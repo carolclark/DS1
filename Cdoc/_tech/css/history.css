@@ -1,0 +1,37 @@
+@import "default.css";
+
+/* features for history files */
+.stage {												/* for Current, etc.	*/
+	margin-top: 1em;
+	margin-bottom: 25px;
+	margin-left: 200px;
+	font: bold italic 16px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
+	color: #000;
+	text-align: center;
+	border-top: 1px solid #9999ff;
+	border-bottom: 1px solid #9999ff;
+	background-color: #f5f5ff;	
+}
+
+														/* hmark: see also default.css hmark, also used in Version files */
+														
+														/* Milestones			*/
+p.milestart {
+	font-style: italic;
+	text-align: right;
+	text-decoration: overline;
+}
+p.mileend {
+	font-style: italic;
+	text-align: right;
+	text-decoration: underline;
+}
+
+p.datemark {text-align: right}							/* date marker			*/
+
+.proposed {
+	font-size: 12px;
+	font-style: italic;
+	margin-left: .3in;
+	color: #005500;
+}

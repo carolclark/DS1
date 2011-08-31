@@ -1,0 +1,1031 @@
+	<!-- $Id: Support.html 63 2011-07-15 17:44:19Z carolclark $ -->
+<!-- Created by Carol Clark on 03 Jan 2011. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Support</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+</head>
+<body>
+<!-- @navhead "../Support/Development.html" "Development" "Support_hist.html" -->
+<h1>Support</h1>
+
+<!-- @marker "(topic structure)" -->
+<!-- Topic Structure
+heading with topics: Topic Name;tp_TopicName;2
+[h3 topic links; name includes TopicName]
+topicSep
+topicGroup "Tasks" "2"
+
+heading with name: Topic Name Tasks;tl_TopicName;4
+heading with name: Task Name; tsk_TaskName;5
+(within a topic, retain markers for tasks only, indented 2 spaces)
+-->
+
+<!-- @marker "0 ===" -->
+<!-- @topicList "Support" "Contents" -->
+	<!-- @topicGroup "Policies and Techniques" "1" -->
+		<!-- @topicItem "CCDev" "#tp_CCDev" "0" "" -->
+		<!-- @topicItem "Source Control" "#tp_SourceControl" "0" "" -->
+		<!-- @topicItem "Backup" "#tp_Backup" "0" "" -->
+		<!-- @topicGroup "" "5" -->
+		<!-- @topicItem "Web Sites" "#tp_WebSites" "0" "" -->
+		<!-- @topicItem "File Server" "#tp_FileServer" "0" "" -->
+		<!-- @topicItem "Unix and Unix tools" "#tp_Unix" "0" "" -->
+		<!-- @topicItem "Tools for Compiled Code" "#tp_CompileTools" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Related Project Files" "11" -->
+		<!-- @topicItem "Support Versions" "Support_vers.html#Contents" "0" "" -->
+		<!-- @topicItem "Support History" "Support_hist.html#Contents" "0" "" -->
+	<!-- @topicGroup "" "14" -->
+		<!-- @topicItem "Cdoc" "Cdoc.html#Contents" "0" "in-house documentation system" -->
+		<!-- @topicItem "Tools" "Tools.html#Contents" "0" "installed applications, tools, and libraries" -->
+	<!-- @topicGroup "" "17" -->
+		<!-- @topicItem "Support Glossary" "Support_gloss.html#Contents" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "1 === CCDev" -->
+<h2>CCDev</h2>
+<!-- @topicList "CCDev" "tp_CCDev" -->
+	<!-- @topicItem "Scripting" "#Scripting" "0" "" -->
+	<!-- @topicItem "Build System" "#BuildSystem" "0" "" -->
+<!-- @/topicList -->
+<p>CCDev is a system for supporting our development work. It includes:</p><ul>
+	<li>folder CCDev containing scripts and other supporting functionality<ul>
+		<li>all files in folder CCDev are derived</li>
+		<li>environment variable $CCDev contains the path to folder CCDev</li>
+	</ul></li>
+	<li>target CCDev, which generates much of the content of folder CCDev</li>
+</ul>
+
+<!-- @marker "Scripting" -->
+<h3>Scripting</h3>
+<!-- @topicList "Scripting" "Scripting" -->
+	<!-- @topicItem "Development Environment" "#DevelopmentEnvironment" "0" "unix-level environment support" -->
+	<!-- @topicItem "Supported Script Types" "#ScriptTypes" "0" "languages and conventions" -->
+	<!-- @topicItem "Snippets" "#ScriptingSnippets" "0" "parameterized text blocks" -->
+	<!-- @topicItem "Scriptdocs" "#ScriptingScriptdocs" "0" "documentation for scripts and snippets" -->
+<!-- @/topicList -->
+
+<!-- @marker "Development Environment" -->
+<h4><a name="DevelopmentEnvironment">Development Environment</a></h4>
+<p>CCDev supports scripting in both Unix and AppleScript.</p>
+<p>Effective January 3, 2011, we use the Korn shell for Unix development.
+This decision was made on the advice of Scott Clark, and has been working very well.</p>
+
+<h5>Environment Configuration Files</h5>
+<p>Files that establish the development environment are installed by CCDev subtarget Environment.</p>
+
+<h6>~/.profile</h6>
+<p>user login file (source: Environment/profile)</p><ul>
+	<li>set default shell to <span class='mono'>ksh</span>; matches setting in System Preferences:Accounts</li>
+	<li>set environment file (<span class='mono'>$ENV</span>) to our Korn environment file at ~/CCDev/bin/kshrc</li>
+</ul>
+
+<h6>~/CCDev/bin/.kshrc</h6>
+<p>eystem Environment file (source: Environment/kshrc)</p><ul>
+	<li>set default user prompt to "&lt;userName&gt; &lt;lineno&gt;</li>
+	<li>add $CCDev/bin to <span class='mono'>$PATH</span></li>
+	<li>add $CCDev/func to <span class='mono'>$PATH</span> and <span class='mono'>$FPATH</span></li>
+</ul>
+
+<h6>~/subversion/config</h6>
+<p>Subversion configuration file (source: Environment/subversion_config)</p><ul>
+</ul>
+
+<!-- @marker "Supported Script Types" -->
+<h4><a name="ScriptTypes">Supported Script Types</a></h4>
+
+<h6>Unix</h6><dl class='funclist'>
+	<dt>Scripts</dt><dd>standard Unix scripts<br />
+		source files: extension .uia for scripts that require user interaction, others .ksh<br />
+		installation: @ $CCDev/bin; extension .ksh dropped</dd>
+	<dt>Functions</dt><dd>Unix functions @ $CCDev/func<br />
+		source files: extension .func<br />
+		installation: @ $CCDev/func; extension .func dropped</dd>
+	<dt>Snippets</dt><dd>text to be processed as <a class='glosslink' href='Support_gloss.html#def_snippet'>snippets</a><br />
+		source files: extension .snip<br />
+		installation: @ $CCDev/snip</dd>
+</dl>
+
+<h6>AppleScript</h6><dl class='funclist'>
+	<dt>Scripts</dt><dd>compiled AppleScripts<br />
+		source files: extension .applescript<br />
+		installation: @ $CCDev/Scripts; extension .scpt	</dd>
+	<dt>Functions</dt><dd>compiled AppleScript functions; $CCDev/Scripts<br />
+		source files: extension .applescript<br />
+		installation: @ $CCDev/Scripts; extension .scpt<br />
+		by convention, AppleScript functions use the idiom <span class='mono'>on run argv</span> and are named with leading '_'</dd>
+</dl>
+
+<!-- @marker "Snippets" -->
+<h4><a name="ScriptingSnippets">Snippets</a></h4>
+
+<!-- @marker "Scriptdocs" -->
+<h4><a name="ScriptingScriptdocs">Scriptdocs</a></h4>
+
+<!-- @marker "2 ===" -->
+<!-- @marker "Build System" -->
+<h3><a name="BuildSystem">Build System</a></h3>
+<p>CCDev supports a build system used to process script-based targets. These targets are identified as CCDev targets, as distinct from Xcode targets.</p>
+
+<!-- @marker "  Build Scripts" -->
+<h4><a name="BuildScripts">Build Scripts</a></h4>
+<p>Build scripts are files named <em>&lt;Name&gt;.build</em>, and are normally stored at the root level of their parent folder. Each script processes the files in its folder. Since any build scripts found at <em>directory/&lt;Name&gt;.build</em> are expected to process the files in <em>directory</em>, they hide any build scripts contained at deeper levels under <em>directory</em>.</p>
+<p>Build scripts are run in place, with the current directory set to their immediate parent folder. Any scripts or functions called should be invoked from their installed locations.</p>
+<p>A single parameter specifies the subtarget(s) to be built or the command to be executed. Actions not shown in square brackets below must be implemented. Standard subtargets and commands include:</p><dl class='funclist'>
+	<dt>all</dt><dd>build and install all subtargets</dd>
+	<dt>[clean]</dt><dd>remove intermediate files, triggering files for rebuilding</dd>
+	<dt>[install]</dt><dd>handles steps needed to install this target that should be performed before its standard build action(s)</dd>
+	<dt>[uninstall]</dt><dd>clean, plus remove installed and built files from their installed locations</dd>
+	<dt>actions</dt><dd>return an array of names of all commands and subtargets supported<br />
+may include user-defined commands and subtargets<br />
+used by BBEdit to provide a user interface for selecting a command to execute or a subtarget to build<br />
+action names may contain only alphanumeric and underscore characters [:word:]</dd>
+	<dt>[test]</dt><dd>execute any files *.test associated with this target<br />
+	each test scripts *.test:<br />
+	is run in place, with the current directory set to $CCDev<br />
+	writes test data to ~/CCDev/TestData<br />
+	tests using installed scripts<br />
+	returns status reflecting pass/fail<br />
+	is independent; run order of *.test files is undefined<br />
+	<span class='nyi'>later, support functions or scripts to generate shared test data</span>
+</dd>
+</dl>
+
+<h4><a name='BuildCdoc'>Cdoc</a></h4>
+<p>A Cdoc target is a type of CCDev target that is used to process documentation for <a class='glosslink' href='Support_gloss.html#def_Cdoc'>Cdoc</a>, our in-house documentation system.</p>
+<p>For Cdoc targets, the build script may be omitted from the Cdoc source folder. The default script $CCDev/Scripts/Cdoc.build is then used.</p>
+
+<!-- @marker "3 ===" -->
+<!-- @marker "Source Control" -->
+<h2>Source Control</h2>
+<!-- @topicList "Source Control" "tp_SourceControl" -->
+	<!-- @topicItem "Source Control Policies" "#SourceControlPolicies" "0" "" -->
+	<!-- @topicItem "Repository Access" "#RepositoryAccess" "0" "for developers" -->
+	<!-- @topicItem "Repository Administration" "#RepositoryAdministration" "0" "for repository administrator" -->
+<!-- @/topicList -->
+
+<p>A Source Control Management system supports tracking the source files used in a project at multiple stages of development. It maintains a repository of the files, and updates that repository when the user requests that the files be "checked in". It normally stores only the differences between successive copies of a file, which saves space and, for text files, supports viewing any two revisions of the same file side-by-side.</p>
+<p>The Source Control system currently used at C &amp; C software is Subversion, which, among other advantages, does use binary comparison when handling binary files.</p>
+
+<!-- @marker "Source Control Policies" -->
+<h3>Source Control Policies</h3>
+<!-- @topicList "Source Control Policies" "SourceControlPolicies" -->
+	<!-- @topicItem "Repository Backup" "#SCPolicies_Backup" "0" "" -->
+	<!-- @topicItem "File Types" "#SCPolicies_filetypes" "0" "" -->
+		<!-- @topicItem "iWork" "#SCPolicies_iWork" "1" "" -->
+<!-- @/topicList --><ul>
+	<li>WARNING: <a name='subversionFoldersAndContents'>Do not attempt</a> to rename a folder and change its contents on the same revision. This does not work in Subversion, and attempting to do so apparently can corrupt the repository.</li>
+	<li>CAUTION: Prior to Xcode 4, we always used BBEdit or Terminal to add items to a repository because Xcode 3 did not respect svn:ignore or [auto-props] for file types. This has not yet been checked in Xcode 4.</li>
+</ul>
+
+<!-- @marker "Repository Backup" -->
+<h4 id="SCPolicies_Backup">Repository Backup</h4><ul>
+	<li class='blurb'>Status 30 May 2011<ul>
+		<li>For some time, Subversion repositories have been backed up with an automatic MobileMe Backup scheduled daily to an external hard drive and to iDisk</li>
+		<li>Recently, in-house script ccBackup was added. This updates a mirror of selected folders including the Subversion repository to an external hard drive on demand.</li>
+		<li>However, copying a Subversion repository may generate a unusable repository if another user accesses the repository during the copy process. This becomes a problem now, as other users start to use repositories. Subversion provides a hot copy option/script that effectively deals with this problem.</li>
+		<li>Also, Subversion supports dumping repository contents to a text file in full and incremental versions. We have not used this in the past, but should implement it now.</li>
+	</ul></li>
+	<li>Repositories Backed Up as Follows:<ul>
+		<li>Backup with an automatic MobileMe Backup scheduled daily to an external hard drive and to iDisk. These backups are subject to corruption if another user accesses the repository while the backup is in process, but with the low level of remote traffic we expect, this is expected to be rare. Most backups are incremental, so the previous backup would still be available.</li>
+		<li class='nyi'>Subversion hook script runs Subversion's hotcopy (via Subversion's hot-backup.py script) whenever a	 new revision is created.</li>
+		<li class='nyi'>ccBackup (in-house script, run on demand) maintains hot-copied repositories with its disk image.</li>
+		<li class='nyi'>scheduled launchd tasks maintain repository dumps, with full dumps weekly and incremental dumps daily</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "File Types" -->
+<h4 id="SCPolicies_filetypes">File Types</h4><ul>
+	<li>Human-Edited Text Files<ul>
+		<li>These are the ideal type of file to use with version control system because:<ul>
+			<li>different versions of a file can easily be compared side-by-side, with differences highlighted</li>
+			<li>files are also stored by tracking only the differences, which allows storage of a lot of information in a compact form</li>	
+		<li>Normally, all files of this type are versioned; we know of no exceptions at this time.</li>
+		</ul></li>
+	</ul></li>
+	<li>Generated Text Files<ul>
+		<li>similar to human-edited text files; generated by many programs, frequently in XML</li>
+		<li>may be large; may contain frequent and spurious changes; may not be human-readable</li>
+		<li>some types, currently several that track user status (eg. current selection, window size) for individual files, are excluded</li>
+	</ul></li>
+	<li>Binary Files<ul>
+		<li>user cannot easily compare different versions of a file</li>
+		<li>essential binary files, as determined by the needs of each project, are versioned</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "iWork" -->
+<h5><a name="SCPolicies_iWork">iWork</a></h5>
+<p>iWork documents are in general incompatible with Subversion. When iWork resaves any file, it overwrites any existing content, including the contained subversion data. The workarounds that I have been able to find appear to be quite complex and probably impractical for any of the uses we currently envision for iWork files.</p>
+<p>Numbers files can be exported to .csv or .xls formats. Pages files can be exported to plain text or RTF. We do not currently foresee a need for Keynote files. Needing to reexport before check in is an inconvenience and is vulnerable to human error.</p>
+<p>Conclusions:</p><ul>
+	<li>avoid using iWork files in development projects</li>
+	<li>if iWork files are used, provide a script that can be run at check-in time to prompt the user if any affected exported files are older than their sources</li>
+</ul>
+
+<h5 class='depr'>previous iWork notes</h5><ul>
+	<li>we currently have experience with Pages and Numbers documents, which share a common package structure:<ul>
+			<li>Contents/PkgInfo ("Document", apparently binary)</li>
+			<li>QuickLook/Thumbnail.jpg</li>
+			<li>document-thumbnail.tiff	(Numbers only)</li>
+			<li>index.xml.gz<ul>
+				<li>binary archive contains single .xml file, not really human-readable</li>
+				<li>more complex files might have more than one such archived files</li>
+			</ul></li>
+	</ul></li>
+	<li>the fact that text files in these packages are zipped is an inconvenience for source control that might or might not be worth the trouble to work around</li>
+	<li>one possible way to handle versioning for these files might be:<ul>
+		<li>"building" an iWork file would:<ul>
+		 	<li>create a sibling folder with the same base file name; copy PkgInfo, any .xml.gz files, and any graphics files with possible exclusions for thumbnails, to that folder</li>
+		 	<li>in the new folder, unzip any zipped files and remove their originals</li>
+		</ul></li>
+		<li>have the source control system ignore the iWork package but check in the sibling folder</li> 
+		<li>"building" the sibling folder would reconstruct the iWork file</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Repository Access" -->
+<h3>Repository Access</h3>
+<!-- @topicList "Repository Access" "RepositoryAccess" -->
+	<!-- @topicGroup "Tasks" "1" -->
+		<!-- @topicItem "Checkout Repository" "#tsk_CheckoutRepository" "0" "" -->
+		<!-- @topicItem "Xcode: Add Repository" "#tsk_Xcode_AddRepository" "0" "" -->
+<!-- @/topicList -->
+
+<h4>Repository Access Tasks`</h4>
+<!-- @marker "  Checkout Repository" -->
+<h5 id="tsk_CheckoutRepository">Checkout Repository</h5>
+<p class='blurb'>This will place a complete set of all the active files in the repository at a location you specify on your hard drive. This set of files is called a "working copy".</p><ul>
+	<li>You need a separate folder on your hard drive to hold working copies for multiple projects. If you do not already have a working copy folder, create one, probably either inside your Documents folder or directly in your home directory. Mine is called "Dev", and is in my home folder.</li>
+	<li>Determine the complete pathname for a repository folder inside your working copy folder. The path should use start with "${HOME}" to specify your home directory, and should end with the name of the repository. Examples: "${HOME}/Dev/Punkin"; "${HOME}/Documents/Projects/Support"</li>
+	<li>Terminal: <span class='mono'>svn checkout svn://&lt;IPAddress&gt;/&lt;repos&gt;/trunk &lt;workingCopyPath&gt;/&lt;repos&gt;</span><ul>
+		<li>In this and similar instructions, any expression like &lt;aLabel&gt; is to be replaced by whatever aLabel represents. For example:<ul>
+			<li><span class='mono'>&lt;repos&gt;</span> stands for the name of the repository you are checking out</li>
+			<li><span class='mono'>&lt;IPAddress&gt;</span> stands for the IP address of the server that is the host for the repository</li>
+			<li><span class='mono'>&lt;workingCopyPath&gt;</span> stands for the path to your working folder, starting with ${HOME}/</li>
+		</ul></li>
+		<li>It is important to type this command exactly. In particular, omitting "/trunk" from the repository address or the repository name from the &lt;workingCopyPath&gt; are easy mistakes to make that will have undesired results.</li>
+		<li>If Terminal says "Can't connect to host ... Connection refused", then the server is probably offline; contact administrator.</li>
+		<li>When asked for your username and/or password in this or another subversion operation, and to your subversion username and password.</li>
+	</ul></li>
+	<li>Verify that there is now be a folder named &lt;repos&gt; in your working copy folder that contains files already in the project.</li>
+	<li>Continue with Xcode: Add Repository below.</li>
+</ul>
+
+<!-- @marker "  Xcode: Add Repository" -->
+<h5 id="tsk_Xcode_AddRepository">Xcode: Add Repository</h5>
+<p class='blurb'>Tell Xcode about an existing repository. Then you will be able to use Xcode to manage your work with that repository.</p><ul>
+	<li>Open Xcode; select Window &gt; Organizer; from the set of five tabs at the top of the Organizer window, select "Repositories".</li>
+	<li class='blurb'>The Repositories panel on the left shows a list of the repositories Xcode knows about. It is initially empty.</li>
+	<li>Add repository named &lt;repos&gt; to Xcode repositories:<ul>
+		<li>Click the "+" button at the bottom of the Repositories panel; choose "Add Working Copy..." from the popup menu. Choose the folder to be added from inside your working copy folder.</li>
+		<li>The repository now appears in your repositories list. Select the repository -- it is called, &lt;repos&gt;, and it has a brown repository icon on the left and the green or yellow status dot on the right. If the status dot is yellow, type your Subversion username and password into the fields provided; the yellow dot should turn green to tell you that the repository can now be accessed.</li>
+		<li>Click the disclosure triangle next to the repository if it is not already open. The purple folder "root" represents the repository. Clicking on the purple folder shows the files in the repository; your working copy files are in folder "trunk". The blue folder represents your working copy; clicking on it displays the files in your working copy. The bottom of the screen shows the repository history -- what, when, why and by whom changes have been made. Once you've checked something in, your comments will appear here.</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Repository Administration" -->
+<h3>Repository Administration</h3>
+<!-- @topicList "Repository Administration" "RepositoryAdministration" -->
+	<!-- @topicItem "Source Control History" "#SourceControlHistory" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Tasks" "3" -->
+		<!-- @topicItem "New Repository" "#tsk_NewRepository" "0" "admin" -->
+		<!-- @topicItem "Rename Repository" "#tsk_RenameRepository" "0" "admin" -->
+		<!-- @topicItem "Forward svn.candcsoft to Local Apache" "#tsk_forward_svncandcsoft" "0" "" -->
+<!-- @/topicList -->
+
+<h4><a name="SourceControlHistory">Source Control History</a></h4>
+<p><em>Current</em> Subversion repository at ~/Dev/svnrep<br />
+<span class='todo'>see DevSupport:<a href="../Legacy/DevSupport/DevSupport.html#_Subversion">Subversion</a></span></p>
+
+<h5>Previous Source Control Systems</h5><ul>
+	<li class='blurb'>(shown most recent first)</li>
+	<li><em>CVS</em><br />
+		used for a short time starting when we switched to Mac OS X<br />
+		preserved at /Ext/Development Archives/):
+		cvs root directory CVSROOT;	CVS directories within controlled projects</li>
+	<li><em>VSS</em><br />
+		Visual SourceSafe - OS 9 (not Classic) only<br />
+		repositories (DevDB, Dev1DB) have been preserved at /Ext/Development Archives/DevVSS,
+		but are probably no longer accessible</li>
+	<li><em>Projector</em><br />
+		source control system for MPW<br />
+		repository no longer available</li>
+</ul>
+
+<!-- @marker "Repository Administration Tasks" -->
+<h4><a name="tl_RepositoryAdministration">Repository Administration Tasks</a></h4>
+
+<!-- @marker "  New Repository" -->
+<h5><a name="tsk_NewRepository">New Repository</a></h5><ul>
+	<li>NewRepository.worksheet [BBEdit]<ul>
+		<li><em>Create New Repository</em> [Shell] <ul>
+			<li class='mono'>svnadmin create ~/Dev/svnrep/&lt;ProjectName&gt;</li>
+		</ul></li>
+		<li><em>Create and Import Repository Directory Structure</em><ul>
+			<li>create ${CCDev}/tmp/&lt;ProjectName&gt; containing folders trunk, branches, tags</li>
+			<li class='mono'>svn import ${CCDev}/tmp/&lt;repos&gt; svn://&lt;IPAddress&gt;/&lt;repos&gt; -m "import directory structure"</li>
+			<li>remove imported directory ${CCDev}/tmp/&lt;repos&gt;</li>
+		</ul></li>
+		<li><em>Verify Repository Directory Structure</em><ul>
+			<li class='mono'>svn list --recursive svn://&lt;IPAddress&gt;/&lt;repos&gt;</li>
+		</ul></li>
+		<li><em>Configure Repository</em><ul>
+			<li>enable changes to log messages <ul class='mono'>
+				<li>f="pre-revprop-change"</li>
+				<li>cd ~/Dev/svnrep/&lt;repos&gt;/hooks; cp $f.tmpl $f; chmod u+x $f</li>
+			</ul></li>
+			<li>configRepository (script)<ul>
+				<li>install svnserve.conf and password files into the repository</li>
+			</ul></li>
+		</ul></li>
+		<li><em>Add Support for New Project</em><ul>
+			<li>add subversion status line to Shell.worksheet</li>
+			<li>BBEdit Preferences : Source Control: add repository</li>
+			<li>Accessor : BBEdit.r: add events for new project</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "  Rename Repository" -->
+<h5><a name="tsk_RenameRepository">Rename Repository</a></h5><ul>
+	<li>check in repository; close</li>
+	<li>Finder: rename svnrep's folder</li>
+	<li>Shell <ul>
+		<li>check out renamed repository <ul>
+			<li class='mono'>cd ~/Dev; svn checkout file:///Users/carolclark/Dev/svnrep/&lt;ReposName&gt;/trunk &lt;ReposName&gt;</li>
+		</ul></li>
+	</ul></li>
+	<li>Xcode<ul>
+		<li>Repository: Xcode &gt; Organizer &gt; Repositories: remove entry for old project; Add Working Copy &lt;NewProjectName&gt;</li>
+		<li>Xcode Project, if applicable <ul>
+			<li>rename targets to avoid name clashes</li>
+			<li>Doxygen target: rename .doxygen config file;
+				rename target in build phase and in config file</li>
+			<li>WARNING: If the project itself needs to be renamed, this must be done in separate revision. See <a href='#subversionFoldersAndContents'>Policies</a>.</li>
+		</ul></li>
+	</ul></li>
+	<li>Cdoc <ul>
+		<li>Support/Development_hist: change occurrences of &lt;OldName&gt; to &lt;NewName&gt;</li>
+		<li>remove existing directory ~/CCDev/Sites/Development/Tech/&lt;OldName&gt;; rebuild documentation; check HTML</li>
+		<li>check all HTML</li>
+	</ul></li>
+</ul>
+
+<!-- "4 ==="-->
+<!-- @marker "Backup" -->
+<h2>Backup</h2>
+<!-- @topicList "Backup" "tp_Backup" -->
+	<!-- @topicItem "Backup Schedules by Tool" "#BackupTools" "0" "" -->
+		<!-- @topicItem "Time Machine" "#BackupTimeMachine" "1" "" -->
+		<!-- @topicItem "MobileMe Backup" "#BackupMobileMeBackup" "1" "" -->
+		<!-- @topicItem "Tar" "#BackupTar" "1" "" -->
+<!-- @/topicList -->
+
+<h3><a name="BackupTools">Backup Schedules by Tool</a></h3>
+<!-- @marker "Time Machine" -->
+<h4><a name="BackupTimeMachine">Time Machine</a></h4><ul>
+	<li class='blurb'>Maintains current and previous hard drive images on a separate drive.</li>
+	<li>Problem with Speech Recognition<ul>
+		<li>Apparently, Time Machine frequently causes unacceptable performance with Mac's built-in speech recognition. This does not appear to be caused by Accessor (our in-house speech recognition application) because it also appears in System Preferences &gt; Speech &gt; Speech Recognition &gt; Calibrate at the same times.</li>
+		<li>To correct the problem, it is necessary to turn off Time Machine, eject the Time Machine volume, and then turn off that volume.</li>
+		<li>As a result, Time Machine on Carol's computer is run much less frequently than its design intended.</li>
+	</ul></li>
+	<li>Exclusion Notes<ul>
+		<li>Files are included unless specifically marked for exclusion, either via the <a href='file:///System/Library/CoreServices/backupd.bundle/Contents/Resources/StdExclusions.plist'>standard exclusions list</a> or by adding them as exclusions from Time Machine preferences.</li>
+		<li>On Carol's computer, volumes other than the primary volume are intended for use only for backup, testing, and storage of archives that are also saved on physical disks.</li>
+		<li>When we use Parallels, it was essential to exclude the Parallels Virtual Machine. If we need Windows emulation again, we may switch to VMware instead of Parallels. In either case, the Virtual machine file must be excluded because it is a single very large file that changes every time it is opened.</li>
+		<li>11/2010 previous attempt to exclude ~/Dev/_discard resulted in
+			excluding all of ~/Dev, which required starting a new Time Machine volume to
+			correct (per Haddock Computer)</li>
+		<li>see also <a href='http://ryanblock.com/2008/05/good-folders-to-exclude-from-time-machine-backups/'>Good folders to exclude from Time Machine backups</a></li>
+	</ul></li>
+	<li>Conclusion: try to run Time Machine at least once a day; manually exclude external volumes</li>
+</ul>
+
+<!-- @marker "MobileMe Backup" -->
+<h4><a name="BackupMobileMeBackup">MobileMe Backup</a></h4><ul>
+	<li class='blurb'> backup utility Backup provided by Apple with MobileMe account</li>
+	<li class='blurb'> Selecting Items to be Backed Up <ul>
+		<li>Quick Picks: predefined selections, such as Safari Settings<ul>
+			<li>except for Quick Picks that backup particular file types from the home folder, all available Quick Picks are included in a backup plan</li>
+			<li>in the list below, Quick Picks marked with '*' are suspected to be obsolete; we have not found corresponding folders, and in our backups no files appear</li>
+		</ul></li>
+		<li>by folder, with exclusions supported</li>
+	</ul></li>
+	<li class='blurb'>Scheduling and Incremental Backups <ul>
+		<li>Only incremental backups can be scheduled. Full backups must be run manually often enough to control space required 
+		by incremental backups. For many items, including many of the Quick Picks, incremental backups are not much smaller than 
+		the full backups on which they depend; however, all incremental backups since the last full backup must be saved.</li>
+	</ul></li>
+	<li><a name='BackupPlans'>Backup Plans</a> <ul>
+		<li>Personal Data &amp; Settings <ul>
+			<li>scheduled daily to iDisk</li>
+			<li>contents: <ul>
+				<li>svnrep</li>
+				<li>Quick Picks: Address Book, Application preferences, iCal, Keychain, *Safari settings, *Stickies</li>
+			</ul></li>
+		</ul></li>
+		<li>Daily <ul>
+			<li>scheduled daily to /Aux/Backups; once a month, run full backup &amp; delete old incrementals</li>
+			<li>contents <ul>
+				<li><b>Quick Picks</b> Address Book, Application preferences, iCal, Keychain, *Safari settings, *Stickies</li>
+				<li><b>~/Archives</b></li>
+				<li><b>~/Databases</b> contains our current Arbonne database</li>
+				<li><b>~/Documents</b></li>
+				<li><b>~/Dev/svnrep</b> Subversion repository</li>
+				<li><b>~/Dev/Documents</b> unversioned development documents</li>
+			</ul></li>
+		</ul></li>
+		<li>Weekly <ul>
+			<li>scheduled weekly to /Aux/Backups; once every 3 to 6 months, run full backup &amp; delete old incrementals</li>
+			<li>also delete ~/Library/Application Support/Developer/Shared/SnapshotRepository.sparseimage regularly
+				at times indicated by development needs</li>
+			<li>contents <ul>
+				<li><b>Quick Picks</b> Mail messages and settings</li>
+				<li><b>~/Downloads/Installed</b></li>
+				<li><b>~/Library/Application Support/Dragon</b></li>
+				<li><b>~/Library/Application Support/Xcode</b></li>
+				<li><b>~/Library/Application Support/BBEdit</b></li>
+				<li><b>~/Library/Developer/Xcode/Snapshots</b></li>
+				<li><b>~/Library/Developer/Xcode/UserData</b></li>
+				<li><b>~/Reference</b></li>
+			</ul></li>
+		</ul></li>
+		<li>Standard DVD <ul>
+			<li>run full backup manually every month or so to DVD; normally stored off-site</li>
+			<li>contents <ul>
+				<li>~/Dev: all, instead of just svnrep and Documents</li>
+				<li>otherwise, all items from Daily and Weekly plans</li>
+			</ul></li>
+		</ul></li>
+		<li>iTunes <ul>
+			<li>run as indicated</li>
+			<li><b>Quick Picks</b> iTunes Library, iTunes Playlists, iTunes Purchases</li>
+		</ul></li>
+		<li>Media <ul>
+			<li>run as indicated</li>
+			<li><b>Quick Picks</b> iMovie projects, iPhoto library, iWeb sites</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Tar" -->
+<h4><a name="BackupTar">Tar</a></h4><ul>
+	<li class='blurb'>unix tool scripted to produce archives of development projects </li>
+	<li class='blurb'>scripts produce tarballs at ~/Archives, which are then backed up by Time Machine and Backup</li>
+	<li class='nyi'> currently (March 22, 2011), these scripts, which had been run from Xcode but are no longer available there and have not yet been moved, are unavailable </li>
+	<li>Xcode Menu Scripts <ul>
+		<li>Archive Project <ul>
+			<li>archives project files, not including Subversion files or derivative files</li>
+			<li>script produces tarballs with names including a timestamp, which should be edited to a version or revision tag</li>
+		</ul></li>
+		<li>Archive Repository <ul>
+			<li>produces timestamped archive of the current Subversion repository</li>
+		</ul></li>
+		<li>Archive to Retire <ul>
+			<li>produces timestamped archive with name including "svn"</li>
+			<li>contains same data as that produced by Archive Project, plus the Subversion repository folder by the same name
+				and the corresponding technical documentation folder</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "5 ===" -->
+<!-- @marker "Web Sites" -->
+<h2>Web Sites</h2>
+<!-- @topicList "Web Sites" "tp_WebSites" -->
+	<!-- @topicItem "WebSite Structures" "#WebSite_Structures" "0" "" -->
+		<!-- @topicItem "Conceptual" "#ws_Conceptual" "1" "" -->
+		<!-- @topicItem "Site Source Structure" "#ws_Source" "1" "" -->
+		<!-- @topicItem "Local and Installed Sites" "#ws_LocalNInstalled" "1" "" -->
+	<!-- @topicGroup "" "5" -->
+	<!-- @topicItem "Web Hosting" "#WebHosting" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Tasks" "#tl_WebSites" "0" "" -->
+		<!-- @topicItem "Forward candcsoft to MobileMe" "#tsk_forward_candcsoft" "1" "" -->
+		<!-- @topicItem "Forward svn.candcsoft to Local Apache" "#tsk_forward_svncandcsoft" "1" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "WebSite Structures" -->
+<h4><a name="WebSite_Structures">WebSite Structures</a></h4>
+
+<p class='blurb'>in this discussion:</p><ul class='blurb'>
+	<li>Resources_ represents zero or more folders containing particular types of resources from among:<ul>
+		<li>gen (commonly linked pages, such as About,...)</li>
+		<li>incl (HTML files to be included in other HTML files)</li>
+		<li>css (css)</li>
+		<li>js (javascript)</li>
+		<li>img (images)</li>
+		<li>dnld (downloads)</li>
+		<li>possibly additional &lt;_parts&gt; folders with similar structure</li>
+	</ul></li>
+	<li>sites marked with '*' are self-contained sites that can be installed at another location</li>
+	<li><a class='glosslink' href='Support_gloss.html#def_Cdoc'>Cdoc</a> is developer technical documentation</li>
+</ul>
+
+<h5><a name="ws_Conceptual">Conceptual Site Structure</a></h5>
+<p>CCDev/Sites</p><ul>
+	<li>*TechnicalDocs<ul>
+		<li>Punkin<ul>
+			<li>_pnkn (Resources_)</li>
+			<li>_bkid (Resources_)</li>
+			<li>resources_</li>
+		</ul></li>
+		<li>&lt;additional projects...&gt; <ul>
+			<li>resources_</li>
+		</ul></li>
+		<li>_tech (Resources_)</li>
+		<li>Legacy<ul>
+			<li class='blurb'>documentation for projects to be replaced or discontinued, all using the previous version of Cdoc</li>
+			<li>Resources_</li>
+		</ul></li>
+	</ul></li>
+	<li>*C &amp; C Software (promotional/business site)<ul>
+		<li>Punkin<ul>
+			<li>_pnkn (Resources_)</li>
+		</ul></li>
+		<li>_cnc (Resources_)</li>
+	</ul></li>
+	<li>Punkin<ul>
+		<li>BilingualKids<ul>
+			<li>*AtTheTable<ul>
+				<li>_tabl (Resources_)</li>
+			</ul></li>
+			<li>_bkid (Resources_)</li>
+		</ul></li>
+		<li>_pnkn (Resources_)</li>
+	</ul></li>
+	<li>*Personal<ul>
+		<li class='blurb'>structure set up by Support/PersonalSite; most content generated by iWeb and stored in project WebGen</li>
+		<li class='blurb'>photo galleries are exported from iPhoto to carollclark/Web/Sites/_gallery; pages use photos from that location directly</li>
+		<li>_prsn (Resources_)</li>
+	</ul></li>
+	<li>_comn (Resources_)</li>
+</ul>
+
+<!-- @marker "Site Source Structure" -->
+<h5><a name="ws_Source">Site Source Structure</a></h5><ul>
+	<li>TechnicalDocs: @~/Dev/&lt;ProjectName&gt;/Cdoc<ul>
+		<li>_tech: @~/Dev/Support/Cdoc</li>
+		<li>Legacy: @~/Dev/&lt;ProjectName&gt;/cdocsrc/Tech</li>
+	</ul></li>	
+	<li>C &amp; C Software: @~/Dev/Support/Sites/CandC<ul>
+		<li>_pnkn: @~/Dev/Punkin/PunkinSite</li>
+		<li>_cnc: @~/Dev/Support/Sites/CandC</li>
+	</ul></li>
+	<li>Punkin<ul>
+		<li>AtTheTable: @~/Dev/Punkin</li>
+		<li>_bkid: @~/Dev/Punkin</li>
+	</ul></li>
+	<li>Personal<ul>
+		<li>site pages, _prsn: @~/Dev/Support/PersonalSite</li>
+		<li>generated pages: @~/Dev/WebGen/(Personal)Pages</li>
+	</ul></li>
+	<li>_comn: @~/Dev/Support/Sites</li>	
+</ul>
+
+<!-- @marker "Local and Installed Sites" -->
+<h5><a name="ws_LocalNInstalled">Local and Installed Sites</a></h5><ul>
+	<li>build system, created by project Support, creates complete local site images at ~/CCDev/Sites</li>
+	<li>for self-contained sites, the build system actually stores shared resources from conceptual parents inside the folders of the sites that use them, generating multiple copies as necessary</li>
+	<li>build system also provides scripts to install local site images at their destination locations</li>
+	<li>installed site destinations:<ul>
+		<li>Personal: <a href='#WebHosting'>WebHost_Personal</a></li>
+		<li>C &amp; C Software: <a href='#WebHosting'>WebHost_CandC</a></li>
+		<li>AtTheTable: carollclark/PrivateSites</li>
+		<li>TechnicalDocs: carollclark/PrivateSites</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Web Hosting" -->
+<h4><a name="WebHosting">Web Hosting</a></h4><ul>
+	<li id="WebHostAddresses">Current WebHost Addresses (MobileMe host and iDisk)<ul>
+		<li>Personal Site (WebHost_Personal): <a href='http://web.me.com/carollclark'>http://web.me.com/carollclark</a></li>
+		<li>C &amp; C Software Site (WebHost_CandC): <a href='http://www.candcsoft.com'>http://www.candcsoft.com</a>, by forward from GoDaddy</li>
+		<li>installation via iDisk at carollclark/Web/Sites/candcsoft for C &amp; C Software public sites, carollclark/Web/Sites for other public sites, carollclark/Public for private sites</li>
+	</ul></li>
+	<li>MobileMe<ul>
+		<li>Advantages<ul>
+			<li>Cost: this host is free to us because we had an existing account; other supposedly free web hosting services have significant disadvantages such as problematic advertising requirements</li>
+			<li>Installation Convenience: I can mount my iDisk and access the files very conveniently</li>
+		</ul></li>
+		<li>Advantage or Disadvantage?<ul>
+			<li>Does not support FTP (no wonder I was having trouble!). MobileMe is easier for me to script now, but the technology is non-standard and therefore not compatible with what we would need with a different host.</li>
+		</ul></li>
+		<li>Disadvantages:<ul>
+			<li>Does not support <a href='#ClientServer'>server-side</a> technologies such as PHP, so there's no provision for communicating anything back to us other than via e-mail, which is standard HTML technology.</li>
+			<li>Acceptable password protection requires server-side technology which, in the case of MobileMe, means that we must rely on the hosting service to provide password protection. But the MobileMe service provides password protection only for iWeb sites (per MobileMe support 3/28/11).</li>
+			<li>Therefore, the only way I could find to get password protection for our website was to put it on my iDisk at a location other than either Sites folder. This may turn out to be less convenient.</li>
+		</ul></li>
+	</ul></li>
+	<li><a name='ClientServer'>Client and Server Code</a> (as I now understand it):<ul>
+		<li>Client-side code is HTML, CSS, and JavaScript that makes up the website. Client-side code is limited to text files that can potentially be read by the client.</li>
+		<li>Server-side code is that connected with the server that responds to requests to provide webpages. Server-side code can be in scripts in languages like PHP and Perl, but can also access code in other forms. Only server-side code can communicate with the provider of the website.</li>
+	</ul></li>
+	<li class='tech'>Website <a name='MobileMeLocationPossibilities'>Location Possibilities with MobileMe</a>:<ul>
+		<li><a href='http://www.candcsoft.com/'>http://www.candcsoft.com/</a> (carollclark/Web/Sites/candcsoft/Punkin - current location) - site is hosted by MobileMe; not acceptable because this makes it a public site for which server-side password protection is available only for iWeb sites (per MobileMe support 3/28/11)</li>
+		<li><a href='https://public.me.com/carollclark'>https://public.me.com/carollclark</a> - protected access to iDisk with authentication required; can download files, but not access them as a website </li>
+		<li><a href='http://homepage.mac.com/carollclark'>http://homepage.mac.com/carollclark</a> (carollclark/Sites) - apparently not protected by the password</li>
+		<li>access via file protocol (file:///Volumes/carollclark/Public/index.html) from mounted iDisk, which requires authentication<ul>
+			<li>iDisk folder other than Public folder calls itself Public in Safari's address bar, which seems problematic</li>
+			<li>iDisk Public folder seems to work. It could use a different password, but Public can still be accessed by mounting my iDisk with its password, so a special Public folder password does not seem indicated.</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Tasks" -->
+<h4><a name="tl_WebSites">Tasks</a></h4>
+
+<!-- @marker "  Forward candcsoft to MobileMe" -->
+<h5><a name="tsk_forward_candcsoft">Forward candcsoft to MobileMe</a></h5><ul>
+	<li>to forward candcsoft.com to folder candcsoft of MobileMe site (&lt;iDisk&gt;/Web/Sites/candcsoft)<ul>
+		<li class='blurb'>based on instructions found at MobileMe, searching for "host domain" in "Find a Help topic" </li>
+		<li><a href='http://www.godaddy.com/default.aspx'>GoDaddy.com</a><ul>
+			<li>login; go to my account / my products; view in domain manager</li>
+			<li>select candcsoft.com; manage forwarding; forward without masking to "web.me.com/carollclark/candcsoft", leaving "update DNS settings to accommodate this change" checked</li>
+		</ul></li>
+		<li>MobileMe<ul>
+			<li>go to Carol Clark / account; login</li>
+			<li>Personal Domain; Add Domain "www.candcsoft.com"; click "Continue"</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "  Forward svn.candcsoft to Local Apache" -->
+<h5><a name="tsk_forward_svncandcsoft">Forward svn.candcsoft to Local Apache</a></h5><ul>
+	<li>to forward svn.candcsoft.com to folder our local Apache svn server<ul>
+		<li><a href='http://www.godaddy.com/default.aspx'>GoDaddy.com</a><ul>
+			<li>login; go to my account / my products; view in domain manager</li>
+			<li>select DNS Manager; select candcsoft.com; click "Edit Zone"</li>
+			<li>add a Host entry; enter "svn.candcsoft.com" and IP address</li>
+		</ul></li>
+		<li>Apache Configuration<ul>
+			<li>add <span class='mono'>ServerName svn.candcsoft.com</span> in section Subversion Configuration</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "File Server" -->
+<h2>File Server</h2>
+<!-- @topicList "File Server" "tp_FileServer" -->
+	<!-- @topicItem "Apache" "#Server_Apache" "0" "" -->
+	<!-- @topicItem "Testing" "#Server_Testing" "0" "" -->
+<!-- @/topicList -->
+<p>We need a file server to allow remote access to the Subversion repositories by multiple developers. We may also at some point wish to use it to serve webpages.</p>
+<p>There are two servers supported for use with subversion:</p><ul>
+	<li>svnserve<ul>
+		<li>specialized server provided with Subversion</li>
+		<li>simpler to set up that Apache</li>
+	</ul></li>
+	<li>Apache<ul>
+		<li>widely used general-purpose server</li>
+		<li>supports more features and options than svnserve; comparative strength and getting through firewalls may be relevant to us</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Apache" -->
+<h3>Apache</h3>
+<!-- @topicList "Apache" "Server_Apache" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Apache Security Configuration" "#Apache_Security" "0" "" -->
+	<!-- @topicGroup "Tasks" "3" -->
+		<!-- @topicItem "Starting and Stopping" "#tsk_StartingAndStopping" "0" "" -->
+		<!-- @topicItem "Change Host Directory" "#tsk_ChangeHostDirectory" "0" "" -->
+<!-- @/topicList -->
+<p>See also <a href='Tools.html#Apache_'>Tools: Apache 2</a>.</p>
+
+<!-- @marker "Apache Security Configuration" -->
+<h4 id="Apache_Security">Apache Security Configuration</h4><ul>
+	<li class='blurb'>We went to a great deal of trouble to figure out what security precautions to take to protect our server and the files it serves, and to keep the server on for quick testing only until that was done. In the end, we had decided on precautions that almost exactly matched what had already been done in the default installation we had used (MacPorts).</li>
+	<li>File Permissions<ul>
+		<li>directory /opt/local/apache2 is owned by root:admin [default]</li>
+		<li>in general, directories have permissions 755 (read-only except for owner; files can be added by all) [default]</li>
+		<li>in general, files have permissions 644 (read-write for owner, read-only for others); execute permissions are added (755) for executable files [default]</li>
+		<li>logs and configuration information are readable only by owner [custom]:<ul class='mono'>
+			<li>chmod -R go-r /opt/local/apache2/conf</li>
+			<li>chmod -R go-r /opt/local/apache2/logs</li>
+		</ul></li>
+	</ul></li>
+	<li>configuration file httpd.conf<ul>
+		<li>set Listen to &lt;IPAddress&gt;:80 [asInstructed]</li>
+		<li>set ServerName to svn.candcsoft.com:80 (or &lt;IPAddress&gt;:80 if domain name is svn.candcsoft.com not configured) [asInstructed]</li>
+		<li>set restrictive rules for the default Directory configuration; rules can then be overridden for specific directories<ul>
+			<li>specify that no files are to be served to anyone [default]</li>
+			<li>allow following of symbolic links [default]<ul>
+				<li class='blurb'>According to the Apache documentation: restricting symbolic links doesn't really work as a security precaution because it can be gotten around; following symbolic link does not change the Directory rules; restricting symbolic links can cause performance problems</li>
+			</ul></li>
+			<li>do not allow .htaccess files, which can be placed under the web server tree to affect configuration [default]</li>
+		</ul></li>
+		<li>do not allow access to Web server's document root [custom]<ul>
+			<li class='blurb'>Apache allows this by default. But it exposes the websites at ~/Sites, which contains our local copy of the Punkin documentation. (Turning Web Sharing on also exposes ~/Sites).</li>
+			<li>comment out the active statements in the Directory /var/www/htdocs directive</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Apache Tasks" -->
+<h4 id="tsk_Apache">Apache Tasks</h4>
+
+<!-- @marker "  Starting and Stopping" -->
+<h5 id="tsk_StartingAndStopping">Starting and Stopping</h5><ul>
+	<li>start/stop, and enable/disable startup daemon:<ul>
+		<li class='mono'>sudo launchctl [load|unload] -w /Library/LaunchDaemons/org.macports.apache2.plist</li>
+	</ul></li>
+	<li>start and stop:<ul>
+		<li class='mono'>sudo /opt/local/etc/LaunchDaemons/org.macports.apache2/apache2.wrapper [start|stop|restart]</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "  Change Host Directory" -->
+<h5 id="tsk_ChangeHostDirectory">Change Host Directory</h5><ul>
+	<li>to change Apache's web root from ~/localhost, edit httpd.conf as follows:<ul class='mono'>
+		<li>edit DocumentRoot and &lt;Directory "/Users/&lt;user&gt;/localhost"&gt; to use the new path</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Testing" -->
+<h4>Testing</h4>
+<!-- @topicList "Testing" "Server_Testing" -->
+	<!-- @topicGroup "Preliminary" "1" -->
+		<!-- @topicItem "Initial Subversion Remote Access Testing" "#Remote_Testing_Initial" "0" "" -->
+		<!-- @topicItem "Initial Apache Testing" "#Apache_Testing_Initial" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Initial Subversion Remote Access Testing" -->
+<h5 id="Remote_Testing_Initial">Initial Subversion Remote Access Testing</h5>
+<p class='blurb'>June 2011 testing of options for providing remote access to Subversion repositories</p><ul>
+	<li>Firewall settings:<ul>
+		<li>Off: firewall is disabled</li>
+		<li>Standard: firewall in state where "trusted" or "essential" connections are allowed<ul class='blurb'>
+			<li>Leopard: Allow only essential services</li>
+			<li>Snow Leopard: Automatically allow signed software to receive incoming connections: On</li>
+		</ul></li>
+		<li>Strict: <ul class='blurb'>
+			<li>Leopard: Set access for specific services and applications (no services or applications are specified)p</li>
+			<li>Snow Leopard: Automatically allow signed software to receive incoming connections: Off</li>
+		</ul></li>
+	</ul></li>
+	<li>Error messages:<ul>
+		<li>svnsAddressInUse [svnserve]<ul>
+			<li class='blurb'>svn: Can't connect to host '&lt;IPAddress&gt;'; Address already in use</li>
+		</ul></li>
+		<li>svnsConnectionRefused [svnserve]<ul>
+			<li class='blurb'>svn: Can't connect to host '&lt;IPAddress&gt;'; Connection refused</li>
+		</ul></li>
+		<li>apacheCouldNotConnect [apache]<ul>
+			<li class='blurb'>svn: OPTIONS of 'http://192.168.0.104/svn/Test': could not connect to server (http://192.168.0.104)</li>
+		</ul></li>
+	</ul></li>
+	<li>In testing, when firewall configurations were changed the system was shut down and restarted  between tests. When server configurations were changed, the server was shut down and restarted.</li>
+</ul>
+<h6>svnserve testing</h6><ul>
+	<li>svnserve is a "simple" server provided with Subversion recommended for basic remote-access setups. The subversion documentation says that Apache has the advantage that it can deal with "corporate firewalls"; is does not say that about svnserve.</li>
+	<li class='blurb'>connect with <span class='mono'>svnserve -d -r /svnreptest</span>; test with <span class='mono'>svn list svn://192.168.0.104/Test</span>; expected result on 3 lines: /branches /tags /trunk</li>
+	<li>Carol's computer; Firewall Off or Standard: works (but doesn't add anything)</li>
+	<li>Carol's computer; Firewall Strict: [svnsConnectionRefused]</li>
+	<li>Jim's computer: Carol FW Off; Jim FW Off or Standard: works</li>
+	<li>Jim's computer: Carol FW Standard; Jim FW Off or Standard; [svnsConnectionRefused]</li>
+	<li>Carol's or Jim's computer: Carol forgets to activate svnserve, which must currently be done manually; [svnsConnectionRefused]</li>
+	<li>Carol's computer; FW Standard; default svnserve port specified on command line; works</li>
+	<li>Carol's computer; FW Standard; non-default svnserve port specified on command line; [svnsConnectionRefused]<ul class='blurb'>
+		<li>It's also supposed to be possible to configure a non-default port, but I cannot get that to work. I have seen [svnsAddressInUse] 	when I tried.</li>
+	</ul></li>
+	<li>Laura's computer; computer firewall off, wifi firewall probably on; [svnsAddressInUse]</li>
+	<li>There is also an option to use SSH with svnserve. No one seems to recommend it except for situations where SSH is already in place, or where rules prevent someone from setting up a standard server.</li>
+</ul>
+
+<h6>Apache testing</h6><ul>
+	<li class='blurb'>Apache can be stopped and restarted, is currently configured to start automatically; test with <span class='mono'>svn list http://192.168.0.104/svn/Test</span>; expected result on 3 lines: /branches /tags /trunk</li>
+	<li>Carol's computer; FW Strict: [apacheCouldNotConnect] from any computer tested including Carol's</li>
+	<li>Carol's computer FW Standard; Jim's FW Standard: works from Carol's or Jim's computer</li>
+	<li>Laura's computer; computer FW off, wifi FW probably on; [apacheCouldNotConnect]</li>	
+</ul>
+
+<h6>Observations</h6><ul>
+	<li>From what I have seen in forum discussions, it is clear that remote access to Subversion repository is a common practice.</li>
+	<li>I originally tried svnserve because it was a supposedly simple option for basic use, and I interpreted "corporate firewall" to mean something more restrictive than the standard firewalls Jim and I use. From testing, however, it looks as if the firewall problem with svnserve maybe more of a problem than I had expected.</li>
+	<li>Apache is the standard solution for remote access and may be the best choice, especially since we've gotten this far (installation, initial configuration) with it. It appears possible that the problem Laura is having results from a restrictive firewall on the Wi-Fi she uses. Testing on more systems is needed. 6/18/2011</li>
+</ul>
+
+<!-- @marker "Initial Apache Tests" -->
+<h5 id="Apache_Testing_Initial">Initial Apache Tests</h5><ul>
+	<li class='blurb'>These notes are from some initial testing using information we had at the time. Better tests would have been:<ul>
+		<li><span class='mono'>curl --silent http://svn.candcsoft.com</span> returns "&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;", includin	g in a script; use for automated testing</li>
+		<li>for telnet:<ul>
+			<li>open connection as we have been; then<ul>
+				<li class='mono'>GET / HTTP/1.1</li>
+				<li><span class='mono'>Host: 192.168.0.104</span> or <span class='mono'>Host: svn.candcsoft.com</span></li>
+			</ul></li>
+			<li>followed by a blank line serves "&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;" when things are working</li>
+		</ul></li>
+	</ul></li>
+	<li>test result codes for tests below:<ul>
+		<li class='blurb'>for these codes, "connects" means that telnet says it connected and accepts commands; "serves" means returns a html page; "says" means displays a message</li>
+		<li class='blurb'>clear Safari cache at beginning of each group</li>
+		<li>[telnetNoConnection]: no connection; says "telnet: Unable to connect to remote host"</li>
+		<li>[telnetConnRefused]: says "Connection refused; telnet: Unable to connect to remote 	host"</li>
+		<li>[telnetFailedURI]: connects; GET /HTTP/1.1 serves page containing 		"...&amp;SearchQuery=&amp;FailedURI...", says Connection closed by foreign host."</li>
+		<li>[telnetBadRequest]: connects; GET /HTTP/1.1 serves page containing "Bad Request: Your browser sent a request that this server could not understand."</li>
+		<li>[telnetNotFound]: connects; GET /HTTP/1.1 serves page containing "Not Found: The requested URL /HTTP/1.1 was not found on this server.", says "Connection closed by foreign host."</li>
+		<li>[telnetTempUnavail]: connects; GET /HTTP/1.1 serves page containing "This website is temporarily unavailable, please try again later.", says "Connection closed by foreign host."</li>
+		<li>[telnetForbidden]: connects; GET /HTTP/1.1 serves page containing "Forbidden: You don't have permission to access /HTTP/1.1", says "Connection closed by foreign host."</li>
+		<li>[safariCantConnect]: says "Safari can't open the page 'http://&lt;host&gt;[~carolclark]' because Safari can't connect to the server '&lt;host&gt;'."</li>
+		<li>[safariIndexPage]: serves contents of Apache's DocumentRoot, which by default points to /opt/local/apache2/htdocs/ containing index.html that displays "It works!"</li>
+		<li>[safariSitesFolder]: serves directory ~/Sites; clicking parent directory link serves contents of DocumentRoot's index page</li>
+		<li>[safariCcNotFound]: serves "Not Found: The requested URL /~carolclark was not found on this server."</li>
+		<li>[safariForbidden]: serves "Forbidden: You don't have permission to access /[~carolclark/] on this server."</li>
+	</ul></li>
+	<li id='testApacheInitial'>Apache initial configuration<ul>
+		<li>server and web sharing off<ul>
+			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetConnRefused]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetFailedURI]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetTempUnavail]</li>
+			<li>Safari http://localhost: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104: [safariCantConnect]</li>
+			<li>Safari http://localhost/~carolclark: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariCantConnect]</li>
+		</ul></li>
+		<li>server on / web sharing off<ul>
+			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetBadRequest]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetFailedURI]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetNotFound]</li>
+			<li>Safari http://localhost: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104: [safariIndexPage]</li>
+			<li>Safari http://localhost/~carolclark: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariCcNotFound]</li>
+		</ul></li>
+		<li>server and web sharing on<ul>
+			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetNotFound]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetFailedURI]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetTempUnavail]</li>
+			<li>Safari http://localhost: [safariIndexPage]</li>
+			<li>Safari http://192.168.0.104: [safariIndexPage]</li>
+			<li>Safari http://localhost/~carolclark: [safariSitesFolder]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariCcNotFound]</li>
+		</ul></li>
+		<li>server off / web sharing on is not a valid state, since Web Sharing activates the server</li>
+	</ul></li>
+	<li id='testApacheForwarded'>svn.candcsoft.com Forwarded<ul>
+		<li>server and web sharing off<ul>
+			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetNotFound]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetNotFound]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetTempUnavail]</li>
+			<li>Safari http://localhost: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104: [safariCantConnect]</li>
+			<li>Safari http://localhost/~carolclark: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariCantConnect]</li>
+		</ul></li>
+		<li>server on / web sharing off<ul>
+			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetNotFound]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetNotFound]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetTempUnavail]</li>
+			<li>Safari http://localhost: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104: [safariIndexPage]</li>
+			<li>Safari http://localhost/~carolclark: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariCcNotFound]</li>
+		</ul></li>
+		<li>server and web sharing on<ul>
+			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetNotFound]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetNotFound]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetTempUnavail]</li>
+			<li>Safari http://localhost: [safariIndexPage]</li>
+			<li>Safari http://192.168.0.104: [safariIndexPage]</li>
+			<li>Safari http://localhost/~carolclark: [safariSitesFolder]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariCcNotFound]</li>
+		</ul></li>
+		<li>server off / web sharing on is not a valid state, since Web Sharing activates the server</li>
+	</ul></li>		
+	<li id='blockDocumentRoot'>Block Access to Document Root<ul>
+		<li>server and web sharing off<ul>
+			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetNoConnection]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetNoConnection]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetTempUnavail]</li>
+			<li>Safari http://localhost: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104: [safariCantConnect]</li>
+			<li>Safari http://localhost/~carolclark: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariCantConnect]</li>
+		</ul></li>
+		<li>server on / web sharing off<ul>
+			<li><span class='mono'>telnet 192.1	68.0.104 80</span>: [telnetForbidden]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetForbidden]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetTempUnavail]</li>
+			<li>Safari http://localhost: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104: [safariForbidden]</li>
+			<li>Safari http://localhost/~carolclark: [safariCantConnect]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariForbidden]</li>
+		</ul></li>
+		<li>server and web sharing on<ul>
+			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetForbidden]</li>
+			<li><span class='mono'>telnet svn.candcsoft.com 80</span>: [telnetForbidden]</li>
+			<li><span class='mono'>telnet www.candcsoft.com 80</span>: [telnetTempUnavail]</li>
+			<li>Safari http://localhost: [safariIndexPage]</li>
+			<li>Safari http://192.168.0.104: [safariForbidden]</li>
+			<li>Safari http://localhost/~carolclark: [safariSitesFolder]</li>
+			<li>Safari http://192.168.0.104/~carolclark: [safariForbidden]</li>
+		</ul></li>
+		<li>server off / web sharing on is not a valid state, since Web Sharing activates the server</li>
+	</ul></li>
+</ul>
+
+
+<!-- @marker "Unix and Unix tools" -->
+<h2>Unix and Unix tools</h2>
+<!-- @topicList "Unix and Unix tools" "tp_Unix" -->
+	<!-- @topicItem "Permissions" "#Unix_Permissions" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Permissions" -->
+<h3>Permissions</h3>
+<!-- @topicList "Permissions" "Unix_Permissions" -->
+	<!-- @topicItem "Permissions Policy" "#PermissionsPolicy" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Tasks" "3" -->
+	<!-- @topicItem "Add Group" "#tsk_AddGroup" "0" "" -->
+	<!-- @topicItem "Add User" "#tsk_AddUser" "0" "" -->
+	<!-- @topicItem "Add User to Group" "#tsk_AddUserToGroup" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "  Permissions Policy" -->
+<h4><a name="PermissionsPolicy">Permissions Policy</a></h4>
+<p>In general, we use default permissions for most filetypes of <span class='mono'>rwxr-xr-x</span> for directories and <span class='mono'>rw-r--r--</span> for files.</p>
+<p>Files, directories and applications using different permissions:</p><ul>
+	<li>Scripts and script templates, except Javascript: <span class='mono'>rwxr-xr-x</span></li>
+	<li>iWeb uses <span class='mono'>rwx------</span> for everything</li>
+</ul>
+
+<!-- @marker "Permissions Tasks" -->
+<h4 id="tl_Permissions">Permissions Tasks</h4>
+<!-- @marker "Add Group" -->
+<h5 id="tsk_AddGroup">Add Group</h5><ul>
+	<li>check existing group IDs on the system to ensure unique ID<br />
+		<span class='mono'>dscl . -list Groups PrimaryGroupID</span></li>
+	<li>create group &lt;gname&gt;<ul>
+		<li class='mono'>sudo dscl . -create /Groups/&lt;gname&gt;</li>
+	</ul></li>
+	<li>set group properties Password, PrimaryGroupID, RealName<ul>
+		<li class='mono'>sudo dscl . -create /Groups/&lt;gname&gt; &lt;keyword&gt; &lt;value&gt;</li>
+	</ul></li>
+</ul>
+
+<h5 id="tsk_AddUser">Add User</h5><ul>
+	<li>check existing user IDs on the system to ensure unique ID<br />
+		<span class='mono'>dscl . -list Users UniqueID</span></li>
+	<li>create user &lt;uname&gt;<ul>
+		<li class='mono'>sudo dscl . -create /Users/&lt;uname&gt;</li>
+	</ul></li>
+	<li>set user properties Password, UniqueID, PrimaryGroupID, RealName<ul>
+		<li class='mono'>sudo dscl . -create /Users/&lt;uname&gt; &lt;keyword&gt; &lt;value&gt;</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add User to Group" -->
+<h5 id="tsk_AddUserToGroup">Add User to Group</h5><ul>
+	<li>dsmemberutil checkmembership -U &lt;uname&gt; -G &lt;gname&gt;</li>
+	<li>sudo dscl . -append /Groups/&lt;gname&gt; GroupMembership &lt;uname&gt;</li>
+	<li>dsmemberutil checkmembership -U &lt;uname&gt; -G &lt;gname&gt;</li>
+</ul>
+
+<!-- @marker "7 ===" -->
+<!-- @marker "Tools for Compiled Code" -->
+<h2>Tools for Compiled Code</h2>
+<!-- @topicList "Tools for Compiled Code" "tp_CompileTools" -->
+	<!-- @topicItem "Doxygen" "#Compile_Doxygen" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Doxygen" -->
+<h3>Doxygen</h3>
+<!-- @topicList "Doxygen" "Compile_Doxygen" -->
+	<!-- @topicItem "Doxygen Tool Info" "../Legacy/DevSupport/DevSupport.html#Doxygen_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Doxygen Tasks" "3" -->
+	<!-- @topicItem "Establish Doxygen Target" "#tsk_EstablishDoxygenTarget" "0" "" -->
+<!-- @/topicList -->
+
+
+<!-- @marker "Doxygen Tasks" -->
+<h4>Doxygen Tasks</h4>
+<!-- @marker "  Establish Doxygen Target" -->
+<h5><a name="tsk_EstablishDoxygenTarget">Establish Doxygen Target</a></h5><ul class='expand'>
+	<li>template file Project.doxygen.tmpl defines configuration for project</li>
+	<li>reference file Xcode &gt; Defaults.doxygen describes available options</li>
+</ul>
+
+<!-- @marker "9 === Targets" -->
+<h2>Targets</h2>
+<!-- @topicList "Targets" "Targets" -->
+<!-- @/topicList -->
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright 2011 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Confidential and Proprietary.</p>
+</body>
+</html>

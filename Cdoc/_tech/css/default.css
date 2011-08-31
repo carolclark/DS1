@@ -1,0 +1,542 @@
+/* default font, headers */
+	body {
+		font: normal 12px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
+	}
+	h1	{
+		margin-top: 1em;
+		margin-bottom: 25px;
+		font: bold 30px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
+		color: #000;
+		text-align: center;
+		border-top: 1px solid #9999ff;
+		border-bottom: 1px solid #9999ff;
+		background-color: #f5f5ff;
+	}
+	h2	{
+		margin-top: 2.5em;
+		font-size: 24px;
+		color: #000;
+		padding-bottom: 2px;
+		border-bottom: 1px solid black;
+	}
+	h3	{
+		border-bottom: 1px solid #555555;
+		width: 65%;
+		margin-top: 2.1em;
+		margin-bottom: .5em;
+		font-size: 21px;
+		color: #000;
+	}
+	h4	{
+		margin-top: 1.5em;
+		margin-bottom: .5em;
+		font-size: 18px;
+		color: #000;
+		border-bottom: 1px solid #aaaaaa;
+		width: 50%;
+	}
+	h5	{
+		margin-top: 20px;
+		margin-bottom: .5em;
+		padding: 0;
+		font-size: 14px;
+		color: #000;
+	}
+	h6	{
+		margin-top: 15px;
+		margin-bottom: .5em;
+		padding: 0;
+		font-size: 12px;
+		color: #000;
+	}
+	p.footer {
+		text-align: center;
+		font-size: 10px;
+		color: gray	
+	}
+	hr.footer {
+		width: 70%;
+	}
+
+/* navigation button bars */
+	td.right {
+		text-align: right;
+	}
+	.navhead {						/* top-line header */
+		text-align: left;
+		width: 100%;
+		cellpadding: 0;
+		cellspacing: 0;
+		border: 0;
+		padding-top: 0;
+		font-size: 11px;
+	}
+	col.navhead_c1 {
+		width: 360px;
+	}
+	.navline {						/* nav line within content */
+		text-align: left;
+		width: 100%;
+		cellpadding: 0;
+		cellspacing: 0;
+		border: 0;
+		padding-top: 0;
+		font-size: 11px;
+	}
+	.navright {						/* top-right button */
+		text-align: right;
+	}
+/* class */
+	.classholder {
+		margin-left: 10px;
+		padding-left: 20px;
+		border-left: 4px solid #b0c4de;
+	}
+/* function list */
+	.funclist {
+		margin-left: 30px;
+	}
+	.funclist h5 {
+		margin-left: -20px;
+	}
+	.funclist h6 {
+		margin-top: 5px;
+		margin-bottom: 0;
+	}
+	.funclist dt {
+		font-family: monospace;
+	}
+	.funclist dd {
+		margin-left: 30px;
+		padding-bottom: 6px;
+	}
+/* message list */
+	.msglist {
+		margin-left: 30px;
+	}
+	.msglist h5 {
+		margin-left: -20px;
+	}
+	.msglist h6 {
+		margin-top: 5px;
+		margin-bottom: 0;
+	}
+	.msglist dt {
+		font-family: monospace;
+	}
+	.msglist dd {
+		margin-left: 30px;
+		padding-bottom: 6px;
+	}
+/* dictionary */
+	.dictionary {
+		margin-left: 30px;
+	}
+	.dictionary dt {
+		font-weight: bolder;
+	}
+	.dictionary dd {
+		margin-left: 30px;
+		padding-bottom: 6px;
+	}
+/* glossary */
+	.glossary {
+	}
+	.glossary dt {
+		font-weight: bolder;
+	}
+	.glossary dd {
+		margin-left: 30px;
+		padding-bottom: 6px;
+	}
+	.glosslink {
+		color: #6c0000;
+	}
+/* value lists */
+	.valuelist {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-left: 5px;
+		}
+	col.vt {
+		width: 100px;
+		}
+	td.vt {
+		font-family: monospace;
+		text-align: right;
+		padding-right: 10px;
+		vertical-align: top;
+		}
+/* tables */
+	/* objects - also try #e5d4cd & #fffcf8? */
+	.tableholder {
+		margin-top: 7px;
+		margin-bottom: 5px;
+		margin-left: 20px;
+		}
+	.tabl {
+		border-top: 1px solid #919699;
+		border-left: 1px solid #919699;
+		caption-side: bottom;
+		}
+		
+	.tabl th {
+		padding: 4px 8px 4px 8px;
+		text-align: left;
+		background-color: #cccccc;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		}
+	.tabl td {
+		padding: 4px;
+		vertical-align: center;
+		background-color: #fcfcfc;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		}
+	.tabl caption {
+		text-align: right;
+		font-size: smaller;
+		font-weight: bolder;
+	}
+
+	/* attribute table */
+	td.attributeGroup { 
+		text-align: center;
+		font-style: italic;
+		font-weight: bold;
+	}
+	td.attributeGroupComment { 
+		text-align: center;
+		font-style: italic;
+	}
+
+	/* table mark: cells with classifications represented by bullets, etc. */
+	th.tm1 {
+		padding: 4px 8px 4px 8px;
+		text-align: center;
+		background-color: #cccccc;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		}
+
+	td.tm1 {
+		padding: 4px;
+		text-align: center;
+		vertical-align: center;
+		background-color: #fcfcfc;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+	}
+		/* darker background */
+	th.tm2 {
+		padding: 4px 8px 4px 8px;
+		text-align: center;
+		background-color: #bbbbbb;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		}
+
+	td.tm2 {
+		padding: 4px;
+		text-align: center;
+		vertical-align: center;
+		background-color: #ececec;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+	}
+	
+	/* goal table */
+	.goaltabl {
+		border-top: 1px solid #919699;
+		border-left: 1px solid #919699;
+		caption-side: bottom;
+		}
+		
+	.goaltabl th {
+		padding: 4px 8px 4px 8px;
+		background-color: #ccccdd;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		}
+	.goaltabl td {
+		padding: 4px;
+		vertical-align: center;
+		background-color: #fcfcfc;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		}
+	.goaltabl caption {
+		text-align: right;
+		font-size: smaller;
+		font-weight: bolder;
+	}
+
+/* topics lists */
+	.topics {
+		margin-left: 24px;
+		margin-right: 24px;
+		width: 640px;
+		background-color: #eeeeff;
+	}
+	div.topics {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	table.topics {
+		padding: 12px;
+	}
+	caption.topics {
+		font-size: 18px;
+		font-weight: bold;
+		margin-left: 0px;
+		text-align: center;
+		border-bottom: 1px solid #9999ff;
+		padding: 12px;
+	}
+	col.topics_c1					/* column 1 */
+		{ width: 250px; }
+	.topicGroup {					/* header for a topic subgroup */
+		text-align: center;
+		font-style: italic;
+	}
+
+	.linetag {						/* line number indicator */
+		padding-left: 20px;
+		color: #777799;
+	}
+	
+	.tick {							/* tick mark for every fifth row */
+		background-color: #ddddff;
+		rules: bottom;
+	}
+									/* indents to show topic structure */
+	td.i0 { text-indent:0px }
+	td.i1 { text-indent:12px }
+	td.i2 { text-indent:24px }
+	td.i3 { text-indent:36px }
+
+	.hmark {						/* for "<--"	*/
+		margin-top: 1em;
+		margin-bottom: 25px;
+		margin-left: 600px;
+		font: bold italic 16px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
+		color: #000;
+		text-align: center;
+		border-top: 1px solid #9999ff;
+		border-bottom: 1px solid #9999ff;
+		background-color: #f5f5ff;	
+	}
+
+/* reference lists */
+	.reference {
+		margin-left: 24px;
+		margin-right: 24px;
+		width: 590px;
+		background-color: #eeeef2;
+	}
+	div.reference {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	table.reference {
+		padding: 12px;
+	}
+	caption.reference {
+		font-size: 18px;
+		font-weight: bold;
+		margin-left: 0px;
+		text-align: center;
+		border-bottom: 1px solid #999999;
+		padding: 12px;
+	}
+	col.reference_c1					/* column 1 */
+		{ width: 250px; }
+	.topicGroup {					/* header for a topic subgroup */
+		text-align: center;
+		font-style: italic;
+	}
+
+	.linetag {						/* line number indicator */
+		padding-left: 20px;
+		color: #777777;
+	}
+
+/* use cases */
+	.uc {
+		margin-left: 5px;
+		padding-left: 5px;
+		border-left: 2px solid #888888;
+	}
+	.uc h4 {
+		margin-left: -5px;
+		padding-left: 0px;
+		border-left: none;
+		border-bottom: 1px solid #aaaaaa;
+		width: 40%;
+	}
+
+/* crc */
+	.crcholder {
+		margin-top: 5px;
+		margin-bottom: 15px;
+		margin-left: 7px;
+		margin-right: 7px;
+		}
+	.crc {
+		border-top: 1px solid #919699;
+		border-left: 1px solid #919699;
+		caption-side: bottom;
+		}
+	.crc ul {
+		margin-left: 0;
+		padding-left: 15px;
+		margin-right: 1px;
+		padding-right: 1px;
+		margin-top: 1px;
+		padding-top: 1px;
+		margin-bottom: 1px;
+		padding-bottom: 1px;
+	}
+	.crc li {
+		font-size: 85%;
+	}
+	.crc th {
+		padding: 2px 4px 2px 4px;
+		text-align: center;
+		background-color: #cccccc;
+		font-weight: normal;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+	}
+	.crc td {
+		padding: 2px;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		background-color: #f0f0f0;
+	}
+
+/* block layout; used for user interface design */
+	.blocklayout {
+		caption-side: bottom;
+		border-top: 1px solid #919699;
+		border-left: 1px solid #919699;
+		}
+	.blocklayout th {
+		padding: 4px 8px 4px 8px;
+		text-align: left;
+		background-color: #cccccc;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		}
+	.blocklayout td {
+		padding: 4px;
+		text-align: center;
+		vertical-align: center;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		}
+	.blocklayout td.bisque {
+		padding: 4px;
+		text-align: center;
+		vertical-align: center;
+		border-bottom: 1px solid #919699;
+		border-right: 1px solid #919699;
+		background-color: #FFE4C4;
+		}
+	.blocklayout caption {
+		text-align: right;
+		font-size: smaller;
+		font-weight: bolder;
+	}
+
+/* inline styles */
+	.cod	{
+		font-size: 12px;
+		font-family: monospace;
+		background: #dddddd;
+		margin-right: 80px;
+	}
+	.mono	{
+		font-size: 12px;
+		font-family: monospace;
+		padding-bottom: 0;
+	}
+	.tech	{
+		background-color: #f4efd9;
+	}
+	.center {
+		text-align: center;
+	}
+	.gray {
+		color: #AAAAAA;
+	}
+	.small {
+		font-size: 80%;
+	}
+	.nyi {						/* not yet implemented */
+		font-style: italic;
+		color: #a00000;
+	}
+	.nyi:link {
+		font-style: italic;
+		color: #a00000;
+		text-decoration: underline;
+	}
+	.dq {						/* design question */
+		font-style: italic;
+		color: #da70d6;
+	}
+	.depr {						/* deprecated */
+		text-decoration: line-through;
+		color: #777777;
+	}
+	.expand {					/* documentation to expand */
+		font-style: italic;
+		color: #ff5555;
+	}
+	.remove {					/* remove */
+		text-decoration: line-through;
+		color: #777777;
+		background-color: #FFC0A0;
+	}
+	td.remove {					/* remove */
+		text-decoration: line-through;
+		color: #777777;
+		background-color: #FFC0A0;
+	}
+	.future {					/* future */
+		font-style: italic;
+		color: #B8860B;
+	}
+	.impl {						/* implementation */
+		font-size: 12px;
+		font-style: italic;
+		margin-left: .3in;
+		color: #005500;
+	}
+	.em	{
+		font-style: normal;
+		font-weight: bold;
+	}
+	.blurb {
+		font-size: 12px;
+		font-style: italic;
+		margin-left: .3in;
+	}
+	.red {
+		color: red;
+	}
+	.subitems {
+		margin-left: .3in;
+		margin-right: .3in;
+	}
+	.pslink {
+		color: #007788;
+	}
+	.done {
+		background-color: #d8ffd8;
+	}
+	.todo {
+		background-color: #ffd8d8;
+	}

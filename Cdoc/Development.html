@@ -1,0 +1,170 @@
+<!-- $Id: Development.html 37 2011-05-05 22:02:57Z carolclark $ -->
+<!-- Created by Carol Clark on 03 Jan 2011. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Development</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+</head>
+<body>
+<!-- @navhead "Support.html" "Support" "Development_hist.html" -->
+<h1>Development</h1>
+
+<!-- @topicList "Development" "Contents" -->
+	<!-- @topicGroup "Active Repositories" "1" -->
+		<!-- @topicItem "Support" "Support.html#Contents" "0" "information about &amp; support for our working environment" -->
+		<!-- @topicItem "Punkin Project" "../Punkin/Punkin.html#Contents" "0" "bilingual web app for prereaders" -->
+		<!-- @topicItem "WebGen" "../WebGen/WebGen.html" "0" "manage and support refactoring of generated web content" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Deprecated &amp; Legacy Repositories" "6" -->
+		<!-- @topicItem "DevSupport" "../Legacy/DevSupport/DevSupport.html#Contents" "0" "deprecated predecessor of Support" -->
+		<!-- @topicItem "Accessor" "../Legacy/Accessor_C9/AccessorProject.html#Contents" "0" "accessibility products for inhouse &amp; commercial use" -->
+		<!-- @topicItem "Koala_Try1" "../Legacy/Koala_Try1/Koala.html#Contents" "0" "database front end for Core Data" -->
+		<!-- @topicItem "Koala_Try2" "../Legacy/Koala_Try2/Koala.html#Contents" "0" "database front end for Core Data" -->
+		<!-- @topicItem "MyLibrary" "../Legacy/MyLibrary/MyLibrary.html#Contents" "0" "books and music library" -->
+		<!-- @topicItem "ArbonneProto" "../Legacy/ArbonneProto/Arbonne.html#Contents" "0" "application for use by Arbonne consultants" -->
+		<!-- @topicItem "ArbonneFM" "../Legacy/ArbonneFM/ArbonneFM.html#Contents" "0" "deprecated FileMaker-based Arbonne consultant database" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Legacy Status Notes" "#LegacyStatus" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Archived Projects" "17" -->
+		<!-- @topicItem "Archived 2010" "#arch_10" "0" "" -->
+		<!-- @topicItem "Archived December 2008" "#arch12_08" "0" "" -->
+		<!-- @topicItem "Archived Before 2008" "#before08" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Legacy Status Notes" -->
+<h4><a name="LegacyStatus">Deprecated and Legacy: Status Notes</a></h4><ul>
+	<li>DevSupport<ul>
+		<li>predecessor to current project Support; features are currently being moved into project Support</li>
+	</ul></li>
+	<li>Accessor_C9<ul>
+		<li>our current speech recognition application</li>
+		<li>started as a port from a CodeWarrior project; now in Carbon</li>
+		<li>to be replaced with a new Cocoa project and extensively refactored</li>
+	</ul></li>
+	<li>Koala_Try1<ul>
+		<li>Framework project that also implements models for testing</li>
+		<li>Koala_Try1 builds the framework; does not have a separate build scheme, but is built by target KoalaUnitTests_Try1</li>
+		<li>KoalaUnitTests_Try1 builds the Koala framework and runs unit tests against it</li>
+		<li>AllTests_Try1 builds and runs tests in a standalone GHUnit application</li>
+		<li>Doxygen target builds a Doxygen docset</li>
+	</ul></li>
+	<li>Koala_Try2<ul>
+		<li>intended as a replacement for Koala_Try1, but only got as far as to work on revising the documentation</li>
+	</ul></li>
+	<li>MyLibrary<ul>
+		<li>partial implementation of a target that uses a custom framework</li>
+		<li>target MyLibrary: opens a standard window, and displays a log message to the console; uses framework Koala_Try1, but does not successfully #import it "Koala.h" header</li>
+	</ul></li>
+	<li>ArbonneProto<ul>
+		<li>attempt at implementing a replacement for the existing FileMaker Arbonne database in Cocoa and Core Data</li>
+		<li>demonstrates techniques we were using for Cocoa development</li>
+		<li>Core Data code was poorly structured, and probably should not be emulated</li>
+	</ul></li>
+	<li>ArbonneFM<ul>
+		<li>documentation for existing FileMaker Arbonne database; useful, at least for its specification of tables and fields, until a replacement has been developed</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "8 = ArchivedProjects" --><h1><a name='ArchivedProjects'>Archived Projects</a></h1>
+
+<!-- @marker "Archived 2010" -->
+<h2><a name="arch_10">Archived 2010</a></h2><ul>
+	<li>RenaissanceFramework [12 May 2010] unsuccessful attempt to use the GNUstep Renaissance for user interface creation
+		for accessibility and portability; using Interface Builder instead</li>
+	<li>ObjectiveC [12 May 2010] abandoned attempt to develop in ObjectiveC with Renaissance</li>
+	<li>JavaLib [13 May 2010] predecessor of JavaDev</li>
+	<li>JavaDev [13 May 2010] packages and support for Java development; archive may someday be useful as a Java model</li>
+	<li>ArbonneJava [13 May 2010] abandoned attempt at Arbonne software using Java; archive may someday be useful as a Java model</li>
+	<li>Workspace [25 Aug 2010] replaced by DevSupport</li>
+</ul>
+
+<!-- @marker "Archived December 2008" -->
+<h2><a name="arch12_08">Archived December 2008</a></h2><ul>
+	<li>Access [24 Jan 2006] predecessor to AccessLib_C9</li>
+	<li>AccessLib_C9 [18 May 2006] last CodeWarrior/cvs version of predecessor to Accessor</li>
+	<li>AccessLib_C9_IX [08 Jun 2006] first version of predecessor to Accessor in Xcode and Subversion</li>
+	<li>Management [08 Jun 2005] predecessor to Workspace</li>
+	<li>Scripts [24 Jan 2006] also a predecessor to Workspace</li>
+</ul>
+
+<!-- @marker "Archived Before 2008" -->
+<h2><a name="before08">Archived Before 2008</a></h2>
+
+	<h3>AccessLib</h3>
+	<p>previous versions of AccessLib_C9, in CodeWarrior &amp; cvs</p>
+
+	<h3>AccessLib_VSS</h3>
+	<p>predecessor of AccessLib, in CodeWarrior &amp; VSS</p>
+
+	<h3>ParcelLib</h3>
+	<p>in CodeWarrior &amp; VSS</p>
+	<ul>
+		<li><em>Assistant</em>
+		our speech recognition predecessor of AccessLib_VSS - for OS 9 and earlier<br />
+		supports word prediction</li>
+		<li><em>Lemonade</em> used for a class of Jim's</li>
+		<li><em>ParcelLib</em> supporting components</li>
+	</ul>
+
+	<h3>PTContexts</h3>
+	<p>files from our first fairly complete speech recognition application; name is historical<br />
+	was in MPW - MacApp &amp; Projector; does not compile or run</p>
+
+	<h3>DTS</h3>
+	<p>records of Apple Developer Tech Support Incidents</p>
+
+	<h3>Access</h3>
+	<p>start at library for Mach-O &amp; Carbon<br />
+	abandoned in favor of switch to Cocoa &amp; Xcode<br />
+	in CodeWarrior &amp; Subversion</p>
+
+	<h3>Access_A</h3>
+	<p>predecessor to Access in CodeWarrior &amp; cvs</p>
+
+	<h3>Management</h3>
+	<p><em>contained</em></p>
+	<ul>
+		<li>notes on environment &amp; history, resources, databases, unix configuration</li>
+		<li>links documents for Safari</li>
+	</ul>
+	<p><em>disposition</em> active information incorporated into Workspace</p>
+
+	<h3>Management_A</h3>
+	<p>predecessor to Management using cvs</p>
+
+	<h3>Scripts</h3>
+	<p><em>contained</em> general &amp; app-specific support for customization &amp; automation<br />
+	<em>disposition</em> active information incorporated into Workspace</p>
+
+	<h3>Scripts_A</h3>
+	<p>predecessor to Scripts using cvs</p>
+
+	<h3>Compiler</h3>
+	<ul>
+		<li><em>Expression</em> previous console tool that successfully evaluates simple expressions</li>
+		<li><em>SmallC</em> old C compiler example</li>
+	</ul>
+
+	<h3>PostEvents</h3>
+	<p>demonstration developed with help from DTS<br />
+	shows operations needed to allow disabled users to control third-party apps in both Classic and Carbon environments<br />
+	in CodeWarrior &amp; VSS
+	</p>
+
+	<h3>OverlayTestFromDTS</h3>
+	<p>received from DTS in response to our question about overlaying a mouse grid on the screen<br />
+	as far as we now, it was never generally available</p>
+
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright 2011 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Confidential and Proprietary.</p>
+</body>
+</html>
