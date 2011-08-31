@@ -54,6 +54,16 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>CollectionID</key>
+			<string>87E0ECBE-8420-4C2F-9E23-46C1EAAE1A23</string>
+			<key>CollectionItems</key>
+			<array>
+				<string>0CC9BDC0-4E25-4FB9-ADDC-33F0A28767AA</string>
+				<string>572DA855-135E-43A0-B07E-47FFEBB7E2CE</string>
+				<string>22BA9B55-C4C5-4648-B007-822C441EEB3A</string>
+			</array>
+		</dict>
 	</array>
 	<key>ProjectItems</key>
 	<dict>
@@ -119,6 +129,40 @@
 			</dict>
 			<key>ItemName</key>
 			<string>ucds_4.tiff</string>
+			<key>ItemType</key>
+			<string>FileReference</string>
+		</dict>
+		<key>0CC9BDC0-4E25-4FB9-ADDC-33F0A28767AA</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>AliasData</key>
+				<data>
+				AAAAAAGYAAIAAANNYWMAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAADHK3m/SCsAAAB8WLkRQ29tbW9uU2xhdGVzX0M5
+				LmgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAHxYwMneFwZURVhUAAAAAP//
+				//8AAAkgAAAAAAAAAAAAAAAAAAAAClVzZXJTbGF0ZXMA
+				EAAIAADHK84fAAAAEQAIAADJ3l1WAAAAAQAUAHxYuQB8
+				T5wANyMVAAgIEwAAkY0AAgA9TWFjOlVzZXJzOmNhcm9s
+				Y2xhcms6RGV2OlN1cHBvcnQ6VXNlclNsYXRlczpDb21t
+				b25TbGF0ZXNfQzkuaAAADgAkABEAQwBvAG0AbQBvAG4A
+				UwBsAGEAdABlAHMAXwBDADkALgBoAA8ACAADAE0AYQBj
+				ABIAOVVzZXJzL2Nhcm9sY2xhcmsvRGV2L1N1cHBvcnQv
+				VXNlclNsYXRlcy9Db21tb25TbGF0ZXNfQzkuaAAAEwAB
+				LwAAFQACABH//wAA
+				</data>
+				<key>FileURL</key>
+				<string>file://localhost/Users/carolclark/Dev/Support/UserSlates/CommonSlates_C9.h</string>
+				<key>RelativePath</key>
+				<string>./UserSlates/CommonSlates_C9.h</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>CommonSlates_C9.h</string>
 			<key>ItemType</key>
 			<string>FileReference</string>
 		</dict>
@@ -287,6 +331,39 @@
 			<key>ItemType</key>
 			<string>FileReference</string>
 		</dict>
+		<key>22BA9B55-C4C5-4648-B007-822C441EEB3A</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>AliasData</key>
+				<data>
+				AAAAAAF6AAIAAANNYWMAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAADHK3m/SCsAAAB8WLkKWGNvZGVfQzkucgAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAHxY0sneFwZURVhUAAAAAP//
+				//8AAAkgAAAAAAAAAAAAAAAAAAAAClVzZXJTbGF0ZXMA
+				EAAIAADHK84fAAAAEQAIAADJ3l1WAAAAAQAUAHxYuQB8
+				T5wANyMVAAgIEwAAkY0AAgA2TWFjOlVzZXJzOmNhcm9s
+				Y2xhcms6RGV2OlN1cHBvcnQ6VXNlclNsYXRlczpYY29k
+				ZV9DOS5yAA4AFgAKAFgAYwBvAGQAZQBfAEMAOQAuAHIA
+				DwAIAAMATQBhAGMAEgAyVXNlcnMvY2Fyb2xjbGFyay9E
+				ZXYvU3VwcG9ydC9Vc2VyU2xhdGVzL1hjb2RlX0M5LnIA
+				EwABLwAAFQACABH//wAA
+				</data>
+				<key>FileURL</key>
+				<string>file://localhost/Users/carolclark/Dev/Support/UserSlates/Xcode_C9.r</string>
+				<key>RelativePath</key>
+				<string>./UserSlates/Xcode_C9.r</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>Xcode_C9.r</string>
+			<key>ItemType</key>
+			<string>FileReference</string>
+		</dict>
 		<key>34526D7B-809C-48D6-BEC2-7BCDCA614946</key>
 		<dict>
 			<key>ItemData</key>
@@ -450,6 +527,40 @@
 			<key>ItemType</key>
 			<string>FileReference</string>
 		</dict>
+		<key>572DA855-135E-43A0-B07E-47FFEBB7E2CE</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>AliasData</key>
+				<data>
+				AAAAAAGYAAIAAANNYWMAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAADHK3m/SCsAAAB8WLkRQ29tbW9uU2xhdGVzX0M5
+				LnIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAHxYwcneFwZURVhUAAAAAP//
+				//8AAAkgAAAAAAAAAAAAAAAAAAAAClVzZXJTbGF0ZXMA
+				EAAIAADHK84fAAAAEQAIAADJ3l1WAAAAAQAUAHxYuQB8
+				T5wANyMVAAgIEwAAkY0AAgA9TWFjOlVzZXJzOmNhcm9s
+				Y2xhcms6RGV2OlN1cHBvcnQ6VXNlclNsYXRlczpDb21t
+				b25TbGF0ZXNfQzkucgAADgAkABEAQwBvAG0AbQBvAG4A
+				UwBsAGEAdABlAHMAXwBDADkALgByAA8ACAADAE0AYQBj
+				ABIAOVVzZXJzL2Nhcm9sY2xhcmsvRGV2L1N1cHBvcnQv
+				VXNlclNsYXRlcy9Db21tb25TbGF0ZXNfQzkucgAAEwAB
+				LwAAFQACABH//wAA
+				</data>
+				<key>FileURL</key>
+				<string>file://localhost/Users/carolclark/Dev/Support/UserSlates/CommonSlates_C9.r</string>
+				<key>RelativePath</key>
+				<string>./UserSlates/CommonSlates_C9.r</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>CommonSlates_C9.r</string>
+			<key>ItemType</key>
+			<string>FileReference</string>
+		</dict>
 		<key>60AE39D5-CB08-4F93-90BA-4DC48AD9493A</key>
 		<dict>
 			<key>ItemData</key>
@@ -573,6 +684,15 @@
 			<array/>
 			<key>ItemName</key>
 			<string>Cdoc</string>
+			<key>ItemType</key>
+			<string>StaticCollection</string>
+		</dict>
+		<key>87E0ECBE-8420-4C2F-9E23-46C1EAAE1A23</key>
+		<dict>
+			<key>ItemData</key>
+			<array/>
+			<key>ItemName</key>
+			<string>UserSlates</string>
 			<key>ItemType</key>
 			<string>StaticCollection</string>
 		</dict>

@@ -80,4 +80,80 @@
          </Group>
       </Group>
    </Group>
+   <Group
+      location = "container:"
+      name = "UserSlates">
+      <FileRef
+         location = "group:UserSlates/ArbonnePrototype_c9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Automator_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Backup_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/BBEdit_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Calendar_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/CommonSlates_C9.h">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/CommonSlates_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Dashcode_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Eclipse_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/FileMaker_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Finder_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Games_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/InterfaceBuilder_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Mail_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Preview_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Safari_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/ScriptEditor_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/SystemPrefs_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Terminal_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/TextEdit_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Tunes_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/UIBrower_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/UMLet_C9.r">
+      </FileRef>
+      <FileRef
+         location = "group:UserSlates/Xcode_C9.r">
+      </FileRef>
+   </Group>
 </Workspace>
