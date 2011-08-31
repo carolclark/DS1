@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<!-- @navhead "Support.html" "Support" "Development_hist.html" -->
+<!-- @navhead "Support.html" "Support" "Support_hist.html" -->
 <h1>Development</h1>
 
 <!-- @topicList "Development" "Contents" -->
@@ -18,8 +18,9 @@
 		<!-- @topicItem "WebGen" "../WebGen/WebGen.html" "0" "manage and support refactoring of generated web content" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Deprecated &amp; Legacy Repositories" "6" -->
-		<!-- @topicItem "DevSupport" "../Legacy/DevSupport/DevSupport.html#Contents" "0" "deprecated predecessor of Support" -->
 		<!-- @topicItem "Accessor" "../Legacy/Accessor_C9/AccessorProject.html#Contents" "0" "accessibility products for inhouse &amp; commercial use" -->
+		<!-- @topicItem "Support_svn" "../Support/Development.html#Contents" "0" "deprecated predecessor of Support" -->
+		<!-- @topicItem "DevSupport" "../Legacy/DevSupport/DevSupport.html#Contents" "0" "older deprecated predecessor of Support" -->
 		<!-- @topicItem "Koala_Try1" "../Legacy/Koala_Try1/Koala.html#Contents" "0" "database front end for Core Data" -->
 		<!-- @topicItem "Koala_Try2" "../Legacy/Koala_Try2/Koala.html#Contents" "0" "database front end for Core Data" -->
 		<!-- @topicItem "MyLibrary" "../Legacy/MyLibrary/MyLibrary.html#Contents" "0" "books and music library" -->
@@ -36,27 +37,34 @@
 
 <!-- @marker "Legacy Status Notes" -->
 <h4><a name="LegacyStatus">Deprecated and Legacy: Status Notes</a></h4><ul>
-	<li>DevSupport<ul>
-		<li>predecessor to current project Support; features are currently being moved into project Support</li>
-	</ul></li>
 	<li>Accessor_C9<ul>
 		<li>our current speech recognition application</li>
 		<li>started as a port from a CodeWarrior project; now in Carbon</li>
 		<li>to be replaced with a new Cocoa project and extensively refactored</li>
 	</ul></li>
-	<li>Koala_Try1<ul>
-		<li>Framework project that also implements models for testing</li>
-		<li>Koala_Try1 builds the framework; does not have a separate build scheme, but is built by target KoalaUnitTests_Try1</li>
-		<li>KoalaUnitTests_Try1 builds the Koala framework and runs unit tests against it</li>
-		<li>AllTests_Try1 builds and runs tests in a standalone GHUnit application</li>
-		<li>Doxygen target builds a Doxygen docset</li>
+	<li>Support_svn<ul>
+		<li>predecessor to current project Support; features are currently being moved into project Support</li>
 	</ul></li>
-	<li>Koala_Try2<ul>
-		<li>intended as a replacement for Koala_Try1, but only got as far as to work on revising the documentation</li>
+	<li>DevSupport<ul>
+		<li>older predecessor to current project Support; features are currently being moved into project Support</li>
 	</ul></li>
-	<li>MyLibrary<ul>
-		<li>partial implementation of a target that uses a custom framework</li>
-		<li>target MyLibrary: opens a standard window, and displays a log message to the console; uses framework Koala_Try1, but does not successfully #import it "Koala.h" header</li>
+	<li>Koala Framework<ul>
+		<li class='blurb'>These projects were developed to get started with building and testing Frameworks.</li>
+		<li class='blurb'>However, iOS requires self-contained apps, and therefore cannot use frameworks.	</li>
+		<li>Koala_Try1<ul>
+			<li>Framework project that also implements models for testing</li>
+			<li>Koala_Try1 builds the framework; does not have a separate build scheme, but is built by target KoalaUnitTests_Try1</li>
+			<li>KoalaUnitTests_Try1 builds the Koala framework and runs unit tests against it</li>
+			<li>AllTests_Try1 builds and runs tests in a standalone GHUnit application</li>
+			<li>Doxygen target builds a Doxygen docset</li>
+		</ul></li>
+		<li>Koala_Try2<ul>
+			<li>intended as a replacement for Koala_Try1, but only got as far as to work on revising the documentation</li>
+		</ul></li>
+		<li>MyLibrary<ul>
+			<li>partial implementation of a target that uses a custom framework</li>
+			<li>target MyLibrary: opens a standard window, and displays a log message to the console; uses framework Koala_Try1, but does not successfully #import it "Koala.h" header</li>
+		</ul></li>
 	</ul></li>
 	<li>ArbonneProto<ul>
 		<li>attempt at implementing a replacement for the existing FileMaker Arbonne database in Cocoa and Core Data</li>

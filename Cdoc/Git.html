@@ -1,0 +1,130 @@
+<!-- Git.html -->	
+<!-- Created by Carol Clark on 24 Aug 2011 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Git</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+</head>
+<body>
+<!-- @navhead "Support.html" "Support" "Support_hist.html" -->
+<h1>Git</h1>
+
+<!-- @topicList "Git" "Contents" -->
+	<!-- @topicItem "Git Workflows" "#Workflows_" "0" "" -->
+	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
+<!-- @/topicList -->
+
+<p>
+Support.xcodeproj
+quit Xcode, BBEdit
+rename Support to Support_hold
+create new Xcode project support at folder ~/Dev
+quit Xcode
+move content of new Support folder into Support_hold
+rename Support_hold to Support
+open workspace; add project	
+</p>
+
+<p>
+to replace an existing working copy with a newly-cloned one, first remove the existing repository from Xcode's repository list, close the Xcode workspace, and quit Terminal (BBEdit project?)
+git ls-files --other --exclude-standard	#untracked files
+my working copy has a branch for Laura's stuff (she pushes to Remote; I integrate and push to Main)
+internal: threads; branches; compound (here or with source control?)
+git diff master origin/master
+git reset --hard HEAD to revert all changes to last commit
+git branch --no-merged	; check for unmerged branches
+diff
+	git diff: unstaged
+	git diff --cached: staged
+	git diff HEAD: all
+
+	add branch name: compares working copy with tip of that branch
+	add -- ./path to restrict to a path
+	add --name-status for one line per file (like svn status)
+
+	git diff master origin/master
+	git diff --name-status master.._cdoc
+log
+	add --pretty=oneline to show just sha and one-line comment
+	add --graph to show branch relationships; with --topo-order, shows top-down so tree is clearer
+	add --date-order to show chronologically
+tag
+	list: git tag
+		add -l to match a pattern
+	create: git tag -a &lt;tag&gt; -m '&lt;msg&gt;'
+	delete: git tag -d &lt;tag&gt;
+
+see git-rev-parse
+</p>
+
+<p>Remotes</p><ul>
+	<li>Create: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Add Remote<ul>
+		<li>(parameters)</li>
+	</ul></li>
+	<li>Track Branch: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Track Branch2<ul>
+		<li>(parameters)</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Git Workflows" -->
+<h2>Git Workflows</h2>
+<!-- @topicList "Git Workflows" "Workflows_" -->
+<!-- @/topicList -->
+
+<!-- @marker "Git Tasks" -->
+<h2 id='GitTasks_'>Git Tasks</h2><ul>
+	<li>Development Cycle<ul>
+		<li>switch/verify branch</li>
+		<li>edit; test</li>
+		<li>** other way*** git diff --name-status master; edit in changes as indicated (eg. history)</li>		
+		<li>status; [add] (Terminal)</li>
+		<li>verify modifications (Xcode)</li>
+		<li>commit (Xcode)</li>
+		<li>[tag; squash (Terminal) and/or merge]</li>
+		<li>[push [pushRemote] (Xcode)]</li>
+		<li>fetch sha/date marker</li>
+		<li>switch branch if indicated</li>
+		<li>set sha/date marker<ul>
+			<li><span class='mono'>print "[$(cd /Users/carolclark/Dev/${proj}; git log -1 --pretty=format:'%h') $(date +%m/%d/20%y) &lt;placeholder&gt;]"</span></li>
+			<li class='blurb'>Setting the sha/date marker replaces the clearly-visible (from source code) commit message and notes with the sha/date marker. A branch's sha/date is often updated from another branch.</li>
+		</ul></li>
+	</ul></li>
+	<li>branch<ul>
+		<li>[stash]</li>	
+		<li>switch to new or existing branch (Xcode)</li>
+		<li>status</li>
+		<li>develop/commit cycle(s)	</li>
+		<li>[squash and/or merge]</li>
+		<li>[push (Xcode)]</li>
+	</ul></li>
+	<li><a href="#tsk_CreateNewRepository">Create Repository</a></li>
+</ul>
+
+<h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
+	<li class='mono'>proj=&lt;ProjectName&gt;</li>
+	<li class='mono'>mkdir -p ~/Dev/gitrep/${proj}Main</li>
+	<li class='mono'>cd ~/Dev/gitrep/${proj}Main</li>
+	<li class='mono'>git init --bare</li>
+	<li>add initial history file Cdoc/&lt;ProjectName&gt;_hist.html</li>
+	<li>interactive unix:<ul>
+		<li><span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add --all --interactive</span></li>
+	</ul></li>
+	<li class='mono'>git commit -m "new repository with initial history file"</li>
+	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
+		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt;Main</li>
+		<li><b>name:</b> &lt;ProjectName&gt;</li>
+		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
+	</ul></li>
+</ul>
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright 2011 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Confidential and Proprietary.</p>
+</body>
+</html>

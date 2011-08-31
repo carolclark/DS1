@@ -39,7 +39,7 @@
 		<!-- @topicItem "Terminal" "#Terminal" "0" "" -->
 		<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
 		<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
-	<!-- @topicGroup "" "10" -->
+	<!-- @topicGroup "" "20" -->
 <!-- @/topicList -->
 
 <!-- @marker "AddressBook" -->
@@ -168,7 +168,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 	<p><b>Custom Commands</b></p><ul>
 		<li>BBEdit <ul>
 			<li>history suffix: _hist</li>
-			<li>jump line end: cReturn</li>
+			<li>jump line end: cRight</li>
 			<li>list item: &lt;li&gt;&lt;##&gt;&lt;/li&gt;</li>
 			<li>next field: rAccent</li>
 			<li>previous field: srAccent</li>
@@ -178,6 +178,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 	</ul>
 	<p><b>Custom Vocabulary</b></p><ul>
 		<li>/ (slash)</li>
+		<li>.hist (tag history)</li>
 		<li>Arbonne</li>
 		<li>BBEdit</li>
 		<li>candcsoft (CNC soft; Lower case in titles)</li>
@@ -185,11 +186,14 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 		<li>CCDev (see-see-dev)</li>
 		<li>Cdoc (see-doc)</li>
 		<li>Corlan</li>
+		<li>git</li>
 		<li>iDisk (Lower case in titles)</li>
+		<li>iOS (Lower case in titles)</li>
 		<li>Koala</li>
 		<li>Punkin</li>
 		<li>refactor</li>
 		<li>refactoring</li>
+		<li>subslates</li>
 		<li>subtarget</li>
 		<li>Unix</li>
 		<li>unversioned</li>
@@ -201,8 +205,8 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 
 <h3 id="Eclipse_config">Installation and Configuration</h3>
 	<p><b>Application</b> /JavaDeveloper/Applications/eclipse/Eclipse.app v	1.4.0 (Indigo)</p>
-	<p><b>Source</b> <a href='http://www.eclipse.org/downloads/'>Eclipse IDE for Java Developers, Mac	64-bit</a></p>
-	<p><b>License</b> <a href='http://www.eclipse.org/legal/epl/notice.php'>Eclipse Foundation Software User Agreement</a></p>
+	<p><b>Source</b> <a href="http://www.eclipse.org/downloads/">Eclipse IDE for Java Developers, Mac 64-bit</a></p>
+	<p><b>License</b> <a href="http://www.eclipse.org/legal/epl/notice.php">Eclipse Foundation Software User Agreement</a></p>
 	<p><b>Critical Data</b> workspaces at ~/Documents/Eclipse</p>
 	<p><b>Installation and Configuration</b></p><ul>
 		<li>Preferences: Java: Compiler: 1.6</li>
@@ -226,17 +230,19 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 	</ul>
 	<p><b>Customization &amp; Automation</b> <br />
 	script applications to operate on dropped files:</p>
-	<ul>
+	<ul class='todo'>
 		<li><b>Set Mac Info Scripts</b> set file and/or creator type as indicated<br />
 		toBBEdit; toFileGroup (BBEdit); toTypeTEXT</li>
 	</ul>
 
 <!-- @marker "iCal" -->
+	<div class='todo'>
 <h2><a name="iCal">iCal</a></h2>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> ~/Library/Application Support/iCal; calendars exportable</p>
 	<p><b>Configuration</b> </p>
 	<p><b>Customization &amp; Automation</b> </p>
+	</div>
 
 <!-- marker "iTunes" -->
 <h2><a name="iTunes">iTunes</a></h2>
@@ -246,6 +252,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 	<p><b>Customization &amp; Automation</b> </p>
 
 <!-- marker "Mail" -->
+<div class='todo'>
 <h2><a name="Mail">Mail</a></h2>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> ~/Library/Mail</p>
@@ -311,6 +318,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 		</ul></li>
 	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- @marker "Safari" -->
 <h2><a name="Safari">Safari</a></h2>
@@ -324,6 +332,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 	</ul>
 
 <!-- @marker "SystemPreferences" -->
+<div class='todo'>
 <h2><a name="SystemPreferences">System Preferences</a></h2>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> </p>
@@ -353,6 +362,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 		<li><b>Date &amp; Time</b> select time zone</li>
 		<li><b>Time Machine</b>: on</li>
 	</ul>
+</div>
 
 <!-- @marker "Terminal" -->
 <h2><a name="Terminal">Terminal</a></h2>
@@ -386,10 +396,15 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 		<li><b>Key Bindings</b> duplicate default to Carol<br />
 		<ul>
 			<li><b>Xcode</b> Hide Xcode [none]; Hide Others [none]</li>
-			<li><b>Window</b> Minimize [coM]</li>
+			<li><b>Window</b> Minimize [none]</li>
 			<li><b>Edit &gt; Format</b> Balance [cM]</li>
-			<li><b>Edit &gt; Find</b> Replace [cH]; Replace and Find Next [csH]</li>
-			<li><b>Text</b> Select Line [rM], Select Word [rO]; Capitalize Word [srC]; Lowercase Word [srL]</li>
+			<li><b>Edit &gt; Find</b> Replace [cH]; Replace and Find Next [csH]; Hide Find Bar [croG]</li>
+			<li><b>Editor &gt; Code Folding</b> Unfold All [coDown]</li>
+			<li><b>Text</b> Select Line [rM], Select Word [roW]; Capitalize Word [srUp]; Lowercase Word [srDown]</li>
+		</ul></li>
+		<li>Behaviors<ul>
+			<li>Build Fails: show tab Build; show Log Navigator; navigate to current log</li>
+			<li>Build Generates New Issues: show tab Build; show Issue Navigator; navigate to first new issue</li>
 		</ul></li>
 	</ul>
 	<ul class='depr'>
@@ -461,7 +476,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 		
 		<h5 id="AndroidSDK_config">Installation and Configuration</h5>
 			<p><b>Eclipse SDK</b> folder /JavaDeveloper/SDKs/android-sdk-mac_x86; downloaded 07/24/2011</p>
-			<p><b>Source</b> <a href='http://developer.android.com/sdk/index.html'>Download the Android SDK</a></p>
+			<p><b>Source</b> <a href="http://developer.android.com/sdk/index.html">Download the Android SDK</a></p>
 			<p><b>Configuration</b> Preferences: Android: set SDK folder location</p>
 
 	<h4 id="ADT_">ADT Plugin</h4>
@@ -469,7 +484,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 		
 		<h5 id="ADT_config">Installation and Configuration</h5>
 			<p><b>Eclipse Plugin</b> downloaded 07/24/2011</p>
-			<p><b>Source</b> Eclipse download from address specified at <a href='http://developer.android.com/sdk/index.html'>Download the Android SDK</a></p>
+			<p><b>Source</b> Eclipse download from address specified at <a href="http://developer.android.com/sdk/index.html">Download the Android SDK</a></p>
 			<p><b>Installation and Configuration</b> Eclipse: Help: Install New Software...: add available software location "ADT Plugin" @ https://dlssl.google.com/android/eclipse/; install all</p>
 
 	<h4 id="AndroidPackages_">AndroidPackages</h4>
@@ -537,11 +552,11 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 <h3 id="Apache_config">Installation and Configuration</h3>
 	<p><b>Library</b> /usr/local/apache; 2.2.19</p>
 	<p><b>Source</b> MacPorts</p>
-	<p><b>License</b> <a href='http://www.apache.org/licenses/'>Apache Licenses</a></p>
+	<p><b>License</b> <a href="http://www.apache.org/licenses/">Apache Licenses</a></p>
 	<p><b>Installation and Configuration</b></p><ul class='todo'>
 		<li>Installation<ul>
-			<li>install PHP via <a href='http://www.macports.org/index.php'>MacPorts &gt; Available Ports</a><ul>
-				<li class='blurb'>According to Stoyan Stefanov (author of "Object-Oriented JavaScript") in 2009 at <a href='http://www.phpied.com/installing-php-and-apache-on-mac-osx-that-was-pretty-easy/'>Installing PHP and Apache on Mac OSX</a>, Apache comes installed on a Mac, but you don't know what version you have. It's also disabled unless Web Sharing has been turned on in System Preferences. He recommends simply installing a current version of PHP5, which has apache2 as a dependency, through MacPorts, ignoring the versions of each that are already there. It appears to work well.</li>
+			<li>install PHP via <a href="http://www.macports.org/index.php">MacPorts &gt; Available Ports</a><ul>
+				<li class='blurb'>According to Stoyan Stefanov (author of "Object-Oriented JavaScript") in 2009 at <a href="http://www.phpied.com/installing-php-and-apache-on-mac-osx-that-was-pretty-easy/">Installing PHP and Apache on Mac OSX</a>, Apache comes installed on a Mac, but you don't know what version you have. It's also disabled unless Web Sharing has been turned on in System Preferences. He recommends simply installing a current version of PHP5, which has apache2 as a dependency, through MacPorts, ignoring the versions of each that are already there. It appears to work well.</li>
 			</ul></li>
 			<li>start apache, and set launch daemon on startup:<br />
 				<span class='mono'>sudo launchctl load -w /Library/LaunchDaemons/org.macports.apache2.plist</span></li>
@@ -554,7 +569,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 		<li>Configuration<ul>
 			<li class='blurb'>to edit Apache configuration file httpd.conf:<br />
 				<span class='mono'>sudo pico /opt/local/apache2/conf/httpd.conf</span></li>
-			<li>if desired, change the directory for the Web server host; see <a href='Support.html#tsk_ChangeHostDirectory'>Change Host Directory</a></li>
+			<li>if desired, change the directory for the Web server host; see <a href="Support.html#tsk_ChangeHostDirectory">Change Host Directory</a></li>
 			<li>edit Apache configuration file httpd.conf to recognize Subversion and find repositories at &lt;reposPath&gt;<ul>
 				<li>LoadModule: immediately after existing line to load mod_dav:<br /><span class='blurb'>LoadModule dav_svn_module modules/mod_dav_svn.so</span></li>
 				<li>after the LoadModule directives:<ul class='mono'>
@@ -567,7 +582,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 			</ul></li>
 			<li class='blurb'>test</li>
 		</ul></li>
-	<li>see also <a href='Support.html#Server_Apache'>Support: Apache</a></li>
+	<li>see also <a href="Support.html#Server_Apache">Support: Apache</a></li>
 	</ul>
 
 <!-- @marker "CrashReporterPrefs" -->
@@ -698,7 +713,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 <p>editor for launchd items</p>
 <h3 id="Lingon_config">Installation and Configuration</h3>
 	<p><b>Application</b> /Applications/Utilities; 1.2</p>
-	<p><b>Source</b> <a href='http://www.apple.com/downloads/macosx/system_disk_utilities/lingon.html'>MacOS Downloads</a></p>
+	<p><b>Source</b> <a href="http://www.apple.com/downloads/macosx/system_disk_utilities/lingon.html">MacOS Downloads</a></p>
 	<p><b>License</b> freeware</p>
 	<p><b>Critical Data</b> edits data at: /Library/Agents; /Library/LaunchDaemons; ~/Library/LaunchAgents</p>
 
@@ -830,6 +845,8 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 <!-- @marker "5 ===" -->
 <!-- @marker "System Installation" -->
 <h2 id="tp_SystemInstallation">System Installation</h2>
+	<div class='todo'>
+
 <p class='blurb'> When installing a new computer, we prefer to reinstall from scratch rather than attempting to restore the hard drive to its previous state. This helps us to keep track of what applications, tools, and other files are actually needed; helps to avoid fossils in the installation process; and eliminates the risk of problems from one Installation being replicated onto the next.</p><ul>
 	<li>Preparation <ul>
 		<li>Xcode: check in all projects; archive all active repositories</li>
@@ -930,6 +947,7 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 		<li>System Preferences: Time Machine: turn on</li>
 	</ul></li>
 </ul>
+	</div>
 
 <!-- @marker "9 === Inactive" -->
 <h2>Inactive</h2>

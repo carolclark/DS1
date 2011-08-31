@@ -1,4 +1,4 @@
-	<!-- $Id: Support.html 63 2011-07-15 17:44:19Z carolclark $ -->
+<!-- $Id: Support.html 63 2011-07-15 17:44:19Z carolclark $ -->
 <!-- Created by Carol Clark on 03 Jan 2011. -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -32,16 +32,16 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicGroup "" "5" -->
 		<!-- @topicItem "Web Sites" "#tp_WebSites" "0" "" -->
 		<!-- @topicItem "File Server" "#tp_FileServer" "0" "" -->
-		<!-- @topicItem "Unix and Unix tools" "#tp_Unix" "0" "" -->
+		<!-- @topicItem "Unix" "#tp_Unix" "0" "" -->
 		<!-- @topicItem "Tools for Compiled Code" "#tp_CompileTools" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Related Project Files" "11" -->
-		<!-- @topicItem "Support Versions" "Support_vers.html#Contents" "0" "" -->
 		<!-- @topicItem "Support History" "Support_hist.html#Contents" "0" "" -->
-	<!-- @topicGroup "" "14" -->
+	<!-- @topicGroup "" "13" -->
+		<!-- @topicItem "Git" "Git.html#Contents" "0" "adopted source control system" -->
 		<!-- @topicItem "Cdoc" "Cdoc.html#Contents" "0" "in-house documentation system" -->
 		<!-- @topicItem "Tools" "Tools.html#Contents" "0" "installed applications, tools, and libraries" -->
-	<!-- @topicGroup "" "17" -->
+	<!-- @topicGroup "" "16" -->
 		<!-- @topicItem "Support Glossary" "Support_gloss.html#Contents" "0" "" -->
 <!-- @/topicList -->
 
@@ -65,7 +65,6 @@ heading with name: Task Name; tsk_TaskName;5
 	<!-- @topicItem "Development Environment" "#DevelopmentEnvironment" "0" "unix-level environment support" -->
 	<!-- @topicItem "Supported Script Types" "#ScriptTypes" "0" "languages and conventions" -->
 	<!-- @topicItem "Snippets" "#ScriptingSnippets" "0" "parameterized text blocks" -->
-	<!-- @topicItem "Scriptdocs" "#ScriptingScriptdocs" "0" "documentation for scripts and snippets" -->
 <!-- @/topicList -->
 
 <!-- @marker "Development Environment" -->
@@ -84,10 +83,12 @@ This decision was made on the advice of Scott Clark, and has been working very w
 </ul>
 
 <h6>~/CCDev/bin/.kshrc</h6>
-<p>eystem Environment file (source: Environment/kshrc)</p><ul>
-	<li>set default user prompt to "&lt;userName&gt; &lt;lineno&gt;</li>
+<p>System Environment file (source: Environment/kshrc)</p><ul>
+	<li>set default user prompt to "&lt;userName&gt; &lt;lineno&gt;"</li>
 	<li>add $CCDev/bin to <span class='mono'>$PATH</span></li>
 	<li>add $CCDev/func to <span class='mono'>$PATH</span> and <span class='mono'>$FPATH</span></li>
+	<li>SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit</li>
+	<li>GIT_TEMPLATE_DIR="$CCDev/GitTemplates"; export GIT_TEMPLATE_DIR <span class='blurb'>not currently used</span></li>
 </ul>
 
 <h6>~/subversion/config</h6>
@@ -107,13 +108,16 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<dt>Snippets</dt><dd>text to be processed as <a class='glosslink' href='Support_gloss.html#def_snippet'>snippets</a><br />
 		source files: extension .snip<br />
 		installation: @ $CCDev/snip</dd>
+	<dt>BuildScripts</dt><dd>scripts to be run in place to process files in their parent folder<br />
+		source files: extension .build for scripts that perform standalone builds; not install for scripts to be run after compile<br />
+		installation: none</dd>
 </dl>
 
 <h6>AppleScript</h6><dl class='funclist'>
 	<dt>Scripts</dt><dd>compiled AppleScripts<br />
 		source files: extension .applescript<br />
 		installation: @ $CCDev/Scripts; extension .scpt	</dd>
-	<dt>Functions</dt><dd>compiled AppleScript functions; $CCDev/Scripts<br />
+	<dt>Functions</dt><dd class='nyi'>compiled AppleScript functions; $CCDev/Scripts<br />
 		source files: extension .applescript<br />
 		installation: @ $CCDev/Scripts; extension .scpt<br />
 		by convention, AppleScript functions use the idiom <span class='mono'>on run argv</span> and are named with leading '_'</dd>
@@ -121,12 +125,10 @@ This decision was made on the advice of Scott Clark, and has been working very w
 
 <!-- @marker "Snippets" -->
 <h4><a name="ScriptingSnippets">Snippets</a></h4>
-
-<!-- @marker "Scriptdocs" -->
-<h4><a name="ScriptingScriptdocs">Scriptdocs</a></h4>
+<p class='expand'>expand</p>
 
 <!-- @marker "2 ===" -->
-<!-- @marker "Build System" -->
+<div class='todo'><!-- @marker "Build System" -->
 <h3><a name="BuildSystem">Build System</a></h3>
 <p>CCDev supports a build system used to process script-based targets. These targets are identified as CCDev targets, as distinct from Xcode targets.</p>
 
@@ -157,8 +159,10 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 <h4><a name='BuildCdoc'>Cdoc</a></h4>
 <p>A Cdoc target is a type of CCDev target that is used to process documentation for <a class='glosslink' href='Support_gloss.html#def_Cdoc'>Cdoc</a>, our in-house documentation system.</p>
 <p>For Cdoc targets, the build script may be omitted from the Cdoc source folder. The default script $CCDev/Scripts/Cdoc.build is then used.</p>
+</div>
 
 <!-- @marker "3 ===" -->
+<div class='todo'>
 <!-- @marker "Source Control" -->
 <h2>Source Control</h2>
 <!-- @topicList "Source Control" "tp_SourceControl" -->
@@ -362,20 +366,21 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 	</ul></li>
 	<li>Xcode<ul>
 		<li>Repository: Xcode &gt; Organizer &gt; Repositories: remove entry for old project; Add Working Copy &lt;NewProjectName&gt;</li>
-		<li>Xcode Project, if applicable <ul>
+		<li>Xcode and BBEdit Projects, if applicable <ul>
+			<li>rename *.bbprojectd</li>
 			<li>rename targets to avoid name clashes</li>
 			<li>Doxygen target: rename .doxygen config file;
 				rename target in build phase and in config file</li>
-			<li>WARNING: If the project itself needs to be renamed, this must be done in separate revision. See <a href='#subversionFoldersAndContents'>Policies</a>.</li>
+			<li>WARNING: If the project itself needs to be renamed, this must be done in separate revision. See <a href="#subversionFoldersAndContents">Policies</a>.</li>
 		</ul></li>
 	</ul></li>
 	<li>Cdoc <ul>
-		<li>Support/Development_hist: change occurrences of &lt;OldName&gt; to &lt;NewName&gt;</li>
-		<li>remove existing directory ~/CCDev/Sites/Development/Tech/&lt;OldName&gt;; rebuild documentation; check HTML</li>
+		<li>remove existing directory ~/CCDev/Sites/TechnicalDocs/&lt;OldName&gt;; rebuild documentation; check HTML</li>
 		<li>check all HTML</li>
 	</ul></li>
 </ul>
-
+</div>
+	
 <!-- "4 ==="-->
 <!-- @marker "Backup" -->
 <h2>Backup</h2>
@@ -396,13 +401,13 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 		<li>As a result, Time Machine on Carol's computer is run much less frequently than its design intended.</li>
 	</ul></li>
 	<li>Exclusion Notes<ul>
-		<li>Files are included unless specifically marked for exclusion, either via the <a href='file:///System/Library/CoreServices/backupd.bundle/Contents/Resources/StdExclusions.plist'>standard exclusions list</a> or by adding them as exclusions from Time Machine preferences.</li>
+		<li>Files are included unless specifically marked for exclusion, either via the <a href="file:///System/Library/CoreServices/backupd.bundle/Contents/Resources/StdExclusions.plist">standard exclusions list</a> or by adding them as exclusions from Time Machine preferences.</li>
 		<li>On Carol's computer, volumes other than the primary volume are intended for use only for backup, testing, and storage of archives that are also saved on physical disks.</li>
 		<li>When we use Parallels, it was essential to exclude the Parallels Virtual Machine. If we need Windows emulation again, we may switch to VMware instead of Parallels. In either case, the Virtual machine file must be excluded because it is a single very large file that changes every time it is opened.</li>
 		<li>11/2010 previous attempt to exclude ~/Dev/_discard resulted in
 			excluding all of ~/Dev, which required starting a new Time Machine volume to
 			correct (per Haddock Computer)</li>
-		<li>see also <a href='http://ryanblock.com/2008/05/good-folders-to-exclude-from-time-machine-backups/'>Good folders to exclude from Time Machine backups</a></li>
+		<li>see also <a href="http://ryanblock.com/2008/05/good-folders-to-exclude-from-time-machine-backups/">Good folders to exclude from Time Machine backups</a></li>
 	</ul></li>
 	<li>Conclusion: try to run Time Machine at least once a day; manually exclude external volumes</li>
 </ul>
@@ -595,8 +600,8 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 	<li>for self-contained sites, the build system actually stores shared resources from conceptual parents inside the folders of the sites that use them, generating multiple copies as necessary</li>
 	<li>build system also provides scripts to install local site images at their destination locations</li>
 	<li>installed site destinations:<ul>
-		<li>Personal: <a href='#WebHosting'>WebHost_Personal</a></li>
-		<li>C &amp; C Software: <a href='#WebHosting'>WebHost_CandC</a></li>
+		<li>Personal: <a href="#WebHosting">WebHost_Personal</a></li>
+		<li>C &amp; C Software: <a href="#WebHosting">WebHost_CandC</a></li>
 		<li>AtTheTable: carollclark/PrivateSites</li>
 		<li>TechnicalDocs: carollclark/PrivateSites</li>
 	</ul></li>
@@ -605,8 +610,8 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 <!-- @marker "Web Hosting" -->
 <h4><a name="WebHosting">Web Hosting</a></h4><ul>
 	<li id="WebHostAddresses">Current WebHost Addresses (MobileMe host and iDisk)<ul>
-		<li>Personal Site (WebHost_Personal): <a href='http://web.me.com/carollclark'>http://web.me.com/carollclark</a></li>
-		<li>C &amp; C Software Site (WebHost_CandC): <a href='http://www.candcsoft.com'>http://www.candcsoft.com</a>, by forward from GoDaddy</li>
+		<li>Personal Site (WebHost_Personal): <a href="http://web.me.com/carollclark">http://web.me.com/carollclark</a></li>
+		<li>C &amp; C Software Site (WebHost_CandC): <a href="http://www.candcsoft.com">http://www.candcsoft.com</a>, by forward from GoDaddy</li>
 		<li>installation via iDisk at carollclark/Web/Sites/candcsoft for C &amp; C Software public sites, carollclark/Web/Sites for other public sites, carollclark/Public for private sites</li>
 	</ul></li>
 	<li>MobileMe<ul>
@@ -618,7 +623,7 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 			<li>Does not support FTP (no wonder I was having trouble!). MobileMe is easier for me to script now, but the technology is non-standard and therefore not compatible with what we would need with a different host.</li>
 		</ul></li>
 		<li>Disadvantages:<ul>
-			<li>Does not support <a href='#ClientServer'>server-side</a> technologies such as PHP, so there's no provision for communicating anything back to us other than via e-mail, which is standard HTML technology.</li>
+			<li>Does not support <a href="#ClientServer">server-side</a> technologies such as PHP, so there's no provision for communicating anything back to us other than via e-mail, which is standard HTML technology.</li>
 			<li>Acceptable password protection requires server-side technology which, in the case of MobileMe, means that we must rely on the hosting service to provide password protection. But the MobileMe service provides password protection only for iWeb sites (per MobileMe support 3/28/11).</li>
 			<li>Therefore, the only way I could find to get password protection for our website was to put it on my iDisk at a location other than either Sites folder. This may turn out to be less convenient.</li>
 		</ul></li>
@@ -628,9 +633,9 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 		<li>Server-side code is that connected with the server that responds to requests to provide webpages. Server-side code can be in scripts in languages like PHP and Perl, but can also access code in other forms. Only server-side code can communicate with the provider of the website.</li>
 	</ul></li>
 	<li class='tech'>Website <a name='MobileMeLocationPossibilities'>Location Possibilities with MobileMe</a>:<ul>
-		<li><a href='http://www.candcsoft.com/'>http://www.candcsoft.com/</a> (carollclark/Web/Sites/candcsoft/Punkin - current location) - site is hosted by MobileMe; not acceptable because this makes it a public site for which server-side password protection is available only for iWeb sites (per MobileMe support 3/28/11)</li>
-		<li><a href='https://public.me.com/carollclark'>https://public.me.com/carollclark</a> - protected access to iDisk with authentication required; can download files, but not access them as a website </li>
-		<li><a href='http://homepage.mac.com/carollclark'>http://homepage.mac.com/carollclark</a> (carollclark/Sites) - apparently not protected by the password</li>
+		<li><a href="http://www.candcsoft.com/">http://www.candcsoft.com/</a> (carollclark/Web/Sites/candcsoft/Punkin - current location) - site is hosted by MobileMe; not acceptable because this makes it a public site for which server-side password protection is available only for iWeb sites (per MobileMe support 3/28/11)</li>
+		<li><a href="https://public.me.com/carollclark">https://public.me.com/carollclark</a> - protected access to iDisk with authentication required; can download files, but not access them as a website </li>
+		<li><a href="http://homepage.mac.com/carollclark">http://homepage.mac.com/carollclark</a> (carollclark/Sites) - apparently not protected by the password</li>
 		<li>access via file protocol (file:///Volumes/carollclark/Public/index.html) from mounted iDisk, which requires authentication<ul>
 			<li>iDisk folder other than Public folder calls itself Public in Safari's address bar, which seems problematic</li>
 			<li>iDisk Public folder seems to work. It could use a different password, but Public can still be accessed by mounting my iDisk with its password, so a special Public folder password does not seem indicated.</li>
@@ -645,7 +650,7 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 <h5><a name="tsk_forward_candcsoft">Forward candcsoft to MobileMe</a></h5><ul>
 	<li>to forward candcsoft.com to folder candcsoft of MobileMe site (&lt;iDisk&gt;/Web/Sites/candcsoft)<ul>
 		<li class='blurb'>based on instructions found at MobileMe, searching for "host domain" in "Find a Help topic" </li>
-		<li><a href='http://www.godaddy.com/default.aspx'>GoDaddy.com</a><ul>
+		<li><a href="http://www.godaddy.com/default.aspx">GoDaddy.com</a><ul>
 			<li>login; go to my account / my products; view in domain manager</li>
 			<li>select candcsoft.com; manage forwarding; forward without masking to "web.me.com/carollclark/candcsoft", leaving "update DNS settings to accommodate this change" checked</li>
 		</ul></li>
@@ -659,7 +664,7 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 <!-- @marker "  Forward svn.candcsoft to Local Apache" -->
 <h5><a name="tsk_forward_svncandcsoft">Forward svn.candcsoft to Local Apache</a></h5><ul>
 	<li>to forward svn.candcsoft.com to folder our local Apache svn server<ul>
-		<li><a href='http://www.godaddy.com/default.aspx'>GoDaddy.com</a><ul>
+		<li><a href="http://www.godaddy.com/default.aspx">GoDaddy.com</a><ul>
 			<li>login; go to my account / my products; view in domain manager</li>
 			<li>select DNS Manager; select candcsoft.com; click "Edit Zone"</li>
 			<li>add a Host entry; enter "svn.candcsoft.com" and IP address</li>
@@ -671,6 +676,7 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 </ul>
 
 <!-- @marker "File Server" -->
+<div class='todo'><!-- move to separate Subversion Server file -->
 <h2>File Server</h2>
 <!-- @topicList "File Server" "tp_FileServer" -->
 	<!-- @topicItem "Apache" "#Server_Apache" "0" "" -->
@@ -697,7 +703,7 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 		<!-- @topicItem "Starting and Stopping" "#tsk_StartingAndStopping" "0" "" -->
 		<!-- @topicItem "Change Host Directory" "#tsk_ChangeHostDirectory" "0" "" -->
 <!-- @/topicList -->
-<p>See also <a href='Tools.html#Apache_'>Tools: Apache 2</a>.</p>
+<p>See also <a href="Tools.html#Apache_">Tools: Apache 2</a>.</p>
 
 <!-- @marker "Apache Security Configuration" -->
 <h4 id="Apache_Security">Apache Security Configuration</h4><ul>
@@ -931,11 +937,11 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 		<li>server off / web sharing on is not a valid state, since Web Sharing activates the server</li>
 	</ul></li>
 </ul>
+</div>
 
-
-<!-- @marker "Unix and Unix tools" -->
-<h2>Unix and Unix tools</h2>
-<!-- @topicList "Unix and Unix tools" "tp_Unix" -->
+<!-- @marker "Unix" -->
+<h2>Unix</h2>
+<!-- @topicList "Unix" "tp_Unix" -->
 	<!-- @topicItem "Permissions" "#Unix_Permissions" "0" "" -->
 <!-- @/topicList -->
 
