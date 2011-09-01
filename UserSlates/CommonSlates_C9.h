@@ -527,7 +527,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 	Event { "left",		"left arrow" },	Keypress { kc_left, 0 },	\
 	Event { "right",	"right arrow" },	Keypress { kc_right, 0 },	\
 	Event { "north",	"up arrow" },	Keypress { kc_up, 0 },	\
-	Event { "down",		"down arrow" },	Keypress { kc_down, 0 },
+	Event { "down",		"down arrow" },	Keypress { kc_down, 0 }
 				
 #pragma mark _ModifierKeys_
 #define _ModifierKeys_		\

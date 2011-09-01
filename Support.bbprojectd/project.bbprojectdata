@@ -17,6 +17,7 @@
 				<string>CDFDFE54-6162-45D5-B954-AF1D8CD04706</string>
 				<string>546C6D42-3140-4FBF-89AD-77721BEAD544</string>
 				<string>714844B6-DB81-4105-9E12-9DEFEB25DC85</string>
+				<string>AB944942-510B-48CE-91C3-5B8D11C6E028</string>
 				<dict>
 					<key>CollectionID</key>
 					<string>73013DD1-0B95-4C16-A83A-2D4EB23B15F5</string>
@@ -759,6 +760,38 @@
 			</dict>
 			<key>ItemName</key>
 			<string>ucgl_p.tiff</string>
+			<key>ItemType</key>
+			<string>FileReference</string>
+		</dict>
+		<key>AB944942-510B-48CE-91C3-5B8D11C6E028</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>AliasData</key>
+				<data>
+				AAAAAAFgAAIAAANNYWMAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAADHK3m/SCsAAAB8T8EIR2l0Lmh0bWwAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAHxXS8qEEpoAAAAAAAAAAP//
+				//8AAAkgAAAAAAAAAAAAAAAAAAAABENkb2MAEAAIAADH
+				K84fAAAAEQAIAADKhFjqAAAAAQAUAHxPwQB8T5wANyMV
+				AAgIEwAAkY0AAgAuTWFjOlVzZXJzOmNhcm9sY2xhcms6
+				RGV2OlN1cHBvcnQ6Q2RvYzpHaXQuaHRtbAAOABIACABH
+				AGkAdAAuAGgAdABtAGwADwAIAAMATQBhAGMAEgAqVXNl
+				cnMvY2Fyb2xjbGFyay9EZXYvU3VwcG9ydC9DZG9jL0dp
+				dC5odG1sABMAAS8AABUAAgAR//8AAA==
+				</data>
+				<key>FileURL</key>
+				<string>file://localhost/Users/carolclark/Dev/Support/Cdoc/Git.html</string>
+				<key>RelativePath</key>
+				<string>./Cdoc/Git.html</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>Git.html</string>
 			<key>ItemType</key>
 			<string>FileReference</string>
 		</dict>

@@ -27,17 +27,17 @@
 		<li>[<a href="#_cdoc">_cdoc]</a>update Cdoc internal documentation</li>
 		<li>[3d058db tag 'withUpdatedDocs' -m "initial docs updated" merge 82f029b push]</li>
 		<li>[<a href="#_userslates">_userslates]</a> move UserSlates into Support</li>
-		<li>[-- 3 5a1d2b5 tag 'importUserSlates' -m "move Accessor's UserSlates into Support" merge push]</li>
+		<li>[e4ea9a3 08/31/2011 merge push]</li>
 		<li>[<a href="#_xcode">_xcode]</a> updates to Xcode Configuration and UserSlates</li>
 		<li>[-- 4 8e4ff8c + current Xcode_C9.r]</li>
-		<li>[<a href="#_git">_git</a>] Establish Git Workflow: Project Setup; Status and Commit; Squash; Branch; Merge</li>
-		<li>[<a href="#_terminal">Implement Window Tabs</a>]</li>
+		<li>[<a href="#_git">_git</a>] Improve Documentation of Git Workflow</li>
 		<li>[newProjectPunkin] new git project Punkin</li>
+		<li>[newProjectAccessor] new workspace Accessor contains existing Xcode project Accessor_C9</li>
 		<li>[<a href="#_cdocdev">_cdocdev</a>] add build target Cdoc</li>
-		<li>[<a href="#_cdocdev_hist">_cdocdev_hist</a>] Establish Simplified History Format</li>
+		<li>[<a href="#_cdocdev">_cdocdev</a>] Support Simplified History Format</li>
+		<li>[<a href="#_terminal">Implement Window Tabs</a>]</li>
 		<li>[newProjectWebGen] new git project WebGen from existing Subversion project</li>
 		<li>[newProjectArbonne] new workspace Arbonne contains existing Xcode projects ArbonneProto and ArbonneFM</li>
-		<li>[newProjectAccessor] new workspace Accessor contains existing Xcode project Accessor_C9</li>
 	</ul></li>
 
 	<li id='_userslates'>Accessor's UserSlates (Speech Recognition Support) [_userslates]<ul>
@@ -46,16 +46,12 @@
 			<li>document and commit last Accessor_C9 revision of UserSlates</li>
 			<li>import active User Slates from project Accessor_C9 to Support/UserSlates; add to workspace Support</li>
 			<li>Xcode Source Trees: UserSlates now @ ${HOME}/Dev/Support/UserSlates</li>
-			<li>
-move Accessor's UserSlates into Support
-
-merge push
-			</li>
+			<li>[e4ea9a3 08/31/2011 merge push]</li>
 		</ul></li>
 	</ul></li>
 	
 	<li id='_git'>Git Workflow [_git]<ul>
-		<li>new file Git.html: establish workflows for Project Setup; Status and Commit; Squash; Branch; Merge<ul>
+		<li>new file Git.html: establish workflows for project setup; status and commit; stash; remove squash; branch; merge; undo<ul>
 			<li class='blurb'>Contains notes made during creation of this Support repository.</li>
 		</ul></li>
 		<li>Support.html: Source Control<ul>
@@ -86,7 +82,7 @@ merge push
 			<li>make new scheme shared</li>
 		</ul></li>
 		<li>build and test</li>
-		<li id='_cdocdev_hist'>Establish Simplified History Format [_cdocdev_hist]<ul>
+		<li>Support Simplified History Format<ul>
 			<li>Each project is projected to contain an overview history file that links to smaller files for multiple threads of development. Planning for a new project can start in Support's history file.</li>
 			<li>Motivation: <ul class='blurb'>
 				<li>the existing system, which includes a top-level Development history file, a projected version file for each product, and a single history file for each project, all of which are interlinked, is too hard to maintain for the use we get out of it</li>
@@ -192,6 +188,10 @@ tag 'slate_Xcode4' -m "Xcode 4 in active use" merge push
 				<li>color schemes allow developer to distinguish between windows</li>
 			</ul></li>
 			<li>command Shell: New Tab takes a repository name, opens a window with the associated scheme, and sets variable ${proj} and associated path</li>
+		</ul></li>
+		<li>User Slate<ul>
+			<li>terminal subslate from Xcode</li>
+			<li>git: vim; add -i</li>
 		</ul></li>
 	</ul></li>
 
