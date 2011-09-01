@@ -111,6 +111,16 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 					Launch { Home_"Reference/svn-book.pdf", resid_Preview },
 				Event { "Make", "" }, Launch { Home_"Reference/make.pdf", resid_Preview },
 				endSubslate{},
+			Event { "Workspace", "" },			Subslate { "Workspace" },
+				_SlateGlobals_,
+				_CloseSubslate_,
+				Event { "Support", "" },		Launch { Home_"Dev/Support/Support.xcworkspace", resid_Xcode },
+				Event { "Carbon", "" },			Launch { Dev_"Accessor_C9/Accessor_C9.xcodeproj", resid_Xcode },
+				Event { "Punkin", "" },			Launch { Dev_"Punkin/Punkin.xcworkspace", resid_Xcode },
+				Event { "Support", "" },		Launch { Dev_"Support/Support.xcworkspace", resid_Xcode },
+				Event { "old Support", "" },	Launch { Dev_"Support_svn/Support_svn.xcworkspace", resid_Xcode },
+				Event { "Dev Support", "" },	Launch { Dev_"DevSupport/DevSupport.xcodeproj", resid_Xcode },
+				endSubslate{},
 		 } }
 	} };
 
