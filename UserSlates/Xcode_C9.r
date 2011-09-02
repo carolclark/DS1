@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					©2006-11 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					ï¿½2006-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -211,10 +211,6 @@ resource restype_Slate (resid_TypeSpecialXcodeSlate, "Type Special Xcode Slate")
 	Event { "add space", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_space, 0 }, endSequence{},	\
 	Event { "add comma", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_comma, 0 }, endSequence{},	\
 	Event { "list item", "" },	Sequence{}, TypeText { "<li><#item#></li>" }, _previous, endSequence{},	\
-	Event { "go back", "" },		Keypress { kc_left, mf_shift + mf_command + mf_option },	\
-	Event { "step back", "" },		Keypress { kc_left, mf_command + mf_option },				\
-	Event { "go forward", "" },		Keypress { kc_right, mf_shift + mf_command + mf_option },	\
-	Event { "step forward", "" },	Keypress { kc_right, mf_command + mf_option },				\
 	_JumpBar_,		\
 	closeDocument_,	\
 	Event { "page top", "" },	Keypress { kc_home, 0 },	\
@@ -1419,7 +1415,7 @@ resource restype_Slate (resid_FindReplace, "FindReplace") { {
 	Slate { "file", {
 		_SlateGlobals_,
 		ExitEvent { "exit", "" },			NilAction{},
-		ExitEvent { "close", "" },			Click { 1, -31, _r1_v, _window, _topLeft },
+		ExitEvent { "close", "" },			Click { 1, -31, _r1_v, _window, _topRight },
 		ExitEvent { "done", "" },			Click { 1, -31, _r1_v, _window, _topRight },
 		Event { "options", "" },			Sequence{}, _clickOptionsButton, _down, _return, ResSubslate { resid_findOptions }, endSequence{},
 		Event { "search field", "" },		Sequence{}, Click { 1, -94, _r1_v, _window, _topRight }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
@@ -1549,10 +1545,6 @@ resource restype_Slate (resid_TypeDesign, "Type for Design") { {
 		ExitEvent { "exit", "" },		NilAction{},
 		Event { "Macro", "" },			ResSubslate { resid_Macro },
 		Event { "Special", "" },		ResSubslate { resid_TypeSpecialXcodeSlate },
-		Event { "go back", "" },		Keypress { kc_left, mf_shift + mf_command + mf_option },
-		Event { "step back", "" },		Keypress { kc_left, mf_command + mf_option },
-		Event { "go forward", "" },		Keypress { kc_right, mf_shift + mf_command + mf_option },
-		Event { "step forward", "" },	Keypress { kc_right, mf_command + mf_option },
 		Event { "select word", "" },	_selword,
 		Event { "select line", "" },	_selline,
 		_JumpDownSubslate_,
@@ -1581,10 +1573,6 @@ resource restype_Slate (resid_DataModel, "DataModel") { {
 		Event { "page end", "" },	Keypress { kc_end, 0 },
 		Event { "page north", "" },	Keypress { kc_pageup, 0 },
 		Event { "page down", "" },	Keypress { kc_pagedown, 0 },
-		Event { "go back", "" },		Keypress { kc_left, mf_shift + mf_command + mf_option },
-		Event { "step back", "" },		Keypress { kc_left, mf_command + mf_option },
-		Event { "go forward", "" },		Keypress { kc_right, mf_shift + mf_command + mf_option },
-		Event { "step forward", "" },	Keypress { kc_right, mf_command + mf_option },
 		Event { "select word", "" },	_selword,
 		Event { "select line", "" },	_selline,
 		closeDocument_,
@@ -2021,10 +2009,6 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "hide find bar", "" },	_hideFindBar,
 		Event { "go next", "tab" },		Keypress { kc_closebracket, mf_command + mf_shift },
 		Event { "go previous", "tab" },	Keypress { kc_bracket, mf_command + mf_shift },
-		Event { "go back", "" },		Keypress { kc_left, mf_shift + mf_command + mf_option },
-		Event { "step back", "" },		Keypress { kc_left, mf_command + mf_option },
-		Event { "go forward", "" },		Keypress { kc_right, mf_shift + mf_command + mf_option },
-		Event { "step forward", "" },	Keypress { kc_right, mf_command + mf_option },
 		Event { "next panel", "" },		Keypress { kc_period, mf_command + mf_option },
 		Event { "previous panel", "" },	Keypress { kc_period, mf_command + mf_option + mf_shift },
 		Event { "next button", "" },	Keypress { kc_tab, mf_control },
