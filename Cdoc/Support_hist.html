@@ -17,7 +17,7 @@
 <h2>Support</h2><ul>
 	<li>Transition to Git and Xcode<ul>
 		<li>commit and archive existing project Support; rename to Support_svn</li>
-		<li>create <a href="#newRepository">new repository</a> with initial file Support_hist.html</li>
+		<li>create <a href="Git.html#tsk_CreateNewRepository">new repository</a> with initial file Support_hist.html</li>
 		<li>add file Support_hist.html: standard Cdoc file; initial content with simplified structures and styles</li>
 		<li>[46be7d9 08/31/2011]</li>
 		<li>add files Support.xcworkspace, Support.bbprojectd</li>
@@ -29,8 +29,13 @@
 		<li>[<a href="#_userslates">_userslates]</a> move UserSlates into Support</li>
 		<li>[e4ea9a3 08/31/2011 merge push]</li>
 		<li>[<a href="#_xcode">_xcode]</a> updates to Xcode Configuration and UserSlates</li>
-		<li>[-- 4 8e4ff8c + current Xcode_C9.r]</li>
-		<li>[<a href="#_git">_git</a>] Improve Documentation of Git Workflow</li>
+		<li>[372317d 09/01/2011 tag 'slate_Xcode4' merge push]</li>
+		<li>[<a href="#_git">_git</a>] Initial Documentation of Git Workflow</li>
+		<li>
+Git: Initial Documentation of Workflow
+
+merge push
+		</li>
 		<li>[newProjectPunkin] new git project Punkin</li>
 		<li>[newProjectAccessor] new workspace Accessor contains existing Xcode project Accessor_C9</li>
 		<li>[<a href="#_cdocdev">_cdocdev</a>] add build target Cdoc</li>
@@ -151,20 +156,7 @@
 			</ul></li>
 			<li>Launch Slate: launch workspaces directly</li>
 			<li>menu View: Utilities</li>
-			<li>[-- 4 8e4ff8c; replace Xcode.r with current
-Xcode config; update UserSlate for Xcode 4 use
-
-configure and document custom Behaviors
-"select word" and "select line" use Accessor sequences; disable capitalize and lowercase for now
-use standard/assistant/version to switch editors, Editor:standard/assistant/version to also access features
-restructure resid_NavPanel
-Open and Save dialogs
-search/find
-menu View: Utilities
-Launch Slate: launches workspaces directly
-
-tag 'slate_Xcode4' -m "Xcode 4 in active use" merge push
-			</li>
+			<li>[372317d 09/01/2011 tag 'slate_Xcode4' merge push]</li>
 		</ul></li>
 		<li>Scripts<ul>
 			<li>require CCDev script support</li>
@@ -207,25 +199,6 @@ tag 'slate_Xcode4' -m "Xcode 4 in active use" merge push
 
 </ul>
 
-<h5 id='newRepository'>Create New Repository</h5><ul>
-	<li>Project Setup<ul>
-		<li class='mono'>proj=&lt;ProjectName&gt;</li>
-		<li class='mono'>mkdir -p ~/Dev/gitrep/${proj}Main</li>
-		<li class='mono'>cd ~/Dev/gitrep/${proj}Main</li>
-		<li class='mono'>git init --bare</li>
-		<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
-			<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt;Main</li>
-			<li><b>name:</b> &lt;ProjectName&gt;</li>
-			<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
-		</ul></li>
-		<li>add initial history file Cdoc/&lt;ProjectName&gt;_hist.html</li>
-		<li>interactive unix:<ul>
-			<li><span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add --all --interactive</span></li>
-		</ul></li>
-		<li class='mono'>git commit -m "new repository with initial history file"</li>
-	</ul></li>
-</ul>
-
 <h2>Support Development Threads</h2><ul>
 	<li>Setup: Unix-only target that sets up our development environment. Setup's script can be run independently of Xcode, and is run prior to attempting to build any other targets or do other development tasks.</li>
 	<li>CCDev: Development environment documentation, automation and support. For features that require more complex processing, such as AppleScript compilation.<ul>
@@ -245,7 +218,7 @@ tag 'slate_Xcode4' -m "Xcode 4 in active use" merge push
 		<li>generate data for new Punkin_hist.html here</li>
 		<li>update existing folder PunkinStartfiles with changed files Cdoc/PunkinRepositories.pages, Cdoc/_pnkn/PunkinRepositories.pdf, Collaborator/Collaborator.build, Cdoc/Punkin_hist.html (split from Support.hist; _pcdoc to _cdoc)</li>
 		<li>create new project from contents of previous version<ul>
-			<li>new <a href="#newRepository">new git repositorynewRepository</a>; initial content, if any is needed: single file Punkin_hist.html</li>
+			<li>new <a href="Git.html#tsk_CreateNewRepository">new git repository</a></li>
 			<li>add Xcode workspace Punkin</li>
 		</ul></li>
 	</ul></li>

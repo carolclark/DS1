@@ -12,112 +12,164 @@
 <h1>Git</h1>
 
 <!-- @topicList "Git" "Contents" -->
-	<!-- @topicItem "Git Workflows" "#Workflows_" "0" "" -->
+	<!-- @topicItem "Development Cycle" "#DevelopmentCycle" "0" "" -->
+	<!-- @topicGroup "" "2" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
-<!-- @/topicList -->
-
-<p>
-Support.xcodeproj
-quit Xcode, BBEdit
-rename Support to Support_hold
-create new Xcode project support at folder ~/Dev
-quit Xcode
-move content of new Support folder into Support_hold
-rename Support_hold to Support
-open workspace; add project	
-</p>
-
-<p>
-to replace an existing working copy with a newly-cloned one, first remove the existing repository from Xcode's repository list, close the Xcode workspace, and quit Terminal (BBEdit project?)
-git ls-files --other --exclude-standard	#untracked files
-my working copy has a branch for Laura's stuff (she pushes to Remote; I integrate and push to Main)
-internal: threads; branches; compound (here or with source control?)
-git diff master origin/master
-git reset --hard HEAD to revert all changes to last commit
-git branch --no-merged	; check for unmerged branches
-diff
-	git diff: unstaged
-	git diff --cached: staged
-	git diff HEAD: all
-
-	add branch name: compares working copy with tip of that branch
-	add -- ./path to restrict to a path
-	add --name-status for one line per file (like svn status)
-
-	git diff master origin/master
-	git diff --name-status master.._cdoc
-log
-	add --pretty=oneline to show just sha and one-line comment
-	add --graph to show branch relationships; with --topo-order, shows top-down so tree is clearer
-	add --date-order to show chronologically
-tag
-	list: git tag
-		add -l to match a pattern
-	create: git tag -a &lt;tag&gt; -m '&lt;msg&gt;'
-	delete: git tag -d &lt;tag&gt;
-
-see git-rev-parse
-</p>
-
-<p>Remotes</p><ul>
-	<li>Create: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Add Remote<ul>
-		<li>(parameters)</li>
-	</ul></li>
-	<li>Track Branch: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Track Branch2<ul>
-		<li>(parameters)</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Git Workflows" -->
-<h2>Git Workflows</h2>
-<!-- @topicList "Git Workflows" "Workflows_" -->
+		<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
+		<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
+		<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
+		<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
+		<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
+	<!-- @topicGroup "Repositories" "9" -->
+		<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
+		<!-- @topicItem "Remote Repositories" "#tsk_RemoteRepositories" "1" "" -->
+	<!-- @topicGroup "" "12" -->
+	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Git Tasks" -->
-<h2 id='GitTasks_'>Git Tasks</h2><ul>
-	<li>Development Cycle<ul>
-		<li>switch/verify branch</li>
-		<li>edit; test</li>
-		<li>** other way*** git diff --name-status master; edit in changes as indicated (eg. history)</li>		
-		<li>status; [add] (Terminal)</li>
-		<li>verify modifications (Xcode)</li>
-		<li>commit (Xcode)</li>
-		<li>[tag; squash (Terminal) and/or merge]</li>
-		<li>[push [pushRemote] (Xcode)]</li>
-		<li>fetch sha/date marker</li>
-		<li>switch branch if indicated</li>
-		<li>set sha/date marker<ul>
-			<li><span class='mono'>print "[$(cd /Users/carolclark/Dev/${proj}; git log -1 --pretty=format:'%h') $(date +%m/%d/20%y) &lt;placeholder&gt;]"</span></li>
-			<li class='blurb'>Setting the sha/date marker replaces the clearly-visible (from source code) commit message and notes with the sha/date marker. A branch's sha/date is often updated from another branch.</li>
-		</ul></li>
-	</ul></li>
-	<li>branch<ul>
-		<li>[stash]</li>	
-		<li>switch to new or existing branch (Xcode)</li>
-		<li>status</li>
-		<li>develop/commit cycle(s)	</li>
-		<li>[squash and/or merge]</li>
-		<li>[push (Xcode)]</li>
-	</ul></li>
-	<li><a href="#tsk_CreateNewRepository">Create Repository</a></li>
+<h2 id='GitTasks_'>Git Tasks</h2>
+
+<!-- @marker "Development Cycle" -->
+<h4 id="DevelopmentCycle">Development Cycle</h4><ul style="background-color: #d8e8ff">
+	<li>switch/verify branch<span class='blurb'>Xcode</span></li>
+	<li>edit/test</li>
+	<li>[add or stash; repeat edit/test]<span class='blurb'>Terminal</span></li>
+	<li>construct commit message<span class='blurb'>Xcode</span></li>
+	<li>status; [add]<span class='blurb'>Terminal</span></li>
+	<li>verify modifications<span class='blurb'>Xcode</span></li>
+	<li>commit</li>
+	<li>log<span class='blurb'>Terminal</span></li>
+	<li>[tag]</li>
+	<li>[merge [push [pushRemote]]<span class='blurb'>Xcode</span></li>
+	<li>fetch sha/date marker<span class='blurb'>BBEdit or Terminal</span></li>
+	<li>[switch branch]<span class='blurb'>Xcode or Terminal</span></li>
+	<li>status; check for unmerged branches<span class='blurb'>Terminal</span></li>
+	<li>set sha/date marker<span class='blurb'>Xcode</span></li>
 </ul>
 
+<p><br /><br /><br /></p>
+<!-- @marker "Diff" -->
+<h4 id="tsk_Diff">Diff</h4>
+	<h5>Diff Commands</h5><ul>
+		<li><span class='mono'>git diff</span>&nbsp;&nbsp;# working copy and index (unstaged)</li>
+		<li><span class='mono'>git diff --cached</span>&nbsp;&nbsp;# index and last commit (staged)</li>
+		<li><span class='mono'>git diff HEAD</span>&nbsp;&nbsp;# working directory since your last commit (unstaged and staged)</li>
+		<li><span class='mono'>git diff &lt;branch&gt;</span>&nbsp;&nbsp;# working copy and another branch</li>
+		<li><span class='mono'>git diff &lt;branch1&gt;..&lt;branch2&gt;</span>&nbsp;&nbsp;# tips of the two branches</li>
+		<li><span class='mono'>git diff &lt;branch1&gt;...&lt;branch2&gt;</span>&nbsp;&nbsp;# from their common ancestor to branch2</li>
+	</ul>
+	<h5>Diff Options</h5><ul>
+		<li><span class='mono'>-- ./path</span>&nbsp;&nbsp;# restrict to a path</li>
+		<li><span class='mono'>--name-status</span>&nbsp;&nbsp;# one line per file (like svn status)</li>
+		<li><span class='mono'>--pretty=oneline</span>&nbsp;&nbsp;# to show just sha and one-line comment</li>
+		<li><span class='mono'>--graph</span>&nbsp;&nbsp;#  to show branch relationships<ul>
+			<li>with <span class='mono'>--topo-order</span>&nbsp;&nbsp;# shows top-down so tree is clearer</li>
+		</ul></li>
+		<li><span class='mono'>--date-order</span>&nbsp;&nbsp;# to show chronologically</li>
+	</ul>
+
+<!-- @marker "Tag" -->
+<h4 id="tsk_Tag">Tag</h4><ul>
+	<li><span class='mono'>git tag</span>&nbsp;&nbsp;# list<ul>
+		<li><span class='mono'>-l</span>&nbsp;&nbsp;# to match a pattern</li>
+	</ul></li>
+	<li><span class='mono'>git tag -a &lt;tag&gt; -m '&lt;msg&gt;'</span>&nbsp;&nbsp;# create</li>
+	<li><span class='mono'>git tag -d &lt;tag&gt;</span>&nbsp;&nbsp;# delete</li>
+	<li><span class='mono'>git show &lt;tag&gt;</span>&nbsp;&nbsp;# show information about &lt;tag&gt;</li>
+	<li><span class='mono'>git push --tags</span>&nbsp;&nbsp;# see <a href="http://jasonswett.net/blog/a-git-tag-example-that-doesnt-suck/">A Git tag example that doesn't suck</a></li>
+</ul>
+
+<!-- @marker "Information" -->
+<h4 id="tsk_Information">Information</h4>
+	<h5>Log Commands</h5><ul>
+		<li><span class='mono'>git log &lt;tag&gt;..</span>&nbsp;&nbsp;# commits since (not reachable from) &lt;tag&gt;</li>
+		<li><span class='mono'>git log &lt;branch&gt;..master</span>&nbsp;&nbsp;# commits reachable from master but not &lt;branch&gt;</li>
+		<li><span class='mono'>git log master..&lt;branch&gt;</span>&nbsp;&nbsp;# commits reachable from &lt;branch&gt; but not master</li>
+		<li><span class='mono'>git log master...&lt;branch&gt;</span>&nbsp;&nbsp;# commits reachable from either &lt;branch&gt; or master, but not both</li>
+		<li><span class='mono'>git log &lt;folder&gt;/</span>&nbsp;&nbsp;# commits that modify any file under &lt;folder&gt;/</li>
+	</ul>
+	<h5>Log Options</h5><ul>
+		<li><span class='mono'>git log --since="2 weeks ago"</span>&nbsp;&nbsp;# commits from the last 2 weeks</li>
+		<li><span class='mono'>git log &lt;filename&gt;</span>&nbsp;&nbsp;# commits that modify &lt;filename&gt;</li>
+		<li><span class='mono'>git log -S'&lt;pattern&gt;'</span>&nbsp;&nbsp;# commits that add or remove any file data matching the string '&lt;pattern&gt;'</li>
+		<li><span class='mono'>git log --no-merges</span>&nbsp;&nbsp;# skip merge commits</li>
+	</ul>
+	<h5>Other Information Commands</h5><ul>
+		<li><span class='mono'>git ls-files --other --exclude-standard</span>&nbsp;&nbsp;# untracked files</li>
+		<li><span class='mono'>git branch --no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
+	</ul>
+	 
+<p></p>
+<!-- @marker "Stash" -->
+<h4 id="tsk_Stash">Stash</h4><ul>
+	<li><span class='mono'>git stash save &lt;message&gt;</span>&nbsp;&nbsp;# <ul>
+			<li><span class='mono'>add --keep-index</span>&nbsp;&nbsp;# to leave all changes already added to the index intact</li>
+	</ul></li>
+	<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash<ul>
+		<li><span class='mono'>add stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  to apply a different stash</li>
+	</ul></li>
+	<li><span class='mono'>git stash pop</span>&nbsp;&nbsp;#  to apply and remove the top stash</li>
+	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# </li>
+	<li><span class='mono'>git stash clear</span>&nbsp;&nbsp;# </li>
+</ul>
+
+<!-- @marker "Undo" -->
+<h4 id="tsk_Undo">Undo</h4><ul>
+	<li><span class='mono'>git checkout -- &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in index</li>
+	<li><span class='mono'>git checkout HEAD &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in HEAD revision</li>
+	<li><span class='mono'>git reset --hard HEAD</span>&nbsp;&nbsp;# revert all changes since last commit; restores index and files (causes the results of "git diff" and "git diff --cached" to both be empty)</li>
+	<li><span class='mono'>git revert [HEAD|&lt;commit&gt;]</span>&nbsp;&nbsp;# creates a new commit that undoes the most recent or a previous commit</li>
+</ul>
+
+<!-- @marker "Create New Repository" -->
 <h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
 	<li class='mono'>proj=&lt;ProjectName&gt;</li>
 	<li class='mono'>mkdir -p ~/Dev/gitrep/${proj}Main</li>
 	<li class='mono'>cd ~/Dev/gitrep/${proj}Main</li>
 	<li class='mono'>git init --bare</li>
-	<li>add initial history file Cdoc/&lt;ProjectName&gt;_hist.html</li>
-	<li>interactive unix:<ul>
-		<li><span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add --all --interactive</span></li>
-	</ul></li>
-	<li class='mono'>git commit -m "new repository with initial history file"</li>
 	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
 		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt;Main</li>
 		<li><b>name:</b> &lt;ProjectName&gt;</li>
 		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
 	</ul></li>
+	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with the repository until it contains at least one file.</li>
+	<li>add initial history file Cdoc/&lt;ProjectName&gt;_hist.html</li>
+	<li><span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add --all --interactive</span>&nbsp;&nbsp;#  (interactive)</li>
+	<li class='mono'>git commit -m "new repository with initial history file"</li>
 </ul>
+
+<!-- @marker "Remote Repositories" -->
+<h4 id="tsk_RemoteRepositories">Remote Repositories</h4><ul>
+	<li>Create: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Add Remote<ul>
+		<li>(parameters)</li>
+	</ul></li>
+	<li>Track Branch: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Track Branch<ul>
+		<li>(parameters)</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Policies and Notes" -->
+<h2>Policies and Notes</h2>
+<!-- @topicList "Policies and Notes" "GitPolicies_" -->
+<!-- @/topicList -->
+
+<ul>
+	<li>do not use squash; rebase only to rebase an existing branch on more current code; see <a href="http://paul.stadig.name/2010/12/thou-shalt-not-lie-git-rebase-ammend.html">Paul Stadig: Thou Shalt Not Lie</a></li>
+	<li>sha/date marker: used in history and thread files to support matching history with repository<ul>
+		<li>Setting the sha/date marker replaces the clearly-visible (from source code) commit message and notes with the sha/date marker. A branch's sha/date is often updated from another branch.</li>
+		<li><span class='mono'>print "[$(cd /Users/carolclark/Dev/${proj}; git log -1 --pretty=format:'%h') $(date +%m/%d/20%y) &lt;placeholder&gt;]"</span></li>		
+	</ul></li>
+</ul>
+
+<p>
+to replace an existing working copy with a newly-cloned one, first remove the existing repository from Xcode's repository list, close the Xcode workspace, and quit Terminal (BBEdit project?)<br />
+my working copy has a branch for Laura's stuff (she pushes to Remote; I integrate and push to Main)<br />
+internal: threads; branches; compound (here or with source control?)<br />
+git diff master origin/master (same as master..origin/master?)<br />
+see git-rev-parse<br />
+see <a href="http://grit.rubyforge.org/">grit</a> for ruby scripting<br />
+</p>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
