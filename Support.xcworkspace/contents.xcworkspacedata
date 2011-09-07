@@ -35,6 +35,19 @@
             location = "container:"
             name = "css">
             <FileRef
+               location = "group:Cdoc/_tech/css/default.css">
+            </FileRef>
+            <FileRef
+               location = "group:Cdoc/_tech/css/history.css">
+            </FileRef>
+            <FileRef
+               location = "group:Cdoc/_tech/css/technical.css">
+            </FileRef>
+         </Group>
+         <Group
+            location = "container:"
+            name = "img">
+            <FileRef
                location = "group:Cdoc/_tech/img/space.tiff">
             </FileRef>
             <FileRef
@@ -66,19 +79,6 @@
             </FileRef>
             <FileRef
                location = "group:Cdoc/_tech/img/ucgl_x.tiff">
-            </FileRef>
-         </Group>
-         <Group
-            location = "container:"
-            name = "img">
-            <FileRef
-               location = "group:Cdoc/_tech/css/default.css">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/css/history.css">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/css/technical.css">
             </FileRef>
          </Group>
       </Group>

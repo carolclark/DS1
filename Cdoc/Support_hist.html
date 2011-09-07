@@ -5,53 +5,64 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Support History</title>
-	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+	<link rel="stylesheet" type="text/css" href="../css/history.css" />
 </head>
 <body>
-<!-- @navhead "../Support/Support.html" "Support" "Support_hist.html" -->
+<!-- navhead "../Support/Support.html" "Support	" "Support_hist.html" -->
+<div class="navhead"><a name="Top"></a><table class="navhead"><col class="navhead_c1" /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="Support_hist.html#hmark_Current">Current</a>]</td><td class="right">[<a href="#Contents">Contents</a>]</td></tr></table></div>
 <h1>Support History</h1>
 
 <!-- @topicList "Support History" "Contents" -->
+	<!-- @topicItem "Active" "#active_" "0" "" -->
+		<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Threads" "#threads_" "0" "" -->
+	<!-- @topicItem "Completed" "#completed_" "0" "" -->
 <!-- @/topicList -->
 
-<h2>Support</h2><ul>
+<!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
+<h2 id='active_'>Active</h2><ul>
 	<li>Transition to Git and Xcode<ul>
 		<li>commit and archive existing project Support; rename to Support_svn</li>
 		<li>create <a href="Git.html#tsk_CreateNewRepository">new repository</a> with initial file Support_hist.html</li>
 		<li>add file Support_hist.html: standard Cdoc file; initial content with simplified structures and styles</li>
-		<li>[46be7d9 08/31/2011]</li>
 		<li>add files Support.xcworkspace, Support.bbprojectd</li>
 		<li>from previous project Support_svn, import existing documentation, excluding history-related files
 			build and validate</li>
-		<li>[820c932 08/31/2011 push]</li>
 		<li>[<a href="#_cdoc">_cdoc]</a>update Cdoc internal documentation</li>
-		<li>[3d058db tag 'withUpdatedDocs' -m "initial docs updated" merge 82f029b push]</li>
 		<li>[<a href="#_userslates">_userslates]</a> move UserSlates into Support</li>
-		<li>[e4ea9a3 08/31/2011 merge push]</li>
+		<li class='tldate'>[withUpdatedDocs 08/31/2011]</li>
 		<li>[<a href="#_xcode">_xcode]</a> updates to Xcode Configuration and UserSlates</li>
-		<li>[372317d 09/01/2011 tag 'slate_Xcode4' merge push]</li>
+		<li class='tldate'>[slate_Xcode4 09/01/2011]</li>
 		<li>[<a href="#_git">_git</a>] Initial Documentation of Git Workflow</li>
-		<li>[2f04026 09/02/2011 push]</li>
+		<li>Xcode.r: minor corrections and changes</li>
 		<li>[newProjectPunkin] new git project Punkin</li>
-		<li>[newProjectAccessor] new workspace Accessor contains existing Xcode project Accessor_C9</li>
+		<li class='tlmark'>&lt;--</li>
+		<li>Cdoc history support: split Thread histories into separate documents<ul>
+			<li class='blurb'>This will simplify handling of multiple threads because most changes on threads will then be documented in their thread file instead of in the shared history file.</li>
+			<li>[<a href="#_cdocdev">_cdocdev</a>] revise history styles</li>
+			<li>[<a href="#_xcode">_xcode</a>] add templates for History and Thread files</li>
+			<li>[<a href="#_cdocdev">_cdocdev</a>] Support, Punkin: split histories for active threads into separate thread files</li>
+		</ul></li>
 		<li>[<a href="#_cdocdev">_cdocdev</a>] add build target Cdoc</li>
-		<li>[<a href="#_cdocdev">_cdocdev</a>] Support Simplified History Format</li>
+		<li>[<a href="#_xcode">_xcode]</a> add initial scripts and workflows</li>
+		<li>[newProjectAccessor] new workspace Accessor contains existing Xcode project Accessor_C9</li>
 		<li>[<a href="#_terminal">Implement Window Tabs</a>]</li>
 		<li>[newProjectWebGen] new git project WebGen from existing Subversion project</li>
 		<li>[newProjectArbonne] new workspace Arbonne contains existing Xcode projects ArbonneProto and ArbonneFM</li>
 	</ul></li>
 
-	<li id='_userslates'>Accessor's UserSlates (Speech Recognition Support) [_userslates]<ul>
+	<li id='_userslates'>Accessor's UserSlates (Speech Recognition Support) <span class='ttag'>[_userslates]</span><ul>
 		<li>move Accessor's UserSlates into Support<ul>
 			<li class='blurb'>These Slates used by Accessor to provide speech recognition support were previously stored with application Accessor. They are developed as part of each application's workflow, and compiled by Accessor_C9. They will be edited and versioned with any other work being done in their workflow, and compiled from their Support folder by target Accessor.</li>
 			<li>document and commit last Accessor_C9 revision of UserSlates</li>
 			<li>import active User Slates from project Accessor_C9 to Support/UserSlates; add to workspace Support</li>
 			<li>Xcode Source Trees: UserSlates now @ ${HOME}/Dev/Support/UserSlates</li>
-			<li>[e4ea9a3 08/31/2011 merge push]</li>
+			<li style='tldate'>[08/31/2011]</li>
 		</ul></li>
 	</ul></li>
-	
-	<li id='_git'>Git Workflow [_git]<ul>
+
+	<li id='_git'>Git Workflow <span class='ttag'>[_git]</span><ul>
 		<li>new file Git.html: establish workflows for project setup; status and commit; stash; remove squash; branch; merge; undo<ul>
 			<li class='blurb'>Contains notes made during creation of this Support repository.</li>
 		</ul></li>
@@ -61,7 +72,7 @@
 		<li>new fileset Git.r: provides content that can be included in Slates for applications that use Git commands</li>
 	</ul></li>
 
-	<li id='_setup'>Development Environment Setup [_setup]<ul>
+	<li id='_setup'>Development Environment Setup <span class='ttag'>[_setup]</span><ul>
 		<li>create target Setup<ul>
 			<li>determine features to be imported from existing Support_svn target CCDev</li>
 			<li>create new  Mac OS X Bundle target Setup; remove Link Binary with Frameworks and Copy Bundle Resources build phases<ul>
@@ -70,20 +81,13 @@
 		</ul></li>
 	</ul></li>			
 
-	<li id='_ccdev'>Development Environment [_ccdev]<ul>
+	<li id='_ccdev'>Development Environment <span class='ttag'>[_ccdev]</span><ul>
 		<li>determine features to be imported from existing Support_svn target CCDev</li>
 		<li class='blurb'>Snippets: import snippet code from Support_svn target BBEdit</li>
 	</ul></li>			
 
-	<li id='_cdocdev'>CdocDev: Support for In-House Documentation System [_cdocdev]<ul>
-		<li>add empty project BuildSupport at ~/Dev/Support</li>
-		<li>target Cdoc<ul>
-			<li>add Bundle target Cdoc_Support; remove Compile Bundle Resources, Link Binary with Libraries and Copy Bundle Resources build phases</li>
-			<li>add Run Script build phase Build Cdoc: <span class='mono'>buildCdoc ${TARGET_BUILD_DIR}</span></li>
-			<li>make new scheme shared</li>
-		</ul></li>
-		<li>build and test</li>
-		<li>Support Simplified History Format<ul>
+	<li id='_cdocdev'>CdocDev: Support for In-House Documentation System <span class='ttag'>[_cdocdev]</span><ul>
+		<li>revise history styles<ul>
 			<li>Each project is projected to contain an overview history file that links to smaller files for multiple threads of development. Planning for a new project can start in Support's history file.</li>
 			<li>Motivation: <ul class='blurb'>
 				<li>the existing system, which includes a top-level Development history file, a projected version file for each product, and a single history file for each project, all of which are interlinked, is too hard to maintain for the use we get out of it</li>
@@ -93,18 +97,27 @@
 				</ul></li>
 				<li>With the new system, it will be much easier to seamlessly start a new project, since a project's history can start in an existing file (probably Support_hist.html), move into a separate single history file, and expand with the addition of thread files. Previously, it was difficult to work on the planning process for new project without first creating a project with interlinked files.</li>
 			</ul></li>
+			<li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>Support_hist.html: add markers; test in BBEdit</li>
-			<li>Styles<ul>
-				<li>thread label: lighter blue than link; to label heading lines for threads</li>
-				<li>section header: based on existing <span class='mono'>stage</span>; for sections Future (planning), Threads (existing and projected threads), Current (recording current work), Completed (stuff that has been done)</li>
-				<li>startmark, endmark, shamark based on milestart, mileend, datemark</li>
+			<li>Threads and Timelines (history.css and client files)<ul>
+				<li>thread label: colored to stand out and highlight heading lines for threads</li>
+				<li>Timeline header: based on existing <span class='mono'>hmark</span>; for sections Active (active planning and coding), Threads (existing and projected threads of development), Current (recording current work), Completed (stuff that has been done)</li>
+				<li>update datemark: allows/expects list item</li>
+				<li>tlmark: for smaller markers inside lists</li>
 			</ul></li>
-			<li>thread header: <span class='mono'>&lt;li onload="thread(tag, text)"&gt;</span></li>
+			<li style='tldate'>[09/07/2011]</li>
+			<li class='tlmark'>&lt;--</li>
 		</ul></li>
 		<li>split smaller linked thread files from existing Support_hist.html</li>
+		<li>BuildSupport target Cdoc<ul>
+			<li>add Bundle target Cdoc_Support; remove Compile Bundle Resources, Link Binary with Libraries and Copy Bundle Resources build phases</li>
+			<li>add Run Script build phase Build Cdoc: <span class='mono'>buildCdoc ${TARGET_BUILD_DIR}</span></li>
+			<li>make new scheme shared</li>
+		</ul></li>
+		<li>build and test</li>
 	</ul></li>
 	
-	<li id='_cdoc'>Cdoc: internal technical documentation [_cdoc]<ul>
+	<li id='_cdoc'>Cdoc: internal technical documentation <span class='ttag'>[_cdoc]</span><ul>
 		<li>update existing documentation<ul>
 			<li>use class='todo' to mark sections requiring updates</li>
 			<li>replace href name attributes with ids; replace leading '_' in ids with trailing '_'<ul>
@@ -119,7 +132,8 @@
 			</ul></li>
 			<li>add new file Git.html</li>
 		</ul></li>
-		<li>[3d058db tag 'withUpdatedDocs' -m "initial docs updated" merge 82f029b push]</li>
+		<li style='tldate'>[09/07/2011]</li>
+		<li class='tlmark'>&lt;--</li>
 		<li>replace $Id fields with filenames</li>
 		<li>Support_svn history: move content to be preserved into Support files; new file SubversionServer for information, mostly obsolete, about that topic</li>
 		<li>update 'todo' sections</li>
@@ -127,7 +141,8 @@
 		<li>Tools.html: clean up headings within topics (search for "Installation and Configuration")</li>
 	</ul></li>
 
-	<li id='_xcode'>Xcode [_xcode]<ul>
+	
+	<li id='_xcode'>Xcode <span class='ttag'>[_xcode]</span><ul>
 		<li>Configuration<ul>
 			<li>Behaviors<ul>
 				<li>document: Build Fails: show tab Build; show Log Navigator; navigate to current log</li>
@@ -152,30 +167,53 @@
 			</ul></li>
 			<li>Launch Slate: launch workspaces directly</li>
 			<li>menu View: Utilities</li>
-			<li>[372317d 09/01/2011 tag 'slate_Xcode4' merge push]</li>
+			<li class='tldate'>[slate_Xcode 09/01/2011]</li>
 			<li>minor corrections and changes</li>
-			<li>
-Xcode.r: minor corrections and changes
-
-remove obsolete go/skip back/forward; correct resid_FindReplace close
-			</li>
+			<li class='tlmark'>&lt;--</li>
+			<li>capitalize, lowercase via Transform submenu</li>
+			<li class='depr'>Snippets:Accessor enters full Snippet<ul>
+				<li class='blurb'>Although I did not find a radar, I cannot currently get Xcode snippets to work (they disappear when I quit Xcode). For snippets normally entered from Xcode, Accessor will need to enter the entire snippet, with parameter expansion done manually.</li>
+			</ul></li>
 		</ul></li>
-		<li>Scripts<ul>
-			<li>require CCDev script support</li>
+		<li>add empty project BuildSupport at ~/Dev/Support</li>
+		<li>BuildSupport target Xcode<ul>
+			<li>script Xcode.build<ul>
+				<li>check exit status, log output</li>
+			</ul></li>
+			<li>copy Xcode/Templates/FileTemplates to ~/Library/Developer/Xcode/Templates/File Templates</li>
+		</ul></li>
+		<li>add file template(s) for history and thread files</li>
+		<li>Scripts and Workflows<ul>
 			<li class='blurb'>assistive access:<ul>
 				<li>shell scripts: add to Behaviors</li>
-				<li>AppleScripts: add to scripts menu; Slates call AppleScript directly</li>
+				<li>AppleScripts, Workflows: add to scripts menu; Slates call file directly</li>
 			</ul></li>
-			<li>_getFrontDocument.applescript, _getSelection.applescript; see getFrontDocument.applescript</li>
-			<li>Snippets</li>
+			<li>_getFrontDocument.applescript, _getSelection.applescript; see getFrontDocument.applescript
+			</li>
 			<li>ViewInBrowser</li>
-			<li>GoToMarker: use AppleScript's choose from list to find marker<ul>
-				<li>could use existing selection if any (start there?)</li>
+			<li>Snippets<ul>
+				<li>Accessor: enter Snippet line with parameters</li>
+				<li>User: replace parameters; select line</li>
+				<li>Automator: AppleScript to get selected text; pass to BBEdit's Snippets script; leave result on pasteboard</li>
+				<li>User or Accessor: paste in result</li>
+			</ul></li>
+			<li>GoToMarker<ul>
+				<li>Accessor event<ul>
+					<li>Automator actiogetn<ul>
+						<li>AppleScript: get name of Xcode's front document</li>
+						<li>getMarkers.ksh: grep and process list of markers to ~/CCDev/tmp/XcodeMarkers</li>
+						<li>new BBEdit document with contents</li>
+					</ul></li>
+					<li>go to line; accept line number; select line's content; enter find string; go to Xcode; find again</li>
+				</ul></li>
+				<li class='depr'>use AppleScript's choose from list to find marker<ul>
+					<li>could use existing selection if any (start there?)</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
 	
-	<li id='_terminal'>Terminal [_terminal]<ul>
+	<li id='_terminal'>Terminal <span class='ttag'>[_terminal]</span><ul>
 		<li>Implement Window Tabs<ul>
 			<li>make per-repository custom color schemes<ul>
 				<li>separate windows make it practical to define a project variable and directory within each repository's window</li>
@@ -185,23 +223,25 @@ remove obsolete go/skip back/forward; correct resid_FindReplace close
 		</ul></li>
 		<li>User Slate<ul>
 			<li>terminal subslate from Xcode</li>
+			<li>commands log, commit, </li>
 			<li>git: vim; add -i</li>
 		</ul></li>
 	</ul></li>
 
-	<li id='_bbedit'>BBEdit [_bbedit]<ul>
+	<li id='_bbedit'>BBEdit <span class='ttag'>[_bbedit]</span><ul>
 		<li>Take go previous/go next out of Type.</li>
 		<li>add target with Run Script build phase: ../BBEdit/BBEdit.install ${TARGET_BUILD_DIR}</li>
 		<li>omit Snippet support; moved to CCDev</li>
 	</ul></li>
 
-	<li id='_finder'>Finder [_finder]<ul>
+	<li id='_finder'>Finder <span class='ttag'>[_finder]</span><ul>
 		<li>Preferences: edit and document customization</li>
 	</ul></li>
 
 </ul>
 
-<h2>Support Development Threads</h2><ul>
+<!-- @marker "5 === Threads" --><p class='tlhead'>&lt;-- Threads</p>
+<h2 id='threads_'>Threads</h2><ul>
 	<li>Setup: Unix-only target that sets up our development environment. Setup's script can be run independently of Xcode, and is run prior to attempting to build any other targets or do other development tasks.</li>
 	<li>CCDev: Development environment documentation, automation and support. For features that require more complex processing, such as AppleScript compilation.<ul>
 		<li>Also tracks target AllProcesses: Aggregate target that compiles all active Support targets except Setup and Cdoc.</li>
@@ -212,172 +252,8 @@ remove obsolete go/skip back/forward; correct resid_FindReplace close
 	<li>UserSlates: Custom Speech Recognition support.</li>
 </ul>
 
-<h2>Punkin</h2><ul>
-	<li id='newRepositoryPunkin'>new git repository Punkin<ul>
-		<li>previously done<ul>
-			<li><span class='mono'>svn export -rN file:///Users/carolclark/Dev/Punkin/trunk ~/Dev/Punkin_rN</span> for latest (r22), and for revisions 16-19 to capture changes in art</li>			
-		</ul></li>
-		<li>generate data for new Punkin_hist.html here</li>
-		<li>update existing folder PunkinStartfiles with changed files Cdoc/PunkinRepositories.pages, Cdoc/_pnkn/PunkinRepositories.pdf, Collaborator/Collaborator.build, Cdoc/Punkin_hist.html (split from Support.hist; _pcdoc to _cdoc)</li>
-		<li>create new project from contents of previous version<ul>
-			<li>new <a href="Git.html#tsk_CreateNewRepository">new git repository</a></li>
-			<li>add Xcode workspace Punkin</li>
-		</ul></li>
-	</ul></li>
-	<li>[<a href="#_android_dev">_android_dev</a> Android Development Environment (previous work) [_android_dev]</li>
-	<li>[<a href="#_pcdoc">_pcdoc]</a>] import and update existing Punkin Cdoc content</li>
-	<li>[<a href="#_blink_art">_blink_art</a>] add previously developed art and artist's notes</li>
-	<li>[<a href="#_blink_collaborator">_blink_collaborator</a>] add git configuration support</li>
-	<li>[<a href="#_blink_collaborator">_blink_collaborator</a>] create remote repository</li>
-	<li>[<a href="#_blink_web_sample">_blink_web_sample</a>] build sample site from tutorial</li>
-	<li>[<a href="#_ios">_ios</a>] AtTheTable_iOS [_ios]</li>
-
-	<li id='_pcdoc'>Internal Documentation [_pcdoc]<ul>
-		<li>copy current existing documentation into ~/Dev/Punkin; add new file PunkinRepositories.pages</li>
-		<li>add target Cdoc: <span class='mono'>buildCdoc "Punkin"</span></li>		
-		<li>replace all instances of single quotes inside href tags double quotes<ul>
-			<li class='blurb'>because Xcode does not handle single quotes correctly</li>
-		</ul></li>
-	</ul></li>
-
-	<li id='_Blink'>Bilingual Kids: Shared Resources and Support [_Blink]<ul>
-		<li id='_blink_art'>Blink Art [_blink_art]<ul>
-			<li>add previously developed art and artist's notes<ul>
-				<li>first main set: Display Art; initial People development (from r16)</li>
-				<li>revise BodyProportions/Family.ai (17)</li>
-				<li>revise BodyProportions/Family.ai (18)</li>
-				<li>revise BodyProportions files (19)</li>
-				<li>revise BodyProportions files (latest)</li>
-			</ul></li>
-		</ul></li>
-		<li id='_Blink_Web'>Blink Web Development for Products and Websites [_Blink_Web]<ul>
-			<li>AtTheTable.html: finish table as index to storyboard pages</li>
-			<li>AtTheTable.html: could try creating the <span class='mono'>pages</span> object that contains the story data directly in JavaScript code for better error feedback</li>
-		</ul></li>
-		<li>Web Application Tutorials<ul>
-			<li id='_blink_web_sample'>Web Application [_blink_web_sample]<ul>
-				<li class='blurb'>using <a href="http://my.safaribooksonline.com/book/programming/iphone/9781449380236">Building iPhone/Android Apps with HTML, CSS, and JavaScript</a> as a model to establish synchronized styles, development environment, basic techniques</li>				
-				<li>Sample Web Page<ul>
-					<li class='blurb'>Jonathan Stark is the author of the book we are using as a model. Sample content from his webpage is used as a model for getting started.</li>
-					<li>new folder Web/TutorialStark, branch tutorial_stark<ul>
-						<li>Sample Page from Stark Tutorial</li>
-						<li>new file Sample.html from example 2.1 of Stark's book</li>
-						<li>Sample.html: link stylesheets to Sample.html (2.1.1); add viewport meta-tag (2.1.2)</li>
-						<li>new files desktop.css (ex 1.7), iphone.css (ex 2.2)</li>
-						<li>[continue from 2.2]</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-			<li id='_Blink_Web_Rsrc'>Web Resources, including shared Styles and JavaScript [_Blink_Web_Rsrc]<ul>
-				<li id='_Blink_Web_Rsrc_Platforms'>initial Web Resources for iOS and Android platforms [_Blink_Web_Rsrc_Platforms]<ul>
-					<li class='blurb'>using <a href="http://my.safaribooksonline.com/book/programming/iphone/9781449380236">Building iPhone/Android Apps with HTML, CSS, and JavaScript</a> as a model to establish synchronized styles, development environment, basic techniques</li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-
-	<li id='_Dev'>Punkin Developer Support [_Dev]<ul>
-		<li id='_blink_collaborator'>Collaborator Support [_blink_collaborator]<ul>
-			<li>add git configuration support<ul>
-				<li>build script Collaborator/Collaborator.build sets up git environment for current user</li>
-				<li>Support: disable corresponding configuration steps from CCDev.build</li>
-			</ul></li>
-			<li>--</li>
-			<li>create remote repository<ul>
-				<li>choose a technique<ol>
-					<li>previous technique<ul>
-						<li class='blurb'>see <a href="http://cworth.org/hgbook-git/tour/">A tour of git: The Basics: 2.8.5 Pushing changes to another repository</a><ul>
-							<li>create bare repository at &lt;PunkinRemote&gt; with <span class='mono'>git --bare init --shared</span></li>
-							<li><span class='mono'>cd &lt;PunkinMain&gt;; git push &lt;PunkinRemote&gt; --all</span></li>
-						</ul></li>
-					</ul></li>
-					<li>see WWDC video</li>
-				</ol></li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-
-	<li id='_ios'>AtTheTable_iOS [_ios]<ul>
-		<li id="_ios_project">Initial iOS Project[_ios_project]<ul>
-			<li>new Xcode project AtTheTable_iOS from iOS Universal Tabbed Application template<ul>
-				<li>test in Simulator</li>
-				<li>set schemes for AtTheTable_iOS to "shared"</li>
-			</ul></li>
-			<li id='_ios_runondevice'> AtTheTable_iOS runs on iOS device [_ios_runondevice]<ul>
-				<li class='blurb'>The plan been to work through getting this sample app to run the device at this point. However, Xcode 4.2 comes with iOS 5.0, which is still in beta, and therefore not on my iPad. Chances are, 5.0 will show up as a suggested update for my device soon; if not, we could either install the beta or figure out how to install the iOS 4.3 SDK for Xcode.  Once we do have compatible architectures for the app and the device, we will pick up with WWDC video Session 317; Device Management ... at 7:09 to work on provisioning and running on a device.</li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-						
-	<li id='_Android'>Android Wrapper for Web App [_Android]<ul>
-		<li id='_android_dev'>Android Development Environment [_android_dev]<ul>
-			<li id='_Android_Install'>Install Java Dev Environment [_Android_Install]<ul>
-				<li class='blurb'>References<ul>
-					<li>Android App Development Fundamentals I and II LiveLessons (Video Training), Sneak Peak, Stephen G. Kochan, Google</li>
-					<li><a href="http://developer.android.com/index.html">Android Developers</a></li>
-				</ul></li>
-				<li>install and configure: <a href="../Support/Tools.html#Eclipse_">Eclipse</a>; <a href="../Support/Tools.html#AndroidForEclipse_">Android for Eclipse</a></li>
-				<li>[rFirstRevision]</li>
-				<li>Status 7/25/11<ul>
-					<li>Launching an emulator device almost always crashed with "emulator-arm quit unexpectedly".</li>
-					<li>Once when we added some platforms it said: <ul>
-						<li>Updated ADB to support the USB devices declared in the SDK add-ons.</li>
-						<li>'adb kill-server' succeeded.</li>
-						<li>'adb start-server' failed.</li>
-					</ul></li>
-					<li>We have also seen "adb quit unexpectedly".</li>
-					<li>When we are running Eclipse, we have more glitches in other applications than usual. This is consistent with previous experience.</li>
-					<li>Speech recognition performance is not as good when Eclipse is running.</li>
-					<li>These issues suggest that we might want to depend as little on Eclipse as possible, an advantage of a Web application for Android as compared with a Java application.</li>
-				</ul></li>
-				<li>next steps<ul>
-					<li>First, try reopening Eclipse in a few days to see if any updates have appeared that fix the problem. (Suggested by previous experience)</li>
-					<li>remove the installation and the workspace and reinstall</li>
-					<li>try posting to a forum</li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-</ul>
-
-<h2>Punkin Completed</h2><ul>
-	<li id="Dashcode_Issues">Dashcode Issues><ul>
-		<li>Xcode 4, the Xcode version that I use was, until recently, still in Developer Preview status. The Dashcode/Simulator package is also very new. There was not an installer intended to install both, and I had some apparent installation conflicts.</li>
-		<li>Apparently, in early April Apple released a new installer for both Xcode 4 and the Dashcode/iOS Simulator package. Installing that package resolved a number of technical issues, but it then turned out that Dashcode's layout capability had problems serious enough to make its use impractical for the purpose planned.</li>
-		<li>Dashcode can still be used to examine CSS snippets that can be used as models in creating an appropriate IOS look and feel for our application.</li>
-	</ul></li>
-	<li class="datemark">[r6 04/22/2011</li>
-	
-	<li id='PlanB_7_2011'>Change In Product Design Direction: July 2011<ul>
-		<li>Since we want this product to run on both iOS and Android, I had originally expected to produce the product directly in HTML. However, that strategy did not work, at least for the design phase of the project.<ul>
-			<li>I have worked with basic techniques in HTML before. I was able to learn enough about the more advanced techniques I would be for this product to feel that I knew how to proceed.</li>
-			<li>However, from what I learned about the design of web applications, it appears that the objective for quality software is basically to produce something that looks like it was written in iOS. There are JavaScript libraries, notably jQTouch, whose purpose is to produce the objects needed to do that in HTML, but they do not discuss User Interface design. I wound up trying to learn iOS User Interface design without using iOS directly, and have been unsuccessful.</li>
-		</ul></li>
-		<li>Meanwhile, at this year's Developer Conference, Apple announced some changes that will make a MAJOR impact on my ability to efficiently write iOS software.<ul>
-			<li>Interface Builder<ul>
-				<li>application used with Xcode to design user interfaces for Mac and iOS software</li>
-				<li>difficult enough to automate that I've never really done it successfully, so I really cannot comfortably spend much time using it</li>
-				<li>Previously, it also required an inordinate amount of fine mouse work to make changes to an existing user interface, and work done in Interface Builder could not be practically translated into code for easier editing.</li>
-				<li>Recent changes just announced appear to go along way toward solving both of those problems.</li>
-			</ul></li>
-			<li>Cocoa Memory Management<ul>
-				<li>The new Cocoa memory management model just announced will significantly (by my observation, by more than 50%) reduce the amount of code needed to write an application, as well as reducing the learning curve for "proper" (not garbage-collected) memory management that I had not yet mastered. It also makes it possible for me to share code between my new Speech Recognition tool for Mac and iOS software, which had been impractical before.</li>
-			</ul></li>
-		</ul></li>
-		<li>Plan B<ul>
-			<li>Produce iOS application, at least as a mockup of what we intend. We could still produce final applications for all platforms in HTML. It might also be practical (and might result in a better product) to produce an iOS version for iOS platforms. The Android product could then be translated either to HTML or to Java.</li>
-		</ul></li>
-		<li id='xml_data_issues'>XML Data Issues: Additional Implication<ul>
-			<li>We had data-definition files set up with the intent of maintaining .numbers documents with source data, an .xls document, and a .xml document produced from that by an automatic conversion process that Scott can do. However:<ul>
-				<li>We now realize that we cannot add the .numbers file to the Subversion repository; see <a href="../Support/Support.html#SCPolicies_iWork">Source Control Policies: iWork</a> for details. We therefore cannot have subversion automatically check to make sure that in an up-to-date .xls document exists to match the .numbers file, since the remote Subversion server cannot find out that the .numbers file exists.</li>
-				<li>Farther down the line, these data will be used to drive the actual product. The conversion process would then be difficult to manage, since the raw data would need to be converted, most conveniently involving checkin, BEFORE testing can be done.</li>
-				<li>If there is a formatting error anywhere in the XML document, the HTML that reads it simply returns an empty object and therefore displays no data. This makes it impractical to edit the XML document directly.</li>
-			</ul></li>
-			<li>It may now make sense to produce a custom editor for these data using Core Data.</li>
-		</ul></li>
-	</ul></li>
-	<li class="datemark">[r20 07/25/2011]</li>
-</ul>
+<!-- @marker "7 === Completed" --><p class='tlhead'>&lt;-- Completed</p>
+<h2 id='completed_'>Completed</h2>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

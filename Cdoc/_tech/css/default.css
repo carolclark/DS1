@@ -316,18 +316,6 @@
 	td.i2 { text-indent:24px }
 	td.i3 { text-indent:36px }
 
-	.hmark {						/* for "<--"	*/
-		margin-top: 1em;
-		margin-bottom: 25px;
-		margin-left: 600px;
-		font: bold italic 16px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
-		color: #000;
-		text-align: center;
-		border-top: 1px solid #9999ff;
-		border-bottom: 1px solid #9999ff;
-		background-color: #f5f5ff;	
-	}
-
 /* reference lists */
 	.reference {
 		margin-left: 24px;

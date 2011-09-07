@@ -17,6 +17,7 @@
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 		<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
 		<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
+		<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
 		<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
 		<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
 		<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
@@ -41,14 +42,12 @@
 	<li>commit</li>
 	<li>log<span class='blurb'>Terminal</span></li>
 	<li>[tag]</li>
-	<li>[merge [push [pushRemote]]<span class='blurb'>Xcode</span></li>
-	<li>fetch sha/date marker<span class='blurb'>BBEdit or Terminal</span></li>
+	<li>[diff branches (Terminal); merge [push [pushRemote]]<span class='blurb'>Xcode</span></li>
 	<li>[switch branch]<span class='blurb'>Xcode or Terminal</span></li>
 	<li>status; check for unmerged branches<span class='blurb'>Terminal</span></li>
-	<li>set sha/date marker<span class='blurb'>Xcode</span></li>
 </ul>
 
-<p><br /><br /><br /></p>
+<p><br /><br /></p>
 <!-- @marker "Diff" -->
 <h4 id="tsk_Diff">Diff</h4>
 	<h5>Diff Commands</h5><ul>
@@ -78,6 +77,21 @@
 	<li><span class='mono'>git tag -d &lt;tag&gt;</span>&nbsp;&nbsp;# delete</li>
 	<li><span class='mono'>git show &lt;tag&gt;</span>&nbsp;&nbsp;# show information about &lt;tag&gt;</li>
 	<li><span class='mono'>git push --tags</span>&nbsp;&nbsp;# see <a href="http://jasonswett.net/blog/a-git-tag-example-that-doesnt-suck/">A Git tag example that doesn't suck</a></li>
+</ul>
+
+<!-- @marker "Branch" -->
+<h4 id="tsk_Branch">Branch</h4><ul>
+	<li><span class='mono'>git branch</span> to list current branches<ul>
+		<li>add <span class='mono'>-r</span> to list remote branches</li>
+		<li>add <span class='mono'>-a</span> to list both local and remote branches</li>
+	</ul></li>
+	<li><span class='mono'>git branch -m [&lt;oldbranch&gt;] &lt;newbranch&gt;</span> to rename a branch</li>
+	<li><span class='mono'>git branch -d &lt;branchname&gt;</span> delete a branch<ul>
+		<li class='blurb'>also see git docs for information about deleting and cleaning up remote branches</li>
+	</ul></li>
+	<li><span class='mono'>git checkout -b &lt;new-branch&gt;</span> move existing work to a new branch<ul>
+		<li class='blurb'>verify that Xcode's branch is in sync; may need to quit and restart Xcode</li>
+	</ul></li>
 </ul>
 
 <!-- @marker "Information" -->
@@ -141,8 +155,17 @@
 
 <!-- @marker "Remote Repositories" -->
 <h4 id="tsk_RemoteRepositories">Remote Repositories</h4><ul>
-	<li>Create: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Add Remote<ul>
+	<li>Clone<ul>
+		<li><b>WorkingCopy</b>: name of Working Copy folder</li>
+		<li><b>Parent</b>: folder WorkingCopy goes in</li>
+		<li>in Terminal:<ul>
+			<li class='mono'>cd &lt;Parent&gt;</li>
+			<li class='mono'>git clone /Volumes/carollclark/gitrep/PunkinRemote &lt;WorkingCopy&gt;</li>
+		</ul></li>
+	</ul></li>
+	<li class='nyi'>Xcode Clone: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Add Remote<ul>
 		<li>(parameters)</li>
+		<li>Xcode cannot currently handle password-protected git repositories 9/6/11</li>
 	</ul></li>
 	<li>Track Branch: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Track Branch<ul>
 		<li>(parameters)</li>
@@ -163,6 +186,7 @@
 </ul>
 
 <p>
+config, admin only: git remote add remote /Volumes/carollclark/gitrep/PunkinRemote	# adds PunkinRemote as remote "remote"
 to replace an existing working copy with a newly-cloned one, first remove the existing repository from Xcode's repository list, close the Xcode workspace, and quit Terminal (BBEdit project?)<br />
 my working copy has a branch for Laura's stuff (she pushes to Remote; I integrate and push to Main)<br />
 internal: threads; branches; compound (here or with source control?)<br />
