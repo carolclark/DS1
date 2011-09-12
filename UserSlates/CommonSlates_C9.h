@@ -66,6 +66,7 @@
 #define resid_PackageMaker				19000
 #define resid_Eclipse					20000
 #define resid_BBEdit					21000
+	#define resid_BBEdit_External			resid_BBEdit+1
 
 #define resid_FileMaker					22000
 #define resid_AppleWorks				23000
@@ -696,12 +697,13 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 		ExitEvent { "bug or issue", "" },		Sequence{},		\
 			TypeText { "@bugOrIssue <#title#>" }, _return, _up, _next, endSequence{},		\
 		ExitEvent { "link step", "" },		Sequence{},		\
-			TypeText { "<a href=\"#PROJECTNAME#_hist.html#<#stepTag#>\">[<#stepTag#>]</a>" }, Keypress { kc_U, mf_command + mf_control }, _previous, _previous, endSequence{},		\
-		ExitEvent { "date marker", "" },			Sequence{},		\
-			TypeText { "@dateMarker <#revision#>" }, _return, _up, _next,		\
-			endSequence{},		\
-		ExitEvent { "revisionMark", "" },		Sequence{},		\
-			TypeText { "@revisionMark <#then#>" }, _return, _up, _next, endSequence{},		\
+			TypeText { "<a href=\"#PROJECTNAME#_hist.html#<#stepTag#>\">[<#stepTag#>]</a>" }, 	\
+			Keypress { kc_U, mf_command + mf_control }, _previous, _previous, endSequence{},	\
+		ExitEvent { "thread tag", "" },		Sequence{}, 		\
+			TypeText { "<li id='<#ttag#>'><#title#> <span class='ttag'>[<#ttag#>]</span><ul>" }, _return,	\
+			_delete, TypeText { "</ul></li>" }, _previous, _previous, _previous, endSequence{},		\
+		ExitEvent { "date mark", "" },		Sequence{},		\
+			TypeText { "<li style='tldate'>[<#date#>]</li>" }, _return, _previous, endSequence{},		\
 		ExitEvent { "future note", "" },		Sequence{},		\
 			TypeText { "@futureNote <#title#>; <#name#>" }, _return, _up, _next, endSequence{},		\
 		ExitEvent { "app or tool", "" },		Sequence{},		\

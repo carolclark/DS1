@@ -37,10 +37,10 @@
 		<li>[<a href="#_git">_git</a>] Initial Documentation of Git Workflow</li>
 		<li>Xcode.r: minor corrections and changes</li>
 		<li>[newProjectPunkin] new git project Punkin</li>
-		<li class='tlmark'>&lt;--</li>
 		<li>Cdoc history support: split Thread histories into separate documents<ul>
 			<li class='blurb'>This will simplify handling of multiple threads because most changes on threads will then be documented in their thread file instead of in the shared history file.</li>
 			<li>[<a href="#_cdocdev">_cdocdev</a>] revise history styles</li>
+			<li class='tlmark'>&lt;--</li>
 			<li>[<a href="#_xcode">_xcode</a>] add templates for History and Thread files</li>
 			<li>[<a href="#_cdocdev">_cdocdev</a>] Support, Punkin: split histories for active threads into separate thread files</li>
 		</ul></li>
@@ -97,7 +97,6 @@
 				</ul></li>
 				<li>With the new system, it will be much easier to seamlessly start a new project, since a project's history can start in an existing file (probably Support_hist.html), move into a separate single history file, and expand with the addition of thread files. Previously, it was difficult to work on the planning process for new project without first creating a project with interlinked files.</li>
 			</ul></li>
-			<li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>Support_hist.html: add markers; test in BBEdit</li>
 			<li>Threads and Timelines (history.css and client files)<ul>
 				<li>thread label: colored to stand out and highlight heading lines for threads</li>
@@ -169,12 +168,27 @@
 			<li>menu View: Utilities</li>
 			<li class='tldate'>[slate_Xcode 09/01/2011]</li>
 			<li>minor corrections and changes</li>
-			<li class='tlmark'>&lt;--</li>
-			<li>capitalize, lowercase via Transform submenu</li>
-			<li class='depr'>Snippets:Accessor enters full Snippet<ul>
-				<li class='blurb'>Although I did not find a radar, I cannot currently get Xcode snippets to work (they disappear when I quit Xcode). For snippets normally entered from Xcode, Accessor will need to enter the entire snippet, with parameter expansion done manually.</li>
+			<li>support BBEdit as an External Editor for Xcode	<ul>
+				<li class='blurb'>needed especially for User Slates (.r) files, since Xcode does not even reliably support code completion for those files</li>
+				<li>#define resid_BBEdit_External (CommonSlate_C9.h); define Slate resid_BBEdit_External (BBEdit_C9.r); add Xcode Event File:BBEdit</li>
+				<li>remove duplication: define BBEdit Slate Search; #define _BBEditBase_ to be shared between resid_BBEdit and resid_BBEdit_External</li>
 			</ul></li>
+			<li>capitalize, lowercase via Transform submenu</li>
+			<li>Xcode subslate Build</li>
+			<li>Accessor slate: add access to resid_edIssues; add go next/previous to resid_BuildAccessor and resid_edIssues</li>
+			<li>resid_phaseRunScript: expand</li>	
 		</ul></li>
+		<li>
+UserSlates: BBEdit from Xcode, other; Git.html 
+
+Support BBEdit as External Editor for Xcode: #define resid_BBEdit_External; add Xcode Event File:BBEdit; remove duplication between resid_BBEdit and resid_BBEdit_External
+capitalize, lowercase via Transform submenu
+Xcode subslate Build
+add go next/previous to resid_BuildAccessor and resid_edIssues
+expand resid_phaseRunScript
+also update and expand Git.html stash and branch
+		</li>
+		<li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>add empty project BuildSupport at ~/Dev/Support</li>
 		<li>BuildSupport target Xcode<ul>
 			<li>script Xcode.build<ul>

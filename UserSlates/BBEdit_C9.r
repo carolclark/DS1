@@ -1,5 +1,5 @@
 // =================================================================================
-//	BBEdit.r					©2005-11 C & C Software, Inc. All rights reserved.
+//	BBEdit.r					ï¿½2005-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -7,31 +7,33 @@
 
 #pragma mark 0 ===
 // #defined in CommonSlates_C9.h
-
+//	#define resid_BBEdit_External			resid_BBEdit+1
+	
 // resid_
-#define resid_WindowBBEdit				resid_BBEdit+1
+#define resid_WindowBBEdit				resid_BBEdit+10
 
-#define resid_Browser					resid_BBEdit+3
+#define resid_Browser					resid_BBEdit+12
 
-#define resid_TypeBBEditSlate			resid_BBEdit+10
+#define resid_TypeBBEditSlate			resid_BBEdit+20
 	#define resid_TypeSpecialBBEdit			resid_TypeBBEditSlate+1
 	#define resid_Dictate					resid_TypeBBEditSlate+2
 	#define resid_Macro						resid_TypeBBEditSlate+3
 	#define resid_Snippet					resid_TypeBBEditSlate+4
+	#define resid_Placeholder				resid_TypeBBEditSlate+5
 
 	#define resid_Document					resid_TypeBBEditSlate+10
 	#define resid_Markers					resid_TypeBBEditSlate+11
 	#define resid_Symbol					resid_TypeBBEditSlate+12
 	#define resid_GoFile					resid_TypeBBEditSlate+13
 
-#define resid_Shell						resid_BBEdit+30
+#define resid_Shell						resid_BBEdit+40
 	#define resid_shellSvn					resid_Shell+1
 	#define resid_shellLs					resid_Shell+2
 
-#define resid_Preferences				resid_BBEdit+40
+#define resid_Preferences				resid_BBEdit+50
 	#define resid_prefsMenus				resid_Preferences+1
 
-#define resid_Subversion				resid_BBEdit+50
+#define resid_Subversion				resid_BBEdit+60
 	#define resid_Commit					resid_Subversion+1
 	#define resid_DoCommit					resid_Subversion+2
 	#define resid_svnStatus					resid_Subversion+3
@@ -39,11 +41,11 @@
 	#define resid_Differences				resid_Subversion+5
 	#define resid_SelectCompare				resid_Subversion+6
 
-#define resid_DocWindow					resid_BBEdit+60
+#define resid_DocWindow					resid_BBEdit+70
 	#define resid_Drawer					resid_DocWindow+1
 	#define	resid_DrawerActions				resid_DocWindow+2
 
-#define resid_Project					resid_BBEdit+70
+#define resid_Project					resid_BBEdit+80
 	#define resid_ProjectContents			resid_Project+1
 
 #define resid_FileMenu					resid_BBEdit+200
@@ -52,14 +54,16 @@
 	#define resid_FileNew					resid_FileMenu+3
 	#define resid_FileTemplate				resid_FileMenu+4
 
-#define resid_EditMenu					resid_BBEdit+400
-	#define resid_Find						resid_EditMenu+1
-	#define resid_FindMultiple				resid_EditMenu+2
-	#define resid_SearchBrowser				resid_EditMenu+3
-	#define resid_SearchPattern				resid_EditMenu+4
-	#define resid_Clipboard					resid_EditMenu+5
+#define resid_EditMenu					resid_BBEdit+300
+	#define	resid_Search					resid_EditMenu+1
+	#define resid_Find						resid_EditMenu+2
+	#define resid_FindMultiple				resid_EditMenu+3
+	#define resid_SearchBrowser				resid_EditMenu+4
+	#define resid_SearchPattern				resid_EditMenu+5
+	#define resid_Clipboard					resid_EditMenu+6
 
-#define resid_Markup					resid_BBEdit+300
+
+#define resid_Markup					resid_BBEdit+400
 	#define resid_MakeTag					resid_Markup+1
 	#define resid_EditTag					resid_Markup+2
 	#define resid_teAnchor					resid_Markup+3
@@ -71,8 +75,6 @@
 
 	#define resid_InsertElement				resid_Markup+50
 	#define resid_InsertStyle				resid_Markup+51
-
-#define resid_Placeholder				resid_BBEdit+400
 
 #define resid_Script					resid_BBEdit+500
 #define resid_Action					resid_BBEdit+550
@@ -100,8 +102,8 @@
 	_SlateGlobals_,                                                                                             \
 	Event { "goto line", "" },			Keypress { kc_J, mf_command },                                          \
 	Event { "File menu", "" },			ResSubslate { resid_FileMenu },							\
-	Event { "go previous", "" },			Keypress { kc_bracket, mf_command + mf_option },		\
-	Event { "go forward", "" },			Keypress { kc_closebracket, mf_command + mf_option },	\
+	Event { "go previous", "" },		Keypress { kc_bracket, mf_command + mf_option },		\
+	Event { "go next", "" },			Keypress { kc_closebracket, mf_command + mf_option },	\
 	Event { "next window", "" },		Keypress { kc_accent, mf_command },						\
 	_DoJumpSubslate_,                                                                           \
 	_DoSelectSubslate_,                                                                         \
@@ -148,15 +150,16 @@ resource restype_Slate (resid_TypeSpecialBBEdit, "Type Special BBEdit Slate") { 
 		_SlateGlobals_,
 		_CloseSubslate_,
 		_TypeSpecialBaseItems_,
-		ExitEvent { "resource id", "" },		TypeText { "resid_" },
-		ExitEvent { "end event", "" },				Sequence{},
+		ExitEvent { "define", "" },			TypeText { "#define" },
+		ExitEvent { "resource id", "" },	TypeText { "resid_" },
+		ExitEvent { "end event", "" },		Sequence{},
 			_quote, TypeText { ", " }, _quote, _quote, Keypress { kc_space, 0 },
 			Keypress { kc_closebracket, mf_shift }, Keypress { kc_comma, 0 }, 
 			Keypress { kc_tab, 0 }, Keypress { kc_tab, 0 }, endSequence{},
 		ExitEvent { "in use development", "" },	TypeText
 			{ "in-use development" },
-		ExitEvent { "pragma mark", "" },		TypeText { "#pragma mark " },
-		ExitEvent { "mark spot", "" },			TypeText { "<##>" },
+		ExitEvent { "pragma mark", "" },	TypeText { "#pragma mark " },
+		ExitEvent { "mark spot", "" },		TypeText { "<##>" },
 	} }
 } };
 
@@ -1067,6 +1070,42 @@ resource restype_Slate (resid_Clipboard, "Clipboard") { {
 			Click { 1, 0-_PatternFromRight, 75, _window, _topRight },      \
 			ResSubslate { resid_SearchPattern }, endSequence{}
 
+#pragma mark Search
+resource restype_Slate (resid_Search, "Search") { {
+	Slate { "Search", {
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_TypeBBEditSlate_,
+		_DirectionKeys_,
+		ExitEvent { "close", "" },				Keypress { kc_W, mf_command },
+		Event { "enter find string", "" },		Keypress { kc_E, mf_command },
+		Event { "enter replace string", "" },	Keypress { kc_E, mf_command + mf_option },
+		Event { "find again", "" },				Keypress { kc_G, mf_command },
+		Event { "find previous", "" },			Keypress { kc_G, mf_command + mf_shift },
+		Event { "change", "" },					Keypress { kc_equal, mf_command },
+		Event { "change again", "" },			Keypress { kc_equal, mf_command + mf_shift},
+		Event { "next panel", "" },				Keypress { kc_tab, mf_control },
+		Event { "save", "" },					Keypress { kc_S, mf_command },
+		Event { "find", "find" },				Sequence{}, Keypress { kc_F, mf_command },
+			ResSubslate { resid_Find }, endSequence{},
+		Event { "multiple", "" },				Sequence{},
+			Keypress { kc_f, mf_command + mf_shift }, ResSubslate { resid_FindMultiple },
+			endSequence{},
+		Event { "compare", "" },				Sequence{}, ClickMenu { "Search" },
+			Keypress { kc_down, 0 },
+			TypeText { "Find Differences" }, Keypress { kc_return, 0 },
+			ResSubslate { resid_SelectCompare }, endSequence{},
+		Event { "compare disk", "" },	Sequence{}, ClickMenu { "Search" },
+			Keypress { kc_down, 0 },
+			TypeText { "Compare Against Disk File" }, Keypress { kc_return, 0 }, 
+			ResSubslate { resid_Differences }, endSequence{},
+		Event { "compare front", "" },	Sequence{}, ClickMenu { "Search" },
+			Keypress { kc_down, 0 },
+			TypeText { "Compare Two Front Documents" }, Keypress { kc_return, 0 }, 
+			ResSubslate { resid_Differences }, endSequence{},
+	} }
+} };
+
 #pragma mark Find
 #define _MatchingRow		155
 #define _PatternFromRight	150
@@ -1494,19 +1533,37 @@ resource restype_Slate (resid_Snippet, "") { {
 	} }
 } };
 
+//_BBEditBase_: shared by resid_BBEdit and resid_BBEdit_External
+#define _BBEditBase_	\
+		_SlateGlobals_,		\
+		_DefaultBase_,		\
+		_TypeBBEditSlate_,		\
+		Event { "Drawer", "" },		ResSubslate { resid_Drawer },		\
+		Event { "Project", "" },	ResSubslate { resid_Project },		\
+		Event { "File menu", "" },	ResSubslate { resid_FileMenu },		\
+		Event { "Browser", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},		\
+		Event { "Validate", "" },	ResSubslate { resid_ValidateMarkup },		\
+		Event { "Script", "" },		Sequence{}, _clickScriptsMenu, _down, ResSubslate { resid_Script }, endSequence{},		\
+		Event { "Terminal", "" },	Sequence{}, ResSubslate { resid_BBTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},		\
+		Event { "Shell", "" }, 		Sequence{}, Launch { Dev_"DevSupport/BBEdit/Shell.worksheet", 0 }, ResSubslate { resid_Shell }, endSequence{},		\
+		Event { "Search", "" },		ResSubslate { resid_Search }
+
+#pragma mark BBEdit_External
+resource restype_Slate (resid_BBEdit_External, "BBEdit from Xcode") { {
+	Slate { "extBBEdit",	{
+		_BBEditBase_,
+		Event { "okay", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
+	 } }
+} };
+
 #pragma mark BBEdit
 resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
 	Slate { "BBEdit",	{
-		_SlateGlobals_,
-		_DefaultBase_,
-		_TypeBBEditSlate_,
+		_BBEditBase_,	
 		Event { "close document", "" },	Keypress { kc_W, mf_command },
 		Event { "Macro", "" },			ResSubslate { resid_Macro },
-		Event { "Project", "" },	ResSubslate { resid_Project },
 		Event { "Contents", "" },	ResSubslate { resid_ProjectContents },
 		Event { "Doc Window", "" },	ResSubslate { resid_DocWindow },
-		Event { "Drawer", "" },		ResSubslate { resid_Drawer },
-		Event { "File menu", "'File' menu" }, ResSubslate { resid_FileMenu },
 		Event { "Menu", "access menus" },	Subslate { "Menu" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -1520,7 +1577,6 @@ resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
 			ExitEvent { "Version", "'Version' menu" }, ClickMenu { "CVS" },
 			ExitEvent { "Help", "'Help' menu" }, ClickMenu { "Help" },
 			endSubslate{},
-		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "Window", "" },			ResSubslate { resid_WindowBBEdit },
 		Event { "Preferences", "" },	Sequence{}, Keypress { kc_comma, mf_command }, ResSubslate { resid_Preferences }, endSequence{},
 		Event { "Accessor", "" },			Subslate { "Accessor" },
@@ -1533,49 +1589,9 @@ resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
 				Launch { HomeApps_"Accessor_C9.app", 0 }, endSequence{},
 			Event { "quit", "" },			Keypress { kc_Q, mf_command },
 			endSubslate{},
-		Event { "Validate", "" },		ResSubslate { resid_ValidateMarkup },
 		Event { "Markup", "" },			ResSubslate { resid_Markup },
 		Event { "Subversion", "switch to subslate 'Subversion'" },
 			ResSubslate { resid_Subversion },
-		Event { "Script", "" },			Sequence{}, _clickScriptsMenu,
-			_down, ResSubslate { resid_Script }, endSequence{},
 		Event { "Action", "" },			ResSubslate { resid_Action },
-		Event { "Terminal", "" },		Sequence{}, ResSubslate { resid_BBTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},
-		Event { "Shell", "" }, 			Sequence{},
-			Launch { Dev_"DevSupport/BBEdit/Shell.worksheet", 0 }, ResSubslate { resid_Shell },
-			endSequence{},
-		Event { "Search", "BBEdit 'Search' menu" },
-			Subslate { "Search" },
-				_SlateGlobals_,
-				_CloseSubslate_,
-				_TypeBBEditSlate_,
-				_DirectionKeys_,
-				ExitEvent { "close", "" },				Keypress { kc_W, mf_command },
-				Event { "enter find string", "" },		Keypress { kc_E, mf_command },
-				Event { "enter replace string", "" },	Keypress { kc_E, mf_command + mf_option },
-				Event { "find again", "" },				Keypress { kc_G, mf_command },
-				Event { "find previous", "" },			Keypress { kc_G, mf_command + mf_shift },
-				Event { "change", "" },					Keypress { kc_equal, mf_command },
-				Event { "change again", "" },			Keypress { kc_equal, mf_command + mf_shift},
-				Event { "next panel", "" },				Keypress { kc_tab, mf_control },
-				Event { "save", "" },					Keypress { kc_S, mf_command },
-				Event { "find", "find" },				Sequence{}, Keypress { kc_F, mf_command },
-					ResSubslate { resid_Find }, endSequence{},
-				Event { "multiple", "" },				Sequence{},
-					Keypress { kc_f, mf_command + mf_shift }, ResSubslate { resid_FindMultiple },
-					endSequence{},
-				Event { "compare", "" },		Sequence{}, ClickMenu { "Search" },
-					Keypress { kc_down, 0 },
-					TypeText { "Find Differences" }, Keypress { kc_return, 0 },
-					ResSubslate { resid_SelectCompare }, endSequence{},
- 				Event { "compare disk", "" },	Sequence{}, ClickMenu { "Search" },
- 					Keypress { kc_down, 0 },
-					TypeText { "Compare Against Disk File" }, Keypress { kc_return, 0 }, 
-					ResSubslate { resid_Differences }, endSequence{},
-				Event { "compare front", "" },	Sequence{}, ClickMenu { "Search" },
-					Keypress { kc_down, 0 },
-					TypeText { "Compare Two Front Documents" }, Keypress { kc_return, 0 }, 
-					ResSubslate { resid_Differences }, endSequence{},
-				endSubslate{},
 	 } }
 } };

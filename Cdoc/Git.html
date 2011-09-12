@@ -18,8 +18,8 @@
 		<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
 		<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
 		<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
-		<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
 		<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
+		<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
 		<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
 	<!-- @topicGroup "Repositories" "9" -->
 		<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
@@ -81,17 +81,31 @@
 
 <!-- @marker "Branch" -->
 <h4 id="tsk_Branch">Branch</h4><ul>
-	<li><span class='mono'>git branch</span> to list current branches<ul>
-		<li>add <span class='mono'>-r</span> to list remote branches</li>
-		<li>add <span class='mono'>-a</span> to list both local and remote branches</li>
+	<li><span class='mono'>git branch</span>&nbsp;&nbsp;# to list current branches<ul>
+		<li>add <span class='mono'>-r</span>&nbsp;&nbsp;# to list remote branches</li>
+		<li>add <span class='mono'>-a</span>&nbsp;&nbsp;# to list both local and remote branches</li>
 	</ul></li>
-	<li><span class='mono'>git branch -m [&lt;oldbranch&gt;] &lt;newbranch&gt;</span> to rename a branch</li>
-	<li><span class='mono'>git branch -d &lt;branchname&gt;</span> delete a branch<ul>
+	<li><span class='mono'>git branch --no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
+	<li><span class='mono'>git branch -m [&lt;oldbranch&gt;] &lt;newbranch&gt;</span>&nbsp;&nbsp;# to rename a branch</li>
+	<li><span class='mono'>git branch -d &lt;branchname&gt;</span>&nbsp;&nbsp;# delete a branch<ul>
 		<li class='blurb'>also see git docs for information about deleting and cleaning up remote branches</li>
 	</ul></li>
-	<li><span class='mono'>git checkout -b &lt;new-branch&gt;</span> move existing work to a new branch<ul>
+	<li><span class='mono'>git checkout -b &lt;new-branch&gt;</span>&nbsp;&nbsp;# move existing work to a new branch<ul>
 		<li class='blurb'>verify that Xcode's branch is in sync; may need to quit and restart Xcode</li>
 	</ul></li>
+</ul>
+
+<!-- @marker "Stash" -->
+<h4 id="tsk_Stash">Stash</h4><ul>
+	<li><span class='mono'>git stash save &lt;message&gt;</span>&nbsp;&nbsp;# <ul>
+			<li><span class='mono'>add --keep-index</span>&nbsp;&nbsp;# to leave all changes already added to the index intact</li>
+	</ul></li>
+	<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash<ul>
+		<li><span class='mono'>add stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  to apply a different stash</li>
+	</ul></li>
+	<li><span class='mono'>git stash pop</span>&nbsp;&nbsp;#  to apply and remove the top stash</li>
+	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# </li>
+	<li><span class='mono'>git stash clear</span>&nbsp;&nbsp;# </li>
 </ul>
 
 <!-- @marker "Information" -->
@@ -114,20 +128,6 @@
 		<li><span class='mono'>git branch --no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
 	</ul>
 	 
-<p></p>
-<!-- @marker "Stash" -->
-<h4 id="tsk_Stash">Stash</h4><ul>
-	<li><span class='mono'>git stash save &lt;message&gt;</span>&nbsp;&nbsp;# <ul>
-			<li><span class='mono'>add --keep-index</span>&nbsp;&nbsp;# to leave all changes already added to the index intact</li>
-	</ul></li>
-	<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash<ul>
-		<li><span class='mono'>add stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  to apply a different stash</li>
-	</ul></li>
-	<li><span class='mono'>git stash pop</span>&nbsp;&nbsp;#  to apply and remove the top stash</li>
-	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# </li>
-	<li><span class='mono'>git stash clear</span>&nbsp;&nbsp;# </li>
-</ul>
-
 <!-- @marker "Undo" -->
 <h4 id="tsk_Undo">Undo</h4><ul>
 	<li><span class='mono'>git checkout -- &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in index</li>
