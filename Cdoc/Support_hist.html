@@ -178,22 +178,16 @@
 			<li>Accessor slate: add access to resid_edIssues; add go next/previous to resid_BuildAccessor and resid_edIssues</li>
 			<li>resid_phaseRunScript: expand</li>	
 		</ul></li>
-		<li>
-UserSlates: BBEdit from Xcode, other; Git.html 
-
-Support BBEdit as External Editor for Xcode: #define resid_BBEdit_External; add Xcode Event File:BBEdit; remove duplication between resid_BBEdit and resid_BBEdit_External
-capitalize, lowercase via Transform submenu
-Xcode subslate Build
-add go next/previous to resid_BuildAccessor and resid_edIssues
-expand resid_phaseRunScript
-also update and expand Git.html stash and branch
-		</li>
-		<li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>add empty project BuildSupport at ~/Dev/Support</li>
 		<li>BuildSupport target Xcode<ul>
+			<li>set location for file Xcode-Info.plist; delete file *.pch, folder en.lproj</li>
+			<li>mark scheme Xcode as shared</li>
+			<li>remove build phases Compile Sources, Link Binary with Libraries, Copy Bundle resources</li>
+			<li>add build phase BuildXcode to run script ../Xcode/Xcode.build</li>
 			<li>script Xcode.build<ul>
 				<li>check exit status, log output</li>
 			</ul></li>
+			<li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>copy Xcode/Templates/FileTemplates to ~/Library/Developer/Xcode/Templates/File Templates</li>
 		</ul></li>
 		<li>add file template(s) for history and thread files</li>

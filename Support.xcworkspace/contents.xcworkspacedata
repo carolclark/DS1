@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:BuildSupport/BuildSupport.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "Cdoc">
@@ -157,6 +160,13 @@
       </FileRef>
       <FileRef
          location = "group:UserSlates/Xcode_C9.r">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:BuildSupport"
+      name = "Xcode">
+      <FileRef
+         location = "group:../Xcode/Xcode.build">
       </FileRef>
    </Group>
 </Workspace>
