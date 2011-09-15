@@ -109,7 +109,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 					Launch { Home_"Reference/git-book.pdf", resid_Preview },
 				Event { "Subversion", "" },
 					Launch { Home_"Reference/svn-book.pdf", resid_Preview },
-				Event { "Make", "" }, Launch { Home_"Reference/make.pdf", resid_Preview },
+				Event { "shell unit", "" }, 	Launch { Home_"Reference/shunit2.html", resid_Safari},
 				endSubslate{},
 			Event { "Workspace", "" },			Subslate { "Workspace" },
 				_SlateGlobals_,

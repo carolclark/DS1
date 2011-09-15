@@ -20,9 +20,8 @@
 #define	resid_InsertElement			resid_Xcode+4
 #define	resid_InsertStyle			resid_Xcode+5
 #define	resid_InsertTag				resid_Xcode+6
-#define resid_Dictate				resid_Xcode+7
-#define resid_Workspace				resid_Xcode+8
-#define resid_Find					resid_Xcode+9
+#define resid_Workspace				resid_Xcode+7
+#define resid_Find					resid_Xcode+8
 #define resid_FindMultiple			resid_Xcode+10
 	#define resid_SearchIn				resid_FindMultiple+1
 #define resid_RunSlate				resid_Xcode+12
@@ -322,31 +321,12 @@ resource restype_Slate (resid_Identifier, "") { {
 	} }
 } };
 
-#pragma mark Dictate
-resource restype_Slate (resid_Dictate, "Dictate") { {
-	Slate { "Dictate",	{
-		_SlateGlobals_,
-		ExitEvent { "okay", "" },			NilAction{},
-		ExitEvent { "go back", "" },		Launch { DevApps_"XCode.app", 0 },
-		ExitEvent { "cut back", "" },		Sequence{}, Keypress { kc_A, mf_command }, Keypress { kc_X, mf_command }, 
-			Launch { DevApps_"XCode.app", 0 }, endSequence{},
-		Event { "microphone off", "and hide recognition window" },	_CloseRecognitionWindow_,
-		Event { "microphone on", "" },
-			Sequence{}, Click { 1, -230, 74, _screen, _topRight }, ResSubslate { resid_DictateSlate },
-			endSequence{},
-		Event { "recognition window", "" },	_CloseRecognitionWindow_,
-		Event { "go to sleep", "" },		NilAction{},
-	} }
-} };
-
 #define _cutNextLine	Keypress { kc_right, mf_command }, Keypress { kc_right, 0 },	\
 	Keypress { kc_right, mf_command + mf_shift }, Keypress { kc_X, mf_command }
 resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 	Slate { "Type",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "dictate", "" },		Sequence{},
-			Launch { MainApps_"Dragon Dictate.app", 0 }, ResSubslate { resid_Dictate }, endSequence{},
 		Event { "Identifier", "" },		ResSubslate { resid_Identifier },
 		Event { "Macro", "" },			ResSubslate { resid_Macro },
 		_JumpBar_,

@@ -1,0 +1,242 @@
+#!/bin/ksh
+
+#  Xcode.build
+#  BuildSupport
+#
+#  Created by Carol Clark on 9/7/11.
+#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Confidential and Proprietary.
+
+USAGE='
+# Xcode.build -- install custom Xcode support
+#	--clean
+#	--no-clean (default)
+#		whether target is to be cleaned
+#	--build (default)
+#	--no-build
+#		whether target is to be built
+#	--test (default)
+#	--no-test
+#		whether target is to be tested
+#	--help
+#		display this information
+'
+
+#^ 1 === top
+trapString='errtrap Xcode.build $LINENO $?'
+trap "$trapString" ERR
+
+#^ lastbuilt
+function lastbuilt {
+	print "${buildsource.derivedDirectory}_${buildsource.subtarget}.lastbuilt"
+}
+
+#^ buildsource_validate
+function buildsource_validate {
+	srcdir="${buildsource.sourceDirectory}"
+	dstdir="${buildsource.destinationDirectory}"
+	derived="${buildsource.derivedDirectory}"
+	msg=""
+	if [[ -n "${srcdir}" ]] ; then
+		if [[ -e "${srcdir}" ]] ; then
+			if [[ ! -d "${srcdir}" ]] ; then
+				msg="specified source directory ${srcdir} exists and is not a directory"
+			fi
+		else
+			msg="source directory ${srcdir} does not exist"
+		fi
+	else
+		msg="source directory undefined"
+	fi
+	if [[ ! -n "${msg}" ]] ; then
+		if [[ -e "${dstdir}" ]] ; then
+			if [[ ! -d "${dstdir}" ]] ; then
+				msg="specified destination directory ${dstdir} exists and is not a directory"
+			fi
+		fi
+	fi
+	if [[ ! -n "${msg}" ]] ; then
+		if [[ -e "${derived}" ]] ; then
+			if [[ ! -d "${derived}" ]] ; then
+				msg="specified derived directory ${derived} exists and is not a directory"
+			fi
+		fi
+	fi
+	if [[ -n "${msg}" ]] ; then
+		print "${msg}"
+		return 1
+	fi	
+}
+
+#^ buildsource_process
+function buildsource_process {
+	processFunction="${1?process function not specified}"
+
+	buildsource_validate
+	if [[ "$?" > 0 ]] ; then
+		print "*** invalid buildsource"
+		return 1
+	fi
+	
+	fs=0
+	typeset -i errcnt=0
+	cd "${buildsource.sourceDirectory}"
+	if [[ -e "$(lastbuilt)" ]] ; then
+		find . -path '*/.svn' -prune -o -type f -newer $(lastbuilt) | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.build$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
+	else
+		find . -path '*/.svn' -prune -o -type f | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.build$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
+	fi
+	if [[ "$?" > 0 ]] ; then
+		print "*** could not write file list"
+		return 1
+	fi
+
+	fs=0
+	typeset -i errcnt=0
+	while read fl ; do
+		print -n "${fl}: "
+
+		"${processFunction}" "${fl}"
+
+		fs="$?"
+		msg="failed"
+		if [[ ${fs} = 0 ]] ; then
+			msg="succeeded"
+		else
+			errcnt+=1
+		fi
+		print "${msg}"
+	done < "${flist}"
+	if [[ ${errcnt} = 0 ]] ; then
+		mkdir -p "${buildsource.derivedDirectory}"
+		print $(basename $(lastbuilt)) $(date) > $(lastbuilt)
+		print "build succeeded"
+		fs=0
+	else
+		pl="s"
+		if [[ ${errcnt} = 1 ]] ; then
+			pl=""
+		fi
+		print "***build failed: ${errcnt} error${pl} encountered"
+		fs=1
+	fi
+	return "${fs}"
+}
+
+#^ buildsource_clean
+function buildsource_clean {
+	msg="$(buildsource_validate)"
+	if [[ "$?" > 0 ]] ; then
+		print "*** invalid buildsource: $msg"
+		return 1
+	fi
+
+	rm "$(lastbuilt)"
+}
+
+#^ copySource
+function copySource {
+	print "hi"
+	fl="${1?missing filename}"
+	print "$(dirname "${buildsource.destinationDirectory}")"
+	mkdir -p "$(dirname "${buildsource.destinationDirectory}"/${fl})"
+	if [[ "${?}" > 0 ]] ; then
+		print "*** could not create directory $(dirname ${buildsource.destinationDirectory}/${fl})"
+		return 1
+	fi
+	cp "${buildsource.sourceDirectory}/${fl}" "${buildsource.destinationDirectory}/${fl}"
+	if [[ "${?}" > 0 ]] ; then
+		print "*** could not copy ${buildsource.sourceDirectory}/${fl} to ${buildsource.destinationDirectory}/${fl}"
+		return 1
+	fi
+}
+
+#^ 7 === main
+
+typeset -i doClean=0
+typeset -i doBuild=1
+typeset -i doTest=1
+while [[ $1 == -* ]]; do
+	case $1 in
+		--clean )
+			doClean=1
+			;;
+		--no-clean )
+			doClean=0
+			;;
+		--build )
+			doBuild=1
+			;;
+		--no-build )
+			doBuild=0
+			;;
+		--test )
+			doTest=1
+			;;
+		--no-test )
+			doTest=0
+			;;
+		--help )
+			print "${USAGE}"
+			exit 0;
+			;;
+		* )
+			print "unrecognized option ${1}"
+			print "USAGE: ${USAGE}"
+			exit 1;
+	esac
+	shift
+done
+
+cd ..
+basedir="$(pwd)"
+project="${1:?Usage: Xcode.install <ProjectName>}"
+target="$(basename ${0%.build})"
+flist="${CCDev}/tmp/flist"
+mkdir -p "${CCDev}/tmp"
+
+buildsource_Xcode=(
+	sourceDirectory="${HOME}/Dev/Support/Xcode/Templates/FileTemplates"
+	destinationDirectory="${HOME}/Library/Developer/Xcode/Templates/File Templates"
+	derivedDirectory="${CCDev}/build/Support/Xcode" subtarget="")
+
+print "$project $target $flist"
+print "doClean: ${doClean}; doBuild: ${doBuild}; doTest: ${doTest}"
+
+st=0
+
+nameref buildsource=buildsource_Xcode
+print $(lastbuilt)
+	
+if [[ ${doClean} > 0 ]] ; then
+	buildsource_clean
+	st="$?"
+fi
+
+if [[ ${st} = 0 && ${doBuild} > 0 ]] ; then
+	buildsource_process "copySource"
+	st="$?"
+	cd "${basedir}" 
+fi
+
+if [[ ${st} = 0 && ${doTest} > 0 ]] ; then
+	typeset -i failcnt=0
+
+	pwd
+	print "== Xcode/_Tests/testXcode.ksh"
+	trap "" ERR
+	result=$(Xcode/_Tests/testXcode.ksh)
+	if [[ "${?}" > 0 ]] ; then
+		failcnt="${failcnt}"+1
+	fi
+	trap "$trapString" ERR
+	print "${result}"
+
+	exit "${failcnt}"
+fi
+
+
+#print "${0}:$LINENO: warning: This is a pretend warning."
+#st=1
+
+exit ${st}
