@@ -97,18 +97,18 @@
          name = "FileTemplates">
          <Group
             location = "container:"
-            name = "Other_CC">
+            name = "Scripting">
             <Group
-               location = "container:"
+               location = "container:Xcode/Templates/FileTemplates/Scripting/ShellScript.xctemplate"
                name = "ShellScript">
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Other_CC/ShellScript.xctemplate/___FILEBASENAME___.sh">
+                  location = "group:___FILEBASENAME___.sh">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Other_CC/ShellScript.xctemplate/TemplateIcon.icns">
+                  location = "group:TemplateIcon.icns">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Other_CC/ShellScript.xctemplate/TemplateInfo.plist">
+                  location = "group:TemplateInfo.plist">
                </FileRef>
             </Group>
          </Group>
