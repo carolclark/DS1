@@ -102,7 +102,7 @@
                location = "container:Xcode/Templates/FileTemplates/Scripting/ShellScript.xctemplate"
                name = "ShellScript">
                <FileRef
-                  location = "group:___FILEBASENAME___.sh">
+                  location = "group:___FILEBASENAME___.ksh">
                </FileRef>
                <FileRef
                   location = "group:TemplateIcon.icns">
