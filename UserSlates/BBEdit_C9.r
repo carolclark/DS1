@@ -1347,18 +1347,18 @@ resource restype_Slate (resid_Action, "scripts and other actions") { {
 	} }
 } };
 
-#define goBack_		Event { "go back", "" },	Launch { MainApps_"BBEdit.app", resid_BBEdit }
 #pragma mark Terminal
 resource restype_Slate (resid_BBTerminal, "terminal support") { {
 	Slate { "Terminal",	{
 		_SlateGlobals_,
 		_TerminalItems_,
-		ExitEvent { "quit", "" },		Keypress { kc_Q, mf_command },
-		ExitEvent { "okay", "" },		Launch { MainApps_"BBEdit.app", 0 },
+		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
+		Event { "okay", "" },		Launch { MainApps_"BBEdit.app", 0 },
 	} }
 } };
 
 /*
+#define goBack_		Event { "go back", "" },	Launch { MainApps_"BBEdit.app", resid_BBEdit }
 #pragma mark Build
 resource restype_Slate (resid_Build, "") { {
 	Slate { "Build",	{
