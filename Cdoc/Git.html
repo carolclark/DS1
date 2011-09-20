@@ -27,27 +27,30 @@
 	<!-- @topicGroup "" "12" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
-
-<!-- @marker "Git Tasks" -->
-<h2 id='GitTasks_'>Git Tasks</h2>
+<p> Renaming Files and Folders: Git is supposed to rename files without losing all of their history. We haven't seen that happen yet. we currently (9/20/11) suspect that  (S Xcode is deleting and adding the file if it gets to touch it. Try handling renames by renaming clean files from Finder and immediately committing from Terminal.</p>
 
 <!-- @marker "Development Cycle" -->
 <h4 id="DevelopmentCycle">Development Cycle</h4><ul style="background-color: #d8e8ff">
-	<li>switch/verify branch<span class='blurb'>Xcode</span></li>
-	<li>edit/test</li>
-	<li>[add or stash; repeat edit/test]<span class='blurb'>Terminal</span></li>
-	<li>construct commit message<span class='blurb'>Xcode</span></li>
-	<li>status; [add]<span class='blurb'>Terminal</span></li>
-	<li>verify modifications<span class='blurb'>Xcode</span></li>
-	<li>commit</li>
-	<li>log<span class='blurb'>Terminal</span></li>
+	<li>create branch<span class='blurb'>Xcode</span></li>
+	<li>repeat until branch's work complete<ul>
+		<li>repeat until commit<ul>
+			<li>edit/test<span class='blurb'>Xcode</span></li>
+			<li>[add]<span class='blurb'>Terminal</span></li>
+		</ul></li>
+		<li>construct commit message<span class='blurb'>Xcode</span></li>
+		<li>verify modifications</li>
+		<li>commit</li>
+		<li>log<span class='blurb'>Terminal</span></li>
+	</ul></li>
 	<li>[tag]</li>
-	<li>[diff branches (Terminal); merge [push [pushRemote]]<span class='blurb'>Xcode</span></li>
-	<li>[switch branch]<span class='blurb'>Xcode or Terminal</span></li>
-	<li>status; check for unmerged branches<span class='blurb'>Terminal</span></li>
+	<li>diff branch with master</li>
+	<li>merge [push [pushRemote]]<span class='blurb'>Xcode</span></li>
+	<li>delete branch<span class='blurb'>Terminal</span></li>
+	<li>status; check for uncommitted or unmerged branches</li>
 </ul>
 
-<p><br /><br /></p>
+<!-- @marker "Git Tasks" -->
+<h2 id='GitTasks_'>Git Tasks</h2>
 <!-- @marker "Diff" -->
 <h4 id="tsk_Diff">Diff</h4>
 	<h5>Diff Commands</h5><ul>
@@ -95,17 +98,21 @@
 	</ul></li>
 </ul>
 
+<p><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <!-- @marker "Stash" -->
 <h4 id="tsk_Stash">Stash</h4><ul>
 	<li><span class='mono'>git stash save &lt;message&gt;</span>&nbsp;&nbsp;# <ul>
 			<li><span class='mono'>add --keep-index</span>&nbsp;&nbsp;# to leave all changes already added to the index intact</li>
 	</ul></li>
-	<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash<ul>
-		<li><span class='mono'>add stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  to apply a different stash</li>
+	<li>apply:<ul>
+		<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash to the current working copy</li>
+		<li><span class='mono'>git stash branch</span>&nbsp;&nbsp;# to apply the top stash to a new branch based in the stash's base revision</li>
+		<li><span class='mono'>git stash pop</span>&nbsp;&nbsp;#  to apply and remove the top stash to the current working copy; stash not removed if conflicts occur</li>
+		<li><span class='mono'>add stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  for <span class='mono'>apply</span> and <span class='mono'>branch</span>, apply a different stash</li>
 	</ul></li>
-	<li><span class='mono'>git stash pop</span>&nbsp;&nbsp;#  to apply and remove the top stash</li>
-	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# </li>
-	<li><span class='mono'>git stash clear</span>&nbsp;&nbsp;# </li>
+	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# list all stashes in repository</li>
+	<li><span class='mono'>git stash clear</span>&nbsp;&nbsp;# clear all stashes in repository</li>
+	<li><span class='mono'>git stash show [stash@{n}]</span>&nbsp;&nbsp;# show details for the top or a specified stash</li>
 </ul>
 
 <!-- @marker "Information" -->

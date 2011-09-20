@@ -97,6 +97,30 @@
          name = "FileTemplates">
          <Group
             location = "container:"
+            name = "Cdoc">
+            <Group
+               location = "container:"
+               name = "CdocFile">
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Cdoc/CdocFile.xctemplate/___FILEBASENAME___.html">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Cdoc/CdocFile.xctemplate/TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "container:"
+               name = "HistoryFile">
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Cdoc/HistoryFile.xctemplate/___FILEBASENAME___.html">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Cdoc/HistoryFile.xctemplate/TemplateInfo.plist">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "container:"
             name = "Scripting">
             <Group
                location = "container:Xcode/Templates/FileTemplates/Scripting/ShellScript.xctemplate"
@@ -124,36 +148,40 @@
    <Group
       location = "container:"
       name = "8 UserSlates">
-      <FileRef
-         location = "group:UserSlates/BBEdit_C9.r">
-      </FileRef>
-      <FileRef
-         location = "group:UserSlates/Calendar_C9.r">
-      </FileRef>
-      <FileRef
-         location = "group:UserSlates/CommonSlates_C9.h">
-      </FileRef>
-      <FileRef
-         location = "group:UserSlates/CommonSlates_C9.r">
-      </FileRef>
-      <FileRef
-         location = "group:UserSlates/InterfaceBuilder_C9.r">
-      </FileRef>
-      <FileRef
-         location = "group:UserSlates/Mail_C9.r">
-      </FileRef>
-      <FileRef
-         location = "group:UserSlates/Safari_C9.r">
-      </FileRef>
-      <FileRef
-         location = "group:UserSlates/Terminal_C9.r">
-      </FileRef>
-      <FileRef
-         location = "group:UserSlates/Xcode_C9.r">
-      </FileRef>
       <Group
          location = "container:"
-         name = "LessActive">
+         name = "Active">
+         <FileRef
+            location = "group:UserSlates/BBEdit_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/Calendar_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/CommonSlates_C9.h">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/CommonSlates_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/InterfaceBuilder_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/Mail_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/Safari_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/Terminal_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/Xcode_C9.r">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Others">
          <FileRef
             location = "group:UserSlates/ArbonnePrototype_c9.r">
          </FileRef>
