@@ -1,5 +1,5 @@
 // =================================================================================
-//	BBEdit.r					ï¿½2005-11 C & C Software, Inc. All rights reserved.
+//	BBEdit.r					©2005-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -1353,7 +1353,7 @@ resource restype_Slate (resid_BBTerminal, "terminal support") { {
 		_SlateGlobals_,
 		_TerminalItems_,
 		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
-		Event { "okay", "" },		Launch { MainApps_"BBEdit.app", 0 },
+		Event { "okay", "" },		Launch { MainApps_"BBEdit.app", resid_BBEdit },
 	} }
 } };
 

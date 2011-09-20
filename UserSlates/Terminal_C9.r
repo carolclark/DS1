@@ -1,40 +1,129 @@
 // =================================================================================
-//	Terminal_C9.r					©2008 C & C Software, Inc. All rights reserved.
+//	Terminal_C9.r				©2008-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
 #include "CommonSlates_C9.h"
 
+// Git reserved to resid_TermGit+49
+#define resid_termGitBrowser	resid_TermGit+1
+#define	resid_gitDiff			resid_termGit+2
+#define	resid_gitLog			resid_termGit+3
+#define	resid_gitStash			resid_termGit+4
+#define	resid_gitBranch			resid_termGit+5
+#define	resid_gitTag			resid_termGit+6
+#define	resid_gitUndo			resid_termGit+7
 
-#define	resid_gitDiff			resid_termGit+1
-#define resid_termGitBrowser	resid_TermGit+2
+#define	resid_termGitAdd		resid_termGit+20
 
-#pragma mark _TerminalStandards_
-#define _TerminalStandards_	\
-		_SlateGlobals_,		\
-		_CloseSubslate_,	\
-		Event { "execute", "" },	_return,				\
-		Event { "return	", "" },	_return,				\
-		Event { "password", "" },	TypeText { "6868" },	\
-		Event { "cancel", "" },		Keypress { kc_C, mf_command },		\
-		Event { "quiver", "" },		Keypress { kc_Q, 0 },		\
-		_TypeSlate_
+resource restype_Slate (resid_termType, "Type") { {
+	Slate { "Type",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_TypeSlateItems_,
+		Event { "execute", "" },	_return,
+		Event { "return	", "" },	_return,
+		Event { "password", "" },	TypeText { "6868" },
+		Event { "cancel", "" },		_cancel,
+		Event { "quiver", "" },		Keypress { kc_Q, 0 },
+	} }
+} };
 
 #pragma mark Git
 resource restype_Slate (resid_gitDiff, "") { {
 	Slate { "diff",	{
 		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "execute", "" },	_return,
-		Event { "return	", "" },		_return,
-		Event { "cancel", "" },			Keypress { kc_C, mf_command },
-		Event { "cached", "" },			TypeText { "--cached " },
-		Event { "head", "" },			TypeText { "HEAD " },
-		Event { "file", "" },			TypeText { "HEAD -- ./" },
+		ExitEvent { "exit", "" },		NilAction{},
+		ExitEvent { "excecute", "" },	_return,
+		ExitEvent { "cancel", "" },		_cancel,
+		Event { "unstaged", "" },		NilAction{},
+		Event { "staged", "" },			TypeText { "--cached " },
+		Event { "all", "" },			TypeText { "HEAD " },
+		Event { "path", "" },			TypeText { "HEAD -- ./" },
 		Event { "master", "" },			TypeText { "master " },
-		Event { "brief", "" },			TypeText { "--name-status " },
-		Event { "quiver", "" },			Keypress { kc_Q, 0 },
-		_TypeSlate_
+		Event { "abbreviate", "" },		TypeText { "--name-status " },
+		Event { "graph", "" },			TypeText { "--graph " },
+		Event { "graph from top", "" },	TypeText { "--graph --topo-order " },
+	} }
+} };
+
+resource restype_Slate (resid_gitLog, "") { {
+	Slate { "log",	{
+		_SlateGlobals_,
+		ExitEvent { "exit", "" },		NilAction{},
+		ExitEvent { "excecute", "" },	_return,
+		ExitEvent { "cancel", "" },		_cancel,
+		Event { "master", "" },			TypeText { "master " },
+		Event { "abbreviate,", "" },	TypeText { "--oneline " },
+		Event { "graph", "" },			TypeText { "--graph " },
+		Event { "graph from top", "" },	TypeText { "--graph --topo-order " },
+	} }
+} };
+
+resource restype_Slate (resid_gitStash, "") { {
+	Slate { "stash",	{
+		_SlateGlobals_,
+		ExitEvent { "exit", "" },		NilAction{},
+		ExitEvent { "excecute", "" },	_return,
+		ExitEvent { "cancel", "" },		_cancel,
+		Event { "save", "" },			Sequence{}, _cancel, TypeText { "# git stash save <message>" }, _return, TypeText { "git stash save " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "keep index", "" },		TypeText { "--keep-index " },
+		Event { "show", "" },			TypeText { "show " },
+		Event { "pop", "" },			TypeText { "pop " },
+		Event { "apply", "" },			Sequence{}, TypeText { "apply " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "branch", "" },			TypeText { "branch " },
+		Event { "previous", "" },		Sequence{}, TypeText { "stash@{" }, ResSubslate { resid_termType }, endSequence{},
+		Event { "abbreviate", "" },		TypeText { "--name-status " },
+		Event { "list", "" },			TypeText { "list " },
+		Event { "clear", "" },			TypeText { "clear " },
+	} }
+} };
+
+resource restype_Slate (resid_gitBranch, "") { {
+	Slate { "branch",	{
+		_SlateGlobals_,
+		ExitEvent { "exit", "" },		NilAction{},
+		ExitEvent { "excecute", "" },	_return,
+		ExitEvent { "cancel", "" },		_cancel,
+		ExitEvent { "list", "" },		_return,
+		ExitEvent { "list all", "" },		Sequence{}, TypeText { "-a " }, _return, endSequence{},
+		ExitEvent { "unmerged", "" },		Sequence{}, TypeText { "--no-merged " }, _return, endSequence{},
+		Event { "rename", "" },			Sequence{}, TypeText { "-m " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "checkout", "" },		Sequence{}, _cancel, TypeText { "git checkout -b " }, ResSubslate { resid_termType }, endSequence{}
+	} }
+} };
+
+resource restype_Slate (resid_gitTag, "") { {
+	Slate { "tag",	{
+		_SlateGlobals_,
+		ExitEvent { "exit", "" },		NilAction{},
+		ExitEvent { "excecute", "" },	_return,
+		ExitEvent { "cancel", "" },		_cancel,
+		ExitEvent { "list", "" },		_return,
+		ExitEvent { "push", "" },		TypeText { "push " },
+		Event { "make", "" },			Sequence{}, _cancel, TypeText { "# git tag -a 'tagname' -m \"message\"" }, _return, TypeText { "git tag -a "}, ResSubslate { resid_termType }, endSequence{},
+		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "show", "" },			Sequence{}, _cancel, TypeText { "git show --name-status " }, ResSubslate { resid_termType }, endSequence{}, 
+	} }
+} };
+
+resource restype_Slate (resid_gitUndo, "") { {
+	Slate { "undo",	{
+		_SlateGlobals_,
+		ExitEvent { "exit", "" },		NilAction{},
+		ExitEvent { "excecute", "" },	_return,
+		ExitEvent { "cancel", "" },		_cancel,
+		Event { "file", "" },		Subslate { "file" },
+			_TerminalStandards_,
+			Event { "to index", "" },	Sequence{}, TypeText { "git checkout -- " }, ResSubslate { resid_termType }, endSequence{}, 
+			Event { "to head", "" },	Sequence{}, TypeText { "git checkout HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
+			endSubslate{},
+		Event { "working copy", "" },	Subslate { "working copy" },
+			_TerminalStandards_,
+			Event { "reset hard", "" },	Sequence{}, TypeText { "git reset --hard HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
+			Event { "revert last commit", "" },		Sequence{}, TypeText { "git revert HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
+			endSubslate{},
 	} }
 } };
 
@@ -56,13 +145,37 @@ resource restype_Slate (resid_termGit, "") { {
 			endSubslate{},
 		Event { "browser", "" },		Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_termGitBrowser }, endSequence{},
 		Event { "status", "" },			Sequence{}, TypeText { "git status" }, _return, endSequence{},
-		Event { "differences", "" },	Sequence{}, TypeText { "git diff " }, ResSubslate { resid_gitDiff }, endSequence{},
+		Event { "branch", "" },			Sequence{}, TypeText { "git branch " }, ResSubslate { resid_gitBranch }, endSequence{},
+		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
+		Event { "undo", "" },			ResSubslate { resid_gitUndo },
+		Event { "difference", "" },		Sequence{}, TypeText { "git diff " }, ResSubslate { resid_gitDiff }, endSequence{},
+		Event { "log", "" },			Sequence{}, TypeText { "git log " }, ResSubslate { resid_gitLog }, endSequence{},
+		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
 		Event { "interact", "" },		Subslate { "interact" },
 			_SlateGlobals_,
 			_CloseSubslate_,
-			Event { "add", "" },			Sequence{}, TypeText { "git add --all --interactive" }, _return, ResSubslate { resid_TypeSlate }, endSequence{},
-			Event { "squash", "" },			Sequence{}, TypeText { "git rebase -i HEAD~" }, ResSubslate { resid_TypeSlate }, endSequence{},
+			Event { "add", "" },			Sequence{}, TypeText { "git add --all --interactive" }, _return, ResSubslate { resid_termGitAdd }, endSequence{},
+			Event { "rebase", "" },			Sequence{}, TypeText { "git rebase -i " }, ResSubslate { resid_termType }, endSequence{},
 			endSubslate{},
+	} }
+} };
+
+resource restype_Slate (resid_termGitAdd, "") { {
+	Slate { "add -i",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_NumberKeys_,
+		_ReturnKey_,
+		Event { "minus sign", "" },	Keypress { kc_minus, 0 },
+		Event { "return", "" },		_return,
+		Event { "status", "" },		Sequence{}, Keypress { kc_S, 0 }, _return, endSequence{},
+		Event { "update", "" },		Sequence{}, Keypress { kc_U, 0 }, _return, endSequence{},
+		Event { "revert", "" },		Sequence{}, Keypress { kc_R, 0 }, _return, endSequence{},
+		Event { "add", "" },		Sequence{}, Keypress { kc_A, 0 }, _return, endSequence{},
+		Event { "patch", "" },		Sequence{}, Keypress { kc_P, 0 }, _return, endSequence{},
+		Event { "diff", "" },		Sequence{}, Keypress { kc_D, 0 }, _return, endSequence{},
+		Event { "quit", "" },		Sequence{}, Keypress { kc_Q, 0 }, _return, endSequence{},
+		Event { "help", "" },		Sequence{}, Keypress { kc_H, 0 }, _return, endSequence{},
 	} }
 } };
 
@@ -81,7 +194,7 @@ resource restype_Slate (resid_termArchive, "") { {
 	Slate { "Archive",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		ExitEvent { "cancel", "" },		Keypress { kc_C, mf_control },
+		ExitEvent { "cancel", "" },		_cancel,
 		ExitEvent { "execute", "" },	Keypress { kc_return, 0 },
 		Event { "project", "" },		TypeText { "project " },
 		Event { "to retire", "" },		TypeText { "toRetire " },
@@ -95,7 +208,7 @@ resource restype_Slate (resid_termBuild, "") { {
 	Slate { "Build",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "cancel", "" },		Keypress { kc_C, mf_control },
+		Event { "cancel", "" },		_cancel,
 		Event { "build", "" },		Sequence{}, TypeText { "build.uia" }, Keypress { kc_enter, 0 }, endSequence{},
 		Event { "one", "" },		Sequence{}, Keypress { kc_1, 0 }, Keypress { kc_enter, 0 }, endSequence{},
 		Event { "two", "" },		Sequence{}, Keypress { kc_2, 0 }, Keypress { kc_enter, 0 }, endSequence{},

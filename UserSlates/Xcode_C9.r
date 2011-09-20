@@ -964,6 +964,7 @@ resource restype_Slate (resid_NavFilter, "NavFilter") { {
 		ExitEvent { "unsaved", "" },		Click { 1, 71, -10, _pwindow, _bottomLeft },
 		Event { "clear filter", "" },		Click { 1, 243, -10, _pwindow, _bottomLeft },
 		Event {	"filter", "" },				Click { 1, 200, -10, _pwindow, _bottomLeft },
+		ExitEvent { "last build", "" },		Click { 1, 12, -10, _pwindow, _bottomLeft },
 	} }
 } };
 
@@ -1039,6 +1040,11 @@ resource restype_Slate (resid_Organizer, "Organizer") { {
 	} }
 } };
 
+#define replist_top	426
+#define	replist_sp	83
+#define	_rowSupport	replist_top+0*replist_sp
+#define	_rowPunkin	_rowSupport+1*replist_sp
+
 #pragma mark Repositories
 resource restype_Slate (resid_Repositories, "Repositories") { {
 	Slate { "rep", {
@@ -1048,17 +1054,17 @@ resource restype_Slate (resid_Repositories, "Repositories") { {
 		_DirectionKeys_,
 		_TypeXcodeSlate_,
 		Event { "cancel", "" },			Keypress { kc_period, mf_command },
+		Event { "click one", "" },		Click { 1, 0, 0, _cursor },
 		Event { "select", "" },			Subslate { "select repository" },
 			_SlateGlobals_,
-			ExitEvent { "okay", "" },			NilAction{},
-			ExitEvent { "Support", "" },		TypeText { "Support" },
-			ExitEvent { "Punkin", "" },			TypeText { "Punkin" },
-			ExitEvent { "Carbon", "" },			TypeText { "Accessor_C9" },
-			ExitEvent { "Dev Support", "" },	TypeText { "Dev Support" },
-			ExitEvent { "old Support", "" },	TypeText { "Support_svn" },
-			ExitEvent { "Web Gen", "" },		TypeText { "Web Gen" },
+			ExitEvent { "exit", "" },			NilAction{},
+			ExitEvent { "okay", "" },			Click { 1, 0, 0, _cursor },
+			ExitEvent { "Branches", "" },		Click { 1, 27, 0, _cursor },
+			ExitEvent { "Remotes", "" },		Click { 1, 42, 0, _cursor },
+			ExitEvent { "Working Copy", "" },	Click { 1, 57, 0, _cursor },
+			ExitEvent { "Support", "" },		Click { 0, 25, _rowSupport, _window, _topLeft },
+			ExitEvent { "Punkin", "" },			Click { 0, 25, _rowPunkin, _window, _topLeft }, 
 			endSubslate{},
-		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft },		Click { -1, 280, 10, _screen, _topLeft }, endSequence{},	
 		Event { "content", "" },		Click { 1, 0, 90, _window, _topCenter },
 		Event { "pull", "" },			Sequence{}, Click { 1, 214, -33, _window, _bottomLeft },
 			ResSubslate { resid_Update }, endSequence{},

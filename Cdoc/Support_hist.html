@@ -100,7 +100,7 @@
 		<li>new files CCDev.install, CCDev/_Tests/CCDev.ksh: extract/refactor from Xcode.install</li>
 		<li>function filesToProcess verifies parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
 		<li>*.install uses cases by path pattern to process files by folder</li>
-		<li class='blurb'>file getobj:
+		<li class='impl'>file getobj:
 			#! /bin/ksh
 			
 			function getobj {
@@ -152,13 +152,14 @@
 			<li>[<a href="#_xcode">_xcode</a>] add template for history files</li>
 		</ul></li>
 	</ul></li>
+	<li style='tldate'>[09/20/2011]</li>
 	<li class='dq'>split smaller linked thread files from existing Support_hist.html</li>
 	<li>BuildSupport target Cdoc<ul>
 		<li>add Bundle target Cdoc_Support; remove Compile Bundle Resources, Link Binary with Libraries and Copy Bundle Resources build phases</li>
 		<li>add Run Script build phase Build Cdoc: <span class='mono'>buildCdoc ${TARGET_BUILD_DIR}</span></li>
 		<li>make new scheme shared</li>
+		<li>build and test</li>
 	</ul></li>
-	<li>build and test</li>
 </ul>
 	
 <!-- @marker "In-House Documentation [_cdoc]" -->
@@ -257,6 +258,7 @@
 		</ul></li>
 		<li>add file template(s) Cdoc:CdocFile and Cdoc:HistoryFile</li>
 	</ul></li>
+	<li style='tldate'>[09/20/2011]</li>
 	<li>Scripts and Workflows<ul>
 		<li class='blurb'>assistive access:<ul>
 			<li>shell scripts: add to Behaviors</li>
@@ -290,7 +292,7 @@
 	
 <!-- @marker "Terminal [_terminal]" -->
 <h4 id='_terminal'>Terminal <span class='ttag'>[_terminal]</span></h4><ul>
-	<!-- @marker "--git_slate_module" --><li class='tlmark'>git_slate_module</li>
+	<!-- @marker "--git_slate_module" --><li class='tlmark'>git_slate_module</li> 
 	<li id='git_slate_module'>separate UserSlates files Git_module.h/r to facilitate using Git Slates as subslates from multiple process slates</li>
 	<li>Implement Window Tabs<ul>
 		<li>make per-repository custom color schemes<ul>
@@ -300,11 +302,6 @@
 		<li>command Shell: New Tab takes a repository name, opens a window with the associated scheme, and sets variable ${proj} and associated path</li>
 	</ul></li>
 	<li>variable cb for current branch (per repository)</li>
-	<li>User Slate<ul>
-		<li>terminal subslate from Xcode</li>
-		<li>commands log, commit, </li>
-		<li>git: vim; add -i</li>
-	</ul></li>
 </ul>
 
 <!-- @marker "BBEdit [_bbedit]" -->

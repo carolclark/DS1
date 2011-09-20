@@ -146,7 +146,6 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 
 #pragma mark _BrowserSlates_
 #define	_BrowserStandards_		\
-		_TypeSlate_,            \
 		_SlateGlobals_,         \
 		_StarterBase_,          \
 		_WindowSlate_,          \
@@ -702,8 +701,9 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 		ExitEvent { "thread tag", "" },		Sequence{}, 		\
 			TypeText { "<li id='<#ttag#>'><#title#> <span class='ttag'>[<#ttag#>]</span><ul>" }, _return,	\
 			_delete, TypeText { "</ul></li>" }, _previous, _previous, _previous, endSequence{},		\
+		ExitEvent { "current tag", "" },	Sequence{},	TypeText { "<!-- @marker \"<#name#>\" --><li class='tlmark'>&lt;--</li>" }, _previous, endSequence{},		\
 		ExitEvent { "date mark", "" },		Sequence{},		\
-			TypeText { "<li style='tldate'>[<#date#>]</li>" }, _return, _previous, endSequence{},		\
+			TypeText { "<li style='tldate'>[<#date#>]</li>" }, _previous, endSequence{},		\
 		ExitEvent { "future note", "" },		Sequence{},		\
 			TypeText { "@futureNote <#title#>; <#name#>" }, _return, _up, _next, endSequence{},		\
 		ExitEvent { "app or tool", "" },		Sequence{},		\
@@ -1936,15 +1936,31 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 #define resid_termGit				resid_Terminal+100
 #define resid_termBuild				resid_Terminal+150
 #define resid_termArchive			resid_Terminal+200
-#define	resid_termShell			resid_Terminal+350
+#define	resid_termShell				resid_Terminal+350
 #define resid_termMacPorts			resid_Terminal+400
 #define resid_termApache			resid_Terminal+450
 #define resid_termTelnet			resid_Terminal+500
+#define resid_termType				resid_Terminal+900
+
+#define _termTypeSlate_	Event { "Type", "" },		ResSubslate { resid_termType }
+#define	_cancel			Keypress { kc_C, mf_control }
+
+#define _TerminalStandards_	\
+		_SlateGlobals_,		\
+		_CloseSubslate_,	\
+		Event { "execute", "" },	_return,				\
+		Event { "return	", "" },	_return,				\
+		Event { "password", "" },	TypeText { "6868" },	\
+		ExitEvent { "cancel", "" },	_cancel,				\
+		ExitEvent { "quiver", "" },	Keypress { kc_Q, 0 },	\
+		_termTypeSlate_
+
 #define	_TerminalItems_			\
 		_StarterBase_,			\
-		_TypeSlate_,			\
-		Event { "execute", "" },		_return,		\
-		Event { "Menu", "access menus" },		Subslate { "Menu" },		\
+		_termTypeSlate_,		\
+		Event { "execute", "" },	_return,		\
+		Event { "cancel", "" },	_cancel,			\
+		Event { "Menu", "" },		Subslate { "Menu" },		\
 			_SlateGlobals_,		\
 			_CloseSubslate_,		\
 			ExitEvent { "Application", "'Terminal' menu" }, ClickMenu { "Terminal" },		\
