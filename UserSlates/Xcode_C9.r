@@ -431,6 +431,7 @@ resource restype_Slate (resid_Workspace, "") { {
 		ExitEvent { "Carbon", "" },			Launch { Dev_"Accessor_C9/Accessor_C9.xcodeproj", 0 },
 		ExitEvent { "Punkin", "" },			Launch { Dev_"Punkin/Punkin.xcworkspace", 0 },
 		ExitEvent { "Support", "" },		Launch { Dev_"Support/Support.xcworkspace", 0 },
+		ExitEvent { "Technical", "" },		Launch { Dev_"TechnicalDocs/TechnicalDocs.xcworkspace", 0 },
 		ExitEvent { "old Support", "" },	Launch { Dev_"Support_svn/Support_svn.xcworkspace", 0 },
 		ExitEvent { "Dev Support", "" },	Launch { Dev_"DevSupport/DevSupport.xcodeproj", 0 },
 	} }
@@ -727,6 +728,7 @@ resource restype_Slate (resid_FileMenu, "File") { {
 	_JumpDownSubslate_,		\
 	_JumpNorthSubslate_,		\
 	_DirectionKeys_,		\
+	_WhitespaceKeys_,	\
 	_LetterKeys_,		\
 	_CommandSlate_,		\
 	_IMouseSlate_,		\
@@ -767,10 +769,13 @@ resource restype_Slate (resid_AddFiles, "Add Files") { {
 resource restype_Slate (resid_SourceControl, "Source Control") { {
 	Slate { "SourceControl", {
 		_SlateGlobals_,
-		_CloseSubslate_,
+		ExitEvent { "okay", "" },	_return,
+		ExitEvent { "exit", "" },	NilAction{},
 		ExitEvent { "cancel", "" },	Keypress { kc_escape, 0 },
-		Event { "commit", "" },		Sequence{}, Keypress { kc_C, mf_command + mf_option }, ResSubslate { resid_Commit }, endSequence{},
-		Event { "merge", "" },		TypeText { "merge" },
+		Event { "commit", "" },		Sequence{}, TypeText { "Commit" }, _return, ResSubslate { resid_Commit }, endSequence{},
+		Event { "merge", "" },		TypeText { "Merge" },
+		Event { "push", "" },		TypeText { "Push" },
+		Event { "repositories", "" }, Sequence{}, TypeText { "Repositories" }, _return, ResSubslate { resid_Repositories }, endSequence{},
 	} }
 } };
 
@@ -1042,8 +1047,9 @@ resource restype_Slate (resid_Organizer, "Organizer") { {
 
 #define replist_top	426
 #define	replist_sp	83
-#define	_rowSupport	replist_top+0*replist_sp
-#define	_rowPunkin	_rowSupport+1*replist_sp
+#define	_rowSupport			replist_top+0*replist_sp
+#define	_rowPunkin			replist_top+1*replist_sp
+#define	_rowTechnicalDocs	replist_top+2*replist_sp
 
 #pragma mark Repositories
 resource restype_Slate (resid_Repositories, "Repositories") { {
@@ -1064,6 +1070,7 @@ resource restype_Slate (resid_Repositories, "Repositories") { {
 			ExitEvent { "Working Copy", "" },	Click { 1, 57, 0, _cursor },
 			ExitEvent { "Support", "" },		Click { 0, 25, _rowSupport, _window, _topLeft },
 			ExitEvent { "Punkin", "" },			Click { 0, 25, _rowPunkin, _window, _topLeft }, 
+			ExitEvent { "Technical", "" },		Click { 0, 25, _rowTechnicalDocs, _window, _topLeft }, 
 			endSubslate{},
 		Event { "content", "" },		Click { 1, 0, 90, _window, _topCenter },
 		Event { "pull", "" },			Sequence{}, Click { 1, 214, -33, _window, _bottomLeft },
@@ -1234,6 +1241,10 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 		_DirectionKeys_,
 		_CommandSlate_,
 		closeDocument_,
+		_NumberKeys_,
+		_JumpDownSubslate_,
+		_JumpNorthSubslate_,
+		_DoJumpSubslate_,
 		Event { "compare", "" },		Click { 1, -100, -20, _window, _bottomRight },
 		Event { "annotate", "" },		Click { 1, -73, -20, _window, _bottomRight },
 		Event { "revisions", "" },		Click { 1, -46, -20, _window, _bottomRight },

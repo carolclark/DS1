@@ -33,7 +33,7 @@ resource restype_Slate (resid_termType, "Type") { {
 resource restype_Slate (resid_gitDiff, "") { {
 	Slate { "diff",	{
 		_SlateGlobals_,
-		ExitEvent { "exit", "" },		NilAction{},
+		_CloseSubslate_,
 		ExitEvent { "excecute", "" },	_return,
 		ExitEvent { "cancel", "" },		_cancel,
 		Event { "unstaged", "" },		NilAction{},
@@ -50,7 +50,7 @@ resource restype_Slate (resid_gitDiff, "") { {
 resource restype_Slate (resid_gitLog, "") { {
 	Slate { "log",	{
 		_SlateGlobals_,
-		ExitEvent { "exit", "" },		NilAction{},
+		_CloseSubslate_,
 		ExitEvent { "excecute", "" },	_return,
 		ExitEvent { "cancel", "" },		_cancel,
 		Event { "master", "" },			TypeText { "master " },
@@ -63,7 +63,7 @@ resource restype_Slate (resid_gitLog, "") { {
 resource restype_Slate (resid_gitStash, "") { {
 	Slate { "stash",	{
 		_SlateGlobals_,
-		ExitEvent { "exit", "" },		NilAction{},
+		_CloseSubslate_,
 		ExitEvent { "excecute", "" },	_return,
 		ExitEvent { "cancel", "" },		_cancel,
 		Event { "save", "" },			Sequence{}, _cancel, TypeText { "# git stash save <message>" }, _return, TypeText { "git stash save " }, ResSubslate { resid_termType }, endSequence{},
@@ -82,7 +82,7 @@ resource restype_Slate (resid_gitStash, "") { {
 resource restype_Slate (resid_gitBranch, "") { {
 	Slate { "branch",	{
 		_SlateGlobals_,
-		ExitEvent { "exit", "" },		NilAction{},
+		_CloseSubslate_,
 		ExitEvent { "excecute", "" },	_return,
 		ExitEvent { "cancel", "" },		_cancel,
 		ExitEvent { "list", "" },		_return,
@@ -97,7 +97,7 @@ resource restype_Slate (resid_gitBranch, "") { {
 resource restype_Slate (resid_gitTag, "") { {
 	Slate { "tag",	{
 		_SlateGlobals_,
-		ExitEvent { "exit", "" },		NilAction{},
+		_CloseSubslate_,
 		ExitEvent { "excecute", "" },	_return,
 		ExitEvent { "cancel", "" },		_cancel,
 		ExitEvent { "list", "" },		_return,
@@ -111,7 +111,7 @@ resource restype_Slate (resid_gitTag, "") { {
 resource restype_Slate (resid_gitUndo, "") { {
 	Slate { "undo",	{
 		_SlateGlobals_,
-		ExitEvent { "exit", "" },		NilAction{},
+		_CloseSubslate_,
 		ExitEvent { "excecute", "" },	_return,
 		ExitEvent { "cancel", "" },		_cancel,
 		Event { "file", "" },		Subslate { "file" },
@@ -124,6 +124,7 @@ resource restype_Slate (resid_gitUndo, "") { {
 			Event { "reset hard", "" },	Sequence{}, TypeText { "git reset --hard HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
 			Event { "revert last commit", "" },		Sequence{}, TypeText { "git revert HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
 			endSubslate{},
+		Event { "unstage", "" },		TypeText { "git rm --cached " },
 	} }
 } };
 
@@ -133,8 +134,9 @@ resource restype_Slate (resid_termGit, "") { {
 		Event { "project", "" },		Subslate { "project" },
 			_SlateGlobals_,
 			_CloseSubslate_,
-			ExitEvent { "Support", "" },	Sequence{}, TypeText { "cd ~/Dev/Support" }, _return, endSequence{},
-			ExitEvent { "Punkin", "" },		Sequence{}, TypeText { "cd ~/Dev/Punkin" }, _return, endSequence{},
+			ExitEvent { "Support", "" },		Sequence{}, TypeText { "cd ~/Dev/Support" }, _return, endSequence{},
+			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "cd ~/Dev/Punkin" }, _return, endSequence{},
+			ExitEvent { "Technical", "" },		Sequence{}, TypeText { "cd ~/Dev/TechnicalDocs" }, _return, endSequence{},
 			endSubslate{},
 		Event { "repository", "" },		Subslate { "repository" },
 			_SlateGlobals_,
@@ -174,7 +176,7 @@ resource restype_Slate (resid_termGitAdd, "") { {
 		Event { "add", "" },		Sequence{}, Keypress { kc_A, 0 }, _return, endSequence{},
 		Event { "patch", "" },		Sequence{}, Keypress { kc_P, 0 }, _return, endSequence{},
 		Event { "diff", "" },		Sequence{}, Keypress { kc_D, 0 }, _return, endSequence{},
-		Event { "quit", "" },		Sequence{}, Keypress { kc_Q, 0 }, _return, endSequence{},
+		ExitEvent { "quit", "" },	Sequence{}, Keypress { kc_Q, 0 }, _return, endSequence{},
 		Event { "help", "" },		Sequence{}, Keypress { kc_H, 0 }, _return, endSequence{},
 	} }
 } };

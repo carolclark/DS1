@@ -117,6 +117,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 				Event { "Support", "" },		Launch { Home_"Dev/Support/Support.xcworkspace", resid_Xcode },
 				Event { "Carbon", "" },			Launch { Dev_"Accessor_C9/Accessor_C9.xcodeproj", resid_Xcode },
 				Event { "Punkin", "" },			Launch { Dev_"Punkin/Punkin.xcworkspace", resid_Xcode },
+				Event { "Technical", "" },		Launch { Dev_"TechnicalDocs/TechnicalDocs.xcworkspace", resid_Xcode },
 				Event { "Support", "" },		Launch { Dev_"Support/Support.xcworkspace", resid_Xcode },
 				Event { "old Support", "" },	Launch { Dev_"Support_svn/Support_svn.xcworkspace", resid_Xcode },
 				Event { "Dev Support", "" },	Launch { Dev_"DevSupport/DevSupport.xcodeproj", resid_Xcode },

@@ -100,6 +100,16 @@
             name = "Cdoc">
             <Group
                location = "container:"
+               name = "ReadMe">
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Cdoc/ReadMe.xctemplate/___FILEBASENAME___.html">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Cdoc/ReadMe.xctemplate/TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "container:"
                name = "CdocFile">
                <FileRef
                   location = "group:Xcode/Templates/FileTemplates/Cdoc/CdocFile.xctemplate/___FILEBASENAME___.html">

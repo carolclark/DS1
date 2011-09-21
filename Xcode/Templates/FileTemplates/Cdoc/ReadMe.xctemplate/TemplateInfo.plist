@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>DefaultCompletionName</key>
-	<string>Proj_hist</string>
+	<string>ReadMe</string>
 	<key>Description</key>
-	<string>An empty Cdoc history file.</string>
+	<string>An empty ReadMe file.</string>
 	<key>Kind</key>
 	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
 	<key>MainTemplateFile</key>
 	<string>___FILEBASENAME___.html</string>
 	<key>Summary</key>
-	<string>An empty Cdoc history file</string>
+	<string>An ReadMe documentation file</string>
 </dict>
 </plist>
