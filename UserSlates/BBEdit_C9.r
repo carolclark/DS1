@@ -858,7 +858,6 @@ resource restype_Slate (resid_Project, "Project") { {
 		ExitEvent { "old Support", "" },	Launch { Dev_"Support_svn/Support_svn.bbprojectd", 0 },
 		ExitEvent { "Support", "" },		Launch { Dev_"Support/Support.bbprojectd", 0 },
 		ExitEvent { "Punkin", "" },			Launch { Dev_"Punkin/Punkin.bbprojectd", 0 },
-		ExitEvent { "Technical", "" },		Launch { Dev_"TechnicalDocs/TechnicalDocs.bbprojectd", 0 },
 		ExitEvent { "Web Gen", "" },		Launch { Dev_"WebGen/WebGen.bbprojectd", 0 },
 		ExitEvent { "Dev Support", "" },	Launch { Dev_"DevSupport/DevSupport.bbprojectd", 0 },
 		ExitEvent { "Carbon", "" },			Launch { Dev_"Accessor_C9/Accessor_C9.bbprojectd", 0 },

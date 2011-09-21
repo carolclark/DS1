@@ -136,7 +136,6 @@ resource restype_Slate (resid_termGit, "") { {
 			_CloseSubslate_,
 			ExitEvent { "Support", "" },		Sequence{}, TypeText { "cd ~/Dev/Support" }, _return, endSequence{},
 			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "cd ~/Dev/Punkin" }, _return, endSequence{},
-			ExitEvent { "Technical", "" },		Sequence{}, TypeText { "cd ~/Dev/TechnicalDocs" }, _return, endSequence{},
 			endSubslate{},
 		Event { "repository", "" },		Subslate { "repository" },
 			_SlateGlobals_,

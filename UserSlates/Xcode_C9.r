@@ -767,10 +767,10 @@ resource restype_Slate (resid_AddFiles, "Add Files") { {
 
 #pragma mark SourceControl
 resource restype_Slate (resid_SourceControl, "Source Control") { {
-	Slate { "SourceControl", {
+	Slate { "scm", {
 		_SlateGlobals_,
-		ExitEvent { "okay", "" },	_return,
-		ExitEvent { "exit", "" },	NilAction{},
+		ExitEvent { "select", "" },	_return,
+		ExitEvent { "okay", "" },	NilAction{},
 		ExitEvent { "cancel", "" },	Keypress { kc_escape, 0 },
 		Event { "commit", "" },		Sequence{}, TypeText { "Commit" }, _return, ResSubslate { resid_Commit }, endSequence{},
 		Event { "merge", "" },		TypeText { "Merge" },
@@ -1049,7 +1049,6 @@ resource restype_Slate (resid_Organizer, "Organizer") { {
 #define	replist_sp	83
 #define	_rowSupport			replist_top+0*replist_sp
 #define	_rowPunkin			replist_top+1*replist_sp
-#define	_rowTechnicalDocs	replist_top+2*replist_sp
 
 #pragma mark Repositories
 resource restype_Slate (resid_Repositories, "Repositories") { {
@@ -1065,15 +1064,14 @@ resource restype_Slate (resid_Repositories, "Repositories") { {
 			_SlateGlobals_,
 			ExitEvent { "exit", "" },			NilAction{},
 			ExitEvent { "okay", "" },			Click { 1, 0, 0, _cursor },
-			ExitEvent { "Branches", "" },		Click { 1, 27, 0, _cursor },
-			ExitEvent { "Remotes", "" },		Click { 1, 42, 0, _cursor },
-			ExitEvent { "Working Copy", "" },	Click { 1, 57, 0, _cursor },
-			ExitEvent { "Support", "" },		Click { 0, 25, _rowSupport, _window, _topLeft },
-			ExitEvent { "Punkin", "" },			Click { 0, 25, _rowPunkin, _window, _topLeft }, 
-			ExitEvent { "Technical", "" },		Click { 0, 25, _rowTechnicalDocs, _window, _topLeft }, 
+			ExitEvent { "Branches", "" },		Click { 1, 0, 27, _cursor },
+			ExitEvent { "Remotes", "" },		Click { 1, 0, 42, _cursor },
+			ExitEvent { "Working Copy", "" },	Click { 1, 0, 57, 	_cursor },
+			Event { "Support", "" },			Click { 0, 25, _rowSupport, _window, _topLeft },
+			Event { "Punkin", "" },				Click { 0, 25, _rowPunkin, _window, _topLeft }, 
 			endSubslate{},
 		Event { "content", "" },		Click { 1, 0, 90, _window, _topCenter },
-		Event { "pull", "" },			Sequence{}, Click { 1, 214, -33, _window, _bottomLeft },
+		Event { "pull changes", "" },	 Sequence{}, Click { 1, 214, -33, _window, _bottomLeft },
 			ResSubslate { resid_Update }, endSequence{},
 		Event { "commit", "" },			Sequence{}, Click { 1, 270, -33, _window, _bottomLeft }, Click { 0, 83, 125, _window, _topLeft }, ResSubslate { resid_Commit }, endSequence{},
 		Event { "refresh", "" },		Click { 1, 88, -33, _window, _bottomCenter },

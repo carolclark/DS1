@@ -701,7 +701,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 		ExitEvent { "thread tag", "" },		Sequence{}, 		\
 			TypeText { "<li id='<#ttag#>'><#title#> <span class='ttag'>[<#ttag#>]</span><ul>" }, _return,	\
 			_delete, TypeText { "</ul></li>" }, _previous, _previous, _previous, endSequence{},		\
-		ExitEvent { "current tag", "" },	Sequence{},	TypeText { "<!-- @marker \"<#name#>\" --><li class='tlmark'>&lt;--</li>" }, _previous, endSequence{},		\
+		ExitEvent { "current tag", "" },	Sequence{},	TypeText { "<li class='tlmark'>&lt;--</li>" }, _previous, endSequence{},		\
 		ExitEvent { "date mark", "" },		Sequence{},		\
 			TypeText { "<li style='tldate'>[<#date#>]</li>" }, _previous, endSequence{},		\
 		ExitEvent { "future note", "" },		Sequence{},		\
