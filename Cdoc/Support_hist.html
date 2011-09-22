@@ -13,59 +13,140 @@
 <h1>Support History</h1>
 
 <!-- @topicList "Support History" "Contents" -->
-	<!-- @topicItem "Active" "#hmark_Active" "0" "active planning and development" -->
-	<!-- @topicItem "Current" "#hmark_Current" "1" "where we are now" -->
-	<!-- @topicSep -->
-	<!-- @topicItem "Threads" "#hmark_Threads" "0" "development threads" -->
-	<!-- @topicSep -->
-	<!-- @topicItem "Completed" "#hmark_Completed" "0" "work completed" -->
+	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
+		<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
+		<!-- @topicGroup "" "3" -->
+		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
+		<!-- @topicItem "Automation Support" "#_automation" "1" "" -->
+	<!-- @topicGroup "" "6" -->
+	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
+	<!-- @topicGroup "" "8" -->
+	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
-<h2 id='hmark_Active'>Active</h2><ul>
-	<li>Transition to Git and Xcode<ul>
-		<li>commit and archive existing project Support; rename to Support_svn</li>
-		<li>create <a href="Git.html#tsk_CreateNewRepository">new repository</a> with initial file Support_hist.html</li>
-		<li>add file Support_hist.html: standard Cdoc file; initial content with simplified structures and styles</li>
-		<li>add files Support.xcworkspace, Support.bbprojectd</li>
-		<li>from previous project Support_svn, import existing documentation, excluding history-related files
-			build and validate</li>
-		<li>[<a href="#_cdoc">_cdoc]</a>update Cdoc internal documentation</li>
-		<li>[<a href="#_userSlates">_userSlates]</a> move UserSlates into Support</li>
+<h2 id='hmark_Active'>Active</h2>
+
+	<!-- @marker "Transfer Existing Development Work" -->
+	<h5 id="transferExisting">Transfer Existing Development Work</h5><ul>
+		<li class='blurb'>There have been major changes in our development environment, including replacing Subversion with Git for Source Control. All existing projects, along with any still-active functionality, will be transferred into the new system.</li>
+		<li>new Git project Support [_cdoc]<ul>
+			<li>commit and archive existing project Support; rename to Support_svn</li>
+			<li>create <a href="Git.html#tsk_CreateNewRepository">new repository</a>; add file Support_hist.html with simplified history structure</li>
+			<li>add files Support.xcworkspace, Support.bbprojectd</li>
+			<li>from previous project Support_svn, import existing documentation, excluding history-related files; build and validate</li>
+			<li>update existing documentation<ul>
+				<li>use class='todo' to mark sections requiring updates</li>
+				<li>replace all instances of single quotes inside href tags double quotes<ul>
+					<li class='blurb'>because Xcode does not handle single quotes in href tags correctly</li>
+				</ul></li>
+				<li>add new file Git.html</li>
+			</ul></li>
+		</ul></li>
+		<li>move Accessor's UserSlates into Support [_userSlates]<ul>
+			<li class='blurb'>These Slates used by Accessor to provide speech recognition support were previously stored with application Accessor. They are developed as part of each application's workflow, and compiled by Accessor_C9. They will be edited and versioned with any other work being done in their workflow, and compiled from their Support folder by target Accessor.</li>
+			<li>document and commit last Accessor_C9 revision of UserSlates</li>
+			<li>import active User Slates from project Accessor_C9 to Support/UserSlates; add to workspace Support</li>
+			<li>Xcode Source Trees: UserSlates now @ ${HOME}/Dev/Support/UserSlates</li>
+		</ul></li>
 		<li class='tldate'>[withUpdatedDocs 08/31/2011]</li>
-		<li>[<a href="#_xcode">_xcode]</a> updates to Xcode Configuration and UserSlates</li>
+		<li>updates to Xcode Configuration and UserSlates [_xcode]<ul>
+			<li>Configuration: Behaviors<ul>
+				<li>document: Build Fails: show tab Build; show Log Navigator; navigate to current log</li>
+				<li>add Build Generates New Issues: show tab Build; show Issue Navigator; navigate to first new issue</li>
+			</ul></li>
+			<li>Xcode.r (User Slate)<ul>
+				<li>Workaround for Xcode Key Bindings bug 'xckbbug'<ul>
+					<li class='blurb'>Key Bindings do not currently work in Xcode (rdar:10029381)</li>
+				</ul></li>
+				<li>use standard/assistant/version to switch editors</li>
+				<li>Accessor: Add Repository; search/find structure; View: Utilities</li>
+			</ul></li>
+		</ul></li>
 		<li class='tldate'>[slate_Xcode4 09/01/2011]</li>
-		<li>[<a href="#_git">_git</a>] Initial Documentation of Git Workflow</li>
-		<li>Xcode.r: minor corrections and changes</li>
-		<li>[newProjectPunkin] new git project Punkin</li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>Initial Documentation of Git Workflow [_git]</li>	
+		<li>new git project Punkin [<a href="../Punkin/Punkin_hist.html#Contents">Punkin]</a></li>
+		<li class='tldate'>[09/02/2011]</li>
+		<li>revise history styles<ul>
+			<li>Support_hist.html: add markers; test in BBEdit</li>
+			<li>Threads and Timelines (history.css and client files)<ul>
+				<li>thread label: colored to stand out and highlight heading lines for threads</li>
+				<li>Timeline header: based on existing <span class='mono'>hmark</span>; for sections Active (active planning and coding), Threads (existing and projected threads of development), Current (recording current work), Completed (stuff that has been done)</li>
+				<li>update datemark: allows/expects list item</li>
+				<li>tlmark: for smaller markers inside lists</li>
+			</ul></li>
+			<li class='tldate'>[09/07/2011]</li>
+			<li>Cdoc history files: standardize; add file template<ul>
+				<li>Support, Punkin: history files: standardize; improve formatting</li>
+				<li>[<a href="#_cdocdev">_cdocdev</a>] revise history styles</li>
+				<li>[<a href="#_cdocdev">_cdocdev</a>] Support, Punkin histories: standardize; improve formatting</li>
+				<li>BuildSupport target Xcode</li>
+				<li>[<a href="#_xcode">_xcode</a>] add template for history files</li>
+			</ul></li>
+		</ul></li>
+		<li class='tldate'>[09/20/2011]</li>
+		<li>Xcode: automation support; file templates<ul>
+			<li>support BBEdit as an External Editor for Xcode</li>
+			<li>capitalize, lowercase via Transform submenu</li>
+			<li>Xcode subslate Build</li>
+			<li>Accessor slate: expand resid_phaseRunScript; add access to resid_edIssues; add go next/previous to resid_BuildAccessor and resid_edIssues</li>
+			<li>add empty project BuildSupport at ~/Dev/Support; <a href="Support.html#tsk_NewInstallerTarget">add Xcode target</a> BuildSupport<ul>
+				<li>script Xcode.install<ul>
+					<li>check exit status, log output</li>
+					<li>define and process parameters, adding &lt;Project&gt; argument</li>
+					<li>run shunit tests from folder _Tests</li>
+					<li>use deprecated buildsource code from previous Support to handle copying files and clean for now</li>
+				</ul></li>
+				<li>copy Xcode/Templates/FileTemplates to ~/Library/Developer/Xcode/Templates/File Templates<ul>
+					<li>use added files template ShellScript.xctemplate - copy of Xcode's default</li>
+				</ul></li>
+			</ul></li>
+			<li>Xcode_C9.r: finish multiple search Slate resid_edSearch; add Slate resid_Panel for use with panel selection window, eg. for Move Focus to Editor... (cmd-J); add Slate resid_XCTerminal; revise resid_Editor</li>
+			<li>Initial Template Files<ul>
+				<li>rename ShellScript template file and folder<ul>
+					<li>rename Other_CC/ShellScript/___FILEBASENAME___.sh to Scripting/ShellScript/___FILEBASENAME___.ksh</li>
+					<li>___FILEBASENAME___.ksh: change shebang line</li>
+					<li>TemplateInfo.plist: change MainTemplateFile name; add Korn to description and summary</li>	
+				</ul></li>
+				<li>add file template(s) Cdoc:CdocFile and Cdoc:HistoryFile</li>
+			</ul></li>
+		</ul></li>
+		<li class='tldate'>[09/20/2011]</li>
 		<li>[historyWorkflow] Improve Cdoc History File Workflow [<a href="#_cdocdev">_cdocdev</a>]<ul>
 			<li>standardize existing history documents</li>
 			<li>add file templates ReadMe.html, CdocFile.html, HistoryFile.html</li>
 			<li>revert creation of new project TechnicalDocs (a false start)</li>
+			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>Restructure this file to tie history information more effectively with associated branches and to reduce detail recorded within a development cycle.</li>
-		</ul></li>
-		<li>[<a href="#_ccdev_install">_ccdev_install</a>] script CCDev.install</li>
-		<li>[<a href="#_cdocdev">_cdocdev</a>] add build target Cdoc</li>
-		<li>[<a href="#_ccdev_planImport">_ccdev_planImport</a>] Determine Features to be Imported</li>
-		<li>[<a href="#_xcode">_xcode]</a> add initial scripts and workflows</li>
-		<li>[newProjectAccessor] new workspace Accessor contains existing Xcode project Accessor_C9</li>
-		<li>[<a href="#_terminal">Implement Window Tabs</a>]</li>
-		<li>[newProjectWebGen] new git project WebGen from existing Subversion project</li>
-		<li>[newProjectArbonne] new workspace Arbonne contains existing Xcode projects ArbonneProto and ArbonneFM</li>
-	</ul></li>
-</ul>
+restructure Support_hist.html; UserSlates
 
-<!-- @marker "5 === Threads" --><p class='tlhead'>&lt;-- Threads</p>
-<h2>Threads</h2>
-<!-- @topicList "Threads" "hmark_Threads" -->
+also UserSlate Xcode:Search:go marker: find @marker associated with the current find string
+			<li>Support_hist.html sorting: reorder to do sections; move completed tasks into their section</li>
+		</ul></li>
+		<li></li>
+		<li>Support import: add subprojects; plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
+		<li>script CCDev.install [<a href="#_ccdev_install">_ccdev_install</a>]</li>
+		<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
+		<li>add initial Xcode scripts and workflows [<a href="#_xcode">_xcode]</a></li>
+	</ul>
+
+	<!-- @marker "Automation Support" -->
+	<h5 id="_automation">Automation Support</h5><ul>
+		<li>Xcode:Search:go marker: find @marker associated with the current find string</li>
+		<li class='tlmark'>&lt;--</li>
+	</ul>
+	
+<!-- @marker "5 === ToDo" --><p class='tlhead'>&lt;-- ToDo</p>
+<h2>ToDo</h2>
+<!-- @topicList "ToDo" "hmark_ToDo" -->
 	<!-- @topicItem "In-House Documentation " "#_cdoc" "0" "" -->
 	<!-- @topicItem "Development Environment " "#_ccdev" "0" "" -->
 	<!-- @topicItem "Git Workflow " "#_git" "0" "" -->
+	<!-- @topicItem "Import Existing Projects" "#_devimport" "0" "" -->
 	<!-- @topicItem "Cdoc: In-House Documentation System " "#_cdocdev" "0" "" -->
 	<!-- @topicItem "Accessor's UserSlates" "#_userSlates" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Apps and Tools" "7" -->
+	<!-- @topicGroup "Apps and Tools" "8" -->
 	<!-- @topicItem "Xcode " "#_xcode" "0" "" -->
 	<!-- @topicItem "Terminal " "#_terminal" "0" "" -->
 	<!-- @topicItem "BBEdit " "#_bbedit" "0" "" -->
@@ -74,13 +155,6 @@
 
 <!-- @marker "Speech Recognition Support [_userSlates]" -->
 <h4	id='_userSlates'>Speech Recognition Support <span class='ttag'>[_userSlates]</span></h4><ul>
-	<li>move Accessor's UserSlates into Support<ul>
-		<li class='blurb'>These Slates used by Accessor to provide speech recognition support were previously stored with application Accessor. They are developed as part of each application's workflow, and compiled by Accessor_C9. They will be edited and versioned with any other work being done in their workflow, and compiled from their Support folder by target Accessor.</li>
-		<li>document and commit last Accessor_C9 revision of UserSlates</li>
-		<li>import active User Slates from project Accessor_C9 to Support/UserSlates; add to workspace Support</li>
-		<li>Xcode Source Trees: UserSlates now @ ${HOME}/Dev/Support/UserSlates</li>
-		<li class='tldate'>[08/31/2011]</li>
-	</ul></li>
 </ul>
 
 <!-- @marker "Git Workflow [_git]" -->
@@ -96,69 +170,57 @@
 
 <!-- @marker "Development Environment [_ccdev]" -->
 <h4 id='_ccdev'>Development Environment <span class='ttag'>[_ccdev]</span></h4><ul>
-	<li id='_ccdev_import'>Import from existing Support_svn <span class='ttag'>[_ccdev_import]</span><ul>
-		<li id='_ccdev_planImport'>Determine Features to be Imported <span class='ttag'>[_ccdev_planImport]</span><ul>
+	<li id='_ccdev_importSupport'>Import from existing Support_svn [_ccdev_importSupport]<ul>
+		<li>Support: import plan<ul>
+			<li class='blurb'>Snippets: import snippet code from Support_svn target BBEdit (do not restrict to BBEdit)</li>
 		</ul></li>
-		<li class='blurb'>Snippets: import snippet code from Support_svn target BBEdit</li>
 	</ul></li>
-	<li id='_ccdev_install'>script CCDev.install <span class='ttag'>[_ccdev_install]</span><ul>
-		<li>new files CCDev.install, CCDev/_Tests/CCDev.ksh: extract/refactor from Xcode.install</li>
-		<li>function filesToProcess verifies parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
-		<li>*.install uses cases by path pattern to process files by folder</li>
-		<li class='impl'>file getobj:
-			#! /bin/ksh
-			
-			function getobj {
-			print $*
-			typeset -n obj=$1
-			obj=( first="a" second="b" third="${2}")
-			}
-			
-			caller:
-			#! /bin/ksh
-			
-			getobj myobj "Hello"
-			print $myobj
-			#( first=a second=b third=Hello )</li>
+	<li id='_ccdev_install'>CCDev.install [_ccdev_install]<ul>
+		<li>CCDev.install: refactor functionality from Xcode.install into separate script ccInstall<ul>
+		</ul></li>
+		<li>new files ccInstall.func (extension dropped by installer), CCDev.install, CCDev/_Tests/TestCCDev.ksh: extract/refactor from Xcode.install to </li>
+		<li>ccInstall --params<ul>
+			<li class='impl'>$*: string containing all arguments</li>
+			<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
+				#! /bin/ksh
+				
+				function getobj {
+				typeset -n obj=$1
+				obj=( first="a" second="b" third="${2}")
+				}
+				
+				caller:
+				#! /bin/ksh
+				
+				getobj myobj "Hello"
+				print $myobj
+				#( first=a second=b third=Hello )</li>
+		</ul></li>
+		<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
+		<li>CCDev.install uses cases by path pattern to process files by folder</li>
 	</ul></li>
-	<li id='_ccdev_setup'>Target Setup <span class='ttag'>[_setup]</span><ul>
-		<li class='blurb'>Unix-only target that sets up our development environment. Setup's script can be run independently of Xcode, and is run prior to attempting to build any other targets or do other development tasks.</li>
+	<li id='_ccdev_setup'>Target Setup [_ccdev_setup]<ul>
+		<li>Create Unix-only target that sets up our development environment. Setup's script can be run independently of Xcode, and is run prior to attempting to build any other targets or do other development tasks.</li>
 		<li>determine features to be imported from existing Support_svn target CCDev</li>
 		<li>create new  Mac OS X Bundle target Setup; remove Link Binary with Frameworks and Copy Bundle Resources build phases</li>
 		<li>script Setup.build based on Support_svn:CCDev.build</li>
 	</ul></li>
 </ul>
 
+<!-- @marker "Import Existing Projects" -->
+<h4 id="_devimport">Import Existing Projects</h4><ul>
+	<li>Accessor: new workspace Accessor contains existing Xcode project Accessor_C9 ( ! existing svn repository is not working)</li>
+	<li>Support<ul>
+		<li>add Support_svn, DevSupport to workspace for now</li>
+		<li>plan import of remaining features</li>
+	</ul></li>
+	<li>Arbonne: new workspace Arbonne contains existing Xcode projects ArbonneProto and ArbonneFM</li>
+	<li>WebGen: move generated sites to ~/Documents; transfer information as needed from WebGen docs to Support:PersonalSitep</li>
+	<li>retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done2 another way, probably with static libraries, in the future.</li>
+</ul>
+		
 <!-- @marker "In-House Documentation System [_cdocdev]" -->
 <h4 id='_cdocdev'>In-House Documentation System <span class='ttag'>[_cdocdev]</span></h4><ul>
-	<li>revise history styles<ul>
-		<li>Each project is projected to contain an overview history file that links to smaller files for multiple threads of development. Planning for a new project can start in Support's history file.</li>
-		<li>Motivation: <ul class='blurb'>
-			<li>the existing system, which includes a top-level Development history file, a projected version file for each product, and a single history file for each project, all of which are interlinked, is too hard to maintain for the use we get out of it</li>
-			<li>smaller per-thread files<ul>
-				<li>Xcode: smaller files are better for simultaneous access to history and code because Xcode does not have a good mechanism for moving around within an HTML file (some editing of other HTML files may stay with BBEdit)</li>
-				<li>Git: a per-thread file will normally be associated with its branch, so multiple branches will not all have to change the same history file</li>
-			</ul></li>
-			<li>With the new system, it will be much easier to seamlessly start a new project, since a project's history can start in an existing file (probably Support_hist.html), move into a separate single history file, and expand with the addition of thread files. Previously, it was difficult to work on the planning process for new project without first creating a project with interlinked files.</li>
-		</ul></li>
-		<li>Support_hist.html: add markers; test in BBEdit</li>
-		<li>Threads and Timelines (history.css and client files)<ul>
-			<li>thread label: colored to stand out and highlight heading lines for threads</li>
-			<li>Timeline header: based on existing <span class='mono'>hmark</span>; for sections Active (active planning and coding), Threads (existing and projected threads of development), Current (recording current work), Completed (stuff that has been done)</li>
-			<li>update datemark: allows/expects list item</li>
-			<li>tlmark: for smaller markers inside lists</li>
-		</ul></li>
-		<li class='tldate'>[09/07/2011]</li>
-		<li>Cdoc history files: standardize; add file template<ul>
-			<li>Support, Punkin: history files: standardize; improve formatting</li>
-			<li>[<a href="#_cdocdev">_cdocdev</a>] revise history styles</li>
-			<li>[<a href="#_cdocdev">_cdocdev</a>] Support, Punkin histories: standardize; improve formatting</li>
-			<li>[<a href="#_xcode_target">_xcode Target</a>] BuildSupport target Xcode</li>
-			<li>[<a href="#_xcode">_xcode</a>] add template for history files</li>
-		</ul></li>
-	</ul></li>
-	<li class='tldate'>[09/20/2011]</li>
-	<li class='dq'>split smaller linked thread files from existing Support_hist.html</li>
 	<li>BuildSupport target Cdoc<ul>
 		<li>add Bundle target Cdoc_Support; remove Compile Bundle Resources, Link Binary with Libraries and Copy Bundle Resources build phases</li>
 		<li>add Run Script build phase Build Cdoc: <span class='mono'>buildCdoc ${TARGET_BUILD_DIR}</span></li>
@@ -169,22 +231,6 @@
 	
 <!-- @marker "In-House Documentation [_cdoc]" -->
 <h4 id='_cdoc'>In-House Documentation <span class='ttag'>[_cdoc]</span></h4><ul>
-	<li>update existing documentation<ul>
-		<li>use class='todo' to mark sections requiring updates</li>
-		<li>replace href name attributes with ids; replace leading '_' in ids with trailing '_'<ul>
-			<li class='blurb'> since links beginning with '_' will now be used for development thread names</li>
-		</ul></li>
-		<li>replace all instances of single quotes inside href tags double quotes<ul>
-			<li class='blurb'>because Xcode does not handle single quotes in href tags correctly</li>
-		</ul></li>
-		<li>Support.html<ul>
-			<li>Unix and Unix tools: rename to Unix</li>
-			<li>update tsk_RenameRepository</li>
-		</ul></li>
-		<li>add new file Git.html</li>
-	</ul></li>
-	<li class='tldate'>[09/07/2011]</li>
-	<li class='tlmark'>upgradeDocs</li>
 	<li>replace $Id fields with filenames</li>
 	<li>Support_svn history: move content to be preserved into Support files; new file SubversionServer for information, mostly obsolete, about that topic</li>
 	<li>update 'todo' sections</li>
@@ -194,85 +240,12 @@
 
 <!-- @marker "Xcode [_xcode]" -->
 <h4 id='_xcode'>Xcode <span class='ttag'>[_xcode]</span></h4><ul>
-	<li>Configuration<ul>
-		<li>Behaviors<ul>
-			<li>document: Build Fails: show tab Build; show Log Navigator; navigate to current log</li>
-			<li>add Build Generates New Issues: show tab Build; show Issue Navigator; navigate to first new issue</li>
-		</ul></li>
-	</ul></li>
-	<li>Xcode.r (User Slate)<ul>
-		<li>update select word, select line, capitalize, lowercase</li>
-		<li>nav panel: filter, top [coUp], files, ...</li>
-		<li>Workaround for Xcode Key Bindings bug<ul>
-			<li class='blurb'>Key Bindings do not currently work in Xcode (rdar:10029381)</li>
-			<li>specify tag 'xckbbug' to identify workarounds for this bug</li>
-			<li>replace "select word" and "select line" with Accessor sequences; disable capitalize and lowercase for now</li>
-		</ul></li>
-		<li>use standard/assistant/version to switch editors, Editor:standard/assistant/version to also access features</li>
-		<li>restructure resid_NavPanel</li>
-		<li>Accessor: Add Repository: Clone<ul>
-			<li>standard file dialog: split to open and save (header height: 60); use to clone repository</li>
-		</ul></li>
-		<li>search/find<ul>
-			<li>search/find structure in place</li>
-		</ul></li>
-		<li>Launch Slate: launch workspaces directly</li>
-		<li>menu View: Utilities</li>
-		<li class='tldate'>[slate_Xcode 09/01/2011]</li>
-		<li>minor corrections and changes</li>
-		<li>support BBEdit as an External Editor for Xcode	<ul>
-			<li class='blurb'>needed especially for User Slates (.r) files, since Xcode does not even reliably support code completion for those files</li>
-			<li>#define resid_BBEdit_External (CommonSlate_C9.h); define Slate resid_BBEdit_External (BBEdit_C9.r); add Xcode Event File:BBEdit</li>
-			<li>remove duplication: define BBEdit Slate Search; #define _BBEditBase_ to be shared between resid_BBEdit and resid_BBEdit_External</li>
-		</ul></li>
-		<li>capitalize, lowercase via Transform submenu</li>
-		<li>Xcode subslate Build</li>
-		<li>Accessor slate: add access to resid_edIssues; add go next/previous to resid_BuildAccessor and resid_edIssues</li>
-		<li>resid_phaseRunScript: expand</li>	
-	</ul></li>
-	<li>add empty project BuildSupport at ~/Dev/Support</li>
-	<li id='_xcode_target'>BuildSupport target Xcode<ul>
-		<li>set location for file Xcode-Info.plist; delete file *.pch, folder en.lproj</li>
-		<li>mark scheme Xcode as shared</li>
-		<li>remove build phases Compile Sources, Link Binary with Libraries, Copy Bundle resources</li>
-		<li>add build phase BuildXcode to run script ../Xcode/Xcode.build</li>
-		<li>script Xcode.install<ul>
-			<li>check exit status, log output</li>
-			<li>define and process parameters, adding &lt;Project&gt; argument</li>
-			<li>run shunit tests from folder _Tests</li>
-			<li>use deprecated buildsource code from previous Support to handle copying files and clean for now</li>
-		</ul></li>
-		<li>copy Xcode/Templates/FileTemplates to ~/Library/Developer/Xcode/Templates/File Templates<ul>
-			<li>use added files template ShellScript.xctemplate - copy of Xcode's default</li>
-		</ul></li>
-	</ul></li>
-	<li>Behaviors: for Build Generates New Issues, use current log</li>
-	<li>Xcode_C9.r<ul>
-		<li>finish multiple search Slate resid_edSearch</li>
-		<li>add Slate resid_Panel for use with panel selection window, eg. for Move Focus to Editor... (cmd-J)</li>
-		<li>add Slate resid_XCTerminal; also correct bug in related BBEdit Slate</li>
-		<li>replace obsolete nextPanel_/previousPanel_ with focus_/focusBack_</li>
-		<li>revise resid_Editor</li>
-		<li>miscellaneous tweaks and updates</li>
-	</ul></li>
-	<li>Initial Template Files<ul>
-		<li>rename ShellScript template file and folder<ul>
-			<li>rename Other_CC/ShellScript/___FILEBASENAME___.sh to Scripting/ShellScript/___FILEBASENAME___.ksh</li>
-			<li>___FILEBASENAME___.ksh: change shebang line</li>
-			<li>TemplateInfo.plist: change MainTemplateFile name; add Korn to description and summary</li>	
-		</ul></li>
-		<li>add file template(s) Cdoc:CdocFile and Cdoc:HistoryFile</li>
-	</ul></li>
-	<li class='tldate'>[09/20/2011]</li>
 	<li>Scripts and Workflows<ul>
 		<li class='blurb'>assistive access:<ul>
 			<li>shell scripts: add to Behaviors</li>
 			<li>AppleScripts, Workflows: add to scripts menu; Slates call file directly</li>
 			<li>to call ruby from Accessor: <span class='mono'>do shell script "/usr/bin/ruby ~/CCDev/hello.rb"</span></li>
 		</ul></li>
-		<li>for clean, upload Behaviors: <span class='mono'>tell application "Xcode" to return name of active target of project of active project document</span></li>
-		<li><span class='mono'>tell application id "com.apple.dt.Xcode" to set windowname to name of window 1</span>; then <span class='mono'>word 1 of windowname</span> is Project name, <span class='mono'>word -1 of windowname</span> is filename</li>
-		<li>_getFrontDocument.applescript, _getSelection.applescript; see getFrontDocument.applescript</li>
 		<li>ViewInBrowser</li>
 		<li>Snippets<ul>
 			<li>Accessor: enter Snippet line with parameters</li>
@@ -293,14 +266,72 @@
 				<li>could use existing selection if any (start there?)</li>
 			</ul></li>
 		</ul></li>
+		<li>AppleScript/OSA techniques<ul>
+			<li>for clean, upload Behaviors: <span class='mono'>tell application "Xcode" to return name of active target of project of active project document</span></li>
+			<li><span class='mono'>tell application id "com.apple.dt.Xcode" to set windowname to name of window 1</span>; then <span class='mono'>word 1 of windowname</span> is Project name, <span class='mono'>word -1 of windowname</span> is filename</li>
+			<li>getAllAndSelectedText.scpt: tell application id "com.apple.dt.Xcode"
+				set windowname to name of window 1
+				set docname to word -1 of windowname
+				set doc to ""
+				repeat with adoc in text documents
+				if ((name of adoc as string) is docname) then
+				set doc to adoc
+				exit repeat
+				end if
+				end repeat
+				
+				end tell
+				set alltext to text of doc --***
+				
+				tell application "Xcode"
+				set seltext to ""
+				set sel to selected character range of doc
+				end tell
+				set cf to (item 1 of sel)
+				set cl to (item 2 of sel)
+				if (cl is greater than cf) then
+				set seltext to (characters cl through cf) of alltext as string
+				end if
+				seltext --***
+				
+				tell application "Xcode"
+				set selected character range of doc to {5, 10} -- nyi - maybe someday
+				end tell</li>
+			<li>processSnippetText.scpt:to processInput(inputString)
+				set savedDelimiters to AppleScript's text item delimiters
+				set tag to word 1 of inputString
+				set b to (length of tag) + 3
+				set e to length of inputString
+				set paramlist to (characters b thru e of inputString) as string
+				set AppleScript's text item delimiters to {"; "}
+				set paramItems to every text item of paramlist
+				set params to {}
+				set AppleScript's text item delimiters to {"|"}
+				repeat with param in paramItems
+				set split to every text item of param
+				set params to params &amp; {{item 1 of split, item 2 of split}}
+				end repeat
+				set AppleScript's text item delimiters to savedDelimiters
+				return {tag, {params}}
+				end processInput
+				
+				on replace(searchString, replaceString)
+				tell application "BBEdit"
+				replace searchString using replaceString searching in selection of text 1 of text document 1 options {search mode:literal, starting at top:false, wrap around:false, backwards:false, case sensitive:true, match words:false, extend selection:false}
+				end tell
+				end replace
+				
+				processInput("@a b|B C; c|D")</li>
+		</ul></li>
 	</ul></li>
 </ul>
 	
 <!-- @marker "Terminal [_terminal]" -->
 <h4 id='_terminal'>Terminal <span class='ttag'>[_terminal]</span></h4><ul>
-	<li class='tlmark'>git_slate_module</li>
-	<li id='git_slate_module'>separate UserSlates files Git_module.h/r to facilitate using Git Slates as subslates from multiple process slates</li>
-	<li>Implement Window Tabs<ul>
+	<li id='git_slate_module'>UserSlates: Git Slate Module<ul>
+		<li>separate UserSlates files Git_module.h/r to facilitate using Git Slates as subslates from multiple process slates</li>
+	</ul></li>
+	<li id='git_repository_tabs'>Separate Window Tab for Each Repository<ul>
 		<li>make per-repository custom color schemes<ul>
 			<li>separate windows make it practical to define a project variable and directory within each repository's window</li>
 			<li>color schemes allow developer to distinguish between windows</li>

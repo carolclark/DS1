@@ -1000,8 +1000,33 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 <!-- @marker "Tools for Compiled Code" -->
 <h2>Tools for Compiled Code</h2>
 <!-- @topicList "Tools for Compiled Code" "tp_CompileTools" -->
+	<!-- @topicItem "Xcode" "#Compile_Xcode" "0" "" -->
 	<!-- @topicItem "Doxygen" "#Compile_Doxygen" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "Xcode" -->
+<h3>Xcode</h3>
+<!-- @topicList "Xcode" "Compile_Xcode" -->
+	<!-- @topicItem "Xcode Tool Info" "Tools.html#_Xcode" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Xcode Tasks" "3" -->
+	<!-- @topicItem "New Installer Target" "#tsk_NewInstallerTarget" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Xcode Tasks" -->
+<h4>Xcode Tasks</h4>
+<!-- @marker "  New Installer Target" -->
+<h5><a name="tsk_NewInstallerTarget">New Installer Target</a></h5><ul>
+	<li>add empty project, normally at project's root level</li>
+	<li>create new target<ul>
+		<li>set location for file *-Info.plist; delete file *.pch, folder en.lproj</li>
+		<li>mark scheme as shared</li>
+		<li>remove build phases Compile Sources, Link Binary with Libraries, Copy Bundle resources</li>
+		<li>add build phase BuildXcode to run *.install script</li>
+	</ul></li>
+</ul>
+
+
 
 <!-- @marker "Doxygen" -->
 <h3>Doxygen</h3>
@@ -1011,7 +1036,6 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 	<!-- @topicGroup "Doxygen Tasks" "3" -->
 	<!-- @topicItem "Establish Doxygen Target" "#tsk_EstablishDoxygenTarget" "0" "" -->
 <!-- @/topicList -->
-
 
 <!-- @marker "Doxygen Tasks" -->
 <h4>Doxygen Tasks</h4>

@@ -871,7 +871,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		Event { "page end", "" },		Keypress { kc_end, 0 },			\
 		Event { "lock option",	"lock or unlock option key" },	Keypress { 0, mf_option + mf_toggle }
 
-#define _pzlTop		515
+#define _pzlTop		506
 resource restype_Slate (resid_sudokuTimes, "") { {
 	Slate { "Times", {
 		Event { "main frame", "" },		Click { 1, 10, -40, window, "1", _bottomLeft },

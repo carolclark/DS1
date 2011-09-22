@@ -1381,6 +1381,7 @@ resource restype_Slate (resid_Search, "Search") { {
 		Event { "find previous", "" },			Keypress { kc_G, mf_command + mf_shift },
 		Event { "change", "" },					Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Replace" }, _return, endSequence{},
 		Event { "change again", "" },			Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Replace and Find Again" }, _return, endSequence{},
+		Event { "go marker", "" },	Sequence{}, Keypress { kc_F, mf_command }, Keypress { kc_right, mf_command }, TypeText { "\" -->" },  _up, TypeText { "<!-- @marker \"" }, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Hide Find Bar" }, _return, Keypress { kc_G, mf_command }, endSequence{},
 	} }
 } };
 
