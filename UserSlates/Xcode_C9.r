@@ -55,6 +55,9 @@
 #define resid_Build					resid_Xcode+100
 	#define resid_BuildAccessor			resid_Build+1
 
+#define resid_Scripts				resid_Xcode+150
+	#define	resid_bbeSelectMarker			resid_Scripts+1
+
 #define resid_Editor				resid_Xcode+200
 	#define resid_edStandard			resid_Editor+10
 	#define resid_edAssistant			resid_Editor+20
@@ -102,6 +105,7 @@
 
 #define resid_TargetPopup			resid_Xcode+910
 
+#define _scriptsMenu	Click { 1, -340, 13, _screen, _topRight }, Wait { 20 }, _down, TypeText { "Xcode" }, _right
 #define closeDocument_	\
 	Event { "close document", "" },	Keypress { kc_W, mf_command + mf_control },
 
@@ -662,27 +666,27 @@ resource restype_Slate (resid_XCTerminal, "terminal support") { {
 #pragma mark File Menu
 #define _FileDialogStandards_	\
 	_SlateGlobals_,				\
-	Event { "go to folder", "" },	ResSubslate { resid_GoToFolder },                        \
-	ExitEvent { "exit", "" },		NilAction{},                                                \
-	ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },                       \
-	ExitEvent { "okay", "" },		_return,                                                    \
-	Event { "location", "" },		Click { 1, 0, 100+_headerHt, _pwindow, _topCenter },      \
-	Event { "filter", "" },			Click { 1, 200, 100+_headerHt, _pwindow, _topCenter },      \
-	Event { "navigate", "" },		Sequence{}, Click { 1, 200, 100+_headerHt, _pwindow, _topCenter }, _tab, _tab, endSequence{},      \
-	Event { "go back", "" },		Click { 1, -246, 100+_headerHt, _pwindow, _topCenter },         \
-	Event { "go forward", "" },		Click { 1, -220, 100+_headerHt, _pwindow, _topCenter },      \
-	Event { "icons", "" },			Keypress { kc_1, mf_command },					\
-	Event { "list", "" },			Keypress { kc_2, mf_command },					\
-	Event { "panel", "" },			Keypress { kc_3, mf_command },					\
-	Event { "new folder", "" },		Click { 1, -200, 440+_headerHt, _pwindow, _topCenter },      \
-	_DirectionKeys_,                                                                       \
-	_CommandSlate_,                                                                        \
-	_WhitespaceKeys_,                                                                      \
-	_JumpNorthSubslate_,                                                                   \
-	_JumpDownSubslate_,                                                                    \
-	_LetterKeys_,                                                                          \
-	_IMouseSlate_,																		\
-	_DoSelectSubslate_,																	\
+	Event { "go to folder", "" },	ResSubslate { resid_GoToFolder },                       	\
+	ExitEvent { "exit", "" },		NilAction{},                                            	\
+	ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },                     	\
+	ExitEvent { "okay", "" },		_return,                                                	\
+	Event { "location", "" },		Click { 1, 0, 100+_headerHt, _pwindow, _topCenter },    	\
+	Event { "filter", "" },			Click { 1, 280, 100+_headerHt, _pwindow, _topCenter },		\
+	Event { "navigate", "" },		Sequence{}, Click { 1, 280, 100+_headerHt, _pwindow, _topCenter }, _tab, _tab, endSequence{},    	\
+	Event { "go back", "" },		Click { 1, -246, 100+_headerHt, _pwindow, _topCenter }, 	\
+	Event { "go forward", "" },		Click { 1, -220, 100+_headerHt, _pwindow, _topCenter }, 	\
+	Event { "icons", "" },			Keypress { kc_1, mf_command },								\
+	Event { "list", "" },			Keypress { kc_2, mf_command },								\
+	Event { "panel", "" },			Keypress { kc_3, mf_command },								\
+	Event { "new folder", "" },		Click { 1, -200, 440+_headerHt, _pwindow, _topCenter },		\
+	_DirectionKeys_,                                                               				\
+	_CommandSlate_,                                                                        		\
+	_WhitespaceKeys_,                                                                      		\
+	_JumpNorthSubslate_,                                                                   		\
+	_JumpDownSubslate_,                                                                    		\
+	_LetterKeys_,                                                                          		\
+	_IMouseSlate_,																				\
+	_DoSelectSubslate_,																			\
 	_TypeXcodeSlate_
 
 resource restype_Slate (resid_FileMenu, "File") { {
@@ -757,7 +761,7 @@ resource restype_Slate (resid_NewFile, "New File") { {
 #define _offsetleft	-152
 #define	_toprow		276
 #define _rsp		18
-#define _headerHt 	0
+#define _headerHt 	10
 resource restype_Slate (resid_AddFiles, "Add Files") { {
 	Slate { "Add Files", {
 		Event { "targets", "" },	ResSubslate { resid_SelectTargets },
@@ -1198,6 +1202,35 @@ resource restype_Slate (resid_RefactorHelp, "Refactoring Help") { {
 	} }
 } };
 
+#pragma mark Scripts
+resource restype_Slate (resid_Scripts, "Scripts") { {
+	Slate { "Scripts", {
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_IMouseSlate_,
+		_DirectionKeys_,
+		_CommandSlate_,
+		Event { "go marker", "" },		Sequence{}, TypeText { "goMarker" }, _return, ResSubslate { resid_bbeSelectMarker }, endSequence{},
+	} }
+} };
+
+resource restype_Slate (resid_bbeSelectMarker, "BBEdit SelectMarker") { {
+	Slate { "select", {
+		_SlateGlobals_,
+		_IMouseSlate_,
+		_DirectionKeys_,
+		_PageUpKey_,
+		_PageDownKey_,
+		_CommandSlate_,
+		_NumberKeys_,
+		_ReturnKey_,
+		Event { "go line", "" },	Keypress { kc_J, mf_command },
+		ExitEvent { "exit", "" },	NilAction{},
+		Event { "go back", "" },	Launch { DevApps_"XCode.app", resid_Xcode },
+		Event { "okay", "" },		Sequence{}, Keypress { kc_left, mf_command }, TypeText { "<!-- @marker \"" }, Keypress { kc_right, mf_command }, TypeText { "\"" }, Keypress { kc_left, mf_command + mf_shift }, Keypress { kc_E, mf_command }, Keypress { kc_Z, mf_command }, Keypress { kc_Z, mf_command }, Keypress { kc_W, mf_command }, Launch { DevApps_"XCode.app", resid_Xcode }, Keypress { kc_G, mf_command }, endSequence{},
+	} }
+} };
+
 #pragma mark 6 === Editors
 
 #pragma mark Standard Editor
@@ -1247,7 +1280,7 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 		Event { "annotate", "" },		Click { 1, -73, -20, _window, _bottomRight },
 		Event { "revisions", "" },		Click { 1, -46, -20, _window, _bottomRight },
 		Event { "edit left", "" },		Click { 1, 660, 540, _window, _topLeft },
-		Event { "edit right", "" },		Click { 1, -350, 540, _window, _centerRight },
+		Event { "edit right", "" },		Click { 1, -350, 540, _window, _topRight },
 		Event { "nav list", ""},		_navList,
 		Event { "top", "" },			Sequence{}, Click { 1, 660, 540, _window, _topLeft }, Keypress { kc_up, mf_command }, endSequence{},	
 		Event { "difference", "" },		Click { 1, 125, 125, _window, _topCenter },
@@ -1381,7 +1414,6 @@ resource restype_Slate (resid_Search, "Search") { {
 		Event { "find previous", "" },			Keypress { kc_G, mf_command + mf_shift },
 		Event { "change", "" },					Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Replace" }, _return, endSequence{},
 		Event { "change again", "" },			Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Replace and Find Again" }, _return, endSequence{},
-		Event { "go marker", "" },	Sequence{}, Keypress { kc_F, mf_command }, Keypress { kc_right, mf_command }, TypeText { "\" -->" },  _up, TypeText { "<!-- @marker \"" }, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Hide Find Bar" }, _return, Keypress { kc_G, mf_command }, endSequence{},
 	} }
 } };
 
@@ -2069,6 +2101,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "Source Control", "'Source Control' menu" }, Sequence{}, ClickMenu { "File" }, _down, TypeText { "Source Control" }, _right, ResSubslate { resid_SourceControl }, endSequence{},
 		Event { "Edit Menu", "'Edit' menu" }, Sequence{},
 			ClickMenu { "Edit" }, _down, ResSubslate { resid_EditMenu }, endSequence{},
+		Event { "Script", "" },			Sequence{}, _scriptsMenu, ResSubslate { resid_Scripts }, endSequence{}, 
 		Event { "build", "" },				ResSubslate { resid_Build },
 		Event { "Refactor", "" },			Sequence{},
 			ClickMenu { "Edit" }, _down, TypeText { "Refactor" }, _return, ResSubslate { resid_Refactor }, endSequence{},

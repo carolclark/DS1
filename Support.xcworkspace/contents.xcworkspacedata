@@ -94,6 +94,16 @@
       </FileRef>
       <Group
          location = "container:"
+         name = "Workflows">
+         <FileRef
+            location = "group:Xcode/Workflows/frontTextDoc.workflow">
+         </FileRef>
+         <FileRef
+            location = "group:Xcode/Workflows/goMarker.workflow">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
          name = "FileTemplates">
          <Group
             location = "container:"

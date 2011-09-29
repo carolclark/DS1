@@ -180,7 +180,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 // ihl_offset 			horizontal offset to secondary spot for rows that are indented
 #define	_BrowseCdocSlate_      \
 	#define ihl_top		110    \
-	#define ihl_left	91     \
+	#define ihl_left	86     \
 	#define ihl_rsp		19     \
 	#define ihl_csp		254    \
 	#define ihl_offset	35     \
@@ -703,7 +703,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 			_delete, TypeText { "</ul></li>" }, _previous, _previous, _previous, endSequence{},		\
 		ExitEvent { "current tag", "" },	Sequence{},	TypeText { "<li class='tlmark'>&lt;--</li>" }, _previous, endSequence{},		\
 		ExitEvent { "date mark", "" },		Sequence{},		\
-			TypeText { "<li style='tldate'>[<#date#>]</li>" }, _previous, endSequence{},		\
+			TypeText { "<li class='tldate'>[<#date#>]</li>" }, _previous, endSequence{},		\
 		ExitEvent { "future note", "" },		Sequence{},		\
 			TypeText { "@futureNote <#title#>; <#name#>" }, _return, _up, _next, endSequence{},		\
 		ExitEvent { "app or tool", "" },		Sequence{},		\
@@ -1925,7 +1925,8 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 	_MenuBarSlate_,		\
 	_DockWindowSlate_,	\
 	_DirectionKeys_,	\
-	_WhitespaceKeys_
+	_ReturnKey_,		\
+	_SpaceKey_
 
 #define	_DefaultBase_	\
 	_StarterBase_,		\

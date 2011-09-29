@@ -1,15 +1,13 @@
 <!-- Support_hist.html -->	
 <!-- Created by Carol Clark on 17 Aug 2011 for project Support. -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Support History</title>
 	<link rel="stylesheet" type="text/css" href="../css/history.css" />
 </head>
 <body>
-<!-- navhead "../Support/Support.html" "Support	" "Support_hist.html" -->
-<div class="navhead"><a name="Top"></a><table class="navhead"><col class="navhead_c1" /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="Support_hist.html#hmark_Current">Current</a>]</td><td class="right">[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<div class='navhead'><a name='Top'></a><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="Support_hist.html#hmark_Current">Current</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
 <h1>Support History</h1>
 
 <!-- @topicList "Support History" "Contents" -->
@@ -35,24 +33,35 @@
 			<li>standardize existing history documents</li>
 			<li>add file templates ReadMe.html, CdocFile.html, HistoryFile.html</li>
 			<li>revert creation of new project TechnicalDocs (a false start)</li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>Restructure this file to tie history information more effectively with associated branches and to reduce detail recorded within a development cycle.</li>
 			<li>Support_hist.html: reorder to do sections; move completed tasks into their section</li>
 			<li>synchronize Punkin_hist.html</li>
+			<li>Xcode:Script:go marker: workflow goMarker supports moving within a document to predefined markers [<a href="#_xcode">_xcode</a>]<ul>
+				<li>Accessor event<ul>
+					<li>Automator action<ul>
+						<li>AppleScript: get contents of Xcode's front document</li>
+						<li>ruby: grep and process list of markers</li>
+						<li>new BBEdit document with contents</li>
+					</ul></li>
+					<li>BBEdit: go to line; accept line number; select line's content; enter find string; go to Xcode; find again</li>
+				</ul></li>
+				<li>Xcode.install: install workflows at ~/Library/Scripts/Xcode</li>
+			</ul></li>
+			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+			<li>history documents: add a header level to section Active to provide for splitting larger topics into smaller sections</li>
+			<li>TechnicalDocs: corrections to allow BBEdit: Validate All to pass</li>
+			<li>script CCDev.install [<a href="#_ccdev_install">_ccdev_install</a>]</li>
+			<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
 		</ul></li>
-		<li></li>
-		<li>Support import: add data to be imported; plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
-		<li>script CCDev.install [<a href="#_ccdev_install">_ccdev_install</a>]</li>
-		<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
-		<li>add initial Xcode scripts and workflows [<a href="#_xcode">_xcode]</a></li>
+		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
+		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
 	</ul>
 
 	<!-- @marker "Automation Support" -->
 	<h5 id="_automation">Automation Support</h5><ul>
-		<li>Xcode:Search:go marker: find @marker associated with the current find string</li>
 		<li class='tlmark'>&lt;--</li>
 	</ul>
-	
+
 <!-- @marker "5 === ToDo" --><p class='tlhead'>&lt;-- ToDo</p>
 <h2>ToDo</h2>
 <!-- @topicList "ToDo" "hmark_ToDo" -->
@@ -84,12 +93,18 @@
 		<li id='_ccdev_importSupport'>Import from existing Support_svn [_ccdev_importSupport]<ul>
 			<li>Support: import plan<ul>
 				<li class='blurb'>Snippets: import snippet code from Support_svn target BBEdit (do not restrict to BBEdit)</li>
+				<li>ccBackup issues<ul>
+					<li>.git folders: object files are locked, so ccBackup fails when it tries to update an existing .git folder<ul>
+						<li class='blurb'>It appears that all of these files have identical creation and modification dates, which suggests that existing files do not get overwritten. If so, writing only files that have changed since the last backup should solve the problem.</li>
+					</ul></li>
+					<li>Files that cannot be copied currently abort the backup. Try letting the backup continue, and print a warning at the end summarizing the files that could not be copied.</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
 		<li id='_ccdev_install'>CCDev.install [_ccdev_install]<ul>
 			<li>CCDev.install: refactor functionality from Xcode.install into separate script ccInstall<ul>
 			</ul></li>
-			<li>new files ccInstall.func (extension dropped by installer), CCDev.install, CCDev/_Tests/TestCCDev.ksh: extract/refactor from Xcode.install to </li>
+			<li>new files ccInstall.func (extension dropped by installer), CCDev.install, CCDev/_Tests/TestCCDev.ksh: extract/refactor from Xcode.install</li>
 			<li>ccInstall --params<ul>
 				<li class='impl'>$*: string containing all arguments</li>
 				<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
@@ -169,19 +184,6 @@
 				<li>User: replace parameters; select line</li>
 				<li>Automator: AppleScript to get selected text; pass to BBEdit's Snippets script; leave result on pasteboard</li>
 				<li>User or Accessor: paste in result</li>
-			</ul></li>
-			<li>GoToMarker<ul>
-				<li>Accessor event<ul>
-					<li>Automator action<ul>
-						<li>AppleScript: get name of Xcode's front document</li>
-						<li>getMarkers.ksh: grep and process list of markers to ~/CCDev/tmp/XcodeMarkers</li>
-						<li>new BBEdit document with contents</li>
-					</ul></li>
-					<li>go to line; accept line number; select line's content; enter find string; go to Xcode; find again</li>
-				</ul></li>
-				<li class='depr'>use AppleScript's choose from list to find marker<ul>
-					<li>could use existing selection if any (start there?)</li>
-				</ul></li>
 			</ul></li>
 			<li>AppleScript/OSA techniques<ul>
 				<li>for clean, upload Behaviors: <span class='mono'>tell application "Xcode" to return name of active target of project of active project document</span></li>
@@ -273,7 +275,7 @@
 <!-- @marker "7 === Completed" --><p class='tlhead'>&lt;-- Completed</p>
 <h2 id='hmark_Completed'>Completed</h2>
 
-	<!-- @marker "Transfer Existing Development Work" -->
+	<!-- @marker "Transfer Existing Development Work [completed]" -->
 	<h5 id="transferExisting_compl">Transfer Existing Development Work</h5><ul>
 		<li>new Git project Support [_cdoc]<ul>
 			<li>commit and archive existing project Support; rename to Support_svn</li>
@@ -359,6 +361,7 @@
 		<li class='tldate'>[09/20/2011]</li>
 	</ul>
 
+	<!-- @marker "[end]" -->
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

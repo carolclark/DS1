@@ -195,28 +195,40 @@ target="$(basename ${0%.build})"
 flist="${CCDev}/tmp/flist"
 mkdir -p "${CCDev}/tmp"
 
-buildsource_Xcode=(
+buildsource_FileTemplates=(
 	sourceDirectory="${HOME}/Dev/Support/Xcode/Templates/FileTemplates"
 	destinationDirectory="${HOME}/Library/Developer/Xcode/Templates/File Templates"
-	derivedDirectory="${CCDev}/build/Support/Xcode" subtarget="")
+	derivedDirectory="${CCDev}/build/Support/Xcode" subtarget="FileTemplates")
+
+buildsource_Workflows=(
+	sourceDirectory="${HOME}/Dev/Support/Xcode/Workflows"
+	destinationDirectory="${HOME}/Library/Scripts/Xcode"
+	derivedDirectory="${CCDev}/build/Support/Xcode" subtarget="Workflows")
 
 print "$project $target $flist"
 print "doClean: ${doClean}; doBuild: ${doBuild}; doTest: ${doTest}"
 
 st=0
 
-nameref buildsource=buildsource_Xcode
 print $(lastbuilt)
 	
 if [[ ${doClean} > 0 ]] ; then
+	nameref buildsource=buildsource_FileTemplates
 	buildsource_clean
 	st="$?"
 fi
 
 if [[ ${st} = 0 && ${doBuild} > 0 ]] ; then
+	nameref buildsource=buildsource_FileTemplates
 	buildsource_process "copySource"
 	st="$?"
 	cd "${basedir}" 
+	if [[ ${st} = 0 ]] ; then
+		nameref buildsource=buildsource_Workflows
+		buildsource_process "copySource"
+		st="$?"
+		cd "${basedir}" 
+	fi
 fi
 
 if [[ ${st} = 0 && ${doTest} > 0 ]] ; then
