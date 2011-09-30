@@ -15,18 +15,24 @@
 		<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 		<!-- @topicGroup "" "3" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
-		<!-- @topicItem "Automation Support" "#_automation" "1" "" -->
-	<!-- @topicGroup "" "6" -->
+			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
+		<!-- @topicGroup "" "6" -->
+		<!-- @topicItem "Other Active" "#otherActive" "1" "" -->
+			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
+	<!-- @topicGroup "" "9" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "8" -->
+	<!-- @topicGroup "" "11" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
 <h2 id='hmark_Active'>Active</h2>
 
-	<!-- @marker "Transfer Existing Development Work" -->
-	<h5 id="transferExisting">Transfer Existing Development Work</h5><ul>
+<!-- @marker "Transfer Existing Development Work" -->
+<h4 id="transferExisting">Transfer Existing Development Work</h4>
+
+	<!-- @marker "Transfer Existing: Setup" -->
+	<h5 id="transferExisting_setup">Transfer Existing: Setup</h5><ul>
 		<li class='blurb'>There have been major changes in our development environment, including replacing Subversion with Git for Source Control. All existing projects, along with any still-active functionality, will be transferred into the new system.</li>
 		<li><a href="#transferExisting_compl"><i>(completed)</i></a></li>
 		<li>[historyWorkflow] Improve Cdoc History File Workflow [<a href="#_cdocdev">_cdocdev</a>]<ul>
@@ -49,15 +55,42 @@
 			</ul></li>
 			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>history documents: add a header level to section Active to provide for splitting larger topics into smaller sections</li>
-			<li>TechnicalDocs: corrections to allow BBEdit: Validate All to pass</li>
-			<li>script CCDev.install [<a href="#_ccdev_install">_ccdev_install</a>]</li>
+			<li>TechnicalDocs: corrections to Support_svn (this project's predecessor) docs to allow BBEdit:Validate All to pass</li>
+			<li>[_ccdev_install] CCDev.install<ul>
+				<li>Xcode.install processes files by folder</li>
+				<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
+					<li>new files ccInstall.func (extension dropped by installer), CCDev.install, CCDev/_Tests/TestCCDev.ksh: extract/refactor from Xcode.install</li>
+					<li>ccInstall --params<ul>
+						<li class='impl'>$*: string containing all arguments</li>
+						<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
+							#! /bin/ksh
+							
+							function getobj {
+							typeset -n obj=$1
+							obj=( first="a" second="b" third="${2}")
+							}
+							
+							caller:
+							#! /bin/ksh
+						
+							getobj myobj "Hello"
+							print $myobj
+							#( first=a second=b third=Hello )</li>
+					</ul></li>
+					<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
+					<li>CCDev.install (new): copies ~/Dev/Support/CCDev/Scripts/ccInstall.func to ~/CCDev/func/ccInstall</li>
+				</ul></li>
+			</ul></li>
 			<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
 		</ul></li>
 		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
 		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
 	</ul>
 
-	<!-- @marker "Automation Support" -->
+<!-- @marker "Other Active" -->
+<h4 id="otherActive">Other Active</h4>
+
+<!-- @marker "Automation Support" -->
 	<h5 id="_automation">Automation Support</h5><ul>
 		<li class='tlmark'>&lt;--</li>
 	</ul>
@@ -100,30 +133,6 @@
 					<li>Files that cannot be copied currently abort the backup. Try letting the backup continue, and print a warning at the end summarizing the files that could not be copied.</li>
 				</ul></li>
 			</ul></li>
-		</ul></li>
-		<li id='_ccdev_install'>CCDev.install [_ccdev_install]<ul>
-			<li>CCDev.install: refactor functionality from Xcode.install into separate script ccInstall<ul>
-			</ul></li>
-			<li>new files ccInstall.func (extension dropped by installer), CCDev.install, CCDev/_Tests/TestCCDev.ksh: extract/refactor from Xcode.install</li>
-			<li>ccInstall --params<ul>
-				<li class='impl'>$*: string containing all arguments</li>
-				<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
-					#! /bin/ksh
-					
-					function getobj {
-					typeset -n obj=$1
-					obj=( first="a" second="b" third="${2}")
-					}
-					
-					caller:
-					#! /bin/ksh
-					
-					getobj myobj "Hello"
-					print $myobj
-					#( first=a second=b third=Hello )</li>
-			</ul></li>
-			<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
-			<li>CCDev.install uses cases by path pattern to process files by folder</li>
 		</ul></li>
 		<li id='_ccdev_setup'>Target Setup [_ccdev_setup]<ul>
 			<li>Create Unix-only target that sets up our development environment. Setup's script can be run independently of Xcode, and is run prior to attempting to build any other targets or do other development tasks.</li>

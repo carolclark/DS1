@@ -191,10 +191,10 @@
 					<key>COMMAND_STRING</key>
 					<string>ARGF.grep /&lt;!-- @marker/ do |line|
 	line="#{line.strip}"
-	line="#{line.sub (/&lt;!-- @marker/, '')}"
-	line="#{line.sub ('"', '')}"
-	line="#{line.sub (/".*$/, '')}"
-	line="#{line.sub (/&lt;!-- @marker/, '')}"
+#	line="#{line.sub (/&lt;!-- @marker/, '')}"
+#	line="#{line.sub ('"', '')}"
+#	line="#{line.sub (/".*$/, '')}"
+#	line="#{line.sub (/&lt;!-- @marker/, '')}"
 	line="#{line.sub (' ', '')}"
 	print "#{line}\r"
 end
@@ -488,19 +488,19 @@ end
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>157EF934-06DD-4CD7-92E1-FC94990D0B3E</key>
-		<dict>
-			<key>from</key>
-			<string>20A9AAFD-949D-4A69-8F3F-2A0F7D3485E3 - 20A9AAFD-949D-4A69-8F3F-2A0F7D3485E3</string>
-			<key>to</key>
-			<string>CA2A4BD5-4BAA-4094-9F25-E6F23AB0426E - CA2A4BD5-4BAA-4094-9F25-E6F23AB0426E</string>
-		</dict>
-		<key>A1C79EBF-BD8C-42AF-83EB-E22F48ACBD4E</key>
+		<key>92A4F1B8-F94C-45F4-91DB-FCAE4F8DA281</key>
 		<dict>
 			<key>from</key>
 			<string>CA2A4BD5-4BAA-4094-9F25-E6F23AB0426E - CA2A4BD5-4BAA-4094-9F25-E6F23AB0426E</string>
 			<key>to</key>
 			<string>E4453E59-D6D9-401B-BED9-B7083464E3B1 - E4453E59-D6D9-401B-BED9-B7083464E3B1</string>
+		</dict>
+		<key>BC90A157-735E-4514-830B-B27BC6B89F86</key>
+		<dict>
+			<key>from</key>
+			<string>20A9AAFD-949D-4A69-8F3F-2A0F7D3485E3 - 20A9AAFD-949D-4A69-8F3F-2A0F7D3485E3</string>
+			<key>to</key>
+			<string>CA2A4BD5-4BAA-4094-9F25-E6F23AB0426E - CA2A4BD5-4BAA-4094-9F25-E6F23AB0426E</string>
 		</dict>
 	</dict>
 	<key>state</key>
@@ -571,7 +571,7 @@ end
 			</array>
 		</dict>
 		<key>windowFrame</key>
-		<string>{{771, 0}, {1000, 877}}</string>
+		<string>{{73, 148}, {1000, 877}}</string>
 		<key>workflowViewScrollPosition</key>
 		<string>{{0, 0}, {619, 609}}</string>
 	</dict>

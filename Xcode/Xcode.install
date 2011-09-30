@@ -28,19 +28,33 @@ trap "$trapString" ERR
 
 #^ lastbuilt
 function lastbuilt {
-	print "${buildsource.derivedDirectory}_${buildsource.subtarget}.lastbuilt"
+	print "${derivedDirectory}.lastbuilt"
+}
+
+#^ directory_exists
+function directory_exists {
+	dirpath="${1:?directory_exists: argument not given}"
+	if [[ -e "${dirpath}" ]] ; then
+		if [[ ! -d "${dirpath}" ]] ; then
+			print "specified directory path ${dirpath} exists but is not a directory"
+			return 1
+		fi
+	else
+		print "directory path ${dirpath} does not exist"
+		return 1
+	fi
 }
 
 #^ buildsource_validate
 function buildsource_validate {
-	srcdir="${buildsource.sourceDirectory}"
-	dstdir="${buildsource.destinationDirectory}"
-	derived="${buildsource.derivedDirectory}"
+	srcdir="${sourceDirectory}"
+	dstdir="${destinationDirectory}"
+	derived="${derivedDirectory}"
 	msg=""
 	if [[ -n "${srcdir}" ]] ; then
 		if [[ -e "${srcdir}" ]] ; then
 			if [[ ! -d "${srcdir}" ]] ; then
-				msg="specified source directory ${srcdir} exists and is not a directory"
+				msg="specified source directory ${srcdir} exists but is not a directory"
 			fi
 		else
 			msg="source directory ${srcdir} does not exist"
@@ -51,14 +65,14 @@ function buildsource_validate {
 	if [[ ! -n "${msg}" ]] ; then
 		if [[ -e "${dstdir}" ]] ; then
 			if [[ ! -d "${dstdir}" ]] ; then
-				msg="specified destination directory ${dstdir} exists and is not a directory"
+				msg="specified destination directory ${dstdir} exists but is not a directory"
 			fi
 		fi
 	fi
 	if [[ ! -n "${msg}" ]] ; then
 		if [[ -e "${derived}" ]] ; then
 			if [[ ! -d "${derived}" ]] ; then
-				msg="specified derived directory ${derived} exists and is not a directory"
+				msg="specified derived directory ${derived} exists but is not a directory"
 			fi
 		fi
 	fi
@@ -72,19 +86,25 @@ function buildsource_validate {
 function buildsource_process {
 	processFunction="${1?process function not specified}"
 
-	buildsource_validate
+	msg="$(directory_exists "${sourceDirectory}")"
 	if [[ "$?" > 0 ]] ; then
-		print "*** invalid buildsource"
+		print "*** invalid source directory: $msg"
+		return 1
+	fi
+	
+	msg="$(directory_exists "${derivedDirectory}")"
+	if [[ "$?" > 0 ]] ; then
+		print "*** invalid derived directory: $msg"
 		return 1
 	fi
 	
 	fs=0
 	typeset -i errcnt=0
-	cd "${buildsource.sourceDirectory}"
+	cd "${sourceDirectory}"
 	if [[ -e "$(lastbuilt)" ]] ; then
-		find . -path '*/.svn' -prune -o -type f -newer $(lastbuilt) | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.build$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
+		find . -path '*/.svn' -prune -o -type f -newer $(lastbuilt) | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.install$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
 	else
-		find . -path '*/.svn' -prune -o -type f | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.build$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
+		find . -path '*/.svn' -prune -o -type f | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.install$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
 	fi
 	if [[ "$?" > 0 ]] ; then
 		print "*** could not write file list"
@@ -101,14 +121,18 @@ function buildsource_process {
 		fs="$?"
 		msg="failed"
 		if [[ ${fs} = 0 ]] ; then
-			msg="succeeded"
+			if [[ -n "${destinationDirectory}" ]] ; then
+				msg="succeeded"
+			else
+				msg="no action"
+			fi	
 		else
 			errcnt+=1
 		fi
 		print "${msg}"
 	done < "${flist}"
 	if [[ ${errcnt} = 0 ]] ; then
-		mkdir -p "${buildsource.derivedDirectory}"
+		mkdir -p "${derivedDirectory}"
 		print $(basename $(lastbuilt)) $(date) > $(lastbuilt)
 		print "build succeeded"
 		fs=0
@@ -125,28 +149,74 @@ function buildsource_process {
 
 #^ buildsource_clean
 function buildsource_clean {
-	msg="$(buildsource_validate)"
+	msg="$(directory_exists "${derivedDirectory}")"
 	if [[ "$?" > 0 ]] ; then
-		print "*** invalid buildsource: $msg"
+		print "*** invalid derived directory: $msg"
 		return 1
 	fi
 
 	rm "$(lastbuilt)"
 }
 
+#^ processFile
+2function processFile {
+	
+	fl="${1?missing filename}"
+	sourceFolder="${fl%%/*}"	# first path component
+	sourcePath="${fl#*/}"		# remaining path components
+
+	targetPath="${sourcePath}"
+	if [[ "${prevfldr}" != "${sourceFolder}" ]] ; then
+		destinationDirectory=""
+		case "${sourceFolder}" in
+			"Templates" )
+				destinationDirectory="${HOME}/Library/Developer/Xcode/Templates"
+				;;
+			"Workflows" )
+				destinationDirectory="${HOME}/Library/Scripts/Xcode"
+				;;
+			"_Tests" )
+				;;	#handled elsewhere
+			* )
+				print "source folder ${sourceDirectory}/${sourceFolder} not handled"
+				return 1
+				;;
+		esac
+		if [[ -n "${destinationDirectory}" ]] ; then
+			msg="$(directory_exists "${destinationDirectory}")"
+			if [[ "$?" > 0 ]] ; then
+				print "*** invalid destinationDirectory directory: $msg"
+				return 1
+			fi
+		fi
+		prevfldr="${sourceFolder}"
+	fi
+
+	if [[ -n "${destinationDirectory}" ]] ; then
+		mkdir -p "$(dirname "${destinationDirectory}"/${targetPath})"
+		if [[ "${?}" > 0 ]] ; then
+			print "*** could not create directory $(dirname ${destinationDirectory}/${targetPath})"
+			return 1
+		fi
+		cp "${sourceDirectory}/"${sourceFolder}"/${sourcePath}" "${destinationDirectory}/${targetPath}"
+		if [[ "${?}" > 0 ]] ; then
+			print "*** could not copy ${sourceDirectory}/"${sourceFolder}"/${sourcePath} to ${destinationDirectory}/${targetPath}"
+			return 1
+		fi
+	fi
+}
+
 #^ copySource
 function copySource {
-	print "hi"
 	fl="${1?missing filename}"
-	print "$(dirname "${buildsource.destinationDirectory}")"
-	mkdir -p "$(dirname "${buildsource.destinationDirectory}"/${fl})"
+	mkdir -p "$(dirname "${destinationDirectory}"/${fl})"
 	if [[ "${?}" > 0 ]] ; then
-		print "*** could not create directory $(dirname ${buildsource.destinationDirectory}/${fl})"
+		print "*** could not create directory $(dirname ${destinationDirectory}/${fl})"
 		return 1
 	fi
-	cp "${buildsource.sourceDirectory}/${fl}" "${buildsource.destinationDirectory}/${fl}"
+	cp "${sourceDirectory}/${fl}" "${destinationDirectory}/${fl}"
 	if [[ "${?}" > 0 ]] ; then
-		print "*** could not copy ${buildsource.sourceDirectory}/${fl} to ${buildsource.destinationDirectory}/${fl}"
+		print "*** could not copy ${sourceDirectory}/${fl} to ${destinationDirectory}/${fl}"
 		return 1
 	fi
 }
@@ -194,47 +264,28 @@ project="${1:?Usage: Xcode.install <ProjectName>}"
 target="$(basename ${0%.build})"
 flist="${CCDev}/tmp/flist"
 mkdir -p "${CCDev}/tmp"
+prevfldr=""
 
-buildsource_FileTemplates=(
-	sourceDirectory="${HOME}/Dev/Support/Xcode/Templates/FileTemplates"
-	destinationDirectory="${HOME}/Library/Developer/Xcode/Templates/File Templates"
-	derivedDirectory="${CCDev}/build/Support/Xcode" subtarget="FileTemplates")
-
-buildsource_Workflows=(
-	sourceDirectory="${HOME}/Dev/Support/Xcode/Workflows"
-	destinationDirectory="${HOME}/Library/Scripts/Xcode"
-	derivedDirectory="${CCDev}/build/Support/Xcode" subtarget="Workflows")
-
-print "$project $target $flist"
-print "doClean: ${doClean}; doBuild: ${doBuild}; doTest: ${doTest}"
+sourceDirectory="${HOME}/Dev/Support/Xcode"
+destinationDirectory="${HOME}/Library/Developer/Xcode"
+derivedDirectory="${CCDev}/build/Support/Xcode"
 
 st=0
 
-print $(lastbuilt)
-	
 if [[ ${doClean} > 0 ]] ; then
-	nameref buildsource=buildsource_FileTemplates
 	buildsource_clean
 	st="$?"
 fi
 
 if [[ ${st} = 0 && ${doBuild} > 0 ]] ; then
-	nameref buildsource=buildsource_FileTemplates
-	buildsource_process "copySource"
+	buildsource_process "processFile"
 	st="$?"
 	cd "${basedir}" 
-	if [[ ${st} = 0 ]] ; then
-		nameref buildsource=buildsource_Workflows
-		buildsource_process "copySource"
-		st="$?"
-		cd "${basedir}" 
-	fi
 fi
 
 if [[ ${st} = 0 && ${doTest} > 0 ]] ; then
 	typeset -i failcnt=0
 
-	pwd
 	print "== Xcode/_Tests/testXcode.ksh"
 	trap "" ERR
 	result=$(Xcode/_Tests/testXcode.ksh)
