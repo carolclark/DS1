@@ -110,7 +110,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "../Xcode/Xcode.install \"Support\"";
+			shellScript = "cd ..; Xcode/Xcode.install";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

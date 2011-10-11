@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					ï¿½2006-11 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					©2006-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -717,17 +717,13 @@ resource restype_Slate (resid_FileMenu, "File") { {
 	} }
 } };
 
-#define _fnewFilter		Click { 1, 200, 176, _window, _topCenter }
-#define tg_h	-72
-#define	tg_t	386
-#define	tg_s	19
+#define	_clickFilename			Click { 1, fname_h, fname_v, _window, _topCenter }
+#define	_clickFilter			Click { 1, flt_h, flt_v, _window, _topCenter }
 #define _FileNewStandards_		\
 	_SlateGlobals_,		\
 	ExitEvent { "exit", "" },	NilAction{},		\
 	ExitEvent { "cancel", "" },	Keypress { kc_period, mf_command },		\
 	ExitEvent { "okay", "" },	Keypress { kc_return, 0 },		\
-	Event { "tab", "" },		_tab,		\
-	Event { "tab back", "" },	Keypress { kc_tab, mf_shift },		\
 	_DoJumpSubslate_,		\
 	_JumpDownSubslate_,		\
 	_JumpNorthSubslate_,		\
@@ -739,18 +735,28 @@ resource restype_Slate (resid_FileMenu, "File") { {
 	_TypeXcodeSlate_,		\
 	Event { "next", "" },		_return,		\
 	Event { "previous", "" },	Click { 1, 205, 75, _window, _topCenter },		\
-	Event { "filename", "" },	Click { 1, 0, 130, _window, _topCenter },		\
-	Event { "location", "" },	Click { 1, 0, 180, _window, _topCenter },		\
-	Event { "filter", "" },		_fnewFilter,		\
-	Event { "navigate", "" },	Sequence{}, _fnewFilter, _tab, _tab, endSequence{},		\
-	Event { "group", "" },		Click { 1, 0, 355, _window, _topCenter },		\
+	Event { "filename", "" },	_clickFilename,		\
+	Event { "history", "" },	Sequence{}, _clickFilename, _tab, _tab, endSequence{},		\
+	Event { "view", "" },		Sequence{}, _clickFilter, _tabBack, _tabBack, endSequence{},	\
+	Event { "location", "" },	Sequence{}, _clickFilter, _tabBack, endSequence{},		\
+	Event { "filter", "" },		_clickFilter,		\
+	Event { "devices", "" },	Sequence{}, _clickFilter, _tab, endSequence{},		\
+	Event { "navigate", "" },	Sequence{}, _clickFilter, _tab, _tab, endSequence{},		\
+	Event { "group", "" },		Sequence{}, _clickFilter, _tab, _tab, _tab, endSequence{},		\
+	Event { "new folder", "" },	Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, _tab, endSequence{},		\
 	Event { "target 1", "" },	Click { 1, tg_h, tg_t+0*tg_s, _window, _topCenter },		\
 	Event { "target 2", "" },	Click { 1, tg_h, tg_t+1*tg_s, _window, _topCenter },		\
 	Event { "target 3", "" },	Click { 1, tg_h, tg_t+2*tg_s, _window, _topCenter },		\
 	Event { "target 4", "" },	Click { 1, tg_h, tg_t+3*tg_s, _window, _topCenter },		\
-	Event { "target 5", "" },	Click { 1, tg_h, tg_t+4*tg_s, _window, _topCenter },		\
-	Event { "new folder", "" },	Click { 1, -194, 517, _window, _topCenter }
+	Event { "target 5", "" },	Click { 1, tg_h, tg_t+4*tg_s, _window, _topCenter }
 
+#define	fname_h	0		// filename field, from _window _topCenter
+#define	fname_v	130
+#define	flt_h	200		// filter field, from _window _topCenter
+#define	flt_v	176
+#define tg_h	10		// target rows, from _window _topCenter
+#define	tg_t	386
+#define	tg_s	19
 resource restype_Slate (resid_NewFile, "New File") { {
 	Slate { "New File", {
 		_FileNewStandards_,
@@ -1227,7 +1233,7 @@ resource restype_Slate (resid_bbeSelectMarker, "BBEdit SelectMarker") { {
 		Event { "go line", "" },	Keypress { kc_J, mf_command },
 		ExitEvent { "exit", "" },	NilAction{},
 		Event { "go back", "" },	Launch { DevApps_"XCode.app", resid_Xcode },
-		Event { "okay", "" },		Sequence{}, Keypress { kc_left, mf_command }, TypeText { "<!-- @marker \"" }, Keypress { kc_right, mf_command }, TypeText { "\"" }, Keypress { kc_left, mf_command + mf_shift }, Keypress { kc_E, mf_command }, Keypress { kc_Z, mf_command }, Keypress { kc_Z, mf_command }, Keypress { kc_W, mf_command }, Launch { DevApps_"XCode.app", resid_Xcode }, Keypress { kc_G, mf_command }, endSequence{},
+		Event { "okay", "" },		Sequence{}, Keypress { kc_left, mf_command }, Keypress { kc_right, mf_command + mf_shift }, Wait { 10 }, Keypress { kc_E, mf_command }, Keypress { kc_W, mf_command }, Launch { DevApps_"XCode.app", resid_Xcode }, Keypress { kc_G, mf_command }, endSequence{},
 	} }
 } };
 
@@ -1336,6 +1342,13 @@ resource restype_Slate (resid_edProject, "Project") { {
 	} }
 } };
 
+#define	fname_h	0		// filename field, from _window _topCenter
+#define	fname_v	130
+#define	flt_h	200		// filter field, from _window _topCenter
+#define	flt_v	176
+#define tg_h	-72		// target rows, from _window _topCenter
+#define	tg_t	386
+#define	tg_s	19
 resource restype_Slate (resid_projAddTarget, "AddTarget") { {
 	Slate { "addTarget", {
 		_FileNewStandards_,
@@ -1466,6 +1479,7 @@ resource restype_Slate (resid_edSearch, "Search Multiple") { {
 		_CloseSubslate_,
 		_TypeXcodeSlate_,
 		_DirectionKeys_,
+		_WhitespaceKeys_,
 		_CommandSlate_,
 		_IMouseSlate_,
 		Event { "enter find string", "" },		Keypress { kc_E, mf_command },

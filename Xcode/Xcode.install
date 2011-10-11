@@ -26,83 +26,24 @@ USAGE='
 trapString='errtrap Xcode.build $LINENO $?'
 trap "$trapString" ERR
 
-#^ lastbuilt
-function lastbuilt {
-	print "${derivedDirectory}.lastbuilt"
-}
-
-#^ directory_exists
-function directory_exists {
-	dirpath="${1:?directory_exists: argument not given}"
-	if [[ -e "${dirpath}" ]] ; then
-		if [[ ! -d "${dirpath}" ]] ; then
-			print "specified directory path ${dirpath} exists but is not a directory"
-			return 1
-		fi
-	else
-		print "directory path ${dirpath} does not exist"
-		return 1
-	fi
-}
-
-#^ buildsource_validate
-function buildsource_validate {
-	srcdir="${sourceDirectory}"
-	dstdir="${destinationDirectory}"
-	derived="${derivedDirectory}"
-	msg=""
-	if [[ -n "${srcdir}" ]] ; then
-		if [[ -e "${srcdir}" ]] ; then
-			if [[ ! -d "${srcdir}" ]] ; then
-				msg="specified source directory ${srcdir} exists but is not a directory"
-			fi
-		else
-			msg="source directory ${srcdir} does not exist"
-		fi
-	else
-		msg="source directory undefined"
-	fi
-	if [[ ! -n "${msg}" ]] ; then
-		if [[ -e "${dstdir}" ]] ; then
-			if [[ ! -d "${dstdir}" ]] ; then
-				msg="specified destination directory ${dstdir} exists but is not a directory"
-			fi
-		fi
-	fi
-	if [[ ! -n "${msg}" ]] ; then
-		if [[ -e "${derived}" ]] ; then
-			if [[ ! -d "${derived}" ]] ; then
-				msg="specified derived directory ${derived} exists but is not a directory"
-			fi
-		fi
-	fi
-	if [[ -n "${msg}" ]] ; then
-		print "${msg}"
-		return 1
-	fi	
-}
-
 #^ buildsource_process
 function buildsource_process {
 	processFunction="${1?process function not specified}"
 
-	msg="$(directory_exists "${sourceDirectory}")"
-	if [[ "$?" > 0 ]] ; then
-		print "*** invalid source directory: $msg"
-		return 1
-	fi
-	
-	msg="$(directory_exists "${derivedDirectory}")"
-	if [[ "$?" > 0 ]] ; then
-		print "*** invalid derived directory: $msg"
-		return 1
+	if [[ -e "${sourceDirectory}" ]] ; then
+		if [[ ! -d "${sourceDirectory}" ]] ; then
+			print "source directory path ${sourceDirectory} exists but is not a directory"
+			return 1
+		fi
+	else
+		print "source directory path ${sourceDirectory} does not exist"
 	fi
 	
 	fs=0
 	typeset -i errcnt=0
 	cd "${sourceDirectory}"
-	if [[ -e "$(lastbuilt)" ]] ; then
-		find . -path '*/.svn' -prune -o -type f -newer $(lastbuilt) | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.install$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
+	if [[ -e "${lastbuilt}" ]] ; then
+		find . -path '*/.svn' -prune -o -type f -newer ${lastbuilt} | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.install$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
 	else
 		find . -path '*/.svn' -prune -o -type f | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.install$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
 	fi
@@ -132,8 +73,8 @@ function buildsource_process {
 		print "${msg}"
 	done < "${flist}"
 	if [[ ${errcnt} = 0 ]] ; then
-		mkdir -p "${derivedDirectory}"
-		print $(basename $(lastbuilt)) $(date) > $(lastbuilt)
+		mkdir -p "$(dirname ${lastbuilt})"
+		print $(basename ${lastbuilt}) $(date) > ${lastbuilt}
 		print "build succeeded"
 		fs=0
 	else
@@ -149,17 +90,13 @@ function buildsource_process {
 
 #^ buildsource_clean
 function buildsource_clean {
-	msg="$(directory_exists "${derivedDirectory}")"
-	if [[ "$?" > 0 ]] ; then
-		print "*** invalid derived directory: $msg"
-		return 1
+	if [[ -e "${lastbuilt}" ]] ; then
+		rm "${lastbuilt}"
 	fi
-
-	rm "$(lastbuilt)"
 }
 
 #^ processFile
-2function processFile {
+function processFile {
 	
 	fl="${1?missing filename}"
 	sourceFolder="${fl%%/*}"	# first path component
@@ -183,9 +120,9 @@ function buildsource_clean {
 				;;
 		esac
 		if [[ -n "${destinationDirectory}" ]] ; then
-			msg="$(directory_exists "${destinationDirectory}")"
-			if [[ "$?" > 0 ]] ; then
-				print "*** invalid destinationDirectory directory: $msg"
+			mkdir -p "$(dirname "${destinationDirectory}"/${targetPath})"
+			if [[ "${?}" > 0 ]] ; then
+				print "*** could not create directory $(dirname ${destinationDirectory}/${targetPath})"
 				return 1
 			fi
 		fi
@@ -193,11 +130,7 @@ function buildsource_clean {
 	fi
 
 	if [[ -n "${destinationDirectory}" ]] ; then
-		mkdir -p "$(dirname "${destinationDirectory}"/${targetPath})"
-		if [[ "${?}" > 0 ]] ; then
-			print "*** could not create directory $(dirname ${destinationDirectory}/${targetPath})"
-			return 1
-		fi
+		mkdir -p "$(dirname ${destinationDirectory}/${targetPath})"
 		cp "${sourceDirectory}/"${sourceFolder}"/${sourcePath}" "${destinationDirectory}/${targetPath}"
 		if [[ "${?}" > 0 ]] ; then
 			print "*** could not copy ${sourceDirectory}/"${sourceFolder}"/${sourcePath} to ${destinationDirectory}/${targetPath}"
@@ -258,18 +191,20 @@ while [[ $1 == -* ]]; do
 	shift
 done
 
-cd ..
-basedir="$(pwd)"
-project="${1:?Usage: Xcode.install <ProjectName>}"
-target="$(basename ${0%.build})"
-flist="${CCDev}/tmp/flist"
+scriptpath="$(pwd)/${0}"
+target="$(basename ${scriptpath%.install})"
+basedir="${scriptpath%/*/${target}.install}"
+project="${basedir##/*/}"
+sourceDirectory="${basedir}/${target}"
+lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
+
+# print "scriptpath: ${scriptpath}; project: ${project}; target: ${target}; basedir: ${basedir}; sourceDirectory: ${sourceDirectory}; lastbuilt: ${lastbuilt}"
+
 mkdir -p "${CCDev}/tmp"
+flist="${CCDev}/tmp/flist"
 prevfldr=""
 
-sourceDirectory="${HOME}/Dev/Support/Xcode"
-destinationDirectory="${HOME}/Library/Developer/Xcode"
-derivedDirectory="${CCDev}/build/Support/Xcode"
-
+cd "${basedir}"
 st=0
 
 if [[ ${doClean} > 0 ]] ; then

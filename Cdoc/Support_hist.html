@@ -53,36 +53,41 @@
 				</ul></li>
 				<li>Xcode.install: install workflows at ~/Library/Scripts/Xcode</li>
 			</ul></li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-			<li>history documents: add a header level to section Active to provide for splitting larger topics into smaller sections</li>
-			<li>TechnicalDocs: corrections to Support_svn (this project's predecessor) docs to allow BBEdit:Validate All to pass</li>
-			<li>[_ccdev_install] CCDev.install<ul>
-				<li>Xcode.install processes files by folder</li>
-				<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
-					<li>new files ccInstall.func (extension dropped by installer), CCDev.install, CCDev/_Tests/TestCCDev.ksh: extract/refactor from Xcode.install</li>
-					<li>ccInstall --params<ul>
-						<li class='impl'>$*: string containing all arguments</li>
-						<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
-							#! /bin/ksh
-							
-							function getobj {
-							typeset -n obj=$1
-							obj=( first="a" second="b" third="${2}")
-							}
-							
-							caller:
-							#! /bin/ksh
-						
-							getobj myobj "Hello"
-							print $myobj
-							#( first=a second=b third=Hello )</li>
-					</ul></li>
-					<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
-					<li>CCDev.install (new): copies ~/Dev/Support/CCDev/Scripts/ccInstall.func to ~/CCDev/func/ccInstall</li>
-				</ul></li>
+			<li>goMarker.workflow: remove code specific to HTML markers in preparation for extending to other file types</li>
+			<li>Xcode.install: correct problems with creating derived directory folder and excluding *.install files; change expected directory and drop Project parameter; continued refactoring</li>
+			<li>Xcode.r: clean up _FileNewStandards_</li>
+			<li>TechnicalDocs<ul>
+				<li>history documents: add a header level to section Active to provide for splitting larger topics into smaller sections</li>
+				<li>corrections to Support_svn (this project's predecessor) docs to allow BBEdit:Validate All to pass</li>
 			</ul></li>
-			<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
 		</ul></li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>[_ccdev_install] CCDev.install<ul>
+			<li>Xcode.install processes files by folder</li>
+			<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
+				<li>new files ccInstall.func (extension dropped by installer), CCDev.install, CCDev/_Tests/TestCCDev.ksh: extract/refactor from Xcode.install</li>
+				<li>ccInstall --params<ul>
+					<li class='impl'>$*: string containing all arguments</li>
+					<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
+						#! /bin/ksh
+						
+						function getobj {
+						typeset -n obj=$1
+						obj=( first="a" second="b" third="${2}")
+						}
+						
+						caller:
+						#! /bin/ksh
+					
+						getobj myobj "Hello"
+						print $myobj
+						#( first=a second=b third=Hello )</li>
+				</ul></li>
+				<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
+				<li>CCDev.install (new): copies ~/Dev/Support/CCDev/Scripts/ccInstall.func to ~/CCDev/func/ccInstall</li>
+			</ul></li>
+		</ul></li>
+		<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
 		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
 		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
 	</ul>
