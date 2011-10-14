@@ -35,33 +35,18 @@
 	<h5 id="transferExisting_setup">Transfer Existing: Setup</h5><ul>
 		<li class='blurb'>There have been major changes in our development environment, including replacing Subversion with Git for Source Control. All existing projects, along with any still-active functionality, will be transferred into the new system.</li>
 		<li><a href="#transferExisting_compl"><i>(completed)</i></a></li>
-		<li>[historyWorkflow] Improve Cdoc History File Workflow [<a href="#_cdocdev">_cdocdev</a>]<ul>
-			<li>standardize existing history documents</li>
-			<li>add file templates ReadMe.html, CdocFile.html, HistoryFile.html</li>
-			<li>revert creation of new project TechnicalDocs (a false start)</li>
-			<li>Restructure this file to tie history information more effectively with associated branches and to reduce detail recorded within a development cycle.</li>
-			<li>Support_hist.html: reorder to do sections; move completed tasks into their section</li>
-			<li>synchronize Punkin_hist.html</li>
-			<li>Xcode:Script:go marker: workflow goMarker supports moving within a document to predefined markers [<a href="#_xcode">_xcode</a>]<ul>
-				<li>Accessor event<ul>
-					<li>Automator action<ul>
-						<li>AppleScript: get contents of Xcode's front document</li>
-						<li>ruby: grep and process list of markers</li>
-						<li>new BBEdit document with contents</li>
-					</ul></li>
-					<li>BBEdit: go to line; accept line number; select line's content; enter find string; go to Xcode; find again</li>
-				</ul></li>
-				<li>Xcode.install: install workflows at ~/Library/Scripts/Xcode</li>
+		<li>[cdocWorkflow] improve Cdoc workflow<ul>
+			<li>ViewInBrowser: new workflow to open, in Safari, the file in our TechnicalDocs site that corresponds to Xcode's front text document</li>
+			<li>Xcode.r: _FileNewStandards_: extend to _FileSaveStandards_ and _FileOpenStandards_; extract _FileDialogStandards_; add File:Open</li>
+			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+			<li>rename Cdoc files for as indicated to form Topic_Project.html for improved keyboard access<ul>
+				<li class='blurb'>Currently, many documentation files have names that start with the name of their project. This is inconvenient for file access from Xcode, where one can type the beginning of the file name to select that file. Also, some standard files have unusual abbreviations (eg. Support_hist) for historical reasons.</li>
+				<li>For existing projects in new format (Support, Punkin), rename documentation files as indicated to the form Topic_Project.html.</li>
 			</ul></li>
-			<li>goMarker.workflow: remove code specific to HTML markers in preparation for extending to other file types</li>
-			<li>Xcode.install: correct problems with creating derived directory folder and excluding *.install files; change expected directory and drop Project parameter; continued refactoring</li>
-			<li>Xcode.r: clean up _FileNewStandards_</li>
-			<li>TechnicalDocs<ul>
-				<li>history documents: add a header level to section Active to provide for splitting larger topics into smaller sections</li>
-				<li>corrections to Support_svn (this project's predecessor) docs to allow BBEdit:Validate All to pass</li>
+			<li>add templates for files Requirements_.html, UseCases_.html, Design_.html<ul>
+				<li>based on files Koala_Requirements.html, Koala_Design.html from deprecated project Koala_Try2; to be used for project Punkin</li>
 			</ul></li>
 		</ul></li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>[_ccdev_install] CCDev.install<ul>
 			<li>Xcode.install processes files by folder</li>
 			<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
@@ -119,10 +104,10 @@
 
 	<!-- @marker "In-House Documentation [_cdoc]" -->
 	<h4 id='_cdoc'>In-House Documentation <span class='ttag'>[_cdoc]</span></h4><ul>
-		<li>replace $Id fields with filenames</li>
+		<li>replace Subversion $Id fields with filenames</li>
 		<li>Support_svn history: move content to be preserved into Support files; new file SubversionServer for information, mostly obsolete, about that topic</li>
-		<li>update 'todo' sections</li>
-		<li>specify new threads for remaining content to be transferred from Support_svn (recent) and DevSupport (older) to Support</li>
+		<li>update sections with class 'todo'</li>
+		<li>plan for remaining content to be transferred from Support_svn (recent) and DevSupport (older) to Support</li>
 		<li>Tools.html: clean up headings within topics (search for "Installation and Configuration")</li>
 	</ul>
 	
@@ -149,9 +134,6 @@
 	
 	<!-- @marker "Git Workflow [_git]" -->
 	<h4 id='_git'>Git Workflow <span class='ttag'>[_git]</span></h4><ul>
-		<li>new file Git.html: establish workflows for project setup; status and commit; stash; remove squash; branch; merge; undo<ul>
-			<li class='blurb'>Contains notes made during creation of this Support repository.</li>
-		</ul></li>
 		<li>Support.html: Source Control<ul>
 			<li>reorganize to address both svn and git</li>
 		</ul></li>
@@ -192,7 +174,6 @@
 				<li>AppleScripts, Workflows: add to scripts menu; Slates call file directly</li>
 				<li>to call ruby from Accessor: <span class='mono'>do shell script "/usr/bin/ruby ~/CCDev/hello.rb"</span></li>
 			</ul></li>
-			<li>ViewInBrowser</li>
 			<li>Snippets<ul>
 				<li>Accessor: enter Snippet line with parameters</li>
 				<li>User: replace parameters; select line</li>
@@ -202,50 +183,47 @@
 			<li>AppleScript/OSA techniques<ul>
 				<li>for clean, upload Behaviors: <span class='mono'>tell application "Xcode" to return name of active target of project of active project document</span></li>
 				<li><span class='mono'>tell application id "com.apple.dt.Xcode" to set windowname to name of window 1</span>; then <span class='mono'>word 1 of windowname</span> is Project name, <span class='mono'>word -1 of windowname</span> is filename</li>
-				<li>getAllAndSelectedText.scpt: tell application id "com.apple.dt.Xcode"
+				<li>getSelectedText.scpt: tell application id "com.apple.dt.Xcode"
 					set windowname to name of window 1
 					set docname to word -1 of windowname
 					set doc to ""
 					repeat with adoc in text documents
-					if ((name of adoc as string) is docname) then
-					set doc to adoc
-					exit repeat
-					end if
+						if ((name of adoc as string) is docname) then
+							set doc to adoc
+							exit repeat
+						end if
 					end repeat
-					
-					end tell
 					set alltext to text of doc --***
-					
 					tell application "Xcode"
-					set seltext to ""
-					set sel to selected character range of doc
+						set seltext to ""
+						set sel to selected character range of doc
 					end tell
 					set cf to (item 1 of sel)
 					set cl to (item 2 of sel)
 					if (cl is greater than cf) then
-					set seltext to (characters cl through cf) of alltext as string
+						set seltext to (characters cl through cf) of alltext as string
 					end if
 					seltext --***
 					
 					tell application "Xcode"
-					set selected character range of doc to {5, 10} -- nyi - maybe someday
+						set selected character range of doc to {5, 10} -- nyi - maybe someday
 					end tell</li>
 				<li>processSnippetText.scpt:to processInput(inputString)
-					set savedDelimiters to AppleScript's text item delimiters
-					set tag to word 1 of inputString
-					set b to (length of tag) + 3
-					set e to length of inputString
-					set paramlist to (characters b thru e of inputString) as string
-					set AppleScript's text item delimiters to {"; "}
-					set paramItems to every text item of paramlist
-					set params to {}
-					set AppleScript's text item delimiters to {"|"}
-					repeat with param in paramItems
-					set split to every text item of param
-					set params to params &amp; {{item 1 of split, item 2 of split}}
-					end repeat
-					set AppleScript's text item delimiters to savedDelimiters
-					return {tag, {params}}
+						set savedDelimiters to AppleScript's text item delimiters
+						set tag to word 1 of inputString
+						set b to (length of tag) + 3
+						set e to length of inputString
+						set paramlist to (characters b thru e of inputString) as string
+						set AppleScript's text item delimiters to {"; "}
+						set paramItems to every text item of paramlist
+						set params to {}
+						set AppleScript's text item delimiters to {"|"}
+						repeat with param in paramItems
+							set split to every text item of param
+							set params to params &amp; {{item 1 of split, item 2 of split}}
+						end repeat
+						set AppleScript's text item delimiters to savedDelimiters
+						return {tag, {params}}
 					end processInput
 					
 					on replace(searchString, replaceString)
@@ -301,7 +279,9 @@
 				<li>replace all instances of single quotes inside href tags double quotes<ul>
 					<li class='blurb'>because Xcode does not handle single quotes in href tags correctly</li>
 				</ul></li>
-				<li>add new file Git.html</li>
+				<li>new file Git.html: establish workflows for project setup; status and commit; stash; remove squash; branch; merge; undo<ul>
+					<li class='blurb'>Contains notes made during creation of this Support repository.</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
 		<li>move Accessor's UserSlates into Support [_userSlates]<ul>
@@ -373,6 +353,33 @@
 			</ul></li>
 		</ul></li>
 		<li class='tldate'>[09/20/2011]</li>
+		<li>[historyWorkflow] Improve Cdoc History File Workflow [<a href="#_cdocdev">_cdocdev</a>]<ul>
+			<li>standardize existing history documents</li>
+			<li>add file templates ReadMe.html, CdocFile.html, HistoryFile.html</li>
+			<li>revert creation of new project TechnicalDocs (a false start)</li>
+			<li>Restructure this file to tie history information more effectively with associated branches and to reduce detail recorded within a development cycle.</li>
+			<li>Support_hist.html: reorder to do sections; move completed tasks into their section</li>
+			<li>synchronize Punkin_hist.html</li>
+			<li>Xcode:Script:go marker: workflow goMarker supports moving within a document to predefined markers [<a href="#_xcode">_xcode</a>]<ul>
+				<li>Accessor event<ul>
+					<li>Automator action<ul>
+						<li>AppleScript: get contents of Xcode's front document</li>
+						<li>ruby: grep and process list of markers</li>
+						<li>new BBEdit document with contents</li>
+					</ul></li>
+					<li>BBEdit: go to line; accept line number; select line's content; enter find string; go to Xcode; find again</li>
+				</ul></li>
+				<li>Xcode.install: install workflows at ~/Library/Scripts/Xcode</li>
+			</ul></li>
+			<li>goMarker.workflow: remove code specific to HTML markers in preparation for extending to other file types</li>
+			<li>Xcode.install: correct problems with creating derived directory folder and excluding *.install files; change expected directory and drop Project parameter; continued refactoring</li>
+			<li>Xcode.r: clean up _FileNewStandards_</li>
+			<li>TechnicalDocs<ul>
+				<li>history documents: add a header level to section Active to provide for splitting larger topics into smaller sections</li>
+				<li>corrections to Support_svn (this project's predecessor) docs to allow BBEdit:Validate All to pass</li>
+			</ul></li>
+		</ul></li>
+		<li class='tldate'>[10/14/2011]</li>
 	</ul>
 
 	<!-- @marker "[end]" -->

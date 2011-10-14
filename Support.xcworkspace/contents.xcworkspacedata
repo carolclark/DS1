@@ -96,6 +96,9 @@
          location = "container:"
          name = "Workflows">
          <FileRef
+            location = "group:Xcode/Workflows/viewInBrowser.workflow">
+         </FileRef>
+         <FileRef
             location = "group:Xcode/Workflows/frontTextDoc.workflow">
          </FileRef>
          <FileRef

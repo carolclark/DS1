@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					©2006-11 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					ï¿½2006-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -37,8 +37,9 @@
 
 #define resid_FileMenu				resid_Xcode+45
 	#define resid_NewFile				resid_FileMenu+1
-	#define resid_AddFiles				resid_FileMenu+2
-	#define resid_SourceControl			resid_FileMenu+3
+	#define resid_OpenFile				resid_FileMenu+2
+	#define resid_AddFiles				resid_FileMenu+3
+	#define resid_SourceControl			resid_FileMenu+4
 
 #define resid_firstFileDialog		resid_Xcode+50
 	#define resid_FileOpen				resid_firstFileDialog+0
@@ -664,30 +665,47 @@ resource restype_Slate (resid_XCTerminal, "terminal support") { {
 
 #pragma mark 4 === Standard Menus
 #pragma mark File Menu
+#define	_clickFilename			Click { 1, fname_h, fname_v, _window, _topCenter }
+#define	_clickFilter			Click { 1, flt_h, flt_v, _window, _topCenter }
+
 #define _FileDialogStandards_	\
 	_SlateGlobals_,				\
-	Event { "go to folder", "" },	ResSubslate { resid_GoToFolder },                       	\
 	ExitEvent { "exit", "" },		NilAction{},                                            	\
 	ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },                     	\
 	ExitEvent { "okay", "" },		_return,                                                	\
-	Event { "location", "" },		Click { 1, 0, 100+_headerHt, _pwindow, _topCenter },    	\
-	Event { "filter", "" },			Click { 1, 280, 100+_headerHt, _pwindow, _topCenter },		\
-	Event { "navigate", "" },		Sequence{}, Click { 1, 280, 100+_headerHt, _pwindow, _topCenter }, _tab, _tab, endSequence{},    	\
-	Event { "go back", "" },		Click { 1, -246, 100+_headerHt, _pwindow, _topCenter }, 	\
-	Event { "go forward", "" },		Click { 1, -220, 100+_headerHt, _pwindow, _topCenter }, 	\
-	Event { "icons", "" },			Keypress { kc_1, mf_command },								\
-	Event { "list", "" },			Keypress { kc_2, mf_command },								\
-	Event { "panel", "" },			Keypress { kc_3, mf_command },								\
-	Event { "new folder", "" },		Click { 1, -200, 440+_headerHt, _pwindow, _topCenter },		\
-	_DirectionKeys_,                                                               				\
-	_CommandSlate_,                                                                        		\
-	_WhitespaceKeys_,                                                                      		\
+	Event { "go to folder", "" },	Sequence{}, Keypress { kc_G, mf_command }, ResSubslate { resid_GoToFolder }, endSequence{},		\
+	Event { "history", "" },		Sequence{}, _clickFilter, _tabBack, _tabBack, _tabBack, endSequence{},		\
+	Event { "view", "" },			Sequence{}, _clickFilter, _tabBack, _tabBack, endSequence{},	\
+	Event { "location", "" },		Sequence{}, _clickFilter, _tabBack, endSequence{},	    	\
+	Event { "filter", "" },			_clickFilter,												\
+	Event { "devices", "" },		Sequence{}, _clickFilter, _tab, endSequence{},		\
+	Event { "navigate", "" },		Sequence{}, _clickFilter, _tab, _tab, endSequence{},		\
+	_DoJumpSubslate_,																			\
 	_JumpNorthSubslate_,                                                                   		\
 	_JumpDownSubslate_,                                                                    		\
+	_DirectionKeys_,                                                               				\
+	_WhitespaceKeys_,                                                                      		\
+	_CommandSlate_,                                                                        		\
 	_LetterKeys_,                                                                          		\
 	_IMouseSlate_,																				\
-	_DoSelectSubslate_,																			\
 	_TypeXcodeSlate_
+
+#define _FileOpenStandards_	\
+	Event { "destination", "" },	Sequence{}, _clickFilter, _tab, _tab, _tab, endSequence{},	\
+	Event { "folders", "" },		Sequence{}, _clickFilter, _tab, _tab, _tab,  _tab, endSequence{},	\
+	_DoSelectSubslate_,																			\
+	_FileDialogStandards_
+
+#define _FileSaveStandards_		\
+	Event { "filename", "" },	_clickFilename,		\
+	Event { "new folder", "" },	Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, _tab, endSequence{},		\
+	Event { "group", "" },		Sequence{}, _clickFilter, _tab, _tab, _tab, endSequence{},	\
+	Event { "target 1", "" },	Click { 1, tg_h, tg_t+0*tg_s, _window, _topCenter },		\
+	Event { "target 2", "" },	Click { 1, tg_h, tg_t+1*tg_s, _window, _topCenter },		\
+	Event { "target 3", "" },	Click { 1, tg_h, tg_t+2*tg_s, _window, _topCenter },		\
+	Event { "target 4", "" },	Click { 1, tg_h, tg_t+3*tg_s, _window, _topCenter },		\
+	Event { "target 5", "" },	Click { 1, tg_h, tg_t+4*tg_s, _window, _topCenter },		\
+	_FileDialogStandards_
 
 resource restype_Slate (resid_FileMenu, "File") { {
 	Slate { "File", {
@@ -700,6 +718,8 @@ resource restype_Slate (resid_FileMenu, "File") { {
 			Keypress { kc_N, mf_command + mf_shift }, ResSubslate { resid_NewFile }, endSequence{},
         Event { "New Workspace", "" },			Sequence{},
 			Keypress { kc_N, mf_command + mf_control }, ResSubslate { resid_NewFile }, endSequence{},
+		Event { "Open File", "" },				Sequence{},
+			Keypress { kc_O, mf_command }, ResSubslate { resid_OpenFile }, endSequence{},
 		ExitEvent { "new group", "" },			Keypress { kc_N, mf_command + mf_option },
 		ExitEvent { "new tab", "" },			Keypress { kc_T, mf_command },
 		ExitEvent { "close window", "" },		Keypress { kc_W, mf_command + mf_shift },
@@ -717,39 +737,6 @@ resource restype_Slate (resid_FileMenu, "File") { {
 	} }
 } };
 
-#define	_clickFilename			Click { 1, fname_h, fname_v, _window, _topCenter }
-#define	_clickFilter			Click { 1, flt_h, flt_v, _window, _topCenter }
-#define _FileNewStandards_		\
-	_SlateGlobals_,		\
-	ExitEvent { "exit", "" },	NilAction{},		\
-	ExitEvent { "cancel", "" },	Keypress { kc_period, mf_command },		\
-	ExitEvent { "okay", "" },	Keypress { kc_return, 0 },		\
-	_DoJumpSubslate_,		\
-	_JumpDownSubslate_,		\
-	_JumpNorthSubslate_,		\
-	_DirectionKeys_,		\
-	_WhitespaceKeys_,	\
-	_LetterKeys_,		\
-	_CommandSlate_,		\
-	_IMouseSlate_,		\
-	_TypeXcodeSlate_,		\
-	Event { "next", "" },		_return,		\
-	Event { "previous", "" },	Click { 1, 205, 75, _window, _topCenter },		\
-	Event { "filename", "" },	_clickFilename,		\
-	Event { "history", "" },	Sequence{}, _clickFilename, _tab, _tab, endSequence{},		\
-	Event { "view", "" },		Sequence{}, _clickFilter, _tabBack, _tabBack, endSequence{},	\
-	Event { "location", "" },	Sequence{}, _clickFilter, _tabBack, endSequence{},		\
-	Event { "filter", "" },		_clickFilter,		\
-	Event { "devices", "" },	Sequence{}, _clickFilter, _tab, endSequence{},		\
-	Event { "navigate", "" },	Sequence{}, _clickFilter, _tab, _tab, endSequence{},		\
-	Event { "group", "" },		Sequence{}, _clickFilter, _tab, _tab, _tab, endSequence{},		\
-	Event { "new folder", "" },	Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, _tab, endSequence{},		\
-	Event { "target 1", "" },	Click { 1, tg_h, tg_t+0*tg_s, _window, _topCenter },		\
-	Event { "target 2", "" },	Click { 1, tg_h, tg_t+1*tg_s, _window, _topCenter },		\
-	Event { "target 3", "" },	Click { 1, tg_h, tg_t+2*tg_s, _window, _topCenter },		\
-	Event { "target 4", "" },	Click { 1, tg_h, tg_t+3*tg_s, _window, _topCenter },		\
-	Event { "target 5", "" },	Click { 1, tg_h, tg_t+4*tg_s, _window, _topCenter }
-
 #define	fname_h	0		// filename field, from _window _topCenter
 #define	fname_v	130
 #define	flt_h	200		// filter field, from _window _topCenter
@@ -759,19 +746,24 @@ resource restype_Slate (resid_FileMenu, "File") { {
 #define	tg_s	19
 resource restype_Slate (resid_NewFile, "New File") { {
 	Slate { "New File", {
-		_FileNewStandards_,
+		_FileSaveStandards_,
 	} }
 } };
 
-/* todo */
-#define _offsetleft	-152
-#define	_toprow		276
-#define _rsp		18
-#define _headerHt 	10
+#define	flt_h	350		// filter field, from _window _topCenter
+#define	flt_v	40
+resource restype_Slate (resid_OpenFile, "Open File") { {
+	Slate { "Open File", {
+		_FileOpenStandards_,
+	} }
+} };
+
+#define	flt_h	350		// filter field, from _window _topCenter
+#define	flt_v	120
 resource restype_Slate (resid_AddFiles, "Add Files") { {
 	Slate { "Add Files", {
 		Event { "targets", "" },	ResSubslate { resid_SelectTargets },
-		_FileDialogStandards_,
+		_FileOpenStandards_,
 	} }
 } };
 
@@ -822,14 +814,14 @@ resource restype_Slate (resid_Commit, "Commit") { {
 #define _headerHt	0
 resource restype_Slate (resid_FileOpen, "Open File Dialog") { {
 	Slate { "Open", {
-		_FileDialogStandards_,
+		_FileOpenStandards_,
 	} }
 } };
 
 #define _headerHt	60
 resource restype_Slate (resid_FileSave, "Save File Dialog") { {
 	Slate { "Save", {
-		_FileDialogStandards_,
+		_FileSaveStandards_,
 	} }
 } };
 
@@ -1216,7 +1208,8 @@ resource restype_Slate (resid_Scripts, "Scripts") { {
 		_IMouseSlate_,
 		_DirectionKeys_,
 		_CommandSlate_,
-		Event { "go marker", "" },		Sequence{}, TypeText { "goMarker" }, _return, ResSubslate { resid_bbeSelectMarker }, endSequence{},
+		Event { "go marker", "" },			Sequence{}, TypeText { "goMarker" }, _return, ResSubslate { resid_bbeSelectMarker }, endSequence{},
+		Event { "view in browser", "" },	Sequence{}, TypeText { "viewInBrowser" }, _return, endSequence{},
 	} }
 } };
 
@@ -1351,7 +1344,7 @@ resource restype_Slate (resid_edProject, "Project") { {
 #define	tg_s	19
 resource restype_Slate (resid_projAddTarget, "AddTarget") { {
 	Slate { "addTarget", {
-		_FileNewStandards_,
+		_FileSaveStandards_,
 	} }
 } };
 
