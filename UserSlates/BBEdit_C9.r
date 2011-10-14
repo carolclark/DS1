@@ -233,7 +233,7 @@ resource restype_Slate (resid_GoFile, "") { {
 			_SlateGlobals_,
 			_CloseSubslate_,
 			ExitEvent { "support", "" },	Sequence{}, TypeText { "~/Dev/Support/Cdoc/Support.html" }, _return, endSequence{},
-			ExitEvent { "history", "" },	Sequence{}, TypeText { "~/Dev/Support/Cdoc/Support_hist.html" }, _return, endSequence{},
+			ExitEvent { "history", "" },	Sequence{}, TypeText { "~/Dev/Support/Cdoc/History_Support.html" }, _return, endSequence{},
 			ExitEvent { "versions", "" },	Sequence{}, TypeText { "~/Dev/Support/Cdoc/Support_vers.html" }, _return, endSequence{},
 			ExitEvent { "development", "" },Sequence{}, TypeText { "~/Dev/Support/Cdoc/Development.html" }, _return, endSequence{},
 			ExitEvent { "top history", "" },	Sequence{}, TypeText { "~/Dev/Support/Cdoc/Development_hist.html" }, _return, endSequence{},
