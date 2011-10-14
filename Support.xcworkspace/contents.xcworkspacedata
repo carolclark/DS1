@@ -8,7 +8,7 @@
       location = "container:"
       name = "1 Cdoc">
       <FileRef
-         location = "group:Cdoc/Support_hist.html">
+         location = "group:Cdoc/History_Support.html">
       </FileRef>
       <FileRef
          location = "group:Cdoc/Support.html">
@@ -20,7 +20,7 @@
          location = "group:Cdoc/Git.html">
       </FileRef>
       <FileRef
-         location = "group:Cdoc/Support_gloss.html">
+         location = "group:Cdoc/Glossary_Support.html">
       </FileRef>
       <FileRef
          location = "group:Cdoc/Tools.html">
