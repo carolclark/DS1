@@ -17,7 +17,7 @@
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
 		<!-- @topicGroup "" "6" -->
-		<!-- @topicItem "Other Active" "#otherActive" "1" "" -->
+		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
 	<!-- @topicGroup "" "9" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
@@ -38,7 +38,6 @@
 		<li>[cdocWorkflow] improve Cdoc workflow<ul>
 			<li>ViewInBrowser: new workflow to open, in Safari, the file in our TechnicalDocs site that corresponds to Xcode's front text document</li>
 			<li>Xcode.r: _FileNewStandards_: extend to _FileSaveStandards_ and _FileOpenStandards_; extract _FileDialogStandards_; add File:Open</li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>rename Cdoc files for as indicated to form Topic_Project.html for improved keyboard access<ul>
 				<li class='blurb'>Currently, many documentation files have names that start with the name of their project. This is inconvenient for file access from Xcode, where one can type the beginning of the file name to select that file. Also, some standard files have unusual abbreviations (eg. Support_hist) for historical reasons.</li>
 				<li>renamed: Support_gloss.html -&gt; Glossary_Support.html, Support_hist.html -&gt; History_Support.html</li>
@@ -49,29 +48,34 @@
 				<li>based on files Koala_Requirements.html, Koala_Design.html from deprecated project Koala_Try2; to be used for project Punkin</li>
 			</ul></li>
 		</ul></li>
-		<li>[_ccdev_install] CCDev.install<ul>
-			<li>Xcode.install processes files by folder</li>
-			<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
-				<li>new files ccInstall.func (extension dropped by installer), CCDev.install, CCDev/_Tests/TestCCDev.ksh: extract/refactor from Xcode.install</li>
-				<li>ccInstall --params<ul>
-					<li class='impl'>$*: string containing all arguments</li>
-					<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
-						#! /bin/ksh
-						
-						function getobj {
-						typeset -n obj=$1
-						obj=( first="a" second="b" third="${2}")
-						}
-						
-						caller:
-						#! /bin/ksh
-					
-						getobj myobj "Hello"
-						print $myobj
-						#( first=a second=b third=Hello )</li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>[refactorInstall] refactor Xcode.install to enable extension for other targets<ul>
+			<li>target <a href="Support.html#tar_CCDev_Setup">CCDev_Setup</a>; script CCDev.setup<ul>
+			</ul></li>
+			<li>CCDev.install<ul>
+				<li>Xcode.install processes files by folder</li>
+				<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
+					<li>new file ccInstall.func (initially empty) installed by CCDev.setup to ~/CCDev/func/ccInstall</li>
+					<li>new files CCDev.install, CCDev/_Tests/testCCDev.ksh; extract/refactor code from Xcode.install using ccInstall</li>
+					<li>ccInstall --params<ul>
+						<li class='impl'>$*: string containing all arguments</li>
+						<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
+							#! /bin/ksh
+							
+							function getobj {
+							typeset -n obj=$1
+							obj=( first="a" second="b" third="${2}")
+							}
+							
+							caller:
+							#! /bin/ksh
+							
+							getobj myobj "Hello"
+							print $myobj
+							#( first=a second=b third=Hello )</li>
+					</ul></li>
+					<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
 				</ul></li>
-				<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
-				<li>CCDev.install (new): copies ~/Dev/Support/CCDev/Scripts/ccInstall.func to ~/CCDev/func/ccInstall</li>
 			</ul></li>
 		</ul></li>
 		<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
@@ -79,8 +83,8 @@
 		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
 	</ul>
 
-<!-- @marker "Other Active" -->
-<h4 id="otherActive">Other Active</h4>
+<!-- @marker "General" -->
+<h4 id="General">General</h4>
 
 <!-- @marker "Automation Support" -->
 	<h5 id="_automation">Automation Support</h5><ul>
@@ -126,12 +130,6 @@
 				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li id='_ccdev_setup'>Target Setup [_ccdev_setup]<ul>
-			<li>Create Unix-only target that sets up our development environment. Setup's script can be run independently of Xcode, and is run prior to attempting to build any other targets or do other development tasks.</li>
-			<li>determine features to be imported from existing Support_svn target CCDev</li>
-			<li>create new  Mac OS X Bundle target Setup; remove Link Binary with Frameworks and Copy Bundle Resources build phases</li>
-			<li>script Setup.build based on Support_svn:CCDev.build</li>
-		</ul></li>
 	</ul>
 	
 	<!-- @marker "Git Workflow [_git]" -->
@@ -176,6 +174,7 @@
 				<li>AppleScripts, Workflows: add to scripts menu; Slates call file directly</li>
 				<li>to call ruby from Accessor: <span class='mono'>do shell script "/usr/bin/ruby ~/CCDev/hello.rb"</span></li>
 			</ul></li>
+			<li>ValidateAll, ValidateProject Workflows</li>
 			<li>Snippets<ul>
 				<li>Accessor: enter Snippet line with parameters</li>
 				<li>User: replace parameters; select line</li>
@@ -308,7 +307,7 @@
 		</ul></li>
 		<li class='tldate'>[slate_Xcode4 09/01/2011]</li>
 		<li>Initial Documentation of Git Workflow [_git]</li>	
-		<li>new git project Punkin [<a href="../Punkin/Punkin_hist.html#Contents">Punkin]</a></li>
+		<li>new git project Punkin [<a href="../Punkin/History_Punkin.html#Contents">Punkin]</a></li>
 		<li class='tldate'>[09/02/2011]</li>
 		<li>revise history styles<ul>
 			<li>Support_hist.html: add markers; test in BBEdit</li>

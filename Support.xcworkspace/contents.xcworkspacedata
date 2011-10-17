@@ -106,10 +106,10 @@
          </FileRef>
       </Group>
       <Group
-         location = "container:"
+         location = "container:Xcode/Templates/FileTemplates"
          name = "FileTemplates">
          <Group
-            location = "container:"
+            location = "container:Xcode/Templates/FileTemplates/Cdoc"
             name = "Cdoc">
             <Group
                location = "container:"
@@ -139,6 +139,36 @@
                </FileRef>
                <FileRef
                   location = "group:Xcode/Templates/FileTemplates/Cdoc/HistoryFile.xctemplate/TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:RequirementsDoc.xctemplate"
+               name = "RequirementsDoc">
+               <FileRef
+                  location = "group:___FILEBASENAME___.html">
+               </FileRef>
+               <FileRef
+                  location = "group:TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:UseCasesDoc.xctemplate"
+               name = "UseCasesDoc">
+               <FileRef
+                  location = "group:___FILEBASENAME___.html">
+               </FileRef>
+               <FileRef
+                  location = "group:TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:DesignDoc.xctemplate"
+               name = "DesignDoc">
+               <FileRef
+                  location = "group:___FILEBASENAME___.html">
+               </FileRef>
+               <FileRef
+                  location = "group:TemplateInfo.plist">
                </FileRef>
             </Group>
          </Group>
@@ -175,6 +205,9 @@
          location = "container:"
          name = "Active">
          <FileRef
+            location = "group:UserSlates/Xcode_C9.r">
+         </FileRef>
+         <FileRef
             location = "group:UserSlates/BBEdit_C9.r">
          </FileRef>
          <FileRef
@@ -197,9 +230,6 @@
          </FileRef>
          <FileRef
             location = "group:UserSlates/Terminal_C9.r">
-         </FileRef>
-         <FileRef
-            location = "group:UserSlates/Xcode_C9.r">
          </FileRef>
       </Group>
       <Group
@@ -249,6 +279,85 @@
          </FileRef>
          <FileRef
             location = "group:UserSlates/UMLet_C9.r">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "9 Reference">
+      <Group
+         location = "container:"
+         name = "Support_svn">
+         <Group
+            location = "container:"
+            name = "CCDev">
+            <FileRef
+               location = "group:../Support_svn/CCDev/CCDev.build">
+            </FileRef>
+            <Group
+               location = "container:"
+               name = "Environment">
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Environment/environment.plist">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Environment/kshrc.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Environment/profile.ksh">
+               </FileRef>
+            </Group>
+            <Group
+               location = "container:"
+               name = "Scripts">
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/archive.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/build_test.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/build.uia">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/buildCdoc.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/ccBackup.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/errtrap.func">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/svnAddToRepository.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/svnserve_test.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/svnSetFolderProps.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/svnShowProperties.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/test.test">
+               </FileRef>
+               <FileRef
+                  location = "group:../Support_svn/CCDev/Scripts/writeEnvironmentPlist.ksh">
+               </FileRef>
+            </Group>
+         </Group>
+      </Group>
+      <Group
+         location = "container:"
+         name = "DevSupport">
+      </Group>
+      <Group
+         location = "container:"
+         name = "Punkin">
+         <FileRef
+            location = "group:../Punkin/Collaborator/Collaborator.build">
          </FileRef>
       </Group>
    </Group>

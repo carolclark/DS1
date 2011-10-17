@@ -10,12 +10,12 @@
 			<string>7D9FC5E6-726C-4AE1-88D3-C81675F7D8BC</string>
 			<key>CollectionItems</key>
 			<array>
-				<string>B189D9C5-482E-4036-A0C5-4D586DA6262E</string>
+				<string>CB40D598-D20B-4014-A019-AF87CA37A026</string>
 				<string>089BC07D-4C47-4383-9955-243FAC0B312D</string>
 				<string>12BC58C7-3254-4D05-9F46-5B30C83D3DEE</string>
 				<string>DE52635F-93C7-4D61-97A2-D0C33E8623C5</string>
-				<string>CDFDFE54-6162-45D5-B954-AF1D8CD04706</string>
 				<string>546C6D42-3140-4FBF-89AD-77721BEAD544</string>
+				<string>6AB69DC6-C95D-423C-B3EE-5CA713F719C8</string>
 				<string>714844B6-DB81-4105-9E12-9DEFEB25DC85</string>
 				<string>AB944942-510B-48CE-91C3-5B8D11C6E028</string>
 				<dict>
@@ -604,6 +604,40 @@
 			<key>ItemType</key>
 			<string>FileReference</string>
 		</dict>
+		<key>6AB69DC6-C95D-423C-B3EE-5CA713F719C8</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>AliasData</key>
+				<data>
+				AAAAAAGWAAIAAANNYWMAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAADHK3m/SCsAAAB8T8EVR2xvc3NhcnlfU3VwcG9y
+				dC5odG1sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAI+LLsqEEpoAAAAAAAAAAP//
+				//8AAAkgAAAAAAAAAAAAAAAAAAAABENkb2MAEAAIAADH
+				K84fAAAAEQAIAADKhFjqAAAAAQAUAHxPwQB8T5wANyMV
+				AAgIEwAAkY0AAgA7TWFjOlVzZXJzOmNhcm9sY2xhcms6
+				RGV2OlN1cHBvcnQ6Q2RvYzpHbG9zc2FyeV9TdXBwb3J0
+				Lmh0bWwAAA4ALAAVAEcAbABvAHMAcwBhAHIAeQBfAFMA
+				dQBwAHAAbwByAHQALgBoAHQAbQBsAA8ACAADAE0AYQBj
+				ABIAN1VzZXJzL2Nhcm9sY2xhcmsvRGV2L1N1cHBvcnQv
+				Q2RvYy9HbG9zc2FyeV9TdXBwb3J0Lmh0bWwAABMAAS8A
+				ABUAAgAR//8AAA==
+				</data>
+				<key>FileURL</key>
+				<string>file://localhost/Users/carolclark/Dev/Support/Cdoc/Glossary_Support.html</string>
+				<key>RelativePath</key>
+				<string>./Cdoc/Glossary_Support.html</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>Glossary_Support.html</string>
+			<key>ItemType</key>
+			<string>FileReference</string>
+		</dict>
 		<key>714844B6-DB81-4105-9E12-9DEFEB25DC85</key>
 		<dict>
 			<key>ItemData</key>
@@ -795,39 +829,6 @@
 			<key>ItemType</key>
 			<string>FileReference</string>
 		</dict>
-		<key>B189D9C5-482E-4036-A0C5-4D586DA6262E</key>
-		<dict>
-			<key>ItemData</key>
-			<dict>
-				<key>AliasData</key>
-				<data>
-				AAAAAAGGAAIAAANNYWMAAAAAAAAAAAAAAAAAAAAAAAAA
-				AAAAAADHK3m/SCsAAAB8T8ERU3VwcG9ydF9oaXN0Lmh0
-				bWwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-				AAAAAAAAAAAAAAAAAAAAAHxP68qD+VhURVhUUipjaP//
-				//8AAAkgAAAAAAAAAAAAAAAAAAAABENkb2MAEAAIAADH
-				K84fAAAAEQAIAADKhD+oAAAAAQAUAHxPwQB8T5wANyMV
-				AAgIEwAAkY0AAgA3TWFjOlVzZXJzOmNhcm9sY2xhcms6
-				RGV2OlN1cHBvcnQ6Q2RvYzpTdXBwb3J0X2hpc3QuaHRt
-				bAAADgAkABEAUwB1AHAAcABvAHIAdABfAGgAaQBzAHQA
-				LgBoAHQAbQBsAA8ACAADAE0AYQBjABIAM1VzZXJzL2Nh
-				cm9sY2xhcmsvRGV2L1N1cHBvcnQvQ2RvYy9TdXBwb3J0
-				X2hpc3QuaHRtbAAAEwABLwAAFQACABH//wAA
-				</data>
-				<key>FileURL</key>
-				<string>file://localhost/Users/carolclark/Dev/Support/Cdoc/Support_hist.html</string>
-				<key>RelativePath</key>
-				<string>./Cdoc/Support_hist.html</string>
-				<key>TypeID</key>
-				<string>_CFileLocator</string>
-				<key>Version</key>
-				<integer>1</integer>
-			</dict>
-			<key>ItemName</key>
-			<string>Support_hist.html</string>
-			<key>ItemType</key>
-			<string>FileReference</string>
-		</dict>
 		<key>B35F5D7C-A104-4807-9721-2A269FEB845E</key>
 		<dict>
 			<key>ItemData</key>
@@ -870,36 +871,37 @@
 			<key>ItemType</key>
 			<string>FileReference</string>
 		</dict>
-		<key>CDFDFE54-6162-45D5-B954-AF1D8CD04706</key>
+		<key>CB40D598-D20B-4014-A019-AF87CA37A026</key>
 		<dict>
 			<key>ItemData</key>
 			<dict>
 				<key>AliasData</key>
 				<data>
-				AAAAAAGIAAIAAANNYWMAAAAAAAAAAAAAAAAAAAAAAAAA
-				AAAAAADHK3m/SCsAAAB8T8ESU3VwcG9ydF9nbG9zcy5o
-				dG1sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-				AAAAAAAAAAAAAAAAAAAAAHxTMMppoOgAAAAAAAAAAP//
+				AAAAAAGQAAIAAANNYWMAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAADHK3m/SCsAAAB8T8EUSGlzdG9yeV9TdXBwb3J0
+				Lmh0bWwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAAAI+P7sq5yCIAAAAAAAAAAP//
 				//8AAAkgAAAAAAAAAAAAAAAAAAAABENkb2MAEAAIAADH
-				K84fAAAAEQAIAADKaec4AAAAAQAUAHxPwQB8T5wANyMV
-				AAgIEwAAkY0AAgA4TWFjOlVzZXJzOmNhcm9sY2xhcms6
-				RGV2OlN1cHBvcnQ6Q2RvYzpTdXBwb3J0X2dsb3NzLmh0
-				bWwADgAmABIAUwB1AHAAcABvAHIAdABfAGcAbABvAHMA
-				cwAuAGgAdABtAGwADwAIAAMATQBhAGMAEgA0VXNlcnMv
-				Y2Fyb2xjbGFyay9EZXYvU3VwcG9ydC9DZG9jL1N1cHBv
-				cnRfZ2xvc3MuaHRtbAATAAEvAAAVAAIAEf//AAA=
+				K84fAAAAEQAIAADKug5yAAAAAQAUAHxPwQB8T5wANyMV
+				AAgIEwAAkY0AAgA6TWFjOlVzZXJzOmNhcm9sY2xhcms6
+				RGV2OlN1cHBvcnQ6Q2RvYzpIaXN0b3J5X1N1cHBvcnQu
+				aHRtbAAOACoAFABIAGkAcwB0AG8AcgB5AF8AUwB1AHAA
+				cABvAHIAdAAuAGgAdABtAGwADwAIAAMATQBhAGMAEgA2
+				VXNlcnMvY2Fyb2xjbGFyay9EZXYvU3VwcG9ydC9DZG9j
+				L0hpc3RvcnlfU3VwcG9ydC5odG1sABMAAS8AABUAAgAR
+				//8AAA==
 				</data>
 				<key>FileURL</key>
-				<string>file://localhost/Users/carolclark/Dev/Support/Cdoc/Support_gloss.html</string>
+				<string>file://localhost/Users/carolclark/Dev/Support/Cdoc/History_Support.html</string>
 				<key>RelativePath</key>
-				<string>./Cdoc/Support_gloss.html</string>
+				<string>./Cdoc/History_Support.html</string>
 				<key>TypeID</key>
 				<string>_CFileLocator</string>
 				<key>Version</key>
 				<integer>1</integer>
 			</dict>
 			<key>ItemName</key>
-			<string>Support_gloss.html</string>
+			<string>History_Support.html</string>
 			<key>ItemType</key>
 			<string>FileReference</string>
 		</dict>

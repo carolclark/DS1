@@ -79,6 +79,8 @@
 	#define resid_navFilter				resid_NavPanel+10
 
 #define resid_Utilities				resid_Xcode+370
+	#define resid_utilFile				resid_Utilities+5
+		#define resid_utilFileLocate		resid_utilFile+1
 
 #define resid_Organizer				resid_Xcode+400
 	#define resid_Repositories			resid_Organizer+10
@@ -1018,13 +1020,32 @@ resource restype_Slate (resid_Utilities, "Utilities") { {
 		ExitEvent { "close", "" },	Keypress { kc_0, mf_command + mf_option },
 		Event { "show", "" },		Keypress { kc_0, mf_command + mf_option },
 		Event { "hide", "" },		Keypress { kc_0, mf_command + mf_option },
-		Event { "files", "" },		Keypress { kc_1, mf_command + mf_option },
+		Event { "files", "" },		Sequence{}, Keypress { kc_1, mf_command + mf_option }, ResSubslate { resid_utilFile }, endSequence{},
 		Event { "help", "" },		Keypress { kc_2, mf_command + mf_option },
 		Event { "templates", "" },	Keypress { kc_1, mf_command + mf_option + mf_control },
 		Event { "snippets", "" },	Keypress { kc_2, mf_command + mf_option + mf_control },
 		Event { "objects", "" },	Keypress { kc_3, mf_command + mf_option + mf_control },
 		Event { "media", "" },		Keypress { kc_4, mf_command + mf_option + mf_control },
 		_IMouseSlate_,
+	} }
+} };
+
+resource restype_Slate (resid_utilFile, "file util") { {
+	Slate { "file", {
+		_SlateGlobals_,
+		_IMouseSlate_,
+		ExitEvent { "okay", "" },	_return,
+		ExitEvent { "exit", "" },	NilAction{},
+		Event { "locate", "" },		Sequence{}, Click { 1, -20, 222, _window, _topRight }, ResSubslate { resid_utilFileLocate }, endSequence{},
+		Event { "locate two", "" }, Sequence{}, Click { 1, -20, 232, _window, _topRight }, ResSubslate { resid_utilFileLocate }, endSequence{},
+	} }
+} };
+
+#define	flt_h	350		// filter field, from _window _topCenter
+#define	flt_v	150
+resource restype_Slate (resid_utilFileLocate, "locate file") { {
+	Slate { "locate", {
+		_FileOpenStandards_,
 	} }
 } };
 

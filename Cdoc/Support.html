@@ -34,15 +34,16 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicItem "File Server" "#tp_FileServer" "0" "" -->
 		<!-- @topicItem "Unix" "#tp_Unix" "0" "" -->
 		<!-- @topicItem "Tools for Compiled Code" "#tp_CompileTools" "0" "" -->
+	<!-- @topicGroup "" "10" -->
+	<!-- @topicItem "Support Targets" "#Targets" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Related Project Files" "11" -->
+	<!-- @topicGroup "Related Project Files" "13" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
-	<!-- @topicGroup "" "13" -->
 		<!-- @topicItem "Git" "Git.html#Contents" "0" "adopted source control system" -->
 		<!-- @topicItem "Cdoc" "Cdoc.html#Contents" "0" "in-house documentation system" -->
 		<!-- @topicItem "Tools" "Tools.html#Contents" "0" "installed applications, tools, and libraries" -->
-	<!-- @topicGroup "" "16" -->
 		<!-- @topicItem "Support Glossary" "Glossary_Support.html#Contents" "0" "" -->
+	<!-- @topicGroup "" "19" -->
 <!-- @/topicList -->
 
 <!-- @marker "1 === CCDev" -->
@@ -1045,10 +1046,27 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 	<li>reference file Xcode &gt; Defaults.doxygen describes available options</li>
 </ul>
 
-<!-- @marker "9 === Targets" -->
-<h2>Targets</h2>
-<!-- @topicList "Targets" "Targets" -->
+<!-- @marker "9 === Support Targets" -->
+<h2>SupportTargets</h2>
+<!-- @topicList "Support Targets" "Targets" -->
+	<!-- @topicItem "CCDev_Setup" "#tar_CCDev_Setup" "0" "" -->
+	<!-- @topicItem "CCDev" "#tar_CCDev" "0" "" -->
+	<!-- @topicItem "Xcode" "#tar_Xcode" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "CCDev_Setup" -->
+<h4 id="tar_CCDev_Setup">CCDev_Setup</h4>
+<p>CCDev.setup is a Unix script that sets up our development environment. Script is run prior to attempting to build any other targets or do other development work. It can be run from Terminal or by building Xcode target Support:CCDev_Setup.</p>
+<p>CCDev.setup is available for collaborators to download. For all collaborators, script sets up  basic environment including git support. For administrator, it also installs additional environment files, third-party tools, and starter scripts required for CCDev.install to run.</p>
+<p>Normally, CCDev.setup is run once only, with subsequent maintenance as files change handled by CCDev.install. CCDev.setup does not avoid overwriting existing files.</p>
+
+<!-- @marker "CCDev" -->
+<h4 id="tar_CCDev">CCDev</h4>
+<p>General C &amp; C Software developer and automation support</p>
+
+<!-- @marker "Xcode" -->
+<h4 id="tar_Xcode">Xcode</h4>
+<p>Xcode developer and automation support</p>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

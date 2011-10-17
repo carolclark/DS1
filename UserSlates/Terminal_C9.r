@@ -101,7 +101,8 @@ resource restype_Slate (resid_gitTag, "") { {
 		ExitEvent { "excecute", "" },	_return,
 		ExitEvent { "cancel", "" },		_cancel,
 		ExitEvent { "list", "" },		_return,
-		ExitEvent { "push", "" },		TypeText { "push " },
+		ExitEvent { "push", "" },		Sequence{}, _cancel, TypeText { "git push --tags" }, endSequence{},
+		ExitEvent { "push remote", "known to work if cd is PunkinMain" }, Sequence{}, _cancel, TypeText { "git push --tags /Volumes/carollclark/gitrep/PunkinRemote" }, endSequence{},
 		Event { "make", "" },			Sequence{}, _cancel, TypeText { "# git tag -a 'tagname' -m \"message\"" }, _return, TypeText { "git tag -a "}, ResSubslate { resid_termType }, endSequence{},
 		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_termType }, endSequence{},
 		Event { "show", "" },			Sequence{}, _cancel, TypeText { "git show --name-status " }, ResSubslate { resid_termType }, endSequence{}, 
@@ -185,8 +186,8 @@ resource restype_Slate (resid_termGitBrowser, "") { {
 		_SlateGlobals_,
 		_CloseSubslate_,
 		_TypeSlate_,
-		Event { "go browser", "" },		Click { 1, 0, 34, _screen, _topCenter },
-		Event { "quit browser", "" },	Keypress { kc_Q, mf_command },
+		Event { "activate", "" },	Click { 1, 0, 34, _screen, _topCenter },
+		Event { "quit", "" },		Keypress { kc_Q, mf_command },
 	} }
 } };
 
