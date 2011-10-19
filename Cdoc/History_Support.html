@@ -48,14 +48,18 @@
 				<li>based on files Koala_Requirements.html, Koala_Design.html from deprecated project Koala_Try2; to be used for project Punkin</li>
 			</ul></li>
 		</ul></li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>[refactorInstall] refactor Xcode.install to enable extension for other targets<ul>
-			<li>target <a href="Support.html#tar_CCDev_Setup">CCDev_Setup</a>; script CCDev.setup<ul>
+			<li>Support: add reference files for CCDev; see <a href="Support.html#ReferenceFiles">Support: Reference Files</a></li>
+			<li>target <a href="Support.html#tar_CCDev_Setup">CCDev_Setup</a>; script CCDev_Setup.ksh<ul>
+				<li>new file CCDev_Setup.ksh based on code from Support_svn:CCDev.build and Punkin_svn:Collaborator.build</li>
+				<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+				<li>add CCDev/_Tests/testCCDevSetup.ksh; run from CCDev_Setup.ksh</li>
+				<li>initial critical files: add tests; and files based on existing Support_svn files</li>
 			</ul></li>
 			<li>CCDev.install<ul>
 				<li>Xcode.install processes files by folder</li>
 				<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
-					<li>new file ccInstall.func (initially empty) installed by CCDev.setup to ~/CCDev/func/ccInstall</li>
+					<li>new file ccInstall.func (initially empty) installed by CCDev_Setup to ~/CCDev/func/ccInstall</li>
 					<li>new files CCDev.install, CCDev/_Tests/testCCDev.ksh; extract/refactor code from Xcode.install using ccInstall</li>
 					<li>ccInstall --params<ul>
 						<li class='impl'>$*: string containing all arguments</li>

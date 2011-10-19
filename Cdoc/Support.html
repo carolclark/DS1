@@ -1059,7 +1059,12 @@ action names may contain only alphanumeric and underscore characters [:word:]</d
 <p>CCDev.setup is a Unix script that sets up our development environment. Script is run prior to attempting to build any other targets or do other development work. It can be run from Terminal or by building Xcode target Support:CCDev_Setup.</p>
 <p>CCDev.setup is available for collaborators to download. For all collaborators, script sets up  basic environment including git support. For administrator, it also installs additional environment files, third-party tools, and starter scripts required for CCDev.install to run.</p>
 <p>Normally, CCDev.setup is run once only, with subsequent maintenance as files change handled by CCDev.install. CCDev.setup does not avoid overwriting existing files.</p>
-
+	<h5>Notes</h5>
+	<h6 id='ReferenceFiles'>Reference Files</h6>
+		<p>Reference Files are read-only copies of external files, usually from another repository, that are included in a workspace for reference. Reference filenames are prefixed with "_rf_" to allow git to ignore them.</p><ul class='blurb'>
+			<li>Files not included in a workspace cannot be displayed by Assistant.</li>
+			<li>References to external files can be placed in a workspace. However, then Xcode knows about them and tries to support git operations with their projects, which makes Merge, at least, more complicated and much more error-prone.</li>
+		</ul>
 <!-- @marker "CCDev" -->
 <h4 id="tar_CCDev">CCDev</h4>
 <p>General C &amp; C Software developer and automation support</p>

@@ -10,6 +10,10 @@
 		67692458141EB921005D3E68 /* Xcode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xcode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		6769245F141EB921005D3E68 /* Xcode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Xcode-Info.plist"; sourceTree = "<group>"; };
+		67AA8011144F3DAD00FCCDC9 /* CCDev_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCDev_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67AA8015144F3DAD00FCCDC9 /* CCDev_Setup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev_Setup-Info.plist"; sourceTree = "<group>"; };
+		67AA8017144F3DAD00FCCDC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		67AA8019144F3DAD00FCCDC9 /* CCDev_Setup-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCDev_Setup-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -17,6 +21,7 @@
 			isa = PBXGroup;
 			children = (
 				6769245D141EB921005D3E68 /* Xcode */,
+				67AA8013144F3DAD00FCCDC9 /* CCDev_Setup */,
 				6769245A141EB921005D3E68 /* Frameworks */,
 				67692459141EB921005D3E68 /* Products */,
 			);
@@ -26,6 +31,7 @@
 			isa = PBXGroup;
 			children = (
 				67692458141EB921005D3E68 /* Xcode.bundle */,
+				67AA8011144F3DAD00FCCDC9 /* CCDev_Setup.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +60,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		67AA8013144F3DAD00FCCDC9 /* CCDev_Setup */ = {
+			isa = PBXGroup;
+			children = (
+				67AA8014144F3DAD00FCCDC9 /* Supporting Files */,
+			);
+			path = CCDev_Setup;
+			sourceTree = "<group>";
+		};
+		67AA8014144F3DAD00FCCDC9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				67AA8015144F3DAD00FCCDC9 /* CCDev_Setup-Info.plist */,
+				67AA8016144F3DAD00FCCDC9 /* InfoPlist.strings */,
+				67AA8019144F3DAD00FCCDC9 /* CCDev_Setup-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -70,6 +94,21 @@
 			name = Xcode;
 			productName = Xcode;
 			productReference = 67692458141EB921005D3E68 /* Xcode.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		67AA8010144F3DAD00FCCDC9 /* CCDev_Setup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67AA801A144F3DAD00FCCDC9 /* Build configuration list for PBXNativeTarget "CCDev_Setup" */;
+			buildPhases = (
+				67AA801D144F3DE400FCCDC9 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCDev_Setup;
+			productName = CCDev_Setup;
+			productReference = 67AA8011144F3DAD00FCCDC9 /* CCDev_Setup.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -93,6 +132,7 @@
 			projectRoot = "";
 			targets = (
 				67692457141EB921005D3E68 /* Xcode */,
+				67AA8010144F3DAD00FCCDC9 /* CCDev_Setup */,
 			);
 		};
 /* End PBXProject section */
@@ -113,7 +153,32 @@
 			shellScript = "cd ..; Xcode/Xcode.install";
 			showEnvVarsInLog = 0;
 		};
+		67AA801D144F3DE400FCCDC9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/ksh;
+			shellScript = "cd ..; CCDev/CCDev_Setup.ksh";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		67AA8016144F3DAD00FCCDC9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67AA8017144F3DAD00FCCDC9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		67692452141EB818005D3E68 /* Debug */ = {
@@ -185,6 +250,63 @@
 			};
 			name = Release;
 		};
+		67AA801B144F3DAD00FCCDC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCDev_Setup/CCDev_Setup-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "CCDev_Setup/CCDev_Setup-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		67AA801C144F3DAD00FCCDC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCDev_Setup/CCDev_Setup-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "CCDev_Setup/CCDev_Setup-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -205,6 +327,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		67AA801A144F3DAD00FCCDC9 /* Build configuration list for PBXNativeTarget "CCDev_Setup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AA801B144F3DAD00FCCDC9 /* Debug */,
+				67AA801C144F3DAD00FCCDC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

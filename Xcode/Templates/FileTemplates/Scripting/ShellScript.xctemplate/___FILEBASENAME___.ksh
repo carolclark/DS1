@@ -1,7 +1,7 @@
 #!/bin/ksh
 
 #  ___FILENAME___
-#  ___PROJECTNAME___
+#  <#Project#>
 #
 #  Created by ___FULLUSERNAME___ on ___DATE___.
 #  Copyright ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.

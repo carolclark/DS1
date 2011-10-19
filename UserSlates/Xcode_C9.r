@@ -75,8 +75,8 @@
 	#define resid_FindReplace			resid_Search+1
 	#define resid_FindOptions			resid_Search+2
 
-#define resid_NavPanel				resid_Xcode+350
-	#define resid_navFilter				resid_NavPanel+10
+#define resid_Navigate				resid_Xcode+350
+	#define resid_navFilter				resid_Navigate+10
 
 #define resid_Utilities				resid_Xcode+370
 	#define resid_utilFile				resid_Utilities+5
@@ -935,29 +935,39 @@ resource restype_Slate (resid_EditMenu, "Edit") { {
 #define	il_h	176
 #define	il_r1	182
 #define	il_rsp	30
-#pragma mark NavPanel
-resource restype_Slate (resid_NavPanel, "NavPanel") { {
+#pragma mark Navigate
+resource restype_Slate (resid_Navigate, "Navigate") { {
 	Slate { "nav", {
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "filter", "" },		ResSubslate { resid_navFilter },
-		Event { "file", "" },		Keypress { kc_1, mf_command },
-		Event { "symbol", "" },		Keypress { kc_2, mf_command },
-		Event { "search", "" },		Keypress { kc_3, mf_command },
-		Event { "issue", "" },		Keypress { kc_4, mf_command },
-		Event { "debug", "" },		Keypress { kc_5, mf_command },
-		Event { "breakpoint", "" },	Keypress { kc_6, mf_command },
-		Event { "log", "" },		Keypress { kc_7, mf_command },
-		Event { "top row", "" },	Keypress { kc_up, mf_option },
+		ExitEvent { "open in", "" },	Keypress { kc_comma, mf_command + mf_option + mf_shift },
+		Event { "new tab", "" },		Keypress { kc_T, mf_command },
+		Event { "close tab", "" },		Keypress { kc_W, mf_command },
+		Event { "go panel", "" },		Keypress { kc_J, mf_command },
+		Event { "next panel", "" },		Keypress { kc_period, mf_command + mf_option },
+		Event { "previous panel", "" },	Keypress { kc_period, mf_command + mf_option + mf_shift },
+		Event { "next file", "" },		Keypress { kc_right, mf_command + mf_control },
+		Event { "previous file", "" },	Keypress { kc_right, mf_command + mf_control + mf_shift },
+		Event { "nav list", "" },		_navList,
+		_JumpBar_,
+		Event { "filter", "" },			ResSubslate { resid_navFilter },
+		Event { "file", "" },			Keypress { kc_1, mf_command },
+		Event { "symbol", "" },			Keypress { kc_2, mf_command },
+		Event { "search", "" },			Keypress { kc_3, mf_command },
+		Event { "issue", "" },			Keypress { kc_4, mf_command },
+		Event { "debug", "" },			Keypress { kc_5, mf_command },
+		Event { "breakpoint", "" },		Keypress { kc_6, mf_command },
+		Event { "log", "" },			Keypress { kc_7, mf_command },
+		Event { "top row", "" },		Keypress { kc_up, mf_option },
 		_IMouseSlate_,
 		_DirectionKeys_,
 		_WhitespaceKeys_,
+		_CommandSlate_,
 		_JumpDownSubslate_,
 		_JumpNorthSubslate_,
 		_DoJumpSubslate_,
 		_LetterKeys_,
 		_NumberKeys_,
-		_NavPanelRows_,
 	} }
 } };
 
@@ -983,9 +993,7 @@ resource restype_Slate (resid_Panel, "Panel") { {
 		_SlateGlobals_,
 		ExitEvent { "okay", "" },	NilAction{},
 		Event { "select", "" },		Keypress { kc_J, mf_command },
-		Event { "go back", "" },	Keypress { kc_left, mf_command + mf_option + mf_control + mf_shift },
-		Event { "go forward", "" },	Keypress { kc_right, mf_command + mf_option + mf_control + mf_shift },
-		Event { "navigate", "" },	Sequence{}, _navList, ResSubslate { resid_NavPanel }, endSequence{},
+		Event { "navigate", "" },	Sequence{}, _navList, ResSubslate { resid_Navigate }, endSequence{},
 		_DirectionKeys_,
 		_ReturnKey_,
 		_JumpBar_,
@@ -1331,7 +1339,7 @@ resource restype_Slate (resid_edProject, "Project") { {
 		Event { "open Copy Headers", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
 		Event { "open Copy Resources", "" },	Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
 		Event { "open Link	", "" },			Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
-		Event { "delete phase", "" },	Click { 0, 1630, 0, _cursor },
+		Event { "delete phase", "" },	Click { 0, 1620, 0, _cursor },
 		Event { "phase one", "" },		Click { 0, il_h+8, il_r1 + 0 * il_rsp, _pwindow, _topLeft },
 		Event { "phase two", "" },		Click { 0, il_h+8, il_r1 + 1 * il_rsp, _pwindow, _topLeft },
 		Event { "phase three", "" },	Click { 0, il_h+8, il_r1 + 2 * il_rsp, _pwindow, _topLeft },
@@ -1366,6 +1374,8 @@ resource restype_Slate (resid_edProject, "Project") { {
 resource restype_Slate (resid_projAddTarget, "AddTarget") { {
 	Slate { "addTarget", {
 		_FileSaveStandards_,
+		Event { "tab forward", "" },	_tab,
+		Event { "tab back", "" },		_tabBack,
 	} }
 } };
 
@@ -2085,7 +2095,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },
 		targetPopup_,
 		Event { "nav list", "" },		_navList,
-		Event { "nav panel", "" },		Sequence{}, _navList, ResSubslate { resid_NavPanel }, endSequence{},
+		Event { "navigate", "" },		Sequence{}, _navList, ResSubslate { resid_Navigate }, endSequence{},
 		Event { "top row", "" },		Sequence{}, _navList, Keypress { kc_up, mf_option }, endSequence{},
 		Event { "filter", "" },			ResSubslate { resid_NavFilter },
 		Event { "standard", "" },			Keypress { kc_return, mf_command },
