@@ -145,6 +145,7 @@ resource restype_Slate (resid_termGit, "") { {
 			ExitEvent { "Punkin main", "" },	Sequence{}, TypeText { "cd ~/Dev/gitrep/PunkinMain" }, _return,	 endSequence{},
 			ExitEvent { "Punkin remote", "" },	Sequence{}, TypeText { "cd /Volumes/carollclark/gitrep/PunkinRemote" }, _return, endSequence{},
 			endSubslate{},
+		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "browser", "" },		Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_termGitBrowser }, endSequence{},
 		Event { "status", "" },			Sequence{}, TypeText { "git status" }, _return, endSequence{},
 		Event { "branch", "" },			Sequence{}, TypeText { "git branch " }, ResSubslate { resid_gitBranch }, endSequence{},
@@ -153,12 +154,7 @@ resource restype_Slate (resid_termGit, "") { {
 		Event { "difference", "" },		Sequence{}, TypeText { "git diff " }, ResSubslate { resid_gitDiff }, endSequence{},
 		Event { "log", "" },			Sequence{}, TypeText { "git log " }, ResSubslate { resid_gitLog }, endSequence{},
 		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
-		Event { "interact", "" },		Subslate { "interact" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			Event { "add", "" },			Sequence{}, TypeText { "git add --all --interactive" }, _return, ResSubslate { resid_termGitAdd }, endSequence{},
-			Event { "rebase", "" },			Sequence{}, TypeText { "git rebase -i " }, ResSubslate { resid_termType }, endSequence{},
-			endSubslate{},
+		Event { "add files", "" },		Sequence{}, TypeText { "git add --all --interactive" }, _return, ResSubslate { resid_termGitAdd }, endSequence{},
 	} }
 } };
 

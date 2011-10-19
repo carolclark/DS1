@@ -122,12 +122,12 @@ if [[ installCCDevSupport ]] ; then
 
 	# install environment files
 	fldr="${srcdir}/Environment"
-#	install "${fldr}/profile.ksh" "${HOME}" ".profile"			# establish shell environment
-#	install "${fldr}/kshrc.ksh" "${CCDev}/bin" ".kshrc"			# establish ksh (Korn shell) environment
-#	install "${fldr}/environment.plist" "${HOME}/.MacOSX"		# establish some environment variables for use by applications
+	install "${fldr}/profile.ksh" "${HOME}" ".profile"			# establish shell environment
+	install "${fldr}/kshrc.ksh" "${CCDev}/bin" ".kshrc"			# establish ksh (Korn shell) environment
+	install "${fldr}/environment.plist" "${HOME}/.MacOSX"		# establish some environment variables for use by applications
 
 	# install bootstrap scripts
-#	install "${srcdir}/Scripts/errtrap.func" "$CCDev/func" "errtrap"
+	install "${srcdir}/Scripts/errtrap.func" "$CCDev/func" "errtrap"
 
 	# install third party software
 #	cd $(dirname ${srcdir})/ThirdParty
@@ -139,4 +139,16 @@ if [[ installCCDevSupport ]] ; then
 #		fi
 #	fi
 fi
+
+# test CCDev_Setup
+typeset -i failcnt=0
+
+print "== CCDev/_Tests/testCCDev_Setup.ksh"
+result=$(CCDev/_Tests/testCCDev_Setup.ksh)
+if [[ "${?}" > 0 ]] ; then
+	failcnt="${failcnt}"+1
+fi
+print "${result}"
+
+exit "${failcnt}"
 

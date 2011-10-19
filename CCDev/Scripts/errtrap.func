@@ -1,0 +1,20 @@
+#!/bin/ksh
+
+#  errtrap.func
+#  Support
+#
+#  Created by Carol Clark on 10/19/11.
+#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Confidential and Proprietary.
+
+USAGE='
+# errtrap.func -- error trap function for use in shell scripts\n
+\n
+example:\n
+trapString='errtrap <scriptname> $LINENO $?'
+trap "$trapString" ERR
+'
+
+function errtrap {
+	print "$1: ERROR line $2: Command exited with status $3."
+}

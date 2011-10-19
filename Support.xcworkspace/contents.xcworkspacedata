@@ -92,6 +92,33 @@
       <FileRef
          location = "group:CCDev/CCDev_Setup.ksh">
       </FileRef>
+      <Group
+         location = "container:"
+         name = "Environment">
+         <FileRef
+            location = "group:CCDev/Environment/environment.plist">
+         </FileRef>
+         <FileRef
+            location = "group:CCDev/Environment/profile.ksh">
+         </FileRef>
+         <FileRef
+            location = "group:CCDev/Environment/kshrc.ksh">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Scripts">
+         <FileRef
+            location = "group:CCDev/Scripts/errtrap.func">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "_Tests">
+         <FileRef
+            location = "group:CCDev/_Tests/testCCDev_Setup.ksh">
+         </FileRef>
+      </Group>
    </Group>
    <Group
       location = "group:BuildSupport"
@@ -193,6 +220,19 @@
                </FileRef>
                <FileRef
                   location = "group:TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "container:"
+               name = "shunitTest">
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Scripting/SHUnitTest.xctemplate/___FILEBASENAME___.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Scripting/SHUnitTest.xctemplate/TemplateIcon.icns">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Scripting/SHUnitTest.xctemplate/TemplateInfo.plist">
                </FileRef>
             </Group>
          </Group>

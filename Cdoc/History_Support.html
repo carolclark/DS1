@@ -53,8 +53,11 @@
 			<li>target <a href="Support.html#tar_CCDev_Setup">CCDev_Setup</a>; script CCDev_Setup.ksh<ul>
 				<li>new file CCDev_Setup.ksh based on code from Support_svn:CCDev.build and Punkin_svn:Collaborator.build</li>
 				<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-				<li>add CCDev/_Tests/testCCDevSetup.ksh; run from CCDev_Setup.ksh</li>
-				<li>initial critical files: add tests; and files based on existing Support_svn files</li>
+				<li>add File Template Scripting/shunitTest</li>
+				<li>add CCDev/_Tests/testCCDev_Setup.ksh; run from CCDev_Setup.ksh</li>
+				<li>initial critical files: add tests; add files based on existing Support_svn files<ul>
+					<li>CCDev/Environment: profile.ksh, kshrc.ksh, environment.plist; CCDev/Scripts: errtrap.func; all based on previously existing Support_svn files</li>
+				</ul></li>
 			</ul></li>
 			<li>CCDev.install<ul>
 				<li>Xcode.install processes files by folder</li>

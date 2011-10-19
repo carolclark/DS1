@@ -451,6 +451,7 @@ resource restype_Slate (resid_Build, "") { {
 		_CloseSubslate_,
 		Event { "build", "" },			Keypress { kc_B, mf_command },
 		Event { "issues", "" },			Sequence{}, _showHideNavigator, ResSubslate { resid_edIssues }, _down, endSequence{},
+		Event { "top row", "" },		Sequence{}, _navList, Wait { 10 }, Keypress { kc_up, mf_option }, endSequence{},
 		Event { "Accessor", "" },		Sequence{}, Keypress { kc_B, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
 		Event { "go next", "" },		Keypress { kc_closebracket, mf_command + mf_shift },
 		Event { "go previous", "" },	Keypress { kc_bracket, mf_command + mf_shift },
@@ -461,10 +462,7 @@ resource restype_Slate (resid_BuildAccessor, "") { {
 	Slate { "Accessor",	{
 		_SlateGlobals_,
 		ExitEvent { "exit", "" },		NilAction{},
-		Event { "top row", "" },		Sequence{}, _navList, Wait { 10 }, Keypress { kc_up, mf_option }, endSequence{},
-		Event { "issues", "" },			Sequence{}, _showHideNavigator, ResSubslate { resid_edIssues }, endSequence{},
-		Event { "go next", "" },		Keypress { kc_closebracket, mf_command + mf_shift },
-		Event { "go previous", "" },	Keypress { kc_bracket, mf_command + mf_shift },
+		ExitEvent { "cancel", "" },		NilAction{},
 		Event { "run original", "" },	Launch { HomeApps_"Accessor_C9.app", 0 },
 		Event { "quit", "" },			Keypress { kc_Q, mf_command },
 	} }
@@ -959,6 +957,8 @@ resource restype_Slate (resid_Navigate, "Navigate") { {
 		Event { "breakpoint", "" },		Keypress { kc_6, mf_command },
 		Event { "log", "" },			Keypress { kc_7, mf_command },
 		Event { "top row", "" },		Keypress { kc_up, mf_option },
+		Event { "new group", "" },		Keypress { kc_N, mf_command + mf_option },
+		Event { "filter", "" },			ResSubslate { resid_NavFilter },
 		_IMouseSlate_,
 		_DirectionKeys_,
 		_WhitespaceKeys_,
@@ -966,6 +966,7 @@ resource restype_Slate (resid_Navigate, "Navigate") { {
 		_JumpDownSubslate_,
 		_JumpNorthSubslate_,
 		_DoJumpSubslate_,
+		_TypeXcodeSlate_,
 		_LetterKeys_,
 		_NumberKeys_,
 	} }
@@ -1296,6 +1297,7 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 	Slate { "vers", {
 		_SlateGlobals_,
 		_CloseSubslate_,
+		ExitEvent { "standard", "" },	Keypress { kc_return, mf_command }, 
 		_IMouseSlate_,
 		_DirectionKeys_,
 		_CommandSlate_,
@@ -1304,6 +1306,7 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 		_JumpDownSubslate_,
 		_JumpNorthSubslate_,
 		_DoJumpSubslate_,
+		Event { "filter", "" },			ResSubslate { resid_navFilter },
 		Event { "compare", "" },		Click { 1, -100, -20, _window, _bottomRight },
 		Event { "annotate", "" },		Click { 1, -73, -20, _window, _bottomRight },
 		Event { "revisions", "" },		Click { 1, -46, -20, _window, _bottomRight },
