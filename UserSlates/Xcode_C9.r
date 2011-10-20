@@ -1313,6 +1313,7 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 		Event { "edit left", "" },		Click { 1, 660, 540, _window, _topLeft },
 		Event { "edit right", "" },		Click { 1, -350, 540, _window, _topRight },
 		Event { "nav list", ""},		_navList,
+		Event { "top row", "" },		Sequence{}, _navList, Keypress { kc_up, mf_option }, endSequence{},
 		Event { "top", "" },			Sequence{}, Click { 1, 660, 540, _window, _topLeft }, Keypress { kc_up, mf_command }, endSequence{},	
 		Event { "difference", "" },		Click { 1, 125, 125, _window, _topCenter },
 		Event { "down again", "" },		_down,

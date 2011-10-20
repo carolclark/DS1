@@ -54,6 +54,48 @@ function gitPrintExclude {
 	print '_rf_*'
 }
 
+#^	shunitInstall
+function shunitInstall {
+	src=${srcdir}/../ThirdParty/shunit
+	dst=${CCDev}/shunit
+	mkdir -p ${dst}
+	if [[ "${?}" != "0" ]] ; then
+		print "failure while installing shunit"
+		exit 1
+	fi
+	mkdir -p ${dst}/bin
+	if [[ "${?}" != "0" ]] ; then
+		print "failure while installing shunit"
+		exit 1
+	fi
+	for fl in $(ls "${src}/bin") ; do
+		print "${src}/bin/${fl} => ${dst}/bin"
+		cp "${src}/bin/${fl}" "${dst}/bin"
+		if [[ "${?}" != "0" ]] ; then
+			print "failure while installing shunit"
+			exit 1
+		fi
+	done
+	mkdir -p ${dst}/lib
+	for fl in $(ls "${src}/lib") ; do
+		print "${src}/lib/${fl} => ${dst}/lib"
+		cp "${src}/lib/${fl}" "${dst}/lib"
+		if [[ "${?}" != "0" ]] ; then
+			print "failure while installing shunit"
+			exit 1
+		fi
+	done
+	mkdir -p ${dst}/src
+	for fl in $(ls "${src}/src") ; do
+		print "${src}/src/${fl} => ${dst}/src"
+		cp "${src}/src/${fl}" "${dst}/src"
+		if [[ "${?}" != "0" ]] ; then
+			print "failure while installing shunit"
+			exit 1
+		fi
+	done	
+}
+
 #^	main
 
 # identify and set variables for currentf user
@@ -130,17 +172,11 @@ if [[ installCCDevSupport ]] ; then
 	install "${srcdir}/Scripts/errtrap.func" "$CCDev/func" "errtrap"
 
 	# install third party software
-#	cd $(dirname ${srcdir})/ThirdParty
-#	if [[ -e "shunit" ]] && [[ -d "shunit" ]] ; then
-#		shunit/shunit.build
-#		if [[ "${?}" != "0" ]] ; then
-#			print "failed to install shunit"
-#			exit 1
-#		fi
-#	fi
+	shunitInstall
 fi
 
 # test CCDev_Setup
+#	this install script does not have access to errtrap, so we rely on shunit for some installation checking
 typeset -i failcnt=0
 
 print "== CCDev/_Tests/testCCDev_Setup.ksh"

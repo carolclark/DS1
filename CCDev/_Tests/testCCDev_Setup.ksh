@@ -38,5 +38,11 @@ testScripts() {
 	
 }
 
+testThirdParty() {
+	if [[ ! -e ${SHUnit} ]] ; then
+		fail "$LINENO: shunit2 binary missing" 
+	fi
+}
+
 # load shunit2
 . ${SHUnit}
