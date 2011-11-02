@@ -1,10 +1,11 @@
 #!/bin/sh
 
 #  testXcodeBuild.ksh
-#  BuildSupport
+#  Support
 #
 #  Created by Carol Clark on 9/13/11.
 #  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Confidential and Proprietary.
 
 testEquality() {
 	assertEquals "$LINENO: " 1 1

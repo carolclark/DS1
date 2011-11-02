@@ -90,6 +90,9 @@
       location = "container:"
       name = "2 CCDev">
       <FileRef
+         location = "group:CCDev/CCDev.install">
+      </FileRef>
+      <FileRef
          location = "group:CCDev/CCDev_Setup.ksh">
       </FileRef>
       <Group
@@ -108,6 +111,9 @@
       <Group
          location = "container:"
          name = "Scripts">
+         <FileRef
+            location = "group:CCDev/Scripts/ccInstall.func">
+         </FileRef>
          <FileRef
             location = "group:CCDev/Scripts/errtrap.func">
          </FileRef>
@@ -254,6 +260,9 @@
       <Group
          location = "container:"
          name = "_Tests">
+         <FileRef
+            location = "group:CCDev/_Tests/testCCDev.ksh">
+         </FileRef>
          <FileRef
             location = "group:CCDev/_Tests/testCCDev_Setup.ksh">
          </FileRef>
@@ -471,6 +480,15 @@
    <Group
       location = "container:"
       name = "9 Reference">
+      <FileRef
+         location = "group:CCDev/Scripts/_rf_ccInstall2.func">
+      </FileRef>
+      <FileRef
+         location = "group:ReferenceFiles/_rf_testCCDev.ksh">
+      </FileRef>
+      <FileRef
+         location = "group:ReferenceFiles/_rf_ccInstall.func">
+      </FileRef>
       <Group
          location = "container:"
          name = "Support_svn">

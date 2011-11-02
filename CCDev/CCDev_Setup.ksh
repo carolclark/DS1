@@ -170,6 +170,7 @@ if [[ installCCDevSupport ]] ; then
 
 	# install bootstrap scripts
 	install "${srcdir}/Scripts/errtrap.func" "$CCDev/func" "errtrap"
+	install "${srcdir}/Scripts/ccInstall.func" "$CCDev/func" "ccInstall"
 
 	# install third party software
 	shunitInstall

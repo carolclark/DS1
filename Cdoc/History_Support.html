@@ -59,30 +59,20 @@
 				</ul></li>
 				<li>install shunit 2.1.6 test framework from downloaded source</li>
 			</ul></li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>CCDev.install<ul>
-				<li>Xcode.install processes files by folder</li>
 				<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
-					<li>new file ccInstall.func (initially empty) installed by CCDev_Setup to ~/CCDev/func/ccInstall</li>
-					<li>new files CCDev.install, CCDev/_Tests/testCCDev.ksh; extract/refactor code from Xcode.install using ccInstall</li>
-					<li>ccInstall --params<ul>
-						<li class='impl'>$*: string containing all arguments</li>
-						<li class='impl'>file getobj: (use technique to read parameters in a separate function)	
-							#! /bin/ksh
-							
-							function getobj {
-							typeset -n obj=$1
-							obj=( first="a" second="b" third="${2}")
-							}
-							
-							caller:
-							#! /bin/ksh
-							
-							getobj myobj "Hello"
-							print $myobj
-							#( first=a second=b third=Hello )</li>
+					<li>new target CCDev uses new function ccInstall<ul>
+						<li>new file CCDev.install, target CCDev</li>
+						<li>new file ccInstall.func installed by CCDev_Setup and CCDev to ~/CCDev/func/ccInstall</li>
+						<li>new file CCDev/_Tests/testCCDev.ksh run by CCDev.install</li>
 					</ul></li>
-					<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
+					<li>obtain status code from within errtrap function instead of passing by parameter</li>
+					<li>correct bug while moving among targets in project window</li>
+					<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+					<li>extract/refactor code from Xcode.install using ccInstall<ul>
+						<li>ccInstall --getActions</li>
+						<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
+					</ul></li>
 				</ul></li>
 			</ul></li>
 		</ul></li>

@@ -12,5 +12,5 @@ USAGE='
 '
 
 #^ 1 === top
-trapString='errtrap ___FILENAME___ $LINENO $?'
+trapString='errtrap $0 $LINENO'
 trap "$trapString" ERR

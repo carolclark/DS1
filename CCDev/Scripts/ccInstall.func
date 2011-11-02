@@ -1,0 +1,79 @@
+#!/bin/ksh
+
+#  ccInstall.func
+#  Support
+#
+#  Created by Carol Clark on 10/20/11.
+#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Confidential and Proprietary.
+
+NAME='ccInstall -- provides functions that support install scripts'
+USAGE='\n
+\t	ccInstall commandFlag objectReference ...\n
+\t\t		commandFlag: see descriptions below\n
+\t\t		resultObject: object to contain results\n
+\t	ccInstall --getActions resultObject [actionString]\n
+\t\t		actionString: [-[citu]+] - actions requested (clean, install, test, upload)\n
+\t\t\t			default: -it
+'
+HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
+
+RC_SyntaxError=10
+RC_InsufficientArguments=11
+RC_InvalidActionParameter=12
+
+#^ 1 === top
+trapString='errtrap $0 $LINENO'
+#trap "$trapString" ERR
+
+function getActions {
+	typeset -n resultObj=$1
+	actionString="${2:--it}"
+
+	errorTag=""
+	errorString=""
+	typeset -i errorCount=0
+	resultObj=(
+		actionString=${actionString}
+		doClean=1
+		doBuild=2
+		doTest=3
+		doUpload=4
+		errorCount=${errorCount}
+		errorMessage="Hello"
+		resultTag="err_Hello"
+	)
+}
+
+function ccInstall {
+	if [[ $# < 2 ]] ; then
+		if [[ $# > 0 ]] ; then
+			print "$0: insufficient arguments: expected $0 commandFlag objectReference ..."
+		fi
+		print "${HELP}"
+		return $RC_InsufficientArguments
+	fi
+	case "${1}" in
+		"--getActions" )
+			getActions "${2}" "${3}"
+			return $?
+			;;
+		"--help" )
+			typeset -n resultObj=$2
+			resultObj=(
+				resultString="${HELP}"
+				resultTag="helpString"
+			)
+			;;
+		* )
+			typeset -n resultObj=$2
+			resultObj=(
+				resultTag='err_InvalidActionParameter'
+				errorMessage="invalid action parameter $1"
+				errorCount=1
+			)
+			return $RC_InvalidActionParameter
+			;;
+	esac
+	return 0
+}

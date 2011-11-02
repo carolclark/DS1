@@ -64,6 +64,7 @@
 	#define resid_edAssistant			resid_Editor+20
 	#define resid_edVersion				resid_Editor+30
 	#define	resid_edProject				resid_Editor+40
+		#define resid_projTargetList		resid_edProject+1
 		#define resid_projAddTarget			resid_edProject+2
 		#define resid_projAddPhase			resid_edProject+3
 			#define resid_phaseRunScript		resid_edProject+10
@@ -1323,6 +1324,7 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 	} }
 } };
 
+#define _targetList		Click { 2, 14, -73, _pwindow, _bottomLeft }
 #pragma mark Project
 resource restype_Slate (resid_edProject, "Project") { {
 	Slate { "stdProj", {
@@ -1331,7 +1333,7 @@ resource restype_Slate (resid_edProject, "Project") { {
 		Event { "add target", "" },		Sequence{}, Click { 1, 86, -36, _pwindow, _bottomLeft }, ResSubslate { resid_projAddTarget }, endSequence{},
 		Event { "add build phase", "" },	Sequence{}, Click { 1, -72, -36, _pwindow, _bottomRight }, ResSubslate { resid_projAddPhase }, endSequence{},
 		Event { "modernize", "" },		Click { 1, 0, -36, _pwindow, _bottomCenter },
-		Event { "target list", "" },	Click { 1, 14, -73, _pwindow, _bottomLeft },
+		Event { "target list", "" },	ResSubslate { resid_projTargetList },
 		Event { "info", "" },			Click { 1, -80, 134, _pwindow, _topCenter },
 		Event { "build settings", "" },	Click { 1, -5, 134, _pwindow, _topCenter },
 		Event { "build phases", "" },	Click { 1, 110, 134, _pwindow, _topCenter },
@@ -1365,6 +1367,17 @@ resource restype_Slate (resid_edProject, "Project") { {
 		_JumpDownSubslate_,
 		_JumpNorthSubslate_,
 		_DoJumpSubslate_,
+	} }
+} };
+
+#pragma mark TargetList
+resource restype_Slate (resid_projTargetList, "projTargetList") { {
+	Slate { "tarList", {
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_IMouseSlate_,
+		Event { "north", "" },		Sequence{}, _targetList, _up, endSequence{},
+		Event { "down", "" },		Sequence{}, _targetList, _down, endSequence{},
 	} }
 } };
 

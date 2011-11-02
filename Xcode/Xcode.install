@@ -23,7 +23,7 @@ USAGE='
 '
 
 #^ 1 === top
-trapString='errtrap Xcode.build $LINENO $?'
+trapString='errtrap $0 $LINENO'
 trap "$trapString" ERR
 
 #^ buildsource_process
