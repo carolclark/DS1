@@ -156,41 +156,6 @@ function copySource {
 
 #^ 7 === main
 
-typeset -i doClean=0
-typeset -i doBuild=1
-typeset -i doTest=1
-while [[ $1 == -* ]]; do
-	case $1 in
-		--clean )
-			doClean=1
-			;;
-		--no-clean )
-			doClean=0
-			;;
-		--build )
-			doBuild=1
-			;;
-		--no-build )
-			doBuild=0
-			;;
-		--test )
-			doTest=1
-			;;
-		--no-test )
-			doTest=0
-			;;
-		--help )
-			print "${USAGE}"
-			exit 0;
-			;;
-		* )
-			print "unrecognized option ${1}"
-			print "USAGE: ${USAGE}"
-			exit 1;
-	esac
-	shift
-done
-
 scriptpath="$(pwd)/${0}"
 target="$(basename ${scriptpath%.install})"
 basedir="${scriptpath%/*/${target}.install}"
@@ -200,6 +165,13 @@ lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
 
 # print "scriptpath: ${scriptpath}; project: ${project}; target: ${target}; basedir: ${basedir}; sourceDirectory: ${sourceDirectory}; lastbuilt: ${lastbuilt}"
 
+ccInstall --getActions actions "${1}"
+st=$?
+if [[ ${st} > 0 ]] ; then
+	print "$0 $LINENO: ${result.errorMessage}"
+	exit ${st}
+fi
+
 mkdir -p "${CCDev}/tmp"
 flist="${CCDev}/tmp/flist"
 prevfldr=""
@@ -207,18 +179,20 @@ prevfldr=""
 cd "${basedir}"
 st=0
 
-if [[ ${doClean} > 0 ]] ; then
-	buildsource_clean
-	st="$?"
+if [[ ${actions.doClean} > 0 ]] ; then
+	if [[ -e "${lastbuilt}" ]] ; then
+		rm "${lastbuilt}"
+		st="$?"
+	fi
 fi
 
-if [[ ${st} = 0 && ${doBuild} > 0 ]] ; then
+if [[ ${st} = 0 ]] && [[ ${actions.doBuild} > 0 ]] ; then
 	buildsource_process "processFile"
 	st="$?"
 	cd "${basedir}" 
 fi
 
-if [[ ${st} = 0 && ${doTest} > 0 ]] ; then
+if [[ ${st} = 0 ]] && [[ ${actions.doTest} > 0 ]] ; then
 	typeset -i failcnt=0
 
 	print "== Xcode/_Tests/testXcode.ksh"

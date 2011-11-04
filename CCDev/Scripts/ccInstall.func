@@ -20,7 +20,8 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 RC_SyntaxError=10
 RC_InsufficientArguments=11
-RC_InvalidActionParameter=12
+RC_InvalidCommandParameter=12
+RC_InvalidActionFlag=13
 
 #^ 1 === top
 trapString='errtrap $0 $LINENO'
@@ -28,21 +29,58 @@ trapString='errtrap $0 $LINENO'
 
 function getActions {
 	typeset -n resultObj=$1
-	actionString="${2:--it}"
-
-	errorTag=""
-	errorString=""
-	typeset -i errorCount=0
 	resultObj=(
 		actionString=${actionString}
-		doClean=1
-		doBuild=2
-		doTest=3
-		doUpload=4
-		errorCount=${errorCount}
-		errorMessage="Hello"
-		resultTag="err_Hello"
+		doClean=0
+		doInstall=0
+		doTest=0
+		doUpload=0
+		errorCount=0
+		errorMessage=""
+		resultTag=""
+		resultString=""
 	)
+	resultCode=0
+
+	if [[ -n ${2} ]] ; then
+		actionString="${2#-}"
+		if [[ ${actionString} = ${2} ]] ; then
+			resultObj.resultTag="err_SyntaxError"
+			resultObj.errorMessage="actionString $2: expected first character '-'"
+			resultCode=$RC_SyntaxError
+		fi
+	else
+		actionString="it"
+	fi
+	resultObj.actionString=${actionString}
+
+	if [[ ${resultCode} = 0 ]] ; then
+		typeset -i i=${#actionString}
+		typeset -i errorCount
+		while [[ $i > 0 ]] ; do
+			ch=$(print ${actionString} | cut -c ${i})
+			case "${ch}" in
+				"c" )	resultObj.doClean=1;;
+				"i" )	resultObj.doInstall=1;;
+				"t" )	resultObj.doTest=1;;
+				"u" )	resultObj.doUpload=1;;
+				* )		if [[ ${resultObj.errorCount} = 0 ]] ; then
+							resultObj.resultTag="err_InvalidActionFlag"
+							errorString='invalid action flag '"${ch}"
+						fi
+						errorCount+=1
+						resultCode=$RC_InvalidActionFlag
+						;;
+			esac
+			i=i-1
+		done
+		if [[ errorCount > 0 ]] ; then
+			resultObj.errorMessage='ccInstall --getActions: '"${errorString}"
+			resultObj.errorCount=$errorCount
+		fi
+	fi
+
+	return $resultCode
 }
 
 function ccInstall {
@@ -72,7 +110,7 @@ function ccInstall {
 				errorMessage="invalid action parameter $1"
 				errorCount=1
 			)
-			return $RC_InvalidActionParameter
+			return $RC_InvalidCommandParameter
 			;;
 	esac
 	return 0

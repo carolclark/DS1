@@ -18,7 +18,11 @@ trap "$trapString" ERR
 cp CCDev/Scripts/ccInstall.func ${FPATH}/ccInstall		# install new installer first
 
 ccInstall --getActions result "${1}"
-#print ${result}
+st=$?
+if [[ ${st} > 0 ]] ; then
+	print "$0 $LINENO: ${result.errorMessage}"
+	exit ${st}
+fi
 
 # run tests
 typeset -i failcnt=0

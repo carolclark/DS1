@@ -11,5 +11,5 @@ USAGE="errtrap -- error trap function for use by shell scripts"
 
 function errtrap {
 	es=$?
-	print "$1: ERROR line $2: Command exited with status $es."
+	print "$1#$2: Command exited with status $es."
 }
