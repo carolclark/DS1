@@ -38,9 +38,8 @@ lastbuilt=""
 #^ setPaths
 function setPaths {
 	scriptpath="${1}"
-	target="$(basename ${scriptpath%.install})"
-	basePath="${scriptpath%/*/${target}.install}"
-#	print ${basePath}; return
+	target="$(basename ${scriptpath%_install.ksh})"
+	basePath="${scriptpath%/*/${target}_install.ksh}"
 	project="${basePath##/*/}"
 	sourcePath="${basePath}/${target}"
 	lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"

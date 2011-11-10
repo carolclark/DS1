@@ -8,10 +8,9 @@
 #  Confidential and Proprietary.
 
 #^	1 === ccInstall
-testCcInstall() {
+testCciGeneral() {
 	typeset str
 
-#^ General & Help
 	ccInstall > /dev/null
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument $?
 
@@ -23,8 +22,12 @@ testCcInstall() {
 	str=$(ccInstall --xxx)
 	assertEquals "$LINENO: incorrect return code for action param '--xxx': " $RC_InvalidArgument $?
 	assertNotNull "$LINENO: empty error string: " "${str}"
+}
 
 #^ --getActions
+testCciGetActions() {
+	typeset str
+
 	ccInstall --getActions result
 	st=$?
 	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
@@ -47,12 +50,16 @@ testCcInstall() {
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput $st
 	assertEquals "$LINENO: expected resultTag err_InvalidActionFlag: " "err_InvalidInput" "${result.resultTag}"
 	assertEquals "$LINENO: incorrect error count" 3 "${result.errorCount}"
+}
+
 
 #^ Paths
+testCciPaths() {
 	str=$(ccInstall --getBasePath)
 	st=$?
 	assertEquals "$LINENO: expected error RC_MissingArgument" $RC_MissingArgument "${st}"
-	scriptPath="${CCDev}/TestData/A/A.install"		# not a real file
+
+	scriptPath="${CCDev}/TestData/A/A_install.ksh"		# not a real file
 	str=$(ccInstall --getBasePath "${scriptPath}")
 	assertEquals "$LINENO: incorrect base path: " "${CCDev}/TestData" "${str}"
 	str=$(ccInstall --getSourcePath "${scriptPath}")

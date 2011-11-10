@@ -38,9 +38,9 @@ function buildsource_process {
 	typeset -i errcnt=0
 	cd "${sourcePath}"
 	if [[ -e "${lastbuilt}" ]] ; then
-		find . -path '*/.svn' -prune -o -type f -newer ${lastbuilt} | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.install$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
+		find . -path '*/.svn' -prune -o -type f -newer ${lastbuilt} | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '_install.ksh$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
 	else
-		find . -path '*/.svn' -prune -o -type f | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.install$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
+		find . -path '*/.svn' -prune -o -type f | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '_install.ksh$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
 	fi
 	if [[ "$?" > 0 ]] ; then
 		print "*** could not write file list"
@@ -159,6 +159,7 @@ if [[ ${st} > 0 ]] ; then
 	exit ${st}
 fi
 
+# get and cd to installation's base path
 basePath=$(ccInstall --getBasePath "$(pwd)/${0}")
 st=$?
 if [[ "${st}" > 0 ]] ; then
@@ -172,6 +173,7 @@ if [[ "${st}" > 1 ]] ; then
 	exit ${st}
 fi
 
+# clean
 if [[ ${actions.doClean} > 0 ]] ; then
 	lastbuilt=$(ccInstall --getLastbuilt $(pwd)/${0})
 	if [[ -e "${lastbuilt}" ]] ; then
@@ -180,6 +182,7 @@ if [[ ${actions.doClean} > 0 ]] ; then
 	fi
 fi
 
+# install
 if [[ ${st} = 0 ]] && [[ ${actions.doInstall} > 0 ]] ; then
 	buildsource_process "$(pwd)/${0}" "processFile"
 	st="$?"
@@ -190,6 +193,7 @@ if [[ ${st} = 0 ]] && [[ ${actions.doInstall} > 0 ]] ; then
 	fi
 fi
 
+# test
 if [[ ${st} = 0 ]] && [[ ${actions.doTest} > 0 ]] ; then
 	typeset -i failcnt=0
 
@@ -204,9 +208,5 @@ if [[ ${st} = 0 ]] && [[ ${actions.doTest} > 0 ]] ; then
 
 	exit "${failcnt}"
 fi
-
-
-#print "${0}:$LINENO: warning: This is a pretend warning."
-#st=1
 
 exit ${st}
