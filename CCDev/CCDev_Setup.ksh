@@ -169,8 +169,8 @@ if [[ installCCDevSupport ]] ; then
 	install "${fldr}/environment.plist" "${HOME}/.MacOSX"		# establish some environment variables for use by applications
 
 	# install bootstrap scripts
-	install "${srcdir}/Scripts/errtrap.func" "$CCDev/func" "errtrap"
-	install "${srcdir}/Scripts/ccInstall.func" "$CCDev/func" "ccInstall"
+	install "${srcdir}/Functions/errtrap.ksh" "$CCDev/func" "errtrap"
+	install "${srcdir}/Functions/ccInstall.ksh" "$CCDev/func" "ccInstall"
 
 	# install third party software
 	shunitInstall

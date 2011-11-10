@@ -75,7 +75,13 @@
 					<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 					<li>extract/refactor code from Xcode.install using ccInstall<ul>
 						<li>ccInstall --getActions</li>
-						<li>ccInstall --get<Path>: encapsulate path calculations</li>
+						<li>ccInstall --get&lt;Path&gt;: encapsulate path calculations</li>
+						<li class='tldate'>[10/11/2011]</li>
+						<li>rename/move script files to use standard extensions<ul>
+							<li class='blurb'>At this time, it appears that Xcode's XCCodeSenseAllowAutoCompletionInPlainFiles works to support code completion only in files with extensions it recognizes.</li>
+							<li>files Scripts/*.func: rename to Functions/*.ksh</li>
+							<li>files *.install: rename to *_install.ksh</li>
+						</ul></li>
 						<li>ccInstall --findFiles: verify parameters, generates sources_&lt;target&gt; and tests_&lt;target&gt; at $CCDev/build/&lt;Project&gt;</li>
 					</ul></li>
 				</ul></li>

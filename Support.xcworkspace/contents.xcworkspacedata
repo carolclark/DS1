@@ -90,7 +90,7 @@
       location = "container:"
       name = "2 CCDev">
       <FileRef
-         location = "group:CCDev/CCDev.install">
+         location = "group:CCDev/CCDev_install.ksh">
       </FileRef>
       <FileRef
          location = "group:CCDev/CCDev_Setup.ksh">
@@ -110,12 +110,12 @@
       </Group>
       <Group
          location = "container:"
-         name = "Scripts">
+         name = "Functions">
          <FileRef
-            location = "group:CCDev/Scripts/ccInstall.func">
+            location = "group:CCDev/Functions/ccInstall.ksh">
          </FileRef>
          <FileRef
-            location = "group:CCDev/Scripts/errtrap.func">
+            location = "group:CCDev/Functions/errtrap.ksh">
          </FileRef>
       </Group>
       <Group
@@ -272,7 +272,7 @@
       location = "group:BuildSupport"
       name = "3 Xcode">
       <FileRef
-         location = "group:../Xcode/Xcode.install">
+         location = "group:../Xcode/Xcode_install.ksh">
       </FileRef>
       <Group
          location = "container:"
@@ -480,18 +480,6 @@
    <Group
       location = "container:"
       name = "9 Reference">
-      <FileRef
-         location = "group:CCDev/Scripts/_rf_ccInstall.func">
-      </FileRef>
-      <FileRef
-         location = "group:CCDev/Scripts/_rf_ccInstall2.func">
-      </FileRef>
-      <FileRef
-         location = "group:ReferenceFiles/_rf_testCCDev.ksh">
-      </FileRef>
-      <FileRef
-         location = "group:ReferenceFiles/_rf_ccInstall.func">
-      </FileRef>
       <Group
          location = "container:"
          name = "Support_svn">

@@ -190,7 +190,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "cd ..; Xcode/Xcode.install";
+			shellScript = "cd ..; Xcode/Xcode_install.ksh";
 			showEnvVarsInLog = 0;
 		};
 		67AA801D144F3DE400FCCDC9 /* ShellScript */ = {
@@ -218,7 +218,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "cd ..; CCDev/CCDev.install";
+			shellScript = "cd ..; CCDev/CCDev_install.ksh";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
