@@ -1963,6 +1963,17 @@ resource restype_Slate (resid_Documentation, "Xcode Reference Documentation") { 
 } };
 
 #pragma mark 8 ===
+	sourcePath=$(ccInstall --getSourcePath ${scriptpath})
+	if [[ -e "${sourcePath}" ]] ; then
+		if [[ ! -d "${sourcePath}" ]] ; then
+			print "source path ${sourcePath} exists but is not a directory"
+			return 1
+		fi
+	else
+		print "source path ${sourcePath} does not exist"
+		return 1
+	fi
+	
 
 #pragma mark TargetPopup
 resource restype_Slate (resid_TargetPopup, "Target Popup") { {
@@ -1979,17 +1990,9 @@ resource restype_Slate (resid_TargetPopup, "Target Popup") { {
 		ExitEvent { "run", "" },		Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_R, mf_command }, endSequence{},
 		ExitEvent { "debug", "" },		Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_Y, mf_command + mf_option }, endSequence{},
 		ExitEvent { "clean", "" },		Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_K, mf_command + mf_shift }, endSequence{},
-		Event { "Xcode", "" },					TypeText { "Xcode" },
-		Event { "Documentation", "" },			TypeText { "Documentation" },
-		Event { "Doxygen", "" },				TypeText { "Doxygen" },
-		Event { "All Tests", "" },				TypeText { "AllTests" },
-		Event { "Koala", "" },					TypeText { "KoalaUnitTests" },
-		Event { "Koala framework", "" },		TypeText { "Koala" },
-		Event { "My Library", "" },				TypeText { "MyLibrary" },
-		Event { "Prototype application", "" },	TypeText { "Prototype" },
-		Event { "Prototype", "" },				TypeText { "PrototypeTest" },
-		Event { "Prototype Extended", "" },		TypeText { "ProtoExtTest" },
-		Event { "Prototype Doxygen", "" },		TypeText { "ProtoDoxygen" },
+		Event { "Xcode", "" },			Sequence{}, TypeText { "Xcode" }, _down, endSequence{},
+		Event { "Setup", "" },			Sequence{}, TypeText { "CCDev_Setup" }, _down, endSequence{},
+		Event { "C C Dev", "" },		Sequence{}, TypeText { "CCDev" }, _down, endSequence{},
 	} }
 } };
 

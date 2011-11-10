@@ -7,18 +7,24 @@
 #  Copyright 2011 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
-#^	ccInstall
+#^	1 === ccInstall
 testCcInstall() {
+	typeset str
+
+#^ General & Help
 	ccInstall > /dev/null
-	assertEquals "$LINENO: RC_InsufficientArguments expected" $RC_InsufficientArguments $?
+	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument $?
 
-	ccInstall --help result
-	assertEquals "$LINENO: incorrect resultTag for action param '--help': " "helpString" "${result.resultTag}"
+	typeset str=$(ccInstall --help result)
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --help' failed with code $st" 0 $st
+	assertNotNull "$LINENO: empty help string: " "${str}"
 
-	ccInstall --xxx result
-	assertEquals "$LINENO: incorrect return code for action param '--xxx': " $RC_InvalidCommandParameter $?
-	assertEquals "$LINENO: incorrect resultTag for action param '--xxx': " "err_InvalidActionParameter" "${result.resultTag}"
+	str=$(ccInstall --xxx)
+	assertEquals "$LINENO: incorrect return code for action param '--xxx': " $RC_InvalidArgument $?
+	assertNotNull "$LINENO: empty error string: " "${str}"
 
+#^ --getActions
 	ccInstall --getActions result
 	st=$?
 	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
@@ -38,9 +44,21 @@ testCcInstall() {
 
 	ccInstall --getActions result -xyz
 	st=$?
-	assertEquals "$LINENO: RC_InvalidActionFlag expected" $RC_InvalidActionFlag $st
-	assertEquals "$LINENO: expected resultTag err_InvalidActionFlag: " "err_InvalidActionFlag" "${result.resultTag}"
+	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput $st
+	assertEquals "$LINENO: expected resultTag err_InvalidActionFlag: " "err_InvalidInput" "${result.resultTag}"
 	assertEquals "$LINENO: incorrect error count" 3 "${result.errorCount}"
+
+#^ Paths
+	str=$(ccInstall --getBasePath)
+	st=$?
+	assertEquals "$LINENO: expected error RC_MissingArgument" $RC_MissingArgument "${st}"
+	scriptPath="${CCDev}/TestData/A/A.install"		# not a real file
+	str=$(ccInstall --getBasePath "${scriptPath}")
+	assertEquals "$LINENO: incorrect base path: " "${CCDev}/TestData" "${str}"
+	str=$(ccInstall --getSourcePath "${scriptPath}")
+	assertEquals "$LINENO: incorrect source path: " "${CCDev}/TestData/A" "${str}"
+	str=$(ccInstall --getLastbuilt "${scriptPath}")
+	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/TestData/A.lastbuilt" "${str}"
 }
 
 # load shunit2

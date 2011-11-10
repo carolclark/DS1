@@ -481,6 +481,9 @@
       location = "container:"
       name = "9 Reference">
       <FileRef
+         location = "group:CCDev/Scripts/_rf_ccInstall.func">
+      </FileRef>
+      <FileRef
          location = "group:CCDev/Scripts/_rf_ccInstall2.func">
       </FileRef>
       <FileRef
