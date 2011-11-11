@@ -25,7 +25,6 @@ testXodeInstall() {
 	if [[ ! -d "${fl}" ]] ; then
 		fail "$LINENO: file template Cdoc/HistoryFile.xctemplate: directory expected" 
 	fi
-
 }
 
 # load shunit2

@@ -104,6 +104,9 @@ function processFile {
 			"Templates" )
 				destinationDirectory="${HOME}/Library/Developer/Xcode/Templates"
 				;;
+			"Scripts" )
+				destinationDirectory="${HOME}/Library/Scripts/Xcode"
+				;;
 			"Workflows" )
 				destinationDirectory="${HOME}/Library/Scripts/Xcode"
 				;;
@@ -126,6 +129,7 @@ function processFile {
 
 	if [[ -n "${destinationDirectory}" ]] ; then
 		mkdir -p "$(dirname ${destinationDirectory}/${targetRel})"
+		targetRel="${targetRel%.ksh}"
 		cp "${sourcePath}/${sourceFolder}/${sourceRel}" "${destinationDirectory}/${targetRel}"
 		if [[ "${?}" > 0 ]] ; then
 			print "*** could not copy ${sourcePath}/"${sourceFolder}"/${sourceRel} to ${destinationDirectory}/${targetRel}"
@@ -208,5 +212,5 @@ if [[ ${st} = 0 ]] && [[ ${actions.doTest} > 0 ]] ; then
 
 	exit "${failcnt}"
 fi
-
+	
 exit ${st}

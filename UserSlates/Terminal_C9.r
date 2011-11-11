@@ -201,6 +201,20 @@ resource restype_Slate (resid_termArchive, "") { {
 	} }
 } };
 
+#pragma mark Clean
+resource restype_Slate (resid_termClean, "") { {
+	Slate { "Clean",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "cancel", "" },		_cancel,
+		ExitEvent { "execute", "" },	Keypress { kc_enter, 0 },
+		Event { "Support", "" },		TypeText { "Support " },
+		Event { "Punkin", "" },			TypeText { "Punkin " },
+		Event { "C C Dev", "" },		TypeText { "CCDev " },
+		Event { "Xcode", "" },			TypeText { "Xcode " },
+	} }
+} };
+
 #pragma mark Build
 resource restype_Slate (resid_termBuild, "") { {
 	Slate { "Build",	{

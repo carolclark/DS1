@@ -110,6 +110,13 @@
       </Group>
       <Group
          location = "container:"
+         name = "Scripts">
+         <FileRef
+            location = "group:CCDev/Scripts/cleanProjectTarget.ksh">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
          name = "Functions">
          <FileRef
             location = "group:CCDev/Functions/ccInstall.ksh">
@@ -260,6 +267,9 @@
       <Group
          location = "container:"
          name = "_Tests">
+         <FileRef
+            location = "group:CCDev/_Tests/testCcInstall.ksh">
+         </FileRef>
          <FileRef
             location = "group:CCDev/_Tests/testCCDev.ksh">
          </FileRef>

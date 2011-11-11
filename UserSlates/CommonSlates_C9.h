@@ -708,6 +708,13 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 			TypeText { "@futureNote <#title#>; <#name#>" }, _return, _up, _next, endSequence{},		\
 		ExitEvent { "app or tool", "" },		Sequence{},		\
 			TypeText { "@appOrTool <#name#>" }, _return, endSequence{},		\
+		ExitEvent { "assert equal", "" },	TypeText { "assertEquals \"$LINENO: <#message#>\" <#expected#> <#actual#>" },	\
+		ExitEvent { "assert not equal", "" },	TypeText { "assertNotEquals \"$LINENO: <#message#>\" <#unexpected#> <#actual#>" },	\
+		ExitEvent { "assert null", "" },	TypeText { "assertNull \"$LINENO: <#message#>\" <#value#>" },	\
+		ExitEvent { "assert not null", "" },	TypeText { "assertNotNull \"$LINENO: <#message#>\" <#value#>" },	\
+		ExitEvent { "assert true", "" },	TypeText { "assertTrue \"$LINENO: <#message#>\" <#condition#>" },	\
+		ExitEvent { "assert false", "" },	TypeText { "assertFalse \"$LINENO: <#message#>\" <#condition#>" },	\
+		ExitEvent { "assert failure", "" },	TypeText { "fail \"$LINENO: <#message#>\"" },	\
 		ExitEvent { "pragma", "" }, TypeText { "#pragma mark " },		\
 		ExitEvent { "unix selection", "" }, TypeText { "%%%{PBXSelection}%%%" },		\
 		ExitEvent { "ampersand", "" }, TypeText { "&amp;" },		\
@@ -1936,6 +1943,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 
 #define resid_termGit				resid_Terminal+100
 #define resid_termBuild				resid_Terminal+150
+#define resid_termClean				resid_Terminal+160
 #define resid_termArchive			resid_Terminal+200
 #define	resid_termShell				resid_Terminal+350
 #define resid_termMacPorts			resid_Terminal+400
@@ -1970,6 +1978,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 			ExitEvent { "Window", "'Window' menu" }, ClickMenu { "Window" },		\
 			endSubslate{},		\
 		Event { "git", "" },	ResSubslate { resid_termGit },			\
+		Event { "clean", "" },	Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_termClean }, endSequence{},		\
 		Event { "build", "" },	Sequence{}, TypeText { "build.uia" }, Keypress { kc_enter, 0 }, ResSubslate { resid_termBuild }, endSequence{},		\
 		Event { "archive", "" },	Sequence{}, TypeText { "archive " }, ResSubslate { resid_termArchive }, endSequence{},		\
 		Event { "backup", "" },	TypeText { "ccBackup Backup " },		\

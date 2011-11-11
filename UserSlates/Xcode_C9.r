@@ -1963,17 +1963,6 @@ resource restype_Slate (resid_Documentation, "Xcode Reference Documentation") { 
 } };
 
 #pragma mark 8 ===
-	sourcePath=$(ccInstall --getSourcePath ${scriptpath})
-	if [[ -e "${sourcePath}" ]] ; then
-		if [[ ! -d "${sourcePath}" ]] ; then
-			print "source path ${sourcePath} exists but is not a directory"
-			return 1
-		fi
-	else
-		print "source path ${sourcePath} does not exist"
-		return 1
-	fi
-	
 
 #pragma mark TargetPopup
 resource restype_Slate (resid_TargetPopup, "Target Popup") { {

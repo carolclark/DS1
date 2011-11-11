@@ -50,7 +50,7 @@ heading with name: Task Name; tsk_TaskName;5
 <h2>CCDev</h2>
 <!-- @topicList "CCDev" "tp_CCDev" -->
 	<!-- @topicItem "Scripting" "#Scripting" "0" "" -->
-	<!-- @topicItem "Build System" "#BuildSystem" "0" "" -->
+	<!-- @topicItem "ccInstall" "#ccInstall" "0" "" -->
 <!-- @/topicList -->
 <p>CCDev is a system for supporting our development work. It includes:</p><ul>
 	<li>folder CCDev containing scripts and other supporting functionality<ul>
@@ -101,27 +101,23 @@ This decision was made on the advice of Scott Clark, and has been working very w
 
 <h6>Unix</h6><dl class='funclist'>
 	<dt>Scripts</dt><dd>standard Unix scripts<br />
-		source files: extension .uia for scripts that require user interaction, others .ksh<br />
+		source files: extension .ksh<br />
 		installation: @ $CCDev/bin; extension .ksh dropped</dd>
 	<dt>Functions</dt><dd>Unix functions @ $CCDev/func<br />
-		source files: extension .func<br />
+		source files: extension .ksh<br />
 		installation: @ $CCDev/func; extension .func dropped</dd>
 	<dt>Snippets</dt><dd>text to be processed as <a class='glosslink' href='Glossary_Support.html#def_snippet'>snippets</a><br />
-		source files: extension .snip<br />
+		source files: ?<br />
 		installation: @ $CCDev/snip</dd>
-	<dt>BuildScripts</dt><dd>scripts to be run in place to process files in their parent folder<br />
-		source files: extension .build for scripts that perform standalone builds; not install for scripts to be run after compile<br />
+	<dt>InstallScripts</dt><dd>scripts to be run in place to process files in their parent folder<br />
+		source files: end with _install.ksh<br />
 		installation: none</dd>
 </dl>
 
-<h6>AppleScript</h6><dl class='funclist'>
+<h6 class='nyi'>AppleScript</h6><dl class='funclist'>
 	<dt>Scripts</dt><dd>compiled AppleScripts<br />
 		source files: extension .applescript<br />
 		installation: @ $CCDev/Scripts; extension .scpt	</dd>
-	<dt>Functions</dt><dd class='nyi'>compiled AppleScript functions; $CCDev/Scripts<br />
-		source files: extension .applescript<br />
-		installation: @ $CCDev/Scripts; extension .scpt<br />
-		by convention, AppleScript functions use the idiom <span class='mono'>on run argv</span> and are named with leading '_'</dd>
 </dl>
 
 <!-- @marker "Snippets" -->
@@ -129,38 +125,24 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <p class='expand'>expand</p>
 
 <!-- @marker "2 ===" -->
-<div class='todo'><!-- @marker "Build System" -->
-<h3><a name="BuildSystem">Build System</a></h3>
-<p>CCDev supports a build system used to process script-based targets. These targets are identified as CCDev targets, as distinct from Xcode targets.</p>
+<!-- @marker "ccInstall" -->
+<h3><a name="ccInstall">ccInstall</a></h3>
+<p>CCDev supports an installation system used to process script-based targets. It is used primarily to install technical documentation, application configuration automation support, and general developer scripting support.</p>
 
-<!-- @marker "  Build Scripts" -->
-<h4><a name="BuildScripts">Build Scripts</a></h4>
-<p>Build scripts are files named <em>&lt;Name&gt;.build</em>, and are normally stored at the root level of their parent folder. Each script processes the files in its folder. Since any build scripts found at <em>directory/&lt;Name&gt;.build</em> are expected to process the files in <em>directory</em>, they hide any build scripts contained at deeper levels under <em>directory</em>.</p>
-<p>Build scripts are run in place, with the current directory set to their immediate parent folder. Any scripts or functions called should be invoked from their installed locations.</p>
-<p>A single parameter specifies the subtarget(s) to be built or the command to be executed. Actions not shown in square brackets below must be implemented. Standard subtargets and commands include:</p><dl class='funclist'>
-	<dt>all</dt><dd>build and install all subtargets</dd>
-	<dt>[clean]</dt><dd>remove intermediate files, triggering files for rebuilding</dd>
-	<dt>[install]</dt><dd>handles steps needed to install this target that should be performed before its standard build action(s)</dd>
-	<dt>[uninstall]</dt><dd>clean, plus remove installed and built files from their installed locations</dd>
-	<dt>actions</dt><dd>return an array of names of all commands and subtargets supported<br />
-may include user-defined commands and subtargets<br />
-used by BBEdit to provide a user interface for selecting a command to execute or a subtarget to build<br />
-action names may contain only alphanumeric and underscore characters [:word:]</dd>
-	<dt>[test]</dt><dd>execute any files *.test associated with this target<br />
-	each test scripts *.test:<br />
-	is run in place, with the current directory set to $CCDev<br />
-	writes test data to ~/CCDev/TestData<br />
-	tests using installed scripts<br />
-	returns status reflecting pass/fail<br />
-	is independent; run order of *.test files is undefined<br />
-	<span class='nyi'>later, support functions or scripts to generate shared test data</span>
-</dd>
+<!-- @marker "  Install Scripts" -->
+<h4><a name="InstallScripts">Install Scripts</a></h4>
+<p>Install scripts are files named <em>&lt;Name&gt;_install.ksh</em>, and are normally stored at the root level of their parent folder. Each script processes the files in its folder.</p>
+<p>Install scripts are run in place, with the current directory set to their immediate parent folder. Any scripts or functions called should be invoked from their installed locations.</p>
+<p>A single parameter specifies the command(s) to be executed:</p><dl class='funclist'>
+	<dt>clean</dt><dd>trigger files for rebuilding; may perform additional cleanup</dd>
+	<dt>install</dt><dd>install files changed since last build, or all files if target was cleaned</dd>
+	<dt>test</dt><dd>execute shunit test files _Tests/test*.ksh associated with this target</dd>
+	<dt>upload</dt><dd>copy files from their installed locations to server</dd>
 </dl>
 
-<h4><a name='BuildCdoc'>Cdoc</a></h4>
-<p>A Cdoc target is a type of CCDev target that is used to process documentation for <a class='glosslink' href='Glossary_Support.html#def_Cdoc'>Cdoc</a>, our in-house documentation system.</p>
-<p>For Cdoc targets, the build script may be omitted from the Cdoc source folder. The default script $CCDev/Scripts/Cdoc.build is then used.</p>
-</div>
+<h4><a name='ccInstall_script'>ccInstall Script</a></h4>
+<p>ccInstall provides support for install scripts.</p>
+<p><a class='glosslink' href='Glossary_Support.html#def_Cdoc'>Cdoc</a> (technical documentation) targets  can normally be installed directly by ccInstall, instead of requiring a script Cdoc_install.ksh. If the Cdoc folder contains a script &lt;ProjectName&gt;Additions.ksh, it will be executed as part of the install process.</p>
 
 <!-- @marker "3 ===" -->
 <div class='todo'>

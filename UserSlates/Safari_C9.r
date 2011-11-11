@@ -1,5 +1,5 @@
 // =================================================================================
-//	Safari.r					©2005-11 C & C Software, Inc. All rights reserved.
+//	Safari.r					ï¿½2005-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma mark 0 ===
@@ -15,7 +15,8 @@
 #define resid_DocBrowser				resid_Safari+20
 	#define resid_BrowseDoxygen				resid_DocBrowser+1
 #define resid_Login						resid_Safari+30
-#define resid_AirTran					resid_Safari+35
+#define resid_Discover					resid_Safari+35
+#define resid_AirTran					resid_Safari+36
 #define resid_XcodeJavadoc				resid_Safari+100
 #define resid_Javadoc						resid_XcodeJavadoc+1
 #define resid_ScanLinks					resid_Safari+120
@@ -751,7 +752,23 @@ resource restype_Slate (resid_Login, "Login Slate") { {
 			Keypress { kc_enter, 0 },
 			endSequence{},
 		ExitEvent { "Punkin", "" },		TypeText { "4YZHqz5pq1" },
+		Event { "Discover", "" },		ResSubslate { resid_Discover },
 		Event { "AirTran", "" },		ResSubslate { resid_AirTran },
+	 } }
+} };
+
+resource restype_Slate (resid_Discover, "Discover Slate") { {
+	Slate { "Discover",	{
+		_SafariStandards_,
+		_CloseSubslate_,
+		Event { "name", "" },		TypeText { "Carol L Clark" },
+		Event { "number", "" },		TypeText { "6011499463079978" },
+		Event { "month", "" },		TypeText { "07" },
+		Event { "long year", "" },	TypeText { "2016" },
+		Event { "year", "" },		TypeText { "16" },
+		Event { "zip", "" },		TypeText { "67220" },
+		Event { "security", "" },	TypeText { "983" },
+		Event { "tab", "" },		Keypress { kc_tab, 0 },
 	 } }
 } };
 
@@ -1321,6 +1338,7 @@ resource restype_Slate (resid_Safari, "Safari Slate") { {
 		Event { "Documentation", "" },		Click { 1, 65, 65, window, "1", _topLeft },
 		Event { "Javadoc", "" },			ResSubslate { resid_Javadoc },
 		Event { "Login", "" },				ResSubslate { resid_Login },
+		Event { "Discover", "" },			ResSubslate { resid_Discover },
 		Event { "AirTran", "" },			ResSubslate { resid_AirTran },
 		Event { "Layout", "" },				ResSubslate { resid_Layout },
 		Event { "Browser", "" },			ResSubslate { resid_DocBrowser },

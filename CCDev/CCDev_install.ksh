@@ -16,6 +16,8 @@ trapString='errtrap $0 $LINENO'
 trap "$trapString" ERR
 
 cp CCDev/Functions/ccInstall.ksh ${FPATH}/ccInstall		# install new installer first
+cp CCDev/Scripts/cleanProjectTarget.ksh ${CCDev}/bin/cleanProjectTarget
+chmod a+x ${CCDev}/bin/cleanProjectTarget
 
 ccInstall --getActions result "${1}"
 st=$?
@@ -30,6 +32,22 @@ typeset -i failcnt=0
 trap "" ERR
 print "== CCDev/_Tests/testCCDev.ksh"
 result=$(CCDev/_Tests/testCCDev.ksh)
+if [[ "${?}" > 0 ]] ; then
+	failcnt="${failcnt}"+1
+fi
+trap "$trapString" ERR
+print "${result}"
+
+print "== CCDev/_Tests/testCcInstall.ksh"
+result=$(CCDev/_Tests/testCcInstall.ksh)
+if [[ "${?}" > 0 ]] ; then
+	failcnt="${failcnt}"+1
+fi
+trap "$trapString" ERR
+print "${result}"
+
+print "== CCDev/_Tests/testCCDev_Setup.ksh"
+result=$(CCDev/_Tests/testCCDev_Setup.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi
