@@ -218,7 +218,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "cd ..; CCDev/CCDev_install.ksh";
+			shellScript = "ccInstall ${HOME}/Dev/Support CCDev";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

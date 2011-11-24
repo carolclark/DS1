@@ -167,7 +167,6 @@ resource restype_Slate (resid_TypeSpecialXcodeSlate, "Type Special Xcode Slate")
 		_TypeSpecialBaseItems_,
 		ExitEvent { "define", "" },			TypeText { "#define" },
 		ExitEvent { "mark spot", "" },		TypeText { "<##>" },
-		ExitEvent { "where", "" },			TypeText { "_WHERE_" },
 		ExitEvent { "test actual", "" },	TypeText { "@\"actual: %@ (%@)\", <#arg#>, _WHERE_);" };
 		ExitEvent { "resource id", "" },	TypeText { "resid_" },
 		ExitEvent { "in use development", "" },	TypeText { "in-use development" },
@@ -233,16 +232,19 @@ resource restype_Slate (resid_TypeSpecialXcodeSlate, "Type Special Xcode Slate")
 	Event { "choose eleven", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, endSequence{},	\
 	Event { "choose twelve", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, endSequence{},	\
 	Event { "choose thirteen", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, endSequence{},	\
-	Event { "choose previous", "" }, Subslate { "prev" },		\
-		_SlateGlobals_,		\
-		ExitEvent { "one", "" }, _up,	\
-		ExitEvent { "two", "" }, Sequence{}, _up, _up, endSequence{},	\
-		ExitEvent { "three", "" }, Sequence{}, _up, _up, _up, endSequence{},	\
-		ExitEvent { "four", "" }, Sequence{}, _up, _up, _up, _up, endSequence{},	\
-		ExitEvent { "five", "" }, Sequence{}, _up, _up, _up, _up, _up, endSequence{},	\
-		ExitEvent { "six", "" }, Sequence{}, _up, _up, _up, _up, _up, _up, endSequence{},	\
-		ExitEvent { "seven", "" }, Sequence{}, _up, _up, _up, _up, _up, _up, _up, endSequence{},	\
-	endSubslate{},		\
+	Event { "up one", "" }, _up,	\
+	Event { "up two", "" }, 	Sequence{}, _up, _up, endSequence{},	\
+	Event { "up three", "" },	Sequence{}, _up, _up, _up, endSequence{},	\
+	Event { "up four", "" }, 	Sequence{}, _up, _up, _up, _up, endSequence{},	\
+	Event { "up five", "" }, 	Sequence{}, _up, _up, _up, _up, _up, endSequence{},	\
+	Event { "up six", "" }, 	Sequence{}, _up, _up, _up, _up, _up, _up, endSequence{},	\
+	Event { "up seven", "" }, 	Sequence{}, _up, _up, _up, _up, _up, _up, _up, endSequence{},	\
+	Event { "up eight", "" }, 	Sequence{}, _up, _up, _up, _up, _up, _up, _up, _up, endSequence{},	\
+	Event { "up nine", "" }, 	Sequence{}, _up, _up, _up, _up, _up, _up, _up, _up, _up, endSequence{},	\
+	Event { "up ten", "" }, 	Sequence{}, _up, _up, _up, _up, _up, _up,_up, _up, _up, _up, endSequence{},	\
+	Event { "up eleven", "" }, 	Sequence{}, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, endSequence{},	\
+	Event { "up twelve", "" }, 	Sequence{}, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, endSequence{},	\
+	Event { "up thirteen", "" }, Sequence{}, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, _up, endSequence{},	\
 	_DoJumpSubslate_,		\
 	_DoSelectSubslate_,		\
 	Event { "jump right", "option-right <n> times" },	Subslate { "<n>" },	\
@@ -346,8 +348,8 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 		Event { "breakpoints", "" },	Click { 1, -100, 75, _pwindow, _topRight },
 		Event { "counterpart", "" },	Click { 1, -27, 75, _pwindow, _topRight },
 		Event { "includes", "" },		Click { 1, -50, 75, _pwindow, _topRight },
-		ExitEvent { "copy", "" },		Keypress { kc_C, mf_command },
-		ExitEvent { "paste", "" },		Keypress { kc_V, mf_command + mf_option + mf_shift },
+		Event { "copy", "" },			Keypress { kc_C, mf_command },
+		Event { "paste", "" },			Keypress { kc_V, mf_command + mf_option + mf_shift },
 		Event { "cut next line", "" },	Sequence{}, _cutNextLine, endSequence{},
 		Event { "exec line", "" },		Sequence{},
 			Keypress { kc_right, mf_command },
@@ -358,9 +360,10 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 		Event { "Element", "" },		ResSubslate { resid_InsertElement },
 		Event { "Add Style", "" },			ResSubslate { resid_InsertStyle },
 		Event { "Insert Tag", "" },			ResSubslate { resid_InsertTag },
-		Event { "hide bubbles", "" },		Keypress { kc_H, mf_shift + mf_option + mf_command },
-		Event { "select exec", "click the Active Executable popup" }, Click { 1, 315, 40, _pwindow, _topLeft },
-		Event { "error icon", "click the error/warning icon" }, Click { 1, -32, -11, _pwindow, _bottomRight },
+		Event { "indent", "" },				Keypress { kc_closebracket, mf_command + mf_shift },
+//		Event { "hide bubbles", "" },		Keypress { kc_H, mf_shift + mf_option + mf_command },
+//		Event { "select exec", "click the Active Executable popup" }, Click { 1, 315, 40, _pwindow, _topLeft },
+//		Event { "error icon", "click the error/warning icon" }, Click { 1, -32, -11, _pwindow, _bottomRight },
 		Event { "mark cells", "" },	Subslate { "mark cells" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -370,8 +373,8 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 			Event { "not applicable", "" },	Sequence{}, TypeText { "n/a" }, Keypress { kc_slash, mf_control }, endSequence{},
 			Event { "question", "" },		Sequence{}, Keypress { kc_slash, mf_shift }, Keypress { kc_slash, mf_control }, endSequence{},
 			endSubslate{},
-		Event { "show selection", "" },		Keypress { kc_J, mf_command },
-		Event { "go to definition", "" },	Keypress { kc_D, mf_command + mf_shift },
+		Event { "show selection", "" },		Keypress { kc_L, mf_command + mf_shift },
+		Event { "go to definition", "" },	Keypress { kc_J, mf_command + mf_option },
 		goToReference_,
 		Event { "save files", "" },			Keypress { kc_S, mf_command + mf_option },
 		Event { "Special", "type predefined text shortcuts" },
@@ -938,7 +941,8 @@ resource restype_Slate (resid_EditMenu, "Edit") { {
 resource restype_Slate (resid_Navigate, "Navigate") { {
 	Slate { "nav", {
 		_SlateGlobals_,
-		_CloseSubslate_,
+		ExitEvent { "okay", "" },		_return,
+		ExitEvent { "cancel", "" },		NilAction{},
 		ExitEvent { "open in", "" },	Keypress { kc_comma, mf_command + mf_option + mf_shift },
 		Event { "new tab", "" },		Keypress { kc_T, mf_command },
 		Event { "close tab", "" },		Keypress { kc_W, mf_command },

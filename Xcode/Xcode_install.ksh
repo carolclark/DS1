@@ -15,14 +15,20 @@ trap "$trapString" ERR
 
 #^ buildsource_process
 function buildsource_process {
-	scriptpath="${1?scriptpath not specified}"
-	processFunction="${2?process function not specified}"
+	basePath="${1?basePath not specified}"
+	target="${2?target not specified}"
+	processFunction="${3?process function not specified}"
 
 	mkdir -p "${CCDev}/tmp"
 	flist="${CCDev}/tmp/flist"
 	prevfldr=""
 
-	sourcePath=$(ccInstall --getSourcePath ${scriptpath})
+	sourcePath=$(ccInstall --getSourcePath ${basePath} ${target})
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		print "${sourcePath}"
+		return ${st}
+	fi
 	if [[ -e "${sourcePath}" ]] ; then
 		if [[ ! -d "${sourcePath}" ]] ; then
 			print "source path ${sourcePath} exists but is not a directory"
@@ -33,7 +39,7 @@ function buildsource_process {
 		return 1
 	fi
 	
-	lastbuilt=$(ccInstall --getLastbuilt ${scriptpath})
+	lastbuilt=$(ccInstall --getLastbuilt ${basePath} ${target})
 	fs=0
 	typeset -i errcnt=0
 	cd "${sourcePath}"
@@ -164,7 +170,7 @@ if [[ ${st} > 0 ]] ; then
 fi
 
 # get and cd to installation's base path
-basePath=$(ccInstall --getBasePath "$(pwd)/${0}")
+basePath=$(ccInstall --getBasePath "${HOME}/Dev/Support" Xcode)
 st=$?
 if [[ "${st}" > 0 ]] ; then
 	print "$0#$LINENO: ${basePath}"
@@ -179,7 +185,7 @@ fi
 
 # clean
 if [[ ${actions.doClean} > 0 ]] ; then
-	lastbuilt=$(ccInstall --getLastbuilt $(pwd)/${0})
+	lastbuilt=$(ccInstall --getLastbuilt "${HOME}/Dev/Support" Xcode)
 	if [[ -e "${lastbuilt}" ]] ; then
 		rm "${lastbuilt}"
 		st="$?"
@@ -188,8 +194,12 @@ fi
 
 # install
 if [[ ${st} = 0 ]] && [[ ${actions.doInstall} > 0 ]] ; then
-	buildsource_process "$(pwd)/${0}" "processFile"
+	buildsource_process "${HOME}/Dev/Support" Xcode "processFile"
 	st="$?"
+	if [[ "${st}" > 1 ]] ; then
+		print "$0#$LINENO: buildsource_process error"
+		exit ${st}
+	fi
 	cd "${basePath}"
 	if [[ "${st}" > 1 ]] ; then
 		print "$0#$LINENO: could not cd to basePath"

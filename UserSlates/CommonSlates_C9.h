@@ -674,6 +674,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 			TypeText { "if [[ \"${?}\" > 0 ]] ; then" },		\
 			_return, _tab, TypeText { "<##>" }, _return, _delete, TypeText { "fi" },		\
 			_previous, _previous, endSequence{},		\
+		ExitEvent { "where", "" },			TypeText { "$0#$LINENO: " },		\
 		ExitEvent { "marker", "" },					Sequence{}, TypeText { "<!-- @marker \"<#marker#>\" -->" }, _return, _up, _next, endSequence{},		\
 		ExitEvent { "topic item", "" },				Sequence{},		\
 			TypeText { "<!-- @topicItem \"<#title#>\" \"<#linkDestination#>\" \"<#indent0-3#>\" \"<#[description]#>\" -->" }, _up, _next, endSequence{},		\

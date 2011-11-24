@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  CCDev.install
+#  CCDev_install.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
@@ -12,7 +12,7 @@ CCDev.install -- install CCDev support
 '
 
 #^ 1 === top
-trapString='errtrap $0 $LINENO'
+trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
 cp CCDev/Functions/ccInstall.ksh ${FPATH}/ccInstall		# install new installer first
@@ -22,7 +22,7 @@ chmod a+x ${CCDev}/bin/cleanProjectTarget
 ccInstall --getActions result "${1}"
 st=$?
 if [[ ${st} > 0 ]] ; then
-	print "$0 $LINENO: ${result.errorMessage}"
+	print "$0#$LINENO: ${result.errorMessage}"
 	exit ${st}
 fi
 
@@ -35,7 +35,6 @@ result=$(CCDev/_Tests/testCCDev.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi
-trap "$trapString" ERR
 print "${result}"
 
 print "== CCDev/_Tests/testCcInstall.ksh"
@@ -43,7 +42,6 @@ result=$(CCDev/_Tests/testCcInstall.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi
-trap "$trapString" ERR
 print "${result}"
 
 print "== CCDev/_Tests/testCCDev_Setup.ksh"
