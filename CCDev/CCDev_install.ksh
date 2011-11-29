@@ -16,6 +16,7 @@ CCDev_install.ksh -- provide functions for ccInstall to support CCDev installati
 #		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
 #	--cleanFiles
 #		perform any cleanup indicated for files that this target installs
+#		return 0 to have caller continue by updating last built data
 '
 
 . "${CCDev}/bin/resultCodes.ksh"
@@ -32,7 +33,7 @@ function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
 		subtarget="${1}"
 	else
-		print "USAGE: CCDev_install.ksh --getSubtargetDestination subtarget"
+		print "USAGE: ${target}_install.ksh --getSubtargetDestination subtarget"
 		return $RC_MissingArgument
 	fi
 	destinationFolder=""
@@ -63,7 +64,7 @@ function handleFile {
 		filepath="${2}"
 		destinationFolder="${3}"
 	else
-		print "USAGE: CCDev_install.ksh --handleFile subtarget filepath destinationFolder"
+		print "USAGE: ${target}_install.ksh --handleFile subtarget filepath destinationFolder"
 		return $RC_MissingArgument
 	fi
 

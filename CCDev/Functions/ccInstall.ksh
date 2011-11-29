@@ -337,11 +337,6 @@ function processActions {
 
 #^ 8 === ccInstall
 function ccInstall {
-#*** temporary
-	cp ${HOME}/Dev/Support/CCDev/Functions/ccInstall.ksh ${FPATH}/ccInstall		# install new installer first
-	cp ${HOME}/Dev/Support/CCDev/Scripts/cleanProjectTarget.ksh ${CCDev}/bin/cleanProjectTarget
-	chmod a+x ${CCDev}/bin/cleanProjectTarget
-#*
 	if [[ $# = 0 ]] ; then
 		print "$0: missing commandFlag"
 		return $RC_MissingArgument

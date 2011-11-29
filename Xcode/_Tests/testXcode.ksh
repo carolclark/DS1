@@ -11,7 +11,7 @@ testEquality() {
 	assertEquals "$LINENO: " 1 1
 }
 
-testXodeInstall() {
+testXcodeInstall() {
 	# goMarker.workflow
 	if [[ ! -e ${HOME}/Library/Scripts/Xcode/goMarker.workflow ]] ; then
 		fail "$LINENO: script goMarker missing" 

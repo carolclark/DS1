@@ -1,14 +1,14 @@
 #!/bin/ksh
 
-#  Xcode_install.ksh
-#  Support
+#  ___FILENAME___
+#  <#Project#>
 #
-#  Created by Carol Clark on 11/29/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Created by ___FULLUSERNAME___ on ___DATE___.
+#  Copyright ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
-Xcode_install.ksh -- provide functions for ccInstall to support CCDev installation
+<#Target#>_install.ksh -- provide functions for ccInstall to support CCDev installation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--handleFile subtarget filepath destinationFolder
@@ -25,8 +25,8 @@ Xcode_install.ksh -- provide functions for ccInstall to support CCDev installati
 trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
-projectPath="${HOME}/Dev/Support"
-target="Xcode"
+projectPath="${HOME}/Dev/<#Project#>"
+target="<#Target#>"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -43,12 +43,6 @@ function getSubtargetDestination {
 			;;
 		"Functions" )
 			destinationFolder="${CCDev}/func"
-			;;
-		"Workflows" )
-			destinationFolder="${HOME}/Library/Scripts/Xcode"
-			;;
-		"Templates" )
-			destinationFolder="${HOME}/Library/Developer/Xcode/Templates"
 			;;
 		"_Tests" )
 			;;	#handled elsewhere

@@ -34,87 +34,11 @@
 	<!-- @marker "Transfer Existing: Setup" -->
 	<h5 id="transferExisting_setup">Transfer Existing: Setup</h5><ul>
 		<li class='blurb'>There have been major changes in our development environment, including replacing Subversion with Git for Source Control. All existing projects, along with any still-active functionality, will be transferred into the new system.</li>
-		<li><a href="#transferExisting_compl"><i>(completed)</i></a></li>
-		<li>[cdocWorkflow] improve Cdoc workflow<ul>
-			<li>ViewInBrowser: new workflow to open, in Safari, the file in our TechnicalDocs site that corresponds to Xcode's front text document</li>
-			<li>Xcode.r: _FileNewStandards_: extend to _FileSaveStandards_ and _FileOpenStandards_; extract _FileDialogStandards_; add File:Open</li>
-			<li>rename Cdoc files for as indicated to form Topic_Project.html for improved keyboard access<ul>
-				<li class='blurb'>Currently, many documentation files have names that start with the name of their project. This is inconvenient for file access from Xcode, where one can type the beginning of the file name to select that file. Also, some standard files have unusual abbreviations (eg. Support_hist) for historical reasons.</li>
-				<li>renamed: Support_gloss.html -&gt; Glossary_Support.html, Support_hist.html -&gt; History_Support.html</li>
-				<li>change default file name for FileTemplate HistoryFile</li>
-				<li>also rename Cdoc files in project Punkin as indicated</li>
-			</ul></li>
-			<li>add templates for files Requirements_.html, UseCases_.html, Design_.html<ul>
-				<li>based on files Koala_Requirements.html, Koala_Design.html from deprecated project Koala_Try2; to be used for project Punkin</li>
-			</ul></li>
+		<li><a href="#transferExisting_compl"><i>(completed)</i></a><ul>
+			<li class='blurb'>ccInstall now handles actions clean, install, and test for non-Cdoc targets</li>
 		</ul></li>
-		<li>[refactorInstall] refactor Xcode.install to enable extension for other targets<ul>
-			<li>Support: add reference files for CCDev; see <a href="Support.html#ReferenceFiles">Support: Reference Files</a></li>
-			<li>target <a href="Support.html#tar_CCDev_Setup">CCDev_Setup</a>; script CCDev_Setup.ksh<ul>
-				<li>new file CCDev_Setup.ksh based on code from Support_svn:CCDev.build and Punkin_svn:Collaborator.build</li>
-				<li>add File Template Scripting/shunitTest</li>
-				<li>add CCDev/_Tests/testCCDev_Setup.ksh; run from CCDev_Setup.ksh</li>
-				<li>initial critical files: add tests; add files based on existing Support_svn files<ul>
-					<li>CCDev/Environment: profile.ksh, kshrc.ksh, environment.plist; CCDev/Scripts: errtrap.func; all based on previously existing Support_svn files</li>
-				</ul></li>
-				<li>install shunit 2.1.6 test framework from downloaded source</li>
-			</ul></li>
-			<li>CCDev.install<ul>
-				<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
-					<li>new target CCDev uses new function ccInstall<ul>
-						<li>new file CCDev.install, target CCDev</li>
-						<li>new file ccInstall.func installed by CCDev_Setup and CCDev to ~/CCDev/func/ccInstall</li>
-						<li>new file CCDev/_Tests/testCCDev.ksh run by CCDev.install</li>
-					</ul></li>
-					<li>obtain status code from within errtrap function instead of passing by parameter</li>
-					<li>Xcode_C9.r: correct bug while moving among targets in project window</li>
-					<li class='tldate'>[11/04/2011]</li>
-					<li>ccInstall: implement --getActions<ul>
-						<li>use in Xcode.install</li>
-					</ul></li>
-					<li>extract/refactor code from Xcode.install using ccInstall<ul>
-						<li>ccInstall --getActions</li>
-						<li>ccInstall --get&lt;Path&gt;: encapsulate path calculations</li>
-						<li class='tldate'>[10/11/2011]</li>
-						<li>rename/move script files to use standard extensions<ul>
-							<li class='blurb'>At this time, it appears that Xcode's XCCodeSenseAllowAutoCompletionInPlainFiles works to support code completion only in files with extensions it recognizes.</li>
-							<li>files Scripts/*.func: rename to Functions/*.ksh</li>
-							<li>files *.install: rename to *_install.ksh</li>
-							<li>ccInstall, Xcode_install: update for renamed files</li>
-						</ul></li>
-						<li>add script <span class='mono'>cleanProjectTarget &lt;Project&gt; &lt;Target&gt;</span></li>
-						<li>CCDev: make ccInstall, not the folder-specific code, the controlling script<ul>
-							<li>target CCDev: set script to "ccInstall ${HOME}/Dev/Support CCDev"</li>
-							<li>ccInstall.ksh, testCcInstall.ksh<ul>
-								<li>setPaths takes "projectPath target" instead of "scriptpath"</li>
-								<li>add functions findTests, processActions</li>
-							</ul></li>
-							<li>Xcode_install.ksh: update for changes to ccInstall</li>
-						</ul></li>
-						<li>ccInstall handles install action<ul>
-							<li>ccInstall.ksh, testCcInstall.ksh<ul>
-								<li>--getTargetScript</li>
-								<li>--findSources</li>
-							</ul></li>
-							<li>add file resultCodes.ksh</li>
-							<li>CCDev_install.ksh, testCCDev.ksh<ul>
-								<li>--getSubtargetDestination</li>
-								<li>--handleFile</li>
-							</ul></li>
-							<li>ccInstall.ksh: processActions handles install action</li>
-						</ul></li>
-						<li>ccInstall: implement clean action<ul>
-							<li>ccInstall.ksh, testCcInstall.ksh: --updateLastbuilt, --clearLastbuilt</li>
-							<li>ccInstall.ksh processActions: handle clean action; update $lastbuilt on successful build</li>
-						</ul></li>
-						<li>cleanProjectTarget.ksh: use ccInstall -c</li>
-						<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-						<li>add InstallTarget template</li>
-						<li>refactor Xcode_install.ksh to use ccInstall</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
+		<li class='tldate'>[implCcInstall 11/29/2011]</li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
 		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
 		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
@@ -418,6 +342,85 @@
 			</ul></li>
 		</ul></li>
 		<li class='tldate'>[10/14/2011]</li>
+		<li>[cdocWorkflow] improve Cdoc workflow<ul>
+			<li>ViewInBrowser: new workflow to open, in Safari, the file in our TechnicalDocs site that corresponds to Xcode's front text document</li>
+			<li>Xcode.r: _FileNewStandards_: extend to _FileSaveStandards_ and _FileOpenStandards_; extract _FileDialogStandards_; add File:Open</li>
+			<li>rename Cdoc files for as indicated to form Topic_Project.html for improved keyboard access<ul>
+				<li class='blurb'>Currently, many documentation files have names that start with the name of their project. This is inconvenient for file access from Xcode, where one can type the beginning of the file name to select that file. Also, some standard files have unusual abbreviations (eg. Support_hist) for historical reasons.</li>
+				<li>renamed: Support_gloss.html -&gt; Glossary_Support.html, Support_hist.html -&gt; History_Support.html</li>
+				<li>change default file name for FileTemplate HistoryFile</li>
+				<li>also rename Cdoc files in project Punkin as indicated</li>
+			</ul></li>
+			<li>add templates for files Requirements_.html, UseCases_.html, Design_.html<ul>
+				<li>based on files Koala_Requirements.html, Koala_Design.html from deprecated project Koala_Try2; to be used for project Punkin</li>
+			</ul></li>
+		</ul></li>
+		<li>[refactorInstall] refactor Xcode.install to enable extension for other targets<ul>
+			<li>Support: add reference files for CCDev; see <a href="Support.html#ReferenceFiles">Support: Reference Files</a></li>
+			<li>target <a href="Support.html#tar_CCDev_Setup">CCDev_Setup</a>; script CCDev_Setup.ksh<ul>
+				<li>new file CCDev_Setup.ksh based on code from Support_svn:CCDev.build and Punkin_svn:Collaborator.build</li>
+				<li>add File Template Scripting/shunitTest</li>
+				<li>add CCDev/_Tests/testCCDev_Setup.ksh; run from CCDev_Setup.ksh</li>
+				<li>initial critical files: add tests; add files based on existing Support_svn files<ul>
+					<li>CCDev/Environment: profile.ksh, kshrc.ksh, environment.plist; CCDev/Scripts: errtrap.func; all based on previously existing Support_svn files</li>
+				</ul></li>
+				<li>install shunit 2.1.6 test framework from downloaded source</li>
+			</ul></li>
+			<li>CCDev.install<ul>
+				<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
+					<li>new target CCDev uses new function ccInstall<ul>
+						<li>new file CCDev.install, target CCDev</li>
+						<li>new file ccInstall.func installed by CCDev_Setup and CCDev to ~/CCDev/func/ccInstall</li>
+						<li>new file CCDev/_Tests/testCCDev.ksh run by CCDev.install</li>
+					</ul></li>
+					<li>obtain status code from within errtrap function instead of passing by parameter</li>
+					<li>Xcode_C9.r: correct bug while moving among targets in project window</li>
+					<li class='tldate'>[11/04/2011]</li>
+					<li>ccInstall: implement --getActions<ul>
+						<li>use in Xcode.install</li>
+					</ul></li>
+					<li>extract/refactor code from Xcode.install using ccInstall<ul>
+						<li>ccInstall --getActions</li>
+						<li>ccInstall --get&lt;Path&gt;: encapsulate path calculations</li>
+						<li class='tldate'>[10/11/2011]</li>
+						<li>rename/move script files to use standard extensions<ul>
+							<li class='blurb'>At this time, it appears that Xcode's XCCodeSenseAllowAutoCompletionInPlainFiles works to support code completion only in files with extensions it recognizes.</li>
+							<li>files Scripts/*.func: rename to Functions/*.ksh</li>
+							<li>files *.install: rename to *_install.ksh</li>
+							<li>ccInstall, Xcode_install: update for renamed files</li>
+						</ul></li>
+						<li>add script <span class='mono'>cleanProjectTarget &lt;Project&gt; &lt;Target&gt;</span></li>
+						<li>CCDev: make ccInstall, not the folder-specific code, the controlling script<ul>
+							<li>target CCDev: set script to "ccInstall ${HOME}/Dev/Support CCDev"</li>
+							<li>ccInstall.ksh, testCcInstall.ksh<ul>
+								<li>setPaths takes "projectPath target" instead of "scriptpath"</li>
+								<li>add functions findTests, processActions</li>
+							</ul></li>
+							<li>Xcode_install.ksh: update for changes to ccInstall</li>
+						</ul></li>
+						<li>ccInstall handles install action<ul>
+							<li>ccInstall.ksh, testCcInstall.ksh<ul>
+								<li>--getTargetScript</li>
+								<li>--findSources</li>
+							</ul></li>
+							<li>add file resultCodes.ksh</li>
+							<li>CCDev_install.ksh, testCCDev.ksh<ul>
+								<li>--getSubtargetDestination</li>
+								<li>--handleFile</li>
+							</ul></li>
+							<li>ccInstall.ksh: processActions handles install action</li>
+						</ul></li>
+						<li>ccInstall: implement clean action<ul>
+							<li>ccInstall.ksh, testCcInstall.ksh: --updateLastbuilt, --clearLastbuilt</li>
+							<li>ccInstall.ksh processActions: handle clean action; update $lastbuilt on successful build</li>
+						</ul></li>
+						<li>cleanProjectTarget.ksh: use ccInstall -c</li>
+						<li>add InstallTarget template</li>
+						<li>refactor Xcode_install.ksh to use ccInstall</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
 	</ul>
 
 	<!-- @marker "[end]" -->

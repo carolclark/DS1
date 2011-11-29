@@ -371,6 +371,19 @@
             location = "container:"
             name = "Scripting">
             <Group
+               location = "container:"
+               name = "InstallTarget">
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Scripting/InstallTarget.xctemplate/___FILEBASENAME___.ksh">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Scripting/InstallTarget.xctemplate/TemplateIcon.icns">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Scripting/InstallTarget.xctemplate/TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
                location = "container:Xcode/Templates/FileTemplates/Scripting/ShellScript.xctemplate"
                name = "ShellScript">
                <FileRef

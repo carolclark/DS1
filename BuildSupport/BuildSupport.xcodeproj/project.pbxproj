@@ -190,7 +190,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "cd ..; Xcode/Xcode_install.ksh";
+			shellScript = "ccInstall ${HOME}/Dev/Support Xcode";
 			showEnvVarsInLog = 0;
 		};
 		67AA801D144F3DE400FCCDC9 /* ShellScript */ = {
