@@ -171,6 +171,7 @@ if [[ installCCDevSupport ]] ; then
 	# install bootstrap scripts
 	install "${srcdir}/Functions/errtrap.ksh" "$CCDev/func" "errtrap"
 	install "${srcdir}/Functions/ccInstall.ksh" "$CCDev/func" "ccInstall"
+	install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin"
 
 	# install third party software
 	shunitInstall

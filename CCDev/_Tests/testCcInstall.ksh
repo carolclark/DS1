@@ -75,6 +75,8 @@ testCciPaths() {
 	assertEquals "$LINENO: incorrect base path: " "${CCDev}/TestData" "${str}"
 	str=$(ccInstall --getSourcePath "${projectPath}" "${target}")
 	assertEquals "$LINENO: incorrect source path: " "${CCDev}/TestData/ProjA/Tar1" "${str}"
+	str=$(ccInstall --getTargetScript "${projectPath}" "${target}")
+	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/ProjA/Tar1/Tar1_install.ksh" "${str}"
 	str=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
 	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/ProjA/Tar1.lastbuilt" "${str}"
 }
@@ -101,7 +103,14 @@ testFind() {
 	print "Dick" > "${projectPath}/${target}/_Tests/testDick.ksh"
 	print "Harry" > "${projectPath}/${target}/_Tests/testHarry.ksh"
 	print "Jane" > "${projectPath}/${target}/_Tests/Jane.ksh"
-
+	mkdir -p ${projectPath}/${target}/A
+	print "One" > "${projectPath}/${target}/A/One"
+	print "Two" > "${projectPath}/${target}/A/Two"
+	print "store" > "${projectPath}/${target}/A/.DS_Store"
+	mkdir -p ${projectPath}/${target}/B
+	print "red" > "${projectPath}/${target}/B/red"
+	print "blue" > "${projectPath}/${target}/B/blue"
+	
 	fl=$(ccInstall --findTests)
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected: " $RC_MissingArgument "${st}"
@@ -119,11 +128,35 @@ testFind() {
 	result=$?
 	assertEquals "$LINENO: line missing: " 1 "${result}"
 
+	fl=$(ccInstall --findSources)
+	st=$?
+	assertEquals "$LINENO: RC_MissingArgument expected: " $RC_MissingArgument "${st}"
+
+	fl=$(ccInstall --findSources "${projectPath}" "${target}")
+	fileContainsLine "${fl}" "A/One"
+	result=$?
+	assertEquals "$LINENO: line missing: " 1 "${result}"
+	fileContainsLine "${fl}" "A/.DS_Store"
+	result=$?
+	assertEquals "$LINENO: A/.DS_Store found: " 0 "${result}"
+	set -A lines
+	while read ln ; do
+		lines+=("${ln}")
+	done < "${fl}"
+	assertEquals "$LINENO: incorrect line count: " 4 "${#lines[*]}"
+
 	rm "${projectPath}/${target}/_Tests/testTom.ksh"
 	rm "${projectPath}/${target}/_Tests/testDick.ksh"
 	rm "${projectPath}/${target}/_Tests/testHarry.ksh"
 	rm "${projectPath}/${target}/_Tests/Jane.ksh"
 	rmdir "${projectPath}/${target}/_Tests/"
+	rm "${projectPath}/${target}/A/One"
+	rm "${projectPath}/${target}/A/Two"
+	rm "${projectPath}/${target}/A/.DS_Store"
+	rmdir "${projectPath}/${target}/A"
+	rm "${projectPath}/${target}/B/red"
+	rm "${projectPath}/${target}/B/blue"
+	rmdir "${projectPath}/${target}/B"
 	rmdir "${projectPath}/${target}"
 	rmdir "${projectPath}"
 }

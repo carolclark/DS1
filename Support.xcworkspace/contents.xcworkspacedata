@@ -114,6 +114,9 @@
          <FileRef
             location = "group:CCDev/Scripts/cleanProjectTarget.ksh">
          </FileRef>
+         <FileRef
+            location = "group:CCDev/Scripts/resultCodes.ksh">
+         </FileRef>
       </Group>
       <Group
          location = "container:"

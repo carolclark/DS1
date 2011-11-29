@@ -83,14 +83,34 @@
 							<li>ccInstall, Xcode_install: update for renamed files</li>
 						</ul></li>
 						<li>add script <span class='mono'>cleanProjectTarget &lt;Project&gt; &lt;Target&gt;</span></li>
-						<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 						<li>CCDev: make ccInstall, not the folder-specific code, the controlling script<ul>
 							<li>target CCDev: set script to "ccInstall ${HOME}/Dev/Support CCDev"</li>
-							<li>ccInstall.ksh, testCcIstall.ksh<ul>
+							<li>ccInstall.ksh, testCcInstall.ksh<ul>
 								<li>setPaths takes "projectPath target" instead of "scriptpath"</li>
 								<li>add functions findTests, processActions</li>
 							</ul></li>
 							<li>Xcode_install.ksh: update for changes to ccInstall</li>
+						</ul></li>
+						<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+						<li>ccInstall handles install action<ul>
+							<li>ccInstall.ksh, testCcInstall.ksh<ul>
+								<li>--getTargetScript</li>
+								<li>--findSources</li>
+							</ul></li>
+							<li>add file resultCodes.ksh</li>
+							<li>CCDev_install.ksh, testCCDev.ksh<ul>
+								<li>--getSubtargetDestination</li>
+								<li>--handleFile</li>
+							</ul></li>
+							<li>ccInstall.ksh: processActions handles install action</li>
+						</ul></li>
+						<li>ccInstall handles clean action<ul>
+							<li>ccInstall.ksh, testCcInstall.ksh<ul>
+							</ul></li>
+							<li>CCDev_install.ksh, testCCDev.ksh<ul>
+								<li>--cleanTarget</li>
+							</ul></li>
+							<li>ccInstall.ksh: processActions handles clean action</li>
 						</ul></li>
 					</ul></li>
 				</ul></li>

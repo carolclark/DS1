@@ -9,27 +9,31 @@
 
 NAME='ccInstall -- installation script and supporting functions'
 USAGE='
-ccInstall project target [actionFlags]
+ccInstall projectPath target [actionFlags]
 #	build the specified project target
 #		actionFlags: [-[citu]+] - actions requested (clean, install, test, upload); default: -it
 ccInstall commandFlag [argument(s)]
-#	--getActions resultObject [actionString]
+#	--getActions	resultObject [actionString]
 #		actionString: [-[citu]+] - actions requested (clean, install, test, upload)
 #			default: -it
 #			resultObject: object to contain results
+#	--get<Path>		projectPath target
+#		<Path>: 	BaseBath | SourcePath | TargetScript | Lastbuilt
+#		result: 	string containing specified path
+#	--findTests 	projectPath target
+#		result: 	path to file containing list of tests for <projectPath>/<target>
+#	--findSources	projectPath target
+#		result: 	path to file containing list of source files for <projectPath>/<target>
 #	--help
 #		print this information
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
+. "${CCDev}/bin/resultCodes.ksh"
+
 #^ 1 === top
 trapString='errtrap $0 $LINENO'
 #trap "$trapString" ERR
-
-RC_SyntaxError=10
-RC_MissingArgument=11
-RC_InvalidArgument=12
-RC_InvalidInput=13
 
 scriptpath=""
 target=""
@@ -46,6 +50,7 @@ function setPaths {
 	basePath="${projectPath%/*}"
 	project="${projectPath##/*/}"
 	sourcePath="${projectPath}/${target}"
+	targetScript="${sourcePath}/${target}_install.ksh"
 	lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
 }
 
@@ -64,10 +69,11 @@ function getPath {
 	setPaths "${projectPath}" "${target}"
 	typeset -i index=-1
 	case "${command}" in
-		"--getBasePath" )	path="${basePath}";;
-		"--getSourcePath" )	path="${sourcePath}";;
-		"--getLastbuilt" )	path="${lastbuilt}";;
-		* ) 				return $RC_InvalidParameter;;
+		"--getBasePath" )		path="${basePath}";;
+		"--getSourcePath" )		path="${sourcePath}";;
+		"--getTargetScript" )	path="${targetScript}";;
+		"--getLastbuilt" )		path="${lastbuilt}";;
+		* ) 					return $RC_InvalidParameter;;
 	esac
 	print "${path}"
 }
@@ -123,13 +129,32 @@ function findTests {
 	fi
 
 	origdir=$(pwd)
-	fl="${CCDev}/tmp/found"
+	iofile="${CCDev}/tmp/found"
 	cd "${projectPath}/${target}"
-	find . -type f -and -name "test*.ksh"| sed 's|\./||' > "${fl}"
-	chmod a+r "${fl}"
+	find . -type f -and -name "test*.ksh"| sed 's|\./||' > "${iofile}"
+	chmod a+r "${iofile}"
 	cd "${origdir}"
 
-	print "${fl}"
+	print "${iofile}"
+}
+
+function findSources {
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+		projectPath="${1}"
+		target="${2}"
+	else
+		print "USAGE: ccInstall findTests pathToProject target"
+		return $RC_MissingArgument
+	fi
+
+	origdir=$(pwd)
+	iofile="${CCDev}/tmp/sources"
+	cd "${projectPath}/${target}"
+	find . -path '*/.git' -prune -or -type f | grep -v .git | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
+	chmod a+r "${iofile}"
+	cd "${origdir}"
+
+	print "${iofile}"
 }
 
 #^ 7 === processActions
@@ -149,9 +174,71 @@ function processActions {
 		return ${st}
 	fi
 
+# install
+	if [[ ${actions.doInstall} > 0 ]] ; then
+		print "installing ${projectPath##*/}/${target}..."
+		iofile=$(findSources "${projectPath}" "${target}")
+		cd ${projectPath}
+		typeset -i failcnt=0
+		prevFolder=""
+		while read fl ; do
+			sourceFolder="${fl%%/*}"
+			fpath="${fl#*/}"
+			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
+				msg=$(${HOME}/Dev/Support/CCDev/CCDev_install.ksh --getSubtargetDestination "${sourceFolder}")
+				st=$?
+				if [[ ${st} > 0 ]] ; then
+					failcnt="${failcnt}"+1
+					print "*** ${msg}"
+				else
+					destination="${msg}"
+					prevFolder="${sourceFolder}"
+				fi
+				if [[ -n "${destination}" ]] ; then
+					print "=${projectPath##*/}/${target}/${sourceFolder}:"
+				fi
+			fi
+			if [[ ${st} > 0 ]] ; then
+				failcnt="${failcnt}"+1
+				print "*** ${msg}"
+			else
+				print -n "${fpath}: "
+				msg=$(${HOME}/Dev/Support/CCDev/CCDev_install.ksh --handleFile "${sourceFolder}" "${fpath}" "${destination}")
+				st=$?
+				if [[ ${st} > 0 ]] ; then
+					failcnt="${failcnt}"+1
+					print "*** ${msg}"
+				else
+					hfile="${msg}"
+					set -A copyInfo
+					while read ln ; do
+						copyInfo+=("${ln}")
+					done < "${hfile}"
+					action="${copyInfo[0]}"
+					sourceForCopy="${copyInfo[1]}"
+					destinationForCopy="${copyInfo[2]}"
+				fi
+					action="${action}"
+				case "${action}" in
+					"ignore" )
+						print "skipped"
+						;;
+					"copy" )
+						#print "cp ${sourceForCopy} ${destinationForCopy}"
+						cp ${sourceForCopy} ${destinationForCopy}
+						print "copied to ${destinationForCopy}"
+						;;
+					* )
+						print "*** Unrecognized action string ${action}"
+						;;
+				esac
+			fi
+		done < "${iofile}"
+		exit "${failcnt}"
+	fi
 # test
 	if [[ ${actions.doTest} > 0 ]] ; then
-		fl=$(findTests "${projectPath}" "${target}")
+		iofile=$(findTests "${projectPath}" "${target}")
 		cd ${projectPath}
 		typeset -i failcnt=0
 
@@ -164,15 +251,15 @@ function processActions {
 			if [[ "${st}" > 0 ]] ; then
 				failcnt="${failcnt}"+1
 			fi
-		results="${msg}${result}\n"
-		done < "${fl}"
+			results="${msg}${result}\n"
+		done < "${iofile}"
 
+		print "${results}"
 		exit "${failcnt}"
 	fi
-	print "${results}"
 }
 
-#^ 8 === ccInstall projectPath target [-[citu]+]
+#^ 8 === ccInstall
 function ccInstall {
 #*** temporary
 	cp ${HOME}/Dev/Support/CCDev/Functions/ccInstall.ksh ${FPATH}/ccInstall		# install new installer first
@@ -199,6 +286,12 @@ function ccInstall {
 			;;
 		"--findTests" )
 			msg=$(findTests "${2}" "${3}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--findSources" )
+			msg=$(findSources "${2}" "${3}")
 			es=$?
 			print "${msg}"
 			return "${es}"

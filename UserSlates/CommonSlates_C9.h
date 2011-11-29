@@ -659,9 +659,9 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 #define _ElementItems_		\
 		ExitEvent { "shebang", "" },				Sequence{},		\
 			TypeText { "#! /bin/ksh" }, _return, _return, endSequence{},		\
-		ExitEvent { "variable", "" },				Sequence{},		\
+		ExitEvent { "quote variable", "" },				Sequence{},		\
 			TypeText { "\"${<##>}\"<##>" }, _previous, _previous, endSequence{},		\
-		ExitEvent { "plain variable", "" },				Sequence{},		\
+		ExitEvent { "variable", "" },				Sequence{},		\
 			TypeText { "${<##>}<##>" }, _previous, _previous, endSequence{},		\
 		ExitEvent { "command", "" },				Sequence{},		\
 			TypeText { "\"$(<##>)\"<##>" }, _previous, _previous, endSequence{},		\
