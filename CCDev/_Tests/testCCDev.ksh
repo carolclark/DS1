@@ -26,8 +26,10 @@ testCCDevInstall() {
 	st=$?
 	assertEquals "$LINENO: --handleFile (no args): " $RC_MissingArgument ${st}	
 	
+	targetScript=$(ccInstall --getTargetScript "${HOME}/Dev/Support" "CCDev")
+	assertEquals "$LINENO: incorrect target script: " "${HOME}/Dev/Support/CCDev/CCDev_install.ksh" "${targetScript}"
 	# test Functions/ccInstall.ksh
-	dest=$(${HOME}/Dev/Support/CCDev/CCDev_install.ksh --getSubtargetDestination Functions)
+	dest=$("${targetScript}" --getSubtargetDestination Functions)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination Functions: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination Functions" "${CCDev}/func" "${dest}"
@@ -44,7 +46,7 @@ testCCDevInstall() {
 	assertEquals "$LINENO: incorrect destinationForCopy: " "${CCDev}/func/ccInstall" "${copyInfo[2]}"
 
 	# test Environment/kshrc.ksh
-	dest=$(${HOME}/Dev/Support/CCDev/CCDev_install.ksh --getSubtargetDestination Environment)
+	dest=$("${targetScript}" --getSubtargetDestination Environment)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination Environment: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination Environment" "" "${dest}"

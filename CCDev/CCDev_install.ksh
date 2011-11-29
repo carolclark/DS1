@@ -85,6 +85,11 @@ function handleFile {
 	return 0
 }
 
+#^ 7 === cleanTarget
+function cleanTarget {
+	return 0
+}
+
 #^ 8 === main
 
 if [[ $# = 0 ]] ; then
@@ -100,6 +105,12 @@ case "${1}" in
 		;;
 	"--handleFile" )
 		msg=$(handleFile "${2}" "${3}" "${4}")
+		es=$?
+		print "${msg}"
+		return "${es}"
+		;;
+	"--cleanTarget" )
+		msg=$(cleanTarget)
 		es=$?
 		print "${msg}"
 		return "${es}"

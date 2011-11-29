@@ -77,8 +77,12 @@ testCciPaths() {
 	assertEquals "$LINENO: incorrect source path: " "${CCDev}/TestData/ProjA/Tar1" "${str}"
 	str=$(ccInstall --getTargetScript "${projectPath}" "${target}")
 	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/ProjA/Tar1/Tar1_install.ksh" "${str}"
-	str=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/ProjA/Tar1.lastbuilt" "${str}"
+	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
+	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/ProjA/Tar1.lastbuilt" "${lastbuilt}"
+	ccInstall --updateLastbuilt "${projectPath}" "${target}"
+	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
+	ccInstall --clearLastbuilt "${projectPath}" "${target}"
+	assertFalse "$LINENO: file ${lastbuilt} still present" "[ -e ${lastbuilt} ]"
 }
 
 fileContainsLine() {		# returns 1 iff file "${1}" contains line "${2}"
@@ -111,6 +115,7 @@ testFind() {
 	print "red" > "${projectPath}/${target}/B/red"
 	print "blue" > "${projectPath}/${target}/B/blue"
 	
+	ccInstall --clearLastbuilt "${projectPath}" "${target}"
 	fl=$(ccInstall --findTests)
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected: " $RC_MissingArgument "${st}"
@@ -145,6 +150,18 @@ testFind() {
 	done < "${fl}"
 	assertEquals "$LINENO: incorrect line count: " 4 "${#lines[*]}"
 
+	ccInstall --updateLastbuilt "${projectPath}" "${target}"
+	fl=$(ccInstall --findSources "${projectPath}" "${target}")
+	fileContainsLine "${fl}" "A/One"
+	result=$?
+	assertEquals "$LINENO: file A/One is now up-to-date: " 0 "${result}"
+	ccInstall --clearLastbuilt "${projectPath}" "${target}"
+	print "One" > "${projectPath}/${target}/A/One"
+	fl=$(ccInstall --findSources "${projectPath}" "${target}")
+	fileContainsLine "${fl}" "A/One"
+	result=$?
+	assertEquals "$LINENO: file A/One is now changed: " 1 "${result}"
+
 	rm "${projectPath}/${target}/_Tests/testTom.ksh"
 	rm "${projectPath}/${target}/_Tests/testDick.ksh"
 	rm "${projectPath}/${target}/_Tests/testHarry.ksh"
@@ -169,7 +186,6 @@ testCleanProjectTarget() {
 	str=$(cleanProjectTarget abc)
 	st=$?
 	assertEquals "$LINENO: error RC_MissingArgument expected" $RC_MissingArgument "${st}"
-#	expand?
 }
 
 #^ 7 === testInstall

@@ -23,8 +23,7 @@ if [[ ! -n "${1}" ]] || [[ ! -n "${2}" ]] ; then
 	return $RC_MissingArgument
 fi
 
-project="${1?project not specified}"
-target="${2?target not specified}"
+project="${1}"
+target="${2}"
 
-cd "${HOME}/Dev/${project}"
-"${target}/${target}_install.ksh" -c
+ccInstall "${HOME}/Dev/${project}" "${target}" -c

@@ -91,7 +91,6 @@
 							</ul></li>
 							<li>Xcode_install.ksh: update for changes to ccInstall</li>
 						</ul></li>
-						<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 						<li>ccInstall handles install action<ul>
 							<li>ccInstall.ksh, testCcInstall.ksh<ul>
 								<li>--getTargetScript</li>
@@ -104,14 +103,14 @@
 							</ul></li>
 							<li>ccInstall.ksh: processActions handles install action</li>
 						</ul></li>
-						<li>ccInstall handles clean action<ul>
-							<li>ccInstall.ksh, testCcInstall.ksh<ul>
-							</ul></li>
-							<li>CCDev_install.ksh, testCCDev.ksh<ul>
-								<li>--cleanTarget</li>
-							</ul></li>
-							<li>ccInstall.ksh: processActions handles clean action</li>
+						<li>ccInstall: implement clean action<ul>
+							<li>ccInstall.ksh, testCcInstall.ksh: --updateLastbuilt, --clearLastbuilt</li>
+							<li>ccInstall.ksh processActions: handle clean action; update $lastbuilt on successful build</li>
 						</ul></li>
+						<li>cleanProjectTarget.ksh: use ccInstall -c</li>
+						<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+						<li>add InstallTarget template</li>
+						<li>refactor Xcode_install.ksh to use ccInstall</li>
 					</ul></li>
 				</ul></li>
 			</ul></li>

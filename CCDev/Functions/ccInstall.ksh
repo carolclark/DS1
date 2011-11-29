@@ -78,6 +78,36 @@ function getPath {
 	print "${path}"
 }
 
+#^ updateLastbuilt
+function updateLastbuilt {
+	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		print "$LINENO: ccInstall --getLastbuilt ${projectPath} ${target} failed"
+		return ${st}
+	fi
+	mkdir -p "$(dirname ${lastbuilt})"
+	print $(basename ${lastbuilt}) $(date) > ${lastbuilt}	
+}
+
+#^ clearLastbuilt
+function clearLastbuilt {
+	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		print "$LINENO: ccInstall --getLastbuilt ${projectPath} ${target} failed"
+		return ${st}
+	fi
+	if [[ -e "${lastbuilt}" ]] ; then
+		rm "${lastbuilt}"
+		st="$?"
+		if [[ ${st} > 0 ]] ; then
+			print "*** error ${st} attempting to remove file ${lastbuilt}"
+			return ${st}
+		fi
+	fi	
+}
+
 #^ 3 === getActions
 function getActions {
 	typeset -n resultObj=$1
@@ -150,7 +180,17 @@ function findSources {
 	origdir=$(pwd)
 	iofile="${CCDev}/tmp/sources"
 	cd "${projectPath}/${target}"
-	find . -path '*/.git' -prune -or -type f | grep -v .git | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
+	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		print "$LINENO: ccInstall --getLastbuilt ${projectPath} ${target} failed"
+		return ${st}
+	fi
+	if [[ -e "${lastbuilt}" ]] ; then
+		find . -path '*/.git' -prune -or -type f -newer ${lastbuilt} | grep -v .git | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
+	else
+		find . -path '*/.git' -prune -or -type f | grep -v .git | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
+	fi
 	chmod a+r "${iofile}"
 	cd "${origdir}"
 
@@ -174,9 +214,34 @@ function processActions {
 		return ${st}
 	fi
 
+	targetScript=$(ccInstall --getTargetScript "${projectPath}" "${target}")
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		print "$LINENO: ccInstall --getTargetScript ${projectPath} ${target} failed"
+		return ${st}
+	fi
+
+# clean
+	if [[ ${actions.doClean} > 0 ]] ; then
+		print "== cleaning ${projectPath##*/}/${target}..."
+		msg=$("${targetScript}" --cleanTarget)
+		st=$?
+		if [[ ${st} > 0 ]] ; then
+			print "*** ${msg}"
+			return ${st}
+		fi
+		lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
+		st=$?
+		if [[ ${st} > 0 ]] ; then
+			print "$LINENO: ccInstall --getLastbuilt ${projectPath} ${target} failed"
+			return ${st}
+		fi
+		ccInstall --clearLastbuilt "${projectPath}" "${target}"
+	fi
+
 # install
 	if [[ ${actions.doInstall} > 0 ]] ; then
-		print "installing ${projectPath##*/}/${target}..."
+		print "== installing ${projectPath##*/}/${target}..."
 		iofile=$(findSources "${projectPath}" "${target}")
 		cd ${projectPath}
 		typeset -i failcnt=0
@@ -185,7 +250,7 @@ function processActions {
 			sourceFolder="${fl%%/*}"
 			fpath="${fl#*/}"
 			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
-				msg=$(${HOME}/Dev/Support/CCDev/CCDev_install.ksh --getSubtargetDestination "${sourceFolder}")
+				msg=$("${targetScript}" --getSubtargetDestination "${sourceFolder}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -203,7 +268,7 @@ function processActions {
 				print "*** ${msg}"
 			else
 				print -n "${fpath}: "
-				msg=$(${HOME}/Dev/Support/CCDev/CCDev_install.ksh --handleFile "${sourceFolder}" "${fpath}" "${destination}")
+				msg=$("${targetScript}" --handleFile "${sourceFolder}" "${fpath}" "${destination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -234,8 +299,19 @@ function processActions {
 				esac
 			fi
 		done < "${iofile}"
-		exit "${failcnt}"
+		if [[ ${failcnt} = 0 ]] ; then
+			ccInstall --updateLastbuilt "${projectPath}" "${target}"
+			print "build succeeded"
+		else
+			pl="s"
+			if [[ ${failcnt} = 1 ]] ; then
+				pl=""
+			fi
+			print "*** Build Failed: ${errcnt} error${pl} encountered; tests not run"
+			exit "${failcnt}"
+		fi
 	fi
+
 # test
 	if [[ ${actions.doTest} > 0 ]] ; then
 		iofile=$(findTests "${projectPath}" "${target}")
@@ -292,6 +368,18 @@ function ccInstall {
 			;;
 		"--findSources" )
 			msg=$(findSources "${2}" "${3}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--updateLastbuilt" )
+			msg=$(updateLastbuilt "${2}" "${3}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--clearLastbuilt" )
+			msg=$(clearLastbuilt "${2}" "${3}")
 			es=$?
 			print "${msg}"
 			return "${es}"

@@ -899,9 +899,7 @@ resource restype_Slate (resid_sudokuTimes, "") { {
 		Event { "clue", "" },			Click { 1, 455,	_pzlTop+300, window, "1", _topLeft },
 		Event { "capital",		"shift key" },	Keypress { 0, mf_shift },
 		Event { "lock shift",	"lock or unlock shift key" },	Keypress { 0, mf_shift + mf_toggle },
-		Event { "position window", "" },	Sequence{},
-		Click { 1, 10, -40, window, "1", _bottomLeft }, KeyDelay { kc_end, 0, 20 }, KeyDelay { kc_pageup, 0, 20 }, 
-			endSequence{},
+		Event { "position puzzle", "" },	Sequence{}, Click { 1, 400, 400, window, "1", _topLeft }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, endSequence{},
 		_SudokuBase_,
 	} }
 } };
