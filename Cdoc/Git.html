@@ -21,13 +21,12 @@
 		<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
 		<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
 		<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
-	<!-- @topicGroup "Repositories" "9" -->
+	<!-- @topicGroup "Repositories" "10" -->
 		<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
 		<!-- @topicItem "Remote Repositories" "#tsk_RemoteRepositories" "1" "" -->
-	<!-- @topicGroup "" "12" -->
+	<!-- @topicGroup "" "13" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
-<p> Renaming Files and Folders: Git is supposed to rename files without losing all of their history. We haven't seen that happen yet. we currently (9/20/11) suspect that  (S Xcode is deleting and adding the file if it gets to touch it. Try handling renames by renaming clean files from Finder and immediately committing from Terminal.</p>
 
 <!-- @marker "Development Cycle" -->
 <h4 id="DevelopmentCycle">Development Cycle</h4><ul style="background-color: #d8e8ff">
@@ -156,7 +155,7 @@
 		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
 	</ul></li>
 	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with the repository until it contains at least one file.</li>
-	<li>add initial history file Cdoc/&lt;ProjectName&gt;_hist.html</li>
+	<li>add initial history file Cdoc/History_&lt;ProjectName&gt;.html</li>
 	<li><span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add --all --interactive</span>&nbsp;&nbsp;#  (interactive)</li>
 	<li class='mono'>git commit -m "new repository with initial history file"</li>
 </ul>

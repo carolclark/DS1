@@ -1,5 +1,5 @@
 // =================================================================================
-//	Safari.r					�2005-11 C & C Software, Inc. All rights reserved.
+//	Safari.r					©2005-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma mark 0 ===
@@ -790,10 +790,9 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 #pragma mark Puzzles	
 #define _SudokuBase_		\
 		_SlateGlobals_,		\
-		_CommandSlate_,		\
 		_DirectionKeys_,	\
 		_IMouseSlate_,		\
-		_WhitespaceKeys_,	\
+		_ReturnKey_,		\
 		_WindowSlate_,		\
 		_CloseSubslate_,	\
 		ExitEvent { "close window", "" },	Keypress { kc_W, mf_command },		\
@@ -935,6 +934,7 @@ resource restype_Slate (resid_sudokuDailyClean, "") { {
 
 resource restype_Slate (resid_sudokuDaily, "") { {
 	Slate { "Daily", {
+		_WhitespaceKeys_,
 		Event { "archives", "" },		Click { 1, 70, 260, _window, _topLeft },
 		Event { "draw puzzle", "" },	Click { 1, 70, 320, _window, _topLeft },
 		Event { "puzzle", "" },			Click { 1, 400, 650, _window, _topLeft },

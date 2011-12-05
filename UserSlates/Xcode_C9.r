@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					�2006-11 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					©82006-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -336,6 +336,8 @@ resource restype_Slate (resid_Identifier, "") { {
 
 #define _cutNextLine	Keypress { kc_right, mf_command }, Keypress { kc_right, 0 },	\
 	Keypress { kc_right, mf_command + mf_shift }, Keypress { kc_X, mf_command }
+#define _indent			Keypress { kc_closebracket, mf_command }
+#define _indentBack		Keypress { kc_bracket, mf_command }
 resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 	Slate { "Type",	{
 		_SlateGlobals_,
@@ -361,7 +363,8 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 		Event { "Element", "" },		ResSubslate { resid_InsertElement },
 		Event { "Add Style", "" },			ResSubslate { resid_InsertStyle },
 		Event { "Insert Tag", "" },			ResSubslate { resid_InsertTag },
-		Event { "indent", "" },				Keypress { kc_closebracket, mf_command },
+		Event { "indent", "" },				_indent,
+		Event { "indent back", "" },		_indentBack,
 //		Event { "hide bubbles", "" },		Keypress { kc_H, mf_shift + mf_option + mf_command },
 //		Event { "select exec", "click the Active Executable popup" }, Click { 1, 315, 40, _pwindow, _topLeft },
 //		Event { "error icon", "click the error/warning icon" }, Click { 1, -32, -11, _pwindow, _bottomRight },
@@ -390,9 +393,77 @@ resource restype_Slate (resid_InsertElement, "") { {
 	Slate { "Element",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		_ElementItems_,
+		ExitEvent { "shebang", "" },				Sequence{},
+			TypeText { "#! /bin/ksh" }, _return, _return, endSequence{},
+		ExitEvent { "quote variable", "" },				Sequence{},
+			TypeText { "\"${<##>}\"<##>" }, _previous, _previous, endSequence{},
+		ExitEvent { "variable", "" },				Sequence{},
+			TypeText { "${<##>}<##>" }, _previous, _previous, endSequence{},
+		ExitEvent { "command", "" },				Sequence{},
+			TypeText { "\"$(<##>)\"<##>" }, _previous, _previous, endSequence{},
+		ExitEvent { "plain command", "" },				Sequence{},
+			TypeText { "$(<##>)<##>" }, _previous, _previous, endSequence{},
+		ExitEvent { "if block", "" },		Sequence{}, TypeText { "if [[ <##> ]] ; then" },
+			_return, _tab, TypeText { "<##>" }, _return, _delete, TypeText { "fi" },
+			_previous, _previous, endSequence{},
+		ExitEvent { "check status", "" },		Sequence{},
+			TypeText { "if [[ \"${?}\" > 0 ]] ; then" },
+			_return, _tab, TypeText { "<##>" }, _return, _delete, TypeText { "fi" },
+			_previous, _previous, endSequence{},
+		ExitEvent { "where", "" },			TypeText { "$0#$LINENO: " },
+		ExitEvent { "marker", "" },					Sequence{}, TypeText { "<!-- @marker \"<#marker#>\" -->" }, _return, _up, _next, endSequence{},
+		ExitEvent { "topic item", "" },				Sequence{},
+			TypeText { "<!-- @topicItem \"<#title#>\" \"<#linkDestination#>\" \"<#indent0-3#>\" \"<#[description]#>\" -->" }, _up, _next, endSequence{},
+		ExitEvent { "topic Group", "" },	Sequence{},
+			TypeText { "<!-- @topicGroup \"<#title#>\" \"<#linenum#>\" -->" }, _previous, _previous, endSequence{},
+		ExitEvent { "topic Separator", "" },	TypeText { "<!-- @topicSep -->" },
+		ExitEvent { "goal", "" },		Sequence{}, TypeText { "<tr> <td><#Project#></td> <td><#goal#></td> <td class='small'><#comments#></td> <td align=\"center\"><#priority#></td> </tr>" }, _previous,  _previous, _previous, _previous, endSequence{},
+		ExitEvent { "heading with name", "" },		Sequence{},
+			TypeText { "<#=== -> topicList [1]#>" }, _indentBack, _return,
+			TypeText { "<!-- @topicItem \"<#title#>\" \"#<#name#>\" \"0\" \"\" -->" }, _return,
+			TypeText { "<!-- @marker \"<#title#>\" -->" }, _indentBack, _return,
+			TypeText { "<h<#level#> id='<#name#>'><#title#></h<#level#>><##>" }, _indentBack, _return, _indentBack, _next, endSequence{},
+		ExitEvent { "heading with topics", "" },		Sequence{},
+			TypeText { "<#=== -> topicList [1]#>" }, _indentBack, _return,
+			TypeText { "<!-- @topicItem \"<#title#>\" \"#<#name#>\" \"0\" \"\" -->" }, _return,
+			TypeText { "<!-- @marker \"<#title#>\" -->" }, _indentBack, _return,
+			TypeText { "<h<#level#>><#title#></h<#level#>><##>" }, _indentBack, _return, 
+			TypeText { "<!-- @topicList \"__title__\" \"__name__\" -->" }, _indentBack, _return,
+			TypeText { "<!-- @/topicList --><##>" }, _indentBack, _return,
+			_indentBack, _next, endSequence{},
+		ExitEvent { "bug or issue", "" },	Sequence{},
+			TypeText { "<!-- @topicItem \"<#title#>\" \"#BI_<#abbreviatedDate#>-01\" \"0\" \"[BI_<#abbreviatedDate#>-01]\" -->" }, _indent, _return,
+			TypeText { "<h5 id='BI_<#abbreviatedDate#>-01'>__title__ [BI_<#abbreviatedDate#>-01] new</h5>" }, _return, 
+			endSequence{},
+		ExitEvent { "current tag", "" },	Sequence{},	TypeText { "<li class='tlmark'>&lt;--</li>" }, _previous, endSequence{},
+		ExitEvent { "date mark", "" },		Sequence{},
+			TypeText { "<li class='tldate'>[<#date#>]</li>" }, _previous, endSequence{},
+		ExitEvent { "assert equal", "" },	TypeText { "assertEquals \"$LINENO: <#message#>\" <#expected#> <#actual#>" },
+		ExitEvent { "assert not equal", "" },	TypeText { "assertNotEquals \"$LINENO: <#message#>\" <#unexpected#> <#actual#>" },
+		ExitEvent { "assert null", "" },	TypeText { "assertNull \"$LINENO: <#message#>\" <#value#>" },
+		ExitEvent { "assert not null", "" },	TypeText { "assertNotNull \"$LINENO: <#message#>\" <#value#>" },
+		ExitEvent { "assert true", "" },	TypeText { "assertTrue \"$LINENO: <#message#>\" <#condition#>" },
+		ExitEvent { "assert false", "" },	TypeText { "assertFalse \"$LINENO: <#message#>\" <#condition#>" },
+		ExitEvent { "assert failure", "" },	TypeText { "fail \"$LINENO: <#message#>\"" },
+		ExitEvent { "pragma", "" }, TypeText { "#pragma mark " },
+		ExitEvent { "unix selection", "" }, TypeText { "%%%{PBXSelection}%%%" },
+		ExitEvent { "ampersand", "" }, TypeText { "&amp;" },
+		ExitEvent { "less than", "" }, TypeText { "&lt;" },
+		ExitEvent { "greater than", "" }, TypeText { "&gt;" },
+		ExitEvent { "angle brackets", "" },	Sequence{}, TypeText { "&lt;&gt;<##> " }, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},
+		ExitEvent { "hard space", "" }, TypeText { "&nbsp;" },
+		ExitEvent { "arrow left", "" }, TypeText { "&larr;" },
+		ExitEvent { "arrow right", "" }, TypeText { "&rarr;" },
+		ExitEvent { "arrow up", "" }, TypeText { "&uarr;" },
+		ExitEvent { "arrow down", "" }, TypeText { "&darr;" },
+		ExitEvent { "check mark", "" }, TypeText { "&radic;" },
+		ExitEvent { "bullet", "" }, TypeText { "&bull;" },
+		ExitEvent { "diamond", "" }, TypeText { "&loz;" }
 	} }
 } };
+//ExitEvent { "heading with name", "" }, Sequence{}, TypeText { "@headingWithName <#title#>; <#name#>; <#level#>" }, _return, _up, _next, endSequence{},
+//ExitEvent { "heading with topics", "" }, Sequence{}, TypeText { "@headingWithTopics <#title#>; <#name#>; <#level#>" }, _return, _up, _next, endSequence{},
+//ExitEvent { "bug or issue", "" }, Sequence{}, TypeText { "@bugOrIssue <#title#>" }, _return, _up, _next, endSequence{},
 
 #pragma mark Styles
 resource restype_Slate (resid_InsertStyle, "css Styles") { {
@@ -441,6 +512,7 @@ resource restype_Slate (resid_Workspace, "") { {
 		_SlateGlobals_,
 		_CloseSubslate_,
 		ExitEvent { "Carbon", "" },			Launch { Dev_"Accessor_C9/Accessor_C9.xcodeproj", 0 },
+		ExitEvent { "Accessor", "" },		Launch { Dev_"Accessor/Accessor.xcworkspace", 0 },
 		ExitEvent { "Punkin", "" },			Launch { Dev_"Punkin/Punkin.xcworkspace", 0 },
 		ExitEvent { "Support", "" },		Launch { Dev_"Support/Support.xcworkspace", 0 },
 		ExitEvent { "Technical", "" },		Launch { Dev_"TechnicalDocs/TechnicalDocs.xcworkspace", 0 },
@@ -1028,7 +1100,7 @@ resource restype_Slate (resid_jumpPopup, "") { {
 } };
 
 #pragma mark Utilities
-resource restype_Slate (resid_Utilities, "Utilities") { {
+resource restype_Slate (resid_Utilities, "Utility") { {
 	Slate { "util", {
 		_SlateGlobals_,
 		_CloseSubslate_,
@@ -1087,6 +1159,7 @@ resource restype_Slate (resid_Organizer, "Organizer") { {
 #define	replist_sp	83
 #define	_rowSupport			replist_top+0*replist_sp
 #define	_rowPunkin			replist_top+1*replist_sp
+#define	_rowAccessor		replist_top+2*replist_sp
 
 #pragma mark Repositories
 resource restype_Slate (resid_Repositories, "Repositories") { {
@@ -1107,6 +1180,7 @@ resource restype_Slate (resid_Repositories, "Repositories") { {
 			ExitEvent { "Working Copy", "" },	Click { 1, 0, 57, 	_cursor },
 			Event { "Support", "" },			Click { 0, 25, _rowSupport, _window, _topLeft },
 			Event { "Punkin", "" },				Click { 0, 25, _rowPunkin, _window, _topLeft }, 
+			Event { "Accessor", "" },			Click { 0, 25, _rowAccessor, _window, _topLeft }, 
 			endSubslate{},
 		Event { "content", "" },		Click { 1, 0, 90, _window, _topCenter },
 		Event { "pull changes", "" },	 Sequence{}, Click { 1, 214, -33, _window, _bottomLeft },
@@ -1288,10 +1362,19 @@ resource restype_Slate (resid_edAssistant, "edAssistant") { {
 	Slate { "asst", {
 		_SlateGlobals_,
 		_CloseSubslate_,
+		ExitEvent { "standard", "" },	Keypress { kc_return, mf_command }, 
 		_IMouseSlate_,
 		_DirectionKeys_,
 		_CommandSlate_,
 		closeDocument_,
+		Event { "filter", "" },			ResSubslate { resid_navFilter },
+		Event { "compare", "" },		Click { 1, -100, -20, _window, _bottomRight },
+		Event { "annotate", "" },		Click { 1, -73, -20, _window, _bottomRight },
+		Event { "revisions", "" },		Click { 1, -46, -20, _window, _bottomRight },
+		Event { "edit left", "" },		Click { 1, 660, 540, _window, _topLeft },
+		Event { "edit right", "" },		Click { 1, -350, 540, _window, _topRight },
+		Event { "nav list", ""},		_navList,
+		Event { "top row", "" },		Sequence{}, _navList, Keypress { kc_up, mf_option }, endSequence{},
 		Event { "nav list", ""},		_navList,
 		Event { "top", "" },			Sequence{}, Click { 1, 660, 540, _window, _topLeft }, Keypress { kc_up, mf_command }, endSequence{},	
 		_NavPanelRows_,
@@ -1320,6 +1403,7 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 		Event { "edit right", "" },		Click { 1, -350, 540, _window, _topRight },
 		Event { "nav list", ""},		_navList,
 		Event { "top row", "" },		Sequence{}, _navList, Keypress { kc_up, mf_option }, endSequence{},
+		Event { "nav list", ""},		_navList,
 		Event { "top", "" },			Sequence{}, Click { 1, 660, 540, _window, _topLeft }, Keypress { kc_up, mf_command }, endSequence{},	
 		Event { "difference", "" },		Click { 1, 125, 125, _window, _topCenter },
 		Event { "down again", "" },		_down,
@@ -2119,7 +2203,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "standard issues", "" },	Sequence{}, Keypress { kc_return, mf_command }, _showHideNavigator, ResSubslate { resid_edIssues }, endSequence{},	
 		Event { "assistant", "" },			Sequence{}, Keypress { kc_return, mf_command + mf_option }, ResSubslate { resid_edAssistant }, endSequence{},
 		Event { "version", "" },			Sequence{}, Keypress { kc_return, mf_command + mf_option + mf_shift }, ResSubslate { resid_edVersion }, endSequence{},
-		Event { "utilities", "" },		ResSubslate { resid_Utilities },
+		Event { "utility", "" },		ResSubslate { resid_Utilities },
 		Event { "Organizer", "" },		Sequence{}, Keypress { kc_2, mf_command + mf_shift },
 			ResSubslate { resid_Organizer }, endSequence{},
 		Event { "Repositories", "" },	ResSubslate { resid_Repositories },

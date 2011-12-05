@@ -11,19 +11,43 @@
 <h1>Support History</h1>
 
 <!-- @topicList "Support History" "Contents" -->
+	<!-- @topicItem "Development Overview" "#DevelopmentOverview" "0" "" -->
+	<!-- @topicGroup "" "2" -->
 	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
-		<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
-		<!-- @topicGroup "" "3" -->
+	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
+		<!-- @topicGroup "" "5" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
-		<!-- @topicGroup "" "6" -->
+		<!-- @topicGroup "" "8" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-	<!-- @topicGroup "" "9" -->
-	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
 	<!-- @topicGroup "" "11" -->
+	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
+	<!-- @topicGroup "" "13" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
+	
+<!-- @marker "Development Overview" -->
+<h3 id='DevelopmentOverview'>Development Overview</h3>
+
+<div class="tableholder"><table class="goaltabl" border="0" cellspacing="0" cellpadding="5"><caption>Development Overview</caption>
+	<tr><th>Project</th> <th>Goal</th> <th>Comments</th> <th>When</th></tr>
+	<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#ImportExisting">Import Existing Development Work</a></td> <td class='small'>existing svn repository broken</td> <td align="center">1</td> </tr>
+	<tr> <td>Punkin</td> <td>Requirements, Use Cases, Design</td> <td class='small'></td> <td align="center">2</td> </tr>
+	<tr> <td>Punkin</td> <td>establish iOS Cocoa development environment</td> <td class='small'>with testing, provisioning, and probably Doxygen, support</td> <td align="center">3</td> </tr>
+	<tr> <td>Punkin</td> <td> establish framework for iOS mobile websites[<a href="../Punkin/History_Punkin.html#_web_sample">_web_sample</a>]</td> <td class='small'>build sample sites from tutorial</td> <td align="center">3</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Developer Support and Automation</span></td></tr>
+	<tr> <td>Support</td> <td>support Cdoc install/clean</td> <td class='small'>install: adapt existing Support_svn script; clean: as for other targets</td> <td align="center">1</td> </tr>
+	<tr> <td>Support</td> <td>Snippets: Accessor Slate temporarily enters full Snippet text</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
+	<tr> <td>Support</td> <td><a href="#Snippets">Snippet</a> support</td> <td class='small'>could use entry of full snippet text as an intermediate stage</td> <td align="center">3</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Upgrade to Lion</span></td></tr>
+	<tr> <td>Arbonne</td> <td>replace FileMaker recordkeeping system</td> <td class='small'>FileMaker runs under Rosetta</td> <td align="center">2</td> </tr>
+	<tr> <td>Accessor</td> <td>replace deprecated calls</td> <td class='small'></td> <td align="center">2</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Transfer Existing Development Work</span></td></tr>
+ 	<tr> <td>Support</td> <td>plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</td> <td class='small'>while we remember them</td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td>plan import of remaining projects [<a href="#_devimport">_devimport</a>]</td> <td class='small'>while we remember them</td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td>ccInstall: incorporate Cdoc</td> <td class='small'></td> <td align="center">4</td> </tr>
+</table></div>
 
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
 <h2 id='hmark_Active'>Active</h2>
@@ -39,6 +63,12 @@
 		</ul></li>
 		<li class='tldate'>[implCcInstall 11/29/2011]</li>
 		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>support new project Accessor<ul>
+			<li>History_Support: add Development Overview section</li>
+			<li>default.css: add italic style</li>
+			<li>update Cdoc File, HistoryFile templates</li>
+		</ul></li>
+		<li class='tldate'>[12/05/11]</li>
 		<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
 		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
 		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
@@ -70,7 +100,7 @@
 <!-- @/topicList -->
 
 	<!-- @marker "In-House Documentation [_cdoc]" -->
-	<h4 id='_cdoc'>In-House Documentation <span class='ttag'>[_cdoc]</span></h4><ul>
+	<h4 id='_cdoc'>In-House Documentation [_cdoc]</h4><ul>
 		<li>replace Subversion $Id fields with filenames</li>
 		<li>Support_svn history: move content to be preserved into Support files; new file SubversionServer for information, mostly obsolete, about that topic</li>
 		<li>update sections with class 'todo'</li>
@@ -79,10 +109,10 @@
 	</ul>
 	
 	<!-- @marker "Development Environment [_ccdev]" -->
-	<h4 id='_ccdev'>Development Environment <span class='ttag'>[_ccdev]</span></h4><ul>
+	<h4 id='_ccdev'>Development Environment [_ccdev]</h4><ul>
 		<li id='_ccdev_importSupport'>Import from existing Support_svn [_ccdev_importSupport]<ul>
 			<li>Support: import plan<ul>
-				<li class='blurb'>Snippets: import snippet code from Support_svn target BBEdit (do not restrict to BBEdit)</li>
+				<li class='blurb'>Snippets: import snippet code from Support_svn target BBEdit to CCDev or Xcode</li>
 				<li>ccBackup issues<ul>
 					<li>.git folders: object files are locked, so ccBackup fails when it tries to update an existing .git folder<ul>
 						<li class='blurb'>It appears that all of these files have identical creation and modification dates, which suggests that existing files do not get overwritten. If so, writing only files that have changed since the last backup should solve the problem.</li>
@@ -94,7 +124,7 @@
 	</ul>
 	
 	<!-- @marker "Git Workflow [_git]" -->
-	<h4 id='_git'>Git Workflow <span class='ttag'>[_git]</span></h4><ul>
+	<h4 id='_git'>Git Workflow [_git]</h4><ul>
 		<li>Support.html: Source Control<ul>
 			<li>reorganize to address both svn and git</li>
 		</ul></li>
@@ -105,16 +135,15 @@
 	<h4 id="_devimport">Import Existing Projects</h4><ul>
 		<li>Accessor: new workspace Accessor contains existing Xcode project Accessor_C9 ( ! existing svn repository is not working)</li>
 		<li>Support<ul>
-			<li>add Support_svn, DevSupport to workspace for now</li>
 			<li>plan import of remaining features</li>
 		</ul></li>
 		<li>Arbonne: new workspace Arbonne contains existing Xcode projects ArbonneProto and ArbonneFM</li>
 		<li>WebGen: move generated sites to ~/Documents; transfer information as needed from WebGen docs to Support:PersonalSitep</li>
-		<li>retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done2 another way, probably with static libraries, in the future.</li>
+		<li>retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done another way, probably with static libraries, in the future.</li>
 	</ul>
 	
 	<!-- @marker "In-House Documentation System [_cdocdev]" -->
-	<h4 id='_cdocdev'>In-House Documentation System <span class='ttag'>[_cdocdev]</span></h4><ul>
+	<h4 id='_cdocdev'>In-House Documentation System [_cdocdev]</h4><ul>
 		<li>BuildSupport target Cdoc<ul>
 			<li>add Bundle target Cdoc_Support; remove Compile Bundle Resources, Link Binary with Libraries and Copy Bundle Resources build phases</li>
 			<li>add Run Script build phase Build Cdoc: <span class='mono'>buildCdoc ${TARGET_BUILD_DIR}</span></li>
@@ -124,24 +153,25 @@
 	</ul>
 	
 	<!-- @marker "Speech Recognition Support [_userSlates]" -->
-	<h4	id='_userSlates'>Speech Recognition Support <span class='ttag'>[_userSlates]</span></h4><ul>
+	<h4	id='_userSlates'>Speech Recognition Support [_userSlates]</h4><ul>
 	</ul>
 
 	<!-- @marker "Xcode [_xcode]" -->
-	<h4 id='_xcode'>Xcode <span class='ttag'>[_xcode]</span></h4><ul>
+	<h4 id='_xcode'>Xcode [_xcode]</h4><ul>
 		<li>Scripts and Workflows<ul>
 			<li class='blurb'>assistive access:<ul>
 				<li>shell scripts: add to Behaviors</li>
 				<li>AppleScripts, Workflows: add to scripts menu; Slates call file directly</li>
 				<li>to call ruby from Accessor: <span class='mono'>do shell script "/usr/bin/ruby ~/CCDev/hello.rb"</span></li>
 			</ul></li>
-			<li>ValidateAll, ValidateProject Workflows</li>
-			<li>Snippets<ul>
-				<li>Accessor: enter Snippet line with parameters</li>
-				<li>User: replace parameters; select line</li>
-				<li>Automator: AppleScript to get selected text; pass to BBEdit's Snippets script; leave result on pasteboard</li>
-				<li>User or Accessor: paste in result</li>
+			<li id="Snippets">Snippets<ul>
+				<li>Accessor: enter Snippet line with parameters; enter Type Slate</li>
+				<li>User: replace parameters</li>
+				<li>Accessor: select line; activate Workflow</li>
+				<li>Automator: get selected text; pass to script that gets text from per-Snippet files and performs replacements; cat result of leave in on pasteboard</li>
+				<li>User or Accessor: in necessary, paste in result</li>
 			</ul></li>
+			<li>ValidateAll, ValidateProject Workflows</li>
 			<li>AppleScript/OSA techniques<ul>
 				<li>for clean, upload Behaviors: <span class='mono'>tell application "Xcode" to return name of active target of project of active project document</span></li>
 				<li><span class='mono'>tell application id "com.apple.dt.Xcode" to set windowname to name of window 1</span>; then <span class='mono'>word 1 of windowname</span> is Project name, <span class='mono'>word -1 of windowname</span> is filename</li>
@@ -200,7 +230,7 @@
 	</ul>
 	
 	<!-- @marker "Terminal [_terminal]" -->
-	<h4 id='_terminal'>Terminal <span class='ttag'>[_terminal]</span></h4><ul>
+	<h4 id='_terminal'>Terminal [_terminal]</h4><ul>
 		<li id='git_slate_module'>UserSlates: Git Slate Module<ul>
 			<li>separate UserSlates files Git_module.h/r to facilitate using Git Slates as subslates from multiple process slates</li>
 		</ul></li>
@@ -215,14 +245,14 @@
 	</ul>
 	
 	<!-- @marker "BBEdit [_bbedit]" -->
-	<h4 id='_bbedit'>BBEdit <span class='ttag'>[_bbedit]</span></h4><ul>
+	<h4 id='_bbedit'>BBEdit [_bbedit]</h4><ul>
 		<li>Take go previous/go next out of Type.</li>
 		<li>add target with Run Script build phase: ../BBEdit/BBEdit.install ${TARGET_BUILD_DIR}</li>
 		<li>omit Snippet support; moved to CCDev</li>
 	</ul>
 	
 	<!-- @marker "Finder [_finder]" -->
-	<h4 id='_finder'>Finder <span class='ttag'>[_finder]</span></h4><ul>
+	<h4 id='_finder'>Finder [_finder]</h4><ul>
 		<li>Preferences: edit and document customization</li>
 	</ul>
 	

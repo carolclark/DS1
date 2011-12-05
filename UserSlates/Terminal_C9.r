@@ -137,6 +137,7 @@ resource restype_Slate (resid_termGit, "") { {
 			_CloseSubslate_,
 			ExitEvent { "Support", "" },		Sequence{}, TypeText { "cd ~/Dev/Support" }, _return, endSequence{},
 			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "cd ~/Dev/Punkin" }, _return, endSequence{},
+			ExitEvent { "Accessor", "" },		Sequence{}, TypeText { "cd ~/Dev/Accessor" }, _return, endSequence{},
 			endSubslate{},
 		Event { "repository", "" },		Subslate { "repository" },
 			_SlateGlobals_,
@@ -144,6 +145,7 @@ resource restype_Slate (resid_termGit, "") { {
 			ExitEvent { "Support main", "" },	Sequence{}, TypeText { "cd ~/Dev/gitrep/SupportMain" }, _return, endSequence{},
 			ExitEvent { "Punkin main", "" },	Sequence{}, TypeText { "cd ~/Dev/gitrep/PunkinMain" }, _return,	 endSequence{},
 			ExitEvent { "Punkin remote", "" },	Sequence{}, TypeText { "cd /Volumes/carollclark/gitrep/PunkinRemote" }, _return, endSequence{},
+			ExitEvent { "Accessor main", "" },	Sequence{}, TypeText { "cd ~/Dev/gitrep/AccessorMain" }, _return,	 endSequence{},
 			endSubslate{},
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "browser", "" },		Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_termGitBrowser }, endSequence{},
@@ -212,6 +214,7 @@ resource restype_Slate (resid_termClean, "") { {
 		Event { "Punkin", "" },			TypeText { "Punkin " },
 		Event { "C C Dev", "" },		TypeText { "CCDev " },
 		Event { "Xcode", "" },			TypeText { "Xcode " },
+		Event { "Accessor", "" },			TypeText { "Accessor " },
 	} }
 } };
 

@@ -99,6 +99,7 @@
 #define	_TypeProjectName_			\
 		Event { "Support", "" },		TypeText { "Support" },			\
 		Event { "Punkin", "" },			TypeText { "Punkin" },			\
+		Event { "Accessor", "" },		TypeText { "Accessor" },			\
 		Event { "Web Gen", "" },		TypeText { "WebGen" },			\
 		Event { "Dev Support", "" },	TypeText { "DevSupport" },		\
 		Event { "Carbon", "" },			TypeText { "Accessor_C9" },		\
@@ -739,6 +740,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 		ExitEvent { "expand", "" }, Sequence{}, TypeText { " class='expand'" }, _right, endSequence{},		\
 		ExitEvent { "code", "" }, Sequence{}, TypeText { " class='cod'" }, _right, endSequence{},		\
 		ExitEvent { "emphasize", "" }, Sequence{}, TypeText { " class='em'" }, _right, endSequence{},		\
+		ExitEvent { "italic", "" }, Sequence{}, TypeText { " class='ital'" }, _right, endSequence{},		\
 		ExitEvent { "blurb", "" }, Sequence{}, TypeText { " class='blurb'" }, _right, endSequence{},		\
 		ExitEvent { "small", "" }, Sequence{}, TypeText { " class='small'" }, _right, endSequence{},		\
 		ExitEvent { "center", "" }, Sequence{}, TypeText { " class='center'" }, _right, endSequence{},		\

@@ -507,6 +507,9 @@
 		font-style: normal;
 		font-weight: bold;
 	}
+	.ital {
+		font-style: italic;
+	}
 	.blurb {
 		font-size: 12px;
 		font-style: italic;
