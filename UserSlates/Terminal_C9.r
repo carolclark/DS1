@@ -123,6 +123,7 @@ resource restype_Slate (resid_gitUndo, "") { {
 		Event { "working copy", "" },	Subslate { "working copy" },
 			_TerminalStandards_,
 			Event { "reset hard", "" },	Sequence{}, TypeText { "git reset --hard HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
+			Event { "file", "" },	Sequence{}, TypeText { "git reset HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
 			Event { "revert last commit", "" },		Sequence{}, TypeText { "git revert HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
 			endSubslate{},
 		Event { "unstage", "" },		TypeText { "git rm --cached " },
@@ -137,6 +138,7 @@ resource restype_Slate (resid_termGit, "") { {
 			_CloseSubslate_,
 			ExitEvent { "Support", "" },		Sequence{}, TypeText { "cd ~/Dev/Support" }, _return, endSequence{},
 			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "cd ~/Dev/Punkin" }, _return, endSequence{},
+			ExitEvent { "Carbon", "" },			Sequence{}, TypeText { "cd ~/Dev/AccessorC9" }, _return, endSequence{},
 			ExitEvent { "Accessor", "" },		Sequence{}, TypeText { "cd ~/Dev/Accessor" }, _return, endSequence{},
 			endSubslate{},
 		Event { "repository", "" },		Subslate { "repository" },
@@ -145,6 +147,7 @@ resource restype_Slate (resid_termGit, "") { {
 			ExitEvent { "Support main", "" },	Sequence{}, TypeText { "cd ~/Dev/gitrep/SupportMain" }, _return, endSequence{},
 			ExitEvent { "Punkin main", "" },	Sequence{}, TypeText { "cd ~/Dev/gitrep/PunkinMain" }, _return,	 endSequence{},
 			ExitEvent { "Punkin remote", "" },	Sequence{}, TypeText { "cd /Volumes/carollclark/gitrep/PunkinRemote" }, _return, endSequence{},
+			ExitEvent { "Carbon main", "" },	Sequence{}, TypeText { "cd ~/Dev/gitrep/AccessorC9Main" }, _return,	 endSequence{},
 			ExitEvent { "Accessor main", "" },	Sequence{}, TypeText { "cd ~/Dev/gitrep/AccessorMain" }, _return,	 endSequence{},
 			endSubslate{},
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
@@ -214,7 +217,8 @@ resource restype_Slate (resid_termClean, "") { {
 		Event { "Punkin", "" },			TypeText { "Punkin " },
 		Event { "C C Dev", "" },		TypeText { "CCDev " },
 		Event { "Xcode", "" },			TypeText { "Xcode " },
-		Event { "Accessor", "" },			TypeText { "Accessor " },
+		Event { "Carbon", "" },			TypeText { "AccessorC9 " },
+		Event { "Accessor", "" },		TypeText { "Accessor " },
 	} }
 } };
 

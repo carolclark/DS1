@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  ccInstall.func
+#  ccInstall.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
@@ -283,15 +283,27 @@ function processActions {
 					sourceForCopy="${copyInfo[1]}"
 					destinationForCopy="${copyInfo[2]}"
 				fi
-					action="${action}"
 				case "${action}" in
 					"ignore" )
 						print "skipped"
 						;;
 					"copy" )
-						#print "cp ${sourceForCopy} ${destinationForCopy}"
-						cp ${sourceForCopy} ${destinationForCopy}
-						print "copied to ${destinationForCopy}"
+						print "mkdir -p $(dirname ${destinationForCopy})"
+						mkdir -p $(dirname "${destinationForCopy}")
+						st=$?
+						if [[ $st > 0 ]] ; then
+							failcnt="${failcnt}"+1
+							print "*** could not create directory $(dirname ${destinationForCopy})"
+						else
+							cp "${sourceForCopy}" "${destinationForCopy}"
+							st=$?
+							if [[ $st > 0 ]] ; then
+								failcnt="${failcnt}"+1
+								print "*** could not copy to ${destinationForCopy}"
+							else
+								print "copied to ${destinationForCopy}"
+							fi
+						fi
 						;;
 					* )
 						print "*** Unrecognized action string ${action}"

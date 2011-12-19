@@ -17,6 +17,9 @@
          location = "group:Cdoc/Development.html">
       </FileRef>
       <FileRef
+         location = "group:Cdoc/DevelopingProjects.html">
+      </FileRef>
+      <FileRef
          location = "group:Cdoc/Git.html">
       </FileRef>
       <FileRef
@@ -304,36 +307,36 @@
          location = "container:Xcode/Templates/FileTemplates"
          name = "FileTemplates">
          <Group
-            location = "container:Xcode/Templates/FileTemplates/Cdoc"
-            name = "Cdoc">
+            location = "container:Xcode/Templates/FileTemplates/Documentation"
+            name = "Documentation">
             <Group
-               location = "container:"
+               location = "group:"
                name = "ReadMe">
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Cdoc/ReadMe.xctemplate/___FILEBASENAME___.html">
+                  location = "group:ReadMe.xctemplate/___FILEBASENAME___.html">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Cdoc/ReadMe.xctemplate/TemplateInfo.plist">
+                  location = "group:ReadMe.xctemplate/TemplateInfo.plist">
                </FileRef>
             </Group>
             <Group
-               location = "container:"
+               location = "group:"
                name = "CdocFile">
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Cdoc/CdocFile.xctemplate/___FILEBASENAME___.html">
+                  location = "group:CdocFile.xctemplate/___FILEBASENAME___.html">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Cdoc/CdocFile.xctemplate/TemplateInfo.plist">
+                  location = "group:CdocFile.xctemplate/TemplateInfo.plist">
                </FileRef>
             </Group>
             <Group
-               location = "container:"
+               location = "group:"
                name = "HistoryFile">
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Cdoc/HistoryFile.xctemplate/___FILEBASENAME___.html">
+                  location = "group:HistoryFile.xctemplate/___FILEBASENAME___.html">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Cdoc/HistoryFile.xctemplate/TemplateInfo.plist">
+                  location = "group:HistoryFile.xctemplate/TemplateInfo.plist">
                </FileRef>
             </Group>
             <Group
@@ -410,6 +413,13 @@
                </FileRef>
             </Group>
          </Group>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Doxygen">
+         <FileRef
+            location = "group:CCDev/Doxygen/Default.doxygen">
+         </FileRef>
       </Group>
       <Group
          location = "container:"

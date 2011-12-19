@@ -32,21 +32,22 @@
 
 <div class="tableholder"><table class="goaltabl" border="0" cellspacing="0" cellpadding="5"><caption>Development Overview</caption>
 	<tr><th>Project</th> <th>Goal</th> <th>Comments</th> <th>When</th></tr>
-	<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#ImportExisting">Import Existing Development Work</a></td> <td class='small'>existing svn repository broken</td> <td align="center">1</td> </tr>
-	<tr> <td>Punkin</td> <td>Requirements, Use Cases, Design</td> <td class='small'></td> <td align="center">2</td> </tr>
-	<tr> <td>Punkin</td> <td>establish iOS Cocoa development environment</td> <td class='small'>with testing, provisioning, and probably Doxygen, support</td> <td align="center">3</td> </tr>
-	<tr> <td>Punkin</td> <td> establish framework for iOS mobile websites[<a href="../Punkin/History_Punkin.html#_web_sample">_web_sample</a>]</td> <td class='small'>build sample sites from tutorial</td> <td align="center">3</td> </tr>
+	<tr> <td>AccessorC9</td> <td><a href="../AccessorC9/History_Accessor.html#ImportExisting">Import Existing Development Work</a></td> <td class='small'>existing svn repository broken</td> <td align="center">&radic;1</td> </tr>
+	<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#CocoaApp">Port to Cocoa Application</a></td> <td class='small'>existing Carbon project file is a no-longer-supported format and is causing problems</td> <td align="center">1</td> </tr>
+	<tr> <td>Punkin</td> <td>Requirements, Use Cases, Design</td> <td class='small'></td> <td align="center">1</td> </tr>
+	<tr> <td>Punkin</td> <td>establish iOS Cocoa development environment</td> <td class='small'>with testing, provisioning and Doxygen support</td> <td align="center">5</td> </tr>
+	<tr> <td>Punkin</td> <td> establish framework for iOS mobile websites [<a href="../Punkin/History_Punkin.html#_web_sample">_web_sample</a>]</td> <td class='small'>build sample sites from tutorial</td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Developer Support and Automation</span></td></tr>
-	<tr> <td>Support</td> <td>support Cdoc install/clean</td> <td class='small'>install: adapt existing Support_svn script; clean: as for other targets</td> <td align="center">1</td> </tr>
+	<tr> <td>Support</td> <td><a href="#CdocBuild">support Cdoc install/clean</a></td> <td class='small'>install: adapt existing Support_svn script and call as build script;<br />clean: add access to cleanProjectTarget script</td> <td align="center">1</td> </tr>
 	<tr> <td>Support</td> <td>Snippets: Accessor Slate temporarily enters full Snippet text</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
 	<tr> <td>Support</td> <td><a href="#Snippets">Snippet</a> support</td> <td class='small'>could use entry of full snippet text as an intermediate stage</td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Upgrade to Lion</span></td></tr>
 	<tr> <td>Arbonne</td> <td>replace FileMaker recordkeeping system</td> <td class='small'>FileMaker runs under Rosetta</td> <td align="center">2</td> </tr>
-	<tr> <td>Accessor</td> <td>replace deprecated calls</td> <td class='small'></td> <td align="center">2</td> </tr>
+	<tr> <td>Accessor</td> <td>replace deprecated calls</td> <td class='small'></td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Transfer Existing Development Work</span></td></tr>
  	<tr> <td>Support</td> <td>plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</td> <td class='small'>while we remember them</td> <td align="center">2</td> </tr>
 	<tr> <td>Support</td> <td>plan import of remaining projects [<a href="#_devimport">_devimport</a>]</td> <td class='small'>while we remember them</td> <td align="center">2</td> </tr>
-	<tr> <td>Support</td> <td>ccInstall: incorporate Cdoc</td> <td class='small'></td> <td align="center">4</td> </tr>
+	<tr> <td>Support</td> <td><a href="#ccInstallCdoc">ccInstall: incorporate Cdoc</a></td> <td class='small'></td> <td align="center">4</td> </tr>
 </table></div>
 
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
@@ -67,9 +68,35 @@
 			<li>History_Support: add Development Overview section</li>
 			<li>default.css: add italic style</li>
 			<li>update Cdoc File, HistoryFile templates</li>
+			<li class='tldate'>[12/05/11]</li>
+			<li>Accessor: support both Carbon (AccessorC9) and Accessor for project selection</li>
+			<li>add default annotated Doxygen configuration file Default.doxygen for reference</li>
+			<li>Xcode UserSlate: add macros for several common type actions</li>
+			<li>Cdoc: add file DevelopingProjects.html<ul>
+				<li class='blurb'>tasks and refactorings related to development with (Xcode) projects</li>
+			</ul></li>
+			<li>rename Xcode FileTemplate group Cdoc to Documentation</li>
+			<li>ccInstall: call mkdir before attempting to copy files; and error checks on file copy</li>
+			<li class='tldate'>[12/19/2011]</li>
+			<li>Doxygen support<ul>
+				<li>add template file Documentation/Doxygen for customized Doxygen configuration file</li>
+				<li>add script buildDocset.sh; used as Run Script script to build custom docsets and install in Xcode</li>
+			</ul></li>
 		</ul></li>
-		<li class='tldate'>[12/05/11]</li>
-		<li>add build target Cdoc [<a href="#_cdocdev">_cdocdev</a>]</li>
+		<li><a id="CdocBuild">support Cdoc build/clean</a><ul>
+			<li>build Cdoc targets from run script that calls buildCdoc; clean using cleanProjectTarget from Terminal as for other targets</li>
+			<li class='blurb'>replaces Support_svn scripts build.uia, currently called from Terminal, and buildCdoc, called by build.uia</li>
+			<li>UserSlates:Xcode: skipBack, skipAhead for moving among successive locations within a tab</li>
+			<li>UserSlates:Xcode:Target&gt;Build: newTab, showBuild, test, analyze</li>
+			<li>Xcode Behaviors settings: remove automatic navigation to Build tab for successful builds</li>
+			<li>BuildSupport target Support:Cdoc<ul>
+				<li>add Bundle target Cdoc_Support; remove Compile Bundle Resources, Link Binary with Libraries and Copy Bundle Resources build phases</li>
+				<li>add Run Script build phase Build Cdoc: <span class='mono'>buildCdoc ${TARGET_BUILD_DIR}</span></li>
+				<li>make new scheme shared</li>
+				<li>build and test</li>
+			</ul></li>
+			<li>switch to Cdoc targets for Punkin, AccessorC9, Accessor</li>
+		</ul></li>
 		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
 		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
 	</ul>
@@ -89,10 +116,9 @@
 	<!-- @topicItem "Development Environment " "#_ccdev" "0" "" -->
 	<!-- @topicItem "Git Workflow " "#_git" "0" "" -->
 	<!-- @topicItem "Import Existing Projects" "#_devimport" "0" "" -->
-	<!-- @topicItem "Cdoc: In-House Documentation System " "#_cdocdev" "0" "" -->
 	<!-- @topicItem "Accessor's UserSlates" "#_userSlates" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Apps and Tools" "8" -->
+	<!-- @topicGroup "Apps and Tools" "7" -->
 	<!-- @topicItem "Xcode " "#_xcode" "0" "" -->
 	<!-- @topicItem "Terminal " "#_terminal" "0" "" -->
 	<!-- @topicItem "BBEdit " "#_bbedit" "0" "" -->
@@ -142,22 +168,13 @@
 		<li>retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done another way, probably with static libraries, in the future.</li>
 	</ul>
 	
-	<!-- @marker "In-House Documentation System [_cdocdev]" -->
-	<h4 id='_cdocdev'>In-House Documentation System [_cdocdev]</h4><ul>
-		<li>BuildSupport target Cdoc<ul>
-			<li>add Bundle target Cdoc_Support; remove Compile Bundle Resources, Link Binary with Libraries and Copy Bundle Resources build phases</li>
-			<li>add Run Script build phase Build Cdoc: <span class='mono'>buildCdoc ${TARGET_BUILD_DIR}</span></li>
-			<li>make new scheme shared</li>
-			<li>build and test</li>
-		</ul></li>
-	</ul>
-	
 	<!-- @marker "Speech Recognition Support [_userSlates]" -->
 	<h4	id='_userSlates'>Speech Recognition Support [_userSlates]</h4><ul>
 	</ul>
 
 	<!-- @marker "Xcode [_xcode]" -->
 	<h4 id='_xcode'>Xcode [_xcode]</h4><ul>
+		<li id='ccInstallCdoc'>ccInstall: incorporate buildCdoc</li>
 		<li>Scripts and Workflows<ul>
 			<li class='blurb'>assistive access:<ul>
 				<li>shell scripts: add to Behaviors</li>
@@ -311,8 +328,8 @@
 			<li class='tldate'>[09/07/2011]</li>
 			<li>Cdoc history files: standardize; add file template<ul>
 				<li>Support, Punkin: history files: standardize; improve formatting</li>
-				<li>revise history styles [<a href="#_cdocdev">_cdocdev</a>]</li>
-				<li>Support, Punkin histories: standardize; improve formatting [<a href="#_cdocdev">_cdocdev</a>]</li>
+				<li>revise history styles [_cdocdev]</li>
+				<li>Support, Punkin histories: standardize; improve formatting [_cdocdev]</li>
 				<li>BuildSupport: <a href="Support.html#tsk_NewInstallerTarget">add target</a> Xcode</li>
 				<li>add template for history files [<a href="#_xcode">_xcode</a>]</li>
 			</ul></li>
@@ -345,7 +362,7 @@
 			</ul></li>
 		</ul></li>
 		<li class='tldate'>[09/20/2011]</li>
-		<li>[historyWorkflow] Improve Cdoc History File Workflow [<a href="#_cdocdev">_cdocdev</a>]<ul>
+		<li>[historyWorkflow] Improve Cdoc History File Workflow [_cdocdev]<ul>
 			<li>standardize existing history documents</li>
 			<li>add file templates ReadMe.html, CdocFile.html, HistoryFile.html</li>
 			<li>revert creation of new project TechnicalDocs (a false start)</li>

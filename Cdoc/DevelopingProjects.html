@@ -1,0 +1,79 @@
+<!-- DevelopingProjects.html -->
+<!-- Created by Carol Clark on 12/17/11 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DevelopingProjects</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />	
+</head>
+<body>
+<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="History_Support.html#Contents">History</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<h1>Developing Projects</h1>
+
+<!-- @topicList "DevelopingProjects" "Contents" -->
+	<!-- @topicItem "Targets and Build Phases" "#Target_" "0" "" -->
+<!-- @/topicList -->
+
+<p>tasks and refactorings related to development with (Xcode) projects</p>
+
+<!-- @marker "Targets and Build Phases" -->
+<h2>Targets and Build Phases</h2>
+
+<!-- @topicList "Targets and Build Phases" "Target_" -->
+	<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
+	<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
+	<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
+	<!-- @topicItem "Add Doxygen Documentation" "#AddDoxygenDocumentation" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Add Run Script Target" -->
+<h4 id='AddRunScriptTarget'>Add Run Script Target</h4><ul>
+	<li>create new Bundle target<ul>
+		<li>delete file *.pch, folder en.lproj</li>
+		<li>mark scheme as shared</li>
+		<li>remove build phases Compile Sources, Link Binary with Libraries, Copy Bundle resources</li>
+		<li>add Run Script build phase</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Promote Run Phase to Target" -->
+<h4 id='PromoteRunPhaseToTarget'>Promote Run Phase to Target</h4><ul class='blurb'>
+		<li>make a Run Script build phase into its own target</li>
+		<li>use to separately control the steps in building a product</li>
+	</ul><ul>
+		<li><a href="#AddRunScriptTarget">Add Run Script Target</a></li>
+		<li>copy script from its build phase in the old target to the new Run Script phase in the new target</li>
+		<li>in the original target's scheme, add the new target to the target list of the Build section</li>
+		<li>test build</li>
+		<li>in the original target, remove the Run Script build phase that has been replaced</li>
+	</ul>
+
+<!-- @marker "Add Unit Testing" -->
+<h4 id='AddUnitTesting'>Add Unit Testing</h4><ul>
+	<li>add Application Tests<ul>
+		<li class='blurb'>We have only produced application test targets by requesting them with the template when the target is first produced.</li>
+		<li class='blurb'>from iPhoneUnitsSample ReadMe: "Important: Application targets with unit tests cannot be built or run using the iPhone Simulator SDK; they can be built and run only using the iPhone Device SDK." The sample produces two copies of the app, one with Unit Tests and one without.</li>
+	</ul></li>
+	<li>add Unit Tests<ul>
+		<li>add a new target from Cocoa Unit Testing Bundle template</li>
+	</ul></li>
+	<li>set up debugging<ul>
+		<li>add symbolic breakpoint at -[SenTestCase failWithException:]</li>
+	</ul></li>
+</ul>
+	
+<!-- @marker "Add Doxygen Documentation" -->
+<h4 id='AddDoxygenDocumentation'>Add Doxygen Documentation</h4><ul>
+	<li>add file &lt;Project&gt;.doxygen from template; set parameters as indicated, using Dev/Support/Default.doxygen as a reference</li>
+	<li>add Run Script build phase or target: buildDoxygen &lt;ProjectName&gt; [&lt;Subfolder&gt;]</li>
+</ul>
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright 2011 C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Confidential and Proprietary.</p>
+</body>
+</html>

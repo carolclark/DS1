@@ -99,10 +99,10 @@
 #define	_TypeProjectName_			\
 		Event { "Support", "" },		TypeText { "Support" },			\
 		Event { "Punkin", "" },			TypeText { "Punkin" },			\
-		Event { "Accessor", "" },		TypeText { "Accessor" },			\
+		Event { "Accessor", "" },		TypeText { "Accessor" },		\
 		Event { "Web Gen", "" },		TypeText { "WebGen" },			\
 		Event { "Dev Support", "" },	TypeText { "DevSupport" },		\
-		Event { "Carbon", "" },			TypeText { "Accessor_C9" },		\
+		Event { "Carbon", "" },			TypeText { "AccessorC9" },		\
 		Event { "Prototype", "" },		TypeText { "ArbonneProto" },	\
 		Event { "FileMaker", "" },		TypeText { "ArbonneFM" },		\
 		Event { "Try 2", "" },			TypeText { "Koala_Try2" },		\
@@ -753,7 +753,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 		ExitEvent { "pseudo link", "" }, Sequence{}, TypeText { " class='pslink'" }, _right, endSequence{},		\
 		ExitEvent { "implement", "" }, Sequence{}, TypeText { " class='impl'" }, _right, endSequence{},		\
 		ExitEvent { "done", "" }, Sequence{}, TypeText { " class='done'" }, _right, endSequence{},		\
-		\		ExitEvent { "todo", "" }, Sequence{}, TypeText { " class='todo'" }, _right, endSequence{}
+		ExitEvent { "todo", "" }, Sequence{}, TypeText { " class='todo'" }, _right, endSequence{}
 
 #define _TagItems_	\
 		ExitEvent { "comment", "" }, Sequence{}, TypeText		\
@@ -778,6 +778,11 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 			endSequence{},		\
 		ExitEvent { "plain list", "" }, Sequence{}, TypeText		\
 			{ "<ul></ul>" }, _left, _left, _left, _left, _left,		\
+			Keypress { kc_return, 0 }, Keypress { kc_return, 0 },		\
+			Keypress { kc_up, 0 }, Keypress { kc_tab, 0 },		\
+			endSequence{},		\
+		ExitEvent { "ordered list", "" }, Sequence{}, TypeText		\
+			{ "<ol></ol>" }, _left, _left, _left, _left, _left,		\
 			Keypress { kc_return, 0 }, Keypress { kc_return, 0 },		\
 			Keypress { kc_up, 0 }, Keypress { kc_tab, 0 },		\
 			endSequence{},		\

@@ -67,7 +67,7 @@ testInstallation() {
 	# Scripts/cleanProjectTarget
 	fl="${CCDev}/bin/cleanProjectTarget"
 	if [[ ! -e "${fl}" ]] ; then
-	fail "$LINENO: CCDev script cleanProjectTarget missing" 
+		fail "$LINENO: CCDev script cleanProjectTarget missing" 
 	fi
 }
 
