@@ -11,10 +11,27 @@
 <h1>Developing Projects</h1>
 
 <!-- @topicList "DevelopingProjects" "Contents" -->
+	<!-- @topicItem "Projects" "#Projects_" "0" "" -->
 	<!-- @topicItem "Targets and Build Phases" "#Target_" "0" "" -->
 <!-- @/topicList -->
 
 <p>tasks and refactorings related to development with (Xcode) projects</p>
+
+<!-- @marker "Projects" -->
+<h2>Projects</h2>
+
+<!-- @topicList "Projects" "Projects_" -->
+	<!-- @topicItem "Add Cocoa Project" "#AddCocoaProject" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Add Cocoa Project" -->
+<h4 id='AddCocoaProject'>Add Cocoa Project</h4><ul>
+	<li>open the Workspace that will contain the Project</li>
+	<li>create Project from indicated template; check Include Unit Tests</li>
+	<li><a href="#AddUnitTesting">Add Unit Testing</a></li>
+	<li><a href="#AddDoxygenTarget">Add Doxygen Target</a></li>
+	<li>mark all schemes "shared"</li>
+</ul>
 
 <!-- @marker "Targets and Build Phases" -->
 <h2>Targets and Build Phases</h2>
@@ -23,14 +40,14 @@
 	<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 	<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
 	<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
-	<!-- @topicItem "Add Doxygen Documentation" "#AddDoxygenDocumentation" "0" "" -->
+	<!-- @topicItem "Add Doxygen Target" "#AddDoxygenTarget" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Add Run Script Target" -->
 <h4 id='AddRunScriptTarget'>Add Run Script Target</h4><ul>
 	<li>create new Bundle target<ul>
-		<li>delete file *.pch, folder en.lproj</li>
 		<li>mark scheme as shared</li>
+		<li>delete file *.pch, folder en.lproj</li>
 		<li>remove build phases Compile Sources, Link Binary with Libraries, Copy Bundle resources</li>
 		<li>add Run Script build phase</li>
 	</ul></li>
@@ -56,16 +73,17 @@
 	</ul></li>
 	<li>add Unit Tests<ul>
 		<li>add a new target from Cocoa Unit Testing Bundle template</li>
+		<li>mark scheme "shared"</li>
 	</ul></li>
 	<li>set up debugging<ul>
 		<li>add symbolic breakpoint at -[SenTestCase failWithException:]</li>
 	</ul></li>
 </ul>
 	
-<!-- @marker "Add Doxygen Documentation" -->
-<h4 id='AddDoxygenDocumentation'>Add Doxygen Documentation</h4><ul>
+<!-- @marker "Add Doxygen Target" -->
+<h4 id='AddDoxygenTarget'>Add Doxygen Target</h4><ul>
+	<li>add Run Script build phase or <a href="#AddRunScriptTarget">target</a>: doxygenBuild &lt;ProjectName&gt;</li>
 	<li>add file &lt;Project&gt;.doxygen from template; set parameters as indicated, using Dev/Support/Default.doxygen as a reference</li>
-	<li>add Run Script build phase or target: buildDoxygen &lt;ProjectName&gt; [&lt;Subfolder&gt;]</li>
 </ul>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

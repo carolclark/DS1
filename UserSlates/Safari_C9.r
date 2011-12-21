@@ -141,9 +141,10 @@ resource restype_Slate (resid_TypeSafariSlate, "Type Slate") { {
 _BrowseCdocSlate_
 
 #pragma mark BrowseDoxygen
-#define	_BrowseDoxygenResID_	resid_BrowseDoxygen
-#define	_mainFrame_h			0
-#define	_mainFrame_v			75
+	#define	_BrowseDoxygenResID_	resid_BrowseDoxygen
+	#define	_mainFrame_h			0
+	#define	_mainFrame_v			75
+	#define _homeApp				Apps_"Safari.app"
 _BrowseDoxygenSlate_	
 
 resource restype_Slate (resid_Links, "scan among links") { {

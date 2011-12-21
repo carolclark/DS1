@@ -18,12 +18,12 @@ testXcodeInstall() {
 	fi
 
 	# HistoryFile.xctemplate
-	fl="${HOME}/Library/Developer/Xcode/Templates/FileTemplates/Cdoc/HistoryFile.xctemplate"
+	fl="${HOME}/Library/Developer/Xcode/Templates/FileTemplates/Documentation/HistoryFile.xctemplate"
 	if [[ ! -e "${fl}" ]] ; then
-		fail "$LINENO: file template Cdoc/HistoryFile.xctemplate missing" 
+		fail "$LINENO: file template Documentation/HistoryFile.xctemplate missing" 
 	fi
 	if [[ ! -d "${fl}" ]] ; then
-		fail "$LINENO: file template Cdoc/HistoryFile.xctemplate: directory expected" 
+		fail "$LINENO: file template Documentation/HistoryFile.xctemplate: directory expected" 
 	fi
 }
 

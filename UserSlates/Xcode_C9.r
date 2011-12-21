@@ -103,14 +103,14 @@
 
 #define resid_Macro					resid_Xcode+700
 
+#define resid_TargetPopup			resid_Xcode+910
+
 /* todo */
 #define resid_Documentation				resid_Xcode+800
 	#define resid_refDocset					resid_Documentation+1
 	#define resid_refBookmarks				resid_Documentation+2
 	#define resid_refSearch					resid_Documentation+10
 		#define resid_refSearchResults			resid_refSearch+1
-
-#define resid_TargetPopup			resid_Xcode+910
 
 #define _scriptsMenu	Click { 1, -340, 13, _screen, _topRight }, Wait { 20 }, _down, TypeText { "Xcode" }, _right
 #define closeDocument_	\
@@ -768,10 +768,10 @@ resource restype_Slate (resid_XCTerminal, "terminal support") { {
 resource restype_Slate (resid_BBValidate, "html validation support") { {
 	Slate { "ValidateHTML",	{
 		_SlateGlobals_,
-		ExitEvent { "close", "" },	Keypress { kc_W, mf_command },
+		ExitEvent { "close", "" },	Sequence{}, Keypress { kc_W, mf_command }, Launch { DevApps_"XCode.app", resid_Xcode }, endSequence{},
 		ExitEvent { "exit", "" },	NilAction{},
 		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
-		Event { "okay", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
+		Event { "okay", "" },		Sequence{}, _return, Launch { DevApps_"XCode.app", resid_Xcode }, endSequence{},
 		_CommandSlate_,
 		_IMouseSlate_,
 		_TypeXcodeSlate_,
@@ -824,14 +824,15 @@ resource restype_Slate (resid_BBContinueCheckAll, "resid_BBContinueCheckAll") { 
 	_FileDialogStandards_
 
 #define _FileSaveStandards_		\
-	Event { "filename", "" },	_clickFilename,		\
-	Event { "new folder", "" },	Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, _tab, endSequence{},		\
-	Event { "group", "" },		Sequence{}, _clickFilter, _tab, _tab, _tab, endSequence{},	\
-	Event { "target 1", "" },	Click { 1, tg_h, tg_t+0*tg_s, _window, _topCenter },		\
-	Event { "target 2", "" },	Click { 1, tg_h, tg_t+1*tg_s, _window, _topCenter },		\
-	Event { "target 3", "" },	Click { 1, tg_h, tg_t+2*tg_s, _window, _topCenter },		\
-	Event { "target 4", "" },	Click { 1, tg_h, tg_t+3*tg_s, _window, _topCenter },		\
-	Event { "target 5", "" },	Click { 1, tg_h, tg_t+4*tg_s, _window, _topCenter },		\
+	Event { "filename", "" },			_clickFilename,		\
+	Event { "new folder", "" },			Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, _tab, endSequence{},		\
+	Event { "group", "" },				Sequence{}, _clickFilter, _tab, _tab, _tab, endSequence{},	\
+	Event { "template groups", "" },	Click { 1, -270, 530, _window, _topCenter },				\
+	Event { "target 1", "" },			Click { 1, tg_h, tg_t+0*tg_s, _window, _topCenter },		\
+	Event { "target 2", "" },			Click { 1, tg_h, tg_t+1*tg_s, _window, _topCenter },		\
+	Event { "target 3", "" },			Click { 1, tg_h, tg_t+2*tg_s, _window, _topCenter },		\
+	Event { "target 4", "" },			Click { 1, tg_h, tg_t+3*tg_s, _window, _topCenter },		\
+	Event { "target 5", "" },			Click { 1, tg_h, tg_t+4*tg_s, _window, _topCenter },		\
 	_FileDialogStandards_
 
 resource restype_Slate (resid_FileMenu, "File") { {
@@ -1380,7 +1381,9 @@ resource restype_Slate (resid_Scripts, "Scripts") { {
 		_DirectionKeys_,
 		_CommandSlate_,
 		Event { "go marker", "" },			Sequence{}, TypeText { "goMarker" }, _return, ResSubslate { resid_bbeSelectMarker }, endSequence{},
-		Event { "view in browser", "" },	Sequence{}, TypeText { "viewInBrowser" }, _return, endSequence{},
+		Event { "view in browser", "" },	Sequence{}, TypeText { "viewCdoc" }, _return, endSequence{},
+		Event { "view C doc", "" },			Sequence{}, TypeText { "viewCdoc" }, _return, endSequence{},
+		Event { "view Doxygen", "" },		Sequence{}, TypeText { "viewDoxygen" }, _return, endSequence{},
 	} }
 } };
 
@@ -1726,8 +1729,7 @@ resource restype_Slate (resid_Doxygen, "Doxygen") { {
 		Event { "comment", "" },					Sequence{}, TypeText { "/*!  */" }, _return, _left, _left, _left, _left, _left, endSequence{},
 		ExitEvent { "trailing", "trailing comment" }, Sequence{}, TypeText { "/*!< \\brief" }, _tab,
 			TypeText { " */" }, _left, _left, _left, endSequence{},
-		
-		ExitEvent { "brief", "" },					Sequence{}, TypeText { "\\brief" }, _tab, _tab, endSequence{},
+		ExitEvent { "brief", "" },					Sequence{}, TypeText { "//!  " }, _return, _left, endSequence{},
 		ExitEvent { "details", "" },				Sequence{}, TypeText { "\\details" }, _tab, endSequence{},
 		ExitEvent { "parameter", "" },				Sequence{}, TypeText { "\\param" }, _tab, _tab,
 				TypeText { "<#paramName#>" }, _tab, TypeText { "<#description#>" }, _previous, _previous, endSequence{},
@@ -1901,11 +1903,11 @@ resource restype_Slate (resid_DataModel, "DataModel") { {
 	#define _homeApp			DevApps_"Xcode.app"
 _BrowseCdocSlate_
 
-/* to do */
 #pragma mark BrowseDoxygen
-#define	_BrowseDoxygenResID_	resid_BrowseDoxygen
-#define	_mainFrame_h			0
-#define	_mainFrame_v			55
+	#define	_BrowseDoxygenResID_	resid_BrowseDoxygen
+	#define	_mainFrame_h			0
+	#define	_mainFrame_v			75
+	#define _homeApp				DevApps_"Xcode.app"
 _BrowseDoxygenSlate_
 
 #pragma mark Reference
@@ -2139,6 +2141,8 @@ resource restype_Slate (resid_TargetPopup, "Target Popup") { {
 		Event { "Xcode", "" },			Sequence{}, TypeText { "Xcode" }, _down, endSequence{},
 		Event { "Setup", "" },			Sequence{}, TypeText { "CCDev_Setup" }, _down, endSequence{},
 		Event { "C C Dev", "" },		Sequence{}, TypeText { "CCDev" }, _down, endSequence{},
+		Event { "Accessor", "" },		Sequence{}, TypeText { "Accessor" }, _down, endSequence{},
+		Event { "Doxygen", "" },		Sequence{}, TypeText { "Doxygen" }, _down, endSequence{},
 	} }
 } };
 
@@ -2251,6 +2255,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 			_WindowItems_,
 			endSubslate{},
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
+		Event { "Doxygen", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
 		Event { "focus", "" },			Keypress { kc_period, mf_command + mf_option },
 		Event { "focus next", "" },		Keypress { kc_period, mf_command + mf_option },
 		Event { "focus back", "" },		Keypress { kc_period, mf_command + mf_option + mf_shift },
@@ -2319,7 +2324,6 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 			Keypress { kc_tab, mf_command },
 			ResSubslate { resid_UMLetSubslate },
 			endSequence{},
-		Event { "Doxygen", "" },	ResSubslate { resid_Doxygen },
 		Event { "Snapshots", "" },	Sequence{},
 			ClickMenu { "File" }, _down, TypeText { "Snapshots" }, _return, ResSubslate { resid_Snapshots },
 			endSequence{},

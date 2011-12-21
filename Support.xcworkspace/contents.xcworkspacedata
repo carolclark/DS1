@@ -115,6 +115,9 @@
          location = "container:"
          name = "Scripts">
          <FileRef
+            location = "group:CCDev/Scripts/doxygenBuild.ksh">
+         </FileRef>
+         <FileRef
             location = "group:CCDev/Scripts/cleanProjectTarget.ksh">
          </FileRef>
          <FileRef
@@ -129,6 +132,13 @@
          </FileRef>
          <FileRef
             location = "group:CCDev/Functions/errtrap.ksh">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Doxygen">
+         <FileRef
+            location = "group:CCDev/Doxygen/Default.doxygen">
          </FileRef>
       </Group>
       <Group
@@ -294,6 +304,12 @@
          location = "container:"
          name = "Workflows">
          <FileRef
+            location = "group:Xcode/Workflows/viewCdoc.workflow">
+         </FileRef>
+         <FileRef
+            location = "group:Xcode/Workflows/viewDoxygen.workflow">
+         </FileRef>
+         <FileRef
             location = "group:Xcode/Workflows/viewInBrowser.workflow">
          </FileRef>
          <FileRef
@@ -369,6 +385,19 @@
                   location = "group:TemplateInfo.plist">
                </FileRef>
             </Group>
+            <Group
+               location = "container:"
+               name = "DoxygenConfig">
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Documentation/DoxygenConfig.xctemplate/___FILEBASENAME___.txt">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Documentation/DoxygenConfig.xctemplate/TemplateIcon.icns">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/Documentation/DoxygenConfig.xctemplate/TemplateInfo.plist">
+               </FileRef>
+            </Group>
          </Group>
          <Group
             location = "container:"
@@ -413,13 +442,6 @@
                </FileRef>
             </Group>
          </Group>
-      </Group>
-      <Group
-         location = "container:"
-         name = "Doxygen">
-         <FileRef
-            location = "group:CCDev/Doxygen/Default.doxygen">
-         </FileRef>
       </Group>
       <Group
          location = "container:"

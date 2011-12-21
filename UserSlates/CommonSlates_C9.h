@@ -111,40 +111,6 @@
 
 #pragma mark 2 ===
 
-#pragma mark _BrowseDoxygenSlate_
-// parameters: _BrowseDoxygenResID_; _mainFrame_h, _mainFrame_v
-#define _BrowseDoxygenSlate_                                                                               \
-resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { {                          \
-	Slate { "Doxygen", {                                                                                      \
-		_SlateGlobals_,                                                                                          \
-		_CloseSubslate_,                                                                                         \
-		_IMouseSlate_,                                                                                           \
-		_TypeSlate_,                                                                                             \
-		_DirectionKeys_,                                                                                         \
-		_JumpDownSubslate_,                                                                                      \
-		_JumpNorthSubslate_,                                                                                     \
-		Event { "hide banner", "" },		Keypress { kc_G, mf_command + mf_control + mf_option },                    \
-		Event { "search", "" },				Click { 1, -50, _mainFrame_v+15, _window, _topRight },                        \
-		Event { "main page", "" },			Click { 1, _mainFrame_h+67, _mainFrame_v+23, _window, _topLeft },           \
-		Event { "related pages", "" },		Click { 1, _mainFrame_h+135, _mainFrame_v+23, _window, _topLeft },       \
-		Event { "classes", "" },			Click { 1, _mainFrame_h+225, _mainFrame_v+23, _window, _topLeft },            \
-		Event { "files", "" },				Click { 1, _mainFrame_h+271, _mainFrame_v+23, _window, _topLeft },             \
-		Event { "class list", "" },			Click { 1, _mainFrame_h+65, _mainFrame_v+49, _window, _topLeft },          \
-		Event { "class hierarchy", "" },	Click { 1, _mainFrame_h+144, _mainFrame_v+49, _window, _topLeft },      \
-		Event { "class members", "" },		Click { 1, _mainFrame_h+247, _mainFrame_v+49, _window, _topLeft },       \
-		Event { "file list", "" },			Click { 1, _mainFrame_h+65, _mainFrame_v+49, _window, _topLeft },           \
-		Event { "file members", "" },		Click { 1, _mainFrame_h+144, _mainFrame_v+49, _window, _topLeft },        \
-		Event { "all", "" },				Click { 1, _mainFrame_h+46, _mainFrame_v+74, _window, _topLeft },                \
-		Event { "functions", "" },			Click { 1, _mainFrame_h+97, _mainFrame_v+74, _window, _topLeft },           \
-		Event { "variables", "" },			Click { 1, _mainFrame_h+165, _mainFrame_v+74, _window, _topLeft },          \
-		Event { "properties", "" },			Click { 1, _mainFrame_h+236, _mainFrame_v+74, _window, _topLeft },         \
-		Event { "typedefs", "" },			Click { 1, _mainFrame_h+236, _mainFrame_v+74, _window, _topLeft },           \
-		Event { "enumerations", "" },		Click { 1, _mainFrame_h+312, _mainFrame_v+74, _window, _topLeft },        \
-		Event { "enumerator", "" },			Click { 1, _mainFrame_h+389, _mainFrame_v+74, _window, _topLeft },         \
-		Event { "defines", "" },			Click { 1, _mainFrame_h+462, _mainFrame_v+74, _window, _topLeft },            \
-	} }                                                                                                       \
-} };
-
 #pragma mark _BrowserSlates_
 #define	_BrowserStandards_		\
 		_SlateGlobals_,         \
@@ -170,9 +136,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		Event { "page end", "" },		Keypress { kc_end, 0 },                           \
 		Event { "link content", "" },	ResSubslate { resid_LinkContentSlate },			\
 		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft }, \
-			Click { -1, 335, 10, _screen, _topLeft }, endSequence{},	\
-		Event { "bookmarks", "" },		Sequence{}, ClickMenu { "Bookmarks" },		\
-			ResSubslate { _id_Safari_Bookmarks }, endSequence{}
+			Click { -1, 335, 10, _screen, _topLeft }, endSequence{}
 
 // parameters: _BrowseCdocResID_; _mainFrame_h, _mainFrame_v; _homeApp
 // InHouse Links Table variables
@@ -376,6 +340,51 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 		Event { "david forty four", "" },	Click { 1, ihl_left + ihl_csp + ihl_offset, ihl_top+44*ihl_rsp, _window, _topLeft },	\
 		Event { "david forty five", "" },	Click { 1, ihl_left + ihl_csp + ihl_offset, ihl_top+45*ihl_rsp, _window, _topLeft },	\
 	} }     \
+} };
+
+#pragma mark _BrowseDoxygenSlate_
+// parameters: _BrowseDoxygenResID_; _mainFrame_h, _mainFrame_v, _homeApp
+#define _BrowseDoxygenSlate_                                                                               \
+resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { {                          \
+	Slate { "Doxygen", {                                                                                      \
+		_BrowserStandards_,                                                                                             \
+		ExitEvent { "okay", "" },		Launch { _homeApp, 0 }, 												\
+		ExitEvent { "close", "" },		Sequence{}, Keypress { kc_W, mf_command }, Launch { _homeApp, 0 }, endSequence{},    \
+		Event { "exit", "" },			CloseSubslate{},																	\
+		Event { "search", "" },				Click { 1, -100, _mainFrame_v+70, _window, _topRight },                        \
+		Event { "main page", "" },			Click { 1, _mainFrame_h+50, _mainFrame_v+70, _window, _topLeft },           \
+		Event { "related", "" },			Click { 1, _mainFrame_h+175, _mainFrame_v+70, _window, _topLeft },           \
+		Event { "classes", "" },			Click { 1, _mainFrame_h+290, _mainFrame_v+70, _window, _topLeft },            \
+			Event { "class list", "" },			Click { 1, _mainFrame_h+50, _mainFrame_v+175, _window, _topLeft },          \
+			Event { "class index", "" },		Click { 1, _mainFrame_h+140, _mainFrame_v+175, _window, _topLeft },       \
+			Event { "class members", "" },		Click { 1, _mainFrame_h+250, _mainFrame_v+175, _window, _topLeft },       \
+				Event { "all", "" },				Click { 1, _mainFrame_h+25, _mainFrame_v+145, _window, _topLeft },                \
+				Event { "functions", "" },			Click { 1, _mainFrame_h+100, _mainFrame_v+145, _window, _topLeft },           \
+				Event { "variables", "" },			Click { 1, _mainFrame_h+185, _mainFrame_v+145, _window, _topLeft },          \
+				Event { "properties", "" },			Click { 1, _mainFrame_h+280, _mainFrame_v+145, _window, _topLeft },         \
+		Event { "files", "" },				Click { 1, _mainFrame_h+370, _mainFrame_v+70, _window, _topLeft },             \
+			Event { "file list", "" },			Click { 1, _mainFrame_h+65, _mainFrame_v+145, _window, _topLeft },           \
+			Event { "file members", "" },		Click { 1, _mainFrame_h+144, _mainFrame_v+145, _window, _topLeft },        \
+		Event { "select", "" },				Click { 1, 0, 0, _cursor },       \
+		Event { "down", "" },				Click { 0, 0, 22, _cursor },       \
+		Event { "north", "" },				Click { 0, 0, -22, _cursor },       \
+		Event { "row one", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+225, _window, _topLeft },       \
+		Event { "row two", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+247, _window, _topLeft },       \
+		Event { "row three", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+270, _window, _topLeft },       \
+		Event { "row four", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+293, _window, _topLeft },       \
+		Event { "row five", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+316, _window, _topLeft },       \
+		Event { "row six", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+339, _window, _topLeft },       \
+		Event { "row seven", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+362, _window, _topLeft },       \
+		Event { "row eight", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+395, _window, _topLeft },       \
+		Event { "row nine", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+418, _window, _topLeft },       \
+		Event { "row ten", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+442, _window, _topLeft },       \
+		Event { "typedefs", "" },			Click { 1, _mainFrame_h+236, _mainFrame_v+74, _window, _topLeft },           \
+		Event { "enumerations", "" },		Click { 1, _mainFrame_h+312, _mainFrame_v+74, _window, _topLeft },        \
+		Event { "enumerator", "" },			Click { 1, _mainFrame_h+389, _mainFrame_v+74, _window, _topLeft },         \
+		Event { "defines", "" },			Click { 1, _mainFrame_h+462, _mainFrame_v+74, _window, _topLeft },            \
+		Event { "related pages", "" },		Click { 1, _mainFrame_h+135, _mainFrame_v+23, _window, _topLeft },			\
+		Event { "class hierarchy", "" },	Click { 1, _mainFrame_h+144, _mainFrame_v+49, _window, _topLeft },      \
+	} }                                                                                                       		\
 } };
 
 #pragma mark Macros
@@ -827,7 +836,7 @@ resource restype_Slate (_BrowseCdocResID_, "browse Cdoc documentation") { {				\
 			{ "<div></div>" }, _left, _left, _left, _left, _left, _left, _left,		\
 			endSequence{},		\
 		ExitEvent { "link", "" }, Sequence{}, TypeText		\
-			{ "<a href=\"\"><##></a>" }, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},		\
+			{ "<a href=\"<##>\"><##></a>" }, _previous, endSequence{},		\
 		ExitEvent { "identifier", "" }, Sequence{}, _left, TypeText { " id=''" }, _left, endSequence{},		\
 		ExitEvent { "glossary item", "" }, Sequence{}, TypeText		\
 			{ "<dt><a name='def_<#term#>'><#term#></a></dt><dd>" }, _return, _tab,		\
