@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>DefaultCompletionName</key>
-	<string>Design_</string>
+	<string>_Doxygen</string>
 	<key>Description</key>
-	<string>An empty Design document.</string>
+	<string>A Doxygen configuration file.</string>
 	<key>Kind</key>
 	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
 	<key>MainTemplateFile</key>
-	<string>___FILEBASENAME___.html</string>
+	<string>___FILEBASENAME___.txt</string>
 	<key>Summary</key>
-	<string>An empty Design document</string>
+	<string>A Doxygen configuration file</string>
 </dict>
 </plist>
