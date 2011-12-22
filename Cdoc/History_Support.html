@@ -39,7 +39,7 @@
 	<tr> <td>Punkin</td> <td> establish framework for iOS mobile websites [<a href="../Punkin/History_Punkin.html#_web_sample">_web_sample</a>]</td> <td class='small'>build sample sites from tutorial</td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Developer Support and Automation</span></td></tr>
 	<tr> <td>Support</td> <td><a href="#CdocBuild">support Cdoc install/clean</a></td> <td class='small'>install: adapt existing Support_svn script and call as build script;<br />clean: add access to cleanProjectTarget script</td> <td align="center">1</td> </tr>
-	<tr> <td>Support</td> <td>update ccBackup [<a href="#_ccdev">_ccdev</a>]</td> <td class='small'>do not attempt to copy unchanged files</td> <td align="center">1</td> </tr>
+	<tr> <td>Support</td> <td>update ccBackup [<a href="#_ccdev">_ccdev</a>]</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
 	<tr> <td>Support</td> <td>Snippets: Accessor Slate temporarily enters full Snippet text</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
 	<tr> <td>Support</td> <td><a href="#Snippets">Snippet</a> support</td> <td class='small'>could use entry of full snippet text as an intermediate stage</td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Upgrade to Lion</span></td></tr>
@@ -64,7 +64,6 @@
 			<li class='blurb'>ccInstall now handles actions clean, install, and test for non-Cdoc targets</li>
 		</ul></li>
 		<li class='tldate'>[implCcInstall 11/29/2011]</li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>support new project Accessor<ul>
 			<li>History_Support: add Development Overview section</li>
 			<li>default.css: add italic style</li>
@@ -88,18 +87,19 @@
 				<li>new viewDoxygen.workflow based on refactored viewCdoc.workflow</li>
 			</ul></li>
 		</ul></li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>update ccBackup<ul>
+			<li class='blurb'>Backup script from Support_svn; currently fails on .zip files; also have had some problems with .git folders</li>
+			<li> import existing script; skip .zip files</li>
+		</ul></li>
 		<li><a id="CdocBuild">support Cdoc build/clean</a><ul>
-			<li>build Cdoc targets from run script that calls buildCdoc; clean using cleanProjectTarget from Terminal as for other targets</li>
+			<li class='blurb'>build Cdoc targets from run script that calls buildCdoc; clean using cleanProjectTarget from Terminal as for other targets</li>
 			<li class='blurb'>replaces Support_svn scripts build.uia, currently called from Terminal, and buildCdoc, called by build.uia</li>
-			<li>UserSlates:Xcode: skipBack, skipAhead for moving among successive locations within a tab</li>
-			<li>UserSlates:Xcode:Target&gt;Build: newTab, showBuild, test, analyze</li>
-			<li>Xcode Behaviors settings: remove automatic navigation to Build tab for successful builds</li>
-			<li>BuildSupport target Support:Cdoc<ul>
-				<li>add Bundle target Cdoc_Support; remove Compile Bundle Resources, Link Binary with Libraries and Copy Bundle Resources build phases</li>
-				<li>add Run Script build phase Build Cdoc: <span class='mono'>buildCdoc ${TARGET_BUILD_DIR}</span></li>
-				<li>make new scheme shared</li>
-				<li>build and test</li>
-			</ul></li>
+			<li>new script buildCdoc from existing Support_svn script buildCdoc</li>
+			<li><a href="DevelopingProjects.html#AddRunScriptTarget">Add Run Script Target</a> Cdoc with script buildCdoc Support</li>
+			<li>cleanProjectTarget: add special handling to clean targets Cdoc</li>
+			<li>Xcode.r: support cleanProjectTarget &lt;Project&gt; Cdoc</li>
+			<li class='tldate'>[targetCdoc 12/22/2011]</li>
 			<li>switch to Cdoc targets for Punkin, AccessorC9, Accessor</li>
 		</ul></li>
 		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>

@@ -6,86 +6,90 @@
    </FileRef>
    <Group
       location = "container:"
-      name = "1 Cdoc">
+      name = "1 Documentation">
       <FileRef
          location = "group:Cdoc/History_Support.html">
       </FileRef>
-      <FileRef
-         location = "group:Cdoc/Support.html">
-      </FileRef>
-      <FileRef
-         location = "group:Cdoc/Development.html">
-      </FileRef>
-      <FileRef
-         location = "group:Cdoc/DevelopingProjects.html">
-      </FileRef>
-      <FileRef
-         location = "group:Cdoc/Git.html">
-      </FileRef>
-      <FileRef
-         location = "group:Cdoc/Glossary_Support.html">
-      </FileRef>
-      <FileRef
-         location = "group:Cdoc/Tools.html">
-      </FileRef>
-      <FileRef
-         location = "group:Cdoc/Cdoc.html">
-      </FileRef>
-      <FileRef
-         location = "group:Cdoc/DevU.html">
-      </FileRef>
       <Group
          location = "container:"
-         name = "_tech">
+         name = "Cdoc">
+         <FileRef
+            location = "group:Cdoc/Support.html">
+         </FileRef>
+         <FileRef
+            location = "group:Cdoc/Development.html">
+         </FileRef>
+         <FileRef
+            location = "group:Cdoc/DevelopingProjects.html">
+         </FileRef>
+         <FileRef
+            location = "group:Cdoc/Git.html">
+         </FileRef>
+         <FileRef
+            location = "group:Cdoc/Glossary_Support.html">
+         </FileRef>
+         <FileRef
+            location = "group:Cdoc/Tools.html">
+         </FileRef>
+         <FileRef
+            location = "group:Cdoc/Cdoc.html">
+         </FileRef>
+         <FileRef
+            location = "group:Cdoc/DevU.html">
+         </FileRef>
          <Group
             location = "container:"
-            name = "css">
-            <FileRef
-               location = "group:Cdoc/_tech/css/default.css">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/css/history.css">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/css/technical.css">
-            </FileRef>
-         </Group>
-         <Group
-            location = "container:"
-            name = "img">
-            <FileRef
-               location = "group:Cdoc/_tech/img/space.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucds_1.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucds_2.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucds_3.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucds_4.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucds_5.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucgl_h.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucgl_p.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucgl_s.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucgl_u.tiff">
-            </FileRef>
-            <FileRef
-               location = "group:Cdoc/_tech/img/ucgl_x.tiff">
-            </FileRef>
+            name = "_tech">
+            <Group
+               location = "container:"
+               name = "css">
+               <FileRef
+                  location = "group:Cdoc/_tech/css/default.css">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/css/history.css">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/css/technical.css">
+               </FileRef>
+            </Group>
+            <Group
+               location = "container:"
+               name = "img">
+               <FileRef
+                  location = "group:Cdoc/_tech/img/space.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucds_1.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucds_2.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucds_3.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucds_4.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucds_5.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucgl_h.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucgl_p.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucgl_s.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucgl_u.tiff">
+               </FileRef>
+               <FileRef
+                  location = "group:Cdoc/_tech/img/ucgl_x.tiff">
+               </FileRef>
+            </Group>
          </Group>
       </Group>
    </Group>
@@ -115,6 +119,9 @@
          location = "container:"
          name = "Scripts">
          <FileRef
+            location = "group:CCDev/Scripts/buildCdoc.ksh">
+         </FileRef>
+         <FileRef
             location = "group:CCDev/Scripts/doxygenBuild.ksh">
          </FileRef>
          <FileRef
@@ -122,6 +129,9 @@
          </FileRef>
          <FileRef
             location = "group:CCDev/Scripts/resultCodes.ksh">
+         </FileRef>
+         <FileRef
+            location = "group:CCDev/Scripts/ccBackup.ksh">
          </FileRef>
       </Group>
       <Group

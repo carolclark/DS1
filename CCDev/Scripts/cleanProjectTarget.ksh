@@ -26,4 +26,22 @@ fi
 project="${1}"
 target="${2}"
 
-ccInstall "${HOME}/Dev/${project}" "${target}" -c
+case "${target}" in
+	"Cdoc" )
+		print -n "== cleaning ${project}/${target}... "
+		lastbuilt="${CCDev}/build/${project}/Cdoc.lastbuilt"
+		if [[ -e "${lastbuilt}" ]] ; then
+			rm "${lastbuilt}"
+			st="$?"
+			if [[ ${st} > 0 ]] ; then
+				print "*** error ${st} attempting to remove file ${lastbuilt}"
+				return ${st}
+			fi
+		fi
+		print "succeeded"
+		;;
+	"*" )
+		ccInstall "${HOME}/Dev/${project}" "${target}" -c
+		;;
+esac
+	

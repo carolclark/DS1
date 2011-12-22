@@ -215,10 +215,11 @@ resource restype_Slate (resid_termClean, "") { {
 		ExitEvent { "execute", "" },	Keypress { kc_enter, 0 },
 		Event { "Support", "" },		TypeText { "Support " },
 		Event { "Punkin", "" },			TypeText { "Punkin " },
-		Event { "C C Dev", "" },		TypeText { "CCDev " },
-		Event { "Xcode", "" },			TypeText { "Xcode " },
 		Event { "Carbon", "" },			TypeText { "AccessorC9 " },
 		Event { "Accessor", "" },		TypeText { "Accessor " },
+		Event { "C doc", "" },			TypeText { "Cdoc " },
+		Event { "C C Dev", "" },		TypeText { "CCDev " },
+		Event { "Xcode", "" },			TypeText { "Xcode " },
 	} }
 } };
 
