@@ -468,6 +468,10 @@ resource restype_Slate (resid_InsertElement, "") { {
 		ExitEvent { "current tag", "" },	Sequence{},	TypeText { "<li class='tlmark'>&lt;--</li>" }, _previous, endSequence{},
 		ExitEvent { "date mark", "" },		Sequence{},
 			TypeText { "<li class='tldate'>[<#date#>]</li>" }, _previous, endSequence{},
+		ExitEvent { "date list", "" },		Sequence{},
+			TypeText { "<li class='tldate'>[<#date#>]</li>" }, _previous, endSequence{},
+		ExitEvent { "date paragraph", "" },		Sequence{},
+			TypeText { "<p class='tldate'>[<#date#>]</p>" }, _previous, endSequence{},
 		ExitEvent { "pragma", "" }, TypeText { "#pragma mark " },
 		ExitEvent { "unix selection", "" }, TypeText { "%%%{PBXSelection}%%%" },
 		ExitEvent { "ampersand", "" }, TypeText { "&amp;" },
@@ -1483,6 +1487,7 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 resource restype_Slate (resid_edProject, "Project") { {
 	Slate { "stdProj", {
 		ExitEvent { "okay", "" },		_showHideNavigator,
+		ExitEvent { "exit", "" },		NilAction{},
 		Event { "click one", "" },		Click { 1, 0, 0, _cursor },
 		Event { "add target", "" },		Sequence{}, Click { 1, 86, -36, _pwindow, _bottomLeft }, ResSubslate { resid_projAddTarget }, endSequence{},
 		Event { "add build phase", "" },	Sequence{}, Click { 1, -72, -36, _pwindow, _bottomRight }, ResSubslate { resid_projAddPhase }, endSequence{},
@@ -1498,7 +1503,7 @@ resource restype_Slate (resid_edProject, "Project") { {
 		Event { "open Copy Files", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
 		Event { "open Copy Headers", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
 		Event { "open Copy Resources", "" },	Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
-		Event { "open Link	", "" },			Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
+		Event { "open Link", "" },				Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
 		Event { "delete phase", "" },	Click { 0, 1620, 0, _cursor },
 		Event { "phase one", "" },		Click { 0, il_h+8, il_r1 + 0 * il_rsp, _pwindow, _topLeft },
 		Event { "phase two", "" },		Click { 0, il_h+8, il_r1 + 1 * il_rsp, _pwindow, _topLeft },
@@ -2118,6 +2123,8 @@ resource restype_Slate (resid_Documentation, "Xcode Reference Documentation") { 
 
 #pragma mark 8 ===
 
+#define _rtop	142
+#define _rsp	18
 #pragma mark TargetPopup
 resource restype_Slate (resid_TargetPopup, "Target Popup") { {
 	Slate { "TargetPopup",	{
@@ -2134,15 +2141,21 @@ resource restype_Slate (resid_TargetPopup, "Target Popup") { {
 		ExitEvent { "run", "" },		Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_R, mf_command }, endSequence{},
 		ExitEvent { "clean", "" },		Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_K, mf_command + mf_shift }, endSequence{},
 		Event { "scheme", "" },			Subslate { "scheme" },
-			ExitEvent { "okay", "" },		Keypress { kc_escape, 0 },
-			ExitEvent { "edit", "" },		Sequence{}, TypeText { "Edit Scheme" }, _return, endSequence{},
-			ExitEvent { "manage", "" },		Sequence{}, TypeText { "Manage Schemes" }, _return, endSequence{},
+			ExitEvent { "cancel", "" },	Keypress { kc_escape, 0 },
+			ExitEvent { "okay", "" },	Keypress { kc_return, 0 },
+			ExitEvent { "exit", "" },	NilAction{},
+			ExitEvent { "edit", "" },	Sequence{}, TypeText { "Edit Scheme" }, _down, _return, endSequence{},
+			Event { "manage", "" },		Sequence{}, TypeText { "Manage Schemes" }, _down, _return, endSequence{},
+			Event { "row one", "" },	Click { 0, 0, 150+(1*_rsp), _window, _topCenter },
+			Event { "shared", "" },		Click { 1, 284, 0, _cursor },
+			Event { "show", "" },		Click { 1, -284, 0, _cursor },
 			endSubslate{},
 		Event { "Xcode", "" },			Sequence{}, TypeText { "Xcode" }, _down, endSequence{},
 		Event { "Setup", "" },			Sequence{}, TypeText { "CCDev_Setup" }, _down, endSequence{},
 		Event { "C C Dev", "" },		Sequence{}, TypeText { "CCDev" }, _down, endSequence{},
 		Event { "Accessor", "" },		Sequence{}, TypeText { "Accessor" }, _down, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, TypeText { "Doxygen" }, _down, endSequence{},
+		Event { "C doc", "" },			Sequence{}, TypeText { "Cdoc" }, _down, endSequence{},
 	} }
 } };
 
@@ -2267,7 +2280,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		targetPopup_,
 		Event { "nav list", "" },		_navList,
 		Event { "navigate", "" },		Sequence{}, _navList, ResSubslate { resid_Navigate }, endSequence{},
-		Event { "top row", "" },		Sequence{}, _navList, Keypress { kc_up, mf_option }, endSequence{},
+		Event { "top row", "" },		Click { 1, 130, 130, _window, _topLeft },
 		Event { "filter", "" },			ResSubslate { resid_NavFilter },
 		Event { "standard", "" },			Keypress { kc_return, mf_command },
 		Event { "standard edit", "" },		Sequence{}, Keypress { kc_return, mf_command }, ResSubslate { resid_edStandard }, endSequence{},

@@ -92,6 +92,13 @@
             </Group>
          </Group>
       </Group>
+      <Group
+         location = "container:"
+         name = "DocGraphics">
+         <FileRef
+            location = "group:../DevSupport/cdocsrc/UseCaseImages.pages">
+         </FileRef>
+      </Group>
    </Group>
    <Group
       location = "container:"
