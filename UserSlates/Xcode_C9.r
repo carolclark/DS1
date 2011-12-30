@@ -56,8 +56,8 @@
 	#define	resid_TypeDesign			resid_DesignMenu+1
 	#define resid_DataModel				resid_DesignMenu+2
 
-#define resid_Build					resid_Xcode+100
-	#define resid_BuildAccessor			resid_Build+1
+#define resid_Accessor				resid_Xcode+100
+	#define resid_BuildAccessor			resid_Accessor+1
 
 #define resid_Scripts				resid_Xcode+150
 	#define	resid_bbeSelectMarker			resid_Scripts+1
@@ -71,7 +71,8 @@
 		#define resid_projAddTarget			resid_edProject+2
 		#define resid_projAddPhase			resid_edProject+3
 			#define resid_phaseRunScript		resid_edProject+10
-	#define	resid_edIssues				resid_Editor+60
+	#define	resid_edLog					resid_Editor+60
+	#define	resid_edIssues				resid_Editor+65
 	#define	resid_edSearch				resid_Editor+70
 		#define resid_edFindOptions			resid_edSearch+1
 
@@ -80,7 +81,8 @@
 	#define resid_FindOptions			resid_Search+2
 
 #define resid_Navigate				resid_Xcode+350
-	#define resid_navFilter				resid_Navigate+10
+	#define resid_navFilter				resid_Navigate+1
+	#define resid_SelectRow				resid_Navigate+2
 
 #define resid_Utilities				resid_Xcode+370
 	#define resid_utilFile				resid_Utilities+5
@@ -146,6 +148,7 @@
 
 #define _clickFile	Click { 1, 126, 10, _screen, _topLeft }
 #define _navList	Click { 1, 30, -30, _window, _bottomLeft }
+#define _topRow		Click { 1, 130, 148, _window, _topLeft }
 #define targetPopup_								\
 	Event { "target", "" },			Sequence{},		\
 		Click { 1, 125, 40, _pwindow, _topLeft },		\
@@ -548,15 +551,16 @@ resource restype_Slate (resid_Workspace, "") { {
 	} }
 } };
 
-#pragma mark 2 === Build
-resource restype_Slate (resid_Build, "") { {
-	Slate { "Build",	{
+#pragma mark 2 === Accessor
+resource restype_Slate (resid_Accessor, "") { {
+	Slate { "Accessor",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "build", "" },			Keypress { kc_B, mf_command },
-		Event { "issues", "" },			Sequence{}, _showHideNavigator, ResSubslate { resid_edIssues }, _down, endSequence{},
+		Event { "analyze", "" },		Keypress { kc_B, mf_command + mf_shift },
+		Event { "build", "" },			Sequence{}, Keypress { kc_B, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
+		Event { "log", "" },			Sequence{}, _showHideNavigator, ResSubslate { resid_edLog }, _down, endSequence{},
+		Event { "issues", "" },			Sequence{}, Keypress { kc_4, mf_command }, ResSubslate { resid_edIssues }, endSequence{},
 		Event { "top row", "" },		Sequence{}, _navList, Wait { 10 }, Keypress { kc_up, mf_option }, endSequence{},
-		Event { "Accessor", "" },		Sequence{}, Keypress { kc_B, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
 		Event { "go next", "" },		_goNext,
 		Event { "go previous", "" },	_goPrevious,
 	} }
@@ -705,7 +709,7 @@ resource restype_Slate (resid_SearchIn, "search in") { {
 
 /* todo */
 #pragma mark Snapshots
-#define _toprow	120
+#define _trow	120
 #define	_rsp	18
 #define	_rowx	520
 resource restype_Slate (resid_Snapshots, "Snapshots") { {
@@ -729,31 +733,31 @@ resource restype_Slate (resid_Snapshots, "Snapshots") { {
 		Event { "tab", "" },			Keypress { kc_tab, 0 },
 		Event { "next row", "" },		Click { 0, 0, 18, _cursor },
 		Event { "previous row", "" },	Click { 0, 0, -18, _cursor },
-		Event { "row one", "" },		Click { 0, _rowx, _toprow+0*_rsp, _window, _topLeft },
-		Event { "row two", "" },		Click { 0, _rowx, _toprow+1*_rsp, _window, _topLeft },
-		Event { "row three ", "" },		Click { 0, _rowx, _toprow+2*_rsp, _window, _topLeft },
-		Event { "row four", "" },		Click { 0, _rowx, _toprow+3*_rsp, _window, _topLeft },
-		Event { "row five", "" },		Click { 0, _rowx, _toprow+4*_rsp, _window, _topLeft },
-		Event { "row six", "" },		Click { 0, _rowx, _toprow+5*_rsp, _window, _topLeft },
-		Event { "row seven", "" },		Click { 0, _rowx, _toprow+6*_rsp, _window, _topLeft },
-		Event { "row eight", "" },		Click { 0, _rowx, _toprow+7*_rsp, _window, _topLeft },
-		Event { "row nine", "" },		Click { 0, _rowx, _toprow+8*_rsp, _window, _topLeft },
-		Event { "row ten", "" },		Click { 0, _rowx, _toprow+9*_rsp, _window, _topLeft },
-		Event { "row eleven", "" },		Click { 0, _rowx, _toprow+10*_rsp, _window, _topLeft },
-		Event { "row twelve", "" },		Click { 0, _rowx, _toprow+11*_rsp, _window, _topLeft },
-		Event { "row thirteen", "" },	Click { 0, _rowx, _toprow+12*_rsp, _window, _topLeft },
-		Event { "row fourteen", "" },	Click { 0, _rowx, _toprow+13*_rsp, _window, _topLeft },
-		Event { "row fifteen", "" },	Click { 0, _rowx, _toprow+14*_rsp, _window, _topLeft },
-		Event { "row sixteen", "" },	Click { 0, _rowx, _toprow+15*_rsp, _window, _topLeft },
-		Event { "row seventeen", "" },	Click { 0, _rowx, _toprow+16*_rsp, _window, _topLeft },
-		Event { "row eighteen", "" },	Click { 0, _rowx, _toprow+17*_rsp, _window, _topLeft },
-		Event { "row nineteen", "" },	Click { 0, _rowx, _toprow+18*_rsp, _window, _topLeft },
-		Event { "row twenty", "" },		Click { 0, _rowx, _toprow+19*_rsp, _window, _topLeft },
-		Event { "row twenty one", "" },		Click { 0, _rowx, _toprow+20*_rsp, _window, _topLeft },
-		Event { "row twenty two", "" },		Click { 0, _rowx, _toprow+21*_rsp, _window, _topLeft },
-		Event { "row twenty three", "" },	Click { 0, _rowx, _toprow+22*_rsp, _window, _topLeft },
-		Event { "row twenty four", "" },	Click { 0, _rowx, _toprow+23*_rsp, _window, _topLeft },
-		Event { "row twenty five", "" },	Click { 0, _rowx, _toprow+24*_rsp, _window, _topLeft },
+		Event { "row one", "" },		Click { 0, _rowx, _trow+0*_rsp, _window, _topLeft },
+		Event { "row two", "" },		Click { 0, _rowx, _trow+1*_rsp, _window, _topLeft },
+		Event { "row three ", "" },		Click { 0, _rowx, _trow+2*_rsp, _window, _topLeft },
+		Event { "row four", "" },		Click { 0, _rowx, _trow+3*_rsp, _window, _topLeft },
+		Event { "row five", "" },		Click { 0, _rowx, _trow+4*_rsp, _window, _topLeft },
+		Event { "row six", "" },		Click { 0, _rowx, _trow+5*_rsp, _window, _topLeft },
+		Event { "row seven", "" },		Click { 0, _rowx, _trow+6*_rsp, _window, _topLeft },
+		Event { "row eight", "" },		Click { 0, _rowx, _trow+7*_rsp, _window, _topLeft },
+		Event { "row nine", "" },		Click { 0, _rowx, _trow+8*_rsp, _window, _topLeft },
+		Event { "row ten", "" },		Click { 0, _rowx, _trow+9*_rsp, _window, _topLeft },
+		Event { "row eleven", "" },		Click { 0, _rowx, _trow+10*_rsp, _window, _topLeft },
+		Event { "row twelve", "" },		Click { 0, _rowx, _trow+11*_rsp, _window, _topLeft },
+		Event { "row thirteen", "" },	Click { 0, _rowx, _trow+12*_rsp, _window, _topLeft },
+		Event { "row fourteen", "" },	Click { 0, _rowx, _trow+13*_rsp, _window, _topLeft },
+		Event { "row fifteen", "" },	Click { 0, _rowx, _trow+14*_rsp, _window, _topLeft },
+		Event { "row sixteen", "" },	Click { 0, _rowx, _trow+15*_rsp, _window, _topLeft },
+		Event { "row seventeen", "" },	Click { 0, _rowx, _trow+16*_rsp, _window, _topLeft },
+		Event { "row eighteen", "" },	Click { 0, _rowx, _trow+17*_rsp, _window, _topLeft },
+		Event { "row nineteen", "" },	Click { 0, _rowx, _trow+18*_rsp, _window, _topLeft },
+		Event { "row twenty", "" },		Click { 0, _rowx, _trow+19*_rsp, _window, _topLeft },
+		Event { "row twenty one", "" },		Click { 0, _rowx, _trow+20*_rsp, _window, _topLeft },
+		Event { "row twenty two", "" },		Click { 0, _rowx, _trow+21*_rsp, _window, _topLeft },
+		Event { "row twenty three", "" },	Click { 0, _rowx, _trow+22*_rsp, _window, _topLeft },
+		Event { "row twenty four", "" },	Click { 0, _rowx, _trow+23*_rsp, _window, _topLeft },
+		Event { "row twenty five", "" },	Click { 0, _rowx, _trow+24*_rsp, _window, _topLeft },
 	} }
 } };
 
@@ -958,7 +962,7 @@ resource restype_Slate (resid_FileSave, "Save File Dialog") { {
 } };
 
 #define _offset		-121
-#define	_toprow		454
+#define	_trow		454
 #define _rsp		18
 resource restype_Slate (resid_SelectTargets, "Select Targets") { {
 	Slate { "Select Targets", {
@@ -969,11 +973,11 @@ resource restype_Slate (resid_SelectTargets, "Select Targets") { {
 		Event { "page north", "" },		Keypress { kc_pageup, 0 },
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },
 		Event { "target list", "" },	Click { 1, 138, 488, _pwindow, _topCenter },
-		Event { "row one", "" },		Click { 1, _offset, _toprow+0*_rsp, _pwindow, _topCenter },
-		Event { "row two", "" },		Click { 1, _offset, _toprow+1*_rsp, _pwindow, _topCenter },
-		Event { "row three", "" },		Click { 1, _offset, _toprow+2*_rsp, _pwindow, _topCenter },
-		Event { "row four", "" },		Click { 1, _offset, _toprow+3*_rsp, _pwindow, _topCenter },
-		Event { "row five", "" },		Click { 1, _offset, _toprow+4*_rsp, _pwindow, _topCenter },
+		Event { "row one", "" },		Click { 1, _offset, _trow+0*_rsp, _pwindow, _topCenter },
+		Event { "row two", "" },		Click { 1, _offset, _trow+1*_rsp, _pwindow, _topCenter },
+		Event { "row three", "" },		Click { 1, _offset, _trow+2*_rsp, _pwindow, _topCenter },
+		Event { "row four", "" },		Click { 1, _offset, _trow+3*_rsp, _pwindow, _topCenter },
+		Event { "row five", "" },		Click { 1, _offset, _trow+4*_rsp, _pwindow, _topCenter },
 		_IMouseSlate_,
 		_TypeXcodeItems_,
 	} }
@@ -992,39 +996,59 @@ resource restype_Slate (resid_EditMenu, "Edit") { {
 #pragma mark 5 === Navigate
 // Navigation Panel
 #define	nb_h	120
-#define	nb_r1	138
-#define	nb_rsp	30
+#define	nb_r1	140
+#define	nb_rsp	16
 #define	_NavPanelRows_	\
-	Event { "row one", "" },	Click { 1, nb_h, nb_r1 + 0 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row two", "" },	Click { 1, nb_h, nb_r1 + 1 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row three", "" },	Click { 1, nb_h, nb_r1 + 2 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row four", "" },	Click { 1, nb_h, nb_r1 + 3 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row five", "" },	Click { 1, nb_h, nb_r1 + 4 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row six", "" },	Click { 1, nb_h, nb_r1 + 5 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row seven", "" },	Click { 1, nb_h, nb_r1 + 6 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row eight", "" },	Click { 1, nb_h, nb_r1 + 7 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row nine", "" },	Click { 1, nb_h, nb_r1 + 8 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row ten", "" },	Click { 1, nb_h, nb_r1 + 9 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row eleven", "" },	Click { 1, nb_h, nb_r1 + 10 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twelve", "" },	Click { 1, nb_h, nb_r1 + 11 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row thirteen", "" },	Click { 1, nb_h, nb_r1 + 12 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row fourteen", "" },	Click { 1, nb_h, nb_r1 + 13 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row fifteen", "" },	Click { 1, nb_h, nb_r1 + 14 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row sixteen", "" },	Click { 1, nb_h, nb_r1 + 15 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row seventeen", "" },	Click { 1, nb_h, nb_r1 + 16 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row eighteen", "" },	Click { 1, nb_h, nb_r1 + 17 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row nineteen", "" },	Click { 1, nb_h, nb_r1 + 18 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty", "" },		Click { 1, nb_h, nb_r1 + 19 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty one", "" },	Click { 1, nb_h, nb_r1 + 20 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty two", "" },	Click { 1, nb_h, nb_r1 + 21 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty three", "" },	Click { 1, nb_h, nb_r1 + 22 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty four", "" },	Click { 1, nb_h, nb_r1 + 23 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty five", "" },	Click { 1, nb_h, nb_r1 + 24 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty six", "" },		Click { 1, nb_h, nb_r1 + 25 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty seven", "" },	Click { 1, nb_h, nb_r1 + 26 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty eight", "" },	Click { 1, nb_h, nb_r1 + 27 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row twenty nine", "" },	Click { 1, nb_h, nb_r1 + 28 * nb_rsp, _pwindow, _topLeft },	\
-	Event { "row thirty", "" },			Click { 1, nb_h, nb_r1 + 29 * nb_rsp, _pwindow, _topLeft }
+	Event { "one", "" },	Click { 0, nb_h, nb_r1 + 0 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "two", "" },	Click { 0, nb_h, nb_r1 + 1 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "three", "" },	Click { 0, nb_h, nb_r1 + 2 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "four", "" },	Click { 0, nb_h, nb_r1 + 3 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "five", "" },	Click { 0, nb_h, nb_r1 + 4 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "six", "" },	Click { 0, nb_h, nb_r1 + 5 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "seven", "" },	Click { 0, nb_h, nb_r1 + 6 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "eight", "" },	Click { 0, nb_h, nb_r1 + 7 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "nine", "" },	Click { 0, nb_h, nb_r1 + 8 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "ten", "" },	Click { 0, nb_h, nb_r1 + 9 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "eleven", "" },	Click { 0, nb_h, nb_r1 + 10 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twelve", "" },	Click { 0, nb_h, nb_r1 + 11 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirteen", "" },	Click { 0, nb_h, nb_r1 + 12 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "fourteen", "" },	Click { 0, nb_h, nb_r1 + 13 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "fifteen", "" },	Click { 0, nb_h, nb_r1 + 14 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "sixteen", "" },	Click { 0, nb_h, nb_r1 + 15 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "seventeen", "" },	Click { 0, nb_h, nb_r1 + 16 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "eighteen", "" },	Click { 0, nb_h, nb_r1 + 17 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "nineteen", "" },	Click { 0, nb_h, nb_r1 + 18 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty", "" },		Click { 0, nb_h, nb_r1 + 19 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty one", "" },	Click { 0, nb_h, nb_r1 + 20 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty two", "" },	Click { 0, nb_h, nb_r1 + 21 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty three", "" },	Click { 0, nb_h, nb_r1 + 22 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty four", "" },	Click { 0, nb_h, nb_r1 + 23 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty five", "" },	Click { 0, nb_h, nb_r1 + 24 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty six", "" },		Click { 0, nb_h, nb_r1 + 25 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty seven", "" },	Click { 0, nb_h, nb_r1 + 26 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty eight", "" },	Click { 0, nb_h, nb_r1 + 27 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "twenty nine", "" },	Click { 0, nb_h, nb_r1 + 28 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty", "" },			Click { 0, nb_h, nb_r1 + 29 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty one", "" },		Click { 0, nb_h, nb_r1 + 30 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty two", "" },		Click { 0, nb_h, nb_r1 + 31 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty three", "" },	Click { 0, nb_h, nb_r1 + 32 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty four", "" },	Click { 0, nb_h, nb_r1 + 33 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty five", "" },	Click { 0, nb_h, nb_r1 + 34 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty six", "" },		Click { 0, nb_h, nb_r1 + 35 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty seven", "" },	Click { 0, nb_h, nb_r1 + 36 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty eight", "" },	Click { 0, nb_h, nb_r1 + 37 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "thirty nine", "" },	Click { 0, nb_h, nb_r1 + 38 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty", "" },			Click { 0, nb_h, nb_r1 + 39 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty one", "" },		Click { 0, nb_h, nb_r1 + 40 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty two", "" },		Click { 0, nb_h, nb_r1 + 41 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty three", "" },	Click { 0, nb_h, nb_r1 + 42 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty four", "" },		Click { 0, nb_h, nb_r1 + 43 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty five", "" },		Click { 0, nb_h, nb_r1 + 44 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty six", "" },		Click { 0, nb_h, nb_r1 + 45 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty seven", "" },	Click { 0, nb_h, nb_r1 + 46 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty eight", "" },	Click { 0, nb_h, nb_r1 + 47 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "forty nine", "" },		Click { 0, nb_h, nb_r1 + 48 * nb_rsp, _pwindow, _topLeft },	\
+	Event { "fifty", "" },			Click { 0, nb_h, nb_r1 + 49 * nb_rsp, _pwindow, _topLeft }
 
 // Organizer NavPanel
 #define	ov_h	120
@@ -1071,6 +1095,7 @@ resource restype_Slate (resid_Navigate, "Navigate") { {
 		_SlateGlobals_,
 		ExitEvent { "okay", "" },		NilAction{},
 		ExitEvent { "open in", "" },	Keypress { kc_comma, mf_command + mf_option + mf_shift },
+		ExitEvent { "focus", "" },		Keypress { kc_period, mf_command + mf_option },
 		Event { "new tab", "" },		_newTab,
 		Event { "close tab", "" },		_closeTab,
 		Event { "go next", "" },		_goNext,
@@ -1093,9 +1118,10 @@ resource restype_Slate (resid_Navigate, "Navigate") { {
 		Event { "debug", "" },			Keypress { kc_5, mf_command },
 		Event { "breakpoint", "" },		Keypress { kc_6, mf_command },
 		Event { "log", "" },			Keypress { kc_7, mf_command },
-		Event { "top row", "" },		Keypress { kc_up, mf_option },
+		Event { "top row", "" },		_topRow,
 		Event { "new group", "" },		Keypress { kc_N, mf_command + mf_option },
 		Event { "filter", "" },			ResSubslate { resid_NavFilter },
+		Event { "select row", "" },		ResSubslate { resid_SelectRow },
 		_IMouseSlate_,
 		_DirectionKeys_,
 		_WhitespaceKeys_,
@@ -1125,13 +1151,33 @@ resource restype_Slate (resid_NavFilter, "NavFilter") { {
 	} }
 } };
 
+#pragma mark SelectRow
+resource restype_Slate (resid_SelectRow, "SelectRow") { {
+	Slate { "row", {
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_IMouseSlate_,
+		ExitEvent { "select", "" },		Click { 1, 0, 0, _cursor },
+		closeDocument_,
+		Event { "north", "" },			Click { 0, 0, -nb_rsp, _cursor },
+		Event { "down", "" },			Click { 0, 0, nb_rsp, _cursor },
+		Event { "adjust", "" },			Subslate { "adjust" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			Event { "north", "" },			Click { 0, 0, -2, _cursor },
+			Event { "down", "" },			Click { 0, 0, 2, _cursor },
+			endSubslate{},
+		_NavPanelRows_,
+	} }
+} };
+
 #pragma mark Panel
 resource restype_Slate (resid_Panel, "Panel") { {
 	Slate { "Panel", {
 		_SlateGlobals_,
 		ExitEvent { "okay", "" },	NilAction{},
 		Event { "select", "" },		_goPanel,
-		Event { "navigate", "" },	Sequence{}, _navList, ResSubslate { resid_Navigate }, endSequence{},
+		Event { "navigate", "" },	Sequence{}, Keypress { kc_1, mf_command }, _navList, ResSubslate { resid_Navigate }, endSequence{},
 		_DirectionKeys_,
 		_ReturnKey_,
 		_JumpBar_,
@@ -1421,7 +1467,7 @@ resource restype_Slate (resid_edStandard, "edStandard") { {
 		closeDocument_,
 		Event { "nav list", ""},		_navList,
 		Event { "jump top", "" },		Keypress { kc_up, mf_option },
-		_NavPanelRows_,
+		Event { "select row", "" },		ResSubslate { resid_SelectRow },
 	} }
 } };
 
@@ -1442,10 +1488,10 @@ resource restype_Slate (resid_edAssistant, "edAssistant") { {
 		Event { "edit left", "" },		Click { 1, 660, 540, _window, _topLeft },
 		Event { "edit right", "" },		Click { 1, -350, 540, _window, _topRight },
 		Event { "nav list", ""},		_navList,
-		Event { "top row", "" },		Sequence{}, _navList, Keypress { kc_up, mf_option }, endSequence{},
+		Event { "top row", "" },		_topRow,
 		Event { "nav list", ""},		_navList,
 		Event { "top", "" },			Sequence{}, Click { 1, 660, 540, _window, _topLeft }, Keypress { kc_up, mf_command }, endSequence{},	
-		_NavPanelRows_,
+		Event { "select row", "" },		ResSubslate { resid_SelectRow },
 	} }
 } };
 
@@ -1470,15 +1516,14 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 		Event { "edit left", "" },		Click { 1, 660, 540, _window, _topLeft },
 		Event { "edit right", "" },		Click { 1, -350, 540, _window, _topRight },
 		Event { "nav list", ""},		_navList,
-		Event { "top row", "" },		Sequence{}, _navList, Keypress { kc_up, mf_option }, endSequence{},
-		Event { "nav list", ""},		_navList,
+		Event { "top row", "" },		_topRow,
 		Event { "top", "" },			Sequence{}, Click { 1, 660, 540, _window, _topLeft }, Keypress { kc_up, mf_command }, endSequence{},	
 		Event { "difference", "" },		Click { 1, 125, 125, _window, _topCenter },
 		Event { "down again", "" },		_down,
 		Event { "commit", "" },			Sequence{}, Keypress { kc_C, mf_command + mf_option }, ResSubslate { resid_Commit }, endSequence{},
 		Event { "new tab", "" },		Keypress { kc_T, mf_command },
 //??		Event { "merge", "" },			TypeText { "merge" },
-		_NavPanelRows_,
+		Event { "select row", "" },		ResSubslate { resid_SelectRow },
 	} }
 } };
 
@@ -1592,15 +1637,31 @@ resource restype_Slate (resid_phaseRunScript, "resid_phaseRunScript") { {
 	} }
 } };
 
-#pragma mark Issues
-resource restype_Slate (resid_edIssues, "editIssues") { {
-	Slate { "stdIssues", {
+#pragma mark Log
+resource restype_Slate (resid_edLog, "Log") { {
+	Slate { "stdLog", {
 		ExitEvent { "okay", "" },		_showHideNavigator,
 		Event { "expand", "" },			Sequence{}, ClickMenu { "Editor", }, _down, TypeText { "Expand Selected Transcripts" }, _return, endSequence{},
 		Event { "collapse", "" },		Sequence{}, ClickMenu { "Editor", }, _down, TypeText { "Collapse Selected Transcripts" }, _return, endSequence{},
 		Event { "go next", "" },		_goNext,
 		Event { "go previous", "" },	_goPrevious,
 		_SlateGlobals_,
+		_XcodeStandards_,
+		_IMouseSlate_,
+		_DirectionKeys_,
+		_JumpDownSubslate_,
+		_JumpNorthSubslate_,
+		_DoJumpSubslate_,
+	} }	
+} };
+
+#pragma mark Issues
+resource restype_Slate (resid_edIssues, "Issues") { {
+	Slate { "stdLog", {
+		_SlateGlobals_,
+		ExitEvent { "okay", "" },		NilAction{},
+		Event { "by file", "" },		Click { 1, 35, 132, _window, _topLeft },
+		Event { "by type", "" },		Click { 1, 92, 132, _window, _topLeft },
 		_XcodeStandards_,
 		_IMouseSlate_,
 		_DirectionKeys_,
@@ -2279,14 +2340,14 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },
 		targetPopup_,
 		Event { "nav list", "" },		_navList,
-		Event { "navigate", "" },		Sequence{}, _navList, ResSubslate { resid_Navigate }, endSequence{},
-		Event { "top row", "" },		Click { 1, 130, 130, _window, _topLeft },
+		Event { "navigate", "" },		Sequence{}, Keypress { kc_1, mf_command }, _navList, ResSubslate { resid_Navigate }, endSequence{},
+		Event { "top row", "" },		_topRow,
 		Event { "filter", "" },			ResSubslate { resid_NavFilter },
 		Event { "standard", "" },			Keypress { kc_return, mf_command },
 		Event { "standard edit", "" },		Sequence{}, Keypress { kc_return, mf_command }, ResSubslate { resid_edStandard }, endSequence{},
 		Event { "standard project", "" },	Sequence{}, Keypress { kc_return, mf_command }, _showHideNavigator, ResSubslate { resid_edProject }, endSequence{},
-		Event { "standard search", "" },	Sequence{}, Keypress { kc_return, mf_command }, ResSubslate { resid_edSearch }, endSequence{},	
-		Event { "standard issues", "" },	Sequence{}, Keypress { kc_return, mf_command }, _showHideNavigator, ResSubslate { resid_edIssues }, endSequence{},	
+		Event { "standard issues", "" },	Sequence{}, Keypress { kc_return, mf_command }, _showHideNavigator, Keypress { kc_4, mf_command }, ResSubslate { resid_edIssues }, endSequence{},	
+		Event { "standard log", "" },		Sequence{}, Keypress { kc_return, mf_command }, _showHideNavigator, Keypress { kc_7, mf_command }, ResSubslate { resid_edLog }, endSequence{},	
 		Event { "assistant", "" },			Sequence{}, Keypress { kc_return, mf_command + mf_option }, ResSubslate { resid_edAssistant }, endSequence{},
 		Event { "version", "" },			Sequence{}, Keypress { kc_return, mf_command + mf_option + mf_shift }, ResSubslate { resid_edVersion }, endSequence{},
 		Event { "utility", "" },		ResSubslate { resid_Utilities },
@@ -2325,8 +2386,8 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "Edit Menu", "'Edit' menu" }, Sequence{},
 			ClickMenu { "Edit" }, _down, ResSubslate { resid_EditMenu }, endSequence{},
 		Event { "Script", "" },			Sequence{}, _scriptsMenu, ResSubslate { resid_Scripts }, endSequence{}, 
-		Event { "build", "" },				ResSubslate { resid_Build },
-		Event { "Refactor", "" },			Sequence{},
+		Event { "Accessor", "" },		ResSubslate { resid_Accessor },
+		Event { "Refactor", "" },		Sequence{},
 			ClickMenu { "Edit" }, _down, TypeText { "Refactor" }, _return, ResSubslate { resid_Refactor }, endSequence{},
 		Event { "Data Model", "" },				ResSubslate { resid_DataModel },
 		Event { "Workspace", "" },				ResSubslate { resid_Workspace },
