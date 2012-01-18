@@ -1,5 +1,5 @@
 // =================================================================================
-//	CommonSlates_C9.r			©2004-11 C & C Software, Inc. All rights reserved.
+//	CommonSlates_C9.r			©2004-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -63,11 +63,11 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 			Event { "Preview", "launch Preview" }, Launch { Apps_"Preview.app", resid_Preview },
 			Event { "Script Editor", "launch Script Editor" }, Launch { Apps_"Utilities/AppleScript Editor.app", resid_ScriptEditor },
 			Event { "Games", "" },	ResSubslate { resid_LaunchGamesSlate },
-			Event { "Spider", "" },	Launch { Apps_"Games/sol.app", resid_solSpider },
 			Event { "BBEdit", "launch BBEdit" }, Launch { MainApps_"BBEdit.app", resid_BBEdit },
 			Event { "Interface", "launch PreFab¨ UI Browser" },
 				Launch { MainApps_"UI Browser.app", resid_UIBrowser },
 			Event { "Terminal", "launch Terminal" }, Launch { Apps_"Utilities/Terminal.app", resid_Terminal },
+			Event { "Cyberduck", "launch Cyberduck" }, Launch { Apps_"Cyberduck.app", resid_DefaultSlate },
 			Event { "Activities", "" }, Launch { Apps_"Utilities/Activity Monitor.app", resid_DefaultSlate },
 			Event { "AppleWorks", "launch AppleWorks" },
 				Launch { MainApps_"AppleWorks 6/AppleWorks 6.app", resid_AppleWorks },

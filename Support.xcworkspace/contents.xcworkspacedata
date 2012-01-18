@@ -312,8 +312,45 @@
       </Group>
    </Group>
    <Group
+      location = "container:Website"
+      name = "3 Website">
+      <FileRef
+         location = "group:welcome.html">
+      </FileRef>
+      <FileRef
+         location = "group:missing.html">
+      </FileRef>
+      <Group
+         location = "container:"
+         name = "php">
+         <FileRef
+            location = "group:Website/php.ini">
+         </FileRef>
+         <FileRef
+            location = "group:Website/webformmailer.php">
+         </FileRef>
+         <FileRef
+            location = "group:Website/gdform.php">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Windows support">
+         <FileRef
+            location = "group:Website/favicon.ico">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "stats">
+         <FileRef
+            location = "group:Website/stats/index.html">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
       location = "group:BuildSupport"
-      name = "3 Xcode">
+      name = "4 Xcode">
       <FileRef
          location = "group:../Xcode/Xcode_install.ksh">
       </FileRef>
