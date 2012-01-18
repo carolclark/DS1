@@ -1,5 +1,5 @@
 // =================================================================================
-//	Terminal_C9.r				©2008-11 C & C Software, Inc. All rights reserved.
+//	Terminal_C9.r				©2008-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -123,7 +123,7 @@ resource restype_Slate (resid_gitUndo, "") { {
 		Event { "working copy", "" },	Subslate { "working copy" },
 			_TerminalStandards_,
 			Event { "reset hard", "" },	Sequence{}, TypeText { "git reset --hard HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
-			Event { "file", "" },	Sequence{}, TypeText { "git reset HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
+			Event { "file", "" },		Sequence{}, TypeText { "git checkout -- " }, ResSubslate { resid_termType }, endSequence{}, 
 			Event { "revert last commit", "" },		Sequence{}, TypeText { "git revert HEAD " }, ResSubslate { resid_termType }, endSequence{}, 
 			endSubslate{},
 		Event { "unstage", "" },		TypeText { "git rm --cached " },

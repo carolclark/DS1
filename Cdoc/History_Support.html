@@ -16,14 +16,15 @@
 	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 		<!-- @topicGroup "" "5" -->
+		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
-		<!-- @topicGroup "" "8" -->
+		<!-- @topicGroup "" "9" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-	<!-- @topicGroup "" "11" -->
+	<!-- @topicGroup "" "12" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "13" -->
+	<!-- @topicGroup "" "14" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 	
@@ -32,6 +33,7 @@
 
 <div class="tableholder"><table class="goaltabl" border="0" cellspacing="0" cellpadding="5"><caption>Development Overview</caption>
 	<tr><th>Project</th> <th>Goal</th> <th>Comments</th> <th>When</th></tr>
+	<tr> <td>Punkin/Support</td> <td><a href="#webHost">Switch Web Hosts</a></td> <td class='small'>MobileMe iDisk no longer available to host remote repository</td> <td align="center">1</td> </tr>
 	<tr> <td>AccessorC9</td> <td><a href="../AccessorC9/History_Accessor.html#ImportExisting">Import Existing Development Work</a></td> <td class='small'>existing svn repository broken</td> <td align="center">&radic;1</td> </tr>
 	<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#CocoaApp">Port to Cocoa Application</a></td> <td class='small'>existing Carbon project file is a no-longer-supported format and is causing problems</td> <td align="center">1</td> </tr>
 	<tr> <td>Punkin</td> <td>Requirements, Use Cases, Design</td> <td class='small'></td> <td align="center">1</td> </tr>
@@ -54,6 +56,43 @@
 
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
 <h2 id='hmark_Active'>Active</h2>
+
+<!-- @marker "Switch Web Hosts" -->
+<h4 id='webHost'>Switch Web Hosts</h4><ul>
+	<li class='blurb'>Status 1/17/2012<ul>
+		<li>We have been using MobileMe to host:<ul>
+			<li>a remote Punkin git repository on iDisk</li>
+			<li>candcsoft.com (stub; forwarded from Go Daddy to web.me.com/carollclark/candcsoft)</li>
+			<li>a family photos website (http://web.me.com/carollclark/Family/ClarksHome.html)</li>
+			<li>file Punkin_index.html that was intended to link to developer documentation; the link is dead, but the intention is to provide such a link, with password protection, for Punkin team members</li>
+		</ul></li>
+		<li>MobileMe is obsolete, and will be unavailable effective June 30, 2012.</li>
+		<li>We will be switching to Go Daddy to host the services.</li>
+		<li>Tentative Site Plan<ul>
+			<li>candcsoft.com: hosted site</li>
+			<li>candcsoft.com/TechnicalDocs: password-protected technical documentation site</li>
+			<li>candcsoft.com/Family: family photos site</li>
+			<li>candcsoft.com/Private: contains Punkin repository accessible via ssh</li>
+			<li>later: We also own domains EverydaySpanish.net and EverydaySpanishForKids.com, and intend to eventually forward at least one of those via Go Daddy to a site within candcsoft.com.</li>
+		</ul></li>
+	</ul></li>
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	<li>candcsoft.com<ul>
+		<li>add Go Daddy hosting; reconnect candcsoft.com there, which sets up a placeholder page</li>
+		<li>document and track contents of placeholder page</li>
+	</ul></li>
+	<li>ssh setup<ul>
+		
+	</ul></li>
+	<li>Punkin repository at candcsoft.com/Private</li>
+	<li><a href="Support.html#WebHosting">Support: WebHosting</a><ul>
+		<li>update to reflect changing hosting</li>
+		<li>plan revised site structure</li>
+	</ul></li>
+	<li>candcsoft.com: use our starter content</li>
+	<li>password-protected TechnicalDocs site</li>
+	<li>Family site</li>
+</ul>
 
 <!-- @marker "Transfer Existing Development Work" -->
 <h4 id="transferExisting">Transfer Existing Development Work</h4>
@@ -105,7 +144,7 @@
 		<li class='tldate'>[cdocTargets 11/23/2011]</li>
 		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
 		<li>add existing Pages document UseCaseImages.pages (from DevSupport)</li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li class='tlmark'>&lt;--</li>
 		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
 	</ul>
 
@@ -416,7 +455,7 @@
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-12 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>

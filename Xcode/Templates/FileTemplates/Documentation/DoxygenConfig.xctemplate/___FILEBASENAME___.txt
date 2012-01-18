@@ -7,9 +7,11 @@
 
 PROJECT_NAME			= <#ProjectName#>
 OUTPUT_DIRECTORY		= /Users/carolclark/CCDev/Sites/Doxygen/<#ProjectName#>
-STRIP_FROM_PATH			= /Users/carolclark/Dev/<#ProjectName#>/Source
+STRIP_FROM_PATH			= /Users/carolclark/Dev/<#ProjectName#>
 EXTRACT_ALL				= YES
-INPUT					= /Users/carolclark/Dev/<#ProjectName#>/Source
+INPUT					= /Users/carolclark/Dev/<#ProjectName#>
+EXCLUDE_PATTERNS		= *.plist *.pch
+EXCLUDE					= en.lproj
 RECURSIVE				= YES
 EXAMPLE_PATTERNS		= *
 GENERATE_DOCSET			= NO
