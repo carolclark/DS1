@@ -13,6 +13,7 @@
 #define	resid_gitBranch			resid_termGit+5
 #define	resid_gitTag			resid_termGit+6
 #define	resid_gitUndo			resid_termGit+7
+#define resid_gitCommit			resid_termGit+8
 
 #define	resid_termGitAdd		resid_termGit+20
 
@@ -26,6 +27,8 @@ resource restype_Slate (resid_termType, "Type") { {
 		Event { "password", "" },	TypeText { "6868" },
 		Event { "cancel", "" },		_cancel,
 		Event { "quiver", "" },		Keypress { kc_Q, 0 },
+		Event { "copy", "" },		Keypress { kc_C, mf_command },
+		Event { "paste", "" },		Keypress { kc_V, mf_command },
 	} }
 } };
 
@@ -130,6 +133,16 @@ resource restype_Slate (resid_gitUndo, "") { {
 	} }
 } };
 
+resource restype_Slate (resid_gitCommit, "") { {
+	Slate { "commit",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "excecute", "" },	_return,
+		Event { "message", "" },		Sequence{}, TypeText { "-m \"\"" }, _left, endSequence{},
+		Event { "file", "" },			TypeText { "-F \"${CCDev}/tmp/gitmessage" },
+	} }
+} };
+
 resource restype_Slate (resid_termGit, "") { {
 	Slate { "Git",	{
 		_TerminalStandards_,
@@ -160,6 +173,7 @@ resource restype_Slate (resid_termGit, "") { {
 		Event { "log", "" },			Sequence{}, TypeText { "git log " }, ResSubslate { resid_gitLog }, endSequence{},
 		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
 		Event { "add files", "" },		Sequence{}, TypeText { "git add --all --interactive" }, _return, ResSubslate { resid_termGitAdd }, endSequence{},
+		Event { "commit", "" },			Sequence{}, TypeText { "git commit " }, ResSubslate { resid_gitCommit }, endSequence{},
 	} }
 } };
 

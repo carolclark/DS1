@@ -119,6 +119,8 @@ resource restype_Slate (resid_TypeSafariSlate, "Type Slate") { {
 		Event { "copy address", "" },	Sequence{},	\
 			_clickAddress, Keypress { kc_A, mf_command }, Keypress { kc_C, mf_command },	\
 			endSequence{},	\
+		Event { "copy", "" },		Keypress { kc_C, mf_command },	\
+		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
 		Event { "inhouse link", "" },	Sequence{},	\
 			Click { 1, 0, 35, _window, _topCenter }, Keypress { kc_right, mf_command }, Keypress { kc_left, mf_shift + mf_option },	\
 			Keypress { kc_left, mf_shift + mf_option },	Keypress { kc_left, mf_shift + mf_option },Keypress { kc_left, mf_shift + mf_option }, \

@@ -1429,6 +1429,8 @@ resource restype_Slate (resid_AddRepository, "Add Repository") { {
 		_WhitespaceKeys_,
 		_CommandSlate_,
 		_TypeXcodeSlate_,
+		Event { "copy", "" },			Keypress { kc_C, mf_command },
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		Event { "Working Copy", "" },	TypeText { "Add Working" },
 		Event { "Repository", "" },		TypeText { "Add Repository" },
 		Event { "Clone", "" },			TypeText { "Checkout or Clone" },

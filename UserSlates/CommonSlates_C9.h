@@ -1,5 +1,5 @@
 // =================================================================================
-//	CommonSlates_C9.h			©1997-2011 C & C Software, Inc. All rights reserved.
+//	CommonSlates_C9.h			©1997-2012 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma once
@@ -1977,6 +1977,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		Event { "execute", "" },	_return,				\
 		Event { "return	", "" },	_return,				\
 		Event { "password", "" },	TypeText { "6868" },	\
+		Event { "copy", "" },		Keypress { kc_C, mf_command },	\
+		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
 		ExitEvent { "cancel", "" },	_cancel,				\
 		ExitEvent { "quiver", "" },	Keypress { kc_Q, 0 },	\
 		_termTypeSlate_
@@ -1984,6 +1986,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define	_TerminalItems_			\
 		_StarterBase_,			\
 		_termTypeSlate_,		\
+		Event { "copy", "" },		Keypress { kc_C, mf_command },	\
+		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
 		Event { "execute", "" },	_return,		\
 		Event { "cancel", "" },	_cancel,			\
 		Event { "Menu", "" },		Subslate { "Menu" },		\

@@ -17,8 +17,8 @@
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 		<!-- @topicGroup "" "5" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
-			<!-- @topicItem "Initial Host Setup" "#initialHostSetup" "2" "" -->
-			<!-- @topicItem "Add Remote Punkin Repository" "#remotePunkinRepo" "2" "" -->
+			<!-- @topicItem "Initial Web Host Setup" "#webHostSetup" "2" "" -->
+			<!-- @topicItem "Set Up Remote Punkin Repository" "#remotePunkinRepo" "2" "" -->
 			<!-- @topicItem "Script Site Installation" "#installSite" "2" "" -->
 			<!-- @topicItem "Add TechnicalDocs Area" "#addTechnicalDocs" "2" "" -->
 			<!-- @topicItem "Add Family Area" "#addFamily" "2" "" -->
@@ -74,7 +74,7 @@
 			<li>file Punkin_index.html that was intended to link to developer documentation; the link is dead, but the intention is to provide such a link, with password protection, for Punkin team members</li>
 		</ul></li>
 		<li>MobileMe is obsolete, and will be unavailable effective June 30, 2012.</li>
-		<li>We will be switching to Go Daddy to host the services.</li>
+		<li>We will be switching to Go Daddy to host website, ProjectLocker to host git repository.</li>
 		<li>Tentative Site Plan<ul>
 			<li>candcsoft.com: hosted site</li>
 			<li>candcsoft.com/TechnicalDocs: password-protected technical documentation site</li>
@@ -85,22 +85,33 @@
 	</ul></li>
 </ul>
 
-	<!-- @marker "Initial Host Setup" -->
-	<h5 id='initialHostSetup'>Initial Host Setup</h5><ul>
+	<!-- @marker "Set Up Remote Punkin Repository" -->
+	<h5 id='remotePunkinRepo'>Set Up Remote Punkin Repository</h5><ul>
+		<li>update Carol's Punkin working copy to include content from both Carol's and Laura's existing repositories</li>
+		<li>ssh setup<ul>
+			<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
+			<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing my public key</li>
+		</ul></li>
+		<li>new account at ProjectLocker: CCSoftware; initial project Punkin; ssh address git-CCSoftware@pl5.projectlocker.com/Punkin.git</li>
+		<li>add that repository as a remote to Carol's Punkin working copy; push Carol's working copy to remote</li>
+		<li>clone new working repositories for Carol and Laura from the new remote</li>
+	</ul>
+	
+	<!-- @marker "Initial Web Host Setup" -->
+	<h5 id='webHostSetup'>Initial Web Host Setup</h5><ul>
 		<li>candcsoft.com<ul>
 			<li>add Go Daddy hosting; reconnect candcsoft.com there, which sets up a starter site</li>
 			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>document and track contents of starter site</li>
-			<li>use our starter content</li>
+			<li>welcome.html uses our starter content</li>
 		</ul></li>
-	</ul>
-
-	<!-- @marker "Add Remote Punkin Repository" -->
-	<h5 id='remotePunkinRepo'>Add Remote Punkin Repository</h5><ul>
-		<li>ssh setup<ul>
-			
+		<li>add TechnicalDocs and Family areas with index.html files</li>
+		<li>add password protection for TechnicalDocs site<ul>
+			<li>use form at <a href="http://www.password-protection.com/">Easy Website Password Protection Tutorial</a>, with user names and Punkin password, to generate crypt codes carolclark:sNdw6YfVKsBhQ; lauramartinez:CkE.DaoOV7vco; scottclark:hpqwU9HjAtzVw; ginaclark:mHA6/NOjriqmQ</li>
+			<li>create files htpasswd, TechnicalDocs/htaccess; upload to .htpasswd, TechnicalDocs/.htaccess<ul>
+				<li class='blurb'>see <a href="http://support.godaddy.com/help/1641/using-htpasswd-with-your-linux-shared-hosting-account">GoDaddy: Using .htpasswd with Your Linux Shared Hosting Account</a></li>
+			</ul></li>
 		</ul></li>
-		<li>Punkin repository at candcsoft.com/Private</li>		
 	</ul>
 	
 	<!-- @marker "Script Site Installation" -->
@@ -108,7 +119,7 @@
 		<li class='blurb'>implement script and target to install site content (leave other template files for now)<ul>
 			<li><span class='mono'>build</span> builds local copy; <span class='mono'>upload</span> updates hosted site from local copy</li>
 		</ul></li>
-		<li class='blurb'>see <a href="http://www.cs.colostate.edu/helpdocs/ftp.html">Basic FTP Commands</a>; <a href="http://myithaca.wordpress.com/2009/06/21/expect-scripting-tutorial/">Expect scripting tutorial</a> (expect is included on Mac); (<a href="http://www.stratigery.com/scripting.ftp.html">Using ftp in a shell script</a>, if needed)</li>
+		<li class='blurb'>see <a href="http://oreilly.com/catalog/expect/chapter/ch03.html">Exploring Expect: Chapter 3</a>, <a href="http://www.cs.colostate.edu/helpdocs/ftp.html">Basic FTP Commands</a>; <a href="http://myithaca.wordpress.com/2009/06/21/expect-scripting-tutorial/">Expect scripting tutorial</a> (expect is included on Mac); (<a href="http://www.stratigery.com/scripting.ftp.html">Using ftp in a shell script</a>, if needed)</li>
 	</ul>
 
 	<!-- @marker "Add TechnicalDocs Area" -->
@@ -117,7 +128,6 @@
 			<li>update to reflect changing hosting</li>
 			<li>plan revised site structure</li>
 		</ul></li>
-		<li>add password-protected TechnicalDocs site</li>
 	</ul>
 
 	<!-- @marker "Add Family Area" -->

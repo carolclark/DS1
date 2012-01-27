@@ -22,9 +22,10 @@
 		<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
 		<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
 	<!-- @topicGroup "Repositories" "10" -->
+		<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "1" "" -->
 		<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
-		<!-- @topicItem "Remote Repositories" "#tsk_RemoteRepositories" "1" "" -->
-	<!-- @topicGroup "" "13" -->
+		<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
+	<!-- @topicGroup "" "14" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
 
@@ -34,7 +35,7 @@
 	<li>repeat until branch's work complete<ul>
 		<li>repeat until commit<ul>
 			<li>edit/test<span class='blurb'>Xcode</span></li>
-			<li>status; [add]<span class='blurb'>Terminal</span></li>
+			<li>status; [add/stage]<span class='blurb'>Terminal</span></li>
 		</ul></li>
 		<li>construct commit message<span class='blurb'>Xcode</span></li>
 		<li>verify modifications</li>
@@ -44,7 +45,7 @@
 	<li>[tag]</li>
 	<li>diff master with branch; inspect for conflicts</li>
 	<li>switch to branch master<span class='blurb'>Xcode</span></li>
-	<li>merge; [push [to remote]]; [push tags [to remote]]</li>
+	<li>merge; [push [[pull] to remote]]; [push tags [to remote]]</li>
 	<li>delete branch</li>
 	<li>status; check for uncommitted or unmerged branches<span class='blurb'>Terminal</span></li>
 </ul>
@@ -143,25 +144,37 @@
 	<li><span class='mono'>git revert [HEAD|&lt;commit&gt;]</span>&nbsp;&nbsp;# creates a new commit that undoes the most recent or a previous commit</li>
 </ul>
 
+<!-- @marker "Create Bare Repository" -->
+<h4 id='tsk_CreateBareRepository'>Create Bare Repository</h4><ul>
+	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/gitrep/&lt;ProjectName&gt;; https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;Remote)</li>
+	<li class='mono'>mkdir -p ${path}; cd ${path}</li>
+	<li class='mono'>git init --bare</li>
+</ul>
+
 <!-- @marker "Create New Repository" -->
 <h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
-	<li class='mono'>proj=&lt;ProjectName&gt;</li>
-	<li class='mono'>mkdir -p ~/Dev/gitrep/${proj}Main</li>
-	<li class='mono'>cd ~/Dev/gitrep/${proj}Main</li>
-	<li class='mono'>git init --bare</li>
+	<li><a href="#tsk_CreateBareRepository">Create Bare Repository</a> ~/Dev/gitrep/&lt;ProjectName&gt;</li>
 	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
-		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt;Main</li>
+		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt;</li>
 		<li><b>name:</b> &lt;ProjectName&gt;</li>
 		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
 	</ul></li>
-	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with the repository until it contains at least one file.</li>
-	<li>add initial history file Cdoc/History_&lt;ProjectName&gt;.html</li>
+	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
+	<li>Xcode: add workspace; add initial file, normally history file Cdoc/History_&lt;ProjectName&gt;.html</li>
 	<li><span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add --all --interactive</span>&nbsp;&nbsp;#  (interactive)</li>
-	<li class='mono'>git commit -m "new repository with initial history file"</li>
+	<li>Xcode: commit "add workspace and initial history file"; push</li>
 </ul>
 
-<!-- @marker "Remote Repositories" -->
-<h4 id="tsk_RemoteRepositories">Remote Repositories</h4><ul>
+<!-- @marker "Add Remote Repository" -->
+<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul>
+	<li class='blurb'>Add Remote Repository from existing working copy &lt;ProjectName&gt;</li>
+		<li class='blurb'>see WWDC 2011 video Managing Source Control</li>
+		<li><a href="../Support/Git.html#tsk_CreateBareRepository">Create Bare Repository</a> at https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;</li>
+		<li>Xcode &gt; Repositories/&lt;ProjectName&gt;/Remotes: add remote: name 'remote', location https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;</li>
+		<li>push master branch of existing working copy to remote/master (create)</li>
+		<li>?track remote branch?</li>
+</ul>
+<div class='depr'><ul>
 	<li>Clone<ul>
 		<li><b>WorkingCopy</b>: name of Working Copy folder</li>
 		<li><b>Parent</b>: folder WorkingCopy goes in</li>
@@ -177,7 +190,7 @@
 	<li>Track Branch: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Track Branch<ul>
 		<li>(parameters)</li>
 	</ul></li>
-</ul>
+</ul></div>
 
 <!-- @marker "Policies and Notes" -->
 <h2>Policies and Notes</h2>
@@ -207,7 +220,7 @@ see <a href="http://grit.rubyforge.org/">grit</a> for ruby scripting<br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-12 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>

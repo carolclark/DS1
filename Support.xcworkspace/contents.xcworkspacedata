@@ -317,8 +317,28 @@
       <FileRef
          location = "group:welcome.html">
       </FileRef>
+      <Group
+         location = "container:"
+         name = "TechnicalDocs">
+         <FileRef
+            location = "group:Website/TechnicalDocs/index.html">
+         </FileRef>
+         <FileRef
+            location = "group:Website/TechnicalDocs/htaccess">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Family">
+         <FileRef
+            location = "group:Website/Family/index.html">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:missing.html">
+      </FileRef>
+      <FileRef
+         location = "group:htpasswd">
       </FileRef>
       <Group
          location = "container:"
