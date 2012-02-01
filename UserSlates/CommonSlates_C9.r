@@ -89,7 +89,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 				Launch { MainApps_"Backup.app", resid_Backup },
 			Event { "Pages", "" },
 				Launch { MainApps_"iWork '08/Pages.app", resid_DefaultSlate },
-			Event { "Numbers", "" },	Launch { MainApps_"iWork '08/Numbers.app", resid_DefaultSlate },
+			Event { "Numbers", "" },	Launch { MainApps_"iWork '08/Numbers.app", resid_Numbers },
 			Event { "Dictation", "" },	Launch { MainApps_"Dragon Dictate.app", resid_DefaultSlate },
 			Event { "Windows", "launch Parallels" },
 				Launch { Home_"Parallels/Microsoft Windows XP.pvm", resid_Parallels },

@@ -37,6 +37,9 @@
          <FileRef
             location = "group:Cdoc/DevU.html">
          </FileRef>
+         <FileRef
+            location = "group:Cdoc/Personal.html">
+         </FileRef>
          <Group
             location = "container:"
             name = "_tech">
@@ -527,12 +530,22 @@
    </Group>
    <Group
       location = "container:"
+      name = "6 Personal">
+      <FileRef
+         location = "group:Personal/Arbonne.numbers">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
       name = "8 UserSlates">
       <Group
          location = "container:"
          name = "Active">
          <FileRef
             location = "group:UserSlates/Xcode_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/Numbers_C9.r">
          </FileRef>
          <FileRef
             location = "group:UserSlates/BBEdit_C9.r">

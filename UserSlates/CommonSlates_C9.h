@@ -83,6 +83,7 @@
 #define resid_ScriptEditor				32000
 #define resid_SystemPrefs				33000
 #define resid_Dashcode					34000
+#define resid_Numbers					35000
 #define resid_ArbProto					40000
 #define resid_Xcode3					48000
 

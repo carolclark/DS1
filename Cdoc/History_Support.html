@@ -17,20 +17,21 @@
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 		<!-- @topicGroup "" "5" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
-			<!-- @topicItem "Initial Web Host Setup" "#webHostSetup" "2" "" -->
-			<!-- @topicItem "Set Up Remote Punkin Repository" "#remotePunkinRepo" "2" "" -->
 			<!-- @topicItem "Script Site Installation" "#installSite" "2" "" -->
 			<!-- @topicItem "Add TechnicalDocs Area" "#addTechnicalDocs" "2" "" -->
 			<!-- @topicItem "Add Family Area" "#addFamily" "2" "" -->
-		<!-- @topicGroup "" "12" -->
+		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
-		<!-- @topicGroup "" "15" -->
+		<!-- @topicGroup "" "13" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-	<!-- @topicGroup "" "18" -->
+		<!-- @topicGroup "" "16" -->
+		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
+			<!-- @topicItem "Initial Arbonne Spreadsheets" "#initArbonne" "1" "" -->
+	<!-- @topicGroup "" "19" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "20" -->
+	<!-- @topicGroup "" "21" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 	
@@ -50,6 +51,7 @@
 	<tr> <td>Support</td> <td><a href="#CdocBuild">support Cdoc install/clean</a></td> <td class='small'>install: adapt existing Support_svn script and call as build script;<br />clean: add access to cleanProjectTarget script</td> <td align="center">&radic;1</td> </tr>
 	<tr> <td>Support</td> <td>update ccBackup</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
 	<tr> <td>Support</td> <td>Snippets: Accessor Slate temporarily enters full Snippet text</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
+	<tr> <td>Support</td> <td>implement new scheduled backup</td> <td class='small'>The backup program we currently use was obtained through our MobileMe account. We are unable to verify that the software will continue to be supported. The App Store has other options that appear viable.</td> <td align="center">2</td> </tr>
 	<tr> <td>Support</td> <td>script ccArchive</td> <td class='small'>supports archiving svn and git repositories</td> <td align="center">2</td> </tr>
 	<tr> <td>Support</td> <td><a href="#Snippets">Snippet</a> support</td> <td class='small'>?could use entry of full snippet text as an intermediate stage</td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Upgrade to Lion</span></td></tr>
@@ -85,35 +87,6 @@
 	</ul></li>
 </ul>
 
-	<!-- @marker "Set Up Remote Punkin Repository" -->
-	<h5 id='remotePunkinRepo'>Set Up Remote Punkin Repository</h5><ul>
-		<li>update Carol's Punkin working copy to include content from both Carol's and Laura's existing repositories</li>
-		<li>ssh setup<ul>
-			<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
-			<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing my public key</li>
-		</ul></li>
-		<li>new account at ProjectLocker: CCSoftware; initial project Punkin; ssh address git-CCSoftware@pl5.projectlocker.com/Punkin.git</li>
-		<li>add that repository as a remote to Carol's Punkin working copy; push Carol's working copy to remote</li>
-		<li>clone new working repositories for Carol and Laura from the new remote</li>
-	</ul>
-	
-	<!-- @marker "Initial Web Host Setup" -->
-	<h5 id='webHostSetup'>Initial Web Host Setup</h5><ul>
-		<li>candcsoft.com<ul>
-			<li>add Go Daddy hosting; reconnect candcsoft.com there, which sets up a starter site</li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-			<li>document and track contents of starter site</li>
-			<li>welcome.html uses our starter content</li>
-		</ul></li>
-		<li>add TechnicalDocs and Family areas with index.html files</li>
-		<li>add password protection for TechnicalDocs site<ul>
-			<li>use form at <a href="http://www.password-protection.com/">Easy Website Password Protection Tutorial</a>, with user names and Punkin password, to generate crypt codes carolclark:sNdw6YfVKsBhQ; lauramartinez:CkE.DaoOV7vco; scottclark:hpqwU9HjAtzVw; ginaclark:mHA6/NOjriqmQ</li>
-			<li>create files htpasswd, TechnicalDocs/htaccess; upload to .htpasswd, TechnicalDocs/.htaccess<ul>
-				<li class='blurb'>see <a href="http://support.godaddy.com/help/1641/using-htpasswd-with-your-linux-shared-hosting-account">GoDaddy: Using .htpasswd with Your Linux Shared Hosting Account</a></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-	
 	<!-- @marker "Script Site Installation" -->
 	<h5 id='installSite'>Script Site Installation</h5><ul>
 		<li class='blurb'>implement script and target to install site content (leave other template files for now)<ul>
@@ -196,6 +169,21 @@
 	<h5 id="_automation">Automation Support</h5><ul>
 		<li class='tlmark'>&lt;--</li>
 	</ul>
+
+<!-- @marker "Personal" -->
+<h4 id='Personal_'>Personal</h4>
+
+<!-- @marker "Initial Arbonne Spreadsheets" -->
+<h5 id='initArbonne'>Initial Arbonne Spreadsheets</h5><ul>
+	<li>establish <a href="Personal.html#file_Arbonne">Arbonne</a> spreadsheet structure<ul>
+		<li>add files Personal.html, Arbonne.numbers, Arbonne_C9.r</li>
+		<li>sheet Create Invoice creates skeleton invoice containing data looked up from People and Catalog, contains summary line for posting to Invoices</li>
+	</ul></li>
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	<li>import and look up from actual catalog data</li>
+	
+	<li>establish <a href="Personal.html#file_Arbonne_before2009">Arbonne_before2009</a> stores all existing data thru 2008</li>
+</ul>
 
 <!-- @marker "5 === ToDo" --><p class='tlhead'>&lt;-- ToDo</p>
 <h2>ToDo</h2>
@@ -490,6 +478,35 @@
 		</ul></li>
 	</ul>
 
+	<!-- @marker "Set Up Remote Punkin Repository" -->
+	<h5 id='remotePunkinRepo'>Set Up Remote Punkin Repository</h5><ul>
+		<li>update Carol's Punkin working copy to include content from both Carol's and Laura's existing repositories</li>
+		<li>ssh setup<ul>
+			<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
+			<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing my public key</li>
+		</ul></li>
+		<li>new account at ProjectLocker: CCSoftware; initial project Punkin; ssh address git-CCSoftware@pl5.projectlocker.com/Punkin.git</li>
+		<li>add that repository as a remote to Carol's Punkin working copy; push Carol's working copy to remote</li>
+		<li>clone new working repositories for Carol and Laura from the new remote</li>
+	</ul>
+	
+	<!-- @marker "Initial Web Host Setup" -->
+	<h5 id='webHostSetup'>Initial Web Host Setup</h5><ul>
+		<li>candcsoft.com<ul>
+			<li>add Go Daddy hosting; reconnect candcsoft.com there, which sets up a starter site</li>
+			<li>document and track contents of starter site</li>
+			<li>welcome.html uses our starter content</li>
+		</ul></li>
+		<li>add TechnicalDocs and Family areas with index.html files</li>
+		<li>add password protection for TechnicalDocs site<ul>
+			<li>use form at <a href="http://www.password-protection.com/">Easy Website Password Protection Tutorial</a>, with user names and Punkin password, to generate crypt codes carolclark:sNdw6YfVKsBhQ; lauramartinez:XfhfvKRc7AdfA; scottclark:hpqwU9HjAtzVw; ginaclark:mHA6/NOjriqmQ</li>
+			<li>create files htpasswd, TechnicalDocs/htaccess; upload to .htpasswd, TechnicalDocs/.htaccess<ul>
+				<li class='blurb'>see <a href="http://support.godaddy.com/help/1641/using-htpasswd-with-your-linux-shared-hosting-account">GoDaddy: Using .htpasswd with Your Linux Shared Hosting Account</a></li>
+			</ul></li>
+		</ul></li>
+	</ul>
+	<p class='tldate'>[02/01/2012]</p>
+	
 	<!-- @marker "[end]" -->
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

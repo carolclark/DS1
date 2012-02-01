@@ -1654,7 +1654,7 @@ resource restype_Slate (resid_edProject, "Project") { {
 		Event { "target list", "" },	ResSubslate { resid_projTargetList },
 		Event { "info", "" },			Click { 1, -80, 134, _pwindow, _topCenter },
 		Event { "build settings", "" },	Click { 1, -5, 134, _pwindow, _topCenter },
-		Event { "build phases", "" },	Click { 1, 110, 134, _pwindow, _topCenter },
+		Event { "build phases", "" },	Click { 1, 115, 134, _pwindow, _topCenter },
 		Event { "build rules", "" },	Click { 1, 250, 134, _pwindow, _topCenter },
 		Event { "open run script", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, ResSubslate { resid_phaseRunScript }, endSequence{},
 		Event { "open dependencies", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},

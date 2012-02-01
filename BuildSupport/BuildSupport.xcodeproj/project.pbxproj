@@ -561,6 +561,7 @@
 				67A00C5114A287B6002456DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67AA801A144F3DAD00FCCDC9 /* Build configuration list for PBXNativeTarget "CCDev_Setup" */ = {
 			isa = XCConfigurationList;
