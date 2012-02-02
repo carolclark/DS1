@@ -520,7 +520,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 		ExitEvent { "event", "" },				TypeText { "Event { \"" },
 		ExitEvent { "plain event", "" },		TypeText { "Event { \"" },
 		ExitEvent { "end event", "" },			Sequence{}, TypeText { "\", \"\" }," }, Keypress { kc_tab, mf_option }, Keypress { kc_tab, mf_option }, Keypress { kc_tab, mf_option }, endSequence{},
-		ExitEvent { "sequence", "" },			Sequence{}, TypeText { "Sequence{}, <##>, endSequence{}," }, _previous, endSequence{},
+		ExitEvent { "sequence", "" },			Sequence{}, TypeText { "Sequence{}, <##> endSequence{}," }, _previous, endSequence{},
 		ExitEvent { "subslate", "" },			Sequence{}, TypeText { "Subslate { \"<##>\" }," }, _return, _tab, _tab, _tab, TypeText { "<##>" }, _return, _tab, _tab, _tab, TypeText { "endSubslate{}," }, _previous, endSequence{},
 		ExitEvent { "type text", "" },			Sequence{}, TypeText { "TypeText { \"<##>\" }," }, _previous, endSequence{},
 		ExitEvent { "resource subslate", "" },	Sequence{}, TypeText { "ResSubslate { resid_<##> }," }, _previous, endSequence{},
