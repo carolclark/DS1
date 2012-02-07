@@ -8,9 +8,16 @@
 #define resid_TypeNumbersSlate			resid_Numbers+1
 #define resid_TypeSpecialNumbersSlate	resid_Numbers+2
 
-#define resid_Formula		resid_Numbers+100
+#define resid_Menus			resid_Numbers+100
+	#define resid_EditMenu		resid_Menus+0
+	#define resid_InsertMenu	resid_Menus+1
+	#define resid_TableMenu		resid_Menus+2
+	#define resid_ViewMenu		resid_Menus+3
+
+#define resid_Formula		resid_Numbers+200
 	#define resid_fmColumn		resid_Formula+1
 	#define resid_fmColumnSub	resid_Formula+2
+
 #define resid_Macro			resid_Numbers+400
 #define resid_Arbonne		resid_Numbers+500
 
@@ -44,6 +51,56 @@ resource restype_Slate (resid_TypeNumbersSlate, "Type Slate") { {
 #define _TypeNumbersSlate_ 		\
 	Event { "Type", "simulate keypresses" },	\
 		ResSubslate { resid_TypeNumbersSlate }
+
+#pragma mark === Menus
+
+#pragma mark EditMenu
+resource restype_Slate (resid_EditMenu, "") { {
+	Slate { "Edit",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "Paste Values", "" },	Sequence{}, TypeText { "Paste Values" }, _return, endSequence{},
+	} }
+} };
+
+#pragma mark Insert
+resource restype_Slate (resid_InsertMenu, "") { {
+	Slate { "Insert",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "Sheet", "" },			Sequence{}, TypeText { "Sheet" }, _return, endSequence{},
+		ExitEvent { "Table", "" },			Sequence{}, TypeText { "Table" }, _right, endSequence{},
+		ExitEvent { "Fill", "" },			Sequence{}, TypeText { "Fill" }, _right, endSequence{},
+		ExitEvent { "Comment", "" },		Sequence{}, TypeText { "Comment" }, _return, endSequence{},
+	} }
+} };
+
+#pragma mark Table
+resource restype_Slate (resid_TableMenu, "") { {
+	Slate { "Table",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "Add Row Above", "" },				Sequence{}, TypeText { "Add Row Above" }, _return, endSequence{},
+		ExitEvent { "Add Row Below", "" },				Sequence{}, TypeText { "Add Row Below" }, _return, endSequence{},
+		ExitEvent { "Add Header Column Before", "" },	Sequence{}, TypeText { "Add Header Column Before" }, _return, endSequence{},
+		ExitEvent { "Add Column After", "" },			Sequence{}, TypeText { "Add Column After" }, _return, endSequence{},
+		ExitEvent { "Delete Rows", "" },				TypeText { "Delete Rows" },
+		ExitEvent { "Delete Columns", "" },				TypeText { "Delete Columns" },
+		ExitEvent { "Header Rows", "" },				Sequence{}, TypeText { "Header Rows" }, _right, endSequence{},
+		ExitEvent { "Header Columns", "" },				Sequence{}, TypeText { "Header Columns" }, _right, endSequence{},
+	} }
+} };
+
+#pragma mark View
+resource restype_Slate (resid_ViewMenu, "") { {
+	Slate { "View",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "Inspector", "" },			Sequence{}, Keypress { kc_I, mf_command + mf_option }, _return, endSequence{},
+		ExitEvent { "New Inspector", "" },		Sequence{}, TypeText { "New Inspector" }, _return, endSequence{},
+		ExitEvent { "Functions", "" },			Sequence{}, TypeText { "Show Function Browser" }, _return, endSequence{},
+	} }
+} };
 
 #pragma mark Formula
 #define _form_sp	10
@@ -132,10 +189,7 @@ resource restype_Slate (resid_Numbers, "Numbers Slate") { {
 		Event { "formula", "" },			Sequence{}, Click { 0, _split_h, _formula_v, _window, _topLeft }, ResSubslate { resid_Formula }, endSequence{},
 		Event { "Arbonne", "" },			ResSubslate { resid_Arbonne },
 		Event { "Window", "" },				ResSubslate { resid_WindowSlate },
-		Event { "fix window", "" },			Sequence{},
-			Click { 0, -4, -4, window, "1", _bottomRight },
-			Click { -1, 0, -60, _cursor },
-			endSequence{},
+		Event { "fix window", "" },			Sequence{}, Click { 0, -4, -4, window, "1", _bottomRight }, Click { -1, 0, -60, _cursor }, endSequence{},
 		Event { "page down", "" },			Keypress { kc_pagedown, 0 },
 		Event { "page north", "" },			Keypress { kc_pageup, 0 },
 		Event { "Macro", "" },				ResSubslate { resid_Macro },
@@ -144,13 +198,14 @@ resource restype_Slate (resid_Numbers, "Numbers Slate") { {
 		Event { "Menu", "access menus" },	Subslate { "Menu" },
 			_SlateGlobals_,
 			_CloseSubslate_,
+			ExitEvent { "select", "" },			_return,
 			ExitEvent { "Application", "" },	ClickMenu { "Numbers" },
 			ExitEvent { "File", "" }, 			ClickMenu { "File" },
-			ExitEvent { "Edit", "" }, 			ClickMenu { "Edit" },
-			ExitEvent { "Insert", "" }, 		ClickMenu { "Insert" },
-			ExitEvent { "Table", "" }, 			ClickMenu { "Table" },
+			Event { "Edit", "" }, 				Sequence{}, ClickMenu { "Edit" }, ResSubslate { resid_EditMenu },endSequence{},
+			Event { "Insert", "" }, 			Sequence{}, ClickMenu { "Insert" }, ResSubslate { resid_InsertMenu }, endSequence{},
+			Event { "Table", "" }, 				Sequence{}, ClickMenu { "Table" }, ResSubslate { resid_TableMenu }, endSequence{},
 			ExitEvent { "Arrange", "" }, 		ClickMenu { "Arrange" },
-			ExitEvent { "View", "" }, 			ClickMenu { "View" },
+			Event { "View", "" }, 				Sequence{}, ClickMenu { "View" }, ResSubslate { resid_ViewMenu }, endSequence{},
 			ExitEvent { "Window", "" }, 		ClickMenu { "Window" },
 			endSubslate{},
 	 } }

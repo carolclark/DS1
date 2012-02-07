@@ -1,5 +1,5 @@
 // =================================================================================
-//	Safari.r					©2005-12 C & C Software, Inc. All rights reserved.
+//	Safari.r					ï¿½2005-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma mark 0 ===
@@ -39,6 +39,7 @@
 #define resid_Facebook					resid_Safari+700
 #define resid_YahooHome					resid_Safari+720
 #define resid_SafariOnline				resid_Safari+740
+#define resid_gmail						resid_Safari+760
 #define resid_TestAddress				resid_Safari+890
 #define resid_Puzzles					resid_Safari+990		// resid not used
 	#define resid_TypePuzzles				resid_Puzzles+1
@@ -708,6 +709,15 @@ resource restype_Slate (resid_SafariOnline, "") { {
 	} }
 } };
 
+#pragma mark gmail
+resource restype_Slate (resid_gmail, "") { {
+	Slate { "gmail",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "login", "" },			Sequence{}, TypeText { "caroljimclark@gmail.com" }, _tab, TypeText { "cc686868" }, endSequence{},
+	} }
+} };
+
 resource restype_Slate (resid_Facebook, "") { {
 	Slate { "Facebook",	{
 		_SafariStandards_,
@@ -1298,8 +1308,8 @@ resource restype_Slate (resid_Safari, "Safari Slate") { {
 				OpenURL { "file:///Volumes/carollclark/PrivateSites/index.html" }, ResSubslate { resid_DocBrowser }, endSequence{},
 			Event { "my development", "" },	Sequence{}, 
 				OpenURL { "file:///Users/carolclark/CCDev/Sites/TechnicalDocs/Support/Development.html" }, ResSubslate { resid_DocBrowser }, endSequence{},
-			Event { "Safari books", "" },			Sequence{}, 
-				OpenURL { "http://my.safaribooksonline.com" }, ResSubslate { resid_SafariOnline }, endSequence{},
+			Event { "Safari books", "" },			Sequence{}, OpenURL { "http://my.safaribooksonline.com" }, ResSubslate { resid_SafariOnline }, endSequence{},
+			Event { "gmail", "" },		Sequence{}, OpenURL { "https://mail.google.com/mail/?shva=1" }, ResSubslate { resid_gmail }, endSequence{},
 			Event { "Facebook", "" },		Sequence{}, 
 				OpenURL { "http://www.facebook.com/" }, ResSubslate { resid_Facebook }, endSequence{},
 			Event { "Arbonne", "" },		Sequence{},
@@ -1320,10 +1330,13 @@ resource restype_Slate (resid_Safari, "Safari Slate") { {
 		Event { "current site", "" },		Subslate { "site" },
 			_SafariStandards_,
 			_CloseSubslate_,
-			Event { "YahooHome", "" },			ResSubslate { resid_YahooHome },
+			Event { "YahooHome", "" },		ResSubslate { resid_YahooHome },
 			Event { "Facebook", "" },		ResSubslate { resid_Facebook },
 			Event { "Arbonne", "" },		ResSubslate { resid_Arbonne },
 			Event { "Safari Books", "" },	ResSubslate { resid_SafariOnline },
+			Event { "gmail", "" },			ResSubslate { resid_gmail },
+			Event { "Sudoku Times", "" },	ResSubslate { resid_sudokuTimes },
+			Event { "Sudoku Daily", "" },	ResSubslate { resid_sudokuDaily },
 			endSubslate{},
 		Event { "scan", "" },				ResSubslate { resid_ScanLinks },
 		Event { "Scripts", "" },			Sequence{},

@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					Â©2006-12 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					©2006-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -523,7 +523,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 		ExitEvent { "sequence", "" },			Sequence{}, TypeText { "Sequence{}, <##> endSequence{}," }, _previous, endSequence{},
 		ExitEvent { "subslate", "" },			Sequence{}, TypeText { "Subslate { \"<##>\" }," }, _return, _tab, _tab, _tab, TypeText { "<##>" }, _return, _tab, _tab, _tab, TypeText { "endSubslate{}," }, _previous, endSequence{},
 		ExitEvent { "type text", "" },			Sequence{}, TypeText { "TypeText { \"<##>\" }," }, _previous, endSequence{},
-		ExitEvent { "resource subslate", "" },	Sequence{}, TypeText { "ResSubslate { resid_<##> }," }, _previous, endSequence{},
+		ExitEvent { "resource subslate", "" },	Sequence{}, TypeText { "ResSubslate { resid_<##> }, " }, _previous, endSequence{},
 		ExitEvent { "keypress", "" },			Sequence{}, TypeText { "Keypress { kc_<##>, <##> }," }, _previous, _previous, endSequence{},
 			ExitEvent { "key return", "" },			TypeText { "return" },
 			ExitEvent { "key space", "" },			TypeText { "space" },
