@@ -532,7 +532,7 @@
       location = "container:"
       name = "6 Personal">
       <FileRef
-         location = "group:Personal/Arbonne.numbers">
+         location = "group:Personal/ArbonneStruct.numbers">
       </FileRef>
    </Group>
    <Group

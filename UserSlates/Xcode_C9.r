@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					©2006-12 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					ï¿½2006-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -516,14 +516,18 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 	Slate { "UserSlate",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
+		ExitEvent { "define", "" },				Sequence{}, TypeText { "#define" }, Keypress { kc_tab, mf_option }, endSequence{},
 		ExitEvent { "exit event", "" },			TypeText { "ExitEvent { \"" },
 		ExitEvent { "event", "" },				TypeText { "Event { \"" },
 		ExitEvent { "plain event", "" },		TypeText { "Event { \"" },
 		ExitEvent { "end event", "" },			Sequence{}, TypeText { "\", \"\" }," }, Keypress { kc_tab, mf_option }, Keypress { kc_tab, mf_option }, Keypress { kc_tab, mf_option }, endSequence{},
 		ExitEvent { "sequence", "" },			Sequence{}, TypeText { "Sequence{}, <##> endSequence{}," }, _previous, endSequence{},
-		ExitEvent { "subslate", "" },			Sequence{}, TypeText { "Subslate { \"<##>\" }," }, _return, _tab, _tab, _tab, TypeText { "<##>" }, _return, _tab, _tab, _tab, TypeText { "endSubslate{}," }, _previous, endSequence{},
+		ExitEvent { "subslate", "" },			Sequence{}, TypeText { "Subslate { \"<##>\" }," }, _return, _tab, _tab, _tab, TypeText { "_SlateGlobals_," }, _return, _tab, _tab, _tab, TypeText { "_CloseSubslate_," }, _return, _tab, _tab, _tab, TypeText { "<##>" }, _return, _tab, _tab, _tab, TypeText { "endSubslate{}," }, _previous, _previous, endSequence{},
+		ExitEvent { "indent subslate", "" },	Sequence{}, _indent, _down, _indent, _indent, _down, _indent, _indent, _down, _indent, endSequence{},
 		ExitEvent { "type text", "" },			Sequence{}, TypeText { "TypeText { \"<##>\" }," }, _previous, endSequence{},
-		ExitEvent { "resource subslate", "" },	Sequence{}, TypeText { "ResSubslate { resid_<##> }, " }, _previous, endSequence{},
+		ExitEvent { "resource subslate", "" },	Sequence{}, TypeText { "ResSubslate { <##> }, " }, _previous, endSequence{},
+		ExitEvent { "click menu", "" },			Sequence{}, TypeText { "ClickMenu { \"<##>\" }, " }, _previous, endSequence{},
+		ExitEvent { "nil action", "" },			TypeText { "NilAction{}" },
 		ExitEvent { "keypress", "" },			Sequence{}, TypeText { "Keypress { kc_<##>, <##> }," }, _previous, _previous, endSequence{},
 			ExitEvent { "key return", "" },			TypeText { "return" },
 			ExitEvent { "key space", "" },			TypeText { "space" },
@@ -543,15 +547,21 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 			ExitEvent { "modify option", "" },		TypeText { "mf_option" },
 			ExitEvent { "modify control", "" },		TypeText { "mf_control" },
 		ExitEvent { "click", "" },				Sequence{}, TypeText { "Click { <#count#>, <#h#>, <#v#>, <#position#> }," }, _previous, _previous, _previous, _previous, endSequence{},
+		ExitEvent { "click modified", "" },		Sequence{}, TypeText { "ClickMod { <#count#>, <#h#>, <#v#>, <#position#>, <#modifiers#> }," }, _previous, _previous, _previous, _previous, _previous, endSequence{},
 			Event { "window", "" },					Sequence{}, TypeText { "_window, <#corner#>" }, _previous, endSequence{},
 			Event { "screen", "" },					Sequence{}, TypeText { "_screen, <#corner#>" }, _previous, endSequence{},
 			ExitEvent { "cursor", "" },				TypeText { "_cursor" },
 			ExitEvent { "top left", "" },			TypeText { "_topLeft" },
+			ExitEvent { "top center", "" },			TypeText { "_topCenter" },
 			ExitEvent { "top right", "" },			TypeText { "_topRight" },
 			ExitEvent { "bottom right", "" },		TypeText { "_bottomRight" },
+			ExitEvent { "bottom center", "" },		TypeText { "_bottomCenter" },
 			ExitEvent { "bottom left", "" },		TypeText { "_bottomLeft" },
+			ExitEvent { "center right", "" },		TypeText { "_centerRight" },
+			ExitEvent { "center center", "" },		TypeText { "_centerCenter" },
+			ExitEvent { "center left", "" },		TypeText { "_centerLeft" },
 		ExitEvent { "slate", "" },				Sequence{}, 
-			TypeText { "#define resid_<##>" }, Keypress { kc_tab, mf_option }, TypeText { "resid_<#relative_resid#>+<##>" }, _return,
+			TypeText { "#define resid_<##>" }, Keypress { kc_tab, mf_option }, TypeText { "<#relative_resid#>+<##>" }, _return,
 			TypeText { "#pragma mark <##>" }, _return,
 			TypeText { "resource restype_Slate (resid_<##>, \"\") { {" }, _return,
 			TypeText { "Slate { \"<##>\"," }, Keypress { kc_tab, mf_option }, TypeText { "{" }, _return,
@@ -584,6 +594,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 			ExitEvent { "Letter Keys", "" },			TypeText { "_LetterKeys_," },
 			ExitEvent { "Number Keys", "" },			TypeText { "_NumberKeys_," },
 			ExitEvent { "Whitespace Keys", "" },		TypeText { "_WhitespaceKeys_," },
+			ExitEvent { "Mouse Slate", "" },			TypeText { "_IMouseSlate_," },
 			endSubslate{},
 	} }
 } };
@@ -2445,10 +2456,10 @@ resource restype_Slate (resid_Macro, "") { {
 			TypeText { "<ul>" }, _return, TypeText { "</ul>" }, Keypress { kc_M, mf_control }, Keypress { kc_X, mf_command },
 			endSequence{},
 		Event { "one", "temp" },				Sequence{},
-			TypeText { "Workspace-r54" },
+			TypeText { "_insert_row, " },
 			endSequence{},
 		Event { "two", "temp" },				Sequence{},
-			TypeText { "Users/Shared/Cdoc" },
+			TypeText { " _left," },
 			endSequence{},
 		Event { "three", "temp" },				Sequence{},
 			Keypress { kc_C, mf_command }, _right, Keypress { kc_comma, 0 }, _return,

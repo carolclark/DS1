@@ -92,7 +92,8 @@
 		<li class='blurb'>implement script and target to install site content (leave other template files for now)<ul>
 			<li><span class='mono'>build</span> builds local copy; <span class='mono'>upload</span> updates hosted site from local copy</li>
 		</ul></li>
-		<li class='blurb'>see <a href="http://oreilly.com/catalog/expect/chapter/ch03.html">Exploring Expect: Chapter 3</a>, <a href="http://www.cs.colostate.edu/helpdocs/ftp.html">Basic FTP Commands</a>; <a href="http://myithaca.wordpress.com/2009/06/21/expect-scripting-tutorial/">Expect scripting tutorial</a> (expect is included on Mac); (<a href="http://www.stratigery.com/scripting.ftp.html">Using ftp in a shell script</a>, if needed)</li>
+		<li class='blurb'>see <a href="http://4loc.wordpress.com/2008/12/04/using-ftp-in-ruby/">Using FTP in Ruby</a></li>
+		<li class='depr'>see <a href="http://oreilly.com/catalog/expect/chapter/ch03.html">Exploring Expect: Chapter 3</a>, <a href="http://www.cs.colostate.edu/helpdocs/ftp.html">Basic FTP Commands</a>; <a href="http://myithaca.wordpress.com/2009/06/21/expect-scripting-tutorial/">Expect scripting tutorial</a> (expect is included on Mac); (<a href="http://www.stratigery.com/scripting.ftp.html">Using ftp in a shell script</a>, if needed)</li>
 	</ul>
 
 	<!-- @marker "Add TechnicalDocs Area" -->
@@ -173,28 +174,30 @@
 <!-- @marker "Personal" -->
 <h4 id='Personal_'>Personal</h4>
 
-<!-- @marker "Initial Arbonne Spreadsheets" -->
-<h5 id='initArbonne'>Initial Arbonne Spreadsheets</h5><ul>
-	<li>establish <a href="Personal.html#file_Arbonne">Arbonne</a> spreadsheet structure<ul>
-		<li>add files Personal.html, Arbonne.numbers, Arbonne_C9.r</li>
-		<li>sheet Create Invoice creates skeleton invoice containing data looked up from People and Catalog, contains summary line for posting to Invoices</li>
-	</ul></li>
-	<li>commit deletion of files from previous version of Numbers</li>
-	<li>upgrade to Numbers 2.1; file format changed</li>
-	<li>import and look up from actual catalog data</li>
-	<li>use reference labels in formulas</li>
-	<li>move invoice line information from invoice summary line to a separate table<ul>
-		<li>use table display in sheet Create Invoice</li>
-		<li>add sheet Invoice Lines</li>
-	</ul></li>
-	<li>add invoice calculations to Create Invoice sheet; add results to Invoice summary line</li>
-	<li>rename Arbonne.numbers to ArbonneStruct.numbers; active file to be stored at ~/Documents</li>
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-	<li>establish <a href="Personal.html#file_Arbonne_thru2008">Arbonne_thru2008</a>: stores all existing data thru 2008</li>
-	<li>Arbonne: import existing customers</li>
-	<li>test by creating invoices matching contents of recent orders</li>
-	<li>add sheet Delivery Slip</li>
-</ul>
+	<!-- @marker "Initial Arbonne Spreadsheets" -->
+	<h5 id='initArbonne'>Initial Arbonne Spreadsheets</h5><ul>
+		<li>establish <a href="Personal.html#file_Arbonne">Arbonne</a> spreadsheet structure<ul>
+			<li>add files Personal.html, Arbonne.numbers, Arbonne_C9.r</li>
+			<li>sheet Create Invoice creates skeleton invoice containing data looked up from People and Catalog, contains summary line for posting to Invoices</li>
+		</ul></li>
+		<li>commit deletion of files from previous version of Numbers</li>
+		<li>upgrade to Numbers 2.1; file format changed</li>
+		<li>import and look up from actual catalog data</li>
+		<li>use reference labels in formulas</li>
+		<li>move invoice line information from invoice summary line to a separate table<ul>
+			<li>use table display in sheet Create Invoice</li>
+			<li>add sheet Invoice Lines</li>
+		</ul></li>
+		<li>add invoice calculations to Create Invoice sheet; add results to Invoice summary line</li>
+		<li>rename Arbonne.numbers to ArbonneStruct.numbers; active file to be stored at ~/Documents</li>
+		<li>establish <a href="Personal.html#file_Arbonne_FM">Arbonne_FM</a>: stores all existing data from existing FileMaker database</li>
+		<li>import existing customers</li>
+		<li>test by creating invoices matching contents of recent orders</li>
+		<li>add sheet Delivery Slip</li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>import existing Orders and ItemsOrdered starting with 2009</li>
+		<li>copy ArbonneStruct.numbers to ~/Documents/Arbonne.numbers; clean up</li>
+	</ul>
 
 <!-- @marker "5 === ToDo" --><p class='tlhead'>&lt;-- ToDo</p>
 <h2>ToDo</h2>
