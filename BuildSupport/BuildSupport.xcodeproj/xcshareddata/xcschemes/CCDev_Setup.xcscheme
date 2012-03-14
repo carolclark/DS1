@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67AA7FE5144F35CB00FCCDC9"
+               BlueprintIdentifier = "67AA8010144F3DAD00FCCDC9"
                BuildableName = "CCDev_Setup.bundle"
                BlueprintName = "CCDev_Setup"
                ReferencedContainer = "container:BuildSupport.xcodeproj">

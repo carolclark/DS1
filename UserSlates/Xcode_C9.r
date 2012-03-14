@@ -25,9 +25,10 @@
 #define resid_Find					resid_Xcode+9
 #define resid_FindMultiple			resid_Xcode+10
 	#define resid_SearchIn				resid_FindMultiple+1
-#define resid_RunSlate				resid_Xcode+12
-#define resid_Snapshots				resid_Xcode+13
-#define resid_Package				resid_Xcode+14
+#define resid_GoTab					resid_Xcode+12
+#define resid_RunSlate				resid_Xcode+13
+#define resid_Snapshots				resid_Xcode+14
+#define resid_Package				resid_Xcode+15
 
 #define resid_Debug					resid_Xcode+20
 	#define resid_Threads				resid_Debug+1
@@ -151,7 +152,7 @@
 #define	_previousIssue	Keypress { kc_quote, mf_command + mf_shift }
 #define _goNext			Keypress { kc_closebracket, mf_command + mf_shift }
 #define _goPrevious		Keypress { kc_bracket, mf_command + mf_shift }
-
+#define	_goTab			ResSubslate { resid_GoTab } 
 #define _clickFile	Click { 1, 126, 10, _screen, _topLeft }
 #define _navList	Click { 1, 30, -30, _window, _bottomLeft }
 #define _topRow		Click { 1, 130, 148, _window, _topLeft }
@@ -657,6 +658,24 @@ resource restype_Slate (resid_BuildAccessor, "") { {
 	} }
 } };
 
+#pragma mark GoTab
+#define	tabT	96
+resource restype_Slate (resid_GoTab, "") { {
+	Slate { "go tab",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "one", "" },		Click { 1, 100, tabT, _window, _topLeft },	
+		ExitEvent { "two", "" },		Click { 1, 300, tabT, _window, _topLeft },	
+		ExitEvent { "three", "" },		Click { 1, -300, tabT, _window, _topCenter },	
+		ExitEvent { "four", "" },		Click { 1, -140, tabT, _window, _topCenter },	
+		ExitEvent { "five", "" },		Click { 1, 102, tabT, _window, _topCenter },	
+		ExitEvent { "six", "" },		Click { 1, -476, tabT, _window, _topRight },	
+		ExitEvent { "seven", "" },		Click { 1, -310, tabT, _window, _topRight },	
+		ExitEvent { "eight", "" },		Click { 1, -235, tabT, _window, _topRight },	
+		ExitEvent { "nine", "" },		Click { 1, -100, tabT, _window, _topRight },	
+	} }
+} };
+
 #pragma mark RunSlate
 resource restype_Slate (resid_RunSlate, "run test application with its own slate") { {
 	Slate { "run slate",	{
@@ -700,6 +719,7 @@ resource restype_Slate (resid_Debug, "") { {
 		_SlateGlobals_,
 		_CloseSubslate_,
 		Event { "next workspace", "" }, 	Keypress { kc_accent, mf_command },
+		Event { "run", "" },				Keypress { kc_R, mf_command },
 		Event { "panel", "" },				Keypress { kc_Y, mf_command + mf_shift },
 		Event { "over", "" },				Keypress { kc_fn6, 0 },
 		Event { "in", "" },					Keypress { kc_fn7, 0 },
@@ -1229,6 +1249,7 @@ resource restype_Slate (resid_Navigate, "Navigate") { {
 		Event { "close tab", "" },		_closeTab,
 		Event { "go next", "" },		_goNext,
 		Event { "go previous", "" },	_goPrevious,
+		Event { "go tab", "" },			_goTab,
 		Event { "go panel", "" },		_goPanel,
 		Event { "next panel", "" },		_nextPanel,
 		Event { "previous panel", "" },	_previousPanel,
@@ -1771,6 +1792,7 @@ resource restype_Slate (resid_edLog, "Log") { {
 		Event { "collapse", "" },		Sequence{}, ClickMenu { "Editor", }, _down, TypeText { "Collapse Selected Transcripts" }, _return, endSequence{},
 		Event { "go next", "" },		_goNext,
 		Event { "go previous", "" },	_goPrevious,
+		Event { "go tab", "" },			_goTab,
 		Event { "top row", "" },		_topRow,
 		focus_,
 		_XcodeStandards_,
@@ -2333,12 +2355,14 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "build", "" },			Keypress { kc_B, mf_command },
 		Event { "run", "" },			Sequence{}, Keypress { kc_R, mf_command }, ResSubslate { resid_RunTarget },endSequence{},
 		Event { "debug", "" },			ResSubslate { resid_Debug },
+		Event { "archive", "" },		Sequence{}, ClickMenu { "Product" }, TypeText { "Archive" }, _return, endSequence{},
 		Event { "clean", "" },			Keypress { kc_K, mf_command + mf_shift },
 		Event { "click back", "" },		Click { 1, -500, 40, _window, _topRight },
 		Event { "scheme", "" },			Sequence{}, _targetPopup, ResSubslate { resid_TargetScheme }, endSequence{},
 		Event { "pop up", "" },			_targetPopup,
 		Event { "go next", "" },		_goNext,
 		Event { "go previous", "" },	_goPrevious,
+		Event { "go tab", "" },			_goTab,
 		Event { "Xcode", "" },			Sequence{}, _targetPopup, TypeText { "Xcode" }, _down, _return, endSequence{},
 		Event { "Setup", "" },			Sequence{}, _targetPopup, TypeText { "CCDev_Setup" }, _down, _return, endSequence{},
 		Event { "C C Dev", "" },		Sequence{}, _targetPopup, TypeText { "CCDev" }, _down, _return, endSequence{},
@@ -2524,6 +2548,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "hide find bar", "" },	_hideFindBar,
 		Event { "go next", "tab" },		_goNext,
 		Event { "go previous", "tab" },	_goPrevious,
+		Event { "go tab", "" },			_goTab,
 		Event { "panel", "" },			ResSubslate { resid_Panel },
 		_JumpBar_,
 		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _pwindow, _topLeft }, Click { -1, 280, 10, _screen, _topLeft }, endSequence{},	
