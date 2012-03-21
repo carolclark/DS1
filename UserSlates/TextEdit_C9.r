@@ -1,5 +1,5 @@
 // =================================================================================
-//	TextEdit_C9.r					©2010 C & C Software, Inc. All rights reserved.
+//	TextEdit_C9.r				©2010-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -64,7 +64,7 @@ resource restype_Slate (resid_TextEdit, "TextEdit Slate") { {
 		Event { "page end", "" },		Keypress { kc_end, 0 },
 		Event { "fix window", "" },		Sequence{},
 			Click { 0, 85, 10, window, "1", _topLeft },
-			Click { -1, 280, 10, _screen, _topLeft },
+			Click { -1, 280, 29, _screen, _topLeft },
 			endSequence{},
 		Event { "Notes", "" },			ResSubslate { resid_NotesSlate },
 		Event { "Menu", "access menus" },		Subslate { "Menu" },

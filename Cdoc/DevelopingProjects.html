@@ -16,7 +16,7 @@
 	<!-- @topicItem "Porting C++ to Objective-C" "#PortingCxxToObjC" "0" "" -->
 <!-- @/topicList -->
 
-<p>tasks and refactorings related to development with (Xcode) projects</p>
+<p>tasks and refactorings related to development with Xcode projects</p>
 
 <!-- @marker "Projects" -->
 <h2>Projects</h2>
@@ -90,34 +90,32 @@
 <!-- @marker "Porting C++ to Objective-C" -->
 <h2>Porting C++ to Objective-C</h2><ul>
 	<li>Motivation<ul>
+		<li>For Mac development, C++ is being replaced by Cocoa with Objective-C.</li>
 		<li>Xcode supports and we consistently use a testing framework for Objective-C, but not for C++.</li>
 		<li>C++ code is incompatible with Objective-C Automatic Reference Counting.</li>
 	</ul></li>
 </ul>
 
 <!-- @topicList "Porting C++ to Objective-C" "PortingCxxToObjC" -->
-	<!-- @topicItem "Add Tests For C++ Code" "#AddTestsForCxxCode" "0" "" -->
 	<!-- @topicItem "Replace C++ Interface with Objective-C" "#ReplaceCxxInterfaceWithObjC" "0" "" -->
 	<!-- @topicItem "Use Objective-C Feature Interface" "#UseObjCFeatureInterface" "0" "" -->	
 <!-- @/topicList -->
 
-<!-- @marker "Add Tests For C++ Code" -->
-<h4 id='AddTestsForCxxCode'>Add Tests For C++ Code</h4><ul>
-	<li class='blurb'>we use "provide" here in the sense of "create it does not already exist"</li>
-	<li>provide Objective-C files to access the C++ code</li>
-	<li>provide an Objective-C wrapper to the C++ code</li>
-	<li>provide Objective-C method(s) to access the C++ code to be tested</li>
-	<li>provide test files for the Objective-C wrapper</li>
-	<li>add tests</li>
-</ul>
-
 <!-- @marker "Replace C++ Interface with Objective-C" -->
-<h4 id='ReplaceCxxInterfaceWithObjC'>Replace C++ Interface with Objective-C</h4>
-<p class='blurb'>ultimately replaces C++ module &lt;Module&gt;_XX.cp/h with Objective-C module &lt;Module&gt;_YY.mm/h</p><ul>
-	<li><a href="#AddTestsForCxxCode">Add Tests For C++ Code</a></li>
-	<li>for each class in C++ module: Rename Class to add extension CP</li>
+<h4 id='ReplaceCxxInterfaceWithObjC'>Replace C++ Interface with Objective-C</h4><ul>
+	<li class='blurb'>ultimately replaces C++ module &lt;Module&gt;_XX.cp/h with Objective-C module &lt;Module&gt;_YY.mm/h</li>
+	<li class='blurb'>we use "provide" here in the sense of "create if it does not already exist"</li>
+	<li>provide Objective-C files &lt;Module&gt;_YY/mm.h to contain wrappers for the C++ classes in &lt;Module&gt;_XX.cp/h</li>
+	<li>provide test files &lt;Module&gt;Test_YY/mm.h</li>
+	<li>for each class in &lt;Module&gt;_XX.cp/h<ul>
+		<li>rename C++ &lt;Class&gt; to &lt;Class_CP&gt;</li>
+		<li>in &lt;Module&gt;_YY/mm.h, provide wrapper &lt;Class&gt; to access code in &lt;Class_CP&gt;</li>
+		<li>for each feature<ul>
+			<li>define method(s) in &lt;Module&gt;_YY/mm.h:&lt;Class&gt; to access the C++ code to be tested</li>
+			<li>add tests for &lt;Module&gt;_YY/mm.h</li>
+		</ul></li>
+	</ul></li>
 	<li>replace C++ interface with Objective-C interface<ul>
-		<li>provide files &lt;Module&gt;_YY/mm.h</li>
 		<li>for each feature in existing module: <a href="#UseObjCFeatureInterface">Use Objective-C Feature Interface</a></li>
 		<li>verify that file &lt;Module&gt;_XX.h is not referenced except from &lt;Module&gt;_YY.h</li>
 	</ul></li>

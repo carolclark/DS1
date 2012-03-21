@@ -136,7 +136,7 @@
 		Event { "page top", "" },		Keypress { kc_home, 0 },                          \
 		Event { "page end", "" },		Keypress { kc_end, 0 },                           \
 		Event { "link content", "" },	ResSubslate { resid_LinkContentSlate },			\
-		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft }, \
+		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 29, _window, _topLeft }, \
 			Click { -1, 335, 10, _screen, _topLeft }, endSequence{}
 
 // parameters: _BrowseCdocResID_; _mainFrame_h, _mainFrame_v; _homeApp
@@ -404,7 +404,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define _fixWindow	\
 		Event { "fix window", "" },		Sequence{},			\
 			Click { 0, 85, 10, _window, _topLeft },		\
-			Click { -1, 335, 10, _screen, _topLeft },		\
+			Click { -1, 335, 29, _screen, _topLeft },		\
 			endSequence{}
 
 #define _OpenScriptsMenu_	Click { 1, -279, 15, _screen, _topRight }, KeyDelay { kc_down, 0, 10 }
@@ -1670,7 +1670,6 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 	_CloseSubslate_,                                                                               \
 	ExitEvent { "show position", "display information about the current cursor position" },	IMouse { im_Position, 0 },			\
 	Event { "move", "move" },			IMouse { im_Move, 0 },                  \
-	Event { "drag", "drag" },			IMouse { im_Drag, 0 },                  \
 	Event { "set mark", "" },			IMouse { im_MarkSet, 0 },				\
 	Event { "drag to mark", "" },		IMouse { im_DragToMark, 0 },			\
 	Event { "go to mark", "" },			IMouse { im_GoToMark, 0 },			\
@@ -1765,6 +1764,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 			endSubslate{},	\
 		endSubslate{},	\
 	ExitEvent { "okay", "exit this Subslate" },	IMouse { im_Close, 0 }
+// Event { "drag", "drag" },			IMouse { im_Drag, 0 },           code exists, but has never worked
 
 #pragma mark _FullAccessItems_
 #define _FullAccessItems_	\

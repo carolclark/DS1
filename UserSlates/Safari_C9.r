@@ -811,7 +811,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		ExitEvent { "close window", "" },	Keypress { kc_W, mf_command },		\
 		Event { "fix window", "" },		Sequence{},			\
 			Click { 0, 85, 10, window, "1", _topLeft },		\
-			Click { -1, 280, 10, _screen, _topLeft },		\
+			Click { -1, 480, 29, _screen, _topLeft },		\
 			endSequence{},			\
 		Event { "jump right", "option-right <n> times" },	Subslate { "<n>" },		\
 			_SlateGlobals_,		\
@@ -1292,7 +1292,7 @@ resource restype_Slate (resid_Safari, "Safari Slate") { {
 			_SafariStandards_,
 			_CloseSubslate_,
 			Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, window, "1", _topLeft },
-				Click { -1, 280, 10, _screen, _topLeft }, endSequence{},
+				Click { -1, 480, 29, _screen, _topLeft }, endSequence{},
 			Event { "close window", "" },	Keypress { kc_W, mf_command },
 			Event { "yahoo home", "" },		Sequence{}, 
 				OpenURL { "http://my.yahoo.com/" }, ResSubslate { resid_YahooHome }, endSequence{},

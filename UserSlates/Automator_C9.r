@@ -1,5 +1,5 @@
 // =================================================================================
-//	Automator_C9.r					©2010 C & C Software, Inc. All rights reserved.
+//	Automator_C9.r				©2010-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -193,7 +193,7 @@ resource restype_Slate (resid_Automator, "Automator Slate") { {
 		Event { "workflow", "" },		Click { 1, -280, 100, _window, _topRight },
 		Event { "fix window", "" },		Sequence{},
 			Click { 0, 85, 10, window, "1", _topLeft },
-			Click { -1, 280, 10, _screen, _topLeft },
+			Click { -1, 280, 29, _screen, _topLeft },
 			endSequence{},
 		Event { "Action", "" },			ResSubslate { resid_ActionSlate },
 		Event { "Menu", "access menus" },		Subslate { "Menu" },

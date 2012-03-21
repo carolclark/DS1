@@ -399,7 +399,7 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 			Event { "question", "" },		Sequence{}, Keypress { kc_slash, mf_shift }, Keypress { kc_slash, mf_control }, endSequence{},
 			endSubslate{},
 		Event { "show selection", "" },		Keypress { kc_L, mf_command + mf_shift },
-		Event { "go to definition", "" },	Keypress { kc_J, mf_command + mf_option },
+		Event { "go definition", "" },	Keypress { kc_J, mf_command + mf_option },
 		goToReference_,
 		Event { "save files", "" },			Keypress { kc_S, mf_command + mf_option },
 		Event { "Special", "type predefined text shortcuts" },
@@ -528,6 +528,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 		ExitEvent { "type text", "" },			Sequence{}, TypeText { "TypeText { \"<##>\" }," }, _previous, endSequence{},
 		ExitEvent { "resource subslate", "" },	Sequence{}, TypeText { "ResSubslate { <##> }, " }, _previous, endSequence{},
 		ExitEvent { "click menu", "" },			Sequence{}, TypeText { "ClickMenu { \"<##>\" }, " }, _previous, endSequence{},
+		ExitEvent { "wait", "" },				Sequence{}, TypeText { "Wait { <##> }, " }, _previous, endSequence{},
 		ExitEvent { "nil action", "" },			TypeText { "NilAction{}" },
 		ExitEvent { "keypress", "" },			Sequence{}, TypeText { "Keypress { kc_<##>, <##> }," }, _previous, _previous, endSequence{},
 			ExitEvent { "key return", "" },			TypeText { "return" },
@@ -653,7 +654,7 @@ resource restype_Slate (resid_BuildAccessor, "") { {
 		_SlateGlobals_,
 		ExitEvent { "exit", "" },		NilAction{},
 		ExitEvent { "cancel", "" },		NilAction{},
-		Event { "run original", "" },	Launch { HomeApps_"Accessor_C9.app", 0 },
+		Event { "run original", "" },	Launch { HomeApps_"AccessorC9.app", 0 },
 		Event { "quit", "" },			Keypress { kc_Q, mf_command },
 	} }
 } };
@@ -930,7 +931,7 @@ resource restype_Slate (resid_BBContinueCheckAll, "resid_BBContinueCheckAll") { 
 		_SlateGlobals_,
 		ExitEvent { "cancel", "" },		NilAction{},
 		ExitEvent { "exit", "" },		NilAction{},
-		ExitEvent { "continue", "" },	Sequence{}, _return, _BBClickScriptsMenu, _down, TypeText { "ValidateHTML" }, _right, TypeText { "CheckLinksAll" }, _return, endSequence{},
+		ExitEvent { "continue", "" },	Sequence{}, _return, Wait { 40 }, _BBClickScriptsMenu, Wait { 40 }, _down, TypeText { "ValidateHTML" }, _right, TypeText { "CheckLinksAll" }, _return, endSequence{},
 	} }
 } };
 
@@ -1394,7 +1395,7 @@ resource restype_Slate (resid_Organizer, "Organizer") { {
 		_CloseSubslate_,
 		_IMouseSlate_,
 		_DirectionKeys_,
-		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft },		Click { -1, 280, 10, _screen, _topLeft }, endSequence{},	
+		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft },		Click { -1, 280, 29, _screen, _topLeft }, endSequence{},	
 		_OrgPanelRows_,
 		ExitEvent { "open",	"" },		Keypress { kc_return, 0 },
 		Event { "devices", "" },		Click { 1, -128, 45, _window, _topCenter },	
@@ -1484,7 +1485,7 @@ resource restype_Slate (resid_Update, "Update") { {
 		_IMouseSlate_,
 		_DirectionKeys_,
 		_WhitespaceKeys_,
-		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft },		Click { -1, 280, 10, _screen, _topLeft }, endSequence{},	
+		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft },		Click { -1, 280, 29, _screen, _topLeft }, endSequence{},	
 	} }
 } };
 
@@ -2515,6 +2516,11 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		_DefaultBase_,
 		_TypeXcodeSlate_,
 		_XcodeStandards_,
+		Event { "test click", "" },		Subslate { "test clicks" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			_TestClicksItems_,
+		endSubslate{},
 		Event { "window", "" },			Subslate { "window" },
 			_WindowItems_,
 			endSubslate{},
@@ -2551,7 +2557,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "go tab", "" },			_goTab,
 		Event { "panel", "" },			ResSubslate { resid_Panel },
 		_JumpBar_,
-		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _pwindow, _topLeft }, Click { -1, 280, 10, _screen, _topLeft }, endSequence{},	
+		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _pwindow, _topLeft }, Click { -1, 87, 29, _screen, _topLeft }, endSequence{},	
 		Event { "reveal", "" },			Keypress { kc_L, mf_command },
 		Event { "context menu", "" },	ClickMod { 1, 0, 0, _cursor, mf_control },
 		Event { "Terminal", "" },		Sequence{}, ResSubslate { resid_XCTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},

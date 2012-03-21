@@ -25,7 +25,8 @@
 		<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "1" "" -->
 		<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
 		<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
-	<!-- @topicGroup "" "14" -->
+		<!-- @topicItem "Set Up User SSH" "#setupSSH" "1" "" -->
+	<!-- @topicGroup "" "15" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
 
@@ -153,9 +154,9 @@
 
 <!-- @marker "Create New Repository" -->
 <h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
-	<li><a href="#tsk_CreateBareRepository">Create Bare Repository</a> ~/Dev/gitrep/&lt;ProjectName&gt;</li>
+	<li><a href="#tsk_CreateBareRepository">Create Bare Repository</a> locally at ~/Dev/gitrep/&lt;ProjectName&gt;, or at ProjectLocker <b>ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git</b> or <b>ssh://git-CCSoftware@pl5.projectLocker.com:lt;ProjectName&gt;.git</b></li>
 	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
-		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt;</li>
+		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or <b>ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git</b> or <b>ssh://git-CCSoftware@pl5.projectLocker.com:lt;ProjectName&gt;.git</b></li>
 		<li><b>name:</b> &lt;ProjectName&gt;</li>
 		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
 	</ul></li>
@@ -168,29 +169,16 @@
 <!-- @marker "Add Remote Repository" -->
 <h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul>
 	<li class='blurb'>Add Remote Repository from existing working copy &lt;ProjectName&gt;</li>
-		<li class='blurb'>see WWDC 2011 video Managing Source Control</li>
-		<li><a href="../Support/Git.html#tsk_CreateBareRepository">Create Bare Repository</a> at https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;</li>
-		<li>Xcode &gt; Repositories/&lt;ProjectName&gt;/Remotes: add remote: name 'remote', location https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;</li>
-		<li>push master branch of existing working copy to remote/master (create)</li>
-		<li>?track remote branch?</li>
+	<li class='blurb'>see WWDC 2011 video Managing Source Control</li>
+	<li>add repository to ProjectLocker account, or <a href="../Support/Git.html#tsk_CreateBareRepository">Create Bare Repository</a> locally</li>
+	<li>if there is an existing working copy, push its master branch to remote/master (create)</li>
 </ul>
-<div class='depr'><ul>
-	<li>Clone<ul>
-		<li><b>WorkingCopy</b>: name of Working Copy folder</li>
-		<li><b>Parent</b>: folder WorkingCopy goes in</li>
-		<li>in Terminal:<ul>
-			<li class='mono'>cd &lt;Parent&gt;</li>
-			<li class='mono'>git clone /Volumes/carollclark/gitrep/PunkinRemote &lt;WorkingCopy&gt;</li>
-		</ul></li>
-	</ul></li>
-	<li class='nyi'>Xcode Clone: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Add Remote<ul>
-		<li>(parameters)</li>
-		<li>Xcode cannot currently handle password-protected git repositories 9/6/11</li>
-	</ul></li>
-	<li>Track Branch: Xcode: Repositories &gt; &lt;ProjectName&gt; &gt; Remotes: Track Branch<ul>
-		<li>(parameters)</li>
-	</ul></li>
-</ul></div>
+
+<!-- @marker "Set Up User SSH" -->
+<h4 id='setupSSH'>Set Up User SSH</h4><ul>
+	<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
+	<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>	
+</ul>
 
 <!-- @marker "Policies and Notes" -->
 <h2>Policies and Notes</h2>
