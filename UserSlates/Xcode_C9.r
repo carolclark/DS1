@@ -40,22 +40,24 @@
 
 #define resid_XCTerminal			resid_Xcode+40
 
-#define resid_BBValidate			resid_Xcode+42
-#define resid_BBContinueCheckAll		resid_BBValidate+1
+#define resid_Stickies				resid_Xcode+42
 
-#define resid_FileMenu				resid_Xcode+45
+#define resid_BBValidate			resid_Xcode+45
+	#define resid_BBContinueCheckAll	resid_BBValidate+1
+
+#define resid_FileMenu				resid_Xcode+50
 	#define resid_NewFile				resid_FileMenu+1
 	#define resid_OpenFile				resid_FileMenu+2
 	#define resid_AddFiles				resid_FileMenu+3
 	#define resid_SourceControl			resid_FileMenu+4
 
-#define resid_firstFileDialog		resid_Xcode+50
+#define resid_firstFileDialog		resid_Xcode+60
 	#define resid_FileOpen				resid_firstFileDialog+0
 	#define resid_FileSave				resid_firstFileDialog+1
 
-#define resid_SelectTargets			resid_Xcode+60	
+#define resid_SelectTargets			resid_Xcode+70	
 
-#define resid_EditMenu				resid_Xcode+70
+#define resid_EditMenu				resid_Xcode+80
 
 #define resid_DesignMenu			resid_Xcode+90
 	#define	resid_TypeDesign			resid_DesignMenu+1
@@ -908,6 +910,25 @@ resource restype_Slate (resid_XCTerminal, "terminal support") { {
 	} }
 } };
 
+#pragma mark Stickies
+resource restype_Slate (resid_Stickies, "") { {
+	Slate { "Stickies",	{
+		_SlateGlobals_,
+		ExitEvent { "close", "" },	Sequence{}, Keypress { kc_W, mf_command }, Launch { DevApps_"XCode.app", resid_Xcode }, endSequence{},
+		ExitEvent { "exit", "" },	NilAction{},
+		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
+		Event { "okay", "" },		Sequence{}, _return, Launch { DevApps_"XCode.app", resid_Xcode }, endSequence{},
+		Event { "select all", "" },	Keypress { kc_A, mf_command },
+		Event { "paste", "" },		Keypress { kc_V, mf_command },
+		Event { "copy all", "" },	Sequence{}, Keypress { kc_A, mf_command }, Keypress { kc_C, mf_command }, _right, endSequence{},
+		_CommandSlate_,
+		_IMouseSlate_,
+		_TypeXcodeSlate_,
+		_WhitespaceKeys_,
+		_DirectionKeys_,
+	} }
+} };
+
 #pragma mark Validate
 #define _BBClickScriptsMenu	Click { 1, 628, 11, _screen, _topLeft }
 resource restype_Slate (resid_BBValidate, "html validation support") { {
@@ -1669,6 +1690,7 @@ resource restype_Slate (resid_edVersion, "edVersion") { {
 		Event { "commit", "" },			Sequence{}, Keypress { kc_C, mf_command + mf_option }, ResSubslate { resid_Commit }, endSequence{},
 		Event { "new tab", "" },		Keypress { kc_T, mf_command },
 //??		Event { "merge", "" },			TypeText { "merge" },
+		Event { "Stickies", "" },		Sequence{}, ResSubslate { resid_Stickies }, Launch { Apps_"Stickies.app", 0 }, endSequence{},
 		Event { "select row", "" },		ResSubslate { resid_SelectRow },
 		_TypeXcodeSlate_,
 	} }
@@ -2562,6 +2584,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "context menu", "" },	ClickMod { 1, 0, 0, _cursor, mf_control },
 		Event { "Terminal", "" },		Sequence{}, ResSubslate { resid_XCTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},
 		Event { "Validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { Apps_"BBEdit.app", 0 }, endSequence{},
+		Event { "Stickies", "" },		Sequence{}, ResSubslate { resid_Stickies }, Launch { Apps_"Stickies.app", 0 }, endSequence{},
 		Event { "Menu", "access menus" },
 			Subslate { "Menu" },
 				_SlateGlobals_,

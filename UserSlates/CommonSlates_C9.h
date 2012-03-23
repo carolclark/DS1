@@ -1038,6 +1038,38 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 			endSequence{},                                                                                                                                                                                                                                                                                                                                 \
 		endSubslate{},
 
+#pragma mark _GoLeftItems_
+#define	_GoLeftItems_	\
+	ExitEvent { "one", "" },		Sequence{}, _left, endSequence{},	\
+	ExitEvent { "two", "" },		Sequence{}, _left, _left, endSequence{},	\
+	ExitEvent { "three", "" },		Sequence{},	_left, _left, _left, endSequence{},	\
+	ExitEvent { "four", "" },		Sequence{},	_left, _left, _left, _left,	endSequence{},	\
+	ExitEvent { "five", "" },		Sequence{},	_left, _left, _left, _left, _left, endSequence{},	\
+	ExitEvent { "six", "" },		Sequence{},	_left, _left, _left, _left, _left, _left, endSequence{}, \
+	ExitEvent { "seven", "" },		Sequence{},	_left, _left, _left, _left, _left, _left, _left, endSequence{},	\
+	ExitEvent { "eight", "" },		Sequence{},	_left, _left, _left, _left, _left, _left, _left, _left, endSequence{},	\
+	ExitEvent { "nine", "" },		Sequence{}, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},	\
+	ExitEvent { "ten", "" },		Sequence{}, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},	\
+	ExitEvent { "twenty", "" },		Sequence{}, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},	\
+	ExitEvent { "thirty", "" },		Sequence{}, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left,	 _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},	\
+	ExitEvent { "forty", "" },		Sequence{}, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left,	 _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{}
+
+#pragma mark _GoRightItems_
+#define	_GoRightItems_	\
+	ExitEvent { "one", "" },		Sequence{}, _right, endSequence{},	\
+	ExitEvent { "two", "" },		Sequence{}, _right, _right, endSequence{},	\
+	ExitEvent { "three", "" },		Sequence{},	_right, _right, _right, endSequence{},	\
+	ExitEvent { "four", "" },		Sequence{},	_right, _right, _right, _right,	endSequence{},	\
+	ExitEvent { "five", "" },		Sequence{},	_right, _right, _right, _right, _right, endSequence{},	\
+	ExitEvent { "six", "" },		Sequence{},	_right, _right, _right, _right, _right, _right, endSequence{}, \
+	ExitEvent { "seven", "" },		Sequence{},	_right, _right, _right, _right, _right, _right, _right, endSequence{},	\
+	ExitEvent { "eight", "" },		Sequence{},	_right, _right, _right, _right, _right, _right, _right, _right, endSequence{},	\
+	ExitEvent { "nine", "" },		Sequence{}, _right, _right, _right, _right, _right, _right, _right, _right, _right, endSequence{},	\
+	ExitEvent { "ten", "" },		Sequence{}, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, endSequence{},	\
+	ExitEvent { "twenty", "" },		Sequence{}, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, endSequence{},	\
+	ExitEvent { "thirty", "" },		Sequence{}, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right,	 _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, endSequence{},	\
+	ExitEvent { "forty", "" },		Sequence{}, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right,	 _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, _right, endSequence{}
+
 #pragma mark _TabBackSubslate_
 #define	_TabBackSubslate_	\
 	Event { "tab back", "shift-tab <n> times" },	Subslate { "tb<n>" },                                                                                                                                                                                                                                                                               \

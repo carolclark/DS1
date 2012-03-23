@@ -139,7 +139,7 @@ resource restype_Slate (resid_gitCommit, "") { {
 		_CloseSubslate_,
 		ExitEvent { "excecute", "" },	_return,
 		Event { "message", "" },		Sequence{}, TypeText { "-m \"\"" }, _left, endSequence{},
-		Event { "file", "" },			TypeText { "-F \"${CCDev}/tmp/gitmessage" },
+		Event { "file", "" },			Sequence{}, TypeText { "-F \"${CCDev}/tmp/gitmessage" }, Keypress { kc_quote, mf_shift }, endSequence{},
 	} }
 } };
 
