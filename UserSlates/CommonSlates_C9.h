@@ -61,29 +61,29 @@
 #define resid_Safari					14000
 #define resid_Calendar					15000
 #define resid_Tunes						16000
-#define resid_Xcode						17000
-#define resid_InterfaceBuilder			18000
-#define resid_PackageMaker				19000
-#define resid_Eclipse					20000
-#define resid_BBEdit					21000
+#define resid_Xcode						17000		// allocate 2000
+#define resid_InterfaceBuilder			19000
+#define resid_PackageMaker				20000
+#define resid_Eclipse					21000
+#define resid_BBEdit					22000
 	#define resid_BBEdit_External			resid_BBEdit+1
 
-#define resid_FileMaker					22000
-#define resid_AppleWorks				23000
-#define resid_Backup					24000
-#define resid_Parallels					25000
-#define resid_UMLet						26000
+#define resid_FileMaker					23000
+#define resid_AppleWorks				24000
+#define resid_Backup					25000
+#define resid_Parallels					26000
+#define resid_UMLet						27000
 	#define resid_LaunchUMLet			resid_UMLet+1
 	#define resid_UMLetSubslate			resid_UMLet+2
-#define resid_Preview					27000
-#define resid_Terminal					28000
-#define resid_UIBrowser					29000
-#define resid_Automator					30000
-#define resid_TextEdit					31000
-#define resid_ScriptEditor				32000
-#define resid_SystemPrefs				33000
-#define resid_Dashcode					34000
-#define resid_Numbers					35000
+#define resid_Preview					28000
+#define resid_Terminal					29000
+#define resid_UIBrowser					30000
+#define resid_Automator					31000
+#define resid_TextEdit					32000
+#define resid_ScriptEditor				33000
+#define resid_SystemPrefs				34000
+#define resid_Dashcode					35000
+#define resid_Numbers					36000
 #define resid_ArbProto					40000
 #define resid_Xcode3					48000
 
@@ -355,20 +355,23 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		Event { "search", "" },				Click { 1, -100, _mainFrame_v+70, _window, _topRight },                        \
 		Event { "main page", "" },			Click { 1, _mainFrame_h+50, _mainFrame_v+70, _window, _topLeft },           \
 		Event { "related", "" },			Click { 1, _mainFrame_h+175, _mainFrame_v+70, _window, _topLeft },           \
-		Event { "classes", "" },			Click { 1, _mainFrame_h+290, _mainFrame_v+70, _window, _topLeft },            \
-			Event { "class list", "" },			Click { 1, _mainFrame_h+50, _mainFrame_v+175, _window, _topLeft },          \
-			Event { "class index", "" },		Click { 1, _mainFrame_h+140, _mainFrame_v+175, _window, _topLeft },       \
-			Event { "class members", "" },		Click { 1, _mainFrame_h+250, _mainFrame_v+175, _window, _topLeft },       \
+		Event { "namespaces", "" },			Click { 1, _mainFrame_h+290, _mainFrame_v+70, _window, _topLeft },            \
+		Event { "classes", "" },			Click { 1, _mainFrame_h+410, _mainFrame_v+70, _window, _topLeft },            \
+			Event { "class list", "" },			Click { 1, _mainFrame_h+50, _mainFrame_v+110, _window, _topLeft },          \
+			Event { "class index", "" },		Click { 1, _mainFrame_h+140, _mainFrame_v+110, _window, _topLeft },       \
+			Event { "class members", "" },		Click { 1, _mainFrame_h+250, _mainFrame_v+110, _window, _topLeft },       \
 				Event { "all", "" },				Click { 1, _mainFrame_h+25, _mainFrame_v+145, _window, _topLeft },                \
 				Event { "functions", "" },			Click { 1, _mainFrame_h+100, _mainFrame_v+145, _window, _topLeft },           \
 				Event { "variables", "" },			Click { 1, _mainFrame_h+185, _mainFrame_v+145, _window, _topLeft },          \
 				Event { "properties", "" },			Click { 1, _mainFrame_h+280, _mainFrame_v+145, _window, _topLeft },         \
-		Event { "files", "" },				Click { 1, _mainFrame_h+370, _mainFrame_v+70, _window, _topLeft },             \
-			Event { "file list", "" },			Click { 1, _mainFrame_h+65, _mainFrame_v+145, _window, _topLeft },           \
-			Event { "file members", "" },		Click { 1, _mainFrame_h+144, _mainFrame_v+145, _window, _topLeft },        \
+		Event { "files", "" },				Click { 1, _mainFrame_h+490, _mainFrame_v+70, _window, _topLeft },             \
+			Event { "file list", "" },			Click { 1, _mainFrame_h+65, _mainFrame_v+110, _window, _topLeft },           \
+			Event { "file members", "" },		Click { 1, _mainFrame_h+144, _mainFrame_v+110, _window, _topLeft },        \
 		Event { "select", "" },				Click { 1, 0, 0, _cursor },       \
 		Event { "down", "" },				Click { 0, 0, 22, _cursor },       \
 		Event { "north", "" },				Click { 0, 0, -22, _cursor },       \
+		Event { "left", "" },				Click { 0, 40, 0, _cursor },       \
+		Event { "right", "" },				Click { 0, -40, 0, _cursor },       \
 		Event { "row one", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+225, _window, _topLeft },       \
 		Event { "row two", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+247, _window, _topLeft },       \
 		Event { "row three", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+270, _window, _topLeft },       \

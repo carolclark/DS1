@@ -1,5 +1,5 @@
 // =================================================================================
-//	Finder.r						©2006 C & C Software, Inc. All rights reserved.
+//	Finder.r					©2006-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -28,6 +28,7 @@ resource restype_Slate (resid_TypeFinderSlate, "Type Slate") { {
 		_TypeSlateItems_,
 		_JumpDownSubslate_,
 		_JumpNorthSubslate_,
+		_DoJumpSubslate_,
 		Event { "Special", "type predefined text shortcuts" },
 			ResSubslate { resid_TypeSpecialFinderSlate },
 	} }
@@ -74,6 +75,7 @@ resource restype_Slate (resid_Finder, "Finder Slate") { {
 		_TypeFinderSlate_,
 		_JumpDownSubslate_,
 		_JumpNorthSubslate_,
+		_DoJumpSubslate_,
 		Event { "Menu", "access menus" },		Subslate { "Menu" },
 			_SlateGlobals_,
 			_CloseSubslate_,
