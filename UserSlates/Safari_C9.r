@@ -1,5 +1,5 @@
 // =================================================================================
-//	Safari.r					ï¿½2005-12 C & C Software, Inc. All rights reserved.
+//	Safari.r					©2005-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma mark 0 ===
@@ -839,8 +839,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },      \
 		Event { "page north", "" },		Keypress { kc_pageup, 0 },       \
 		Event { "page top", "" },		Keypress { kc_home, 0 },           \
-		Event { "page end", "" },		Keypress { kc_end, 0 },			\
-		Event { "lock option",	"lock or unlock option key" },	Keypress { 0, mf_option + mf_toggle }
+		Event { "page end", "" },		Keypress { kc_end, 0 }
 
 #define _pzlTop		524
 resource restype_Slate (resid_sudokuTimes, "") { {
@@ -854,6 +853,7 @@ resource restype_Slate (resid_sudokuTimes, "") { {
 		Event { "capital",		"shift key" },	Keypress { 0, mf_shift },
 		Event { "lock shift",	"lock or unlock shift key" },	Keypress { 0, mf_shift + mf_toggle },
 		Event { "position puzzle", "" },	Sequence{}, Click { 1, 400, 400, window, "1", _topLeft }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, endSequence{},
+		Event { "lock option",	"lock or unlock option key" },	Keypress { 0, mf_control + mf_toggle },
 		_SudokuBase_,
 	} }
 } };
@@ -1004,6 +1004,7 @@ resource restype_Slate (resid_sudokuDaily, "") { {
 				ExitEvent { "December", "" },	_indexStart_"10/12/index.html" }, endSequence{},
 				endSubslate{},
 			endSubslate{},
+		Event { "lock option",	"lock or unlock option key" },	Keypress { 0, mf_option + mf_toggle },
 		_SudokuBase_,
 	} }
 } };

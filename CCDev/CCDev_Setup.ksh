@@ -101,14 +101,12 @@ function shunitInstall {
 # identify and set variables for currentf user
 user="${USER}"
 ccdevFolder="/Users/${user}/.ccdev"
-typeset -i installCCDevSupport=0
 
 case "${user}" in
 	"carolclark" )
 		fullname="Carol Clark"
 		email="carolclark@cox.net"
 		ccdevFolder="${HOME}/CCDev"
-		installCCDevSupport=1
 		;;
 	"lauramartinez" )
 		fullname="Laura Martinez"
@@ -116,7 +114,7 @@ case "${user}" in
 		;;
 	"scottclark" )
 		fullname="Scott Clark"
-		email="scotttclark@verizon.net"
+		email="scottclark@kualumni.org"
 		;;
 	"ginaclark" )
 		fullname="Gina N. Clark"
@@ -129,56 +127,61 @@ case "${user}" in
 esac
 
 # configure git
+print "configuring git"
 CCDev="${ccdevFolder}"; export CCDev
 config="/Users/${user}/.gitconfig"
 exclude="${CCDev}/Git/exclude"
+mkdir -p "${CCDev}/Git"
 gitPrintConfig > "${config}"				# configure git
 gitPrintExclude > "${exclude}"				# specify files for git to ignore
 
 # configure Xcode ORGANIZATIONNAME
-print "writing Xcode defaults ..."
+print "writing Xcode defaults"
 defaults write com.apple.Xcode PBXCustomTemplateMacroDefinitions '{ "ORGANIZATIONNAME" = "C & C Software, Inc.";}'
 if [[ "${?}" != "0" ]] ; then
 	print "failed to write Xcode ORGANIZATIONNAME"
 	exit 1
 fi
 
-# install CCDev Support
-if [[ installCCDevSupport ]] ; then
-	# configure XCCodeSenseAllowAutoCompletionInPlainFiles
+# configure XCCodeSenseAllowAutoCompletionInPlainFiles
+if [[ "${user}" = "carolclark" ]] ; then
+	print "configuring XCCodeSenseAllowAutoCompletionInPlainFiles"	
 	defaults write com.apple.Xcode XCCodeSenseAllowAutoCompletionInPlainFiles -true
 	if [[ "${?}" != "0" ]] ; then
 		print "failed to write XCCodeSenseAllowAutoCompletionInPlainFiles"
 		exit 1
 	fi
-
-	# set up environment variables
-	PATH="$PATH:$CCDev/bin:$CCDev/func"; export PATH
-	FPATH="$CCDev/func"; export FPATH
-	SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit
-
-	# set up to install $CCDev files
-	srcdir="$(dirname $0)"; export srcdir
-	mkdir -p $CCDev/func
-	mkdir -p $CCDev/bin
-
-	# install environment files
-	fldr="${srcdir}/Environment"
-	install "${fldr}/profile.ksh" "${HOME}" ".profile"			# establish shell environment
-	install "${fldr}/kshrc.ksh" "${CCDev}/bin" ".kshrc"			# establish ksh (Korn shell) environment
-	install "${fldr}/environment.plist" "${HOME}/.MacOSX"		# establish some environment variables for use by applications
-
-	# install bootstrap scripts
-	install "${srcdir}/Functions/errtrap.ksh" "$CCDev/func" "errtrap"
-	install "${srcdir}/Functions/ccInstall.ksh" "$CCDev/func" "ccInstall"
-	install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin"
-
-	# install third party software
-	shunitInstall
 fi
 
+# set up environment paths
+print "setting up environment paths"
+PATH="$PATH:$CCDev/bin:$CCDev/func"; export PATH
+FPATH="$CCDev/func"; export FPATH
+SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit
+
+# set up to install $CCDev files
+print "creating CCDev (${CCDev}) subdirectories"
+srcdir="$(dirname $0)"; export srcdir
+mkdir -p $CCDev/func
+mkdir -p $CCDev/bin
+mkdir -p $CCDev/tmp
+
+print "installing files ..."
+# install environment files
+fldr="${srcdir}/Environment"
+install "${fldr}/profile.ksh" "${HOME}" ".profile"			# establish shell environment
+install "${fldr}/kshrc.ksh" "${CCDev}/bin" ".kshrc"			# establish ksh (Korn shell) environment
+install "${fldr}/environment.plist" "${HOME}/.MacOSX"		# establish some environment variables for use by applications
+
+# install bootstrap scripts
+install "${srcdir}/Functions/errtrap.ksh" "$CCDev/func" "errtrap"
+install "${srcdir}/Functions/ccInstall.ksh" "$CCDev/func" "ccInstall"
+install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin"
+
+# install third party software
+shunitInstall
+
 # test CCDev_Setup
-#	this install script does not have access to errtrap, so we rely on shunit for some installation checking
 typeset -i failcnt=0
 
 print "== CCDev/_Tests/testCCDev_Setup.ksh"

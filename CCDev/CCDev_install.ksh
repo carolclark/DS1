@@ -46,7 +46,7 @@ function getSubtargetDestination {
 			;;
 		"Doxygen" )			# files for reference only
 			;&
-		"CCDev_Setup.ksh" )	# custom setup scriptCCDev_Setup.ksh
+		"CCDev_Setup.ksh" )	# custom setup script CCDev_Setup.ksh
 			;&
 		"Environment" )		# handled by CCDev_Setup.ksh
 			;;

@@ -370,18 +370,19 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		Event { "select", "" },				Click { 1, 0, 0, _cursor },       \
 		Event { "down", "" },				Click { 0, 0, 22, _cursor },       \
 		Event { "north", "" },				Click { 0, 0, -22, _cursor },       \
-		Event { "left", "" },				Click { 0, 40, 0, _cursor },       \
-		Event { "right", "" },				Click { 0, -40, 0, _cursor },       \
-		Event { "row one", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+225, _window, _topLeft },       \
-		Event { "row two", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+247, _window, _topLeft },       \
-		Event { "row three", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+270, _window, _topLeft },       \
-		Event { "row four", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+293, _window, _topLeft },       \
-		Event { "row five", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+316, _window, _topLeft },       \
-		Event { "row six", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+339, _window, _topLeft },       \
-		Event { "row seven", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+362, _window, _topLeft },       \
-		Event { "row eight", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+395, _window, _topLeft },       \
-		Event { "row nine", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+418, _window, _topLeft },       \
-		Event { "row ten", "" },			Click { 0, _mainFrame_h+30, _mainFrame_v+442, _window, _topLeft },       \
+		Event { "left", "" },				Click { 0, -40, 0, _cursor },       \
+		Event { "right", "" },				Click { 0, 40, 0, _cursor },       \
+		Event { "row zero", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+198, _window, _topLeft },       \
+		Event { "row one", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+225, _window, _topLeft },       \
+		Event { "row two", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+247, _window, _topLeft },       \
+		Event { "row three", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+270, _window, _topLeft },       \
+		Event { "row four", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+293, _window, _topLeft },       \
+		Event { "row five", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+316, _window, _topLeft },       \
+		Event { "row six", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+339, _window, _topLeft },       \
+		Event { "row seven", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+362, _window, _topLeft },       \
+		Event { "row eight", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+395, _window, _topLeft },       \
+		Event { "row nine", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+418, _window, _topLeft },       \
+		Event { "row ten", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+442, _window, _topLeft },       \
 		Event { "typedefs", "" },			Click { 1, _mainFrame_h+236, _mainFrame_v+74, _window, _topLeft },           \
 		Event { "enumerations", "" },		Click { 1, _mainFrame_h+312, _mainFrame_v+74, _window, _topLeft },        \
 		Event { "enumerator", "" },			Click { 1, _mainFrame_h+389, _mainFrame_v+74, _window, _topLeft },         \
@@ -848,6 +849,9 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		ExitEvent { "glossary link", "" }, Sequence{}, TypeText		\
 			{ "<a class='glosslink' href=\"<#which#>_gloss.html#def_<#term#>\"><#text#></a>" },		\
 			_previous, _previous, _previous, endSequence{},		\
+		ExitEvent { "refactor link", "" }, Sequence{}, TypeText		\
+			{ "<a href=\"../Support/DevelopingProjects.html#<#name#>\"><#title#></a>" },		\
+			_previous, endSequence{},		\
 		ExitEvent { "name", "" }, Sequence{}, TypeText		\
 			{ "<a name=''><##></a>" }, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left,		\
 			endSequence{},		\

@@ -14,6 +14,9 @@ testGitSetup() {
 	if [[ ! -e ${CCDev}/Git/exclude ]] ; then
 		fail "$LINENO: file ${CCDev}/Git/exclude missing" 
 	fi
+	if [[ ! -e ${CCDev}/tmp ]] ; then
+		fail "$LINENO: file ${CCDev}/tmp missing" 
+	fi
 }
 
 testEnvironment() {

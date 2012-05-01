@@ -13,6 +13,7 @@
 <!-- @topicList "DevelopingProjects" "Contents" -->
 	<!-- @topicItem "Projects" "#Projects_" "0" "" -->
 	<!-- @topicItem "Targets and Build Phases" "#Target_" "0" "" -->
+	<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
 	<!-- @topicItem "Porting C++ to Objective-C" "#PortingCxxToObjC" "0" "" -->
 <!-- @/topicList -->
 
@@ -87,6 +88,35 @@
 	<li>add file &lt;Project&gt;.doxygen from template; set parameters as indicated, using Dev/Support/Default.doxygen as a reference</li>
 </ul>
 
+<!-- @marker "Interface Builder" -->
+<h2>Interface Builder</h2>
+<!-- @topicList "Interface Builder" "InterfaceBuilder" -->
+	<!-- @topicItem "Remove IB Outlet" "#RemoveIBOutlet" "0" "" -->
+	<!-- @topicItem "Rename IB Outlet" "#RenameIBOutlet" "0" "" -->
+	<!-- @topicItem "Rename IB Object" "#RenameIBObject" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Remove IB Outlet" -->
+<h4 id='RemoveIBOutlet'>Remove IB Outlet</h4><ul>
+	<li>ensure that the IBOutlet variable is not accessed in code</li>
+	<li>in Interface Builder, delete the outlet connection</li>
+	<li>remove all occurrences of the IBOutlet variable in code</li>
+</ul>
+
+<!-- @marker "Rename IB Outlet" -->
+<h4 id='RenameIBOutlet'>Rename IB Outlet</h4><ul>
+	<li>add outlet connection for new name</li>
+	<li>compare the properties of the variables with the old and new names; make new variable match original intent</li>
+	<li>change all uses of the original variable to use the new name</li>
+	<li>apply <a href="#RemoveIBOutlet">Remove IB Outlet</a> to the original variable name</li>
+</ul>
+
+<!-- @marker "Rename IB Object" -->
+<h4 id='RenameIBObject'>Rename IB Object</h4><ul>
+	<li>in Interface Builder's hierarchical list, rename the object</li>
+	<li>apply <a href="#RenameIBOutlet">Rename IB Outlet</a> as indicated to rename IBOutlet connections to the renamed object</li>
+</ul>
+
 <!-- @marker "Porting C++ to Objective-C" -->
 <h2>Porting C++ to Objective-C</h2><ul>
 	<li>Motivation<ul>
@@ -94,13 +124,35 @@
 		<li>Xcode supports and we consistently use a testing framework for Objective-C, but not for C++.</li>
 		<li>C++ code is incompatible with Objective-C Automatic Reference Counting.</li>
 	</ul></li>
+	<li>AccessorC9<ul>
+		<li>These techniques are intended for use in porting C++ code from AccessorC9 to its Cocoa version Accessor. We exploit some characteristics of AccessorC9 in this process.<ul>
+			<li>AccessorC9 code is contained in namespace AccessLib, alias <span class='mono'>al</span>. ObjC objects &lt;Class&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
+			<li>AccessorC9 class al::Host was intended to support polymorphism for executable type and context. al::Host became bottleneck access point to the Application, Window, and SlateManager classes. We now exploit those aspects to provide an initial facade between Objective-C and C++ code.</li>
+		</ul></li>
+	</ul></li>
+	<li>As much as possible, we will wrap rather than change existing code until the initial import is complete.</li>
 </ul>
 
 <!-- @topicList "Porting C++ to Objective-C" "PortingCxxToObjC" -->
-	<!-- @topicItem "Replace C++ Interface with Objective-C" "#ReplaceCxxInterfaceWithObjC" "0" "" -->
-	<!-- @topicItem "Use Objective-C Feature Interface" "#UseObjCFeatureInterface" "0" "" -->	
+	<!-- @topicItem "Wrap C++ Class with Objective-C" "#WrapCxxClassWithObjC" "0" "" -->
+	<!-- @topicItem "Add C++ Object to Objective-C Class" "#AddCxxObjectToObjCClass" "0" "" -->
+	<!-- @topicItem "Replace C++ Interface with Objective-C" "#ReplaceCxxInterfaceWithObjC" "0" "deprecated" -->
+	<!-- @topicItem "Use Objective-C Feature Interface" "#UseObjCFeatureInterface" "0" "deprecated9" -->	
 <!-- @/topicList -->
 
+<!-- @marker "Wrap C++ Class with Objective-C" -->
+<h4 id='WrapCxxClassWithObjC'>Wrap C++ Class with Objective-C</h4><ul>
+	<li>add files &lt;Class&gt;_AL.cp/h to project, file &lt;Class&gt;_AL.cp to target; compile and test</li>
+	<li>add files &lt;Class&gt;.mm/h, &lt;Class&gt;Test.mm/h to project and relevant targets; compile and test</li>
+	<li>apply [<a href="#AddCxxObjectToObjCClass">Add C++ Object to Objective-C Class</a>] to add C++ object of type al::&lt;Class&gt; to &lt;Class&gt;; add init... and destroy code; compile and test</li>
+</ul>
+	
+<!-- @marker "Add C++ Object to Objective-C Class" -->
+<h4 id='AddCxxObjectToObjCClass'>Add C++ Object to Objective-C Class</h4><ul>
+	<li>&lt;Class&gt;: see <a href="http://robnapier.net/blog/wrapping-c-take-2-1-486">Wrapping C++</a></li>	
+</ul>
+
+<div class='depr'>
 <!-- @marker "Replace C++ Interface with Objective-C" -->
 <h4 id='ReplaceCxxInterfaceWithObjC'>Replace C++ Interface with Objective-C</h4><ul>
 	<li class='blurb'>ultimately replaces C++ module &lt;Module&gt;_XX.cp/h with Objective-C module &lt;Module&gt;_YY.mm/h</li>
@@ -126,6 +178,7 @@
 <!-- @marker "Use Objective-C Feature Interface" -->
 <h4 id='UseObjCFeatureInterface'>Use Objective-C Feature Interface</h4><ul>
 </ul>
+</div>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
