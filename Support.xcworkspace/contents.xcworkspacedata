@@ -400,6 +400,20 @@
          location = "container:Xcode/Templates/FileTemplates"
          name = "FileTemplates">
          <Group
+            location = "container:Xcode/Templates/FileTemplates/ObjectiveC"
+            name = "ObjectiveC">
+            <Group
+               location = "container:Xcode/Templates/FileTemplates/ObjectiveC/CPPWrapper.xctemplate"
+               name = "CPPWrapper">
+               <FileRef
+                  location = "group:___FILEBASENAME___.mm">
+               </FileRef>
+               <FileRef
+                  location = "group:TemplateInfo.plist">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
             location = "container:Xcode/Templates/FileTemplates/Documentation"
             name = "Documentation">
             <Group

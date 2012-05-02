@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					ï¿½2006-12 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					©2006-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -408,7 +408,7 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 		Event { "Add Style", "" },			ResSubslate { resid_InsertStyle },
 		Event { "Insert Tag", "" },			ResSubslate { resid_InsertTag },
 		Event { "User", "" },				ResSubslate { resid_InsertSlateText },
-		Event { "Special", "" },	1		ResSubslate { resid_TypeSpecialXcodeSlate },
+		Event { "Special", "" },			ResSubslate { resid_TypeSpecialXcodeSlate },
 		Event { "Doxygen", "" },			ResSubslate { resid_Doxygen },
 		Event { "indent", "" },				_indent,
 		Event { "indent back", "" },		_indentBack,
@@ -1312,6 +1312,8 @@ resource restype_Slate (resid_EditMenu, "Edit") { {
 		ExitEvent { "open in", "" },	Keypress { kc_comma, mf_command + mf_option + mf_shift },		\
 		ExitEvent { "focus", "" },		Keypress { kc_period, mf_command + mf_option },		\
 		Event { "nav list", "" },		_navList,		\
+		_JumpNorthSubslate_,	\
+		_JumpDownSubslate_,		\
 		Event { "top row", "" },		_topRow,		\
 		Event { "select row", "" },		ResSubslate { resid_SelectRow },		\
 		Event { "file", "" },			Keypress { kc_1, mf_command },		\
@@ -2331,7 +2333,7 @@ resource restype_Slate (resid_Macro, "") { {
 			TypeText { "_insert_row, " },
 			endSequence{},
 		Event { "two", "temp" },				Sequence{},
-			TypeText { "Hello\rHi" },
+			Keypress { kc_left, mf_command }, TypeText { "//" }, Keypress { kc_left, mf_command }, _down, 
 			endSequence{},
 		Event { "three", "temp" },				Sequence{},
 			Keypress { kc_C, mf_command }, _right, Keypress { kc_comma, 0 }, _return,

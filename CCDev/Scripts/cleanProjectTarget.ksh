@@ -27,7 +27,7 @@ project="${1}"
 target="${2}"
 
 case "${target}" in
-	"Cdoc" )
+	Cdoc )
 		print -n "== cleaning ${project}/${target}... "
 		lastbuilt="${CCDev}/build/${project}/Cdoc.lastbuilt"
 		if [[ -e "${lastbuilt}" ]] ; then
@@ -40,7 +40,7 @@ case "${target}" in
 		fi
 		print "succeeded"
 		;;
-	"*" )
+	* )
 		ccInstall "${HOME}/Dev/${project}" "${target}" -c
 		;;
 esac
