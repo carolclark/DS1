@@ -29,7 +29,10 @@ al::___FILEBASENAME___ ___FILEBASENAMEASIDENTIFIER___;
 	[super dealloc];
 }
 
-#pragma mark Interface for Testing
+#pragma mark	Interface for Testing
+/*! \name		InterfaceForTesting */
+//@{
+//@}
 
 @end
 

@@ -1,5 +1,5 @@
 // =================================================================================
-//	BBEdit.r					ï¿½2005-11 C & C Software, Inc. All rights reserved.
+//	BBEdit.r					©2005-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -432,10 +432,12 @@ resource restype_Slate (resid_TypeBBEditSlate, "Type Slate") { {
 		Event { "Special", "type predefined text shortcuts" },
 			ResSubslate { resid_TypeSpecialBBEdit },
 		Event { "undo", "" },			Keypress { kc_Z, mf_command },
+		Event { "copy", "" },			Keypress { kc_C, mf_command },
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		Event { "insert tag", "" },		ResSubslate { resid_Markup }, 
 		Event { "element", "" },		ResSubslate { resid_InsertElement }, 
 		Event { "insert element", "" },	ResSubslate { resid_InsertElement }, 
-		Event { "add style", "" },		ResSubslate { resid_InsertStyle }, 
+		Event { "add style", "" },		ResSubslate { resid_InsertStyle },
 		Event { "list item", "" },		Sequence{}, TypeText { "<li><#item#></li>" }, _previous, endSequence{},
 		Event { "select word", "" },	Sequence{}, Keypress { kc_left, mf_option },
 			Keypress { kc_right, mf_option + mf_shift }, endSequence{},
@@ -985,10 +987,13 @@ resource restype_Slate (resid_FileMenu, "File Menu") { {
 			Event { "Project", "" },		Sequence{}, Keypress { kc_N, mf_command + mf_option + mf_shift }, ResSubslate { resid_FileSaveDialog }, endSequence{},
 			Event { "Browser", "" },		Keypress { kc_N, mf_command + mf_option },
 		endSubslate{},
-		ExitEvent { "Revert", "" },		Keypress { kc_U, mf_command },
-		Event { "Save", "" },			Sequence{}, Keypress { kc_S, mf_command }, ResSubslate { resid_FileSaveDialog }, endSequence{},
-		ExitEvent { "Save Copy", "" },	Keypress { kc_S, mf_command + mf_option + mf_shift },
-		ExitEvent { "Save All", "" },	Keypress { kc_S, mf_command + mf_option },
+		Event { "open", "" },				Sequence{}, Keypress { kc_O, mf_command }, ResSubslate { resid_FileOpenDialog },  endSequence{},
+		ExitEvent { "Revert", "" },			Keypress { kc_U, mf_command },
+		Event { "Save", "" },				Sequence{}, Keypress { kc_S, mf_command }, ResSubslate { resid_FileSaveDialog }, endSequence{},
+		ExitEvent { "Save Copy", "" },		Keypress { kc_S, mf_command + mf_option + mf_shift },
+		ExitEvent { "Save All", "" },		Keypress { kc_S, mf_command + mf_option },
+		ExitEvent { "Close Document", "" },	Keypress { kc_W, mf_command },
+		ExitEvent { "Close Window", "" },	Keypress { kc_W, mf_command + mf_shift },
 	} },
 } };
 
@@ -1538,6 +1543,7 @@ resource restype_Slate (resid_Snippet, "") { {
 		_SlateGlobals_,		\
 		_DefaultBase_,		\
 		_TypeBBEditSlate_,		\
+		_Markers_,			\
 		Event { "Drawer", "" },		ResSubslate { resid_Drawer },		\
 		Event { "Project", "" },	ResSubslate { resid_Project },		\
 		Event { "File menu", "" },	ResSubslate { resid_FileMenu },		\

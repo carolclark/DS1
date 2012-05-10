@@ -40,7 +40,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 			Event { "Finder", "launch Finder" },
 				Launch { "Finder", resid_Finder },
 			Event { "Accessor", "launch Accessor" },
-				Launch { HomeApps_"Accessor_C9.app", resid_DefaultSlate },
+				Launch { HomeApps_"AccessorC9.app", resid_DefaultSlate },
 			Event { "System Prefs", "launch System Preferences" },
 				Launch { Apps_"System Preferences.app", resid_SystemPrefs },
 			Event { "Software Update", "launch Software Update" },

@@ -383,11 +383,21 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		Event { "row eight", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+395, _window, _topLeft },       \
 		Event { "row nine", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+418, _window, _topLeft },       \
 		Event { "row ten", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+442, _window, _topLeft },       \
-		Event { "typedefs", "" },			Click { 1, _mainFrame_h+236, _mainFrame_v+74, _window, _topLeft },           \
-		Event { "enumerations", "" },		Click { 1, _mainFrame_h+312, _mainFrame_v+74, _window, _topLeft },        \
-		Event { "enumerator", "" },			Click { 1, _mainFrame_h+389, _mainFrame_v+74, _window, _topLeft },         \
-		Event { "defines", "" },			Click { 1, _mainFrame_h+462, _mainFrame_v+74, _window, _topLeft },            \
-		Event { "related pages", "" },		Click { 1, _mainFrame_h+135, _mainFrame_v+23, _window, _topLeft },			\
+		Event { "row eleven", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+466, _window, _topLeft },       \
+		Event { "row twelve", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+490, _window, _topLeft },       \
+		Event { "row thirteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+514, _window, _topLeft },       \
+		Event { "row fourteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+538, _window, _topLeft },       \
+		Event { "row fifteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+562, _window, _topLeft },       \
+		Event { "row sixteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+586, _window, _topLeft },       \
+		Event { "row seventeen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+610, _window, _topLeft },       \
+		Event { "row eighteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+634, _window, _topLeft },       \
+		Event { "row nineteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+658, _window, _topLeft },       \
+		Event { "row twenty", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+682, _window, _topLeft },       \
+		Event { "typedefs", "" },			Click { 1, _mainFrame_h+236, _mainFrame_v+74, _window, _topLeft },       \
+		Event { "enumerations", "" },		Click { 1, _mainFrame_h+312, _mainFrame_v+74, _window, _topLeft },       \
+		Event { "enumerator", "" },			Click { 1, _mainFrame_h+389, _mainFrame_v+74, _window, _topLeft },       \
+		Event { "defines", "" },			Click { 1, _mainFrame_h+462, _mainFrame_v+74, _window, _topLeft },       \
+		Event { "related pages", "" },		Click { 1, _mainFrame_h+135, _mainFrame_v+23, _window, _topLeft },		\
 		Event { "class hierarchy", "" },	Click { 1, _mainFrame_h+144, _mainFrame_v+49, _window, _topLeft },      \
 	} }                                                                                                       		\
 } };
@@ -1606,9 +1616,13 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #pragma mark _TypeSpecialBaseItems_
 #define	_TypeSpecialBaseItems_	\
 	ExitEvent { "my e mail",	"" },	TypeText { "carolclark@cox.net" },	\
+	ExitEvent { "software", "" },		TypeText { "C & C Software" },		\
 	ExitEvent { "version 3", "" },		TypeText { "4YZHqz5pq1" },			\
 	ExitEvent { "IP address", "" },		TypeText { "192.168.0.104" },		\
-	ExitEvent { "shebang", "" },		TypeText { "#! /bin/ksh" }
+	ExitEvent { "shebang", "" },		TypeText { "#! /bin/ksh" },			\
+	ExitEvent { "pragma mark", "" },	TypeText { "#pragma mark" },		\
+	ExitEvent { "pragma heading", "" },	Sequence{}, TypeText { "#pragma mark <#digit#> === <#text#>" }, _previous, _previous, endSequence{},		\
+	ExitEvent { "pragma subhead", "" },	Sequence{}, TypeText { "#pragma mark <#digit#> -- <#text#>" }, _previous, _previous, endSequence{},		\
 
 #pragma mark _CommandSlateItems_
 #define _CommandSlateItems_	\

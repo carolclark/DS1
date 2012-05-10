@@ -14,7 +14,7 @@
 	<!-- @topicItem "Projects" "#Projects_" "0" "" -->
 	<!-- @topicItem "Targets and Build Phases" "#Target_" "0" "" -->
 	<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
-	<!-- @topicItem "Porting C++ to Objective-C" "#PortingCxxToObjC" "0" "" -->
+	<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
 <!-- @/topicList -->
 
 <p>tasks and refactorings related to development with Xcode projects</p>
@@ -118,7 +118,19 @@
 </ul>
 
 <!-- @marker "Porting C++ to Objective-C" -->
-<h2>Porting C++ to Objective-C</h2><ul>
+<h2>Porting C++ to Objective-C</h2>
+
+<!-- @topicList "Porting C++ to Objective-C" "PortingCppToObjC" -->
+	<!-- @topicItem "Porting Overview" "#PortingOverview" "0" "" -->
+		<!-- @topicItem "Porting: Naming Conventions" "#PortingNamingConventions" "1" "" -->
+	<!-- @topicGroup "" "3" -->
+	<!-- @topicItem "Deimplement Method" "#DeimplementMethod" "0" "" -->
+	<!-- @topicItem "Import C++ Class" "#ImportCppClass" "0" "" -->
+	<!-- @topicItem "Wrap C++ Class with Objective-C" "#WrapCppClassWithObjC" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Porting Overview" -->
+<h4 id='PortingOverview'>Porting Overview</h4><ul>
 	<li>Motivation<ul>
 		<li>For Mac development, C++ is being replaced by Cocoa with Objective-C.</li>
 		<li>Xcode supports and we consistently use a testing framework for Objective-C, but not for C++.</li>
@@ -126,60 +138,49 @@
 	</ul></li>
 	<li>AccessorC9<ul>
 		<li>These techniques are intended for use in porting C++ code from AccessorC9 to its Cocoa version Accessor. We exploit some characteristics of AccessorC9 in this process.<ul>
-			<li>AccessorC9 code is contained in namespace AccessLib, alias <span class='mono'>al</span>. ObjC objects &lt;Class&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
-			<li>AccessorC9 class al::Host was intended to support polymorphism for executable type and context. al::Host became bottleneck access point to the Application, Window, and SlateManager classes. We now exploit those aspects to provide an initial facade between Objective-C and C++ code.</li>
+			<li>AccessorC9 code is contained in namespace AccessLib, alias <span class='mono'>al</span>. ObjC objects &lt;ClassCP&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
+			<li>AccessorC9 class al::Host was intended to support polymorphism for executable type and context. al::Host became bottleneck access point to the Application, Window, and SlateManager classes. We now exploit those aspects to provide an access to application-level Objective-C classes from C++ code.</li>
 		</ul></li>
 	</ul></li>
 	<li>As much as possible, we will wrap rather than change existing code until the initial import is complete.</li>
 </ul>
 
-<!-- @topicList "Porting C++ to Objective-C" "PortingCxxToObjC" -->
-	<!-- @topicItem "Wrap C++ Class with Objective-C" "#WrapCxxClassWithObjC" "0" "" -->
-	<!-- @topicItem "Add C++ Object to Objective-C Class" "#AddCxxObjectToObjCClass" "0" "" -->
-	<!-- @topicItem "Replace C++ Interface with Objective-C" "#ReplaceCxxInterfaceWithObjC" "0" "deprecated" -->
-	<!-- @topicItem "Use Objective-C Feature Interface" "#UseObjCFeatureInterface" "0" "deprecated9" -->	
-<!-- @/topicList -->
-
-<!-- @marker "Wrap C++ Class with Objective-C" -->
-<h4 id='WrapCxxClassWithObjC'>Wrap C++ Class with Objective-C</h4><ul>
-	<li>add files &lt;Class&gt;_AL.cp/h to project, file &lt;Class&gt;_AL.cp to target; compile and test</li>
-	<li>add files &lt;Class&gt;.mm/h, &lt;Class&gt;Test.mm/h to project and relevant targets; compile and test</li>
-	<li>apply [<a href="#AddCxxObjectToObjCClass">Add C++ Object to Objective-C Class</a>] to add C++ object of type al::&lt;Class&gt; to &lt;Class&gt;; add init... and destroy code; compile and test</li>
-</ul>
-	
-<!-- @marker "Add C++ Object to Objective-C Class" -->
-<h4 id='AddCxxObjectToObjCClass'>Add C++ Object to Objective-C Class</h4><ul>
-	<li>&lt;Class&gt;: see <a href="http://robnapier.net/blog/wrapping-c-take-2-1-486">Wrapping C++</a></li>	
+<!-- @marker "Porting: Naming Conventions" -->
+<h5 id='PortingNamingConventions'>Porting: Naming Conventions</h5><ul>
+	<li>Original C++ files for class &lt;Class&gt; are named &lt;Class&gt;_AL.cp/h (or &lt;Class&gt;_C9.cp/h). These are initially imported as is. The implementation file may later be renamed to use extension .mm to enable use of Objective-C code.</li>
+	<li>Files for an Objective-C class that wraps the class in files &lt;Class&gt;_AL.cp/h are named &lt;Class&gt;.mm/h. The class itself is temporarily named &lt;Class&gt;CP, since otherwise the compiler could sometimes confuse &lt;Class&gt; with al::&lt;Class&gt;.</li>
+	<li>Pure Objective-C classes are in files named &lt;Class&gt;.m/h. Ultimately, pure Objective-C classes will replace all C++ and Objective-C++ classes.</li>
 </ul>
 
-<div class='depr'>
-<!-- @marker "Replace C++ Interface with Objective-C" -->
-<h4 id='ReplaceCxxInterfaceWithObjC'>Replace C++ Interface with Objective-C</h4><ul>
-	<li class='blurb'>ultimately replaces C++ module &lt;Module&gt;_XX.cp/h with Objective-C module &lt;Module&gt;_YY.mm/h</li>
-	<li class='blurb'>we use "provide" here in the sense of "create if it does not already exist"</li>
-	<li>provide Objective-C files &lt;Module&gt;_YY/mm.h to contain wrappers for the C++ classes in &lt;Module&gt;_XX.cp/h</li>
-	<li>provide test files &lt;Module&gt;Test_YY/mm.h</li>
-	<li>for each class in &lt;Module&gt;_XX.cp/h<ul>
-		<li>rename C++ &lt;Class&gt; to &lt;Class_CP&gt;</li>
-		<li>in &lt;Module&gt;_YY/mm.h, provide wrapper &lt;Class&gt; to access code in &lt;Class_CP&gt;</li>
-		<li>for each feature<ul>
-			<li>define method(s) in &lt;Module&gt;_YY/mm.h:&lt;Class&gt; to access the C++ code to be tested</li>
-			<li>add tests for &lt;Module&gt;_YY/mm.h</li>
+<!-- @marker "Deimplement Method" -->
+<h4 id='DeimplementMethod'>Deimplement Method</h4><ul>
+	<li class='blurb'>use to mark and disable a method that is not yet fully implemented</li>
+	<li>add C++ macro _NotYetImplemented_, which always causes an assertion failure, to the beginning of the method</li>
+	<li>comment and comment out code as indicated</li>
+</ul>
+
+<!-- @marker "Import C++ Class" -->
+<h4 id='ImportCppClass'>Import C++ Class</h4><ul>
+	<li>copy the existing class files directly into the project's source folder; add new files to project and relevant targets</li>
+	<li>make it compile, using these techniques is indicated:<ul>
+		<li>make <b>minor</b> editing changes, such as renaming parameters and/or variables named <span class='mono'>id</span></li>
+		<li>for code requiring significant change, apply <a href="#DeimplementMethod">Deimplement Method</a></li>
+		<li>for missing #included files, either:<ul>
+			<li>add the files, or</li>
+			<li>comment out the #include; apply <a href="#DeimplementMethod">Deimplement Method</a> as needed</li>
 		</ul></li>
 	</ul></li>
-	<li>replace C++ interface with Objective-C interface<ul>
-		<li>for each feature in existing module: <a href="#UseObjCFeatureInterface">Use Objective-C Feature Interface</a></li>
-		<li>verify that file &lt;Module&gt;_XX.h is not referenced except from &lt;Module&gt;_YY.h</li>
-	</ul></li>
-	<li>for each feature: move implementation code from C++ files to Objective-C files</li>
-	<li>remove C++ files for this module</li>
+	<li>compile and test</li>
+</ul>
+
+<!-- @marker "Wrap C++ Class with Objective-C" -->
+<h4 id='WrapCppClassWithObjC'>Wrap C++ Class with Objective-C</h4><ul>
+	<li class='blurb'>based on <a href="http://robnapier.net/blog/wrapping-c-take-2-1-486">Wrapping C++</a></li>	
+	<li>create new file &lt;Class&gt;.mm using CPPWrapper template - file also contains starter code for files &lt;Class&gt;.h, &lt;Class&gt;Test.mm/h</li>
+	<li>create new empty files &lt;Class&gt;.h, &lt;Class&gt;Test.mm/h; move starter code into the new files</li>
+	<li>add new files to project and relevant targets; compile and test</li>
 </ul>
 	
-<!-- @marker "Use Objective-C Feature Interface" -->
-<h4 id='UseObjCFeatureInterface'>Use Objective-C Feature Interface</h4><ul>
-</ul>
-</div>
-
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
