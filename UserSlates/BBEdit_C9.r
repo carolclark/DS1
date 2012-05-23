@@ -988,6 +988,7 @@ resource restype_Slate (resid_FileMenu, "File Menu") { {
 			Event { "Browser", "" },		Keypress { kc_N, mf_command + mf_option },
 		endSubslate{},
 		Event { "open", "" },				Sequence{}, Keypress { kc_O, mf_command }, ResSubslate { resid_FileOpenDialog },  endSequence{},
+		ExitEvent { "open recent", "" },	Sequence{}, ClickMenu { "File" }, _down, TypeText { "Open Recent" }, _right, endSequence{},
 		ExitEvent { "Revert", "" },			Keypress { kc_U, mf_command },
 		Event { "Save", "" },				Sequence{}, Keypress { kc_S, mf_command }, ResSubslate { resid_FileSaveDialog }, endSequence{},
 		ExitEvent { "Save Copy", "" },		Keypress { kc_S, mf_command + mf_option + mf_shift },

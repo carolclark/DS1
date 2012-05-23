@@ -546,6 +546,9 @@
       location = "container:"
       name = "6 Personal">
       <FileRef
+         location = "group:../../Documents/Church 2012-2013">
+      </FileRef>
+      <FileRef
          location = "group:Personal/ArbonneStruct.numbers">
       </FileRef>
    </Group>

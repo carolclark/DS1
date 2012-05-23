@@ -163,6 +163,73 @@ resource restype_Slate (resid_DictateSlate, "Dragon Dictate Active") { {
 	} }
 } };
 
+#pragma mark doScan
+resource restype_Slate (resid_DoScan, "") { {
+	Slate { "doScan",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "select", "" },		Keypress { kc_enter, 0 },
+		Event { "ahead", "" },		ResSubslate { resid_ScanAhead },
+		Event { "back", "" },		ResSubslate { resid_ScanBack },
+		_PageKeys_,
+	} }
+} };
+
+resource restype_Slate (resid_ScanAhead, "") { {
+	Slate { "ahead",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "select", "" },	Sequence{}, Keypress { kc_enter, 0 }, CloseSubslate{}, endSequence{},
+		Event { "back", "" },		Sequence{}, CloseSubslate{}, ResSubslate { resid_ScanBack }, endSequence{},
+		_PageKeys_,
+		_ScanAheadItems_,
+	} }
+} };
+
+resource restype_Slate (resid_ScanBack, "") { {
+	Slate { "back",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "select", "" },	Sequence{}, Keypress { kc_enter, 0 }, CloseSubslate{}, endSequence{},
+		Event { "ahead", "" },		Sequence{}, CloseSubslate{}, ResSubslate { resid_ScanAhead }, endSequence{},
+		_PageKeys_,
+		_ScanBackItems_,
+	} }
+} };
+
+#pragma mark doTab
+resource restype_Slate (resid_DoTab, "") { {
+	Slate { "doTab",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "select", "" },		Keypress { kc_enter, 0 },
+		Event { "ahead", "" },		ResSubslate { resid_TabAhead },
+		Event { "back", "" },		ResSubslate { resid_TabBack },
+	} }
+} };
+
+resource restype_Slate (resid_TabAhead, "") { {
+	Slate { "ahead",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "select", "" },	Sequence{}, Keypress { kc_enter, 0 }, CloseSubslate{}, endSequence{},
+		Event { "back", "" },		Sequence{}, CloseSubslate{}, ResSubslate { resid_TabBack }, endSequence{},
+		_PageKeys_,
+		_TabAheadItems_,
+	} }
+} };
+
+resource restype_Slate (resid_TabBack, "") { {
+	Slate { "back",	{
+		_SlateGlobals_,
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "select", "" },	Sequence{}, Keypress { kc_enter, 0 }, CloseSubslate{}, endSequence{},
+		Event { "ahead", "" },		Sequence{}, CloseSubslate{}, ResSubslate { resid_TabAhead }, endSequence{},
+		_TabBackItems_,
+	} }
+} };
+
 #define _csp	110
 #pragma mark LinkContent
 resource restype_Slate (resid_LinkContentSlate, "") { {

@@ -727,7 +727,7 @@ resource restype_Slate (resid_Facebook, "") { {
 		_CloseSubslate_,
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
 		Event { "search box", "" },		Click { 1, -149, 87, _window, _topRight },
-		Event { "home", "" },			Click { 1, 147, 88, _window, _topLeft },
+		Event { "home page", "" },		Click { 1, 147, 88, _window, _topLeft },
 		Event { "inbox", "" },			Click { 1, 317, 88, _window, _topLeft },
 		Event { "requests", "" },		Click { 1, -292, 164, _window, _topRight },
 	} }

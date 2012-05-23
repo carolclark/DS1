@@ -1,5 +1,5 @@
 // =================================================================================
-//	Mail_C9.r					©2008-09 C & C Software, Inc. All rights reserved.
+//	Mail_C9.r					©2008-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -62,7 +62,7 @@ resource restype_Slate (resid_menuMailbox, "") { {
 		Event { "new mailbox", "" },		Sequence{}, ClickMenu { "Mailbox" }, _down, TypeText { "New Mailbox" }, _return, ResSubslate { resid_TypeMailSlate }, endSequence{},
 		Event { "rename mailbox", "" },		Sequence{}, ClickMenu { "Mailbox" }, _down, TypeText { "Rename Mailbox" }, _return, endSequence{},
 		Event { "delete mailbox", "" },		Sequence{}, ClickMenu { "Mailbox" }, _down, TypeText { "Delete Mailbox" }, _return, endSequence{},
-		Event { "archive mailbox", "" },		Sequence{}, ClickMenu { "Mailbox" }, _down, TypeText { "Archive Mailbox" }, _return, endSequence{},
+		Event { "archive mailbox", "" },	Sequence{}, ClickMenu { "Mailbox" }, _down, TypeText { "Archive Mailbox" }, _return, endSequence{},
 		_DirectionKeys_,
 	} }
 } };
@@ -127,13 +127,14 @@ resource restype_Slate (resid_Mailbox, "Choose Mailbox") { {
 		ExitEvent { "Linked In", "" },		Click { 1, 70, _base+9*_lsp, _window, _topLeft },
 		ExitEvent { "Humor", "" },			Click { 1, 70, _base+10*_lsp, _window, _topLeft },
 		ExitEvent { "Netflix", "" },		Click { 1, 70, _base+11*_lsp, _window, _topLeft },
-		ExitEvent { "Punkin", "" },			Click { 1, 70, _base+12*_lsp, _window, _topLeft },
-		ExitEvent { "Receipts", "" },		Click { 1, 70, _base+13*_lsp, _window, _topLeft },
-		ExitEvent { "Technical", "" },		Click { 1, 70, _base+14*_lsp, _window, _topLeft },
-		ExitEvent { "Accessibility", "" },	Click { 1, 70, _base+15*_lsp, _window, _topLeft },
-		ExitEvent { "Cocoa", "" },			Click { 1, 70, _base+16*_lsp, _window, _topLeft },
-		ExitEvent { "Saved", "" },			Click { 1, 70, _base+17*_lsp, _window, _topLeft },
-		ExitEvent { "Xcode", "" },			Click { 1, 70, _base+18*_lsp, _window, _topLeft },
+		ExitEvent { "News Feeds", "" },		Click { 1, 70, _base+12*_lsp, _window, _topLeft },
+		ExitEvent { "Punkin", "" },			Click { 1, 70, _base+13*_lsp, _window, _topLeft },
+		ExitEvent { "Receipts", "" },		Click { 1, 70, _base+14*_lsp, _window, _topLeft },
+		ExitEvent { "Technical", "" },		Click { 1, 70, _base+15*_lsp, _window, _topLeft },
+		ExitEvent { "Accessibility", "" },	Click { 1, 70, _base+16*_lsp, _window, _topLeft },
+		ExitEvent { "Cocoa", "" },			Click { 1, 70, _base+17*_lsp, _window, _topLeft },
+		ExitEvent { "Saved", "" },			Click { 1, 70, _base+18*_lsp, _window, _topLeft },
+		ExitEvent { "Xcode", "" },			Click { 1, 70, _base+19*_lsp, _window, _topLeft },
 	} }
 } };
 
@@ -171,6 +172,7 @@ resource restype_Slate (resid_MoveTo, "Move to Mailbox") { {
 		ExitEvent { "Linked In", "" },			Sequence{}, TypeText { "LinkedIn" }, Keypress { kc_return, 0 }, endSequence{},
 		ExitEvent { "Humor", "" },				Sequence{}, TypeText { "Humor" }, Keypress { kc_return, 0 }, endSequence{},
 		ExitEvent { "Netflix", "" },			Sequence{}, TypeText { "Netflix" }, Keypress { kc_return, 0 }, endSequence{},
+		ExitEvent { "News Feeds", "" },			Sequence{}, TypeText { "News Feeds" }, Keypress { kc_return, 0 }, endSequence{},
 		ExitEvent { "Punkin", "" },				Sequence{}, TypeText { "Punkin" }, Keypress { kc_return, 0 }, endSequence{},
 		ExitEvent { "Receipts", "" },			Sequence{}, TypeText { "Receipts" }, Keypress { kc_return, 0 }, endSequence{},
 		ExitEvent { "Technical", "" },			Sequence{}, TypeText { "Technical" }, Keypress { kc_return, 0 }, endSequence{},
@@ -194,7 +196,6 @@ _BrowseCdocSlate_
 #define btnH		-70
 #define	_PreferencesStandards_	\
 		_SlateGlobals_,		\
-		_CloseSubslate_,	\
 		_FullAccessSlate_,	\
 		_IMouseSlate_,		\
 		_JumpLeftSubslate_,	\
@@ -202,12 +203,11 @@ _BrowseCdocSlate_
 		_WhitespaceKeys_,	\
 		_DirectionKeys_	
 
-
-
 #pragma mark Preferences
 resource restype_Slate (resid_Preferences, "") { {
 	Slate { "prefs	",	{
 		_PreferencesStandards_,
+		_CloseSubslate_,
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
 		Event { "Rules", "" },			Sequence{}, ResSubslate { resid_prefsRules }, Click { 1, -36, 50, _window, _topRight }, endSequence{},
 	} }
@@ -217,10 +217,18 @@ resource restype_Slate (resid_Preferences, "") { {
 resource restype_Slate (resid_prefsRules, "") { {
 	Slate { "Rules",	{
 		_PreferencesStandards_,
+		ExitEvent { "okay", "" },		_return,
+		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
+		ExitEvent { "exit", "" },		NilAction{},
 		Event { "add rule", "" },		Click { 1, btnH, btnTop + 0 * btnVsp, _window, _topRight },
 		Event { "edit", "" },			Click { 1, btnH, btnTop + 1 * btnVsp, _window, _topRight },
 		Event { "duplicate", "" },		Click { 1, btnH, btnTop + 2 * btnVsp, _window, _topRight },
 		Event { "remove", "" },			Click { 1, btnH, btnTop + 3 * btnVsp, _window, _topRight },
+		Event { "add condition", "" },	Click { 1, -36, 170, _window, _topRight },
+		_JumpNorthSubslate_,
+		_JumpDownSubslate_,
+		_DirectionKeys_,
+		_LetterKeys_
 	} }
 } };
 
@@ -260,7 +268,7 @@ resource restype_Slate (resid_Mail, "Mail Slate") { {
 			ClickMenu { "Message" }, Keypress { kc_T, mf_command + mf_option },
 			endSequence{},
 		Event { "signature", "" },		Click { 1, -80, 205, _window, _topRight },
-		Event { "browser", "google news" },		Sequence{}, Click { 1, 260, 555, _window, _topLeft }, ResSubslate { resid_Browser }, endSequence{},
+		Event { "browser", "google news" },		Sequence{}, Click { 1, -35, -20, _window, _bottomRight }, Keypress { kc_tab, mf_option + mf_shift }, _return, ResSubslate { resid_Browser }, endSequence{},
 		Event { "Preferences", "" },	Sequence{}, Keypress { kc_comma, mf_command }, ResSubslate { resid_Preferences },  endSequence{},
 		Event { "Menu", "access menus" },		Subslate { "Menu" },
 			_SlateGlobals_,
@@ -269,7 +277,7 @@ resource restype_Slate (resid_Mail, "Mail Slate") { {
 			ExitEvent { "File", "" }, 			ClickMenu { "File" },
 			ExitEvent { "Edit", "" }, 			ClickMenu { "Edit" },
 			ExitEvent { "View", "" }, 			ClickMenu { "View" },
-			Event { "Mailbox", "" },	 	Sequence{}, CloseSubslate{}, ClickMenu { "Mailbox" }, ResSubslate { resid_menuMailbox }, endSequence{},
+			Event { "Mailbox", "" },	 		Sequence{}, CloseSubslate{}, ClickMenu { "Mailbox" }, ResSubslate { resid_menuMailbox }, endSequence{},
 			ExitEvent { "Message", "" },	 	ClickMenu { "Message" },
 			ExitEvent { "Format", "" }, 		ClickMenu { "Format" },
 			ExitEvent { "Window", "" },			ClickMenu { "Window" },
