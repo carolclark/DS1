@@ -1999,9 +1999,9 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 	_CloseSubslate_,		\
 	Event { "next", "" },								Keypress { kc_accent, mf_command }, \
 	Event { "previous", "" },							Keypress { kc_accent, mf_command + mf_shift }, \
-	ExitEvent { "close", "click Close button" },		Click { 1, 15, 11, _window, _topLeft },	\
-	ExitEvent { "minimize", "click Minimize button" },	Click { 1, 36, 11, _window, _topLeft },	\
-	ExitEvent { "zoom", "click Zoom button" },			Click { 1, 58, 11, _window, _topLeft },	\
+	Event { "close", "click Close button" },		Click { 1, 15, 11, _window, _topLeft },	\
+	Event { "minimize", "click Minimize button" },	Click { 1, 36, 11, _window, _topLeft },	\
+	Event { "zoom", "click Zoom button" },			Click { 1, 58, 11, _window, _topLeft },	\
 	ExitEvent { "list", "" },							ClickMenu { "Window" }, \
 	ExitEvent { "move", "" },		Click { 0, 74, 11, _window, _topLeft },	\
 	ExitEvent { "resize", "" },		Click { 0, -4, -4, _window, _bottomRight }, 	\

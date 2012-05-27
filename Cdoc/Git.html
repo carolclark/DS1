@@ -23,10 +23,12 @@
 		<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
 	<!-- @topicGroup "Repositories" "10" -->
 		<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "1" "" -->
+		<!-- @topicItem "Fetch Working Copy of Repository" "#FetchWorkingCopy" "1" "" -->
 		<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
 		<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
 		<!-- @topicItem "Set Up User SSH" "#setupSSH" "1" "" -->
-	<!-- @topicGroup "" "15" -->
+		<!-- @topicItem "Add User to ProjectLocker Account" "#AddPLUser" "0" "" -->
+	<!-- @topicGroup "" "17" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
 
@@ -153,32 +155,58 @@
 	<li class='mono'>git init --bare</li>
 </ul>
 
-<!-- @marker "Create New Repository" -->
-<h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
-	<li><a href="#tsk_CreateBareRepository">Create Bare Repository</a> locally at ~/Dev/gitrep/&lt;ProjectName&gt;, or at ProjectLocker <b>ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git</b> or <b>ssh://git-CCSoftware@pl5.projectLocker.com:lt;ProjectName&gt;.git</b></li>
+<!-- @marker "Fetch Working Copy of Repository" -->
+<h4 id='FetchWorkingCopy'>Fetch Working Copy of Repository</h4><ul>
 	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
-		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or <b>ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git</b> or <b>ssh://git-CCSoftware@pl5.projectLocker.com:lt;ProjectName&gt;.git</b></li>
+		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or ssh://git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
 		<li><b>name:</b> &lt;ProjectName&gt;</li>
 		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
+		<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
+	</ul></li>	
+</ul>
+
+<!-- @marker "Create New Repository" -->
+<h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
+	<li>create an empty local or ProjectLocker repository<ul>
+		<li>local: <a href="#tsk_CreateBareRepository">Create Bare Repository</a> at ~/Dev/gitrep/&lt;ProjectName&gt;</li>
+		<li>ProjectLocker: add project to ProjectLocker account</li>
 	</ul></li>
-	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
-	<li>Xcode: add workspace; add initial file, normally history file Cdoc/History_&lt;ProjectName&gt;.html</li>
-	<li><span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add --all --interactive</span>&nbsp;&nbsp;#  (interactive)</li>
-	<li>Xcode: commit "add workspace and initial history file"; push</li>
+	<li>Xcode: <a href="#FetchWorkingCopy">Fetch Working Copy of Repository</a></li>
+	<li>add new or existing content<ul>
+		<li>in working copy, either add existing files or create new ones (eg. Xcode workspace and initial history file Cdoc/History_&lt;ProjectName&gt;.html)</li>
+		<li>Terminal: <span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add <span class='depr'>--all</span> --interactive</span></li>
+		<li>Xcode: commit; push</li>
+	</ul></li>
 </ul>
 
 <!-- @marker "Add Remote Repository" -->
-<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul>
-	<li class='blurb'>Add Remote Repository from existing working copy &lt;ProjectName&gt;</li>
-	<li class='blurb'>see WWDC 2011 video Managing Source Control</li>
-	<li>add repository to ProjectLocker account, or <a href="../Support/Git.html#tsk_CreateBareRepository">Create Bare Repository</a> locally</li>
-	<li>if there is an existing working copy, push its master branch to remote/master (create)</li>
+<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul class='expand'>
+	<li class='blurb'>Add Remote Repository from existing working copy ~/Dev/&lt;ProjectName&gt;</li>
+	<li>add repository to ProjectLocker account</li>
+	<li>push working copy's master branch to remote/master (create)</li>
 </ul>
 
 <!-- @marker "Set Up User SSH" -->
 <h4 id='setupSSH'>Set Up User SSH</h4><ul>
-	<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
-	<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>	
+	<li>on User's computer, login to user account</li>
+	<li>Terminal:<ul>
+		<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
+		<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>	
+	</ul></li>
+</ul>
+
+<!-- @marker "Add User to ProjectLocker Account" -->
+<h4 id='AddPLUser'>Add User to ProjectLocker Account</h4><ul>
+	<li>ProjectLocker admin: add user to account (List Account Users)</li>
+	<li>User<ul>
+		<li><a href="#setupSSH">User: Set Up User SSH</a></li>
+		<li>copy the contents (without the carriage return at the end) of the file ${HOME}/.ssh/authorized_keys to the clipboard</li>
+		<li>login to <a href="https://portal.projectlocker.com/">ProjectLocker</a> with your username and our password</li>
+		<li>select Manage Public Keys; click Edit next to the account with your name</li>
+		<li>paste the contents of the clipboard into the large field labeled Key</li>
+		<li>At the end of the new key field is some text starting with &lt;username&gt;@. Copy from username to the end of the field into the User Name field.</li>
+		<li>click Save Public Key</li>
+	</ul></li>
 </ul>
 
 <!-- @marker "Policies and Notes" -->
