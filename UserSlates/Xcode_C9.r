@@ -1317,6 +1317,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "view Doxygen", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
 		Event { "top row", "" },		_topRow,
+		Event { "project", "" },		Keypress { kc_1, mf_command },
 		Event { "symbol", "" },			Keypress { kc_2, mf_command },
 		Event { "issue", "" },			Sequence{}, Keypress { kc_4, mf_command }, ResSubslate { resid_IssueIndex }, endSequence{},
 		Event { "debug", "" },			Sequence{}, Keypress { kc_5, mf_command }, ResSubslate { resid_DebugIndex }, endSequence{},
@@ -1516,7 +1517,7 @@ resource restype_Slate (resid_Macro, "") { {
 		Event { "close tab", "" },		_closeTab,		\
 		Event { "go next", "tab" },		_goNext,							\
 		Event { "go previous", "tab" },	_goPrevious,						\
-		Event { "go tab", "" },			_goTab,								\
+		Event { "go tab", "" },			_goTab,								\	Event { "open Assist", "" },	Keypress { kc_comma, mf_command + mf_option },	\
 		Event { "pop issues", "" },		Click { 1, -24, 108, _window, _topRight },		\
 		Event { "next issue", "" },		_nextIssue,		\
 		Event { "previous issue", "" },	_previousIssue,		\
