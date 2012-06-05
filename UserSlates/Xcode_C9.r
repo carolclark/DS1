@@ -1854,6 +1854,8 @@ resource restype_Slate (resid_IBDocument, "") { {
 	Event { "go next", "" },		_goNext,		\
 	Event { "go previous", "" },	_goPrevious,	\
 	Event { "go tab", "" },			_goTab,			\
+	focus_,			\
+	focusBack_,		\
 	Event { "return", "" },			_return, 		\
 	Event { "page top", "" },		Keypress { kc_home, 0 },		\
 	Event { "page end", "" },		Keypress { kc_end, 0 },			\
