@@ -405,6 +405,7 @@ resource restype_Slate (resid_Accessor, "") { {
 		_CloseSubslate_,
 		Event { "analyze", "" },		Keypress { kc_B, mf_command + mf_shift },
 		Event { "build", "" },			Sequence{}, Keypress { kc_B, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
+		Event { "run", "" },			Sequence{}, Keypress { kc_R, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
 	} }
 } };
 
@@ -413,7 +414,8 @@ resource restype_Slate (resid_BuildAccessor, "") { {
 		_SlateGlobals_,
 		ExitEvent { "exit", "" },		NilAction{},
 		Event { "Target", "" },			Sequence{}, CloseSubslate{}, CloseSubslate{}, ResSubslate { resid_Target }, endSequence{}, 
-		Event { "run original", "" },	Launch { HomeApps_"AccessorC9.app", 0 },
+		Event { "run original", "" },	Launch { HomeApps_"Accessor.app", 0 },
+		Event { "return", "" },			_return,
 		Event { "quit", "" },			Keypress { kc_Q, mf_command },
 	} }
 } };
@@ -2875,8 +2877,8 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 				ExitEvent { "Window", "" },		ClickMenu { "Window" },
 				endSubslate{},
 		Event { "Script", "" },			Sequence{}, _scriptsMenu, ResSubslate { resid_Scripts }, endSequence{}, 
-		Event { "Accessor", "" },		Sequence{}, Keypress { kc_S, mf_command + mf_option }, Launch { Dev_"AccessorC9/AccessorC9.xcworkspace", 0 }, ResSubslate { resid_Accessor }, endSequence{},
-		Event { "interface", "" },		ResSubslate { resid_InterfaceBuilder }, 
+		Event { "Accessor", "" },		Sequence{}, Keypress { kc_S, mf_command + mf_option }, Launch { Dev_"Accessor/Accessor.xcworkspace", 0 }, ResSubslate { resid_Accessor }, endSequence{},
+		Event { "interface", "" },		ResSubslate { resid_InterfaceBuilder },
 		Event { "Data Model", "" },		ResSubslate { resid_DataModel },
 		Event { "Workspace", "" },		ResSubslate { resid_Workspace },
 		Event { "Search", "" },			ResSubslate { resid_Search },

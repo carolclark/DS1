@@ -8,21 +8,44 @@
 #include "Keyboard_AL.h"
 
 #pragma mark folders
-#ifdef	_Laptop_
-	#define bootvol_	"/Volumes/Macintosh HD"
-#else
-	#define bootvol_	"/Volumes/Mac"
+
+// set #defines for alternative builds in Accessor Build Settings: Preprocessor Defines
+#define bootvol_        "/Volumes/Mac"
+#ifdef _Laptop_
+#define bootvol_        "/Volumes/Macintosh HD"
+#endif
+#ifdef _Lion_
+#define bootvol_        "/Volumes/Lion"
 #endif
 
-#define mainvol_	bootvol_
-#ifdef	_Leopard_
-	#define mainvol_	"Mac"
+#define	mainvol_		bootvol_
+#define DevApps_        bootvol_"/Developer/Applications/"
+
+#ifdef _Lion_
+#define mainvol_        "/Volumes/Mac"
+#define DevApps_        bootvol_"/Applications/"
 #endif
+
+//#if	ALT_BOOT_VOLUME
+//	#define bootvol_	"/Volumes/"ALT_BOOT_VOLUME
+//#else
+//	#define bootvol_	"/Volumes/Mac"
+//#endif
+
+//#define mainvol_	bootvol_
+//#if	ALT_BOOT_VOLUME
+//	#define mainvol_	"Mac"
+//#endif
+
+//#if LION
+//    #define DevApps_	bootvol_"/Applications/"
+//#else
+//    #define DevApps_	bootvol_"/Developer/Applications/"
+//#endif
 
 #define Sys_		bootvol_"/System Folder/"
 #define Apps_		bootvol_"/Applications/"
 #define MainApps_	mainvol_"/Applications/"
-#define DevApps_	bootvol_"/Developer/Applications/"
 #define JavaApps_	bootvol_"/JavaDeveloper/Applications/"
 #define Home_		mainvol_"/Users/carolclark/"
 #define HomeApps_	Home_"Applications/"

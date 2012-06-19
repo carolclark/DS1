@@ -26,56 +26,52 @@
 		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
-		<!-- @topicGroup "" "13" -->
+			<!-- @topicItem "Recover DevSupport Scripts" "#DevSupport" "2" "" -->
+			<!-- @topicItem "Import Existing Projects" "#devImport" "2" "" -->
+			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
+		<!-- @topicGroup "" "16" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-		<!-- @topicGroup "" "16" -->
+		<!-- @topicGroup "" "19" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
 			<!-- @topicItem "Initial Arbonne Spreadsheets" "#initArbonne" "1" "" -->
-	<!-- @topicGroup "" "19" -->
+	<!-- @topicGroup "" "22" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "21" -->
+	<!-- @topicGroup "" "24" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 	
-<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
-<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<p><br /></p>
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <!-- @marker "Development Overview" -->
 <h3 id='DevelopmentOverview'>Development Overview</h3>
 
 <div class="tableholder"><table class="goaltabl" border="0" cellspacing="0" cellpadding="5"><caption>Development Overview</caption>
 	<tr><th>Project</th> <th>Goal</th> <th>Comments</th> <th>When</th></tr>
-	<tr> <td>AccessorC9</td> <td><a href="../AccessorC9/History_Accessor.html#ImportExisting">Import Existing Development Work</a></td> <td class='small'>existing svn repository broken</td> <td align="center">&radic;1</td> </tr>
-	<tr> <td>AccessorC9</td> <td>replace deprecated calls</td> <td class='small'></td> <td align="center">&radic;2</td> </tr>
-	<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#CocoaApp">port in existing code from AccessorC9</a></td> <td class='small'>existing Carbon project file is a no-longer-supported format and is causing problems</td> <td align="center">3</td> </tr>
 	<tr> <td>Punkin</td> <td>restructure documentation</td> <td class='small'>recognize ABC product as well as EverydaySpanish</td> <td align="center">1</td> </tr>
 	<tr> <td>Punkin</td> <td>establish iOS Cocoa development environment</td> <td class='small'>with testing, provisioning and Doxygen support</td> <td align="center">2</td> </tr>
-	<tr> <td>Punkin</td> <td> establish framework for iOS mobile websites [<a href="../Punkin/History_Punkin.html#_web_sample">_web_sample</a>]</td> <td class='small'>build sample sites from tutorial</td> <td align="center">3</td> </tr>
+	<tr> <td>Punkin</td> <td> establish framework for mobile websites [<a href="../Punkin/History_Punkin.html#_web_sample">_web_sample</a>]</td> <td class='small'>work from sample sites in iOS and Android tutorials</td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Upgrade to Lion</span></td></tr>
-	<tr> <td>Arbonne</td> <td>replace FileMaker recordkeeping system</td> <td class='small'>FileMaker runs under Rosetta</td> <td align="center">&radic;2</td> </tr>
-	<tr> <td>AccessorC9</td> <td><a href="../AccessorC9/History_Accessor.html#compileLion">compile under Lion</a></td> <td class='small'></td> <td align="center">X</td> </tr>
-	<tr> <td>Support</td> <td>replace MobileMe Backup with Lion Backup</td> <td class='small'></td> <td align="center">3</td> </tr>
+	<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#CocoaApp">port in existing code from AccessorC9</a></td> <td class='small'>existing Carbon project does not compile or run under Lion</td> <td align="center">1</td> </tr>
+	<tr> <td>Support</td> <td>update Backup for Lion</td> <td class='small'>previously depended on MobileMe; probably use iCloud instead</td> <td align="center">1</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Replace MobileMe and iDisk</span></td></tr>
-	<tr> <td>Punkin/Support</td> <td><a href="#remotePunkinRepo">Replace Punkin Repository</a></td> <td class='small'>MobileMe iDisk no longer available to host remote repository</td> <td align="center">1</td> </tr>
 	<tr> <td>Support</td> <td><a href="#webHost">Finish Switching Web Hosts</a></td> <td class='small'>switch TechnicalDocs and Family web areas to new host</td> <td align="center">2</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Developer Support and Automation</span></td></tr>
-	<tr> <td>Support</td> <td><a href="#CdocBuild">support Cdoc install/clean</a></td> <td class='small'>install: adapt existing Support_svn script and call as build script;<br />clean: add access to cleanProjectTarget script</td> <td align="center">&radic;1</td> </tr>
-	<tr> <td>Support</td> <td>update ccBackup</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
-	<tr> <td>Support</td> <td>Snippets: Accessor Slate temporarily enters full Snippet text</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
-	<tr> <td>Support</td> <td>script ccArchive</td> <td class='small'>supports archiving svn and git repositories</td> <td align="center">2</td> </tr>
-	<tr> <td>Support</td> <td><a href="#Snippets">Snippet</a> support</td> <td class='small'>?could use entry of full snippet text as an intermediate stage</td> <td align="center">3</td> </tr>
-<tr><td colspan="4" align="center"><span class='ital'>Transfer Existing Development Work</span></td></tr>
- 	<tr> <td>Support</td> <td>plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</td> <td class='small'>while we remember them</td> <td align="center">&radic;2</td> </tr>
- 	<tr> <td>Support</td> <td>import remaining Support features [<a href="#_devimport">_devimport</a>]</td> <td class='small'></td> <td align="center">3</td> </tr>
-	<tr> <td>Support</td> <td>plan import of remaining projects [<a href="#_devimport">_devimport</a>]</td> <td class='small'>while we remember them</td> <td align="center">2</td> </tr>
-	<tr> <td>Support</td> <td>ccInstall: incorporate buildCdoc</td> <td class='small'></td> <td align="center">4</td> </tr>
+	<tr> <td>Support</td> <td>script ccArchive</td> <td class='small'>supports archiving svn and git repositories</td> <td align="center">1</td> </tr>
+<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#procSnippet">Snippet</a> support</td> <td class='small'>maybe a Service to expand the selected text</td> <td align="center">2</td> </tr>
+	<tr><td colspan="4" align="center"><span class='ital'>Transfer Existing Development Work</span></td></tr>
+ 	<tr> <td>Support</td> <td>plan import of remaining Support features</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
+	<tr> <td>Support</td> <td>plan disposition of remaining projects [<a href="#devImport">Import Existing Projects</a>]</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
+ 	<tr> <td>Support</td> <td>import remaining Support features [<a href="#DevSupport">Recover DevSupport Scripts</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td>finish import of existing projects [<a href="#devImport">Import Existing Projects</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td>Cdoc cleanup [<a href="#cdocCleanup">In-House Documentation</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td>ccInstall: incorporate buildCdoc</td> <td class='small'></td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Personal</span></td></tr>
 	<tr> <td>iPhoto</td> <td>establish Events</td> <td class='small'>correct dates; organize into realistic sequence of Events</td> <td align="center">3</td> </tr>
-	<tr> <td>Mail</td> <td>add new mailboxes and rules</td> <td class='small'>Our existing rules all used folders on the local drive. We're now having everything forwarded to Gmail, and need to establish new mailboxes and rules.</td> <td align="center">2</td> </tr>
 	<tr> <td>Mail</td> <td>sort old Mail</td> <td class='small'></td> <td align="center">4</td> </tr>
 </table></div>
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<p><br /><br /><br /></p>
 
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
 <h2 id='hmark_Active'>Active</h2>
@@ -172,10 +168,42 @@
 			<li>switch to Cdoc targets for Punkin, AccessorC9, Accessor</li>
 		</ul></li>
 		<li class='tldate'>[cdocTargets 11/23/2011]</li>
-		<li>Support import: plan import of remaining Support features [<a href="#_devimport">_devimport</a>]</li>
+		<li>Support import: plan import of remaining Support features [<a href="#devImport">DevImport</a>]</li>
 		<li>add existing Pages document UseCaseImages.pages (from DevSupport)</li>
 		<li class='tlmark'>&lt;--</li>
-		<li>plan import of remaining existing projects [<a href="#_devimport">_devimport</a>]</li>
+		<li>plan import of remaining existing projects and features [<a href="#DevSupport">DevSupport</a>] [<a href="#devImport">devImport</a>]</li>
+	</ul>
+
+	<!-- @marker "Recover DevSupport Scripts" -->
+	<h5 id='DevSupport'>Recover DevSupport Scripts</h5><ul>
+		<li id='archive'>Archive script: based on archiveProject, archiveRepository, archiveToRetire, openArchives from DevSupport:Xcode.sh</li>
+		<li>recover Finder scrit toTEXT<ul>
+			<li>script documents changing creator and/or file tyle</li>
+		</ul></li>
+		<li>keep a reference copy of DevSupport's Snippet script in case it is needed in the future</li>
+	</ul>
+
+	<!-- @marker "Import Existing Projects" -->
+	<h5 id='devImport'>Import Existing Projects</h5><ul>
+		<li>&radic;AccessorC9: new workspace AccessorC9 contains existing Xcode project Accessor_C9 ( ! existing svn repository is not working)</li>
+		<li>Accessor: new workspace Accessor contains Cocoa import of AccessorC9</li>
+		<li>Support: import remaining active features from previous projects [<a href="#DevSupport">Recover DevSupport Scripts</a>]</li>
+		<li>&radic;Arbonne: new Numbers worksheet replaces existing Xcode projects ArbonneProto and ArbonneFM</li>
+		<li>WebGen: just use iWeb for now; use utility iWebSites with iWeb to generate multiple sites (?or could also have iWeb generate the Family site as from a single iWeb site)</li>
+		<li>archive and retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done another way, probably with static libraries, in the future.</li>
+		<li>archive and retire Accessor_svn; Accessor_C9; AccessorC9; Support_svn; DevSupport; ArbonneFM; ArbonneProto; WebGen; archive ~/Dev/svnrep; clean up ~/Dev</li>
+	</ul>
+	
+	<!-- @marker "In-House Documentation" -->
+	<h4 id='cdocCleanup'>In-House Documentation</h4><ul>
+		<li>replace Subversion $Id fields with filenames</li>
+		<li>update for git/Subversion<ul>
+			<li>Source Control: add git</li>
+			<li>new file Subversion for information, mostly obsolete, about that topic; includes Server info</li>
+			<li>Support_svn history: move content to be preserved into Support files</li>
+		</ul></li>
+		<li>update sections with class 'todo'</li>
+		<li>Tools.html: clean up headings within topics (search for "Installation and Configuration")</li>
 	</ul>
 
 <!-- @marker "General" -->
@@ -227,98 +255,7 @@
 <!-- @marker "5 === ToDo" --><p class='tlhead'>&lt;-- ToDo</p>
 <h2>ToDo</h2>
 <!-- @topicList "ToDo" "hmark_ToDo" -->
-	<!-- @topicItem "In-House Documentation " "#_cdoc" "0" "" -->
-	<!-- @topicItem "Import Existing Projects" "#_devimport" "0" "" -->
-	<!-- @topicItem "Import Support Features" "#importSupport" "0" "" -->
-	<!-- @topicItem "Accessor's UserSlates" "#_userSlates" "0" "" -->
-	<!-- @topicItem "Finder Customization" "#_finder" "0" "" -->
 <!-- @/topicList -->
-
-	<!-- @marker "In-House Documentation" -->
-	<h4 id='_cdoc'>In-House Documentation</h4><ul>
-		<li>replace Subversion $Id fields with filenames</li>
-		<li>update for git/Subversion<ul>
-			<li>Source Control: add git</li>
-			<li>new file Subversion for information, mostly obsolete, about that topic; includes Server info</li>
-			<li>Support_svn history: move content to be preserved into Support files</li>
-		</ul></li>
-		<li>update sections with class 'todo'</li>
-		<li>plan for remaining content to be transferred from Support_svn (recent) and DevSupport (older) to Support</li>
-		<li>Tools.html: clean up headings within topics (search for "Installation and Configuration")</li>
-	</ul>
-	
-	<!-- @marker "Import Existing Projects" -->
-	<h4 id="_devimport">Import Existing Projects</h4><ul>
-		<li>&radic;Accessor: new workspace AccessorC9 contains existing Xcode project Accessor_C9 ( ! existing svn repository is not working)</li>
-		<li>Support: <a href="#importSupport">import remaining active features</a> from previous projects</li>
-		<li>?Arbonne: new workspace Arbonne contains existing Xcode projects ArbonneProto and ArbonneFM</li>
-		<li>WebGen: move generated sites to ~/Documents; transfer information as needed from WebGen docs to Support:PersonalSite</li>
-		<li>retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done another way, probably with static libraries, in the future.</li>
-	</ul>
-	
-
-	<!-- @marker "Import Support Features" -->
-	<h4 id='importSupport'>Import Support Features</h4><ul>
-		<li id="Snippets">Snippets workflow [CCDev]<ul>
-			<li>Accessor: enter Snippet line with parameters; enter Type Slate</li>
-			<li>User: replace parameters</li>
-			<li>Accessor: select line; activate Workflow</li>
-			<li>Automator: get selected text; pass to script that gets text from per-Snippet files and performs replacements; leave result on pasteboard<ul>
-				<li class='blurb'>processSnippetText.scpt<ul>
-					<li>to processInput(inputString)
-						set savedDelimiters to AppleScript's text item delimiters
-						set tag to word 1 of inputString
-						set b to (length of tag) + 3
-						set e to length of inputString
-						set paramlist to (characters b thru e of inputString) as string
-						set AppleScript's text item delimiters to {"; "}
-						set paramItems to every text item of paramlist
-						set params to {}
-						set AppleScript's text item delimiters to {"|"}
-						repeat with param in paramItems
-							set split to every text item of param
-							set params to params &amp; {{item 1 of split, item 2 of split}}
-						end repeat
-						set AppleScript's text item delimiters to savedDelimiters
-						return {tag, {params}}
-						end processInput
-						
-						on replace(searchString, replaceString)
-						tell application "BBEdit"
-						replace searchString using replaceString searching in selection of text 1 of text document 1 options {search mode:literal, starting at top:false, wrap around:false, backwards:false, case sensitive:true, match words:false, extend selection:false}
-						end tell
-						end replace
-						
-						processInput("@a b|B C; c|D")</li>
-				</ul></li>
-			</ul></li>
-			<li>User or Accessor: paste in result</li>
-		</ul></li>
-		<li id='ValidateTechnical'>ValidateTechnical from Support_svn [BBEdit]<ul>
-			<li>import script</li>
-		</ul></li>
-		<li id='BBEditMarkers'>recover SetMarkers from Support_svn [BBEdit]</li>
-		<li id='archive'>Archive script: based on archiveProject, archiveRepository, archiveToRetire, openArchives from DevSupport:Xcode.sh</li>
-		<li>recover Finder scripts toTEXT, toBBEdit(?) [DevSupport]</li>
-		<li>Xcode notes<ul>
-			<li class='blurb'>assistive access notes:<ul>
-				<li>shell scripts: add to Behaviors</li>
-				<li>AppleScripts, Workflows: add to scripts menu; Slates call file directly</li>
-				<li>to call ruby from Accessor: <span class='mono'>do shell script "/usr/bin/ruby ~/CCDev/hello.rb"</span></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-
-	<!-- @marker "Accessor's UserSlates" -->
-	<h4	id='_userSlates'>Accessor's UserSlates</h4><ul>
-		<li>BBEdit: go previous/go next out of Type.</li>
-		<li>Terminal: variable cb for current branch</li>
-	</ul>
-
-	<!-- @marker "Finder" -->
-	<h4 id='_finder'>Finder</h4><ul>
-		<li>Preferences: edit and document customization</li>
-	</ul>
 	
 <!-- @marker "7 === Completed" --><p class='tlhead'>&lt;-- Completed</p>
 <h2 id='hmark_Completed'>Completed</h2>
