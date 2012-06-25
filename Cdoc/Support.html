@@ -30,14 +30,16 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicItem "Source Control" "#tp_SourceControl" "0" "" -->
 		<!-- @topicItem "Backup" "#tp_Backup" "0" "" -->
 		<!-- @topicGroup "" "5" -->
+		<!-- @topicItem "New System Setup" "#tp_NewSystemSetup" "0" "" -->
+		<!-- @topicItem "System Installation" "#tp_SystemInstallation" "0" "" -->
 		<!-- @topicItem "Web Sites" "#tp_WebSites" "0" "" -->
 		<!-- @topicItem "File Server" "#tp_FileServer" "0" "" -->
+		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Unix" "#tp_Unix" "0" "" -->
 		<!-- @topicItem "Tools for Compiled Code" "#tp_CompileTools" "0" "" -->
-	<!-- @topicGroup "" "10" -->
 	<!-- @topicItem "Support Targets" "#Targets" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Related Project Files" "13" -->
+	<!-- @topicGroup "Related Project Files" "15" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
 		<!-- @topicItem "Developing Projects" "DevelopingProjects.html#Contents" "0" "tasks and refactorings" -->
 		<!-- @topicItem "Git" "Git.html#Contents" "0" "adopted source control system" -->
@@ -45,7 +47,7 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicItem "Tools" "Tools.html#Contents" "0" "installed applications, tools, and libraries" -->
 		<!-- @topicItem "Support Glossary" "Glossary_Support.html#Contents" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Personal" "21" -->
+	<!-- @topicGroup "Personal" "25" -->
 		<!-- @topicItem "Personal" "Personal.html#Contents" "0" "Arbonne, ..." -->
 <!-- @/topicList -->
 
@@ -426,7 +428,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 			<li>contents <ul>
 				<li><b>Quick Picks</b> Address Book, Application preferences, iCal, Keychain, *Safari settings, *Stickies</li>
 				<li><b>~/Archives</b></li>
-				<li><b>~/Databases</b> contains our current Arbonne database</li>
+				<li class='depr'><b>~/Databases</b> contains our current Arbonne database</li>
 				<li><b>~/Documents</b></li>
 				<li><b>~/Dev/svnrep</b> Subversion repository</li>
 				<li><b>~/Dev/Documents</b> unversioned development documents</li>
@@ -483,6 +485,116 @@ This decision was made on the advice of Scott Clark, and has been working very w
 			<li>contains same data as that produced by Archive Project, plus the Subversion repository folder by the same name
 				and the corresponding technical documentation folder</li>
 		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "New System Setup" -->
+<h2 id='tp_NewSystemSetup'>New System Setup</h2><ul>
+	<li>Preparation: Accessor: have a copy, customized for external partition if applicable, available<ul>
+		<li>to customize for external partition; see CommonSlates_C9.h leading defines<ul>
+			<li class='blurb'>for external partition, runs Applications from the boot volume; uses folder Dev from main volume, CCDev from boot volume</li>
+		</ul></li>
+	</ul></li>
+	<li>Setup<ul>
+		<li>copy the customized Accessor to ~/Applications; run</li>
+			<li><a href="Tools.html#SystemPreferences">configure</a> System Preferences</li>
+		<li>make ~/Library visible: <span class='mono'>cd ~; chflags nohidden Library</span></li>
+		<li>Xcode<ul>
+			<li>enable Command Line Tools including git: Xcode preferences &gt; Downloads &gt; Components: install Command Line Tools</li>
+			<li class='tlmark'>&lt;--</li>	
+			<li>workspace Support: build target CCDev_Setup; build target CCDev</li>
+		</ul></li>
+		<li>for external partition: Support: build CCDev_Setup; CCDev; Xcode; ...</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "System Installation" -->
+<h2 id="tp_SystemInstallation">System Installation</h2>
+<p class='blurb'> When installing a new computer, we prefer to reinstall from scratch rather than attempting to restore the hard drive to its previous state. This helps us to keep track of what applications, tools, and other files are actually needed; helps to avoid fossils in the installation process; and eliminates the risk of problems from one Installation being replicated onto the next.</p><ul>
+	<li class='blurb'>items tagged with [icl] are likely to require updating once we fully understand the implications of iCloud 	on this process</li>
+	<li>Preparation <ul>
+		<li>Xcode: check in all projects; archive all active repositories</li>
+		<li>update Archives on external drive</li>
+		<li>[icl]Mail: turn off automatic check for new mail</li>
+		<li>run all backups</li>
+		<li>copy to externally accessible location: compiled version of this document; Accessor application</li>
+		<li>locate/copy any games to be installed</li>
+		<li>locate install DVDs <ul>
+			<li>computer's installation disks, at least for bundled applications</li>
+			<li>Mac OS X disk, if different</li>
+			<li>[speechRec]DragonDictate: original data disk; DVD with app from download, license key file</li>
+			<li>iWork</li>
+		</ul></li>
+	</ul></li>
+	<li>Installation <ul>
+		<li>install System from computer's installation disks</li>
+		<li>if Mac OS X disk is for a later OS version, update OS from that disk</li>
+		<li><a href="Support.html#tp_NewSystemSetup">configure</a> new system except Time Machine</li>
+		<li>run Software Update until it finds nothing more to update</li>
+		<li>[icl]Backup: download from Software folder at <a href="http://www.me.com/idisk/">MobileMe:</a>iDisk/Home/Software/Backup; install</li>
+		<li>Restore from Backup <ul>
+			<li>[icl]Quick Picks: Address Book, iCal, Keychain, Safari settings; Mail messages and settings</li>
+		</ul></li>
+		<li>BBEdit: <a href="http://www.barebones.com/support/bbedit/updates.html">download</a>;
+			install; <a href="Tools.html#BBEdit">configure</a></li>
+		<li class='depr'>Subversion: <ul>
+			<li>Terminal: copy file _subversion_config to ~/.subversion/config</li>
+			<li>Documentation: search at <a href="http://subversion.apache.org/packages.html#osx">openCollabNet</a>
+				for Subversion documentation; save PDF at ~/Reference</li>
+		</ul></li>
+		<li>~/Dev/Support<ul>
+			<li>create folder ~/Dev; copy in or clone workspaces for current repositories</li>
+			<li>Support: build CCDev_Setup; CCDev; Cdoc; additional support targets (eg. Xcode)</li>
+			<li class='depr'>BBEdit: quit &amp; rerun BBEdit to run its startup script</li>
+			<li class='depr'>DevSupport<ul>
+				<li>DevSupport <ul>
+					<li>checkout <ul>
+						<li>cd ~/Dev</li>
+						<li>n=DevSupport</li>
+						<li>svn checkout file:///Users/carolclark/Dev/svnrep/"$n"/trunk/ $n</li>
+					</ul></li>
+					<li>build targets Documentation, BBEdit, Finder, Safari</li>
+				</ul></li>
+				<li>Terminal: build.uia to build Cdoc</li>
+			</ul></li>
+			<li class='depr'>Punkin <ul>
+				<li>Xcode: clone ~/Dev/gitrep/PunkinMain to ~/Dev/Punkin; from ~/Dev/Punkin, create remote branch at &lt;iDisk&gt;/gitrep/PunkinRemote</li>
+				<li>BBEdit: open file Collaborator/Collaborator.build; run from shebang menu</li>
+				<li>Terminal: build.uia to build Cdoc</li>
+			</ul></li>
+ 		</ul></li>
+		<li class='depr'><a href="Tools.html#DragonDictate">DragonDictate</a></li>
+		<li><a href="Tools.html#Doxygen_">Doxygen</a></li>
+		<li>Dev Projects: checkout and build remaining current projects</li>
+		<li class='depr'>BBEdit: <a href="Tools.html#BBEdit">configure</a> Subversion projects</li>
+		<li>Restore from Backup <ul>
+			<li class='depr'>/Applications/Arbonne Assistant</li>
+			<li>~/Archives</li>
+			<li>~/Documents</li>
+			<li class='depr'>~/Databases</li>
+			<li class='depr'>~/Library/Application Support/Dragon</li>
+			<li>~/Reference</li>
+			<li>Quick Picks: iTunes</li>
+		</ul></li>
+		<li><a href="Support.html#tp_Backup">set up</a> Backup for new installation</li>
+		<li>AppleScript: <a href="Tools.html#_AppleScript">configure</a></li>
+		<li class='depr'>FileMaker 9: from CDs: install Pro v8.5; upgrade to Pro v9; run updater for 9.0v3</li>
+		<li>iWork: from CD: install</li>
+		<li>Games: install as indicated</li>
+		<li>Additional Tools &amp; Applications <ul>
+			<li><a href="Tools.html#UIBrowser">UI Browser</a></li>
+			<li class='depr'><a href="Tools.html#_UMLet">UMLet</a>; build DevSupport target UMLet</li>
+			<li><a href="Tools.html#StuffItExpander_">?StuffIt Expander</a></li>
+			<li><a href="Tools.html#FullKeyCodes_">Full Key Codes</a></li>
+			<li><a href="Tools.html#DiskInventoryX_">Disk Inventory X</a></li>
+			<li><a href="Tools.html#CrashReporterPrefs_">CrashReporterPrefs</a></li>
+			<li><a href="Tools.html#_MaskRAid">MaskRAid</a></li>
+			<li><a href="Tools.html#_MacPorts">MacPorts</a></li>
+			<li class='depr'><a href="Tools.html#_Eclipse">Eclipse</a></li>
+			<li class='depr'><a href="Tools.html#AndroidForEclipse_">Android for Eclipse</a></li>
+			<li><a href="Tools.html#Lingon_">Lingon</a></li>
+		</ul></li>
+		<li>System Preferences: Time Machine: turn on</li>
 	</ul></li>
 </ul>
 

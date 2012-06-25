@@ -9,7 +9,7 @@
 
 #pragma mark folders
 
-// set #defines for alternative builds in Accessor Build Settings: Preprocessor Defines
+// set #defines for alternative builds in Accessor and/or Install Build Settings: Preprocessor Defines
 #define bootvol_        "/Volumes/Mac"
 #ifdef _Laptop_
 #define bootvol_        "/Volumes/Macintosh HD"
@@ -2131,8 +2131,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		Event { "password", "" },	TypeText { "6868" },	\
 		Event { "copy", "" },		Keypress { kc_C, mf_command },	\
 		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
+		Event { "quiver", "" },		Keypress { kc_Q, 0 },		\
 		ExitEvent { "cancel", "" },	_cancel,				\
-		ExitEvent { "quiver", "" },	Keypress { kc_Q, 0 },	\
 		_termTypeSlate_
 
 #define	_TerminalItems_			\

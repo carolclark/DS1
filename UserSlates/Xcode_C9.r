@@ -403,6 +403,7 @@ resource restype_Slate (resid_Accessor, "") { {
 	Slate { "Accessor",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
+		Event { "Target", "" },			ResSubslate { resid_Target }, 
 		Event { "analyze", "" },		Keypress { kc_B, mf_command + mf_shift },
 		Event { "build", "" },			Sequence{}, Keypress { kc_B, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
 		Event { "run", "" },			Sequence{}, Keypress { kc_R, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
@@ -609,8 +610,8 @@ resource restype_Slate (resid_SourceControl, "Source Control") { {
 		ExitEvent { "okay", "" },	NilAction{},
 		ExitEvent { "cancel", "" },	Keypress { kc_escape, 0 },
 		Event { "commit", "" },		Sequence{}, TypeText { "Commit" }, _return, ResSubslate { resid_Commit }, endSequence{},
-		Event { "merge", "" },		TypeText { "Merge" },
-		Event { "push", "" },		TypeText { "Push" },
+		ExitEvent { "merge", "" },	TypeText { "Merge" },
+		ExitEvent { "push", "" },	TypeText { "Push" },
 		Event { "repositories", "" }, Sequence{}, TypeText { "Repositories" }, _return, ResSubslate { resid_Repositories }, endSequence{},
 	} }
 } };
@@ -874,6 +875,7 @@ resource restype_Slate (resid_Organizer, "Organizer") { {
 	Slate { "org", {
 		_SlateGlobals_,
 		_CloseSubslate_,
+		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
 		_IMouseSlate_,
 		_DirectionKeys_,
 		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft },		Click { -1, 280, 29, _screen, _topLeft }, endSequence{},	
@@ -1344,6 +1346,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "Setup", "" },			Sequence{}, _targetPopup, TypeText { "CCDev_Setup" }, _down, _return, endSequence{},
 		Event { "C C Dev", "" },		Sequence{}, _targetPopup, TypeText { "CCDev" }, _down, _return, endSequence{},
 		Event { "Accessor", "" },		Sequence{}, _targetPopup, TypeText { "Accessor" }, _down, _return, endSequence{},
+		Event { "Install", "" },		Sequence{}, _targetPopup, TypeText { "Install" }, _down, _return, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, _targetPopup, TypeText { "Doxygen" }, _down, _return, endSequence{},
 		Event { "C doc", "" },			Sequence{}, _targetPopup, TypeText { "Cdoc" }, _down, _return, endSequence{},
 		_SlateGlobals_,
@@ -1503,7 +1506,7 @@ resource restype_Slate (resid_Macro, "") { {
 } };
 
 #pragma mark 6 === Editors
-// inside: _EditorStandards_, 1 Marker, 2 Standard, 3 Assistant, 5 Version, 5 ProjectSettings, 6 Interface Builder
+// inside: _EditorStandards_, 1 Marker, 2 Standard, 3 Assistant, 4 Version, 5 ProjectSettings, 6 Interface Builder
 // Editor Standards
 #define		_EditorStandards_	\
 		Event { "filter", "" },			ResSubslate { resid_navFilter },	\
@@ -1659,6 +1662,7 @@ resource restype_Slate (resid_ProjectSettings, "Project") { {
 		Event { "go tab", "" },			_goTab,
 		Event { "scroll top", "" },		Click { 1, -7, 179, _window, _topRight },
 		Event { "scroll end", "" },		Click { 1, -7, -99, _window, _bottomRight },
+		Event { "search field", "" },	Click { 1, -100, 153, _window, _topRight },
 		Event { "delete phase", "" },	Click { 0, 1620, 0, _cursor },
 		Event { "add items", "" },		Click { 1, 3, 0, _cursor },
 		Event { "remove items", "" },	Click { 0, 31, 0, _cursor },
@@ -2866,6 +2870,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 			Subslate { "Menu" },
 				_SlateGlobals_,
 				_CloseSubslate_,
+				ExitEvent { "select", "" },		_return,
 				Event { "File", "" }, 			Sequence{}, _clickFile, _down, ResSubslate { resid_FileMenu }, endSequence{},
 				Event { "Source Control", "" },	Sequence{}, ClickMenu { "File" }, _down, TypeText { "Source Control" }, _right, ResSubslate { resid_SourceControl }, endSequence{},
 				Event { "Snapshots", "" },		Sequence{}, ClickMenu { "File" }, _down, TypeText { "Snapshots" }, _return, ResSubslate { resid_Snapshots }, endSequence{},

@@ -586,6 +586,9 @@
             location = "group:UserSlates/Safari_C9.r">
          </FileRef>
          <FileRef
+            location = "group:UserSlates/SystemPrefs_C9.r">
+         </FileRef>
+         <FileRef
             location = "group:UserSlates/Terminal_C9.r">
          </FileRef>
       </Group>
@@ -621,9 +624,6 @@
          </FileRef>
          <FileRef
             location = "group:UserSlates/ScriptEditor_C9.r">
-         </FileRef>
-         <FileRef
-            location = "group:UserSlates/SystemPrefs_C9.r">
          </FileRef>
          <FileRef
             location = "group:UserSlates/TextEdit_C9.r">

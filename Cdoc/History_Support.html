@@ -18,26 +18,28 @@
 	<!-- @topicGroup "" "2" -->
 	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
-		<!-- @topicGroup "" "5" -->
+	<!-- @topicGroup "" "5" -->
+		<!-- @topicItem "Switch to Lion" "#Lion" "1" "" -->
+		<!-- @topicGroup "" "7" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
 			<!-- @topicItem "Script Site Installation" "#installSite" "2" "" -->
 			<!-- @topicItem "Add TechnicalDocs Area" "#addTechnicalDocs" "2" "" -->
 			<!-- @topicItem "Add Family Area" "#addFamily" "2" "" -->
-		<!-- @topicGroup "" "10" -->
+		<!-- @topicGroup "" "12" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
 			<!-- @topicItem "Recover DevSupport Scripts" "#DevSupport" "2" "" -->
 			<!-- @topicItem "Import Existing Projects" "#devImport" "2" "" -->
 			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
-		<!-- @topicGroup "" "16" -->
+		<!-- @topicGroup "" "18" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-		<!-- @topicGroup "" "19" -->
+		<!-- @topicGroup "" "21" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
 			<!-- @topicItem "Initial Arbonne Spreadsheets" "#initArbonne" "1" "" -->
-	<!-- @topicGroup "" "22" -->
-	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
 	<!-- @topicGroup "" "24" -->
+	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
+	<!-- @topicGroup "" "26" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 	
@@ -53,6 +55,7 @@
 	<tr> <td>Punkin</td> <td> establish framework for mobile websites [<a href="../Punkin/History_Punkin.html#_web_sample">_web_sample</a>]</td> <td class='small'>work from sample sites in iOS and Android tutorials</td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Upgrade to Lion</span></td></tr>
 	<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#CocoaApp">port in existing code from AccessorC9</a></td> <td class='small'>existing Carbon project does not compile or run under Lion</td> <td align="center">1</td> </tr>
+	<tr> <td>Support</td> <td><a href="#Lion">Switch to Lion</a></td> <td class='small'></td> <td align="center">1</td> </tr>
 	<tr> <td>Support</td> <td>update Backup for Lion</td> <td class='small'>previously depended on MobileMe; probably use iCloud instead</td> <td align="center">1</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Replace MobileMe and iDisk</span></td></tr>
 	<tr> <td>Support</td> <td><a href="#webHost">Finish Switching Web Hosts</a></td> <td class='small'>switch TechnicalDocs and Family web areas to new host</td> <td align="center">2</td> </tr>
@@ -75,6 +78,14 @@
 
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
 <h2 id='hmark_Active'>Active</h2>
+
+<!-- @marker "Switch to Lion" -->
+<h4 id='Lion'>Switch to Lion</h4><ul>
+	<li>upgrade CCDev installation and environment variables to support Dev folder not on boot volume</li>
+	<li>set up Lion partition for testing: <a href="Support.html#tp_NewSystemSetup">New System Setup</a></li>
+	<li>...</li>
+	<li>after testing, install Lion on primary volume</li>
+</ul>
 
 <!-- @marker "Switch Web Hosts" -->
 <h4 id='webHost'>Switch Web Hosts</h4><ul>

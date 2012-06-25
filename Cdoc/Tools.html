@@ -94,14 +94,14 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </ul>
 <p><b>Configuration</b></p>
 <ul>
-	<li><b>Clippings Aliases:</b> aliases to ~/Dev/DevSupport/BBEdit/Clippings folders at
+	<li class='depr'><b>Clippings Aliases:</b> aliases to ~/Dev/DevSupport/BBEdit/Clippings folders at
 		~/Library/Application Support/BBEdit/Clippings</li>
-	<li><b>Application</b> At Startup: Do Nothing; Reopen documents that were open at last quit</li>
+	<li><b>Application</b> At Startup: Do Nothing; Reopen documents that were open at last quit: off</li>
 	<li><b>Documents &amp; Drawer</b><ul>
 		<li>Allow Documents Drawer to acquire keyboard focus: On</li>
 	</ul></li>
 	<li><b>Editing: General</b> <ul>
-		<li>Include dictionary words in completion list: Off</li>
+		<li>Include dictionary words in completion list: ON</li>
 		<li>Soft wrapped line indentation: Reverse</li>
 	</ul></li>
 	<li><b>Editing: Keyboard</b> <ul>
@@ -114,24 +114,22 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 			<li>Site path on server: ~carolclark/CCDev/Sites/TechnicalDocs/</li>
 			<li>Default page name: Development.html</li>
 			<li>Local site root: ~/CCDev/Sites/TechnicalDocs</li>
-			<li>Look for templates and includes in: ~/Dev/Support/BBEdit/Templates</li>
+			<li class='depr'>Look for templates and includes in: ~/Dev/Support/BBEdit/Templates</li>
 		</ul></li>
-	<li><b>Source Control</b> add active projects</li>
+	<li class='depr'><b>Source Control</b> add active projects</li>
 	<li><b>Menus</b><ul>
 		<li><b>File</b> Revert cU; Save a Copy csoS</li>
 		<li><b>Text</b> Change Case... coC; Change Case csoC</li>
 		<li><b>View</b> Text Display: Soft Wrap Text: crW</li>
-		<li><b>Search</b> Replace and Find Again cs=</li>
-		<li><b>Subversion</b> Compare Revisions orD; Commit Working Copy orC; 
+		<li><b>Search</b> Replace and Find Next cs=</li>
+		<li class='depr'><b>Subversion</b> Compare Revisions orD; Commit Working Copy orC; 
 			Show Working Copy Status... orS; </li>
-		<li><b>Clippings</b> Insert Clipping corC</li>
+		<li class='depr'><b>Clippings</b> Insert Clipping corC</li>
 	</ul></li>
 	<li><b>Text Status Display</b><ul>
 		<li>Show line numbers: On</li>
 	</ul></li>
 </ul>
-<p><b>Troubleshooting</b> if Shell worksheet does not respond to commands: create a new Shell worksheet; 
-replace its contents with contents of existing worksheet; save over existing ~/Dev/DevSupport/BBEdit/Shell.wks</p>
 
 <!-- @marker "Cyberduck" -->
 <h2><a name="Cyberduck">Cyberduck</a></h2>
@@ -339,37 +337,34 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 	</ul>
 
 <!-- @marker "SystemPreferences" -->
-<div class='todo'>
 <h2><a name="SystemPreferences">System Preferences</a></h2>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b></p>
 	<ul>
+		<li><b>Accessor</b>: connect to its trigger key or mouse action</li>
+		<li><b>Universal Access</b>: Enable access for assistive devices: ON (otherwise, mouse events that show position or are window-relative fail)</li>
 		<li><b>Dock</b>: fairly small (about 10%); on right</li>
 		<li><b>Expose</b>: topRight: Put Display to Sleep</li>
 		<li><b>Language &amp; Text</b>: Input Menu: On; show Character Palette, Keyboard Viewer</li>
-		<li><b>Displays</b>: 50-60% brightness</li>
-		<li class='depr'><b>Energy Saver</b>: put computer to sleep: Never</li>
+		<li><b>Displays</b>: minimum brightness</li>
 		<li><b>Keyboard</b>: Keyboard Shortcuts <ul>
 			<li>Keyboard: Use all F1, F2 keys as standard function keys: On <ul>
 				<li class='blurb'>then press &lt;fn&gt; to perfom the special function on the key</li>
 				<li>Show Keyboard and Character Viewer in menu bar: On</li>
 			</ul></li>
-			<li>Keyboard Shortcuts: Full Keyboard Access: All Controls</li>
+			<li class='depr'>Keyboard Shortcuts: Full Keyboard Access: All Controls</li>
 		</ul></li>
-		<li><b>Mouse</b>:  scroll button opens current Accessor_C9</li>
 		<li><b>Sound</b> <ul>
 			<li>Output: volume ~20%</li>
 			<li>Input: external microphone; input volume ~67%</li>
 		</ul></li>
-		<li><b>Accounts</b> Login Items: Mail, iCal, Activity Monitor (Hide)</li>
+		<li><b>Accounts</b> Login Items: Mail, iCal, Activity Monitor (Hide); iTunes Helper (Hide)</li>
 		<li><b>Software Update</b>: Download Updates Automatically: off</li>
-		<li><b>Speech</b>: Speech Recognition: External Microphone; Calibrate: set to low</li>
-		<li><b>Universal Access</b>: Enable access for assistive devices on</li>
+		<li><b>Speech</b>: Speech Recognition: External Microphone; Calibrate: adjust	</li>
 		<li><b>Date &amp; Time</b> select time zone</li>
-		<li><b>Time Machine</b>: on</li>
+		<li><b>Time Machine</b>: on; uses volume TimeMachine</li>
 	</ul>
-</div>
 
 <!-- @marker "Terminal" -->
 <h2><a name="Terminal">Terminal</a></h2>
@@ -877,113 +872,6 @@ replace its contents with contents of existing worksheet; save over existing ~/D
 				<li>flyweight - requires several libraries we do not now have, but they can probably be obtained</li>
 			</ul></li>
 		</ul>
-
-<!-- @marker "5 ===" -->
-<!-- @marker "System Installation" -->
-<h2 id="tp_SystemInstallation">System Installation</h2>
-	<div class='todo'>
-
-<p class='blurb'> When installing a new computer, we prefer to reinstall from scratch rather than attempting to restore the hard drive to its previous state. This helps us to keep track of what applications, tools, and other files are actually needed; helps to avoid fossils in the installation process; and eliminates the risk of problems from one Installation being replicated onto the next.</p><ul>
-	<li>Preparation <ul>
-		<li>Xcode: check in all projects; archive all active repositories</li>
-		<li>update Archives on external drive</li>
-		<li>Mail: turn off automatic check for new mail</li>
-		<li>run all backups</li>
-		<li>copy to external drive: compiled version of this document; Accessor application; current repository tarballs</li>
-		<li>locate/copy any games to be installed</li>
-		<li>locate install DVDs <ul>
-			<li>computer's installation disks, at least for bundled applications</li>
-			<li>Mac OS X disk, if different</li>
-			<li>DragonDictate: original data disk; DVD with app from download, license key file</li>
-			<li>FileMaker (both 8.x and 9 disks needed to install)</li>
-			<li>iWork</li>
-		</ul></li>
-	</ul></li>
-	<li>Installation <ul>
-		<li>install System from computer's installation disks</li>
-		<li>if Mac OS X disk is for a later OS version, update OS from that disk</li>
-		<li><a href="#SystemPreferences">configure</a> system except Time Machine</li>
-		<li>run Software Update until it finds nothing more to update</li>
-		<li>Backup: download from Software folder at <a href="http://www.me.com/idisk/">MobileMe:</a>iDisk/Home/Software/Backup; install</li>
-		<li>Restore from Backup <ul>
-			<li>Quick Picks: Address Book, iCal, Keychain, Safari settings; Mail messages and settings</li>
-		</ul></li>
-		<li>current Xcode: download from <a href="https://connect.apple.com/MemberSite">ADC Member Site</a>:Downloads:Developer Tools; install; <a href="#_Xcode">configure</a></li>
-		<li>BBEdit: <a href="http://www.barebones.com/support/bbedit/updates.html">download</a>;
-			install; open Shell.wks; <a href="#BBEdit">configure</a> (except Source Control projects)</li>
-		<li>Subversion: <ul>
-			<li>Terminal: copy file _subversion_config to ~/.subversion/config</li>
-			<li>Documentation: search at <a href="http://subversion.apache.org/packages.html#osx">openCollabNet</a>
-				for Subversion documentation; save PDF at ~/Reference</li>
-		</ul></li>
-		<li>~/Dev/Support<ul>
-			<li>create folder ~/Dev; copy in and expand current repository tarballs</li>
-			<li>Support <ul>
-				<li>checkout <ul>
-					<li>cd ~/Dev</li>
-					<li>n=Support</li>
-					<li>svn checkout file:///Users/carolclark/Dev/svnrep/"$n"/trunk/ $n</li>
-				</ul></li>
-				<li>BBEdit: open file CCDev/CCDev.build; run from shebang menu</li>
-				<li>Terminal: build.uia to build Cdoc</li>
-			</ul></li>
-			<li>BBEdit: quit &amp; rerun BBEdit to run its startup script</li>
-			<li>DevSupport<ul>
-				<li>DevSupport <ul>
-					<li>checkout <ul>
-						<li>cd ~/Dev</li>
-						<li>n=DevSupport</li>
-						<li>svn checkout file:///Users/carolclark/Dev/svnrep/"$n"/trunk/ $n</li>
-					</ul></li>
-					<li>build targets Documentation, BBEdit, Finder, Safari</li>
-				</ul></li>
-				<li>Terminal: build.uia to build Cdoc</li>
-			</ul></li>
-			<li>Punkin <ul>
-				<li>Xcode: clone ~/Dev/gitrep/PunkinMain to ~/Dev/Punkin; from ~/Dev/Punkin, create remote branch at &lt;iDisk&gt;/gitrep/PunkinRemote</li>
-				<li>BBEdit: open file Collaborator/Collaborator.build; run from shebang menu</li>
-				<li>Terminal: build.uia to build Cdoc</li>
-			</ul></li>
- 		</ul></li>
-		<li>Accessor project<ul>
-			<li>checkout &amp; build targets Documentation, Accessor </li>
-			<li><a href="#SystemPreferences">System Preferences</a>: replace scroll button target with new Accessor</li>
-		</ul></li>
-		<li><a href="#DragonDictate">DragonDictate</a></li>
-		<li><a href="#Doxygen_">Doxygen</a></li>
-		<li>Dev Projects: checkout and build remaining current projects</li>
-		<li>BBEdit: <a href="#BBEdit">configure</a> Subversion projects</li>
-		<li>Restore from Backup <ul>
-			<li>/Applications/Arbonne Assistant</li>
-			<li>~/Archives</li>
-			<li>~/Documents</li>
-			<li>~/Databases</li>
-			<li>~/Library/Application Support/Dragon</li>
-			<li>~/Reference</li>
-			<li>Quick Picks: iTunes</li>
-		</ul></li>
-		<li><a href="Support.html#tp_Backup">set up</a> Backup for new installation</li>
-		<li>AppleScript: <a href="#_AppleScript">configure</a></li>
-		<li>FileMaker 9: from CDs: install Pro v8.5; upgrade to Pro v9; run updater for 9.0v3</li>
-		<li>iWork: from CD: install</li>
-		<li>Games: install as indicated</li>
-		<li>Additional Tools &amp; Applications <ul>
-			<li><a href="#UIBrowser">UI Browser</a></li>
-			<li><a href="#_UMLet">UMLet</a>; build DevSupport target UMLet</li>
-			<li><a href="#StuffItExpander_">StuffIt Expander</a></li>
-			<li><a href="#FullKeyCodes_">Full Key Codes</a></li>
-			<li><a href="#DiskInventoryX_">Disk Inventory X</a></li>
-			<li><a href="#CrashReporterPrefs_">CrashReporterPrefs</a></li>
-			<li><a href="#_MaskRAid">MaskRAid</a></li>
-			<li><a href="#_MacPorts">MacPorts</a></li>
-			<li><a href="#_Eclipse">Eclipse</a></li>
-			<li><a href="#AndroidForEclipse_">Android for Eclipse</a></li>
-			<li><a href="#Lingon_">Lingon</a></li>
-		</ul></li>
-		<li>System Preferences: Time Machine: turn on</li>
-	</ul></li>
-</ul>
-	</div>
 
 <!-- @marker "9 === Inactive" -->
 <h2>Inactive</h2>
