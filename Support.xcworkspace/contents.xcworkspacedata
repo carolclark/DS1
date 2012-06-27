@@ -118,12 +118,6 @@
          <FileRef
             location = "group:CCDev/Environment/environment.plist">
          </FileRef>
-         <FileRef
-            location = "group:CCDev/Environment/profile.ksh">
-         </FileRef>
-         <FileRef
-            location = "group:CCDev/Environment/kshrc.ksh">
-         </FileRef>
       </Group>
       <Group
          location = "container:"

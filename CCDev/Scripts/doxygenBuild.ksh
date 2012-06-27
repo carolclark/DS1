@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 12/20/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -31,7 +31,7 @@ if [[ $st > 0 ]] ; then
 fi
 
 #  Run doxygen on the config file
-$doxygenPath "${HOME}/Dev/${project}/Doxygen/${project}_doxygen.txt"
+$doxygenPath "${DEV}/${project}/Doxygen/${project}_doxygen.txt"
 st=$?
 if [[ $st > 0 ]] ; then
 	print "error while generating Doxygen docs"

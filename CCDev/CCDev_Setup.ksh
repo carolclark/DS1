@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/18/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -33,6 +33,33 @@ function install {
 	else
 		print "could not copy to ${dst}"
 		exit 1
+	fi
+}
+
+#^	envProfile
+function envProfile {
+	print "SHELL=/bin/ksh"
+	print "export ENV=${CCDev}/bin/.kshrc"
+}
+
+#^	envEnvironment
+function envEnvironment {
+	#terminal promp	apt: "<username> <lineno> $ "
+	if [[ ${setTerminalPrompt} = "yes" ]] ; then
+		export PS1="$LOGNAME ! $ "
+		print "export PS1=\"$LOGNAME ! $ \""
+	fi
+	DEV="${devFolder}"; export DEV
+	print "DEV=\"${devFolder}\"; export DEV"
+	CCDev="${ccdevFolder}"; export CCDev
+	print "CCDev=\"${ccdevFolder}\"; export CCDev"
+	PATH="$PATH:$CCDev/bin:$CCDev/func"; export PATH
+	print 'PATH="$PATH:$CCDev/bin:$CCDev/func"; export PATH'
+	FPATH="$CCDev/func"; export FPATH
+	print 'FPATH="$CCDev/func"; export FPATH'
+	if [[ ${installEnvironmentPlist} = "yes" ]] ; then
+		SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit
+		print 'SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit'
 	fi
 }
 
@@ -98,19 +125,27 @@ function shunitInstall {
 
 #^	main
 
-# identify and set variables for currentf user
+# identify and set variables for current user
 user="${USER}"
+devFolder="${HOME}/Dev"
 ccdevFolder="/Users/${user}/.ccdev"
+installEnvironmentPlist="yes"
+setTerminalPrompt="no"
+installSHUnit="no"
 
 case "${user}" in
 	"carolclark" )
 		fullname="Carol Clark"
 		email="carolclark@cox.net"
+		devFolder="/Volumes/Mac/Users/carolclark/Dev"
 		ccdevFolder="${HOME}/CCDev"
+		setTerminalPrompt="yes"
+		installSHUnit="yes"
 		;;
 	"lauramartinez" )
 		fullname="Laura Martinez"
 		email="cello.laura@gmail.com"
+		devFolder="${HOME}/Documents/Projects"
 		;;
 	"scottclark" )
 		fullname="Scott Clark"
@@ -125,6 +160,11 @@ case "${user}" in
 		exit 1
 		;;
 esac
+
+# configure environment
+print "configuring environment"
+envProfile > "${HOME}/.profile"
+envEnvironment > "${CCDev}/bin/.kshrc"
 
 # configure git
 print "configuring git"
@@ -153,12 +193,6 @@ if [[ "${user}" = "carolclark" ]] ; then
 	fi
 fi
 
-# set up environment paths
-print "setting up environment paths"
-PATH="$PATH:$CCDev/bin:$CCDev/func"; export PATH
-FPATH="$CCDev/func"; export FPATH
-SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit
-
 # set up to install $CCDev files
 print "creating CCDev (${CCDev}) subdirectories"
 srcdir="$(dirname $0)"; export srcdir
@@ -168,18 +202,19 @@ mkdir -p $CCDev/tmp
 
 print "installing files ..."
 # install environment files
-fldr="${srcdir}/Environment"
-install "${fldr}/profile.ksh" "${HOME}" ".profile"			# establish shell environment
-install "${fldr}/kshrc.ksh" "${CCDev}/bin" ".kshrc"			# establish ksh (Korn shell) environment
-install "${fldr}/environment.plist" "${HOME}/.MacOSX"		# establish some environment variables for use by applications
+if [[ ${installEnvironmentPlist} = "yes" ]] ; then
+	install "${srcdir}/Environment/environment.plist" "${HOME}/.MacOSX"		# establish some environment variables for use by applications
+fi
 
 # install bootstrap scripts
 install "${srcdir}/Functions/errtrap.ksh" "$CCDev/func" "errtrap"
 install "${srcdir}/Functions/ccInstall.ksh" "$CCDev/func" "ccInstall"
 install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin"
 
-# install third party software
-shunitInstall
+# install shunit (third party)
+if [[ ${installEnvironmentPlist} = "yes" ]] ; then
+	shunitInstall
+fi
 
 # test CCDev_Setup
 typeset -i failcnt=0

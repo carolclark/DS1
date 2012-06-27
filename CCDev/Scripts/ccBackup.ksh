@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 12/21/11 from file created 04/28/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -179,9 +179,9 @@ function processCustomFolder {
 	done
 
 	# Carol's custom folders
-	for fl in $(ls "${HOME}/Dev") ; do
+	for fl in $(ls "${DEV}") ; do
 		if [[ ${fl} = "svnrep" ]] ; then
-			folder="${HOME}/Dev/svnrep"
+			folder="${DEV}/svnrep"
 			batch="Custom"
 			target="${destination}/${batch}/Dev/svnrep-$(date '+%Y_%m_%d-%H%M%S')"
 			if [[ -e "${folder}" ]] ; then

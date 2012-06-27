@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 11/11/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -41,7 +41,7 @@ case "${target}" in
 		print "succeeded"
 		;;
 	* )
-		ccInstall "${HOME}/Dev/${project}" "${target}" -c
+		ccInstall "${DEV}/${project}" "${target}" -c
 		;;
 esac
 	

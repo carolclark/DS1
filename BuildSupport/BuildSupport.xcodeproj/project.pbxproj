@@ -227,7 +227,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "ccInstall ${HOME}/Dev/Support Xcode";
+			shellScript = "ccInstall ${DEV}/Support Xcode";
 			showEnvVarsInLog = 0;
 		};
 		67A00C5414A2891D002456DB /* ShellScript */ = {
@@ -269,7 +269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "ccInstall ${HOME}/Dev/Support CCDev";
+			shellScript = "ccInstall ${DEV}/Support CCDev";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

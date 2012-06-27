@@ -20,26 +20,29 @@
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 	<!-- @topicGroup "" "5" -->
 		<!-- @topicItem "Switch to Lion" "#Lion" "1" "" -->
-		<!-- @topicGroup "" "7" -->
+			<!-- @topicItem "Establish Lion Volume" "#LionVolume" "2" "" -->
+			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
+			<!-- @topicItem "Install Lion on Primary Partition" "#LionPrimary" "2" "" -->
+		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
 			<!-- @topicItem "Script Site Installation" "#installSite" "2" "" -->
 			<!-- @topicItem "Add TechnicalDocs Area" "#addTechnicalDocs" "2" "" -->
 			<!-- @topicItem "Add Family Area" "#addFamily" "2" "" -->
-		<!-- @topicGroup "" "12" -->
+		<!-- @topicGroup "" "15" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
 			<!-- @topicItem "Recover DevSupport Scripts" "#DevSupport" "2" "" -->
 			<!-- @topicItem "Import Existing Projects" "#devImport" "2" "" -->
 			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
-		<!-- @topicGroup "" "18" -->
+		<!-- @topicGroup "" "21" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-		<!-- @topicGroup "" "21" -->
+		<!-- @topicGroup "" "24" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
 			<!-- @topicItem "Initial Arbonne Spreadsheets" "#initArbonne" "1" "" -->
-	<!-- @topicGroup "" "24" -->
+	<!-- @topicGroup "" "27" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "26" -->
+	<!-- @topicGroup "" "29" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 	
@@ -61,8 +64,9 @@
 	<tr> <td>Support</td> <td><a href="#webHost">Finish Switching Web Hosts</a></td> <td class='small'>switch TechnicalDocs and Family web areas to new host</td> <td align="center">2</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Developer Support and Automation</span></td></tr>
 	<tr> <td>Support</td> <td>script ccArchive</td> <td class='small'>supports archiving svn and git repositories</td> <td align="center">1</td> </tr>
-<tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#procSnippet">Snippet</a> support</td> <td class='small'>maybe a Service to expand the selected text</td> <td align="center">2</td> </tr>
-	<tr><td colspan="4" align="center"><span class='ital'>Transfer Existing Development Work</span></td></tr>
+    <tr> <td>Accessor</td> <td>improve <a href="../Accessor/History_Accessor.html#ErrorCommunication">Error Communication</a></td> <td class='small'>will improve identification of Faults</td> <td align="center">1</td> </tr>
+    <tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#procSnippet">Snippet</a> support</td> <td class='small'>maybe a Service to expand the selected text</td> <td align="center">2</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Transfer Existing Development Work</span></td></tr>
  	<tr> <td>Support</td> <td>plan import of remaining Support features</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
 	<tr> <td>Support</td> <td>plan disposition of remaining projects [<a href="#devImport">Import Existing Projects</a>]</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
  	<tr> <td>Support</td> <td>import remaining Support features [<a href="#DevSupport">Recover DevSupport Scripts</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
@@ -80,12 +84,39 @@
 <h2 id='hmark_Active'>Active</h2>
 
 <!-- @marker "Switch to Lion" -->
-<h4 id='Lion'>Switch to Lion</h4><ul>
-	<li>upgrade CCDev installation and environment variables to support Dev folder not on boot volume</li>
-	<li>set up Lion partition for testing: <a href="Support.html#tp_NewSystemSetup">New System Setup</a></li>
-	<li>...</li>
-	<li>after testing, install Lion on primary volume</li>
-</ul>
+<h4 id='Lion'>Switch to Lion</h4>
+
+	<!-- @marker "Establish Lion Volume" -->
+	<h5 id='LionVolume'>Establish Lion Volume</h5><ul>
+		<li class='blurb'>set up extra partition Lion for testing</li>
+		<li>Accessor <a href="../Accessor/History_Accessor.html#estWorkflow">Establish Workflow</a>: finalize Lion-compatible version of Accessor; make it compatible with booting from either primary volume Mac ora test volume Lion</li>
+		<li>upgrade CCDev installation and environment variables to support Dev folder not on boot volume</li>
+		<li>set up Lion partition for testing: <a href="Support.html#tp_NewSystemSetup">New System Setup</a></li>
+		<li>all targets: switch to LLDB debugger to avoid build system warning</li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>unlink documentation for Legacy projects from active documentation<ul>
+			<li>move documentation for inactive projects to Legacy folder; edit active Cdoc to remove references to those projects</li>
+		</ul></li>
+		<li>restore <a href="#ValidateHTML">ValidateHTML</a> support<ul>
+			<li>new target BBEdit, based on DevSupport's BBEdit, installs features that are still active</li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Backups and Volumes" -->
+	<h5 id='BackupsVolumes'>Backups and Volumes</h5><ul>
+		<li class='blurb'>Update backup support procedures, including usage of our external volumes</li>
+		<li class='blurb'>QuickPicks<ul>
+			<li>our current backup utility, obtained from MobileMe, identifies critical data for some standard applications; it looks like a good list</li>
+			<li>Application Preferences @~/Library/Preferences; Address Book database @	; iCal calendars (~
+			</li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Install Lion on Primary Partition" -->
+	<h5 id='LionPrimary'>Install Lion on Primary Partition</h5><ul>
+		<li>after testing, install Lion on primary volume</li>
+		<li>Accessor: AccessorErrorTest: uncomment two tests that failed on external partition due to problems with <span class='mono'>__FILE__</span> comparison</li>
+	</ul>
 
 <!-- @marker "Switch Web Hosts" -->
 <h4 id='webHost'>Switch Web Hosts</h4><ul>
@@ -102,7 +133,7 @@
 			<li>candcsoft.com: hosted site</li>
 			<li>candcsoft.com/TechnicalDocs: password-protected technical documentation site</li>
 			<li>candcsoft.com/Family: family photos site</li>
-			<li>candcsoft.com/Private: contains Punkin repository accessible via ssh</li>
+				<li>git-CCSoftware@pl5.projectlocker.com:&lt;ProjectName&gt;.git: active project repositories</li>
 			<li>later: We also own domains EverydaySpanish.net and EverydaySpanishForKids.com, and intend to eventually forward at least one of those via Go Daddy to a site within candcsoft.com.</li>
 		</ul></li>
 	</ul></li>
@@ -111,7 +142,7 @@
 	<!-- @marker "Script Site Installation" -->
 	<h5 id='installSite'>Script Site Installation</h5><ul>
 		<li class='blurb'>implement script and target to install site content (leave other template files for now)<ul>
-			<li><span class='mono'>build</span> builds local copy; <span class='mono'>upload</span> updates hosted site from local copy</li>
+			<li><span class='mono'>build</span> builds local copy; <span class='mono'>upload</span> updates hosted site from local copy (function <span class='mono'>upload</span>, similar to <span class='mono'>install</span>, generates and executes ruby ftp script</li>
 		</ul></li>
 		<li class='blurb'>see <a href="http://4loc.wordpress.com/2008/12/04/using-ftp-in-ruby/">Using FTP in Ruby</a></li>
 		<li class='depr'>see <a href="http://oreilly.com/catalog/expect/chapter/ch03.html">Exploring Expect: Chapter 3</a>, <a href="http://www.cs.colostate.edu/helpdocs/ftp.html">Basic FTP Commands</a>; <a href="http://myithaca.wordpress.com/2009/06/21/expect-scripting-tutorial/">Expect scripting tutorial</a> (expect is included on Mac); (<a href="http://www.stratigery.com/scripting.ftp.html">Using ftp in a shell script</a>, if needed)</li>
@@ -134,64 +165,12 @@
 <!-- @marker "Transfer Existing Development Work" -->
 <h4 id="transferExisting">Transfer Existing Development Work</h4>
 
-	<!-- @marker "Transfer Existing: Setup" -->
-	<h5 id="transferExisting_setup">Transfer Existing: Setup</h5><ul>
-		<li class='blurb'>There have been major changes in our development environment, including replacing Subversion with Git for Source Control. All existing projects, along with any still-active functionality, will be transferred into the new system.</li>
-		<li><a href="#transferExisting_compl"><i>(completed)</i></a><ul>
-			<li class='blurb'>ccInstall now handles actions clean, install, and test for non-Cdoc targets</li>
-		</ul></li>
-		<li class='tldate'>[implCcInstall 11/29/2011]</li>
-		<li>support new project Accessor<ul>
-			<li>History_Support: add Development Overview section</li>
-			<li>default.css: add italic style</li>
-			<li>update Cdoc File, HistoryFile templates</li>
-			<li class='tldate'>[12/05/11]</li>
-			<li>Accessor: support both Carbon (AccessorC9) and Accessor for project selection</li>
-			<li>add default annotated Doxygen configuration file Default.doxygen for reference</li>
-			<li>Xcode UserSlate: add macros for several common type actions</li>
-			<li>Cdoc: add file DevelopingProjects.html<ul>
-				<li class='blurb'>tasks and refactorings related to development with (Xcode) projects</li>
-			</ul></li>
-			<li>rename Xcode FileTemplate group Cdoc to Documentation</li>
-			<li>ccInstall: call mkdir before attempting to copy files; and error checks on file copy</li>
-			<li class='tldate'>[12/19/2011]</li>
-			<li>Doxygen support<ul>
-				<li>add template file Documentation/DoxygenConfig for customized Doxygen configuration file</li>
-				<li>add script buildDocset.sh; used as Run Script script to build Doxygen documentation</li>
-			</ul></li>
-			<li>viewDoxygen.workflow<ul>
-				<li>refactor viewInBrowser.workflow to viewCdoc.workflow, which uses a template format that can easily be replicated for viewDoxygen.workflow</li>
-				<li>new viewDoxygen.workflow based on refactored viewCdoc.workflow</li>
-			</ul></li>
-		</ul></li>
-		<li>update ccBackup<ul>
-			<li class='blurb'>Backup script from Support_svn; currently fails on .zip files; also have had some problems with .git folders</li>
-			<li> import existing script; skip .zip files</li>
-		</ul></li>
-		<li><a id="CdocBuild">support Cdoc build/clean</a><ul>
-			<li class='blurb'>build Cdoc targets from run script that calls buildCdoc; clean using cleanProjectTarget from Terminal as for other targets</li>
-			<li class='blurb'>replaces Support_svn scripts build.uia, currently called from Terminal, and buildCdoc, called by build.uia</li>
-			<li>new script buildCdoc from existing Support_svn script buildCdoc</li>
-			<li><a href="DevelopingProjects.html#AddRunScriptTarget">Add Run Script Target</a> Cdoc with script buildCdoc Support</li>
-			<li>cleanProjectTarget: add special handling to clean targets Cdoc</li>
-			<li>Xcode.r: support cleanProjectTarget &lt;Project&gt; Cdoc</li>
-			<li class='tldate'>[targetCdoc 12/22/2011]</li>
-			<li>switch to Cdoc targets for Punkin, AccessorC9, Accessor</li>
-		</ul></li>
-		<li class='tldate'>[cdocTargets 11/23/2011]</li>
-		<li>Support import: plan import of remaining Support features [<a href="#devImport">DevImport</a>]</li>
-		<li>add existing Pages document UseCaseImages.pages (from DevSupport)</li>
-		<li class='tlmark'>&lt;--</li>
-		<li>plan import of remaining existing projects and features [<a href="#DevSupport">DevSupport</a>] [<a href="#devImport">devImport</a>]</li>
-	</ul>
-
 	<!-- @marker "Recover DevSupport Scripts" -->
 	<h5 id='DevSupport'>Recover DevSupport Scripts</h5><ul>
+        <li id='ValidateHTML'>BBEdit support: recover active scripts including ValidateHTML</li>
 		<li id='archive'>Archive script: based on archiveProject, archiveRepository, archiveToRetire, openArchives from DevSupport:Xcode.sh</li>
-		<li>recover Finder scrit toTEXT<ul>
-			<li>script documents changing creator and/or file tyle</li>
-		</ul></li>
-		<li>keep a reference copy of DevSupport's Snippet script in case it is needed in the future</li>
+		<li>Finder: recover script toTEXT; include documentation for changing creator and/or file type</li>
+		<li>Snippet script: translate to Automator Service</li>
 	</ul>
 
 	<!-- @marker "Import Existing Projects" -->
@@ -229,7 +208,7 @@
 			<li>Xcode: add Marker support; reorganize Xcode slates to utilize markers and to improve organization and maintainability</li>
 		</ul></li>
 		<li>Safari subslates: It is now possible to use the Filter field to anchor moving among links using the tab option-tab keys. For Doxygen pages, the Doxygen Filter field can be used in the same way. Update Safari slates accordingly.</li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li class='tlmark'>&lt;--</li>
 		<li>Accessor (new): add copies of files AccessLib_rsrc.h, Keyboard_AL.h to UserSlates folder</li>
 	</ul>
 
@@ -498,6 +477,57 @@
 		<li>RemoteOperator has just been updated to remove deprecated calls</li>
 	</ul>
 
+	<!-- @marker "Transfer Existing: Setup" -->
+	<h5 id="transferExisting_setup">Transfer Existing: Setup</h5><ul>
+		<li class='blurb'>There have been major changes in our development environment, including replacing Subversion with Git for Source Control. All existing projects, along with any still-active functionality, will be transferred into the new system.</li>
+		<li><a href="#transferExisting_compl"><i>(completed)</i></a><ul>
+			<li class='blurb'>ccInstall now handles actions clean, install, and test for non-Cdoc targets</li>
+		</ul></li>
+		<li class='tldate'>[implCcInstall 11/29/2011]</li>
+		<li>support new project Accessor<ul>
+			<li>History_Support: add Development Overview section</li>
+			<li>default.css: add italic style</li>
+			<li>update Cdoc File, HistoryFile templates</li>
+			<li class='tldate'>[12/05/11]</li>
+			<li>Accessor: support both Carbon (AccessorC9) and Accessor for project selection</li>
+			<li>add default annotated Doxygen configuration file Default.doxygen for reference</li>
+			<li>Xcode UserSlate: add macros for several common type actions</li>
+			<li>Cdoc: add file DevelopingProjects.html<ul>
+				<li class='blurb'>tasks and refactorings related to development with (Xcode) projects</li>
+			</ul></li>
+			<li>rename Xcode FileTemplate group Cdoc to Documentation</li>
+			<li>ccInstall: call mkdir before attempting to copy files; and error checks on file copy</li>
+			<li class='tldate'>[12/19/2011]</li>
+			<li>Doxygen support<ul>
+				<li>add template file Documentation/DoxygenConfig for customized Doxygen configuration file</li>
+				<li>add script buildDocset.sh; used as Run Script script to build Doxygen documentation</li>
+			</ul></li>
+			<li>viewDoxygen.workflow<ul>
+				<li>refactor viewInBrowser.workflow to viewCdoc.workflow, which uses a template format that can easily be replicated for viewDoxygen.workflow</li>
+				<li>new viewDoxygen.workflow based on refactored viewCdoc.workflow</li>
+			</ul></li>
+		</ul></li>
+		<li>update ccBackup<ul>
+			<li class='blurb'>Backup script from Support_svn; currently fails on .zip files; also have had some problems with .git folders</li>
+			<li> import existing script; skip .zip files</li>
+		</ul></li>
+		<li><a id="CdocBuild">support Cdoc build/clean</a><ul>
+			<li class='blurb'>build Cdoc targets from run script that calls buildCdoc; clean using cleanProjectTarget from Terminal as for other targets</li>
+			<li class='blurb'>replaces Support_svn scripts build.uia, currently called from Terminal, and buildCdoc, called by build.uia</li>
+			<li>new script buildCdoc from existing Support_svn script buildCdoc</li>
+			<li><a href="DevelopingProjects.html#AddRunScriptTarget">Add Run Script Target</a> Cdoc with script buildCdoc Support</li>
+			<li>cleanProjectTarget: add special handling to clean targets Cdoc</li>
+			<li>Xcode.r: support cleanProjectTarget &lt;Project&gt; Cdoc</li>
+			<li class='tldate'>[targetCdoc 12/22/2011]</li>
+			<li>switch to Cdoc targets for Punkin, AccessorC9, Accessor</li>
+		</ul></li>
+		<li class='tldate'>[cdocTargets 11/23/2011]</li>
+		<li>Support import: plan import of remaining Support features [<a href="#devImport">DevImport</a>]</li>
+		<li>add existing Pages document UseCaseImages.pages (from DevSupport)</li>
+		<li>plan import of remaining existing projects and features [<a href="#DevSupport">DevSupport</a>] [<a href="#devImport">devImport</a>]</li>
+	</ul>
+	<p class='tldate'>[06/20/2012]</p>
+	
 	<!-- @marker "[end]" -->
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

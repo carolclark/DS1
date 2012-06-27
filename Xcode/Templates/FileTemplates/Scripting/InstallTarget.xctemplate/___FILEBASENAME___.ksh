@@ -25,7 +25,7 @@ USAGE='
 trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
-projectPath="${HOME}/Dev/<#Project#>"
+projectPath="${DEV}/<#Project#>"
 target="<#Target#>"
 
 #^ 3 === getSubtargetDestination

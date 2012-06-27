@@ -36,10 +36,11 @@
 		<!-- @topicItem "iTunes" "#iTunes" "0" "" -->
 		<!-- @topicItem "Mail" "#Mail" "0" "" -->
 		<!-- @topicItem "Safari" "#Safari" "0" "" -->
+		<!-- @topicItem "Stickies" "#Stickies" "0" "" -->
 		<!-- @topicItem "System Preferences" "#SystemPreferences" "0" "" -->
 		<!-- @topicItem "Terminal" "#Terminal" "0" "" -->
-		<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
 	<!-- @topicGroup "" "20" -->
+		<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
 		<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
 <!-- @/topicList -->
 
@@ -336,6 +337,16 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<li>alias to ~/CCDev/Sites/TechnicalDocs/Support/Development.html to ~/Documents</li>
 	</ul>
 
+<!-- @marker "Stickies" -->
+<h2 id='Stickies'>Stickies</h2>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b> database at ~/Library/StickiesDatabase</p>
+	<p><b>Configuration</b></p>
+	<ul>
+		<li><b>Font</b>: Menlo regular 11</li>
+		<li><b>Default Window</b>: gray; exactly 50 characters wide (for git comments)</li>
+	</ul>
+
 <!-- @marker "SystemPreferences" -->
 <h2><a name="SystemPreferences">System Preferences</a></h2>
 	<p><b>Application</b> Apple app at /Applications</p>
@@ -345,8 +356,8 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<li><b>Accessor</b>: connect to its trigger key or mouse action</li>
 		<li><b>Universal Access</b>: Enable access for assistive devices: ON (otherwise, mouse events that show position or are window-relative fail)</li>
 		<li><b>Dock</b>: fairly small (about 10%); on right</li>
-		<li><b>Expose</b>: topRight: Put Display to Sleep</li>
-		<li><b>Language &amp; Text</b>: Input Menu: On; show Character Palette, Keyboard Viewer</li>
+		<li><b>Mission Control</b>: topRight: Put Display to Sleep</li>
+		<li class='depr'><b>Language &amp; Text</b>: Input Sources: Show Keyboard &amp; Character Viewer: ON</li>
 		<li><b>Displays</b>: minimum brightness</li>
 		<li><b>Keyboard</b>: Keyboard Shortcuts <ul>
 			<li>Keyboard: Use all F1, F2 keys as standard function keys: On <ul>
@@ -357,9 +368,9 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		</ul></li>
 		<li><b>Sound</b> <ul>
 			<li>Output: volume ~20%</li>
-			<li>Input: external microphone; input volume ~67%</li>
+			<li>Input: external microphone; input volume (???)~67%</li>
 		</ul></li>
-		<li><b>Accounts</b> Login Items: Mail, iCal, Activity Monitor (Hide); iTunes Helper (Hide)</li>
+		<li><b>Accounts</b> Login Items: Mail, iCal, Activity Monitor (Hide); <span class='depr'>iTunes Helper (Hide)</span>; in Account Context Menu: set system shell to /bin/ksh</li>
 		<li><b>Software Update</b>: Download Updates Automatically: off</li>
 		<li><b>Speech</b>: Speech Recognition: External Microphone; Calibrate: adjust	</li>
 		<li><b>Date &amp; Time</b> select time zone</li>

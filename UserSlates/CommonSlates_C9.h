@@ -11,20 +11,22 @@
 
 // set #defines for alternative builds in Accessor and/or Install Build Settings: Preprocessor Defines
 #define bootvol_        "/Volumes/Mac"
-#ifdef _Laptop_
+#ifdef LAPTOP
 #define bootvol_        "/Volumes/Macintosh HD"
 #endif
-#ifdef _Lion_
+#ifdef LION
 #define bootvol_        "/Volumes/Lion"
 #endif
 
 #define	mainvol_		bootvol_
 #define DevApps_        bootvol_"/Developer/Applications/"
 
-#ifdef _Lion_
+#ifdef LION
 #define mainvol_        "/Volumes/Mac"
 #define DevApps_        bootvol_"/Applications/"
 #endif
+
+#define mainhome_       mainvol_"/Users/carolclark/"
 
 //#if	ALT_BOOT_VOLUME
 //	#define bootvol_	"/Volumes/"ALT_BOOT_VOLUME
@@ -47,12 +49,12 @@
 #define Apps_		bootvol_"/Applications/"
 #define MainApps_	mainvol_"/Applications/"
 #define JavaApps_	bootvol_"/JavaDeveloper/Applications/"
-#define Home_		mainvol_"/Users/carolclark/"
+#define Home_		bootvol_"/Users/carolclark/"
 #define HomeApps_	Home_"Applications/"
-#define Docs_		Home_"Documents/"
-#define Dev_		Home_"Dev/"
-#define Reference_	Home_"Reference/"
-#define Databases_	Home_"Databases/"
+#define Docs_		mainhome_"/Documents/"
+#define Dev_		mainhome_"/Dev/"
+#define Reference_	mainhome_"/Reference/"
+#define Databases_	mainhome_"/Databases/"
 #define Utilities_	Apps_"Utilities/"
 
 #pragma mark resid_

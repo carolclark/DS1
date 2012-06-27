@@ -85,7 +85,8 @@
 	#define resid_Profile				resid_Target+1
 	#define resid_RunTarget				resid_Target+2
 	#define	resid_TargetScheme			resid_Target+3
-
+	#define	resid_TargetPopup			resid_Target+4
+	
 #pragma mark Editor Slates
 #define	resid_Editor				resid_Xcode+1000
 	#define resid_Marker				resid_Editor+1
@@ -364,8 +365,8 @@ resource restype_Slate (resid_JumpBar, "JumpBar") { {
 		_SlateGlobals_,		\
 		ExitEvent { "okay", "" },		Keypress { kc_return, 0 },								\
 		ExitEvent { "return", "" },		Keypress { kc_return, 0 },								\
-		ExitEvent { "cancel", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, endSequence{},																		\
-		ExitEvent { "close", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, endSequence{},																		\
+		ExitEvent { "cancel", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, endSequence{},	\
+		ExitEvent { "close", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, endSequence{},	\
 		ExitEvent { "exit", "" },		CloseSubslate{},										\
 		Event { "page top", "" },		Keypress { kc_home, 0 },								\
 		Event { "page end", "" },		Keypress { kc_end, 0 },									\
@@ -1315,9 +1316,9 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "test", "" },			Keypress { kc_U, mf_command },
 		Event { "analyze", "" },		Keypress { kc_B, mf_command + mf_shift },
 		Event { "build", "" },			Keypress { kc_B, mf_command },
-		Event { "run", "" },			Sequence{}, Keypress { kc_R, mf_command }, ResSubslate { resid_RunTarget },endSequence{},
-		Event { "profile", "" },		Sequence{}, Keypress { kc_I	, mf_command }, ResSubslate { resid_Profile },endSequence{},
-		Event { "validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { Apps_"BBEdit.app", 0 }, endSequence{},
+		Event { "run", "" },			Sequence{}, Keypress { kc_R, mf_command }, ResSubslate { resid_RunTarget }, endSequence{},
+		Event { "profile", "" },		Sequence{}, Keypress { kc_I	, mf_command }, ResSubslate { resid_Profile }, endSequence{},
+		Event { "validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { MainApps_"BBEdit.app", 0 }, endSequence{},
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "view Doxygen", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
 		Event { "top row", "" },		_topRow,
@@ -1331,7 +1332,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "clean", "" },			Keypress { kc_K, mf_command + mf_shift },
 		Event { "click back", "" },		Click { 1, -500, 40, _window, _topRight },
 		Event { "scheme", "" },			Sequence{}, _targetPopup, ResSubslate { resid_TargetScheme }, endSequence{},
-		Event { "pop up", "" },			_targetPopup,
+		Event { "pop up", "" },			Sequence{}, _targetPopup, ResSubslate { resid_TargetPopup }, endSequence{},
 		Event { "nav list", "" },		_navList,
 		Event { "go next", "" },		_goNext,
 		Event { "go previous", "" },	_goPrevious,
@@ -1385,21 +1386,17 @@ resource restype_Slate (resid_RunTarget, "") { {
 
 resource restype_Slate (resid_TargetScheme, "") { {
 	Slate { "TargetScheme",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "cancel", "" },	Keypress { kc_escape, 0 },
-		ExitEvent { "okay", "" },	Keypress { kc_return, 0 },
-		ExitEvent { "exit", "" },	NilAction{},
+		_PopupStandards_,
 		ExitEvent { "edit", "" },	Sequence{}, TypeText { "Edit Scheme" }, _down, _return, endSequence{},
 		Event { "manage", "" },		Sequence{}, TypeText { "Manage Schemes" }, _down, _return, endSequence{},
 		Event { "shared", "" },		Click { 1, 284, 0, _cursor },
 		Event { "show", "" },		Click { 1, -284, 0, _cursor },
-		Event { "Xcode", "" },			Sequence{}, TypeText { "Xcode" }, _down, _return, endSequence{},
-		Event { "Setup", "" },			Sequence{}, TypeText { "CCDev_Setup" }, _down, _return, endSequence{},
-		Event { "C C Dev", "" },		Sequence{}, TypeText { "CCDev" }, _down, _return, endSequence{},
-		Event { "Accessor", "" },		Sequence{}, TypeText { "Accessor" }, _down, _return, endSequence{},
-		Event { "Doxygen", "" },		Sequence{}, TypeText { "Doxygen" }, _down, _return, endSequence{},
-		Event { "C doc", "" },			Sequence{}, TypeText { "Cdoc" }, _down, _return, endSequence{},
+		Event { "Xcode", "" },		Sequence{}, TypeText { "Xcode" }, _down, _return, endSequence{},
+		Event { "Setup", "" },		Sequence{}, TypeText { "CCDev_Setup" }, _down, _return, endSequence{},
+		Event { "C C Dev", "" },	Sequence{}, TypeText { "CCDev" }, _down, _return, endSequence{},
+		Event { "Accessor", "" },	Sequence{}, TypeText { "Accessor" }, _down, _return, endSequence{},
+		Event { "Doxygen", "" },	Sequence{}, TypeText { "Doxygen" }, _down, _return, endSequence{},
+		Event { "C doc", "" },		Sequence{}, TypeText { "Cdoc" }, _down, _return, endSequence{},
 		Event { "row one", "" },	Click { 0, 0, 150+(1*_rsp), _window, _topCenter },
 		Event { "row two", "" },	Click { 0, 0, 150+(2*_rsp), _window, _topCenter },
 		Event { "row three", "" },	Click { 0, 0, 150+(3*_rsp), _window, _topCenter },
@@ -1408,6 +1405,12 @@ resource restype_Slate (resid_TargetScheme, "") { {
 		Event { "row six", "" },	Click { 0, 0, 150+(6*_rsp), _window, _topCenter },
 		Event { "row seven", "" },	Click { 0, 0, 150+(7*_rsp), _window, _topCenter },
 		Event { "row eight", "" },	Click { 0, 0, 150+(8*_rsp), _window, _topCenter },
+	} }
+} };
+
+resource restype_Slate (resid_TargetPopup, "") { {
+	Slate { "TargetPopup",	{
+		_PopupStandards_,
 	} }
 } };
 
@@ -2591,7 +2594,7 @@ resource restype_Slate (resid_InsertElement, "") { {
 		ExitEvent { "ampersand", "" }, TypeText { "&amp;" },
 		ExitEvent { "less than", "" }, TypeText { "&lt;" },
 		ExitEvent { "greater than", "" }, TypeText { "&gt;" },
-		ExitEvent { "angle brackets", "" },	Sequence{}, TypeText { "1&lt;&gt;<##> " }, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},
+		ExitEvent { "angle brackets", "" },	Sequence{}, TypeText { "&lt;&gt;<##> " }, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},
 		ExitEvent { "hard space", "" }, TypeText { "&nbsp;" },
 		ExitEvent { "arrow left", "" }, TypeText { "&larr;" },
 		ExitEvent { "arrow right", "" }, TypeText { "&rarr;" },
@@ -2864,7 +2867,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft }, Click { -1, 87, 29, _screen, _topLeft }, endSequence{},	
 		Event { "context menu", "" },	ClickMod { 1, 0, 0, _cursor, mf_control },
 		Event { "Terminal", "" },		Sequence{}, ResSubslate { resid_XCTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},
-		Event { "Validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { Apps_"BBEdit.app", 0 }, endSequence{},
+		Event { "Validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { MainApps_"BBEdit.app", 0 }, endSequence{},
 		Event { "Stickies", "" },		Sequence{}, ResSubslate { resid_Stickies }, Launch { Apps_"Stickies.app", 0 }, endSequence{},
 		Event { "Menu", "access menus" },
 			Subslate { "Menu" },

@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 12/21/11 from file created 02/23/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -288,7 +288,7 @@ project=${1:?"usage: buildCdoc projectName"}
 action=${2:-all}
 
 # Builds $project/Cdoc at ~/CCDev/Sites/TechnicalDocs/$project
-buildsource_Cdoc=(sourceDirectory="${HOME}/Dev/${project}/Cdoc" destinationDirectory="${CCDev}/Sites/TechnicalDocs/${project}" derivedDirectory="${CCDev}/build/${project}/Cdoc" subtarget="")
+buildsource_Cdoc=(sourceDirectory="${DEV}/${project}/Cdoc" destinationDirectory="${CCDev}/Sites/TechnicalDocs/${project}" derivedDirectory="${CCDev}/build/${project}/Cdoc" subtarget="")
 
 st=0
 nameref buildsource=buildsource_Cdoc	

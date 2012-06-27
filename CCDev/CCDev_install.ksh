@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -25,7 +25,7 @@ CCDev_install.ksh -- provide functions for ccInstall to support CCDev installati
 trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
-projectPath="${HOME}/Dev/Support"
+projectPath="${DEV}/Support"
 target="CCDev"
 
 #^ 3 === getSubtargetDestination
