@@ -136,7 +136,7 @@
 
 #define _TypeXcodeSlate_ 		Event { "Type", "" }, ResSubslate { resid_TypeXcodeSlate }
 
-#define _scriptsMenu	Click { 1, -340, 13, _screen, _topRight }, Wait { 30 }, _down, TypeText { "Xcode" }, _right
+#define _scriptsMenu	Click { 1, -310, 13, _screen, _topRight }, Wait { 30 }, _down, TypeText { "Xcode" }, _right
 #define closeDocument_	\
 	Event { "close document", "" },	Keypress { kc_W, mf_command + mf_control },
 
@@ -525,7 +525,7 @@ resource restype_Slate (resid_BBValidate, "html validation support") { {
 		_TypeXcodeSlate_,
 		_WhitespaceKeys_,
 		_DirectionKeys_,
-		Event { "technical", "" },	 Sequence{}, _BBClickScriptsMenu, _down, TypeText { "ValidateHTML" }, _right, TypeText { "CheckSyntaxAll" }, _return, ResSubslate { resid_BBContinueCheckAll }, endSequence{},
+		Event { "technical", "" },	 Sequence{}, _BBClickScriptsMenu, _down, TypeText { "CheckSyntax" }, _return, ResSubslate { resid_BBContinueCheckAll }, endSequence{},
 	} }
 } };
 
@@ -534,7 +534,7 @@ resource restype_Slate (resid_BBContinueCheckAll, "resid_BBContinueCheckAll") { 
 		_SlateGlobals_,
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
 		ExitEvent { "exit", "" },		NilAction{},
-		ExitEvent { "continue", "" },	Sequence{}, _return, Wait { 40 }, _BBClickScriptsMenu, Wait { 40 }, _down, TypeText { "ValidateHTML" }, _right, TypeText { "CheckLinksAll" }, _return, endSequence{},
+		ExitEvent { "continue", "" },	Sequence{}, _return, Wait { 40 }, _BBClickScriptsMenu, Wait { 40 }, _down, TypeText { "CheckLinks" }, _return, endSequence{},
 	} }
 } };
 
@@ -1343,9 +1343,10 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "skip back", "" },		_skipBack,
 		Event { "next issue", "" },		_nextIssue,
 		Event { "previous issue", "" },	_previousIssue,
-		Event { "Xcode", "" },			Sequence{}, _targetPopup, TypeText { "Xcode" }, _down, _return, endSequence{},
 		Event { "Setup", "" },			Sequence{}, _targetPopup, TypeText { "CCDev_Setup" }, _down, _return, endSequence{},
 		Event { "C C Dev", "" },		Sequence{}, _targetPopup, TypeText { "CCDev" }, _down, _return, endSequence{},
+		Event { "Xcode", "" },			Sequence{}, _targetPopup, TypeText { "Xcode" }, _down, _return, endSequence{},
+		Event { "BBEdit", "" },			Sequence{}, _targetPopup, TypeText { "BBEdit" }, _down, _return, endSequence{},
 		Event { "Accessor", "" },		Sequence{}, _targetPopup, TypeText { "Accessor" }, _down, _return, endSequence{},
 		Event { "Install", "" },		Sequence{}, _targetPopup, TypeText { "Install" }, _down, _return, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, _targetPopup, TypeText { "Doxygen" }, _down, _return, endSequence{},

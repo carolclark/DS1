@@ -1,5 +1,5 @@
 // =================================================================================
-//	InterfaceBuilder_C9.r		©2006-09 C & C Software, Inc. All rights reserved.
+//	InterfaceBuilder_C9.r		ï¿½2006-09 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

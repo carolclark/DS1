@@ -35,9 +35,6 @@
             location = "group:Cdoc/Cdoc.html">
          </FileRef>
          <FileRef
-            location = "group:Cdoc/DevU.html">
-         </FileRef>
-         <FileRef
             location = "group:Cdoc/Personal.html">
          </FileRef>
          <Group
@@ -381,9 +378,6 @@
             location = "group:Xcode/Workflows/viewDoxygen.workflow">
          </FileRef>
          <FileRef
-            location = "group:Xcode/Workflows/viewInBrowser.workflow">
-         </FileRef>
-         <FileRef
             location = "group:Xcode/Workflows/frontTextDoc.workflow">
          </FileRef>
          <FileRef
@@ -533,6 +527,26 @@
          name = "_Tests">
          <FileRef
             location = "group:Xcode/_Tests/testXcode.ksh">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "BBEdit">
+      <FileRef
+         location = "group:BBEdit/BBEdit_install.ksh">
+      </FileRef>
+      <Group
+         location = "container:"
+         name = "Scripts">
+         <FileRef
+            location = "group:BBEdit/Scripts/CheckLinks.scpt">
+         </FileRef>
+         <FileRef
+            location = "group:BBEdit/Scripts/CheckSyntax.scpt">
+         </FileRef>
+         <FileRef
+            location = "group:BBEdit/Scripts/BBEditUtil.scpt">
          </FileRef>
       </Group>
    </Group>
