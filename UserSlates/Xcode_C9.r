@@ -135,10 +135,7 @@
 #define _splitter_x		260
 
 #define _TypeXcodeSlate_ 		Event { "Type", "" }, ResSubslate { resid_TypeXcodeSlate }
-
-#define _scriptsMenu	Click { 1, -310, 13, _screen, _topRight }, Wait { 30 }, _down, TypeText { "Xcode" }, _right
-#define closeDocument_	\
-	Event { "close document", "" },	Keypress { kc_W, mf_command + mf_control },
+#define closeDocument_			Event { "close document", "" },	Keypress { kc_W, mf_command + mf_control }
 
 #define	focus_			Event { "focus", "" },			Keypress { kc_period, mf_command + mf_option }
 #define	focusBack_		Event { "focus back", "" },		Keypress { kc_period, mf_command + mf_option + mf_shift }
@@ -2644,6 +2641,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 		ExitEvent { "resource subslate", "" },	Sequence{}, TypeText { "ResSubslate { <##> }, " }, _previous, endSequence{},
 		ExitEvent { "click menu", "" },			Sequence{}, TypeText { "ClickMenu { \"<##>\" }, " }, _previous, endSequence{},
 		ExitEvent { "launch", "" },				Sequence{}, TypeText { "Launch { \"<#path#>\", <#slate#> }, " }, _previous, _previous, endSequence{},
+		ExitEvent { "interface script", "" },	Sequence{}, TypeText { "UIScript { \"<#script#>\", \"<#target#>\" }," }, _previous, _previous, endSequence{},
 		ExitEvent { "wait", "" },				Sequence{}, TypeText { "Wait { <##> }, " }, _previous, endSequence{},
 		ExitEvent { "nil action", "" },			TypeText { "NilAction{}" },
 		ExitEvent { "close subslate", "" },		TypeText { "CloseSubslate{}," },
@@ -2885,7 +2883,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 				ExitEvent { "Build", "" }, 		ClickMenu { "Build" },
 				ExitEvent { "Window", "" },		ClickMenu { "Window" },
 				endSubslate{},
-		Event { "Script", "" },			Sequence{}, _scriptsMenu, ResSubslate { resid_Scripts }, endSequence{}, 
+		Event { "Script", "" },			Sequence{}, _systemScriptsMenu, ResSubslate { resid_Scripts }, Wait { 30 }, _down, TypeText { "Xcode" }, _right, endSequence{}, 
 		Event { "Accessor", "" },		Sequence{}, Keypress { kc_S, mf_command + mf_option }, Launch { Dev_"Accessor/Accessor.xcworkspace", 0 }, ResSubslate { resid_Accessor }, endSequence{},
 		Event { "interface", "" },		ResSubslate { resid_InterfaceBuilder },
 		Event { "Data Model", "" },		ResSubslate { resid_DataModel },

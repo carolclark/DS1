@@ -10,44 +10,22 @@
 #pragma mark folders
 
 // set #defines for alternative builds in Accessor and/or Install Build Settings: Preprocessor Defines
-#define bootvol_        "/Volumes/Mac"
+#define mainvol_		"/Volumes/Mac"
 #ifdef LAPTOP
-#define bootvol_        "/Volumes/Macintosh HD"
-#endif
-#ifdef LION
-#define bootvol_        "/Volumes/Lion"
+#define mainvol_        "/Volumes/Macintosh HD"
 #endif
 
-#define	mainvol_		bootvol_
-#define DevApps_        bootvol_"/Developer/Applications/"
-
-#ifdef LION
-#define mainvol_        "/Volumes/Mac"
-#define DevApps_        bootvol_"/Applications/"
+#define bootvol_        mainvol_
+#ifdef MOUNTAIN
+#define bootvol_        "/Volumes/Mountain"
 #endif
 
 #define mainhome_       mainvol_"/Users/carolclark/"
 
-//#if	ALT_BOOT_VOLUME
-//	#define bootvol_	"/Volumes/"ALT_BOOT_VOLUME
-//#else
-//	#define bootvol_	"/Volumes/Mac"
-//#endif
-
-//#define mainvol_	bootvol_
-//#if	ALT_BOOT_VOLUME
-//	#define mainvol_	"Mac"
-//#endif
-
-//#if LION
-//    #define DevApps_	bootvol_"/Applications/"
-//#else
-//    #define DevApps_	bootvol_"/Developer/Applications/"
-//#endif
-
 #define Sys_		bootvol_"/System Folder/"
 #define Apps_		bootvol_"/Applications/"
 #define MainApps_	mainvol_"/Applications/"
+#define DevApps_    MainApps_
 #define JavaApps_	bootvol_"/JavaDeveloper/Applications/"
 #define Home_		bootvol_"/Users/carolclark/"
 #define HomeApps_	Home_"Applications/"
@@ -126,6 +104,8 @@
 #define resid_FortyThieves				resid_Games
 
 #define _id_Safari_Bookmarks			resid_Safari+4
+
+#define	_systemScriptsMenu		Script { "tell application \"System Events\" to tell process \"SystemUIServer\" to click menu bar item 1 of menu bar 1", "" }
 
 #pragma mark 1 ===
 #pragma mark _TypeProjectName_

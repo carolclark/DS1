@@ -102,8 +102,12 @@
 		<li>restore <a href="#ValidateHTML">ValidateHTML</a> support<ul>
 			<li>new target BBEdit, based on DevSupport's BBEdit, installs features that are still active</li>
 		</ul></li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-        <li>restore View Cdoc/Doxygen scripts</li>
+        <li>restore View Cdoc/Doxygen scripts<ul>
+			<li class='blurb'>The only Script Menu items we still use are to open Doxygen and Cdoc files. They were implemented as workflows containing AppleScript and Ruby scripts. The Ruby scripts don't work in Lion.</li>
+			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+			<li>_systemScriptsMenu: Script action to click the System Scripts (iconic) menu; independent of screen location</li>
+			<li class='tldate'>[rebuildXcodeScripts]</li>
+		</ul></li>
 	</ul>
 
 	<!-- @marker "Backups and Volumes" -->
