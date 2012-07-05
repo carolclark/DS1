@@ -38,15 +38,11 @@ function getSubtargetDestination {
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
-		"Scripts" )
-			destinationFolder="${CCDev}/bin"
-			;;
-		"Functions" )
-			destinationFolder="${CCDev}/func"
-			;;
-		"Workflows" )
+		"AppleScripts" )
 			destinationFolder="${HOME}/Library/Scripts/Xcode"
 			;;
+		"Workflows" )
+			;;	#obsolete	
 		"Templates" )
 			destinationFolder="${HOME}/Library/Developer/Xcode/Templates"
 			;;

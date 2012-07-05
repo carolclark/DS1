@@ -370,6 +370,19 @@
       </FileRef>
       <Group
          location = "container:"
+         name = "AppleScripts">
+         <FileRef
+            location = "group:Xcode/AppleScripts/viewDoxygen.scpt">
+         </FileRef>
+         <FileRef
+            location = "group:Xcode/AppleScripts/viewCdoc.scpt">
+         </FileRef>
+         <FileRef
+            location = "group:Xcode/AppleScripts/frontWindow.scpt">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
          name = "Workflows">
          <FileRef
             location = "group:Xcode/Workflows/viewCdoc.workflow">

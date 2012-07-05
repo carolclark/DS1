@@ -102,12 +102,20 @@
 		<li>restore <a href="#ValidateHTML">ValidateHTML</a> support<ul>
 			<li>new target BBEdit, based on DevSupport's BBEdit, installs features that are still active</li>
 		</ul></li>
-        <li>restore View Cdoc/Doxygen scripts<ul>
-			<li class='blurb'>The only Script Menu items we still use are to open Doxygen and Cdoc files. They were implemented as workflows containing AppleScript and Ruby scripts. The Ruby scripts don't work in Lion.</li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-			<li>_systemScriptsMenu: Script action to click the System Scripts (iconic) menu; independent of screen location</li>
-			<li class='tldate'>[rebuildXcodeScripts]</li>
+		<li>rebuild Xcode scripts<ul>
+			<li>restore View Cdoc/Doxygen scripts<ul>
+				<li class='blurb'>The only Script Menu items we still use are to open Doxygen and Cdoc files. They were implemented as workflows containing AppleScript and Ruby scripts. The Ruby scripts don't work in Lion.</li>
+				<li>_systemScriptsMenu: Script action to click the System Scripts (iconic) menu; independent of screen location</li>
+				<li>AppleScripts viewCdoc/Doxygen, frontWindow</li>
+				<li class='tldate'>[07/05/2012]</li>
+				<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+				<li>change source scripts to .applescript text format; compile AppleScripts; install from bundle<ul>
+					<li class='blurb'>bundle location: use or pass ${BUILT_PRODUCTS_DIR}</li>
+				</ul></li>
+			</ul></li>
+			<li>BBEditUtil:validateHTML: use predefined BBEdit site instead of path to specify site to check</li>
 		</ul></li>
+		<li class='tldate'>[rebuildXcodeScripts]</li>
 	</ul>
 
 	<!-- @marker "Backups and Volumes" -->
@@ -122,7 +130,7 @@
 
 	<!-- @marker "Install Lion on Primary Partition" -->
 	<h5 id='LionPrimary'>Install Lion on Primary Partition</h5><ul>
-		<li>after testing, install Lion on primary volume</li>
+		<li>&radic;after testing, install Lion on primary volume</li>
 		<li>Accessor: AccessorErrorTest: uncomment two tests that failed on external partition due to problems with <span class='mono'>__FILE__</span> comparison</li>
 	</ul>
 

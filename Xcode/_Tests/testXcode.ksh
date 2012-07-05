@@ -12,9 +12,9 @@ testEquality() {
 }
 
 testXcodeInstall() {
-	# goMarker.workflow
-	if [[ ! -e ${HOME}/Library/Scripts/Xcode/goMarker.workflow ]] ; then
-		fail "$LINENO: script goMarker missing" 
+	# viewCdoc.scpt
+	if [[ ! -e ${HOME}/Library/Scripts/Xcode/viewCdoc.scpt ]] ; then
+		fail "$LINENO: script viewCdoc missing" 
 	fi
 
 	# HistoryFile.xctemplate
