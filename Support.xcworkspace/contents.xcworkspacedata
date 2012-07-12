@@ -372,13 +372,13 @@
          location = "container:"
          name = "AppleScripts">
          <FileRef
-            location = "group:Xcode/AppleScripts/viewDoxygen.scpt">
+            location = "group:Xcode/AppleScripts/frontWindow.applescript">
          </FileRef>
          <FileRef
-            location = "group:Xcode/AppleScripts/viewCdoc.scpt">
+            location = "group:Xcode/AppleScripts/viewCdoc.applescript">
          </FileRef>
          <FileRef
-            location = "group:Xcode/AppleScripts/frontWindow.scpt">
+            location = "group:Xcode/AppleScripts/viewDoxygen.applescript">
          </FileRef>
       </Group>
       <Group
@@ -550,16 +550,16 @@
          location = "group:BBEdit/BBEdit_install.ksh">
       </FileRef>
       <Group
-         location = "container:"
-         name = "Scripts">
+         location = "container:BBEdit/AppleScripts"
+         name = "AppleScripts">
          <FileRef
-            location = "group:BBEdit/Scripts/CheckLinks.scpt">
+            location = "group:BBEditUtil.applescript">
          </FileRef>
          <FileRef
-            location = "group:BBEdit/Scripts/CheckSyntax.scpt">
+            location = "group:CheckLinks.applescript">
          </FileRef>
          <FileRef
-            location = "group:BBEdit/Scripts/BBEditUtil.scpt">
+            location = "group:CheckSyntax.applescript">
          </FileRef>
       </Group>
    </Group>

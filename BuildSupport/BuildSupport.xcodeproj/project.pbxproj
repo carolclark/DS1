@@ -6,6 +6,15 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		67F480DB15AF2792004CD4E1 /* frontWindow.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480D815AF2792004CD4E1 /* frontWindow.applescript */; };
+		67F480DC15AF2792004CD4E1 /* viewCdoc.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480D915AF2792004CD4E1 /* viewCdoc.applescript */; };
+		67F480DD15AF2792004CD4E1 /* viewDoxygen.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480DA15AF2792004CD4E1 /* viewDoxygen.applescript */; };
+		67F480E115AF37C3004CD4E1 /* BBEditUtil.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480DE15AF37C3004CD4E1 /* BBEditUtil.applescript */; };
+		67F480E215AF37C3004CD4E1 /* CheckLinks.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480DF15AF37C3004CD4E1 /* CheckLinks.applescript */; };
+		67F480E315AF37C3004CD4E1 /* CheckSyntax.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480E015AF37C3004CD4E1 /* CheckSyntax.applescript */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		671C4824159CFF3800214A9E /* BBEdit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEdit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		671C4828159CFF3800214A9E /* BBEdit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BBEdit-Info.plist"; sourceTree = "<group>"; };
@@ -24,6 +33,12 @@
 		67BA94D814508D19005BF0E9 /* CCDev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev-Info.plist"; sourceTree = "<group>"; };
 		67BA94DA14508D19005BF0E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67BA94DC14508D19005BF0E9 /* CCDev-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCDev-Prefix.pch"; sourceTree = "<group>"; };
+		67F480D815AF2792004CD4E1 /* frontWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = frontWindow.applescript; path = ../Xcode/AppleScripts/frontWindow.applescript; sourceTree = "<group>"; };
+		67F480D915AF2792004CD4E1 /* viewCdoc.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = viewCdoc.applescript; path = ../Xcode/AppleScripts/viewCdoc.applescript; sourceTree = "<group>"; };
+		67F480DA15AF2792004CD4E1 /* viewDoxygen.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = viewDoxygen.applescript; path = ../Xcode/AppleScripts/viewDoxygen.applescript; sourceTree = "<group>"; };
+		67F480DE15AF37C3004CD4E1 /* BBEditUtil.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = BBEditUtil.applescript; path = ../BBEdit/AppleScripts/BBEditUtil.applescript; sourceTree = "<group>"; };
+		67F480DF15AF37C3004CD4E1 /* CheckLinks.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = CheckLinks.applescript; path = ../BBEdit/AppleScripts/CheckLinks.applescript; sourceTree = "<group>"; };
+		67F480E015AF37C3004CD4E1 /* CheckSyntax.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = CheckSyntax.applescript; path = ../BBEdit/AppleScripts/CheckSyntax.applescript; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -48,6 +63,12 @@
 		6769244B141EB818005D3E68 = {
 			isa = PBXGroup;
 			children = (
+				67F480DE15AF37C3004CD4E1 /* BBEditUtil.applescript */,
+				67F480DF15AF37C3004CD4E1 /* CheckLinks.applescript */,
+				67F480E015AF37C3004CD4E1 /* CheckSyntax.applescript */,
+				67F480D815AF2792004CD4E1 /* frontWindow.applescript */,
+				67F480D915AF2792004CD4E1 /* viewCdoc.applescript */,
+				67F480DA15AF2792004CD4E1 /* viewDoxygen.applescript */,
 				6769245D141EB921005D3E68 /* Xcode */,
 				67AA8013144F3DAD00FCCDC9 /* CCDev_Setup */,
 				67BA94D614508D19005BF0E9 /* CCDev */,
@@ -169,6 +190,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67692464141EB921005D3E68 /* Build configuration list for PBXNativeTarget "Xcode" */;
 			buildPhases = (
+				67F480D615AF2772004CD4E1 /* Sources */,
 				67692467141EBD70005D3E68 /* Xcode support */,
 			);
 			buildRules = (
@@ -334,6 +356,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F480E115AF37C3004CD4E1 /* BBEditUtil.applescript in Sources */,
+				67F480E215AF37C3004CD4E1 /* CheckLinks.applescript in Sources */,
+				67F480E315AF37C3004CD4E1 /* CheckSyntax.applescript in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F480D615AF2772004CD4E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67F480DB15AF2792004CD4E1 /* frontWindow.applescript in Sources */,
+				67F480DC15AF2792004CD4E1 /* viewCdoc.applescript in Sources */,
+				67F480DD15AF2792004CD4E1 /* viewDoxygen.applescript in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

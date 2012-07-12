@@ -38,7 +38,7 @@ function getSubtargetDestination {
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
-		"Scripts" )
+		"AppleScripts" )
 			destinationFolder="${HOME}/Library/Application Support/BBEdit/Scripts"
 			;;
 	* )
@@ -61,7 +61,13 @@ function handleFile {
 		return $RC_MissingArgument
 	fi
 
-	if [[ -n "${destinationFolder}" ]] ; then
+	if [[ "${subtarget}" = "AppleScripts" ]] ; then
+		fname="${filepath%.applescript}.scpt"
+		action="copy"
+
+		sourceForCopy="${BUILT_PRODUCTS_DIR}/BBEdit.bundle/Contents/Resources/${fname}"
+		destinationForCopy="${destinationFolder}/${fname}"
+	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
 		action="copy"

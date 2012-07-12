@@ -68,7 +68,13 @@ function handleFile {
 		return $RC_MissingArgument
 	fi
 
-	if [[ -n "${destinationFolder}" ]] ; then
+	if [[ "${subtarget}" = "AppleScripts" ]] ; then
+		fname="${filepath%.applescript}.scpt"
+		action="copy"
+
+		sourceForCopy="${BUILT_PRODUCTS_DIR}/Xcode.bundle/Contents/Resources/${fname}"
+		destinationForCopy="${destinationFolder}/${fname}"
+	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
 		action="copy"
