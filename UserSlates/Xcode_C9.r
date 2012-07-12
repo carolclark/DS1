@@ -531,7 +531,7 @@ resource restype_Slate (resid_BBContinueCheckAll, "resid_BBContinueCheckAll") { 
 		_SlateGlobals_,
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
 		ExitEvent { "exit", "" },		NilAction{},
-		ExitEvent { "continue", "" },	Sequence{}, _return, Wait { 40 }, _BBClickScriptsMenu, Wait { 40 }, _down, TypeText { "CheckLinks" }, _return, endSequence{},
+		ExitEvent { "continue", "" },	Sequence{}, _return, _BBClickScriptsMenu, _down, TypeText { "CheckLinks" }, _return, endSequence{},
 	} }
 } };
 
@@ -1618,8 +1618,8 @@ resource restype_Slate (resid_VersionEditor, "") { {
 		Event { "compare", "" },		Click { 1, -100, -20, _window, _bottomRight },
 		Event { "annotate", "" },		Click { 1, -73, -20, _window, _bottomRight },
 		Event { "revisions", "" },		Click { 1, -46, -20, _window, _bottomRight },
-		Event { "top", "" },			Sequence{}, Click { 1, 660, 540, _window, _topLeft }, Keypress { kc_up, mf_command }, endSequence{},	
-		Event { "end", "" },			Sequence{}, Click { 1, 660, 540, _window, _topLeft }, Keypress { kc_down, mf_command }, _up, _up, _up, _up, endSequence{},	
+		Event { "top", "" },			Sequence{}, Click { 1, 660, 160, _window, _topLeft }, Keypress { kc_up, mf_command }, endSequence{},	
+		Event { "end", "" },			Sequence{}, Click { 1, 660, 160, _window, _topLeft }, Keypress { kc_down, mf_command }, _up, _up, _up, _up, endSequence{},	
 		Event { "difference", "" },		Click { 1, 125, 125, _window, _topCenter },
 		Event { "down again", "" },		_down,
 		Event { "commit", "" },			Sequence{}, Keypress { kc_C, mf_command + mf_option }, ResSubslate { resid_Commit }, endSequence{},

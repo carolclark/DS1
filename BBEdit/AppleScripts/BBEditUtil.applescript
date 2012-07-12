@@ -23,7 +23,7 @@ on getCdocInfo() -- get Cdoc information for the current file of the current pro
 	set extension to ""
 	set isCdocSource to false
 	tell application "BBEdit"
-		set pname to name of project document 1
+		-- set pname to name of project document 1
 		set fname to name of document 1
 		set upath to URL of document 1
 	end tell
@@ -60,16 +60,18 @@ on getCdocInfo() -- get Cdoc information for the current file of the current pro
 end getCdocInfo
 
 on validateHTML(parent, fldr, checking)
+	set itemName to "Folder " & checking & "É"
+	set pth to parent
+	if (fldr is not "") then set pth to pth & "/" & fldr
 	tell application "System Events"
-		set itemName to "Folder " & checking & "É"
-		set pth to parent
-		if (fldr is not "") then set pth to pth & "/" & fldr
 		tell process "BBEdit"
 			click menu item itemName of menu 1 of menu item "Check" of menu 1 of menu bar item "Markup" of menu bar 1
-			keystroke "OG" using command down
-			keystroke pth
-			keystroke return
-			keystroke return
+			if (checking = "Syntax") -- set folder on first pass
+				keystroke "OG" using command down
+				keystroke pth
+				keystroke return
+				keystroke return
+			end if
 			keystroke return
 		end tell
 	end tell
