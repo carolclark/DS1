@@ -47,6 +47,8 @@ resource restype_Slate (resid_gitDiff, "") { {
 		Event { "abbreviate", "" },		TypeText { "--name-status " },
 		Event { "graph", "" },			TypeText { "--graph " },
 		Event { "graph from top", "" },	TypeText { "--graph --topo-order " },
+		Event { "copy", "" },			Keypress { kc_C, mf_command },
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
 	} }
 } };
 
@@ -146,6 +148,7 @@ resource restype_Slate (resid_gitCommit, "") { {
 resource restype_Slate (resid_termGit, "") { {
 	Slate { "Git",	{
 		_TerminalStandards_,
+		Event { "go back", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
 		Event { "workspace", "" },		Subslate { "workspace" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -158,8 +161,7 @@ resource restype_Slate (resid_termGit, "") { {
 			_SlateGlobals_,
 			_CloseSubslate_,
 			ExitEvent { "Support", "" },	Sequence{}, TypeText { "cd ${DEV}/gitrep/SupportMain" }, _return, endSequence{},
-			ExitEvent { "Punkin", "" },		Sequence{}, TypeText { "cd ${DEV}/gitrep/PunkinMain" }, _return,	 endSequence{},
-			ExitEvent { "Punkin", "" },		Sequence{}, TypeText { "cd /Volumes/carollclark/gitrep/PunkinRemote" }, _return, endSequence{},
+			ExitEvent { "Punkin", "" },		Sequence{}, TypeText { "cd git-CCSoftware@pl5.projectlocker.com:Punkin.git" }, _return, endSequence{},
 			ExitEvent { "Carbon", "" },		Sequence{}, TypeText { "cd ${DEV}/gitrep/AccessorC9Main" }, _return,	 endSequence{},
 			ExitEvent { "Accessor", "" },	Sequence{}, TypeText { "cd ${DEV}/gitrep/AccessorMain" }, _return,	 endSequence{},
 			endSubslate{},
@@ -214,12 +216,14 @@ resource restype_Slate (resid_termArchive, "") { {
 	Slate { "Archive",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		ExitEvent { "cancel", "" },		_cancel,
-		ExitEvent { "execute", "" },	Keypress { kc_return, 0 },
-		Event { "project", "" },		TypeText { "project " },
-		Event { "to retire", "" },		TypeText { "toRetire " },
-		Event { "repositories", "" },	TypeText { "repositories " },
-		_TypeProjectName_,
+		ExitEvent { "cancel", "" },			_cancel,
+		ExitEvent { "execute", "" },		Keypress { kc_return, 0 },
+		Event { "project", "" },			TypeText { "--project " },
+		Event { "code", "" },				TypeText { "--code " },
+		Event { "repositories", "" },		TypeText { "--repositories " },
+		Event { "folder", "" },				Sequence{}, TypeText { "#--folder archiveName inputPath inputFolder" }, _return, TypeText { "archive --folder " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "type", "" },				ResSubslate { resid_termType },
+		Event { "paste", "" },				Keypress { kc_V, mf_command },
 	} }
 } };
 

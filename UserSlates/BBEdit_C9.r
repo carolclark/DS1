@@ -98,6 +98,8 @@
 #define _NextPanel	Event { "next panel", "" },	Keypress { kc_tab, mf_control }
 #define _PreviousPanel	Event { "previous panel", "" },	Keypress { kc_tab, mf_control + mf_shift }
 
+#define _TypeProjectName_
+
 #define _BBEditStandards_		\
 	_SlateGlobals_,                                                                                             \
 	Event { "goto line", "" },			Keypress { kc_J, mf_command },                                          \

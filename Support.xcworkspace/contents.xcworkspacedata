@@ -120,6 +120,9 @@
          location = "container:"
          name = "Scripts">
          <FileRef
+            location = "group:CCDev/Scripts/archive.ksh">
+         </FileRef>
+         <FileRef
             location = "group:CCDev/Scripts/buildCdoc.ksh">
          </FileRef>
          <FileRef

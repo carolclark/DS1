@@ -108,20 +108,6 @@
 #define	_systemScriptsMenu		Script { "tell application \"System Events\" to tell process \"SystemUIServer\" to click menu bar item 1 of menu bar 1", "" }
 
 #pragma mark 1 ===
-#pragma mark _TypeProjectName_
-#define	_TypeProjectName_			\
-		Event { "Support", "" },		TypeText { "Support" },			\
-		Event { "Punkin", "" },			TypeText { "Punkin" },			\
-		Event { "Accessor", "" },		TypeText { "Accessor" },		\
-		Event { "Web Gen", "" },		TypeText { "WebGen" },			\
-		Event { "Dev Support", "" },	TypeText { "DevSupport" },		\
-		Event { "Carbon", "" },			TypeText { "AccessorC9" },		\
-		Event { "Prototype", "" },		TypeText { "ArbonneProto" },	\
-		Event { "FileMaker", "" },		TypeText { "ArbonneFM" },		\
-		Event { "Try 2", "" },			TypeText { "Koala_Try2" },		\
-		Event { "Try 1", "" },			TypeText { "Koala_Try1" },		\
-		Event { "My Library", "" },		TypeText { "MyLibrary" }		\
-
 #pragma mark 2 ===
 
 #pragma mark _BrowserSlates_
@@ -2120,11 +2106,14 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define	_TerminalItems_			\
 		_StarterBase_,			\
 		_termTypeSlate_,		\
-		Event { "copy", "" },		Keypress { kc_C, mf_command },	\
-		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
-		Event { "execute", "" },	_return,		\
-		Event { "cancel", "" },	_cancel,			\
-		Event { "Menu", "" },		Subslate { "Menu" },		\
+		Event { "copy", "" },			Keypress { kc_C, mf_command },	\
+		Event { "paste", "" },			Keypress { kc_V, mf_command },	\
+		Event { "execute", "" },		_return,		\
+		Event { "cancel", "" },			_cancel,			\
+		Event { "next window", "" },	Keypress { kc_accent, mf_command },						\
+		Event { "go next", "" }, 		Keypress { kc_closebracket, mf_command + mf_shift },	\
+		Event { "go previous", "" },	Keypress { kc_bracket, mf_command + mf_shift },			\
+		Event { "Menu", "" },			Subslate { "Menu" },		\
 			_SlateGlobals_,		\
 			_CloseSubslate_,		\
 			ExitEvent { "Application", "'Terminal' menu" }, ClickMenu { "Terminal" },		\
@@ -2140,18 +2129,5 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		Event { "ports", "" },			ResSubslate { resid_termMacPorts },		\
 		Event { "Shell", "" },			ResSubslate { resid_termShell },		\
 		Event { "Apache", "" },			ResSubslate { resid_termApache },		\
-		Event { "Telnet", "" },			ResSubslate { resid_termTelnet },		\
-		Event { "test", "" },		Subslate { "test" },		\
-			_SlateGlobals_,		\
-			_CloseSubslate_,		\
-			Event { "Subversion", "" },		Subslate { "svnserve" },		\
-				_SlateGlobals_,		\
-				_CloseSubslate_,		\
-				Event { "start basic", "" },	TypeText { "svnserve --daemon --root /svnreptest --pid-file /Users/carolclark/CCDev/tmp/svnserve_pid" },		\
-				Event { "start default", "" },	TypeText { "svnserve --daemon --root /svnreptest --listen-port 3690 --pid-file /Users/carolclark/CCDev/tmp/svnserve_pid" },		\
-				Event { "start alternate", "" },	TypeText { "svnserve --daemon --root /svnreptest --listen-port 3695 --pid-file /Users/carolclark/CCDev/tmp/svnserve_pid" },		\
-				Event { "kill", "" },		TypeText { "kill $(cat /Users/carolclark/CCDev/tmp/svnserve_pid)" },		\
-				Event { "test connection", "" },	TypeText { "svn list svn://192.168.0.104/Punkin" },		\
-				endSubslate{},		\
-			endSubslate{}
+		Event { "Telnet", "" },			ResSubslate { resid_termTelnet }
 

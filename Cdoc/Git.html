@@ -42,7 +42,7 @@
 		</ul></li>
 		<li>construct commit message<span class='blurb'>Xcode / Stickies</span></li>
 		<li>verify modifications<span class='blurb'>Xcode</span></li>
-		<li>commit</li>
+		<li>commit <span class='blurb'>Xcode for simple commits; otherwise Terminal</span></li>
 		<li>log<span class='blurb'>Terminal</span></li>
 	</ul></li>
 	<li>[tag]</li>
@@ -156,10 +156,9 @@
 <!-- @marker "Fetch Working Copy of Repository" -->
 <h4 id='FetchWorkingCopy'>Fetch Working Copy of Repository</h4><ul>
 	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
-		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or ssh://git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
+		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
 		<li><b>name:</b> &lt;ProjectName&gt;</li>
 		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
-		<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
 	</ul></li>	
 </ul>
 
@@ -170,6 +169,7 @@
 		<li>ProjectLocker: add project to ProjectLocker account</li>
 	</ul></li>
 	<li>Xcode: <a href="#FetchWorkingCopy">Fetch Working Copy of Repository</a></li>
+	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
 	<li>add new or existing content<ul>
 		<li>in working copy, either add existing files or create new ones (eg. Xcode workspace and initial history file Cdoc/History_&lt;ProjectName&gt;.html)</li>
 		<li>Terminal: <span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add <span class='depr'>--all</span> --interactive</span></li>
