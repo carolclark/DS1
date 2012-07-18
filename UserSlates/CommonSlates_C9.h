@@ -1651,7 +1651,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #pragma mark 7 === Item Groups
 #define _MicrophoneOn_		\
 	Event { "microphone on", "" },	Sequence{}, Click { 1, -57, 76, _screen, _topRight }, ResSubslate { resid_DictateSlate }, endSequence{}
-#define _CloseRecognitionWindow_	Click { 1, -442, 225, _screen, _topRight }
+#define _CloseRecognitionWindow_	Click { 1, -420, -420, _screen, _bottomRight }
 
 #pragma mark _TypeSlateItems_
 #define _TypeSlateItemsWithoutDictation_	\
