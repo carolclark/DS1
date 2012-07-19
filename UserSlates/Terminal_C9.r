@@ -220,8 +220,8 @@ resource restype_Slate (resid_termArchive, "") { {
 		ExitEvent { "execute", "" },		Keypress { kc_return, 0 },
 		Event { "project", "" },			TypeText { "--project " },
 		Event { "code", "" },				TypeText { "--code " },
-		Event { "repositories", "" },		TypeText { "--repositories " },
-		Event { "folder", "" },				Sequence{}, TypeText { "#--folder archiveName inputPath inputFolder" }, _return, TypeText { "archive --folder " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "repository", "" },			TypeText { "--repository " },
+		Event { "folder", "" },				Sequence{}, TypeText { "--folder " }, ResSubslate { resid_termType }, endSequence{},
 		Event { "type", "" },				ResSubslate { resid_termType },
 		Event { "paste", "" },				Keypress { kc_V, mf_command },
 	} }

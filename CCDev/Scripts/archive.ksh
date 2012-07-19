@@ -13,20 +13,20 @@ USAGE='
 #		current workspace: included code and git repository; associated technical docs
 #	--code
 #		current workspace: code only
-#	--repositories
-#		git repositories from active working copies
-#	--folder inputFolder
+#	--repository
+#		current repository: git repository
+#	--folder folderName
 #		contents of specified folder in working directory
 '
 
 . "${CCDev}/bin/resultCodes.ksh"
 
-#^ 1 === top
+#^ 0 === top
 trapString='errtrap $0 $LINENO'
 trap "$trapString" ERR
 
-#^ 2 === archiveCode
-function archiveCode {	# archivePath project
+#^ 1 === archiveCode
+function archiveCode {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
 	tar --file="${HOME}/Archives/${archivePath}" --create --exclude ".git" "${projectName}"/*
@@ -38,8 +38,21 @@ function archiveCode {	# archivePath project
 	return ${err}
 }
 
+#^ 2 === archiveRepository
+function archiveRepository {	# archivePath projectName
+	cd ${baseDir}
+	cd ..
+	tar --file="${HOME}/Archives/${archivePath}" --create "${projectName}/.git"/*
+	err=$?
+	cd ${baseDir}
+	if [[ ${err} = 0 ]] ; then
+		print "${projectName}: new archive ${HOME}/Archives/${archivePath} created"
+	fi
+	return ${err}
+}
+
 #^ 3 === appendRepository
-function appendRepository {	# archivePath project
+function appendRepository {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
 	tar --file="${HOME}/Archives/${archivePath}" --append "${projectName}/.git"/*
@@ -51,8 +64,21 @@ function appendRepository {	# archivePath project
 	return ${err}
 }
 
-#^ 4 === appendCdoc
-function appendCdoc {	# archivePath project
+#^ 4 === appendGitReadMe
+function appendGitReadMe {	# archivePath projectName
+	print "The contents of this archive are inside folder ${projectName} in invisible folder .git." > "${CCDev}/tmp/gitReadMe"
+	cd "${CCDev}/tmp"
+	tar --file="${HOME}/Archives/${archivePath}" --append "gitReadMe"
+	err=$?
+	cd ${basedir}
+	if [[ ${err} = 0 ]] ; then
+		print "repository ${projectName}/.git: gitReadMe appended"
+	fi
+	return ${err}
+}
+
+#^ 5 === appendCdoc
+function appendCdoc {	# archivePath projectName
 	cd ${CCDev}/Sites
 	tar --file="${HOME}/Archives/${archivePath}" --append "TechnicalDocs/${projectName}"/* "TechnicalDocs/css" "TechnicalDocs/img"
 	err=$?
@@ -63,8 +89,18 @@ function appendCdoc {	# archivePath project
 	return ${err}
 }
 
+#^ 6 === archiveFolder
+function archiveFolder {	# archivePath folderName
+	tar --file="${HOME}/Archives/${archivePath}" --create "${folderName}"/*
+	err=$?
+	if [[ ${err} = 0 ]] ; then
+		print "${folderName}: new archive ${HOME}/Archives/${archivePath} created"
+	fi
+	return ${err}
+}
+
 #^ 7 === revealArchive
-function revealArchive {	# revealArchive
+function revealArchive {	# archivePath
 	osascript -e "tell application \"Finder\" to reveal POSIX file \"${HOME}/Archives/${archivePath}\""
 	osascript -e "tell application \"Finder\" to activate"
 }
@@ -79,25 +115,29 @@ baseDir="$(pwd)"
 projectName="${baseDir##/*/}"
 
 archivePath=""		# path from ${HOME}/Archives
-inputPath=""		# path to parent of folder to be archived
-inputFolder=""		# folder to be archived
 
 case "${arg}" in
 	"--project" )
 		archivePath="Dev/${projectName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
-		msg=$(archiveCode ${archivePath} ${inputFolder})
+		msg=$(archiveCode)
 		es=$?
 		print "${msg}"
 		if [[ ${es} > 0 ]] ; then
 			return "${es}"
 		fi
-		msg=$(appendRepository ${archivePath} ${inputFolder})
+		msg=$(appendRepository)
 		es=$?
 		print "${msg}"
 		if [[ ${es} > 0 ]] ; then
 			return "${es}"
 		fi
-		msg=$(appendCdoc ${archivePath} ${inputFolder})
+		msg=$(appendGitReadMe)
+		es=$?
+		print "${msg}"
+		if [[ ${es} > 0 ]] ; then
+			return "${es}"
+		fi
+		msg=$(appendCdoc)
 		es=$?
 		print "${msg}"
 		if [[ ${es} > 0 ]] ; then
@@ -112,9 +152,58 @@ case "${arg}" in
 		;;
 	"--code" )
 		archivePath="Dev/${projectName}_code-`date "+%Y-%m-%d-%H%M%S"`.tar"
-		msg=$(archiveCode ${archivePath} ${inputFolder})
+		msg=$(archiveCode)
 		es=$?
 		print "${msg}"
+		if [[ ${es} > 0 ]] ; then
+			return "${es}"
+		fi
+		msg=$(revealArchive)
+		es=$?
+		if [[ ${es} > 0 ]] ; then
+			print "${msg}"
+		fi
+		return "${es}"
+		;;
+	"--repository" )
+		archivePath="Dev/${projectName}_Git-`date "+%Y-%m-%d-%H%M%S"`.tar"
+		msg=$(archiveRepository)
+		es=$?
+		print "${msg}"
+		if [[ ${es} > 0 ]] ; then
+			return "${es}"
+		fi
+		msg=$(appendGitReadMe)
+		es=$?
+		print "${msg}"
+		if [[ ${es} > 0 ]] ; then
+			return "${es}"
+		fi
+		msg=$(revealArchive)
+		es=$?
+		if [[ ${es} > 0 ]] ; then
+			print "${msg}"
+		fi
+		return "${es}"
+		;;
+	"--folder" )
+		if [[ $# < 2 ]] ; then
+			print "expected --folder <folderName>"
+			return $RC_InvalidArgument
+		fi
+		folderName="${2}"
+		archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
+		msg=$(archiveFolder)
+		es=$?
+		print "${msg}"
+		if [[ ${es} > 0 ]] ; then
+			return "${es}"
+		fi
+		msg=$(revealArchive)
+		es=$?
+		if [[ ${es} > 0 ]] ; then
+			print "${msg}"
+		fi
 		return "${es}"
 		;;
 	* )
