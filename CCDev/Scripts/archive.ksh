@@ -15,8 +15,8 @@ USAGE='
 #		current workspace: code only
 #	--repositories
 #		git repositories from active working copies
-#	--folder archivePath, inputPath inputFolder
-#		contents of specified folder
+#	--folder inputFolder
+#		contents of specified folder in working directory
 '
 
 . "${CCDev}/bin/resultCodes.ksh"
@@ -63,6 +63,12 @@ function appendCdoc {	# archivePath project
 	return ${err}
 }
 
+#^ 7 === revealArchive
+function revealArchive {	# revealArchive
+	osascript -e "tell application \"Finder\" to reveal POSIX file \"${HOME}/Archives/${archivePath}\""
+	osascript -e "tell application \"Finder\" to activate"
+}
+
 #^ 8 === main
 
 arg="${1}"
@@ -73,7 +79,7 @@ baseDir="$(pwd)"
 projectName="${baseDir##/*/}"
 
 archivePath=""		# path from ${HOME}/Archives
-inputPath=""		# path to parent of folder to be archived1
+inputPath=""		# path to parent of folder to be archived
 inputFolder=""		# folder to be archived
 
 case "${arg}" in
@@ -91,9 +97,17 @@ case "${arg}" in
 		if [[ ${es} > 0 ]] ; then
 			return "${es}"
 		fi
-		msg=$(appendCdoc, ${archivePath} ${inputFolder})
+		msg=$(appendCdoc ${archivePath} ${inputFolder})
 		es=$?
 		print "${msg}"
+		if [[ ${es} > 0 ]] ; then
+			return "${es}"
+		fi
+		msg=$(revealArchive)
+		es=$?
+		if [[ ${es} > 0 ]] ; then
+			print "${msg}"
+		fi
 		return "${es}"
 		;;
 	"--code" )

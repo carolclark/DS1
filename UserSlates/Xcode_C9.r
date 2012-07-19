@@ -1345,7 +1345,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "Xcode", "" },			Sequence{}, _targetPopup, TypeText { "Xcode" }, _down, _return, endSequence{},
 		Event { "BBEdit", "" },			Sequence{}, _targetPopup, TypeText { "BBEdit" }, _down, _return, endSequence{},
 		Event { "Accessor", "" },		Sequence{}, _targetPopup, TypeText { "Accessor" }, _down, _return, endSequence{},
-		Event { "Install", "" },		Sequence{}, _targetPopup, TypeText { "Install" }, _down, _return, endSequence{},
+		Event { "In House", "" },		Sequence{}, _targetPopup, TypeText { "InHouse" }, _down, _return, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, _targetPopup, TypeText { "Doxygen" }, _down, _return, endSequence{},
 		Event { "C doc", "" },			Sequence{}, _targetPopup, TypeText { "Cdoc" }, _down, _return, endSequence{},
 		_SlateGlobals_,
