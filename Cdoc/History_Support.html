@@ -18,34 +18,29 @@
 	<!-- @topicGroup "" "2" -->
 	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
-		<!-- @topicItem "Target UserSlates" "#targetUserSlates" "0" "" -->
-	<!-- @topicGroup "" "6" -->
+	<!-- @topicGroup "" "5" -->
 		<!-- @topicItem "Switch to Lion" "#Lion" "1" "" -->
 			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
-			<!-- @topicItem "Install Lion on Primary Partition" "#LionPrimary" "2" "" -->
-		<!-- @topicGroup "" "11" -->
+		<!-- @topicGroup "" "8" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
 			<!-- @topicItem "Script Site Installation" "#installSite" "2" "" -->
 			<!-- @topicItem "Add TechnicalDocs Area" "#addTechnicalDocs" "2" "" -->
 			<!-- @topicItem "Add Family Area" "#addFamily" "2" "" -->
-		<!-- @topicGroup "" "16" -->
+		<!-- @topicGroup "" "13" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
-			<!-- @topicItem "Transfer Existing: Setup" "#transferExisting_setup" "2" "" -->
 			<!-- @topicItem "Recover DevSupport Scripts" "#DevSupport" "2" "" -->
-			<!-- @topicItem "Import Existing Projects" "#devImport" "2" "" -->
 			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
-		<!-- @topicGroup "" "21" -->
+		<!-- @topicGroup "" "17" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-		<!-- @topicGroup "" "24" -->
+		<!-- @topicGroup "" "20" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
-			<!-- @topicItem "Initial Arbonne Spreadsheets" "#initArbonne" "1" "" -->
-	<!-- @topicGroup "" "27" -->
+	<!-- @topicGroup "" "22" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "29." -->
+	<!-- @topicGroup "" "24" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
-	
+
 <p><br /></p>
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <!-- @marker "Development Overview" -->
@@ -64,14 +59,14 @@
 <tr><td colspan="4" align="center"><span class='ital'>Replace MobileMe and iDisk</span></td></tr>
 	<tr> <td>Support</td> <td><a href="#webHost">Finish Switching Web Hosts</a></td> <td class='small'>switch TechnicalDocs and Family web areas to new host</td> <td align="center">2</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Developer Support and Automation</span></td></tr>
-	<tr> <td>Support</td> <td>script ccArchive</td> <td class='small'>supports archiving svn and git repositories</td> <td align="center">1</td> </tr>
+	<tr> <td>Support</td> <td>script archive</td> <td class='small'>supports archiving svn and git repositories</td> <td align="center">&radic;1</td> </tr>
     <tr> <td>Accessor</td> <td>improve <a href="../Accessor/History_Accessor.html#ErrorCommunication">Error Communication</a></td> <td class='small'>will improve identification of Faults</td> <td align="center">1</td> </tr>
     <tr> <td>Accessor</td> <td><a href="../Accessor/History_Accessor.html#procSnippet">Snippet</a> support</td> <td class='small'>maybe a Service to expand the selected text</td> <td align="center">2</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Transfer Existing Development Work</span></td></tr>
  	<tr> <td>Support</td> <td>plan import of remaining Support features</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
 	<tr> <td>Support</td> <td>plan disposition of remaining projects [<a href="#devImport">Import Existing Projects</a>]</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
  	<tr> <td>Support</td> <td>import remaining Support features [<a href="#DevSupport">Recover DevSupport Scripts</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
-	<tr> <td>Support</td> <td>finish import of existing projects [<a href="#devImport">Import Existing Projects</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td>finish import of existing projects [<a href="#devImport">Import Existing Projects</a>]</td> <td class='small'></td> <td align="center">&radic;2</td> </tr>
 	<tr> <td>Support</td> <td>Cdoc cleanup [<a href="#cdocCleanup">In-House Documentation</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
 	<tr> <td>Support</td> <td>ccInstall: incorporate buildCdoc</td> <td class='small'></td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Personal</span></td></tr>
@@ -84,21 +79,15 @@
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
 <h2 id='hmark_Active'>Active</h2>
 
-	<!-- @marker "Target UserSlates" -->
-	<h5 id='targetUserSlates'>Target UserSlates</h5><ul>
-		<li>new target UserSlates: compile UserSlates resources; copy output to ../Accessor/UserSlates</li>
-	</ul>
-	<p class='tldate'>[supportBuildsUserSlates 07/19/2012]</p>
-
 <!-- @marker "Switch to Lion" -->
 <h4 id='Lion'>Switch to Lion</h4>
 
 	<!-- @marker "Backups and Volumes" -->
 	<h5 id='BackupsVolumes'>Backups and Volumes</h5><ul>
 		<li>Dev<ul>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>reimplement <a href="#archive">Archive script</a></li>
 			<li>archive and retire existing obsolete projects; see <a href="#devImport">Import Existing Projects</a></li>
+			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>upload git repositories for Accessor and Support to ProjectLocker</li>
 		</ul></li>
 		<li>Update backup support procedures, including usage of our external volumes<ul>
@@ -157,23 +146,13 @@
 
 	<!-- @marker "Recover DevSupport Scripts" -->
 	<h5 id='DevSupport'>Recover DevSupport Scripts</h5><ul>
-        <li id='ValidateHTML'>BBEdit support: recover active scripts including ValidateHTML</li>
-		<li id='archive'>Archive script: based on archiveProject, archiveRepository, archiveToRetire, openArchives from DevSupport:Xcode.sh</li>
+        <li id='ValidateHTML'>&radic;BBEdit support: recover active scripts including ValidateHTML</li>
+		<li id='archive'>&radic;Archive script: based on archiveProject, archiveRepository, archiveToRetire, openArchives from DevSupport:Xcode.sh</li>
+		<li>&radic;add Snippet and Finder scripts and data from old project DevSupport for later incorporation</li>
 		<li>Finder: recover script toTEXT; include documentation for changing creator and/or file type</li>
-		<li>Snippet script: translate to Service</li>
+		<li>Snippet script: translate to Automator Service</li>
 	</ul>
 
-	<!-- @marker "Import Existing Projects" -->
-	<h5 id='devImport'>Import Existing Projects</h5><ul>
-		<li>&radic;AccessorC9: new workspace AccessorC9 contains existing Xcode project Accessor_C9 ( ! existing svn repository is not working)</li>
-		<li>&radic;Accessor: new workspace Accessor contains Cocoa import of AccessorC9</li>
-		<li>Support: import remaining active features from previous projects [<a href="#DevSupport">Recover DevSupport Scripts</a>]</li>
-		<li>&radic;Arbonne: new Numbers worksheet replaces existing Xcode projects ArbonneProto and ArbonneFM</li>
-		<li>WebGen: just use iWeb for now; use utility iWebSites with iWeb to generate multiple sites (?or could also have iWeb generate the Family site as from a single iWeb site)</li>
-		<li>archive and retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done another way, probably with static libraries, in the future.</li>
-		<li>archive and retire Accessor_svn; Accessor_C9; AccessorC9; Support_svn; DevSupport; ArbonneFM; ArbonneProto; WebGen; archive ~/Dev/svnrep; clean up ~/Dev</li>
-	</ul>
-	
 	<!-- @marker "In-House Documentation" -->
 	<h4 id='cdocCleanup'>In-House Documentation</h4><ul>
 		<li>replace Subversion $Id fields with filenames</li>
@@ -204,33 +183,6 @@
 
 <!-- @marker "Personal" -->
 <h4 id='Personal_'>Personal</h4>
-
-	<!-- @marker "Initial Arbonne Spreadsheets" -->
-	<h5 id='initArbonne'>Initial Arbonne Spreadsheets</h5><ul>
-		<li>establish <a href="Personal.html#file_Arbonne">Arbonne</a> spreadsheet structure<ul>
-			<li>add files Personal.html, Arbonne.numbers, Arbonne_C9.r</li>
-			<li>sheet Create Invoice creates skeleton invoice containing data looked up from People and Catalog, contains summary line for posting to Invoices</li>
-		</ul></li>
-		<li>commit deletion of files from previous version of Numbers</li>
-		<li>upgrade to Numbers 2.1; file format changed</li>
-		<li>import and look up from actual catalog data</li>
-		<li>use reference labels in formulas</li>
-		<li>move invoice line information from invoice summary line to a separate table<ul>
-			<li>use table display in sheet Create Invoice</li>
-			<li>add sheet Invoice Lines</li>
-		</ul></li>
-		<li>add invoice calculations to Create Invoice sheet; add results to Invoice summary line</li>
-		<li>rename Arbonne.numbers to ArbonneStruct.numbers; active file to be stored at ~/Documents</li>
-		<li>establish <a href="Personal.html#file_Arbonne_FM">Arbonne_FM</a>: stores all existing data from existing FileMaker database</li>
-		<li>import existing customers</li>
-		<li>test by creating invoices matching contents of recent orders</li>
-		<li>add sheet Delivery Slip</li>
-		<li>import existing Invoices and Items Ordered starting with 2009</li>
-		<li>Invoices: add TotalRV data</li>
-		<li>clean up; copy ArbonneStruct.numbers to ~/Documents/Arbonne.numbers</li>
-		<li class='tldate'>[initialArbonne 2/20/2012]</li>
-		<li>correct formulas to recognize ProductType set as product</li>
-	</ul>
 
 <!-- @marker "5 === ToDo" --><p class='tlhead'>&lt;-- ToDo</p>
 <h2>ToDo</h2>
@@ -550,6 +502,58 @@
 		<li>&radic;Accessor: AccessorErrorTest: uncomment two tests that failed on external partition due to problems with <span class='mono'>__FILE__</span> comparison</li>
 		<li class='tldate'>[07/12/2012]</li>
 	</ul>
+
+	<!-- @marker "Initial Arbonne Spreadsheets" -->
+	<h5 id='initArbonne'>Initial Arbonne Spreadsheets</h5><ul>
+		<li>establish <a href="Personal.html#file_Arbonne">Arbonne</a> spreadsheet structure<ul>
+			<li>add files Personal.html, Arbonne.numbers, Arbonne_C9.r</li>
+			<li>sheet Create Invoice creates skeleton invoice containing data looked up from People and Catalog, contains summary line for posting to Invoices</li>
+		</ul></li>
+		<li>commit deletion of files from previous version of Numbers</li>
+		<li>upgrade to Numbers 2.1; file format changed</li>
+		<li>import and look up from actual catalog data</li>
+		<li>use reference labels in formulas</li>
+		<li>move invoice line information from invoice summary line to a separate table<ul>
+			<li>use table display in sheet Create Invoice</li>
+			<li>add sheet Invoice Lines</li>
+		</ul></li>
+		<li>add invoice calculations to Create Invoice sheet; add results to Invoice summary line</li>
+		<li>rename Arbonne.numbers to ArbonneStruct.numbers; active file to be stored at ~/Documents</li>
+		<li>establish <a href="Personal.html#file_Arbonne_FM">Arbonne_FM</a>: stores all existing data from existing FileMaker database</li>
+		<li>import existing customers</li>
+		<li>test by creating invoices matching contents of recent orders</li>
+		<li>add sheet Delivery Slip</li>
+		<li>import existing Invoices and Items Ordered starting with 2009</li>
+		<li>Invoices: add TotalRV data</li>
+		<li>clean up; copy ArbonneStruct.numbers to ~/Documents/Arbonne.numbers</li>
+		<li class='tldate'>[initialArbonne 2/20/2012]</li>
+		<li>correct formulas to recognize ProductType set as product</li>
+	</ul>
+	
+	<!-- @marker "Target UserSlates" -->
+	<h5 id='targetUserSlates'>Target UserSlates</h5><ul>
+		<li>new target UserSlates: compile UserSlates resources; copy output to ../Accessor/UserSlates</li>
+	</ul>
+	<p class='tldate'>[supportBuildsUserSlates 07/19/2012]</p>
+	
+	<!-- @marker "Import Existing Projects" -->
+	<h5 id='devImport'>Import Existing Projects</h5><ul>
+		<li>&radic;AccessorC9: new workspace AccessorC9 contains existing Xcode project Accessor_C9 ( ! existing svn repository is not working)</li>
+		<li>&radic;Accessor: new workspace Accessor contains Cocoa import of AccessorC9</li>
+		<li>&radic;Arbonne: new Numbers worksheet replaces existing Xcode projects ArbonneProto and ArbonneFM</li>
+		<li>&radic;WebGen: just use iWeb for now; use utility iWebSites with iWeb to generate multiple sites (?or could also have iWeb generate the Family site as from a single iWeb site)</li>
+		<li>&radic;Koala: archive and retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done another way, probably with static libraries, in the future.</li>
+		<li>&radic;Accessor predecessors: archive and retire Accessor_svn; Accessor_C9/C9</li>
+		<li>&radic;Support predecessors<ul>
+			<li>add copies of DevSupport's Finder and Snippet scripts as is to current Support workspace; to be incorporated at <a href="#DevSupport">Recover DevSupport Scripts</a></li>
+			<li>archive and retire Support_svn; DevSupport</li>
+		</ul></li>
+		<li>&radic;Arbonne: archive and retire ArbonneFM; ArbonneProto</li>
+	</ul>
+	<p class='tldate'>[07/20/2012]</p>
+
+	<p>move UserSlates/Accessor.rsrc (Support/UserSlates output; Accessor/Accessor input) to CCDev</p>
+	<p class='tldate'>[UserSlatesCCDev 07/20/2012]</p>
 
 	<!-- @marker "[end]" -->
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

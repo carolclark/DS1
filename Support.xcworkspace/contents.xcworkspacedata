@@ -570,9 +570,6 @@
       location = "container:"
       name = "6 Personal">
       <FileRef
-         location = "group:../../Documents/Church 2012-2013">
-      </FileRef>
-      <FileRef
          location = "group:Personal/ArbonneStruct.numbers">
       </FileRef>
    </Group>
@@ -666,67 +663,5 @@
    <Group
       location = "container:"
       name = "9 Reference">
-      <Group
-         location = "container:"
-         name = "Support_svn">
-         <Group
-            location = "container:"
-            name = "CCDev">
-            <FileRef
-               location = "group:ReferenceFiles/CCDev/_rf_CCDev.build">
-            </FileRef>
-            <FileRef
-               location = "group:ReferenceFiles/CCDev/_rf_shunit.build">
-            </FileRef>
-            <Group
-               location = "container:"
-               name = "Environment">
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Environment/_rf_environment.plist">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Environment/_rf_kshrc.ksh">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Environment/_rf_profile.ksh">
-               </FileRef>
-            </Group>
-            <Group
-               location = "container:"
-               name = "Scripts">
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Scripts/_rf_archive.ksh">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Scripts/_rf_build_test.ksh">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Scripts/_rf_build.uia">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Scripts/_rf_buildCdoc.ksh">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Scripts/_rf_ccBackup.ksh">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Scripts/_rf_errtrap.func">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Scripts/_rf_test.test">
-               </FileRef>
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Scripts/_rf_writeEnvironmentPlist.ksh">
-               </FileRef>
-            </Group>
-            <Group
-               location = "container:"
-               name = "Punkin">
-               <FileRef
-                  location = "group:ReferenceFiles/CCDev/Punkin/_rf_Collaborator.build">
-               </FileRef>
-            </Group>
-         </Group>
-      </Group>
    </Group>
 </Workspace>

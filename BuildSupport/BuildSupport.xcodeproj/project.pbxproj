@@ -442,7 +442,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p ../../Accessor/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ../../Accessor/UserSlates/Accessor.rsrc\n";
+			shellScript = "mkdir -p ../../../CCDev/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ../../../CCDev/UserSlates/Accessor.rsrc\n";
 		};
 		67692467141EBD70005D3E68 /* Xcode support */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -935,6 +935,7 @@
 				674BF6C415B7287B0093786D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67692450141EB818005D3E68 /* Build configuration list for PBXProject "BuildSupport" */ = {
 			isa = XCConfigurationList;

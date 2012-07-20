@@ -888,12 +888,11 @@ resource restype_Slate (resid_Organizer, "Organizer") { {
 	} }
 } };
 
-#define replist_top	426
-#define	replist_sp	83
+#define replist_top	100
+#define	replist_sp	81
 #define	_rowSupport			replist_top+0*replist_sp
-#define	_rowPunkin			replist_top+1*replist_sp
-#define	_rowCarbon			replist_top+2*replist_sp
-#define	_rowAccessor		replist_top+4*replist_sp-16
+#define	_rowAccessor		replist_top+1*replist_sp
+#define	_rowPunkin			replist_top+2*replist_sp
 
 #pragma mark Repositories
 resource restype_Slate (resid_Repositories, "Repositories") { {
@@ -911,10 +910,9 @@ resource restype_Slate (resid_Repositories, "Repositories") { {
 			ExitEvent { "okay", "" },			Click { 1, 0, 0, _cursor },
 			ExitEvent { "Branches", "" },		Click { 1, 0, 27, _cursor },
 			ExitEvent { "Remotes", "" },		Click { 1, 0, 42, _cursor },
-			ExitEvent { "Working Copy", "" },	Click { 1, 0, 57, 	_cursor },
+			ExitEvent { "Working Copy", "" },	Click { 1, 0, 57, _cursor },
 			Event { "Support", "" },			Click { 0, 25, _rowSupport, _window, _topLeft },
 			Event { "Punkin", "" },				Click { 0, 25, _rowPunkin, _window, _topLeft }, 
-			Event { "Carbon", "" },				Click { 0, 25, _rowCarbon, _window, _topLeft }, 
 			Event { "Accessor", "" },			Click { 0, 25, _rowAccessor, _window, _topLeft }, 
 			endSubslate{},
 		Event { "content", "" },		Click { 1, 0, 90, _window, _topCenter },

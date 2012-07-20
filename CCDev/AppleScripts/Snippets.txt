@@ -1,0 +1,258 @@
+#pragma mark snippet
+__snippet name <<snippetTag;paramListText;paramListSlate>>
+<#=== -> BBEdit's snippet Slate [1]#>
+		ExitEvent { "__snippetTag__", "" },		Sequence{},
+			TypeText { "@__snippetTag__ __paramListSlate__" }, _return, endSequence{},
+#pragma mark __snippetTag__
+____snippetTag__ <<__TEXT_PARAMS__>>
+<#code#>
+__snippetTag____
+snippet__
+
+#pragma mark headingWithTopics
+__headingWithTopics <<title;name;level>>
+<#=== -> topicList [1]#>
+	<!-- @topicItem "__title__" "#__name__" "0" "" -->
+<!-- @marker "__title__" -->
+<h__level__>__title__</h__level__>
+<!-- @topicList "__title__" "__name__" -->
+<!-- @/topicList --><##>
+headingWithTopics__
+
+#pragma mark headingWithName
+__headingWithName <<title;name;level>>	this is a comment
+<#=== -> topicList [1]#>
+	<!-- @topicItem "__title__" "#__name__" "0" "" -->
+<!-- @marker "__title__" -->
+<h__level__ id='__name__'>__title__</h__level__><##>
+headingWithName__
+
+#pragma mark version
+__version <<title;pTag;vTag>>	examples: ptag:pt vtag:0p1
+<#=== -> document contents [2]#>
+		<!-- @topicItem "Version __vTag__" "#__pTag____vTag__" "1" "__title__" -->
+<#=== -> current versions contents [2]#>
+	<!-- @topicItem "Version __vTag__" "#__pTag____vTag__" "0" "__title__" -->
+<!-- @marker "Version __vTag__: __title__" -->
+<h3>Version __vTag__: __title__</h3>
+<!-- @topicList "v __vTag__: __title__" "__pTag____vTag__" -->
+	<!-- @topicItem "Dependencies" "#__pTag____vTag___depend" "0" "" -->
+	<!-- @topicItem "Impact Summary" "#__pTag____vTag___impact" "0" "" -->
+	<!-- @topicItem "Development Goals" "#__pTag____vTag___goals" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Objectives" "5" -->
+<!-- @/topicList -->
+<p><#desc#></p>
+
+<!-- @marker "3 = Dependencies" -->
+<h4>__vTag__ Dependencies</h4>
+<div class="reference"><table class="reference"><col class="reference_c1" /><caption class="reference" id="__pTag____vTag___depend">__vTag__ Dependencies</caption>
+	<!-- @topicGroup "External" "1" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Internal" "3" -->
+		<!-- @topicItem "Cdoc [Support]" "../Support/Support.html" "0" "[<a href='../Support/Support_vers.html#sp0p1'>0p.1</a>]&nbsp;&nbsp;&nbsp;<i>in-house documentation support</i>" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Used By" "6" -->
+</table></div>
+
+<!-- @marker "4 = Impact Summary" -->
+<h4>__vTag__ Impact Summary</h4>
+<!-- @topicList "__vTag__ Impact Summary" "__pTag____vTag___impact" -->
+<!-- @/topicList -->
+
+<!-- @marker "5 = Development Goals" -->
+<h4>__vTag__ Development Goals</h4>
+<!-- @topicList "__vTag__ Development Goals" "__pTag____vTag___goals" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "" "2" -->
+	<!-- @topicItem "Future Goals" "#__pTag____vTag___future" "0" "" -->
+<!-- @/topicList -->
+
+<div class="tableholder"><table class="goaltabl" border="0" cellspacing="0" cellpadding="5"><caption>Version __vTag__</caption><tr><th>Topic</th> <th>Goal</th> <th>Expansion</th> <th>When</th></tr>
+</table></div>
+
+<!-- @marker "6 = Future Goals" -->
+<h5 id="__pTag____vTag___future">Future Goals</h5>
+
+<div class="tableholder"><table class="goaltabl" border="0" cellspacing="0" cellpadding="5"><caption>Version __vTag__: Future</caption><tr><th>Topic</th> <th>Goal</th> <th>Expansion</th> <th>When</th></tr>
+</table></div>
+
+version__
+
+#pragma mark objective
+__objective <<title;vtag;mtag>>
+<#=== -> "History file" [15]#>
+<#	=== -> "4 InProgress" topic list [2]#>
+	<!-- @topicItem "__title__" "#__vtag_____mtag__" "0" "<a href='#BASENAME#.html#__vtag__'>[__vtag__]</a>" -->
+<#	=== -> "InProgress Content" [11]#>
+<!-- @marker "__title__" -->
+<h4>__title__ <a href='#PROJECTNAME#_vers.html#obj___vtag_____mtag__'>[obj___vtag_____mtag__]</a></h4>
+<!-- @objective "__vtag_____mtag__" "<#blurb#>" -->
+<!-- @topicList "__title__" "__vtag_____mtag__" -->
+<!-- @/topicList -->
+<div class="subitems">
+
+</div>
+<!-- @/objective "__vtag_____mtag__" "<#Completion:rN Date#>" -->
+
+<#=== -> "Development_hist" [17]#>
+<#	=== -> Future section [9]#>
+<!-- @marker "#PROJECTNAME#: __title__" -->
+<h6 id="#PROJECTNAME#___vtag_____mtag__">#PROJECTNAME#: __title__</h6>
+<!-- @objective "#PROJECTNAME#: __title__" "<#blurb#>" --><ul>
+	<li><a href="../#PROJECTNAME#/#PROJECTNAME#_hist.html#__vtag_____mtag__">
+		#PROJECTNAME#: __title__</a><ul>
+	</ul></li>
+</ul>
+<!-- @/objective "#PROJECTNAME#: __title__" "" -->
+<#	=== -> Current or Future Steps section [4]#>
+	<li><a href="../#PROJECTNAME#/#PROJECTNAME#_hist.html#__vtag_____mtag__">
+		#PROJECTNAME#: __title__</a><ul>
+	</ul></li>
+<#	=== -> Active topic list [2]#>
+		<!-- @topicItem "__title__" "##PROJECTNAME#___vtag_____mtag__" "1" "[<a href='../#PROJECTNAME#/#PROJECTNAME#_vers.html#__vtag__'>__vtag__</a>]" -->
+<#=== -> "for Version (active) file"#>
+<#=== -> Version Objectives topicList [1]#>
+		<!-- @topicItem "__title__" "#obj___vtag_____mtag__" "0" "<a href='#PROJECTNAME#_hist.html#__vtag_____mtag__'>[__vtag_____mtag__]</a>" -->
+<#	=== -> Development Goals topic list [2]#>
+	<!-- @topicItem "__title__" "#gl___vtag_____mtag__" "0" "" -->
+<#	=== -> Version goals table [2]#>
+	<tr><td colspan="4" align="center" id="gl___vtag_____mtag__"><a href="#PROJECTNAME#_hist.html#__vtag_____mtag__">__title__</a></td></tr>
+<!-- @marker "  __title__" -->
+<h5 id="obj___vtag_____mtag__">__title__ <a href='#gl___vtag_____mtag__'>[gl___vtag_____mtag__]</a></h5><##>
+<#===#>
+objective__
+
+#pragma mark step
+__step <<title;mtag;stag>>
+<#=== -> Development_hist > "3 = Current" or "4 = Future" [2]#>
+		<li><a href="../#PROJECTNAME#/#PROJECTNAME#_hist.html#__mtag_____stag__">
+			__title__</a></li>
+<#=== -> 4 = InProgress and Objective topic lists [3]#>
+		<!-- @topicItem "__title__" "#__mtag_____stag__" "1" "<a href='#__mtag__'>[__mtag__]</a>" -->
+	<!-- @topicItem "__title__" "#__mtag_____stag__" "0" "<#impact#>" -->
+<#===#>
+	<h4 id="__mtag_____stag__">__title__ <a href="#__mtag__">[__mtag__]</a></h4><##>
+step__
+
+<#=== -> BBEdit's snippet Slate [1]#>
+#pragma mark stepLink
+__stepLink <<stepTag>>
+<a href='#PROJECTNAME#_hist.html#__stepTag__'>[__stepTag__]</a>
+stepLink__
+
+#pragma mark dateMarker
+__dateMarker <<revision>>
+<p class="datemark">[r__revision__] __SHORT_DATE__</p>
+dateMarker__
+
+#pragma mark revisionMark
+__revisionMark <<then>>
+		<li>[__LASTCOMMIT_TREEISH__ __SHORT_DATE__ __then__<##>]</li>
+revisionMark__
+
+#pragma mark futureNote
+__futureNote <<title;name>>
+<#=== -> Versions: expansion link for a goal  [1]#>
+<a href='#PROJECTNAME#_hist.html#__name__'>[__name__]</a>
+<!-- @marker "__title__" -->
+<h6 id="__name__">__title__</h6><##>
+futureNote__
+
+#pragma mark appOrTool
+__appOrTool <<name>>
+<#=== Topics List [1]#>
+	<!-- @topicItem "__name__" "#__name___" "0" "" -->
+<!-- @marker "__name__" -->
+<h2 id='__name___'>__name__</h2>
+<p><#desc#></p>
+
+<h3 id='__name___config'>Installation and Configuration</h3>
+	<p><b><#what is installed (eg. Application, Library)#></b> <#locationWithName#>; <#versionInfo#></p>
+	<p><b>Source</b> <#source#></p>
+	<p><b>License</b> <#license#></p>
+	<p><b>Critical Data</b> <#location#></p>
+	<p><b>Installation and Configuration</b> <#installAndConfigure#></p>
+appOrTool__
+
+#pragma mark bugOrIssue
+__bugOrIssue <<title>>
+	<!-- @topicItem "__title__" "#BI___ABBREV_DATE__-01" "0" "[BI___ABBREV_DATE__-01]" -->
+<h5 id='BI___ABBREV_DATE__-01'>__title__ [BI___ABBREV_DATE__-01] new</h5>
+bugOrIssue__
+
+#pragma mark contentHeading
+__contentHeading <<title;name;level>>
+	<li><a href='#__name__'>__title__</a></li>
+<h__level__ id='__name__'>__title__</h__level__><##>
+contentHeading__
+
+<!!>overviewHeader (title)??
+<!-- @marker "title" -->
+<h6>title</h6>
+<!-- @objective "title" "<#blurb#>" --><ul><#items#>
+</ul>
+<!-- @/objective "title" "" -->
+
+<!!>versionLink (tag)
+<a href='_vers.html#tag'> vg</a>
+
+<!!done>step (title;mtag;stag)
+	<h4><a name="mtag_name">title</a> <a href="#mtag">[mtag]</a></h4><##>
+<#=== -> Development_hist > "3 = Current" or "4 = Future" [2]#>
+		<li>title <a href="../DevSupport/DevSupport_hist.html#mtag">[mtag]</a></li>
+<#=== -> 4 = InProgress and Objective topic lists [3]#>
+		<!-- @topicItem "title" "#mtag_name" "1" "<a href='#mtag'>[mtag]</a>" -->
+	<!-- @topicItem "title" "#mtag_name" "0" "<#impact#>" -->
+<#===#>
+
+<!! done>stepLink (tag)
+<a href='..//_hist.html#stepTag'>[stepTag]</a>
+
+<!!>parentLink (parentTag)
+[<a href='#parentTag'>parentTag</a>]
+
+<!!>useCase (title;[1-5];[hsupx]) (used 5;x)
+<!-- @marker "uc_title" -->
+<div class="uc">
+<!-- @useCaseHeader "title" "uc_title" "5" "x" -->
+<##>
+</div>
+	<!-- @topicItem "title" "#uc_title" "<#indent#>" "<#status#>" -->
+
+<!!>useCaseFields ()
+	<p><b>Scope: </b><#scope#></p>
+	<p><b>Primary Actor: </b><#Primary Actor#></p>
+	<p><b>Context of Use: </b><#Context#></p>
+	<p><b>Stakeholders and Interests: </b></p><ul>
+		<li><#Stakeholder: Interest#></li>
+	</ul>
+	<p><b>Precondition: </b><#Precondition#></p>
+	<p><b>Minimal Guarantee: </b><#Minimal#></p>
+	<p><b>Success Guarantee: </b><#Success#></p>
+	<p><b>Trigger: </b><#Trigger#></p>
+	<p><b>Main Success Scenario: </b></p><ol>
+		<#Scenario#>
+	</ol>
+	<p><b>Extensions: </b><#Extensions#></p><ul>
+		<#Extension#>
+	</ul>
+	<p><b>Technology &amp; Data Variations: </b><#Variations#></p>
+	<p><b>Related Information: </b><#Related#></p>
+	<p><b>Diagram: </b><#link to diagram#></p>
+
+<!!>useCaseLink (caseName)
+<a href='#uc_caseName'>caseName</a>
+
+<!! done>workspaceAppOrTool (AppOrToolName)
+<!-- @marker "AppOrToolName" -->
+<h2><a name="AppOrToolName_">AppOrToolName</a></h2>
+<p><#desc#></p>
+
+<h3><a name="AppOrToolName_config"></a>Installation and Configuration</h3>
+	<p><b><#what is installed (eg. Application, Library)#></b> <#locationWithName#>; <#versionInfo#></p>
+	<p><b>Source</b> <#source#></p>
+	<p><b>License</b> <#license#></p>
+	<p><b>Critical Data</b> <#location#></p>
+	<p><b>Installation and Configuration</b> <#installAndConfigure#></p>
+	<!-- @topicItem "AppOrToolName" "#AppOrToolName_" "0" "" -->
