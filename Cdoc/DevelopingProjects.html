@@ -39,11 +39,48 @@
 <h2>Targets and Build Phases</h2>
 
 <!-- @topicList "Targets and Build Phases" "Target_" -->
+	<!-- @topicItem "Xcode Project Settings" "#pbxproj" "0" "" -->
 	<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 	<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
 	<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
 	<!-- @topicItem "Add Doxygen Target" "#AddDoxygenTarget" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "Xcode Project Settings" -->
+<h4 id='pbxproj'>Xcode Project Settings</h4><ul>
+	<li><b>Project</b><ul>
+		<li><b>ProjectName</b> for initial single/initial project, normally Build&lt;ProjectName&gt;</li>
+		<li><b>Source folder</b> support Source folder that can be shared among multiple projects<ul>
+			<li>USER_HEADER_SEARCH_PATHS = ${SRCROOT}/Source/**</li>
+		</ul></li>
+		<li><b>initial target:</b> override Xcode's default behavior to name initial target with project name<ul>
+			<li>rename the target's product and its folder inside &lt;TargetName&gt;Build/&lt;</li>
+			<li>INFOPLIST_FILE = &lt;TargetName&gt;/&lt;TargetName&gt;-Info.plist</li>
+			<li>GCC_PREFIX_HEADER = &lt;TargetName&gt;/&lt;TargetName&gt;-Prefix.pch</li>
+		</ul></li>
+	</ul></li>
+	<li><b>Schemes</b> mark all schemes "shared"</li>
+	<li><b>Targets</b><ul>
+		<li><b>InHouse</b> products installed for InHouse use<ul>
+			<li><b>Product</b> set installation location for the target to be istalled<ul>
+				<li>INSTALL_PATH = /Applications</li>
+				<li>DSTROOT = $(HOME)</li>
+			</ul></li>
+			<li><b>InHouse</b> script target: xcodebuild install -target &lt;TargetName&gt; -configuration Debug DEPLOYMENT_LOCATION=YES SYMROOT=${HOME}/CCDev/build</li>
+		</ul></li>
+		<li><b>Test Targets</b> from Cocoa Unit Test Bundle<ul>
+			<li>Logic Tests include files for tested code in the target; Application Tests do not</li>
+			<li><b>Application Tests</b>: set up tests to run inside Application<ul>
+				<li>BUNDLE_LOADER = $(BUILT_PRODUCTS_DIR)/&lt;ProjectName&gt;.app/Contents/MacOS/&lt;ProjectName&gt;</li>
+				<li>TEST_HOST = $(BUNDLE_LOADER)</li>
+			</ul></li>
+		</ul></li>
+		<li><b>Script targets</b> Bundle targets; remove all template build phases except Target Dependencies; delete .pch file; add Run Script build phase<ul>
+			<li><b>Cdoc</b> script: buildCdoc &lt;WorkspaceName&gt;</li>
+			<li><b>Doxygen</b> script: doxygenBuild &lt;WorkspaceName&gt;</li>
+		</ul></li>
+	</ul></li>
+</ul>
 
 <!-- @marker "Add Run Script Target" -->
 <h4 id='AddRunScriptTarget'>Add Run Script Target</h4><ul>

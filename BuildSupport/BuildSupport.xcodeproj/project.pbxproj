@@ -443,6 +443,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "mkdir -p ../../../CCDev/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ../../../CCDev/UserSlates/Accessor.rsrc\n";
+			showEnvVarsInLog = 0;
 		};
 		67692467141EBD70005D3E68 /* Xcode support */ = {
 			isa = PBXShellScriptBuildPhase;
