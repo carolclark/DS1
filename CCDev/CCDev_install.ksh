@@ -44,6 +44,8 @@ function getSubtargetDestination {
 		"Functions" )
 			destinationFolder="${CCDev}/func"
 			;;
+		"AppleScripts" )	# files for future use
+			;&
 		"Doxygen" )			# files for reference only
 			;&
 		"CCDev_Setup.ksh" )	# custom setup script CCDev_Setup.ksh
