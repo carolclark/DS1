@@ -1683,6 +1683,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define	_TypeSpecialBaseItems_	\
 	ExitEvent { "my e mail",	"" },	TypeText { "carolclark@cox.net" },	\
 	ExitEvent { "software", "" },		TypeText { "C & C Software" },		\
+	ExitEvent { "Kids Corner", "" },	TypeText { "Kid's Corner" },		\
 	ExitEvent { "version 3", "" },		TypeText { "4YZHqz5pq1" },			\
 	ExitEvent { "IP address", "" },		TypeText { "192.168.0.104" },		\
 	ExitEvent { "shebang", "" },		TypeText { "#! /bin/ksh" },			\

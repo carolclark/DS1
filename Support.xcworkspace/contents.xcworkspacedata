@@ -375,6 +375,9 @@
          location = "container:"
          name = "AppleScripts">
          <FileRef
+            location = "group:Xcode/AppleScripts/fixWindow.applescript">
+         </FileRef>
+         <FileRef
             location = "group:Xcode/AppleScripts/frontWindow.applescript">
          </FileRef>
          <FileRef
@@ -611,6 +614,9 @@
          </FileRef>
          <FileRef
             location = "group:UserSlates/Terminal_C9.r">
+         </FileRef>
+         <FileRef
+            location = "group:UserSlates/AccessLibTypes.r">
          </FileRef>
       </Group>
       <Group
