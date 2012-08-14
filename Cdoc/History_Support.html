@@ -32,12 +32,13 @@
 			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
 		<!-- @topicGroup "" "17" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
+			<!-- @topicItem "Upgrade and Add Xcode File Templates" "#XcodeTemplates_8_12" "2" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-		<!-- @topicGroup "" "20" -->
+		<!-- @topicGroup "" "21" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
-	<!-- @topicGroup "" "22" -->
+	<!-- @topicGroup "" "23" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "24" -->
+	<!-- @topicGroup "" "25" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 
@@ -88,7 +89,7 @@
 		<li>Dev<ul>
 			<li>reimplement <a href="#archive">Archive script</a></li>
 			<li>archive and retire existing obsolete projects; see <a href="#devImport">Import Existing Projects</a></li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+			<li class='tlmark'>&lt;--</li>
 			<li>upload git repositories for Accessor and Support to ProjectLocker</li>
 		</ul></li>
 		<li>Update backup support procedures, including usage of our external volumes<ul>
@@ -169,7 +170,20 @@
 <!-- @marker "General" -->
 <h4 id="General">General</h4>
 
-<!-- @marker "Automation Support" -->
+	<!-- @marker "Upgrade and Add Xcode File Templates" -->
+	<h5 id='XcodeTemplates_8_12'>Upgrade and Add Xcode File Templates</h5><ul>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>rename our custom folders with leading "_"</li>
+		<li>improve selection of icons for existing templates</li>
+		<li>new templates<ul>
+			<li>CocoaClassARC: Objective-C ARC class with logic tests</li>
+			<li>CocoaAppDelegate*ARC: Objective-C ARC class &lt;Target&gt;AppDelegate with logic tests</li>
+			<li>CocoaCoreDataEntityARC: Objective-C ARC Core Data Entity class with logic tests</li>
+			<li>CocoaCoreDataAppDelegateARC: Objective-C ARC Core Data AppDelegate &lt;Target&gt;AppDelegate with logic tests</li>			
+		</ul></li>
+	</ul>
+		
+	<!-- @marker "Automation Support" -->
 	<h5 id="_automation">Automation Support</h5><ul>
 		<li>Xcode: add slate GoTab</li>
 		<li>Replacing deprecated mouse calls in AccessorC9 also corrected screen coordinates so they start from the top instead of the bottom of the menu bar. Change all active FixWindow events accordingly. (CommonSlates, Xcode, Safari, Automator, TextEdit)</li>

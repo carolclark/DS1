@@ -407,10 +407,10 @@
          location = "container:Xcode/Templates/FileTemplates"
          name = "FileTemplates">
          <Group
-            location = "container:Xcode/Templates/FileTemplates/ObjectiveC"
-            name = "ObjectiveC">
+            location = "container:Xcode/Templates/FileTemplates/_ObjectiveC"
+            name = "_ObjectiveC">
             <Group
-               location = "container:Xcode/Templates/FileTemplates/ObjectiveC/CPPWrapper.xctemplate"
+               location = "container:Xcode/Templates/FileTemplates/_ObjectiveC/CPPWrapper.xctemplate"
                name = "CPPWrapper">
                <FileRef
                   location = "group:___FILEBASENAME___.mm">
@@ -421,8 +421,8 @@
             </Group>
          </Group>
          <Group
-            location = "container:Xcode/Templates/FileTemplates/Documentation"
-            name = "Documentation">
+            location = "container:Xcode/Templates/FileTemplates/_Documentation"
+            name = "_Documentation">
             <Group
                location = "group:"
                name = "ReadMe">
@@ -484,37 +484,37 @@
                </FileRef>
             </Group>
             <Group
-               location = "container:"
+               location = "group:DoxygenConfig.xctemplate"
                name = "DoxygenConfig">
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Documentation/DoxygenConfig.xctemplate/___FILEBASENAME___.txt">
+                  location = "group:___FILEBASENAME___.txt">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Documentation/DoxygenConfig.xctemplate/TemplateIcon.icns">
+                  location = "group:TemplateIcon.icns">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Documentation/DoxygenConfig.xctemplate/TemplateInfo.plist">
+                  location = "group:TemplateInfo.plist">
                </FileRef>
             </Group>
          </Group>
          <Group
             location = "container:"
-            name = "Scripting">
+            name = "_Scripting">
             <Group
-               location = "container:"
+               location = "group:Xcode/Templates/FileTemplates/_Scripting/InstallTarget.xctemplate"
                name = "InstallTarget">
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Scripting/InstallTarget.xctemplate/___FILEBASENAME___.ksh">
+                  location = "group:___FILEBASENAME___.ksh">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Scripting/InstallTarget.xctemplate/TemplateIcon.icns">
+                  location = "group:TemplateIcon.icns">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Scripting/InstallTarget.xctemplate/TemplateInfo.plist">
+                  location = "group:TemplateInfo.plist">
                </FileRef>
             </Group>
             <Group
-               location = "container:Xcode/Templates/FileTemplates/Scripting/ShellScript.xctemplate"
+               location = "container:Xcode/Templates/FileTemplates/_Scripting/ShellScript.xctemplate"
                name = "ShellScript">
                <FileRef
                   location = "group:___FILEBASENAME___.ksh">
@@ -527,16 +527,16 @@
                </FileRef>
             </Group>
             <Group
-               location = "container:"
+               location = "group:Xcode/Templates/FileTemplates/_Scripting/shunitTest.xctemplate"
                name = "shunitTest">
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Scripting/SHUnitTest.xctemplate/___FILEBASENAME___.ksh">
+                  location = "group:___FILEBASENAME___.ksh">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Scripting/SHUnitTest.xctemplate/TemplateIcon.icns">
+                  location = "group:TemplateIcon.icns">
                </FileRef>
                <FileRef
-                  location = "group:Xcode/Templates/FileTemplates/Scripting/SHUnitTest.xctemplate/TemplateInfo.plist">
+                  location = "group:TemplateInfo.plist">
                </FileRef>
             </Group>
          </Group>

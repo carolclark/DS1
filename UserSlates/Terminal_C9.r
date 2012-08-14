@@ -41,14 +41,16 @@ resource restype_Slate (resid_gitDiff, "") { {
 		ExitEvent { "cancel", "" },		_cancel,
 		Event { "unstaged", "" },		NilAction{},
 		Event { "staged", "" },			TypeText { "--cached " },
-		Event { "all", "" },			TypeText { "HEAD " },
+		Event { "head", "" },			TypeText { "HEAD" },
 		Event { "path", "" },			TypeText { "HEAD -- ./" },
 		Event { "master", "" },			TypeText { "master " },
 		Event { "abbreviate", "" },		TypeText { "--name-status " },
 		Event { "graph", "" },			TypeText { "--graph " },
 		Event { "graph from top", "" },	TypeText { "--graph --topo-order " },
+		Event { "tilde", "" },			Keypress { kc_accent, mf_shift },
 		Event { "copy", "" },			Keypress { kc_C, mf_command },
 		Event { "paste", "" },			Keypress { kc_V, mf_command },
+		_NumberKeys_,
 	} }
 } };
 

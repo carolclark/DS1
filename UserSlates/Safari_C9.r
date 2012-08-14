@@ -1,5 +1,5 @@
 // =================================================================================
-//	Safari.r					©2005-12 C & C Software, Inc. All rights reserved.
+//	Safari.r					ï¿½2005-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma mark 0 ===
@@ -841,7 +841,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		Event { "page top", "" },		Keypress { kc_home, 0 },           \
 		Event { "page end", "" },		Keypress { kc_end, 0 }
 
-#define _pzlTop		524
+#define _pzlTop		468
 resource restype_Slate (resid_sudokuTimes, "") { {
 	Slate { "Times", {
 		Event { "main frame", "" },		Click { 1, 10, -40, window, "1", _bottomLeft },
