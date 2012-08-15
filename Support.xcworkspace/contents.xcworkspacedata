@@ -410,6 +410,111 @@
             location = "container:Xcode/Templates/FileTemplates/_ObjectiveC"
             name = "_ObjectiveC">
             <Group
+               location = "container:"
+               name = "NSManagedObject">
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/NSManagedObject.xctemplate/___FILEBASENAME___.h">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/NSManagedObject.xctemplate/___FILEBASENAME___.m">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/NSManagedObject.xctemplate/TemplateIcon.icns">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/NSManagedObject.xctemplate/TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+               name = "CocoaClass">
+               <Group
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+                  name = "NSWindowController">
+                  <FileRef
+                     location = "group:NSWindowController/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSWindowController/___FILEBASENAME___.m">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+                  name = "NSWindowControllerwithXIBMac">
+                  <FileRef
+                     location = "group:NSWindowControllerwithXIBMac/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSWindowControllerwithXIBMac/___FILEBASENAME___.m">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSWindowControllerwithXIBMac/___FILEBASENAME___.xib">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+                  name = "NSViewControllerwithXIBMac">
+                  <FileRef
+                     location = "group:NSViewControllerwithXIBMac/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSViewControllerwithXIBMac/___FILEBASENAME___.m">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSViewControllerwithXIBMac/___FILEBASENAME___.xib">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+                  name = "NSDocument">
+                  <FileRef
+                     location = "group:NSDocument/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSDocument/___FILEBASENAME___.m">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSDocument/___FILEBASENAME___.xib">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+                  name = "NSViewContoller">
+                  <FileRef
+                     location = "group:NSViewController/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSViewController/___FILEBASENAME___.m">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+                  name = "NSView">
+                  <FileRef
+                     location = "group:NSView/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSView/___FILEBASENAME___.m">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+                  name = "NSObject">
+                  <FileRef
+                     location = "group:NSObject/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSObject/___FILEBASENAME___.m">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate/TemplateIcon.icns">
+               </FileRef>
+               <FileRef
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate/TemplateInfo.plist">
+               </FileRef>
+            </Group>
+            <Group
                location = "container:Xcode/Templates/FileTemplates/_ObjectiveC/CPPWrapper.xctemplate"
                name = "CPPWrapper">
                <FileRef

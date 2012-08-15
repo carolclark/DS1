@@ -32,7 +32,7 @@
 			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
 		<!-- @topicGroup "" "17" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
-			<!-- @topicItem "Upgrade and Add Xcode File Templates" "#XcodeTemplates_8_12" "2" "" -->
+			<!-- @topicItem "Upgrade/Add Xcode File Templates" "#XcodeTemplates_8_12" "2" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
 		<!-- @topicGroup "" "21" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
@@ -170,19 +170,19 @@
 <!-- @marker "General" -->
 <h4 id="General">General</h4>
 
-	<!-- @marker "Upgrade and Add Xcode File Templates" -->
+	<!-- @marker "Upgrade/Add Xcode File Templates" -->
 	<h5 id='XcodeTemplates_8_12'>Upgrade and Add Xcode File Templates</h5><ul>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>rename our custom folders with leading "_"</li>
-		<li>improve selection of icons for existing templates</li>
+		<li>use Objective_C icons for CPPWrapper template</li>
 		<li>new templates<ul>
-			<li>CocoaClassARC: Objective-C ARC class with logic tests</li>
-			<li>CocoaAppDelegate*ARC: Objective-C ARC class &lt;Target&gt;AppDelegate with logic tests</li>
-			<li>CocoaCoreDataEntityARC: Objective-C ARC Core Data Entity class with logic tests</li>
-			<li>CocoaCoreDataAppDelegateARC: Objective-C ARC Core Data AppDelegate &lt;Target&gt;AppDelegate with logic tests</li>			
+			<li>CocoaClass: copied from Xcode's Objective-C template; replace file headers; adjust block style</li>
+			<li>NSManagedObject: copied from Xcode's NSManagedObject subclass template; replace file headers; adjust block style</li>
+			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+			<li>CocoaTestClass: start with CocoaClass; reduce options to Default, CoreData; update code</li>
+			<li>CocoaClass: add AppDelegate, AppDelegate_CoreData</li>
 		</ul></li>
 	</ul>
-		
+
 	<!-- @marker "Automation Support" -->
 	<h5 id="_automation">Automation Support</h5><ul>
 		<li>Xcode: add slate GoTab</li>
