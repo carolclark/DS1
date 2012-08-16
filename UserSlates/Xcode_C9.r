@@ -2883,7 +2883,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 				ExitEvent { "Build", "" }, 		ClickMenu { "Build" },
 				ExitEvent { "Window", "" },		ClickMenu { "Window" },
 				endSubslate{},
-		Event { "Script", "" },			Sequence{}, _systemScriptsMenu, ResSubslate { resid_Scripts }, _down, Wait { 30 }, TypeText { "Xcode" }, _right, endSequence{}, 
+		Event { "Script", "" },			Sequence{}, _systemScriptsMenu, ResSubslate { resid_Scripts }, _down, Wait { 60 }, TypeText { "Xcode" }, _right, endSequence{}, 
 		Event { "Accessor", "" },		Sequence{}, Keypress { kc_S, mf_command + mf_option }, Launch { Dev_"Accessor/Accessor.xcworkspace", 0 }, ResSubslate { resid_Accessor }, endSequence{},
 		Event { "interface", "" },		ResSubslate { resid_InterfaceBuilder },
 		Event { "Data Model", "" },		ResSubslate { resid_DataModel },
