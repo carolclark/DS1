@@ -394,6 +394,7 @@ resource restype_Slate (resid_Workspace, "") { {
 		ExitEvent { "Technical", "" },		Launch { Dev_"TechnicalDocs/TechnicalDocs.xcworkspace", 0 },
 		ExitEvent { "old Support", "" },	Launch { Dev_"Support_svn/Support_svn.xcworkspace", 0 },
 		ExitEvent { "Dev Support", "" },	Launch { Dev_"DevSupport/DevSupport.xcodeproj", 0 },
+		Event { "next", "" },				Keypress { kc_accent, mf_command },
 	} }
 } };
 

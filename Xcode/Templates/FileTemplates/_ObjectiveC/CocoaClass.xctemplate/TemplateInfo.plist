@@ -56,6 +56,7 @@
 			<key>Values</key>
 			<array>
 				<string>NSObject</string>
+				<string>NSApplicationDelegate</string>
 				<string>NSDocument</string>
 				<string>NSView</string>
 				<string>NSViewController</string>
@@ -75,6 +76,23 @@
 				<array>
 					<string>NSViewController</string>
 					<string>NSWindowController</string>
+				</array>
+			</dict>
+			<key>Type</key>
+			<string>checkbox</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>true</string>
+			<key>Identifier</key>
+			<string>withCoreData</string>
+			<key>Name</key>
+			<string>with Core Data</string>
+			<key>RequiredOptions</key>
+			<dict>
+				<key>cocoaSubclass</key>
+				<array>
+					<string>NSApplicationDelegate</string>
 				</array>
 			</dict>
 			<key>Type</key>

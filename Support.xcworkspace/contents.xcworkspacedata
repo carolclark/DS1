@@ -414,6 +414,36 @@
                name = "CocoaClass">
                <Group
                   location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
+                  name = "NSObject">
+                  <FileRef
+                     location = "group:NSObject/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:NSObject/___FILEBASENAME___.m">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "container:"
+                  name = "NSApplicationDelegate">
+                  <FileRef
+                     location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate/NSApplicationDelegate/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate/NSApplicationDelegate/___FILEBASENAME___.m">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "container:"
+                  name = "NSApplicationDelegatewithCoreData">
+                  <FileRef
+                     location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate/NSApplicationDelegatewithCoreData/___FILEBASENAME___.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate/NSApplicationDelegatewithCoreData/___FILEBASENAME___.m">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
                   name = "NSWindowController">
                   <FileRef
                      location = "group:NSWindowController/___FILEBASENAME___.h">
@@ -479,16 +509,6 @@
                   </FileRef>
                   <FileRef
                      location = "group:NSView/___FILEBASENAME___.m">
-                  </FileRef>
-               </Group>
-               <Group
-                  location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate"
-                  name = "NSObject">
-                  <FileRef
-                     location = "group:NSObject/___FILEBASENAME___.h">
-                  </FileRef>
-                  <FileRef
-                     location = "group:NSObject/___FILEBASENAME___.m">
                   </FileRef>
                </Group>
                <FileRef
