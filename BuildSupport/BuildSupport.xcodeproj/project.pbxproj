@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		67112AD615D2F54900182D8D /* fixWindow.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67112AD515D2F54900182D8D /* fixWindow.applescript */; };
+		6744BB6D15DEFF8B003587FE /* Xcode_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 6744BB6C15DEFF8B003587FE /* Xcode_C9.r */; };
 		674BF6CE15B729D30093786D /* CommonSlates_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 674BF6C815B728D00093786D /* CommonSlates_C9.r */; };
 		674BF6CF15B729D30093786D /* Finder_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 674BF6C915B728D00093786D /* Finder_C9.r */; };
 		674BF6E415B72A9F0093786D /* Automator_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 674BF6D015B72A9F0093786D /* Automator_C9.r */; };
@@ -28,7 +29,7 @@
 		674BF6F315B72A9F0093786D /* TextEdit_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 674BF6E015B72A9F0093786D /* TextEdit_C9.r */; };
 		674BF6F415B72A9F0093786D /* Tunes_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 674BF6E115B72A9F0093786D /* Tunes_C9.r */; };
 		674BF6F515B72A9F0093786D /* UIBrower_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 674BF6E215B72A9F0093786D /* UIBrower_C9.r */; };
-		674BF6F615B72A9F0093786D /* Xcode_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 674BF6E315B72A9F0093786D /* Xcode_C9.r */; };
+		6788B78515E1AE1A00EFB2F9 /* Dash_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 6788B78415E1AE1A00EFB2F9 /* Dash_C9.r */; };
 		67F480DB15AF2792004CD4E1 /* frontWindow.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480D815AF2792004CD4E1 /* frontWindow.applescript */; };
 		67F480DC15AF2792004CD4E1 /* viewCdoc.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480D915AF2792004CD4E1 /* viewCdoc.applescript */; };
 		67F480DD15AF2792004CD4E1 /* viewDoxygen.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480DA15AF2792004CD4E1 /* viewDoxygen.applescript */; };
@@ -43,6 +44,7 @@
 		671C4828159CFF3800214A9E /* BBEdit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BBEdit-Info.plist"; sourceTree = "<group>"; };
 		671C482A159CFF3800214A9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		671C482C159CFF3800214A9E /* BBEdit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBEdit-Prefix.pch"; sourceTree = "<group>"; };
+		6744BB6C15DEFF8B003587FE /* Xcode_C9.r */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; name = Xcode_C9.r; path = ../UserSlates/Xcode_C9.r; sourceTree = "<group>"; };
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		674BF6BE15B7287B0093786D /* UserSlates-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UserSlates-Info.plist"; sourceTree = "<group>"; };
 		674BF6C015B7287B0093786D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		67692458141EB921005D3E68 /* Xcode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xcode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		6769245F141EB921005D3E68 /* Xcode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Xcode-Info.plist"; sourceTree = "<group>"; };
+		6788B78415E1AE1A00EFB2F9 /* Dash_C9.r */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; name = Dash_C9.r; path = ../UserSlates/Dash_C9.r; sourceTree = "<group>"; };
 		67A00C4714A287B6002456DB /* Cdoc.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cdoc.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A00C4B14A287B6002456DB /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
 		67AA8011144F3DAD00FCCDC9 /* CCDev_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCDev_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +134,8 @@
 		6769244B141EB818005D3E68 = {
 			isa = PBXGroup;
 			children = (
+				6788B78415E1AE1A00EFB2F9 /* Dash_C9.r */,
+				6744BB6C15DEFF8B003587FE /* Xcode_C9.r */,
 				67112AD515D2F54900182D8D /* fixWindow.applescript */,
 				674BF6D015B72A9F0093786D /* Automator_C9.r */,
 				674BF6D115B72A9F0093786D /* Backup_C9.r */,
@@ -393,6 +398,8 @@
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6788B78515E1AE1A00EFB2F9 /* Dash_C9.r in Rez */,
+				6744BB6D15DEFF8B003587FE /* Xcode_C9.r in Rez */,
 				674BF6E415B72A9F0093786D /* Automator_C9.r in Rez */,
 				674BF6E515B72A9F0093786D /* Backup_C9.r in Rez */,
 				674BF6E615B72A9F0093786D /* BBEdit_C9.r in Rez */,
@@ -412,7 +419,6 @@
 				674BF6F315B72A9F0093786D /* TextEdit_C9.r in Rez */,
 				674BF6F415B72A9F0093786D /* Tunes_C9.r in Rez */,
 				674BF6F515B72A9F0093786D /* UIBrower_C9.r in Rez */,
-				674BF6F615B72A9F0093786D /* Xcode_C9.r in Rez */,
 				674BF6CE15B729D30093786D /* CommonSlates_C9.r in Rez */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -76,6 +76,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 			Event { "Arbonne", "launch Arbonne" },
 				Launch { Home_"Documents/Arbonne/Arbonne.numbers", resid_Numbers },			
 			Event { "Xcode", "" }, Launch { DevApps_"XCode.app", resid_Xcode },
+			Event { "Dash", "" }, Launch { Apps_"Dash.app", resid_Dash },
 			Event { "Instruments", "" }, Launch { DevApps_"Instruments.app", resid_DefaultSlate },
 			Event { "Dashcode", "" }, Launch { DevApps_"Dashcode.app", resid_Dashcode },
 			ExitEvent { "Inspector", "" },	Launch { DevApps_"Utilities/Accessibility Tools/Accessibility Inspector.app", 0 },

@@ -198,7 +198,7 @@ resource restype_Slate (resid_termGitAdd, "") { {
 		Event { "add", "" },		Sequence{}, Keypress { kc_A, 0 }, _return, endSequence{},
 		Event { "patch", "" },		Sequence{}, Keypress { kc_P, 0 }, _return, endSequence{},
 		Event { "diff", "" },		Sequence{}, Keypress { kc_D, 0 }, _return, endSequence{},
-		ExitEvent { "quit", "" },	Sequence{}, Keypress { kc_Q, 0 }, _return, endSequence{},
+		ExitEvent { "quit", "" },	Sequence{}, _return, Keypress { kc_Q, 0 }, _return, endSequence{},
 		Event { "help", "" },		Sequence{}, Keypress { kc_H, 0 }, _return, endSequence{},
 	} }
 } };

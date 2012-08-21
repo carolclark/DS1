@@ -738,6 +738,9 @@
          location = "container:"
          name = "Active">
          <FileRef
+            location = "group:UserSlates/Dash_C9.r">
+         </FileRef>
+         <FileRef
             location = "group:UserSlates/Xcode_C9.r">
          </FileRef>
          <FileRef

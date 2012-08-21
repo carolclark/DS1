@@ -94,6 +94,9 @@
 #define resid_SystemPrefs				34000
 #define resid_Dashcode					35000
 #define resid_Numbers					36000
+#define resid_Dash						37000
+	#define resid_XcodeDash					resid_Dash+1
+
 #define resid_ArbProto					40000
 #define resid_Xcode3					48000
 
@@ -375,7 +378,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		Event { "main page", "" },			Click { 1, _mainFrame_h+50, _mainFrame_v+70, _window, _topLeft },           \
 		Event { "related", "" },			Click { 1, _mainFrame_h+175, _mainFrame_v+70, _window, 	_topLeft },           \
 		Event { "namespaces", "" },			Click { 1, _mainFrame_h+290, _mainFrame_v+70, _window, _topLeft },            \
-		Event { "classes", "" },			Click { 1, _mainFrame_h+410, _mainFrame_v+70, _window, _topLeft },            \
+		Event { "classes Accessor", "" },			Click { 1, _mainFrame_h+410, _mainFrame_v+70, _window, _topLeft },            \
+		Event { "classes", "" },			Click { 1, _mainFrame_h+290, _mainFrame_v+70, _window, _topLeft },            \
 			Event { "class list", "" },			Click { 1, _mainFrame_h+50, _mainFrame_v+110, _window, _topLeft },          \
 			Event { "class index", "" },		Click { 1, _mainFrame_h+140, _mainFrame_v+110, _window, _topLeft },       \
 			Event { "class members", "" },		Click { 1, _mainFrame_h+250, _mainFrame_v+110, _window, _topLeft },       \
@@ -383,7 +387,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 				Event { "functions", "" },			Click { 1, _mainFrame_h+100, _mainFrame_v+145, _window, _topLeft },           \
 				Event { "variables", "" },			Click { 1, _mainFrame_h+185, _mainFrame_v+145, _window, _topLeft },          \
 				Event { "properties", "" },			Click { 1, _mainFrame_h+280, _mainFrame_v+145, _window, _topLeft },         \
-		Event { "files", "" },				Click { 1, _mainFrame_h+490, _mainFrame_v+70, _window, _topLeft },             \
+		Event { "files Accessor", "" },				Click { 1, _mainFrame_h+490, _mainFrame_v+70, _window, _topLeft },             \
+		Event { "files", "" },				Click { 1, _mainFrame_h+370, _mainFrame_v+70, _window, _topLeft },             \
 			Event { "file list", "" },			Click { 1, _mainFrame_h+65, _mainFrame_v+110, _window, _topLeft },           \
 			Event { "file members", "" },		Click { 1, _mainFrame_h+144, _mainFrame_v+110, _window, _topLeft },        \
 		Event { "test list", "" },			Click { 1, 70, 270, _window, _topLeft },	\

@@ -807,7 +807,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		_IMouseSlate_,		\
 		_ReturnKey_,		\
 		_WindowSlate_,		\
-		_CloseSubslate_,	\
+		ExitEvent { "exit", "" },			NilAction{},	\
 		ExitEvent { "close window", "" },	Keypress { kc_W, mf_command },		\
 		Event { "fix window", "" },		Sequence{},			\
 			Click { 0, 85, 10, window, "1", _topLeft },		\
