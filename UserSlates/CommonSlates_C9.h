@@ -130,12 +130,13 @@
 		Event { "copy address", "" },	Sequence{},										\
 			Click { 1, 0, 35, _window, _topCenter }, Keypress { kc_A, mf_command }, Keypress { kc_C, mf_command },														\
 			endSequence{},															\
+		Event { "copy local address", "" },	Sequence{},	Click { 1, 0, 35, _window, _topCenter }, Keypress { kc_A, mf_command }, _left, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, 0 }, Keypress { kc_right, mf_shift + mf_command }, Keypress { kc_C, mf_command }, _left, endSequence{},		\
 		Event { "go back", "", },		Keypress { kc_bracket, mf_command },              \
 		Event { "go forward", "", },	Keypress { kc_closeBracket, mf_command },       \
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },                     \
 		Event { "page north", "" },		Keypress { kc_pageup, 0 },                      \
 		Event { "page top", "" },		Keypress { kc_home, 0 },                          \
-		Event { "page end", "" },		Keypress { kc_end, 0 },                           \
+		Event { "page bottom", "" },	Keypress { kc_end, 0 },                           \
 		Event { "link content", "" },	ResSubslate { resid_LinkContentSlate },			\
 		Event { "fix window", "" },		Sequence{}, Click { 0, 80, 10, _window, _topLeft }, \
 			Click { -1, 335, 30, _screen, _topLeft }, endSequence{}
@@ -353,6 +354,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		_CloseSubslate_,		\
 		_WindowSlate_,          \
 		_TypeSlate_,            \
+		_IMouseSlate_,			\
+		Event { "select", "" },			Click { 1, 0, 0, _cursor },					\
 		Event { "do scan", "" },		Sequence{}, Click { 1, -130, 145, _window, _topRight }, ResSubslate { resid_DoTab }, endSequence{},				\
 		Event { "next", "" },			Keypress { kc_tab, mf_option },				\
 		Event { "previous", "" },		Keypress { kc_tab, mf_option + mf_shift },	\
@@ -383,47 +386,54 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 			Event { "class list", "" },			Click { 1, _mainFrame_h+50, _mainFrame_v+110, _window, _topLeft },          \
 			Event { "class index", "" },		Click { 1, _mainFrame_h+140, _mainFrame_v+110, _window, _topLeft },       \
 			Event { "class members", "" },		Click { 1, _mainFrame_h+250, _mainFrame_v+110, _window, _topLeft },       \
+			Event { "members index", "" },		Subslate { "index" },			\
+				_SlateGlobals_,				\
+				_CloseSubslate_,			\
 				Event { "all", "" },				Click { 1, _mainFrame_h+25, _mainFrame_v+145, _window, _topLeft },                \
 				Event { "functions", "" },			Click { 1, _mainFrame_h+100, _mainFrame_v+145, _window, _topLeft },           \
 				Event { "variables", "" },			Click { 1, _mainFrame_h+185, _mainFrame_v+145, _window, _topLeft },          \
-				Event { "properties", "" },			Click { 1, _mainFrame_h+280, _mainFrame_v+145, _window, _topLeft },         \
+				Event { "properties", "" },			Click { 1, _mainFrame_h+230, _mainFrame_v+145, _window, _topLeft },         \
+				endSubslate{},				\
+		Event { "methods", "" },			Click { 1, -223, 210, _window, _topRight },		\
+		Event { "properties", "" },			Click { 1, -150, 210, _window, _topRight },		\
+		Event { "members", "" },			Click { 1, -73, 210, _window, _topRight },		\
 		Event { "files Accessor", "" },				Click { 1, _mainFrame_h+490, _mainFrame_v+70, _window, _topLeft },             \
 		Event { "files", "" },				Click { 1, _mainFrame_h+370, _mainFrame_v+70, _window, _topLeft },             \
 			Event { "file list", "" },			Click { 1, _mainFrame_h+65, _mainFrame_v+110, _window, _topLeft },           \
 			Event { "file members", "" },		Click { 1, _mainFrame_h+144, _mainFrame_v+110, _window, _topLeft },        \
-		Event { "test list", "" },			Click { 1, 70, 270, _window, _topLeft },	\
-		Event { "down", "" },				Click { 0, 0, 22, _cursor },       \
-		Event { "north", "" },				Click { 0, 0, -22, _cursor },       \
-		Event { "left", "" },				Click { 0, -40, 0, _cursor },       \
-		Event { "right", "" },				Click { 0, 40, 0, _cursor },       \
-		Event { "row zero", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+198, _window, _topLeft },       \
-		Event { "row one", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+225, _window, _topLeft },       \
-		Event { "row two", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+247, _window, _topLeft },       \
-		Event { "row three", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+270, _window, _topLeft },       \
-		Event { "row four", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+293, _window, _topLeft },       \
-		Event { "row five", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+316, _window, _topLeft },       \
-		Event { "row six", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+339, _window, _topLeft },       \
-		Event { "row seven", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+362, _window, _topLeft },       \
-		Event { "row eight", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+395, _window, _topLeft },       \
-		Event { "row nine", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+418, _window, _topLeft },       \
-		Event { "row ten", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+442, _window, _topLeft },       \
-		Event { "row eleven", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+466, _window, _topLeft },       \
-		Event { "row twelve", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+490, _window, _topLeft },       \
-		Event { "row thirteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+514, _window, _topLeft },       \
-		Event { "row fourteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+538, _window, _topLeft },       \
-		Event { "row fifteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+562, _window, _topLeft },       \
-		Event { "row sixteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+586, _window, _topLeft },       \
-		Event { "row seventeen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+610, _window, _topLeft },       \
-		Event { "row eighteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+634, _window, _topLeft },       \
-		Event { "row nineteen", "" },		Click { 0, _mainFrame_h+50, _mainFrame_v+658, _window, _topLeft },       \
-		Event { "row twenty", "" },			Click { 0, _mainFrame_h+50, _mainFrame_v+682, _window, _topLeft },       \
 		Event { "typedefs", "" },			Click { 1, _mainFrame_h+236, _mainFrame_v+74, _window, _topLeft },       \
 		Event { "enumerations", "" },		Click { 1, _mainFrame_h+312, _mainFrame_v+74, _window, _topLeft },       \
 		Event { "enumerator", "" },			Click { 1, _mainFrame_h+389, _mainFrame_v+74, _window, _topLeft },       \
 		Event { "defines", "" },			Click { 1, _mainFrame_h+462, _mainFrame_v+74, _window, _topLeft },       \
 		Event { "related pages", "" },		Click { 1, _mainFrame_h+135, _mainFrame_v+23, _window, _topLeft },		\
 		Event { "class hierarchy", "" },	Click { 1, _mainFrame_h+144, _mainFrame_v+49, _window, _topLeft },      \
-	} }                                                                                                       		\
+		Event { "test list", "" },			Click { 1, 70, 270, _window, _topLeft },	\
+		Event { "down", "" },				Click { 0, 0, 22, _cursor },       \
+		Event { "north", "" },				Click { 0, 0, -22, _cursor },       \
+		Event { "left", "" },				Click { 0, -40, 0, _cursor },       \
+		Event { "right", "" },				Click { 0, 40, 0, _cursor },       \
+		Event { "row zero", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+198, _window, _topLeft },       \
+		Event { "row one", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+225, _window, _topLeft },       \
+		Event { "row two", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+247, _window, _topLeft },       \
+		Event { "row three", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+270, _window, _topLeft },       \
+		Event { "row four", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+293, _window, _topLeft },       \
+		Event { "row five", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+316, _window, _topLeft },       \
+		Event { "row six", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+339, _window, _topLeft },       \
+		Event { "row seven", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+362, _window, _topLeft },       \
+		Event { "row eight", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+395, _window, _topLeft },       \
+		Event { "row nine", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+418, _window, _topLeft },       \
+		Event { "row ten", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+442, _window, _topLeft },       \
+		Event { "row eleven", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+466, _window, _topLeft },       \
+		Event { "row twelve", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+490, _window, _topLeft },       \
+		Event { "row thirteen", "" },		Click { 0, _mainFrame_h+60, _mainFrame_v+514, _window, _topLeft },       \
+		Event { "row fourteen", "" },		Click { 0, _mainFrame_h+60, _mainFrame_v+538, _window, _topLeft },       \
+		Event { "row fifteen", "" },		Click { 0, _mainFrame_h+60, _mainFrame_v+562, _window, _topLeft },       \
+		Event { "row sixteen", "" },		Click { 0, _mainFrame_h+60, _mainFrame_v+586, _window, _topLeft },       \
+		Event { "row seventeen", "" },		Click { 0, _mainFrame_h+60, _mainFrame_v+610, _window, _topLeft },       \
+		Event { "row eighteen", "" },		Click { 0, _mainFrame_h+60, _mainFrame_v+634, _window, _topLeft },       \
+		Event { "row nineteen", "" },		Click { 0, _mainFrame_h+60, _mainFrame_v+658, _window, _topLeft },       \
+		Event { "row twenty", "" },			Click { 0, _mainFrame_h+60, _mainFrame_v+682, _window, _topLeft },       \
+	} }                		\
 } };
 
 #pragma mark Macros
@@ -1691,10 +1701,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 	ExitEvent { "Kids Corner", "" },	TypeText { "Kid's Corner" },		\
 	ExitEvent { "version 3", "" },		TypeText { "4YZHqz5pq1" },			\
 	ExitEvent { "IP address", "" },		TypeText { "192.168.0.104" },		\
-	ExitEvent { "shebang", "" },		TypeText { "#! /bin/ksh" },			\
-	ExitEvent { "pragma mark", "" },	TypeText { "#pragma mark" },		\
-	ExitEvent { "pragma heading", "" },	Sequence{}, TypeText { "#pragma mark <#digit#> === <#text#>" }, _previous, _previous, endSequence{},		\
-	ExitEvent { "pragma subhead", "" },	Sequence{}, TypeText { "#pragma mark <#digit#> -- <#text#>" }, _previous, _previous, endSequence{},		\
+	ExitEvent { "shebang", "" },		TypeText { "#! /bin/ksh" }
 
 #pragma mark _CommandSlateItems_
 #define _CommandSlateItems_	\

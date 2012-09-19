@@ -94,10 +94,14 @@ resource restype_Slate (resid_gitBranch, "") { {
 		ExitEvent { "cancel", "" },		_cancel,
 		ExitEvent { "list", "" },		_return,
 		ExitEvent { "list all", "" },		Sequence{}, TypeText { "-a " }, _return, endSequence{},
-		ExitEvent { "unmerged", "" },		Sequence{}, TypeText { "--no-merged " }, _return, endSequence{},
+		ExitEvent { "get current", "" },	Sequence{}, TypeText { "cb=$(git branch | grep \"*\" | sed \"s/* //\"); print $cb" }, _return, endSequence{},
+		ExitEvent { "unmerged", "" },	Sequence{}, TypeText { "--no-merged " }, _return, endSequence{},
 		Event { "rename", "" },			Sequence{}, TypeText { "-m " }, ResSubslate { resid_termType }, endSequence{},
 		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_termType }, endSequence{},
-		Event { "checkout", "" },		Sequence{}, _cancel, TypeText { "git checkout -b " }, ResSubslate { resid_termType }, endSequence{}
+		Event { "switch new", "" },		Sequence{}, _cancel, TypeText { "git checkout -b " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "checkout", "" },		Sequence{}, _cancel, TypeText { "git checkout " }, ResSubslate { resid_termType }, endSequence{},
+		Event { "current branch", "" },	TypeText { "$cb " },
+		Event { "master", "" },			TypeText { "master " },
 	} }
 } };
 
@@ -142,7 +146,7 @@ resource restype_Slate (resid_gitCommit, "") { {
 		_SlateGlobals_,
 		_CloseSubslate_,
 		ExitEvent { "excecute", "" },	_return,
-		Event { "message", "" },		Sequence{}, TypeText { "-m \"" }, endSequence{},
+		Event { "message", "" },		Sequence{}, TypeText { "-m \"" }, ResSubslate { resid_termType }, endSequence{},
 		Event { "file", "" },			Sequence{}, TypeText { "-F \"${CCDev}/tmp/gitmessage" }, Keypress { kc_quote, mf_shift }, endSequence{},
 	} }
 } };
@@ -151,25 +155,10 @@ resource restype_Slate (resid_termGit, "") { {
 	Slate { "Git",	{
 		_TerminalStandards_,
 		Event { "go back", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
-		Event { "workspace", "" },		Subslate { "workspace" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "Support", "" },		Sequence{}, TypeText { "cd ${DEV}/Support" }, _return, endSequence{},
-			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "cd ${DEV}/Punkin" }, _return, endSequence{},
-			ExitEvent { "Carbon", "" },			Sequence{}, TypeText { "cd ${DEV}/AccessorC9" }, _return, endSequence{},
-			ExitEvent { "Accessor", "" },		Sequence{}, TypeText { "cd ${DEV}/Accessor" }, _return, endSequence{},
-			endSubslate{},
-		Event { "repository", "" },		Subslate { "repository" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "Support", "" },	Sequence{}, TypeText { "cd ${DEV}/gitrep/SupportMain" }, _return, endSequence{},
-			ExitEvent { "Punkin", "" },		Sequence{}, TypeText { "cd git-CCSoftware@pl5.projectlocker.com:Punkin.git" }, _return, endSequence{},
-			ExitEvent { "Carbon", "" },		Sequence{}, TypeText { "cd ${DEV}/gitrep/AccessorC9Main" }, _return,	 endSequence{},
-			ExitEvent { "Accessor", "" },	Sequence{}, TypeText { "cd ${DEV}/gitrep/AccessorMain" }, _return,	 endSequence{},
-			endSubslate{},
 		Event { "project locker", "" },	TypeText { "ssh git-CCSoftware@pl5.projectlocker.com" },
 		Event { "shell", "" },			TypeText { "sealsea v3ejc 6868" },
 		Event { "version 3", "" },		TypeText { "4YZHqz5pq1" },
+		Event { "copy branch", "" },	Sequence{}, Click { 0, 105, -40, _window, _bottomLeft }, Click { 2, 0, 0, _cursor }, Wait { 5 }, Keypress { kc_C, mf_command }, endSequence{},
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "browser", "" },		Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_termGitBrowser }, endSequence{},
 		Event { "status", "" },			Sequence{}, TypeText { "git status" }, _return, endSequence{},
@@ -181,6 +170,7 @@ resource restype_Slate (resid_termGit, "") { {
 		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
 		Event { "add files", "" },		Sequence{}, TypeText { "git add --all --interactive" }, _return, ResSubslate { resid_termGitAdd }, endSequence{},
 		Event { "commit", "" },			Sequence{}, TypeText { "git commit " }, ResSubslate { resid_gitCommit }, endSequence{},
+		Event { "checkout", "" },		Sequence{}, TypeText { "git checkout " }, ResSubslate { resid_termType }, endSequence{},
 	} }
 } };
 

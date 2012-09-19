@@ -12,6 +12,8 @@ setUp() {
 	target=Tar1
 }
 
+. "${CCDev}/bin/resultCodes.ksh"
+
 #^	1 === General
 testCciGeneral() {
 	typeset str

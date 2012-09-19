@@ -33,7 +33,7 @@
 }
 
 // Creates if necessary and returns the managed object model for the application.
-- (NSManagedObjectModel *)managedObjectMode {
+- (NSManagedObjectModel *)managedObjectModel {
     if (__managedObjectModel) {
         return __managedObjectModel;
     }

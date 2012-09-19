@@ -27,6 +27,18 @@
 	background-color: #f5f5ff;	
 }
 
+.tlversion {								/* right-aligned version marker	*/
+	margin-top: 1px;
+	margin-bottom: 1px;
+	margin-left: 700px;
+	font: italic 10px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
+	color: #000;
+	text-align: center;
+	border-top: 1px solid #9999ff;
+	border-bottom: 1px solid #9999ff;
+	background-color: #f5f5ff;	
+}
+
 .tldate {text-align: right}					/* date marker	*/
 
 	/* thread	*/

@@ -375,7 +375,10 @@
          location = "container:"
          name = "AppleScripts">
          <FileRef
-            location = "group:Xcode/AppleScripts/fixWindow.applescript">
+            location = "group:Xcode/AppleScripts/windowShort.applescript">
+         </FileRef>
+         <FileRef
+            location = "group:Xcode/AppleScripts/windowTall.applescript">
          </FileRef>
          <FileRef
             location = "group:Xcode/AppleScripts/frontWindow.applescript">

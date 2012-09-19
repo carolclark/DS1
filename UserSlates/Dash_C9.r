@@ -17,6 +17,8 @@
 
 #define resid_DashWindow			resid_Dash+30
 
+#define	resid_Search				resid_Dash+100
+
 #define _TypeDashItems_	\
 	Event { "focus", "" },		Keypress { kc_tab, 0 },			\
 	Event { "focus back", "" },	Keypress { kc_tab, mf_shift },	\
@@ -65,6 +67,25 @@ resource restype_Slate (resid_TypeDashSlate, "Type Slate") { {
 	} }
 } };
 
+#pragma mark Search
+resource restype_Slate (resid_Search, "") { {
+	Slate { "Search",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "mac os", "" },			TypeText { "osx:" },
+		Event { "ios", "" },			TypeText { "ios:" },
+		Event { "accessor", "" },		TypeText { "acc:" },
+		Event { "punkin", "" },			TypeText { "pun:" },
+		Event { "main page", "" },		TypeText { "main page" },
+		Event { "methods", "" },		Keypress { kc_down, mf_option },
+		_TypeDashSlate_,
+		_WhitespaceKeys_,
+		_DirectionKeys_,
+		_JumpNorthSubslate_,
+		_JumpDownSubslate_,
+	} }
+} };
+
 #pragma mark 9 === Dash
 #define	_DashSlateItems_		\
 		_SlateGlobals_,			\
@@ -81,7 +102,7 @@ resource restype_Slate (resid_TypeDashSlate, "Type Slate") { {
 		_WhitespaceKeys_,	\
 		_DirectionKeys_,	\
 		_LetterKeys_,		\
-		Event { "search", "" },		Keypress { kc_L, mf_command },		\
+		Event { "search", "" },		Sequence{}, Keypress { kc_L, mf_command }, ResSubslate { resid_Search }, endSequence{},	\
 		Event { "focus", "" },		Keypress { kc_tab, 0 },				\
 		Event { "focus back", "" },	Keypress { kc_tab, mf_shift },		\
 		Event { "Window", "" },		Sequence{}, Keypress { kc_comma, mf_command }, Wait { 40 }, Click { 1, 265, 45, _window, _topLeft }, ResSubslate { resid_DashWindow }, endSequence{},		\

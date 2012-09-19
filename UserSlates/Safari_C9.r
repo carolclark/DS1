@@ -844,6 +844,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 #define _pzlTop		468
 resource restype_Slate (resid_sudokuTimes, "") { {
 	Slate { "Times", {
+		ExitEvent { "exit", "" },		NilAction{},
 		Event { "main frame", "" },		Click { 1, 10, -40, window, "1", _bottomLeft },
 		Event { "undo", "" },			Click { 1, 455,	_pzlTop+173, window, "1", _topLeft },
 		Event { "pencil", "" },			Click { 1, 455,	_pzlTop+191, window, "1", _topLeft },

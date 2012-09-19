@@ -11,12 +11,26 @@
 <h1>Developing Projects</h1>
 
 <!-- @topicList "DevelopingProjects" "Contents" -->
+	<!-- @topicItem "Naming Conventions" "#NamingConventions" "0" "" -->
 	<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
 	<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
 	<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
 <!-- @/topicList -->
 
 <p>tasks and refactorings related to development with Xcode projects</p>
+
+<!-- @marker "Naming Conventions" -->
+<h2>Naming Conventions</h2>
+	<!-- @topicList "Naming Conventions" "NamingConventions" -->
+		<!-- @topicItem "Controller and Delegate Classes" "#ControllerNDelegateClasses" "0" "" -->
+	<!-- @/topicList -->
+
+<!-- @marker "Controller and Delegate Classes" -->
+<h4 id='ControllerNDelegateClasses'>Controller and Delegate Classes</h4><ul>
+	<li class='blurb'>Apple's recommendation is to name these classes &lt;Name&gt;WindowController, &lt;Name&gt;ApplicationDelegate, and so on. We tried it, and these names are not only long to type, they are frequently enough abbreviated on display to be accessibility and convenience issue, and all the extra verbiage gets in the way of quickly recognizing what the classes are for.</li>
+	<li>Application delegate classes: name &lt;Name&gt;App</li>
+	<li>Window and View Controller classes: name &lt;Name&gt;WindowC, &lt;Name&gt;ViewC, &lt;Name&gt;SheetC and so on.</li>
+</ul>
 
 <!-- @marker "Targets and Build Phases" -->
 <h2>Targets and Build Phases</h2>
@@ -76,9 +90,11 @@
 	<li class='depr'>add <span class='mono'>\rConfidential and Proprietary.</span> to copyright notice</li>
 	<li class='depr'>USER_HEADER_SEARCH_PATHS = ${SRCROOT}/Source/**</li>
 	<li>AppDelegate: rename to &lt;Target&gt;AppDelegate; update AppDelegate object in xib</li>
+	<li>Application: in xib, set Application's delegate outlet to the AppDelegate object</li>
 	<li>add a source group for &lt;Target&gt;; add file references to group &lt;Target&gt;</li>
 	<li><a href="#AddUnitTesting">Add Unit Testing</a></li>
 	<li>if there is not already a Doxygen target for this project, <a href="#AddDoxygenTarget">Add Doxygen Target</a></li>
+	<li><a href="#ReplaceDefaultWindow">Replace Default Window</a></li>
 </ul>
 
 <!-- @marker "Add Target Feature" -->
@@ -117,8 +133,13 @@
 	<li class='blurb'>from iPhoneUnitsSample ReadMe: "Important: Application targets with unit tests cannot be built or run using the iPhone Simulator SDK; they can be built and run only using the iPhone Device SDK." The sample produces two copies of the app, one with Unit Tests and one without.</li>
 	<li>Add Logic and App Test Targets<ul>
 		<li>for each: add a new target from Cocoa Unit Testing Bundle template; mark scheme "shared"; add to &lt;Target&gt; scheme's Test specification</li>
-		<li>for App Tests: also set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
-		<li>for Logic Tests: also replace &lt;Target&gt;LogicTests with &lt;Target&gt;AppDelegateTest</li>
+		<li>for App Tests, also:<ul>
+			<li>set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
+			<li>add test case testAppDelegate (testAppDelegate#)</li>
+		</ul></li>
+		<li>for Logic Tests, also:<ul>
+			<li>edit &lt;Target&gt;LogicTests: use testNothing<span class='blurb'>Xcode may get confused and issue a warning if it doesn't find &lt;Target&gt;LogicTests with at least one test</span></li>
+		</ul></li>
 	</ul></li>
 	<li>set up debugging<ul>
 		<li>add Exception breakpoint with action Debugger Command <span class='mono'>log message</span></li>
@@ -138,6 +159,10 @@
 	<!-- @topicItem "Remove IB Outlet" "#RemoveIBOutlet" "0" "" -->
 	<!-- @topicItem "Rename IB Outlet" "#RenameIBOutlet" "0" "" -->
 	<!-- @topicItem "Rename IB Object" "#RenameIBObject" "0" "" -->
+	<!-- @topicItem "Deprecate IB Object" "#DeprecateIBObject" "0" "" -->
+	<!-- @topicItem "Remove Deprecated IB Object" "#RemoveDeprecatedIBObject" "0" "" -->
+	<!-- @topicItem "Move IB Object" "#MoveIBObject" "0" "" -->
+	<!-- @topicItem "Replace Default Window" "#ReplaceDefaultWindow" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Remove IB Outlet" -->
@@ -160,6 +185,49 @@
 	<li>in Interface Builder's hierarchical list, rename the object</li>
 	<li>apply <a href="#RenameIBOutlet">Rename IB Outlet</a> as indicated to rename IBOutlet connections to the renamed object</li>
 </ul>
+
+<!-- @marker "Deprecate IB Object" -->
+<h4 id='DeprecateIBObject'>Deprecate IB Object</h4><ul>
+	<li>AppTest for presence of existing expected IBOutlets</li>
+	<li>for each outlet of existing object, apply <a href="#RenameIBOutlet">Rename IB Outlet</a></li>
+</ul>
+
+<!-- @marker "Remove Deprecated IB Object" -->
+<h4 id='RemoveDeprecatedIBObject'>Remove Deprecated IB Object</h4><ul>
+	<li>for each outlet in deprecated IB object, apply <a href="#RemoveIBOutlet">Remove IB Outlet</a></li>
+	<li>remove the original IB object from its xib file</li>
+</ul>
+
+<!-- @marker "Move IB Object" -->
+<h4 id='MoveIBObject'>Move IB Object</h4><ul>
+	<li class='blurb'>replace existing IB object with a identical/similar one in a different .xib file</li>
+	<li>apply <a href="#DeprecateIBObject">DeprecateIBObject</a> to the existing object</li>
+	<li>create replacement IB object in a newly-created or existing xib file</li>
+	<li>for each outlet of existing object<ul>
+		<li>create a corresponding outlet (using original name) in the new object</li>
+		<li>AppTest for presence of new expected IBOutlets</li>
+	</ul></li>
+	<li>apply <a href="#RemoveDeprecatedIBObject">Remove Deprecated IB Object</a> to original object</li>
+</ul>
+
+<!-- @marker "Replace Default Window" -->
+<h4 id='ReplaceDefaultWindow'>Replace Default Window</h4><ul>
+	<li class='blurb'>replace default window from a MainMenu template file with a new NSWindowController and xib file</li>
+	<li>apply <a href="#DeprecateIBObject">DeprecateIBObject</a> to the existing MainMenu.xib window</li>
+	<li>generate new NSWindowController and xib from private Objective-C NSWindowController template</li>
+	<li>remove "Controller" from name of xib</li>
+	<li>in the deprecated window, uncheck Visible at Launch</li>
+	<li>in AppDelegate: display new window<ul>
+		<li>snippet windowControllerProperty#: add @property for the new WindowController; add -(IBAction)newDocument:(id)sender to create WindowController and open window</li>
+		<li>applicationDidFinishLaunching: <span class='mono'>[self newDocument:self];</span></li>
+		<li>confirm window is displayed; AppTest for delegate.winController, delegate.winController.window not nil</li>
+	</ul></li>
+	<li>for each outlet of deprecated object<ul>
+		<li>create a corresponding outlet (using outlet's original name) for the new window</li>
+		<li>AppTest for presence of new expected IBOutlets</li>
+	</ul></li>
+	<li>apply <a href="#RemoveDeprecatedIBObject">Remove Deprecated IB Object</a> to original MainMenu.xib window</li>
+</ul>	
 
 <!-- @marker "Porting C++ to Objective-C" -->
 <h2>Porting C++ to Objective-C</h2>
