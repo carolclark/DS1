@@ -177,7 +177,7 @@ resource restype_Slate (resid_Dictate, "Dictate") { {
 			Launch { MainApps_"BBEdit.app", 0 }, endSequence{},
 		Event { "microphone off", "and hide recognition window" }, _CloseRecognitionWindow_,
 		Event { "microphone on", "" },
-			Sequence{}, Click { 1, -230, 74, _screen, _topRight }, ResSubslate { resid_DictateSlate },
+			Sequence{}, Click { 1, -55, 55, _screen, _topRight }, ResSubslate { resid_DictateSlate },
 			endSequence{},
 		Event { "recognition window", "" },	_CloseRecognitionWindow_,
 		Event { "new window", "" },			Keypress { kc_N, mf_command },

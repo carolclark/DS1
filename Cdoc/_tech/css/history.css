@@ -39,6 +39,14 @@
 	background-color: #f5f5ff;	
 }
 
+.tltarget {
+	font-size: 12px;
+	font-style: italic;
+	margin-left: .3in;
+	color: #9999ff;
+
+}
+
 .tldate {text-align: right}					/* date marker	*/
 
 	/* thread	*/

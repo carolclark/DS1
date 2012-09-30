@@ -817,7 +817,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		ExitEvent { "pseudo link", "" }, Sequence{}, TypeText { " class='pslink'" }, _right, endSequence{},		\
 		ExitEvent { "implement", "" }, Sequence{}, TypeText { " class='impl'" }, _right, endSequence{},		\
 		ExitEvent { "done", "" }, Sequence{}, TypeText { " class='done'" }, _right, endSequence{},		\
-		ExitEvent { "todo", "" }, Sequence{}, TypeText { " class='todo'" }, _right, endSequence{}
+		ExitEvent { "todo", "" }, Sequence{}, TypeText { " class='todo'" }, _right, endSequence{},	\
+		ExitEvent { "target", "" },	Sequence{}, TypeText { " class='tltarget'" }, _right, endSequence{}
 
 #define _TagItems_	\
 		ExitEvent { "comment", "" }, Sequence{}, TypeText		\
@@ -1665,7 +1666,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 
 #pragma mark 7 === Item Groups
 #define _MicrophoneOn_		\
-	Event { "microphone on", "" },	Sequence{}, Click { 1, -57, 76, _screen, _topRight }, ResSubslate { resid_DictateSlate }, endSequence{}
+	Event { "microphone on", "" },	Sequence{}, Click { 1, -55, 55, _screen, _topRight }, ResSubslate { resid_DictateSlate }, endSequence{}
 #define _CloseRecognitionWindow_	Click { 1, -420, -385, _screen, _bottomRight }
 
 #pragma mark _TypeSlateItems_

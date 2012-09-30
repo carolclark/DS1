@@ -112,6 +112,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 				Event { "Core Data Snippets", "" }, Launch { Home_"Reference/CoreDataSnippets.pdf", resid_Preview },
 				Event { "Error Handling", "" }, Launch { Home_"Reference/ErrorHandlingCocoa.pdf", resid_Preview },
 				Event { "Exceptions", "" }, Launch { Home_"Reference/Exceptions.pdf", resid_Preview },
+			Event { "File System", "" }, Launch { Home_"Reference/FileSystemProgrammingGuide.pdf", resid_Preview },	
 				Event { "Git book", "" }, Launch { Home_"Reference/git-book.pdf", resid_Preview },
 				Event { "Instruments User Guide", "" }, Launch { Home_"Reference/InstrumentsUserGuide.pdf", resid_Preview },
 				Event { "Internationalization", "" }, Launch { Home_"Reference/Internationalization.pdf", resid_Preview },
@@ -130,6 +131,8 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 				Event { "Sheets", "" }, Launch { Home_"Reference/Sheets.pdf", resid_Preview },
 				Event { "Strings", "" }, Launch { Home_"Reference/Strings.pdf", resid_Preview },
 				Event { "System Services", "" }, Launch { Home_"Reference/SysServices.pdf", resid_Preview },
+				Event { "Table View", "" }, Launch { Home_"Reference/TableView.pdf", resid_Preview },
+				Event { "Toolbars", "" }, Launch { Home_"Reference/Toolbars.pdf", resid_Preview },
 				Event { "View Programming Guide", "" }, Launch { Home_"Reference/ViewProgrammingGuide.pdf", resid_Preview },
 				Event { "Window Programming Guide", "" }, Launch { Home_"Reference/WindowProgrammingGuide.pdf", resid_Preview },
 
