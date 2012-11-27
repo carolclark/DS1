@@ -31,8 +31,9 @@
 #define resid_Arbonne					resid_Safari+400
 	#define resid_arbHome					resid_Arbonne+10
 	#define resid_arbShop					resid_Arbonne+20
-		#define resid_arbShopIndex				resid_arbShop+1
-		#define resid_arbShopSpecials			resid_arbShop+2
+		#define resid_arbShopCheckout			resid_arbShop+1
+		#define resid_arbShopIndex				resid_arbShop+2
+		#define resid_arbShopSpecials			resid_arbShop+3
 	#define resid_arbWebStats				resid_Arbonne+30
 		#define resid_arbwsVolume				resid_arbWebStats+1
 		#define resid_arbwsOrders				resid_arbWebStats+2
@@ -477,21 +478,10 @@ resource restype_Slate (resid_Arbonne, "Arbonne Slate") { {
 			_CloseSubslate_,
 			ExitEvent { "Window", "" },		ClickMenu { "Window" },
 			endSubslate{},
-		Event { "identify", "" },			Sequence{},
-			TypeText { "15375149" },
-			Keypress { kc_tab, 0 },
-			KeyDelay { kc_A, mf_command, 2 },
-			TypeText { "8104" },
-			Keypress { kc_enter, 0 },
-			endSequence{},
-		Event { "Home", "" },				Sequence{},
-			ResSubslate { resid_arbHome },
-			Click { 0, 390, 390, window, "1", _topLeft },
-			endSequence{},
-		Event { "Shopping", "" },			ResSubslate { resid_arbShop },
-		Event { "Web Stats", "" },			Sequence{},
-			ResSubslate { resid_arbWebStats }, Click { 0, 230, 125, _window, _topCenter }, endSequence{},
-		Event { "Browser", "" },			ResSubslate { resid_DocBrowser },
+		Event { "log in", "" },				Sequence{}, TypeText { "15375149" }, Keypress { kc_tab, 0 }, KeyDelay { kc_A, mf_command, 2 }, TypeText { "8104" }, Keypress { kc_enter, 0 }, endSequence{},
+		Event { "Home", "" },				Sequence{}, ResSubslate { resid_arbHome }, Click { 1, -420, 100, window, "1", _topRight }, endSequence{},
+		Event { "Shopping", "" },			Sequence{}, ResSubslate { resid_arbShop }, Click { 1, -170, 100, window, "1", _topRight }, endSequence{},	
+		Event { "Web Stats", "" },			Sequence{}, ResSubslate { resid_arbWebStats }, Click { 1, -250, 100, window, "1", _topRight }, endSequence{},
 	 } }
 } };
 
@@ -506,7 +496,6 @@ resource restype_Slate (resid_arbHome, "Arbonne Home Slate") { {
 			_CloseSubslate_,
 			ExitEvent { "Window", "" },		ClickMenu { "Window" },
 			endSubslate{},
-		Event { "Browser", "" },			ResSubslate { resid_DocBrowser },
 	 } }
 } };
 
@@ -520,23 +509,40 @@ resource restype_Slate (resid_arbShop, "Arbonne Shopping") { {
 			_CloseSubslate_,
 			ExitEvent { "Window", "" },		ClickMenu { "Window" },
 			endSubslate{},
-		Event { "Browser", "" },			ResSubslate { resid_DocBrowser },
-		Event { "Quick Form", "" },			Click { 1, -57, 215, _window, _topCenter },
-		Event { "Autoship", "" },			Click { 1, 7, 215, _window, _topCenter },
-		Event { "Product Catalog", "" },	Click { 1, -350, 290, _window, _topCenter },
+		Event { "Quick Form", "" },			Click { 1, 122, 215, _window, _topCenter },
+		Event { "Product Catalog", "" },	Click { 1, -360, 290, _window, _topCenter },
 		Event { "Business Aids", "" },		Click { 1, -290, 290, _window, _topCenter },
 		Event { "The Place", "" },			Click { 1, -230, 290, _window, _topCenter },
-		Event { "View Cart", "" },			Click { 1, 210, 115, _window, _topCenter },
-		Event { "index", "" },				Sequence{},
-			Click { 0, -360, 320, _window, _topCenter },
-			ResSubslate { resid_arbShopIndex },
-			endSequence{},
-		Event { "show all", "" },			Sequence{}, Click { 1, 305, 300, _window, _topCenter },
-			TypeText { "All" }, Keypress { kc_return, 0 }, endSequence{},
+		Event { "View Cart", "" },			Click { 1, 265, 110, _window, _topCenter },
+		Event { "Add to Order", "" },		Click { 1, -385, 585, _window, _topCenter },
+		Event { "Special Offers", "" },		Click { 1, -180, 340, _window, _topCenter },
+		Event { "Complete Purchase", "" },	Sequence{}, Click { 1, 140, -95, _window, _bottomCenter }, ResSubslate { resid_arbShopCheckout },  endSequence{},
+		Event { "index", "" },				Sequence{}, Click { 0, -360, 320, _window, _topCenter }, ResSubslate { resid_arbShopIndex }, endSequence{},
+		Event { "show all", "" },			Sequence{}, Click { 1, 0, 300, _window, _topCenter }, TypeText { "All" }, Keypress { kc_return, 0 }, endSequence{},
 	 } }
 } };
 
-resource restype_Slate (resid_arbShopIndex, "Arbonne Shopping") { {
+resource restype_Slate (resid_arbShopCheckout, "Arbonne Checkout") { {
+	Slate { "checkout",	{
+		_SafariStandards_,
+		_SlateGlobals_,
+		Event { "View Cart", "" },			Click { 1, 265, 110, _window, _topCenter },
+		ExitEvent { "exit", "" },			NilAction{},
+		ExitEvent { "okay", "" },			Click { 1, 0, 0, _cursor },
+		Event { "Address Okay", "" },		Click { 1, 0, -420, _window, _bottomCenter },
+		Event { "Use Address", "" },		Click { 1, -285, 347, _window, _topCenter },
+		Event { "Credit Cards", "" },		Click { 1, 45, 260, _window, _topCenter },
+		Event { "Card Type", "" },			Click { 1, -240, -360, _window, _bottomCenter },
+		Event { "Discover", "" },			ResSubslate { resid_Discover },
+		Event { "AirTran", "" },			ResSubslate { resid_AirTran },
+		Event { "Check Out", "" },			Click { 1, -340, -216, _window, _bottomCenter },
+		Event { "print", "" },				Keypress { kc_P, mf_command },
+		ExitEvent { "Change Order", "" },	Click { 1, -55, -220, _window, _bottomCenter },
+		ExitEvent { "Confirm", "" },		Click { 0, 40, -220, _window, _bottomCenter },
+	 } }
+} };
+
+resource restype_Slate (resid_arbShopIndex, "Arbonne Index") { {
 	Slate { "index",	{
 		_SafariStandards_,
 		_SlateGlobals_,
@@ -774,6 +780,7 @@ resource restype_Slate (resid_Discover, "Discover Slate") { {
 	Slate { "Discover",	{
 		_SafariStandards_,
 		_CloseSubslate_,
+		Event { "type", "" },		TypeText { "Discover" },
 		Event { "name", "" },		TypeText { "Carol L Clark" },
 		Event { "number", "" },		TypeText { "6011499463079978" },
 		Event { "month", "" },		TypeText { "07" },
@@ -789,6 +796,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 	Slate { "AirTran",	{
 		_SafariStandards_,
 		_CloseSubslate_,
+		Event { "type", "" },		TypeText { "Master" },
 		Event { "name", "" },		TypeText { "Carol Lynne Clark" },
 		Event { "number", "" },		TypeText { "4327470004698976" },
 		Event { "month", "" },		TypeText { "04" },

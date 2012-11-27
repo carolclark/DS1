@@ -143,11 +143,17 @@ resource restype_Slate (resid_Sort, "") { {
 	Slate { "Sort",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		ExitEvent { "flag", "" },			Click { 1, 190, 80, _window, _topLeft },
-		ExitEvent { "read", "" },			Click { 1, 210, 80, _window, _topLeft },
-		ExitEvent { "from", "" },			Click { 1, 340, 80, _window, _topLeft },
-		ExitEvent { "subject", "" },		Click { 1, 600, 80, _window, _topLeft },
-		ExitEvent { "date", "" },			Click { 1, 800, 80, _window, _topLeft },
+		ExitEvent { "Attachments", "" },	_return,
+		ExitEvent { "Date", "" },			Sequence{}, TypeText { "Date" }, _return, endSequence{},
+		ExitEvent { "From", "" },			Sequence{}, TypeText { "From" }, _return, endSequence{},
+		ExitEvent { "Flags", "" },			Sequence{}, TypeText { "Flags" }, _return, endSequence{},
+		ExitEvent { "Mailbox", "" },		Sequence{}, TypeText { "Mailbox" }, _return, endSequence{},
+		ExitEvent { "Size", "" },			Sequence{}, TypeText { "Size" }, _return, endSequence{},
+		ExitEvent { "Subject", "" },		Sequence{}, TypeText { "Subject" }, _return, endSequence{},
+		ExitEvent { "To", "" },				Sequence{}, TypeText { "To" }, _return, endSequence{},
+		ExitEvent { "Unread", "" },			Sequence{}, TypeText { "Unread" }, _return, endSequence{},
+		ExitEvent { "Ascending", "" },		Sequence{}, TypeText { "Ascending" }, _return, endSequence{},
+		ExitEvent { "Descending", "" },		Sequence{}, TypeText { "Descending" }, _return, endSequence{},
 	} }
 } };
 
@@ -205,7 +211,7 @@ _BrowseCdocSlate_
 
 #pragma mark Preferences
 resource restype_Slate (resid_Preferences, "") { {
-	Slate { "prefs	",	{
+	Slate { "prefs",	{
 		_PreferencesStandards_,
 		_CloseSubslate_,
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
@@ -258,7 +264,7 @@ resource restype_Slate (resid_Mail, "Mail Slate") { {
 		Event { "boxes", "" },			Sequence{}, Click { 1, -50, 35, _window, _topRight }, Keypress { kc_tab, 0 }, endSequence{},
 		Event { "list", "" },			Sequence{}, Click { 1, -50, 35, _window, _topRight }, _tab, _tab, endSequence{},
 		Event { "Mailbox", "" },		ResSubslate { resid_Mailbox },
-		Event { "Sort", "" },			ResSubslate { resid_Sort },
+		Event { "Sort", "" },			Sequence{}, ClickMenu { "View" }, _down, TypeText { "Sort by" }, _right, ResSubslate { resid_Sort }, endSequence{},
 		Event { "Attachment", "" },		ResSubslate { resid_Attachments },
 		Event { "MoveTo", "" },			Sequence{},
 			ClickMenu { "Message" }, TypeText { "Move To" }, Keypress { kc_right, 0 },

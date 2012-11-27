@@ -163,20 +163,22 @@
 	<!-- @topicItem "Remove Deprecated IB Object" "#RemoveDeprecatedIBObject" "0" "" -->
 	<!-- @topicItem "Move IB Object" "#MoveIBObject" "0" "" -->
 	<!-- @topicItem "Replace Default Window" "#ReplaceDefaultWindow" "0" "" -->
+	<!-- @topicItem "Add Sheet" "#AddSheet" "0" "" -->
+	<!-- @topicItem "Add Table View" "#AddTableView" "0" "" -->
+	<!-- @topicGroup "" "10" -->
 <!-- @/topicList -->
 
 <!-- @marker "Remove IB Outlet" -->
 <h4 id='RemoveIBOutlet'>Remove IB Outlet</h4><ul>
-	<li>ensure that the IBOutlet variable is not accessed in code</li>
-	<li>in Interface Builder, delete the outlet connection</li>
+	<li>ensure that the IBOutlet property, and method if applicable, are not accessed in code</li>
+	<li>in Interface Builder, delete any outlet connections</li>
 	<li>remove all occurrences of the IBOutlet variable in code</li>
 </ul>
 
 <!-- @marker "Rename IB Outlet" -->
 <h4 id='RenameIBOutlet'>Rename IB Outlet</h4><ul>
-	<li>add outlet connection for new name</li>
-	<li>compare the properties of the variables with the old and new names; make new variable match original intent</li>
-	<li>change all uses of the original variable to use the new name</li>
+	<li>duplicate the IBAction's declaration and method; rename copies to the new name</li>
+	<li>for each IBAction outlet connected to the original method, reconnect outlet to the new method</li>
 	<li>apply <a href="#RemoveIBOutlet">Remove IB Outlet</a> to the original variable name</li>
 </ul>
 
@@ -228,6 +230,34 @@
 	</ul></li>
 	<li>apply <a href="#RemoveDeprecatedIBObject">Remove Deprecated IB Object</a> to original MainMenu.xib window</li>
 </ul>	
+
+<!-- @marker "Add Sheet" -->
+<h4 id='AddSheet'>Add Sheet</h4><ul>
+	<li>add code (snippet <span class='mono'>sheet</span>; input is capitalized title):<ul>
+		<li>IBAction close&lt;Title&gt;Sheet -- <span class='mono'>[NSApp endSheet:self.fileImagesSheet];</span></li>
+		<li>add <span class='mono'>- (void)didEnd&lt;Title&gt;Sheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo</span> with code <span class='mono'>[sheet orderOut:self];</span></li>
+		<li>IBAction show&lt;Title&gt;Sheet:<span class='mono'>[NSApp beginSheet:self.fileImagesSheet modalForWindow:self.view.window modalDelegate:self didEndSelector:@selector(didEnd&lt;Title&gt;Sheet:returnCode:contextInfo:) contextInfo:nil];</span></li>
+	</ul></li>
+	<li>Sheet Nib: add a window of class NSPanel to nib; set Identity: Label to &lt;title&gt;Sheet; deselect Visible at Launch; add referencing outlet &lt;title&gt;Sheet of File's Owner</li>
+	<li>Close button: add a close button; connect action to close&lt;Title&gt;Sheet</li>
+	<li>to activate sheet, add user interface element with action connected to show&lt;Title&gt;Sheet</li>
+</ul>
+
+<!-- @marker "Add Table View" -->
+<h4 id='AddTableView'>Add Table View</h4><ul>
+	<li>in Owner's source (snippet <span class='mono'>tableView</span>):<ul>
+		<li>adopt NSTableViewDataSource and NSTableViewDelegate</li>
+		<li>implement dataSource method numberOfRowsInTableView:</li>
+		<li>implement delegate method tableView:viewForTableColumn:tableColumn:row</li>
+	</ul></li>
+	<li>in nib view:<ul>
+		<li>add NSTableView; set column count to 1; connect View outlet, delegate, dataSource to Owner</li>
+		<li><a href="#connectColumn">connect up</a> the column</li>
+	</ul></li>
+</ul>
+<h6 id='connectColumn'>to connect up a column:</h6><ul>
+	<li>set Heading; add view of type NSTableCellView or a single NSView subclass; set matching cell and column identifiers</li>
+</ul>
 
 <!-- @marker "Porting C++ to Objective-C" -->
 <h2>Porting C++ to Objective-C</h2>

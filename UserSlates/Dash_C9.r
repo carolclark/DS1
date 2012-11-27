@@ -78,6 +78,7 @@ resource restype_Slate (resid_Search, "") { {
 		Event { "punkin", "" },			TypeText { "pun:" },
 		Event { "main page", "" },		TypeText { "main page" },
 		Event { "methods", "" },		Keypress { kc_down, mf_option },
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		_TypeDashSlate_,
 		_WhitespaceKeys_,
 		_DirectionKeys_,

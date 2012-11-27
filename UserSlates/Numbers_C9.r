@@ -336,7 +336,7 @@ resource restype_Slate (resid_Arbonne, "") { {
 		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		Event { "paste values", "" },	Sequence{}, ClickMenu { "Edit" }, TypeText { "Paste Values" }, endSequence{},
 		Event { "append row", "" },		Sequence{}, Keypress { kc_pagedown, 0 }, Wait { 20 }, Click { 1, 190, -22, _window, _bottomLeft }, Click { 1, 160, -22, _window, _bottomLeft }, Keypress { kc_down, mf_option }, endSequence{},
-		Event { "print sheet", "" },	Sequence{}, Keypress { kc_P, mf_command }, Click { 1, 160, 132, _window, _topCenter }, TypeText { "plain paper, fast draft, black and white" }, _return, _tab, _tab, _tab, _tab, Keypress { kc_1, 0 }, _return, endSequence{},
+		Event { "print sheet", "" },	Sequence{}, Keypress { kc_P, mf_command }, Click { 1, 0, 132, _window, _topCenter }, TypeText { "plain paper, fast draft, black and white" }, _return, _tab, _tab, _space, _down, _return, _tab, Keypress { kc_1, 0 }, _return, endSequence{},
 		Event { "Sheet", "" },			Subslate { "Sheet" },
 			_SlateGlobals_,
 			_CloseSubslate_,

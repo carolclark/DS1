@@ -528,9 +528,6 @@
                   location = "container:"
                   name = "NSObject">
                   <FileRef
-                     location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaTestClass.xctemplate/NSObject/___FILEBASENAME___.h">
-                  </FileRef>
-                  <FileRef
                      location = "group:Xcode/Templates/FileTemplates/_ObjectiveC/CocoaTestClass.xctemplate/NSObject/___FILEBASENAME___.m">
                   </FileRef>
                </Group>
@@ -706,6 +703,13 @@
             location = "group:Xcode/_Tests/testXcode.ksh">
          </FileRef>
       </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Dash">
+      <FileRef
+         location = "group:Dash/snippets.dash">
+      </FileRef>
    </Group>
    <Group
       location = "container:"

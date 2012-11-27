@@ -76,6 +76,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 				Launch { MainApps_"FileMaker Pro 9 Advanced/FileMaker Pro Advanced.app", resid_FileMaker },
 			Event { "Arbonne", "launch Arbonne" },
 				Launch { Home_"Documents/Arbonne/Arbonne.numbers", resid_Numbers },			
+			Event { "PaintCode", "" }, Launch { Apps_"PaintCode.app", resid_DefaultSlate },
 			Event { "Xcode", "" }, Launch { DevApps_"XCode.app", resid_Xcode },
 			Event { "Dash", "" }, Launch { Apps_"Dash.app", resid_Dash },
 			Event { "Instruments", "" }, Launch { DevApps_"Instruments.app", resid_DefaultSlate },
