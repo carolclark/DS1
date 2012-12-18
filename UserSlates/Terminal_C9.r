@@ -11,38 +11,38 @@
 // Other
 //	1 Type; Standards 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
 
-#define resid_termGit				resid_Terminal+100
-#define resid_termBuild				resid_Terminal+150
-#define resid_termClean				resid_Terminal+160
-#define resid_termArchive			resid_Terminal+200
-#define	resid_termShell				resid_Terminal+350
-#define resid_termMacPorts			resid_Terminal+400
-#define resid_termApache			resid_Terminal+450
-#define resid_termTelnet			resid_Terminal+500
-#define resid_termType				resid_Terminal+900
+#define resid_Type				resid_Terminal+20
+#define resid_Git				resid_Terminal+100
+	#define resid_gitType				resid_Git+10
+	#define resid_gitCheckout			resid_Git+50
+	#define	resid_gitBranch				resid_Git+80
+	#define	resid_gitDiff				resid_Git+100
+	#define	resid_gitStash				resid_Git+150
+	#define	resid_gitAdd				resid_Git+170
+		#define resid_gitAddInteract		resid_gitAdd+1
+	#define resid_gitCommit				resid_Git+200
+	#define	resid_gitLog				resid_Git+230
+		#define resid_gitReflog				resid_gitLog+1	
+	#define	resid_gitTag				resid_Git+250
+	#define resid_gitMerge				resid_Git+270
+	#define resid_gitFetch				resid_Git+290
 
-#define resid_gitType				resid_termGit+1
-#define resid_SelectFile			resid_TermGit+3
+	#define resid_SelectFile			resid_Git+300
 
-#define	resid_gitReset				resid_termGit+40
-	#define resid_gitDoReset			resid_gitReset+1
-#define resid_gitBrowser			resid_TermGit+2
+	#define	resid_gitReset				resid_Git+320
+		#define resid_gitDoReset			resid_gitReset+1
+	#define resid_gitBrowser			resid_Git+340
+	// FileMerge 350
+								// git max 449
 
-#define resid_gitCheckout			resid_termGit+35
-#define	resid_gitBranch				resid_termGit+20
-#define	resid_gitDiff				resid_termGit+5
-#define	resid_gitStash				resid_termGit+10
-#define	resid_gitAdd				resid_termGit+45
-	#define resid_gitAddInteract		resid_gitAdd+1
-#define resid_gitCommit				resid_termGit+30
-#define	resid_gitLog				resid_termGit+7
-#define resid_gitReflog				resid_gitReset+2	
-#define	resid_gitTag				resid_termGit+25
-#define resid_gitMerge				resid_termGit+15
-#define resid_Fetch					resid_termGit+12
+#define resid_Build				resid_Terminal+650
+#define resid_Clean				resid_Terminal+700
+#define resid_Archive			resid_Terminal+750
+#define	resid_Shell				resid_Terminal+800
+#define resid_MacPorts			resid_Terminal+850
+#define resid_Apache			resid_Terminal+900
+#define resid_Telnet			resid_Terminal+950
 
-
-#define _termTypeSlate_	Event { "Type", "" },		ResSubslate { resid_termType }
 #define	_cancel			Keypress { kc_C, mf_control }
 
 #define _TerminalStandards_	\
@@ -55,11 +55,11 @@
 		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
 		Event { "quiver", "" },		Keypress { kc_Q, 0 },		\
 		ExitEvent { "cancel", "" },	_cancel,				\
-		_termTypeSlate_
+		Event { "Type", "" },		ResSubslate { resid_Type }
 
 #define	_TerminalItems_			\
 		_StarterBase_,			\
-		_termTypeSlate_,		\
+		Event { "Type", "" },			ResSubslate { resid_Type },		\
 		Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 		Event { "paste", "" },			Keypress { kc_V, mf_command },	\
 		Event { "execute", "" },		_return,		\
@@ -75,15 +75,15 @@
 			ExitEvent { "Edit", "'Edit' menu" }, ClickMenu { "Edit" },		\
 			ExitEvent { "Window", "'Window' menu" }, ClickMenu { "Window" },		\
 			endSubslate{},		\
-		Event { "git", "" },	ResSubslate { resid_termGit },			\
-		Event { "clean", "" },	Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_termClean }, endSequence{},		\
-		Event { "build", "" },	Sequence{}, TypeText { "build.uia" }, Keypress { kc_enter, 0 }, ResSubslate { resid_termBuild }, endSequence{},		\
-		Event { "archive", "" },	Sequence{}, TypeText { "archive " }, ResSubslate { resid_termArchive }, endSequence{},		\
+		Event { "git", "" },	ResSubslate { resid_Git },			\
+		Event { "clean", "" },	Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_Clean }, endSequence{},		\
+		Event { "build", "" },	Sequence{}, TypeText { "build.uia" }, Keypress { kc_enter, 0 }, ResSubslate { resid_Build }, endSequence{},		\
+		Event { "archive", "" },	Sequence{}, TypeText { "archive " }, ResSubslate { resid_Archive }, endSequence{},		\
 		Event { "backup", "" },	TypeText { "ccBackup Backup " },		\
-		Event { "ports", "" },			ResSubslate { resid_termMacPorts },		\
-		Event { "Shell", "" },			ResSubslate { resid_termShell },		\
-		Event { "Apache", "" },			ResSubslate { resid_termApache },		\
-		Event { "Telnet", "" },			ResSubslate { resid_termTelnet }
+		Event { "ports", "" },			ResSubslate { resid_MacPorts },		\
+		Event { "Shell", "" },			ResSubslate { resid_Shell },		\
+		Event { "Apache", "" },			ResSubslate { resid_Apache },		\
+		Event { "Telnet", "" },			ResSubslate { resid_Telnet }
 
 #pragma mark Type
 #define	_TypeTermItems_		\
@@ -94,7 +94,7 @@
 	Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 	Event { "paste", "" },			Keypress { kc_V, mf_command }
 
-resource restype_Slate (resid_termType, "Type") { {
+resource restype_Slate (resid_Type, "Type") { {
 	Slate { "Type",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
@@ -121,7 +121,7 @@ resource restype_Slate (resid_termType, "Type") { {
 #define	_CurrentBranch_		Event { "current branch", "" },	TypeText { "$cb " }
 #define	_GitFile_			Event { "git file", "" },	TypeText { "$gf " }
 
-resource restype_Slate (resid_termGit, "") { {
+resource restype_Slate (resid_Git, "") { {
 	Slate { "Git",	{
 		_GitStandards_,
 		Event { "go back", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
@@ -138,7 +138,7 @@ resource restype_Slate (resid_termGit, "") { {
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
 		Event { "merge", "" },			Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "push", "" },			TypeText { "git push remote/origin " },
-		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch" }, ResSubslate { resid_Fetch }, endSequence{},
+		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch" }, ResSubslate { resid_gitFetch }, endSequence{},
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "select file", "" },	Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_SelectFile }, endSequence{},
 		Event { "reset", "" },			ResSubslate { resid_gitReset },
@@ -323,7 +323,7 @@ resource restype_Slate (resid_gitMerge, "") { {
 } };
 
 #pragma mark Fetch
-resource restype_Slate (resid_Fetch, "") { {
+resource restype_Slate (resid_gitFetch, "") { {
 	Slate { "Fetch",	{
 		_GitStandards_,
 	} }
@@ -399,7 +399,7 @@ resource restype_Slate (resid_gitBrowser, "") { {
 } };
 
 #pragma mark 5 === Archive
-resource restype_Slate (resid_termArchive, "") { {
+resource restype_Slate (resid_Archive, "") { {
 	Slate { "Archive",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
@@ -408,14 +408,14 @@ resource restype_Slate (resid_termArchive, "") { {
 		Event { "project", "" },			TypeText { "--project " },
 		Event { "code", "" },				TypeText { "--code " },
 		Event { "repository", "" },			TypeText { "--repository " },
-		Event { "folder", "" },				Sequence{}, TypeText { "--folder " }, ResSubslate { resid_termType }, endSequence{},
-		Event { "type", "" },				ResSubslate { resid_termType },
+		Event { "folder", "" },				Sequence{}, TypeText { "--folder " }, ResSubslate { resid_Type }, endSequence{},
+		Event { "type", "" },				ResSubslate { resid_Type },
 		Event { "paste", "" },				Keypress { kc_V, mf_command },
 	} }
 } };
 
 #pragma mark Clean
-resource restype_Slate (resid_termClean, "") { {
+resource restype_Slate (resid_Clean, "") { {
 	Slate { "Clean",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
@@ -432,7 +432,7 @@ resource restype_Slate (resid_termClean, "") { {
 } };
 
 #pragma mark Build
-resource restype_Slate (resid_termBuild, "") { {
+resource restype_Slate (resid_Build, "") { {
 	Slate { "Build",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
@@ -452,7 +452,7 @@ resource restype_Slate (resid_termBuild, "") { {
 } };
 
 #pragma mark 6 === MacPorts
-resource restype_Slate (resid_termMacPorts, "MacPorts Slate") { {
+resource restype_Slate (resid_MacPorts, "MacPorts Slate") { {
 	Slate { "MacPorts", {
 		Event { "update", "" },		TypeText { "sudo /opt/local/bin/port selfupdate" },
 		Event { "define", "" },		TypeText { "p=" },
@@ -467,7 +467,7 @@ resource restype_Slate (resid_termMacPorts, "MacPorts Slate") { {
 
 #pragma mark 7 === Apache
 #define	_ApacheWrapperPath_ 	"/opt/local/etc/LaunchDaemons/org.macports.apache2/apache2.wrapper"
-resource restype_Slate (resid_termApache, "Apache Slate") { {
+resource restype_Slate (resid_Apache, "Apache Slate") { {
 	Slate { "Apache", {
 		Event { "start", "" },			TypeText { "sudo "_ApacheWrapperPath_" start" },
 		Event { "stop", "" },			TypeText { "sudo "_ApacheWrapperPath_" stop" },
@@ -484,7 +484,7 @@ resource restype_Slate (resid_termApache, "Apache Slate") { {
 } };
 
 #pragma mark Telnet
-resource restype_Slate (resid_termTelnet, "Telnet Slate") { {
+resource restype_Slate (resid_Telnet, "Telnet Slate") { {
 	Slate { "Telnet", {
 		Event { "get top", "" },			Sequence{}, TypeText { "GET / HTTP/1.1" }, _return, TypeText { "Host: www.candcsoft.com" }, _return, endSequence{},
 		Event { "open address", "" },		TypeText { "telnet 192.168.0.104 80" },
@@ -495,7 +495,7 @@ resource restype_Slate (resid_termTelnet, "Telnet Slate") { {
 } };
 
 #pragma mark 8 === Shell
-resource restype_Slate (resid_termShell, "Shell Slate") { {
+resource restype_Slate (resid_Shell, "Shell Slate") { {
 	Slate { "Shell", {
 		Event { "password", "" },		TypeText { "6868" },
 		Event { "where is", "" },		TypeText { "whereis " },
