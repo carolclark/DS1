@@ -16,8 +16,6 @@
 #define resid_Workspace				resid_Xcode+12
 #define resid_Snapshots				resid_Xcode+13
 
-#define resid_XCTerminal			resid_Xcode+40
-
 #define resid_Stickies				resid_Xcode+42
 #define resid_Console				resid_Xcode+43
 #define resid_BBValidate			resid_Xcode+45
@@ -474,16 +472,6 @@ resource restype_Slate (resid_Snapshots, "Snapshots") { {
 		Event { "row twenty three", "" },	Click { 0, _rowx, _trow+22*_rsp, _window, _topLeft },
 		Event { "row twenty four", "" },	Click { 0, _rowx, _trow+23*_rsp, _window, _topLeft },
 		Event { "row twenty five", "" },	Click { 0, _rowx, _trow+24*_rsp, _window, _topLeft },
-	} }
-} };
-
-#pragma mark Terminal
-resource restype_Slate (resid_XCTerminal, "terminal support") { {
-	Slate { "Terminal",	{
-		_SlateGlobals_,
-		_TerminalItems_,
-		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
-		Event { "okay", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
 	} }
 } };
 
@@ -3161,7 +3149,6 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "go next", "tab" },		_goNext,
 		Event { "go previous", "tab" },	_goPrevious,
 		_JumpBar_,
-//		Event { "fix window", "" },		Sequence{}, Click { 0, 85, 10, _window, _topLeft }, Click { -1, 87, 29, _screen, _topLeft }, endSequence{},	
 		Event { "context menu", "" },	ClickMod { 1, 0, 0, _cursor, mf_control },
 		Event { "Terminal", "" },		Sequence{}, ResSubslate { resid_XCTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},
 		Event { "Validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { MainApps_"BBEdit.app", 0 }, endSequence{},

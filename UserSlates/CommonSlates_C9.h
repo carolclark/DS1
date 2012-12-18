@@ -87,6 +87,7 @@
 	#define resid_UMLetSubslate			resid_UMLet+2
 #define resid_Preview					28000
 #define resid_Terminal					29000
+	#define resid_XCTerminal		resid_Terminal+1
 #define resid_UIBrowser					30000
 #define resid_Automator					31000
 #define resid_TextEdit					32000

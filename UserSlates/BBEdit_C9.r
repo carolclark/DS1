@@ -80,13 +80,6 @@
 #define resid_Action					resid_BBEdit+550
 	#define resid_Output					resid_Action+1
 
-#define resid_BBTerminal				resid_BBEdit+570
-/*
-#define resid_Build						resid_Terminal+1
-	#define resid_Archive					resid_Terminal+2
-	#define resid_OldBuild					resid_Terminal+9
-*/
-
 //#define	resid_Dictate					resid_BBEdit+900
 #define resid_MoviePlayer				resid_BBEdit+950
 
@@ -1355,16 +1348,6 @@ resource restype_Slate (resid_Action, "scripts and other actions") { {
 	} }
 } };
 
-#pragma mark Terminal
-resource restype_Slate (resid_BBTerminal, "terminal support") { {
-	Slate { "Terminal",	{
-		_SlateGlobals_,
-		_TerminalItems_,
-		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
-		Event { "okay", "" },		Launch { MainApps_"BBEdit.app", resid_BBEdit },
-	} }
-} };
-
 /*
 #define goBack_		Event { "go back", "" },	Launch { MainApps_"BBEdit.app", resid_BBEdit }
 #pragma mark Build
@@ -1553,7 +1536,6 @@ resource restype_Slate (resid_Snippet, "") { {
 		Event { "Browser", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},		\
 		Event { "Validate", "" },	ResSubslate { resid_ValidateMarkup },		\
 		Event { "Script", "" },		Sequence{}, _clickScriptsMenu, _down, ResSubslate { resid_Script }, endSequence{},		\
-		Event { "Terminal", "" },	Sequence{}, ResSubslate { resid_BBTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},		\
 		Event { "Shell", "" }, 		Sequence{}, Launch { Dev_"DevSupport/BBEdit/Shell.worksheet", 0 }, ResSubslate { resid_Shell }, endSequence{},		\
 		Event { "Search", "" },		ResSubslate { resid_Search }
 

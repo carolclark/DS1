@@ -7,12 +7,22 @@
 
 #pragma mark === Markers ===
 // Git
-//	Type, Checkout, Branch, Difference, Stash, Add, Commit, Log, Tag, Merge, Push, Fetch, SelectFile, Reset, Browser, FileMerge
+//	2 Git, Type, Checkout, Branch, Difference, Stash; 3 Add, Commit, Log, Tag, Merge, Push, Fetch; 4 SelectFile, Reset, Browser, FileMerge
 // Other
 //	1 Type; Standards 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
 
+//#define resid_XCTerminal		resid_Terminal+1
 #define resid_Type				resid_Terminal+20
-#define resid_Git				resid_Terminal+100
+
+#define resid_Build				resid_Terminal+50
+#define resid_Clean				resid_Terminal+100
+#define resid_Archive			resid_Terminal+150
+#define	resid_Shell				resid_Terminal+200
+#define resid_MacPorts			resid_Terminal+250
+#define resid_Apache			resid_Terminal+300
+#define resid_Telnet			resid_Terminal+350
+
+#define resid_Git				resid_Terminal+400
 	#define resid_gitType				resid_Git+10
 	#define resid_gitCheckout			resid_Git+50
 	#define	resid_gitBranch				resid_Git+80
@@ -28,23 +38,16 @@
 	#define resid_gitFetch				resid_Git+290
 
 	#define resid_SelectFile			resid_Git+300
-
 	#define	resid_gitReset				resid_Git+320
 		#define resid_gitDoReset			resid_gitReset+1
 	#define resid_gitBrowser			resid_Git+340
-	// FileMerge 350
-								// git max 449
-
-#define resid_Build				resid_Terminal+650
-#define resid_Clean				resid_Terminal+700
-#define resid_Archive			resid_Terminal+750
-#define	resid_Shell				resid_Terminal+800
-#define resid_MacPorts			resid_Terminal+850
-#define resid_Apache			resid_Terminal+900
-#define resid_Telnet			resid_Terminal+950
+	#define resid_FileMerge				resid_Git+350
+		#define resid_FileMergeActions		resid_FileMerge+1
 
 #define	_cancel			Keypress { kc_C, mf_control }
 
+
+#pragma mark 1 === Standards
 #define _TerminalStandards_	\
 		_SlateGlobals_,		\
 		_CloseSubslate_,	\
@@ -103,8 +106,8 @@ resource restype_Slate (resid_Type, "Type") { {
 	} }
 } };
 
-#pragma mark 1 === Git
-// inside: 1 Difference; SelectFile; 2 Log; 3 Stash; Merge; 4 Branch; 5 Tag; 6 Checkout; Reset; 7 Commit; 9 Add; Browser
+#pragma mark 2 === Git
+// inside: Standards; 1 Git; 2 Type; 3 Checkout; 4 Branch; 5 Difference; 6 Stash
 #define _GitStandards_	\
 		_SlateGlobals_,		\
 		_CloseSubslate_,	\
@@ -121,6 +124,7 @@ resource restype_Slate (resid_Type, "Type") { {
 #define	_CurrentBranch_		Event { "current branch", "" },	TypeText { "$cb " }
 #define	_GitFile_			Event { "git file", "" },	TypeText { "$gf " }
 
+#pragma mark 1 -- Git
 resource restype_Slate (resid_Git, "") { {
 	Slate { "Git",	{
 		_GitStandards_,
@@ -137,7 +141,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
 		Event { "merge", "" },			Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
-		Event { "push", "" },			TypeText { "git push remote/origin " },
+		Event { "push", "" },			TypeText { "git push origin " },
 		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch" }, ResSubslate { resid_gitFetch }, endSequence{},
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "select file", "" },	Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_SelectFile }, endSequence{},
@@ -146,6 +150,7 @@ resource restype_Slate (resid_Git, "") { {
 	} }
 } };
 
+#pragma mark 2 -- Type
 resource restype_Slate (resid_gitType, "Type") { {
 	Slate { "Type",	{
 		_SlateGlobals_,
@@ -162,7 +167,7 @@ resource restype_Slate (resid_gitType, "Type") { {
 	} }
 } };
 
-#pragma mark 6 -- Checkout
+#pragma mark 3 -- Checkout
 resource restype_Slate (resid_gitCheckout, "") { {
 	Slate { "checkout",	{
 		Event { "new branch", "" },		TypeText { "-b " },
@@ -192,11 +197,12 @@ resource restype_Slate (resid_gitBranch, "") { {
 	} }
 } };
 
-#pragma mark 1 -- Difference
+#pragma mark 5 -- Difference
 resource restype_Slate (resid_gitDiff, "") { {
 	Slate { "diff",	{
 		_GitStandards_,
 		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool" }, endSequence{},
+		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{}, 
 		Event { "cached", "between staged and head" },			TypeText { "--cached " },
 		Event { "standard", "between staged and unstaged" },	NilAction{},
 		Event { "head", "both staged and unstaged" },			TypeText { "HEAD " },
@@ -214,7 +220,7 @@ resource restype_Slate (resid_gitDiff, "") { {
 	} }
 } };
 
-#pragma mark 3 -- Stash
+#pragma mark 6 -- Stash
 resource restype_Slate (resid_gitStash, "") { {
 	Slate { "stash",	{
 		_GitStandards_,
@@ -230,8 +236,8 @@ resource restype_Slate (resid_gitStash, "") { {
 	} }
 } };
 
-#pragma mark 9 -- Add
-#pragma mark Add
+#pragma mark 3 === Add
+// inside: Add; 1 Commit; 2 Log; 3 Tag; 4 Merge; 5 Push; 6 Fetch
 resource restype_Slate (resid_gitAdd, "") { {
 	Slate { "Add",	{
 		_GitStandards_,
@@ -260,7 +266,7 @@ resource restype_Slate (resid_gitAddInteract, "") { {
 	} }
 } };
 
-#pragma mark 7 -- Commit
+#pragma mark 1 -- Commit
 resource restype_Slate (resid_gitCommit, "") { {
 	Slate { "commit",	{
 		_GitStandards_,
@@ -297,7 +303,7 @@ resource restype_Slate (resid_gitReflog, "") { {
 	} }
 } };
 
-#pragma mark 5 -- Tag
+#pragma mark 3 -- Tag
 resource restype_Slate (resid_gitTag, "") { {
 	Slate { "tag",	{
 		ExitEvent { "list", "" },		_return,
@@ -310,26 +316,30 @@ resource restype_Slate (resid_gitTag, "") { {
 	} }
 } };
 
-#pragma mark Merge
+#pragma mark 4 -- Merge
 resource restype_Slate (resid_gitMerge, "") { {
 	Slate { "Merge",	{
 		_GitStandards_,
+		_currentBranch_,
 		ExitEvent { "abort", "" },		TypeText { "git merge --abort" },
 		Event { "close branch", "" },	Sequence{}, TypeText { "--no-ff $cb -m \"merge branch $cb\"" }, endSequence{},
 		Event { "message", "" },		Sequence{}, TypeText { "$cb -m \"merge $cb:" }, endSequence{},
 		Event { "remote", "" },			Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist:" }, endSequence{},
 		Event { "conflicts", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool" }, endSequence{},
+		Event { "file merge", "" },		ResSubslate { resid_FileMerge }, 
 	} }
 } };
 
-#pragma mark Fetch
+#pragma mark 5 -- Push
+#pragma mark 6 -- Fetch
 resource restype_Slate (resid_gitFetch, "") { {
 	Slate { "Fetch",	{
 		_GitStandards_,
 	} }
 } };
 
-#pragma mark SelectFile
+#pragma mark 4 === SelectFile
+// inside: SelectFile; 1 Reset; 2 Browser; 3 FileMerge
 resource restype_Slate (resid_SelectFile, "") { {
 	Slate { "Select File",	{
 		_SlateGlobals_,
@@ -357,6 +367,7 @@ resource restype_Slate (resid_SelectFile, "") { {
 	} }
 } };
 
+#pragma mark 1 -- Reset
 resource restype_Slate (resid_gitReset, "") { {
 	Slate { "reset",	{
 		_SlateGlobals_,
@@ -388,6 +399,7 @@ resource restype_Slate (resid_gitDoReset, "") { {
 	} }
 } };
 
+#pragma mark 2 -- Browser
 resource restype_Slate (resid_gitBrowser, "") { {
 	Slate { "gitk",	{
 		_SlateGlobals_,
@@ -398,6 +410,34 @@ resource restype_Slate (resid_gitBrowser, "") { {
 	} }
 } };
 
+#pragma mark 3 -- FileMerge
+resource restype_Slate (resid_FileMerge, "") { {
+	Slate { "FileMerge",	{
+		_SlateGlobals_,
+		ExitEvent { "okay", "" },			CloseSubslate{},
+		Event { "continue", "" },			Keypress { kc_Q, mf_command },
+		Event { "cancel", "" },				Keypress { kc_period, mf_command },
+		Event { "return", "" },				_return,
+		Event { "difference", "" },			Click { 1, 0, 75, _window, _topCenter },
+		Event { "actions", "" },			Sequence{}, Click { 1, -110, -30, _window, _bottomRight }, _down, ResSubslate { resid_FileMergeActions }, endSequence{},
+		_IMouseSlate_,
+		_DirectionKeys_,
+	} }
+} };
+
+#pragma mark FileMergeActions
+resource restype_Slate (resid_FileMergeActions, "") { {
+	Slate { "FileMergeActions",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "left", "" },			Sequence{}, TypeText { "choose left" }, _return, endSequence{},
+		ExitEvent { "right", "" },			Sequence{}, TypeText { "choose right" }, _return, endSequence{},
+		ExitEvent { "left first", "" },		Sequence{}, TypeText { "choose both (left first)" }, _return, endSequence{},
+		ExitEvent { "right first", "" },	Sequence{}, TypeText { "choose both (right first)" }, _return, endSequence{},
+		ExitEvent { "neither", "" },		Sequence{}, TypeText { "neither" }, _return, endSequence{},
+	} }
+} };
+	
 #pragma mark 5 === Archive
 resource restype_Slate (resid_Archive, "") { {
 	Slate { "Archive",	{
@@ -509,5 +549,15 @@ resource restype_Slate (resid_Terminal, "Terminal Slate") { {
 		_SlateGlobals_,
 		_LaunchSlate_,
 		_TerminalItems_
+	 } }
+} };
+
+resource restype_Slate (resid_XCTerminal, "XcodeTerminal Slate") { {
+	Slate { "Terminal",	{
+		_SlateGlobals_,
+		_LaunchSlate_,
+		_TerminalItems_,
+		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
+		Event { "okay", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
 	 } }
 } };
