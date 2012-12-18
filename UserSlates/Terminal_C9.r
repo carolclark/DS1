@@ -5,30 +5,85 @@
 #include "AccessLibTypes.r"
 #include "CommonSlates_C9.h"
 
-// Git reserved to resid_termGit+49
-#define resid_gitType				resid_termGit+1
-#define resid_gitBrowser			resid_TermGit+2
-#define resid_SelectFile			resid_TermGit+3
+#pragma mark === Markers ===
+// Git
+//	Type, Checkout, Branch, Difference, Stash, Add, Commit, Log, Tag, Merge, Push, Fetch, SelectFile, Reset, Browser, FileMerge
+// Other
+//	1 Type; Standards 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
 
-#define	resid_gitDiff				resid_termGit+5
-#define	resid_gitLog				resid_termGit+7
-#define	resid_gitStash				resid_termGit+10
-#define resid_Fetch					resid_termGit+12
-#define resid_gitMerge				resid_termGit+15
-#define	resid_gitBranch				resid_termGit+20
-#define	resid_gitTag				resid_termGit+25
-#define resid_gitCommit				resid_termGit+30
-#define resid_gitCheckout			resid_termGit+35
+#define resid_termGit				resid_Terminal+100
+#define resid_termBuild				resid_Terminal+150
+#define resid_termClean				resid_Terminal+160
+#define resid_termArchive			resid_Terminal+200
+#define	resid_termShell				resid_Terminal+350
+#define resid_termMacPorts			resid_Terminal+400
+#define resid_termApache			resid_Terminal+450
+#define resid_termTelnet			resid_Terminal+500
+#define resid_termType				resid_Terminal+900
+
+#define resid_gitType				resid_termGit+1
+#define resid_SelectFile			resid_TermGit+3
 
 #define	resid_gitReset				resid_termGit+40
 	#define resid_gitDoReset			resid_gitReset+1
-	#define resid_gitReflog				resid_gitReset+2
-	
+#define resid_gitBrowser			resid_TermGit+2
+
+#define resid_gitCheckout			resid_termGit+35
+#define	resid_gitBranch				resid_termGit+20
+#define	resid_gitDiff				resid_termGit+5
+#define	resid_gitStash				resid_termGit+10
 #define	resid_gitAdd				resid_termGit+45
 	#define resid_gitAddInteract		resid_gitAdd+1
+#define resid_gitCommit				resid_termGit+30
+#define	resid_gitLog				resid_termGit+7
+#define resid_gitReflog				resid_gitReset+2	
+#define	resid_gitTag				resid_termGit+25
+#define resid_gitMerge				resid_termGit+15
+#define resid_Fetch					resid_termGit+12
 
-#pragma mark === Markers ===
-// 1 gitDifference, gitSelectFile, gitLog, gitStash, gitMerge, gitPush, gitBranch, gitTag, gitCheckout, gitReset; 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
+
+#define _termTypeSlate_	Event { "Type", "" },		ResSubslate { resid_termType }
+#define	_cancel			Keypress { kc_C, mf_control }
+
+#define _TerminalStandards_	\
+		_SlateGlobals_,		\
+		_CloseSubslate_,	\
+		Event { "execute", "" },	_return,				\
+		Event { "return	", "" },	_return,				\
+		Event { "password", "" },	TypeText { "6868" },	\
+		Event { "copy", "" },		Keypress { kc_C, mf_command },	\
+		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
+		Event { "quiver", "" },		Keypress { kc_Q, 0 },		\
+		ExitEvent { "cancel", "" },	_cancel,				\
+		_termTypeSlate_
+
+#define	_TerminalItems_			\
+		_StarterBase_,			\
+		_termTypeSlate_,		\
+		Event { "copy", "" },			Keypress { kc_C, mf_command },	\
+		Event { "paste", "" },			Keypress { kc_V, mf_command },	\
+		Event { "execute", "" },		_return,		\
+		Event { "cancel", "" },			_cancel,			\
+		Event { "next window", "" },	Keypress { kc_accent, mf_command },						\
+		Event { "go next", "" }, 		Keypress { kc_closebracket, mf_command + mf_shift },	\
+		Event { "go previous", "" },	Keypress { kc_bracket, mf_command + mf_shift },			\
+		Event { "Menu", "" },			Subslate { "Menu" },		\
+			_SlateGlobals_,		\
+			_CloseSubslate_,		\
+			ExitEvent { "Application", "'Terminal' menu" }, ClickMenu { "Terminal" },		\
+			ExitEvent { "Shell", "'Shell' menu" }, ClickMenu { "Shell" },		\
+			ExitEvent { "Edit", "'Edit' menu" }, ClickMenu { "Edit" },		\
+			ExitEvent { "Window", "'Window' menu" }, ClickMenu { "Window" },		\
+			endSubslate{},		\
+		Event { "git", "" },	ResSubslate { resid_termGit },			\
+		Event { "clean", "" },	Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_termClean }, endSequence{},		\
+		Event { "build", "" },	Sequence{}, TypeText { "build.uia" }, Keypress { kc_enter, 0 }, ResSubslate { resid_termBuild }, endSequence{},		\
+		Event { "archive", "" },	Sequence{}, TypeText { "archive " }, ResSubslate { resid_termArchive }, endSequence{},		\
+		Event { "backup", "" },	TypeText { "ccBackup Backup " },		\
+		Event { "ports", "" },			ResSubslate { resid_termMacPorts },		\
+		Event { "Shell", "" },			ResSubslate { resid_termShell },		\
+		Event { "Apache", "" },			ResSubslate { resid_termApache },		\
+		Event { "Telnet", "" },			ResSubslate { resid_termTelnet }
 
 #pragma mark Type
 #define	_TypeTermItems_		\
@@ -70,24 +125,24 @@ resource restype_Slate (resid_termGit, "") { {
 	Slate { "Git",	{
 		_GitStandards_,
 		Event { "go back", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
-		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
-		Event { "browser", "" },		Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_gitBrowser }, endSequence{},
-		Event { "select file", "" },	Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_SelectFile }, endSequence{},
 		Event { "status", "" },			Sequence{}, TypeText { "git status" }, _return, endSequence{},
-		Event { "branch", "" },			Sequence{}, TypeText { "git branch " }, ResSubslate { resid_gitBranch }, endSequence{},
 		Event { "checkout", "" },		Sequence{}, TypeText { "git checkout " }, ResSubslate { resid_gitCheckout }, endSequence{},
+		Event { "branch", "" },			Sequence{}, TypeText { "git branch " }, ResSubslate { resid_gitBranch }, endSequence{},
 		Event { "difference", "" },		Sequence{}, TypeText { "git diff " }, ResSubslate { resid_gitDiff }, endSequence{},
+		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
 		Event { "add files", "" },		Sequence{}, TypeText { "git add " }, ResSubslate { resid_gitAdd }, endSequence{},
 		Event { "show message", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
 		Event { "commit", "" },			Sequence{}, TypeText { "git commit " }, ResSubslate { resid_gitCommit }, endSequence{},
 		Event { "log", "" },			Sequence{}, TypeText { "git log " }, ResSubslate { resid_gitLog }, endSequence{},
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
-		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch" }, ResSubslate { resid_Fetch }, endSequence{},
 		Event { "merge", "" },			Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "push", "" },			TypeText { "git push remote/origin " },
+		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch" }, ResSubslate { resid_Fetch }, endSequence{},
+		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
+		Event { "select file", "" },	Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_SelectFile }, endSequence{},
 		Event { "reset", "" },			ResSubslate { resid_gitReset },
-		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
+		Event { "browser", "" },		Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_gitBrowser }, endSequence{},
 	} }
 } };
 
@@ -104,6 +159,36 @@ resource restype_Slate (resid_gitType, "Type") { {
 		Event { "shell", "" },			TypeText { "sealsea v3ejc 6868" },
 		Event { "version 3", "" },		TypeText { "4YZHqz5pq1" },
 		Event { "dry run", "" },		TypeText { "--dry-run" },
+	} }
+} };
+
+#pragma mark 6 -- Checkout
+resource restype_Slate (resid_gitCheckout, "") { {
+	Slate { "checkout",	{
+		Event { "new branch", "" },		TypeText { "-b " },
+		Event { "to index", "" },		TypeText { "-- " },
+		Event { "to head", "" },		TypeText { "HEAD " },
+		Event { "master", "" },			TypeText { "master " },
+		_CurrentBranch_,
+		_GitFile_,
+		_GitStandards_,
+	} }
+} };
+
+#pragma mark 4 -- Branch
+resource restype_Slate (resid_gitBranch, "") { {
+	Slate { "branch",	{
+		_GitStandards_,
+		ExitEvent { "list", "" },		_return,
+		ExitEvent { "list all", "" },		Sequence{}, TypeText { "-a " }, _return, endSequence{},
+		ExitEvent { "get current", "" },	Sequence{}, _cancel, TypeText { "cb=$(git branch | grep \"*\" | sed \"s/* //\"); print $cb" }, _return, endSequence{},
+		Event { "unmerged", "" },		Sequence{}, TypeText { "--no-merged " }, endSequence{},
+		Event { "rename", "" },			Sequence{}, TypeText { "-m " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "switch new", "" },		Sequence{}, _cancel, TypeText { "git checkout -b " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "checkout", "" },		Sequence{}, _cancel, TypeText { "git checkout " }, ResSubslate { resid_gitType }, endSequence{},
+		_CurrentBranch_,
+		Event { "master", "" },			TypeText { "master " },
 	} }
 } };
 
@@ -126,6 +211,121 @@ resource restype_Slate (resid_gitDiff, "") { {
 		Event { "graph from top", "" },	TypeText { "--graph --topo-order " },
 		Event { "tilde", "" },			Keypress { kc_accent, mf_shift },
 		_NumberKeys_,
+	} }
+} };
+
+#pragma mark 3 -- Stash
+resource restype_Slate (resid_gitStash, "") { {
+	Slate { "stash",	{
+		_GitStandards_,
+		Event { "save", "" },			Sequence{}, _cancel, TypeText { "# git stash save <message>" }, _return, TypeText { "git stash save " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "keep index", "" },		TypeText { "--keep-index " },
+		Event { "show", "" },			TypeText { "show " },
+		Event { "pop", "" },			TypeText { "pop " },
+		Event { "apply", "" },			Sequence{}, TypeText { "apply " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "branch", "" },			TypeText { "branch " },
+		Event { "previous", "" },		Sequence{}, TypeText { "stash@{" }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "list", "" },			TypeText { "list " },
+		Event { "clear", "" },			TypeText { "clear " },
+	} }
+} };
+
+#pragma mark 9 -- Add
+#pragma mark Add
+resource restype_Slate (resid_gitAdd, "") { {
+	Slate { "Add",	{
+		_GitStandards_,
+		Event { "interact", "" },		Sequence{}, TypeText { "--all --interactive" }, _return, ResSubslate { resid_gitAddInteract }, endSequence{},
+		Event { "update", "" }, 		TypeText { "--update" },
+		Event { "dot", "" },			TypeText { "." },
+	} }
+} };
+
+resource restype_Slate (resid_gitAddInteract, "") { {
+	Slate { "add -i",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_NumberKeys_,
+		_ReturnKey_,
+		Event { "minus sign", "" },	Keypress { kc_minus, 0 },
+		Event { "return", "" },		_return,
+		Event { "status", "" },		Sequence{}, Keypress { kc_S, 0 }, _return, endSequence{},
+		Event { "update", "" },		Sequence{}, Keypress { kc_U, 0 }, _return, endSequence{},
+		Event { "revert", "" },		Sequence{}, Keypress { kc_R, 0 }, _return, endSequence{},
+		Event { "add", "" },		Sequence{}, Keypress { kc_A, 0 }, _return, endSequence{},
+		Event { "patch", "" },		Sequence{}, Keypress { kc_P, 0 }, _return, endSequence{},
+		Event { "diff", "" },		Sequence{}, Keypress { kc_D, 0 }, _return, endSequence{},
+		ExitEvent { "quit", "" },	Sequence{}, _return, Keypress { kc_Q, 0 }, _return, CloseSubslate{}, endSequence{},
+		Event { "help", "" },		Sequence{}, Keypress { kc_H, 0 }, _return, endSequence{},
+	} }
+} };
+
+#pragma mark 7 -- Commit
+resource restype_Slate (resid_gitCommit, "") { {
+	Slate { "commit",	{
+		_GitStandards_,
+		Event { "message", "" },		Sequence{}, TypeText { "-m \"" }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "file", "" },			Sequence{}, TypeText { "-F \"${CCDev}/tmp/gitmessage.txt" }, Keypress { kc_quote, mf_shift }, endSequence{},
+	} }
+} };
+
+#pragma mark 2 -- Log	
+resource restype_Slate (resid_gitLog, "") { {
+	Slate { "log",	{
+		_GitStandards_,
+		Event { "master", "" },			TypeText { "master " },
+		_CurrentBranch_,
+		_GitFile_,
+		Event { "abbreviate,", "" },	TypeText { "--oneline " },
+		Event { "graph", "" },			TypeText { "--graph " },
+		Event { "graph from top", "" },	TypeText { "--graph --topo-order " },
+	} }
+} };
+
+#pragma mark reflog
+resource restype_Slate (resid_gitReflog, "") { {
+	Slate { "reflog",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "excecute", "" },	_return,
+		ExitEvent { "cancel", "" },		_cancel,
+		Event { "show", "" },			TypeText { "show " },
+		Event { "HEAD", "" },			TypeText { "HEAD " },
+		Event { "master", "" },			TypeText { "master " },
+		_CurrentBranch_,
+		_GitFile_,
+	} }
+} };
+
+#pragma mark 5 -- Tag
+resource restype_Slate (resid_gitTag, "") { {
+	Slate { "tag",	{
+		ExitEvent { "list", "" },		_return,
+		ExitEvent { "push", "" },		Sequence{}, _cancel, TypeText { "git push --tags" }, endSequence{},
+		Event { "make", "" },			Sequence{}, _cancel, TypeText { "# git tag -a 'tagname' -m \"message\"" }, _return, TypeText { "git tag -a "}, endSequence{},
+		_CurrentBranch_,
+		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "show", "" },			Sequence{}, _cancel, TypeText { "git show --name-status " }, ResSubslate { resid_gitType }, endSequence{}, 
+		_GitStandards_,	
+	} }
+} };
+
+#pragma mark Merge
+resource restype_Slate (resid_gitMerge, "") { {
+	Slate { "Merge",	{
+		_GitStandards_,
+		ExitEvent { "abort", "" },		TypeText { "git merge --abort" },
+		Event { "close branch", "" },	Sequence{}, TypeText { "--no-ff $cb -m \"merge branch $cb\"" }, endSequence{},
+		Event { "message", "" },		Sequence{}, TypeText { "$cb -m \"merge $cb:" }, endSequence{},
+		Event { "remote", "" },			Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist:" }, endSequence{},
+		Event { "conflicts", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool" }, endSequence{},
+	} }
+} };
+
+#pragma mark Fetch
+resource restype_Slate (resid_Fetch, "") { {
+	Slate { "Fetch",	{
+		_GitStandards_,
 	} }
 } };
 
@@ -157,97 +357,6 @@ resource restype_Slate (resid_SelectFile, "") { {
 	} }
 } };
 
-#pragma mark 2 -- Log	
-resource restype_Slate (resid_gitLog, "") { {
-	Slate { "log",	{
-		_GitStandards_,
-		Event { "master", "" },			TypeText { "master " },
-		_CurrentBranch_,
-		_GitFile_,
-		Event { "abbreviate,", "" },	TypeText { "--oneline " },
-		Event { "graph", "" },			TypeText { "--graph " },
-		Event { "graph from top", "" },	TypeText { "--graph --topo-order " },
-	} }
-} };
-
-#pragma mark 3 -- Stash
-resource restype_Slate (resid_gitStash, "") { {
-	Slate { "stash",	{
-		_GitStandards_,
-		Event { "save", "" },			Sequence{}, _cancel, TypeText { "# git stash save <message>" }, _return, TypeText { "git stash save " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "keep index", "" },		TypeText { "--keep-index " },
-		Event { "show", "" },			TypeText { "show " },
-		Event { "pop", "" },			TypeText { "pop " },
-		Event { "apply", "" },			Sequence{}, TypeText { "apply " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "branch", "" },			TypeText { "branch " },
-		Event { "previous", "" },		Sequence{}, TypeText { "stash@{" }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "list", "" },			TypeText { "list " },
-		Event { "clear", "" },			TypeText { "clear " },
-	} }
-} };
-
-#pragma mark Fetch
-resource restype_Slate (resid_Fetch, "") { {
-	Slate { "Fetch",	{
-		_GitStandards_,
-	} }
-} };
-
-#pragma mark Merge
-resource restype_Slate (resid_gitMerge, "") { {
-	Slate { "Merge",	{
-		_GitStandards_,
-		ExitEvent { "abort", "" },		TypeText { "git merge --abort" },
-		Event { "close branch", "" },	Sequence{}, TypeText { "--no-ff $cb -m \"merge branch $cb\"" }, endSequence{},
-		Event { "message", "" },		Sequence{}, TypeText { "$cb -m \"merge $cb:" }, endSequence{},
-		Event { "remote", "" },			Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist:" }, endSequence{},
-		Event { "conflicts", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool" }, endSequence{},
-	} }
-} };
-
-#pragma mark 4 -- Branch
-resource restype_Slate (resid_gitBranch, "") { {
-	Slate { "branch",	{
-		_GitStandards_,
-		ExitEvent { "list", "" },		_return,
-		ExitEvent { "list all", "" },		Sequence{}, TypeText { "-a " }, _return, endSequence{},
-		ExitEvent { "get current", "" },	Sequence{}, _cancel, TypeText { "cb=$(git branch | grep \"*\" | sed \"s/* //\"); print $cb" }, _return, endSequence{},
-		Event { "unmerged", "" },		Sequence{}, TypeText { "--no-merged " }, endSequence{},
-		Event { "rename", "" },			Sequence{}, TypeText { "-m " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "switch new", "" },		Sequence{}, _cancel, TypeText { "git checkout -b " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "checkout", "" },		Sequence{}, _cancel, TypeText { "git checkout " }, ResSubslate { resid_gitType }, endSequence{},
-		_CurrentBranch_,
-		Event { "master", "" },			TypeText { "master " },
-	} }
-} };
-
-#pragma mark 5 -- Tag
-resource restype_Slate (resid_gitTag, "") { {
-	Slate { "tag",	{
-		ExitEvent { "list", "" },		_return,
-		ExitEvent { "push", "" },		Sequence{}, _cancel, TypeText { "git push --tags" }, endSequence{},
-		Event { "make", "" },			Sequence{}, _cancel, TypeText { "# git tag -a 'tagname' -m \"message\"" }, _return, TypeText { "git tag -a "}, endSequence{},
-		_CurrentBranch_,
-		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "show", "" },			Sequence{}, _cancel, TypeText { "git show --name-status " }, ResSubslate { resid_gitType }, endSequence{}, 
-		_GitStandards_,	
-	} }
-} };
-
-#pragma mark 6 -- Checkout
-resource restype_Slate (resid_gitCheckout, "") { {
-	Slate { "checkout",	{
-		Event { "new branch", "" },		TypeText { "-b " },
-		Event { "to index", "" },		TypeText { "-- " },
-		Event { "to head", "" },		TypeText { "HEAD " },
-		Event { "master", "" },			TypeText { "master " },
-		_CurrentBranch_,
-		_GitFile_,
-		_GitStandards_,
-	} }
-} };
-
 resource restype_Slate (resid_gitReset, "") { {
 	Slate { "reset",	{
 		_SlateGlobals_,
@@ -276,60 +385,6 @@ resource restype_Slate (resid_gitDoReset, "") { {
 		Event { "copy", "" },			Keypress { kc_C, mf_command },
 		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		_NumberKeys_,
-	} }
-} };
-
-#pragma mark reflog
-resource restype_Slate (resid_gitReflog, "") { {
-	Slate { "reflog",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "excecute", "" },	_return,
-		ExitEvent { "cancel", "" },		_cancel,
-		Event { "show", "" },			TypeText { "show " },
-		Event { "HEAD", "" },			TypeText { "HEAD " },
-		Event { "master", "" },			TypeText { "master " },
-		_CurrentBranch_,
-		_GitFile_,
-	} }
-} };
-
-#pragma mark 7 -- Commit
-resource restype_Slate (resid_gitCommit, "") { {
-	Slate { "commit",	{
-		_GitStandards_,
-		Event { "message", "" },		Sequence{}, TypeText { "-m \"" }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "file", "" },			Sequence{}, TypeText { "-F \"${CCDev}/tmp/gitmessage.txt" }, Keypress { kc_quote, mf_shift }, endSequence{},
-	} }
-} };
-
-#pragma mark 9 -- Add
-#pragma mark Add
-resource restype_Slate (resid_gitAdd, "") { {
-	Slate { "Add",	{
-		_GitStandards_,
-		Event { "interact", "" },		Sequence{}, TypeText { "--all --interactive" }, _return, ResSubslate { resid_gitAddInteract }, endSequence{},
-		Event { "update", "" }, 		TypeText { "--update" },
-		Event { "dot", "" },			TypeText { "." },
-	} }
-} };
-
-resource restype_Slate (resid_gitAddInteract, "") { {
-	Slate { "add -i",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		_NumberKeys_,
-		_ReturnKey_,
-		Event { "minus sign", "" },	Keypress { kc_minus, 0 },
-		Event { "return", "" },		_return,
-		Event { "status", "" },		Sequence{}, Keypress { kc_S, 0 }, _return, endSequence{},
-		Event { "update", "" },		Sequence{}, Keypress { kc_U, 0 }, _return, endSequence{},
-		Event { "revert", "" },		Sequence{}, Keypress { kc_R, 0 }, _return, endSequence{},
-		Event { "add", "" },		Sequence{}, Keypress { kc_A, 0 }, _return, endSequence{},
-		Event { "patch", "" },		Sequence{}, Keypress { kc_P, 0 }, _return, endSequence{},
-		Event { "diff", "" },		Sequence{}, Keypress { kc_D, 0 }, _return, endSequence{},
-		ExitEvent { "quit", "" },	Sequence{}, _return, Keypress { kc_Q, 0 }, _return, CloseSubslate{}, endSequence{},
-		Event { "help", "" },		Sequence{}, Keypress { kc_H, 0 }, _return, endSequence{},
 	} }
 } };
 
