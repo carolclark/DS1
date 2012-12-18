@@ -502,6 +502,7 @@ resource restype_Slate (resid_Stickies, "") { {
 		Event { "new window", "" },		Keypress { kc_N, mf_command },
 		Event { "close window", "" },	Keypress { kc_W, mf_command },
 		Event { "go next", "" },		Keypress { kc_accent, mf_command },
+		Event { "save message", "" },	Sequence{}, Keypress { kc_A, mf_command }, ClickMenu { "Stickies" }, _down, TypeText { "Services" }, _right, TypeText { "Git Save Message" }, _return, endSequence{},
 		_CommandSlate_,
 		_IMouseSlate_,
 		_TypeXcodeSlate_,
@@ -593,6 +594,19 @@ resource restype_Slate (resid_FileMenu, "File") { {
 resource restype_Slate (resid_NewFile, "New File") { {
 	Slate { "New File", {
 		Event { "select name", "" },	Sequence{}, Click { 1, 0, 300, _window, _topCenter }, Wait { 10 }, Keypress { kc_left, mf_command }, Keypress { kc_down, mf_shift }, endSequence{},
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
+		Event { "select all", "" },		Keypress { kc_A, mf_command },
+		Event { "superclass", "" },		Subslate { "superclass" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "object", "" },				TypeText { "NSObject" },
+			ExitEvent { "managed object", "" },		TypeText { "NSManagedObject" },
+			ExitEvent { "view", "" },				TypeText { "NSView" },
+			ExitEvent { "view controller", "" },	TypeText { "NSViewController" },
+			ExitEvent { "window controller", "" },	TypeText { "NSWindowController" },
+			ExitEvent { "document", "" },			TypeText { "NSDocument" },
+			ExitEvent { "plus wrapper", "" },		TypeText { "CPPWrapper" },
+			endSubslate{},
 		_FileSaveStandards_,
 	} }
 } };
@@ -663,12 +677,14 @@ resource restype_Slate (resid_SelectTargets, "Select Targets") { {
 resource restype_Slate (resid_SourceControl, "Source Control") { {
 	Slate { "scm", {
 		_SlateGlobals_,
-		ExitEvent { "execute", "" },		_return,
 		ExitEvent { "okay", "" },			NilAction{},
 		ExitEvent { "cancel", "" },			Keypress { kc_escape, 0 },
+		Event { "execute", "" },			_return,
+		Event { "return	", "" },			_return,
 		Event { "commit", "" },				Sequence{}, TypeText { "Commit" }, _return, ResSubslate { resid_Commit }, endSequence{},
 		Event { "merge", "" },				TypeText { "Merge" },
 		Event { "push", "" },				TypeText { "Push" },
+		Event { "pull", "" },				TypeText { "Pull" },
 		Event { "discard changes", "" },	TypeText { "Discard Changes" },
 		Event { "repositories", "" },		Sequence{}, TypeText { "Repositories" }, _return, ResSubslate { resid_Repositories }, endSequence{},
 	} }
@@ -941,11 +957,11 @@ resource restype_Slate (resid_utilFile, "file util") { {
 		_UtilityStandards_,
 		Event { "discard changes", "" },	Click { 0, -70, 40, _cursor },
 		Event { "autolayout", "" },			Click { 0, -130, 392, _window, _topRight, },
-		Event { "locate", "" },				Sequence{}, Click { 1, -10, 97, _cursor }, ResSubslate { resid_utilFileLocate }, endSequence{},
-		Event { "locate two", "" },			Sequence{}, Click { 1, -10, 111, _window, _topRight }, ResSubslate { resid_utilFileLocate }, endSequence{},
-		Event { "locate three", "" },		Sequence{}, Click { 1, -10, 125, _window, _topRight }, ResSubslate { resid_utilFileLocate }, endSequence{},
-		Event { "locate four", "" },		Sequence{}, Click { 1, -10, 139, _window, _topRight }, ResSubslate { resid_utilFileLocate }, endSequence{},
-		Event { "locate five", "" },		Sequence{}, Click { 1, -10, 153, _window, _topRight }, ResSubslate { resid_utilFileLocate }, endSequence{},
+		Event { "locate", "" },				Sequence{}, Click { 1, 90, 110, _cursor }, ResSubslate { resid_utilFileLocate }, endSequence{},
+		Event { "locate two", "" },			Sequence{}, Click { 1, 90, 126, _cursor }, ResSubslate { resid_utilFileLocate }, endSequence{},
+		Event { "locate three", "" },		Sequence{}, Click { 1, 90, 142, _cursor }, ResSubslate { resid_utilFileLocate }, endSequence{},
+		Event { "locate four", "" },		Sequence{}, Click { 1, 90, 158, _cursor }, ResSubslate { resid_utilFileLocate }, endSequence{},
+		Event { "locate five", "" },		Sequence{}, Click { 1, 90, 172, _cursor }, ResSubslate { resid_utilFileLocate }, endSequence{},
 	} }
 } };
 
@@ -1105,8 +1121,9 @@ resource restype_Slate (resid_SwitchBranch, "SwitchBranch") { {
 resource restype_Slate (resid_Documentation, "Xcode Reference Documentation") { {
 	Slate { "Docs",	{
 		_SlateGlobals_,
-		_CloseSubslate_,
+		ExitEvent { "okay", "" },		Keypress { kc_accent, mf_command },
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
+		ExitEvent { "exit", "" },		NilAction{},
 		_WhitespaceKeys_,
 		_DirectionKeys_,
 		_IMouseSlate_,
@@ -1214,17 +1231,21 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "run", "" },			Sequence{}, Keypress { kc_R, mf_command }, ResSubslate { resid_RunTarget }, endSequence{},
 		Event { "run words", "" },		Sequence{}, Keypress { kc_R, mf_command }, ResSubslate { resid_RunWords }, endSequence{},
 		Event { "profile", "" },		Sequence{}, Keypress { kc_I	, mf_command }, ResSubslate { resid_Profile }, endSequence{},
+		Event { "terminate", "" },		Keypress { kc_period, mf_command },
 		Event { "validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { MainApps_"BBEdit.app", 0 }, endSequence{},
 		Event { "open Dash", "" },		_openDash,
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "view Doxygen", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
+		Event { "marker", "" },			ResSubslate { resid_Marker },
+		Event { "goto line", "" },		Keypress { kc_L, mf_command },
+		gotoReference_,
 		Event { "top row", "" },		_topRow,
 		Event { "project", "" },		Keypress { kc_1, mf_command },
 		Event { "symbol", "" },			Keypress { kc_2, mf_command },
-		Event { "issue", "" },			Sequence{}, Keypress { kc_4, mf_command }, ResSubslate { resid_IssueIndex }, endSequence{},
+		Event { "Utility", "" },		ResSubslate { resid_Utilities },
+		Event { "Stickies", "" },		Sequence{}, ResSubslate { resid_Stickies }, Launch { Apps_"Stickies.app", 0 }, endSequence{},
+		Event { "Index", ""	},			ResSubslate { resid_Index },
 		Event { "debug", "" },			Sequence{}, Keypress { kc_5, mf_command }, ResSubslate { resid_DebugIndex }, endSequence{},
-		Event { "breakpoint", "" },		Sequence{}, Keypress { kc_6, mf_command }, ResSubslate { resid_BreakpointIndex }, endSequence{},
-		Event { "log", "" },			Sequence{}, Keypress { kc_7, mf_command }, ResSubslate { resid_LogIndex }, endSequence{},
 		Event { "continue", "" },		Keypress { kc_Y, mf_command + mf_control },
 		Event { "archive", "" },		Sequence{}, ClickMenu { "Product" }, TypeText { "Archive" }, _return, endSequence{},
 		Event { "clean", "" },			Keypress { kc_K, mf_command + mf_shift },
@@ -1475,6 +1496,7 @@ resource restype_Slate (resid_Macro, "") { {
 #define		_EditorStandards_	\
 		Event { "filter", "" },			ResSubslate { resid_navFilter },	\
 		Event { "marker", "" },			ResSubslate { resid_Marker }, 		\
+		gotoReference_,														\
 		Event { "nav list", ""},		_navList,							\
 		Event { "top row", "" },		_topRow,							\
 		Event { "save files", "" },		Keypress { kc_S, mf_command + mf_option },		\
@@ -2486,6 +2508,7 @@ resource restype_Slate (resid_TypeSpecialXcodeSlate, "Type Special Xcode Slate")
 		ExitEvent { "web extension", "" },				TypeText { ".html" },
 		ExitEvent { "korn extension", "" },				TypeText { ".ksh" },
 		ExitEvent { "Xcode selection", "" },			TypeText { "%%%{PBXSelection}%%%" },
+		ExitEvent { "verify", "" },						TypeText { "verify" },
 		ExitEvent { "empty", "" },						TypeText { "&lt;empty&gt;" },
 		ExitEvent { "string literal", "" },				Sequence{}, TypeText { "@\"\"" }, Keypress { kc_left, 0 }, endSequence{},
 		ExitEvent { "format", "" },						TypeText { "@\"%@\"" },
@@ -2505,7 +2528,9 @@ resource restype_Slate (resid_TypeSpecialXcodeSlate, "Type Special Xcode Slate")
 		ExitEvent { "dictionary with objects", "" },	TypeText { "dictionaryWithObjects" },
 		ExitEvent { "app delegate", "" },				TypeText { "[NSApp delegate]" },
 		ExitEvent { "encoding", "" },					TypeText { "NSUTF8StringEncoding" },
-		ExitEvent { "log", "" },						Sequence{}, TypeText { "NSLog(@\"%@<##>\", <##>)" }, _previous, _previous, endSequence{},
+		ExitEvent { "log standard", "" },				Sequence{}, TypeText { "NSLog(@\"%s#%d <##>\", __PRETTY_FUNCTION__, __LINE__, <##>);" }, _previous, _previous, endSequence{};
+		ExitEvent { "log always", "" },					Sequence{}, TypeText { "_ALog_(@\"<#fmt#>\", <#args#>);" }, _previous, _previous, endSequence{},
+		ExitEvent { "log debug", "" },					Sequence{}, TypeText { "_DLog_(@\"<#fmt#>\", <#args#>);" }, _previous, _previous, endSequence{},
 		ExitEvent { "declare test", "" },				TypeText { "- (void)test" },
 		Event { "keys", "" },		Subslate { "keys" },
 			_SlateGlobals_,
@@ -2520,19 +2545,21 @@ resource restype_Slate (resid_TypeSpecialXcodeSlate, "Type Special Xcode Slate")
 		Event { "assert", "" },			Subslate { "assert" },
 			_SlateGlobals_,
 			_CloseSubslate_,
-			ExitEvent { "true", "" },			Sequence{}, TypeText { "STAssertTrue (<#expression#>, nil);" }, _previous, endSequence{},
-			ExitEvent { "fail", "" },			Sequence{}, TypeText { "STFail (<#msgFormat#>)" }, _previous, endSequence{},
-			ExitEvent { "equal objects", "" },	Sequence{}, TypeText { "STAssertEqualObjects (<#object_1#>, <#object_2#>, nil);" }, _previous, _previous, endSequence{},
-			ExitEvent { "equals", "" },			Sequence{}, TypeText { "STAssertEquals (<#value_1#>, <#value_2#>, nil);" }, _previous, _previous, endSequence{},
-			ExitEvent { "equals with accuracy", "" }, Sequence{}, TypeText { "STAssertEqualsWithAccuracy (<#value_1#>, <#value_2#>, <#accuracy#>, nil);" }, _previous, _previous, _previous, endSequence{},
-			ExitEvent { "nil", "" },			Sequence{}, TypeText { "STAssertNil (<#expression#>, nil);" }, _previous, endSequence{},
-			ExitEvent { "not nil", "" },		Sequence{}, TypeText { "STAssertNotNil (<#expression#>, nil);" }, _previous, endSequence{},
-			ExitEvent { "true", "" },			Sequence{}, TypeText { "STAssertTrue (<#expression#>, nil);" }, _previous, endSequence{},
-			ExitEvent { "false", "" },			Sequence{}, TypeText { "STAssertFalse (<#expression#>, nil);" }, _previous, endSequence{},
-			ExitEvent { "throw", "" },			Sequence{}, TypeText { "STAssertThrows (<#expression#>, nil);" }, _previous, endSequence{},
-			ExitEvent { "no throw", "" },		Sequence{}, TypeText { "STAssertNoThrow (<#expression#>, nil);" }, _previous, endSequence{},
-			ExitEvent { "true no throw", "" },	Sequence{}, TypeText { "STAssertTrueNoThrow (<#expression#>, nil);" }, _previous, endSequence{},
-			ExitEvent { "false no throw", "" },	Sequence{}, TypeText { "STAssertFalseNoThrow (<#expression#>, nil);" }, _previous, endSequence{},
+			ExitEvent { "true", "" },			Sequence{}, TypeText { "STAssertTrue (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "fail", "" },			Sequence{}, TypeText { "STFail (<#msgFormat#>)" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "equal objects", "" },	Sequence{}, TypeText { "STAssertEqualObjects (<#object_1#>, <#object_2#>, nil);" }, _previous, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "equal strings", "" },	Sequence{}, TypeText { "_AssertEqualStrings_(<#str1#>,<#str2#>)" }, _previous, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "equals", "" },			Sequence{}, TypeText { "STAssertEquals (<#value_1#>, <#value_2#>, nil);" }, _previous, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "equals with accuracy", "" }, Sequence{}, TypeText { "STAssertEqualsWithAccuracy (<#value_1#>, <#value_2#>, <#accuracy#>, nil);" }, _previous, _previous, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "nil", "" },			Sequence{}, TypeText { "STAssertNil (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "not nil", "" },		Sequence{}, TypeText { "STAssertNotNil (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "true", "" },			Sequence{}, TypeText { "STAssertTrue (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "false", "" },			Sequence{}, TypeText { "STAssertFalse (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "throw", "" },			Sequence{}, TypeText { "STAssertThrows (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "no throw", "" },		Sequence{}, TypeText { "STAssertNoThrow (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "true no throw", "" },	Sequence{}, TypeText { "STAssertTrueNoThrow (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "false no throw", "" },	Sequence{}, TypeText { "STAssertFalseNoThrow (<#expression#>, nil);" }, _previous, CloseSubslate{}, endSequence{},
+			ExitEvent { "verify", "" },			TypeText { "STAssertTrue ([verifier verify], [verifier message]);" },
 			endSubslate{},
 		ExitEvent { "Use Case", "" },		Subslate { "Use Case" },
 			_SlateGlobals_,
@@ -2577,6 +2604,7 @@ resource restype_Slate (resid_TypeDialog, "") { {
 	Event { "add space", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_space, 0 }, endSequence{},	\
 	Event { "add comma", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_comma, 0 }, endSequence{},	\
 	Event { "list item", "" },	Sequence{}, TypeText { "<li><#item#></li>" }, _previous, endSequence{},	\
+	gotoReference_,	\
 	_JumpBar_,		\
 	closeDocument_,	\
 	Event { "page top", "" },	Keypress { kc_home, 0 },	\
@@ -2779,6 +2807,7 @@ resource restype_Slate (resid_InsertSnippet, "") { {
 		ExitEvent { "file images sheet", "" },			TypeText { "fileImagesSheet#" },
 		ExitEvent { "table view", "" },					TypeText { "tableView#" },
 		ExitEvent { "init", "" },						TypeText { "init#" },
+		ExitEvent { "constant", "" },					TypeText { "constant#" },
 		ExitEvent { "attribute", "" },					Subslate { "attribute" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -2789,6 +2818,7 @@ resource restype_Slate (resid_InsertSnippet, "") { {
 			ExitEvent { "assign", "" },						TypeText { "assign" },
 			ExitEvent { "copy", "" },						TypeText { "copy" },
 			endSubslate{},
+		ExitEvent { "user slate", "" },					TypeText { "userSlate#" },
 		ExitEvent { "heading with name", "" },			TypeText { "headingWithName#" },
 		ExitEvent { "heading with topics", "" },		TypeText { "headingWithTopics#" },
 	} }
@@ -3100,6 +3130,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 			_TestClicksItems_,
 		endSubslate{},
 		Event { "window", "" },			Subslate { "window" },
+			ExitEvent { "organizer", "" },	Keypress { kc_2, mf_command + mf_shift },
 			_WindowItems_,
 			endSubslate{},
 		_openDash,
@@ -3141,6 +3172,8 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 				_SlateGlobals_,
 				_CloseSubslate_,
 				ExitEvent { "select", "" },		_return,
+				ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
+				Event { "return", "" },			_return,
 				Event { "File", "" }, 			Sequence{}, _clickFile, _down, ResSubslate { resid_FileMenu }, endSequence{},
 				Event { "Source Control", "" },	Sequence{}, ClickMenu { "File" }, _down, TypeText { "Source Control" }, _right, ResSubslate { resid_SourceControl }, endSequence{},
 				Event { "Snapshots", "" },		Sequence{}, ClickMenu { "File" }, _down, TypeText { "Snapshots" }, _return, ResSubslate { resid_Snapshots }, endSequence{},

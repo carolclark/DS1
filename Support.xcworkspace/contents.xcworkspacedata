@@ -6,7 +6,7 @@
    </FileRef>
    <Group
       location = "container:"
-      name = "1 Documentation">
+      name = "0 Documentation">
       <FileRef
          location = "group:Cdoc/History_Support.html">
       </FileRef>
@@ -388,6 +388,13 @@
          </FileRef>
          <FileRef
             location = "group:Xcode/AppleScripts/viewDoxygen.applescript">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Services">
+         <FileRef
+            location = "group:Xcode/Services/GitSaveMessage.workflow">
          </FileRef>
       </Group>
       <Group

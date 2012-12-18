@@ -34,22 +34,22 @@
 
 <!-- @marker "Development Cycle" -->
 <h4 id="DevelopmentCycle">Development Cycle</h4><ul style="background-color: #d8e8ff">
-	<li>create or move work to branch<span class='blurb'>Xcode</span></li>
+	<li>create or move work to branch<span class='blurb'>Terminal</span></li>
 	<li>repeat until branch's work complete<ul>
 		<li>repeat until commit<ul>
 			<li>edit/test<span class='blurb'>Xcode</span></li>
 			<li>status; [add/stage]<span class='blurb'>Terminal</span></li>
 		</ul></li>
 		<li>construct commit message<span class='blurb'>Xcode / Stickies</span></li>
-		<li>verify modifications<span class='blurb'>Xcode</span></li>
-		<li>commit <span class='blurb'>Xcode for simple commits; otherwise Terminal</span></li>
-		<li>log<span class='blurb'>Terminal</span></li>
+		<li>verify modifications (diff tool)<span class='blurb'>Terminal</span></li>
+		<li>review commit message; commit</li>
+		<li>log; show stashes</li>
 	</ul></li>
+	<li>[tag]</li>
 	<li>check for status clear; diff (abbreviate) master with branch; inspect for conflicts</li>
-	<li>switch to (checkout) branch master</li>
-	<li>[merge]; [push [pull]]<span class='blurb'>Xcode</span></li>
-	<li>status; check for unmerged branches (log abbreviate graph); delete branch<span class='blurb'>Terminal</span></li>
-	<li>[tag; push tags]</li>
+	<li>check again for status clear; switch to (checkout) master</li>
+	<li>merge; fetch; [merge remote]; push [push tags]</li>
+	<li>status; check for unmerged branches (branch --no-merged master); delete branch</li>
 </ul>
 
 <!-- @marker "Git Tasks" -->

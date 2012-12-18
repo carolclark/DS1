@@ -41,8 +41,9 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${HOME}/Library/Scripts/Xcode"
 			;;
-		"Workflows" )
-			;;	#obsolete	
+		"Services" )
+			destinationFolder="${HOME}/Library/Services"
+			;;	
 		"Templates" )
 			destinationFolder="${HOME}/Library/Developer/Xcode/Templates"
 			;;

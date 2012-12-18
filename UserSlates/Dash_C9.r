@@ -17,6 +17,8 @@
 
 #define resid_DashWindow			resid_Dash+30
 
+#define	resid_BrowseDoxygen			resid_Dash+80
+
 #define	resid_Search				resid_Dash+100
 
 #define _TypeDashItems_	\
@@ -87,6 +89,13 @@ resource restype_Slate (resid_Search, "") { {
 	} }
 } };
 
+#pragma mark BrowseDoxygen
+	#define	_BrowseDoxygenResID_	resid_BrowseDoxygen
+	#define	_mainFrame_h			247
+	#define	_mainFrame_v			69
+	#define _homeApp				Apps_"Dash.app"
+_BrowseDoxygenSlate_
+
 #pragma mark 9 === Dash
 #define	_DashSlateItems_		\
 		_SlateGlobals_,			\
@@ -104,6 +113,7 @@ resource restype_Slate (resid_Search, "") { {
 		_DirectionKeys_,	\
 		_LetterKeys_,		\
 		Event { "search", "" },		Sequence{}, Keypress { kc_L, mf_command }, ResSubslate { resid_Search }, endSequence{},	\
+		Event { "doxygen", "" },	ResSubslate { resid_BrowseDoxygen }, 	\
 		Event { "focus", "" },		Keypress { kc_tab, 0 },				\
 		Event { "focus back", "" },	Keypress { kc_tab, mf_shift },		\
 		Event { "Window", "" },		Sequence{}, Keypress { kc_comma, mf_command }, Wait { 40 }, Click { 1, 265, 45, _window, _topLeft }, ResSubslate { resid_DashWindow }, endSequence{},		\
