@@ -15,20 +15,16 @@
 	<!-- @topicItem "Development Cycle" "#DevelopmentCycle" "0" "" -->
 	<!-- @topicGroup "" "2" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
-		<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
-		<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
 		<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
 		<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
+		<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
+		<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
+		<!-- @topicItem "Bisect" "#tsk_Bisect" "0" "" -->
 		<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
 		<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
-	<!-- @topicGroup "Repositories" "10" -->
-		<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "1" "" -->
-		<!-- @topicItem "Fetch Working Copy of Repository" "#FetchWorkingCopy" "1" "" -->
-		<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
-		<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
-		<!-- @topicItem "Set Up User SSH" "#setupSSH" "1" "" -->
-		<!-- @topicItem "Add User to ProjectLocker Account" "#AddPLUser" "0" "" -->
-	<!-- @topicGroup "" "17" -->
+	<!-- @topicGroup "" "10" -->
+	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
+	<!-- @topicSep -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
 
@@ -45,17 +41,48 @@
 		<li>add / review files to be committed</li>
 		<li>review commit message</li>
 		<li>commit</li>
-		<li>log; show stashes</li>
+		<li>log</li>
 	</ul></li>
+	<li>check stash list; check for status clear; diff (abbreviate) master with branch; inspect for conflicts</li>
+	<li>switch to (checkout) master</li>
 	<li>[tag]</li>
-	<li>check for status clear; diff (abbreviate) master with branch; inspect for conflicts</li>
-	<li>check again for status clear; switch to (checkout) master</li>
 	<li>merge; fetch; [merge remote]; push [push tags]</li>
 	<li>status; check for unmerged branches (branch --no-merged master); delete branch</li>
 </ul>
 
+<p><br /><br /><br /><br /><br /></p>
 <!-- @marker "Git Tasks" -->
 <h2 id='GitTasks_'>Git Tasks</h2>
+
+<!-- @marker "Branch" -->
+<h4 id="tsk_Branch">Branch</h4><ul>
+	<li><span class='mono'>git branch</span>&nbsp;&nbsp;# to list current branches<ul>
+		<li><span class='mono'>--remotes</span>&nbsp;&nbsp;# to list remote branches</li>
+		<li><span class='mono'>--all</span>&nbsp;&nbsp;# to list both local and remote branches</li>
+		<li><span class='mono'>--no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
+		<li><span class='mono'>--move [&lt;oldbranch&gt;] &lt;newbranch&gt;</span>&nbsp;&nbsp;# to rename a branch</li>
+		<li><span class='mono'>--delete &lt;branchname&gt;</span>&nbsp;&nbsp;# delete a branch<ul>
+			<li class='blurb'>also see git docs for information about deleting and cleaning up remote branches</li>
+		</ul></li>
+	</ul></li>
+	<li><span class='mono'>git checkout -b &lt;new-branch&gt; [&lt;start_point&gt;]</span>&nbsp;&nbsp;# move existing work to a new branch, rooted at commit &lt;start_point&gt; if specified</li>
+</ul>
+
+<!-- @marker "Stash" -->
+<h4 id="tsk_Stash">Stash</h4><ul>
+	<li><span class='mono'>git stash save &lt;name&gt;</span>&nbsp;&nbsp;# save stash named &lt;name&gt;; leave working directory clean<ul>
+			<li><span class='mono'>add --keep-index</span>&nbsp;&nbsp;# to leave all changes already added to the index intact</li>
+	</ul></li>
+	<li>apply:<ul>
+		<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash to the current working copy</li>
+		<li><span class='mono'>git stash branch</span>&nbsp;&nbsp;# to apply the top stash to a new branch based in the stash's base revision</li>
+		<li>add <span class='mono'>stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  to specify a different stash</li>
+	</ul></li>
+	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# list all stashes in repository</li>
+	<li><span class='mono'>git stash drop</span>&nbsp;&nbsp;# remove the specified stash</li>
+	<li><span class='mono'>git stash show [stash@{n}]</span>&nbsp;&nbsp;# show details for the top or a specified stash</li>
+</ul>
+
 <!-- @marker "Diff" -->
 <h4 id="tsk_Diff">Diff</h4>
 	<h5>Diff Commands</h5><ul>
@@ -65,6 +92,7 @@
 		<li><span class='mono'>git diff &lt;branch&gt;</span>&nbsp;&nbsp;# working copy and another branch</li>
 		<li><span class='mono'>git diff &lt;branch1&gt;..&lt;branch2&gt;</span>&nbsp;&nbsp;# tips of the two branches</li>
 		<li><span class='mono'>git diff &lt;branch1&gt;...&lt;branch2&gt;</span>&nbsp;&nbsp;# from their common ancestor to branch</li>
+		<li><span class='mono'>git difftool &lt;arguments as above&gt;</span>&nbsp;&nbsp;# display results using FileMerge</li>
 	</ul>
 	<h5>Diff Options</h5><ul>
 		<li><span class='mono'>-- ./path</span>&nbsp;&nbsp;# restrict to a path</li>
@@ -76,6 +104,7 @@
 		<li><span class='mono'>--date-order</span>&nbsp;&nbsp;# to show chronologically</li>
 	</ul>
 
+<p><br /><br /><br /></p>
 <!-- @marker "Tag" -->
 <h4 id="tsk_Tag">Tag</h4><ul>
 	<li><span class='mono'>git tag</span>&nbsp;&nbsp;# list<ul>
@@ -84,40 +113,20 @@
 	<li><span class='mono'>git tag -a &lt;tag&gt; -m '&lt;msg&gt;'</span>&nbsp;&nbsp;# create</li>
 	<li><span class='mono'>git tag -d &lt;tag&gt;</span>&nbsp;&nbsp;# delete</li>
 	<li><span class='mono'>git show &lt;tag&gt;</span>&nbsp;&nbsp;# show information about &lt;tag&gt;</li>
-	<li><span class='mono'>git push --tags</span>&nbsp;&nbsp;# see <a href="http://jasonswett.net/blog/a-git-tag-example-that-doesnt-suck/">A Git tag example that doesn't suck</a></li>
+	<li><span class='mono'>git push --tags</span>&nbsp;&nbsp;# push tags</li>
 </ul>
 
-<!-- @marker "Branch" -->
-<h4 id="tsk_Branch">Branch</h4><ul>
-	<li><span class='mono'>git branch</span>&nbsp;&nbsp;# to list current branches<ul>
-		<li>add <span class='mono'>-r</span>&nbsp;&nbsp;# to list remote branches</li>
-		<li>add <span class='mono'>-a</span>&nbsp;&nbsp;# to list both local and remote branches</li>
+<!-- @marker "Bisect" -->
+<h4 id='tsk_Bisect'>Bisect</h4><ul>
+	<li><span class='mono'>git bisect start</span>&nbsp;&nbsp;# start a bisect operation<ul>
+		<li class='blurb'>then execute <span class='mono'>good</span> and <span class='mono'>bad</span> to establish range</li>
 	</ul></li>
-	<li><span class='mono'>git branch --no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
-	<li><span class='mono'>git branch -m [&lt;oldbranch&gt;] &lt;newbranch&gt;</span>&nbsp;&nbsp;# to rename a branch</li>
-	<li><span class='mono'>git branch -d &lt;branchname&gt;</span>&nbsp;&nbsp;# delete a branch<ul>
-		<li class='blurb'>also see git docs for information about deleting and cleaning up remote branches</li>
-	</ul></li>
-	<li><span class='mono'>git checkout -b &lt;new-branch&gt;</span>&nbsp;&nbsp;# move existing work to a new branch<ul>
-		<li class='blurb'>verify that Xcode's branch is in sync; may need to quit and restart Xcode</li>
-	</ul></li>
-</ul>
-
-<p><br /><br /><br /><br /><br /><br /><br /><br /></p>
-<!-- @marker "Stash" -->
-<h4 id="tsk_Stash">Stash</h4><ul>
-	<li><span class='mono'>git stash save &lt;message&gt;</span>&nbsp;&nbsp;# <ul>
-			<li><span class='mono'>add --keep-index</span>&nbsp;&nbsp;# to leave all changes already added to the index intact</li>
-	</ul></li>
-	<li>apply:<ul>
-		<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash to the current working copy</li>
-		<li><span class='mono'>git stash branch</span>&nbsp;&nbsp;# to apply the top stash to a new branch based in the stash's base revision</li>
-		<li><span class='mono'>git stash pop</span>&nbsp;&nbsp;#  to apply and remove the top stash to the current working copy; stash not removed if conflicts occur</li>
-		<li><span class='mono'>add stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  for <span class='mono'>apply</span> and <span class='mono'>branch</span>, apply a different stash</li>
-	</ul></li>
-	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# list all stashes in repository</li>
-	<li><span class='mono'>git stash clear</span>&nbsp;&nbsp;# clear all stashes in repository</li>
-	<li><span class='mono'>git stash show [stash@{n}]</span>&nbsp;&nbsp;# show details for the top or a specified stash</li>
+	<li><span class='mono'>git bisect bad</span>&nbsp;&nbsp;# mark current bisect commit as bad</li>
+	<li><span class='mono'>git bisect good</span>&nbsp;&nbsp;# mark current bisect commit as good</li>
+	<li><span class='mono'>git bisect skip</span>&nbsp;&nbsp;# skip current bisect commit</li>
+	<li><span class='mono'>git bisect reset</span>&nbsp;&nbsp;# clean up from a bisection</li>
+	<li><span class='mono'>git bisect log</span>&nbsp;&nbsp;# show log of current bisection</li>
+	<li><span class='mono'>git bisect replay</span>&nbsp;&nbsp; &lt;logfile&gt; # replay bisection from edited log output &lt;logfile&gt;</li>
 </ul>
 
 <!-- @marker "Information" -->
@@ -138,6 +147,7 @@
 	<h5>Other Information Commands</h5><ul>
 		<li><span class='mono'>git ls-files --other --exclude-standard</span>&nbsp;&nbsp;# untracked files</li>
 		<li><span class='mono'>git branch --no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
+		<li><span class='mono'>git reflog [log options]</span>&nbsp;&nbsp;# show reflog</li>
 	</ul>
 	 
 <!-- @marker "Undo" -->
@@ -148,6 +158,18 @@
 	<li><span class='mono'>git revert [HEAD|&lt;commit&gt;]</span>&nbsp;&nbsp;# creates a new commit that undoes the most recent or a previous commit</li>
 </ul>
 
+<!-- @marker "Managing Repositories" -->
+<h2>Managing Repositories</h2>
+<!-- @topicList "Managing Repositories" "ManagingRepositories" -->
+	<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "1" "" -->
+	<!-- @topicItem "Fetch Working Copy of Repository" "#FetchWorkingCopy" "1" "" -->
+	<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
+	<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
+	<!-- @topicItem "Set Up User SSH" "#setupSSH" "1" "" -->
+	<!-- @topicItem "Add User to ProjectLocker Account" "#AddPLUser" "1" "" -->
+	<!-- @topicGroup "" "7" -->
+<!-- @/topicList -->
+		
 <!-- @marker "Create Bare Repository" -->
 <h4 id='tsk_CreateBareRepository'>Create Bare Repository</h4><ul>
 	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/gitrep/&lt;ProjectName&gt;; https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;Remote)</li>
@@ -232,10 +254,6 @@ see git-rev-parse<br />
 see <a href="http://grit.rubyforge.org/">grit</a> for ruby scripting<br />
 </p>
 
-<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
 <p class='footer'>Copyright 2011-12 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>

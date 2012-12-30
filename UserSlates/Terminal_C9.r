@@ -7,7 +7,7 @@
 
 #pragma mark === Markers ===
 // Git
-//	2 Git, Type, Checkout, Branch, Difference, Stash; 3 Add, Commit, Log, Tag, Merge, Push, Fetch; 4 SelectFile, Reset, Browser, FileMerge
+//	2 Git, Type, Checkout, Branch, Difference, Stash; 3 Add, Commit, Log, Tag, Merge, Push, Fetch; 4 Clean; Bisect; SelectFile, Reset, Browser, FileMerge
 // Other
 //	1 Type; Standards 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
 
@@ -35,9 +35,11 @@
 		#define resid_gitReflog				resid_gitLog+1	
 	#define	resid_gitTag				resid_Git+250
 	#define resid_gitMerge				resid_Git+270
-	#define resid_gitFetch				resid_Git+290
+	#define resid_gitFetch				resid_Git+285
+	#define resid_gitClean				resid_Git+290
+	#define resid_Bisect				resid_Git+295
 
-	#define resid_SelectFile			resid_Git+300
+	#define resid_gitSelectFile			resid_Git+300
 	#define	resid_gitReset				resid_Git+320
 		#define resid_gitDoReset			resid_gitReset+1
 	#define resid_gitBrowser			resid_Git+340
@@ -118,7 +120,7 @@ resource restype_Slate (resid_Type, "Type") { {
 		Event { "paste", "" },			Keypress { kc_V, mf_command },	\
 		Event { "continue", "" },		Keypress { kc_space, 0 },		\
 		Event { "end display", "" },	Keypress { kc_Q, 0 },			\
-		Event { "dry run", "" },		TypeText { "--dry-run" },		\
+		Event { "dry run", "" },		TypeText { "--dry-run " },		\
 		Event { "type", "" },			ResSubslate { resid_gitType }
 
 #define	_CurrentBranch_		Event { "current branch", "" },	TypeText { "$cb " }
@@ -142,9 +144,11 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
 		Event { "merge", "" },			Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "push", "" },			TypeText { "git push origin " },
-		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch" }, ResSubslate { resid_gitFetch }, endSequence{},
+		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch " }, ResSubslate { resid_gitFetch }, endSequence{},
+		Event { "clean", "" },			Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
+		Event { "Bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_Bisect }, endSequence{},
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
-		Event { "select file", "" },	Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_SelectFile }, endSequence{},
+		Event { "select file", "" },	Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_gitSelectFile }, endSequence{},
 		Event { "reset", "" },			ResSubslate { resid_gitReset },
 		Event { "browser", "" },		Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_gitBrowser }, endSequence{},
 	} }
@@ -163,7 +167,7 @@ resource restype_Slate (resid_gitType, "Type") { {
 		Event { "project locker", "" },	TypeText { "ssh git-CCSoftware@pl5.projectlocker.com" },
 		Event { "shell", "" },			TypeText { "sealsea v3ejc 6868" },
 		Event { "version 3", "" },		TypeText { "4YZHqz5pq1" },
-		Event { "dry run", "" },		TypeText { "--dry-run" },
+		Event { "dry run", "" },		TypeText { "--dry-run " },
 	} }
 } };
 
@@ -201,11 +205,13 @@ resource restype_Slate (resid_gitBranch, "") { {
 resource restype_Slate (resid_gitDiff, "") { {
 	Slate { "diff",	{
 		_GitStandards_,
-		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool" }, endSequence{},
+		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
 		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{}, 
 		Event { "cached", "between staged and head" },			TypeText { "--cached " },
 		Event { "standard", "between staged and unstaged" },	NilAction{},
 		Event { "head", "both staged and unstaged" },			TypeText { "HEAD " },
+		Event { "stash", "" },			Sequence{}, TypeText { "stash@{" }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "top stash", "" },		TypeText { "stash@{0} " },
 		ExitEvent { "list files", "" },	Sequence{}, TypeText { "--name-status | grep -n \"[a-z,A-Z]\" > $CCDev/tmp/gitstatus; cat $CCDev/tmp/gitstatus" }, _return, endSequence{},
 		Event { "end options", "" },	TypeText { "-- " },
 		Event { "master", "" },			TypeText { "master " },
@@ -225,14 +231,14 @@ resource restype_Slate (resid_gitStash, "") { {
 	Slate { "stash",	{
 		_GitStandards_,
 		Event { "save", "" },			Sequence{}, _cancel, TypeText { "# git stash save <message>" }, _return, TypeText { "git stash save " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "keep index", "" },		TypeText { "--keep-index " },
-		Event { "show", "" },			TypeText { "show " },
-		Event { "pop", "" },			TypeText { "pop " },
 		Event { "apply", "" },			Sequence{}, TypeText { "apply " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "branch", "" },			TypeText { "branch " },
-		Event { "previous", "" },		Sequence{}, TypeText { "stash@{" }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "drop", "" },			TypeText { "drop " },
 		Event { "list", "" },			TypeText { "list " },
-		Event { "clear", "" },			TypeText { "clear " },
+		Event { "show", "" },			TypeText { "show " },
+		Event { "keep index", "" },		TypeText { "--keep-index " },
+		Event { "to branch", "" },		TypeText { "branch " },
+		Event { "stash", "" },			Sequence{}, TypeText { "stash@{" }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "top stash", "" },		TypeText { "stash@{0} " },
 	} }
 } };
 
@@ -243,6 +249,7 @@ resource restype_Slate (resid_gitAdd, "") { {
 		_GitStandards_,
 		Event { "interact", "" },		Sequence{}, TypeText { "--all --interactive" }, _return, ResSubslate { resid_gitAddInteract }, endSequence{},
 		Event { "update", "" }, 		TypeText { "--update" },
+		Event { "all", "" }, 			TypeText { "--all" },
 		Event { "dot", "" },			TypeText { "." },
 	} }
 } };
@@ -325,8 +332,8 @@ resource restype_Slate (resid_gitMerge, "") { {
 		Event { "close branch", "" },	Sequence{}, TypeText { "--no-ff $cb -m \"merge branch $cb\"" }, endSequence{},
 		Event { "message", "" },		Sequence{}, TypeText { "$cb -m \"merge $cb:" }, endSequence{},
 		Event { "remote", "" },			Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist:" }, endSequence{},
-		Event { "conflicts", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool" }, endSequence{},
-		Event { "file merge", "" },		ResSubslate { resid_FileMerge }, 
+		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
+		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{}, 
 	} }
 } };
 
@@ -338,9 +345,32 @@ resource restype_Slate (resid_gitFetch, "") { {
 	} }
 } };
 
-#pragma mark 4 === SelectFile
-// inside: SelectFile; 1 Reset; 2 Browser; 3 FileMerge
-resource restype_Slate (resid_SelectFile, "") { {
+#pragma mark 4 === Clean
+// inside: Clean 1 Bisect 2 SelectFile; 2 Reset; 4 Browser; 5 FileMerge
+#pragma mark Clean
+resource restype_Slate (resid_gitClean, "") { {
+	Slate { "Clean",	{
+		_GitStandards_,
+		Event { "force", "" },			TypeText { "--force " },
+	} }
+} };
+
+#pragma mark Bisect
+resource restype_Slate (resid_Bisect, "") { {
+	Slate { "Bisect",	{
+		_GitStandards_,
+		Event { "start", "" },			TypeText { "start " },
+		Event { "bad", "" },			TypeText { "bad " },
+		Event { "good", "" },			TypeText { "good " },
+		Event { "skip", "" },			TypeText { "skip " },
+		Event { "reset", "" },			TypeText { "reset " },
+		Event { "log", "" },			TypeText { "log " },
+		Event { "replay", "" },			TypeText { "replay " },
+	} }
+} };
+
+#pragma mark 2 -- Select
+resource restype_Slate (resid_gitSelectFile, "") { {
 	Slate { "Select File",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
@@ -367,12 +397,12 @@ resource restype_Slate (resid_SelectFile, "") { {
 	} }
 } };
 
-#pragma mark 1 -- Reset
+#pragma mark 3 -- Reset
 resource restype_Slate (resid_gitReset, "") { {
 	Slate { "reset",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "dry run", "" },		TypeText { "--dry-run" },
+		Event { "dry run", "" },		TypeText { "--dry-run " },
 		Event { "reset", "" },			Sequence{}, TypeText { "git reset " }, ResSubslate { resid_gitDoReset}, endSequence{},
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "discard changes", "" },	Subslate { "discard changes" },
@@ -399,7 +429,7 @@ resource restype_Slate (resid_gitDoReset, "") { {
 	} }
 } };
 
-#pragma mark 2 -- Browser
+#pragma mark 4 -- Browser
 resource restype_Slate (resid_gitBrowser, "") { {
 	Slate { "gitk",	{
 		_SlateGlobals_,
@@ -410,18 +440,20 @@ resource restype_Slate (resid_gitBrowser, "") { {
 	} }
 } };
 
-#pragma mark 3 -- FileMerge
+#pragma mark 5 -- FileMerge
 resource restype_Slate (resid_FileMerge, "") { {
 	Slate { "FileMerge",	{
 		_SlateGlobals_,
 		ExitEvent { "okay", "" },			CloseSubslate{},
+		Event { "open", "" },				_return,
 		Event { "continue", "" },			Keypress { kc_Q, mf_command },
 		Event { "cancel", "" },				Keypress { kc_period, mf_command },
-		Event { "return", "" },				_return,
 		Event { "difference", "" },			Click { 1, 0, 75, _window, _topCenter },
 		Event { "actions", "" },			Sequence{}, Click { 1, -110, -30, _window, _bottomRight }, _down, ResSubslate { resid_FileMergeActions }, endSequence{},
+		Event { "save", "" },				Keypress { kc_S, mf_command },
 		_IMouseSlate_,
 		_DirectionKeys_,
+		_WhitespaceKeys_,
 	} }
 } };
 
