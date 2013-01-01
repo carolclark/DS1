@@ -85,7 +85,8 @@
 		Event { "clean", "" },	Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_Clean }, endSequence{},		\
 		Event { "build", "" },	Sequence{}, TypeText { "build.uia" }, Keypress { kc_enter, 0 }, ResSubslate { resid_Build }, endSequence{},		\
 		Event { "archive", "" },	Sequence{}, TypeText { "archive " }, ResSubslate { resid_Archive }, endSequence{},		\
-		Event { "backup", "" },	TypeText { "ccBackup Backup " },		\
+		Event { "backup", "" },			TypeText { "ccBackup Backup " },	\
+		Event { "export", "" },			TypeText { "export " },				\
 		Event { "ports", "" },			ResSubslate { resid_MacPorts },		\
 		Event { "Shell", "" },			ResSubslate { resid_Shell },		\
 		Event { "Apache", "" },			ResSubslate { resid_Apache },		\
@@ -98,7 +99,8 @@
 	Event { "password", "" },		TypeText { "6868" },			\
 	Event { "cancel", "" },			_cancel,						\
 	Event { "copy", "" },			Keypress { kc_C, mf_command },	\
-	Event { "paste", "" },			Keypress { kc_V, mf_command }
+	Event { "paste", "" },			Keypress { kc_V, mf_command },	\
+	Event { "system config", "" },	TypeText { "/private/etc/launchd.conf " },
 
 resource restype_Slate (resid_Type, "Type") { {
 	Slate { "Type",	{
@@ -453,6 +455,8 @@ resource restype_Slate (resid_FileMerge, "") { {
 		Event { "actions", "" },			Sequence{}, Click { 1, -110, -30, _window, _bottomRight }, _down, ResSubslate { resid_FileMergeActions }, endSequence{},
 		Event { "edit", "" },				Sequence{}, Click { 1, -30, -260, _window, _bottomRight }, ResSubslate { resid_FileMergeEdit }, endSequence{},
 		Event { "save", "" },				Keypress { kc_S, mf_command },
+		Event { "return", "" },				_return,
+		Event { "space", "" },				_space,
 		_IMouseSlate_,
 		_DirectionKeys_,
 	} }

@@ -146,9 +146,9 @@ function shunitInstall {
 #^	main
 
 # identify and set variables for current user
-user="${USER}"
-devFolder="${HOME}/Dev"
-ccdevFolder="/Users/${user}/.ccdev"
+user=${USER}
+devFolder=${HOME}/Dev
+ccdevFolder=/Users/${user}/.ccdev
 installEnvironmentPlist="yes"
 setTerminalPrompt="no"
 installSHUnit="no"
@@ -157,15 +157,15 @@ case "${user}" in
 	"carolclark" )
 		fullname="Carol Clark"
 		email="carolclark@cox.net"
-		devFolder="/Volumes/Mac/Users/carolclark/Dev"
-		ccdevFolder="${HOME}/CCDev"
+		devFolder=/Volumes/Mac/Users/carolclark/Dev
+		ccdevFolder=${HOME}/CCDev
 		setTerminalPrompt="yes"
 		installSHUnit="yes"
 		;;
 	"lauramartinez" )
 		fullname="Laura Martinez"
 		email="cello.laura@gmail.com"
-		devFolder="${HOME}/Documents/Projects"
+		devFolder=${HOME}/Documents/Projects
 		;;
 	"scottclark" )
 		fullname="Scott Clark"
@@ -250,7 +250,7 @@ print "${result}"
 if [[ "${failcnt}" = 0 ]] ; then
 	print "***"
 	print "*** If 'sudo vi' from Terminal makes sense:"
-	print "***		To finish setting up your environment, copy the contents of file ${CCDev}/tmp/launchd.conf. Then sudo vi /private/etc, and paste clipboard contents into that file. ***"
+	print "***		To finish setting up your environment, copy the contents of file ${CCDev}/tmp/launchd.conf. Then sudo vi /private/etc/launchd.conf, and paste clipboard contents into that file. ***"
 	print "*** If not, ask for help."
 	print "***"
 fi
