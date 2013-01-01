@@ -1,5 +1,5 @@
 // =================================================================================
-//	Terminal_C9.r				©2008-12 C & C Software, Inc. All rights reserved.
+//	Terminal_C9.r				©2008-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -45,6 +45,7 @@
 	#define resid_gitBrowser			resid_Git+340
 	#define resid_FileMerge				resid_Git+350
 		#define resid_FileMergeActions		resid_FileMerge+1
+		#define resid_FileMergeEdit			resid_FileMerge+2
 
 #define	_cancel			Keypress { kc_C, mf_control }
 
@@ -134,7 +135,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "status", "" },			Sequence{}, TypeText { "git status" }, _return, endSequence{},
 		Event { "checkout", "" },		Sequence{}, TypeText { "git checkout " }, ResSubslate { resid_gitCheckout }, endSequence{},
 		Event { "branch", "" },			Sequence{}, TypeText { "git branch " }, ResSubslate { resid_gitBranch }, endSequence{},
-		Event { "difference", "" },		Sequence{}, TypeText { "git diff " }, ResSubslate { resid_gitDiff }, endSequence{},
+		Event { "difference", "" },		Sequence{}, TypeText { "git difftool " }, ResSubslate { resid_gitDiff }, endSequence{},
 		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
 		Event { "add files", "" },		Sequence{}, TypeText { "git add " }, ResSubslate { resid_gitAdd }, endSequence{},
 		Event { "show message", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
@@ -205,8 +206,7 @@ resource restype_Slate (resid_gitBranch, "") { {
 resource restype_Slate (resid_gitDiff, "") { {
 	Slate { "diff",	{
 		_GitStandards_,
-		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
-		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{}, 
+		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{},
 		Event { "cached", "between staged and head" },			TypeText { "--cached " },
 		Event { "standard", "between staged and unstaged" },	NilAction{},
 		Event { "head", "both staged and unstaged" },			TypeText { "HEAD " },
@@ -277,6 +277,7 @@ resource restype_Slate (resid_gitAddInteract, "") { {
 resource restype_Slate (resid_gitCommit, "") { {
 	Slate { "commit",	{
 		_GitStandards_,
+		Event { "amend", "" },			TypeText { "--amend " },
 		Event { "message", "" },		Sequence{}, TypeText { "-m \"" }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "file", "" },			Sequence{}, TypeText { "-F \"${CCDev}/tmp/gitmessage.txt" }, Keypress { kc_quote, mf_shift }, endSequence{},
 	} }
@@ -445,21 +446,21 @@ resource restype_Slate (resid_FileMerge, "") { {
 	Slate { "FileMerge",	{
 		_SlateGlobals_,
 		ExitEvent { "okay", "" },			CloseSubslate{},
-		Event { "open", "" },				_return,
+		ExitEvent { "cancel", "" },			Sequence{}, Keypress { kc_period, mf_command }, CloseSubslate{}, endSequence{},
 		Event { "continue", "" },			Keypress { kc_Q, mf_command },
-		Event { "cancel", "" },				Keypress { kc_period, mf_command },
+		Event { "Terminal", "" }, 			Launch { Apps_"Utilities/Terminal.app", 0 },
 		Event { "difference", "" },			Click { 1, 0, 75, _window, _topCenter },
 		Event { "actions", "" },			Sequence{}, Click { 1, -110, -30, _window, _bottomRight }, _down, ResSubslate { resid_FileMergeActions }, endSequence{},
+		Event { "edit", "" },				Sequence{}, Click { 1, -30, -260, _window, _bottomRight }, ResSubslate { resid_FileMergeEdit }, endSequence{},
 		Event { "save", "" },				Keypress { kc_S, mf_command },
 		_IMouseSlate_,
 		_DirectionKeys_,
-		_WhitespaceKeys_,
 	} }
 } };
 
 #pragma mark FileMergeActions
 resource restype_Slate (resid_FileMergeActions, "") { {
-	Slate { "FileMergeActions",	{
+	Slate { "Actions",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
 		ExitEvent { "left", "" },			Sequence{}, TypeText { "choose left" }, _return, endSequence{},
@@ -469,7 +470,23 @@ resource restype_Slate (resid_FileMergeActions, "") { {
 		ExitEvent { "neither", "" },		Sequence{}, TypeText { "neither" }, _return, endSequence{},
 	} }
 } };
-	
+
+#pragma mark FileMergeEdit
+resource restype_Slate (resid_FileMergeEdit, "") { {
+	Slate { "Edit",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "save", "" },			Sequence{}, Keypress { kc_S, mf_command }, endSequence{},
+		_PageKeys_,
+		_DirectionKeys_,
+		_WhitespaceKeys_,
+		_JumpNorthSubslate_,
+		_JumpDownSubslate_,
+		_DoJumpSubslate_,
+		_TypeSlate_,
+	} }
+} };
+
 #pragma mark 5 === Archive
 resource restype_Slate (resid_Archive, "") { {
 	Slate { "Archive",	{

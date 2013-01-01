@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					©2006-12 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					©2006-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -76,6 +76,7 @@
 #define resid_BrowseDoxygen			resid_Xcode+700
 
 #define resid_Macro					resid_Xcode+750
+#define resid_Copyright				resid_Xcode+780
 
 #define resid_Target				resid_Xcode+900
 	#define resid_Profile				resid_Target+1
@@ -148,8 +149,8 @@
 #define _TypeXcodeSlate_ 		Event { "Type", "" }, ResSubslate { resid_TypeXcodeSlate }
 #define closeDocument_			Event { "close document", "" },	Keypress { kc_W, mf_command + mf_control }
 
-#define	focus_			Event { "focus", "" },			Keypress { kc_period, mf_command + mf_option }
-#define	focusBack_		Event { "focus back", "" },		Keypress { kc_period, mf_command + mf_option + mf_shift }
+#define	focus_			Event { "focus", "" },			Keypress { kc_accent, mf_command + mf_option }
+#define	focusBack_		Event { "focus back", "" },		Keypress { kc_accent, mf_command + mf_option + mf_shift }
 
 #define	_next			Keypress { kc_slash, mf_control }
 #define	_previous		Keypress { kc_slash, mf_control + mf_shift }
@@ -279,7 +280,7 @@
 #define	il_psp	30
 #define il_rsp	19
 #define	_NavigateStandards_		\
-		Event { "focus", "" },			Keypress { kc_period, mf_command + mf_option },		\
+		focus_,					\
 		Event { "nav list", "" },		_navList,		\
 		_JumpNorthSubslate_,	\
 		_JumpDownSubslate_,		\
@@ -1384,6 +1385,18 @@ resource restype_Slate (resid_wordsWords, "") { {
 	} }
 } };
 
+#pragma mark Copyright
+resource restype_Slate (resid_Copyright, "") { {
+	Slate { "Copyright",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "code", "" },				Sequence{}, Keypress { kc_up, mf_command }, _down, _down, _down, _down, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, endSequence{},
+		ExitEvent { "resource", "" },			Sequence{}, Keypress { kc_up, mf_command }, _down, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, endSequence{},
+		ExitEvent { "markup", "" },				Sequence{}, Keypress { kc_down, mf_command }, _up, _up, _up, _up, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option },  Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, endSequence{},
+		ExitEvent { "shell", "" },				Sequence{}, Keypress { kc_up, mf_command }, _down, _down, _down, _down, _down, _down, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, endSequence{},
+	} }
+} };
+
 #pragma mark Macro
 resource restype_Slate (resid_Macro, "") { {
 	Slate { "Macro",	{
@@ -1436,7 +1449,6 @@ resource restype_Slate (resid_Macro, "") { {
 		Event { "next document", "" },			Sequence{},
 			Click { 1, _splitter_x+110, 75, _window, _topLeft }, _down, _return,
 			endSequence{},
-		Event { "check copyright", "" },		Sequence{}, Keypress { kc_up, mf_command }, _down, Keypress { kc_right, mf_option },  Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, Keypress { kc_right, mf_option }, endSequence{},
 		Event { "step tag", "" },				Sequence{},
 			TypeText { "<a href=\<##>_hist.html#" }, Keypress { kc_V, mf_command }, TypeText { "\">" }, Keypress { kc_V, mf_command }, 
 			TypeText { "</a>" }, Keypress { kc_slash, mf_control }, endSequence{},
@@ -2739,6 +2751,7 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 		_CloseSubslate_,
 		Event { "Package", "" },		ResSubslate { resid_Package },
 		Event { "Macro", "" },			ResSubslate { resid_Macro },
+		Event { "Copyright", "" },		ResSubslate { resid_Copyright },
 		_JumpBar_,
 		Event { "enter find string", "" },		Keypress { kc_E, mf_command },
 		Event { "enter replace string", "" },	Keypress { kc_E, mf_command + mf_shift },
@@ -3008,8 +3021,8 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 			Event { "Letter Keys", "" },			Sequence{}, TypeText { "_LetterKeys_," }, _return, endSequence{},
 			Event { "Number Keys", "" },			Sequence{}, TypeText { "_NumberKeys_," }, _return, endSequence{},
 			Event { "Whitespace Keys", "" },		Sequence{}, TypeText { "_WhitespaceKeys_," }, _return, endSequence{},
-			Event { "Page Keys", "" },				Sequence{}, TypeText { "_PageKeys_" }, _return, endSequence{},
-			Event { "Click One", "" },				Sequence{}, TypeText { "_ClickOne_" }, _return, endSequence{},
+			Event { "Page Keys", "" },				Sequence{}, TypeText { "_PageKeys_," }, _return, endSequence{},
+			Event { "Click One", "" },				Sequence{}, TypeText { "_ClickOne_," }, _return, endSequence{},
 			Event { "Mouse Slate", "" },			Sequence{}, TypeText { "_IMouseSlate_," }, _return, endSequence{},
 			Event { "Full Access Slate", "" },		Sequence{}, TypeText { "_FullAccessSlate_," }, _return, endSequence{},
 			Event { "Command Slate", "" },			Sequence{}, TypeText { "_CommandSlate_," }, _return, endSequence{},
@@ -3132,9 +3145,8 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		_openDash,
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
-		Event { "focus", "" },			Keypress { kc_period, mf_command + mf_option },
-		Event { "focus next", "" },		Keypress { kc_period, mf_command + mf_option },
-		Event { "focus back", "" },		Keypress { kc_period, mf_command + mf_option + mf_shift },
+		focus_,
+		focusBack_,
 		Event { "Macro", "" },			ResSubslate { resid_Macro },
 		Event { "page top", "" },		Keypress { kc_home, 0 },
 		Event { "page bottom", "" },		Keypress { kc_end, 0 },

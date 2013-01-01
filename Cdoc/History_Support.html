@@ -19,7 +19,8 @@
 	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 	<!-- @topicGroup "" "5" -->
-		<!-- @topicItem "Switch to Lion" "#Lion" "1" "" -->
+		<!-- @topicItem "Switch to MountainLion" "#MountainLion" "1" "" -->
+			<!-- @topicItem "Build for MountainLion" "#BuildForMountainLion" "2" "" -->
 			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
 		<!-- @topicGroup "" "8" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
@@ -54,9 +55,11 @@
 	<tr> <td>Punkin</td> <td>Add LayerMO [<a href="../Punkin/History_Punkin.html#AddLayerMO">AddLayerMO</a>]</td> <td class='small'>Core Data object to store a name and image data for a graphic layer</td> <td align="center">1</td> </tr>
 	<tr> <td>Punkin</td> <td>establish iOS Cocoa development environment [<a href="../Punkin/History_Punkin.html#InitialiOSApp">InitialiOSApp</a>]</td> <td class='small'>with testing, provisioning and Doxygen support</td> <td align="center">2</td> </tr>
 	<tr> <td>Punkin</td> <td>framework for cross-platform mobile and desktop websites [<a href="../Punkin/History_Punkin.html#SampleSite">Sample Site</a>]</td> <td class='small'>work from sample sites in iOS and Android tutorials</td> <td align="center">3</td> </tr>
-<tr><td colspan="4" align="center"><span class='ital'>Upgrade to Mountain Lion</span></td></tr>
-	<tr> <td>Support</td> <td>Establish Mountain Volume</td> <td class='small'></td> <td align="center">1</td> </tr>
-	<tr> <td>Support</td> <td>Install Mountain Lion on Primary Partition</td> <td class='small'></td> <td align="center">2</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Upgrade to MountainLion</span></td></tr>
+	<tr> <td>Support</td> <td>Establish Mountain Volume</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
+	<tr> <td>Support</td> <td>Install MountainLion on Primary Partition</td> <td class='small'></td> <td align="center">&radic;2</td> </tr>
+	<tr> <td>All</td> <td>Build Projects for MountainLion</td> <td class='small'>make Accessor build; update Support scripts; all targets: compile; clear warnings; clear static analysis; update settings for C++ 11, high-resolution artwork</td> <td align="center">1</td> </tr>
+	<tr> <td>All</td> <td>Upgrade Projects for MountainLion</td> <td class='small'>warning settings and static analyzer preferences; Objective-C modernization (see WWCD 2012 Session 405 - Modern Objective-C, Session 413 - Migrating to Modern Objective-C)</td> <td align="center">2</td> </tr>
 	<tr> <td>Support</td> <td><a href="#BackupsVolumes">Backups and Volumes</a></td> <td class='small'>update backup procedures and external drive</td> <td align="center">3</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Replace MobileMe and iDisk</span></td></tr>
 	<tr> <td>Support</td> <td><a href="#webHost">Finish Switching Web Hosts</a></td> <td class='small'>switch TechnicalDocs to new host</td> <td align="center">2</td> </tr>
@@ -64,7 +67,6 @@
 	<tr> <td>Accessor</td> <td>Refactor Class and ResType Maps [<a href="../Accessor/History_Accessor.html#RefactorRegistry">RefactorRegistry</a>]</td> <td class='small'>needed to switch to 64-bit architecture</td> <td align="center">2</td> </tr>
 	<tr> <td>Accessor</td> <td>Switch to 64-bit architecture [<a href="../Accessor/History_Accessor.html#ChangeTo64bit">ChangeTo64bit</a>]</td> <td class='small'>needed to migrate to ARC</td> <td align="center">3</td> </tr>
 	<tr> <td>Accessor</td> <td>migrate to ARC [<a href="../Accessor/History_Accessor.html#MigrateARC">MigrateARC</a>]</td> <td class='small'></td> <td align="center">3</td> </tr>
-
     <tr> <td>Accessor</td> <td>improve <a href="../Accessor/History_Accessor.html#ErrorCommunication">Error Communication</a></td> <td class='small'>will improve identification of Faults</td> <td align="center">4</td> </tr>
 <tr><td colspan="4" align="center"><span class='ital'>Moderization and Adoption</span></td></tr>
 	<tr> <td>Punkin</td> <td>Add LLDB Support [<a href="../Punkin/History_Punkin.html#AddLLDBSupport">AddLLDBSupport</a>]</td> <td class='small'>improves efficiency and automation capability</td> <td align="center">1</td> </tr>
@@ -87,8 +89,24 @@
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
 <h2 id='hmark_Active'>Active</h2>
 
-<!-- @marker "Switch to Lion" -->
-<h4 id='Lion'>Switch to Lion</h4>
+<!-- @marker "Switch to MountainLion" -->
+<h4 id='MountainLion'>Switch to MountainLion</h4>
+
+	<!-- @marker "Build for MountainLion" -->
+	<h4 id='BuildForMountainLion'>Build for MountainLion</h4><ul>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>update Support scripts<ul>
+			<li class='blurb'>buildCdoc works from Terminal</li>
+			<li>CCDev_Setup.ksh<ul>
+				<li>in addition to .profile, .krsrc, and Environment.plist, create file /etc/launchctl.conf that also defines our environment variables<ul>
+					<li>for now, creates file at CCDev/tmp and instructs user to paste its contents into /private/etc/launchctl.conf</li>
+				</ul></li>
+				<li>git: configure to use FileMerge for diffs</li>
+			</ul></li>
+		</ul></li>
+		<li>pass compilation; clear warnings; clear static analysis for each target</li>
+		<li>update all settings for C++ 11, high-resolution artwork</li>
+	</ul>
 
 	<!-- @marker "Backups and Volumes" -->
 	<h5 id='BackupsVolumes'>Backups and Volumes</h5><ul>
@@ -97,7 +115,7 @@
 			<li>archive and retire existing obsolete projects; see <a href="#devImport">Import Existing Projects</a></li>
 			<li>upload git repositories for Accessor and Support to ProjectLocker</li>
 		</ul></li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li class='tlmark'>&lt;--</li>
 		<li>Update backup support procedures, including usage of our external volumes<ul>
 			<li class='blurb'>QuickPicks<ul>
 				<li>our current backup utility, obtained from MobileMe, identifies critical data for some standard applications; it looks like a good list</li>
@@ -584,7 +602,7 @@
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-12 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>

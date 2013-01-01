@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/18/11.
-#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -63,6 +63,20 @@ function envEnvironment {
 	fi
 }
 
+#^	envLaunchctl
+function envLaunchctl {
+	print "setenv DEV ${devFolder}"
+	print "setenv CCDev ${ccdevFolder}"
+	print "setenv PATH ${PATH}:${CCDev}/bin:${CCDev}/func"
+	print "setenv FPATH ${FPATH}:${CCDev}/func"
+	if [[ ${setTerminalPrompt} = "yes" ]] ; then
+		print "setenv PS1 \"${LOGNAME} ! $ \""
+	fi
+	if [[ ${installEnvironmentPlist} = "yes" ]] ; then
+		print "setenv SHUnit ${CCDev}/shunit/src/shunit2"
+	fi
+}
+
 #^	gitPrintConfig
 function gitPrintConfig {
 	print "[user]"
@@ -71,6 +85,12 @@ function gitPrintConfig {
 	print
 	print "[core]"
 	print "\texcludesfile = ${exclude}"
+	print
+	print "[diff]"
+	print "\ttool = opendiff"
+	print
+	print "[difftool]"
+	print "\tprompt = false"
 }
 
 #^	gitPrintExclude
@@ -165,6 +185,7 @@ esac
 print "configuring environment"
 envProfile > "${HOME}/.profile"
 envEnvironment > "${CCDev}/bin/.kshrc"
+envLaunchctl > "${CCDev}/tmp/launchd.conf"
 
 # configure git
 print "configuring git"
@@ -226,5 +247,12 @@ if [[ "${?}" > 0 ]] ; then
 fi
 print "${result}"
 
-exit "${failcnt}"
+if [[ "${failcnt}" = 0 ]] ; then
+	print "***"
+	print "*** If 'sudo vi' from Terminal makes sense:"
+	print "***		To finish setting up your environment, copy the contents of file ${CCDev}/tmp/launchd.conf. Then sudo vi /private/etc, and paste clipboard contents into that file. ***"
+	print "*** If not, ask for help."
+	print "***"
+fi
 
+exit "${failcnt}"
