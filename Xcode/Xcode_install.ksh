@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 11/29/11.
-#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -41,6 +41,8 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${HOME}/Library/Scripts/Xcode"
 			;;
+		"Workflows" )
+			;;	#obsolete	
 		"Services" )
 			destinationFolder="${HOME}/Library/Services"
 			;;	

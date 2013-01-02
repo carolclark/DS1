@@ -96,7 +96,7 @@
          location = "container:"
          name = "DocGraphics">
          <FileRef
-            location = "group:../DevSupport/cdocsrc/UseCaseImages.pages">
+            location = "group:DocGraphics/UseCaseImages.pages">
          </FileRef>
       </Group>
    </Group>

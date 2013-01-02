@@ -1215,6 +1215,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		_switchVersionEditor_,
 		_switchAssistantEditor_,
 		Event { "Workspace", "" },		ResSubslate { resid_Workspace },
+		Event { "save files", "" },		Keypress { kc_S, mf_command + mf_option },
 		Event { "test", "" },			Keypress { kc_U, mf_command },
 		Event { "analyze", "" },		Keypress { kc_B, mf_command + mf_shift },
 		Event { "build", "" },			Keypress { kc_B, mf_command },
@@ -1483,7 +1484,7 @@ resource restype_Slate (resid_Macro, "") { {
 			endSequence{},
 		Event { "six", "temp" },				Sequence{},
 			Keypress { kc_left, mf_command }, _down, _down, _down, _down,
-			Keypress { kc_left, mf_option }, Keypress { kc_left, mf_option }, _right, Keypress { kc_O, mf_control },		
+			Keypress { kc_left, mf_option }, Keypress { kc_left, mf_option }, _right, Keypress { kc_O, mf_control },
 			endSequence{},
 	} }
 } };
