@@ -20,7 +20,7 @@
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 	<!-- @topicGroup "" "5" -->
 		<!-- @topicItem "Switch to MountainLion" "#MountainLion" "1" "" -->
-			<!-- @topicItem "Build for MountainLion" "#BuildForMountainLion" "2" "" -->
+			<!-- @topicItem "Workspace Mirrors Project Files" "#workspaceMirrorsFiles" "2" "" -->
 			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
 		<!-- @topicGroup "" "8" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
@@ -92,25 +92,15 @@
 <!-- @marker "Switch to MountainLion" -->
 <h4 id='MountainLion'>Switch to MountainLion</h4>
 
-	<!-- @marker "Build for MountainLion" -->
-	<h4 id='BuildForMountainLion'>Build for MountainLion</h4><ul>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-		<li>update Support scripts<ul>
-			<li class='blurb'>buildCdoc works from Terminal</li>
-			<li>CCDev_Setup.ksh<ul>
-				<li>in addition to .profile, .krsrc, and Environment.plist, create file /etc/launchctl.conf that also defines our environment variables<ul>
-					<li>for now, creates file at CCDev/tmp and instructs user to paste its contents into /private/etc/launchctl.conf</li>
-				</ul></li>
-				<li>git: configure to use FileMerge for diffs</li>
-			</ul></li>
-			<li>tweak CCDev_Setup.ksh, buildCdoc.ksh to remove quotes from some environment paths</li>
-		</ul></li>
-		<li>pass compilation; clear warnings; clear static analysis for each target</li>
-		<li>update all settings for C++ 11, high-resolution artwork</li>
+	<!-- @marker "Workspace Mirrors Project Files" -->
+	<h4 id='workspaceMirrorsFiles'>Workspace Mirrors Project Files</h4><ul>
+		<li class='blurb'>We now have an experience to move source files within an Xcode project and not break the build. Having the Workspace mirror project file structure may now be essential, since some descriptions of dealing with Xcode 4.5's code completion bug recommend removing some workspace file.</li>
 	</ul>
 
 	<!-- @marker "Backups and Volumes" -->
 	<h5 id='BackupsVolumes'>Backups and Volumes</h5><ul>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>buildDoxygen: additional argument path-to-config-file</li>
 		<li>Dev<ul>
 			<li>reimplement <a href="#archive">Archive script</a></li>
 			<li>archive and retire existing obsolete projects; see <a href="#devImport">Import Existing Projects</a></li>
@@ -597,6 +587,22 @@
 	<p>move UserSlates/Accessor.rsrc (Support/UserSlates output; Accessor/Accessor input) to CCDev</p>
 	<p class='tldate'>[UserSlatesCCDev 07/20/2012]</p>
 
+	<!-- @marker "Build for MountainLion" -->
+	<h4 id='BuildForMountainLion'>Build for MountainLion</h4><ul>
+		<li>update Support scripts<ul>
+			<li class='blurb'>buildCdoc works from Terminal</li>
+			<li>CCDev_Setup.ksh<ul>
+				<li>in addition to .profile, .krsrc, and Environment.plist, create file /etc/launchctl.conf that also defines our environment variables<ul>
+					<li>for now, creates file at CCDev/tmp and instructs user to paste its contents into /private/etc/launchctl.conf</li>
+				</ul></li>
+				<li>git: configure to use FileMerge for diffs</li>
+			</ul></li>
+			<li>tweak CCDev_Setup.ksh, buildCdoc.ksh to remove quotes from some environment paths</li>
+		</ul></li>
+		<li>pass compilation; clear warnings; clear static analysis for each target</li>
+		<li>update all settings for C++ 11, high-resolution artwork</li>
+	</ul>
+	
 	<!-- @marker "[end]" -->
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

@@ -160,11 +160,6 @@
 #define _capitalize		Keypress { kc_up, mf_control + mf_shift }
 #define _lowercase		Keypress { kc_down, mf_control + mf_shift }
 #define _breakpoint		Keypress { kc_backslash, mf_command },
-/* xckbbug
-#define	_selword		Sequence{}, Keypress { kc_left, mf_option }, Keypress { kc_right, mf_option + mf_shift }, endSequence{}
-#define	_selline		Sequence{}, Keypress { kc_left, mf_command }, Keypress { kc_down, mf_shift }, endSequence{}
-#define	_capitalize		Sequence{}, ClickMenu { "Edit" }, TypeText { "Format" }, _right, TypeText { "Transformations" }, _right, TypeText { "capitalize" }, _return, endSequence{}
-#define	_lowercase		Sequence{}, ClickMenu { "Edit" }, TypeText { "Format" }, _right, TypeText { "Transformations" }, _right, TypeText { "Make Lower Case" }, _return, endSequence{} */
 #define	_newTab			Keypress { kc_T, mf_command }
 #define	_closeTab		Keypress { kc_W, mf_command }
 #define	_goPanel		Keypress { kc_J, mf_command }

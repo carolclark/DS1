@@ -20,6 +20,11 @@ if [[ ! -n $1 ]] ; then
 	exit 1
 fi
 project=$1
+if [[ ! -n $2 ]] ; then
+	print "missing configuration file path parameter"
+	exit 1
+fi
+configPath=$2
 
 doxygenPath=/Applications/Doxygen.app/Contents/Resources/doxygen
 outputDir=/Users/carolclark/CCDev/Sites/Doxygen/${project}
@@ -31,7 +36,7 @@ if [[ $st > 0 ]] ; then
 fi
 
 #  Run doxygen on the config file
-$doxygenPath "${DEV}/${project}/Doxygen/${project}_doxygen.txt"
+$doxygenPath "${configPath}"
 st=$?
 if [[ $st > 0 ]] ; then
 	print "error while generating Doxygen docs"

@@ -140,7 +140,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "difference", "" },		Sequence{}, TypeText { "git difftool " }, ResSubslate { resid_gitDiff }, endSequence{},
 		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
 		Event { "add files", "" },		Sequence{}, TypeText { "git add " }, ResSubslate { resid_gitAdd }, endSequence{},
-		Event { "show message", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
+		Event { "show message file", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
 		Event { "commit", "" },			Sequence{}, TypeText { "git commit " }, ResSubslate { resid_gitCommit }, endSequence{},
 		Event { "log", "" },			Sequence{}, TypeText { "git log " }, ResSubslate { resid_gitLog }, endSequence{},
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
@@ -150,6 +150,8 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch " }, ResSubslate { resid_gitFetch }, endSequence{},
 		Event { "clean", "" },			Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
 		Event { "Bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_Bisect }, endSequence{},
+		Event { "list tree", "" },		TypeText { "git ls-tree -r " },
+		Event { "show", "" },			TypeText { "git show --pretty=\"format:\" --name-only " },
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "select file", "" },	Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_gitSelectFile }, endSequence{},
 		Event { "reset", "" },			ResSubslate { resid_gitReset },
@@ -249,7 +251,7 @@ resource restype_Slate (resid_gitStash, "") { {
 resource restype_Slate (resid_gitAdd, "") { {
 	Slate { "Add",	{
 		_GitStandards_,
-		Event { "interact", "" },		Sequence{}, TypeText { "--all --interactive" }, _return, ResSubslate { resid_gitAddInteract }, endSequence{},
+		Event { "select", "" },			Sequence{}, TypeText { "--all --interactive" }, _return, ResSubslate { resid_gitAddInteract }, endSequence{},
 		Event { "update", "" }, 		TypeText { "--update" },
 		Event { "all", "" }, 			TypeText { "--all" },
 		Event { "dot", "" },			TypeText { "." },
@@ -316,12 +318,13 @@ resource restype_Slate (resid_gitReflog, "") { {
 #pragma mark 3 -- Tag
 resource restype_Slate (resid_gitTag, "") { {
 	Slate { "tag",	{
-		ExitEvent { "list", "" },		_return,
-		ExitEvent { "push", "" },		Sequence{}, _cancel, TypeText { "git push --tags" }, endSequence{},
-		Event { "make", "" },			Sequence{}, _cancel, TypeText { "# git tag -a 'tagname' -m \"message\"" }, _return, TypeText { "git tag -a "}, endSequence{},
+		ExitEvent { "list", "" },			Sequence{}, Keypress { kc_C, mf_control }, TypeText { "git for-each-ref refs/tags --sort=-taggerdate --format=\"%(objectname:short) %(taggerdate:short) %(refname:short)%09%09%(subject) %(body)\"" }, endSequence{},
+		ExitEvent { "list names	", "" },	_return,
+		Event { "show", "" },				Sequence{}, _cancel, TypeText { "git show --name-status " }, ResSubslate { resid_gitType }, endSequence{},
+		ExitEvent { "push", "" },			Sequence{}, _cancel, TypeText { "git push --tags" }, endSequence{},
+		Event { "make", "" },				Sequence{}, _cancel, TypeText { "# git tag -a 'tagname' -m \"message\"" }, _return, TypeText { "git tag -a "}, endSequence{},
+		Event { "delete", "" },				Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
 		_CurrentBranch_,
-		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "show", "" },			Sequence{}, _cancel, TypeText { "git show --name-status " }, ResSubslate { resid_gitType }, endSequence{}, 
 		_GitStandards_,	
 	} }
 } };
