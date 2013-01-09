@@ -94,6 +94,62 @@
 		67DB22E8169CD82300A6E910 /* UIBrower_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = UIBrower_C9.r; sourceTree = "<group>"; };
 		67DB22E9169CD82300A6E910 /* UMLet_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = UMLet_C9.r; sourceTree = "<group>"; };
 		67DB22EA169CD82300A6E910 /* Xcode_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Xcode_C9.r; sourceTree = "<group>"; };
+		67DB2328169E0A2900A6E910 /* testCCDev.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCCDev.ksh; sourceTree = "<group>"; };
+		67DB2329169E0A2900A6E910 /* testCCDev_Setup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCCDev_Setup.ksh; sourceTree = "<group>"; };
+		67DB232A169E0A2900A6E910 /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
+		67DB232C169E0A2900A6E910 /* Snippet.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = Snippet.applescript; sourceTree = "<group>"; };
+		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
+		67DB232E169E0A2900A6E910 /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_install.ksh; sourceTree = "<group>"; };
+		67DB232F169E0A2900A6E910 /* CCDev_Setup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_Setup.ksh; sourceTree = "<group>"; };
+		67DB2331169E0A2900A6E910 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
+		67DB2333169E0A2900A6E910 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
+		67DB2335169E0A2900A6E910 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
+		67DB2336169E0A2900A6E910 /* errtrap.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errtrap.ksh; sourceTree = "<group>"; };
+		67DB2338169E0A2900A6E910 /* CCDev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev-Info.plist"; sourceTree = "<group>"; };
+		67DB2339169E0A2900A6E910 /* CCDev_Setup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev_Setup-Info.plist"; sourceTree = "<group>"; };
+		67DB233B169E0A2900A6E910 /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
+		67DB233C169E0A2900A6E910 /* buildCdoc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = buildCdoc.ksh; sourceTree = "<group>"; };
+		67DB233D169E0A2900A6E910 /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
+		67DB233E169E0A2900A6E910 /* cleanProjectTarget.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = cleanProjectTarget.ksh; sourceTree = "<group>"; };
+		67DB233F169E0A2900A6E910 /* doxygenBuild.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = doxygenBuild.ksh; sourceTree = "<group>"; };
+		67DB2340169E0A2900A6E910 /* resultCodes.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = resultCodes.ksh; sourceTree = "<group>"; };
+		67DB2344169E0A2900A6E910 /* gen_test_results.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gen_test_results.sh; sourceTree = "<group>"; };
+		67DB2345169E0A2900A6E910 /* which */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = which; sourceTree = "<group>"; };
+		67DB2347169E0A2900A6E910 /* CHANGES-2.1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CHANGES-2.1.txt"; sourceTree = "<group>"; };
+		67DB2348169E0A2900A6E910 /* coding_standards.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = coding_standards.txt; sourceTree = "<group>"; };
+		67DB2349169E0A2900A6E910 /* contributors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = contributors.txt; sourceTree = "<group>"; };
+		67DB234A169E0A2900A6E910 /* design_doc.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = design_doc.txt; sourceTree = "<group>"; };
+		67DB234B169E0A2900A6E910 /* LGPL-2.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "LGPL-2.1"; sourceTree = "<group>"; };
+		67DB234C169E0A2900A6E910 /* README.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = README.html; sourceTree = "<group>"; };
+		67DB234D169E0A2900A6E910 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		67DB234E169E0A2900A6E910 /* RELEASE_NOTES-2.1.0.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.0.txt"; sourceTree = "<group>"; };
+		67DB234F169E0A2900A6E910 /* RELEASE_NOTES-2.1.1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.1.txt"; sourceTree = "<group>"; };
+		67DB2350169E0A2900A6E910 /* RELEASE_NOTES-2.1.2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.2.txt"; sourceTree = "<group>"; };
+		67DB2351169E0A2900A6E910 /* RELEASE_NOTES-2.1.3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.3.txt"; sourceTree = "<group>"; };
+		67DB2352169E0A2900A6E910 /* RELEASE_NOTES-2.1.4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.4.txt"; sourceTree = "<group>"; };
+		67DB2353169E0A2900A6E910 /* RELEASE_NOTES-2.1.5.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.5.txt"; sourceTree = "<group>"; };
+		67DB2354169E0A2900A6E910 /* RELEASE_NOTES-2.1.6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.6.txt"; sourceTree = "<group>"; };
+		67DB2355169E0A2900A6E910 /* rst2html.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = rst2html.css; sourceTree = "<group>"; };
+		67DB2356169E0A2900A6E910 /* shunit2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = shunit2.html; sourceTree = "<group>"; };
+		67DB2357169E0A2900A6E910 /* shunit2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2.txt; sourceTree = "<group>"; };
+		67DB2358169E0A2900A6E910 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		67DB235A169E0A2900A6E910 /* equality_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = equality_test.sh; sourceTree = "<group>"; };
+		67DB235B169E0A2900A6E910 /* lineno_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = lineno_test.sh; sourceTree = "<group>"; };
+		67DB235C169E0A2900A6E910 /* math.inc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.pascal; path = math.inc; sourceTree = "<group>"; };
+		67DB235D169E0A2900A6E910 /* math_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = math_test.sh; sourceTree = "<group>"; };
+		67DB235E169E0A2900A6E910 /* mkdir_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = mkdir_test.sh; sourceTree = "<group>"; };
+		67DB235F169E0A2900A6E910 /* party_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = party_test.sh; sourceTree = "<group>"; };
+		67DB2361169E0A2900A6E910 /* shflags */ = {isa = PBXFileReference; lastKnownFileType = text; path = shflags; sourceTree = "<group>"; };
+		67DB2362169E0A2900A6E910 /* shlib */ = {isa = PBXFileReference; lastKnownFileType = text; path = shlib; sourceTree = "<group>"; };
+		67DB2363169E0A2900A6E910 /* versions */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = versions; sourceTree = "<group>"; };
+		67DB2365169E0A2900A6E910 /* shunit2 */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2; sourceTree = "<group>"; };
+		67DB2366169E0A2900A6E910 /* shunit2_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test.sh; sourceTree = "<group>"; };
+		67DB2367169E0A2900A6E910 /* shunit2_test_asserts.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_asserts.sh; sourceTree = "<group>"; };
+		67DB2368169E0A2900A6E910 /* shunit2_test_failures.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_failures.sh; sourceTree = "<group>"; };
+		67DB2369169E0A2900A6E910 /* shunit2_test_helpers */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2_test_helpers; sourceTree = "<group>"; };
+		67DB236A169E0A2900A6E910 /* shunit2_test_macros.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_macros.sh; sourceTree = "<group>"; };
+		67DB236B169E0A2900A6E910 /* shunit2_test_misc.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_misc.sh; sourceTree = "<group>"; };
+		67DB236C169E0A2900A6E910 /* shunit2_test_standalone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_standalone.sh; sourceTree = "<group>"; };
 		67F480D815AF2792004CD4E1 /* frontWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = frontWindow.applescript; path = ../Xcode/AppleScripts/frontWindow.applescript; sourceTree = "<group>"; };
 		67F480D915AF2792004CD4E1 /* viewCdoc.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = viewCdoc.applescript; path = ../Xcode/AppleScripts/viewCdoc.applescript; sourceTree = "<group>"; };
 		67F480DA15AF2792004CD4E1 /* viewDoxygen.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = viewDoxygen.applescript; path = ../Xcode/AppleScripts/viewDoxygen.applescript; sourceTree = "<group>"; };
@@ -124,6 +180,7 @@
 		6769244B141EB818005D3E68 = {
 			isa = PBXGroup;
 			children = (
+				67DB2326169E0A2900A6E910 /* Developer */,
 				67DB22CA169CD82300A6E910 /* UserSlates */,
 				67A02809160132D900A3EF78 /* windowShort.applescript */,
 				67A0280A160132D900A3EF78 /* windowTall.applescript */,
@@ -283,6 +340,181 @@
 				67DB22EA169CD82300A6E910 /* Xcode_C9.r */,
 			);
 			path = Slates;
+			sourceTree = "<group>";
+		};
+		67DB2326169E0A2900A6E910 /* Developer */ = {
+			isa = PBXGroup;
+			children = (
+				67DB232E169E0A2900A6E910 /* CCDev_install.ksh */,
+				67DB232F169E0A2900A6E910 /* CCDev_Setup.ksh */,
+				67DB2327169E0A2900A6E910 /* _Tests */,
+				67DB232B169E0A2900A6E910 /* AppleScripts */,
+				67DB2330169E0A2900A6E910 /* Doxygen */,
+				67DB2332169E0A2900A6E910 /* Environment */,
+				67DB2334169E0A2900A6E910 /* Functions */,
+				67DB2337169E0A2900A6E910 /* plist */,
+				67DB233A169E0A2900A6E910 /* Scripts */,
+				67DB2341169E0A2900A6E910 /* ThirdParty */,
+			);
+			path = Developer;
+			sourceTree = "<group>";
+		};
+		67DB2327169E0A2900A6E910 /* _Tests */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2328169E0A2900A6E910 /* testCCDev.ksh */,
+				67DB2329169E0A2900A6E910 /* testCCDev_Setup.ksh */,
+				67DB232A169E0A2900A6E910 /* testCcInstall.ksh */,
+			);
+			path = _Tests;
+			sourceTree = "<group>";
+		};
+		67DB232B169E0A2900A6E910 /* AppleScripts */ = {
+			isa = PBXGroup;
+			children = (
+				67DB232C169E0A2900A6E910 /* Snippet.applescript */,
+				67DB232D169E0A2900A6E910 /* Snippets.txt */,
+			);
+			path = AppleScripts;
+			sourceTree = "<group>";
+		};
+		67DB2330169E0A2900A6E910 /* Doxygen */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2331169E0A2900A6E910 /* Default.doxygen */,
+			);
+			path = Doxygen;
+			sourceTree = "<group>";
+		};
+		67DB2332169E0A2900A6E910 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2333169E0A2900A6E910 /* environment.plist */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		67DB2334169E0A2900A6E910 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2335169E0A2900A6E910 /* ccInstall.ksh */,
+				67DB2336169E0A2900A6E910 /* errtrap.ksh */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		67DB2337169E0A2900A6E910 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2338169E0A2900A6E910 /* CCDev-Info.plist */,
+				67DB2339169E0A2900A6E910 /* CCDev_Setup-Info.plist */,
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
+		67DB233A169E0A2900A6E910 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				67DB233B169E0A2900A6E910 /* archive.ksh */,
+				67DB233C169E0A2900A6E910 /* buildCdoc.ksh */,
+				67DB233D169E0A2900A6E910 /* ccBackup.ksh */,
+				67DB233E169E0A2900A6E910 /* cleanProjectTarget.ksh */,
+				67DB233F169E0A2900A6E910 /* doxygenBuild.ksh */,
+				67DB2340169E0A2900A6E910 /* resultCodes.ksh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		67DB2341169E0A2900A6E910 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2342169E0A2900A6E910 /* shunit */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		67DB2342169E0A2900A6E910 /* shunit */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2343169E0A2900A6E910 /* bin */,
+				67DB2346169E0A2900A6E910 /* doc */,
+				67DB2359169E0A2900A6E910 /* examples */,
+				67DB2360169E0A2900A6E910 /* lib */,
+				67DB2364169E0A2900A6E910 /* src */,
+			);
+			path = shunit;
+			sourceTree = "<group>";
+		};
+		67DB2343169E0A2900A6E910 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2344169E0A2900A6E910 /* gen_test_results.sh */,
+				67DB2345169E0A2900A6E910 /* which */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		67DB2346169E0A2900A6E910 /* doc */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2347169E0A2900A6E910 /* CHANGES-2.1.txt */,
+				67DB2348169E0A2900A6E910 /* coding_standards.txt */,
+				67DB2349169E0A2900A6E910 /* contributors.txt */,
+				67DB234A169E0A2900A6E910 /* design_doc.txt */,
+				67DB234B169E0A2900A6E910 /* LGPL-2.1 */,
+				67DB234C169E0A2900A6E910 /* README.html */,
+				67DB234D169E0A2900A6E910 /* README.txt */,
+				67DB234E169E0A2900A6E910 /* RELEASE_NOTES-2.1.0.txt */,
+				67DB234F169E0A2900A6E910 /* RELEASE_NOTES-2.1.1.txt */,
+				67DB2350169E0A2900A6E910 /* RELEASE_NOTES-2.1.2.txt */,
+				67DB2351169E0A2900A6E910 /* RELEASE_NOTES-2.1.3.txt */,
+				67DB2352169E0A2900A6E910 /* RELEASE_NOTES-2.1.4.txt */,
+				67DB2353169E0A2900A6E910 /* RELEASE_NOTES-2.1.5.txt */,
+				67DB2354169E0A2900A6E910 /* RELEASE_NOTES-2.1.6.txt */,
+				67DB2355169E0A2900A6E910 /* rst2html.css */,
+				67DB2356169E0A2900A6E910 /* shunit2.html */,
+				67DB2357169E0A2900A6E910 /* shunit2.txt */,
+				67DB2358169E0A2900A6E910 /* TODO.txt */,
+			);
+			path = doc;
+			sourceTree = "<group>";
+		};
+		67DB2359169E0A2900A6E910 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				67DB235A169E0A2900A6E910 /* equality_test.sh */,
+				67DB235B169E0A2900A6E910 /* lineno_test.sh */,
+				67DB235C169E0A2900A6E910 /* math.inc */,
+				67DB235D169E0A2900A6E910 /* math_test.sh */,
+				67DB235E169E0A2900A6E910 /* mkdir_test.sh */,
+				67DB235F169E0A2900A6E910 /* party_test.sh */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		67DB2360169E0A2900A6E910 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2361169E0A2900A6E910 /* shflags */,
+				67DB2362169E0A2900A6E910 /* shlib */,
+				67DB2363169E0A2900A6E910 /* versions */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		67DB2364169E0A2900A6E910 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				67DB2365169E0A2900A6E910 /* shunit2 */,
+				67DB2366169E0A2900A6E910 /* shunit2_test.sh */,
+				67DB2367169E0A2900A6E910 /* shunit2_test_asserts.sh */,
+				67DB2368169E0A2900A6E910 /* shunit2_test_failures.sh */,
+				67DB2369169E0A2900A6E910 /* shunit2_test_helpers */,
+				67DB236A169E0A2900A6E910 /* shunit2_test_macros.sh */,
+				67DB236B169E0A2900A6E910 /* shunit2_test_misc.sh */,
+				67DB236C169E0A2900A6E910 /* shunit2_test_standalone.sh */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,7 +749,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "cd ..; CCDev/CCDev_Setup.ksh";
+			shellScript = "cd ${DEV}/Support/BuildSupport; Developer/CCDev_Setup.ksh";
 			showEnvVarsInLog = 0;
 		};
 		67BA94E1145091B1005BF0E9 /* ShellScript */ = {
@@ -845,7 +1077,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "CCDev_Setup/CCDev_Setup-Info.plist";
+				INFOPLIST_FILE = "Developer/plist/CCDev_Setup-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -872,7 +1104,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "CCDev_Setup/CCDev_Setup-Info.plist";
+				INFOPLIST_FILE = "Developer/plist/CCDev_Setup-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
