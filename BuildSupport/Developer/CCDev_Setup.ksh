@@ -103,7 +103,7 @@ function gitPrintExclude {
 
 #^	shunitInstall
 function shunitInstall {
-	src=${srcdir}/../ThirdParty/shunit
+	src=${srcdir}/ThirdParty/shunit
 	dst=${CCDev}/shunit
 	mkdir -p ${dst}
 	if [[ "${?}" != "0" ]] ; then
@@ -240,8 +240,8 @@ fi
 # test CCDev_Setup
 typeset -i failcnt=0
 
-print "== CCDev/_Tests/testCCDev_Setup.ksh"
-result=$(CCDev/_Tests/testCCDev_Setup.ksh)
+print "== Developer/_Tests/testCCDev_Setup.ksh"
+result=$(Developer/_Tests/testCCDev_Setup.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi
@@ -249,8 +249,8 @@ print "${result}"
 
 if [[ "${failcnt}" = 0 ]] ; then
 	print "***"
-	print "*** If 'sudo vi' from Terminal makes sense:"
-	print "***		To finish setting up your environment, copy the contents of file ${CCDev}/tmp/launchd.conf. Then sudo vi /private/etc/launchd.conf, and paste clipboard contents into that file. ***"
+	print "*** If you are comfortable editing a file with sudo from Terminal:"
+	print "***		To finish setting up your environment, copy the contents of file ${CCDev}/tmp/launchd.conf. Then sudo edit /private/etc/launchd.conf, and paste clipboard contents into that file. ***"
 	print "*** If not, ask for help."
 	print "***"
 fi

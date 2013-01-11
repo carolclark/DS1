@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 NAME='ccInstall -- installation script and supporting functions'
@@ -50,7 +50,8 @@ function setPaths {
 	basePath="${projectPath%/*}"
 	project="${projectPath##/*/}"
 	sourcePath="${projectPath}/${target}"
-	targetScript="${sourcePath}/${target}_install.ksh"
+targetScript="${sourcePath}/CCDev_install.ksh"		# ***
+#	targetScript="${sourcePath}/${target##*/}_install.ksh"
 	lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
 }
 

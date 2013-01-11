@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
-#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -26,7 +26,7 @@ trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
 projectPath="${DEV}/Support"
-target="CCDev"
+target="BuildSupport/Developer"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -49,6 +49,10 @@ function getSubtargetDestination {
 		"Doxygen" )			# files for reference only
 			;&
 		"CCDev_Setup.ksh" )	# custom setup script CCDev_Setup.ksh
+			;&
+		"ThirdParty" )		# used by CCDev_Setup.ksh
+			;&
+		"plist" )			# used by Xcode build system
 			;&
 		"Environment" )		# handled by CCDev_Setup.ksh
 			;;

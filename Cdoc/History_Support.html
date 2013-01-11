@@ -98,6 +98,13 @@
 		<li>target UserSlates: workspace mirrors file structure<ul>
 			<li>move Slate resources from UserSlates to BuildSupport/UserSlates/Slates; move UserSlates/UserSlates-Info.plist to BuildSupport/UserSlates/OtherSources</li>
 		</ul></li>
+		<li>targets CCDev_Setup, CCDev =&gt; Developer_Setup, Developer<ul>
+			<li>move Developer files from CCDev and ThirdParty info Developer</li>
+			<li>update build scripts to match<ul>
+				<li>temporary changes to allow for CCDev, CCDev_Setup scripts not yet renamed: ccInstall.ksh: custom setting for script name; testCcInstall.ksh: comment out test for Developer script name</li>
+			</ul></li>
+			<li>undo temporary changes to ccInstall.ksh, testCcInstall.ksh</li>
+		</ul></li>
 	</ul>
 
 	<!-- @marker "Backups and Volumes" -->
