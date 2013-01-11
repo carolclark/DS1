@@ -11,29 +11,30 @@
 
 #^ CCDev_install.ksh
 testCCDevInstall() {
-	str=$(${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh)
+	script=${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh
+	str=$(${script})
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
 
-	str=$(${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh --getSubtargetDestination)
+	str=$(${script} --getSubtargetDestination)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination (no args): " $RC_MissingArgument ${st}
-	str=$(${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh --getSubtargetDestination xxx)
+	str=$(${script} --getSubtargetDestination xxx)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination xxx: " $RC_InputNotHandled ${st}
 
-	str=$(${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh --handleFile)
+	str=$(${script} --handleFile)
 	st=$?
 	assertEquals "$LINENO: --handleFile (no args): " $RC_MissingArgument ${st}	
 	
 	targetScript=$(ccInstall --getTargetScript "${DEV}/Support" "BuildSupport/Developer")
-	assertEquals "$LINENO: incorrect target script: " "${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh" "${targetScript}"
+	assertEquals "$LINENO: incorrect target script: " "${script}" "${targetScript}"
 	# test Functions/ccInstall.ksh
 	dest=$("${targetScript}" --getSubtargetDestination Functions)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination Functions: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination Functions" "${CCDev}/func" "${dest}"
-	fl=$(${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh --handleFile "Functions" "ccInstall.ksh" "${dest}")
+	fl=$(${script} --handleFile "Functions" "ccInstall.ksh" "${dest}")
 	st=$?
 	assertEquals "$LINENO: --handleFile failed with code $st" 0 $st
 	set -A copyInfo
@@ -41,7 +42,7 @@ testCCDevInstall() {
 		copyInfo+=("${ln}")
 	done < "${fl}"
 	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
-	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
+	assertTrue2 "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
 	assertEquals "$LINENO: incorrect action: " "copy" "${copyInfo[0]}"
 	assertEquals "$LINENO: incorrect sourceForCopy: " "${DEV}/Support/BuildSupport/Developer/Functions/ccInstall.ksh" "${copyInfo[1]}"
 	assertEquals "$LINENO: incorrect destinationForCopy: " "${CCDev}/func/ccInstall" "${copyInfo[2]}"
@@ -51,7 +52,7 @@ testCCDevInstall() {
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination Environment: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination Environment" "" "${dest}"
-	fl=$(${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh --handleFile "Environment" "kshrc.ksh" "${dest}")
+	fl=$(${script} --handleFile "Environment" "kshrc.ksh" "${dest}")
 	st=$?
 	assertEquals "$LINENO: --handleFile failed with code $st" 0 $st
 	set -A copyInfo
