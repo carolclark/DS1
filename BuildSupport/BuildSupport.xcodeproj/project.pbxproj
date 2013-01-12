@@ -94,19 +94,13 @@
 		67DB22E8169CD82300A6E910 /* UIBrower_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = UIBrower_C9.r; sourceTree = "<group>"; };
 		67DB22E9169CD82300A6E910 /* UMLet_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = UMLet_C9.r; sourceTree = "<group>"; };
 		67DB22EA169CD82300A6E910 /* Xcode_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Xcode_C9.r; sourceTree = "<group>"; };
-		67DB2328169E0A2900A6E910 /* testCCDev.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCCDev.ksh; sourceTree = "<group>"; };
-		67DB2329169E0A2900A6E910 /* testCCDev_Setup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCCDev_Setup.ksh; sourceTree = "<group>"; };
 		67DB232A169E0A2900A6E910 /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
 		67DB232C169E0A2900A6E910 /* Snippet.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = Snippet.applescript; sourceTree = "<group>"; };
 		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
-		67DB232E169E0A2900A6E910 /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_install.ksh; sourceTree = "<group>"; };
-		67DB232F169E0A2900A6E910 /* CCDev_Setup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_Setup.ksh; sourceTree = "<group>"; };
 		67DB2331169E0A2900A6E910 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
 		67DB2333169E0A2900A6E910 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		67DB2335169E0A2900A6E910 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67DB2336169E0A2900A6E910 /* errtrap.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errtrap.ksh; sourceTree = "<group>"; };
-		67DB2338169E0A2900A6E910 /* CCDev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev-Info.plist"; sourceTree = "<group>"; };
-		67DB2339169E0A2900A6E910 /* CCDev_Setup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev_Setup-Info.plist"; sourceTree = "<group>"; };
 		67DB233B169E0A2900A6E910 /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
 		67DB233C169E0A2900A6E910 /* buildCdoc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = buildCdoc.ksh; sourceTree = "<group>"; };
 		67DB233D169E0A2900A6E910 /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
@@ -150,6 +144,12 @@
 		67DB236A169E0A2900A6E910 /* shunit2_test_macros.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_macros.sh; sourceTree = "<group>"; };
 		67DB236B169E0A2900A6E910 /* shunit2_test_misc.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_misc.sh; sourceTree = "<group>"; };
 		67DB236C169E0A2900A6E910 /* shunit2_test_standalone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_standalone.sh; sourceTree = "<group>"; };
+		67DB240A16A1CBE500A6E910 /* Developer_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Developer_install.ksh; sourceTree = "<group>"; };
+		67DB240B16A1CBE500A6E910 /* Developer_Setup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Developer_Setup.ksh; sourceTree = "<group>"; };
+		67DB240C16A1CBF900A6E910 /* testDeveloper_Setup.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testDeveloper_Setup.ksh; sourceTree = "<group>"; };
+		67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testDeveloper.ksh; sourceTree = "<group>"; };
+		67DB240E16A1CC0C00A6E910 /* Developer_Setup-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Developer_Setup-Info.plist"; sourceTree = "<group>"; };
+		67DB240F16A1CC0C00A6E910 /* Developer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Developer-Info.plist"; sourceTree = "<group>"; };
 		67F480D815AF2792004CD4E1 /* frontWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = frontWindow.applescript; path = ../Xcode/AppleScripts/frontWindow.applescript; sourceTree = "<group>"; };
 		67F480D915AF2792004CD4E1 /* viewCdoc.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = viewCdoc.applescript; path = ../Xcode/AppleScripts/viewCdoc.applescript; sourceTree = "<group>"; };
 		67F480DA15AF2792004CD4E1 /* viewDoxygen.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = viewDoxygen.applescript; path = ../Xcode/AppleScripts/viewDoxygen.applescript; sourceTree = "<group>"; };
@@ -345,8 +345,8 @@
 		67DB2326169E0A2900A6E910 /* Developer */ = {
 			isa = PBXGroup;
 			children = (
-				67DB232E169E0A2900A6E910 /* CCDev_install.ksh */,
-				67DB232F169E0A2900A6E910 /* CCDev_Setup.ksh */,
+				67DB240A16A1CBE500A6E910 /* Developer_install.ksh */,
+				67DB240B16A1CBE500A6E910 /* Developer_Setup.ksh */,
 				67DB2327169E0A2900A6E910 /* _Tests */,
 				67DB232B169E0A2900A6E910 /* AppleScripts */,
 				67DB2330169E0A2900A6E910 /* Doxygen */,
@@ -362,8 +362,8 @@
 		67DB2327169E0A2900A6E910 /* _Tests */ = {
 			isa = PBXGroup;
 			children = (
-				67DB2328169E0A2900A6E910 /* testCCDev.ksh */,
-				67DB2329169E0A2900A6E910 /* testCCDev_Setup.ksh */,
+				67DB240C16A1CBF900A6E910 /* testDeveloper_Setup.ksh */,
+				67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */,
 				67DB232A169E0A2900A6E910 /* testCcInstall.ksh */,
 			);
 			path = _Tests;
@@ -406,8 +406,8 @@
 		67DB2337169E0A2900A6E910 /* plist */ = {
 			isa = PBXGroup;
 			children = (
-				67DB2338169E0A2900A6E910 /* CCDev-Info.plist */,
-				67DB2339169E0A2900A6E910 /* CCDev_Setup-Info.plist */,
+				67DB240E16A1CC0C00A6E910 /* Developer_Setup-Info.plist */,
+				67DB240F16A1CC0C00A6E910 /* Developer-Info.plist */,
 			);
 			path = plist;
 			sourceTree = "<group>";
@@ -583,9 +583,9 @@
 			productReference = 67A00C4714A287B6002456DB /* Cdoc.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		67AA8010144F3DAD00FCCDC9 /* CCDev_Setup */ = {
+		67AA8010144F3DAD00FCCDC9 /* Developer_Setup */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 67AA801A144F3DAD00FCCDC9 /* Build configuration list for PBXNativeTarget "CCDev_Setup" */;
+			buildConfigurationList = 67AA801A144F3DAD00FCCDC9 /* Build configuration list for PBXNativeTarget "Developer_Setup" */;
 			buildPhases = (
 				67AA801D144F3DE400FCCDC9 /* ShellScript */,
 			);
@@ -593,14 +593,14 @@
 			);
 			dependencies = (
 			);
-			name = CCDev_Setup;
+			name = Developer_Setup;
 			productName = CCDev_Setup;
 			productReference = 67AA8011144F3DAD00FCCDC9 /* CCDev_Setup.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		67BA94D314508D19005BF0E9 /* CCDev */ = {
+		67BA94D314508D19005BF0E9 /* Developer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 67BA94DF14508D19005BF0E9 /* Build configuration list for PBXNativeTarget "CCDev" */;
+			buildConfigurationList = 67BA94DF14508D19005BF0E9 /* Build configuration list for PBXNativeTarget "Developer" */;
 			buildPhases = (
 				67BA94E1145091B1005BF0E9 /* ShellScript */,
 			);
@@ -608,7 +608,7 @@
 			);
 			dependencies = (
 			);
-			name = CCDev;
+			name = Developer;
 			productName = CCDev;
 			productReference = 67BA94D414508D19005BF0E9 /* CCDev.bundle */;
 			productType = "com.apple.product-type.bundle";
@@ -634,8 +634,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				67BA94D314508D19005BF0E9 /* CCDev */,
-				67AA8010144F3DAD00FCCDC9 /* CCDev_Setup */,
+				67BA94D314508D19005BF0E9 /* Developer */,
+				67AA8010144F3DAD00FCCDC9 /* Developer_Setup */,
 				67A00C4614A287B6002456DB /* Cdoc */,
 				67692457141EB921005D3E68 /* Xcode */,
 				671C4823159CFF3800214A9E /* BBEdit */,
@@ -1217,7 +1217,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67AA801A144F3DAD00FCCDC9 /* Build configuration list for PBXNativeTarget "CCDev_Setup" */ = {
+		67AA801A144F3DAD00FCCDC9 /* Build configuration list for PBXNativeTarget "Developer_Setup" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67AA801B144F3DAD00FCCDC9 /* Debug */,
@@ -1226,7 +1226,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67BA94DF14508D19005BF0E9 /* Build configuration list for PBXNativeTarget "CCDev" */ = {
+		67BA94DF14508D19005BF0E9 /* Build configuration list for PBXNativeTarget "Developer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67BA94DD14508D19005BF0E9 /* Debug */,
