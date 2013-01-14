@@ -240,8 +240,8 @@ fi
 # test CCDev_Setup
 typeset -i failcnt=0
 
-print "== Developer/_Tests/testCCDev_Setup.ksh"
-result=$(Developer/_Tests/testCCDev_Setup.ksh)
+print "== Developer/_Tests/testDeveloper_Setup.ksh"
+result=$(Developer/_Tests/testDeveloper_Setup.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi

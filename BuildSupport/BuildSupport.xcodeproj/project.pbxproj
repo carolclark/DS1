@@ -56,11 +56,11 @@
 		67A00C4B14A287B6002456DB /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
 		67A02809160132D900A3EF78 /* windowShort.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = windowShort.applescript; path = ../Xcode/AppleScripts/windowShort.applescript; sourceTree = "<group>"; };
 		67A0280A160132D900A3EF78 /* windowTall.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = windowTall.applescript; path = ../Xcode/AppleScripts/windowTall.applescript; sourceTree = "<group>"; };
-		67AA8011144F3DAD00FCCDC9 /* CCDev_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCDev_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AA8015144F3DAD00FCCDC9 /* CCDev_Setup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev_Setup-Info.plist"; sourceTree = "<group>"; };
 		67AA8017144F3DAD00FCCDC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67AA8019144F3DAD00FCCDC9 /* CCDev_Setup-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCDev_Setup-Prefix.pch"; sourceTree = "<group>"; };
-		67BA94D414508D19005BF0E9 /* CCDev.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCDev.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67BA94D414508D19005BF0E9 /* Developer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA94D814508D19005BF0E9 /* CCDev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev-Info.plist"; sourceTree = "<group>"; };
 		67BA94DA14508D19005BF0E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67BA94DC14508D19005BF0E9 /* CCDev-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCDev-Prefix.pch"; sourceTree = "<group>"; };
@@ -204,8 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				67692458141EB921005D3E68 /* Xcode.bundle */,
-				67AA8011144F3DAD00FCCDC9 /* CCDev_Setup.bundle */,
-				67BA94D414508D19005BF0E9 /* CCDev.bundle */,
+				67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */,
+				67BA94D414508D19005BF0E9 /* Developer.bundle */,
 				67A00C4714A287B6002456DB /* Cdoc.bundle */,
 				671C4824159CFF3800214A9E /* BBEdit.bundle */,
 				674BF6BA15B7287A0093786D /* UserSlates.bundle */,
@@ -292,8 +292,8 @@
 		67DB22CA169CD82300A6E910 /* UserSlates */ = {
 			isa = PBXGroup;
 			children = (
-				67DB22CB169CD82300A6E910 /* OtherSources */,
 				67DB22CD169CD82300A6E910 /* Slates */,
+				67DB22CB169CD82300A6E910 /* OtherSources */,
 			);
 			path = UserSlates;
 			sourceTree = "<group>";
@@ -595,7 +595,7 @@
 			);
 			name = Developer_Setup;
 			productName = CCDev_Setup;
-			productReference = 67AA8011144F3DAD00FCCDC9 /* CCDev_Setup.bundle */;
+			productReference = 67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		67BA94D314508D19005BF0E9 /* Developer */ = {
@@ -610,7 +610,7 @@
 			);
 			name = Developer;
 			productName = CCDev;
-			productReference = 67BA94D414508D19005BF0E9 /* CCDev.bundle */;
+			productReference = 67BA94D414508D19005BF0E9 /* Developer.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -749,7 +749,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "cd ${DEV}/Support/BuildSupport; Developer/CCDev_Setup.ksh";
+			shellScript = "cd ${DEV}/Support/BuildSupport; Developer/Developer_Setup.ksh";
 			showEnvVarsInLog = 0;
 		};
 		67BA94E1145091B1005BF0E9 /* ShellScript */ = {
@@ -1077,7 +1077,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Developer/plist/CCDev_Setup-Info.plist";
+				INFOPLIST_FILE = "Developer/plist/Developer_Setup-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1104,7 +1104,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Developer/plist/CCDev_Setup-Info.plist";
+				INFOPLIST_FILE = "Developer/plist/Developer_Setup-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1133,7 +1133,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Developer/plist/CCDev-Info.plist";
+				INFOPLIST_FILE = "Developer/plist/Developer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1160,7 +1160,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Developer/plist/CCDev-Info.plist";
+				INFOPLIST_FILE = "Developer/plist/Developer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67BA94D314508D19005BF0E9"
-               BuildableName = "CCDev.bundle"
+               BuildableName = "Developer.bundle"
                BlueprintName = "Developer"
                ReferencedContainer = "container:BuildSupport.xcodeproj">
             </BuildableReference>

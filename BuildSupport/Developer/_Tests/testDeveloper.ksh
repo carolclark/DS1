@@ -9,9 +9,9 @@
 
 . "${CCDev}/bin/resultCodes.ksh"
 
-#^ CCDev_install.ksh
-testCCDevInstall() {
-	script=${DEV}/Support/BuildSupport/Developer/CCDev_install.ksh
+#^ Developer_install.ksh
+testDeveloperInstall() {
+	script=${DEV}/Support/BuildSupport/Developer/Developer_install.ksh
 	str=$(${script})
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
@@ -42,7 +42,7 @@ testCCDevInstall() {
 		copyInfo+=("${ln}")
 	done < "${fl}"
 	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
-	assertTrue2 "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
+	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
 	assertEquals "$LINENO: incorrect action: " "copy" "${copyInfo[0]}"
 	assertEquals "$LINENO: incorrect sourceForCopy: " "${DEV}/Support/BuildSupport/Developer/Functions/ccInstall.ksh" "${copyInfo[1]}"
 	assertEquals "$LINENO: incorrect destinationForCopy: " "${CCDev}/func/ccInstall" "${copyInfo[2]}"

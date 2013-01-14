@@ -44,17 +44,17 @@ function getSubtargetDestination {
 		"Functions" )
 			destinationFolder="${CCDev}/func"
 			;;
-		"AppleScripts" )	# files for future use
+		"AppleScripts" )		# files for future use
 			;&
-		"Doxygen" )			# files for reference only
+		"Doxygen" )				# files for reference only
 			;&
-		"CCDev_Setup.ksh" )	# custom setup script CCDev_Setup.ksh
+		"plist" )				# used by Xcode build system
 			;&
-		"ThirdParty" )		# used by CCDev_Setup.ksh
+		"Developer_Setup.ksh" )	# custom setup script Developer_Setup.ksh
 			;&
-		"plist" )			# used by Xcode build system
+		"ThirdParty" )			# handled by Developer_Setup.ksh
 			;&
-		"Environment" )		# handled by CCDev_Setup.ksh
+		"Environment" )			# handled by Developer_Setup.ksh
 			;;
 		* )
 			print "source folder ${projectPath}/${target}/${subtarget} not handled"
