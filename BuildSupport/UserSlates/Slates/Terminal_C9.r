@@ -283,7 +283,7 @@ resource restype_Slate (resid_gitCommit, "") { {
 		_GitStandards_,
 		Event { "amend", "" },			TypeText { "--amend " },
 		Event { "message", "" },		Sequence{}, TypeText { "-m \"" }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "file", "" },			Sequence{}, TypeText { "-F \"${CCDev}/tmp/gitmessage.txt" }, Keypress { kc_quote, mf_shift }, endSequence{},
+		Event { "message file", "" },	Sequence{}, TypeText { "-F \"${CCDev}/tmp/gitmessage.txt" }, Keypress { kc_quote, mf_shift }, endSequence{},
 	} }
 } };
 

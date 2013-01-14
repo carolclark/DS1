@@ -26,7 +26,7 @@ trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
 projectPath="${DEV}/Support"
-target="Xcode"
+target="BuildSupport/Applications/Xcode"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -49,6 +49,8 @@ function getSubtargetDestination {
 		"Templates" )
 			destinationFolder="${HOME}/Library/Developer/Xcode/Templates"
 			;;
+		"_plist" )
+			;;	#used by Xcode build process
 		"_Tests" )
 			;;	#handled elsewhere
 		* )
@@ -75,7 +77,7 @@ function handleFile {
 		fname="${filepath%.applescript}.scpt"
 		action="copy"
 
-		sourceForCopy="${BUILT_PRODUCTS_DIR}/Xcode.bundle/Contents/Resources/${fname}"
+		sourceForCopy="${CONFIGURATION_BUILD_DIR}/Xcode.bundle/Contents/Resources/${fname}"
 		destinationForCopy="${destinationFolder}/${fname}"
 	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"

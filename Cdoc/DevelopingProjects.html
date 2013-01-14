@@ -65,7 +65,7 @@
 		<li><b>Test Targets</b> from Cocoa Unit Test Bundle<ul>
 			<li>Logic Tests include files for tested code in the target; Application Tests do not</li>
 			<li><b>Application Tests</b>: set up tests to run inside Application<ul>
-				<li>BUNDLE_LOADER = $(BUILT_PRODUCTS_DIR)/&lt;ProjectName&gt;.app/Contents/MacOS/&lt;ProjectName&gt;</li>
+				<li>BUNDLE_LOADER = $(BUILT_PRODUCTS_DIR(?CONFIGURATION_BUILD_DIR))/&lt;ProjectName&gt;.app/Contents/MacOS/&lt;ProjectName&gt;</li>
 				<li>TEST_HOST = $(BUNDLE_LOADER)</li>
 			</ul></li>
 		</ul></li>
@@ -151,7 +151,7 @@
 	<li>Add Logic and App Test Targets<ul>
 		<li>for each: add a new target from Cocoa Unit Testing Bundle template; mark scheme "shared"; add to &lt;Target&gt; scheme's Test specification</li>
 		<li>for App Tests, also:<ul>
-			<li>set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
+			<li>set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR(?CONFIGURATION_BUILD_DIR))/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
 			<li>add test case testAppDelegate (testAppDelegate#)</li>
 		</ul></li>
 		<li>for Logic Tests, also:<ul>
