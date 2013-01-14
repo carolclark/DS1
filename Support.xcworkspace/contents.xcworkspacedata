@@ -166,26 +166,6 @@
    </Group>
    <Group
       location = "container:"
-      name = "BBEdit">
-      <FileRef
-         location = "group:BBEdit/BBEdit_install.ksh">
-      </FileRef>
-      <Group
-         location = "container:BBEdit/AppleScripts"
-         name = "AppleScripts">
-         <FileRef
-            location = "group:BBEditUtil.applescript">
-         </FileRef>
-         <FileRef
-            location = "group:CheckLinks.applescript">
-         </FileRef>
-         <FileRef
-            location = "group:CheckSyntax.applescript">
-         </FileRef>
-      </Group>
-   </Group>
-   <Group
-      location = "container:"
       name = "6 Personal">
       <FileRef
          location = "group:Personal/ArbonneStruct.numbers">

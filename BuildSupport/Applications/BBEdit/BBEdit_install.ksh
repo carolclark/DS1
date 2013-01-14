@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 6/28/12.
-#  Copyright 2012 C & C Software, Inc. All rights reserved.
+#  Copyright 2012-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -26,7 +26,7 @@ trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
 projectPath="${DEV}/Support"
-target="BBEdit"
+target="BuildSupport/Applications/BBEdit"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -41,7 +41,9 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${HOME}/Library/Application Support/BBEdit/Scripts"
 			;;
-	* )
+		"_plist" )
+			;;	# used by Xcode build system
+		* )
 			print "source folder ${projectPath}/${target}/${subtarget} not handled"
 			return $RC_InputNotHandled
 			;;
@@ -65,7 +67,7 @@ function handleFile {
 		fname="${filepath%.applescript}.scpt"
 		action="copy"
 
-		sourceForCopy="${BUILT_PRODUCTS_DIR}/BBEdit.bundle/Contents/Resources/${fname}"
+		sourceForCopy="${CONFIGURATION_BUILD_DIR}/BBEdit.bundle/Contents/Resources/${fname}"
 		destinationForCopy="${destinationFolder}/${fname}"
 	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
@@ -98,6 +100,7 @@ if [[ $# = 0 ]] ; then
 fi
 case "${1}" in
 	"--getSubtargetDestination" )
+		print "${2}"
 		msg=$(getSubtargetDestination "${2}")
 		es=$?
 		print "${msg}"

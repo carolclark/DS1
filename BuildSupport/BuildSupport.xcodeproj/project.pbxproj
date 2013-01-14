@@ -38,16 +38,13 @@
 		67DD773C16A4B48500BECCD5 /* viewDoxygen.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD76D216A4AF9300BECCD5 /* viewDoxygen.applescript */; };
 		67DD773D16A4B48500BECCD5 /* windowShort.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD76D316A4AF9300BECCD5 /* windowShort.applescript */; };
 		67DD773E16A4B48500BECCD5 /* windowTall.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD76D416A4AF9300BECCD5 /* windowTall.applescript */; };
-		67F480E115AF37C3004CD4E1 /* BBEditUtil.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480DE15AF37C3004CD4E1 /* BBEditUtil.applescript */; };
-		67F480E215AF37C3004CD4E1 /* CheckLinks.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480DF15AF37C3004CD4E1 /* CheckLinks.applescript */; };
-		67F480E315AF37C3004CD4E1 /* CheckSyntax.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67F480E015AF37C3004CD4E1 /* CheckSyntax.applescript */; };
+		67DD774716A4C4FB00BECCD5 /* BBEditUtil.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD774316A4C2BA00BECCD5 /* BBEditUtil.applescript */; };
+		67DD774816A4C4FB00BECCD5 /* CheckLinks.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD774416A4C2BA00BECCD5 /* CheckLinks.applescript */; };
+		67DD774916A4C4FB00BECCD5 /* CheckSyntax.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		671C4824159CFF3800214A9E /* BBEdit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEdit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		671C4828159CFF3800214A9E /* BBEdit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BBEdit-Info.plist"; sourceTree = "<group>"; };
-		671C482A159CFF3800214A9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		671C482C159CFF3800214A9E /* BBEdit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBEdit-Prefix.pch"; sourceTree = "<group>"; };
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67692458141EB921005D3E68 /* Xcode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xcode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -214,41 +211,21 @@
 		67DD773516A4AF9300BECCD5 /* viewInBrowser.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = viewInBrowser.workflow; sourceTree = "<group>"; };
 		67DD773716A4AF9300BECCD5 /* Xcode_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Xcode_install.ksh; sourceTree = "<group>"; };
 		67DD773916A4B04000BECCD5 /* Xcode-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Xcode-Info.plist"; sourceTree = "<group>"; };
-		67F480DE15AF37C3004CD4E1 /* BBEditUtil.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = BBEditUtil.applescript; path = ../BBEdit/AppleScripts/BBEditUtil.applescript; sourceTree = "<group>"; };
-		67F480DF15AF37C3004CD4E1 /* CheckLinks.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = CheckLinks.applescript; path = ../BBEdit/AppleScripts/CheckLinks.applescript; sourceTree = "<group>"; };
-		67F480E015AF37C3004CD4E1 /* CheckSyntax.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; name = CheckSyntax.applescript; path = ../BBEdit/AppleScripts/CheckSyntax.applescript; sourceTree = "<group>"; };
+		67DD774116A4C2BA00BECCD5 /* BBEdit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BBEdit-Info.plist"; sourceTree = "<group>"; };
+		67DD774316A4C2BA00BECCD5 /* BBEditUtil.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = BBEditUtil.applescript; sourceTree = "<group>"; };
+		67DD774416A4C2BA00BECCD5 /* CheckLinks.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckLinks.applescript; sourceTree = "<group>"; };
+		67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckSyntax.applescript; sourceTree = "<group>"; };
+		67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBEdit_install.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		671C4826159CFF3800214A9E /* BBEdit */ = {
-			isa = PBXGroup;
-			children = (
-				671C4827159CFF3800214A9E /* Supporting Files */,
-			);
-			path = BBEdit;
-			sourceTree = "<group>";
-		};
-		671C4827159CFF3800214A9E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				671C4828159CFF3800214A9E /* BBEdit-Info.plist */,
-				671C4829159CFF3800214A9E /* InfoPlist.strings */,
-				671C482C159CFF3800214A9E /* BBEdit-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		6769244B141EB818005D3E68 = {
 			isa = PBXGroup;
 			children = (
 				67DB2326169E0A2900A6E910 /* Developer */,
 				67DD76CB16A4AF9300BECCD5 /* Applications */,
 				67DB22CA169CD82300A6E910 /* UserSlates */,
-				67F480DE15AF37C3004CD4E1 /* BBEditUtil.applescript */,
-				67F480DF15AF37C3004CD4E1 /* CheckLinks.applescript */,
-				67F480E015AF37C3004CD4E1 /* CheckSyntax.applescript */,
 				67A00C4914A287B6002456DB /* Cdoc */,
-				671C4826159CFF3800214A9E /* BBEdit */,
 				6769245A141EB921005D3E68 /* Frameworks */,
 				67692459141EB921005D3E68 /* Products */,
 			);
@@ -523,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				67DD76CC16A4AF9300BECCD5 /* Xcode */,
+				67DD773F16A4C2BA00BECCD5 /* BBEdit */,
 			);
 			path = Applications;
 			sourceTree = "<group>";
@@ -887,6 +865,34 @@
 			path = _plist;
 			sourceTree = "<group>";
 		};
+		67DD773F16A4C2BA00BECCD5 /* BBEdit */ = {
+			isa = PBXGroup;
+			children = (
+				67DD774016A4C2BA00BECCD5 /* _plist */,
+				67DD774216A4C2BA00BECCD5 /* AppleScripts */,
+				67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */,
+			);
+			path = BBEdit;
+			sourceTree = "<group>";
+		};
+		67DD774016A4C2BA00BECCD5 /* _plist */ = {
+			isa = PBXGroup;
+			children = (
+				67DD774116A4C2BA00BECCD5 /* BBEdit-Info.plist */,
+			);
+			path = _plist;
+			sourceTree = "<group>";
+		};
+		67DD774216A4C2BA00BECCD5 /* AppleScripts */ = {
+			isa = PBXGroup;
+			children = (
+				67DD774316A4C2BA00BECCD5 /* BBEditUtil.applescript */,
+				67DD774416A4C2BA00BECCD5 /* CheckLinks.applescript */,
+				67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */,
+			);
+			path = AppleScripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1062,7 +1068,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "ccInstall ${DEV}/Support BBEdit";
+			shellScript = "ccInstall ${DEV}/Support BuildSupport/Applications/BBEdit";
 			showEnvVarsInLog = 0;
 		};
 		674BF6F715B72ADB0093786D /* ShellScript */ = {
@@ -1143,9 +1149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67F480E115AF37C3004CD4E1 /* BBEditUtil.applescript in Sources */,
-				67F480E215AF37C3004CD4E1 /* CheckLinks.applescript in Sources */,
-				67F480E315AF37C3004CD4E1 /* CheckSyntax.applescript in Sources */,
+				67DD774716A4C4FB00BECCD5 /* BBEditUtil.applescript in Sources */,
+				67DD774816A4C4FB00BECCD5 /* CheckLinks.applescript in Sources */,
+				67DD774916A4C4FB00BECCD5 /* CheckSyntax.applescript in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1162,17 +1168,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		671C4829159CFF3800214A9E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				671C482A159CFF3800214A9E /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		671C482D159CFF3800214A9E /* Debug */ = {
@@ -1195,7 +1190,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "BBEdit/BBEdit-Info.plist";
+				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEdit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1222,7 +1217,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "BBEdit/BBEdit-Info.plist";
+				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEdit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
