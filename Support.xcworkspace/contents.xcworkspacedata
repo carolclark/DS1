@@ -5,116 +5,6 @@
       location = "group:BuildSupport/BuildSupport.xcodeproj">
    </FileRef>
    <Group
-      location = "container:"
-      name = "0 Documentation">
-      <FileRef
-         location = "group:Cdoc/History_Support.html">
-      </FileRef>
-      <Group
-         location = "container:"
-         name = "Cdoc">
-         <FileRef
-            location = "group:Cdoc/Support.html">
-         </FileRef>
-         <FileRef
-            location = "group:Cdoc/Development.html">
-         </FileRef>
-         <FileRef
-            location = "group:Cdoc/DevelopingProjects.html">
-         </FileRef>
-         <FileRef
-            location = "group:Cdoc/Git.html">
-         </FileRef>
-         <FileRef
-            location = "group:Cdoc/Glossary_Support.html">
-         </FileRef>
-         <FileRef
-            location = "group:Cdoc/Tools.html">
-         </FileRef>
-         <FileRef
-            location = "group:Cdoc/Cdoc.html">
-         </FileRef>
-         <FileRef
-            location = "group:Cdoc/Personal.html">
-         </FileRef>
-         <Group
-            location = "container:"
-            name = "_tech">
-            <Group
-               location = "container:"
-               name = "css">
-               <FileRef
-                  location = "group:Cdoc/_tech/css/default.css">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/css/history.css">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/css/technical.css">
-               </FileRef>
-            </Group>
-            <Group
-               location = "container:"
-               name = "img">
-               <FileRef
-                  location = "group:Cdoc/_tech/img/space.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucds_1.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucds_2.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucds_3.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucds_4.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucds_5.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucgl_h.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucgl_p.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucgl_s.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucgl_u.tiff">
-               </FileRef>
-               <FileRef
-                  location = "group:Cdoc/_tech/img/ucgl_x.tiff">
-               </FileRef>
-            </Group>
-         </Group>
-      </Group>
-      <Group
-         location = "container:"
-         name = "DocGraphics">
-         <FileRef
-            location = "group:DocGraphics/UseCaseImages.pages">
-         </FileRef>
-      </Group>
-   </Group>
-   <Group
-      location = "container:"
-      name = "Dash">
-      <FileRef
-         location = "group:Dash/snippets.dash">
-      </FileRef>
-   </Group>
-   <Group
-      location = "container:"
-      name = "6 Personal">
-      <FileRef
-         location = "group:Personal/ArbonneStruct.numbers">
-      </FileRef>
-   </Group>
-   <Group
       location = "group:Website"
       name = "Website">
       <Group
@@ -169,6 +59,101 @@
       </Group>
       <FileRef
          location = "group:htpasswd">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:OtherDocuments"
+      name = "OtherDocuments">
+      <FileRef
+         location = "group:ArbonneStruct.numbers">
+      </FileRef>
+      <FileRef
+         location = "group:UseCaseImages.pages">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Cdoc"
+      name = "Cdoc">
+      <Group
+         location = "group:_tech"
+         name = "_tech">
+         <Group
+            location = "group:css"
+            name = "css">
+            <FileRef
+               location = "group:default.css">
+            </FileRef>
+            <FileRef
+               location = "group:history.css">
+            </FileRef>
+            <FileRef
+               location = "group:technical.css">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:img"
+            name = "img">
+            <FileRef
+               location = "group:space.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucds_1.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucds_2.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucds_3.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucds_4.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucds_5.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucgl_h.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucgl_p.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucgl_s.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucgl_u.tiff">
+            </FileRef>
+            <FileRef
+               location = "group:ucgl_x.tiff">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:Cdoc.html">
+      </FileRef>
+      <FileRef
+         location = "group:DevelopingProjects.html">
+      </FileRef>
+      <FileRef
+         location = "group:Development.html">
+      </FileRef>
+      <FileRef
+         location = "group:Git.html">
+      </FileRef>
+      <FileRef
+         location = "group:Glossary_Support.html">
+      </FileRef>
+      <FileRef
+         location = "group:History_Support.html">
+      </FileRef>
+      <FileRef
+         location = "group:Personal.html">
+      </FileRef>
+      <FileRef
+         location = "group:Support.html">
+      </FileRef>
+      <FileRef
+         location = "group:Tools.html">
       </FileRef>
    </Group>
 </Workspace>
