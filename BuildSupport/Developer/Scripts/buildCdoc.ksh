@@ -16,25 +16,34 @@ buildCdoc projectName
 trapString='errtrap $0 $LINENO'
 trap "$trapString" ERR
 
-#^ 3 === buildsource functions
-#^ lastbuilt
-function lastbuilt {
-	print "${buildsource.derivedDirectory}.lastbuilt"
+scriptpath=""
+target=""
+basePath=""
+project=""
+sourcePath=""
+lastbuilt=""
+
+#^ 2 === Paths
+#^ setPaths
+function setPaths {
+	projectPath="${1}"
+	target="${2}"
+	basePath="${projectPath%/*}"
+	project="${projectPath##/*/}"
+	sourcePath="${projectPath}/${target}"
+	targetScript="${sourcePath}/${target##*/}_install.ksh"
+	lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
+
+	destination=${CCDev}/Sites/TechnicalDocs/${project}
 }
 
-#^ buildsource_clean
-function buildsource_clean {
-	msg="$(buildsource_validate)"
-	if [[ "$?" > 0 ]] ; then
-		print "*** invalid buildsource: $msg"
-		return 1
-	fi
-
-	print "Clean file $(lastbuilt)?"
+#^ 3 === clean
+function clean {
+	print "Clean file ${lastbuilt}?"
 	select action in yes no ; do
 		case ${action} in
 			yes )
-				rm "$(lastbuilt)"
+				rm "${lastbuilt}"
 				;;
 			no )
 				print "target not cleaned -- user cancelled"
@@ -45,59 +54,16 @@ function buildsource_clean {
 	return 0
 }
 
-#^ buildsource_validate
-function buildsource_validate {
-	srcdir="${buildsource.sourceDirectory}"
-	dstdir="${buildsource.destinationDirectory}"
-	derived="${buildsource.derivedDirectory}"
-	msg=""
-	if [[ -n "${srcdir}" ]] ; then
-		if [[ -e "${srcdir}" ]] ; then
-			if [[ ! -d "${srcdir}" ]] ; then
-				msg="specified source directory ${srcdir} exists and is not a directory"
-			fi
-		else
-			msg="source directory ${srcdir} does not exist"
-		fi
-	else
-		msg="source directory undefined"
-	fi
-	if [[ ! -n "${msg}" ]] ; then
-		if [[ -e "${dstdir}" ]] ; then
-			if [[ ! -d "${dstdir}" ]] ; then
-				msg="specified destination directory ${dstdir} exists and is not a directory"
-			fi
-		fi
-	fi
-	if [[ ! -n "${msg}" ]] ; then
-		if [[ -e "${derived}" ]] ; then
-			if [[ ! -d "${derived}" ]] ; then
-				msg="specified derived directory ${derived} exists and is not a directory"
-			fi
-		fi
-	fi
-	if [[ -n "${msg}" ]] ; then
-		print "${msg}"
-		return 1
-	fi	
-}
-
-#^ buildsource_process
-function buildsource_process {
+#^ process
+function process {
 	processFunction="${1?process function not specified}"
 
-	buildsource_validate
-	if [[ "$?" > 0 ]] ; then
-		print "*** invalid buildsource"
-		return 1
-	fi
-	
 	flist="${CCDev}/tmp/flist"
 	fs=0
 	typeset -i errcnt=0
-	cd "${buildsource.sourceDirectory}"
-	if [[ -e "$(lastbuilt)" ]] ; then
-		find . -path '*/.svn' -prune -o -type f -newer $(lastbuilt) | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.build$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
+	cd "${sourcePath}"
+	if [[ -e "${lastbuilt}" ]] ; then
+		find . -path '*/.svn' -prune -o -type f -newer ${lastbuilt} | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.build$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
 	else
 		find . -path '*/.svn' -prune -o -type f | grep -v '/\.svn$' | grep -v '\.DS_Store$' | grep -v '.build$' | grep -v '_test.ksh$' | sed 's|\./||' > "${flist}"
 	fi
@@ -123,13 +89,13 @@ function buildsource_process {
 		print "${msg}"
 	done < "${flist}"
 
-	print $(dirname ${buildsource.sourceDirectory})
-	processCustomBuilds ${buildsource.sourceDirectory}
+	print $(dirname ${sourcePath})
+	processCustomBuilds ${sourcePath}
 	errcnt+="${fs}"
 
 	if [[ ${errcnt} = 0 ]] ; then
-		mkdir -p "${buildsource.derivedDirectory}"
-		print $(basename $(lastbuilt)) $(date) > $(lastbuilt)
+		mkdir -p "${lastbuilt%${target}.lastbuilt}"
+		print $(basename ${lastbuilt}) $(date) > ${lastbuilt}
 		print "build succeeded"
 		fs=0
 	else
@@ -150,7 +116,7 @@ function installCdoc {
 
 	fs=0
 	tarname="${item}"										# default filename with relative path
-	set -A destinations "${buildsource.destinationDirectory}"	# default destination list			
+	set -A destinations "${destination}"	# default destination list			
 	if [[ ${item/#_/} != ${item/\/_/} ]] ; then	# if removing initial "_" or any "/_" changes value
 #^ 6 custom destinations
 		# check for resource folders with custom destinations
@@ -170,10 +136,10 @@ function installCdoc {
 			fs="${?}"
 		done
 	else										# html file
-		mkdir -p $(dirname ${buildsource.destinationDirectory}/${item})
-		translateCdoc "${buildsource.sourceDirectory}/${item}" "${buildsource.destinationDirectory}/${item}"
+		mkdir -p $(dirname ${destination}/${item})
+		translateCdoc "${sourcePath}/${item}" "${destination}/${item}"
 		if [[ "${?}" > 0 ]] ; then
-			print "*** could not translate ${buildsource.sourceDirectory}/${item} to ${buildsource.destinationDirectory}/${item}"
+			print "*** could not translate ${sourcePath}/${item} to ${destination}/${item}"
 			fs=1
 		fi
 	fi
@@ -191,9 +157,9 @@ function copySource {
 		print "*** could not create directory ${dstdir}"
 		return 1
 	fi
-	cp "${buildsource.sourceDirectory}/${fl}" "${dstdir}"
+	cp "${sourcePath}/${fl}" "${dstdir}"
 	if [[ "${?}" > 0 ]] ; then
-		print "*** could not copy ${buildsource.sourceDirectory}/${fl} to ${dstdir}"
+		print "*** could not copy ${sourcePath}/${fl} to ${dstdir}"
 		return 1
 	fi
 }
@@ -202,7 +168,7 @@ function copySource {
 function processCustomBuilds {
 	flist="${CCDev}/tmp/flist"
 	fs=0
-	cd "${buildsource.sourceDirectory}"
+	cd "${sourcePath}"
 	find . -name "*.build" | sed 's|\./||' > "${flist}"
 	if [[ "$?" > 0 ]] ; then
 		print "*** could not write custom buildfile list"
@@ -213,7 +179,7 @@ function processCustomBuilds {
 		print -n "custom script ${fl}: "
 		
 		trap '' ERR
-		"${buildsource.sourceDirectory}/${fl}" "$(dirname ${buildsource.sourceDirectory})"  "$(lastbuilt)" > "${CCDev}/tmp/errmsg"
+		"${sourcePath}/${fl}" "$(dirname ${sourcePath})"  "${lastbuilt}" > "${CCDev}/tmp/errmsg"
 		fs="${?}"
 		trap "$trapString" ERR
 		cat "${CCDev}/tmp/errmsg"
@@ -287,11 +253,13 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 project=${1:?"usage: buildCdoc projectName"}
 action=${2:-all}
 
+projectPath="${DEV}/${project}"
+target="Cdoc"
+setPaths "${projectPath}" "${target}"
+			
 # Builds $project/Cdoc at ~/CCDev/Sites/TechnicalDocs/$project
-buildsource_Cdoc=(sourceDirectory=${DEV}/${project}/Cdoc destinationDirectory=${CCDev}/Sites/TechnicalDocs/${project} derivedDirectory=${CCDev}/build/${project}/Cdoc subtarget="")
 
 st=0
-nameref buildsource=buildsource_Cdoc	
-buildsource_process installCdoc
+process installCdoc
 st="${?}"
 exit ${st}

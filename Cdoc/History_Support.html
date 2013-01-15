@@ -115,6 +115,13 @@
 		<li>Website: folder candcsoft contains site structure; hidden password file stored separately</li>
 		<li>move Dash, Finder support folders into BuildSupport/Applications</li>
 		<li>move ArbonneStruct.numbers, UseCaseImages.pages to OtherDocument</li>
+		<li>refactor Cdoc build to fit within new project structure<ul>
+			<li>buildCdoc: refactor to remove buildsource variables</li>
+			<li>ccInstall: extend to handle Cdoc builds<ul>
+				<li>extract function --copyFiles</li>
+				<li>add function --translateCdoc</li>
+			</ul></li>
+		</ul></li>
 	</ul>
 
 	<!-- @marker "Backups and Volumes" -->

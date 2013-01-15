@@ -51,7 +51,7 @@ function setPaths {
 	project="${projectPath##/*/}"
 	sourcePath="${projectPath}/${target}"
 	targetScript="${sourcePath}/${target##*/}_install.ksh"
-		lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
+	lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
 }
 
 #^ getPath
