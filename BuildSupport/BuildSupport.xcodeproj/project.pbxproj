@@ -868,9 +868,9 @@
 		67DD773F16A4C2BA00BECCD5 /* BBEdit */ = {
 			isa = PBXGroup;
 			children = (
-				67DD774016A4C2BA00BECCD5 /* _plist */,
-				67DD774216A4C2BA00BECCD5 /* AppleScripts */,
 				67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */,
+				67DD774216A4C2BA00BECCD5 /* AppleScripts */,
+				67DD774016A4C2BA00BECCD5 /* _plist */,
 			);
 			path = BBEdit;
 			sourceTree = "<group>";
