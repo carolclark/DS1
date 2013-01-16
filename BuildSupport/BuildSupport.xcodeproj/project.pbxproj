@@ -49,7 +49,6 @@
 		67692458141EB921005D3E68 /* Xcode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xcode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		67A00C4714A287B6002456DB /* Cdoc.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cdoc.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		67A00C4B14A287B6002456DB /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
 		67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA94D414508D19005BF0E9 /* Developer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DB22CC169CD82300A6E910 /* UserSlates-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UserSlates-Info.plist"; sourceTree = "<group>"; };
@@ -219,16 +218,42 @@
 		67DD777716A4D6A700BECCD5 /* snippets.dash */ = {isa = PBXFileReference; lastKnownFileType = file; path = snippets.dash; sourceTree = "<group>"; };
 		67DD777916A4D6A700BECCD5 /* toBBEdit.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		67DD777A16A4D6A700BECCD5 /* toTEXT.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
+		67DD777E16A71F5700BECCD5 /* default.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
+		67DD777F16A71F5700BECCD5 /* history.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = history.css; sourceTree = "<group>"; };
+		67DD778016A71F5700BECCD5 /* technical.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = technical.css; sourceTree = "<group>"; };
+		67DD778216A71F5700BECCD5 /* space.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = space.tiff; sourceTree = "<group>"; };
+		67DD778316A71F5700BECCD5 /* ucds_1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_1.tiff; sourceTree = "<group>"; };
+		67DD778416A71F5700BECCD5 /* ucds_2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_2.tiff; sourceTree = "<group>"; };
+		67DD778516A71F5700BECCD5 /* ucds_3.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_3.tiff; sourceTree = "<group>"; };
+		67DD778616A71F5700BECCD5 /* ucds_4.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_4.tiff; sourceTree = "<group>"; };
+		67DD778716A71F5700BECCD5 /* ucds_5.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_5.tiff; sourceTree = "<group>"; };
+		67DD778816A71F5700BECCD5 /* ucgl_h.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_h.tiff; sourceTree = "<group>"; };
+		67DD778916A71F5700BECCD5 /* ucgl_p.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_p.tiff; sourceTree = "<group>"; };
+		67DD778A16A71F5700BECCD5 /* ucgl_s.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_s.tiff; sourceTree = "<group>"; };
+		67DD778B16A71F5700BECCD5 /* ucgl_u.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_u.tiff; sourceTree = "<group>"; };
+		67DD778C16A71F5700BECCD5 /* ucgl_x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_x.tiff; sourceTree = "<group>"; };
+		67DD778D16A71F5700BECCD5 /* Cdoc_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cdoc_install.ksh; sourceTree = "<group>"; };
+		67DD778F16A71F5700BECCD5 /* Cdoc.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Cdoc.html; sourceTree = "<group>"; };
+		67DD779016A71F5700BECCD5 /* DevelopingProjects.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = DevelopingProjects.html; sourceTree = "<group>"; };
+		67DD779116A71F5700BECCD5 /* Development.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Development.html; sourceTree = "<group>"; };
+		67DD779216A71F5700BECCD5 /* Git.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Git.html; sourceTree = "<group>"; };
+		67DD779316A71F5700BECCD5 /* Glossary_Support.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Glossary_Support.html; sourceTree = "<group>"; };
+		67DD779416A71F5700BECCD5 /* History_Support.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = History_Support.html; path = Cdoc/html/History_Support.html; sourceTree = "<group>"; };
+		67DD779516A71F5700BECCD5 /* Personal.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Personal.html; sourceTree = "<group>"; };
+		67DD779616A71F5700BECCD5 /* Support.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Support.html; sourceTree = "<group>"; };
+		67DD779716A71F5700BECCD5 /* Tools.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
+		67DD779A16A71F5700BECCD5 /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		6769244B141EB818005D3E68 = {
 			isa = PBXGroup;
 			children = (
+				67DD779416A71F5700BECCD5 /* History_Support.html */,
+				67DD777B16A71F5700BECCD5 /* Cdoc */,
 				67DB2326169E0A2900A6E910 /* Developer */,
 				67DD76CB16A4AF9300BECCD5 /* Applications */,
 				67DB22CA169CD82300A6E910 /* UserSlates */,
-				67A00C4914A287B6002456DB /* Cdoc */,
 				6769245A141EB921005D3E68 /* Frameworks */,
 				67692459141EB921005D3E68 /* Products */,
 			);
@@ -253,22 +278,6 @@
 				6769245B141EB921005D3E68 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		67A00C4914A287B6002456DB /* Cdoc */ = {
-			isa = PBXGroup;
-			children = (
-				67A00C4A14A287B6002456DB /* Supporting Files */,
-			);
-			path = Cdoc;
-			sourceTree = "<group>";
-		};
-		67A00C4A14A287B6002456DB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				67A00C4B14A287B6002456DB /* Cdoc-Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		67DB22CA169CD82300A6E910 /* UserSlates */ = {
@@ -915,6 +924,85 @@
 			path = Finder;
 			sourceTree = "<group>";
 		};
+		67DD777B16A71F5700BECCD5 /* Cdoc */ = {
+			isa = PBXGroup;
+			children = (
+				67DD777C16A71F5700BECCD5 /* _tech */,
+				67DD778D16A71F5700BECCD5 /* Cdoc_install.ksh */,
+				67DD778E16A71F5700BECCD5 /* html */,
+				67DD779816A71F5700BECCD5 /* Resources */,
+			);
+			path = Cdoc;
+			sourceTree = "<group>";
+		};
+		67DD777C16A71F5700BECCD5 /* _tech */ = {
+			isa = PBXGroup;
+			children = (
+				67DD777D16A71F5700BECCD5 /* css */,
+				67DD778116A71F5700BECCD5 /* img */,
+			);
+			path = _tech;
+			sourceTree = "<group>";
+		};
+		67DD777D16A71F5700BECCD5 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				67DD777E16A71F5700BECCD5 /* default.css */,
+				67DD777F16A71F5700BECCD5 /* history.css */,
+				67DD778016A71F5700BECCD5 /* technical.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		67DD778116A71F5700BECCD5 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				67DD778216A71F5700BECCD5 /* space.tiff */,
+				67DD778316A71F5700BECCD5 /* ucds_1.tiff */,
+				67DD778416A71F5700BECCD5 /* ucds_2.tiff */,
+				67DD778516A71F5700BECCD5 /* ucds_3.tiff */,
+				67DD778616A71F5700BECCD5 /* ucds_4.tiff */,
+				67DD778716A71F5700BECCD5 /* ucds_5.tiff */,
+				67DD778816A71F5700BECCD5 /* ucgl_h.tiff */,
+				67DD778916A71F5700BECCD5 /* ucgl_p.tiff */,
+				67DD778A16A71F5700BECCD5 /* ucgl_s.tiff */,
+				67DD778B16A71F5700BECCD5 /* ucgl_u.tiff */,
+				67DD778C16A71F5700BECCD5 /* ucgl_x.tiff */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		67DD778E16A71F5700BECCD5 /* html */ = {
+			isa = PBXGroup;
+			children = (
+				67DD778F16A71F5700BECCD5 /* Cdoc.html */,
+				67DD779016A71F5700BECCD5 /* DevelopingProjects.html */,
+				67DD779116A71F5700BECCD5 /* Development.html */,
+				67DD779216A71F5700BECCD5 /* Git.html */,
+				67DD779316A71F5700BECCD5 /* Glossary_Support.html */,
+				67DD779516A71F5700BECCD5 /* Personal.html */,
+				67DD779616A71F5700BECCD5 /* Support.html */,
+				67DD779716A71F5700BECCD5 /* Tools.html */,
+			);
+			path = html;
+			sourceTree = "<group>";
+		};
+		67DD779816A71F5700BECCD5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				67DD779916A71F5700BECCD5 /* plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		67DD779916A71F5700BECCD5 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				67DD779A16A71F5700BECCD5 /* Cdoc-Info.plist */,
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1133,7 +1221,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildCdoc Support";
+			shellScript = "#buildCdoc Support\nccInstall ${DEV}/Support BuildSupport/Cdoc";
 			showEnvVarsInLog = 0;
 		};
 		67AA801D144F3DE400FCCDC9 /* ShellScript */ = {
@@ -1392,7 +1480,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Cdoc/Cdoc-Info.plist";
+				INFOPLIST_FILE = "Cdoc/Resources/plist/Cdoc-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1419,7 +1507,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Cdoc/Cdoc-Info.plist";
+				INFOPLIST_FILE = "Cdoc/Resources/plist/Cdoc-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
