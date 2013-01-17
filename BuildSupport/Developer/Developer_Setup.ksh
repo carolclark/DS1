@@ -72,6 +72,9 @@ function envLaunchctl {
 	if [[ ${setTerminalPrompt} = "yes" ]] ; then
 		print "setenv PS1 \"${LOGNAME} ! $ \""
 	fi
+	if [[ ${setTerminalEditMode} = "yes" ]] ; then
+		print "setenv VISUAL \"$(whereis emacs)\""
+	fi
 	if [[ ${installEnvironmentPlist} = "yes" ]] ; then
 		print "setenv SHUnit ${CCDev}/shunit/src/shunit2"
 	fi
@@ -151,6 +154,7 @@ devFolder=${HOME}/Dev
 ccdevFolder=/Users/${user}/.ccdev
 installEnvironmentPlist="yes"
 setTerminalPrompt="no"
+setTerminalEditMode="yes"
 installSHUnit="no"
 
 case "${user}" in

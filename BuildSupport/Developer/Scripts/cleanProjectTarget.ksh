@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 11/11/11.
-#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -26,22 +26,5 @@ fi
 project="${1}"
 target="${2}"
 
-case "${target}" in
-	Cdoc )
-		print -n "== cleaning ${project}/${target}... "
-		lastbuilt="${CCDev}/build/${project}/Cdoc.lastbuilt"
-		if [[ -e "${lastbuilt}" ]] ; then
-			rm "${lastbuilt}"
-			st="$?"
-			if [[ ${st} > 0 ]] ; then
-				print "*** error ${st} attempting to remove file ${lastbuilt}"
-				return ${st}
-			fi
-		fi
-		print "succeeded"
-		;;
-	* )
-		ccInstall "${DEV}/${project}" "${target}" -c
-		;;
-esac
+ccInstall "${DEV}/${project}" "${target}" -c
 	
