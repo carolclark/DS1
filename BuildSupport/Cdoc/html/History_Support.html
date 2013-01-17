@@ -124,32 +124,13 @@
 		</ul></li>
 		<li>move Cdoc files into BuildSupport folder<ul>
 			<li>move existing files; move .html documents into a separate folder</li>
-			<li>
-stash@{0}:
-M	BuildSupport/BuildSupport.xcodeproj/project.pbxproj
-D	BuildSupport/Cdoc/Cdoc_install.ksh
-A	BuildSupport/Cdoc/Resources/plist/Cdoc-Info.plist
-M	BuildSupport/Cdoc/html/History_Support.html
-D	BuildSupport/Cdoc/plist/Cdoc-Info.plist
-M	√BuildSupport/Developer/Developer_Setup.ksh
-M	√BuildSupport/Developer/Developer_install.ksh
-M	BuildSupport/Developer/Functions/ccInstall.ksh
-M	√BuildSupport/Developer/Scripts/cleanProjectTarget.ksh
-M	√BuildSupport/UserSlates/Slates/Terminal_C9.r
-stash@{1}
-A	BuildSupport/Cdoc/Resources/plist/Cdoc-Info.plist
-M	BuildSupport/Cdoc/html/History_Support.html
-M	√BuildSupport/Developer/Developer_Setup.ksh
-M	√BuildSupport/Developer/Developer_install.ksh
-M	BuildSupport/Developer/Functions/ccInstall.ksh
-M	√BuildSupport/UserSlates/Slates/Terminal_C9.r
-</li>
 			<li>Developer_Setup.ksh: Terminal editing mode: emacs</li>
 			<li>update cleanProjectTarget.ksh for new Cdoc structure</li>
 			<li>ccInstall.ksh: clean up return values and output</li>
 			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>add file Cdoc_install.ksh</li>
-			<li>build from new location using ccInstall</li>
+			<li>build Cdoc from new location using ccInstall</li>
+			<li>move Finder's script folder into BuildSupport/Applications</li>
 		</ul></li>
 		<li>add Cdoc_install template</li>
 	</ul>

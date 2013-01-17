@@ -140,8 +140,19 @@ function copyFile {
 
 #^ translateCdoc
 function translateCdoc {
-	in="${1}"
-	out="${2}"
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+		in="${1}"
+		out="${2}"
+	else
+		print "USAGE: ccInstall --translateCdoc in out"
+		return $RC_MissingArgument
+	fi
+	mkdir -p $(dirname "${out}")
+	st=$?
+	if [[ $st > 0 ]] ; then
+		print "*** could not create directory $(dirname ${destinationForCopy})"
+		return ${st}
+	fi
 	sed '
 		s|<!-- @navhead "\([^"][^"]*\)" "\([^"][^"]*\)" "\([^"][^"]*\)" -->|<div class="navhead"><a name="Top"></a><table class="navhead"><col class="navhead_c1" /><tr> <td>[<a href="\1">\2</a>]</td> <td >[<a href="\3#Contents">History</a>]</td><td class="right">[<a href="#Contents">Contents</a>]</td></tr></table></div>|
 		s|<!-- @vershead "\([^"][^"]*\)" "\([^"][^"]*\)" "\([^"][^"]*\)" -->|<div class="navhead"><a name="Top"></a><table class="navhead"><col class="navhead_c1" /><tr> <td>[<a href="\1">\2</a>]</td> <td >[<a href="#\3">Version \3</a>]</td><td class="right">[<a href="#Contents">Contents</a>]</td></tr></table></div>|
@@ -379,6 +390,8 @@ function processActions {
 						if [[ ${st} > 0 ]] ; then
 							failcnt="${failcnt}"+1
 							print "*** ${msg}"
+						else
+							print "succeeded"
 						fi
 						;;
 					"translateCdoc" )
@@ -387,6 +400,8 @@ function processActions {
 						if [[ ${st} > 0 ]] ; then
 							failcnt="${failcnt}"+1
 							print "*** ${msg}"
+						else
+							print "succeeded"
 						fi
 						;;
 					* )
