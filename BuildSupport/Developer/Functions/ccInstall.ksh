@@ -88,7 +88,9 @@ function updateLastbuilt {
 		return ${st}
 	fi
 	mkdir -p "$(dirname ${lastbuilt})"
-	print $(basename ${lastbuilt}) $(date) > ${lastbuilt}	
+	st=$?
+	print $(basename ${lastbuilt}) $(date) > ${lastbuilt}
+	return ${st}
 }
 
 #^ clearLastbuilt
@@ -106,12 +108,12 @@ function clearLastbuilt {
 			print "*** error ${st} attempting to remove file ${lastbuilt}"
 			return ${st}
 		fi
-	fi	
+	fi
+	return ${st}
 }
 
 #^ copyFile
 function copyFile {
-	fs=0
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		sourceForCopy="${1}"
 		destinationForCopy="${2}"
@@ -123,19 +125,17 @@ function copyFile {
 	mkdir -p $(dirname "${destinationForCopy}")
 	st=$?
 	if [[ $st > 0 ]] ; then
-		fs="${fs}"+1
 		print "*** could not create directory $(dirname ${destinationForCopy})"
-	else
-		cp "${sourceForCopy}" "${destinationForCopy}"
-		st=$?
-		if [[ $st > 0 ]] ; then
-			fs="${fs}"+1
-			print "*** could not copy to ${destinationForCopy}"
-		else
-			print "copied to ${destinationForCopy}"
-		fi
+		return ${st}
 	fi
-	return "${fs}"
+	cp "${sourceForCopy}" "${destinationForCopy}"
+	st=$?
+	if [[ $st > 0 ]] ; then
+		print "*** could not copy to ${destinationForCopy}"
+		return ${st}
+	fi
+	print "copied to ${destinationForCopy}"
+	return 0
 }
 
 #^ translateCdoc
@@ -259,7 +259,7 @@ function findSources {
 		projectPath="${1}"
 		target="${2}"
 	else
-		print "USAGE: ccInstall findTests pathToProject target"
+		print "USAGE: ccInstall findSources pathToProject target"
 		return $RC_MissingArgument
 	fi
 
@@ -296,7 +296,7 @@ function processActions {
 	getActions actions ${actionFlags}
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$0#$LINENO: ${msg}"
+		print "$0#$LINENO: could not read action flags"
 		return ${st}
 	fi
 
@@ -374,12 +374,20 @@ function processActions {
 						print "skipped"
 						;;
 					"copy" )
-						result=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
-						failcnt+=${result}
+						msg=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
+						st=$?
+						if [[ ${st} > 0 ]] ; then
+							failcnt="${failcnt}"+1
+							print "*** ${msg}"
+						fi
 						;;
 					"translateCdoc" )
-						result=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
-						failcnt+=${result}
+						msg=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
+						st=$?
+						if [[ ${st} > 0 ]] ; then
+							failcnt="${failcnt}"+1
+							print "*** ${msg}"
+						fi
 						;;
 					* )
 						print "*** Unrecognized action string ${action}"
@@ -415,12 +423,13 @@ function processActions {
 			if [[ "${st}" > 0 ]] ; then
 				failcnt="${failcnt}"+1
 			fi
-			results="${msg}${result}\n"
 		done < "${iofile}"
 
-		print "${results}"
-		exit "${failcnt}"
+		if [[ "${failcnt}" > 0 ]] ; then
+			return "${failcnt}"
+		fi
 	fi
+	return 0
 }
 
 #^ 8 === ccInstall
