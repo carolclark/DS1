@@ -520,7 +520,7 @@ resource restype_Slate (resid_Clean, "") { {
 		ExitEvent { "cancel", "" },		_cancel,
 		ExitEvent { "execute", "" },	Keypress { kc_enter, 0 },
 		Event { "Support", "" },		TypeText { "Support BuildSupport/" },
-		Event { "Punkin", "" },			TypeText { "Punkin " },
+		Event { "Punkin", "" },			TypeText { "Punkin KidsCorner/" },
 		Event { "Accessor", "" },		TypeText { "Accessor " },
 		Event { "C doc", "" },			TypeText { "Cdoc " },
 		Event { "Developer", "" },		TypeText { "Developer " },

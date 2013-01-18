@@ -45,6 +45,9 @@
 
 /* Begin PBXFileReference section */
 		671C4824159CFF3800214A9E /* BBEdit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEdit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
+		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
+		67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6761489016A8B93F00FE431B /* toBBEdit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
@@ -246,6 +249,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */,
+				67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */,
+				67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */,
+			);
+			path = InstallCdoc.xctemplate;
+			sourceTree = "<group>";
+		};
 		6761488F16A8B93F00FE431B /* Finder */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +844,7 @@
 		67DD772316A4AF9300BECCD5 /* _Scripting */ = {
 			isa = PBXGroup;
 			children = (
+				67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */,
 				67DD772416A4AF9300BECCD5 /* InstallTarget.xctemplate */,
 				67DD772816A4AF9300BECCD5 /* ShellScript.xctemplate */,
 				67DD772C16A4AF9300BECCD5 /* shunitTest.xctemplate */,

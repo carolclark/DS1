@@ -636,7 +636,7 @@ resource restype_Slate (resid_FileSave, "Save File Dialog") { {
 } };
 
 #define _offset		-121
-#define	_trow		454
+#define	_trow		553
 #define _rsp		18
 resource restype_Slate (resid_SelectTargets, "Select Targets") { {
 	Slate { "Select Targets", {

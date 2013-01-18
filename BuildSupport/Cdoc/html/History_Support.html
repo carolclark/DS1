@@ -20,7 +20,6 @@
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 	<!-- @topicGroup "" "5" -->
 		<!-- @topicItem "Switch to MountainLion" "#MountainLion" "1" "" -->
-			<!-- @topicItem "Workspace Mirrors Project Files" "#workspaceMirrorsFiles" "2" "" -->
 			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
 		<!-- @topicGroup "" "8" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
@@ -92,59 +91,15 @@
 <!-- @marker "Switch to MountainLion" -->
 <h4 id='MountainLion'>Switch to MountainLion</h4>
 
-	<!-- @marker "Workspace Mirrors Project Files" -->
-	<h4 id='workspaceMirrorsFiles'>Workspace Mirrors Project Files</h4><ul>
-		<li class='blurb'>We now have an experience to move source files within an Xcode project and not break the build. Having the Workspace mirror project file structure may now be essential, since some descriptions of dealing with Xcode 4.5's code completion bug recommend removing some workspace file.</li>
-		<li>target UserSlates: workspace mirrors file structure<ul>
-			<li>move Slate resources from UserSlates to BuildSupport/UserSlates/Slates; move UserSlates/UserSlates-Info.plist to BuildSupport/UserSlates/OtherSources</li>
-		</ul></li>
-		<li>targets CCDev_Setup, CCDev =&gt; Developer_Setup, Developer<ul>
-			<li>move Developer files from CCDev and ThirdParty info Developer</li>
-			<li>update build scripts to for renamed files<ul>
-				<li>temporary changes to allow for CCDev, CCDev_Setup scripts not yet renamed: ccInstall.ksh: custom setting for script name; testCcInstall.ksh: comment out test for Developer script name</li>
-			</ul></li>
-			<li>testCCDev.ksh: extract script path as variable</li>
-			<li>undo temporary changes to ccInstall.ksh, testCcInstall.ksh</li>
-		</ul></li>
-		<li>target Xcode: workspace mirrors file structure<ul>
-			<li>Xcode_install.ksh, AppleScripts: replace $BUILT_PRODUCTS_DIR with $CONFIGURATION_BUILD_DIR</li>
-		</ul></li>
-		<li>target BBEdit: workspace mirrors file structure<ul>
-			<li>BBEdit_install.ksh, AppleScripts: replace $BUILT_PRODUCTS_DIR with $CONFIGURATION_BUILD_DIR</li>
-		</ul></li>
-		<li>Website: folder candcsoft contains site structure; hidden password file stored separately</li>
-		<li>move Dash, Finder support folders into BuildSupport/Applications</li>
-		<li>move ArbonneStruct.numbers, UseCaseImages.pages to OtherDocument</li>
-		<li>refactor Cdoc build to fit within new project structure<ul>
-			<li>buildCdoc: refactor to remove buildsource variables (for readability)</li>
-			<li>ccInstall: extend to handle Cdoc builds<ul>
-				<li>extract function --copyFile</li>
-				<li>add function --translateCdoc</li>
-			</ul></li>
-		</ul></li>
-		<li>move Cdoc files into BuildSupport folder<ul>
-			<li>move existing files; move .html documents into a separate folder</li>
-			<li>Developer_Setup.ksh: Terminal editing mode: emacs</li>
-			<li>update cleanProjectTarget.ksh for new Cdoc structure</li>
-			<li>ccInstall.ksh: clean up return values and output</li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-			<li>add file Cdoc_install.ksh</li>
-			<li>build Cdoc from new location using ccInstall</li>
-			<li>move Finder's script folder into BuildSupport/Applications</li>
-		</ul></li>
-		<li>add Cdoc_install template</li>
-	</ul>
-
 	<!-- @marker "Backups and Volumes" -->
 	<h5 id='BackupsVolumes'>Backups and Volumes</h5><ul>
-		<li class='tlmark'>&lt;--</li>
 		<li>buildDoxygen: additional argument path-to-config-file</li>
 		<li>Dev<ul>
 			<li>reimplement <a href="#archive">Archive script</a></li>
 			<li>archive and retire existing obsolete projects; see <a href="#devImport">Import Existing Projects</a></li>
 			<li>upload git repositories for Accessor and Support to ProjectLocker</li>
 		</ul></li>
-		<li class='tlmark'>&lt;--</li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>Update backup support procedures, including usage of our external volumes<ul>
 			<li class='blurb'>QuickPicks<ul>
 				<li>our current backup utility, obtained from MobileMe, identifies critical data for some standard applications; it looks like a good list</li>
@@ -641,6 +596,49 @@
 		<li>update all settings for C++ 11, high-resolution artwork</li>
 	</ul>
 	
+	<!-- @marker "Workspace Mirrors Project Files" -->
+	<h4 id='workspaceMirrorsFiles'>Workspace Mirrors Project Files</h4><ul>
+		<li class='blurb'>We now have an experience to move source files within an Xcode project and not break the build. Having the Workspace mirror project file structure may now be essential, since some descriptions of dealing with Xcode 4.5's code completion bug recommend removing some workspace file.</li>
+		<li>target UserSlates: workspace mirrors file structure<ul>
+			<li>move Slate resources from UserSlates to BuildSupport/UserSlates/Slates; move UserSlates/UserSlates-Info.plist to BuildSupport/UserSlates/OtherSources</li>
+		</ul></li>
+		<li>targets CCDev_Setup, CCDev =&gt; Developer_Setup, Developer<ul>
+			<li>move Developer files from CCDev and ThirdParty info Developer</li>
+			<li>update build scripts to for renamed files<ul>
+				<li>temporary changes to allow for CCDev, CCDev_Setup scripts not yet renamed: ccInstall.ksh: custom setting for script name; testCcInstall.ksh: comment out test for Developer script name</li>
+			</ul></li>
+			<li>testCCDev.ksh: extract script path as variable</li>
+			<li>undo temporary changes to ccInstall.ksh, testCcInstall.ksh</li>
+		</ul></li>
+		<li>target Xcode: workspace mirrors file structure<ul>
+			<li>Xcode_install.ksh, AppleScripts: replace $BUILT_PRODUCTS_DIR with $CONFIGURATION_BUILD_DIR</li>
+		</ul></li>
+		<li>target BBEdit: workspace mirrors file structure<ul>
+			<li>BBEdit_install.ksh, AppleScripts: replace $BUILT_PRODUCTS_DIR with $CONFIGURATION_BUILD_DIR</li>
+		</ul></li>
+		<li>Website: folder candcsoft contains site structure; hidden password file stored separately</li>
+		<li>move Dash, Finder support folders into BuildSupport/Applications</li>
+		<li>move ArbonneStruct.numbers, UseCaseImages.pages to OtherDocument</li>
+		<li>refactor Cdoc build to fit within new project structure<ul>
+			<li>buildCdoc: refactor to remove buildsource variables (for readability)</li>
+			<li>ccInstall: extend to handle Cdoc builds<ul>
+				<li>extract function --copyFile</li>
+				<li>add function --translateCdoc</li>
+			</ul></li>
+		</ul></li>
+		<li>move Cdoc files into BuildSupport folder<ul>
+			<li>move existing files; move .html documents into a separate folder</li>
+			<li>Developer_Setup.ksh: Terminal editing mode: emacs</li>
+			<li>update cleanProjectTarget.ksh for new Cdoc structure</li>
+			<li>ccInstall.ksh: clean up return values and output</li>
+			<li>add file Cdoc_install.ksh</li>
+			<li>build Cdoc from new location using ccInstall</li>
+			<li>move Finder's script folder into BuildSupport/Applications</li>
+		</ul></li>
+		<li>Xcode: add Cdoc_install template</li>
+		<li class='tldate'>[workspaceMirrorsFiles 01/18/2013]</li>
+	</ul>
+
 	<!-- @marker "[end]" -->
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

@@ -57,10 +57,8 @@ function envEnvironment {
 	print 'PATH="$PATH:$CCDev/bin:$CCDev/func"; export PATH'
 	FPATH="$CCDev/func"; export FPATH
 	print 'FPATH="$CCDev/func"; export FPATH'
-	if [[ ${installEnvironmentPlist} = "yes" ]] ; then
-		SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit
-		print 'SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit'
-	fi
+	SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit
+	print 'SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit'
 }
 
 #^	envLaunchctl
@@ -69,14 +67,12 @@ function envLaunchctl {
 	print "setenv CCDev ${ccdevFolder}"
 	print "setenv PATH ${PATH}:${CCDev}/bin:${CCDev}/func"
 	print "setenv FPATH ${FPATH}:${CCDev}/func"
+	print "setenv SHUnit ${CCDev}/shunit/src/shunit2"
 	if [[ ${setTerminalPrompt} = "yes" ]] ; then
 		print "setenv PS1 \"${LOGNAME} ! $ \""
 	fi
 	if [[ ${setTerminalEditMode} = "yes" ]] ; then
 		print "setenv VISUAL \"$(whereis emacs)\""
-	fi
-	if [[ ${installEnvironmentPlist} = "yes" ]] ; then
-		print "setenv SHUnit ${CCDev}/shunit/src/shunit2"
 	fi
 }
 
@@ -151,20 +147,17 @@ function shunitInstall {
 # identify and set variables for current user
 user=${USER}
 devFolder=${HOME}/Dev
-ccdevFolder=/Users/${user}/.ccdev
+ccdevFolder=${HOME}/CCDev
 installEnvironmentPlist="yes"
 setTerminalPrompt="no"
 setTerminalEditMode="yes"
-installSHUnit="no"
 
 case "${user}" in
 	"carolclark" )
 		fullname="Carol Clark"
 		email="carolclark@cox.net"
 		devFolder=/Volumes/Mac/Users/carolclark/Dev
-		ccdevFolder=${HOME}/CCDev
 		setTerminalPrompt="yes"
-		installSHUnit="yes"
 		;;
 	"lauramartinez" )
 		fullname="Laura Martinez"
@@ -237,9 +230,7 @@ install "${srcdir}/Functions/ccInstall.ksh" "$CCDev/func" "ccInstall"
 install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin"
 
 # install shunit (third party)
-if [[ ${installEnvironmentPlist} = "yes" ]] ; then
-	shunitInstall
-fi
+shunitInstall
 
 # test CCDev_Setup
 typeset -i failcnt=0

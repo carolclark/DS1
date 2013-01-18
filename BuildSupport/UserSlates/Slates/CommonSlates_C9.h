@@ -99,7 +99,6 @@
 	#define resid_XcodeDash					resid_Dash+1
 
 #define resid_ArbProto					40000
-#define resid_Xcode3					48000
 
 #define	resid_LaunchGamesSlate			50000
 	#define resid_Solitaire		resid_LaunchGamesSlate + 100
