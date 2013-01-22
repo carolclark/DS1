@@ -894,9 +894,6 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		ExitEvent { "link", "" }, Sequence{}, TypeText		\
 			{ "<a href=\"<##>\"><##></a>" }, _previous, endSequence{},		\
 		ExitEvent { "identifier", "" }, Sequence{}, _left, TypeText { " id=''" }, _left, endSequence{},		\
-		ExitEvent { "glossary item", "" }, Sequence{}, TypeText		\
-			{ "<dt><a name='def_<#term#>'><#term#></a></dt><dd>" }, _return, _tab,		\
-			TypeText { "<#text#></dd>" }, _return, _previous, _previous, _previous, endSequence{},		\
 		ExitEvent { "glossary link", "" }, Sequence{}, TypeText		\
 			{ "<a class='glosslink' href=\"<#which#>_gloss.html#def_<#term#>\"><#text#></a>" },		\
 			_previous, _previous, _previous, endSequence{},		\

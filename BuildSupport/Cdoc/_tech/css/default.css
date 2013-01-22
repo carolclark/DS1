@@ -351,17 +351,44 @@
 	}
 
 /* use cases */
-	.uc {
-		margin-left: 5px;
-		padding-left: 5px;
-		border-left: 2px solid #888888;
+	.uc {	/* styles table */
+		border-bottom: 1px solid #8b7765;
+		border-spacing: 0;
+		border-collapse: collapse;
+		}
+
+	.uc td {
+		padding: 4px;
+		vertical-align: center;
+		background-color: #f8f8f8;
+		}
+
+	.uc td.c1 {
+		vertical-align: top;
+		text-align: right;
+		font-weight: bolder;
+		color: #777777
+		}
+
+	.uc caption {
+		caption-side: bottom;
+		text-align: right;
+		font-size: smaller;
+		font-weight: bolder;
+		color: #777777;
+		}
+
+	.uc ul {
+		list-style-type:square;
+		padding-left: 22px;
+		margin-top: 0px;
+		margin-bottom: 0px;
 	}
-	.uc h4 {
-		margin-left: -5px;
-		padding-left: 0px;
-		border-left: none;
-		border-bottom: 1px solid #aaaaaa;
-		width: 40%;
+
+	.uc ol {
+		padding-left: 22px;
+		margin-top: 0px;
+		margin-bottom: 0px;
 	}
 
 /* crc */

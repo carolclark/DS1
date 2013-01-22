@@ -130,18 +130,20 @@
 	#define	resid_LogIndex					resid_Index+90
 
 #pragma mark Typing Slates
-#define resid_TypeXcodeSlate			resid_Xcode+1900
+#define resid_TypeXcodeSlate			resid_Xcode+1600
 	#define resid_TypeSpecialXcodeSlate		resid_TypeXcodeSlate+1
 	#define resid_TypeDebugConsole			resid_TypeXcodeSlate+2
 	#define resid_TypeDialog				resid_TypeXcodeSlate+3
-	#define	resid_InsertSnippet				resid_TypeXcodeSlate+4
-	#define	resid_InsertElement				resid_TypeXcodeSlate+5
-	#define	resid_InsertStyle				resid_TypeXcodeSlate+6
-	#define	resid_InsertTag					resid_TypeXcodeSlate+7
-	#define	resid_InsertSlateText			resid_TypeXcodeSlate+8
-	#define resid_Package					resid_TypeXcodeSlate+9	
-	#define resid_Doxygen					resid_TypeXcodeSlate+10
-	#define resid_typeSearch				resid_TypeXcodeSlate+11
+	#define	resid_InsertElement				resid_TypeXcodeSlate+4
+	#define	resid_InsertStyle				resid_TypeXcodeSlate+5
+	#define	resid_InsertTag					resid_TypeXcodeSlate+6
+	#define	resid_InsertSlateText			resid_TypeXcodeSlate+7
+	#define resid_Package					resid_TypeXcodeSlate+8
+	#define resid_Doxygen					resid_TypeXcodeSlate+9
+	#define resid_typeSearch				resid_TypeXcodeSlate+10
+	#define	resid_InsertSnippet				resid_TypeXcodeSlate+20
+		#define resid_ucLevel	resid_InsertSnippet+1
+		#define resid_ucActor	resid_InsertSnippet+2
 
 #define _splitter_x		260
 
@@ -2791,11 +2793,12 @@ resource restype_Slate (resid_TypeDebugConsole, "") { {
 resource restype_Slate (resid_InsertSnippet, "") { {
 	Slate { "snippet",	{
 		_SlateGlobals_,
-		_CloseSubslate_,
+		ExitEvent { "exit", "" },						NilAction{},
+		ExitEvent { "okay", "" },						_return,
+		Event { "continue", "" },						_return,
 		Event { "clipboard", "" },						Sequence{}, _selword, Keypress { kc_X, mf_command }, endSequence{},
 		ExitEvent { "file header", "" },	 			TypeText { "fileHeader#" },
 		ExitEvent { "window controller property", "" },	TypeText { "windowControllerProperty#" },
-		ExitEvent { "property", "" },					TypeText { "property#" },
 		ExitEvent { "dynamic property", "" },			TypeText { "dynamicProperty#" },
 		ExitEvent { "accessor retain", "" },			TypeText { "accessorRetain#" },
 		ExitEvent { "category accessors", "" },			TypeText { "categoryAccessors#" },
@@ -2804,7 +2807,8 @@ resource restype_Slate (resid_InsertSnippet, "") { {
 		ExitEvent { "table view", "" },					TypeText { "tableView#" },
 		ExitEvent { "init", "" },						TypeText { "init#" },
 		ExitEvent { "constant", "" },					TypeText { "constant#" },
-		ExitEvent { "attribute", "" },					Subslate { "attribute" },
+		Event { "property", "" },						TypeText { "property#" },
+		Event { "attribute", "" },						Subslate { "attribute" },
 			_SlateGlobals_,
 			_CloseSubslate_,
 			Event { "read only", "" },						TypeText { "readonly, " },
@@ -2814,18 +2818,51 @@ resource restype_Slate (resid_InsertSnippet, "") { {
 			ExitEvent { "assign", "" },						TypeText { "assign" },
 			ExitEvent { "copy", "" },						TypeText { "copy" },
 			endSubslate{},
-		ExitEvent { "project", "" },					Subslate { "project" },
+		Event { "project", "" },						Subslate { "project" },
 			_SlateGlobals_,
 			_CloseSubslate_,
 			ExitEvent { "Support", "" },					TypeText { "Support" },
 			ExitEvent { "Accessor", "" },					TypeText { "Accessor" },
 			ExitEvent { "Punkin", "" },						TypeText { "Punkin" },
 			endSubslate{},
-		ExitEvent { "user slate", "" },					TypeText { "userSlate#" },
+		Event { "user slate", "" },						TypeText { "userSlate#" },
 		ExitEvent { "heading with name", "" },			TypeText { "headingWithName#" },
 		ExitEvent { "heading with topics", "" },		TypeText { "headingWithTopics#" },
 		Event { "developer link", "" },					TypeText { "developerLink#" },
 		ExitEvent { "developer item", "" },				TypeText { "developerItem#" },
+		ExitEvent { "glossary item", "" },				TypeText { "glossaryItem#" },
+		Event { "use case", "" },						Sequence{}, TypeText { "useCase#" }, ResSubslate { resid_ucActor }, endSequence{},
+		Event { "use case link", "" },					Sequence{}, TypeText { "useCaseLink#" }, endSequence{},
+		Event { "level", "" },							ResSubslate { resid_ucLevel },
+	} }
+} };
+
+#pragma mark ucLevel
+resource restype_Slate (resid_ucLevel, "") { {
+	Slate { "goal level",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "high", "" },			Sequence{}, _previous, _previous, _previous, _previous, TypeText { "High Summary" }, endSequence{},
+		ExitEvent { "summary", "" },		Sequence{}, _previous, _previous, _previous, _previous, TypeText { "Summary" }, endSequence{},
+		ExitEvent { "user", "" },			Sequence{}, _previous, _previous, _previous, _previous, TypeText { "User Goal" }, endSequence{},
+		ExitEvent { "function", "" },		Sequence{}, _previous, _previous, _previous, _previous, TypeText { "Subfunction" }, endSequence{},
+		ExitEvent { "low", "" },			Sequence{}, _previous, _previous, _previous, _previous, TypeText { "Low" }, endSequence{},
+	} }
+} };
+
+#pragma mark ucActor
+resource restype_Slate (resid_ucActor, "") { {
+	Slate { "ucActor",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "continue", "" },			_return,
+		Event { "Product", "" },			TypeText { "Product" },
+		Event { "Developer", "" },			TypeText { "Developer" },
+		Event { "Activity", "" },			TypeText { "Activity" },
+		Event { "Word", "" },				TypeText { "Word" },
+		Event { "Picture", "" },			TypeText { "Picture" },
+		Event { "Image", "" },				TypeText { "Image" },
+		Event { "Layer", "" },				TypeText { "Layer" },
 	} }
 } };
 

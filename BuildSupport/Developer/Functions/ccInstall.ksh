@@ -17,15 +17,23 @@ ccInstall commandFlag [argument(s)]
 #		actionString: [-[citu]+] - actions requested (clean, install, test, upload)
 #			default: -it
 #			resultObject: object to contain results
-#	--get<Path>		projectPath target
-#		<Path>: 	BaseBath | SourcePath | TargetScript | Lastbuilt
-#		result: 	string containing specified path
-#	--findTests 	projectPath target
-#		result: 	path to file containing list of tests for <projectPath>/<target>
-#	--findSources	projectPath target
-#		result: 	path to file containing list of source files for <projectPath>/<target>
-#	--help
-#		print this information
+#	--get<Path>			projectPath target
+#		<Path>: 		BaseBath | SourcePath | TargetScript | Lastbuilt
+#		result: 		string containing specified path
+#	--findTests 		projectPath target
+#		result: 		path to file containing list of tests for <projectPath>/<target>
+#	--findSources		projectPath target
+#		result: 		path to file containing list of source files for <projectPath>/<target>
+#	--updateLastbuilt	projectPath target
+#						set last built flag to the current date and time
+#	--clearLastbuilt	projectPath target
+#						clear last built flag; forces for rebuild on next install operation
+#	--copyFile			sourceFile destinationPath
+#						copy source file to the specified destination
+#	--translateCdoc		sourceFile destinationPath
+#						translate Cdoc markers in source file and store result at the specified destination
+#	--help				<no args>
+#						print this information
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
@@ -167,7 +175,7 @@ function translateCdoc {
 		s|<!-- @/objective "\([^"][^"]*\)" "\([^"]*\)" -->|<p class="mileend">\2 \1</p>|
 		s|<!-- @historyMark "\([^"][^"]*\)" -->|<p class="hmark"><a name="hmark_\1">\&lt;-- \1</a></p>|
 		s|<!-- @goal "\([^"]*\)" "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr> <td>\1</td> <td>\2</td> <td>\3</td> <td align=\"center\">\4</td> </tr>|
-		s|<!-- @useCaseHeader "\([^"][^"]*\)" "\([^"][^"]*\)" "\([1-5]\)" "\([hsupx]\)" -->|<h4><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/ucds_\3.tiff" alt="design scope \3" /><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><a name="\2">\1</a><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/ucgl_\4.tiff" alt="goal level \4" /></h4>|
+		s|<!-- @useCaseHeader "\([^"][^"]*\)" "\([^"][^"]*\)" "\([1-5]\)" "\([hsupx]\)" -->|<h4><img src="../img/space.tiff" alt="" /><img src="../img/ucds_\3.tiff" alt="design scope \3" style="vertical-align:text-bottom;" /><img src="../img/space.tiff" alt="" /><a id="\2">\1</a><img src="../img/space.tiff" alt="" /><img src="../img/ucgl_\4.tiff" alt="goal level \4" style="vertical-align:text-bottom;" /></h4>|
 		s|<!-- @CrcCard "\([^"][^"]*\)" -->|<div class="crcholder"><table class="crc" border="0" cellspacing="0" cellpadding="5" width="100%"><caption></caption><tr><th colspan="2">\1</th> </tr>|
 		s|<!-- @/CrcCard -->|</table></div>|
 	' <"$in" >"$out"
