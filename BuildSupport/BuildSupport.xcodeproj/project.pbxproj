@@ -53,9 +53,9 @@
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
 		67692458141EB921005D3E68 /* Xcode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xcode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		67A00C4714A287B6002456DB /* Cdoc.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cdoc.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA94D414508D19005BF0E9 /* Developer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67BE04B116B062F00065BFDE /* ccInstallAction.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstallAction.ksh; sourceTree = "<group>"; };
 		67DB22CC169CD82300A6E910 /* UserSlates-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UserSlates-Info.plist"; sourceTree = "<group>"; };
 		67DB22CE169CD82300A6E910 /* AccessLib_rsrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessLib_rsrc.h; sourceTree = "<group>"; };
 		67DB22CF169CD82300A6E910 /* AccessLibTypes.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = AccessLibTypes.r; sourceTree = "<group>"; };
@@ -287,7 +287,6 @@
 				67692458141EB921005D3E68 /* Xcode.bundle */,
 				67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */,
 				67BA94D414508D19005BF0E9 /* Developer.bundle */,
-				67A00C4714A287B6002456DB /* Cdoc.bundle */,
 				671C4824159CFF3800214A9E /* BBEdit.bundle */,
 				674BF6BA15B7287A0093786D /* UserSlates.bundle */,
 			);
@@ -434,6 +433,7 @@
 				67DB233E169E0A2900A6E910 /* cleanProjectTarget.ksh */,
 				67DB233F169E0A2900A6E910 /* doxygenBuild.ksh */,
 				67DB2340169E0A2900A6E910 /* resultCodes.ksh */,
+				67BE04B116B062F00065BFDE /* ccInstallAction.ksh */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -1019,6 +1019,23 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		67BE04B916B06EFF0065BFDE /* Cdoc */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(DEV)/Support BuildSupport/Cdoc $(ACTION)";
+			buildConfigurationList = 67BE04BA16B06EFF0065BFDE /* Build configuration list for PBXLegacyTarget "Cdoc" */;
+			buildPhases = (
+			);
+			buildToolPath = ccInstallAction;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Cdoc;
+			passBuildSettingsInEnvironment = 0;
+			productName = Cdoc;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		671C4823159CFF3800214A9E /* BBEdit */ = {
 			isa = PBXNativeTarget;
@@ -1066,21 +1083,6 @@
 			name = Xcode;
 			productName = Xcode;
 			productReference = 67692458141EB921005D3E68 /* Xcode.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		67A00C4614A287B6002456DB /* Cdoc */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 67A00C5214A287B6002456DB /* Build configuration list for PBXNativeTarget "Cdoc" */;
-			buildPhases = (
-				67A00C5414A2891D002456DB /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Cdoc;
-			productName = Cdoc;
-			productReference = 67A00C4714A287B6002456DB /* Cdoc.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		67AA8010144F3DAD00FCCDC9 /* Developer_Setup */ = {
@@ -1136,10 +1138,10 @@
 			targets = (
 				67BA94D314508D19005BF0E9 /* Developer */,
 				67AA8010144F3DAD00FCCDC9 /* Developer_Setup */,
-				67A00C4614A287B6002456DB /* Cdoc */,
 				67692457141EB921005D3E68 /* Xcode */,
 				671C4823159CFF3800214A9E /* BBEdit */,
 				674BF6B915B7287A0093786D /* UserSlates */,
+				67BE04B916B06EFF0065BFDE /* Cdoc */,
 			);
 		};
 /* End PBXProject section */
@@ -1222,20 +1224,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
 			shellScript = "print $CONFIGURATION_BUILD_DIR; ccInstall ${DEV}/Support BuildSupport/Applications/Xcode";
-			showEnvVarsInLog = 0;
-		};
-		67A00C5414A2891D002456DB /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/ksh;
-			shellScript = "ccInstall ${DEV}/Support BuildSupport/Cdoc";
 			showEnvVarsInLog = 0;
 		};
 		67AA801D144F3DE400FCCDC9 /* ShellScript */ = {
@@ -1474,62 +1462,6 @@
 			};
 			name = Release;
 		};
-		67A00C5014A287B6002456DB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
-				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Cdoc/plist/Cdoc-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		67A00C5114A287B6002456DB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Cdoc/plist/Cdoc-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		67AA801B144F3DAD00FCCDC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1642,6 +1574,65 @@
 			};
 			name = Release;
 		};
+		67BE04BB16B06EFF0065BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		67BE04BC16B06EFF0065BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1681,15 +1672,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67A00C5214A287B6002456DB /* Build configuration list for PBXNativeTarget "Cdoc" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				67A00C5014A287B6002456DB /* Debug */,
-				67A00C5114A287B6002456DB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		67AA801A144F3DAD00FCCDC9 /* Build configuration list for PBXNativeTarget "Developer_Setup" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1707,6 +1689,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		67BE04BA16B06EFF0065BFDE /* Build configuration list for PBXLegacyTarget "Cdoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67BE04BB16B06EFF0065BFDE /* Debug */,
+				67BE04BC16B06EFF0065BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
