@@ -113,7 +113,7 @@ function clearLastbuilt {
 		rm "${lastbuilt}"
 		st="$?"
 		if [[ ${st} > 0 ]] ; then
-			print "*** error ${st} attempting to remove file ${lastbuilt}"
+			print "error: error ${st} attempting to remove file ${lastbuilt}"
 			return ${st}
 		fi
 	fi
@@ -133,13 +133,13 @@ function copyFile {
 	mkdir -p $(dirname "${destinationForCopy}")
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "*** could not create directory $(dirname ${destinationForCopy})"
+		print "error: could not create directory $(dirname ${destinationForCopy})"
 		return ${st}
 	fi
 	cp "${sourceForCopy}" "${destinationForCopy}"
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "*** could not copy to ${destinationForCopy}"
+		print "error: could not copy to ${destinationForCopy}"
 		return ${st}
 	fi
 	print "copied to ${destinationForCopy}"
@@ -158,7 +158,7 @@ function translateCdoc {
 	mkdir -p $(dirname "${out}")
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "*** could not create directory $(dirname ${destinationForCopy})"
+		print "error: could not create directory $(dirname ${destinationForCopy})"
 		return ${st}
 	fi
 	sed '
@@ -180,13 +180,13 @@ function translateCdoc {
 		s|<!-- @/CrcCard -->|</table></div>|
 	' <"$in" >"$out"
 	if [[ "${?}" > 0 ]] ; then
-		print "\n*** attempt to generate output file ${out} failed"
+		print "\nerror: attempt to generate output file ${out} failed"
 		return 1
 	fi
 	# check for untranslated tokens
 	x=$(sed -n 's|<!-- @|&|p' <"$out")
 	if [[ -n "${x}" ]] ; then
-		print "\n***unrecognized translator token(s):"
+		print "\nerror: unrecognized translator token(s):"
 		print "$x"
 		return 1
 	fi
@@ -332,7 +332,7 @@ function processActions {
 		msg=$("${targetScript}" --cleanTarget)
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			print "*** ${msg}"
+			print "error: ${msg}"
 			return ${st}
 		fi
 		lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
@@ -359,7 +359,7 @@ function processActions {
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
-					print "*** ${msg}"
+					print "error: ${msg}"
 				else
 					destination="${msg}"
 					prevFolder="${sourceFolder}"
@@ -370,14 +370,14 @@ function processActions {
 			fi
 			if [[ ${st} > 0 ]] ; then
 				failcnt="${failcnt}"+1
-				print "*** ${msg}"
+				print "error: ${msg}"
 			else
 				print -n "${fpath}: "
 				msg=$("${targetScript}" --handleFile "${sourceFolder}" "${fpath}" "${destination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
-					print "*** ${msg}"
+					print "error: ${msg}"
 				else
 					hfile="${msg}"
 					set -A copyInfo
@@ -397,7 +397,7 @@ function processActions {
 						st=$?
 						if [[ ${st} > 0 ]] ; then
 							failcnt="${failcnt}"+1
-							print "*** ${msg}"
+							print "error: ${msg}"
 						else
 							print "succeeded"
 						fi
@@ -407,13 +407,13 @@ function processActions {
 						st=$?
 						if [[ ${st} > 0 ]] ; then
 							failcnt="${failcnt}"+1
-							print "*** ${msg}"
+							print "error: ${msg}"
 						else
 							print "succeeded"
 						fi
 						;;
 					* )
-						print "*** Unrecognized action string ${action}"
+						print "error: Unrecognized action string ${action}"
 						;;
 				esac
 			fi
@@ -426,7 +426,7 @@ function processActions {
 			if [[ ${failcnt} = 1 ]] ; then
 				pl=""
 			fi
-			print "*** Build Failed: ${errcnt} error${pl} encountered; tests not run"
+			print "error: Build Failed: ${errcnt} error${pl} encountered; tests not run"
 			exit "${failcnt}"
 		fi
 	fi

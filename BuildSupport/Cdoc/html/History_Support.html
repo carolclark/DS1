@@ -33,6 +33,7 @@
 		<!-- @topicGroup "" "17" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Upgrade/Add Xcode File Templates" "#XcodeTemplates_8_12" "2" "" -->
+			<!-- @topicItem "General Support" "#_general" "2" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
 		<!-- @topicGroup "" "21" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
@@ -99,7 +100,7 @@
 			<li>archive and retire existing obsolete projects; see <a href="#devImport">Import Existing Projects</a></li>
 			<li>upload git repositories for Accessor and Support to ProjectLocker</li>
 		</ul></li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li class='tlmark'>&lt;--</li>
 		<li>Update backup support procedures, including usage of our external volumes<ul>
 			<li class='blurb'>QuickPicks<ul>
 				<li>our current backup utility, obtained from MobileMe, identifies critical data for some standard applications; it looks like a good list</li>
@@ -191,6 +192,24 @@
 		<li>after CocoaTestClass:NSManagedObject has been tested in use, add option Use Reference Counting to separate ARC and Managed Memory templates</li>
 	</ul>
 
+	<!-- @marker "General Support" -->
+	<h5 id='_general'>General Support</h5><ul>
+		<li>expandTerminalGit: git taking over scm responsibilities previously handled by Xcode</li>
+		<li class='tldate'>[12/19/2012]</li>
+		<li>add Use Case support<ul>
+			<li>ccInstall.ksh: translateCdoc: update @UseCase</li>
+			<li>default.css: add/update Use Case styles</li>
+			<li>rename use case image ucgl_p.tiff to ucgl_f.tiff</li>
+			<li>add Snippets useCase, useCaseLink, glossaryItem</li>
+		</ul></li>
+		<li class='tldate'>UseCaseSupport [01/22/2013]</li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>replace bundle/script targets with external targets to provide clean support<ul>
+			<li class='blurb'>see <a href="http://yeahrightkeller.com/2009/run-script-while-cleaning-in-xcode/">Run Script While Cleaning in Xcode</a></li>
+			<li>ccInstall: reformat error messages so they begin with error:, since that is Xcode's mechanism for identifying error messages</li>
+		</ul></li>
+	</ul>
+
 	<!-- @marker "Automation Support" -->
 	<h5 id="_automation">Automation Support</h5><ul>
 		<li>Xcode: add slate GoTab</li>
@@ -201,15 +220,6 @@
 		</ul></li>
 		<li>Safari subslates: It is now possible to use the Filter field to anchor moving among links using the tab option-tab keys. For Doxygen pages, the Doxygen Filter field can be used in the same way. Update Safari slates accordingly.</li>
 		<li>Accessor (new): add copies of files AccessLib_rsrc.h, Keyboard_AL.h to UserSlates folder</li>
-		<li>expandTerminalGit: git taking over scm responsibilities previously handled by Xcode</li>
-		<li class='tldate'>[12/19/2012]</li>
-		<li>add Use Case support<ul>
-			<li>ccInstall.ksh: translateCdoc: update @UseCase</li>
-			<li>default.css: add/update Use Case styles</li>
-			<li>rename use case image ucgl_p.tiff to ucgl_f.tiff</li>
-			<li>add Snippets useCase, useCaseLink, glossaryItem</li>
-		</ul></li>
-		<li class='tldate'>UseCaseSupport[01/22/2013]</li>
 		<li class='tlmark'>&lt;--</li>
 	</ul>
 
