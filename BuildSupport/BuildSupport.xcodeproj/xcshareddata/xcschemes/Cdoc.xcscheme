@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67A00C4614A287B6002456DB"
-               BuildableName = "Cdoc.bundle"
+               BlueprintIdentifier = "67BE04B916B06EFF0065BFDE"
+               BuildableName = "Cdoc"
                BlueprintName = "Cdoc"
                ReferencedContainer = "container:BuildSupport.xcodeproj">
             </BuildableReference>
