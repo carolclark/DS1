@@ -44,6 +44,9 @@ function getSubtargetDestination {
 		"Functions" )
 			destinationFolder="${CCDev}/func"
 			;;
+		"Services" )
+			destinationFolder="${HOME}/Library/Services"
+			;;
 		"AppleScripts" )		# files for future use
 			;&
 		"Doxygen" )				# files for reference only

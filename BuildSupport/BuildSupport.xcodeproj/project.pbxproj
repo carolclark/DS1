@@ -56,6 +56,8 @@
 		67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BE04B116B062F00065BFDE /* ccInstallAction.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstallAction.ksh; sourceTree = "<group>"; };
 		67BE04C416B095780065BFDE /* Xcode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Xcode-Info.plist"; sourceTree = "<group>"; };
+		67BE04C616B09CB50065BFDE /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
+		67BE04C716B09CB50065BFDE /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
 		67DB22CC169CD82300A6E910 /* UserSlates-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UserSlates-Info.plist"; sourceTree = "<group>"; };
 		67DB22CE169CD82300A6E910 /* AccessLib_rsrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessLib_rsrc.h; sourceTree = "<group>"; };
 		67DB22CF169CD82300A6E910 /* AccessLibTypes.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = AccessLibTypes.r; sourceTree = "<group>"; };
@@ -147,7 +149,6 @@
 		67DD76D216A4AF9300BECCD5 /* viewDoxygen.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = viewDoxygen.applescript; sourceTree = "<group>"; };
 		67DD76D316A4AF9300BECCD5 /* windowShort.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = windowShort.applescript; sourceTree = "<group>"; };
 		67DD76D416A4AF9300BECCD5 /* windowTall.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = windowTall.applescript; sourceTree = "<group>"; };
-		67DD76D616A4AF9300BECCD5 /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67DD76DB16A4AF9300BECCD5 /* ___FILEBASENAME___.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "___FILEBASENAME___.html"; sourceTree = "<group>"; };
 		67DD76DC16A4AF9300BECCD5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		67DD76DE16A4AF9300BECCD5 /* ___FILEBASENAME___.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "___FILEBASENAME___.html"; sourceTree = "<group>"; };
@@ -306,6 +307,15 @@
 			path = _plist;
 			sourceTree = "<group>";
 		};
+		67BE04C516B09CB50065BFDE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				67BE04C616B09CB50065BFDE /* GitSaveMessage.workflow */,
+				67BE04C716B09CB50065BFDE /* OpenAccessor.workflow */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		67DB22CA169CD82300A6E910 /* UserSlates */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,8 +379,9 @@
 				67DB2330169E0A2900A6E910 /* Doxygen */,
 				67DB2332169E0A2900A6E910 /* Environment */,
 				67DB2334169E0A2900A6E910 /* Functions */,
-				67DB2337169E0A2900A6E910 /* plist */,
 				67DB233A169E0A2900A6E910 /* Scripts */,
+				67BE04C516B09CB50065BFDE /* Services */,
+				67DB2337169E0A2900A6E910 /* plist */,
 				67DB2341169E0A2900A6E910 /* ThirdParty */,
 			);
 			path = Developer;
@@ -550,7 +561,6 @@
 			children = (
 				67DD773716A4AF9300BECCD5 /* Xcode_install.ksh */,
 				67DD76CF16A4AF9300BECCD5 /* AppleScripts */,
-				67DD76D516A4AF9300BECCD5 /* Services */,
 				67DD76D716A4AF9300BECCD5 /* Templates */,
 				67BE04C316B095780065BFDE /* _plist */,
 				67DD773016A4AF9300BECCD5 /* Workflows */,
@@ -577,14 +587,6 @@
 				67DD76D416A4AF9300BECCD5 /* windowTall.applescript */,
 			);
 			path = AppleScripts;
-			sourceTree = "<group>";
-		};
-		67DD76D516A4AF9300BECCD5 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				67DD76D616A4AF9300BECCD5 /* GitSaveMessage.workflow */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		67DD76D716A4AF9300BECCD5 /* Templates */ = {
