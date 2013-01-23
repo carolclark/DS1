@@ -76,14 +76,12 @@ function handleFile {
 	if [[ "${subtarget}" = "AppleScripts" ]] ; then
 		fname="${filepath%.applescript}.scpt"
 		action="copy"
-
 		sourceForCopy="${CONFIGURATION_BUILD_DIR}/Xcode.bundle/Contents/Resources/${fname}"
 		destinationForCopy="${destinationFolder}/${fname}"
 	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
 		action="copy"
-
 		sourceForCopy="${projectPath}/${target}/${subtarget}/${filepath}"
 		destinationForCopy="${destinationFolder}/${destname}"
 	else

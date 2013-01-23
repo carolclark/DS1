@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67BA94D314508D19005BF0E9"
-               BuildableName = "Developer.bundle"
+               BlueprintIdentifier = "67BE04BF16B08DE30065BFDE"
+               BuildableName = "Developer"
                BlueprintName = "Developer"
                ReferencedContainer = "container:BuildSupport.xcodeproj">
             </BuildableReference>

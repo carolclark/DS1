@@ -48,7 +48,7 @@ function getSubtargetDestination {
 			;&
 		"Doxygen" )				# files for reference only
 			;&
-		"plist" )				# used by Xcode build system
+		"plist" )				# used by Xcode build system for Developer_Setup.ksh
 			;&
 		"Developer_Setup.ksh" )	# custom setup script Developer_Setup.ksh
 			;&
