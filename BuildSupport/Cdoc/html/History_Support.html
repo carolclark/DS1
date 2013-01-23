@@ -208,8 +208,13 @@
 			<li class='blurb'>see <a href="http://yeahrightkeller.com/2009/run-script-while-cleaning-in-xcode/">Run Script While Cleaning in Xcode</a></li>
 			<li>ccInstall: reformat error messages so they begin with error:, since that is Xcode's mechanism for identifying error messages</li>
 			<li>new script ccInstallAction.ksh to call ccInstall on behalf of external targets; replace Cdoc Bundle/script target with External target</li>
-			<li>replace Developer Bundle/script target with External target</li>
-			<li>move Services from target Xcode to target Developer</li>
+			<li>Developer<ul>
+				<li>replace Developer Bundle/script target with External target</li>
+				<li>move Services from target Xcode to target Developer</li>
+			</ul></li>
+			<li>Xcode<ul>
+				<li>rename existing target Xcode to XcodeScripts</li>
+			</ul></li>
 		</ul></li>
 	</ul>
 
