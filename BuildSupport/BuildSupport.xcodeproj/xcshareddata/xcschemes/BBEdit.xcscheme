@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "671C4823159CFF3800214A9E"
                BuildableName = "BBEdit.bundle"
-               BlueprintName = "BBEdit"
+               BlueprintName = "BBEditScripts"
                ReferencedContainer = "container:BuildSupport.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

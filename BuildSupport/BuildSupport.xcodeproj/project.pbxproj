@@ -65,7 +65,7 @@
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BE04B116B062F00065BFDE /* ccInstallAction.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstallAction.ksh; sourceTree = "<group>"; };
-		67BE04C416B095780065BFDE /* Xcode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Xcode-Info.plist"; sourceTree = "<group>"; };
+		67BE04C416B095780065BFDE /* XcodeScripts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XcodeScripts-Info.plist"; sourceTree = "<group>"; };
 		67BE04C616B09CB50065BFDE /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67BE04C716B09CB50065BFDE /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
 		67DB22CC169CD82300A6E910 /* UserSlates-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UserSlates-Info.plist"; sourceTree = "<group>"; };
@@ -312,7 +312,7 @@
 		67BE04C316B095780065BFDE /* _plist */ = {
 			isa = PBXGroup;
 			children = (
-				67BE04C416B095780065BFDE /* Xcode-Info.plist */,
+				67BE04C416B095780065BFDE /* XcodeScripts-Info.plist */,
 			);
 			path = _plist;
 			sourceTree = "<group>";
@@ -1074,9 +1074,9 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		671C4823159CFF3800214A9E /* BBEdit */ = {
+		671C4823159CFF3800214A9E /* BBEditScripts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEdit" */;
+			buildConfigurationList = 671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEditScripts" */;
 			buildPhases = (
 				671C4839159D025C00214A9E /* Sources */,
 				671C4831159CFF5500214A9E /* ShellScript */,
@@ -1085,7 +1085,7 @@
 			);
 			dependencies = (
 			);
-			name = BBEdit;
+			name = BBEditScripts;
 			productName = BBEdit;
 			productReference = 671C4824159CFF3800214A9E /* BBEdit.bundle */;
 			productType = "com.apple.product-type.bundle";
@@ -1159,7 +1159,7 @@
 			targets = (
 				67AA8010144F3DAD00FCCDC9 /* Developer_Setup */,
 				67692457141EB921005D3E68 /* XcodeScripts */,
-				671C4823159CFF3800214A9E /* BBEdit */,
+				671C4823159CFF3800214A9E /* BBEditScripts */,
 				674BF6B915B7287A0093786D /* UserSlates */,
 				67BE04B916B06EFF0065BFDE /* Cdoc */,
 				67BE04BF16B08DE30065BFDE /* Developer */,
@@ -1364,7 +1364,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEdit-Info.plist";
+				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEditScripts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1391,7 +1391,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEdit-Info.plist";
+				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEditScripts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1489,7 +1489,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Applications/Xcode/_plist/Xcode-Info.plist";
+				INFOPLIST_FILE = "Applications/Xcode/_plist/XcodeScripts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1517,7 +1517,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Applications/Xcode/_plist/Xcode-Info.plist";
+				INFOPLIST_FILE = "Applications/Xcode/_plist/XcodeScripts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1716,7 +1716,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEdit" */ = {
+		671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEditScripts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				671C482D159CFF3800214A9E /* Debug */,

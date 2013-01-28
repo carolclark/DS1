@@ -204,7 +204,7 @@
 		</ul></li>
 		<li class='tldate'>UseCaseSupport [01/22/2013]</li>
 		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-		<li>replace bundle/script targets with external targets to provide clean support<ul>
+		<li>replace bundle/kshScript targets with external targets to provide clean support<ul>
 			<li class='blurb'>see <a href="http://yeahrightkeller.com/2009/run-script-while-cleaning-in-xcode/">Run Script While Cleaning in Xcode</a></li>
 			<li>ccInstall: reformat error messages so they begin with error:, since that is Xcode's mechanism for identifying error messages</li>
 			<li>new script ccInstallAction.ksh to call ccInstall on behalf of external targets; replace Cdoc Bundle/script target with External target</li>
@@ -219,7 +219,14 @@
 					<li>ccInstall: add --removeFolder</li>
 				</ul></li>
 			</ul></li>
+			<li>BBEdit: use External target BBEdit with dependency on script bundle target BBEditScripts</li>
+			<li>Targets BBEdit, Developer, Cdoc: Clean operation cleans up installed files</li>
+			<li>convert Cdoc, Doxygen targets in Punkin, Accessor to use External targets<ul>
+				<li>expand ccInstallAction.ksh to support Doxygen builds</li>
+			</ul></li>
+			<li>retire obsolete scripts buildCdoc.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>
 		</ul></li>
+		<li>gitaccess.ksh: handles list files, select file, get current branch functionality currently handled by Terminal Slate</li>
 	</ul>
 
 	<!-- @marker "Automation Support" -->

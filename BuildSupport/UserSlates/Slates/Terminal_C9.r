@@ -35,6 +35,7 @@
 		#define resid_gitReflog				resid_gitLog+1	
 	#define	resid_gitTag				resid_Git+250
 	#define resid_gitMerge				resid_Git+270
+	#define resid_gitPush				resid_Git+275
 	#define resid_gitFetch				resid_Git+285
 	#define resid_gitClean				resid_Git+290
 	#define resid_Bisect				resid_Git+295
@@ -141,16 +142,16 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "difference", "" },		Sequence{}, TypeText { "git difftool " }, ResSubslate { resid_gitDiff }, endSequence{},
 		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
 		Event { "add files", "" },		Sequence{}, TypeText { "git add " }, ResSubslate { resid_gitAdd }, endSequence{},
-		Event { "show message file", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
 		Event { "commit", "" },			Sequence{}, TypeText { "git commit " }, ResSubslate { resid_gitCommit }, endSequence{},
 		Event { "log", "" },			Sequence{}, TypeText { "git log " }, ResSubslate { resid_gitLog }, endSequence{},
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
-		Event { "merge", "" },			Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
-		Event { "push", "" },			TypeText { "git push origin " },
+		Event { "merge", "" },			Sequence{}, TypeText { "git mergetool " }, ResSubslate { resid_gitMerge }, endSequence{},
+		Event { "push", "" },			Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
 		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch " }, ResSubslate { resid_gitFetch }, endSequence{},
 		Event { "clean", "" },			Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
-		Event { "Bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_Bisect }, endSequence{},
+		Event { "bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_Bisect }, endSequence{},
+		Event { "show message file", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
 		Event { "list tree", "" },		TypeText { "git ls-tree -r " },
 		Event { "show", "" },			TypeText { "git show --pretty=\"format:\" --name-only " },
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},
@@ -194,16 +195,16 @@ resource restype_Slate (resid_gitCheckout, "") { {
 resource restype_Slate (resid_gitBranch, "") { {
 	Slate { "branch",	{
 		_GitStandards_,
-		ExitEvent { "list", "" },		_return,
+		ExitEvent { "list", "" },			_return,
 		ExitEvent { "list all", "" },		Sequence{}, TypeText { "-a " }, _return, endSequence{},
 		ExitEvent { "get current", "" },	Sequence{}, _cancel, TypeText { "cb=$(git branch | grep \"*\" | sed \"s/* //\"); print $cb" }, _return, endSequence{},
-		Event { "unmerged", "" },		Sequence{}, TypeText { "--no-merged " }, endSequence{},
-		Event { "rename", "" },			Sequence{}, TypeText { "-m " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "delete", "" },			Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "switch new", "" },		Sequence{}, _cancel, TypeText { "git checkout -b " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "checkout", "" },		Sequence{}, _cancel, TypeText { "git checkout " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "unmerged", "" },			Sequence{}, TypeText { "--no-merged " }, endSequence{},
+		Event { "rename", "" },				Sequence{}, TypeText { "-m " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "delete", "" },				Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "switch new", "" },			Sequence{}, _cancel, TypeText { "git checkout -b " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "checkout", "" },			Sequence{}, _cancel, TypeText { "git checkout " }, ResSubslate { resid_gitType }, endSequence{},
 		_CurrentBranch_,
-		Event { "master", "" },			TypeText { "master " },
+		Event { "master", "" },				TypeText { "master " },
 	} }
 } };
 
@@ -235,8 +236,8 @@ resource restype_Slate (resid_gitDiff, "") { {
 resource restype_Slate (resid_gitStash, "") { {
 	Slate { "stash",	{
 		_GitStandards_,
-		Event { "save", "" },			Sequence{}, _cancel, TypeText { "# git stash save <message>" }, _return, TypeText { "git stash save " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "apply", "" },			Sequence{}, TypeText { "apply " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "save", "" },			Sequence{}, TypeText { "save " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "apply", "" },			TypeText { "apply " },
 		Event { "drop", "" },			TypeText { "drop " },
 		Event { "list", "" },			TypeText { "list " },
 		Event { "show", "" },			TypeText { "show " },
@@ -319,11 +320,10 @@ resource restype_Slate (resid_gitReflog, "") { {
 #pragma mark 3 -- Tag
 resource restype_Slate (resid_gitTag, "") { {
 	Slate { "tag",	{
-		ExitEvent { "list", "" },			Sequence{}, Keypress { kc_C, mf_control }, TypeText { "git for-each-ref refs/tags --sort=-taggerdate --format=\"%(objectname:short) %(taggerdate:short) %(refname:short)%09%09%(subject) %(body)\"" }, endSequence{},
-		ExitEvent { "list names	", "" },	_return,
+		ExitEvent { "annotate ", "" },			Sequence{}, Keypress { kc_C, mf_control }, TypeText { "git for-each-ref refs/tags --sort=-taggerdate --format=\"%(objectname:short) %(taggerdate:short) %(refname:short)%09%09%(subject) %(body)\"" }, endSequence{},
+		ExitEvent { "list ", "" },	_return,
 		Event { "show", "" },				Sequence{}, _cancel, TypeText { "git show --name-status " }, ResSubslate { resid_gitType }, endSequence{},
-		ExitEvent { "push", "" },			Sequence{}, _cancel, TypeText { "git push --tags" }, endSequence{},
-		Event { "make", "" },				Sequence{}, _cancel, TypeText { "# git tag -a 'tagname' -m \"message\"" }, _return, TypeText { "git tag -a "}, endSequence{},
+		Event { "make", "" },				Sequence{}, TypeText { "git tag -a "}, ResSubslate { resid_gitType }, endSequence{},
 		Event { "delete", "" },				Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
 		_CurrentBranch_,
 		_GitStandards_,	
@@ -335,16 +335,25 @@ resource restype_Slate (resid_gitMerge, "") { {
 	Slate { "Merge",	{
 		_GitStandards_,
 		_currentBranch_,
-		ExitEvent { "abort", "" },		TypeText { "git merge --abort" },
-		Event { "close branch", "" },	Sequence{}, TypeText { "--no-ff $cb -m \"merge branch $cb\"" }, endSequence{},
+		ExitEvent { "abort", "" },		TypeText { "--abort" },
 		Event { "message", "" },		Sequence{}, TypeText { "$cb -m \"merge $cb:" }, endSequence{},
+		Event { "close branch", "" },	Sequence{}, TypeText { "--no-ff $cb -m \"merge branch $cb\"" }, endSequence{},
 		Event { "remote", "" },			Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist:" }, endSequence{},
-		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
 		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{}, 
 	} }
 } };
 
 #pragma mark 5 -- Push
+#pragma mark gitPush
+resource restype_Slate (resid_gitPush, "") { {
+	Slate { "gitPush",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "origin", "" },			TypeText { "origin " },
+		Event { "tags", "" },			TypeText { "--tags " },
+	} }
+} };
+
 #pragma mark 6 -- Fetch
 resource restype_Slate (resid_gitFetch, "") { {
 	Slate { "Fetch",	{
