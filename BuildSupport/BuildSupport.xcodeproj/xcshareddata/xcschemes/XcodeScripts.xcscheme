@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67692457141EB921005D3E68"
-               BuildableName = "Xcode.bundle"
+               BuildableName = "XcodeScripts.bundle"
                BlueprintName = "XcodeScripts"
                ReferencedContainer = "container:BuildSupport.xcodeproj">
             </BuildableReference>

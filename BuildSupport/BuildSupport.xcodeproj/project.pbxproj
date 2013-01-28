@@ -43,6 +43,16 @@
 		67DD774916A4C4FB00BECCD5 /* CheckSyntax.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		671B547016B1E91D009C2B17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67692457141EB921005D3E68;
+			remoteInfo = XcodeScripts;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		671C4824159CFF3800214A9E /* BBEdit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEdit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
@@ -51,7 +61,7 @@
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6761489016A8B93F00FE431B /* toBBEdit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
-		67692458141EB921005D3E68 /* Xcode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xcode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67692458141EB921005D3E68 /* XcodeScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BE04B116B062F00065BFDE /* ccInstallAction.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstallAction.ksh; sourceTree = "<group>"; };
@@ -283,7 +293,7 @@
 		67692459141EB921005D3E68 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				67692458141EB921005D3E68 /* Xcode.bundle */,
+				67692458141EB921005D3E68 /* XcodeScripts.bundle */,
 				67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */,
 				671C4824159CFF3800214A9E /* BBEdit.bundle */,
 				674BF6BA15B7287A0093786D /* UserSlates.bundle */,
@@ -1018,6 +1028,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
+		671B546C16B1E610009C2B17 /* Xcode */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/Xcode $(ACTION)";
+			buildConfigurationList = 671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */;
+			buildPhases = (
+			);
+			buildToolPath = ccInstallAction;
+			buildWorkingDirectory = "";
+			dependencies = (
+				671B547116B1E91D009C2B17 /* PBXTargetDependency */,
+			);
+			name = Xcode;
+			passBuildSettingsInEnvironment = 0;
+			productName = Xcode;
+		};
 		67BE04B916B06EFF0065BFDE /* Cdoc */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(DEV)/Support BuildSupport/Cdoc $(ACTION)";
@@ -1086,7 +1111,6 @@
 			buildConfigurationList = 67692464141EB921005D3E68 /* Build configuration list for PBXNativeTarget "XcodeScripts" */;
 			buildPhases = (
 				67F480D615AF2772004CD4E1 /* Sources */,
-				67692467141EBD70005D3E68 /* Xcode support */,
 			);
 			buildRules = (
 			);
@@ -1094,7 +1118,7 @@
 			);
 			name = XcodeScripts;
 			productName = Xcode;
-			productReference = 67692458141EB921005D3E68 /* Xcode.bundle */;
+			productReference = 67692458141EB921005D3E68 /* XcodeScripts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		67AA8010144F3DAD00FCCDC9 /* Developer_Setup */ = {
@@ -1139,6 +1163,7 @@
 				674BF6B915B7287A0093786D /* UserSlates */,
 				67BE04B916B06EFF0065BFDE /* Cdoc */,
 				67BE04BF16B08DE30065BFDE /* Developer */,
+				671B546C16B1E610009C2B17 /* Xcode */,
 			);
 		};
 /* End PBXProject section */
@@ -1208,21 +1233,6 @@
 			shellScript = "mkdir -p ${CCDev}/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ${CCDev}/UserSlates/Accessor.rsrc\n";
 			showEnvVarsInLog = 0;
 		};
-		67692467141EBD70005D3E68 /* Xcode support */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Xcode support";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/ksh;
-			shellScript = "print $CONFIGURATION_BUILD_DIR; ccInstall ${DEV}/Support BuildSupport/Applications/Xcode";
-			showEnvVarsInLog = 0;
-		};
 		67AA801D144F3DE400FCCDC9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1264,7 +1274,74 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		671B547116B1E91D009C2B17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67692457141EB921005D3E68 /* XcodeScripts */;
+			targetProxy = 671B547016B1E91D009C2B17 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		671B546E16B1E610009C2B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		671B546F16B1E610009C2B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		671C482D159CFF3800214A9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1395,6 +1472,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CCDev)/build/Support/BuildSupport/Applications/Xcode";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1425,6 +1503,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CCDev)/build/Support/BuildSupport/Applications/Xcode";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1622,6 +1701,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				671B546E16B1E610009C2B17 /* Debug */,
+				671B546F16B1E610009C2B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEdit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1674,6 +1761,7 @@
 				67BE04BC16B06EFF0065BFDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */ = {
 			isa = XCConfigurationList;
@@ -1682,6 +1770,7 @@
 				67BE04C216B08DE30065BFDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
