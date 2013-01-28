@@ -44,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		67043DC916B7333F00E43F90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 671C4823159CFF3800214A9E;
+			remoteInfo = BBEditScripts;
+		};
 		671B547016B1E91D009C2B17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
@@ -1028,6 +1035,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
+		67043DC516B7331400E43F90 /* BBEdit */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/BBEdit $(ACTION)";
+			buildConfigurationList = 67043DC616B7331400E43F90 /* Build configuration list for PBXLegacyTarget "BBEdit" */;
+			buildPhases = (
+			);
+			buildToolPath = ccInstallAction;
+			buildWorkingDirectory = "";
+			dependencies = (
+				67043DCA16B7333F00E43F90 /* PBXTargetDependency */,
+			);
+			name = BBEdit;
+			passBuildSettingsInEnvironment = 0;
+			productName = BBEdit;
+		};
 		671B546C16B1E610009C2B17 /* Xcode */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/Xcode $(ACTION)";
@@ -1079,7 +1101,6 @@
 			buildConfigurationList = 671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEditScripts" */;
 			buildPhases = (
 				671C4839159D025C00214A9E /* Sources */,
-				671C4831159CFF5500214A9E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1164,6 +1185,7 @@
 				67BE04B916B06EFF0065BFDE /* Cdoc */,
 				67BE04BF16B08DE30065BFDE /* Developer */,
 				671B546C16B1E610009C2B17 /* Xcode */,
+				67043DC516B7331400E43F90 /* BBEdit */,
 			);
 		};
 /* End PBXProject section */
@@ -1205,20 +1227,6 @@
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		671C4831159CFF5500214A9E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/ksh;
-			shellScript = "ccInstall ${DEV}/Support BuildSupport/Applications/BBEdit";
-			showEnvVarsInLog = 0;
-		};
 		674BF6F715B72ADB0093786D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1275,6 +1283,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		67043DCA16B7333F00E43F90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 671C4823159CFF3800214A9E /* BBEditScripts */;
+			targetProxy = 67043DC916B7333F00E43F90 /* PBXContainerItemProxy */;
+		};
 		671B547116B1E91D009C2B17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 67692457141EB921005D3E68 /* XcodeScripts */;
@@ -1283,6 +1296,65 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		67043DC716B7331400E43F90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		67043DC816B7331400E43F90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		671B546E16B1E610009C2B17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1707,6 +1779,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		67043DC616B7331400E43F90 /* Build configuration list for PBXLegacyTarget "BBEdit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67043DC716B7331400E43F90 /* Debug */,
+				67043DC816B7331400E43F90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

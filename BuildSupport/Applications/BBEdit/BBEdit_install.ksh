@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  BBEdit_install
+#  BBEdit_install.ksh
 #  Support
 #
 #  Created by Carol Clark on 6/28/12.
@@ -66,14 +66,12 @@ function handleFile {
 	if [[ "${subtarget}" = "AppleScripts" ]] ; then
 		fname="${filepath%.applescript}.scpt"
 		action="copy"
-
-		sourceForCopy="${CONFIGURATION_BUILD_DIR}/BBEdit.bundle/Contents/Resources/${fname}"
+		sourceForCopy=="${CCDev}/build/Support/BuildSupport/Applications/BBEdit/BBEditScripts.bundle/Contents/Resources/${fname}"
 		destinationForCopy="${destinationFolder}/${fname}"
 	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
 		action="copy"
-
 		sourceForCopy="${projectPath}/${target}/${subtarget}/${filepath}"
 		destinationForCopy="${destinationFolder}/${destname}"
 	else
