@@ -278,7 +278,7 @@ function findSources {
 		projectPath="${1}"
 		target="${2}"
 	else
-		print "USAGE: ccInstall findSources pathToProject target"
+		print "error: USAGE: ccInstall findSources pathToProject target"
 		return $RC_MissingArgument
 	fi
 
@@ -332,8 +332,10 @@ function processActions {
 		msg=$("${targetScript}" --cleanTarget)
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			print "error: ${msg}"
+			print "error: ${targetScript} --cleanTarget failed: ${msg}"
 			return ${st}
+		else
+			print ${msg}
 		fi
 		lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
 		st=$?

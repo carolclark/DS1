@@ -213,7 +213,11 @@
 				<li>move Services from target Xcode to target Developer</li>
 			</ul></li>
 			<li>Xcode<ul>
-				<li>rename existing target Xcode to XcodeScripts</li>
+				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to $(CCDev)/build/Support/BuildSupport/Applications/Xcode</li>
+				<li>move ccInstall functionality from Scripts target to new External target</li>
+				<li>Xcode_install.ksh: add folders to function cleanTarget<ul>
+					<li>ccInstall: add --removeFolder</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
 	</ul>
