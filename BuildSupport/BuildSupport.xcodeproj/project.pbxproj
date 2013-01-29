@@ -61,7 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		671C4824159CFF3800214A9E /* BBEdit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEdit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		671C4824159CFF3800214A9E /* BBEditScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEditScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
 		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
@@ -288,10 +288,10 @@
 			isa = PBXGroup;
 			children = (
 				67DD779416A71F5700BECCD5 /* History_Support.html */,
-				67DD777B16A71F5700BECCD5 /* Cdoc */,
-				67DB2326169E0A2900A6E910 /* Developer */,
-				67DD76CB16A4AF9300BECCD5 /* Applications */,
-				67DB22CA169CD82300A6E910 /* UserSlates */,
+				67DD777B16A71F5700BECCD5 /* 0 Cdoc */,
+				67DB2326169E0A2900A6E910 /* 2 Developer */,
+				67DD76CB16A4AF9300BECCD5 /* 5 Applications */,
+				67DB22CA169CD82300A6E910 /* 8 UserSlates */,
 				6769245A141EB921005D3E68 /* Frameworks */,
 				67692459141EB921005D3E68 /* Products */,
 			);
@@ -302,7 +302,7 @@
 			children = (
 				67692458141EB921005D3E68 /* XcodeScripts.bundle */,
 				67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */,
-				671C4824159CFF3800214A9E /* BBEdit.bundle */,
+				671C4824159CFF3800214A9E /* BBEditScripts.bundle */,
 				674BF6BA15B7287A0093786D /* UserSlates.bundle */,
 			);
 			name = Products;
@@ -324,21 +324,23 @@
 			path = _plist;
 			sourceTree = "<group>";
 		};
-		67BE04C516B09CB50065BFDE /* Services */ = {
+		67BE04C516B09CB50065BFDE /* 4 Services */ = {
 			isa = PBXGroup;
 			children = (
 				67BE04C616B09CB50065BFDE /* GitSaveMessage.workflow */,
 				67BE04C716B09CB50065BFDE /* OpenAccessor.workflow */,
 			);
+			name = "4 Services";
 			path = Services;
 			sourceTree = "<group>";
 		};
-		67DB22CA169CD82300A6E910 /* UserSlates */ = {
+		67DB22CA169CD82300A6E910 /* 8 UserSlates */ = {
 			isa = PBXGroup;
 			children = (
 				67DB22CD169CD82300A6E910 /* Slates */,
 				67DB22CB169CD82300A6E910 /* OtherSources */,
 			);
+			name = "8 UserSlates";
 			path = UserSlates;
 			sourceTree = "<group>";
 		};
@@ -386,7 +388,7 @@
 			path = Slates;
 			sourceTree = "<group>";
 		};
-		67DB2326169E0A2900A6E910 /* Developer */ = {
+		67DB2326169E0A2900A6E910 /* 2 Developer */ = {
 			isa = PBXGroup;
 			children = (
 				67DB240A16A1CBE500A6E910 /* Developer_install.ksh */,
@@ -395,12 +397,13 @@
 				67DB232B169E0A2900A6E910 /* AppleScripts */,
 				67DB2330169E0A2900A6E910 /* Doxygen */,
 				67DB2332169E0A2900A6E910 /* Environment */,
-				67DB2334169E0A2900A6E910 /* Functions */,
+				67DB2334169E0A2900A6E910 /* 3 Functions */,
 				67DB233A169E0A2900A6E910 /* Scripts */,
-				67BE04C516B09CB50065BFDE /* Services */,
+				67BE04C516B09CB50065BFDE /* 4 Services */,
 				67DB2337169E0A2900A6E910 /* plist */,
 				67DB2341169E0A2900A6E910 /* ThirdParty */,
 			);
+			name = "2 Developer";
 			path = Developer;
 			sourceTree = "<group>";
 		};
@@ -439,12 +442,13 @@
 			path = Environment;
 			sourceTree = "<group>";
 		};
-		67DB2334169E0A2900A6E910 /* Functions */ = {
+		67DB2334169E0A2900A6E910 /* 3 Functions */ = {
 			isa = PBXGroup;
 			children = (
 				67DB2335169E0A2900A6E910 /* ccInstall.ksh */,
 				67DB2336169E0A2900A6E910 /* errtrap.ksh */,
 			);
+			name = "3 Functions";
 			path = Functions;
 			sourceTree = "<group>";
 		};
@@ -562,14 +566,15 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		67DD76CB16A4AF9300BECCD5 /* Applications */ = {
+		67DD76CB16A4AF9300BECCD5 /* 5 Applications */ = {
 			isa = PBXGroup;
 			children = (
 				67DD76CC16A4AF9300BECCD5 /* Xcode */,
-				67DD773F16A4C2BA00BECCD5 /* BBEdit */,
+				67DD773F16A4C2BA00BECCD5 /* 6 BBEdit */,
 				6761488F16A8B93F00FE431B /* Finder */,
 				67DD777616A4D6A700BECCD5 /* Dash */,
 			);
+			name = "5 Applications";
 			path = Applications;
 			sourceTree = "<group>";
 		};
@@ -917,13 +922,14 @@
 			path = Workflows;
 			sourceTree = "<group>";
 		};
-		67DD773F16A4C2BA00BECCD5 /* BBEdit */ = {
+		67DD773F16A4C2BA00BECCD5 /* 6 BBEdit */ = {
 			isa = PBXGroup;
 			children = (
 				67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */,
 				67DD774216A4C2BA00BECCD5 /* AppleScripts */,
 				67DD774016A4C2BA00BECCD5 /* _plist */,
 			);
+			name = "6 BBEdit";
 			path = BBEdit;
 			sourceTree = "<group>";
 		};
@@ -953,7 +959,7 @@
 			path = Dash;
 			sourceTree = "<group>";
 		};
-		67DD777B16A71F5700BECCD5 /* Cdoc */ = {
+		67DD777B16A71F5700BECCD5 /* 0 Cdoc */ = {
 			isa = PBXGroup;
 			children = (
 				67DD777C16A71F5700BECCD5 /* _tech */,
@@ -961,6 +967,7 @@
 				67DD778E16A71F5700BECCD5 /* html */,
 				67DD779816A71F5700BECCD5 /* Resources */,
 			);
+			name = "0 Cdoc";
 			path = Cdoc;
 			sourceTree = "<group>";
 		};
@@ -1108,7 +1115,7 @@
 			);
 			name = BBEditScripts;
 			productName = BBEdit;
-			productReference = 671C4824159CFF3800214A9E /* BBEdit.bundle */;
+			productReference = 671C4824159CFF3800214A9E /* BBEditScripts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		674BF6B915B7287A0093786D /* UserSlates */ = {
@@ -1422,6 +1429,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CCDev)/build/Support/BuildSupport/Applications/BBEdit";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1452,6 +1460,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CCDev)/build/Support/BuildSupport/Applications/BBEdit";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1786,6 +1795,7 @@
 				67043DC816B7331400E43F90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */ = {
 			isa = XCConfigurationList;

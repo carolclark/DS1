@@ -190,6 +190,56 @@ testCleanProjectTarget() {
 	assertEquals "$LINENO: error RC_MissingArgument expected" $RC_MissingArgument "${st}"
 }
 
+#^ removeFolder
+testRemoveFolder() {
+	projectPath="${CCDev}/TestData/ProjB"
+	str=$(ccInstall --removeFolder)
+	st=$?
+	assertEquals "$LINENO: error RC_MissingArgument expected" $RC_MissingArgument "${st}"
+
+	mkdir -p "${projectPath}/Corlan"
+	mkdir -p "${projectPath}/Emily"
+	mkdir -p "${projectPath}/Corlan/Two"
+	print "red" > "${projectPath}/Corlan/Two/red"
+	print "green" > "${projectPath}/Corlan/Two/green"
+	mkdir -p "${projectPath}/Emily/Nine"
+	print "pink" > "${projectPath}/Emily/Nine/pink"
+	print "blue" > "${projectPath}/Emily/Nine/blue"
+
+	fl="${projectPath}/Emily/Nine/blue"
+	if [[ ! -e "${fl}" ]] ; then
+		fail "$LINENO: file ${projectPath}/Emily/Nine/blue missing"
+	fi
+	fl="${projectPath}/Corlan/Two"
+	if [[ ! -e "${fl}" ]] ; then
+		fail "$LINENO: file ${fl} missing"
+	fi
+	if [[ ! -d "${fl}" ]] ; then
+		fail "$LINENO: file ${fl}: directory expected" 
+	fi
+
+	d1="${projectPath}/Corlan/Two"
+	d2="${projectPath}/Emily/Nine/blue"
+	str=$(ccInstall --removeFolder "${d1}")
+	if [[ -e "${d1}" ]] ; then
+		fail "$LINENO: file ${d1} should have been removed"
+	fi
+
+	if [[ ! -e "${d2}" ]] ; then
+		fail "$LINENO: file ${d2} should still be present"
+	fi
+	str=$(ccInstall --removeFolder "${projectPath}/Corlan")
+	str=$(ccInstall --removeFolder "${projectPath}/Emily")
+	dr="${projectPath}/Corlan"
+	if [[ -e "${dr}" ]] ; then
+		fail "$LINENO: directory ${dr} should have been removed"
+	fi
+	dr="${projectPath}/Emily"
+	if [[ -e "${dr}" ]] ; then
+		fail "$LINENO: directory ${dr} should have been removed"
+	fi
+}
+
 #^ 7 === testInstall
 testInstall() {
 	str=$(ccInstall a)
