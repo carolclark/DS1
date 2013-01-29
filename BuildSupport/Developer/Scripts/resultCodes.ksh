@@ -12,3 +12,4 @@ RC_MissingArgument=11
 RC_InvalidArgument=12
 RC_InvalidInput=13
 RC_InputNotHandled=14
+RC_NoSuchDirectory=15

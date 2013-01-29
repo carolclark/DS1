@@ -92,67 +92,13 @@ function handleFile {
 	return 0
 }
 
-function removeFolder {
-	if [[ -n "${1}" ]] ; then
-		folder="${1}"
-	else
-		print "error: USAGE: ccInstall --get<Path> pathToProject target"
-		return $RC_MissingArgument
-	fi
-	if [[ -d ${folder} ]]; then
-		iofile="${CCDev}/tmp/found3"
-		origdir=$(pwd)
-		print "= ${folder}"
-		cd "${folder}"
-		st=${?}
-		if [[ ${st} > 0 ]] ; then
-			print "error: could set directory to ${folder} because it does not exist or is not a directory"
-			cd "${origdir}"
-			return ${st}
-		fi
-		find . -path -prune -or -type f | sed 's|\./||' > "${iofile}"
-		chmod a+r "${iofile}"
-
-		while read fl ; do
-			print -n "${fl}: "
-			rm "${fl}"
-			st=$?
-			if [[ ${st} > 0 ]] ; then
-				print "error: could not remove"
-				cd "${origdir}"
-				return ${st}
-			fi
-			print "removed"
-		done < "${iofile}"
-		
-		find . -path -prune -or -type d | sed 's|\./||' | tail -r > "${iofile}"
-		chmod a+r "${iofile}"
-
-		while read fl ; do
-			if ! [[ ${fl} = "." ]] ; then
-				print T228"(${fl}: "
-				rmdir "${fl}"
-				st=$?
-				if [[ ${st} > 0 ]] ; then
-					print "error: could not remove"
-					cd "${origdir}"
-					return ${st}
-				fi
-				print "removed"
-			fi
-		done < "${iofile}"
-
-		cd "${origdir}"
-	fi
-	return 0
-}
-
 #^ 7 === cleanTarget
 function cleanTarget {
 	for folder in "${HOME}/Library/Scripts/Xcode" "${HOME}/Library/Developer/Xcode/Templates" "${CCDev}/build/Support/BuildSupport/Applications/Xcode" ; do
-		removeFolder "${folder}"
+		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
+			print "error: ${msg}"
 			return ${st}
 		fi
 	done

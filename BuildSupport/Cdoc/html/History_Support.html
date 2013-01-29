@@ -222,6 +222,10 @@
 			<li>BBEdit: use External target BBEdit with dependency on script bundle target BBEditScripts</li>
 			<li>targets BBEdit, Developer, Cdoc: Clean operation cleans up installed files<ul>
 				<li>move function removeFolder from Xcode_install.ksh to ccInstall.ksh</li>
+				<li>ccInstall<ul>
+					<li>--removeFolder: check for argument exists but is not a directory</li>
+					<li>--copyFiles: do not use unix <span class='mono'>dirname</span>, since it cannot handle folders inside "Application Support"</li>
+				</ul></li>
 			</ul></li>
 			<li>convert Cdoc, Doxygen targets in Punkin, Accessor to use External targets<ul>
 				<li>expand ccInstallAction.ksh to support Doxygen builds</li>

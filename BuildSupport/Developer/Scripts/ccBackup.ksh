@@ -27,7 +27,7 @@ function processFolder {
 	fi
 	lastbuilt="${destination}/${batch}/${folder}/__lastBackup"
 	if [[ -e "${HOME}/${folder}" ]] ; then
-		if [[ ! -d "${HOME}/${folder}" ]] ; then
+		if ! [[ -d "${HOME}/${folder}" ]] ; then
 			print "specified folder ${HOME}/${folder} is not a directory"
 			return 1
 		fi

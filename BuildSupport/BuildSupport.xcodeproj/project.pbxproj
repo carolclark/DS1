@@ -1185,14 +1185,14 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				67AA8010144F3DAD00FCCDC9 /* Developer_Setup */,
-				67692457141EB921005D3E68 /* XcodeScripts */,
-				671C4823159CFF3800214A9E /* BBEditScripts */,
 				674BF6B915B7287A0093786D /* UserSlates */,
-				67BE04B916B06EFF0065BFDE /* Cdoc */,
+				67AA8010144F3DAD00FCCDC9 /* Developer_Setup */,
 				67BE04BF16B08DE30065BFDE /* Developer */,
+				67BE04B916B06EFF0065BFDE /* Cdoc */,
 				671B546C16B1E610009C2B17 /* Xcode */,
 				67043DC516B7331400E43F90 /* BBEdit */,
+				67692457141EB921005D3E68 /* XcodeScripts */,
+				671C4823159CFF3800214A9E /* BBEditScripts */,
 			);
 		};
 /* End PBXProject section */

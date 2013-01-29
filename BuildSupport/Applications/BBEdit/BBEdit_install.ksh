@@ -66,7 +66,7 @@ function handleFile {
 	if [[ "${subtarget}" = "AppleScripts" ]] ; then
 		fname="${filepath%.applescript}.scpt"
 		action="copy"
-		sourceForCopy=="${CCDev}/build/Support/BuildSupport/Applications/BBEdit/BBEditScripts.bundle/Contents/Resources/${fname}"
+		sourceForCopy="${CCDev}/build/Support/BuildSupport/Applications/BBEdit/BBEditScripts.bundle/Contents/Resources/${fname}"
 		destinationForCopy="${destinationFolder}/${fname}"
 	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
@@ -98,7 +98,6 @@ if [[ $# = 0 ]] ; then
 fi
 case "${1}" in
 	"--getSubtargetDestination" )
-		print "${2}"
 		msg=$(getSubtargetDestination "${2}")
 		es=$?
 		print "${msg}"

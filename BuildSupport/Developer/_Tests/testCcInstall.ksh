@@ -206,6 +206,10 @@ testRemoveFolder() {
 	print "pink" > "${projectPath}/Emily/Nine/pink"
 	print "blue" > "${projectPath}/Emily/Nine/blue"
 
+	if [[ ! -e "${fl}" ]] ; then
+		fail "$LINENO: file ${projectPath}/Emily/Nine/blue missing"
+	fi
+
 	fl="${projectPath}/Emily/Nine/blue"
 	if [[ ! -e "${fl}" ]] ; then
 		fail "$LINENO: file ${projectPath}/Emily/Nine/blue missing"
@@ -228,6 +232,12 @@ testRemoveFolder() {
 	if [[ ! -e "${d2}" ]] ; then
 		fail "$LINENO: file ${d2} should still be present"
 	fi
+
+	d3="${projectPath}/Emily/Nine/blue"
+	str=$(ccInstall --removeFolder "${d3}")
+	st=$?
+	assertEquals "$LINENO: error: ${d3} is not a directory" $RC_NoSuchDirectory "${st}"
+
 	str=$(ccInstall --removeFolder "${projectPath}/Corlan")
 	str=$(ccInstall --removeFolder "${projectPath}/Emily")
 	dr="${projectPath}/Corlan"

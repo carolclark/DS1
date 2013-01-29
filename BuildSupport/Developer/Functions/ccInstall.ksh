@@ -129,11 +129,13 @@ function copyFile {
 		print "USAGE: ccInstall --copyFile sourceForCopy destinationForCopy"
 		return $RC_MissingArgument
 	fi
-	print "mkdir -p $(dirname ${destinationForCopy})"
-	mkdir -p $(dirname "${destinationForCopy}")
+
+	dir="${destinationForCopy%/*}"
+	print "mkdir -p ${dir}"
+	mkdir -p "${dir}"
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "error: could not create directory $(dirname ${destinationForCopy})"
+		print "error: could not create directory ${dir}"
 		return ${st}
 	fi
 	cp "${sourceForCopy}" "${destinationForCopy}"
@@ -309,7 +311,11 @@ function removeFolder {
 		print "error: USAGE: ccInstall --get<Path> pathToProject target"
 		return $RC_MissingArgument
 	fi
-	if [[ -d ${folder} ]]; then
+	if [[ -e ${folder} ]]; then			# folder exists
+		if ! [[ -d ${folder} ]]; then
+			print "error: ${folder} is not a directory"
+			return $RC_NoSuchDirectory
+		fi
 		iofile="${CCDev}/tmp/found3"
 		origdir=$(pwd)
 		print "= ${folder}"
