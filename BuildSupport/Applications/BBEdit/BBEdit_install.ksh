@@ -87,6 +87,14 @@ function handleFile {
 
 #^ 7 === cleanTarget
 function cleanTarget {
+	for folder in "${HOME}/Library/Application Support/BBEdit/Scripts" ; do
+		msg=$(ccInstall --removeFolder "${folder}")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			print "error: ${msg}"
+			return ${st}
+		fi
+	done
 	return 0
 }
 

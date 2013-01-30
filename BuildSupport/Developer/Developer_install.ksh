@@ -28,6 +28,10 @@ trap "$trapString" ERR
 projectPath="${DEV}/Support"
 target="BuildSupport/Developer"
 
+servicesFolder="${HOME}/Library/Services"
+scriptsFolder="${CCDev}/bin"
+functionsFolder="${CCDev}/func"
+
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
@@ -39,13 +43,13 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"Scripts" )
-			destinationFolder="${CCDev}/bin"
+			destinationFolder="${scriptsFolder}"
 			;;
 		"Functions" )
-			destinationFolder="${CCDev}/func"
+			destinationFolder="${functionsFolder}"
 			;;
 		"Services" )
-			destinationFolder="${HOME}/Library/Services"
+			destinationFolder="${servicesFolder}"
 			;;
 		"AppleScripts" )		# files for future use
 			;&
