@@ -152,6 +152,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "clean", "" },			Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
 		Event { "bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_Bisect }, endSequence{},
 		Event { "show message file", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
+		Event { "make executable", "" },	Sequence{}, TypeText { "chmod a+x " }, ResSubslate { resid_Type },  endSequence{},
 		Event { "list tree", "" },		TypeText { "git ls-tree -r " },
 		Event { "show", "" },			TypeText { "git show --pretty=\"format:\" --name-only " },
 		Event { "directory", "" },		Sequence{}, TypeText { "pwd" }, _return, endSequence{},

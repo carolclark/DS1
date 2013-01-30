@@ -65,6 +65,9 @@
 		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
 		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
+		673D580A16B9A1450001DFF2 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
+		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
+		673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6761489016A8B93F00FE431B /* toBBEdit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
@@ -108,7 +111,6 @@
 		67DB232A169E0A2900A6E910 /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
 		67DB232C169E0A2900A6E910 /* Snippet.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = Snippet.applescript; sourceTree = "<group>"; };
 		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
-		67DB2331169E0A2900A6E910 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
 		67DB2333169E0A2900A6E910 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		67DB2335169E0A2900A6E910 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67DB2336169E0A2900A6E910 /* errtrap.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errtrap.ksh; sourceTree = "<group>"; };
@@ -275,6 +277,24 @@
 			path = InstallCdoc.xctemplate;
 			sourceTree = "<group>";
 		};
+		673D580916B9A1450001DFF2 /* Doxygen */ = {
+			isa = PBXGroup;
+			children = (
+				673D580B16B9A52A0001DFF2 /* _Tests */,
+				673D580A16B9A1450001DFF2 /* Default.doxygen */,
+				673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */,
+			);
+			path = Doxygen;
+			sourceTree = "<group>";
+		};
+		673D580B16B9A52A0001DFF2 /* _Tests */ = {
+			isa = PBXGroup;
+			children = (
+				673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */,
+			);
+			path = _Tests;
+			sourceTree = "<group>";
+		};
 		6761488F16A8B93F00FE431B /* Finder */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +312,7 @@
 				67DB2326169E0A2900A6E910 /* 2 Developer */,
 				67DD76CB16A4AF9300BECCD5 /* 5 Applications */,
 				67DB22CA169CD82300A6E910 /* 8 UserSlates */,
+				673D580916B9A1450001DFF2 /* Doxygen */,
 				6769245A141EB921005D3E68 /* Frameworks */,
 				67692459141EB921005D3E68 /* Products */,
 			);
@@ -395,7 +416,6 @@
 				67DB240B16A1CBE500A6E910 /* Developer_Setup.ksh */,
 				67DB2327169E0A2900A6E910 /* _Tests */,
 				67DB232B169E0A2900A6E910 /* AppleScripts */,
-				67DB2330169E0A2900A6E910 /* Doxygen */,
 				67DB2332169E0A2900A6E910 /* Environment */,
 				67DB2334169E0A2900A6E910 /* 3 Functions */,
 				67DB233A169E0A2900A6E910 /* Scripts */,
@@ -424,14 +444,6 @@
 				67DB232D169E0A2900A6E910 /* Snippets.txt */,
 			);
 			path = AppleScripts;
-			sourceTree = "<group>";
-		};
-		67DB2330169E0A2900A6E910 /* Doxygen */ = {
-			isa = PBXGroup;
-			children = (
-				67DB2331169E0A2900A6E910 /* Default.doxygen */,
-			);
-			path = Doxygen;
 			sourceTree = "<group>";
 		};
 		67DB2332169E0A2900A6E910 /* Environment */ = {
@@ -1072,6 +1084,20 @@
 			passBuildSettingsInEnvironment = 0;
 			productName = Xcode;
 		};
+		673D581016B9CAF20001DFF2 /* Doxygen */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "${DEV}/Support BuildSupport/Doxygen $(ACTION)";
+			buildConfigurationList = 673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */;
+			buildPhases = (
+			);
+			buildToolPath = ccInstallAction;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Doxygen;
+			passBuildSettingsInEnvironment = 0;
+			productName = Doxygen;
+		};
 		67BE04B916B06EFF0065BFDE /* Cdoc */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(DEV)/Support BuildSupport/Cdoc $(ACTION)";
@@ -1185,14 +1211,15 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				674BF6B915B7287A0093786D /* UserSlates */,
 				67AA8010144F3DAD00FCCDC9 /* Developer_Setup */,
 				67BE04BF16B08DE30065BFDE /* Developer */,
+				674BF6B915B7287A0093786D /* UserSlates */,
 				67BE04B916B06EFF0065BFDE /* Cdoc */,
 				671B546C16B1E610009C2B17 /* Xcode */,
 				67043DC516B7331400E43F90 /* BBEdit */,
 				67692457141EB921005D3E68 /* XcodeScripts */,
 				671C4823159CFF3800214A9E /* BBEditScripts */,
+				673D581016B9CAF20001DFF2 /* Doxygen */,
 			);
 		};
 /* End PBXProject section */
@@ -1478,6 +1505,65 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		673D581216B9CAF20001DFF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		673D581316B9CAF20001DFF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -1811,6 +1897,15 @@
 			buildConfigurations = (
 				671C482D159CFF3800214A9E /* Debug */,
 				671C482E159CFF3800214A9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				673D581216B9CAF20001DFF2 /* Debug */,
+				673D581316B9CAF20001DFF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
