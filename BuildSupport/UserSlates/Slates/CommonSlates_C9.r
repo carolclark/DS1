@@ -1,5 +1,5 @@
 // =================================================================================
-//	CommonSlates_C9.r			©2004-12 C & C Software, Inc. All rights reserved.
+//	CommonSlates_C9.r			©2004-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -390,6 +390,8 @@ resource restype_Slate (resid_GoToFolder, "GoToFolder") { {
 			TypeText { bootvol_"/Developer/" },			Keypress { kc_return, 0 }, endSequence{},
 		Event { "in house docs", "" },	Sequence{}, Keypress { kc_G, mf_command + mf_shift },
 			TypeText { "~/CCDev/Sites/TechnicalDocs" }, _return, ResSubslate { resid_TypeSlate }, endSequence{},
+		ExitEvent { "reference", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
+			TypeText { "~/Reference" },				Keypress { kc_return, 0 }, endSequence{},
 		ExitEvent { "mac", "" },		Sequence{},	Keypress { kc_G, mf_command + mf_shift },
 			TypeText { bootvol_"/" },					Keypress { kc_return, 0 }, endSequence{},
 		ExitEvent { "external", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },

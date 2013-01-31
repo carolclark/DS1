@@ -1,5 +1,5 @@
 // =================================================================================
-//	Mail_C9.r					©2008-12 C & C Software, Inc. All rights reserved.
+//	Mail_C9.r					©2008-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -87,6 +87,7 @@ resource restype_Slate (resid_QuickLook, "") { {
 		_SlateGlobals_,
 		_CloseSubslate_,
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
+		Event { "open", "" },			Click { 1, -135, 15, _window, _topRight },
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },
 		Event { "page north", "" },		Keypress { kc_pageup, 0 },
 		Event { "page top", "" },		Keypress { kc_home, 0 },

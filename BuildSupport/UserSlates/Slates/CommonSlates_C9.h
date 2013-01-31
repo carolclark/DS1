@@ -1,5 +1,5 @@
 // =================================================================================
-//	CommonSlates_C9.h			©1997-2012 C & C Software, Inc. All rights reserved.
+//	CommonSlates_C9.h			©1997-2013 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma once
