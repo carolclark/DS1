@@ -26,7 +26,7 @@ trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
 projectPath="${DEV}/Support"
-target="BuildSupport/Doxygen	"
+target="BuildSupport/Doxygen"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -38,6 +38,8 @@ function getSubtargetDestination {
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
+		"DoxyDemo" )
+			;;
 		"Default.doxygen" )
 			;&
 		"_Tests" )

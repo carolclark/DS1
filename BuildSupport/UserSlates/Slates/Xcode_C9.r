@@ -2282,7 +2282,6 @@ resource restype_Slate (resid_IssueIndex, "Issues") { {
 	Slate { "issues", {
 		_SlateGlobals_,
 		_CloseSubslate_,
-		
 		Event { "by file", "" },		Click { 1, 35, 132, _window, _topLeft },
 		Event { "by type", "" },		Click { 1, 92, 132, _window, _topLeft },
 		Event { "nav list", "" },		_navList,
@@ -3188,6 +3187,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "page north", "" },		Keypress { kc_pageup, 0 },
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },
 		Event { "target", "" },			ResSubslate { resid_Target },
+		Event { "Project", ""	},		Sequence{}, Keypress { kc_2, mf_command }, Keypress { kc_1, mf_command }, ResSubslate { resid_ProjectIndex }, endSequence{},
 		Event { "Index", ""	},			ResSubslate { resid_Index },
 		Event { "nav list", "" },		_navList,
 		Event { "navigate", "" },		ResSubslate { resid_Navigate },
