@@ -1,5 +1,5 @@
 // =================================================================================
-//  AlertPresenter.h
+//  AlertPresenterDD.h
 //
 //  Created by Carol Clark on 10/19/12 for project KidsCorner.
 //	©2012 C & C Software, Inc. All rights reserved. Confidential and Proprietary.
@@ -7,9 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AlertPresenter : NSObject
+@interface AlertPresenterDD : NSObject
 
-+ (void)mockSharedPresenter:(AlertPresenter *)presenter;
++ (void)mockSharedPresenter:(AlertPresenterDD *)presenter;
 
 + (void)presentMessage:(NSString *)message withTitle:(NSString *)title forWindow:(NSWindow *)window;
 + (long)presentAlert:(NSAlert *)alert forWindow:(NSWindow *)window;

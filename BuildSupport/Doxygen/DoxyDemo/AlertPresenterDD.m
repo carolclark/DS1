@@ -1,21 +1,21 @@
 // =================================================================================
-//  AlertPresenter.m
+//  AlertPresenterDD.m
 //
 //  Created by Carol Clark on 10/19/12 for project KidsCorner.
 //	©2012 C & C Software, Inc. All rights reserved. Confidential and Proprietary.
 // =================================================================================
 
-#import "AlertPresenter.h"
+#import "AlertPresenterDD.h"
 #import "WordsApp.h"
 #import "WordsWindowC.h"
 
-AlertPresenter * _sharedInstance = nil;
+AlertPresenterDD * _sharedInstance = nil;
 
 /*! \brief		mockable alert and error presenter
  	\details	intended for use by Application object to display a customized error message
 	\note		This mockable class is not intended to be used directly except by a host object that maintains a reference to it. For testing, a different class can be substituted.
  */
-@implementation AlertPresenter
+@implementation AlertPresenterDD
 
 /*! \brief		present message to user
 	\details	uses a sheet for the specified window, if any; otherwise, displays modal alert\n
@@ -26,7 +26,7 @@ AlertPresenter * _sharedInstance = nil;
 									 defaultButton:nil	alternateButton:nil	otherButton:nil
 						 informativeTextWithFormat:@"%@", message];
 
-	[[AlertPresenter sharedInstance] doPresentAlert:alert forWindow:window];
+	[[AlertPresenterDD sharedInstance] doPresentAlert:alert forWindow:window];
 }
 
 /*! \brief		present Alert to user
@@ -34,7 +34,7 @@ AlertPresenter * _sharedInstance = nil;
  				for testing, see MockAlertPresenter
  */
 + (long)presentAlert:(NSAlert *)alert forWindow:(NSWindow *)window {
-	return [[AlertPresenter sharedInstance] doPresentAlert:alert forWindow:window];
+	return [[AlertPresenterDD sharedInstance] doPresentAlert:alert forWindow:window];
 }
 
 /*! \brief		present error to user
@@ -42,10 +42,10 @@ AlertPresenter * _sharedInstance = nil;
  				for testing, see MockAlertPresenter
  */
 + (int)presentError:(NSError *)error forWindow:(NSWindow *)window {
-	return [[AlertPresenter sharedInstance] doPresentError:error forWindow:window];
+	return [[AlertPresenterDD sharedInstance] doPresentError:error forWindow:window];
 /*
  	NSAlert * alert = [NSAlert alertWithError:error];
-	return [[AlertPresenter sharedInstance] doPresentAlert:alert forWindow:window];
+	return [[AlertPresenterDD sharedInstance] doPresentAlert:alert forWindow:window];
  */
 }
 
@@ -91,16 +91,16 @@ AlertPresenter * _sharedInstance = nil;
 	}
 }
 
-+ (AlertPresenter *)sharedInstance {
++ (AlertPresenterDD *)sharedInstance {
 	if (!_sharedInstance) {
-		AlertPresenter * presenter = [[AlertPresenter alloc] init];
+		AlertPresenterDD * presenter = [[AlertPresenterDD alloc] init];
 		_sharedInstance = presenter;
 	}
 	return _sharedInstance;
 }
 
-/*! \brief		intended for use by testing systems to preset a mock AlertPresenter object */	
-+ (void)mockSharedPresenter:(AlertPresenter *)presenter {
+/*! \brief		intended for use by testing systems to preset a mock AlertPresenterDD object */	
++ (void)mockSharedPresenter:(AlertPresenterDD *)presenter {
 	_sharedInstance = presenter;
 }
 

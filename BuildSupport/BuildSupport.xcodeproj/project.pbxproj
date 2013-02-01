@@ -266,8 +266,8 @@
 		67DD779A16A71F5700BECCD5 /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
 		67EB1F8D16BC41DC00B3DBB9 /* DoxyDemo_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_doxygen.txt; sourceTree = "<group>"; };
 		67EB1F8F16BC477800B3DBB9 /* mainpage.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mainpage.dox; sourceTree = "<group>"; };
-		67EB1F9116BC4A1800B3DBB9 /* AlertPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresenter.h; sourceTree = "<group>"; };
-		67EB1F9216BC4A1800B3DBB9 /* AlertPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPresenter.m; sourceTree = "<group>"; };
+		67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresenterDD.h; sourceTree = "<group>"; };
+		67EB1F9216BC4A1800B3DBB9 /* AlertPresenterDD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPresenterDD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -1061,8 +1061,8 @@
 			isa = PBXGroup;
 			children = (
 				67EB1F8F16BC477800B3DBB9 /* mainpage.dox */,
-				67EB1F9116BC4A1800B3DBB9 /* AlertPresenter.h */,
-				67EB1F9216BC4A1800B3DBB9 /* AlertPresenter.m */,
+				67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */,
+				67EB1F9216BC4A1800B3DBB9 /* AlertPresenterDD.m */,
 			);
 			path = DoxyDemo;
 			sourceTree = "<group>";
