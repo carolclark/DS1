@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 11/11/11.
-#  Copyright 2011-132 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 setUp() {

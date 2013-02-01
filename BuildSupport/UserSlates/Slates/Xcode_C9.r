@@ -229,6 +229,7 @@
 	_PageKeys_,				\
 	_DirectionKeys_,        \
 	_WhitespaceKeys_,       \
+	Event { "tab back", "" },		Keypress { kc_tab, mf_shift },		\
 	_CommandSlate_,         \
 	_LetterKeys_,           \
 	_IMouseSlate_,			\
@@ -579,6 +580,7 @@ resource restype_Slate (resid_NewFile, "New File") { {
 		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		Event { "select all", "" },		Keypress { kc_A, mf_command },
 		Event { "next", "" },			_return,
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		Event { "superclass", "" },		Subslate { "superclass" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -1513,7 +1515,7 @@ resource restype_Slate (resid_Macro, "") { {
 		Event { "go next", "tab" },		_goNext,							\
 		Event { "go previous", "tab" },	_goPrevious,						\
 		Event { "go tab", "" },			_goTab,								\
-		Event { "open Assist", "" },	Keypress { kc_comma, mf_command + mf_option },	\
+		Event { "open Assist", "" },	Sequence{}, ClickMenu { "Navigate" }, _down, TypeText { "Open in Assistant Editor" }, _return, endSequence{},		\
 		Event { "pop issues", "" },		Click { 1, -24, 108, _window, _topRight },		\
 		Event { "next issue", "" },		_nextIssue,		\
 		Event { "previous issue", "" },	_previousIssue,		\
@@ -2237,7 +2239,7 @@ resource restype_Slate (resid_ProjectIndex, "") { {
 		Event { "row two", "" },		Click { 1, 100, 160, _window, _topLeft },
 		Event { "nav list", "" },		_navList,
 		Event { "reveal file", "" },	Keypress { kc_J, mf_command + mf_shift },
-		Event { "open Assist", "" },	Keypress { kc_comma, mf_command + mf_option },
+		Event { "open Assist", "" },	Sequence{}, ClickMenu { "Navigate" }, _down, TypeText { "Open in Assistant Editor" }, _return, endSequence{},
 		Event { "mouse", "" },			ResSubslate { resid_IndexMouse },
 		Event { "new group", "" },		Sequence{}, Keypress { kc_N, mf_command + mf_option }, ResSubslate { resid_NewGroup }, endSequence{},
 		Event { "pop issues", "" },		Click { 1, -24, 108, _window, _topRight },
