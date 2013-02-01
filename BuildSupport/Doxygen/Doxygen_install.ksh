@@ -38,12 +38,10 @@ function getSubtargetDestination {
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
-		"DoxyDemo" )
+		"Doxygen" )
+			destinationFolder="${CCDev}/Sites/Doxygen/DoxyDemo"
 			;;
-		"Default.doxygen" )
-			;&
-		"_Tests" )
-			;;	#handled elsewhere
+		# Doxygen: local folders not processed
 		* )
 			print "source folder ${projectPath}/${target}/${subtarget} not handled"
 			return $RC_InputNotHandled

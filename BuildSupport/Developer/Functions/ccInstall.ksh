@@ -418,6 +418,29 @@ function processActions {
 		ccInstall --clearLastbuilt "${projectPath}" "${target}"
 	fi
 
+# doxygen
+	if [[ ${actions.doDoxygen} > 0 ]] ; then
+		targetName=$(ccInstall --getTargetName "${projectPath}" "${target}")
+		outputDir=$("${targetScript}" --getSubtargetDestination "Doxygen")
+		installName="${outputDir##*/}"
+		print "== installing ${installName} documentation"
+		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
+		mkdir -p "${outputDir}"
+		st=$?
+		if [[ $st > 0 ]] ; then
+			print "failed to create output directory $outputDir"
+			exit $st
+		fi
+		#  Run doxygen on the config file
+		$doxygenPath "${projectPath}/${target}/${targetName}_d8
+		oxygen.txt"
+		st=$?
+		if [[ $st > 0 ]] ; then
+			print "error while generating Doxygen docs"
+			exit $st
+		fi
+	fi
+
 # install
 	if [[ ${actions.doInstall} > 0 ]] ; then
 		print "== installing ${projectPath##*/}/${target}..."
