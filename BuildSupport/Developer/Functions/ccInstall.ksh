@@ -11,14 +11,14 @@ NAME='ccInstall -- installation script and supporting functions'
 USAGE='
 ccInstall projectPath target [actionFlags]
 #	build the specified project target
-#		actionFlags: [-[citu]+] - actions requested (clean, install, test, upload); default: -it
+#		actionFlags: [-[citud]+] - actions requested (clean, install, test, upload, doxygen); default: -it
 ccInstall commandFlag [argument(s)]
 #	--getActions	resultObject [actionString]
-#		actionString: [-[citu]+] - actions requested (clean, install, test, upload)
+#		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
 #			default: -it
 #			resultObject: object to contain results
 #	--get<Path>			projectPath target
-#		<Path>: 		BaseBath | SourcePath | TargetScript | Lastbuilt
+#		<Path>: 		BaseBath | SourcePath | TargetScript | Lastbuilt | TargetName
 #		result: 		string containing specified path
 #	--findTests 		projectPath target
 #		result: 		path to file containing list of tests for <projectPath>/<target>
@@ -45,6 +45,7 @@ trapString='errtrap $0 $LINENO'
 
 scriptpath=""
 target=""
+targetName=""
 basePath=""
 project=""
 sourcePath=""
@@ -55,6 +56,7 @@ lastbuilt=""
 function setPaths {
 	projectPath="${1}"
 	target="${2}"
+	targetName="${target##*/}"
 	basePath="${projectPath%/*}"
 	project="${projectPath##/*/}"
 	sourcePath="${projectPath}/${target}"
@@ -81,6 +83,7 @@ function getPath {
 		"--getSourcePath" )		path="${sourcePath}";;
 		"--getTargetScript" )	path="${targetScript}";;
 		"--getLastbuilt" )		path="${lastbuilt}";;
+		"--getTargetName" )		path="${targetName}";;
 		* ) 					return $RC_InvalidParameter;;
 	esac
 	print "${path}"
@@ -129,11 +132,13 @@ function copyFile {
 		print "USAGE: ccInstall --copyFile sourceForCopy destinationForCopy"
 		return $RC_MissingArgument
 	fi
-	print "mkdir -p $(dirname ${destinationForCopy})"
-	mkdir -p $(dirname "${destinationForCopy}")
+
+	dir="${destinationForCopy%/*}"
+	print "mkdir -p ${dir}"
+	mkdir -p "${dir}"
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "error: could not create directory $(dirname ${destinationForCopy})"
+		print "error: could not create directory ${dir}"
 		return ${st}
 	fi
 	cp "${sourceForCopy}" "${destinationForCopy}"
@@ -222,6 +227,7 @@ function getActions {
 		doInstall=0
 		doTest=0
 		doUpload=0
+		doDoxygen=0
 	)
 
 	if [[ -n ${2} ]] ; then
@@ -240,7 +246,13 @@ function getActions {
 		ch=$(print ${actionString} | cut -c ${i})
 		case "${ch}" in
 			"c" )	resultObj.doClean=1;;
-			"i" )	resultObj.doInstall=1;;
+			"i" )
+				if [[ $(ccInstall --getTargetName "${projectPath}" "${target}") = "Doxygen" ]] ; then
+					resultObj.doDoxygen=1
+				else
+					resultObj.doInstall=1
+				fi
+				;;
 			"t" )	resultObj.doTest=1;;
 			"u" )	resultObj.doUpload=1;;
 			* )		errorCount+=1;;
@@ -278,7 +290,7 @@ function findSources {
 		projectPath="${1}"
 		target="${2}"
 	else
-		print "USAGE: ccInstall findSources pathToProject target"
+		print "error: USAGE: ccInstall findSources pathToProject target"
 		return $RC_MissingArgument
 	fi
 
@@ -300,6 +312,66 @@ function findSources {
 	cd "${origdir}"
 
 	print "${iofile}"
+}
+
+function removeFolder {
+	if [[ -n "${1}" ]] ; then
+		folder="${1}"
+	else
+		print "error: USAGE: ccInstall --get<Path> pathToProject target"
+		return $RC_MissingArgument
+	fi
+	if [[ -e ${folder} ]]; then			# folder exists
+		if ! [[ -d ${folder} ]]; then
+			print "error: ${folder} is not a directory"
+			return $RC_NoSuchDirectory
+		fi
+		iofile="${CCDev}/tmp/found3"
+		origdir=$(pwd)
+		print "= ${folder}"
+		cd "${folder}"
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			print "error: could set directory to ${folder} because it does not exist or is not a directory"
+			cd "${origdir}"
+			return ${st}
+		fi
+		find . -path -prune -or -type f | sed 's|\./||' > "${iofile}"
+		chmod a+r "${iofile}"
+
+		while read fl ; do
+			print -n "${fl}: "
+			rm "${fl}"
+			st=$?
+			if [[ ${st} > 0 ]] ; then
+				print "error: could not remove"
+				cd "${origdir}"
+				return ${st}
+			fi
+			print "removed"
+		done < "${iofile}"
+		
+		find . -path -prune -or -type d | sed 's|\./||' | tail -r > "${iofile}"
+		chmod a+r "${iofile}"
+
+		while read fl ; do
+			if [[ ${fl} = "." ]] ; then
+				fl="${folder}"
+			fi
+			print 	"(${fl}: "
+			rmdir "${fl}"
+			st=$?
+			if [[ ${st} > 0 ]] ; then
+				print "error: could not remove"
+				cd "${origdir}"
+				return ${st}
+			fi
+			print "removed"
+		done < "${iofile}"
+
+		cd "${origdir}"
+	fi
+	return 0
 }
 
 #^ 7 === processActions
@@ -332,8 +404,10 @@ function processActions {
 		msg=$("${targetScript}" --cleanTarget)
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			print "error: ${msg}"
+			print "error: ${targetScript} --cleanTarget failed: ${msg}"
 			return ${st}
+		else
+			print ${msg}
 		fi
 		lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
 		st=$?
@@ -342,6 +416,56 @@ function processActions {
 			return ${st}
 		fi
 		ccInstall --clearLastbuilt "${projectPath}" "${target}"
+	fi
+
+# doxygen
+	if [[ ${actions.doDoxygen} > 0 ]] ; then
+		targetName=$(ccInstall --getTargetName "${projectPath}" "${target}")
+		outputDir=$("${targetScript}" --getSubtargetDestination "Doxygen")
+		installName="${outputDir##*/}"
+		print "== installing ${installName} documentation"
+		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
+		mkdir -p "${outputDir}"
+		st=$?
+		if [[ $st > 0 ]] ; then
+			print "failed to create output directory $outputDir"
+			exit $st
+		fi
+
+	#  Run doxygen on the config file (builds local site)
+		$doxygenPath "${projectPath}/${target}/${installName}_doxygen.txt"
+		st=$?
+		if [[ $st > 0 ]] ; then
+			print "error while generating Doxygen docs"
+			exit $st
+		fi
+
+	# Make docset using the Makefile that just generated
+		print $outputDir/html
+		make -C $outputDir/html install
+		st=$?
+		if [[ $st > 0 ]] ; then
+			print "error while creating $project.docset"
+			exit $st
+		fi
+
+	# Copy the docset to the location expected by Xcode
+		docsetPath="/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.candcsoft.${installName}.docset"
+		cp -r $outputDir/html/com.candcsoft.${installName}.docset $docsetPath
+		st=$?
+		if [[ $st > 0 ]] ; then
+			print "could not copy docset to $docsetPath"
+			exit $st
+		fi
+
+	# Tell Xcode to load the docset
+		osascript -e "tell application \"Xcode\" to load documentation set with path \"$docsetPath\""
+		st=$?
+		if [[ $st > 0 ]] ; then
+			print "error loading $docsetPath into Xcode"
+			exit $st
+		fi
+
 	fi
 
 # install
@@ -495,6 +619,12 @@ function ccInstall {
 			;;
 		"--clearLastbuilt" )
 			msg=$(clearLastbuilt "${2}" "${3}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--removeFolder" )
+			msg=$(removeFolder "${2}")
 			es=$?
 			print "${msg}"
 			return "${es}"

@@ -1,6 +1,6 @@
 #! /bin/ksh
 
-#  CCDev_Setup.ksh
+#  Developer_Setup.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/18/11.
@@ -181,7 +181,10 @@ esac
 # configure environment
 print "configuring environment"
 envProfile > "${HOME}/.profile"
+chmod a+x "${HOME}/.profile"
+mkdir -p "${CCDev}/bin"
 envEnvironment > "${CCDev}/bin/.kshrc"
+chmod a+x "${CCDev}/bin/.kshrc"
 envLaunchctl > "${CCDev}/tmp/launchd.conf"
 
 # configure git
@@ -227,6 +230,7 @@ fi
 # install bootstrap scripts
 install "${srcdir}/Functions/errtrap.ksh" "$CCDev/func" "errtrap"
 install "${srcdir}/Functions/ccInstall.ksh" "$CCDev/func" "ccInstall"
+install "${srcdir}/Scripts/ccInstallAction.ksh" "$CCDev/bin" "ccInstallAction"
 install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin"
 
 # install shunit (third party)

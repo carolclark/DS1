@@ -1,5 +1,5 @@
 // =================================================================================
-//	Finder.r					©2006-12 C & C Software, Inc. All rights reserved.
+//	Finder.r					Â©2006-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -7,7 +7,9 @@
 
 #define resid_TypeFinderSlate			resid_Finder+1
 #define resid_TypeSpecialFinderSlate	resid_Finder+2
-//#define resid_StartAtSlate				resid_Finder+3
+
+#define resid_FinderWindow				resid_Finder+100
+	#define resid_WindowMenu				resid_FinderWindow+1
 
 #pragma mark TypeSpecial
 resource restype_Slate (resid_TypeSpecialFinderSlate, "Type Special Finder Slate") { {
@@ -39,44 +41,42 @@ resource restype_Slate (resid_TypeFinderSlate, "Type Slate") { {
 	Event { "Type", "simulate keypresses" },	\
 		ResSubslate { resid_TypeFinderSlate }
 
-//#pragma mark StartAt
-//resource restype_Slate (resid_StartAtSlate, "Start At Slate") { {
-//	Slate { "StartAt",	{
-//		_SlateGlobals_,
-//		_CloseSubslate_,
-//		ExitEvent { "mac", "" },		Sequence{},	Keypress { kc_G, mf_command + mf_shift },
-//			TypeText { "/Mac/" },					Keypress { kc_return, 0 }, endSequence{},
-//		ExitEvent { "auxiliary", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
-//			TypeText { "/Aux/" },					Keypress { kc_return, 0 }, endSequence{},
-//		ExitEvent { "external", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
-//			TypeText { "/Ext/" },					Keypress { kc_return, 0 }, endSequence{},
-//		ExitEvent { "desktop", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
-//			TypeText { "~/Desktop" },				Keypress { kc_return, 0 }, endSequence{},
-//		ExitEvent { "home", "" },			Keypress { kc_H, mf_command + mf_shift },
-//		ExitEvent { "applications", "" },	Keypress { kc_A, mf_command + mf_shift },
-//		ExitEvent { "utilities", "" },		Keypress { kc_U, mf_command + mf_shift },
-//		ExitEvent { "documents", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
-//			TypeText { "~/Documents" },				Keypress { kc_return, 0 }, endSequence{},
-//		ExitEvent { "my development", "" }, Sequence{},	Keypress { kc_G, mf_command + mf_shift },
-//			TypeText { "~/Dev/" },					Keypress { kc_return, 0 }, endSequence{},
-//		ExitEvent { "Arbonne", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
-//			TypeText { "~/Arbonne/" },				Keypress { kc_return, 0 }, endSequence{},
-//		ExitEvent { "Developer", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
-//			TypeText { "/Mac/Developer/" },			Keypress { kc_return, 0 }, endSequence{},
-//	} }
-//} };
-//
+#pragma mark FinderWindow
+resource restype_Slate (resid_FinderWindow, "") { {
+	Slate { "window",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_WindowItems_,
+		Event { "menu", "" },		Sequence{}, ClickMenu { "Window" }, ResSubslate { resid_WindowMenu }, endSequence{},
+	} }
+} };
+
+
+#pragma mark WindowMenu
+resource restype_Slate (resid_WindowMenu, "") { {
+	Slate { "WindowMenu",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "select", "" },		_return,
+		_LetterKeys_,
+		_DirectionKeys_,
+	} }
+} };
+
 #pragma mark Finder
 resource restype_Slate (resid_Finder, "Finder Slate") { {
 	Slate { "Finder",	{
 		_SlateGlobals_,
 		_DefaultBase_,
-		_WindowSlate_,
+		Event { "window", "" },			ResSubslate { resid_FinderWindow },
 		_TypeFinderSlate_,
+		Event { "copy", "" },			Keypress { kc_C, mf_command },
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
+		Event { "paste and move", "" },	Keypress { kc_V, mf_command + mf_option },
 		_JumpDownSubslate_,
 		_JumpNorthSubslate_,
 		_DoJumpSubslate_,
-		Event { "Menu", "access menus" },		Subslate { "Menu" },
+		Event { "Menu", "" },			Subslate { "Menu" },
 			_SlateGlobals_,
 			_CloseSubslate_,
 			ExitEvent { "Application", "'Finder' menu" }, ClickMenu { "Finder" },
@@ -85,10 +85,8 @@ resource restype_Slate (resid_Finder, "Finder Slate") { {
 			ExitEvent { "View", "'View' menu" }, ClickMenu { "View" },
 			ExitEvent { "Window", "'Window' menu" }, ClickMenu { "Window" },
 			endSubslate{},
-		Event { "close window", "" },			Keypress { kc_W, mf_command },
-		Event { "go to folder", "" },			ResSubslate { resid_GoToFolder },
-
-		//		Event { "Start at", "" },				ResSubslate { resid_StartAtSlate },
+		Event { "close window", "" },	Keypress { kc_W, mf_command },
+		Event { "go to folder", "" },	ResSubslate { resid_GoToFolder },
 	 } }
 } };
 

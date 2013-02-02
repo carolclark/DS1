@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "671B546C16B1E610009C2B17"
-               BuildableName = "Xcode"
-               BlueprintName = "Xcode"
+               BlueprintIdentifier = "67692457141EB921005D3E68"
+               BuildableName = "XcodeScripts.bundle"
+               BlueprintName = "XcodeScripts"
                ReferencedContainer = "container:BuildSupport.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

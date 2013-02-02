@@ -28,6 +28,8 @@ trap "$trapString" ERR
 projectPath="${DEV}/Support"
 target="BuildSupport/Cdoc"
 
+technicalDocs="${CCDev}/Sites/TechnicalDocs"
+
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
@@ -39,10 +41,10 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"html" )
-			destinationFolder="${CCDev}/Sites/TechnicalDocs/Support"
+			destinationFolder="${technicalDocs}/Support"
 			;;
 		"_tech" )
-			destinationFolder="${CCDev}/Sites/TechnicalDocs"
+			destinationFolder="${technicalDocs}"
 			;;
 		"Cdoc_install.ksh" )
 			;&	# this script
@@ -91,6 +93,14 @@ function handleFile {
 
 #^ 7 === cleanTarget
 function cleanTarget {
+	for folder in "${technicalDocs}/Support" "${technicalDocs}/img" "${technicalDocs}/css"; do
+		msg=$(ccInstall --removeFolder "${folder}")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			print "error: ${msg}"
+			return ${st}
+		fi
+	done
 	return 0
 }
 

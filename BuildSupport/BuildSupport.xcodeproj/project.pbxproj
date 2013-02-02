@@ -43,19 +43,41 @@
 		67DD774916A4C4FB00BECCD5 /* CheckSyntax.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		67043DC916B7333F00E43F90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 671C4823159CFF3800214A9E;
+			remoteInfo = BBEditScripts;
+		};
+		671B547016B1E91D009C2B17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67692457141EB921005D3E68;
+			remoteInfo = XcodeScripts;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		671C4824159CFF3800214A9E /* BBEdit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEdit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		671C4824159CFF3800214A9E /* BBEditScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEditScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
 		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
+		673D580A16B9A1450001DFF2 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
+		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
+		673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6761489016A8B93F00FE431B /* toBBEdit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
-		67692458141EB921005D3E68 /* Xcode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xcode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67692458141EB921005D3E68 /* XcodeScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer_Setup.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		67BA94D414508D19005BF0E9 /* Developer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Developer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BE04B116B062F00065BFDE /* ccInstallAction.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstallAction.ksh; sourceTree = "<group>"; };
+		67BE04C416B095780065BFDE /* XcodeScripts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XcodeScripts-Info.plist"; sourceTree = "<group>"; };
+		67BE04C616B09CB50065BFDE /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
+		67BE04C716B09CB50065BFDE /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
 		67DB22CC169CD82300A6E910 /* UserSlates-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UserSlates-Info.plist"; sourceTree = "<group>"; };
 		67DB22CE169CD82300A6E910 /* AccessLib_rsrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessLib_rsrc.h; sourceTree = "<group>"; };
 		67DB22CF169CD82300A6E910 /* AccessLibTypes.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = AccessLibTypes.r; sourceTree = "<group>"; };
@@ -89,7 +111,6 @@
 		67DB232A169E0A2900A6E910 /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
 		67DB232C169E0A2900A6E910 /* Snippet.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = Snippet.applescript; sourceTree = "<group>"; };
 		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
-		67DB2331169E0A2900A6E910 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
 		67DB2333169E0A2900A6E910 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		67DB2335169E0A2900A6E910 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67DB2336169E0A2900A6E910 /* errtrap.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errtrap.ksh; sourceTree = "<group>"; };
@@ -141,14 +162,12 @@
 		67DB240C16A1CBF900A6E910 /* testDeveloper_Setup.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testDeveloper_Setup.ksh; sourceTree = "<group>"; };
 		67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testDeveloper.ksh; sourceTree = "<group>"; };
 		67DB240E16A1CC0C00A6E910 /* Developer_Setup-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Developer_Setup-Info.plist"; sourceTree = "<group>"; };
-		67DB240F16A1CC0C00A6E910 /* Developer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Developer-Info.plist"; sourceTree = "<group>"; };
 		67DD76CE16A4AF9300BECCD5 /* testXcode.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = testXcode.ksh; sourceTree = "<group>"; };
 		67DD76D016A4AF9300BECCD5 /* frontWindow.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = frontWindow.applescript; sourceTree = "<group>"; };
 		67DD76D116A4AF9300BECCD5 /* viewCdoc.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = viewCdoc.applescript; sourceTree = "<group>"; };
 		67DD76D216A4AF9300BECCD5 /* viewDoxygen.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = viewDoxygen.applescript; sourceTree = "<group>"; };
 		67DD76D316A4AF9300BECCD5 /* windowShort.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = windowShort.applescript; sourceTree = "<group>"; };
 		67DD76D416A4AF9300BECCD5 /* windowTall.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = windowTall.applescript; sourceTree = "<group>"; };
-		67DD76D616A4AF9300BECCD5 /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67DD76DB16A4AF9300BECCD5 /* ___FILEBASENAME___.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "___FILEBASENAME___.html"; sourceTree = "<group>"; };
 		67DD76DC16A4AF9300BECCD5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		67DD76DE16A4AF9300BECCD5 /* ___FILEBASENAME___.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "___FILEBASENAME___.html"; sourceTree = "<group>"; };
@@ -214,7 +233,6 @@
 		67DD773416A4AF9300BECCD5 /* viewDoxygen.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = viewDoxygen.workflow; sourceTree = "<group>"; };
 		67DD773516A4AF9300BECCD5 /* viewInBrowser.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = viewInBrowser.workflow; sourceTree = "<group>"; };
 		67DD773716A4AF9300BECCD5 /* Xcode_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Xcode_install.ksh; sourceTree = "<group>"; };
-		67DD773916A4B04000BECCD5 /* Xcode-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Xcode-Info.plist"; sourceTree = "<group>"; };
 		67DD774116A4C2BA00BECCD5 /* BBEdit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BBEdit-Info.plist"; sourceTree = "<group>"; };
 		67DD774316A4C2BA00BECCD5 /* BBEditUtil.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = BBEditUtil.applescript; sourceTree = "<group>"; };
 		67DD774416A4C2BA00BECCD5 /* CheckLinks.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckLinks.applescript; sourceTree = "<group>"; };
@@ -246,6 +264,10 @@
 		67DD779616A71F5700BECCD5 /* Support.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Support.html; sourceTree = "<group>"; };
 		67DD779716A71F5700BECCD5 /* Tools.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
 		67DD779A16A71F5700BECCD5 /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
+		67EB1F8D16BC41DC00B3DBB9 /* DoxyDemo_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_doxygen.txt; sourceTree = "<group>"; };
+		67EB1F8F16BC477800B3DBB9 /* mainpage.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mainpage.dox; sourceTree = "<group>"; };
+		67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresenterDD.h; sourceTree = "<group>"; };
+		67EB1F9216BC4A1800B3DBB9 /* AlertPresenterDD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPresenterDD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -257,6 +279,26 @@
 				67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */,
 			);
 			path = InstallCdoc.xctemplate;
+			sourceTree = "<group>";
+		};
+		673D580916B9A1450001DFF2 /* Doxygen */ = {
+			isa = PBXGroup;
+			children = (
+				673D580B16B9A52A0001DFF2 /* _Tests */,
+				673D580A16B9A1450001DFF2 /* Default.doxygen */,
+				673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */,
+				67EB1F8D16BC41DC00B3DBB9 /* DoxyDemo_doxygen.txt */,
+				67EB1F9016BC4A1800B3DBB9 /* DoxyDemo */,
+			);
+			path = Doxygen;
+			sourceTree = "<group>";
+		};
+		673D580B16B9A52A0001DFF2 /* _Tests */ = {
+			isa = PBXGroup;
+			children = (
+				673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */,
+			);
+			path = _Tests;
 			sourceTree = "<group>";
 		};
 		6761488F16A8B93F00FE431B /* Finder */ = {
@@ -272,10 +314,11 @@
 			isa = PBXGroup;
 			children = (
 				67DD779416A71F5700BECCD5 /* History_Support.html */,
-				67DD777B16A71F5700BECCD5 /* Cdoc */,
-				67DB2326169E0A2900A6E910 /* Developer */,
-				67DD76CB16A4AF9300BECCD5 /* Applications */,
-				67DB22CA169CD82300A6E910 /* UserSlates */,
+				67DD777B16A71F5700BECCD5 /* 0 Cdoc */,
+				67DB2326169E0A2900A6E910 /* 2 Developer */,
+				67DD76CB16A4AF9300BECCD5 /* 5 Applications */,
+				67DB22CA169CD82300A6E910 /* 8 UserSlates */,
+				673D580916B9A1450001DFF2 /* Doxygen */,
 				6769245A141EB921005D3E68 /* Frameworks */,
 				67692459141EB921005D3E68 /* Products */,
 			);
@@ -284,10 +327,9 @@
 		67692459141EB921005D3E68 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				67692458141EB921005D3E68 /* Xcode.bundle */,
+				67692458141EB921005D3E68 /* XcodeScripts.bundle */,
 				67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */,
-				67BA94D414508D19005BF0E9 /* Developer.bundle */,
-				671C4824159CFF3800214A9E /* BBEdit.bundle */,
+				671C4824159CFF3800214A9E /* BBEditScripts.bundle */,
 				674BF6BA15B7287A0093786D /* UserSlates.bundle */,
 			);
 			name = Products;
@@ -301,12 +343,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		67DB22CA169CD82300A6E910 /* UserSlates */ = {
+		67BE04C316B095780065BFDE /* _plist */ = {
+			isa = PBXGroup;
+			children = (
+				67BE04C416B095780065BFDE /* XcodeScripts-Info.plist */,
+			);
+			path = _plist;
+			sourceTree = "<group>";
+		};
+		67BE04C516B09CB50065BFDE /* 4 Services */ = {
+			isa = PBXGroup;
+			children = (
+				67BE04C616B09CB50065BFDE /* GitSaveMessage.workflow */,
+				67BE04C716B09CB50065BFDE /* OpenAccessor.workflow */,
+			);
+			name = "4 Services";
+			path = Services;
+			sourceTree = "<group>";
+		};
+		67DB22CA169CD82300A6E910 /* 8 UserSlates */ = {
 			isa = PBXGroup;
 			children = (
 				67DB22CD169CD82300A6E910 /* Slates */,
 				67DB22CB169CD82300A6E910 /* OtherSources */,
 			);
+			name = "8 UserSlates";
 			path = UserSlates;
 			sourceTree = "<group>";
 		};
@@ -354,20 +415,21 @@
 			path = Slates;
 			sourceTree = "<group>";
 		};
-		67DB2326169E0A2900A6E910 /* Developer */ = {
+		67DB2326169E0A2900A6E910 /* 2 Developer */ = {
 			isa = PBXGroup;
 			children = (
 				67DB240A16A1CBE500A6E910 /* Developer_install.ksh */,
 				67DB240B16A1CBE500A6E910 /* Developer_Setup.ksh */,
 				67DB2327169E0A2900A6E910 /* _Tests */,
 				67DB232B169E0A2900A6E910 /* AppleScripts */,
-				67DB2330169E0A2900A6E910 /* Doxygen */,
 				67DB2332169E0A2900A6E910 /* Environment */,
-				67DB2334169E0A2900A6E910 /* Functions */,
-				67DB2337169E0A2900A6E910 /* plist */,
+				67DB2334169E0A2900A6E910 /* 3 Functions */,
 				67DB233A169E0A2900A6E910 /* Scripts */,
+				67BE04C516B09CB50065BFDE /* 4 Services */,
+				67DB2337169E0A2900A6E910 /* plist */,
 				67DB2341169E0A2900A6E910 /* ThirdParty */,
 			);
+			name = "2 Developer";
 			path = Developer;
 			sourceTree = "<group>";
 		};
@@ -390,14 +452,6 @@
 			path = AppleScripts;
 			sourceTree = "<group>";
 		};
-		67DB2330169E0A2900A6E910 /* Doxygen */ = {
-			isa = PBXGroup;
-			children = (
-				67DB2331169E0A2900A6E910 /* Default.doxygen */,
-			);
-			path = Doxygen;
-			sourceTree = "<group>";
-		};
 		67DB2332169E0A2900A6E910 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,12 +460,13 @@
 			path = Environment;
 			sourceTree = "<group>";
 		};
-		67DB2334169E0A2900A6E910 /* Functions */ = {
+		67DB2334169E0A2900A6E910 /* 3 Functions */ = {
 			isa = PBXGroup;
 			children = (
 				67DB2335169E0A2900A6E910 /* ccInstall.ksh */,
 				67DB2336169E0A2900A6E910 /* errtrap.ksh */,
 			);
+			name = "3 Functions";
 			path = Functions;
 			sourceTree = "<group>";
 		};
@@ -419,7 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				67DB240E16A1CC0C00A6E910 /* Developer_Setup-Info.plist */,
-				67DB240F16A1CC0C00A6E910 /* Developer-Info.plist */,
 			);
 			path = plist;
 			sourceTree = "<group>";
@@ -530,14 +584,15 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		67DD76CB16A4AF9300BECCD5 /* Applications */ = {
+		67DD76CB16A4AF9300BECCD5 /* 5 Applications */ = {
 			isa = PBXGroup;
 			children = (
 				67DD76CC16A4AF9300BECCD5 /* Xcode */,
-				67DD773F16A4C2BA00BECCD5 /* BBEdit */,
+				67DD773F16A4C2BA00BECCD5 /* 6 BBEdit */,
 				6761488F16A8B93F00FE431B /* Finder */,
 				67DD777616A4D6A700BECCD5 /* Dash */,
 			);
+			name = "5 Applications";
 			path = Applications;
 			sourceTree = "<group>";
 		};
@@ -546,11 +601,10 @@
 			children = (
 				67DD773716A4AF9300BECCD5 /* Xcode_install.ksh */,
 				67DD76CF16A4AF9300BECCD5 /* AppleScripts */,
-				67DD76D516A4AF9300BECCD5 /* Services */,
 				67DD76D716A4AF9300BECCD5 /* Templates */,
+				67BE04C316B095780065BFDE /* _plist */,
 				67DD773016A4AF9300BECCD5 /* Workflows */,
 				67DD76CD16A4AF9300BECCD5 /* _Tests */,
-				67DD773816A4B04000BECCD5 /* _plist */,
 			);
 			path = Xcode;
 			sourceTree = "<group>";
@@ -573,14 +627,6 @@
 				67DD76D416A4AF9300BECCD5 /* windowTall.applescript */,
 			);
 			path = AppleScripts;
-			sourceTree = "<group>";
-		};
-		67DD76D516A4AF9300BECCD5 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				67DD76D616A4AF9300BECCD5 /* GitSaveMessage.workflow */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		67DD76D716A4AF9300BECCD5 /* Templates */ = {
@@ -894,21 +940,14 @@
 			path = Workflows;
 			sourceTree = "<group>";
 		};
-		67DD773816A4B04000BECCD5 /* _plist */ = {
-			isa = PBXGroup;
-			children = (
-				67DD773916A4B04000BECCD5 /* Xcode-Info.plist */,
-			);
-			path = _plist;
-			sourceTree = "<group>";
-		};
-		67DD773F16A4C2BA00BECCD5 /* BBEdit */ = {
+		67DD773F16A4C2BA00BECCD5 /* 6 BBEdit */ = {
 			isa = PBXGroup;
 			children = (
 				67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */,
 				67DD774216A4C2BA00BECCD5 /* AppleScripts */,
 				67DD774016A4C2BA00BECCD5 /* _plist */,
 			);
+			name = "6 BBEdit";
 			path = BBEdit;
 			sourceTree = "<group>";
 		};
@@ -938,7 +977,7 @@
 			path = Dash;
 			sourceTree = "<group>";
 		};
-		67DD777B16A71F5700BECCD5 /* Cdoc */ = {
+		67DD777B16A71F5700BECCD5 /* 0 Cdoc */ = {
 			isa = PBXGroup;
 			children = (
 				67DD777C16A71F5700BECCD5 /* _tech */,
@@ -946,6 +985,7 @@
 				67DD778E16A71F5700BECCD5 /* html */,
 				67DD779816A71F5700BECCD5 /* Resources */,
 			);
+			name = "0 Cdoc";
 			path = Cdoc;
 			sourceTree = "<group>";
 		};
@@ -1017,9 +1057,63 @@
 			path = plist;
 			sourceTree = "<group>";
 		};
+		67EB1F9016BC4A1800B3DBB9 /* DoxyDemo */ = {
+			isa = PBXGroup;
+			children = (
+				67EB1F8F16BC477800B3DBB9 /* mainpage.dox */,
+				67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */,
+				67EB1F9216BC4A1800B3DBB9 /* AlertPresenterDD.m */,
+			);
+			path = DoxyDemo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
+		67043DC516B7331400E43F90 /* BBEdit */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/BBEdit $(ACTION)";
+			buildConfigurationList = 67043DC616B7331400E43F90 /* Build configuration list for PBXLegacyTarget "BBEdit" */;
+			buildPhases = (
+			);
+			buildToolPath = ccInstallAction;
+			buildWorkingDirectory = "";
+			dependencies = (
+				67043DCA16B7333F00E43F90 /* PBXTargetDependency */,
+			);
+			name = BBEdit;
+			passBuildSettingsInEnvironment = 0;
+			productName = BBEdit;
+		};
+		671B546C16B1E610009C2B17 /* Xcode */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/Xcode $(ACTION)";
+			buildConfigurationList = 671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */;
+			buildPhases = (
+			);
+			buildToolPath = ccInstallAction;
+			buildWorkingDirectory = "";
+			dependencies = (
+				671B547116B1E91D009C2B17 /* PBXTargetDependency */,
+			);
+			name = Xcode;
+			passBuildSettingsInEnvironment = 0;
+			productName = Xcode;
+		};
+		673D581016B9CAF20001DFF2 /* Doxygen */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "${DEV}/Support BuildSupport/Doxygen $(ACTION)";
+			buildConfigurationList = 673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */;
+			buildPhases = (
+			);
+			buildToolPath = ccInstallAction;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Doxygen;
+			passBuildSettingsInEnvironment = 0;
+			productName = Doxygen;
+		};
 		67BE04B916B06EFF0065BFDE /* Cdoc */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(DEV)/Support BuildSupport/Cdoc $(ACTION)";
@@ -1034,23 +1128,36 @@
 			passBuildSettingsInEnvironment = 0;
 			productName = Cdoc;
 		};
+		67BE04BF16B08DE30065BFDE /* Developer */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "${DEV}/Support BuildSupport/Developer $(ACTION)";
+			buildConfigurationList = 67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */;
+			buildPhases = (
+			);
+			buildToolPath = ccInstallAction;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Developer;
+			passBuildSettingsInEnvironment = 0;
+			productName = Developer;
+		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		671C4823159CFF3800214A9E /* BBEdit */ = {
+		671C4823159CFF3800214A9E /* BBEditScripts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEdit" */;
+			buildConfigurationList = 671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEditScripts" */;
 			buildPhases = (
 				671C4839159D025C00214A9E /* Sources */,
-				671C4831159CFF5500214A9E /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BBEdit;
+			name = BBEditScripts;
 			productName = BBEdit;
-			productReference = 671C4824159CFF3800214A9E /* BBEdit.bundle */;
+			productReference = 671C4824159CFF3800214A9E /* BBEditScripts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		674BF6B915B7287A0093786D /* UserSlates */ = {
@@ -1069,20 +1176,19 @@
 			productReference = 674BF6BA15B7287A0093786D /* UserSlates.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		67692457141EB921005D3E68 /* Xcode */ = {
+		67692457141EB921005D3E68 /* XcodeScripts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 67692464141EB921005D3E68 /* Build configuration list for PBXNativeTarget "Xcode" */;
+			buildConfigurationList = 67692464141EB921005D3E68 /* Build configuration list for PBXNativeTarget "XcodeScripts" */;
 			buildPhases = (
 				67F480D615AF2772004CD4E1 /* Sources */,
-				67692467141EBD70005D3E68 /* Xcode support */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Xcode;
+			name = XcodeScripts;
 			productName = Xcode;
-			productReference = 67692458141EB921005D3E68 /* Xcode.bundle */;
+			productReference = 67692458141EB921005D3E68 /* XcodeScripts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		67AA8010144F3DAD00FCCDC9 /* Developer_Setup */ = {
@@ -1100,28 +1206,13 @@
 			productReference = 67AA8011144F3DAD00FCCDC9 /* Developer_Setup.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		67BA94D314508D19005BF0E9 /* Developer */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 67BA94DF14508D19005BF0E9 /* Build configuration list for PBXNativeTarget "Developer" */;
-			buildPhases = (
-				67BA94E1145091B1005BF0E9 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Developer;
-			productName = CCDev;
-			productReference = 67BA94D414508D19005BF0E9 /* Developer.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		6769244D141EB818005D3E68 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "C & C Software, Inc.";
 			};
 			buildConfigurationList = 67692450141EB818005D3E68 /* Build configuration list for PBXProject "BuildSupport" */;
@@ -1136,12 +1227,15 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				67BA94D314508D19005BF0E9 /* Developer */,
 				67AA8010144F3DAD00FCCDC9 /* Developer_Setup */,
-				67692457141EB921005D3E68 /* Xcode */,
-				671C4823159CFF3800214A9E /* BBEdit */,
+				67BE04BF16B08DE30065BFDE /* Developer */,
 				674BF6B915B7287A0093786D /* UserSlates */,
 				67BE04B916B06EFF0065BFDE /* Cdoc */,
+				671B546C16B1E610009C2B17 /* Xcode */,
+				67043DC516B7331400E43F90 /* BBEdit */,
+				67692457141EB921005D3E68 /* XcodeScripts */,
+				671C4823159CFF3800214A9E /* BBEditScripts */,
+				673D581016B9CAF20001DFF2 /* Doxygen */,
 			);
 		};
 /* End PBXProject section */
@@ -1183,20 +1277,6 @@
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		671C4831159CFF5500214A9E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/ksh;
-			shellScript = "ccInstall ${DEV}/Support BuildSupport/Applications/BBEdit";
-			showEnvVarsInLog = 0;
-		};
 		674BF6F715B72ADB0093786D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1211,21 +1291,6 @@
 			shellScript = "mkdir -p ${CCDev}/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ${CCDev}/UserSlates/Accessor.rsrc\n";
 			showEnvVarsInLog = 0;
 		};
-		67692467141EBD70005D3E68 /* Xcode support */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Xcode support";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/ksh;
-			shellScript = "print $CONFIGURATION_BUILD_DIR; ccInstall ${DEV}/Support BuildSupport/Applications/Xcode";
-			showEnvVarsInLog = 0;
-		};
 		67AA801D144F3DE400FCCDC9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1238,20 +1303,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
 			shellScript = "cd ${DEV}/Support/BuildSupport; Developer/Developer_Setup.ksh";
-			showEnvVarsInLog = 0;
-		};
-		67BA94E1145091B1005BF0E9 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/ksh;
-			shellScript = "ccInstall ${DEV}/Support BuildSupport/Developer";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1281,13 +1332,147 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		67043DCA16B7333F00E43F90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 671C4823159CFF3800214A9E /* BBEditScripts */;
+			targetProxy = 67043DC916B7333F00E43F90 /* PBXContainerItemProxy */;
+		};
+		671B547116B1E91D009C2B17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67692457141EB921005D3E68 /* XcodeScripts */;
+			targetProxy = 671B547016B1E91D009C2B17 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		67043DC716B7331400E43F90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		67043DC816B7331400E43F90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		671B546E16B1E610009C2B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		671B546F16B1E610009C2B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		671C482D159CFF3800214A9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CCDev)/build/Support/BuildSupport/Applications/BBEdit";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1302,7 +1487,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEdit-Info.plist";
+				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEditScripts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1318,6 +1503,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CCDev)/build/Support/BuildSupport/Applications/BBEdit";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1329,12 +1515,71 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEdit-Info.plist";
+				INFOPLIST_FILE = "Applications/BBEdit/_plist/BBEditScripts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		673D581216B9CAF20001DFF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		673D581316B9CAF20001DFF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -1412,6 +1657,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CCDev)/build/Support/BuildSupport/Applications/Xcode";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1426,7 +1672,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Applications/Xcode/_plist/Xcode-Info.plist";
+				INFOPLIST_FILE = "Applications/Xcode/_plist/XcodeScripts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1442,6 +1688,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(CCDev)/build/Support/BuildSupport/Applications/Xcode";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1453,7 +1700,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Applications/Xcode/_plist/Xcode-Info.plist";
+				INFOPLIST_FILE = "Applications/Xcode/_plist/XcodeScripts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1518,62 +1765,6 @@
 			};
 			name = Release;
 		};
-		67BA94DD14508D19005BF0E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
-				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Developer/plist/Developer-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		67BA94DE14508D19005BF0E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Developer/plist/Developer-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		67BE04BB16B06EFF0065BFDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1583,6 +1774,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUGGING_SYMBOLS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1617,6 +1809,68 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		67BE04C116B08DE30065BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		67BE04C216B08DE30065BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1636,11 +1890,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEdit" */ = {
+		67043DC616B7331400E43F90 /* Build configuration list for PBXLegacyTarget "BBEdit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67043DC716B7331400E43F90 /* Debug */,
+				67043DC816B7331400E43F90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				671B546E16B1E610009C2B17 /* Debug */,
+				671B546F16B1E610009C2B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		671C482F159CFF3800214A9E /* Build configuration list for PBXNativeTarget "BBEditScripts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				671C482D159CFF3800214A9E /* Debug */,
 				671C482E159CFF3800214A9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				673D581216B9CAF20001DFF2 /* Debug */,
+				673D581316B9CAF20001DFF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1663,7 +1944,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67692464141EB921005D3E68 /* Build configuration list for PBXNativeTarget "Xcode" */ = {
+		67692464141EB921005D3E68 /* Build configuration list for PBXNativeTarget "XcodeScripts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67692465141EB921005D3E68 /* Debug */,
@@ -1681,15 +1962,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67BA94DF14508D19005BF0E9 /* Build configuration list for PBXNativeTarget "Developer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				67BA94DD14508D19005BF0E9 /* Debug */,
-				67BA94DE14508D19005BF0E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		67BE04BA16B06EFF0065BFDE /* Build configuration list for PBXLegacyTarget "Cdoc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1697,6 +1969,16 @@
 				67BE04BC16B06EFF0065BFDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67BE04C116B08DE30065BFDE /* Debug */,
+				67BE04C216B08DE30065BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -41,16 +41,13 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${HOME}/Library/Scripts/Xcode"
 			;;
-		"Workflows" )
-			;;	#obsolete	
-		"Services" )
-			destinationFolder="${HOME}/Library/Services"
-			;;	
 		"Templates" )
 			destinationFolder="${HOME}/Library/Developer/Xcode/Templates"
 			;;
+		"Workflows" )
+			;&	#obsolete
 		"_plist" )
-			;;	#used by Xcode build process
+			;&	#used by Xcode build process
 		"_Tests" )
 			;;	#handled elsewhere
 		* )
@@ -76,14 +73,12 @@ function handleFile {
 	if [[ "${subtarget}" = "AppleScripts" ]] ; then
 		fname="${filepath%.applescript}.scpt"
 		action="copy"
-
-		sourceForCopy="${CONFIGURATION_BUILD_DIR}/Xcode.bundle/Contents/Resources/${fname}"
+		sourceForCopy="${CCDev}/build/Support/BuildSupport/Applications/Xcode/XcodeScripts.bundle/Contents/Resources/${fname}"
 		destinationForCopy="${destinationFolder}/${fname}"
 	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
 		action="copy"
-
 		sourceForCopy="${projectPath}/${target}/${subtarget}/${filepath}"
 		destinationForCopy="${destinationFolder}/${destname}"
 	else
@@ -99,6 +94,14 @@ function handleFile {
 
 #^ 7 === cleanTarget
 function cleanTarget {
+	for folder in "${HOME}/Library/Scripts/Xcode" "${HOME}/Library/Developer/Xcode/Templates" "${CCDev}/build/Support/BuildSupport/Applications/Xcode" ; do
+		msg=$(ccInstall --removeFolder "${folder}")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			print "error: ${msg}"
+			return ${st}
+		fi
+	done
 	return 0
 }
 

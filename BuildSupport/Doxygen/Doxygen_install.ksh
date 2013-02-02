@@ -1,14 +1,14 @@
 #!/bin/ksh
 
-#  BBEdit_install.ksh
+#  Doxygen_install.ksh
 #  Support
 #
-#  Created by Carol Clark on 6/28/12.
-#  Copyright 2012-13 C & C Software, Inc. All rights reserved.
+#  Created by Carol Clark on 1/30/13.
+#  Copyright 2013 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
-BBEdit_install.ksh -- provide functions for ccInstall to support CCDev installation
+Doxygen_install.ksh -- provide functions for ccInstall to support CCDev installation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--handleFile subtarget filepath destinationFolder
@@ -26,7 +26,7 @@ trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
 projectPath="${DEV}/Support"
-target="BuildSupport/Applications/BBEdit"
+target="BuildSupport/Doxygen"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -38,11 +38,10 @@ function getSubtargetDestination {
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
-		"AppleScripts" )
-			destinationFolder="${HOME}/Library/Application Support/BBEdit/Scripts"
+		"Doxygen" )
+			destinationFolder="${CCDev}/Sites/Doxygen/DoxyDemo"
 			;;
-		"_plist" )
-			;;	# used by Xcode build system
+		# Doxygen: local folders not processed
 		* )
 			print "source folder ${projectPath}/${target}/${subtarget} not handled"
 			return $RC_InputNotHandled
@@ -63,15 +62,11 @@ function handleFile {
 		return $RC_MissingArgument
 	fi
 
-	if [[ "${subtarget}" = "AppleScripts" ]] ; then
-		fname="${filepath%.applescript}.scpt"
-		action="copy"
-		sourceForCopy="${CCDev}/build/Support/BuildSupport/Applications/BBEdit/BBEditScripts.bundle/Contents/Resources/${fname}"
-		destinationForCopy="${destinationFolder}/${fname}"
-	elif [[ -n "${destinationFolder}" ]] ; then
+	if [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
 		action="copy"
+
 		sourceForCopy="${projectPath}/${target}/${subtarget}/${filepath}"
 		destinationForCopy="${destinationFolder}/${destname}"
 	else
@@ -87,14 +82,6 @@ function handleFile {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${HOME}/Library/Application Support/BBEdit/Scripts" ; do
-		msg=$(ccInstall --removeFolder "${folder}")
-		st=${?}
-		if [[ ${st} > 0 ]] ; then
-			print "error: ${msg}"
-			return ${st}
-		fi
-	done
 	return 0
 }
 

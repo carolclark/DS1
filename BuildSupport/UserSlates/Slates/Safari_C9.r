@@ -1,5 +1,5 @@
 // =================================================================================
-//	Safari.r					�2005-12 C & C Software, Inc. All rights reserved.
+//	Safari.r					©2005-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma mark 0 ===
@@ -816,7 +816,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		_ReturnKey_,		\
 		_WindowSlate_,		\
 		ExitEvent { "exit", "" },			NilAction{},	\
-		ExitEvent { "close window", "" },	Keypress { kc_W, mf_command },		\
+		ExitEvent { "close window", "" },	Sequence{}, Click { 1, -15, -30, _window, _topRight }, Keypress { kc_W, mf_command }, endSequence{},		\
 		Event { "fix window", "" },		Sequence{},			\
 			Click { 0, 85, 10, window, "1", _topLeft },		\
 			Click { -1, 480, 29, _screen, _topLeft },		\
@@ -1282,9 +1282,10 @@ resource restype_Slate (resid_Safari, "Safari Slate") { {
 		Event { "link content", "" },		ResSubslate { resid_LinkContentSlate },
 		Event { "search", "" },				Subslate { "search" },
 			_SlateGlobals_,
+			_CloseSubslate_,
 			ExitEvent { "recent", "" },				Click { 1, -247, 32, _window, _topRight },
-			ExitEvent { "clear", "" },				Click { 1, -19, 32, _window, _topRight },
-			ExitEvent { "field", "" },				Click { 1, -65, 32, _window, _topRight },
+			ExitEvent { "clear", "" },				Sequence{}, Keypress { kc_A, mf_command }, Keypress { kc_delete, mf_command }, endSequence{},
+			ExitEvent { "field", "" },				Sequence{}, Click { 0, -100, 32, _window, _topRight }, Click { 1, -100, 32, _window, _topRight }, endSequence{},
 			endSubslate{},
 		Event { "bookmarks", "" },			Sequence{}, ClickMenu { "Bookmarks" },
 			ResSubslate { resid_Bookmarks }, endSequence{},

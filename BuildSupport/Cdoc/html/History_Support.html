@@ -204,11 +204,49 @@
 		</ul></li>
 		<li class='tldate'>UseCaseSupport [01/22/2013]</li>
 		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-		<li>replace bundle/script targets with external targets to provide clean support<ul>
+		<li>replace bundle/kshScript targets with external targets to provide clean support<ul>
 			<li class='blurb'>see <a href="http://yeahrightkeller.com/2009/run-script-while-cleaning-in-xcode/">Run Script While Cleaning in Xcode</a></li>
 			<li>ccInstall: reformat error messages so they begin with error:, since that is Xcode's mechanism for identifying error messages</li>
+<<<<<<< HEAD
 			<li>new script ccInstallAction.ksh to call ccInstall on behalf of external targets</li>
+=======
+			<li>new script ccInstallAction.ksh to call ccInstall on behalf of external targets; replace Cdoc Bundle/script target with External target</li>
+			<li>Developer<ul>
+				<li>replace Developer Bundle/script target with External target</li>
+				<li>move Services from target Xcode to target Developer</li>
+			</ul></li>
+			<li>Xcode<ul>
+				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to $(CCDev)/build/Support/BuildSupport/Applications/Xcode</li>
+				<li>move ccInstall functionality from Scripts target to new External target</li>
+				<li>Xcode_install.ksh: add folders to function cleanTarget<ul>
+					<li>ccInstall: add --removeFolder</li>
+				</ul></li>
+			</ul></li>
+			<li>BBEdit: use External target BBEdit with dependency on script bundle target BBEditScripts</li>
+			<li>targets BBEdit, Cdoc: Clean operation cleans up installed files<ul>
+				<li>move function removeFolder from Xcode_install.ksh to ccInstall.ksh</li>
+				<li>ccInstall<ul>
+					<li>--removeFolder: check for argument exists but is not a directory</li>
+					<li>--copyFiles: do not use unix <span class='mono'>dirname</span>, since it cannot handle folders inside "Application Support"</li>
+				</ul></li>
+			</ul></li>
+			<li>convert Cdoc, Doxygen targets in Punkin, Accessor to use External targets<ul>
+				<li>expand ccInstallAction.ksh to support Doxygen builds<ul>
+					<li>new target Doxygen; new files testDoxygenInstall.ksh, Doxygen_install.ksh; move file Default.doxygen in</li>
+					<li>ccInstall: implement --getTargetName; add action doDoxygen</li>
+					<li>testDoxygenInstall.ksh, Doxygen_install.ksh: implement</li>
+					<li>ccInstall: set up to run doxygen</li>
+					<li>new files DoxyDemo_doxygen.txt, mainpage.dox: configuration and main page files for sample Doxygen docs</li>
+					<li>Doxygen target: build docs</li>
+					<li>Doxygen: load docset into Xcode<ul>
+						<li>rename Doxygen demonstration files AlertPresenter -&gt; AlertPresenterDD to avoid confusion with the real class</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+			<li>retire obsolete scripts buildCdoc.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>
+>>>>>>> useExternalTargets
 		</ul></li>
+		<li>gitaccess.ksh: handles list files, select file, get current branch functionality currently handled by Terminal Slate</li>
 	</ul>
 
 	<!-- @marker "Automation Support" -->

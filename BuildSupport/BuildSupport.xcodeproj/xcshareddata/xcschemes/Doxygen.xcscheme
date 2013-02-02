@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "671B546C16B1E610009C2B17"
-               BuildableName = "Xcode"
-               BlueprintName = "Xcode"
+               BlueprintIdentifier = "673D581016B9CAF20001DFF2"
+               BuildableName = "Doxygen"
+               BlueprintName = "Doxygen"
                ReferencedContainer = "container:BuildSupport.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -32,9 +32,9 @@
 #define resid_firstFileDialog		resid_Xcode+60
 	#define resid_FileOpen				resid_firstFileDialog+0
 	#define resid_FileSave				resid_firstFileDialog+1
-	#define	resid_FileAddToTarget		resid_firstFileDialog+2
 
-#define resid_SelectTargets			resid_Xcode+70	
+#define resid_SelectTargetsAdd			resid_Xcode+70
+#define resid_SelectTargetsNew			resid_Xcode+71
 
 #define resid_EditMenu				resid_Xcode+80
 
@@ -229,6 +229,7 @@
 	_PageKeys_,				\
 	_DirectionKeys_,        \
 	_WhitespaceKeys_,       \
+	Event { "tab back", "" },		Keypress { kc_tab, mf_shift },		\
 	_CommandSlate_,         \
 	_LetterKeys_,           \
 	_IMouseSlate_,			\
@@ -259,16 +260,11 @@
 #define _FileSaveStandards_		\
 	Event { "filename", "" },			_clickFilename,		\
 	Event { "group", "" },				Sequence{}, _clickFilter, _tab, _tab, _tab, endSequence{},	\
-	Event { "targets", "" },			Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, endSequence{},		\
+	Event { "targets", "" },			Sequence{}, Click { 1, 0, 550, _window, _topCenter }, ResSubslate { resid_SelectTargetsNew }, endSequence{},		\
 	Event { "new folder", "" },			Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, _tab, endSequence{},		\
 	Event { "parent", "" },				Click { 1, 310, 340, _window, _topCenter },					\
 	Event { "subclass of", "" },		Click { 1, 310, 340, _window, _topCenter },					\
 	Event { "template groups", "" },	Click { 1, -270, 530, _window, _topCenter },				\
-	Event { "target 1", "" },			Click { 1, tg_h, tg_t+0*tg_s, _window, _topCenter },		\
-	Event { "target 2", "" },			Click { 1, tg_h, tg_t+1*tg_s, _window, _topCenter },		\
-	Event { "target 3", "" },			Click { 1, tg_h, tg_t+2*tg_s, _window, _topCenter },		\
-	Event { "target 4", "" },			Click { 1, tg_h, tg_t+3*tg_s, _window, _topCenter },		\
-	Event { "target 5", "" },			Click { 1, tg_h, tg_t+4*tg_s, _window, _topCenter },		\
 	_FileDialogStandards_
 
 #pragma mark 1 === Navigation
@@ -544,7 +540,7 @@ resource restype_Slate (resid_FileMenu, "File") { {
 	Slate { "File", {
 		_SlateGlobals_,
 		ExitEvent { "okay", "" },				CloseSubslate{},
-		ExitEvent { "cancel", "" },				Keypress { kc_escape, 0 },
+		ExitEvent { "cancel", "" },				Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, endSequence{},
 		Event { "New File", "" },				Sequence{}, Keypress { kc_N, mf_command }, ResSubslate { resid_NewFile }, endSequence{},
         Event { "New Project", "" },			Sequence{}, Keypress { kc_N, mf_command + mf_shift }, ResSubslate { resid_NewFile }, endSequence{},
         Event { "New Workspace", "" },			Sequence{}, Keypress { kc_N, mf_command + mf_control }, ResSubslate { resid_NewFile }, endSequence{},
@@ -561,7 +557,7 @@ resource restype_Slate (resid_FileMenu, "File") { {
 		Event { "Open Recent", "" },			Sequence{}, TypeText { "Open Recent" }, _right, endSequence{},
 		ExitEvent { "Open External", "" },		Sequence{}, TypeText { "Open with External Editor" }, _return, endSequence{},
 		Event { "BBEdit", "" },					Sequence{}, TypeText { "Open with External Editor" }, _return, Launch { MainApps_"BBEdit.app", 0 }, ResSubslate { resid_BBEdit_External }, endSequence{},
-		Event { "AppleScript", "" },				Sequence{}, TypeText { "Open with External Editor" }, _return, Launch { Apps_"Utilities/AppleScript Editor.app", resid_ScriptEditor }, endSequence{},
+		Event { "AppleScript", "" },			Sequence{}, TypeText { "Open with External Editor" }, _return, Launch { Apps_"Utilities/AppleScript Editor.app", resid_ScriptEditor }, endSequence{},
 		Event { "add files", "" },				Sequence{}, Keypress { kc_A, mf_command + mf_option }, ResSubslate { resid_AddFiles }, endSequence{},
 		Event { "Source Control", "'Source Control' menu" }, Sequence{},
 			TypeText { "Source Control" }, _right, ResSubslate { resid_SourceControl }, endSequence{},
@@ -583,6 +579,8 @@ resource restype_Slate (resid_NewFile, "New File") { {
 		Event { "select name", "" },	Sequence{}, Click { 1, 0, 300, _window, _topCenter }, Wait { 10 }, Keypress { kc_left, mf_command }, Keypress { kc_down, mf_shift }, endSequence{},
 		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		Event { "select all", "" },		Keypress { kc_A, mf_command },
+		Event { "next", "" },			_return,
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
 		Event { "superclass", "" },		Subslate { "superclass" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -602,7 +600,8 @@ resource restype_Slate (resid_NewFile, "New File") { {
 #define	flt_v	40
 resource restype_Slate (resid_OpenFile, "Open File") { {
 	Slate { "Open File", {
-		_FileOpenStandards_,
+		_SlateGlobals_,
+		_FileOpenStandards_,		
 	} }
 } };
 
@@ -610,7 +609,8 @@ resource restype_Slate (resid_OpenFile, "Open File") { {
 #define	flt_v	120
 resource restype_Slate (resid_AddFiles, "Add Files") { {
 	Slate { "Add Files", {
-		Event { "targets", "" },	ResSubslate { resid_SelectTargets },
+		_SlateGlobals_,
+		Event { "targets", "" },	ResSubslate { resid_SelectTargetsAdd },
 		_FileOpenStandards_,
 	} }
 } };
@@ -618,14 +618,7 @@ resource restype_Slate (resid_AddFiles, "Add Files") { {
 #define _headerHt	0
 resource restype_Slate (resid_FileOpen, "Open File Dialog") { {
 	Slate { "Open", {
-		_FileOpenStandards_,
-	} }
-} };
-
-#define	flt_h	350		// filter field, from _window _topCenter
-#define	flt_v	150
-resource restype_Slate (resid_FileAddToTarget, "Add To Target Dialog") { {
-	Slate { "Add Files", {
+		_SlateGlobals_,
 		_FileOpenStandards_,
 	} }
 } };
@@ -633,30 +626,40 @@ resource restype_Slate (resid_FileAddToTarget, "Add To Target Dialog") { {
 #define _headerHt	60
 resource restype_Slate (resid_FileSave, "Save File Dialog") { {
 	Slate { "Save", {
+		_SlateGlobals_,
 		_FileSaveStandards_,
 	} }
 } };
 
-#define _offset		-121
-#define	_trow		553
+#define	_TargetAddItems_		\
+		_SlateGlobals_,			\
+		_CloseSubslate_,	\
+		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },	\
+		Event { "page north", "" },		Keypress { kc_pageup, 0 },	\
+		Event { "page down", "" },		Keypress { kc_pagedown, 0 },	\
+		Event { "target list", "" },	Click { 1, 0, 550, _window, _topCenter },	\
+		Event { "row one", "" },		Click { 1, _offset, _trow+0*_rsp, _window, _topCenter },	\
+		Event { "row two", "" },		Click { 1, _offset, _trow+1*_rsp, _window, _topCenter },	\
+		Event { "row three", "" },		Click { 1, _offset, _trow+2*_rsp, _window, _topCenter },	\
+		Event { "row four", "" },		Click { 1, _offset, _trow+3*_rsp, _window, _topCenter },	\
+		Event { "row five", "" },		Click { 1, _offset, _trow+4*_rsp, _window, _topCenter },	\
+		_IMouseSlate_,	\
+		_LetterKeys_,	\
+		_NumberKeys_
+
+#define _offset		-90
 #define _rsp		18
-resource restype_Slate (resid_SelectTargets, "Select Targets") { {
-	Slate { "Select Targets", {
-		_SlateGlobals_,
-		ExitEvent { "exit", "" },		NilAction{},
-		ExitEvent { "okay", "" },		Keypress { kc_return, 0 },
-		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
-		Event { "page north", "" },		Keypress { kc_pageup, 0 },
-		Event { "page down", "" },		Keypress { kc_pagedown, 0 },
-		Event { "target list", "" },	Click { 1, 138, 488, _window, _topCenter },
-		Event { "row one", "" },		Click { 1, _offset, _trow+0*_rsp, _window, _topCenter },
-		Event { "row two", "" },		Click { 1, _offset, _trow+1*_rsp, _window, _topCenter },
-		Event { "row three", "" },		Click { 1, _offset, _trow+2*_rsp, _window, _topCenter },
-		Event { "row four", "" },		Click { 1, _offset, _trow+3*_rsp, _window, _topCenter },
-		Event { "row five", "" },		Click { 1, _offset, _trow+4*_rsp, _window, _topCenter },
-		_IMouseSlate_,
-		_LetterKeys_,
-		_NumberKeys_,
+#define	_trow		486
+resource restype_Slate (resid_SelectTargetsAdd, "Select Add Targets") { {
+	Slate { "Select Add", {
+		_TargetAddItems_,
+	} }
+} };
+
+#define	_trow		505
+resource restype_Slate (resid_SelectTargetsNew, "Select New Targets") { {
+	Slate { "Select New", {
+		_TargetAddItems_,
 	} }
 } };
 
@@ -1242,6 +1245,8 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "click back", "" },		Click { 1, -500, 40, _window, _topRight },
 		Event { "scheme", "" },			Sequence{}, _targetPopup, ResSubslate { resid_TargetScheme }, endSequence{},
 		Event { "pop up", "" },			Sequence{}, _targetPopup, ResSubslate { resid_TargetPopup }, endSequence{},
+		focus_,
+		focusBack_,
 		Event { "nav list", "" },		_navList,
 		Event { "go next", "" },		_goNext,
 		Event { "go previous", "" },	_goPrevious,
@@ -1509,7 +1514,8 @@ resource restype_Slate (resid_Macro, "") { {
 		Event { "close tab", "" },		_closeTab,		\
 		Event { "go next", "tab" },		_goNext,							\
 		Event { "go previous", "tab" },	_goPrevious,						\
-		Event { "go tab", "" },			_goTab,								\	Event { "open Assist", "" },	Keypress { kc_comma, mf_command + mf_option },	\
+		Event { "go tab", "" },			_goTab,								\
+		Event { "open Assist", "" },	Sequence{}, ClickMenu { "Navigate" }, _down, TypeText { "Open in Assistant Editor" }, _return, endSequence{},		\
 		Event { "pop issues", "" },		Click { 1, -24, 108, _window, _topRight },		\
 		Event { "next issue", "" },		_nextIssue,		\
 		Event { "previous issue", "" },	_previousIssue,		\
@@ -1642,7 +1648,6 @@ resource restype_Slate (resid_ProjectSettings, "Project") { {
 		Event { "open Copy Headers", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
 		Event { "open Copy Resources", "" },	Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
 		Event { "open Link", "" },				Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
-		Event { "add other files", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, Wait { 5 }, Click { 1, -127, 529, _window, _topCenter }, ResSubslate { resid_FileAddToTarget }, endSequence{},
 		_SlateGlobals_,
 		_IMouseSlate_,
 		_DirectionKeys_,
@@ -2229,12 +2234,12 @@ resource restype_Slate (resid_ProjectIndex, "") { {
 	Slate { "Project",	{
 		_SlateGlobals_,
 		ExitEvent { "okay", "" },		CloseSubslate{},
-		Event { "list", "" },			Sequence{}, Click { 1, 160, -15, _window, _bottomLeft }, Wait { 30 }, _tabBack, _tabBack, _tabBack, _tabBack, _tabBack, _left, endSequence{},
+		Event { "click list", "" },		Sequence{}, Click { 1, 160, -15, _window, _bottomLeft }, Wait { 30 }, _tabBack, _tabBack, _tabBack, _tabBack, _tabBack, _left, endSequence{},
 		Event { "top row", "" },		_topRow,
 		Event { "row two", "" },		Click { 1, 100, 160, _window, _topLeft },
 		Event { "nav list", "" },		_navList,
 		Event { "reveal file", "" },	Keypress { kc_J, mf_command + mf_shift },
-		Event { "open Assist", "" },	Keypress { kc_comma, mf_command + mf_option },
+		Event { "open Assist", "" },	Sequence{}, ClickMenu { "Navigate" }, _down, TypeText { "Open in Assistant Editor" }, _return, endSequence{},
 		Event { "mouse", "" },			ResSubslate { resid_IndexMouse },
 		Event { "new group", "" },		Sequence{}, Keypress { kc_N, mf_command + mf_option }, ResSubslate { resid_NewGroup }, endSequence{},
 		Event { "pop issues", "" },		Click { 1, -24, 108, _window, _topRight },
@@ -2280,7 +2285,6 @@ resource restype_Slate (resid_IssueIndex, "Issues") { {
 	Slate { "issues", {
 		_SlateGlobals_,
 		_CloseSubslate_,
-		
 		Event { "by file", "" },		Click { 1, 35, 132, _window, _topLeft },
 		Event { "by type", "" },		Click { 1, 92, 132, _window, _topLeft },
 		Event { "nav list", "" },		_navList,
@@ -3186,6 +3190,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "page north", "" },		Keypress { kc_pageup, 0 },
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },
 		Event { "target", "" },			ResSubslate { resid_Target },
+		Event { "Project", ""	},		Sequence{}, Keypress { kc_2, mf_command }, Keypress { kc_1, mf_command }, ResSubslate { resid_ProjectIndex }, endSequence{},
 		Event { "Index", ""	},			ResSubslate { resid_Index },
 		Event { "nav list", "" },		_navList,
 		Event { "navigate", "" },		ResSubslate { resid_Navigate },
