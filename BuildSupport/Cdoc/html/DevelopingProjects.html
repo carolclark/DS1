@@ -40,6 +40,7 @@
 	<!-- @topicItem "Add Cocoa Target" "#AddCocoaTarget" "0" "" -->
 	<!-- @topicItem "Workspace Mirrors Project Files" "#WorkspaceMirrorsFiles" "0" "" -->
 	<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
+	<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
 	<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 	<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
 	<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
@@ -120,6 +121,26 @@
 		<li>add Data Model file</li>
 		<li>create new &lt;Target&gt;AppDelegate from private template _ObjectiveC/CocoaClass/NSApplicationDelegate, with option Use Core Data; recover any preexisting code</li>
 		<li>for Core Data tests, use private template _ObjectiveC/CocoaTestClass/NSManagedObject; see <a href="http://stackoverflow.com/questions/1849802/how-to-unit-test-my-models-now-that-i-am-using-core-data">Testing Core Data discussion</a></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add Build Script Target" -->
+<h4 id='AddBuildScriptTarget'>Add Build Script Target</h4><ul>
+	<li class='blurb'>Motivation: make compiled AppleScripts available for use:<ul>
+		<li>add a target &lt;Target&gt;Scripts to compile &lt;name&gt;.applescript files in folder AppleScripts into a bundle of .scpt files at ${CCDev}/build/&lt;Target&gt;/&lt;Target&gt;Scripts.bundle</li>
+		<li>expand existing External target &lt;Target&gt; to copy the compiled scripts to the desired location</li>
+	</ul></li>
+	<li>target &lt;Target&gt;Scripts<ul>
+		<li>add Bundle target &lt;Target&gt;Scripts; add AppleScripts to the Compile Sources build phase</li>
+		<li>folder /&lt;Workspace&gt;/&lt;Project&gt;/&lt;Target&gt;Scripts<ul>
+			<li>move file &lt;Target&gt;Scripts-Info.plist to /&lt;Workspace&gt;/&lt;Project&gt;/&lt;Target&gt;/plist</li>
+			<li>remove folder /&lt;Workspace&gt;/&lt;Project&gt;/&lt;Target&gt;Scripts with its remaining contents</li>
+			<li>update Build Setting Info.plist file to match</li>
+		</ul></li>
+		<li>Build Settings: set Per-Configuration Built Products Path to ${CCDev}/build/&lt;Workspace&gt;/&lt;Project&gt;/&lt;Target&gt;</li>
+	</ul></li>
+	<li>file &lt;Target&gt;_install.ksh<ul>
+		<li>update getSubtargetDestination, handleFile, cleanFiles accordingly; see Support/BuildSupport/Developer_install.ksh</li>
 	</ul></li>
 </ul>
 

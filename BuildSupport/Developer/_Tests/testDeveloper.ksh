@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  testCCDev.ksh
+#  testDeveloper.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/21/11.
@@ -71,6 +71,13 @@ testInstallation() {
 	if [[ ! -e "${fl}" ]] ; then
 		fail "$LINENO: CCDev script cleanProjectTarget missing" 
 	fi
+	
+	# ~/Library/Scripts/Developer/FixWindow.scpt
+	fl="${HOME}/Library/Scripts/Developer/FixWindow.scpt"
+	if [[ ! -e "${fl}" ]] ; then
+		fail "$LINENO: AppleScript FixWindow.scpt missing" 
+	fi
+
 }
 
 # load shunit2

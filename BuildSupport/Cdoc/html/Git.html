@@ -39,14 +39,15 @@
 		<li>construct and save commit message<span class='blurb'>Xcode / Stickies</span></li>
 		<li>verify modifications (diff tool)<span class='blurb'>Terminal</span></li>
 		<li>add / review files to be committed</li>
-		<li>review commit message</li>
+		<li>review commit msgfile</li>
 		<li>commit</li>
 		<li>log</li>
 	</ul></li>
 	<li>check stash list; check for status clear; diff (abbreviate) master with branch; inspect for conflicts</li>
 	<li>switch to (checkout) master</li>
+	<li>merge; fetch; [merge remote]</li>
 	<li>[tag]</li>
-	<li>merge; fetch; [merge remote]; push [push tags]</li>
+	<li>push [push tags]</li>
 	<li>status; check for unmerged branches (branch --no-merged master); delete branch</li>
 </ul>
 
@@ -147,14 +148,15 @@
 	<h5>Other Information Commands</h5><ul>
 		<li><span class='mono'>git ls-files --other --exclude-standard</span>&nbsp;&nbsp;# untracked files</li>
 		<li><span class='mono'>git branch --no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
-		<li><span class='mono'>git reflog [log options]</span>&nbsp;&nbsp;# show reflog</li>
+		<li><span class='mono'>git reflog [log options | with dates(custom)]</span>&nbsp;&nbsp;# show reflog</li>
 	</ul>
 	 
 <!-- @marker "Undo" -->
 <h4 id="tsk_Undo">Undo</h4><ul>
 	<li><span class='mono'>git checkout -- &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in index</li>
 	<li><span class='mono'>git checkout HEAD &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in HEAD revision</li>
-	<li><span class='mono'>git reset --hard HEAD</span>&nbsp;&nbsp;# revert all changes since last commit; restores index and files (causes the results of "git diff" and "git diff --cached" to both be empty)</li>
+	<li><span class='mono'>git reset --soft HEAD@{1}</span>&nbsp;&nbsp;# discard all changes since last commit; restores index and files (causes the results of "git diff" and "git diff --cached" to both be empty)</li>
+	<li><span class='mono'>git reset --hard HEAD</span>&nbsp;&nbsp;# discard all changes since last commit; restores index and files (causes the results of "git diff" and "git diff --cached" to both be empty)</li>
 	<li><span class='mono'>git revert [HEAD|&lt;commit&gt;]</span>&nbsp;&nbsp;# creates a new commit that undoes the most recent or a previous commit</li>
 </ul>
 

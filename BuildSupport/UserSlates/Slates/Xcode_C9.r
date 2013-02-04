@@ -2626,7 +2626,7 @@ resource restype_Slate (resid_TypeDialog, "") { {
 	Event { "capitalize", "" },		_capitalize,	\
 	Event { "lower case", "" },		_lowercase,		\
 	Event { "breakpoint", "" },		_breakpoint,	\
-	Event { "balance", "" },		Keypress { kc_M, mf_command + mf_option + mf_control },	\
+	Event { "balance", "" },		Keypress { kc_M, 0 },	\
 	Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 	Event { "paste", "" },			Keypress { kc_V, mf_command + mf_option + mf_shift },	\
 	Event { "undo", "" },			Keypress { kc_Z, mf_command },	\
@@ -3170,6 +3170,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		_DefaultBase_,
 		_TypeXcodeSlate_,
 		_XcodeStandards_,
+		Event { "fix window", "" },		Script { "run (load script POSIX file \"/Users/carolclark/Library/Scripts/Developer/FixWindow.scpt\")", "" },
 		Event { "test click", "" },		Subslate { "test clicks" },
 			_SlateGlobals_,
 			_CloseSubslate_,

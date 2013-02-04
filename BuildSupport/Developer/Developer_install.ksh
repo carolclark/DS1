@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  CCDev_install.ksh
+#  Developer_install.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
@@ -51,8 +51,11 @@ function getSubtargetDestination {
 		"Services" )
 			destinationFolder="${servicesFolder}"
 			;;
-		"AppleScripts" )		# files for future use
-			;&
+		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
+			;;
+		"AppleScripts" )
+			destinationFolder="${HOME}/Library/Scripts/Developer"
+			;;
 		"Doxygen" )				# files for reference only
 			;&
 		"plist" )				# used by Xcode build system for Developer_Setup.ksh
@@ -84,12 +87,22 @@ function handleFile {
 	fi
 
 	if [[ -n "${destinationFolder}" ]] ; then
-		srcname="${filepath}"
-		destname="${srcname%.ksh}"
-		action="copy"
-
-		sourceForCopy="${projectPath}/${target}/${subtarget}/${filepath}"
-		destinationForCopy="${destinationFolder}/${destname}"
+		if [[ "${subtarget}" = "AppleScripts" ]] ; then
+			if [[ ${filepath%.applescript} = ${filepath} ]] ; then		# not an AppleScript file
+				action="ignore"
+			else
+				fname="${filepath%.applescript}.scpt"
+				action="copy"
+				sourceForCopy="${CCDev}/build/Support/BuildSupport/Developer/DeveloperScripts.bundle/Contents/Resources/${fname}"
+				destinationForCopy="${destinationFolder}/${fname}"
+			fi
+		else
+			srcname="${filepath}"
+			destname="${srcname%.ksh}"
+			action="copy"
+			sourceForCopy="${projectPath}/${target}/${subtarget}/${filepath}"
+			destinationForCopy="${destinationFolder}/${destname}"
+		fi
 	else
 		action="ignore"
 	fi
@@ -103,6 +116,15 @@ function handleFile {
 
 #^ 7 === cleanTarget
 function cleanTarget {
+	for folder in "${HOME}/Library/Scripts/Developer" ; do
+		msg=$(ccInstall --removeFolder "${folder}")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			print "error: ${msg}"
+			return ${st}
+		fi
+	done
+
 	return 0
 }
 
