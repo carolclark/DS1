@@ -1165,7 +1165,7 @@
 		};
 		67BE04BF16B08DE30065BFDE /* Developer */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "${DEV}/Support BuildSupport/Developer $(ACTION)";
+			buildArgumentsString = "${DEV}/Support BuildSupport/Developer";
 			buildConfigurationList = 67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */;
 			buildPhases = (
 			);
@@ -1354,7 +1354,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "cd ${DEV}/Support/BuildSupport; Developer/Developer_Setup.ksh";
+			shellScript = Developer/Developer_Setup.ksh;
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

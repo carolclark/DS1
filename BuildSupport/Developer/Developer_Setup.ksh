@@ -182,14 +182,13 @@ esac
 print "configuring environment"
 envProfile > "${HOME}/.profile"
 chmod a+x "${HOME}/.profile"
-mkdir -p "${CCDev}/bin"
-envEnvironment > "${CCDev}/bin/.kshrc"
+mkdir -p "${ccdevFolder}/bin"
+envEnvironment > "${ccdevFolder}/bin/.kshrc"
 chmod a+x "${CCDev}/bin/.kshrc"
 envLaunchctl > "${CCDev}/tmp/launchd.conf"
 
 # configure git
 print "configuring git"
-CCDev="${ccdevFolder}"; export CCDev
 config="/Users/${user}/.gitconfig"
 exclude="${CCDev}/Git/exclude"
 mkdir -p "${CCDev}/Git"
@@ -248,9 +247,11 @@ print "${result}"
 
 if [[ "${failcnt}" = 0 ]] ; then
 	print "***"
-	print "*** If you are comfortable editing a file with sudo from Terminal:"
-	print "***		To finish setting up your environment, copy the contents of file ${CCDev}/tmp/launchd.conf. Then sudo edit /private/etc/launchd.conf, and paste clipboard contents into that file. ***"
-	print "*** If not, ask for help."
+	print "*** To finish setting up your environment, open Terminal and:"
+	print "*** 		Type the following command:"
+	print "sudo cp /Users/carolclark/CCDev/tmp/launchd.conf /private/etc/launchd.conf"
+	print "*** 		Press <return>."
+	print "*** Then shut down your computer and reboot."
 	print "***"
 fi
 
