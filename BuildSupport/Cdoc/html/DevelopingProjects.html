@@ -11,6 +11,7 @@
 <h1>Developing Projects</h1>
 
 <!-- @topicList "DevelopingProjects" "Contents" -->
+	<!-- @topicItem "System Configuration" "#SystemConfig" "0" "" -->
 	<!-- @topicItem "Naming Conventions" "#NamingConventions" "0" "" -->
 	<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
 	<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
@@ -18,6 +19,32 @@
 <!-- @/topicList -->
 
 <p>tasks and refactorings related to development with Xcode projects</p>
+
+<!-- @marker "System Configuration" -->
+<h2>System Configuration</h2>
+<!-- @topicList "System Configuration" "SystemConfig" -->
+	<!-- @topicItem "Initial Configuration" "#InitialConfig" "0" "" -->
+	<!-- @topicItem "Test System Configuration" "#TestSystemConfig" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Initial Configuration" -->
+<h4 id='InitialConfig'>Initial Configuration</h4><ul>
+	<li>open workspace Support</li>
+	<li>build target Developer_Setup</li>
+	<li>copy file launchd.conf to /private/etc as instructed</li>
+	<li>reboot computer</li>
+	<li>build target Developer</li>
+</ul>
+
+<!-- @marker "Test System Configuration" -->
+<h4 id='TestSystemConfig'>Test System Configuration</h4><ul>
+	<li>clean targets Developer and Developer_Setup<ul>
+		<li class='blurb'>If Xcode calls clean twice on target Developer, the second clean fails because file ccInstallAction has been cleaned and is missing.</li>
+	</ul></li>
+	<li>sudo delete file /private/etc/launchd.conf</li>
+	<li>reboot computer; verify configuration issues such as missing DEV and CCDev variables</li>
+	<li>complete <a href="#InitialConfig">Initial Configuration</a>; verify configuration okay</li>
+</ul>
 
 <!-- @marker "Naming Conventions" -->
 <h2>Naming Conventions</h2>

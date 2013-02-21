@@ -39,7 +39,7 @@ function install {
 #^	envProfile
 function envProfile {
 	print "SHELL=/bin/ksh"
-	print "export ENV=${CCDev}/bin/.kshrc"
+	print "export ENV=${ccdevFolder}/bin/.kshrc"
 }
 
 #^	envEnvironment
@@ -142,12 +142,35 @@ function shunitInstall {
 	done	
 }
 
+#^	removeFileIfPresent
+function removeFileIfPresent {
+	if [[ -e "${1}" ]] ; then
+		rm "${1}"
+	fi
+}
+
 #^	main
 
-# identify and set variables for current user
-user=${USER}
-devFolder=${HOME}/Dev
+#define	REMOVE_IF_PRESENT(x) if [[ -e x ]] ; then rm x ; fi
 ccdevFolder=${HOME}/CCDev
+
+if [[ "${1}" = clean ]] ; then
+	removeFileIfPresent "${HOME}/.profile"
+	removeFileIfPresent "${HOME}/.MacOSX/environment.plist"
+	removeFileIfPresent "${HOME}/.gitconfig"
+	removeFileIfPresent "${ccdevFolder}/tmp/launchd.conf"
+	removeFileIfPresent "${HOME}/.launchd.conf"
+	removeFileIfPresent "${ccdevFolder}/bin/.kshrc"
+	removeFileIfPresent "${ccdevFolder}/bin/ccInstallAction"
+	removeFileIfPresent "${ccdevFolder}/bin/resultCodes.ksh"
+	removeFileIfPresent "${ccdevFolder}/Git/attributes"
+	removeFileIfPresent "${ccdevFolder}/Git/exclude"
+	exit
+fi
+
+# identify and set variables for current user
+devFolder=${HOME}/Dev
+user=${USER}
 installEnvironmentPlist="yes"
 setTerminalPrompt="no"
 setTerminalEditMode="yes"

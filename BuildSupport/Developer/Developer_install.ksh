@@ -31,6 +31,7 @@ target="BuildSupport/Developer"
 servicesFolder="${HOME}/Library/Services"
 scriptsFolder="${CCDev}/bin"
 functionsFolder="${CCDev}/func"
+applescriptsFolder="${HOME}/Library/Scripts/Developer"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -51,10 +52,10 @@ function getSubtargetDestination {
 		"Services" )
 			destinationFolder="${servicesFolder}"
 			;;
-		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
-			;;
 		"AppleScripts" )
-			destinationFolder="${HOME}/Library/Scripts/Developer"
+			destinationFolder="${applescriptsFolder}"
+			;;
+		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
 			;;
 		"Doxygen" )				# files for reference only
 			;&
@@ -116,7 +117,7 @@ function handleFile {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${HOME}/Library/Scripts/Developer" ; do
+	for folder in "${applescriptsFolder}"  "${scriptsFolder}" "${functionsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then

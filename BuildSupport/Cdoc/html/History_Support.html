@@ -206,9 +206,9 @@
 			<li>Stabilize Developer_Setup<ul>
 				<li class='blurb'>For at least a month, the code that establishes variable CCDev was written before it was defined in the script. This continued to work as long as CCDev had already been defined before the script was run.</li>
 				<li>Developer_Setup.ksh: correct CCDev definition issue - use existing predefined value until CCDev has been defined in the script</li>
-				<li class='blurb'>Change to support more complete testing: to start up a system with no setup variables defined: clean targets Developer_Setup and Developer; reboot</li>
+				<li class='blurb'>Change to support more complete testing: to start up a system with no setup variables defined: clean targets Developer_Setup and Developer; delete file /private/etc/launchd.conf; reboot</li>
 				<li>Build Run Script Phase: do not depend on variable Dev</li>
-				<li>implement Developer_Setup: Clean<ul>
+				<li>implement Developer_Setup clean<ul>
 					<li>change to External Target</li>
 					<li>pass $ACTION to script</li>
 				</ul></li>
