@@ -2975,7 +2975,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 		ExitEvent { "plain event", "" },		TypeText { "Event { \"" },
 		ExitEvent { "end event", "" },			Sequence{}, TypeText { "\", \"\" }," }, Keypress { kc_tab, mf_option }, Keypress { kc_tab, mf_option }, Keypress { kc_tab, mf_option }, endSequence{},
 		ExitEvent { "sequence", "" },			Sequence{}, TypeText { "Sequence{}, <##> endSequence{}," }, _previous, endSequence{},
-		ExitEvent { "subslate", "" },			Sequence{}, TypeText { "Subslate { \"<##>\" }," }, _return, _tab, _tab, _tab, TypeText { "_SlateGlobals_," }, _return, _tab, _tab, _tab, TypeText { "_CloseSubslate_," }, _return, _tab, _tab, _tab, TypeText { "<##>" }, _return, _tab, _tab, _tab, TypeText { "endSubslate{}," }, _previous, _previous, endSequence{},
+		ExitEvent { "subslate", "" },			Sequence{}, TypeText { "Subslate { \"<##>\" }," }, _return, _tab, TypeText { "_SlateGlobals_," }, _return, TypeText { "_CloseSubslate_," }, _return, TypeText { "<##>" }, _return, TypeText { "endSubslate{}," }, _previous, _previous, endSequence{},
 		ExitEvent { "indent subslate", "" },	Sequence{}, _indent, _down, _indent, _indent, _down, _indent, _indent, _down, _indent, endSequence{},
 		ExitEvent { "type text", "" },			Sequence{}, TypeText { "TypeText { \"<##>\" }," }, _previous, endSequence{},
 		ExitEvent { "resource subslate", "" },	Sequence{}, TypeText { "ResSubslate { <##> }, " }, _previous, endSequence{},

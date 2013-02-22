@@ -201,7 +201,6 @@
 			<li>add git grep</li>
 			<li>add between, ancestor specifiers; log/reflog --stat, --before, --after</li>
 		</ul></li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>Developer_Setup<ul>
 			<li>Stabilize Developer_Setup<ul>
 				<li class='blurb'>For at least a month, the code that establishes variable CCDev was written before it was defined in the script. This continued to work as long as CCDev had already been defined before the script was run.</li>
@@ -213,20 +212,15 @@
 					<li>pass $ACTION to script</li>
 				</ul></li>
 			</ul></li>
-			<li>update git excludes</li>
+			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+			<li class='blurb'>Changes from here through Collaborator Support were made once before Developer_Setup was stabilized, then reintroduced.</li>
+			<li>UserSlates: improve git access</li>
 			<li>test environment and git configurations</li>
-			<li>add git attributes support</li>
 			<li>replace /private/etc/launchd.conf, ~/.MacOSX/environment.plist with ~/.launchd.conf<ul>
 				<li>see <a href="http://stackoverflow.com/questions/603785/environment-variables-in-mac-os-x/4567308#4567308">Environment variables in Mac OS X</a></li>
 			</ul></li>
-			<li>prefer variables to flags when setting user-specific configurations</li>
-			<li>refactor environment variables to use variables already defined to write .kshrc files, launchctl configuration</li>
-			<li>refactor configuration to use <span class='mono'>launchctl setenv</span>, <span class='mono'>git config --global</span></li>
-			<li>avoid duplication in $PATH and $FPATH variables</li>
-			<li>add to git configuration:<ul>
-				<li>core.editor emacs</li>
-				<li>merge.tool opendiff</li>
-			</ul></li>
+			<li>refactor Developer_install, Developer_Setup</li>
+			<li>git configuration: update git excludes; add attributes support; add core.editor emacs, merge.tool opendiff</li>
 		</ul></li>
 		<li>Collaborator Support<ul>
 			<li>gitattributes: *./pbxproj merge=union tells Xcode to use changes from both parents when merging Xcode project files</li>

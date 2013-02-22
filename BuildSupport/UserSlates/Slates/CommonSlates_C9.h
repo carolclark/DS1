@@ -127,6 +127,7 @@
 		Event { "enter", "" },			Keypress { kc_enter, 0 },					\
 		Event { "refresh", "" },		Keypress { kc_R, mf_command },				\
 		Event { "address", "" },		Click { 1, 0, 35, _window, _topCenter },       \
+		Event { "copy", "" },			Keypress { kc_C, mf_command },					\
 		Event { "copy address", "" },	Sequence{},										\
 			Click { 1, 0, 35, _window, _topCenter }, Keypress { kc_A, mf_command }, Keypress { kc_C, mf_command },														\
 			endSequence{},															\
