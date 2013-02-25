@@ -213,19 +213,37 @@
 				</ul></li>
 			</ul></li>
 			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-			<li class='blurb'>Changes from here through Collaborator Support were made once before Developer_Setup was stabilized, then reintroduced.</li>
-			<li>UserSlates: improve git access</li>
-			<li>test environment and git configurations</li>
-			<li>replace /private/etc/launchd.conf, ~/.MacOSX/environment.plist with ~/.launchd.conf<ul>
-				<li>see <a href="http://stackoverflow.com/questions/603785/environment-variables-in-mac-os-x/4567308#4567308">Environment variables in Mac OS X</a></li>
+			<li>fetch Configuration and Collaborator changes made previously<ul>
+				<li class='blurb'>These changes were made once before Developer_Setup was stabilized, then reintroduced here.</li>
+				<li>UserSlates: improve git access</li>
+				<li>test environment and git configurations</li>
+				<li>remove ~/.MacOSX/environment.plist; add ~/.launchd.conf; user copies ~/.launchd.conf to /private/etc/launchd.conf<ul>
+					<li>see <a href="http://stackoverflow.com/questions/603785/environment-variables-in-mac-os-x/4567308#4567308">Environment variables in Mac OS X</a></li>
+				</ul></li>
+				<li>refactor Developer_install, Developer_Setup</li>
+				<li>git configuration: configuration, excludes; add attributes support. Includes:<ul>
+					<li>configuration: add core.editor emacs, merge.tool opendiff</li>
+					<li>gitattributes: *./pbxproj merge=union tells Xcode to use changes from both parents when merging Xcode project files</li>
+					<li>gitexclude: ignore folder _patches/</li>
+				</ul></li>
+				<li>Collaborator Support<ul>
+					<li>Developer: menu script CreatePunkinPatches creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) for Punkin at ${DEV}/Punkin/_patches; used by collaborators to prepare patches for submission</li>
+				</ul></li>
 			</ul></li>
-			<li>refactor Developer_install, Developer_Setup</li>
-			<li>git configuration: update git excludes; add attributes support; add core.editor emacs, merge.tool opendiff</li>
-		</ul></li>
-		<li>Collaborator Support<ul>
-			<li>gitattributes: *./pbxproj merge=union tells Xcode to use changes from both parents when merging Xcode project files</li>
-			<li>gitexclude: git ignores folder _patches</li>
-			<li>Developer script CreatePunkinPatches creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) for Punkin at ${DEV}/Punkin/_patches; used by collaborators to prepare patches for submission</li>
+			<li>replace DEV, CCDev definitions with functions<ul>
+				<li class='blurb'>To remove the need for file /private/etc/launchd.conf, which: is difficult to handle because it requires sudo access; is apparently not officially supported anyway. clc 02/25/2013</li>
+				<li>update installation instructions</li>
+			</ul></li>
+			<li>handle testing in response to Test ACTION; run after reboot</li>
+			<li>move remaining Developer functionality to Developer_Setup (workflow OpenAccessor copied only for user carolclark); remove target Developer<ul>
+				<li>also combine tests</li>
+			</ul></li>
+			<li>makeCollaboratorSetup.ksh: script to make tarball at ~/Archives/collatoratorSetup.tar.gz with script Developer_Setup, along with the files it needs to set up a Collaborator's system for development<ul>
+				<li>handle GitSaveMessage.workflow in Developer_Setup</li>
+				<li>target folder includes sources for Developer_Setup</li>
+				<li>add CreatePunkinPatches.scpt from Scripts/Developer, copied in Developer_Setup only if user is not carolclark</li>
+				<li>archive</li>
+			</ul></li>
 		</ul></li>
 		<li>gitaccess.ksh: scripts to support git and git accessibility<ul>
 			<li>--listFiles:  convert input from an abbreviated diff to a numbered file list stored at $CCDev/Git/gitFileList</li>
