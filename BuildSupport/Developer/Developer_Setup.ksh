@@ -90,18 +90,33 @@ function gitPrintConfig {
 	git config --global user.email "${email}"
 
 	git config --global core.excludesfile "${exclude}"
+	git config --global core.attributesfile "${attributes}"
+
+	git config --global color.ui true
+
+	git config --global core.editor emacs
 
 	git config --global diff.tool opendiff
 
 	git config --global difftool.prompt false
+
+	git config --global merge.tool opendiff
 }
 
 #^	gitPrintExclude
 function gitPrintExclude {
 	print '.DS_Store'
-	print 'xcuserdata'
 	print '*.bbprojectsettings'
-	print '_rf_*'
+	print 'xcuserdata/'
+	print '_patches'
+}
+
+#^	gitPrintAttributes
+function gitPrintAttributes {
+	print 'content.pcode text'
+	print '*.png binary'
+	print 'snippets.dash binary'
+	print '*./pbxproj merge=union'		# include changes from both parents when merging project files
 }
 
 #^	shunitInstall
@@ -217,9 +232,11 @@ chmod a+x "${HOME}/.launchd.conf"
 print "configuring git"
 config="/Users/${user}/.gitconfig"
 exclude="${CCDev}/Git/exclude"
+attributes="${CCDev}/Git/attributes"
 mkdir -p "${CCDev}/Git"
 gitPrintConfig > "${config}"				# configure git
 gitPrintExclude > "${exclude}"				# specify files for git to ignore
+gitPrintAttributes > "${attributes}"		# specify file attributes
 
 # configure Xcode
 print "writing Xcode defaults"

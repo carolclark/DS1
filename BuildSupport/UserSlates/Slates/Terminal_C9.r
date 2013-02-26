@@ -151,8 +151,8 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "branch", "" },			Sequence{}, TypeText { "git branch " }, ResSubslate { resid_gitBranch }, endSequence{},
 		Event { "show branch", "" },	Sequence{}, TypeText { "git show-branch " }, ResSubslate { resid_gitShowBranch }, endSequence{},
 		Event { "difference", "" },		Sequence{}, TypeText { "git difftool " }, ResSubslate { resid_gitDiff }, endSequence{},
-		Event { "show", "" },			Sequence{}, TypeText { "git show" }, ResSubslate { resid_gitShow }, endSequence{},
-		Event { "grep", "" },			Sequence{}, TypeText { "git grep" }, ResSubslate { resid_gitGrep }, endSequence{},
+		Event { "show", "" },			Sequence{}, TypeText { "git show " }, ResSubslate { resid_gitShow }, endSequence{},
+		Event { "grep", "" },			Sequence{}, TypeText { "git grep " }, ResSubslate { resid_gitGrep }, endSequence{},
 		Event { "stash away", "" },		Sequence{}, TypeText { "git stash " }, ResSubslate { resid_gitStash }, endSequence{},
 		Event { "add files", "" },		Sequence{}, TypeText { "git add " }, ResSubslate { resid_gitAdd }, endSequence{},
 		Event { "commit", "" },			Sequence{}, TypeText { "git commit " }, ResSubslate { resid_gitCommit }, endSequence{},
@@ -287,7 +287,7 @@ resource restype_Slate (resid_gitDiff, "") { {
 		Event { "statistics", "" },		TypeText { "--stat " },
 		Event { "graph", "" },			TypeText { "--graph " },
 		Event { "graph from top", "" },	TypeText { "--graph --topo-order " },
-		Event { "tilde", "" },			Keypress { kc_accent, mf_shift },
+		Event { "check", "" },			TypeText { "--check " },
 		_NumberKeys_,
 	} }
 } };
