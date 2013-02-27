@@ -230,11 +230,9 @@
 			<li>replace DEV, CCDev definitions with functions<ul>
 				<li class='blurb'>To remove the need for file /private/etc/launchd.conf, which: is difficult to handle because it requires sudo access; is apparently not officially supported anyway. clc 02/25/2013</li>
 				<li>Developer_Setup writes functions DEV, CCDev</li>
-				<li>replace uses of ${DEV} with $(DEV), ${CCDev} with $(CCDev)</li>
+				<li>replace uses of ${DEV}, ${CCDev} with $(DEV), $(CCDev)</li>
 				<li>update installation instructions</li>
 			</ul></li>
-			<li>Developer_Setup: test in response to Test Action; to be run after Setup and reboot</li>
-			<li>move remaining Developer functionality and testing to Developer_Setup (workflow OpenAccessor copied only for user carolclark); remove target Developer</li>
 			<li>script CreatePunkinPatches; see <a href="#ccgit_do">ccgit.ksh</a></li>
 			<li>makeCollaboratorSetup.ksh: script to make tarball at ~/Archives/collatoratorSetup.tar.gz with script Developer_Setup, along with the files it needs to set up a Collaborator's system for development<ul>
 				<li>handle GitSaveMessage.workflow, CreatePunkinPatches.scpt in Developer_Setup</li>

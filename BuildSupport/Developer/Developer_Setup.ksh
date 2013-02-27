@@ -39,14 +39,14 @@ function install {
 #^	envProfile
 function envProfile {
 	print "SHELL=/bin/ksh"
-	print "export ENV=${ccdevFolder}/bin/.kshrc"
+	print "export ENV=${CCDev}/bin/.kshrc"
 }
 
 #^	envKsh				Korn shell configuration
 function envKsh {
-	DEV="${devFolder}"; export DEV						# folder containing development projects
+	DEV="${DEV}"; export DEV							# folder containing development projects
 	print "DEV=${DEV}; export DEV"
-	CCDev="${ccdevFolder}"; export CCDev				# C & C derived data
+	CCDev="${CCDev}"; export CCDev						# C & C derived data
 	print "CCDev=${CCDev}; export CCDev"
 	if [[ $(print ":$PATH:" | grep ":$CCDev/bin:") = "" ]] ; then
 		PATH="$PATH:$CCDev/bin:"
@@ -84,7 +84,7 @@ function envLaunchctl {
 	fi
 }
 
-#^	writeValueFunction
+#^	writeValueFunction	write function that returns a value
 function writeValueFunction {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		name="${1}"
@@ -104,7 +104,7 @@ function writeValueFunction {
 
 #^	gitPrintConfig		git SCM system configuration
 function gitPrintConfig {
-	git config --global user.name "${user}"
+	git config --global user.name "${USER}"
 	git config --global user.email "${email}"
 
 	git config --global core.excludesfile "${exclude}"
@@ -188,38 +188,22 @@ function removeFileIfPresent {
 
 #^	main
 
-ccdevFolder=${HOME}/CCDev
-
-if [[ "${1}" = clean ]] ; then
-	removeFileIfPresent "${HOME}/.profile"
-	removeFileIfPresent "${HOME}/.MacOSX/environment.plist"
-	removeFileIfPresent "${HOME}/.gitconfig"
-	removeFileIfPresent "${HOME}/.launchd.conf"
-	removeFileIfPresent "${ccdevFolder}/bin/.kshrc"
-	removeFileIfPresent "${ccdevFolder}/bin/ccInstallAction"
-	removeFileIfPresent "${ccdevFolder}/bin/resultCodes.ksh"
-	removeFileIfPresent "${ccdevFolder}/Git/attributes"
-	removeFileIfPresent "${ccdevFolder}/Git/exclude"
-	exit
-fi
-
 # identify and set variables for current user
-user=${USER}
-devFolder=${HOME}/Dev
-ccdevFolder=${HOME}/CCDev
+DEV=${HOME}/Dev
+CCDev=${HOME}/CCDev
 configureTerminal="no"
 
-case "${user}" in
+case "${USER}" in
 	"carolclark" )
 		fullname="Carol Clark"
 		email="carolclark@cox.net"
-		devFolder=/Volumes/Mac/Users/carolclark/Dev
+		DEV=/Volumes/Mac/Users/carolclark/Dev
 		configureTerminal="yes"
 		;;
 	"lauramartinez" )
 		fullname="Laura Martinez"
 		email="cello.laura@gmail.com"
-		devFolder=${HOME}/Documents/Projects
+		DEV=${HOME}/Documents/Projects
 		configureTerminal="yes"
 		;;
 	"scottclark" )
@@ -236,23 +220,37 @@ case "${user}" in
 		;;
 esac
 
+# if ACTION is clean, clean and exit
+if [[ "${1}" = clean ]] ; then
+	removeFileIfPresent "${HOME}/.profile"
+	removeFileIfPresent "${HOME}/.MacOSX/environment.plist"
+	removeFileIfPresent "${HOME}/.gitconfig"
+	removeFileIfPresent "${HOME}/.launchd.conf"
+	removeFileIfPresent "${CCDev}/bin/.kshrc"
+	removeFileIfPresent "${CCDev}/bin/ccInstallAction"
+	removeFileIfPresent "${CCDev}/bin/resultCodes.ksh"
+	removeFileIfPresent "${CCDev}/Git/attributes"
+	removeFileIfPresent "${CCDev}/Git/exclude"
+	exit
+fi
+
 # configure environment
 print "configuring environment"
 envProfile > "${HOME}/.profile"
 chmod a+x "${HOME}/.profile"
-mkdir -p "${ccdevFolder}/bin"
-envKsh > "${ccdevFolder}/bin/.kshrc"
+mkdir -p "${CCDev}/bin"
+envKsh > "${CCDev}/bin/.kshrc"
 chmod a+x "${CCDev}/bin/.kshrc"
 envLaunchctl > "${HOME}/.launchd.conf"
 chmod a+x "${HOME}/.launchd.conf"
 
 # write functions DEV, CCDev
-writeValueFunction "DEV" "${devFolder}"
-writeValueFunction "CCDev" "${ccdevFolder}"
+writeValueFunction "DEV" "${DEV}"
+writeValueFunction "CCDev" "${CCDev}"
 
 # configure git
 print "configuring git"
-config="/Users/${user}/.gitconfig"
+config="/Users/${USER}/.gitconfig"
 exclude="${CCDev}/Git/exclude"
 attributes="${CCDev}/Git/attributes"
 mkdir -p "${CCDev}/Git"
@@ -268,7 +266,7 @@ if [[ "${?}" != "0" ]] ; then
 	exit 1
 fi
 
-if [[ "${user}" = "carolclark" ]] ; then
+if [[ "${USER}" = "carolclark" ]] ; then
 	print "configuring XCCodeSenseAllowAutoCompletionInPlainFiles"	
 	defaults write com.apple.Xcode XCCodeSenseAllowAutoCompletionInPlainFiles -true
 	if [[ "${?}" != "0" ]] ; then
@@ -294,27 +292,23 @@ install "${srcdir}/Scripts/ccInstallAction.ksh" "$CCDev/bin" "ccInstallAction"
 # install shunit (third party)
 shunitInstall
 
-# test CCDev_Setup
-typeset -i failcnt=0
-
+# test
 print "== Developer/_Tests/testDeveloper_Setup.ksh"
-#result=$(Developer/_Tests/testDeveloper_Setup.ksh)
-#if [[ "${?}" > 0 ]] ; then
-#	failcnt="${failcnt}"+1
-#fi
-#print "${result}"
-
-if [[ "${failcnt}" = 0 ]] ; then
-	# print instructions for completing configuration
-	print "***"
-	print "*** To finish setting up your environment:"
-	print "*** from Terminal:"
-	print "sudo cp ${HOME}/.launchd.conf /private/etc/launchd.conf"
-		# supposedly ${HOME}/.launchd.conf should suffice, but for now (2/22/13) it is not
-	print "*** Then shut down your computer and reboot."
-#	print "*** If you are configuring your system for the first time, shut down your computer and reboot."
-	print "*** Then reopen workspace Support and build target Developer."
-	print "***"
+result=$(Developer/_Tests/testDeveloper_Setup.ksh)
+if [[ "${?}" > 0 ]] ; then
+	failcnt="${failcnt}"+1
+fi
+print "${result}"
+if [[ $failcnt > 0 ]] ; then
+	exit $failcnt
 fi
 
-exit "${failcnt}"
+# print instructions for completing configuration
+print "***"
+print "*** To finish setting up your environment:"
+print "*** from Terminal:"
+print "sudo cp ${HOME}/.launchd.conf /private/etc/launchd.conf"
+	# supposedly ${HOME}/.launchd.conf should suffice, but for now (2/22/13) it is not
+print "*** Then shut down your computer and reboot."
+print "*** Then reopen workspace Support and build target Developer."
+print "***"

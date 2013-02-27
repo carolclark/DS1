@@ -66,6 +66,18 @@ testDeveloperInstall() {
 #^ Installation.ksh
 testInstallation() {
 	testData="${CCDev}/TestData"
+	assertEquals "$LINENO: incorrect "'$SHELL' /bin/ksh $(launchctl getenv SHELL)
+
+	# launchd settings
+	dev=$(launchctl getenv DEV)
+	if [[ ${USER} = carolclark ]] ; then
+		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
+	else
+		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
+	fi
+	assertEquals "$LINENO"': incorrect $CCDev' ${HOME}/CCDev $(launchctl getenv CCDev)
+	assertEquals "$LINENO"': incorrect $VISUAL' \"/usr/bin/emacs\" $(launchctl getenv VISUAL)
+
 	# Scripts/cleanProjectTarget
 	fl="${CCDev}/bin/cleanProjectTarget"
 	if [[ ! -e "${fl}" ]] ; then

@@ -261,6 +261,7 @@ resource restype_Slate (resid_gitShowBranch, "") { {
 		Event { "topological", "" },	TypeText { "--topo-order " },
 		Event { "merge base", "" },		TypeText { "--merge-base " },
 		_GitStandards_,
+		_TypeVariable_,
 	} }
 } };
 
@@ -282,6 +283,7 @@ resource restype_Slate (resid_gitDiff, "") { {
 		Event { "add path", "" },		TypeText { "-- " },
 		Event { "master", "" },			TypeText { "master " },
 		_TypeVariable_,
+		_StandardBranches_,
 		Event { "abbreviate", "" },		TypeText { "--name-status " },
 		Event { "name status", "" },	TypeText { "--name-status " },
 		Event { "statistics", "" },		TypeText { "--stat " },
@@ -300,6 +302,7 @@ resource restype_Slate (resid_gitShow, "") { {
 		Event { "head", "" },			TypeText { "HEAD " },
 		Event { "stash", "" },			TypeText { "stash " },
 		_GitStandards_,
+		_TypeVariable_,
 		_StandardBranches_,
 	} }
 } };
@@ -330,6 +333,7 @@ resource restype_Slate (resid_gitGrep, "") { {
 		Event { "top stash", "" },		TypeText { "stash@{0} " },
 		Event { "stash", "" },			Sequence{}, TypeText { "stash@{}" }, _left, ResSubslate { resid_gitType }, endSequence{},
 		_TypeVariable_,
+		_StandardBranches_,
 	} }
 } };
 
@@ -353,11 +357,14 @@ resource restype_Slate (resid_gitStash, "") { {
 // inside: Add; 1 Commit; 2 Log; 3 Tag; 4 Merge; 5 Push; 6 Fetch
 resource restype_Slate (resid_gitAdd, "") { {
 	Slate { "Add",	{
-		_GitStandards_,
 		Event { "select", "" },			Sequence{}, TypeText { "--all --interactive" }, _return, ResSubslate { resid_gitAddInteract }, endSequence{},
 		Event { "update", "" }, 		TypeText { "--update" },
 		Event { "all", "" }, 			TypeText { "--all" },
 		Event { "dot", "" },			TypeText { "." },
+		Event { "path ", "" },			TypeText { "-- " },
+		_TypeVariable_,
+		_GitStandards_,
+		_StandardBranches_,
 	} }
 } };
 
@@ -396,6 +403,7 @@ resource restype_Slate (resid_gitLog, "") { {
 		_GitStandards_,
 		Event { "master", "" },			TypeText { "master " },
 		_TypeVariable_,
+		_StandardBranches_,
 		Event { "between", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { ".." }, endSequence{},
 		Event { "ancestor", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { "..." }, endSequence{},
 		Event { "string", "" },			Sequence{}, TypeText { "-S''" }, _left, ResSubslate { resid_gitType }, endSequence{},
@@ -449,6 +457,7 @@ resource restype_Slate (resid_gitMerge, "") { {
 		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool --tool=opendiff " }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{},
 		_TypeVariable_,
+		_StandardBranches_,
 		_GitStandards_,
 	} }
 } };
