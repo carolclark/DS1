@@ -212,7 +212,6 @@
 					<li>pass $ACTION to script</li>
 				</ul></li>
 			</ul></li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>fetch Configuration and Collaborator changes made previously<ul>
 				<li class='blurb'>These changes were made once before Developer_Setup was stabilized, then reintroduced here.</li>
 				<li>UserSlates: improve git access</li>
@@ -226,26 +225,27 @@
 					<li>gitattributes: *./pbxproj merge=union tells Xcode to use changes from both parents when merging Xcode project files</li>
 					<li>gitexclude: ignore folder _patches/</li>
 				</ul></li>
-				<li>Collaborator Support<ul>
-					<li>Developer: menu script CreatePunkinPatches creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) for Punkin at ${DEV}/Punkin/_patches; used by collaborators to prepare patches for submission</li>
-				</ul></li>
 			</ul></li>
+			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 			<li>replace DEV, CCDev definitions with functions<ul>
 				<li class='blurb'>To remove the need for file /private/etc/launchd.conf, which: is difficult to handle because it requires sudo access; is apparently not officially supported anyway. clc 02/25/2013</li>
+				<li>Developer_Setup writes functions DEV, CCDev</li>
+				<li>replace uses of ${DEV} with $(DEV), ${CCDev} with $(CCDev)</li>
 				<li>update installation instructions</li>
 			</ul></li>
-			<li>handle testing in response to Test ACTION; run after reboot</li>
-			<li>move remaining Developer functionality to Developer_Setup (workflow OpenAccessor copied only for user carolclark); remove target Developer<ul>
-				<li>also combine tests</li>
-			</ul></li>
+			<li>Developer_Setup: test in response to Test Action; to be run after Setup and reboot</li>
+			<li>move remaining Developer functionality and testing to Developer_Setup (workflow OpenAccessor copied only for user carolclark); remove target Developer</li>
+			<li>script CreatePunkinPatches; see <a href="#ccgit_do">ccgit.ksh</a></li>
 			<li>makeCollaboratorSetup.ksh: script to make tarball at ~/Archives/collatoratorSetup.tar.gz with script Developer_Setup, along with the files it needs to set up a Collaborator's system for development<ul>
-				<li>handle GitSaveMessage.workflow in Developer_Setup</li>
+				<li>handle GitSaveMessage.workflow, CreatePunkinPatches.scpt in Developer_Setup</li>
 				<li>target folder includes sources for Developer_Setup</li>
-				<li>add CreatePunkinPatches.scpt from Scripts/Developer, copied in Developer_Setup only if user is not carolclark</li>
 				<li>archive</li>
 			</ul></li>
 		</ul></li>
-		<li>gitaccess.ksh: scripts to support git and git accessibility<ul>
+		<li id='ccgit_do'>ccgit.ksh: scripts to support git and git accessibility<ul>
+			<li>--createPatches &lt;Workspace&gt;: creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) at ${DEV}/&lt;Workspace&gt;/_patches<ul>
+				<li>Developer Menu script CreatePunkinPatches creates patches for Punkin at ${DEV}/Punkin/_patches; used by collaborators to prepare patches for submission</li>
+			</ul></li>
 			<li>--listFiles:  convert input from an abbreviated diff to a numbered file list stored at $CCDev/Git/gitFileList</li>
 			<li>--fileSelect: display contents of $CCDev/Git/gitFileList; allow user to select a file by number; return name of selected file</li>
 			<li>--branchCurrent: return name of current branch</li>

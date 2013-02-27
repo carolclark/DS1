@@ -84,6 +84,24 @@ function envLaunchctl {
 	fi
 }
 
+#^	writeValueFunction
+function writeValueFunction {
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+		name="${1}"
+		value="${2}"
+	else
+		print "Usage: writeValueFunction: <name> <value>"
+		exit 1
+	fi
+	mkdir -p "${CCDev}/func"
+	ffpath="${CCDev}/func/${name}"
+	print "function ${name} {" > "${ffpath}"
+	print "	print ${value}" >> "${ffpath}"
+	print "	exit 0" >> "${ffpath}"
+	print "}" >> "${ffpath}"
+	chmod a+x "${ffpath}"
+}
+
 #^	gitPrintConfig		git SCM system configuration
 function gitPrintConfig {
 	git config --global user.name "${user}"
@@ -227,6 +245,10 @@ envKsh > "${ccdevFolder}/bin/.kshrc"
 chmod a+x "${CCDev}/bin/.kshrc"
 envLaunchctl > "${HOME}/.launchd.conf"
 chmod a+x "${HOME}/.launchd.conf"
+
+# write functions DEV, CCDev
+writeValueFunction "DEV" "${devFolder}"
+writeValueFunction "CCDev" "${ccdevFolder}"
 
 # configure git
 print "configuring git"
