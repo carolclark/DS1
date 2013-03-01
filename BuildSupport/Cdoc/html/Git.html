@@ -12,24 +12,17 @@
 <h1>Git</h1>
 
 <!-- @topicList "Git" "Contents" -->
-	<!-- @topicItem "Development Cycle" "#DevelopmentCycle" "0" "" -->
-	<!-- @topicGroup "" "2" -->
+	<!-- @topicGroup "Workflows" "1" -->
+	<!-- @topicItem "Administrator" "#WorkflowAdmin" "0" "" -->
+	<!-- @topicItem "Collaborator" "#WorkflowCollab" "0" "" -->
+	<!-- @topicGroup "" "4" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
-		<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
-		<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
-		<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
-		<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
-		<!-- @topicItem "Bisect" "#tsk_Bisect" "1" "" -->
-		<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
-		<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
-	<!-- @topicGroup "" "10" -->
 	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
-	<!-- @topicSep -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Development Cycle" -->
-<h4 id="DevelopmentCycle">Development Cycle</h4><ul style="background-color: #d8e8ff">
+<!-- @marker "Workflows" -->
+<h4 id="WorkflowAdmin">Workflow: Administrator</h4><ul style="background-color: #d8e8ff">
 	<li>create or move work to branch<span class='blurb'>Terminal</span></li>
 	<li>repeat until branch's work complete<ul>
 		<li>repeat until commit<ul>
@@ -43,6 +36,7 @@
 		<li>review commit msgfile</li>
 		<li>commit</li>
 		<li>log</li>
+		<li class='blurb'>mergepoint, from clean branch: checkout master; merge --no-ff &lt;branch&gt; -m &lt;msgfile&gt;; checkout &lt;branch&gt;</li>
 	</ul></li>
 	<li>check stash list; check for status clear; diff (abbreviate) master with branch; inspect for conflicts</li>
 	<li>switch to (checkout) master</li>
@@ -50,11 +44,38 @@
 	<li>[tag]</li>
 	<li>push [push tags]</li>
 	<li>status; check for unmerged branches (branch --no-merged master); delete branch</li>
+	<li class='dq'>checkout branch laura; fetch from remote laura; merge branch laura to master; push master to remote laura; [push tags]</li>
 </ul>
 
 <p><br /><br /><br /><br /><br /></p>
+	<h4 id="WorkflowCollab">Workflow: Collaborator</h4><ul style="background-color: #d8ffe8">
+		<li>make a group of changes to some files; may include adding new files and deleting old ones as indicated</li>
+		<li>on Organizer - Repositories page, using using the buttons on the lower left of the screen:<ul>
+			<li>Pull: <span class='blurb'>fetches any changes anyone else has made to the repository on GitHub, so your copy stays up-to-date</span><ul>
+				<li class='blurb'>Usually, this will just work. If the pulled changes are in the same files as the changes you just made, you will see a screen showing you the differences between the two files. When that happens for the first time, will walk through it together.</li>
+			</ul></li>
+			<li>Commit: <span class='blurb'>makes a record of these changes in the git repository on your computer</span><ul>
+				<li>It will ask for a message describing what you did. First line should be fairly short (no more that 50 characters). If there's more to say, add a blank line and then just keep going.</li>
+			</ul></li>
+		</ul></li>
+		<li>from the File &gt; Source Control menu:<ul>
+			<li>Push: <span class='blurb'>pushes your changes up to the repository on GitHub</span><ul>
+				<li class='blurb'>This should only fail if someone else (me) pushed to your repository since you just pulled. If that ever happens, will walk through it together.</li>
+			</ul></li>
+		</ul></li>
+	</ul>
+
 <!-- @marker "Git Tasks" -->
-<h2 id='GitTasks_'>Git Tasks</h2>
+<h2>Git Tasks</h2>
+<!-- @topicList "Git Tasks" "GitTasks_" -->
+	<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
+	<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
+	<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
+	<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
+	<!-- @topicItem "Bisect" "#tsk_Bisect" "1" "" -->
+	<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
+	<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
+<!-- @/topicList -->
 
 <!-- @marker "Branch" -->
 <h4 id="tsk_Branch">Branch</h4><ul>

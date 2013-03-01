@@ -233,6 +233,26 @@
 				<li>replace uses of ${DEV}, ${CCDev} with $(DEV), $(CCDev)</li>
 				<li>update installation instructions</li>
 			</ul></li>
+		</ul></li>
+		<li>Collaboration<ul>
+			<li>Switch to GitHub<ul>
+				<li class='blurb'>Motivation<ul>
+					<li>current git host: ProjectLocker<ul>
+						<li>has been a free host for projects Support, Punkin, and Accessor</li>
+						<li>multiple projects grandfathered - free account now supports only one project; we won't be able to add projects, and rules may change in the future to disallow what we are doing</li>
+						<li>Carol's access has been smooth, but we have repeatedly been unable to get Laura's access working</li>
+						<li>supports only Trak (Microsoft) for issue tracking, which we investigated and rejected</li>
+						<li>smallest paid account is $20/mo for up to 15 repositories</li>
+					</ul></li>
+					<li>GitHub<ul>
+						<li>$7/mo for 5 private repositories, unlimited public repositories</li>
+						<li>current standard git host; compatible with huge collection of existing publicly available repositories</li>
+						<li>same location for private and public repositories</li>
+						<li>appears to have excellent, flexible tools for issue tracking, documentation, discussion</li>
+						<li>supports viewing repositories online</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
 			<li>script CreatePunkinPatches; see <a href="#ccgit_do">ccgit.ksh</a></li>
 			<li>makeCollaboratorSetup.ksh: script to make tarball at ~/Archives/collatoratorSetup.tar.gz with script Developer_Setup, along with the files it needs to set up a Collaborator's system for development<ul>
 				<li>handle GitSaveMessage.workflow, CreatePunkinPatches.scpt in Developer_Setup</li>
@@ -241,8 +261,8 @@
 			</ul></li>
 		</ul></li>
 		<li id='ccgit_do'>ccgit.ksh: scripts to support git and git accessibility<ul>
-			<li>--createPatches &lt;Workspace&gt;: creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) at ${DEV}/&lt;Workspace&gt;/_patches<ul>
-				<li>Developer Menu script CreatePunkinPatches creates patches for Punkin at ${DEV}/Punkin/_patches; used by collaborators to prepare patches for submission</li>
+			<li>--createPatches &lt;Workspace&gt;: creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) at $(DEV)/&lt;Workspace&gt;/_patches<ul>
+				<li>Developer Menu script CreatePunkinPatches creates patches for Punkin at $(DEV)/Punkin/_patches; used by collaborators to prepare patches for submission</li>
 			</ul></li>
 			<li>--listFiles:  convert input from an abbreviated diff to a numbered file list stored at $CCDev/Git/gitFileList</li>
 			<li>--fileSelect: display contents of $CCDev/Git/gitFileList; allow user to select a file by number; return name of selected file</li>

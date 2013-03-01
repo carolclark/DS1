@@ -849,16 +849,17 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		Event { "page top", "" },		Keypress { kc_home, 0 },           \
 		Event { "page end", "" },		Keypress { kc_end, 0 }
 
+#define _pzlTop		-422
 resource restype_Slate (resid_sudokuTimes, "") { {
 	Slate { "Times", {
 		ExitEvent { "exit", "" },		NilAction{},
 		Event { "main frame", "" },		Click { 1, 10, -40, _window, _bottomLeft },
-		Event { "undo", "" },			Click { 1, 455,	-233, _window, _bottomLeft },
-		Event { "pencil", "" },			Click { 1, 455,	-215, _window, _bottomLeft },
-		Event { "check", "" },			Click { 1, 455,	-197, _window, _bottomLeft },
-		Event { "notes", "" },			Click { 1, 455,	-130, _window, _bottomLeft },
-		Event { "clue", "" },			Click { 1, 455,	-112, _window, _bottomLeft },
-		Event { "puzzle", "" },			Click { 1, 200, -200, _window, _bottomLeft },
+		Event { "undo", "" },			Click { 1, 455,	_pzlTop+189, _window, _bottomLeft },
+		Event { "pencil", "" },			Click { 1, 455,	_pzlTop+217, _window, _bottomLeft },
+		Event { "check", "" },			Click { 1, 455,	_pzlTop+229, _window, _bottomLeft },
+		Event { "notes", "" },			Click { 1, 455,	_pzlTop+294, _window, _bottomLeft },
+		Event { "clue", "" },			Click { 1, 455,	_pzlTop+316, _window, _bottomLeft },
+		Event { "puzzle", "" },			Click { 1, 200, _pzlTop+250, _window, _bottomLeft },
 		Event { "position puzzle", "" },	Sequence{}, Click { 1, 400, 400, _window, _topLeft }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, endSequence{},
 		Event { "lock option",	"" },	Keypress { 0, mf_control + mf_toggle },
 		_SudokuBase_,
