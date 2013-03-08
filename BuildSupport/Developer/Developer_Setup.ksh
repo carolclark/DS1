@@ -223,7 +223,6 @@ esac
 # if ACTION is clean, clean and exit
 if [[ "${1}" = clean ]] ; then
 	removeFileIfPresent "${HOME}/.profile"
-	removeFileIfPresent "${HOME}/.MacOSX/environment.plist"
 	removeFileIfPresent "${HOME}/.gitconfig"
 	removeFileIfPresent "${HOME}/.launchd.conf"
 	removeFileIfPresent "${CCDev}/bin/.kshrc"
