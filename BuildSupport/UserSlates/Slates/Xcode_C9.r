@@ -985,19 +985,18 @@ resource restype_Slate (resid_Organizer, "Organizer") { {
 		_OrgPanelRows_,
 		ExitEvent { "open",	"" },		Keypress { kc_return, 0 },
 		Event { "devices", "" },		Click { 1, -128, 45, _window, _topCenter },	
-		Event { "repositories", "" },	Sequence{}, Click { 1, -64, 45, _window, _topCenter },
-			ResSubslate { resid_Repositories }, endSequence{},
+		Event { "repositories", "" },	Sequence{}, Click { 1, -64, 45, _window, _topCenter }, ResSubslate { resid_Repositories }, endSequence{},
 		Event { "projects", "" },		Click { 1, 0, 45, _window, _topCenter },	
 		Event { "archives", "" },		Click { 1, 64, 45, _window, _topCenter },	
 		Event { "documentation", "" },	Sequence{}, Click { 1, 128, 45, _window, _topCenter }, ResSubslate { resid_Documentation }, endSequence{},
 	} }
 } };
 
-#define replist_top	93
-#define	replist_sp	81
-#define	_rowPunkin			replist_top+0*replist_sp
+#define replist_top	182
+#define	replist_sp	84
+#define	_rowSupport			replist_top+0*replist_sp
 #define	_rowAccessor		replist_top+1*replist_sp
-#define	_rowSupport			replist_top+2*replist_sp
+#define	_rowPunkin			replist_top+2*replist_sp
 
 #pragma mark 1 --- Repositories
 resource restype_Slate (resid_Repositories, "Repositories") { {
@@ -3169,14 +3168,15 @@ resource restype_Slate (resid_typeSearch, "") { {
 		ExitEvent { "close", "" },		Click { 1, -32, 130, _window, _topRight },
 		ExitEvent { "okay", "" },		NilAction{},
 		Event { "multiple", "" },		Sequence{}, Keypress { kc_F, mf_command + mf_shift }, ResSubslate { resid_SearchIndex }, _right, endSequence{},
-		Event { "find", "" },			Sequence{}, Keypress { kc_F, mf_command }, ResSubslate { resid_TypeDialog }, endSequence{},
-		Event { "replace", "" },		Sequence{}, Keypress { kc_F, mf_command + mf_option }, Click { 1, -200, 150, _window, _topRight }, ResSubslate { resid_TypeDialog }, endSequence{},
+		Event { "find", "" },			Sequence{}, Keypress { kc_F, mf_command }, endSequence{},
+		Event { "replace", "" },		Sequence{}, Keypress { kc_F, mf_command + mf_option }, Click { 1, -200, 150, _window, _topRight }, endSequence{},
 		Event { "hide find bar", "" },	_hideFindBar,
 		Event { "this", "" },			Sequence{}, Keypress { kc_left, mf_option }, Keypress { kc_right, mf_option + mf_shift }, Keypress { kc_E, mf_command }, Keypress { kc_G, mf_command }, endSequence{},
 		Event { "next", "" },			Keypress { kc_G, mf_command },
 		Event { "previous", "" },		Keypress { kc_G, mf_command + mf_shift },
 		Event { "change", "" },			Click { 1, -454, 154, _window, _topRight },
 		Event { "change again", "" },	Click { 1, -364, 154, _window, _topRight },
+		_TypeXcodeSlate_,
 	} }
 } };
 

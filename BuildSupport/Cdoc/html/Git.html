@@ -13,8 +13,8 @@
 
 <!-- @topicList "Git" "Contents" -->
 	<!-- @topicGroup "Workflows" "1" -->
-	<!-- @topicItem "Administrator" "#WorkflowAdmin" "0" "" -->
 	<!-- @topicItem "Collaborator" "#WorkflowCollab" "0" "" -->
+	<!-- @topicItem "Administrator" "#WorkflowAdmin" "0" "" -->
 	<!-- @topicGroup "" "4" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
@@ -22,51 +22,87 @@
 <!-- @/topicList -->
 
 <!-- @marker "Workflows" -->
-<h4 id="WorkflowAdmin">Workflow: Administrator</h4><ul style="background-color: #d8e8ff">
-	<li>create or move work to branch<span class='blurb'>Terminal</span></li>
-	<li>repeat until branch's work complete<ul>
-		<li>repeat until commit<ul>
-			<li>edit/test<span class='blurb'>Xcode</span></li>
-			<li>status; [add/stage]<span class='blurb'>Terminal</span></li>
-		</ul></li>
-		<li>construct and save commit message<span class='blurb'>Xcode / Stickies</span></li>
-		<li>verify modifications (diff tool)<span class='blurb'>Terminal</span></li>
-		<li>status; add / review files to be committed</li>
-		<li>check for stray spaces (diff --cached --check)</li>
-		<li>review commit msgfile</li>
-		<li>commit</li>
-		<li>log</li>
-		<li class='blurb'>mergepoint, from clean branch: checkout master; merge --no-ff &lt;branch&gt; -m &lt;msgfile&gt;; checkout &lt;branch&gt;</li>
-	</ul></li>
-	<li>check stash list; check for status clear; diff (abbreviate) master with branch; inspect for conflicts</li>
-	<li>switch to (checkout) master</li>
-	<li>fetch [merge] remote; merge branch</li>
-	<li>[tag]</li>
-	<li>push [push tags]</li>
-	<li>status; check for unmerged branches (branch --no-merged master); delete branch</li>
-	<li class='dq'>checkout branch laura; fetch from remote laura; merge branch laura to master; push master to remote laura; [push tags]</li>
-</ul>
 
-<p><br /><br /><br /><br /><br /></p>
 	<h4 id="WorkflowCollab">Workflow: Collaborator</h4><ul style="background-color: #d8ffe8">
-		<li>make a group of changes to some files; may include adding new files and deleting old ones as indicated</li>
-		<li>on Organizer - Repositories page, using using the buttons on the lower left of the screen:<ul>
-			<li>Pull: <span class='blurb'>fetches any changes anyone else has made to the repository on GitHub, so your copy stays up-to-date</span><ul>
-				<li class='blurb'>Usually, this will just work. If the pulled changes are in the same files as the changes you just made, you will see a screen showing you the differences between the two files. When that happens for the first time, will walk through it together.</li>
-			</ul></li>
+		<li class='blurb'>To select a branch:<ul>
+			<li>From the Window menu, choose Organizer &gt; Repositories.</li>
+			<li>From the left panel of that window, choose the blue folder associated with your project.</li>
+			<li>The current branch is now displayed at the upper right of the window. If that is not the branch you want, click "Switch Branch" near the bottom right corner and choose the branch you want.</li>
+		</ul></li>
+		<li>select branch 'artist'<ul>
+			<li>Make a group of changes to some files. This may include adding new files and deleting old ones.</li>
 			<li>Commit: <span class='blurb'>makes a record of these changes in the git repository on your computer</span><ul>
+				<li>Click Commit from the bottom left of the Organizer &gt; Repositories window.</li>
 				<li>It will ask for a message describing what you did. First line should be fairly short (no more that 50 characters). If there's more to say, add a blank line and then just keep going.</li>
 			</ul></li>
-		</ul></li>
-		<li>from the File &gt; Source Control menu:<ul>
-			<li>Push: <span class='blurb'>pushes your changes up to the repository on GitHub</span><ul>
-				<li class='blurb'>This should only fail if someone else (me) pushed to your repository since you just pulled. If that ever happens, will walk through it together.</li>
+			<li>Push: <span class='blurb'>publish your changes up to the repository on GitHub</span><ul>
+				<li>Choose menu item File &gt; Source Control &gt; Push</li>
 			</ul></li>
+		</ul></li>
+		<li>select branch 'master'<ul>
+			<li>Pull: <span class='blurb'>fetches any changes anyone else has made to the repository on GitHub, so you have an up-to-date copy	</span><ul>
+				<li>Click Pull from the bottom left of the Organizer &gt; Repositories window.</li>
+			</ul></li>
+		</ul></li>
+		<li>select branch 'artist'<ul>
+			<li>Merge: <span class='blurb'>combine changes from the updated 'master' branch with your working branch</span><ul>
+				<li>Choose menu item File &gt; Source Control &gt; Merge</li>
+				<li>Xcode will show you what changes will be made, and tell you if there are conflicts.<ul>
+					<li>If there are no conflicts, click 'Merge' to accept the changes.</li>
+					<li>If Xcode says that there are conflicts or that the Merge did not succeed, notify Administrator.</li>
+				</ul></li>
+			</ul></li>
+			<li>Continue to make another group of changes to some files.</li>
 		</ul></li>
 	</ul>
 
+<div style="page-break-before: always">
+	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
+		<h5>Develop</h5><ul>
+			<li>create or move work to branch<span class='blurb'>Terminal</span></li>
+			<li>repeat<ul>
+				<li>repeat until commit<ul>
+					<li>edit/test<span class='blurb'>Xcode</span></li>
+					<li>status; [add/stage]<span class='blurb'>Terminal</span></li>
+				</ul></li>
+				<li>construct and save commit message<span class='blurb'>Xcode / Stickies</span></li>
+				<li>verify modifications (diff tool)<span class='blurb'>Terminal</span></li>
+				<li>status; add / review files to be committed</li>
+				<li>check for stray spaces (diff --cached --check)</li>
+				<li>review commit msgfile</li>
+				<li>commit; show --name-only</li>
+				<li>log; [amend]<ul>
+					<li><span class='em'>Amend:</span><ul>
+						<li>[reset --soft lastCommit; restage]; commit --amend; [edit message]</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+		</ul>
+		<h5>Merge</h5><ul>
+			<li>from branch to be merged: check for status clear; diff (abbreviate) master with branch; inspect for conflicts</li>
+			<li>switch to (checkout) master</li>
+			<li><span class='em'>Fetch</span><ul>
+				<li>checkout branch artist; fetch from remote branch laura/artist</li>
+				<li>checkout master; review changes; [rebase]</li>
+				<li>merge artist</li>
+			</ul></li>
+			<li>review change log; [rebase] (for rebase 'edit' steps, amend commit)</li>
+			<li>merge branch (<span class='mono'>merge --no-ff &lt;branch&gt; -m &lt;msg&gt;</span>)</li>
+			<li>verify status clear; delete branch</li>
+			<li>check stash list; check for unmerged branches (branch --no-merged master)</li>
+		</ul>
+		<h5>Push</h5><ul>
+			<li>[tag]</li>
+			<li>push [push tags]</li>
+			<li>push master to remote laura; [push tags]</li>
+		</ul>
+	</div>
+</div>
+
 <!-- @marker "Git Tasks" -->
+<div style="page-break-before: always">
 <h2>Git Tasks</h2>
+</div>
 <!-- @topicList "Git Tasks" "GitTasks_" -->
 	<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
 	<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
