@@ -19,35 +19,39 @@
 	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 	<!-- @topicGroup "" "5" -->
+		<!-- @topicItem "Remove Xcode Env Dependency" "#RemoveXcodeEnvDependency" "0" "" -->
+		<!-- @topicSep -->
 		<!-- @topicItem "Switch to MountainLion" "#MountainLion" "1" "" -->
 			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
-		<!-- @topicGroup "" "8" -->
+		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
 			<!-- @topicItem "Script Site Installation" "#installSite" "2" "" -->
 			<!-- @topicItem "Add TechnicalDocs Area" "#addTechnicalDocs" "2" "" -->
 			<!-- @topicItem "Add Family Area" "#addFamily" "2" "" -->
-		<!-- @topicGroup "" "13" -->
+		<!-- @topicGroup "" "15" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Recover DevSupport Scripts" "#DevSupport" "2" "" -->
 			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
-		<!-- @topicGroup "" "17" -->
+		<!-- @topicGroup "" "19" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Upgrade/Add Xcode File Templates" "#XcodeTemplates_8_12" "2" "" -->
 			<!-- @topicItem "Improve Git Access" "#ImproveGitAccess" "2" "" -->
 			<!-- @topicItem "General Support" "#_general" "2" "" -->
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
-		<!-- @topicGroup "" "21" -->
+		<!-- @topicGroup "" "25" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
-	<!-- @topicGroup "" "23" -->
+	<!-- @topicGroup "" "27" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "25" -->
+	<!-- @topicGroup "" "29" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 
 <p><br /></p>
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <!-- @marker "Development Overview" -->
+<div style="page-break-before: always">
 <h3 id='DevelopmentOverview'>Development Overview</h3>
+</div>
 
 <div class="tableholder"><table class="goaltabl" border="0" cellspacing="0" cellpadding="5"><caption>Development Overview</caption>
 	<tr><th>Project</th> <th>Goal</th> <th>Comments</th> <th>When</th></tr>
@@ -84,11 +88,58 @@
 	<tr> <td>iPhoto</td> <td>establish Events</td> <td class='small'>correct dates; organize into realistic sequence of Events</td> <td align="center">3</td> </tr>
 	<tr> <td>Mail</td> <td>sort old Mail</td> <td class='small'></td> <td align="center">4</td> </tr>
 </table></div>
-<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
-<p><br /><br /><br /></p>
 
 <!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
+<div style="page-break-before: always">
 <h2 id='hmark_Active'>Active</h2>
+</div>
+
+<!-- @marker "Remove Xcode Environment Dependency" -->
+<h4 id='RemoveXcodeEnvDependency'>Remove Xcode Environment Dependency</h4><ul>
+	<li class='blurb'>Previous support used file Environment.plist, which is no longer read. No new method is as yet officially supported. Workaround is to use file /private/etc/launchd.conf, which is difficult to handle, especially for collaborators, because it requires sudo access.</li>
+	<li>replace environment variables ${DEV}, ${CCDev} with functions $(DEV), $(CCDev)<ul>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>remove obsolete files<ul>
+			<li>Developer/Environment/environment.plist; Xcode/Workflows</li>
+		</ul></li>
+		<li>Developer<ul>
+			<li>_Tests: testCcInstall.ksh, testDeveloper.ksh, testDeveloper_Setup.ksh</li>
+			<li>Developer_install.ksh</li>
+			<li>Developer_Setup.ksh</li>
+			<li>Functions: ccInstall.ksh</li>
+			<li>Scripts: archive.ksh, buildCdoc.ksh, ccBackup.ksh, doxygenBuild.ksh</li>
+			<li>Services: GitSaveMessage.workflow/Contents/document.wflow</li>
+		</ul></li>
+		<li>BuildSupport.xcodeproj/project.pbxproj</li>
+		<li>Cdoc<ul>
+			<li>Cdoc_install.ksh</li>
+			<li>html: DevelopingProjects.html, Glossary_Support.html, History_Support.html, Support.html, Tools.html</li>
+		</ul></li>
+		<li>Doxygen<ul>
+			<li>_Tests/testDoxygenInstall.ksh</li>
+			<li>DoxyDemo_doxygen.txt</li>
+			<li>Doxygen_install.ksh</li>
+		</ul></li>
+		<li>UserSlates/Slates: BBEdit_C9.r, Calendar_C9.r, CommonSlates_C9.r, Safari_C9.r, Terminal_C9.r, Xcode_C9.r</li>
+		<li>Applications<ul>
+			<li>BBEdit<ul>
+				<li>AppleScripts: BBEditUtil.applescript, CheckLinks.applescript, CheckSyntax.applescript</li>
+				<li>BBEdit_install.ksh</li>
+			</ul></li>
+			<li>Dash: snippets.dash</li>
+			<li>Xcode<ul>
+				<li>Xcode_install.ksh</li>
+				<li>AppleScripts: viewCdoc.applescript, viewDoxygen.applescript</li>
+				<li>Templates/FileTemplates<ul>
+					<li>_Documentation/DoxygenConfig.xctemplate/___FILEBASENAME___.txt</li>
+					<li>_Scripting/InstallCdoc.xctemplate/___FILEBASENAME___.ksh</li>
+					<li>_Scripting/InstallTarget.xctemplate/___FILEBASENAME___.ksh5</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>update installation instructions</li>
+	</ul></li>
+</ul>
 
 <!-- @marker "Switch to MountainLion" -->
 <h4 id='MountainLion'>Switch to MountainLion</h4>
@@ -226,12 +277,27 @@
 					<li>gitexclude: ignore folder _patches/</li>
 				</ul></li>
 			</ul></li>
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-			<li>replace DEV, CCDev definitions with functions<ul>
-				<li class='blurb'>To remove the need for file /private/etc/launchd.conf, which: is difficult to handle because it requires sudo access; is apparently not officially supported anyway. clc 02/25/2013</li>
-				<li>Developer_Setup writes functions DEV, CCDev</li>
-				<li>replace uses of ${DEV}, ${CCDev} with $(DEV), $(CCDev)</li>
-				<li>update installation instructions</li>
+			<li class='tlmark'>&lt;--</li>
+		</ul></li>
+		<li><a href="#RemoveXcodeEnvDependency">Remove Xcode Environment Dependency</a></li>
+		<li>Collaboration<ul>
+			<li>Switch to GitHub<ul>
+				<li class='blurb'>Motivation<ul>
+					<li>current git host: ProjectLocker<ul>
+						<li>has been a free host for projects Support, Punkin, and Accessor</li>
+						<li>multiple projects grandfathered - free account now supports only one project; we won't be able to add projects, and rules may change in the future to disallow what we are doing</li>
+						<li>Carol's access has been smooth, but we have repeatedly been unable to get Laura's access working</li>
+						<li>supports only Trak (Microsoft) for issue tracking, which we investigated and rejected</li>
+						<li>smallest paid account is $20/mo for up to 15 repositories</li>
+					</ul></li>
+					<li>GitHub<ul>
+						<li>$7/mo for 5 private repositories, unlimited public repositories</li>
+						<li>current standard git host; compatible with huge collection of existing publicly available repositories</li>
+						<li>same location for private and public repositories</li>
+						<li>appears to have excellent, flexible tools for issue tracking, documentation, discussion</li>
+						<li>supports viewing repositories online</li>
+					</ul></li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
 		<li>Collaboration<ul>
