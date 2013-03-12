@@ -12,7 +12,7 @@ setUp() {
 	target="BuildSupport/Doxygen"
 }
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "$(CCDev)/bin/resultCodes.ksh"
 
 testTargetName() {
 	assertEquals "$LINENO: " 1 1
@@ -26,13 +26,13 @@ testTargetName() {
 	str=$(ccInstall --getBasePath "${projectPath}" "${target}")
 	st=$?
 	assertEquals "$LINENO: ${str}" 0 "${st}"
-	assertEquals "$LINENO: incorrect base path: " "${DEV}" "${str}"
-	str=$(ccInstall --getSourcePath "${DEV}/Support" "${target}")
-	assertEquals "$LINENO: incorrect source path: " "${DEV}/Support/BuildSupport/Doxygen" "${str}"
+	assertEquals "$LINENO: incorrect base path: " "$(DEV)" "${str}"
+	str=$(ccInstall --getSourcePath "$(DEV)/Support" "${target}")
+	assertEquals "$LINENO: incorrect source path: " "$(DEV)/Support/BuildSupport/Doxygen" "${str}"
 	str=$(ccInstall --getTargetScript "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect target script: " "${DEV}/Support/BuildSupport/Doxygen/Doxygen_install.ksh" "${str}"
+	assertEquals "$LINENO: incorrect target script: " "$(DEV)/Support/BuildSupport/Doxygen/Doxygen_install.ksh" "${str}"
 	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/Support/BuildSupport/Doxygen.lastbuilt" "${lastbuilt}"
+	assertEquals "$LINENO: incorrect lastbuilt: " "$(CCDev)/build/Support/BuildSupport/Doxygen.lastbuilt" "${lastbuilt}"
 	ccInstall --updateLastbuilt "${projectPath}" "${target}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
 	ccInstall --clearLastbuilt "${projectPath}" "${target}"
