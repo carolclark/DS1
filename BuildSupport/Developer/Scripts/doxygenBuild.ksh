@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 12/20/11.
-#  Copyright 2011-12 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -27,7 +27,7 @@ fi
 configPath=$2
 
 doxygenPath=/Applications/Doxygen.app/Contents/Resources/doxygen
-outputDir=/Users/carolclark/CCDev/Sites/Doxygen/${project}
+outputDir=$(CCDev)/Sites/Doxygen/${project}
 mkdir -p $outputDir
 st=$?
 if [[ $st > 0 ]] ; then

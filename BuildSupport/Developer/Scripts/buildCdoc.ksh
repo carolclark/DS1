@@ -32,7 +32,7 @@ function setPaths {
 	project="${projectPath##/*/}"
 	sourcePath="${projectPath}/${target}"
 	targetScript="${sourcePath}/${target##*/}_install.ksh"
-	lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
+	lastbuilt="$(CCDev)/build/${project}/${target}.lastbuilt"
 
 	destination=${CCDev}/Sites/TechnicalDocs/${project}
 }
@@ -58,7 +58,7 @@ function clean {
 function process {
 	processFunction="${1?process function not specified}"
 
-	flist="${CCDev}/tmp/flist"
+	flist="$(CCDev)/tmp/flist"
 	fs=0
 	typeset -i errcnt=0
 	cd "${sourcePath}"
@@ -166,7 +166,7 @@ function copySource {
 
 #^ processCustomBuilds
 function processCustomBuilds {
-	flist="${CCDev}/tmp/flist"
+	flist="$(CCDev)/tmp/flist"
 	fs=0
 	cd "${sourcePath}"
 	find . -name "*.build" | sed 's|\./||' > "${flist}"
@@ -179,10 +179,10 @@ function processCustomBuilds {
 		print -n "custom script ${fl}: "
 		
 		trap '' ERR
-		"${sourcePath}/${fl}" "$(dirname ${sourcePath})"  "${lastbuilt}" > "${CCDev}/tmp/errmsg"
+		"${sourcePath}/${fl}" "$(dirname ${sourcePath})"  "${lastbuilt}" > "$(CCDev)/tmp/errmsg"
 		fs="${?}"
 		trap "$trapString" ERR
-		cat "${CCDev}/tmp/errmsg"
+		cat "$(CCDev)/tmp/errmsg"
 
 		msg="  script failed"
 		if [[ ${fs} = 0 ]] ; then
