@@ -109,10 +109,13 @@
 				<li>Developer_Setup.ksh</li>
 				<li>Functions: ccInstall.ksh</li>
 			</ul></li>
-			<li>Scripts: archive.ksh, buildCdoc.ksh, ccBackup.ksh, doxygenBuild.ksh</li>
+			<li>BuildSupport.xcodeproj/project.pbxproj<ul>
+				<li>target settings and script
+					use $(DEV), $(CCDev) instead of environment variables ${DEV}, ${CCDev}</li>
+			</ul></li>
+			<li>Scripts: archive.ksh, buildCdoc.ksh, ccBackup.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>
 			<li>Services: GitSaveMessage.workflow/Contents/document.wflow</li>
 		</ul></li>
-		<li>BuildSupport.xcodeproj/project.pbxproj</li>
 		<li>Cdoc<ul>
 			<li>Cdoc_install.ksh</li>
 			<li>html: DevelopingProjects.html, Glossary_Support.html, History_Support.html, Support.html, Tools.html</li>

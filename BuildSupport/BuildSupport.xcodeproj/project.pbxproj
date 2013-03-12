@@ -67,6 +67,13 @@
 			remoteGlobalIDString = 67364A7216C0362C00940D94;
 			remoteInfo = DeveloperScripts;
 		};
+		67645A0C16EFD181004F37F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67FA078816D5A1010022D6A8;
+			remoteInfo = Developer_Setup;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -1095,7 +1102,7 @@
 /* Begin PBXLegacyTarget section */
 		67043DC516B7331400E43F90 /* BBEdit */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/BBEdit $(ACTION)";
+			buildArgumentsString = "$(DEV)/Support BuildSupport/Applications/BBEdit $(ACTION)";
 			buildConfigurationList = 67043DC616B7331400E43F90 /* Build configuration list for PBXLegacyTarget "BBEdit" */;
 			buildPhases = (
 			);
@@ -1110,7 +1117,7 @@
 		};
 		671B546C16B1E610009C2B17 /* Xcode */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/Xcode $(ACTION)";
+			buildArgumentsString = "$(DEV)/Support BuildSupport/Applications/Xcode $(ACTION)";
 			buildConfigurationList = 671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */;
 			buildPhases = (
 			);
@@ -1125,7 +1132,7 @@
 		};
 		673D581016B9CAF20001DFF2 /* Doxygen */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "${DEV}/Support BuildSupport/Doxygen $(ACTION)";
+			buildArgumentsString = "$(DEV)/Support BuildSupport/Doxygen $(ACTION)";
 			buildConfigurationList = 673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */;
 			buildPhases = (
 			);
@@ -1153,13 +1160,14 @@
 		};
 		67BE04BF16B08DE30065BFDE /* Developer */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "${DEV}/Support BuildSupport/Developer $ACTION";
+			buildArgumentsString = "$(DEV)/Support BuildSupport/Developer $(ACTION)";
 			buildConfigurationList = 67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */;
 			buildPhases = (
 			);
 			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
+				67645A0D16EFD181004F37F1 /* PBXTargetDependency */,
 				673A579316C055320000BEE2 /* PBXTargetDependency */,
 			);
 			name = Developer;
@@ -1326,8 +1334,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "mkdir -p ${CCDev}/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ${CCDev}/UserSlates/Accessor.rsrc\n";
+			shellPath = /bin/ksh;
+			shellScript = "mkdir -p $(CCDev)/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc $(CCDev)/UserSlates/Accessor.rsrc\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1381,6 +1389,11 @@
 			isa = PBXTargetDependency;
 			target = 67364A7216C0362C00940D94 /* DeveloperScripts */;
 			targetProxy = 673A579216C055320000BEE2 /* PBXContainerItemProxy */;
+		};
+		67645A0D16EFD181004F37F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67FA078816D5A1010022D6A8 /* Developer_Setup */;
+			targetProxy = 67645A0C16EFD181004F37F1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
