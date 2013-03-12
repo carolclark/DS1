@@ -19,13 +19,13 @@ USAGE='
 #		return 0 to have caller continue by updating last built data
 '
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "$(CCDev)/bin/resultCodes.ksh"
 
 #^ 1 === top
 trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
-projectPath="${DEV}/<#Project#>"
+projectPath="$(DEV)/<#Project#>"
 target="<#Target#>"
 
 #^ 3 === getSubtargetDestination
@@ -39,10 +39,10 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"Scripts" )
-			destinationFolder="${CCDev}/bin"
+			destinationFolder="$(CCDev)/bin"
 			;;
 		"Functions" )
-			destinationFolder="${CCDev}/func"
+			destinationFolder="$(CCDev)/func"
 			;;
 		"_Tests" )
 			;;	#handled elsewhere
@@ -77,8 +77,8 @@ function handleFile {
 		action="ignore"
 	fi
 
-	fl="${CCDev}/tmp/copyInfo"
-	mkdir -p "${CCDev}/tmp"
+	fl="$(CCDev)/tmp/copyInfo"
+	mkdir -p "$(CCDev)/tmp"
 	print "${action}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
 	print "${fl}"
 	return 0

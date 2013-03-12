@@ -19,13 +19,13 @@ Xcode_install.ksh -- provide functions for ccInstall to support CCDev installati
 #		return 0 to have caller continue by updating last built data
 '
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "$(CCDev)/bin/resultCodes.ksh"
 
 #^ 1 === top
 trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
-projectPath="${DEV}/Support"
+projectPath="$(DEV)/Support"
 target="BuildSupport/Applications/Xcode"
 
 #^ 3 === getSubtargetDestination
@@ -73,7 +73,7 @@ function handleFile {
 	if [[ "${subtarget}" = "AppleScripts" ]] ; then
 		fname="${filepath%.applescript}.scpt"
 		action="copy"
-		sourceForCopy="${CCDev}/build/Support/BuildSupport/Applications/Xcode/XcodeScripts.bundle/Contents/Resources/${fname}"
+		sourceForCopy="$(CCDev)/build/Support/BuildSupport/Applications/Xcode/XcodeScripts.bundle/Contents/Resources/${fname}"
 		destinationForCopy="${destinationFolder}/${fname}"
 	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
@@ -85,8 +85,8 @@ function handleFile {
 		action="ignore"
 	fi
 
-	fl="${CCDev}/tmp/copyInfo"
-	mkdir -p "${CCDev}/tmp"
+	fl="$(CCDev)/tmp/copyInfo"
+	mkdir -p "$(CCDev)/tmp"
 	print "${action}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
 	print "${fl}"
 	return 0
@@ -94,7 +94,7 @@ function handleFile {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${HOME}/Library/Scripts/Xcode" "${HOME}/Library/Developer/Xcode/Templates" "${CCDev}/build/Support/BuildSupport/Applications/Xcode" ; do
+	for folder in "${HOME}/Library/Scripts/Xcode" "${HOME}/Library/Developer/Xcode/Templates" "$(CCDev)/build/Support/BuildSupport/Applications/Xcode" ; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
