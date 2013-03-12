@@ -37,7 +37,7 @@ ccInstall commandFlag [argument(s)]
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "$(CCDev)/bin/resultCodes.ksh"
 
 #^ 1 === top
 trapString='errtrap $0 $LINENO'
@@ -61,7 +61,7 @@ function setPaths {
 	project="${projectPath##/*/}"
 	sourcePath="${projectPath}/${target}"
 	targetScript="${sourcePath}/${target##*/}_install.ksh"
-	lastbuilt="${CCDev}/build/${project}/${target}.lastbuilt"
+	lastbuilt="$(CCDev)/build/${project}/${target}.lastbuilt"
 }
 
 #^ getPath
@@ -276,7 +276,7 @@ function findTests {
 	fi
 
 	origdir=$(pwd)
-	iofile="${CCDev}/tmp/found"
+	iofile="$(CCDev)/tmp/found"
 	cd "${projectPath}/${target}"
 	find . -type f -and -name "test*.ksh"| sed 's|\./||' > "${iofile}"
 	chmod a+r "${iofile}"
@@ -295,7 +295,7 @@ function findSources {
 	fi
 
 	origdir=$(pwd)
-	iofile="${CCDev}/tmp/sources"
+	iofile="$(CCDev)/tmp/sources"
 	cd "${projectPath}/${target}"
 	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
 	st=$?
@@ -326,7 +326,7 @@ function removeFolder {
 			print "error: ${folder} is not a directory"
 			return $RC_NoSuchDirectory
 		fi
-		iofile="${CCDev}/tmp/found3"
+		iofile="$(CCDev)/tmp/found3"
 		origdir=$(pwd)
 		print "= ${folder}"
 		cd "${folder}"

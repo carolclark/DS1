@@ -8,11 +8,11 @@
 #  Confidential and Proprietary.
 
 setUp() {
-	projectPath="${CCDev}/TestData/ProjA"
+	projectPath="$(CCDev)/TestData/ProjA"
 	target=Tar1
 }
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "$(CCDev)/bin/resultCodes.ksh"
 
 #^	1 === General
 testCciGeneral() {
@@ -74,13 +74,13 @@ testCciPaths() {
 	str=$(ccInstall --getBasePath "${projectPath}" "${target}")
 	st=$?
 	assertEquals "$LINENO: ${str}" 0 "${st}"
-	assertEquals "$LINENO: incorrect base path: " "${CCDev}/TestData" "${str}"
+	assertEquals "$LINENO: incorrect base path: " "$(CCDev)/TestData" "${str}"
 	str=$(ccInstall --getSourcePath "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect source path: " "${CCDev}/TestData/ProjA/Tar1" "${str}"
+	assertEquals "$LINENO: incorrect source path: " "$(CCDev)/TestData/ProjA/Tar1" "${str}"
 	str=$(ccInstall --getTargetScript "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/ProjA/Tar1/Tar1_install.ksh" "${str}"
+	assertEquals "$LINENO: incorrect target script: " "$(CCDev)/TestData/ProjA/Tar1/Tar1_install.ksh" "${str}"
 	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/ProjA/Tar1.lastbuilt" "${lastbuilt}"
+	assertEquals "$LINENO: incorrect lastbuilt: " "$(CCDev)/build/ProjA/Tar1.lastbuilt" "${lastbuilt}"
 	ccInstall --updateLastbuilt "${projectPath}" "${target}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
 	ccInstall --clearLastbuilt "${projectPath}" "${target}"
@@ -192,7 +192,7 @@ testCleanProjectTarget() {
 
 #^ removeFolder
 testRemoveFolder() {
-	projectPath="${CCDev}/TestData/ProjB"
+	projectPath="$(CCDev)/TestData/ProjB"
 	str=$(ccInstall --removeFolder)
 	st=$?
 	assertEquals "$LINENO: error RC_MissingArgument expected" $RC_MissingArgument "${st}"

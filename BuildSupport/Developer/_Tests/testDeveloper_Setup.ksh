@@ -7,10 +7,9 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+# These tests rely on a value for CCDev that was just exported from Developer_Setup.
 testEnvironment() {
-	if [[ ${CCDev} = "" ]] ; then
-		fail "$LINENO: '${CCDev}' undefined"
-	fi
+	assertEquals "$LINENO: incorrect '${CCDev}'" "${CCDev}" "${HOME}/CCDev"
 	if [[ ! -e ${CCDev}/tmp ]] ; then
 		fail "$LINENO: file ${CCDev}/tmp missing" 
 	fi
@@ -38,8 +37,17 @@ testGitSetup() {
 }
 
 testScripts() {
-	if [[ ! -e $CCDev/func/errtrap ]] ; then
-		fail "$LINENO: file errtrap missing" 
+	if [[ ! -e ${CCDev}/func/errtrap ]] ; then
+		fail "$LINENO: function file errtrap missing"
+	fi
+	if [[ ! -e ${CCDev}/func/DEV ]] ; then
+		fail "$LINENO: function file DEV missing"
+	fi
+	if [[ ! -e ${CCDev}/func/ccInstall ]] ; then
+		fail "$LINENO: function file ccInstall missing"
+	fi
+	if [[ ! -e ${CCDev}/bin/ccInstallAction ]] ; then
+		fail "$LINENO: script file ccInstallAction missing"
 	fi
 }
 
