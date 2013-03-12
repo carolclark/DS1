@@ -154,7 +154,7 @@
 <!-- @marker "Add Build Script Target" -->
 <h4 id='AddBuildScriptTarget'>Add Build Script Target</h4><ul>
 	<li class='blurb'>Motivation: make compiled AppleScripts available for use:<ul>
-		<li>add a target &lt;Target&gt;Scripts to compile &lt;name&gt;.applescript files in folder AppleScripts into a bundle of .scpt files at ${CCDev}/build/&lt;Target&gt;/&lt;Target&gt;Scripts.bundle</li>
+		<li>add a target &lt;Target&gt;Scripts to compile &lt;name&gt;.applescript files in folder AppleScripts into a bundle of .scpt files at $(CCDev)/build/&lt;Target&gt;/&lt;Target&gt;Scripts.bundle</li>
 		<li>expand existing External target &lt;Target&gt; to copy the compiled scripts to the desired location</li>
 	</ul></li>
 	<li>target &lt;Target&gt;Scripts<ul>
@@ -164,7 +164,7 @@
 			<li>remove folder /&lt;Workspace&gt;/&lt;Project&gt;/&lt;Target&gt;Scripts with its remaining contents</li>
 			<li>update Build Setting Info.plist file to match</li>
 		</ul></li>
-		<li>Build Settings: set Per-Configuration Built Products Path to ${CCDev}/build/&lt;Workspace&gt;/&lt;Project&gt;/&lt;Target&gt;</li>
+		<li>Build Settings: set Per-Configuration Built Products Path to $(CCDev)/build/&lt;Workspace&gt;/&lt;Project&gt;/&lt;Target&gt;</li>
 	</ul></li>
 	<li>file &lt;Target&gt;_install.ksh<ul>
 		<li>update getSubtargetDestination, handleFile, cleanFiles accordingly; see Support/BuildSupport/Developer_install.ksh</li>

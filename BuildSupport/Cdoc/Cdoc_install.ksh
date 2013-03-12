@@ -19,16 +19,16 @@ Codc_install.ksh -- provide functions for ccInstall to support CCDev installatio
 #		return 0 to have caller continue by updating last built data
 '
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "$(CCDev)/bin/resultCodes.ksh"
 
 #^ 1 === top
 trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
-projectPath="${DEV}/Support"
+projectPath="$(DEV)/Support"
 target="BuildSupport/Cdoc"
 
-technicalDocs="${CCDev}/Sites/TechnicalDocs"
+technicalDocs="$(CCDev)/Sites/TechnicalDocs"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -84,8 +84,8 @@ function handleFile {
 		action="ignore"
 	fi
 
-	fl="${CCDev}/tmp/copyInfo"
-	mkdir -p "${CCDev}/tmp"
+	fl="$(CCDev)/tmp/copyInfo"
+	mkdir -p "$(CCDev)/tmp"
 	print "${action}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
 	print "${fl}"
 	return 0
