@@ -19,18 +19,18 @@ CCDev_install.ksh -- provide functions for ccInstall to support CCDev installati
 #		return 0 to have caller continue by updating last built data
 '
 
-. "$(CCDev)/bin/resultCodes.ksh"
+. "${CCDev}/bin/resultCodes.ksh"
 
 #^ 1 === top
 trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
-projectPath="$(DEV)/Support"
+projectPath="${DEV}/Support"
 target="BuildSupport/Developer"
 
 servicesFolder="${HOME}/Library/Services"
-scriptsFolder="$(CCDev)/bin"
-functionsFolder="$(CCDev)/func"
+scriptsFolder="${CCDev}/bin"
+functionsFolder="${CCDev}/func"
 applescriptsFolder="${HOME}/Library/Scripts/Developer"
 
 #^ 3 === getSubtargetDestination
@@ -94,7 +94,7 @@ function handleFile {
 			else
 				fname="${filepath%.applescript}.scpt"
 				action="copy"
-				sourceForCopy="$(CCDev)/build/Support/BuildSupport/Developer/DeveloperScripts.bundle/Contents/Resources/${fname}"
+				sourceForCopy="${CCDev}/build/Support/BuildSupport/Developer/DeveloperScripts.bundle/Contents/Resources/${fname}"
 				destinationForCopy="${destinationFolder}/${fname}"
 			fi
 		else
@@ -108,8 +108,8 @@ function handleFile {
 		action="ignore"
 	fi
 
-	fl="$(CCDev)/tmp/copyInfo"
-	mkdir -p "$(CCDev)/tmp"
+	fl="${CCDev}/tmp/copyInfo"
+	mkdir -p "${CCDev}/tmp"
 	print "${action}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
 	print "${fl}"
 	return 0

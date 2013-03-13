@@ -7,7 +7,6 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
-# These tests rely on a value for CCDev that was just exported from Developer_Setup.
 testEnvironment() {
 	assertEquals "$LINENO: incorrect '${CCDev}'" "${CCDev}" "${HOME}/CCDev"
 	if [[ ! -e ${CCDev}/tmp ]] ; then

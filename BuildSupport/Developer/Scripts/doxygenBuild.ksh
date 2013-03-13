@@ -27,7 +27,7 @@ fi
 configPath=$2
 
 doxygenPath=/Applications/Doxygen.app/Contents/Resources/doxygen
-outputDir=$(CCDev)/Sites/Doxygen/${project}
+outputDir=/Users/carolclark/CCDev/Sites/Doxygen/${project}
 mkdir -p $outputDir
 st=$?
 if [[ $st > 0 ]] ; then

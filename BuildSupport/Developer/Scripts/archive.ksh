@@ -19,7 +19,7 @@ USAGE='
 #		contents of specified folder in working directory
 '
 
-. "$(CCDev)/bin/resultCodes.ksh"
+. "${CCDev}/bin/resultCodes.ksh"
 
 #^ 0 === top
 trapString='errtrap $0 $LINENO'
@@ -66,7 +66,7 @@ function appendRepository {	# archivePath projectName
 
 #^ 4 === appendGitReadMe
 function appendGitReadMe {	# archivePath projectName
-	print "The contents of this archive are inside folder ${projectName} in invisible folder .git." > "$(CCDev)/tmp/gitReadMe"
+	print "The contents of this archive are inside folder ${projectName} in invisible folder .git." > "${CCDev}/tmp/gitReadMe"
 	cd "${CCDev}/tmp"
 	tar --file="${HOME}/Archives/${archivePath}" --append "gitReadMe"
 	err=$?
@@ -79,7 +79,7 @@ function appendGitReadMe {	# archivePath projectName
 
 #^ 5 === appendCdoc
 function appendCdoc {	# archivePath projectName
-	cd $(CCDev)/Sites
+	cd ${CCDev}/Sites
 	tar --file="${HOME}/Archives/${archivePath}" --append "TechnicalDocs/${projectName}"/* "TechnicalDocs/css" "TechnicalDocs/img"
 	err=$?
 	cd ${baseDir}

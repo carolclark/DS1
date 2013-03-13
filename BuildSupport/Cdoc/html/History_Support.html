@@ -97,11 +97,10 @@
 <!-- @marker "Remove Xcode Environment Dependency" -->
 <h4 id='RemoveXcodeEnvDependency'>Remove Xcode Environment Dependency</h4><ul>
 	<li class='blurb'>Previous support used file Environment.plist, which is no longer read. No new method is as yet officially supported. Workaround is to use file /private/etc/launchd.conf, which is difficult to handle, especially for collaborators, because it requires sudo access.</li>
+	<li>remove obsolete files<ul>
+		<li>Developer/Environment/environment.plist; Xcode/Workflows</li>
+	</ul></li>
 	<li>replace environment variables ${DEV}, ${CCDev} with functions $(DEV), $(CCDev)<ul>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-		<li>remove obsolete files<ul>
-			<li>Developer/Environment/environment.plist; Xcode/Workflows</li>
-		</ul></li>
 		<li>Developer<ul>
 			<li>Developer_Setup, Developer targets use $(DEV), $(CCDev) instead of environment variables ${DEV}, ${CCDev}<ul>
 				<li>_Tests: testCcInstall.ksh, testDeveloper.ksh, testDeveloper_Setup.ksh</li>
@@ -134,9 +133,10 @@
 			</ul></li>
 			<li>BBEdit: BBEdit_install.ksh</li>
 		</ul></li>
-		<li>UserSlates/Slates: BBEdit_C9.r, Calendar_C9.r, CommonSlates_C9.r, Safari_C9.r, Terminal_C9.r, Xcode_C9.r</li>
-		<li>update installation instructions</li>
+		<li>UserSlates/Slates: Terminal_C9.r</li>
 	</ul></li>
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	<li>revert use functions $(DEV), $(CCDev)</li>
 </ul>
 
 <!-- @marker "Switch to MountainLion" -->

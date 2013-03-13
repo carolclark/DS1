@@ -26,5 +26,5 @@ fi
 project="${1}"
 target="${2}"
 
-ccInstall "$(DEV)/${project}" "${target}" -c
+ccInstall "${DEV}/${project}" "${target}" -c
 	

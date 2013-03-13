@@ -60,7 +60,7 @@ heading with name: Task Name; tsk_TaskName;5
 <p>CCDev is a system for supporting our development work. It includes:</p><ul>
 	<li>folder CCDev containing scripts and other supporting functionality<ul>
 		<li>all files in folder CCDev are derived</li>
-		<li>function $(CCDev) contains the path to folder CCDev</li>
+		<li>environment variable $CCDev contains the path to folder CCDev</li>
 	</ul></li>
 	<li>target CCDev, which generates much of the content of folder CCDev</li>
 </ul>
@@ -91,10 +91,10 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h6>~/CCDev/bin/.kshrc</h6>
 <p>System Environment file (source: Environment/kshrc)</p><ul>
 	<li>set default user prompt to "&lt;userName&gt; &lt;lineno&gt;"</li>
-	<li>add $(CCDev)/bin to <span class='mono'>$PATH</span></li>
-	<li>add $(CCDev)/func to <span class='mono'>$PATH</span> and <span class='mono'>$FPATH</span></li>
-	<li>SHUnit="$(CCDev)/shunit/src/shunit2"; export SHUnit</li>
-	<li>GIT_TEMPLATE_DIR="$(CCDev)/GitTemplates"; export GIT_TEMPLATE_DIR <span class='blurb'>not currently used</span></li>
+	<li>add $CCDev/bin to <span class='mono'>$PATH</span></li>
+	<li>add $CCDev/func to <span class='mono'>$PATH</span> and <span class='mono'>$FPATH</span></li>
+	<li>SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit</li>
+	<li>GIT_TEMPLATE_DIR="$CCDev/GitTemplates"; export GIT_TEMPLATE_DIR <span class='blurb'>not currently used</span></li>
 </ul>
 
 <h6>~/subversion/config</h6>
@@ -107,13 +107,13 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h6>Unix</h6><dl class='funclist'>
 	<dt>Scripts</dt><dd>standard Unix scripts<br />
 		source files: extension .ksh<br />
-		installation: @ $(CCDev)/bin; extension .ksh dropped</dd>
-	<dt>Functions</dt><dd>Unix functions @ $(CCDev)/func<br />
+		installation: @ $CCDev/bin; extension .ksh dropped</dd>
+	<dt>Functions</dt><dd>Unix functions @ $CCDev/func<br />
 		source files: extension .ksh<br />
-		installation: @ $(CCDev)/func; extension .func dropped</dd>
+		installation: @ $CCDev/func; extension .func dropped</dd>
 	<dt>Snippets</dt><dd>text to be processed as <a class='glosslink' href='Glossary_Support.html#def_snippet'>snippets</a><br />
 		source files: ?<br />
-		installation: @ $(CCDev)/snip</dd>
+		installation: @ $CCDev/snip</dd>
 	<dt>InstallScripts</dt><dd>scripts to be run in place to process files in their parent folder<br />
 		source files: end with _install.ksh<br />
 		installation: none</dd>
@@ -122,7 +122,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h6 class='nyi'>AppleScript</h6><dl class='funclist'>
 	<dt>Scripts</dt><dd>compiled AppleScripts<br />
 		source files: extension .applescript<br />
-		installation: @ $(CCDev)/Scripts; extension .scpt	</dd>
+		installation: @ $CCDev/Scripts; extension .scpt	</dd>
 </dl>
 
 <!-- @marker "Snippets" -->

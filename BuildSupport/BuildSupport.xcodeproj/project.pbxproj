@@ -1102,7 +1102,7 @@
 /* Begin PBXLegacyTarget section */
 		67043DC516B7331400E43F90 /* BBEdit */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(DEV)/Support BuildSupport/Applications/BBEdit $(ACTION)";
+			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/BBEdit $(ACTION)";
 			buildConfigurationList = 67043DC616B7331400E43F90 /* Build configuration list for PBXLegacyTarget "BBEdit" */;
 			buildPhases = (
 			);
@@ -1117,7 +1117,7 @@
 		};
 		671B546C16B1E610009C2B17 /* Xcode */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(DEV)/Support BuildSupport/Applications/Xcode $(ACTION)";
+			buildArgumentsString = "${DEV}/Support BuildSupport/Applications/Xcode $(ACTION)";
 			buildConfigurationList = 671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */;
 			buildPhases = (
 			);
@@ -1132,7 +1132,7 @@
 		};
 		673D581016B9CAF20001DFF2 /* Doxygen */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(DEV)/Support BuildSupport/Doxygen $(ACTION)";
+			buildArgumentsString = "${DEV}/Support BuildSupport/Doxygen $(ACTION)";
 			buildConfigurationList = 673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */;
 			buildPhases = (
 			);
@@ -1146,7 +1146,7 @@
 		};
 		67BE04B916B06EFF0065BFDE /* Cdoc */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(DEV)/Support BuildSupport/Cdoc $(ACTION)";
+			buildArgumentsString = "${DEV}/Support BuildSupport/Cdoc $(ACTION)";
 			buildConfigurationList = 67BE04BA16B06EFF0065BFDE /* Build configuration list for PBXLegacyTarget "Cdoc" */;
 			buildPhases = (
 			);
@@ -1160,7 +1160,7 @@
 		};
 		67BE04BF16B08DE30065BFDE /* Developer */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(DEV)/Support BuildSupport/Developer $(ACTION)";
+			buildArgumentsString = "${DEV}/Support BuildSupport/Developer $(ACTION)";
 			buildConfigurationList = 67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */;
 			buildPhases = (
 			);

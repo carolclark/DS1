@@ -19,13 +19,13 @@ Doxygen_install.ksh -- provide functions for ccInstall to support CCDev installa
 #		return 0 to have caller continue by updating last built data
 '
 
-. "$(CCDev)/bin/resultCodes.ksh"
+. "${CCDev}/bin/resultCodes.ksh"
 
 #^ 1 === top
 trapString='errtrap $0#$LINENO'
 trap "$trapString" ERR
 
-projectPath="$(DEV)/Support"
+projectPath="${DEV}/Support"
 target="BuildSupport/Doxygen"
 
 #^ 3 === getSubtargetDestination
@@ -39,7 +39,7 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"Doxygen" )
-			destinationFolder="$(CCDev)/Sites/Doxygen/DoxyDemo"
+			destinationFolder="${CCDev}/Sites/Doxygen/DoxyDemo"
 			;;
 		# Doxygen: local folders not processed
 		* )
@@ -73,8 +73,8 @@ function handleFile {
 		action="ignore"
 	fi
 
-	fl="$(CCDev)/tmp/copyInfo"
-	mkdir -p "$(CCDev)/tmp"
+	fl="${CCDev}/tmp/copyInfo"
+	mkdir -p "${CCDev}/tmp"
 	print "${action}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
 	print "${fl}"
 	return 0
