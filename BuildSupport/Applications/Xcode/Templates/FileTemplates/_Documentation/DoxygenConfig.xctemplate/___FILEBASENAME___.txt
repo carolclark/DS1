@@ -6,7 +6,7 @@
 #	see Support/CCDev/Default.doxygen or the Doxygen application.
 
 PROJECT_NAME			= <#ProjectName#>
-OUTPUT_DIRECTORY		= /Users/carolclark/CCDev/Sites/Doxygen/<#ProjectName#>
+OUTPUT_DIRECTORY		= $(CCDev)/Sites/Doxygen/<#ProjectName#>
 STRIP_FROM_PATH			= /Users/carolclark/Dev/<#ProjectName#>
 EXTRACT_ALL				= YES
 INPUT					= /Users/carolclark/Dev/<#ProjectName#>

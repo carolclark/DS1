@@ -96,8 +96,6 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </ul>
 <p><b>Configuration</b></p>
 <ul>
-	<li class='depr'><b>Clippings Aliases:</b> aliases to ~/Dev/DevSupport/BBEdit/Clippings folders at
-		~/Library/Application Support/BBEdit/Clippings</li>
 	<li><b>Application</b> At Startup: Do Nothing; Reopen documents that were open at last quit: off</li>
 	<li><b>Documents &amp; Drawer</b><ul>
 		<li>Allow Documents Drawer to acquire keyboard focus: On</li>
@@ -108,24 +106,23 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 	</ul></li>
 	<li><b>Editing: Keyboard</b> <ul>
 		<li>Use Tab key to navigate Placeholders: Off</li>
-		<li class='depr'>Allow Tab key to indent text blocks: On</li>
 	</ul></li>
-	<li><b>HTML Web Sites</b></li>
+	<li><b>HTML Web Sites</b> <ul>
 		<li>add site TechicalDocs<ul>
-			<li>Web server name: ~/CCDev/Sites/TechnicalDocs/</li>
-			<li>Site path on server: ~carolclark/CCDev/Sites/TechnicalDocs/</li>
+			<li>Web server name: ~/Library/CCDev/Sites/TechnicalDocs/</li>
+			<li>Site path on server: ~carolclark/Library/CCDev/Sites/TechnicalDocs/</li>
 			<li>Default page name: Development.html</li>
-			<li>Local site root: ~/CCDev/Sites/TechnicalDocs</li>
+			<li>Local site root: ~/Library/CCDev/Sites/TechnicalDocs</li>
 		</ul></li>
-	<li class='depr'><b>Source Control</b> add active projects</li>
+		<li>manually check Syntax and Links for folder TechnicalDocs<ul>
+			<li class='blurb'>so it will be set as needed for script ValidateHTML</li>
+		</ul></li>
+	</ul></li>
 	<li><b>Menus</b><ul>
 		<li><b>File</b> Revert cU; Save a Copy csoS</li>
 		<li><b>Text</b> Change Case... coC; Change Case csoC</li>
 		<li><b>View</b> Text Display: Soft Wrap Text: crW</li>
 		<li><b>Search</b> Replace and Find Next cs=</li>
-		<li class='depr'><b>Subversion</b> Compare Revisions orD; Commit Working Copy orC; 
-			Show Working Copy Status... orS; </li>
-		<li class='depr'><b>Clippings</b> Insert Clipping corC</li>
 	</ul></li>
 	<li><b>Text Status Display</b><ul>
 		<li>Show line numbers: On</li>
@@ -349,8 +346,8 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 	<p><b>Configuration</b> </p>
 	<ul>
 		<li>downloads to ~/Downloads</li>
-		<li>home page to ~/CCDev/Sites/TechnicalDocs/Support/Development.html</li>
-		<li>alias to ~/CCDev/Sites/TechnicalDocs/Support/Development.html to ~/Documents</li>
+		<li>home page to ~/Library/CCDev/Sites/TechnicalDocs/Support/Development.html</li>
+		<li>alias to ~/Library/CCDev/Sites/TechnicalDocs/Support/Development.html to ~/Documents</li>
 	</ul>
 
 <!-- @marker "Stickies" -->
@@ -409,7 +406,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<li>Window Group: Workspaces, containing custom tabs</li>
 		<li>Startup: open window group Workspaces</li>
 	</ul>
-	<p><b>Customization &amp; Automation</b> </p>
+	<p><b>Customization &amp; Automation</b>: set shell ksh (<span class='mono'>chsh -s /bin/ksh</span>) </p>
 
 <!-- @marker "UIBrowser" -->
 <h2><a name="UIBrowser">UI Browser</a></h2>
@@ -1146,7 +1143,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-12 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>

@@ -84,7 +84,7 @@ function envLaunchctl {
 	fi
 }
 
-#^	writeValueFunction	write function that returns a value
+#^	writeValueFunction	write function that returns a fixed value
 function writeValueFunction {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		name="${1}"
@@ -190,7 +190,7 @@ function removeFileIfPresent {
 
 # identify and set variables for current user
 DEV=${HOME}/Dev
-CCDev=${HOME}/CCDev
+CCDev=${HOME}/Library/CCDev
 configureTerminal="no"
 
 case "${USER}" in
@@ -226,8 +226,6 @@ if [[ "${1}" = clean ]] ; then
 	removeFileIfPresent "${HOME}/.gitconfig"
 	removeFileIfPresent "${HOME}/.launchd.conf"
 	removeFileIfPresent "${CCDev}/bin/.kshrc"
-	removeFileIfPresent "${CCDev}/bin/ccInstallAction"
-	removeFileIfPresent "${CCDev}/bin/resultCodes.ksh"
 	removeFileIfPresent "${CCDev}/Git/attributes"
 	removeFileIfPresent "${CCDev}/Git/exclude"
 	exit

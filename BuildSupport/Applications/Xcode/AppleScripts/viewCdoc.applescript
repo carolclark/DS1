@@ -9,7 +9,7 @@ if ((docname is not missing value) and (length of docname > 5)) then
 	set ext to (characters -5 thru -1 of docname) as text
 	if ext is ".html" then set targetFile to docname
 end if
-set targetPath to "Users:carolclark:CCDev:Sites:TechnicalDocs:" & workspaceName of frontWindow & ":" & targetFile
+set targetPath to "Users:carolclark:Library:CCDev:Sites:TechnicalDocs:" & workspaceName of frontWindow & ":" & targetFile
 
 tell application "Safari"
 	open targetPath

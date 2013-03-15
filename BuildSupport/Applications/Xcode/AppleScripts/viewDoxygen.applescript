@@ -3,7 +3,7 @@ set scriptpath to result as string
 
 set frontWindow to run script file ((scriptpath & "frontWindow.scpt") as string)
 
-set targetPath to "Users:carolclark:CCDev:Sites:Doxygen:" & workspaceName of frontWindow & ":html:index.html"
+set targetPath to "Users:carolclark:Library:CCDev:Sites:Doxygen:" & workspaceName of frontWindow & ":html:index.html"
 
 tell application "Safari"
 	open targetPath

@@ -246,11 +246,6 @@
 		67DD772D16A4AF9300BECCD5 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
 		67DD772E16A4AF9300BECCD5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		67DD772F16A4AF9300BECCD5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
-		67DD773116A4AF9300BECCD5 /* frontTextDoc.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = frontTextDoc.workflow; sourceTree = "<group>"; };
-		67DD773216A4AF9300BECCD5 /* goMarker.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = goMarker.workflow; sourceTree = "<group>"; };
-		67DD773316A4AF9300BECCD5 /* viewCdoc.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = viewCdoc.workflow; sourceTree = "<group>"; };
-		67DD773416A4AF9300BECCD5 /* viewDoxygen.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = viewDoxygen.workflow; sourceTree = "<group>"; };
-		67DD773516A4AF9300BECCD5 /* viewInBrowser.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = viewInBrowser.workflow; sourceTree = "<group>"; };
 		67DD773716A4AF9300BECCD5 /* Xcode_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Xcode_install.ksh; sourceTree = "<group>"; };
 		67DD774116A4C2BA00BECCD5 /* BBEdit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BBEdit-Info.plist"; sourceTree = "<group>"; };
 		67DD774316A4C2BA00BECCD5 /* BBEditUtil.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = BBEditUtil.applescript; sourceTree = "<group>"; };
@@ -633,7 +628,6 @@
 				67DD76CF16A4AF9300BECCD5 /* AppleScripts */,
 				67DD76D716A4AF9300BECCD5 /* Templates */,
 				67BE04C316B095780065BFDE /* _plist */,
-				67DD773016A4AF9300BECCD5 /* Workflows */,
 				67DD76CD16A4AF9300BECCD5 /* _Tests */,
 			);
 			path = Xcode;
@@ -956,18 +950,6 @@
 				67DD772F16A4AF9300BECCD5 /* TemplateInfo.plist */,
 			);
 			path = shunitTest.xctemplate;
-			sourceTree = "<group>";
-		};
-		67DD773016A4AF9300BECCD5 /* Workflows */ = {
-			isa = PBXGroup;
-			children = (
-				67DD773116A4AF9300BECCD5 /* frontTextDoc.workflow */,
-				67DD773216A4AF9300BECCD5 /* goMarker.workflow */,
-				67DD773316A4AF9300BECCD5 /* viewCdoc.workflow */,
-				67DD773416A4AF9300BECCD5 /* viewDoxygen.workflow */,
-				67DD773516A4AF9300BECCD5 /* viewInBrowser.workflow */,
-			);
-			path = Workflows;
 			sourceTree = "<group>";
 		};
 		67DD773F16A4C2BA00BECCD5 /* 6 BBEdit */ = {
@@ -1335,7 +1317,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "mkdir -p $(CCDev)/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc $(CCDev)/UserSlates/Accessor.rsrc\n";
+			shellScript = "mkdir -p ${CCDev}/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ${HOME}/Library/CCDev/UserSlates/Accessor.rsrc\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

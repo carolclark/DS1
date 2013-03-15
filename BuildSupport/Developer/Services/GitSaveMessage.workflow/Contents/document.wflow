@@ -75,7 +75,7 @@
 					<key>checkedForDefaultEncoding</key>
 					<true/>
 					<key>newFileFolderPath</key>
-					<string>~/CCDev/tmp</string>
+					<string>~/Library/CCDev/tmp</string>
 					<key>newFileName</key>
 					<string>gitmessage.txt</string>
 					<key>newFileTextEncoding</key>

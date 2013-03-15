@@ -624,9 +624,6 @@ resource restype_Slate (resid_shellSvn, "svn") { {
 		Event { "remove", "" },					TypeText { "remove " },
 		Event { "show branch", "" },			TypeText { "info | grep URL" },
 		Event { "revert", "" },					TypeText { "revert " },
-		Event { "add to repository", "" },		Sequence{}, _delete, _delete, _delete, _delete,
-				TypeText { "/Users/carolclark/CCDev/bin/svnAddToRepository " },
-				endSequence{},
 		Event { "remove from repository", "" },	TypeText { "remove " },
 		Event { "make directory", "" },			TypeText { "mkdir " },
 		Event { "move or rename", "" },			TypeText { "move " },
@@ -642,12 +639,6 @@ resource restype_Slate (resid_shellSvn, "svn") { {
 			Event { "undo", "" },			Keypress { kc_Z, mf_command },
 			Event { "get", "" },			TypeText { "propget " },
 			Event { "set", "" },			TypeText { "propset " },
-			Event { "set folder", "" },		Sequence{}, _delete, _delete, _delete, _delete,
-				TypeText { "/Users/carolclark/CCDev/bin/svnSetFolderProps " },
-				endSequence{},
-			Event { "show all", "" },		Sequence{}, _delete, _delete, _delete, _delete,
-				TypeText { "/Users/carolclark/CCDev/bin/svnShowProperties " },
-				endSequence{},
 			Event { "ignore", "" },			TypeText { "svn:ignore " },
 			Event { "line ends", "" },		TypeText { "svn:eol-style " },
 			Event { "native", "" },			TypeText { "native " },
@@ -1191,7 +1182,7 @@ resource restype_Slate (resid_teList, "List Dialog") { {
 } };
 
 #pragma mark Validate Markup
-#define _techSite_	"~/CCDev/Sites/TechnicalDocs/"
+#define _techSite_	"~/Library/CCDev/Sites/TechnicalDocs/"
 resource restype_Slate (resid_ValidateMarkup, "Validate Markup") { {
 	Slate { "Validate",	{
 		_SlateGlobals_,

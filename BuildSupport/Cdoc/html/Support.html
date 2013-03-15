@@ -85,10 +85,10 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h6>~/.profile</h6>
 <p>user login file (source: Environment/profile)</p><ul>
 	<li>set default shell to <span class='mono'>ksh</span>; matches setting in System Preferences:Accounts</li>
-	<li>set environment file (<span class='mono'>$ENV</span>) to our Korn environment file at ~/CCDev/bin/kshrc</li>
+	<li>set environment file (<span class='mono'>$ENV</span>) to our Korn environment file at ~/Library/CCDev/bin/kshrc</li>
 </ul>
 
-<h6>~/CCDev/bin/.kshrc</h6>
+<h6>~/Library/CCDev/bin/.kshrc</h6>
 <p>System Environment file (source: Environment/kshrc)</p><ul>
 	<li>set default user prompt to "&lt;userName&gt; &lt;lineno&gt;"</li>
 	<li>add $CCDev/bin to <span class='mono'>$PATH</span></li>
@@ -363,7 +363,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		</ul></li>
 	</ul></li>
 	<li>Cdoc <ul>
-		<li>remove existing directory ~/CCDev/Sites/TechnicalDocs/&lt;OldName&gt;; rebuild documentation; check HTML</li>
+		<li>remove existing directory ~/Library/CCDev/Sites/TechnicalDocs/&lt;OldName&gt;; rebuild documentation; check HTML</li>
 		<li>check all HTML</li>
 	</ul></li>
 </ul>
@@ -709,7 +709,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 
 <!-- @marker "Local and Installed Sites" -->
 <h5><a name="ws_LocalNInstalled">Local and Installed Sites</a></h5><ul>
-	<li>build system, created by project Support, creates complete local site images at ~/CCDev/Sites</li>
+	<li>build system, created by project Support, creates complete local site images at ~/Library/CCDev/Sites</li>
 	<li>for self-contained sites, the build system actually stores shared resources from conceptual parents inside the folders of the sites that use them, generating multiple copies as necessary</li>
 	<li>build system also provides scripts to install local site images at their destination locations</li>
 	<li>installed site destinations:<ul>
@@ -1168,16 +1168,16 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <!-- @marker "9 === Support Targets" -->
 <h2>SupportTargets</h2>
 <!-- @topicList "Support Targets" "Targets" -->
-	<!-- @topicItem "CCDev_Setup" "#tar_CCDev_Setup" "0" "" -->
+	<!-- @topicItem "Developer_Setup" "#tar_Developer_Setup" "0" "" -->
 	<!-- @topicItem "CCDev" "#tar_CCDev" "0" "" -->
 	<!-- @topicItem "Xcode" "#tar_Xcode" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "CCDev_Setup" -->
-<h4 id="tar_CCDev_Setup">CCDev_Setup</h4>
-<p>CCDev.setup is a Unix script that sets up our development environment. Script is run prior to attempting to build any other targets or do other development work. It can be run from Terminal or by building Xcode target Support:CCDev_Setup.</p>
-<p>CCDev.setup is available for collaborators to download. For all collaborators, script sets up  basic environment including git support. For administrator, it also installs additional environment files, third-party tools, and starter scripts required for CCDev.install to run.</p>
-<p>Normally, CCDev.setup is run once only, with subsequent maintenance as files change handled by CCDev.install. CCDev.setup does not avoid overwriting existing files.</p>
+<!-- @marker "Developer_Setup" -->
+<h4 id="tar_Developer_Setup">Developer_Setup</h4>
+<p>Developer_Setup.ksh is a Unix script that sets up our development environment. Script is run prior to attempting to build any other targets or do other development work. It can be run from Terminal or by building Xcode target Support:Devekioer_Setup.</p>
+<p>Developer_Setup is available to collaborators. Script sets up basic environment including git support, installs additional environment files, third-party tools, and starter scripts required for targets to build and test.</p>
+<p>Normally, Developer_Setup is run once only, with subsequent maintenance as files change handled by Developer_install. Developer_Setup does not avoid overwriting existing files.</p>
 	<h5>Notes</h5>
 	<h6 id='ReferenceFiles'>Reference Files</h6>
 		<p>Reference Files are read-only copies of external files, usually from another repository, that are included in a workspace for reference. Reference filenames are prefixed with "_rf_" to allow git to ignore them.</p><ul class='blurb'>
@@ -1197,7 +1197,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-12 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>

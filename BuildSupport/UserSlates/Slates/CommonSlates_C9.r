@@ -389,7 +389,7 @@ resource restype_Slate (resid_GoToFolder, "GoToFolder") { {
 		ExitEvent { "Developer", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
 			TypeText { bootvol_"/Developer/" },			Keypress { kc_return, 0 }, endSequence{},
 		Event { "in house docs", "" },	Sequence{}, Keypress { kc_G, mf_command + mf_shift },
-			TypeText { "~/CCDev/Sites/TechnicalDocs" }, _return, ResSubslate { resid_TypeSlate }, endSequence{},
+			TypeText { "~/Library/CCDev/Sites/TechnicalDocs" }, _return, ResSubslate { resid_TypeSlate }, endSequence{},
 		ExitEvent { "reference", "" },	Sequence{},	Keypress { kc_G, mf_command + mf_shift },
 			TypeText { "~/Reference" },				Keypress { kc_return, 0 }, endSequence{},
 		ExitEvent { "mac", "" },		Sequence{},	Keypress { kc_G, mf_command + mf_shift },
