@@ -1,5 +1,5 @@
 // =================================================================================
-//	Calendar.r					©2005-11 C & C Software, Inc. All rights reserved.
+//	Calendar.r					ï¿½2005-11 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -21,7 +21,7 @@ resource restype_Slate (resid_TypeSpecialCalendarSlate, "Type Special Calendar S
 		_CloseSubslate_,
 		_TypeSpecialBaseItems_,
 		ExitEvent { "link prefix,",	"prefix for inhouse link to link Events" },
-			TypeText { "file:///Users/carolclark/CCDev/Sites/TehnicalDocs/" },
+			TypeText { "file:///Users/carolclark/Library/CCDev/Sites/TechnicalDocs/" },
 	} }
 } };
 

@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 testEnvironment() {
-	assertEquals "$LINENO: incorrect '${CCDev}'" "${CCDev}" "${HOME}/CCDev"
+	assertEquals "$LINENO: incorrect '${CCDev}'" "${CCDev}" "${HOME}/Library/CCDev"
 	if [[ ! -e ${CCDev}/tmp ]] ; then
 		fail "$LINENO: file ${CCDev}/tmp missing" 
 	fi

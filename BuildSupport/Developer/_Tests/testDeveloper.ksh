@@ -9,6 +9,35 @@
 
 . "${CCDev}/bin/resultCodes.ksh"
 
+#^ Installation
+testInstallation() {
+	testData="${CCDev}/TestData"
+	assertEquals "$LINENO: incorrect "'$SHELL' /bin/ksh $(launchctl getenv SHELL)
+
+	# launchd settings
+	dev=$(launchctl getenv DEV)
+	if [[ ${USER} = carolclark ]] ; then
+		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
+	else
+		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
+	fi
+	assertEquals "$LINENO"': incorrect $CCDev' ${HOME}/Library/CCDev $(launchctl getenv CCDev)
+	assertEquals "$LINENO"': incorrect $VISUAL' \"/usr/bin/emacs\" $(launchctl getenv VISUAL)
+
+	# Scripts/cleanProjectTarget
+	fl="${CCDev}/bin/cleanProjectTarget"
+	if [[ ! -e "${fl}" ]] ; then
+		fail "$LINENO: CCDev script cleanProjectTarget missing"
+	fi
+
+	# ~/Library/Scripts/Developer/FixWindow.scpt
+	fl="${HOME}/Library/Scripts/Developer/FixWindow.scpt"
+	if [[ ! -e "${fl}" ]] ; then
+		fail "$LINENO: AppleScript FixWindow.scpt missing"
+	fi
+
+}
+
 #^ Developer_install.ksh
 testDeveloperInstall() {
 	script=${DEV}/Support/BuildSupport/Developer/Developer_install.ksh
@@ -61,35 +90,6 @@ testDeveloperInstall() {
 	done < "${fl}"
 	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
 	assertEquals "$LINENO: incorrect action: " "ignore" "${copyInfo[0]}"
-}
-
-#^ Installation.ksh
-testInstallation() {
-	testData="${CCDev}/TestData"
-	assertEquals "$LINENO: incorrect "'$SHELL' /bin/ksh $(launchctl getenv SHELL)
-
-	# launchd settings
-	dev=$(launchctl getenv DEV)
-	if [[ ${USER} = carolclark ]] ; then
-		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
-	else
-		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
-	fi
-	assertEquals "$LINENO"': incorrect $CCDev' ${HOME}/CCDev $(launchctl getenv CCDev)
-	assertEquals "$LINENO"': incorrect $VISUAL' \"/usr/bin/emacs\" $(launchctl getenv VISUAL)
-
-	# Scripts/cleanProjectTarget
-	fl="${CCDev}/bin/cleanProjectTarget"
-	if [[ ! -e "${fl}" ]] ; then
-		fail "$LINENO: CCDev script cleanProjectTarget missing"
-	fi
-
-	# ~/Library/Scripts/Developer/FixWindow.scpt
-	fl="${HOME}/Library/Scripts/Developer/FixWindow.scpt"
-	if [[ ! -e "${fl}" ]] ; then
-		fail "$LINENO: AppleScript FixWindow.scpt missing"
-	fi
-
 }
 
 # load shunit2

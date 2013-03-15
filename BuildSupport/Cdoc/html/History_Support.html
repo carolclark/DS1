@@ -19,7 +19,8 @@
 	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
 	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
 	<!-- @topicGroup "" "5" -->
-		<!-- @topicItem "Remove Xcode Env Dependency" "#RemoveXcodeEnvDependency" "0" "" -->
+		<!-- @topicItem "Collaborator Support" "#CollaboratorSupport" "0" "" -->
+			<!-- @topicItem "Remove Xcode Env Dependency" "#RemoveXcodeEnvDependency" "1" "" -->
 		<!-- @topicSep -->
 		<!-- @topicItem "Switch to MountainLion" "#MountainLion" "1" "" -->
 			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
@@ -94,50 +95,41 @@
 <h2 id='hmark_Active'>Active</h2>
 </div>
 
-<!-- @marker "Remove Xcode Environment Dependency" -->
-<h4 id='RemoveXcodeEnvDependency'>Remove Xcode Environment Dependency</h4><ul>
-	<li class='blurb'>Previous support used file Environment.plist, which is no longer read. No new method is as yet officially supported. Workaround is to use file /private/etc/launchd.conf, which is difficult to handle, especially for collaborators, because it requires sudo access.</li>
-	<li>remove obsolete files<ul>
-		<li>Developer/Environment/environment.plist; Xcode/Workflows</li>
-	</ul></li>
-	<li>replace environment variables ${DEV}, ${CCDev} with functions $(DEV), $(CCDev)<ul>
-		<li>Developer<ul>
-			<li>Developer_Setup, Developer targets use $(DEV), $(CCDev) instead of environment variables ${DEV}, ${CCDev}<ul>
-				<li>_Tests: testCcInstall.ksh, testDeveloper.ksh, testDeveloper_Setup.ksh</li>
-				<li>Developer_install.ksh</li>
-				<li>Developer_Setup.ksh</li>
-				<li>Functions: ccInstall.ksh</li>
+<!-- @marker "Collaborator Support" -->
+<h4>Collaborator Support</h4>
+<!-- @topicList "Collaborator Support" "CollaboratorSupport" -->
+	<!-- @topicItem "initial candcsoftCollaborate" "#initialCandcsoftCollaborate" "0" "" -->
+	<!-- @topicItem "Remove Xcode Env Dependency" "#RemoveXcodeEnvDependency" "0" "" -->
+<!-- @/topicList -->
+<p>candcsoftCollaborate is intended to be an archived folder containing an AppleScript that can be run to set up a Collaborator's development environment to support accessing git via Xcode, building projects, and other functionality as indicated.</p>
+
+	<!-- @marker "initial candcsoftCollaborate" -->
+	<h5 id='initialCandcsoftCollaborate'>initial candcsoftCollaborate</h5><ul>
+		<li>see <a href="#moveCCDev">move $CCDev folder</a></li>
+	</ul>
+
+	<!-- @marker "Remove Xcode Environment Dependency" -->
+	<h5 id='RemoveXcodeEnvDependency'>Remove Xcode Environment Dependency</h5><ul>
+		<li class='blurb'>Previous support for accessing custom environment variables from Xcode used file Environment.plist, which is no longer read. Apparently, no new method of supporting custom environment variables is as yet officially supported. Current workaround uses file /private/etc/launchd.conf, which is difficult to support, especially for collaborators, because it requires sudo access.</li>
+		<li>remove obsolete files<ul>
+			<li>Developer/Environment/environment.plist; Xcode/Workflows</li>
+		</ul></li>
+		<li class='depr'>replace environment variables ${DEV}, ${CCDev} with functions $(DEV), $(CCDev)<ul>
+			<li class='blurb'>This strategy failed because Xcode could not find the ksh functions folder, possibly because we can no longer find a way to tell Xcode which shell we are using.</li>
+		</ul></li>
+		<li>revert "use functions $(DEV), $(CCDev)"</li>
+		<li id='moveCCDev'>move ${CCDev} to standard location<ul>
+			<li class='blurb'>${CCDev} contains path to folder containing scripts, derived files, etc.; has been customizable per user</li>
+			<li>standardize folder location at ~/Library/CCDev<ul>
+				<li>replace definition in Developer_Setup; update in Developer tests</li>
+				<li>update AppleScripts in targets Xcode, BBEdit</li>
+				<li>update UserSlates script and Slates, service GitSaveMessage, DoxyDemo address, Cdoc</li>
 			</ul></li>
-			<li>BuildSupport.xcodeproj/project.pbxproj<ul>
-				<li>target settings and script
-					use $(DEV), $(CCDev) instead of environment variables ${DEV}, ${CCDev}</li>
-			</ul></li>
-			<li>Scripts: archive.ksh, buildCdoc.ksh, ccBackup.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>
 		</ul></li>
-		<li>Cdoc<ul>
-			<li>Cdoc_install.ksh</li>
-			<li>html: DevelopingProjects.html, Glossary_Support.html, History_Support.html, Support.html, Tools.html</li>
-		</ul></li>
-		<li>Doxygen<ul>
-			<li>_Tests/testDoxygenInstall.ksh</li>
-			<li>DoxyDemo_doxygen.txt</li>
-			<li>Doxygen_install.ksh</li>
-		</ul></li>
-		<li>Applications<ul>
-			<li>Xcode<ul>
-				<li>Xcode_install.ksh</li>
-				<li>Templates/FileTemplates<ul>
-					<li>_Scripting/InstallCdoc.xctemplate/___FILEBASENAME___.ksh</li>
-					<li>_Scripting/InstallTarget.xctemplate/___FILEBASENAME___.ksh</li>
-				</ul></li>
-			</ul></li>
-			<li>BBEdit: BBEdit_install.ksh</li>
-		</ul></li>
-		<li>UserSlates/Slates: Terminal_C9.r</li>
-	</ul></li>
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-	<li>revert use functions $(DEV), $(CCDev)</li>
-</ul>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>enter CCDev's standardized path directly into Xcode, replacing uses of ${CCDev}</li>
+		<li>${DEV}: passed as part of a parameter in build scripts; change scripts to use ${SRCROOT} instead</li>
+	</ul>
 
 <!-- @marker "Switch to MountainLion" -->
 <h4 id='MountainLion'>Switch to MountainLion</h4>
@@ -548,7 +540,7 @@
 		</ul></li>
 		<li>[refactorInstall] refactor Xcode.install to enable extension for other targets<ul>
 			<li>Support: add reference files for CCDev; see <a href="Support.html#ReferenceFiles">Support: Reference Files</a></li>
-			<li>target <a href="Support.html#tar_CCDev_Setup">CCDev_Setup</a>; script CCDev_Setup.ksh<ul>
+			<li>target <a href="Support.html#tar_Developer_Setup">Developer_Setup</a>; script CCDev_Setup.ksh<ul>
 				<li>new file CCDev_Setup.ksh based on code from Support_svn:CCDev.build and Punkin_svn:Collaborator.build</li>
 				<li>add File Template Scripting/shunitTest</li>
 				<li>add CCDev/_Tests/testCCDev_Setup.ksh; run from CCDev_Setup.ksh</li>
