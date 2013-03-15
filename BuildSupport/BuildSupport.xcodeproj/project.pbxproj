@@ -67,6 +67,13 @@
 			remoteGlobalIDString = 67364A7216C0362C00940D94;
 			remoteInfo = DeveloperScripts;
 		};
+		67645A0C16EFD181004F37F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67FA078816D5A1010022D6A8;
+			remoteInfo = Developer_Setup;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -124,7 +131,6 @@
 		67DB232A169E0A2900A6E910 /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
 		67DB232C169E0A2900A6E910 /* Snippet.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = Snippet.applescript; sourceTree = "<group>"; };
 		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
-		67DB2333169E0A2900A6E910 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		67DB2335169E0A2900A6E910 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67DB2336169E0A2900A6E910 /* errtrap.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errtrap.ksh; sourceTree = "<group>"; };
 		67DB233B169E0A2900A6E910 /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
@@ -454,7 +460,6 @@
 				67DB240B16A1CBE500A6E910 /* Developer_Setup.ksh */,
 				67DB2327169E0A2900A6E910 /* _Tests */,
 				67DB232B169E0A2900A6E910 /* AppleScripts */,
-				67DB2332169E0A2900A6E910 /* Environment */,
 				67DB2334169E0A2900A6E910 /* 3 Functions */,
 				67DB233A169E0A2900A6E910 /* Scripts */,
 				67BE04C516B09CB50065BFDE /* 4 Services */,
@@ -483,14 +488,6 @@
 				67DB232D169E0A2900A6E910 /* Snippets.txt */,
 			);
 			path = AppleScripts;
-			sourceTree = "<group>";
-		};
-		67DB2332169E0A2900A6E910 /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				67DB2333169E0A2900A6E910 /* environment.plist */,
-			);
-			path = Environment;
 			sourceTree = "<group>";
 		};
 		67DB2334169E0A2900A6E910 /* 3 Functions */ = {
@@ -1149,7 +1146,7 @@
 		};
 		67BE04B916B06EFF0065BFDE /* Cdoc */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(DEV)/Support BuildSupport/Cdoc $(ACTION)";
+			buildArgumentsString = "${DEV}/Support BuildSupport/Cdoc $(ACTION)";
 			buildConfigurationList = 67BE04BA16B06EFF0065BFDE /* Build configuration list for PBXLegacyTarget "Cdoc" */;
 			buildPhases = (
 			);
@@ -1163,13 +1160,14 @@
 		};
 		67BE04BF16B08DE30065BFDE /* Developer */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "${DEV}/Support BuildSupport/Developer $ACTION";
+			buildArgumentsString = "${DEV}/Support BuildSupport/Developer $(ACTION)";
 			buildConfigurationList = 67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */;
 			buildPhases = (
 			);
 			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
+				67645A0D16EFD181004F37F1 /* PBXTargetDependency */,
 				673A579316C055320000BEE2 /* PBXTargetDependency */,
 			);
 			name = Developer;
@@ -1336,8 +1334,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "mkdir -p ${CCDev}/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ${CCDev}/UserSlates/Accessor.rsrc\n";
+			shellPath = /bin/ksh;
+			shellScript = "mkdir -p $(CCDev)/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc $(CCDev)/UserSlates/Accessor.rsrc\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1391,6 +1389,11 @@
 			isa = PBXTargetDependency;
 			target = 67364A7216C0362C00940D94 /* DeveloperScripts */;
 			targetProxy = 673A579216C055320000BEE2 /* PBXContainerItemProxy */;
+		};
+		67645A0D16EFD181004F37F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67FA078816D5A1010022D6A8 /* Developer_Setup */;
+			targetProxy = 67645A0C16EFD181004F37F1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

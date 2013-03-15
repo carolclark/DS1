@@ -81,13 +81,13 @@ testInstallation() {
 	# Scripts/cleanProjectTarget
 	fl="${CCDev}/bin/cleanProjectTarget"
 	if [[ ! -e "${fl}" ]] ; then
-		fail "$LINENO: CCDev script cleanProjectTarget missing" 
+		fail "$LINENO: CCDev script cleanProjectTarget missing"
 	fi
-	
+
 	# ~/Library/Scripts/Developer/FixWindow.scpt
 	fl="${HOME}/Library/Scripts/Developer/FixWindow.scpt"
 	if [[ ! -e "${fl}" ]] ; then
-		fail "$LINENO: AppleScript FixWindow.scpt missing" 
+		fail "$LINENO: AppleScript FixWindow.scpt missing"
 	fi
 
 }
