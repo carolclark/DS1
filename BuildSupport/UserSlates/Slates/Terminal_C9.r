@@ -42,6 +42,7 @@
 	#define resid_gitRebase				resid_Git+240
 	#define	resid_gitTag				resid_Git+250
 	#define resid_gitMerge				resid_Git+270
+	#define resid_gitMergeBase			resid_Git+272
 	#define resid_gitPush				resid_Git+275
 	#define resid_gitFetch				resid_Git+285
 	#define resid_gitClean				resid_Git+290
@@ -206,6 +207,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
 		Event { "merge", "" },			Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
+		Event { "merge base", "" },		Sequence{}, TypeText { "git merge-base" },, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },			Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
 		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch " }, ResSubslate { resid_gitFetch }, endSequence{},
 		Event { "reset", "" },			Sequence{}, TypeText { "git reset " }, ResSubslate { resid_gitReset }, endSequence{},
@@ -361,10 +363,11 @@ resource restype_Slate (resid_gitShow, "") { {
 		Event { "oneline", "" },		TypeText { "--oneline " },
 		Event { "head", "" },			TypeText { "HEAD " },
 		Event { "stash", "" },			TypeText { "stash " },
-		_GitStandards_,
 		_TypeVariable_,
 		_StandardBranches_,
 		_Remotes_,
+		Event { "specify", "" },		ResSubslate { resid_gitSpecify },
+		_GitStandards_,
 	} }
 } };
 
@@ -552,12 +555,21 @@ resource restype_Slate (resid_gitMerge, "") { {
 	} }
 } };
 
+#pragma mark gitMergeBase
+resource restype_Slate (resid_gitMergeBase, "") { {
+	Slate { "merge-base",	{
+		_TypeVariable_,
+		_StandardBranches_,
+		_Remotes_,
+		Event { "specify", "" },		ResSubslate { resid_gitSpecify },
+		_GitStandards_,
+	} }
+} };
+
 #pragma mark 6 -- Push
 #pragma mark Push
 resource restype_Slate (resid_gitPush, "") { {
 	Slate { "Push",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
 		Event { "origin", "" },			TypeText { "origin " },
 		Event { "tags", "" },			TypeText { "--tags " },
 		_GitStandards_,
