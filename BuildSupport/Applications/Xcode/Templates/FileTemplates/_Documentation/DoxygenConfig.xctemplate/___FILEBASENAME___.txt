@@ -3,13 +3,13 @@
 
 # This configuration file includes only the settings we wish to set or change.
 # For more information about these settings, or about the many additional settings available,
-#	see Support/CCDev/Default.doxygen or the Doxygen application.
+#	see Support/BuildSupport/Doxygen/Default.doxygen or the Doxygen application.
 
 PROJECT_NAME			= <#ProjectName#>
 OUTPUT_DIRECTORY		= $(CCDev)/Sites/Doxygen/<#ProjectName#>
-STRIP_FROM_PATH			= /Users/carolclark/Dev/<#ProjectName#>
+STRIP_FROM_PATH			= $(DEV)/<#ProjectName#>
 EXTRACT_ALL				= YES
-INPUT					= /Users/carolclark/Dev/<#ProjectName#>
+INPUT					= $(DEV)/<#ProjectName#>
 EXCLUDE_PATTERNS		= *.plist *.pch
 EXCLUDE					= en.lproj
 RECURSIVE				= YES
@@ -19,4 +19,4 @@ DOCSET_FEEDNAME			= <#ProjectName#>
 DOCSET_BUNDLE_ID		= com.candcsoft.<#ProjectName#>
 DOCSET_PUBLISHER_ID		= com.candcsoft.Publisher
 GENERATE_LATEX			= NO
-IMAGE_PATH				= /Users/carolclark/Dev/<#ProjectName#>/Doxygen
+IMAGE_PATH				= $(DEV)/<#ProjectName#>/Doxygen

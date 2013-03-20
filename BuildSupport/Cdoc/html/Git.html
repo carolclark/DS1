@@ -297,8 +297,8 @@
 <!-- @/topicList -->
 
 <ul>
-	<li>do not use squash; rebase only to rebase an existing branch on more current code; see <a href="http://paul.stadig.name/2010/12/thou-shalt-not-lie-git-rebase-ammend.html">Paul Stadig: Thou Shalt Not Lie</a></li>
-	<li>sha/date marker: used in history and thread files to support matching history with repository<ul>
+	<li>do not use squash merges; rebase only to rebase an existing branch on more current code <span class='dq'>or clean up a current, unmerged branch</span>; see <a href="http://paul.stadig.name/2010/12/thou-shalt-not-lie-git-rebase-ammend.html">Paul Stadig: Thou Shalt Not Lie</a></li>
+	<li class='dq'>sha/date marker: used in history and thread files to support matching history with repository<ul>
 		<li>Setting the sha/date marker replaces the clearly-visible (from source code) commit message and notes with the sha/date marker. A branch's sha/date is often updated from another branch.</li>
 		<li><span class='mono'>print "[$(cd /Users/carolclark/Dev/${proj}; git log -1 --pretty=format:'%h') $(date +%m/%d/20%y) &lt;placeholder&gt;]"</span></li>		
 	</ul></li>

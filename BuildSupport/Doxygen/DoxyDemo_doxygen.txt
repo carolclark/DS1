@@ -7,9 +7,9 @@
 
 PROJECT_NAME			= DoxyDemo
 OUTPUT_DIRECTORY		= $(CCDev)/Sites/Doxygen/DoxyDemo
-STRIP_FROM_PATH			= /Users/carolclark/Dev/Support/BuildSupport/Doxygen/DoxyDemo
+STRIP_FROM_PATH			= $(DEV)/Support/BuildSupport/Doxygen/DoxyDemo
 EXTRACT_ALL				= YES
-INPUT					= /Users/carolclark/Dev/Support/BuildSupport/Doxygen/DoxyDemo
+INPUT					= $(DEV)/Support/BuildSupport/Doxygen/DoxyDemo
 EXCLUDE_PATTERNS		= *.plist *.pch
 EXCLUDE					= en.lproj
 RECURSIVE				= YES
@@ -19,4 +19,4 @@ DOCSET_FEEDNAME			= DoxyDemo
 DOCSET_BUNDLE_ID		= com.candcsoft.DoxyDemo
 DOCSET_PUBLISHER_ID		= com.candcsoft.Publisher
 GENERATE_LATEX			= NO
-IMAGE_PATH				= /Users/carolclark/Dev/Support/BuildSupport/Doxygen/DoxyDemo
+IMAGE_PATH				= $(DEV)/Support/BuildSupport/Doxygen/DoxyDemo

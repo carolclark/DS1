@@ -110,7 +110,7 @@
 
 	<!-- @marker "Remove Xcode Environment Dependency" -->
 	<h5 id='RemoveXcodeEnvDependency'>Remove Xcode Environment Dependency</h5><ul>
-		<li class='blurb'>Previous support for accessing custom environment variables from Xcode used file Environment.plist, which is no longer read. Apparently, no new method of supporting custom environment variables is as yet officially supported. Current workaround uses file /private/etc/launchd.conf, which is difficult to support, especially for collaborators, because it requires sudo access.</li>
+		<li class='blurb'>Previously, Xcode projects used custom environment variables to specify some build paths. These were defined in file Environment.plist, which is no longer read by Xcode. Apparently, no new method of supporting custom environment variables is as yet officially supported. Current workaround uses file /private/etc/launchd.conf, which is difficult to support, especially for collaborators, because it requires sudo access.</li>
 		<li>remove obsolete files<ul>
 			<li>Developer/Environment/environment.plist; Xcode/Workflows</li>
 		</ul></li>
@@ -126,10 +126,28 @@
 				<li>update UserSlates script and Slates, service GitSaveMessage, DoxyDemo address, Cdoc</li>
 			</ul></li>
 		</ul></li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li>enter CCDev's standardized path directly into Xcode, replacing uses of ${CCDev}</li>
 		<li>${DEV}: change scripts to use ${SRCROOT} instead<ul>
 			<li class='blurb'>${DEV} is passed as part of a parameter in build scripts</li>
+		</ul></li>
+		<li>UserSlates/Slates: Terminal_C9.r</li>
+		<li>revert use functions $(DEV), $(CCDev)</li>
+		<li>move CCDev folder location to ~/Library/CCDev<ul>
+			<li>Developer: replace in Developer_Setup, _Tests</li>
+			<li>Applications: update AppleScripts in targets Xcode, BBEdit</li>
+			<li>update UserSlates build script and Slates, service GitSaveMessage, DoxyDemo address, Cdoc</li>
+		</ul></li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li>correct references to locations/environmentVariables $DEV and $CCDev<ul>
+			<li>fix references to paths $DEV, $CCDev<ul>
+				<li>without /private/etc/launchd.conf, Xcode projects will not recognize predefined vars; as projects and paths are currently structured, ${DEV}/&lt;Workspace&gt; is ${SRCROOT}/.., ${CCDev} is now ${HOME}/Library/CCDev</li>
+				<li>for collaboration, all paths containing 'carolclark' to must be corrected</li>
+			</ul></li>
+			<li>update project scripts; Doxygen configuration file (Doxygen expects forms $(DEV) and $(CCDev))</li>
+		</ul></li>
+		<li id='fixUserSpecificBuilds'>replace user-specific build scripts<ul>
+			<li>convert Cdoc, Doxygen targets in Punkin, Accessor to use External targets, ccInstallAction</li>
+			<li>retire obsolete scripts buildCdoc.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>
 		</ul></li>
 	</ul>
 
@@ -319,8 +337,8 @@
 			</ul></li>
 		</ul></li>
 		<li id='ccgit_do'>ccgit.ksh: scripts to support git and git accessibility<ul>
-			<li>--createPatches &lt;Workspace&gt;: creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) at $(DEV)/&lt;Workspace&gt;/_patches<ul>
-				<li>Developer Menu script CreatePunkinPatches creates patches for Punkin at $(DEV)/Punkin/_patches; used by collaborators to prepare patches for submission</li>
+			<li>--createPatches &lt;Workspace&gt;: creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) at ${DEV}/&lt;Workspace&gt;/_patches<ul>
+				<li>Developer Menu script CreatePunkinPatches creates patches for Punkin at ${DEV}/Punkin/_patches; used by collaborators to prepare patches for submission</li>
 			</ul></li>
 			<li>--listFiles:  convert input from an abbreviated diff to a numbered file list stored at $CCDev/Git/gitFileList</li>
 			<li>--fileSelect: display contents of $CCDev/Git/gitFileList; allow user to select a file by number; return name of selected file</li>
@@ -355,7 +373,7 @@
 				<li>move Services from target Xcode to target Developer</li>
 			</ul></li>
 			<li>Xcode<ul>
-				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to $(CCDev)/build/Support/BuildSupport/Applications/Xcode</li>
+				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to ${CCDev}/build/Support/BuildSupport/Applications/Xcode</li>
 				<li>move ccInstall functionality from Scripts target to new External target</li>
 				<li>Xcode_install.ksh: add folders to function cleanTarget<ul>
 					<li>ccInstall: add --removeFolder</li>
@@ -369,20 +387,18 @@
 					<li>--copyFiles: do not use unix <span class='mono'>dirname</span>, since it cannot handle folders inside "Application Support"</li>
 				</ul></li>
 			</ul></li>
-			<li>convert Cdoc, Doxygen targets in Punkin, Accessor to use External targets<ul>
-				<li>expand ccInstallAction.ksh to support Doxygen builds<ul>
-					<li>new target Doxygen; new files testDoxygenInstall.ksh, Doxygen_install.ksh; move file Default.doxygen in</li>
-					<li>ccInstall: implement --getTargetName; add action doDoxygen</li>
-					<li>testDoxygenInstall.ksh, Doxygen_install.ksh: implement</li>
-					<li>ccInstall: set up to run doxygen</li>
-					<li>new files DoxyDemo_doxygen.txt, mainpage.dox: configuration and main page files for sample Doxygen docs</li>
-					<li>Doxygen target: build docs</li>
-					<li>Doxygen: load docset into Xcode<ul>
-						<li>rename Doxygen demonstration files AlertPresenter -&gt; AlertPresenterDD to avoid confusion with the real class</li>
-					</ul></li>
+			<li>expand ccInstallAction.ksh to support Doxygen builds<ul>
+				<li>new target Doxygen; new files testDoxygenInstall.ksh, Doxygen_install.ksh; move file Default.doxygen in</li>
+				<li>ccInstall: implement --getTargetName; add action doDoxygen</li>
+				<li>testDoxygenInstall.ksh, Doxygen_install.ksh: implement</li>
+				<li>ccInstall: set up to run doxygen</li>
+				<li>new files DoxyDemo_doxygen.txt, mainpage.dox: configuration and main page files for sample Doxygen docs</li>
+				<li>Doxygen target: build docs</li>
+				<li>Doxygen: load docset into Xcode<ul>
+					<li>rename Doxygen demonstration files AlertPresenter -&gt; AlertPresenterDD to avoid confusion with the real class</li>
 				</ul></li>
 			</ul></li>
-			<li>retire obsolete scripts buildCdoc.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>
+			<li><a href="#fixUserSpecificBuilds">replace user-specific build scripts</a></li>
 		</ul></li>
 		<li class='tldate'>[useExternalTargets ...]</li>
 	</ul>
