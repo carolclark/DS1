@@ -373,7 +373,7 @@ resource restype_Slate (resid_JumpBar, "JumpBar") { {
 		ExitEvent { "okay", "" },		Keypress { kc_return, 0 },								\
 		ExitEvent { "return", "" },		Keypress { kc_return, 0 },								\
 		ExitEvent { "cancel", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, endSequence{},	\
-		Event { "close", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, endSequence{},	\
+		ExitEvent { "close", "" },		Keypress { kc_escape, 0 },								\
 		ExitEvent { "exit", "" },		CloseSubslate{},										\
 		Event { "page top", "" },		Keypress { kc_home, 0 },								\
 		Event { "page bottom", "" },		Keypress { kc_end, 0 },									\
@@ -1050,7 +1050,7 @@ resource restype_Slate (resid_AddRepository, "Add Repository") { {
 		Event { "Repository", "" },		TypeText { "Add Repository" },
 		Event { "Clone", "" },			TypeText { "Checkout or Clone" },
 		Event { "continue", "" },		_return,
-		Event { "git path", "" },		Sequence{}, TypeText { "/Users/carolclark/Dev/gitrep/Main" }, _left, _left, _left, _left, endSequence{},			
+		Event { "git path", "" },		Sequence{}, TypeText { "https://carolclark@github.com/carolclark" }, _left, _left, _left, _left, endSequence{},
 		Event { "working path", "" },	TypeText { "/Users/carolclark/Dev/" },
 		Event { "next", "" },			_return,
 		Event { "finish", "" },			Sequence{}, _return, ResSubslate { resid_FileSave }, endSequence{},

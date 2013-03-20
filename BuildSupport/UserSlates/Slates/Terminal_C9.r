@@ -7,7 +7,7 @@
 
 #pragma mark === Markers ===
 // Git
-//	2 Git, Type, Specify, Checkout, Branch, Remote, Difference, Show, Grep, Stash; 3 Add, Commit, Log, Rebase, Tag, Merge, Push, Fetch; 4 Clean; Bisect; SelectFile, Reset, Browser, FileMerge
+//	2 Git, Type, Specify, Checkout, Branch, Remote, Difference, Show, Grep, Stash; 3 Add, Commit, Log, Rebase, Tag, Merge, Push, Fetch; 4 Clean; Bisect; Blame; SelectFile, Reset, Browser, FileMerge
 // Other
 //	1 Standards; Type; Emacs; Defines; 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
 
@@ -42,16 +42,17 @@
 	#define resid_gitRebase				resid_Git+240
 	#define	resid_gitTag				resid_Git+250
 	#define resid_gitMerge				resid_Git+270
-	#define resid_gitMergeBase			resid_Git+272
-	#define resid_gitPush				resid_Git+275
-	#define resid_gitFetch				resid_Git+285
-	#define resid_gitClean				resid_Git+290
-	#define resid_Bisect				resid_Git+295
+	#define resid_gitMergeBase			resid_Git+300
+	#define resid_gitPush				resid_Git+320
+	#define resid_gitFetch				resid_Git+340
+	#define resid_gitClean				resid_Git+360
+	#define resid_gitBisect				resid_Git+380
+	#define resid_gitBlame				resid_Git+400
 
-	#define resid_gitSelectFile			resid_Git+300
-	#define	resid_gitReset				resid_Git+320
-	#define resid_gitBrowser			resid_Git+340
-	#define resid_FileMerge				resid_Git+350
+	#define resid_gitSelectFile			resid_Git+500
+	#define	resid_gitReset				resid_Git+520
+	#define resid_gitBrowser			resid_Git+540
+	#define resid_FileMerge				resid_Git+550
 		#define resid_FileMergeActions		resid_FileMerge+1
 		#define resid_FileMergeEdit			resid_FileMerge+2
 
@@ -212,7 +213,8 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch " }, ResSubslate { resid_gitFetch }, endSequence{},
 		Event { "reset", "" },			Sequence{}, TypeText { "git reset " }, ResSubslate { resid_gitReset }, endSequence{},
 		Event { "clean", "" },			Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
-		Event { "bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_Bisect }, endSequence{},
+		Event { "bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_gitBisect }, endSequence{},
+		Event { "blame", "" },			Sequence{}, TypeText { "git blame " }, ResSubslate { resid_gitBlame }, endSequence{},
 		Event { "patch", "" },			Subslate { "patch" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -278,6 +280,7 @@ resource restype_Slate (resid_gitCheckout, "") { {
 		Event { "head", "" },			Sequence{}, TypeText { "HEAD " }, _left, ResSubslate { resid_gitType }, endSequence{},
 		Event { "master", "" },			TypeText { "master " },
 		Event { "path ", "" },			TypeText { "-- " },
+		Event { "specify", "" },		ResSubslate { resid_gitSpecify },
 		_TypeVariable_,
 		_GitStandards_,
 		_StandardBranches_,
@@ -584,7 +587,7 @@ resource restype_Slate (resid_gitFetch, "") { {
 } };
 
 #pragma mark 4 === Clean
-// inside: Clean 1 Bisect 2 SelectFile; 3 Reset; 4 Browser; 5 FileMerge
+// inside: Clean 1 Bisect; 2 Blame; 3 SelectFile; 4 Reset; 5 Browser; 6 FileMerge
 #pragma mark Clean
 resource restype_Slate (resid_gitClean, "") { {
 	Slate { "Clean",	{
@@ -594,7 +597,7 @@ resource restype_Slate (resid_gitClean, "") { {
 } };
 
 #pragma mark Bisect
-resource restype_Slate (resid_Bisect, "") { {
+resource restype_Slate (resid_gitBisect, "") { {
 	Slate { "Bisect",	{
 		_GitStandards_,
 		Event { "start", "" },			TypeText { "start " },
@@ -606,6 +609,32 @@ resource restype_Slate (resid_Bisect, "") { {
 		Event { "replay", "" },			TypeText { "replay " },
 	} }
 } };
+
+#pragma mark gitBlame
+resource restype_Slate (resid_gitBlame, "") { {
+	Slate { "Blame",	{
+		Event { "lines", "" },			TypeText { "-L " },
+		Event { "moved", "" },			TypeText { "-M " },
+		Event { "changed", "" },		TypeText { "-C " },
+		Event { "comma", "" },			Keypress { kc_comma, 0 },
+		Event { "space", "" },			Keypress { kc_space, 0 },
+		Event { "1", "" },				Keypress { kc_1, 0 },
+		Event { "2", "" },				Keypress { kc_2, 0 },
+		Event { "3", "" },				Keypress { kc_3, 0 },
+		Event { "4", "" },				Keypress { kc_4, 0 },
+		Event { "5", "" },				Keypress { kc_5, 0 },
+		Event { "6", "" },				Keypress { kc_6, 0 },
+		Event { "7", "" },				Keypress { kc_7, 0 },
+		Event { "8", "" },				Keypress { kc_8, 0 },
+		Event { "9", "" },				Keypress { kc_9, 0 },
+		Event { "0", "" },				Keypress { kc_0, 0 },
+		_GitStandards_,
+		_TypeVariable_,
+		_StandardBranches_,
+		_Remotes_,
+	} }
+} };
+
 
 #pragma mark 2 -- Select
 resource restype_Slate (resid_gitSelectFile, "") { {
