@@ -226,8 +226,6 @@ if [[ "${1}" = clean ]] ; then
 	removeFileIfPresent "${HOME}/.gitconfig"
 	removeFileIfPresent "${HOME}/.launchd.conf"
 	removeFileIfPresent "${CCDev}/bin/.kshrc"
-	removeFileIfPresent "${CCDev}/bin/ccInstallAction"
-	removeFileIfPresent "${CCDev}/bin/resultCodes.ksh"
 	removeFileIfPresent "${CCDev}/Git/attributes"
 	removeFileIfPresent "${CCDev}/Git/exclude"
 	exit

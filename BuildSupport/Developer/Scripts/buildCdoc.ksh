@@ -211,7 +211,7 @@ function translateCdoc {
 		s|<!-- @/objective "\([^"][^"]*\)" "\([^"]*\)" -->|<p class="mileend">\2 \1</p>|
 		s|<!-- @historyMark "\([^"][^"]*\)" -->|<p class="hmark"><a name="hmark_\1">\&lt;-- \1</a></p>|
 		s|<!-- @goal "\([^"]*\)" "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr> <td>\1</td> <td>\2</td> <td>\3</td> <td align=\"center\">\4</td> </tr>|
-		s|<!-- @useCaseHeader "\([^"][^"]*\)" "\([^"][^"]*\)" "\([1-5]\)" "\([hsupx]\)" -->|<h4><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/ucds_\3.tiff" alt="design scope \3" /><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><a name="\2">\1</a><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><img src="file:///Users/carolclark/CCDev/Sites/TechnicalDocs/img/ucgl_\4.tiff" alt="goal level \4" /></h4>|
+		s|<!-- @useCaseHeader "\([^"][^"]*\)" "\([^"][^"]*\)" "\([1-5]\)" "\([hsupx]\)" -->|<h4><img src="file:///Users/carolclark/Library/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><img src="file:///Users/carolclark/Library/CCDev/Sites/TechnicalDocs/img/ucds_\3.tiff" alt="design scope \3" /><img src="file:///Users/carolclark/Library/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><a name="\2">\1</a><img src="file:///Users/carolclark/Library/CCDev/Sites/TechnicalDocs/img/space.tiff" alt="" /><img src="file:///Users/carolclark/Library/CCDev/Sites/TechnicalDocs/img/ucgl_\4.tiff" alt="goal level \4" /></h4>|
 		s|<!-- @CrcCard "\([^"][^"]*\)" -->|<div class="crcholder"><table class="crc" border="0" cellspacing="0" cellpadding="5" width="100%"><caption></caption><tr><th colspan="2">\1</th> </tr>|
 		s|<!-- @/CrcCard -->|</table></div>|
 	' <"$in" >"$out"
@@ -257,7 +257,7 @@ projectPath="${DEV}/${project}"
 target="Cdoc"
 setPaths "${projectPath}" "${target}"
 			
-# Builds $project/Cdoc at ~/CCDev/Sites/TechnicalDocs/$project
+# Builds $project/Cdoc at ~/Library/CCDev/Sites/TechnicalDocs/$project
 
 st=0
 process installCdoc
