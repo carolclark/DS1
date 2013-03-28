@@ -14,6 +14,86 @@
 <h1>Support History</h1>
 
 <!-- @topicList "Support History" "Contents" -->
+	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
+		<!-- @topicItem "resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
+		<!-- @topicItem "use GitHub Issues" "#useGitHubIssues" "1" "" -->
+		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
+	<!-- @topicGroup "" "2" -->
+	<!-- @topicItem "Closed Issues" "#ClosedIssues" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Topics" "5" -->
+	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
+	<!-- @topicItem "Markdown" "#Markdown" "1" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Active Issues" -->
+<h2 id='ActiveIssues'>Active Issues</h2>
+
+<h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> use GitHub Issues; synchronize History files</h4><pre>
+* adapt History_Support.html to synchronize with GitHub issues
+* **==**
+* allow markdown files to be included in the source for Cdoc sites
+	* make sure they produce valid HTML
+* use separate history file Support_v0_1.md for work on milestone v0.1
+</pre>
+
+<h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
+* correct merge conflicts (Punkin; Accessor)
+* **==**
+* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
+</pre>
+
+<!-- @marker "Automation" -->
+<h4 id='Automation'>Ongoing Automation</h4><pre>
+* GitHub subslate for Xcode
+* **==**
+* assistance for typing Markdown (Maybe Dash snippets accessed with `Type > markdown`?)</pre>
+
+<!-- @marker "Closed Issues" -->
+<h2 id='ClosedIssues'>Closed Issues</h2>
+
+<!-- @marker "Open Topics" -->
+<h2 id='OpenTopics'>Open Topics</h2>
+
+<!-- @marker "Markdown" -->
+<h3 id='Markdown'>Markdown</h3>
+<pre>
+	[mdTools]:	"http://brettterpstra.com/projects/markdown-service-tools/"
+	[markdown]:	"#Markdown"
+	test link: [markdown][markdown]
+
+## Markdown
+
+### Motivation
+###### *Cdoc: existing in-house system for producing website for technical documentation*
+*		*created several years ago to simplify some aspects, especially accessibility features, for our in-house documentation*
+*		*special features use embedded HTML comments to tag special features, which are then expanded by a sed-based script*
+
+###### *Markdown: publicly-available perl script to produce web content from readable text files*
+*		*much more collaborator-friendly*
+*		*can contain embedded HTML*
+*		*special features can be provided using embedded HTML, which can then be expanded using JavaScript*
+*		*translators are available to convert markdown to HTML and HTML to markdown
+
+### Conclusion
+	* move toward markdown instead of Cdoc for in-house documentation
+
+### Expected Stages
+	1. allow markdown files to be included in the source for Cdoc sites
+		*  make sure they produce valid HTML
+	2. add custom stylesheet
+	3. add HTML support, including JavaScript, for special features as indicated
+		* Markdown files can include HTML content, but Cdoc HTML features will be supported only from Cdoc HTML files
+	4. over time: expect existing Cdoc features to become available in JavaScript from either HTML or Markdown; expect files to be converted to Markdown
+	4. eventually, convert existing Cdoc source to markdown
+		*see [Markdown Tools][mdTools] and/or Markdownify for conversion from HTML
+</pre>
+
+<h1>Support History</h1>
+
+<!-- @topicList "Support History: Previous Content" "PreviousContent" -->
 	<!-- @topicItem "Development Overview" "#DevelopmentOverview" "0" "" -->
 	<!-- @topicGroup "" "2" -->
 	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
@@ -24,16 +104,16 @@
 		<!-- @topicSep -->
 		<!-- @topicItem "Switch to MountainLion" "#MountainLion" "1" "" -->
 			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
-		<!-- @topicGroup "" "10" -->
+		<!-- @topicGroup "" "11" -->
 		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
 			<!-- @topicItem "Script Site Installation" "#installSite" "2" "" -->
 			<!-- @topicItem "Add TechnicalDocs Area" "#addTechnicalDocs" "2" "" -->
 			<!-- @topicItem "Add Family Area" "#addFamily" "2" "" -->
-		<!-- @topicGroup "" "15" -->
+		<!-- @topicGroup "" "16" -->
 		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
 			<!-- @topicItem "Recover DevSupport Scripts" "#DevSupport" "2" "" -->
 			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
-		<!-- @topicGroup "" "19" -->
+		<!-- @topicGroup "" "20" -->
 		<!-- @topicItem "General" "#General" "1" "" -->
 			<!-- @topicItem "Upgrade/Add Xcode File Templates" "#XcodeTemplates_8_12" "2" "" -->
 			<!-- @topicItem "Improve Git Access" "#ImproveGitAccess" "2" "" -->
@@ -41,14 +121,12 @@
 			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
 		<!-- @topicGroup "" "25" -->
 		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
-	<!-- @topicGroup "" "27" -->
+	<!-- @topicGroup "" "28" -->
 	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
-	<!-- @topicGroup "" "29" -->
+	<!-- @topicGroup "" "30" -->
 	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
 <!-- @/topicList -->
 
-<p><br /></p>
-<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <!-- @marker "Development Overview" -->
 <div style="page-break-before: always">
 <h3 id='DevelopmentOverview'>Development Overview</h3>
@@ -127,6 +205,8 @@
 			</ul></li>
 			<li>update project scripts; Doxygen configuration file (Doxygen expects forms $(DEV) and $(CCDev))</li>
 		</ul></li>
+		<li class='tldate'>[fixDevCCDev 03/20/2013]</li>
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		<li id='fixUserSpecificBuilds'>replace user-specific build scripts<ul>
 			<li>convert Cdoc, Doxygen targets in Punkin, Accessor to use External targets, ccInstallAction</li>
 			<li>retire obsolete scripts buildCdoc.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>
