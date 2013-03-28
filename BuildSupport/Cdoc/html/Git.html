@@ -67,19 +67,18 @@
 				</ul></li>
 				<li>construct and save commit message<span class='blurb'>Xcode / Stickies</span></li>
 				<li>verify modifications (diff tool)<span class='blurb'>Terminal</span></li>
-				<li>status; add / review files to be committed</li>
+				<li>status; check branch; add / review files to be committed</li>
 				<li>check for stray spaces (diff --cached --check)</li>
 				<li>review commit msgfile</li>
 				<li>commit</li>
 				<li>show --name-only; log; [amend]<ul>
-					<li><span class='em'>Amend:</span><ul>
-						<li>[reset --soft lastCommit; restage]; commit --amend; [edit message]</li>
-					</ul></li>
+					<li><span class='em'>Amend:</span> [reset --soft lastCommit; restage]; commit --amend; [edit message]</li>
 				</ul></li>
+				<li>diff --name-status with master; [merge in master]</li>
 			</ul></li>
 		</ul>
 		<h5>Merge</h5><ul>
-			<li>from branch to be merged: check for status clear; diff (abbreviate) master with branch; inspect for conflicts</li>
+			<li>from branch to be merged: check for status clear; diff (--name-status) master with branch; inspect for conflicts</li>
 			<li>switch to (checkout) master</li>
 			<li><span class='em'>Fetch</span><ul>
 				<li>checkout branch artist; fetch from remote branch laura/artist</li>
@@ -87,11 +86,13 @@
 				<li>merge artist</li>
 			</ul></li>
 			<li>review change log; [rebase] (for rebase 'edit' steps, amend commit)</li>
+			<li>check stash list</li>
 			<li>merge branch (<span class='mono'>merge --no-ff &lt;branch&gt; -m &lt;msg&gt;</span>)</li>
-			<li>verify status clear; delete branch</li>
-			<li>check stash list; check for unmerged branches (branch --no-merged master)</li>
+			<li>checkout branch; verify status clear; [delete branch]</li>
+			<li>check for unmerged branches (branch --no-merged master)</li>
 		</ul>
 		<h5>Push</h5><ul>
+			<li>check for stashes, unmerged branches</li>
 			<li>[tag]</li>
 			<li>push [push tags]</li>
 			<li>push master to remote laura; [push tags]</li>

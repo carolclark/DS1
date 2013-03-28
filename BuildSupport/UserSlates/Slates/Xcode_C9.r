@@ -73,6 +73,13 @@
 	#define resid_refactorPreview		resid_Refactor+1
 	#define resid_refactorView			resid_Refactor+2
 
+#define resid_GitHub				resid_Xcode+650
+	#define resid_ghMyPage				resid_GitHub+1
+	#define resid_ghRepository			resid_GitHub+2
+	#define resid_ghDashIssues			resid_GitHub+5
+	#define resid_ghRepoIssues			resid_GitHub+6
+	#define resid_ghEditIssue			resid_GitHub+7
+
 #define resid_BrowseDoxygen			resid_Xcode+700
 
 #define resid_Macro					resid_Xcode+750
@@ -1185,19 +1192,169 @@ resource restype_Slate (resid_Documentation, "Xcode Reference Documentation") { 
 } };
 
 #pragma mark 3 --- for Safari
+#define _mainFrame_h		0
+#define _mainFrame_v		75
+#define _homeApp			DevApps_"Xcode.app"
+#define	_homeAppSlate		resid_Xcode
+
 #pragma mark Browser
 	#define	_BrowseCdocResID_	resid_Browser
-	#define _mainFrame_h		0
-	#define _mainFrame_v		75
-	#define _homeApp			DevApps_"Xcode.app"
 _BrowseCdocSlate_
 
 #pragma mark BrowseDoxygen
 	#define	_BrowseDoxygenResID_	resid_BrowseDoxygen
-	#define	_mainFrame_h			0
-	#define	_mainFrame_v			75
-	#define _homeApp				DevApps_"Xcode.app"
 _BrowseDoxygenSlate_
+
+#pragma mark Github
+#define	_ghup_	Keypress { kc_K, 0 }
+#define	_ghdn_	Keypress { kc_J, 0 }
+
+#define	_GitHubStandards_		\
+		_SlateGlobals_,		\
+		_WindowSlate_,		\
+		_TypeSlate_,		\
+		_IMouseSlate_,		\
+		Event { "next", "" },			Keypress { kc_tab, mf_option },		\
+		Event { "previous", "" },		Keypress { kc_tab, mf_option + mf_shift },		\
+		Event { "enter", "" },			Keypress { kc_enter, 0 },		\
+		Event { "refresh", "" },		Keypress { kc_R, mf_command },		\
+		Event { "address", "" },		Click { 1, 0, 35, _window, _topCenter },		\
+		Event { "copy address", "" },	Sequence{}, Click { 1, 0, 35, _window, _topCenter }, Keypress { kc_A, mf_command }, Keypress { kc_C, mf_command }, endSequence{},		\
+		Event { "go back", "" },		Keypress { kc_bracket, mf_command },		\
+		Event { "go forward", "" },		Keypress { kc_closebracket, mf_command },		\
+		Event { "page down", "" },		Keypress { kc_pagedown, 0 },	\
+		Event { "page north", "" },		Keypress { kc_pageup, 0 },		\
+		Event { "page top", "" },		Keypress { kc_home, 0 },		\
+		Event { "page end", "" },		Keypress { kc_end, 0 },		\
+		Event { "help", "" },			Keypress { kc_slash, 0 },		\
+		Event { "search", "" },			Keypress { kc_S, 0 },		\
+		Event { "north", "" },			_ghup_,		\
+		Event { "down", "" },			_ghdn_,		\
+		Event { "reset", "" },			Launch { _homeApp, _homeAppSlate }
+
+
+#pragma mark github
+resource restype_Slate (resid_GitHub, "") { {
+	Slate { "gh",	{
+		ExitEvent { "okay", "" },		Launch { _homeApp, 0 },
+		ExitEvent { "close", "" },		Sequence{}, Keypress { kc_W, mf_command }, Launch { _homeApp, 0 }, endSequence{},
+		Event { "dashboard", "" },		Click { 1, 56, 90, _window, _topLeft },
+		Event { "news feed", "" },		Sequence{}, Click { 1, 155, 195, _window, _topLeft }, endSequence{},
+		Event { "issues", "" },			Sequence{}, Click { 1, 125, 195, _window, _topCenter }, ResSubslate { resid_ghDashIssues }, endSequence{},
+		Event { "my page", "" },		Sequence{}, Click { 1, -190, 90, _window, _topRight }, ResSubslate { resid_ghMyPage }, endSequence{},
+		Event { "slate", "" },			Subslate { "slate" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "my page", "" },		ResSubslate { resid_ghMyPage },
+			ExitEvent { "dash issues", "" },	ResSubslate { resid_ghDashIssues },
+			ExitEvent { "repository", "" },		ResSubslate { resid_ghRepository },
+			ExitEvent { "repo issues", "" },	ResSubslate { resid_ghRepoIssues },
+			ExitEvent { "edit issue", "" },		ResSubslate { resid_ghEditIssue },
+			endSubslate{},
+		_GitHubStandards_,
+	} }
+} };
+
+#pragma mark ghMyPage
+resource restype_Slate (resid_ghMyPage, "") { {
+	Slate { "pg",	{
+		_CloseSubslate_,
+		Event { "contributions", "" },	Click { 1, 350, 160, _window, _topLeft },
+		Event { "repositories", "" },	Click { 1, 500, 160, _window, _topLeft },
+		Event { "item 1", "" },			Sequence{}, Click { 1, 350, 260, _window, _topLeft }, ResSubslate { resid_ghRepository }, endSequence{},
+		Event { "item 2", "" },			Sequence{}, Click { 1, 350, 370, _window, _topLeft }, ResSubslate { resid_ghRepository }, endSequence{},
+		Event { "item 3", "" },			Sequence{}, Click { 1, 350, 475, _window, _topLeft }, ResSubslate { resid_ghRepository }, endSequence{},
+		_GitHubStandards_,
+	} }
+} };
+
+#pragma mark ghRepository
+resource restype_Slate (resid_ghRepository, "") { {
+	Slate { "repo",	{
+		_CloseSubslate_,
+		Event { "code", "" },			Click { 1, -400, 190, _window, _topCenter },
+		Event { "network", "" },		Click { 1, -270, 190, _window, _topCenter },
+		Event { "pull requests", "" },	Click { 1, -145, 190, _window, _topCenter },
+		Event { "issue", "" },			Sequence{}, Click { 1, -5, 190, _window, _topCenter }, ResSubslate { resid_ghRepoIssues }, endSequence{},
+		Event { "wiki", "" },			Click { 1, 135, 190, _window, _topCenter },
+		Event { "graphs", "" },			Click { 1, 260, 190, _window, _topCenter },
+		Event { "settings", "" },		Click { 1, 390, 190, _window, _topCenter },
+		Event { "clear filters", "" },	Click { 1, 430, 298, _window, _topLeft },
+		_GitHubStandards_,
+	} }
+} };
+
+#define _ghIssueBar_	\
+	Event { "browse milestones", "" },	Click { 1, 215, 250, _window, _topLeft },		\
+	Event { "search", "" },				Sequence{}, Click { 1, -245, 250, _window, _topLeft }, ResSubslate { resid_TypeXcodeSlate },  endSequence{},		\
+	Event { "new issue", "" },			Sequence{}, Click { 1, -86, 250, _window, _topRight }, ResSubslate { resid_ghEditIssue }, endSequence{}
+
+#define	_ghIssueListStandards_	\
+	_CloseSubslate_,		\
+	_GitHubStandards_,		\
+	Event { "unclosed", "" },		Click { 1, 350, _isstb, _window, _topLeft },		\
+	Event { "closed", "" },			Click { 1, 450, _isstb, _window, _topLeft },		\
+	Event { "north", "" },			_ghup_,		\
+	Event { "down", "" },			_ghdn_,		\
+	Event { "open issue", "" },		Sequence{}, Keypress { kc_O, 0 }, ResSubslate { resid_ghEditIssue }, endSequence{}, 		\
+	Event { "browse issues", "" },	Sequence{}, Click { 1, 100, 250, _window, _topLeft }, CloseSubslate{}, endSequence{},		\
+	_ghIssueBar_
+
+//issue list params
+#define	_issh	575		// horizontal
+#define _isssp	40		// spacing
+#define	_isstb	281		// tab row v
+#define	_iss1v	315		// row1 v
+#pragma mark ghDashIssues
+resource restype_Slate (resid_ghDashIssues, "") { {
+	Slate { "dissues",	{
+		ExitEvent { "dashboard", "" },	Click { 1, 56, 90, _window, _topLeft },		\
+		_ghIssueListStandards_,
+		Event { "filter 1", "" },		Click { 1, 100, 393, _window, _topLeft },
+		Event { "filter 2", "" },		Click { 1, 100, 418, _window, _topLeft },
+		Event { "filter 3", "" },		Click { 1, 100, 443, _window, _topLeft },
+	} }
+} };
+
+#define	_isstb	338		// tab row v
+#define	_iss1v	416		// row1 v
+#pragma mark ghRepoIssues
+resource restype_Slate (resid_ghRepoIssues, "") { {
+	Slate { "rissues",	{
+		ExitEvent { "repository", "" },		Click { 1, -400, 190, _window, _topCenter },
+		ExitEvent { "my page", "" },		Click { 1, -190, 90, _window, _topRight },
+		_ghIssueListStandards_,
+		Event { "milestone", "" },			Sequence{}, Click { 1, 240, 490, _window, _topLeft }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		Event { "label", "" },				Subslate { "label" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			Event { "1", "" },			Click { 1, 142, 535+1*26, _window, _topLeft },
+			Event { "2", "" },			Click { 1, 142, 535+2*26, _window, _topLeft },
+			Event { "3", "" },			Click { 1, 142, 535+3*26, _window, _topLeft },
+			Event { "4", "" },			Click { 1, 142, 535+4*26, _window, _topLeft },
+			Event { "5", "" },			Click { 1, 142, 535+5*26, _window, _topLeft },
+			Event { "6", "" },			Click { 1, 142, 535+6*26, _window, _topLeft },
+			Event { "7", "" },			Click { 1, 142, 535+7*26, _window, _topLeft },
+			Event { "8", "" },			Click { 1, 142, 535+8*26, _window, _topLeft },
+			Event { "9", "" },			Click { 1, 142, 535+9*26, _window, _topLeft },
+			Event { "10", "" },			Click { 1, 142, 535+10*26, _window, _topLeft },
+			endSubslate{},
+	} }
+} };
+
+#pragma mark ghEditIssue
+resource restype_Slate (resid_ghEditIssue, "") { {
+	Slate { "edit",	{
+		ExitEvent { "browse issues", "" },		Sequence{}, Click { 1, 100, 250, _window, _topLeft }, CloseSubslate{}, endSequence{},
+		_ghIssueBar_,
+		Event { "edit text", "" },		Click { 1, 300, 355, _window, _topCenter },
+		Event { "assign", "" },			Sequence{}, Click { 1, -207, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		Event { "milestone", "" },		Sequence{}, Click { 1, 306, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		Event { "label", "" },			Sequence{}, Click { 1, 440, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		_TypeXcodeSlate_,
+		_GitHubStandards_,
+	} }
+} };
 
 #pragma mark 5 === Target
 // inside: 1 Words
@@ -3004,6 +3161,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 		ExitEvent { "script", "" },				Sequence{}, TypeText { "Script { \"<#script#>\", \"<#target#>\" }," }, _previous, _previous, endSequence{},
 		ExitEvent { "interface script", "" },	Sequence{}, TypeText { "UIScript { \"<#script#>\", \"<#target#>\" }," }, _previous, _previous, endSequence{},
 		ExitEvent { "wait", "" },				Sequence{}, TypeText { "Wait { <##> }, " }, _previous, endSequence{},
+		ExitEvent { "open site", "" },			Sequence{}, TypeText { "OpenURL { \"<##>\" }," }, _previous, endSequence{},
 		ExitEvent { "nil action", "" },			TypeText { "NilAction{}" },
 		ExitEvent { "close subslate", "" },		TypeText { "CloseSubslate{}," },
 		Event { "keypress", "" },				Sequence{}, TypeText { "Keypress { kc_<##>, <##> }," }, _previous, _previous, endSequence{},
@@ -3202,13 +3360,15 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 			_WindowItems_,
 			endSubslate{},
 		_openDash,
+		Event { "open git hub", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, OpenURL { "https://github.com" }, ResSubslate { resid_GitHub }, endSequence{},
+		Event { "git hub", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_GitHub }, endSequence{},
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
 		focus_,
 		focusBack_,
 		Event { "Macro", "" },			ResSubslate { resid_Macro },
 		Event { "page top", "" },		Keypress { kc_home, 0 },
-		Event { "page bottom", "" },		Keypress { kc_end, 0 },
+		Event { "page bottom", "" },	Keypress { kc_end, 0 },
 		Event { "page north", "" },		Keypress { kc_pageup, 0 },
 		Event { "page down", "" },		Keypress { kc_pagedown, 0 },
 		Event { "target", "" },			ResSubslate { resid_Target },

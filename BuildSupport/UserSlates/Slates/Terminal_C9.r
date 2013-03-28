@@ -575,7 +575,13 @@ resource restype_Slate (resid_gitPush, "") { {
 	Slate { "Push",	{
 		Event { "origin", "" },			TypeText { "origin " },
 		Event { "tags", "" },			TypeText { "--tags " },
-		_GitStandards_,
+		Event { "authorize", "" },		TypeText { "gh6868cc" },
+		_SlateGlobals_,
+		ExitEvent { "cancel", "" },		_cancel,
+		Event { "execute", "" },		_return,
+		Event { "return	", "" },		_return,
+		Event { "copy", "" },			Keypress { kc_C, mf_command },
+		Event { "paste", "" },			Keypress { kc_V, mf_command },
 	} }
 } };
 
