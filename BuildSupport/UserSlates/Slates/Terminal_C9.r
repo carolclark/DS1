@@ -160,6 +160,8 @@ resource restype_Slate (resid_Emacs, "") { {
 	Event { "artist", "" },			TypeText { "artist " },		\
 	Event { "slates", "" },			TypeText { "slates " }
 
+#define	_specifyWhich	Sequence{}, Keypress { kc_delete, 0 }, TypeText { "@{" }, ResSubslate { resid_gitSpecify }, endSequence{}
+
 resource restype_Slate (resid_Type, "Type") { {
 	Slate { "Type",	{
 		_SlateGlobals_,
@@ -188,7 +190,7 @@ resource restype_Slate (resid_Type, "Type") { {
 resource restype_Slate (resid_Git, "") { {
 	Slate { "Git",	{
 		_GitStandards_,
-		Event { "specify", "" },		ResSubslate { resid_gitSpecify },
+		Event { "specify", "" },		_specifyWhich,
 		Event { "go back", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
 		Event { "FileMerge", "" },		Sequence{}, Launch { DevApps_"XCode.app/Contents/Applications/FileMerge.app", 0 }, ResSubslate { resid_FileMerge },  endSequence{},
 		Event { "status", "" },			Sequence{}, TypeText { "git status" }, _return, endSequence{},
@@ -256,10 +258,8 @@ resource restype_Slate (resid_gitType, "Type") { {
 resource restype_Slate (resid_gitSpecify, "") { {
 	Slate { "specify",	{
 		_SlateGlobals_,
-		_CloseSubslate_,
-		Event { "parent", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "~" }, endSequence{},
-		Event { "merge parent", "" },	Sequence{}, Keypress { kc_delete, 0 }, TypeText { "^" }, endSequence{},
-		Event { "brackets", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { "@{}" }, _left, endSequence{},
+		ExitEvent { "okay", "" },	TypeText { "} " },
+		ExitEvent { "exit", "" },	NilAction{},
 		Event { "1", "" },			TypeText { "1" },
 		Event { "2", "" },			TypeText { "2" },
 		Event { "3", "" },			TypeText { "3" },
@@ -280,7 +280,7 @@ resource restype_Slate (resid_gitCheckout, "") { {
 		Event { "head", "" },			Sequence{}, TypeText { "HEAD " }, _left, ResSubslate { resid_gitType }, endSequence{},
 		Event { "master", "" },			TypeText { "master " },
 		Event { "path ", "" },			TypeText { "-- " },
-		Event { "specify", "" },		ResSubslate { resid_gitSpecify },
+		Event { "specify", "" },		_specifyWhich,
 		_TypeVariable_,
 		_GitStandards_,
 		_StandardBranches_,
@@ -340,7 +340,7 @@ resource restype_Slate (resid_gitDiff, "") { {
 		Event { "top head", "both staged and unstaged" },		TypeText { "HEAD@{0} " },
 		Event { "head", "" },			TypeText { "HEAD " },
 		Event { "stash", "" },			TypeText { "stash " },
-		Event { "specify", "" },		ResSubslate { resid_gitSpecify }, 
+		Event { "specify", "" },		_specifyWhich,
 		Event { "top stash", "" },		TypeText { "stash@{0} " },
 		Event { "between", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { ".." }, endSequence{},
 		Event { "ancestor", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { "..." }, endSequence{},
@@ -369,7 +369,7 @@ resource restype_Slate (resid_gitShow, "") { {
 		_TypeVariable_,
 		_StandardBranches_,
 		_Remotes_,
-		Event { "specify", "" },		ResSubslate { resid_gitSpecify },
+		Event { "specify", "" },		_specifyWhich,
 		_GitStandards_,
 	} }
 } };
@@ -564,7 +564,7 @@ resource restype_Slate (resid_gitMergeBase, "") { {
 		_TypeVariable_,
 		_StandardBranches_,
 		_Remotes_,
-		Event { "specify", "" },		ResSubslate { resid_gitSpecify },
+		Event { "specify", "" },		_specifyWhich,
 		_GitStandards_,
 	} }
 } };
@@ -573,15 +573,15 @@ resource restype_Slate (resid_gitMergeBase, "") { {
 #pragma mark Push
 resource restype_Slate (resid_gitPush, "") { {
 	Slate { "Push",	{
+		ExitEvent { "cancel", "" },		_cancel,
+		ExitEvent { "finish	", "" },	_return,
 		Event { "origin", "" },			TypeText { "origin " },
 		Event { "tags", "" },			TypeText { "--tags " },
 		Event { "authorize", "" },		TypeText { "gh6868cc" },
-		_SlateGlobals_,
-		ExitEvent { "cancel", "" },		_cancel,
 		Event { "execute", "" },		_return,
-		Event { "return	", "" },		_return,
 		Event { "copy", "" },			Keypress { kc_C, mf_command },
 		Event { "paste", "" },			Keypress { kc_V, mf_command },
+		_SlateGlobals_,
 	} }
 } };
 
