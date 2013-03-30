@@ -39,9 +39,6 @@ testScripts() {
 	if [[ ! -e ${CCDev}/func/errtrap ]] ; then
 		fail "$LINENO: function file errtrap missing"
 	fi
-	if [[ ! -e ${CCDev}/func/DEV ]] ; then
-		fail "$LINENO: function file DEV missing"
-	fi
 	if [[ ! -e ${CCDev}/func/ccInstall ]] ; then
 		fail "$LINENO: function file ccInstall missing"
 	fi

@@ -241,10 +241,6 @@ chmod a+x "${CCDev}/bin/.kshrc"
 envLaunchctl > "${HOME}/.launchd.conf"
 chmod a+x "${HOME}/.launchd.conf"
 
-# write functions DEV, CCDev
-writeValueFunction "DEV" "${DEV}"
-writeValueFunction "CCDev" "${CCDev}"
-
 # configure git
 print "configuring git"
 config="/Users/${USER}/.gitconfig"
