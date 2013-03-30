@@ -58,18 +58,24 @@
 
 #define	_cancel			Keypress { kc_C, mf_control }
 
-
 #pragma mark 1 === Standards
+#define	_EmacsKeys_				\
+		_DirectionKeys_,		\
+		Event { "beginning", "" },	Keypress { kc_A, mf_control },	\
+		Event { "end", "" },		Keypress { kc_E, mf_control }
+
 #define _TerminalStandards_	\
 		_SlateGlobals_,		\
 		_CloseSubslate_,	\
 		Event { "execute", "" },	_return,				\
 		Event { "return	", "" },	_return,				\
+		Event { "save directory", "" }, TypeText { "wd=$(pwd); print \"${wd}\"" },				\
+		Event { "restore directory", "" }, TypeText { "cd \"${wd}\"; pwd" },					\
 		Event { "password", "" },	TypeText { "6868" },	\
 		Event { "copy", "" },		Keypress { kc_C, mf_command },	\
 		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
-		Event { "quiver", "" },		Keypress { kc_Q, 0 },		\
 		ExitEvent { "cancel", "" },	_cancel,				\
+		_EmacsKeys_,										\
 		Event { "Type", "" },		ResSubslate { resid_Type }
 
 #define	_TerminalItems_			\
@@ -79,6 +85,7 @@
 		Event { "paste", "" },			Keypress { kc_V, mf_command },	\
 		Event { "execute", "" },		_return,		\
 		Event { "cancel", "" },			_cancel,			\
+		_EmacsKeys_,											\
 		Event { "next window", "" },	Keypress { kc_accent, mf_command },						\
 		Event { "go next", "" }, 		Keypress { kc_closebracket, mf_command + mf_shift },	\
 		Event { "go previous", "" },	Keypress { kc_bracket, mf_command + mf_shift },			\
@@ -90,9 +97,9 @@
 			ExitEvent { "Edit", "'Edit' menu" }, ClickMenu { "Edit" },		\
 			ExitEvent { "Window", "'Window' menu" }, ClickMenu { "Window" },		\
 			endSubslate{},		\
-		Event { "git", "" },	ResSubslate { resid_Git },			\
-		Event { "clean", "" },	Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_Clean }, endSequence{},		\
-		Event { "archive", "" },	Sequence{}, TypeText { "archive " }, ResSubslate { resid_Archive }, endSequence{},		\
+		Event { "git", "" },			ResSubslate { resid_Git },			\
+		Event { "clean", "" },			Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_Clean }, endSequence{},		\
+		Event { "archive", "" },		Sequence{}, TypeText { "archive " }, ResSubslate { resid_Archive }, endSequence{},		\
 		Event { "backup", "" },			TypeText { "ccBackup Backup " },	\
 		Event { "export", "" },			TypeText { "export " },				\
 		Event { "ports", "" },			ResSubslate { resid_MacPorts },		\
@@ -108,6 +115,7 @@
 	Event { "cancel", "" },			_cancel,						\
 	Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 	Event { "paste", "" },			Keypress { kc_V, mf_command },	\
+	_EmacsKeys_,													\
 	Event { "system config", "" },	TypeText { "/private/etc/launchd.conf " },
 
 #pragma mark emacs
@@ -181,9 +189,9 @@ resource restype_Slate (resid_Type, "Type") { {
 		Event { "return	", "" },		_return,						\
 		Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 		Event { "paste", "" },			Keypress { kc_V, mf_command },	\
+		_EmacsKeys_,													\
 		Event { "continue", "" },		Keypress { kc_space, 0 },		\
 		Event { "end display", "" },	Keypress { kc_Q, 0 },			\
-		Event { "dry run", "" },		TypeText { "--dry-run " },		\
 		Event { "type", "" },			ResSubslate { resid_gitType }
 
 #pragma mark 1 -- Git
@@ -210,7 +218,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
 		Event { "merge", "" },			Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
-		Event { "merge base", "" },		Sequence{}, TypeText { "git merge-base" },, ResSubslate { resid_gitMergeBase }, endSequence{},
+		Event { "merge base", "" },		Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },			Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
 		Event { "fetch", "" },			Sequence{}, TypeText { "git fetch " }, ResSubslate { resid_gitFetch }, endSequence{},
 		Event { "reset", "" },			Sequence{}, TypeText { "git reset " }, ResSubslate { resid_gitReset }, endSequence{},
@@ -294,7 +302,7 @@ resource restype_Slate (resid_gitBranch, "") { {
 		ExitEvent { "list", "" },			_return,
 		ExitEvent { "list all", "" },		Sequence{}, TypeText { "-a " }, _return, endSequence{},
 		ExitEvent { "get current", "" },	Sequence{}, _cancel, TypeText { "cb=$(git branch | grep \"*\" | sed \"s/* //\"); print $cb" }, _return, endSequence{},
-		ExitEvent { "print current", "" },	Sequence{}, TypeText { "print $cb" }, _return, endSequence{},
+		ExitEvent { "print current", "" },	Sequence{}, _cancel, TypeText { "print $cb" }, _return, endSequence{},
 		Event { "unmerged", "" },			TypeText { "--no-merged " },
 		Event { "verbose", "" },			TypeText { "--verbose " },
 		Event { "move", "" },				TypeText { "--move " },
