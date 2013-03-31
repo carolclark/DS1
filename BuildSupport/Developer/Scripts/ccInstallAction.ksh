@@ -15,12 +15,33 @@ USAGE='
 trapString='errtrap $0 $LINENO'
 trap "$trapString" ERR
 
+# for target ${DEV}/Support/BuildSupport/Developer:
+#	old params: workspacePath ${DEV}/Support; projectTarget BuildSupport/Developer
+#	new params: srcroot $SRCROOT; targetPath Developer
+
+if [[ ! -n "${1}" ]] ; then
+	print "missing SRCROOT parameter"
+	exit 1
+fi
+srcroot="${1}"
+
+if [[ ! -n "${2}" ]] ; then
+	print "missing target parameter"
+	exit 1
+fi
+targetPath="${2}"
+
 actionFlags="-it"
 if [[ "${3}" = "clean" ]] ; then
 	actionFlags="-c"
 fi
 
-msg=$(ccInstall "${1}" "${2}" "${actionFlags}")
+projectName="${srcroot##*/}"
+workspacePath="${srcroot%/*}"
+projectTarget="${projectName}/${targetPath}"
+
+print "ccInstall ${workspacePath} ${projectTarget} ${actionFlags}"
+msg=$(ccInstall "${workspacePath}" "${projectTarget}" "${actionFlags}")
 st="${?}"
 print "${msg}"
 exit "${st}"
