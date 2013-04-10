@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 setUp() {
-	projectPath="/Volumes/Mac/Users/carolclark/Dev/Support"
+	projectPath="${DEV}/Support"
 	target="BuildSupport/Doxygen"
 }
 

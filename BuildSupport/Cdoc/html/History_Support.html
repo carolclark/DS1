@@ -42,8 +42,20 @@
 <h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
 * correct merge conflicts (Punkin; Accessor)
 * remove references to deprecated functions $(DEV), $(CCDev); remove function definitions
-* **==** Current
 * change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
+* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
+* **==** Current
+* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor</a>)
+* ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
+* remove file /private/etc/launchd.conf from scripts and disk
+</pre>
+
+<h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> use GitHub Issues; synchronize History files</h4><pre>
+* adapt History_Support.html to synchronize with GitHub issues
+* **==**
+* allow markdown files to be included in the source for Cdoc sites
+	* make sure they produce valid HTML
+* use separate history file Support_v0_1.md for work on milestone v0.1
 </pre>
 
 <!-- @marker "Automation" -->

@@ -75,6 +75,7 @@
 					<li><span class='em'>Amend:</span> [reset --soft lastCommit; restage]; commit --amend; [edit message]</li>
 				</ul></li>
 				<li>diff --name-status with master; [merge in master]</li>
+				<li>check stash list</li>
 			</ul></li>
 		</ul>
 		<h5>Merge</h5><ul>
@@ -83,13 +84,12 @@
 			<li><span class='em'>Fetch</span><ul>
 				<li>checkout branch artist; fetch from remote branch laura/artist</li>
 				<li>checkout master; review changes; [rebase]</li>
-				<li>merge artist</li>
+				<li><em>Merge</em> artist</li>
 			</ul></li>
 			<li>review change log; [rebase] (for rebase 'edit' steps, amend commit)</li>
-			<li>check stash list</li>
-			<li>merge branch (<span class='mono'>merge --no-ff &lt;branch&gt; -m &lt;msg&gt;</span>)</li>
-			<li>checkout branch; verify status clear; [delete branch]</li>
-			<li>check for unmerged branches (branch --no-merged master)</li>
+			<li>merge branch (<span class='mono'>merge &lt;branch&gt; </span> or <span class='mono'>merge --no-ff &lt;branch&gt; -m &lt;msg&gt;</span>)</li>
+			<li>verify no stashes on &lt;branch&gt;; [delete branch]</li>
+			<li>check for unmerged branches (branch --no-merged master); check branch list</li>
 		</ul>
 		<h5>Push</h5><ul>
 			<li>check for stashes, unmerged branches</li>
@@ -263,10 +263,13 @@
 </ul>
 
 <!-- @marker "Add Remote Repository" -->
-<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul class='expand'>
+<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul class='depr'>
 	<li class='blurb'>Add Remote Repository from existing working copy ~/Dev/&lt;ProjectName&gt;</li>
 	<li>add repository to ProjectLocker account</li>
 	<li>push working copy's master branch to remote/master (create)</li>
+</ul>
+<ul>
+	<li>remote addresses: https://carolclark@github.com/carolclark/Punkin.git; https://github.com/lauracello/Punkin</li>
 </ul>
 
 <!-- @marker "Set Up User SSH" -->

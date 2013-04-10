@@ -18,6 +18,8 @@ testInstallation() {
 	dev=$(launchctl getenv DEV)
 	if [[ ${USER} = carolclark ]] ; then
 		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
+	if [[ ${USER} = lauramartinez ]] ; then
+		assertEquals "$LINENO"': incorrect $DEV' "{HOME}/Documents/Projects" ${dev}
 	else
 		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
 	fi

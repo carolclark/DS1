@@ -1317,7 +1317,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "mkdir -p ${CCDev}/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ${HOME}/Library/CCDev/UserSlates/Accessor.rsrc\n";
+			shellScript = "mkdir -p ${HOME}/Library/CCDev/UserSlates\ncp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ${HOME}/Library/CCDev/UserSlates/Accessor.rsrc\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
