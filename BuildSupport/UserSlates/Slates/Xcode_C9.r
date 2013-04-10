@@ -11,6 +11,8 @@
 #pragma mark === Markers ===
 // 1 Navigation; Utility; 2 Organizer & Documentation; 3 To Classify; 4 Menus; 5 Target; 6 Editors; 7 Indexes; 8 Typing; 9 Xcode
 
+#define resid_TypeSafariSlate			resid_Safari+2
+
 /* resid_ */	// Xcode has 2000 resid's reserved
 #define resid_Browser				resid_Xcode+11
 #define resid_Workspace				resid_Xcode+12
@@ -76,9 +78,11 @@
 #define resid_GitHub				resid_Xcode+650
 	#define resid_ghMyPage				resid_GitHub+1
 	#define resid_ghRepository			resid_GitHub+2
+	#define resid_ghRepoButtons			resid_GitHub+3
 	#define resid_ghDashIssues			resid_GitHub+5
 	#define resid_ghRepoIssues			resid_GitHub+6
-	#define resid_ghEditIssue			resid_GitHub+7
+	#define resid_ghOpenIssue			resid_GitHub+7
+	#define resid_ghEditIssue			resid_GitHub+8
 
 #define resid_BrowseDoxygen			resid_Xcode+700
 
@@ -1205,15 +1209,25 @@ _BrowseCdocSlate_
 	#define	_BrowseDoxygenResID_	resid_BrowseDoxygen
 _BrowseDoxygenSlate_
 
+/*
+gh/dashboard
+	DIssues > dashboard (IssueListBar open.closed.sort; project filter)
+		Issue:Open < click issues; close subslate
+			Edit: < Cancel/GoBack; Update
+	Repo < .
+		RIssues < repo (IssueListBar open.closed.sort; IssueTabBar open/close.label.assign.milestone; milestone and label filters; list selectable)
+			Issue:Open < click issues; close subslate
+	MyPage < .
+		Repo < .
+*/
 #pragma mark Github
-#define	_ghup_	Keypress { kc_K, 0 }
-#define	_ghdn_	Keypress { kc_J, 0 }
+#define	_ghup_				Keypress { kc_K, 0 }
+#define	_ghdn_				Keypress { kc_J, 0 }
+#define _ghClickDashboard	Click { 1, -450, 90, _window, _topCenter }
 
 #define	_GitHubStandards_		\
-		_SlateGlobals_,		\
-		_WindowSlate_,		\
-		_TypeSlate_,		\
-		_IMouseSlate_,		\
+		Event { "back to host", "" },	Launch { _homeApp, _homeAppSlate },		\
+		Event { "dashboard", "" },		Sequence{}, _ghClickDashboard, SwitchSlate	{ resid_Xcode }, ResSubslate { resid_GitHub }, endSequence{},	\
 		Event { "next", "" },			Keypress { kc_tab, mf_option },		\
 		Event { "previous", "" },		Keypress { kc_tab, mf_option + mf_shift },		\
 		Event { "enter", "" },			Keypress { kc_enter, 0 },		\
@@ -1227,21 +1241,39 @@ _BrowseDoxygenSlate_
 		Event { "page top", "" },		Keypress { kc_home, 0 },		\
 		Event { "page end", "" },		Keypress { kc_end, 0 },		\
 		Event { "help", "" },			Keypress { kc_slash, 0 },		\
-		Event { "search", "" },			Keypress { kc_S, 0 },		\
+		Event { "search GitHub", "" },	Keypress { kc_S, 0 },		\
 		Event { "north", "" },			_ghup_,		\
 		Event { "down", "" },			_ghdn_,		\
-		Event { "reset", "" },			Launch { _homeApp, _homeAppSlate }
-
+		Event { "type", "" },			ResSubslate { resid_TypeSafariSlate },		\
+		_SlateGlobals_,		\
+		_WindowSlate_,		\
+		_IMouseSlate_
 
 #pragma mark github
 resource restype_Slate (resid_GitHub, "") { {
 	Slate { "gh",	{
 		ExitEvent { "okay", "" },		Launch { _homeApp, 0 },
 		ExitEvent { "close", "" },		Sequence{}, Keypress { kc_W, mf_command }, Launch { _homeApp, 0 }, endSequence{},
-		Event { "dashboard", "" },		Click { 1, 56, 90, _window, _topLeft },
-		Event { "news feed", "" },		Sequence{}, Click { 1, 155, 195, _window, _topLeft }, endSequence{},
+		Event { "dashboard", "" },		_ghClickDashboard,
+		Event { "news feed", "" },		Sequence{}, Click { 1, -346, 195, _window, _topCenter }, endSequence{},
 		Event { "issues", "" },			Sequence{}, Click { 1, 125, 195, _window, _topCenter }, ResSubslate { resid_ghDashIssues }, endSequence{},
-		Event { "my page", "" },		Sequence{}, Click { 1, -190, 90, _window, _topRight }, ResSubslate { resid_ghMyPage }, endSequence{},
+		Event { "my page", "" },		Sequence{}, Click { 1, 313, 90, _window, _topCenter }, ResSubslate { resid_ghMyPage }, endSequence{},
+		Event { "repo 1", "" },			Sequence{}, Click { 1, 200, 660, _window, _topCenter }, ResSubslate { resid_ghRepository },  endSequence{},
+		Event { "repo 2", "" },			Sequence{}, Click { 1, 200, 691, _window, _topCenter }, ResSubslate { resid_ghRepository },  endSequence{},
+		Event { "repo 3", "" },			Sequence{}, Click { 1, 200, 722, _window, _topCenter }, ResSubslate { resid_ghRepository },  endSequence{},
+		Event { "repo 4", "" },			Sequence{}, Click { 1, 200, 753, _window, _topCenter }, ResSubslate { resid_ghRepository },  endSequence{},
+		Event { "broadcast", "" },		Subslate { "broadcast" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "hide", "" },	Click { 1, 172, 609, _window, _topCenter },
+			Event { "show", "" },		Click { 1, 172, 558, _window, _topCenter },
+			Event { "show all", "" },	Click { 1, 409, 558, _window, _topCenter },
+			Event { "page top", "" },	Keypress { kc_home, 0 },
+			Event { "page end", "" },	Keypress { kc_end, 0 },
+			Event { "page north", "" },	Keypress { kc_pageup, 0 },
+			Event { "page down", "" },	Keypress { kc_pagedown, 0 },
+			Event { "go back", "" },	Keypress { kc_bracket, mf_command },
+			endSubslate{},
 		Event { "slate", "" },			Subslate { "slate" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -1249,7 +1281,7 @@ resource restype_Slate (resid_GitHub, "") { {
 			ExitEvent { "dash issues", "" },	ResSubslate { resid_ghDashIssues },
 			ExitEvent { "repository", "" },		ResSubslate { resid_ghRepository },
 			ExitEvent { "repo issues", "" },	ResSubslate { resid_ghRepoIssues },
-			ExitEvent { "edit issue", "" },		ResSubslate { resid_ghEditIssue },
+			ExitEvent { "open issue", "" },		ResSubslate { resid_ghOpenIssue },
 			endSubslate{},
 		_GitHubStandards_,
 	} }
@@ -1258,12 +1290,13 @@ resource restype_Slate (resid_GitHub, "") { {
 #pragma mark ghMyPage
 resource restype_Slate (resid_ghMyPage, "") { {
 	Slate { "pg",	{
-		_CloseSubslate_,
-		Event { "contributions", "" },	Click { 1, 350, 160, _window, _topLeft },
-		Event { "repositories", "" },	Click { 1, 500, 160, _window, _topLeft },
-		Event { "item 1", "" },			Sequence{}, Click { 1, 350, 260, _window, _topLeft }, ResSubslate { resid_ghRepository }, endSequence{},
-		Event { "item 2", "" },			Sequence{}, Click { 1, 350, 370, _window, _topLeft }, ResSubslate { resid_ghRepository }, endSequence{},
-		Event { "item 3", "" },			Sequence{}, Click { 1, 350, 475, _window, _topLeft }, ResSubslate { resid_ghRepository }, endSequence{},
+		ExitEvent { "okay", "" },		Keypress { kc_bracket, mf_command },
+		ExitEvent { "exit", "" },		NilAction{},
+		Event { "contributions", "" },	Click { 1, -150, 160, _window, _topCenter },
+		Event { "repositories", "" },	Click { 1, -20, 160, _window, _topCenter },
+		Event { "repo 1", "" },			Sequence{}, Click { 1, -160, 260, _window, _topCenter }, ResSubslate { resid_ghRepository }, endSequence{},
+		Event { "repo 2", "" },			Sequence{}, Click { 1, -160, 370, _window, _topCenter }, ResSubslate { resid_ghRepository }, endSequence{},
+		Event { "repo 3", "" },			Sequence{}, Click { 1, -160, 475, _window, _topCenter }, ResSubslate { resid_ghRepository }, endSequence{},
 		_GitHubStandards_,
 	} }
 } };
@@ -1271,87 +1304,121 @@ resource restype_Slate (resid_ghMyPage, "") { {
 #pragma mark ghRepository
 resource restype_Slate (resid_ghRepository, "") { {
 	Slate { "repo",	{
-		_CloseSubslate_,
+		ExitEvent { "okay", "" },		Keypress { kc_bracket, mf_command },
+		ExitEvent { "exit", "" },		NilAction{},
 		Event { "code", "" },			Click { 1, -400, 190, _window, _topCenter },
+			Event { "files", "" },			Click { 1, -223, 330, _window, _topCenter },
+			Event { "commits", "" },		Click { 1, -143, 330, _window, _topCenter },
+			Event { "branches", "" },		Click { 1, -100, 330, _window, _topCenter },
 		Event { "network", "" },		Click { 1, -270, 190, _window, _topCenter },
 		Event { "pull requests", "" },	Click { 1, -145, 190, _window, _topCenter },
-		Event { "issue", "" },			Sequence{}, Click { 1, -5, 190, _window, _topCenter }, ResSubslate { resid_ghRepoIssues }, endSequence{},
+		Event { "issues", "" },			Sequence{}, Click { 1, 0, 190, _window, _topCenter }, ResSubslate { resid_ghRepoIssues }, endSequence{},
 		Event { "wiki", "" },			Click { 1, 135, 190, _window, _topCenter },
 		Event { "graphs", "" },			Click { 1, 260, 190, _window, _topCenter },
 		Event { "settings", "" },		Click { 1, 390, 190, _window, _topCenter },
-		Event { "clear filters", "" },	Click { 1, 430, 298, _window, _topLeft },
+		Event { "clear filter", "" },	Click { 1, -170, 298, _window, _topCenter },
 		_GitHubStandards_,
 	} }
 } };
 
+#pragma mark ghRepoButtons
+resource restype_Slate (resid_ghRepoButtons, "") { {
+	Slate { "ghRepoButtons",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "unfiltered", "" },		Click { 0, 0, -36, _cursor },
+		Event { "clear filter", "" },	Sequence{}, Click { 1, 0, -36, _cursor }, Click { 0, 0, -36, _cursor }, endSequence{},
+		Event { "unclosed", "" },		Click { 1, 0, 0, _cursor },
+		Event { "closed", "" },			Click { 1, 75, 0, _cursor },
+		Event { "sort", "" },			Click { 1, 210, 0, _cursor },
+		Event { "open", "" },			Click { 1, 0, 50, _cursor },
+		Event { "label", "" },			Click { 1, 70, 50, _cursor },
+		Event { "assign", "" },			Click { 1, 150, 50, _cursor },
+		Event { "milestone", "" },		Click { 1, 240, 50, _cursor },
+	} }
+} };
+
 #define _ghIssueBar_	\
-	Event { "browse milestones", "" },	Click { 1, 215, 250, _window, _topLeft },		\
-	Event { "search", "" },				Sequence{}, Click { 1, -245, 250, _window, _topLeft }, ResSubslate { resid_TypeXcodeSlate },  endSequence{},		\
-	Event { "new issue", "" },			Sequence{}, Click { 1, -86, 250, _window, _topRight }, ResSubslate { resid_ghEditIssue }, endSequence{}
+	Event { "paste", "" },				Keypress { kc_V, mf_command + mf_option + mf_shift },	\
+	Event { "browse milestones", "" },	Click { 1, -290, 250, _window, _topCenter },		\
+	Event { "search", "" },				Sequence{}, Click { 1, -355, 250, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate },  endSequence{},		\
+	Event { "new issue", "" },			Click { 1, 415, 250, _window, _topCenter },			\
+	Event { "submit issue", "" },		Click { 1, 123, 700, _window, _topCenter }
 
 #define	_ghIssueListStandards_	\
-	_CloseSubslate_,		\
+	ExitEvent { "exit", "" },		NilAction{},							\
 	_GitHubStandards_,		\
-	Event { "unclosed", "" },		Click { 1, 350, _isstb, _window, _topLeft },		\
-	Event { "closed", "" },			Click { 1, 450, _isstb, _window, _topLeft },		\
 	Event { "north", "" },			_ghup_,		\
 	Event { "down", "" },			_ghdn_,		\
-	Event { "open issue", "" },		Sequence{}, Keypress { kc_O, 0 }, ResSubslate { resid_ghEditIssue }, endSequence{}, 		\
-	Event { "browse issues", "" },	Sequence{}, Click { 1, 100, 250, _window, _topLeft }, CloseSubslate{}, endSequence{},		\
-	_ghIssueBar_
+	Event { "open issue", "" },		Sequence{}, Keypress { kc_O, 0 }, ResSubslate { resid_ghOpenIssue }, endSequence{}
 
 //issue list params
 #define	_issh	575		// horizontal
 #define _isssp	40		// spacing
-#define	_isstb	281		// tab row v
+#define	_isstb	248		// tab row v, filtered
 #define	_iss1v	315		// row1 v
 #pragma mark ghDashIssues
 resource restype_Slate (resid_ghDashIssues, "") { {
 	Slate { "dissues",	{
-		ExitEvent { "dashboard", "" },	Click { 1, 56, 90, _window, _topLeft },		\
+		ExitEvent { "okay", "" },		_ghClickDashboard,
 		_ghIssueListStandards_,
-		Event { "filter 1", "" },		Click { 1, 100, 393, _window, _topLeft },
-		Event { "filter 2", "" },		Click { 1, 100, 418, _window, _topLeft },
-		Event { "filter 3", "" },		Click { 1, 100, 443, _window, _topLeft },
+		Event { "filter 1", "" },		Click { 1, -500, 393, _window, _topCenter },
+		Event { "filter 2", "" },		Click { 1, -500, 418, _window, _topCenter },
+		Event { "filter 3", "" },		Click { 1, -500, 443, _window, _topCenter },
+		Event { "button", "" },			Sequence{}, Click { 0, -170, 334, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
 	} }
 } };
 
-#define	_isstb	338		// tab row v
+#define	_isstb	334		// tab row v, filtered
 #define	_iss1v	416		// row1 v
 #pragma mark ghRepoIssues
 resource restype_Slate (resid_ghRepoIssues, "") { {
 	Slate { "rissues",	{
-		ExitEvent { "repository", "" },		Click { 1, -400, 190, _window, _topCenter },
-		ExitEvent { "my page", "" },		Click { 1, -190, 90, _window, _topRight },
+		ExitEvent { "okay", "" },		Click { 1, -310, 145, _window, _topCenter },
+		ExitEvent { "exit", "" },		NilAction{},
+		_ghIssueBar_,
 		_ghIssueListStandards_,
-		Event { "milestone", "" },			Sequence{}, Click { 1, 240, 490, _window, _topLeft }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
-		Event { "label", "" },				Subslate { "label" },
+		Event { "select", "" },			Keypress { kc_X, 0 },
+		Event { "button", "" },			Sequence{}, Click { 0, -170, 334, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
+		Event { "milestone", "" },		Sequence{}, Click { 1, -360, 490, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		Event { "label", "" },			Subslate { "label" },
 			_SlateGlobals_,
 			_CloseSubslate_,
-			Event { "1", "" },			Click { 1, 142, 535+1*26, _window, _topLeft },
-			Event { "2", "" },			Click { 1, 142, 535+2*26, _window, _topLeft },
-			Event { "3", "" },			Click { 1, 142, 535+3*26, _window, _topLeft },
-			Event { "4", "" },			Click { 1, 142, 535+4*26, _window, _topLeft },
-			Event { "5", "" },			Click { 1, 142, 535+5*26, _window, _topLeft },
-			Event { "6", "" },			Click { 1, 142, 535+6*26, _window, _topLeft },
-			Event { "7", "" },			Click { 1, 142, 535+7*26, _window, _topLeft },
-			Event { "8", "" },			Click { 1, 142, 535+8*26, _window, _topLeft },
-			Event { "9", "" },			Click { 1, 142, 535+9*26, _window, _topLeft },
-			Event { "10", "" },			Click { 1, 142, 535+10*26, _window, _topLeft },
+			Event { "1", "" },			Click { 1, -358, 535+1*26, _window, _topCenter },
+			Event { "2", "" },			Click { 1, -358, 535+2*26, _window, _topCenter },
+			Event { "3", "" },			Click { 1, -358, 535+3*26, _window, _topCenter },
+			Event { "4", "" },			Click { 1, -358, 535+4*26, _window, _topCenter },
+			Event { "5", "" },			Click { 1, -358, 535+5*26, _window, _topCenter },
+			Event { "6", "" },			Click { 1, -358, 535+6*26, _window, _topCenter },
+			Event { "7", "" },			Click { 1, -358, 535+7*26, _window, _topCenter },
+			Event { "8", "" },			Click { 1, -358, 535+8*26, _window, _topCenter },
+			Event { "9", "" },			Click { 1, -358, 535+9*26, _window, _topCenter },
+			Event { "10", "" },			Click { 1, -358, 535+10*26, _window, _topCenter },
 			endSubslate{},
+	} }
+} };
+
+#pragma mark ghOpenIssue
+resource restype_Slate (resid_ghOpenIssue, "") { {
+	Slate { "open",	{
+		ExitEvent { "okay", "back to issue list" },		Click { 1, -388, 290, _window, _topCenter },
+		ExitEvent { "exit", "" },		NilAction{},
+		Event { "back to host", "" },	Launch { _homeApp, _homeAppSlate },
+		_ghIssueBar_,
+		Event { "edit", "" },			Sequence{}, Click { 1, 300, 355, _window, _topCenter }, ResSubslate { resid_ghEditIssue }, endSequence{},
+		Event { "assign", "" },			Sequence{}, Click { 1, -207, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		Event { "milestone", "" },		Sequence{}, Click { 1, 306, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		Event { "label", "" },			Sequence{}, Click { 1, 440, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		_GitHubStandards_,
 	} }
 } };
 
 #pragma mark ghEditIssue
 resource restype_Slate (resid_ghEditIssue, "") { {
 	Slate { "edit",	{
-		ExitEvent { "browse issues", "" },		Sequence{}, Click { 1, 100, 250, _window, _topLeft }, CloseSubslate{}, endSequence{},
-		_ghIssueBar_,
-		Event { "edit text", "" },		Click { 1, 300, 355, _window, _topCenter },
-		Event { "assign", "" },			Sequence{}, Click { 1, -207, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
-		Event { "milestone", "" },		Sequence{}, Click { 1, 306, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
-		Event { "label", "" },			Sequence{}, Click { 1, 440, 425, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
-		_TypeXcodeSlate_,
+		ExitEvent { "update", "" },		Keypress { kc_return, mf_command },
+		ExitEvent { "cancel", "" },		Keypress { kc_bracket, mf_command },
+		ExitEvent { "exit", "" },		NilAction{},
 		_GitHubStandards_,
 	} }
 } };

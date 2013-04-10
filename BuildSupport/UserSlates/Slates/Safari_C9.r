@@ -7,7 +7,7 @@
 #include "CommonSlates_C9.h"
 
 #define resid_Scripts					resid_Safari+1
-#define resid_TypeSafariSlate			resid_Safari+2
+#define resid_TypeSafariSlate			resid_Safari+2		// used by Xcode.r
 #define resid_TypeSpecialSafariSlate	resid_Safari+3
 #define resid_Bookmarks					resid_Safari+4
 	#define resid_EditBookmarks				resid_Safari+5
