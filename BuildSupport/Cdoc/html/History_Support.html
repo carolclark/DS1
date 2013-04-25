@@ -15,13 +15,18 @@
 
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
+		<!-- @topicItem "replaceKshFPATH" "#replaceKshFPATH" "1" "" -->
 		<!-- @topicItem "resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
+		<!-- @topicItem "support collaborator configuration" "#collaboratorConfig" "1" "" -->
 		<!-- @topicItem "use GitHub Issues" "#useGitHubIssues" "1" "" -->
+		<!-- @topicGroup "" "6" -->
 		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
-	<!-- @topicGroup "" "2" -->
+		<!-- @topicSep -->
+		<!-- @topicItem "&lt;-- Current" "#hmark_Current" "1" "" -->
+	<!-- @topicGroup "" "10" -->
 	<!-- @topicItem "Closed Issues" "#ClosedIssues" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "5" -->
+	<!-- @topicGroup "Topics" "13" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicItem "Markdown" "#Markdown" "1" "" -->
 	<!-- @topicSep -->
@@ -31,38 +36,43 @@
 <!-- @marker "Active Issues" -->
 <h2 id='ActiveIssues'>Active Issues</h2>
 
-<h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> use GitHub Issues; synchronize History files</h4><pre>
-* adapt History_Support.html to synchronize with GitHub issues
-* **==**
-* allow markdown files to be included in the source for Cdoc sites
-	* make sure they produce valid HTML
-* use separate history file Support_v0_1.md for work on milestone v0.1
-</pre>
-
 <h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
-* correct merge conflicts (Punkin; Accessor)
-* remove references to deprecated functions $(DEV), $(CCDev); remove function definitions
-* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
-* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
-* **==** Current
-* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor</a>)
-* ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
-* remove file /private/etc/launchd.conf from scripts and disk
+	* correct merge conflicts (Punkin; Accessor)
+	* remove references to deprecated functions $(DEV), $(CCDev); remove function definitions
+	* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
+	* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
+	<li class='tlmark'>&lt;--</li>
+	* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin#1</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor#1</a>, item "replace deprecated scripts"
+	* ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
+	* remove file /private/etc/launchd.conf from scripts and disk
+</pre>
+
+<h4 id='replaceKshFPATH'><a href="http://github.com/carolclark/Support/issues/5">(#5)</a> replace ksh $FPATH calls with dot syntax</h4><pre>
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	* testCcInstall, ccInstallAction use "&lt;. path&gt;" syntax
+	* get all builds working again
+		* Punkin: replace deprecated script doxygenBuild; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+		* Accessor: replace deprecated scripts doxygenBuildz, buildCdoc; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+</pre>
+
+<h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
+	<li class='tlmark'>&lt;--</li>
 </pre>
 
 <h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> use GitHub Issues; synchronize History files</h4><pre>
-* adapt History_Support.html to synchronize with GitHub issues
-* **==**
-* allow markdown files to be included in the source for Cdoc sites
-	* make sure they produce valid HTML
-* use separate history file Support_v0_1.md for work on milestone v0.1
+	* adapt History_Support.html to synchronize with GitHub issues
+	<li class='tlmark'>&lt;--</li>
+	* allow markdown files to be included in the source for Cdoc sites
+		* make sure they produce valid HTML
+	* use separate history file Support_v0_1.md for work on milestone v0.1
 </pre>
 
 <!-- @marker "Automation" -->
 <h4 id='Automation'>Ongoing Automation</h4><pre>
-* GitHub subslate for Xcode
-* **==**
-* assistance for typing Markdown (Maybe Dash snippets accessed with `Type > markdown`?)</pre>
+	* GitHub subslate for Xcode
+	<li class='tlmark'>&lt;--</li>
+	* assistance for typing Markdown (Maybe Dash snippets accessed with `Type > markdown`?)
+</pre>
 
 <!-- @marker "Closed Issues" -->
 <h2 id='ClosedIssues'>Closed Issues</h2>
@@ -219,7 +229,7 @@
 			<li>update project scripts; Doxygen configuration file (Doxygen expects forms $(DEV) and $(CCDev))</li>
 		</ul></li>
 		<li class='tldate'>[fixDevCCDev 03/20/2013]</li>
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		<li class='tlmark'>&lt;--</li>
 		<li id='fixUserSpecificBuilds'>replace user-specific build scripts<ul>
 			<li>convert Cdoc, Doxygen targets in Punkin, Accessor to use External targets, ccInstallAction</li>
 			<li>retire obsolete scripts buildCdoc.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>

@@ -4,10 +4,10 @@
 
 	/* timeline */
 .tlhead {									/* large "<--"	*/
-	margin-top: 1em;
-	margin-bottom: 25px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	margin-left: 600px;
-	font: bold italic 16px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
+	font: bold italic 12px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
 	color: #000;
 	text-align: center;
 	border-top: 1px solid #9999ff;
@@ -16,8 +16,8 @@
 }
 
 .tlmark {									/* small "<--"	*/
-	margin-top: 1px;
-	margin-bottom: 1px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	margin-left: 700px;
 	font: italic 8px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
 	color: #000;
