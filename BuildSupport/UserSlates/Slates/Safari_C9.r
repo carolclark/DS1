@@ -821,18 +821,6 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 			Click { 0, 85, 10, _window, _topLeft },		\
 			Click { -1, 480, 29, _screen, _topLeft },		\
 			endSequence{},			\
-		Event { "jump left", "left <n> times" },	Subslate { "<n>" },	\
-			_SlateGlobals_,		\
-			_CloseSubslate_,	\
-			_GoLeftItems_,		\
-			endSubslate{},		\
-		Event { "jump right", "right <n> times" },	Subslate { "<n>" },	\
-			_SlateGlobals_,		\
-			_CloseSubslate_,	\
-			_GoRightItems_,		\
-			endSubslate{},		\
-		_JumpDownSubslate_,                                           \
-		_JumpNorthSubslate_,                                          \
 		_DeleteKey_,                                                  \
 		_FDeleteKey_,                                                 \
 		Event { "one",		"1" },	Keypress { kc_kp1, 0 },                \
@@ -849,6 +837,83 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		Event { "page top", "" },		Keypress { kc_home, 0 },           \
 		Event { "page end", "" },		Keypress { kc_end, 0 }
 
+#define _SudokuJump_		\
+		Event { "jump left", "left <n> times" },	Subslate { "<n>" },	\
+			_SlateGlobals_,		\
+			_CloseSubslate_,	\
+			_GoLeftItems_,		\
+			endSubslate{},		\
+		Event { "jump right", "right <n> times" },	Subslate { "<n>" },	\
+			_SlateGlobals_,		\
+			_CloseSubslate_,	\
+			_GoRightItems_,		\
+			endSubslate{},		\
+		_JumpDownSubslate_,     \
+		_JumpNorthSubslate_
+
+#pragma mark _JumpDelaySubslates_
+#define	_wLeft		KeyDelay { kc_left, 0, 4 },
+#define	_wRight		KeyDelay { kc_right, 0, 4 }
+#define	_wUp		KeyDelay { kc_up, 0, 4 }
+#define	_wDown		KeyDelay { kc_down, 0, 4 }
+#define	_JumpDelaySubslates_		\
+	Event { "jump left", "" },		Subslate { "jump left" },	\
+		_SlateGlobals_,			\
+		_CloseSubslate_,		\
+		ExitEvent { "one", "" },		Sequence{}, _wLeft, endSequence{},	\
+		ExitEvent { "two", "" },		Sequence{}, _wLeft, _wLeft, endSequence{},	\
+		ExitEvent { "three", "" },		Sequence{},	_wLeft, _wLeft, _wLeft, endSequence{},	\
+		ExitEvent { "four", "" },		Sequence{},	_wLeft, _wLeft, _wLeft, _wLeft,	endSequence{},	\
+		ExitEvent { "five", "" },		Sequence{},	_wLeft, _wLeft, _wLeft, _wLeft, _wLeft, endSequence{},	\
+		ExitEvent { "six", "" },		Sequence{},	_wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, endSequence{}, \
+		ExitEvent { "seven", "" },		Sequence{},	_wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, endSequence{},	\
+		ExitEvent { "eight", "" },		Sequence{},	_wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, endSequence{},	\
+		ExitEvent { "nine", "" },		Sequence{},	_wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, endSequence{},	\
+		ExitEvent { "ten", "" },		Sequence{},	_wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, _wLeft, endSequence{},	\
+		endSubslate{},			\
+	Event { "jump right", "" },		Subslate { "jump right" },	\
+		_SlateGlobals_,			\
+		_CloseSubslate_,		\
+		ExitEvent { "one", "" },		Sequence{}, _wRight, endSequence{},	\
+		ExitEvent { "two", "" },		Sequence{}, _wRight, _wRight, endSequence{},	\
+		ExitEvent { "three", "" },		Sequence{},	_wRight, _wRight, _wRight, endSequence{},	\
+		ExitEvent { "four", "" },		Sequence{},	_wRight, _wRight, _wRight, _wRight,	endSequence{},	\
+		ExitEvent { "five", "" },		Sequence{},	_wRight, _wRight, _wRight, _wRight, _wRight, endSequence{},	\
+		ExitEvent { "six", "" },		Sequence{},	_wRight, _wRight, _wRight, _wRight, _wRight, _wRight, endSequence{}, \
+		ExitEvent { "seven", "" },		Sequence{},	_wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, endSequence{},	\
+		ExitEvent { "eight", "" },		Sequence{},	_wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, endSequence{},	\
+		ExitEvent { "nine", "" },		Sequence{},	_wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, endSequence{},	\
+		ExitEvent { "ten", "" },		Sequence{},	_wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, _wRight, endSequence{},	\
+		endSubslate{},			\
+	Event { "jump north", "" },		Subslate { "jump up" },	\
+		_SlateGlobals_,			\
+		_CloseSubslate_,		\
+		ExitEvent { "one", "" },		Sequence{}, _wUp, endSequence{},	\
+		ExitEvent { "two", "" },		Sequence{}, _wUp, _wUp, endSequence{},	\
+		ExitEvent { "three", "" },		Sequence{},	_wUp, _wUp, _wUp, endSequence{},	\
+		ExitEvent { "four", "" },		Sequence{},	_wUp, _wUp, _wUp, _wUp,	endSequence{},	\
+		ExitEvent { "five", "" },		Sequence{},	_wUp, _wUp, _wUp, _wUp, _wUp, endSequence{},	\
+		ExitEvent { "six", "" },		Sequence{},	_wUp, _wUp, _wUp, _wUp, _wUp, _wUp, endSequence{}, \
+		ExitEvent { "seven", "" },		Sequence{},	_wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, endSequence{},	\
+		ExitEvent { "eight", "" },		Sequence{},	_wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, endSequence{},	\
+		ExitEvent { "nine", "" },		Sequence{},	_wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, endSequence{},	\
+		ExitEvent { "ten", "" },		Sequence{},	_wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, _wUp, endSequence{},	\
+		endSubslate{},			\
+	Event { "jump down", "" },		Subslate { "jump left" },	\
+		_SlateGlobals_,			\
+		_CloseSubslate_,		\
+		ExitEvent { "one", "" },		Sequence{}, _wDown, endSequence{},	\
+		ExitEvent { "two", "" },		Sequence{}, _wDown, _wDown, endSequence{},	\
+		ExitEvent { "three", "" },		Sequence{},	_wDown, _wDown, _wDown, endSequence{},	\
+		ExitEvent { "four", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown,	endSequence{},	\
+		ExitEvent { "five", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown, _wDown, endSequence{},	\
+		ExitEvent { "six", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown, _wDown, _wDown, endSequence{}, \
+		ExitEvent { "seven", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, endSequence{},	\
+		ExitEvent { "eight", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, endSequence{},	\
+		ExitEvent { "nine", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, endSequence{},	\
+		ExitEvent { "ten", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, endSequence{},	\
+		endSubslate{}
+
 #define _pzlTop		-422
 resource restype_Slate (resid_sudokuTimes, "") { {
 	Slate { "Times", {
@@ -860,8 +925,9 @@ resource restype_Slate (resid_sudokuTimes, "") { {
 		Event { "notes", "" },			Click { 1, 455,	_pzlTop+294, _window, _bottomLeft },
 		Event { "clue", "" },			Click { 1, 455,	_pzlTop+316, _window, _bottomLeft },
 		Event { "puzzle", "" },			Click { 1, 200, _pzlTop+250, _window, _bottomLeft },
-		Event { "position puzzle", "" },	Sequence{}, Click { 1, 400, 400, _window, _topLeft }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, endSequence{},
+		Event { "position puzzle", "" },	Sequence{}, Click { 1, 400, 400, _window, _topLeft }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, endSequence{},
 		Event { "lock option",	"" },	Keypress { 0, mf_control + mf_toggle },
+		_JumpDelaySubslates_,
 		_SudokuBase_,
 	} }
 } };
@@ -872,12 +938,14 @@ resource restype_Slate (resid_sudokuPost, "") { {
 		Event { "capital",		"shift key" },	Keypress { 0, mf_shift },
 		Event { "lock shift",	"lock or unlock shift key" },	Keypress { 0, mf_shift + mf_toggle },
 		_SudokuBase_,
+		_SudokuJump_,
 	} }
 } };
 
 resource restype_Slate (resid_sudokuThink, "") { {
 	Slate { "Think", {
 		_SudokuBase_,
+		_SudokuJump_,
 	} }
 } };
 
@@ -1062,6 +1130,7 @@ resource restype_Slate (resid_sudokuDaily, "") { {
 			endSubslate{},
 		Event { "lock option",	"lock or unlock option key" },	Keypress { 0, mf_option + mf_toggle },
 		_SudokuBase_,
+		_SudokuJump_,
 	} }
 } };
 
@@ -1085,6 +1154,7 @@ resource restype_Slate (resid_sudokuDailyYear, "") { {
 		Event { "ten", "" },	Sequence{}, _prev, _prev, _prev, _prev, _prev, _prev, _prev, _prev, _prev, _prev, endSequence{},
 		Event { "eleven", "" },	Sequence{}, _prev, _prev, _prev, _prev, _prev, _prev, _prev, _prev, _prev, _prev, _prev, endSequence{},
 		_SudokuBase_,
+		_SudokuJump_,
 	} }
 } };
 
