@@ -13,17 +13,10 @@ ccInstall projectPath target [actionFlags]
 #	build the specified project target
 #		actionFlags: [-[citud]+] - actions requested (clean, install, test, upload, doxygen); default: -it
 ccInstall commandFlag [argument(s)]
-#	--getActions	resultObject [actionString]
-#		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
-#			default: -it
-#			resultObject: object to contain results
+#	--setPaths			set derived paths from arguments
 #	--get<Path>			projectPath target
 #		<Path>: 		BaseBath | SourcePath | TargetScript | Lastbuilt | TargetName
 #		result: 		string containing specified path
-#	--findTests 		projectPath target
-#		result: 		path to file containing list of tests for <projectPath>/<target>
-#	--findSources		projectPath target
-#		result: 		path to file containing list of source files for <projectPath>/<target>
 #	--updateLastbuilt	projectPath target
 #						set last built flag to the current date and time
 #	--clearLastbuilt	projectPath target
@@ -32,6 +25,18 @@ ccInstall commandFlag [argument(s)]
 #						copy source file to the specified destination
 #	--translateCdoc		sourceFile destinationPath
 #						translate Cdoc markers in source file and store result at the specified destination
+#	--getActions		resultObject [actionString]
+#		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
+#			default: -it
+#			resultObject: object to contain results
+#	--findTests 		projectPath target
+#		result: 		path to file containing list of tests for <projectPath>/<target>
+#	--findSources		projectPath target
+#		result: 		path to file containing list of source files for <projectPath>/<target>
+#	--removeFolder		removes contents and folder for the folder specified
+#	--processActions	projectPath target actionFlags
+#	--ccInstall			projectPath target actionFlags
+#						performs specified action on target
 #	--help				<no args>
 #						print this information
 '
@@ -429,7 +434,7 @@ function processActions {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			print "failed to create output directory $outputDir"
-			exit $st
+			return $st
 		fi
 
 	#  Run doxygen on the config file (builds local site)
@@ -437,7 +442,7 @@ function processActions {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			print "error while generating Doxygen docs"
-			exit $st
+			return $st
 		fi
 
 	# Make docset using the Makefile that just generated
@@ -446,7 +451,7 @@ function processActions {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			print "error while creating $project.docset"
-			exit $st
+			return $st
 		fi
 
 	# Copy the docset to the location expected by Xcode
@@ -455,7 +460,7 @@ function processActions {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			print "could not copy docset to $docsetPath"
-			exit $st
+			return $st
 		fi
 
 	# Tell Xcode to load the docset
@@ -463,7 +468,7 @@ function processActions {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			print "error loading $docsetPath into Xcode"
-			exit $st
+			return $st
 		fi
 
 	fi

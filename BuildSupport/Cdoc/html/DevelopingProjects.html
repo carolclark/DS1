@@ -98,8 +98,8 @@
 			</ul></li>
 		</ul></li>
 		<li><b>Script targets</b> Bundle targets; remove all template build phases except Target Dependencies; delete .pch file; add Run Script build phase<ul>
-			<li><b>Cdoc</b> script: buildCdoc &lt;WorkspaceName&gt;</li>
-			<li><b>Doxygen</b> script: doxygenBuild &lt;WorkspaceName&gt;</li>
+			<li><b>Cdoc</b> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Cdoc $(ACTION)</span></li>
+			<li><b>Doxygen</b> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Doxygend $(ACTION)</span></li>
 		</ul></li>
 		<li><b>InHouse</b> products installed for InHouse use<ul>
 			<li><b>Product</b> set installation location for the target to be istalled<ul>

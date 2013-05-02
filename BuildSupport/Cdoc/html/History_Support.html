@@ -18,15 +18,16 @@
 		<!-- @topicItem "replaceKshFPATH" "#replaceKshFPATH" "1" "" -->
 		<!-- @topicItem "resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
 		<!-- @topicItem "support collaborator configuration" "#collaboratorConfig" "1" "" -->
-		<!-- @topicItem "use GitHub Issues" "#useGitHubIssues" "1" "" -->
-		<!-- @topicGroup "" "6" -->
+		<!-- @topicItem "&radic;use GitHub Issues" "#useGitHubIssues" "1" "" -->
+		<!-- @topicItem "backup GitHub Issues" "#backupGitHubIssues" "1" "" -->
+		<!-- @topicGroup "" "7" -->
 		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
 		<!-- @topicSep -->
 		<!-- @topicItem "&lt;-- Current" "#hmark_Current" "1" "" -->
-	<!-- @topicGroup "" "10" -->
-	<!-- @topicItem "Closed Issues" "#ClosedIssues" "0" "" -->
+	<!-- @topicGroup "" "11" -->
+	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "13" -->
+	<!-- @topicGroup "Topics" "14" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicItem "Markdown" "#Markdown" "1" "" -->
 	<!-- @topicSep -->
@@ -35,6 +36,10 @@
 
 <!-- @marker "Active Issues" -->
 <h2 id='ActiveIssues'>Active Issues</h2>
+
+<h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
+	<li class='tlmark'>&lt;--</li>
+</pre>
 
 <h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
 	* correct merge conflicts (Punkin; Accessor)
@@ -46,21 +51,25 @@
 	* ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
 	* remove file /private/etc/launchd.conf from scripts and disk
 </pre>
-
 <h4 id='replaceKshFPATH'><a href="http://github.com/carolclark/Support/issues/5">(#5)</a> replace ksh $FPATH calls with dot syntax</h4><pre>
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* testCcInstall, ccInstallAction use "&lt;. path&gt;" syntax
 	* get all builds working again
-		* Punkin: replace deprecated script doxygenBuild; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
-		* Accessor: replace deprecated scripts doxygenBuildz, buildCdoc; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+		* testDoxygenInstall: correct typo
+		* Punkin: replace deprecated script doxygenBuild; for <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+		* Accessor: replace deprecated scripts doxygenBuild, buildCdoc; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+		* Support: remove deprecated scripts doxygenBuild, buildCdoc
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	* refactor ccInstall
+		* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
+		* change ccInstall to take same parameters as ccInstallAction
+	* Then: Is ccInstallAction still necessary?
+	* remove $FPATH
+		* function errtrap: replace calls
+		* delete now-empty folder at $FPATH; remove variable $FPATH
 </pre>
 
-<h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
-	<li class='tlmark'>&lt;--</li>
-</pre>
-
-<h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> use GitHub Issues; synchronize History files</h4><pre>
-	* adapt History_Support.html to synchronize with GitHub issues
+<h4 id='backupGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#backup">(#3:backup)</a> backup GitHub issue content</h4><pre>
+	* backup GitHub issue content
 	<li class='tlmark'>&lt;--</li>
 	* allow markdown files to be included in the source for Cdoc sites
 		* make sure they produce valid HTML
@@ -74,8 +83,13 @@
 	* assistance for typing Markdown (Maybe Dash snippets accessed with `Type > markdown`?)
 </pre>
 
-<!-- @marker "Closed Issues" -->
-<h2 id='ClosedIssues'>Closed Issues</h2>
+<!-- @marker "Completed" -->
+<h2 id='Completed'>Completed</h2>
+
+<h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>
+	* adapt History_Support.html to synchronize with GitHub issues
+	<li class='tlmark'>&lt;--</li>
+</pre>
 
 <!-- @marker "Open Topics" -->
 <h2 id='OpenTopics'>Open Topics</h2>

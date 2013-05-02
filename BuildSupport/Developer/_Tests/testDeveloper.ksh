@@ -8,6 +8,7 @@
 #  Confidential and Proprietary.
 
 . "${CCDev}/bin/resultCodes.ksh"
+. "${CCDev}/func/ccInstall"
 
 #^ Installation
 testInstallation() {
@@ -18,7 +19,7 @@ testInstallation() {
 	dev=$(launchctl getenv DEV)
 	if [[ ${USER} = carolclark ]] ; then
 		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
-	if [[ ${USER} = lauramartinez ]] ; then
+	elif [[ ${USER} = lauramartinez ]] ; then
 		assertEquals "$LINENO"': incorrect $DEV' "{HOME}/Documents/Projects" ${dev}
 	else
 		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
@@ -37,7 +38,6 @@ testInstallation() {
 	if [[ ! -e "${fl}" ]] ; then
 		fail "$LINENO: AppleScript FixWindow.scpt missing"
 	fi
-
 }
 
 #^ Developer_install.ksh

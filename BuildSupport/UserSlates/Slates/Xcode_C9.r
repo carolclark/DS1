@@ -1309,7 +1309,7 @@ resource restype_Slate (resid_ghRepository, "") { {
 		Event { "pulse", "" },			Click { 1, --440, 330, _window, _topCenter },
 		Event { "code", "" },			Click { 1, -370, 190, _window, _topCenter },
 			Event { "files", "" },			Click { 1, -223, 330, _window, _topCenter },
-			Event { "commits", "" },		Click { 1, -143, 330, _window, _topCenter },
+			Event { "commits", "" },		Click { 1, -180, 330, _window, _topCenter },
 			Event { "branches", "" },		Click { 1, -100, 330, _window, _topCenter },
 		Event { "network", "" },		Click { 1, -240, 190, _window, _topCenter },
 		Event { "pull requests", "" },	Click { 1, -120, 190, _window, _topCenter },
@@ -1342,9 +1342,9 @@ resource restype_Slate (resid_ghRepoButtons, "") { {
 #define _ghIssueBar_	\
 	Event { "paste", "" },				Keypress { kc_V, mf_command + mf_option + mf_shift },	\
 	Event { "browse milestones", "" },	Click { 1, -290, 250, _window, _topCenter },		\
-	Event { "search", "" },				Sequence{}, Click { 1, -355, 250, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate },  endSequence{},		\
-	Event { "new issue", "" },			Click { 1, 415, 250, _window, _topCenter },			\
-	Event { "submit issue", "" },		Click { 1, 123, 700, _window, _topCenter }
+	Event { "search", "" },				Sequence{}, Click { 1, -355, 250, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},		\
+	Event { "new issue", "" },			Sequence{}, Click { 1, 415, 250, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},			\
+	Event { "submit issue", "" },		Sequence{}, Click { 1, 123, 700, _window, _topCenter }, ResSubslate { resid_ghOpenIssue },  endSequence{}
 
 #define	_ghIssueListStandards_	\
 	ExitEvent { "exit", "" },		NilAction{},							\
@@ -1382,6 +1382,7 @@ resource restype_Slate (resid_ghRepoIssues, "") { {
 		Event { "select", "" },			Keypress { kc_X, 0 },
 		Event { "assigned", "" },		Click { 1, -406, 347, _window, _topCenter },
 		Event { "button", "" },			Sequence{}, Click { 0, -170, 334, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
+		Event { "search", "" },			Sequence{}, Click { 1, 230, 250, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
 		Event { "milestone", "" },		Sequence{}, Click { 1, -360, 490, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
 		Event { "label", "" },			Subslate { "label" },
 			_SlateGlobals_,

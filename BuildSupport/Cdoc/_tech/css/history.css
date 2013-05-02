@@ -44,10 +44,19 @@
 	font-style: italic;
 	margin-left: .3in;
 	color: #9999ff;
-
 }
 
-.tldate {text-align: right}					/* date marker	*/
+.tldate {									/* date marker	*/
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 700px;
+	font: 12px 'Lucida Grande', geneva, helvetica, arial, sans-serif;
+	color: #000;
+	text-align: right;
+	border-top: 1px solid #9999ff;
+	border-bottom: 1px solid #9999ff;
+	background-color: #f5f5ff;
+}
 
 	/* thread	*/
 .ttag {										/* thread tag	*/

@@ -15,6 +15,8 @@ USAGE='
 trapString='errtrap $0 $LINENO'
 trap "$trapString" ERR
 
+. ${CCDev}/func/ccInstall
+
 # for target ${DEV}/Support/BuildSupport/Developer:
 #	old params: workspacePath ${DEV}/Support; projectTarget BuildSupport/Developer
 #	new params: srcroot $SRCROOT; targetPath Developer

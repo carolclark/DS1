@@ -13,6 +13,7 @@ setUp() {
 }
 
 . "${CCDev}/bin/resultCodes.ksh"
+. "${CCDev}/func/ccInstall"
 
 #^	1 === General
 testCciGeneral() {

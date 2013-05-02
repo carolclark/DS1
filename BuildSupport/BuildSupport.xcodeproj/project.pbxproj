@@ -134,10 +134,8 @@
 		67DB2335169E0A2900A6E910 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67DB2336169E0A2900A6E910 /* errtrap.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errtrap.ksh; sourceTree = "<group>"; };
 		67DB233B169E0A2900A6E910 /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
-		67DB233C169E0A2900A6E910 /* buildCdoc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = buildCdoc.ksh; sourceTree = "<group>"; };
 		67DB233D169E0A2900A6E910 /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
 		67DB233E169E0A2900A6E910 /* cleanProjectTarget.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = cleanProjectTarget.ksh; sourceTree = "<group>"; };
-		67DB233F169E0A2900A6E910 /* doxygenBuild.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = doxygenBuild.ksh; sourceTree = "<group>"; };
 		67DB2340169E0A2900A6E910 /* resultCodes.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = resultCodes.ksh; sourceTree = "<group>"; };
 		67DB2344169E0A2900A6E910 /* gen_test_results.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gen_test_results.sh; sourceTree = "<group>"; };
 		67DB2345169E0A2900A6E910 /* which */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = which; sourceTree = "<group>"; };
@@ -507,10 +505,8 @@
 			isa = PBXGroup;
 			children = (
 				67DB233B169E0A2900A6E910 /* archive.ksh */,
-				67DB233C169E0A2900A6E910 /* buildCdoc.ksh */,
 				67DB233D169E0A2900A6E910 /* ccBackup.ksh */,
 				67DB233E169E0A2900A6E910 /* cleanProjectTarget.ksh */,
-				67DB233F169E0A2900A6E910 /* doxygenBuild.ksh */,
 				67DB2340169E0A2900A6E910 /* resultCodes.ksh */,
 				67BE04B116B062F00065BFDE /* ccInstallAction.ksh */,
 			);
