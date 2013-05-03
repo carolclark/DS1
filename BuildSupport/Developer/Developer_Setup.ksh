@@ -56,11 +56,6 @@ function envKsh {
 	fi
 	export PATH											# path to search for unix scripts
 	print "PATH=${PATH}; export PATH"
-	if [[ $(print ":$FPATH:" | grep ":$CCDev/func:") = "" ]] ; then
-		FPATH="$FPATH:$CCDev/func:"
-	fi
-	export FPATH										# path to search for unix functions
-	print "FPATH=${FPATH}; export FPATH"
 	SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit	# third-party library used for unix testing
 	print "SHUnit=${SHUnit}; export SHUnit"
 	if [[ ${configureTerminal} = "yes" ]] ; then
@@ -76,30 +71,11 @@ function envLaunchctl {
 	print "setenv DEV ${DEV}"
 	print "setenv CCDev ${CCDev}"
 	print "setenv PATH ${PATH}"
-	print "setenv FPATH ${FPATH}"
 	print "setenv SHUnit ${SHUnit}"
 	if [[ ${configureTerminal} = "yes" ]] ; then
 		print "setenv PS1 ${PS1}"
 		print "setenv VISUAL ${VISUAL}"
 	fi
-}
-
-#^	writeValueFunction	write function that returns a fixed value
-function writeValueFunction {
-	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		name="${1}"
-		value="${2}"
-	else
-		print "Usage: writeValueFunction: <name> <value>"
-		exit 1
-	fi
-	mkdir -p "${CCDev}/func"
-	ffpath="${CCDev}/func/${name}"
-	print "function ${name} {" > "${ffpath}"
-	print "	print ${value}" >> "${ffpath}"
-	print "	exit 0" >> "${ffpath}"
-	print "}" >> "${ffpath}"
-	chmod a+x "${ffpath}"
 }
 
 #^	gitPrintConfig		git SCM system configuration
@@ -277,9 +253,8 @@ mkdir -p $CCDev/tmp
 
 print "installing files ..."
 # install bootstrap scripts
-install "${srcdir}/Functions/errtrap.ksh" "$CCDev/func" "errtrap"
 install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin"
-install "${srcdir}/Functions/ccInstall.ksh" "$CCDev/func" "ccInstall"
+install "${srcdir}/Scripts/ccInstall.ksh" "$CCDev/bin" "ccInstall"
 install "${srcdir}/Scripts/ccInstallAction.ksh" "$CCDev/bin" "ccInstallAction"
 
 # install shunit (third party)

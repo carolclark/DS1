@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 . "${CCDev}/bin/resultCodes.ksh"
-. "${CCDev}/func/ccInstall"
+. "${CCDev}/bin/ccInstall"
 
 #^ Installation
 testInstallation() {

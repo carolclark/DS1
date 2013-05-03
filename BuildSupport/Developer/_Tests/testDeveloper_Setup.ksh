@@ -12,9 +12,6 @@ testEnvironment() {
 	if [[ ! -e ${CCDev}/tmp ]] ; then
 		fail "$LINENO: file ${CCDev}/tmp missing" 
 	fi
-	if [[ ${FPATH} = "" ]] ; then
-		fail "$LINENO: '${FPATH}' undefined"
-	fi
 	if [[ ! -e ${HOME}/.profile ]] ; then
 		fail "$LINENO: file .profile missing" 
 	fi
@@ -36,10 +33,7 @@ testGitSetup() {
 }
 
 testScripts() {
-	if [[ ! -e ${CCDev}/func/errtrap ]] ; then
-		fail "$LINENO: function file errtrap missing"
-	fi
-	if [[ ! -e ${CCDev}/func/ccInstall ]] ; then
+	if [[ ! -e ${CCDev}/bin/ccInstall ]] ; then
 		fail "$LINENO: function file ccInstall missing"
 	fi
 	if [[ ! -e ${CCDev}/bin/ccInstallAction ]] ; then

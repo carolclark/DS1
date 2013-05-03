@@ -14,7 +14,7 @@ USAGE='
 #^ 1 === top
 trap 'echo "$(basename $0)#$LINENO: Command exited with status $?." 1>&2' ERR
 
-. ${CCDev}/func/ccInstall
+. ccInstall
 
 # for target ${DEV}/Support/BuildSupport/Developer:
 #	old params: workspacePath ${DEV}/Support; projectTarget BuildSupport/Developer
