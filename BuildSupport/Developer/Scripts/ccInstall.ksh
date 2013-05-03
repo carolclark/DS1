@@ -79,7 +79,7 @@ function getPath {
 		print "USAGE: ccInstall --get<Path> pathToProject target"
 		return $RC_MissingArgument
 	fi
-	
+
 	setPaths "${projectPath}" "${target}"
 	typeset -i index=-1
 	case "${command}" in
@@ -243,7 +243,7 @@ function getActions {
 	else
 		actionString="it"
 	fi
-	resultObj.actionString=${actionString}	
+	resultObj.actionString=${actionString}
 	typeset -i i=${#actionString}
 	typeset -i errorCount=0
 	while [[ $i > 0 ]] ; do
@@ -354,7 +354,7 @@ function removeFolder {
 			fi
 			print "removed"
 		done < "${iofile}"
-		
+
 		find . -path -prune -or -type d | sed 's|\./||' | tail -r > "${iofile}"
 		chmod a+r "${iofile}"
 
