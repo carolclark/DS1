@@ -22,8 +22,7 @@ Doxygen_install.ksh -- provide functions for ccInstall to support CCDev installa
 . "${CCDev}/bin/resultCodes.ksh"
 
 #^ 1 === top
-trapString='errtrap $0#$LINENO'
-trap "$trapString" ERR
+trap 'echo "$(basename $0)#$LINENO: Command exited with status $?." 1>&2' ERR
 
 projectPath="${DEV}/Support"
 target="BuildSupport/Doxygen"

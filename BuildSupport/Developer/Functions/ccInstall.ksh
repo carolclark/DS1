@@ -45,8 +45,7 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 . "${CCDev}/bin/resultCodes.ksh"
 
 #^ 1 === top
-trapString='errtrap $0 $LINENO'
-#trap "$trapString" ERR
+trap 'echo "$(basename $0)#$LINENO: Command exited with status $?." 1>&2' ERR
 
 scriptpath=""
 target=""
@@ -531,7 +530,7 @@ function processActions {
 							print "succeeded"
 						fi
 						;;
-					"translateCdoc" )
+					"j" )
 						msg=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
 						st=$?
 						if [[ ${st} > 0 ]] ; then

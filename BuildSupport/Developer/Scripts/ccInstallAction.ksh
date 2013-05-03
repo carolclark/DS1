@@ -12,8 +12,7 @@ USAGE='
 '
 
 #^ 1 === top
-trapString='errtrap $0 $LINENO'
-trap "$trapString" ERR
+trap 'echo "$(basename $0)#$LINENO: Command exited with status $?." 1>&2' ERR
 
 . ${CCDev}/func/ccInstall
 
