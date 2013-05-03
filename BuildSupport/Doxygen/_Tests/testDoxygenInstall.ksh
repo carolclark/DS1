@@ -13,7 +13,7 @@ setUp() {
 }
 
 . "${CCDev}/bin/resultCodes.ksh"
-. "${CCDev}/func/ccInstall"
+. "${CCDev}/bin/ccInstall"
 
 testTargetName() {
 	assertEquals "$LINENO: " 1 1

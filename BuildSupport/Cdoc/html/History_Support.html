@@ -15,7 +15,7 @@
 
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
-		<!-- @topicItem "replaceKshFPATH" "#replaceKshFPATH" "1" "" -->
+		<!-- @topicItem "&radic;replaceKshFPATH" "#replaceKshFPATH" "1" "" -->
 		<!-- @topicItem "resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
 		<!-- @topicItem "support collaborator configuration" "#collaboratorConfig" "1" "" -->
 		<!-- @topicItem "&radic;use GitHub Issues" "#useGitHubIssues" "1" "" -->
@@ -46,26 +46,18 @@
 	* remove references to deprecated functions $(DEV), $(CCDev); remove function definitions
 	* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
 	* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
-	<li class='tlmark'>&lt;--</li>
 	* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin#1</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor#1</a>, item "replace deprecated scripts"
-	* ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
-	* remove file /private/etc/launchd.conf from scripts and disk
-</pre>
-<h4 id='replaceKshFPATH'><a href="http://github.com/carolclark/Support/issues/5">(#5)</a> replace ksh $FPATH calls with dot syntax</h4><pre>
-	* testCcInstall, ccInstallAction use "&lt;. path&gt;" syntax
-	* get all builds working again
-		* testDoxygenInstall: correct typo
-		* Punkin: replace deprecated script doxygenBuild; for <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
-		* Accessor: replace deprecated scripts doxygenBuild, buildCdoc; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
-		* Support: remove deprecated scripts doxygenBuild, buildCdoc
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-	* refactor ccInstall
+	<li class='tlmark'>&lt;--</li>
+	* ccInstall
 		* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
 		* change ccInstall to take same parameters as ccInstallAction
-	* Then: Is ccInstallAction still necessary?
-	* remove $FPATH
-		* function errtrap: replace calls
-		* delete now-empty folder at $FPATH; remove variable $FPATH
+		* Then: Is ccInstallAction still necessary?
+	* ?? ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
+	* remove file /private/etc/launchd.conf from scripts and disk
+</pre>
+
+<h4 id='UNIXerror'><a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling</h4><pre>
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 </pre>
 
 <h4 id='backupGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#backup">(#3:backup)</a> backup GitHub issue content</h4><pre>
@@ -89,6 +81,21 @@
 <h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>
 	* adapt History_Support.html to synchronize with GitHub issues
 	<li class='tlmark'>&lt;--</li>
+</pre>
+
+<h4 id='replaceKshFPATH'><a href="http://github.com/carolclark/Support/issues/5">(#5)</a> replace ksh $FPATH calls with dot syntax</h4><pre>
+	* testCcInstall, ccInstallAction use "&lt;. path&gt;" syntax
+	* get all builds working again
+		* testDoxygenInstall: correct typo
+		* Punkin: replace deprecated script doxygenBuild; for <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+		* Accessor: replace deprecated scripts doxygenBuild, buildCdoc; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+		* Support: remove deprecated scripts doxygenBuild, buildCdoc
+	* remove $FPATH
+		* function errtrap: replace calls
+			* trap 'echo "$0#$LINENO: Command exited with status $?." 1>&amp;2' ERR
+		* script files: move ccInstall.ksh to Scripts; delete function errtrap.ksh and obsolete script cleanProjectTarget.ksh
+		* delete now-empty folder at $FPATH; remove variable $FPATH
+	<li class='tldate'>[05/03/2013]</li>
 </pre>
 
 <!-- @marker "Open Topics" -->
