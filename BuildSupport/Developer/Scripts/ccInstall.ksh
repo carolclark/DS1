@@ -530,7 +530,7 @@ function processActions {
 							print "succeeded"
 						fi
 						;;
-					"j" )
+					"translateCdoc" )
 						msg=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
 						st=$?
 						if [[ ${st} > 0 ]] ; then

@@ -72,7 +72,7 @@
 				<li>review commit msgfile</li>
 				<li>commit</li>
 				<li>status; show --name-only; log; [amend]<ul>
-					<li><span class='em'>Amend:</span> [reset --soft lastCommit; restage]; commit --amend; [edit message]</li>
+					<li><span class='em'>Amend:</span> [reset --soft lastCommit; restage]; commit</li>
 				</ul></li>
 				<li>[diff --name-status with master; merge in master]</li>
 				<li>check stash list</li>
@@ -84,15 +84,16 @@
 			<li><span class='em'>Fetch</span><ul>
 				<li>checkout branch artist; fetch from remote branch laura/artist</li>
 				<li>checkout master; review changes; [rebase]</li>
-				<li><em>Merge</em> artist</li>
+				<li><b>Merge</b> artist</li>
 			</ul></li>
-			<li>review change log; [rebase] (for rebase 'edit' steps, amend commit)</li>
-			<li>construct and save commit message<span class='blurb'>Xcode / Stickies</span></li>
-			<li>merge in files: <span class='mono'>merge --no-ff --no-commit &lt;branch&gt;</span> (OR <span class='mono'>merge &lt;branch&gt;</span>; only works if no conflicts)</li>
+			<li>review change log</li>
+			<li>construct and save merge commit message<span class='blurb'>Xcode / Stickies</span></li>
+			<li>merge in files: <span class='mono'>merge --no-ff --no-commit &lt;branch&gt;</span></li>
 			<li>resolve conflicts: <span class='mono'>merge tool</span></li>
-			<li>commit, or patch to produce multiple commits</li>
-			<li>verify no stashes on &lt;branch&gt;; [delete branch]<ul>
-				<li>to review whether apparent unmerged branch is safe to delete:<br />
+			<li>review commit msgfile</li>
+			<li>commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
+			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
+				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>):<br />
 					<span class='mono'>git log --graph --left-right --cherry-pick --oneline master...$cb</span></li>
 			</ul></li>
 		</ul>
