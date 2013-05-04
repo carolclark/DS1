@@ -237,6 +237,13 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "make executable", "" },	Sequence{}, TypeText { "chmod a+x " }, ResSubslate { resid_Type }, endSequence{},
 		Event { "list tree", "" },			TypeText { "git ls-tree -r " },
 		Event { "show", "" },				TypeText { "git show --pretty=\"format:\" --name-only " },
+		Event { "set directory", "" },	Subslate { "set directory" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "Support", "" },		Sequence{}, TypeText { "${DEV}/Support" }, _return, endSequence{},
+			ExitEvent { "Accessor", "" },		Sequence{}, TypeText { "${DEV}/Accessor" }, _return, endSequence{},
+			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "${DEV}/Punkin" }, _return, endSequence{},
+			endSubslate{},
 		Event { "print directory", "" },	Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "print variables", "" },	TypeText { "print DEV: ${DEV}; print CCDev: ${CCDev}; print mv: $mv; print cb: $cb; print gf: $gf" },
 		Event { "print", "" },				Sequence{}, TypeText { "print " }, ResSubslate { resid_Type }, endSequence{},
@@ -499,6 +506,7 @@ resource restype_Slate (resid_gitLog, "") { {
 		Event { "topological", "" },	TypeText { "--topo-order " },
 		Event { "not", "" },			TypeText { "--not " },
 		Event { "left right", "" },		TypeText { "--left-right " },
+		Event { "unmerged branch", "" },	TypeText { "git log --graph --left-right --cherry-pick --oneline master..." },
 	} }
 } };
 
@@ -553,9 +561,7 @@ resource restype_Slate (resid_gitTag, "") { {
 #pragma mark 5 -- Merge
 resource restype_Slate (resid_gitMerge, "") { {
 	Slate { "Merge",	{
-		ExitEvent { "abort", "" },		TypeText { "--abort" },
-		Event { "closing branch", "" },	Sequence{}, TypeText { "--no-ff -m \"merge branch \"$cb $cb"}, endSequence{},
-		Event { "message", "" },		Sequence{}, TypeText { "$cb --no-ff -m \"merge $cb: " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "start", "" },			TypeText { "--no-ff --no-commit " },
 		Event { "remote", "" },			Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist: " }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
 		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{},
