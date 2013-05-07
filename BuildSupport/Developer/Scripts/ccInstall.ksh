@@ -45,7 +45,6 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 . "${CCDev}/bin/resultCodes.ksh"
 
 #^ 1 === top
-trap 'echo "$(basename $0)#$LINENO: Command exited with status $?." 1>&2' ERR
 
 scriptpath=""
 target=""
@@ -567,10 +566,8 @@ function processActions {
 
 		while read ln ; do
 			print "== ${target}/${ln}"
-			trap "" ERR
 			"${target}/${ln}"
 			st=$?
-			trap "$trapString" ERR
 			if [[ "${st}" > 0 ]] ; then
 				failcnt="${failcnt}"+1
 			fi

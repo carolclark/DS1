@@ -22,7 +22,6 @@ USAGE='
 . "${CCDev}/bin/resultCodes.ksh"
 
 #^ 1 === top
-trap 'echo "$(basename $0)#$LINENO: Command exited with status $?." 1>&2' ERR
 
 projectPath="${DEV}/<#Project#>"
 target="<#Target#>"

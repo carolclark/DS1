@@ -21,7 +21,7 @@ testErrorExit() {
 	assertEquals "$(basename $0)#$LINENO:" "$errmsg" "$msg"
 
 	# verify error message sent to stderr
-	msg=$(errorExit "[EXPECTED ERROR: $errmsg")
+	msg=$(errorExit "EXPECTED ERROR: $errmsg")
 	assertEquals "$(basename $0)#$LINENO:" "" "$msg"
 }
 
