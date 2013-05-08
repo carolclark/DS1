@@ -22,7 +22,6 @@ USAGE='
 . "${CCDev}/bin/resultCodes.ksh"
 
 #^ 0 === top
-trap 'echo "$(basename $0)#$LINENO: Command exited with status $?." 1>&2' ERR
 
 #^ 1 === archiveCode
 function archiveCode {	# archivePath projectName

@@ -58,6 +58,12 @@
 
 <h4 id='UNIXerror'><a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling</h4><pre>
 	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	* new file testErrsig.ksh: test and demonstrate improved error handling functionality
+		* initial errorExit function
+	* shunit tests should fail on errors in test scripts
+		* remove error traps
+			* *main impact now is generating multiple "Command exited with status 0." messages to stderr, which obscures detection of real errors*
+		* ccInstall: make testing fail if shunit generates error output
 </pre>
 
 <h4 id='backupGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#backup">(#3:backup)</a> backup GitHub issue content</h4><pre>

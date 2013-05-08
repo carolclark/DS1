@@ -427,7 +427,7 @@ resource restype_Slate (resid_gitStash, "") { {
 		Event { "save", "" },			Sequence{}, TypeText { "save " }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "apply", "" },			TypeText { "apply " },
 		Event { "drop", "" },			TypeText { "drop " },
-		Event { "list", "" },			TypeText { "list " },
+		ExitEvent { "list", "" },		Sequence{}, TypeText { "list " }, _return, endSequence{},
 		Event { "show", "" },			TypeText { "show " },
 		Event { "keep index", "" },		TypeText { "--keep-index " },
 		Event { "to branch", "" },		TypeText { "branch " },
@@ -561,10 +561,12 @@ resource restype_Slate (resid_gitTag, "") { {
 #pragma mark 5 -- Merge
 resource restype_Slate (resid_gitMerge, "") { {
 	Slate { "Merge",	{
-		Event { "start", "" },			TypeText { "--no-ff --no-commit " },
-		Event { "remote", "" },			Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist: " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "tool", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
-		Event { "file merge", "" },		Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{},
+		Event { "no fast forward", "" },	TypeText { "--no-ff " },
+		Event { "no commit", "" },			TypeText { "--no-commit " },
+		Event { "abort", "" },				TypeText { "--abort " },
+		Event { "remote", "" },				Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist: " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "tool", "" },				Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
+		Event { "file merge", "" },			Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{},
 		_TypeVariable_,
 		_StandardBranches_,
 		_Remotes_,

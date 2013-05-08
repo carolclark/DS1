@@ -274,6 +274,7 @@
 		67DD779716A71F5700BECCD5 /* Tools.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
 		67DD779A16A71F5700BECCD5 /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
 		67E1DD0317346C60009FC377 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
+		67E6ADF817384360005A30D0 /* testErrsig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrsig.ksh; sourceTree = "<group>"; };
 		67EB1F8D16BC41DC00B3DBB9 /* DoxyDemo_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_doxygen.txt; sourceTree = "<group>"; };
 		67EB1F8F16BC477800B3DBB9 /* mainpage.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mainpage.dox; sourceTree = "<group>"; };
 		67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresenterDD.h; sourceTree = "<group>"; };
@@ -466,6 +467,7 @@
 				67DB240C16A1CBF900A6E910 /* testDeveloper_Setup.ksh */,
 				67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */,
 				67DB232A169E0A2900A6E910 /* testCcInstall.ksh */,
+				67E6ADF817384360005A30D0 /* testErrsig.ksh */,
 			);
 			path = _Tests;
 			sourceTree = "<group>";
