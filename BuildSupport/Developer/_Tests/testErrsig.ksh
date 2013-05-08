@@ -18,11 +18,11 @@ testErrorExit() {
 	# verify error message content
 	errmsg="This is an error."
 	msg=$(errorExit "$errmsg" 2>&1)
-	assertEquals "$(basename $0)#$LINENO:" "$errmsg" "$msg"
+	assertEquals "$0#$LINENO:" "$errmsg" "$msg"
 
 	# verify error message sent to stderr
 	msg=$(errorExit "EXPECTED ERROR: $errmsg")
-	assertEquals "$(basename $0)#$LINENO:" "" "$msg"
+	assertEquals "$0#$LINENO:" "" "$msg"
 }
 
 # load shunit2

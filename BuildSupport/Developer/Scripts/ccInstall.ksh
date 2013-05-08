@@ -559,25 +559,42 @@ function processActions {
 	fi
 
 # test
+#	When shunit tests encounter an error, output is sent to stdout and a nonzero exit status is returned.
+#	The tests themselves may also also throw errors. Messages for those cases should include the text "EXPECTED ERROR".
+#	Here:
+#		failcnt: number of test files that encounter failures, +1 if execution errors are encountered
+#		errfile: file to collect stderr output
+#	returns nonzero exit status if test failures are encountered or messages not including "EXPECTED ERROR" are sent to stderr.
+
 	if [[ ${actions.doTest} > 0 ]] ; then
+		errout="$CCDev/tmp/errout"
+		errinfo="$CCDev/tmp/errinfo"
+		errtmp="$CCDev/tmp/errtmp"
 		iofile=$(findTests "${projectPath}" "${target}")
 		cd ${projectPath}
 		typeset -i failcnt=0
+		typeset -i errcnt=0
+		echo "" > "$errinfo"
 
 		while read ln ; do
 			print "== ${target}/${ln}"
-			"${target}/${ln}"
+			"${target}/${ln}" 2>"$errout"
 			st=$?
 			if [[ "${st}" > 0 ]] ; then
-				failcnt="${failcnt}"+1
+				failcnt=$failcnt+1
+			fi
+			grep -v "EXPECTED ERROR" $errout > $errtmp
+			if [[ $(cat "$errtmp") != "" ]] ; then
+				errcnt=$errcnt+1
+				cat $errtmp >> $errinfo
 			fi
 		done < "${iofile}"
-
-		if [[ "${failcnt}" > 0 ]] ; then
-			return "${failcnt}"
-		fi
 	fi
-	return 0
+	if [[ $errcnt > 0 ]] ; then
+		echo "ERROR ($errcnt files encountered execution errors):"
+		cat "$errinfo"
+	fi
+	return $(($failcnt+$errcnt))
 }
 
 #^ 8 === ccInstall

@@ -74,22 +74,24 @@
 				<li>status; show --name-only; log; [amend]<ul>
 					<li><span class='em'>Amend:</span> [reset --soft lastCommit; restage]; commit</li>
 				</ul></li>
-				<li>[diff --name-status with master; merge in master]</li>
 				<li>check stash list</li>
+				<li>diff --name-status with master</li>
 			</ul></li>
 		</ul>
 		<h5>Merge</h5><ul>
-			<li>from branch to be merged: check for status clear; diff (--name-status) master with branch; inspect for conflicts</li>
+			<li>review change log<span class='blurb'>Terminal</span></li>
+			<li>construct and save merge commit message<span class='blurb'>Xcode / Stickies</span></li>
+			<li>from branch to be merged: check for status clear<span class='blurb'>Terminal</span></li>
 			<li>checkout master</li>
 			<li><span class='em'>Fetch</span><ul>
 				<li>checkout branch artist; fetch from remote branch laura/artist</li>
 				<li>checkout master; review changes; [rebase]</li>
 				<li><b>Merge</b> artist</li>
 			</ul></li>
-			<li>review change log</li>
-			<li>construct and save merge commit message<span class='blurb'>Xcode / Stickies</span></li>
-			<li>merge in files: <span class='mono'>merge --no-ff --no-commit &lt;branch&gt;</span></li>
+			<li>diff (--name-status) master with branch; inspect for conflicts</li>
+			<li><span class='mono'>merge &lt;branch&gt;</span></li>
 			<li>resolve conflicts: <span class='mono'>merge tool</span></li>
+			<li>status: check branch; review files to be committed</li>
 			<li>review commit msgfile</li>
 			<li>commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
