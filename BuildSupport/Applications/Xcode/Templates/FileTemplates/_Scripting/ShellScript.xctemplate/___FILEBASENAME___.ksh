@@ -7,7 +7,7 @@
 #  Copyright ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 #  Confidential and Proprietary.
 
-USAGE='
+NAME='
 # ___FILENAME___ -- <#brief#>
 '
 USAGE='
