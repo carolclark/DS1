@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  errsig
+#  errcc
 #  Support
 #
 #  Created by Carol Clark on 5/10/13.
@@ -8,9 +8,9 @@
 #  Confidential and Proprietary.
 
 #pragma mark === Markers ===
-# 1 errorMessage; 2 errorExit; 8 errsig
+# 1 errorMessage; 2 errorExit; 8 errcc
 
-NAME='errsig -- error and signal handling'
+NAME='errcc -- error handling'
 USAGE='
 errorMessage	location [message [errorCode]]
 #		location: 	source file and line ($0#$LINENO)
@@ -21,8 +21,9 @@ errorMessage	location [message [errorCode]]
 #	construct and return message based on arguments provided
 errorExit	location [message [errorCode]]
 #	construct errorMessage and print to stderr; exit with nonzero value (errorCode if supplied)
+#	NOTE: running this from Terminal exits the current shell process; quit and restart Terminal
 Note: to avoid generating new errors, these methods do not provide direct feedback for invalid arguments
-errsig			subcommand
+errcc			subcommand
 #	--help				<no args>
 #						print this information
 '
@@ -75,7 +76,7 @@ function errorMessage {
 		fi
 	fi
 	echo "$location $message$errorInfo"
-	exit 0
+	return 0
 }
 
 #pragma mark 2 === errorExit
@@ -88,8 +89,8 @@ function errorExit {
 	exit $errorCode
 }
 
-#pragma mark 8 === errsig
-function errsig {
+#pragma mark 8 === errcc
+function errcc {
 	if [[ $# = 0 ]] ; then
 		print "$0: missing commandFlag"
 		return $RC_MissingArgument
