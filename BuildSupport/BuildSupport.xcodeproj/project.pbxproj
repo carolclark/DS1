@@ -275,7 +275,8 @@
 		67DD779A16A71F5700BECCD5 /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
 		67E1DD0317346C60009FC377 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67E6ADF817384360005A30D0 /* testErrsig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrsig.ksh; sourceTree = "<group>"; };
-		67E6AE1E173D97C3005A30D0 /* errsig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errsig.ksh; sourceTree = "<group>"; };
+		67E6AE1E173D97C3005A30D0 /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
+		67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67EB1F8D16BC41DC00B3DBB9 /* DoxyDemo_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_doxygen.txt; sourceTree = "<group>"; };
 		67EB1F8F16BC477800B3DBB9 /* mainpage.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mainpage.dox; sourceTree = "<group>"; };
 		67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresenterDD.h; sourceTree = "<group>"; };
@@ -499,7 +500,8 @@
 				67DB233D169E0A2900A6E910 /* ccBackup.ksh */,
 				67DB2340169E0A2900A6E910 /* resultCodes.ksh */,
 				67BE04B116B062F00065BFDE /* ccInstallAction.ksh */,
-				67E6AE1E173D97C3005A30D0 /* errsig.ksh */,
+				67E6AE1E173D97C3005A30D0 /* errcc.ksh */,
+				67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */,
 			);
 			name = "3 Scripts";
 			path = Scripts;
