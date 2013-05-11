@@ -47,11 +47,15 @@
 	* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
 	* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
 	* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin#1</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor#1</a>, item "replace deprecated scripts"
-	<li class='tlmark'>&lt;--</li>
-	* ccInstall
-		* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
+	* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
+		<li class='tlmark'>&lt;--</li>
+	* refactor ccInstall
+		* check on flags_error for error output
+		* tests: OneTimeSetUp/TearDown for test data
+		* use errorMessage for error returns
+		* --set/getPath: add sourceRoot, sourceFolder
 		* change ccInstall to take same parameters as ccInstallAction
-		* Then: Is ccInstallAction still necessary?
+			* Then: Is ccInstallAction still necessary?
 	* ?? ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
 	* remove file /private/etc/launchd.conf from scripts and disk
 </pre>
@@ -64,6 +68,9 @@
 		* remove error traps
 			* *main impact now is generating multiple "Command exited with status 0." messages to stderr, which obscures detection of real errors*
 		* ccInstall: make testing fail if shunit generates error output
+	* new file errsig.ksh; errorExit, errorMessage functions
+	* new file trapSigDemo: demonstrate trapping interrupt signals
+	* rename errsig.ksh -&gt; errcc.ksh
 </pre>
 
 <h4 id='backupGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#backup">(#3:backup)</a> backup GitHub issue content</h4><pre>
