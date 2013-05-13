@@ -181,16 +181,6 @@ testFind() {
 	rmdir "${projectPath}"
 }
 
-#^ cleanProjectTarget
-testCleanProjectTarget() {
-	str=$(cleanProjectTarget)
-	st=$?
-	assertEquals "$LINENO: error RC_MissingArgument expected" $RC_MissingArgument "${st}"
-	str=$(cleanProjectTarget abc)
-	st=$?
-	assertEquals "$LINENO: error RC_MissingArgument expected" $RC_MissingArgument "${st}"
-}
-
 #^ removeFolder
 testRemoveFolder() {
 	projectPath="${CCDev}/TestData/ProjB"

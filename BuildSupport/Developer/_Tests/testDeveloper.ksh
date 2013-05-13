@@ -27,10 +27,10 @@ testInstallation() {
 	assertEquals "$LINENO"': incorrect $CCDev' ${HOME}/Library/CCDev $(launchctl getenv CCDev)
 	assertEquals "$LINENO"': incorrect $VISUAL' \"/usr/bin/emacs\" $(launchctl getenv VISUAL)
 
-	# Scripts/cleanProjectTarget
-	fl="${CCDev}/bin/cleanProjectTarget"
+	# Scripts/errcc
+	fl="${CCDev}/bin/errcc"
 	if [[ ! -e "${fl}" ]] ; then
-		fail "$LINENO: CCDev script cleanProjectTarget missing"
+		fail "$LINENO: CCDev script errcc missing"
 	fi
 
 	# ~/Library/Scripts/Developer/FixWindow.scpt

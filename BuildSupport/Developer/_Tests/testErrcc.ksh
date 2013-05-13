@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  testErrsig.ksh
+#  testErrcc.ksh
 #  Support
 #
 #  Created by Carol Clark on 5/6/13.
@@ -9,7 +9,11 @@
 
 #pragma mark 0 === Top
 
-. "${CCDev}/bin/errsig"
+. "${CCDev}/bin/errcc"
+
+testErrorCodeText() {
+	assertEquals "$0#$LINENO:" "RC_InvalidArgument" "$(errorCodeText $RC_InvalidArgument)"
+}
 
 testErrorMessage() {
 	hello="Hello, World"

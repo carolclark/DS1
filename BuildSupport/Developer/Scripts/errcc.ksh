@@ -43,36 +43,9 @@ function errorMessage {
 		message="$2"
 	fi
 	if [[ $# > 2 ]] ; then
-		errorCode=$3
-		errorCodeText=""
-		if [[ $((${errorCode})) > 0 ]] ; then
-			case "${errorCode}" in
-				$RC_SyntaxError )
-					errorCodeText="RC_SyntaxError"
-					;;
-				$RC_MissingArgument )
-					errorCodeText="RC_MissingArgument"
-					;;
-				$RC_InvalidArgument )
-					errorCodeText="RC_InvalidArgument"
-					;;
-				$RC_InvalidArgument )
-					errorCodeText="RC_InvalidArgument"
-					;;
-				$RC_InvalidInput )
-					errorCodeText="RC_InvalidInput"
-					;;
-				$RC_InputNotHandled )
-					errorCodeText="RC_InputNotHandled"
-					;;
-				$RC_NoSuchDirectory )
-					errorCodeText="RC_NoSuchDirectory"
-					;;
-				* )
-					errorCodeText="UnknownErrorCode"
-					;;
-			esac
-			errorInfo=" [$errorCodeText:#$errorCode]"
+		text="$(errorCodeText $3)"
+		if [[ -n ${text} ]] ; then
+			errorInfo=" [$text:#$3]"
 		fi
 	fi
 	echo "$location $message$errorInfo"
@@ -87,6 +60,41 @@ function errorExit {
 		errorCode=255
 	fi
 	exit $errorCode
+}
+
+#pragma mark 6 === errorCodeText
+function errorCodeText {
+	errorCode=$1
+	if [[ $((${errorCode})) > 0 ]] ; then
+		case "${errorCode}" in
+			$RC_SyntaxError )
+				echo "RC_SyntaxError"
+				;;
+			$RC_MissingArgument )
+				echo "RC_MissingArgument"
+				;;
+			$RC_InvalidArgument )
+				echo "RC_InvalidArgument"
+				;;
+			$RC_InvalidArgument )
+				echo "RC_InvalidArgument"
+				;;
+			$RC_InvalidInput )
+				echo "RC_InvalidInput"
+				;;
+			$RC_InputNotHandled )
+				echo "RC_InputNotHandled"
+				;;
+			$RC_NoSuchDirectory )
+				echo "RC_NoSuchDirectory"
+				;;
+			* )
+				echo "UnknownErrorCode"
+				;;
+		esac
+	else
+		echo ""
+	fi
 }
 
 #pragma mark 8 === errcc
