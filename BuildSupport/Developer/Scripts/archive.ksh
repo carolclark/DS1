@@ -4,22 +4,25 @@
 #  Support
 #
 #  Created by Carol Clark on 7/13/12.
-#  Copyright 2012 C & C Software, Inc. All rights reserved.
+#  Copyright 2012-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
-USAGE='	
-# archive -- create tar archive for specified content
+NAME='archive -- create tar archive for specified content'
+USAGE='
 #	--project (default)
-#		current workspace: included code and git repository; associated technical docs
+#		current Terminal workspace: includes code and git repository, associated technical docs
 #	--code
-#		current workspace: code only
+#		current Terminal workspace: code only
 #	--repository
-#		current repository: git repository
+#		current repository: git repository for Terminal workspace
 #	--folder folderName
 #		contents of specified folder in working directory
+#	--help	<no args>
+#		print this information
 '
+HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "${CCDev}/bin/errcc"
 
 #^ 0 === top
 
@@ -28,12 +31,10 @@ function archiveCode {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
 	tar --file="${HOME}/Archives/${archivePath}" --create --exclude ".git" "${projectName}"/*
-	err=$?
+	st=$?
 	cd ${baseDir}
-	if [[ ${err} = 0 ]] ; then
-		print "${projectName}: new archive ${HOME}/Archives/${archivePath} created"
-	fi
-	return ${err}
+	[[ $st = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
+	echo "${projectName}: new archive ${HOME}/Archives/${archivePath} created"
 }
 
 #^ 2 === archiveRepository
@@ -203,6 +204,13 @@ case "${arg}" in
 			print "${msg}"
 		fi
 		return "${es}"
+		;;
+	"--help" )
+		print "${HELP}"
+		;;
+	"--"* )
+		print "invalid subcommand $1"
+		return $RC_InvalidArgument
 		;;
 	* )
 		print "invalid argument $1"

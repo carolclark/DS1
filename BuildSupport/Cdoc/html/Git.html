@@ -79,8 +79,6 @@
 			</ul></li>
 		</ul>
 		<h5>Merge</h5><ul>
-			<li>review change log<span class='blurb'>Terminal</span></li>
-			<li>construct and save merge commit message<span class='blurb'>Xcode / Stickies</span></li>
 			<li>from branch to be merged: check for status clear<span class='blurb'>Terminal</span></li>
 			<li>checkout master</li>
 			<li><span class='em'>Fetch</span><ul>
@@ -88,12 +86,14 @@
 				<li>checkout master; review changes; [rebase]</li>
 				<li><b>Merge</b> artist</li>
 			</ul></li>
-			<li>diff (--name-status) master with branch; inspect for conflicts</li>
-			<li><span class='mono'>merge &lt;branch&gt;</span></li>
-			<li>resolve conflicts: <span class='mono'>merge tool</span></li>
-			<li>status: check branch; review files to be committed</li>
-			<li>review commit msgfile</li>
-			<li>commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
+			<li>diff (--name-status) branch</li>
+			<li><span class='mono'>merge &lt;branch&gt;</span><ul>
+				<li>[OR to merge in files only, use <span class='mono'>merge &lt;branch&gt; --no-ff --no-commit</span>]; then commit or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
+			</ul></li>
+			<li>[<b>Resolve Conflicts</b>]<ul>
+				<li>use <span class='mono'>merge tool</span> to resolve conflicts; add / review files to be committed; commit</li>
+				<li>[OR to undo attempted merge, use <span class='mono'>git reset --merge</span>]</li>
+			</ul></li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
 				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>):<br />
 					<span class='mono'>git log --graph --left-right --cherry-pick --oneline master...$cb</span></li>
@@ -103,7 +103,7 @@
 			<li>check for stashes, unmerged branches</li>
 			<li>[tag]</li>
 			<li>push [push tags]</li>
-			<li>push master to remote laura; [push tags]</li>
+			<li>[push master to remote laura; [push tags]] </li>
 		</ul>
 	</div>
 </div>

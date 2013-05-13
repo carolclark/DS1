@@ -16,20 +16,20 @@
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 		<!-- @topicItem "&radic;replaceKshFPATH" "#replaceKshFPATH" "1" "" -->
+		<!-- @topicItem "clean up UNIX error handling" "#UNIXerror" "1" "" -->
 		<!-- @topicItem "resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
-		<!-- @topicItem "support collaborator configuration" "#collaboratorConfig" "1" "" -->
 		<!-- @topicItem "&radic;use GitHub Issues" "#useGitHubIssues" "1" "" -->
-		<!-- @topicItem "backup GitHub Issues" "#backupGitHubIssues" "1" "" -->
-		<!-- @topicGroup "" "7" -->
+		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
+		<!-- @topicItem "support collaborator configuration" "#collaboratorConfig" "1" "" -->
+		<!-- @topicGroup "" "8" -->
 		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
 		<!-- @topicSep -->
 		<!-- @topicItem "&lt;-- Current" "#hmark_Current" "1" "" -->
-	<!-- @topicGroup "" "11" -->
+	<!-- @topicGroup "" "12" -->
 	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "14" -->
+	<!-- @topicGroup "Topics" "15" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
-	<!-- @topicItem "Markdown" "#Markdown" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
 <!-- @/topicList -->
@@ -61,7 +61,6 @@
 </pre>
 
 <h4 id='UNIXerror'><a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling</h4><pre>
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* new file testErrsig.ksh: test and demonstrate improved error handling functionality
 		* initial errorExit function
 	* shunit tests should fail on errors in test scripts
@@ -71,14 +70,19 @@
 	* new file errsig.ksh; errorExit, errorMessage functions
 	* new file trapSigDemo: demonstrate trapping interrupt signals
 	* rename errsig.ksh -&gt; errcc.ksh
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	* refactor existing code to use errorMessage on return, errorExit on exit as indicated
 </pre>
 
-<h4 id='backupGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#backup">(#3:backup)</a> backup GitHub issue content</h4><pre>
+<h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
 	* backup GitHub issue content
 	<li class='tlmark'>&lt;--</li>
+	* script to automate backup of GitHub issue content
 	* allow markdown files to be included in the source for Cdoc sites
+		* cInstall:translateCdoc also handles markdown source
 		* make sure they produce valid HTML
 	* use separate history file Support_v0_1.md for work on milestone v0.1
+	* create new issues for future plans from existing History.html files
 </pre>
 
 <!-- @marker "Automation" -->
@@ -113,40 +117,6 @@
 
 <!-- @marker "Open Topics" -->
 <h2 id='OpenTopics'>Open Topics</h2>
-
-<!-- @marker "Markdown" -->
-<h3 id='Markdown'>Markdown</h3>
-<pre>
-	[mdTools]:	"http://brettterpstra.com/projects/markdown-service-tools/"
-	[markdown]:	"#Markdown"
-	test link: [markdown][markdown]
-
-## Markdown
-
-### Motivation
-###### *Cdoc: existing in-house system for producing website for technical documentation*
-*		*created several years ago to simplify some aspects, especially accessibility features, for our in-house documentation*
-*		*special features use embedded HTML comments to tag special features, which are then expanded by a sed-based script*
-
-###### *Markdown: publicly-available perl script to produce web content from readable text files*
-*		*much more collaborator-friendly*
-*		*can contain embedded HTML*
-*		*special features can be provided using embedded HTML, which can then be expanded using JavaScript*
-*		*translators are available to convert markdown to HTML and HTML to markdown
-
-### Conclusion
-	* move toward markdown instead of Cdoc for in-house documentation
-
-### Expected Stages
-	1. allow markdown files to be included in the source for Cdoc sites
-		*  make sure they produce valid HTML
-	2. add custom stylesheet
-	3. add HTML support, including JavaScript, for special features as indicated
-		* Markdown files can include HTML content, but Cdoc HTML features will be supported only from Cdoc HTML files
-	4. over time: expect existing Cdoc features to become available in JavaScript from either HTML or Markdown; expect files to be converted to Markdown
-	4. eventually, convert existing Cdoc source to markdown
-		*see [Markdown Tools][mdTools] and/or Markdownify for conversion from HTML
-</pre>
 
 <h1>Support History</h1>
 
