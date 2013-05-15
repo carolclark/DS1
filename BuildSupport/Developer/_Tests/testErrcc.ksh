@@ -12,7 +12,7 @@
 . "${CCDev}/bin/errcc"
 
 testErrorCodeText() {
-	assertEquals "$0#$LINENO:" "RC_InvalidArgument" "$(errorCodeText $RC_InvalidArgument)"
+	assertEquals "$0#$LINENO:" "[RC_InvalidArgument:#$RC_InvalidArgument]" "$(errorCodeText $RC_InvalidArgument)"
 }
 
 testErrorMessage() {
@@ -43,15 +43,20 @@ testErrorMessage() {
 	assertEquals "$0#$LINENO:" 0 $st
 	assertEquals "$0#$LINENO:" "file#line: $hello" "$msg"
 
-	msg=$(errorMessage "file#line:" "$hello" 7)
+	msg=$(errorMessage "file#line:" "$hello" 140)
 	st=$?
 	assertEquals "$0#$LINENO:" 0 $st
-	assertEquals "$0#$LINENO:" "file#line: $hello [UnknownErrorCode:#7]" "$msg"
+	assertEquals "$0#$LINENO:" "file#line: $hello [UnknownErrorCode:#140]" "$msg"
 
 	msg=$(errorMessage "file#line:" "$hello" $RC_SyntaxError)
 	st=$?
 	assertEquals "$0#$LINENO:" 0 $st
 	assertEquals "$0#$LINENO:" "file#line: $hello [RC_SyntaxError:#${RC_SyntaxError}]" "$msg"
+
+	msg=$(errorMessage "file#line:" "$hello" 85)
+	st=$?
+	assertEquals "$0#$LINENO:" 0 $st
+	assertEquals "$0#$LINENO:" "file#line: $hello [program loading: Bad executable; EBADEXEC#85]" "$msg"
 }
 
 testErrorExit() {
@@ -63,10 +68,10 @@ testErrorExit() {
 	assertEquals "$0#$LINENO:" "file#line: $errmsg" "$msg"
 
 	errmsg="This is an error."
-	msg=$(errorExit "file#line:" "$errmsg" 55 2>&1)
+	msg=$(errorExit "file#line:" "$errmsg" 255 2>&1)
 	st=$?
-	assertEquals "$0#$LINENO:" 55 $st
-	assertEquals "$0#$LINENO:" "file#line: $errmsg [UnknownErrorCode:#55]" "$msg"
+	assertEquals "$0#$LINENO:" 255 $st
+	assertEquals "$0#$LINENO:" "file#line: $errmsg [UnknownErrorCode:#255]" "$msg"
 
 	# verify error message sent to stderr
 	msg=$(errorExit "EXPECTED ERROR: $errmsg")
