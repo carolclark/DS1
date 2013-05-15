@@ -150,12 +150,14 @@ resource restype_Slate (resid_Emacs, "") { {
 	} }
 } };
 
-#define	_CurrentBranch_		Event { "current branch", "" },	TypeText { "$cb " }
-#define	_GitFile_			Event { "git file", "" },	TypeText { "$gf " }
-#define _MyVariable_		Event { "my variable", "" },	TypeText { "$mv " }
+#define	_CurrentBranch_			Event { "current branch", "" },	TypeText { "$cb " }
+#define	_GitFile_				Event { "git file", "" },	TypeText { "$gf " }
+#define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
+#define _CompareMasterCurrent_	Event { "compare", "" },	TypeText { "master..$cb" }
 #define _TypeVariable_		_CurrentBranch_,	\
 							_GitFile_, 			\
-							_MyVariable_
+							_MyVariable_,		\
+							_CompareMasterCurrent_
 
 #define	_Remotes_			\
 	Event { "origin", "" },			TypeText { "origin " },				\
@@ -235,6 +237,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "set my variable", "" },	TypeText { "mv=" },
 		Event { "show message file", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
 		Event { "make executable", "" },	Sequence{}, TypeText { "chmod a+x " }, ResSubslate { resid_Type }, endSequence{},
+		Event { "list markers", "" },		Sequence{}, TypeText { "cat $gf | grep '#pragma mark' | sed 's|#pragma mark ||'" }, _return, endSequence{},
 		Event { "list tree", "" },			TypeText { "git ls-tree -r " },
 		Event { "show", "" },				TypeText { "git show --pretty=\"format:\" --name-only " },
 		Event { "set directory", "" },	Subslate { "set directory" },

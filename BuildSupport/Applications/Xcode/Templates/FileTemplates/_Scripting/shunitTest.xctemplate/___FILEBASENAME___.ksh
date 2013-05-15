@@ -8,6 +8,9 @@
 #  Confidential and Proprietary.
 
 #pragma mark 0 === Top
+#pragma mark === Markers ===
+
+. "${CCDev}/bin/errcc"
 
 testEquality() {
 	assertEquals "$LINENO: " 1 1

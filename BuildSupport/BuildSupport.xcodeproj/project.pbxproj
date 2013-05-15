@@ -89,6 +89,7 @@
 		673D580A16B9A1450001DFF2 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
 		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
 		673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
+		6741F2FB1743F2AB00F4FF6D /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6761489016A8B93F00FE431B /* toBBEdit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
@@ -470,6 +471,7 @@
 				67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */,
 				67DB232A169E0A2900A6E910 /* testCcInstall.ksh */,
 				67E6ADF817384360005A30D0 /* testErrcc.ksh */,
+				6741F2FB1743F2AB00F4FF6D /* testArchive.ksh */,
 			);
 			path = _Tests;
 			sourceTree = "<group>";

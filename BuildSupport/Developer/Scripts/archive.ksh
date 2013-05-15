@@ -24,9 +24,11 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 . "${CCDev}/bin/errcc"
 
-#^ 0 === top
+#pragma mark 0 === Top
+#pragma mark === Markers ===
+# 1 archiveCode; 2 archiveRepository; 3 appendRepository; 4 appendGitReadMe; 5 appendCdoc; 6 archiveFolder; 7 revealArchive; 8 main
 
-#^ 1 === archiveCode
+#pragma mark 1 === archiveCode
 function archiveCode {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
@@ -37,74 +39,64 @@ function archiveCode {	# archivePath projectName
 	echo "${projectName}: new archive ${HOME}/Archives/${archivePath} created"
 }
 
-#^ 2 === archiveRepository
+#pragma mark 2 === archiveRepository
 function archiveRepository {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
 	tar --file="${HOME}/Archives/${archivePath}" --create "${projectName}/.git"/*
-	err=$?
+	st=$?
 	cd ${baseDir}
-	if [[ ${err} = 0 ]] ; then
-		print "${projectName}: new archive ${HOME}/Archives/${archivePath} created"
-	fi
-	return ${err}
+	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
+	print "${projectName}: new archive ${HOME}/Archives/${archivePath} created"
 }
 
-#^ 3 === appendRepository
+#pragma mark 3 === appendRepository
 function appendRepository {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
 	tar --file="${HOME}/Archives/${archivePath}" --append "${projectName}/.git"/*
-	err=$?
+	st=$?
 	cd ${baseDir}
-	if [[ ${err} = 0 ]] ; then
-		print "repository ${projectName}/.git: appended to ${HOME}/Archives/${archivePath}"
-	fi
-	return ${err}
+	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
+	print "repository ${projectName}/.git: appended to ${HOME}/Archives/${archivePath}"
 }
 
-#^ 4 === appendGitReadMe
+#pragma mark 4 === appendGitReadMe
 function appendGitReadMe {	# archivePath projectName
-	print "The contents of this archive are inside folder ${projectName} in invisible folder .git." > "${CCDev}/tmp/gitReadMe"
+	print  "This archive contains a git repository in invisible folder .git." > "${CCDev}/tmp/gitReadMe"
 	cd "${CCDev}/tmp"
 	tar --file="${HOME}/Archives/${archivePath}" --append "gitReadMe"
-	err=$?
+	st=$?
 	cd ${basedir}
-	if [[ ${err} = 0 ]] ; then
-		print "repository ${projectName}/.git: gitReadMe appended"
-	fi
-	return ${err}
+	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
+	print "repository ${projectName}/.git: gitReadMe appended"
 }
 
-#^ 5 === appendCdoc
+#pragma mark 5 === appendCdoc
 function appendCdoc {	# archivePath projectName
 	cd ${CCDev}/Sites
 	tar --file="${HOME}/Archives/${archivePath}" --append "TechnicalDocs/${projectName}"/* "TechnicalDocs/css" "TechnicalDocs/img"
-	err=$?
+	st=$?
 	cd ${baseDir}
-	if [[ ${err} = 0 ]] ; then
-		print "${projectName} Cdoc: appended to ${HOME}/Archives/${archivePath}"
-	fi
-	return ${err}
+	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
+	print "${projectName} Cdoc: appended to ${HOME}/Archives/${archivePath}"
 }
 
-#^ 6 === archiveFolder
+#pragma mark 6 === archiveFolder
 function archiveFolder {	# archivePath folderName
 	tar --file="${HOME}/Archives/${archivePath}" --create "${folderName}"/*
-	err=$?
-	if [[ ${err} = 0 ]] ; then
-		print "${folderName}: new archive ${HOME}/Archives/${archivePath} created"
-	fi
-	return ${err}
+	st=$?
+	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
+	print "${folderName}: new archive ${HOME}/Archives/${archivePath} created"
 }
 
-#^ 7 === revealArchive
+#pragma mark 7 === revealArchive
 function revealArchive {	# archivePath
 	osascript -e "tell application \"Finder\" to reveal POSIX file \"${HOME}/Archives/${archivePath}\""
 	osascript -e "tell application \"Finder\" to activate"
 }
 
-#^ 8 === main
+#pragma mark 8 === main
 
 arg="${1}"
 if [[ $# = 0 ]] ; then
