@@ -584,9 +584,12 @@ function processActions {
 				failcnt=$failcnt+1
 			fi
 			grep -v "EXPECTED ERROR" $errout > $errtmp
-			if [[ $(cat "$errtmp") != "" ]] ; then
-				errcnt=$errcnt+1
-				cat $errtmp >> $errinfo
+			if [[ $(cat "$errtmp") != "" ]] ; then										# file is not empty
+				if [[ $(cat "$errtmp" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
+								# appears that long EXPECTED ERROR can output an extra CR into $errout
+					errcnt=$errcnt+1
+					cat $errtmp >> $errinfo
+				fi
 			fi
 		done < "${iofile}"
 	fi
