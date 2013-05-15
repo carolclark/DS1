@@ -563,7 +563,7 @@ function processActions {
 #	The tests themselves may also also throw errors. Messages for those cases should include the text "EXPECTED ERROR".
 #	Here:
 #		failcnt: number of test files that encounter failures, +1 if execution errors are encountered
-#		errfile: file to collect stderr output
+#		errout: file to collect stderr output
 #	returns nonzero exit status if test failures are encountered or messages not including "EXPECTED ERROR" are sent to stderr.
 
 	if [[ ${actions.doTest} > 0 ]] ; then

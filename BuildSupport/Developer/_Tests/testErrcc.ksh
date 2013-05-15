@@ -8,6 +8,7 @@
 #  Confidential and Proprietary.
 
 #pragma mark 0 === Top
+#pragma mark === Markers ===
 
 . "${CCDev}/bin/errcc"
 
@@ -19,58 +20,48 @@ testErrorMessage() {
 	hello="Hello, World"
 
 	msg=$(errorMessage)
-	st=$?
-	assertEquals "$0#$LINENO:" 0 $st
-	assertEquals "$0#$LINENO:" "[UnknownFile#Line]: " "$msg"
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$0#$LINENO:" "An unknown error occurred." "$msg"
 
-	msg=$(errorMessage file#line:)
-	st=$?
-	assertEquals "$0#$LINENO:" 0 $st
-	assertEquals "$0#$LINENO:" "file#line: " "$msg"
+	msg=$(errorMessage 64)
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$0#$LINENO:" "[Host is down; EHOSTDOWN#64]" "$msg"
 
-	msg=$(errorMessage "file#line:" "$hello")
-	st=$?
-	assertEquals "$0#$LINENO:" 0 $st
+	msg=$(errorMessage $RC_InvalidInput "file#line:")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$0#$LINENO:" "file#line: [RC_InvalidInput:#$RC_InvalidInput]" "$msg"
+
+	msg=$(errorMessage $RC_InputNotHandled "file#line:" "$hello")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$0#$LINENO:" "file#line: $hello [RC_InputNotHandled:#$RC_InputNotHandled]" "$msg"
+
+	msg=$(errorMessage 145 "file#line:")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$0#$LINENO:" "file#line: [UnknownErrorCode:#145]" "$msg"
+
+	msg=$(errorMessage abc "file#line:" "$hello")
+	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$0#$LINENO:" "file#line: $hello" "$msg"
 
-	msg=$(errorMessage "file#line:" 55)
-	st=$?
-	assertEquals "$0#$LINENO:" 0 $st
-	assertEquals "$0#$LINENO:" "file#line: 55" "$msg"
-
-	msg=$(errorMessage "file#line:" "$hello" abc)
-	st=$?
-	assertEquals "$0#$LINENO:" 0 $st
-	assertEquals "$0#$LINENO:" "file#line: $hello" "$msg"
-
-	msg=$(errorMessage "file#line:" "$hello" 140)
-	st=$?
-	assertEquals "$0#$LINENO:" 0 $st
-	assertEquals "$0#$LINENO:" "file#line: $hello [UnknownErrorCode:#140]" "$msg"
-
-	msg=$(errorMessage "file#line:" "$hello" $RC_SyntaxError)
-	st=$?
-	assertEquals "$0#$LINENO:" 0 $st
+	msg=$(errorMessage $RC_SyntaxError "file#line:" "$hello")
+	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$0#$LINENO:" "file#line: $hello [RC_SyntaxError:#${RC_SyntaxError}]" "$msg"
 
-	msg=$(errorMessage "file#line:" "$hello" 85)
-	st=$?
-	assertEquals "$0#$LINENO:" 0 $st
+	msg=$(errorMessage 85 "file#line:" "$hello")
+	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$0#$LINENO:" "file#line: $hello [program loading: Bad executable; EBADEXEC#85]" "$msg"
 }
 
 testErrorExit() {
 	# verify error message content
 	errmsg="This is an error."
-	msg=$(errorExit "file#line:" "$errmsg" 2>&1)
-	st=$?
-	assertNotEquals "$0#$LINENO: should show failure" 0 $st
-	assertEquals "$0#$LINENO:" "file#line: $errmsg" "$msg"
+	msg=$(errorExit 132 "file#line:" "$errmsg" 2>&1)
+	assertNotEquals "$0#$LINENO: should show failure" 0 $?
+	assertEquals "$0#$LINENO:" "file#line: $errmsg [UnknownErrorCode:#132]" "$msg"
 
 	errmsg="This is an error."
-	msg=$(errorExit "file#line:" "$errmsg" 255 2>&1)
-	st=$?
-	assertEquals "$0#$LINENO:" 255 $st
+	msg=$(errorExit 255 "file#line:" "$errmsg" 2>&1)
+	assertEquals "$0#$LINENO:" 255 $?
 	assertEquals "$0#$LINENO:" "file#line: $errmsg [UnknownErrorCode:#255]" "$msg"
 
 	# verify error message sent to stderr

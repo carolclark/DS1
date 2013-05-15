@@ -12,14 +12,14 @@
 
 NAME='errcc -- error handling'
 USAGE='
-errorMessage	location [message [errorCode]]
-#		location: 	source file and line ($0#$LINENO)
-#		message:	string to be displayed; default "Error encountered"
+errorMessage	[errorCode [location [message]]]
 #		errorCode:	numeric error code
 #						if errorCode is defined in resultCodes.ksh, message includes text equivalent
 #						if errorCode is not a number, it is ignored
+#		location: 	source file and line ($0#$LINENO)
+#		message:	string to be displayed; default "Error encountered"
 #	construct and return message based on arguments provided
-errorExit	location [message [errorCode]]
+errorExit		[errorCode [location [message]]]
 #	construct errorMessage and print to stderr; exit with nonzero value (errorCode if supplied)
 #	NOTE: running this from Terminal exits the current shell process; quit and restart Terminal
 Note: to avoid generating new errors, these methods do not provide direct feedback for invalid arguments
@@ -33,29 +33,35 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 #pragma mark 1 === errorMessage
 function errorMessage {
-	location="[UnknownFile#Line]:"
+	location=""
 	errorInfo=""
 	message=""
+	sp1=""
+	sp2=""
+	if [[ $# = 0 ]] ; then
+		message="An unknown error occurred."
+	fi
 	if [[ $# > 0 ]] ; then
-		location="$1"
+		errorInfo="$(errorCodeText $1)"
 	fi
 	if [[ $# > 1 ]] ; then
-		message="$2"
-	fi
-	if [[ $# > 2 ]] ; then
-		text="$(errorCodeText $3)"
-		if [[ -n ${text} ]] ; then
-			errorInfo=" ${text}"
+		location="$2"
+		if [[ -n ${errorInfo} ]] ; then
+			sp2=" "
 		fi
 	fi
-	echo "$location $message$errorInfo"
+	if [[ $# > 2 ]] ; then
+		message="$3"
+		sp1=" "
+	fi
+	echo "$location$sp1$message$sp2$errorInfo"
 	return 0
 }
 
 #pragma mark 2 === errorExit
 function errorExit {
 	echo $(errorMessage "$1" "$2" "$3" 1>&2)
-	errorCode="$3"
+	errorCode="$1"
 	if [[ $((${errorCode})) = 0 ]] ; then
 		errorCode=255
 	fi
