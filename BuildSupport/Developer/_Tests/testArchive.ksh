@@ -8,15 +8,43 @@
 #  Confidential and Proprietary.
 
 #pragma mark 0 === Top
+#pragma mark === Markers ===
 
-. "${CCDev}/bin/errcc"
+testData="${CCDev}/TestData/tarTest"
+archiveDestination="${CCDev}/TestData/tarArchives"; export archiveDestination
+. "${CCDev}/bin/archive"
 
+
+#pragma mark 1 === oneTimeSetUp
 oneTimeSetUp() {
-	mkdir -p "${CCDev}/TestData/tarTest"
+	mkdir -p "${testData}"
+	mkdir -p "${testData}/folder"
+	echo "fileA" > "${testData}/folder/fileA"
+	mkdir -p "${testData}/folder/inside"
+	echo "fileB" > "${testData}/folder/inside/fileB"
 }
 
+#pragma mark 2 === testArchiveFolder
+testArchiveFolder() {
+	cd "${testData}"
+
+	msg=$(archive --getArchiveDestination)
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$0#$LINENO:" "$archiveDestination" "$msg"
+
+	msg=$(archive --folder)
+	assertEquals "$0#$LINENO:" $RC_InvalidArgument $?
+	assertEquals "$0#$LINENO:" "expected --folder <folderName>" "$msg"
+
+	msg=$(archive --folder "folder")
+	assertEquals "$0#$LINENO:" 0 $?
+	exp="folder: new archive $archiveDestination/$(archive --getLastArchivePath) created"
+	assertEquals "$0#$LINENO:" "$exp" "$msg"
+}
+
+
 testEquality() {
-	assertEquals "$LINENO: " 1 1
+	assertEquals "$0$LINENO: " 1 1
 }
 
 
