@@ -593,8 +593,11 @@ function processActions {
 			fi
 		done < "${iofile}"
 	fi
+	if [[ $failcnt > 0 ]] ; then
+		echo "FAILURES ($failcnt test files encountered failing tests)"
+	fi
 	if [[ $errcnt > 0 ]] ; then
-		echo "ERROR ($errcnt files encountered execution errors):"
+		echo "ERRORS ($errcnt test files encountered execution errors):"
 		cat "$errinfo"
 	fi
 	return $(($failcnt+$errcnt))

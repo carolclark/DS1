@@ -117,7 +117,7 @@ function archive {
 	else
 		archiveDestination="${HOME}/Archives"
 	fi
-	archivePath=""													# path from ${archiveDestination}
+	archivePath=""				# path from ${archiveDestination}
 
 	case "${cmd}" in
 		"--project" )

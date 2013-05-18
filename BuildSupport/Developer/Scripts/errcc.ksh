@@ -73,11 +73,11 @@ function errorCodeText {
 	errorCode=$1
 	if [[ $((${errorCode})) > 0 ]] ; then
 		case "${errorCode}" in
-			1 );	echo "[[Operation not permitted; EPERM#1]" ;;
-			2 );	echo "[[No such file or directory; ENOENT#2]"	;;
-			3 );	echo "[[No such process; ESRCH#3]"	;;
-			4 );	echo "[[Interrupted system call; EINTR#4]"	;;
-			5 );	echo "[[Input/output error; EIO#5]"	;;
+			1 );	echo "[Operation not permitted; EPERM#1]" ;;
+			2 );	echo "[No such file or directory; ENOENT#2]"	;;
+			3 );	echo "[No such process; ESRCH#3]"	;;
+			4 );	echo "[Interrupted system call; EINTR#4]"	;;
+			5 );	echo "[Input/output error; EIO#5]"	;;
 			6 );	echo "[Device not configured; ENXIO#6]"	;;
 			7 );	echo "[Argument list too long; E2BIG#7]"	;;
 			8 );	echo "[Exec format error; ENOEXEC#8]"	;;

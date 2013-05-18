@@ -72,6 +72,7 @@
 		Event { "save directory", "" }, TypeText { "wd=$(pwd); print \"${wd}\"" },				\
 		Event { "restore directory", "" }, TypeText { "cd \"${wd}\"; pwd" },					\
 		Event { "password", "" },	TypeText { "6868" },	\
+		Event { "source", "" },		TypeText { ". \"${CCDev}\"/bin/" },	\
 		Event { "copy", "" },		Keypress { kc_C, mf_command },	\
 		Event { "paste", "" },		Keypress { kc_V, mf_command },	\
 		ExitEvent { "cancel", "" },	_cancel,				\
@@ -243,9 +244,9 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "set directory", "" },	Subslate { "set directory" },
 			_SlateGlobals_,
 			_CloseSubslate_,
-			ExitEvent { "Support", "" },		Sequence{}, TypeText { "${DEV}/Support" }, _return, endSequence{},
-			ExitEvent { "Accessor", "" },		Sequence{}, TypeText { "${DEV}/Accessor" }, _return, endSequence{},
-			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "${DEV}/Punkin" }, _return, endSequence{},
+			ExitEvent { "Support", "" },		Sequence{}, TypeText { "cd ${DEV}/Support" }, _return, endSequence{},
+			ExitEvent { "Accessor", "" },		Sequence{}, TypeText { "cd ${DEV}/Accessor" }, _return, endSequence{},
+			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "cd ${DEV}/Punkin" }, _return, endSequence{},
 			endSubslate{},
 		Event { "print directory", "" },	Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "print variables", "" },	TypeText { "print DEV: ${DEV}; print CCDev: ${CCDev}; print mv: $mv; print cb: $cb; print gf: $gf" },
@@ -269,6 +270,7 @@ resource restype_Slate (resid_gitType, "Type") { {
 		Event { "shell", "" },			TypeText { "sealsea v3ejc 6868" },
 		Event { "version 3", "" },		TypeText { "4YZHqz5pq1" },
 		Event { "dry run", "" },		TypeText { "--dry-run " },
+		Event { "source", "" },			TypeText { ". \"${CCDev}\"/bin/" },
 	} }
 } };
 

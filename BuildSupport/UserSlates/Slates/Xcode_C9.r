@@ -2737,7 +2737,7 @@ resource restype_Slate (resid_LogIndex, "Log") { {
 } };
 
 #pragma mark 8 === Typing
-// inside: 1 Special; 2 _TypeDialogItems_; 3 - _TypeXcodeItems_; Package; 4 TypeXcode; TypeDebugConsole; 5 InsertSnippet; 6 - InsertElement; Styles; InsertTag; 7 - UserSlate; 8 - Doxygen; 9 - typeSearch
+// inside: 1 Special; 2 _TypeDialogItems_; 3 - _TypeXcodeItems_; Package; 4 TypeXcode, unix; TypeDebugConsole; 5 InsertSnippet; 6 - InsertElement; Styles; InsertTag; 7 - UserSlate; 8 - Doxygen; 9 - typeSearch
 #define _quote Keypress { kc_quote, mf_shift }
 #define _uc1		Keypress { kc_tab, 0 }, TypeText { "<p><b>" }
 #define _uc2		TypeText { ": </b><" }, Keypress { kc_3, mf_shift }
@@ -2994,6 +2994,7 @@ resource restype_Slate (resid_Package, "") { {
 } };
 
 #pragma mark 4 -- TypeXcode
+#define _where_	"\"$0#$LINENO:\""
 resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 	Slate { "Type",	{
 		_SlateGlobals_,
@@ -3026,16 +3027,18 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 		Event { "unix", "" },				Subslate { "unix" },
 			_SlateGlobals_,
 			_CloseSubslate_,
+			Event { "clipboard", "" },					Sequence{}, _selword, Keypress { kc_X, mf_command }, endSequence{},
 			ExitEvent { "shebang", "" },				Sequence{},
 				TypeText { "#! /bin/ksh" }, _return, _return, endSequence{},
 			ExitEvent { "quote variable", "" },				Sequence{},
 				TypeText { "\"${<##>}\"<##>" }, _previous, _previous, endSequence{},
 			ExitEvent { "variable", "" },				Sequence{},
 				TypeText { "${<##>}<##>" }, _previous, _previous, endSequence{},
-			ExitEvent { "command", "" },				Sequence{},
-				TypeText { "\"$(<##>)\"<##>" }, _previous, _previous, endSequence{},
-			ExitEvent { "plain command", "" },				Sequence{},
-				TypeText { "$(<##>)<##>" }, _previous, _previous, endSequence{},
+			ExitEvent { "condition", "" },				Sequence{}, TypeText { "[[ <#condition#> ]] <*##>" }, _previous, endSequence{},
+			ExitEvent { "logical or", "" },				TypeText { "|| " },
+			ExitEvent { "logical and", "" },			TypeText { "&& " },
+			ExitEvent { "command", "" },				Sequence{},	TypeText { "\"$(<##>)\"<##>" }, _previous, _previous, endSequence{},
+			ExitEvent { "plain command", "" },			Sequence{},	TypeText { "$(<##>)<##>" }, _previous, _previous, endSequence{},
 			ExitEvent { "if block", "" },		Sequence{}, TypeText { "if [[ <##> ]] ; then" },
 				_return, _tab, TypeText { "<##>" }, _return, _delete, TypeText { "fi" },
 				_previous, _previous, endSequence{},
@@ -3047,18 +3050,19 @@ resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 				TypeText { "if [[ \"${?}\" > 0 ]] ; then" },
 				_return, _tab, TypeText { "<##>" }, _return, _delete, TypeText { "fi" },
 				_previous, _previous, endSequence{},
-			ExitEvent { "location", "" },		TypeText { "\"$0#$LINENO:\" " },
-			ExitEvent { "function", "" },		TypeText { "unixFunction#" },
-			ExitEvent { "test", "" },			TypeText { "unixTest#" },
-			ExitEvent { "test function", "" },	TypeText { "unixTestFunction#" },
-			ExitEvent { "where", "" },			TypeText { "$0#$LINENO: " },
-			ExitEvent { "assert equal", "" },	TypeText { "assertEquals \"$0#$LINENO:\" <#expected#> <#actual#>" },
-			ExitEvent { "assert not equal", "" },	TypeText { "assertNotEquals \"$0#$LINENO:\" <#unexpected#> <#actual#>" },
-			ExitEvent { "assert null", "" },	TypeText { "assertNull \"$0#$LINENO:\" <#value#>" },
-			ExitEvent { "assert not null", "" },	TypeText { "assertNotNull \"$0#$LINENO:\" <#value#>" },
-			ExitEvent { "assert true", "" },	TypeText { "assertTrue \"$0#$LINENO:\" <#condition#>" },
-			ExitEvent { "assert false", "" },	TypeText { "assertFalse \"$0#$LINENO:\" <#condition#>" },
-			ExitEvent { "assert failure", "" },	TypeText { "fail \"$0#$LINENO:\"" },
+			ExitEvent { "where", "" },				TypeText { _where_ },
+			ExitEvent { "error exit", "" },			Sequence{}, TypeText { "errorExit $?<##> "_where_" \"<#msg#>\"" }, _previous, _previous, endSequence{},
+			ExitEvent { "error message", "" },		Sequence{}, TypeText { "errorMessage $?<##> "_where_" \"<#msg#>\"" }, _previous, _previous, endSequence{},
+			ExitEvent { "function", "" },			TypeText { "unixFunction#" },
+			ExitEvent { "test", "" },				TypeText { "unixTest#" },
+			ExitEvent { "test function", "" },		TypeText { "unixTestFunction#" },
+			ExitEvent { "assert equal", "" },		Sequence{}, TypeText { "assertEquals "_where_" <#expected#> <#actual#>" }, _previous, _previous, endSequence{},
+			ExitEvent { "assert not equal", "" },	Sequence{}, TypeText { "assertNotEquals "_where_" <#unexpected#> <#actual#>" }, _previous, _previous, endSequence{},
+			ExitEvent { "assert null", "" },		Sequence{}, TypeText { "assertNull "_where_" <#value#>" }, _previous, endSequence{},
+			ExitEvent { "assert not null", "" },	Sequence{}, TypeText { "assertNotNull "_where_" <#value#>" }, _previous, endSequence{},
+			ExitEvent { "assert true", "" },		Sequence{}, TypeText { "assertTrue "_where_" <#condition#>" }, _previous, endSequence{},
+			ExitEvent { "assert false", "" },		Sequence{}, TypeText { "assertFalse "_where_" <#condition#>" }, _previous, endSequence{},
+			ExitEvent { "assert failure", "" },		TypeText { "fail "_where_"" },
 			endSubslate{},
 		Event { "Insert Element", "" },		ResSubslate { resid_InsertElement },
 		Event { "Element", "" },			ResSubslate { resid_InsertElement },
@@ -3229,7 +3233,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 		ExitEvent { "event", "" },				TypeText { "Event { \"" },
 		ExitEvent { "plain event", "" },		TypeText { "Event { \"" },
 		ExitEvent { "end event", "" },			Sequence{}, TypeText { "\", \"\" }," }, Keypress { kc_tab, mf_option }, Keypress { kc_tab, mf_option }, Keypress { kc_tab, mf_option }, endSequence{},
-		ExitEvent { "sequence", "" },			Sequence{}, TypeText { "Sequence{}, <##> endSequence{}," }, _previous, endSequence{},
+		ExitEvent { "sequence", "" },			Sequence{}, TypeText { "Sequence{}, <##>endSequence{}," }, _previous, endSequence{},
 		ExitEvent { "subslate", "" },			Sequence{}, TypeText { "Subslate { \"<##>\" }," }, _return, _tab, TypeText { "_SlateGlobals_," }, _return, TypeText { "_CloseSubslate_," }, _return, TypeText { "<##>" }, _return, TypeText { "endSubslate{}," }, _previous, _previous, endSequence{},
 		ExitEvent { "indent subslate", "" },	Sequence{}, _indent, _down, _indent, _indent, _down, _indent, _indent, _down, _indent, endSequence{},
 		ExitEvent { "type text", "" },			Sequence{}, TypeText { "TypeText { \"<##>\" }," }, _previous, endSequence{},
