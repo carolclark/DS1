@@ -23,10 +23,6 @@ testErrorMessage() {
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$0#$LINENO:" "An unknown error occurred." "$msg"
 
-	msg=$(errorMessage 64)
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$0#$LINENO:" "[Host is down; EHOSTDOWN#64]" "$msg"
-
 	msg=$(errorMessage $RC_InvalidInput "file#line:")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$0#$LINENO:" "file#line: [RC_InvalidInput:#$RC_InvalidInput]" "$msg"
@@ -46,10 +42,6 @@ testErrorMessage() {
 	msg=$(errorMessage $RC_SyntaxError "file#line:" "$hello")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$0#$LINENO:" "file#line: $hello [RC_SyntaxError:#${RC_SyntaxError}]" "$msg"
-
-	msg=$(errorMessage 85 "file#line:" "$hello")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$0#$LINENO:" "file#line: $hello [program loading: Bad executable; EBADEXEC#85]" "$msg"
 }
 
 testErrorExit() {
