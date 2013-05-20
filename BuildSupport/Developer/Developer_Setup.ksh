@@ -237,7 +237,7 @@ fi
 
 if [[ "${USER}" = "carolclark" ]] ; then
 	print "configuring XCCodeSenseAllowAutoCompletionInPlainFiles"	
-	defaults write com.apple.Xcode XCCodeSenseAllowAutoCompletionInPlainFiles -true
+	defaults write com.apple.Xcode XCCodeSenseAllowAutoCompletionInPlainFiles YES
 	if [[ "${?}" != "0" ]] ; then
 		print "failed to write XCCodeSenseAllowAutoCompletionInPlainFiles"
 		exit 1
