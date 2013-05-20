@@ -227,7 +227,7 @@ testRemoveFolder() {
 	d3="${projectPath}/Emily/Nine/blue"
 	str=$(ccInstall --removeFolder "${d3}")
 	st=$?
-	assertEquals "$LINENO: error: ${d3} is not a directory" $RC_NoSuchDirectory "${st}"
+	assertEquals "$LINENO: error: ${d3} is not a directory" $RC_NoSuchFileOrDirectory "${st}"
 
 	str=$(ccInstall --removeFolder "${projectPath}/Corlan")
 	str=$(ccInstall --removeFolder "${projectPath}/Emily")

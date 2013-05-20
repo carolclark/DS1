@@ -88,10 +88,19 @@ function appendCdoc {	# archivePath projectName
 
 #pragma mark 6 === archiveFolder
 function archiveFolder {	# archivePath folderName
+	if [[ ! -d "${folderName}" ]] ; then
+		echo $(errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder \"$folderName\" does not exist")
+		return $RC_NoSuchFileOrDirectory
+	fi
 	tar --file="${archiveDestination}/${archivePath}" --create "${folderName}"/*
 	st=$?
-	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
-	print "${folderName}: new archive ${archiveDestination}/${archivePath} created"
+	if [[ ${st} ]] ; then
+		msg="${folderName}: new archive ${archiveDestination}/${archivePath} created"
+	else
+		msg=$(errorMessage $st "$0#$LINENO:" 'tar error')
+	fi
+	echo "$msg"
+	return $st
 }
 
 #pragma mark 7 === revealArchive

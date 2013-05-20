@@ -23,7 +23,12 @@ oneTimeSetUp() {
 	echo "fileB" > "${testData}/folder/inside/fileB"
 }
 
-#pragma mark 3 === Check Archive Contentsa
+#pragma mark 2 === messageContainsText
+function messageContainsText {	# message expectedText
+	echo "$1" | grep "$2"
+}
+
+#pragma mark 3 === Check Archive Contents
 function archiveContainsItem {
     lines=$(tar -tf "$1" | sed 's|\(.*\)|!\1!|g' | grep "!$2!")
 	[[ -n "$lines" ]]
@@ -56,6 +61,11 @@ testArchiveFolder() {
 	assertEquals "$0#$LINENO:" 0 $?
 	exp="folder: new archive $archiveDestination/$(archive --getLastArchivePath) created"
 	assertEquals "$0#$LINENO:" "$exp" "$msg"
+
+	msg=$(archive --folder "folderX")
+	assertNotEquals "$0#$LINENO: error expected" 0 $?
+	messageContainsText "$msg" "folder \"folderX\" does not exist \[RC_NoSuchFileOrDirectory:#$RC_NoSuchFileOrDirectory\]"
+	assertTrue "$0#$LINENO: expected text not found" $?
 
 	msg=$(archive --getLastArchivePath)
 	assertEquals "$0#$LINENO:" 0 $?

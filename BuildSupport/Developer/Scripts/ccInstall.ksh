@@ -327,7 +327,7 @@ function removeFolder {
 	if [[ -e ${folder} ]]; then			# folder exists
 		if ! [[ -d ${folder} ]]; then
 			print "error: ${folder} is not a directory"
-			return $RC_NoSuchDirectory
+			return $RC_NoSuchFileOrDirectory
 		fi
 		iofile="${CCDev}/tmp/found3"
 		origdir=$(pwd)

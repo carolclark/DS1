@@ -73,7 +73,10 @@
 	* errcc error codes: renumber custom codes to 64-113 to avoid conflicts with standard codes; also do not intrepret errno.h codes
 	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* refactor existing code to use errorMessage on return, errorExit on exit as indicated
-		* archive.ksh: add testArchive.ksh
+		* archive.ksh:
+			* add testArchive.ksh
+			* --folder: check for invalid folder name
+				* rename error RC_NoSuchDirectory to RC_NoSuchFileOrDirectory
 </pre>
 
 <h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
