@@ -25,7 +25,8 @@ oneTimeSetUp() {
 
 #pragma mark 2 === messageContainsText
 function messageContainsText {	# message expectedText
-	echo "$1" | grep "$2"
+	x=$(echo "$1" | grep "$2")
+	return $?
 }
 
 #pragma mark 3 === Check Archive Contents
@@ -45,9 +46,15 @@ function verify_Missing {		# _where_, archivePath, item
 	assertFalse "${1} unexpected archive item ${3} present" $?
 }
 
-#pragma mark 5 === testArchiveFolder
+#pragma mark 7 === testArchiveFolder
 testArchiveFolder() {
 	cd "${testData}"
+
+	msg=$(archiveFolder)
+	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
+	exp="expected: \"archive --<command> ...\" \[RC_MissingArgument:#$RC_MissingArgument\]"
+	messageContainsText "$msg" "$exp"
+	assertTrue "$0#$LINENO: expected text '$exp' not found in message '$msg'" $?
 
 	msg=$(archive --getArchiveDestination)
 	assertEquals "$0#$LINENO:" 0 $?
@@ -64,8 +71,9 @@ testArchiveFolder() {
 
 	msg=$(archive --folder "folderX")
 	assertNotEquals "$0#$LINENO: error expected" 0 $?
-	messageContainsText "$msg" "folder \"folderX\" does not exist \[RC_NoSuchFileOrDirectory:#$RC_NoSuchFileOrDirectory\]"
-	assertTrue "$0#$LINENO: expected text not found" $?
+	exp="folder \"folderX\" does not exist \[RC_NoSuchFileOrDirectory:#$RC_NoSuchFileOrDirectory\]"
+	messageContainsText "$msg" "$exp"
+	assertTrue "$0#$LINENO: expected text '$exp' not found in message '$msg'" $?
 
 	msg=$(archive --getLastArchivePath)
 	assertEquals "$0#$LINENO:" 0 $?

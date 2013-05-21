@@ -168,6 +168,7 @@ resource restype_Slate (resid_Emacs, "") { {
 	Event { "laura artist", "" },	TypeText { "lm/artist " }
 
 #define	_StandardBranches_	\
+	Event { "master", "" },			TypeText { "master " },		\
 	Event { "artist", "" },			TypeText { "artist " },		\
 	Event { "slates", "" },			TypeText { "slates " }
 
