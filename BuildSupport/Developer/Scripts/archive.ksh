@@ -32,12 +32,20 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 #pragma mark === Markers ===
 # 1 archiveCode; 2 archiveRepository; 3 appendRepository; 4 appendGitReadMe; 5 appendCdoc; 6 archiveFolder; 7 revealArchive; 8 main
 
+baseDir="$(pwd)"
+projectName="${baseDir##/*/}"
+
+__testing__=0
+if [[ -n "${archiveDestination}" ]] ; then
+	__testing__=1
+else
+	archiveDestination="${HOME}/Archives"
+fi
+mkdir -p "$archiveDestination"
+archivePath=""				# path from ${archiveDestination}
+
 #pragma mark 1 === archiveCode
 function archiveCode {	# archivePath projectName
-	if [[ ! -n "$archivePath" ]] ; then
-		echo $(errorMessage $RC_MissingArgument "$0#$LINENO:" "expected: \"archive --<command> ...\"")
-		return $RC_MissingArgument
-	fi
 	cd ${baseDir}
 	cd ..
 	tar --file="${archiveDestination}/${archivePath}" --create --exclude ".git" "${projectName}"/*
@@ -49,10 +57,6 @@ function archiveCode {	# archivePath projectName
 
 #pragma mark 2 === archiveRepository
 function archiveRepository {	# archivePath projectName
-	if [[ ! -n "$archivePath" ]] ; then
-		echo $(errorMessage $RC_MissingArgument "$0#$LINENO:" "expected: \"archive --<command> ...\"")
-		return $RC_MissingArgument
-	fi
 	cd ${baseDir}
 	cd ..
 	tar --file="${archiveDestination}/${archivePath}" --create "${projectName}/.git"/*
@@ -64,10 +68,6 @@ function archiveRepository {	# archivePath projectName
 
 #pragma mark 3 === appendRepository
 function appendRepository {	# archivePath projectName
-	if [[ ! -n "$archivePath" ]] ; then
-		echo $(errorMessage $RC_MissingArgument "$0#$LINENO:" "expected: \"archive --<command> ...\"")
-		return $RC_MissingArgument
-	fi
 	cd ${baseDir}
 	cd ..
 	tar --file="${archiveDestination}/${archivePath}" --append "${projectName}/.git"/*
@@ -79,10 +79,6 @@ function appendRepository {	# archivePath projectName
 
 #pragma mark 4 === appendGitReadMe
 function appendGitReadMe {	# archivePath projectName
-	if [[ ! -n "$archivePath" ]] ; then
-		echo $(errorMessage $RC_MissingArgument "$0#$LINENO:" "expected: \"archive --<command> ...\"")
-		return $RC_MissingArgument
-	fi
 	print  "This archive contains a git repository in invisible folder .git." > "${CCDev}/tmp/gitReadMe"
 	cd "${CCDev}/tmp"
 	tar --file="${archiveDestination}/${archivePath}" --append "gitReadMe"
@@ -94,10 +90,6 @@ function appendGitReadMe {	# archivePath projectName
 
 #pragma mark 5 === appendCdoc
 function appendCdoc {	# archivePath projectName
-	if [[ ! -n "$archivePath" ]] ; then
-		echo $(errorMessage $RC_MissingArgument "$0#$LINENO:" "expected: \"archive --<command> ...\"")
-		return $RC_MissingArgument
-	fi
 	cd ${CCDev}/Sites
 	tar --file="${archiveDestination}/${archivePath}" --append "TechnicalDocs/${projectName}"/* "TechnicalDocs/css" "TechnicalDocs/img"
 	st=$?
@@ -108,14 +100,17 @@ function appendCdoc {	# archivePath projectName
 
 #pragma mark 6 === archiveFolder
 function archiveFolder {	# archivePath folderName
-	if [[ ! -n "$archivePath" ]] ; then
-		echo $(errorMessage $RC_MissingArgument "$0#$LINENO:" "expected: \"archive --<command> ...\"")
+	if [[ $# = 0 ]] || [[ ! -n "$1" ]] ; then
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "argument <folderName> not specified"
 		return $RC_MissingArgument
 	fi
+	folderName="${1}"
 	if [[ ! -d "${folderName}" ]] ; then
 		echo $(errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder \"$folderName\" does not exist")
 		return $RC_NoSuchFileOrDirectory
 	fi
+	archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
+	echo "$archivePath" > "${CCDev}/tmp/lastArchivePath"
 	tar --file="${archiveDestination}/${archivePath}" --create "${folderName}"/*
 	st=$?
 	if [[ ${st} ]] ; then
@@ -129,10 +124,6 @@ function archiveFolder {	# archivePath folderName
 
 #pragma mark 7 === revealArchive
 function revealArchive {	# archivePath
-	if [[ ! -n "$archivePath" ]] ; then
-		echo $(errorMessage $RC_MissingArgument "$0#$LINENO:" "expected: \"archive --<command> ...\"")
-		return $RC_MissingArgument
-	fi
 	if [[ __testing__ = 0 ]] ; then
 		osascript -e "tell application \"Finder\" to reveal POSIX file \"${archiveDestination}/${archivePath}\""
 		osascript -e "tell application \"Finder\" to activate"
@@ -141,24 +132,10 @@ function revealArchive {	# archivePath
 
 #pragma mark 8 === archive
 function archive {
-	cmd="${1}"
-	if [[ $# = 0 ]] ; then
-		cmd="--project"
-	fi
-	baseDir="$(pwd)"
-	projectName="${baseDir##/*/}"
-
-	__testing__=0
-	if [[ -n "${archiveDestination}" ]] ; then
-		__testing__=1
-	else
-		archiveDestination="${HOME}/Archives"
-	fi
-	archivePath=""				# path from ${archiveDestination}
+	cmd="${1:---project}"
 
 	case "${cmd}" in
 		"--project" )
-			mkdir -p "$archiveDestination"
 			archivePath="Dev/${projectName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
 			msg=$(archiveCode)
 			es=$?
@@ -193,7 +170,6 @@ function archive {
 			return "${es}"
 			;;
 		"--code" )
-			mkdir -p "$archiveDestination"
 			archivePath="Dev/${projectName}_code-`date "+%Y-%m-%d-%H%M%S"`.tar"
 			msg=$(archiveCode)
 			es=$?
@@ -210,7 +186,6 @@ function archive {
 			return "${es}"
 			;;
 		"--repository" )
-			mkdir -p "$archiveDestination"
 			archivePath="Dev/${projectName}_Git-`date "+%Y-%m-%d-%H%M%S"`.tar"
 			msg=$(archiveRepository)
 			es=$?
@@ -233,34 +208,14 @@ function archive {
 			return "${es}"
 			;;
 		"--folder" )
-			mkdir -p "$archiveDestination"
-			if [[ $# < 2 ]] ; then
-				print "expected --folder <folderName>"
-				return $RC_InvalidArgument
-			fi
-			folderName="${2}"
-			archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
-			msg=$(archiveFolder)
-			es=$?
-			print "${msg}"
-			if [[ ${es} > 0 ]] ; then
-				return "${es}"
-			fi
-			msg=$(revealArchive)
-			es=$?
-			if [[ ${es} > 0 ]] ; then
-				print "${msg}"
-			fi
-			echo "$archivePath" > "${CCDev}/tmp/lastArchivePath"
-			return "${es}"
+			archiveFolder "$2" || return $?
+			revealArchive
 			;;
 		"--getArchiveDestination" )
 			echo "$archiveDestination"
-			return 0
 			;;
 		"--getLastArchivePath" )
 			cat "${CCDev}/tmp/lastArchivePath"
-			return $?
 			;;
 		"--help" )
 			print "${HELP}"

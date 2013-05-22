@@ -52,7 +52,7 @@ testArchiveFolder() {
 
 	msg=$(archiveFolder)
 	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
-	exp="expected: \"archive --<command> ...\" \[RC_MissingArgument:#$RC_MissingArgument\]"
+	exp="argument <folderName> not specified \[RC_MissingArgument:#$RC_MissingArgument\]"
 	messageContainsText "$msg" "$exp"
 	assertTrue "$0#$LINENO: expected text '$exp' not found in message '$msg'" $?
 
@@ -61,8 +61,9 @@ testArchiveFolder() {
 	assertEquals "$0#$LINENO:" "$archiveDestination" "$msg"
 
 	msg=$(archive --folder)
-	assertEquals "$0#$LINENO:" $RC_InvalidArgument $?
-	assertEquals "$0#$LINENO:" "expected --folder <folderName>" "$msg"
+	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
+	messageContainsText "$msg" "argument <folderName> not specified"
+	assertTrue "$0#$LINENO: expected text '$exp' not found in message '$msg'" $?
 
 	msg=$(archive --folder "folder")
 	assertEquals "$0#$LINENO:" 0 $?
