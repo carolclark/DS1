@@ -23,10 +23,15 @@ oneTimeSetUp() {
 	echo "fileB" > "${testData}/folder/inside/fileB"
 }
 
-#pragma mark 2 === messageContainsText
-function messageContainsText {	# message expectedText
-	x=$(echo "$1" | grep "$2")
-	return $?
+#pragma mark 2 === test for text in message
+function assertTextInMessage {	# _where_ expectedText message
+	x=$(echo "$3" | grep "$2")
+	assertTrue "$1 expected text '$2' not found in message '$3'" $?
+}
+
+function assertTextNotInMessage {	# _where_ expectedText message
+	x=$(echo "$3" | grep "$2")
+	assertFalse "$1 unexpected text '$2' found in message '$3'" $?
 }
 
 #pragma mark 3 === Check Archive Contents
@@ -53,8 +58,7 @@ testArchiveFolder() {
 	msg=$(archiveFolder)
 	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
 	exp="argument <folderName> not specified \[RC_MissingArgument:#$RC_MissingArgument\]"
-	messageContainsText "$msg" "$exp"
-	assertTrue "$0#$LINENO: expected text '$exp' not found in message '$msg'" $?
+	assertTextInMessage "$0#$LINENO:" "$exp" "$msg"
 
 	msg=$(archive --getArchiveDestination)
 	assertEquals "$0#$LINENO:" 0 $?
@@ -62,8 +66,7 @@ testArchiveFolder() {
 
 	msg=$(archive --folder)
 	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
-	messageContainsText "$msg" "argument <folderName> not specified"
-	assertTrue "$0#$LINENO: expected text '$exp' not found in message '$msg'" $?
+	assertTextInMessage "$0#$LINENO:" "argument <folderName> not specified" "$msg"
 
 	msg=$(archive --folder "folder")
 	assertEquals "$0#$LINENO:" 0 $?
@@ -73,8 +76,7 @@ testArchiveFolder() {
 	msg=$(archive --folder "folderX")
 	assertNotEquals "$0#$LINENO: error expected" 0 $?
 	exp="folder \"folderX\" does not exist \[RC_NoSuchFileOrDirectory:#$RC_NoSuchFileOrDirectory\]"
-	messageContainsText "$msg" "$exp"
-	assertTrue "$0#$LINENO: expected text '$exp' not found in message '$msg'" $?
+	assertTextInMessage "$0#$LINENO:" "${exp}" "${msg}"
 
 	msg=$(archive --getLastArchivePath)
 	assertEquals "$0#$LINENO:" 0 $?
@@ -90,7 +92,6 @@ testArchiveFolder() {
 	verify_Present "$0#$LINENO:" "$archivePath" "folder/inside/"
 	verify_Present "$0#$LINENO:" "$archivePath" "folder/inside/fileB"
 }
-
 
 testEquality() {
 	assertEquals "$0#$LINENO: " 1 1

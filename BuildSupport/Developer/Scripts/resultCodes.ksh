@@ -13,4 +13,6 @@ RC_InvalidArgument=66
 RC_InvalidInput=67
 RC_InputNotHandled=68
 RC_NoSuchFileOrDirectory=69
+
+RC_UnknownError=113
 # custom codes available through 113

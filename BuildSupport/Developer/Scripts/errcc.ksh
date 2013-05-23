@@ -38,34 +38,27 @@ function errorMessage {
 	message=""
 	sp1=""
 	sp2=""
-	if [[ $# = 0 ]] ; then
-		message="An unknown error occurred."
-	fi
+	errorCode="$1"
+	[[ $errorCode -ne 0 ]] || errorCode=$RC_UnknownError
+	errorInfo="$(errorCodeText $errorCode)"
 	if [[ $# > 0 ]] ; then
-		errorInfo="$(errorCodeText $1)"
-	fi
-	if [[ $# > 1 ]] ; then
-		location="$2"
-		if [[ -n ${errorInfo} ]] ; then
-			sp2=" "
+		if [[ $# > 1 ]] ; then
+			location="$2"
+			[[ -n ${errorInfo} ]] && sp2=" "
+		fi
+		if [[ $# > 	2 ]] ; then
+			message="$3"
+			sp1=" "
 		fi
 	fi
-	if [[ $# > 2 ]] ; then
-		message="$3"
-		sp1=" "
-	fi
 	echo "$location$sp1$message$sp2$errorInfo"
-	return 0
+	return $errorCode
 }
 
 #pragma mark 2 === errorExit
 function errorExit {
-	echo $(errorMessage "$1" "$2" "$3" 1>&2)
-	errorCode="$1"
-	if [[ $((${errorCode})) = 0 ]] ; then
-		errorCode=255
-	fi
-	exit $errorCode
+	errorMessage "$1" "$2" "$3" 1>&2
+	exit $?
 }
 
 #pragma mark 6 === errorCodeText
@@ -79,6 +72,7 @@ function errorCodeText {
 			$RC_InvalidInput );	echo "[RC_InvalidInput:#$RC_InvalidInput]"	;;
 			$RC_InputNotHandled );	echo "[RC_InputNotHandled:#$RC_InputNotHandled]"	;;
 			$RC_NoSuchFileOrDirectory );	echo "[RC_NoSuchFileOrDirectory:#$RC_NoSuchFileOrDirectory]"	;;
+			$RC_UnknownError );	echo "[RC_UnknownError:#$RC_UnknownError]"	;;
 			* );	echo "[UnknownErrorCode:#$errorCode]"	;;
 		esac
 	else

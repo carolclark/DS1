@@ -102,12 +102,12 @@ function appendCdoc {	# archivePath projectName
 function archiveFolder {	# archivePath folderName
 	if [[ $# = 0 ]] || [[ ! -n "$1" ]] ; then
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "argument <folderName> not specified"
-		return $RC_MissingArgument
+		return
 	fi
 	folderName="${1}"
 	if [[ ! -d "${folderName}" ]] ; then
-		echo $(errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder \"$folderName\" does not exist")
-		return $RC_NoSuchFileOrDirectory
+		errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder \"$folderName\" does not exist"
+		return
 	fi
 	archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
 	echo "$archivePath" > "${CCDev}/tmp/lastArchivePath"
