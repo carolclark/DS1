@@ -91,6 +91,8 @@ testArchiveFolder() {
 	verify_Missing "$0#$LINENO:" "$archivePath" "folder/inside"
 	verify_Present "$0#$LINENO:" "$archivePath" "folder/inside/"
 	verify_Present "$0#$LINENO:" "$archivePath" "folder/inside/fileB"
+
+	rm "${archivePath}"
 }
 
 testEquality() {

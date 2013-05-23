@@ -7,7 +7,7 @@
 #  Copyright 2012-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
-NAME='archive -- create tar archive for specified content'
+NAME='archive -- create tar archive for specified content of the current working directory'
 USAGE='
 #	--project (default)
 #		current Terminal workspace: includes code and git repository, associated technical docs
@@ -48,6 +48,10 @@ archivePath=""				# path from ${archiveDestination}
 function archiveCode {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
+	if [[ ! -d "${projectName}" ]] ; then
+		echo $(errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder '$projectName' does not exist in directory $pwd")
+		return
+	fi
 	tar --file="${archiveDestination}/${archivePath}" --create --exclude ".git" "${projectName}"/*
 	st=$?
 	cd ${baseDir}
@@ -99,7 +103,7 @@ function appendCdoc {	# archivePath projectName
 }
 
 #pragma mark 6 === archiveFolder
-function archiveFolder {	# archivePath folderName
+function archiveFolder {	# folderName
 	if [[ $# = 0 ]] || [[ ! -n "$1" ]] ; then
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "argument <folderName> not specified"
 		return
