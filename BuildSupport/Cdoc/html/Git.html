@@ -22,70 +22,105 @@
 <!-- @/topicList -->
 
 <!-- @marker "Workflows" -->
+<h2>Workflows</h2><ul>
+	<li>Workflows: Technical Notes<ul>
+		<li>The workflows described below assume that Collaborator works with a private fork of a shared repository managed by Administrator. Collaborator pushes to their private repository, and fetches from the shared repository. Administrator pushes to the shared repository, and has Collaborator's repository included in their update list.</li>
+		<li>With these workflows, Collaborator pushes their private branch <span class='ital'>before</span> it has had changes from <span class='mono'>master</span> merged in. The intent is to make it easier for Administrator to help with merge conflicts. If it turns out to cause more trouble than it saves, we should have Collaborator push <span class='ital'>after</span> their private branch is updated from <span class='mono'>master</span>.</li>
+	</ul></li>
+</ul>
 
+<div style="page-break-before: always">
 	<h4 id="WorkflowCollab">Workflow: Collaborator</h4><ul style="background-color: #d8ffe8">
-		<li class='blurb'>To select a branch:<ul>
-			<li>From the Window menu, choose Organizer &gt; Repositories.</li>
-			<li>From the left panel of that window, choose the blue folder associated with your project.</li>
-			<li>The current branch is now displayed at the upper right of the window. If that is not the branch you want, click "Switch Branch" near the bottom right corner and choose the branch you want.</li>
+		<li class='blurb'>Xcode Tasks:<ul>
+			<li>To view your Repository<ul>
+				<li>Choose File &gt; Source Control &gt; Repositories OR choose Window &gt; Organizer &gt; Repositories.</li>
+				<li>From the left panel of that window, choose the blue folder associated with your project.</li>
+				<li>The current branch is now displayed at the upper right of the window. If that is not the branch you want, see "To select a branch" below.</li>
+			</ul></li>
+			<li>To see which files have been changed since they were last committed:<ul>
+				<li>In your project's main window, there is a row of small icons near the bottom left. The third icon, which looks like a folder with the square on it, turns on or off a state that shows only modified files. Click that icon to show only modified files; click again to return to showing all files.<ul>
+					<li>Modified files are also marked with a badge to the right (usually the letter 'M' for modified)'</li>
+				</ul></li>
+			</ul></li>
+			<li>To see which branch you are on:<ul>
+				<li>View your Repository.</li>
+				<li>The current branch is displayed at the upper right corner of the window.</li>
+			</ul></li>
+			<li>To select a branch<ul>
+				<li>Make sure that you do not currently have any modified files.</li>
+				<li>View your Repository.</li>
+				<li>Click "Switch Branch" near the bottom right of the Repository window; make sure that the window that comes up does not have a warning about changed files</li>
+				<li>Choose the branch to switch to.</li>
+			</ul></li>
 		</ul></li>
-		<li>select branch 'artist'<ul>
-			<li>Make a group of changes to some files. This may include adding new files and deleting old ones.</li>
+		<li>Develop <span class='blurb'>do some work</span><ul>
+			<li>select branch 'artist'</li>
+			<li>Make a group of changes to some files. (This may include adding new files and deleting old ones.)</li>
 			<li>Commit: <span class='blurb'>makes a record of these changes in the git repository on your computer</span><ul>
+				<li>View your Repository.</li>
 				<li>Click Commit from the bottom left of the Organizer &gt; Repositories window.</li>
 				<li>It will ask for a message describing what you did. First line should be fairly short (no more that 50 characters). If there's more to say, add a blank line and then just keep going.</li>
 			</ul></li>
-			<li>Push: <span class='blurb'>publish your changes up to the repository on GitHub</span><ul>
-				<li>Choose menu item File &gt; Source Control &gt; Push</li>
-			</ul></li>
 		</ul></li>
-		<li>select branch 'master'<ul>
-			<li>Pull: <span class='blurb'>fetches any changes anyone else has made to the repository on GitHub, so you have an up-to-date copy	</span><ul>
-				<li>Click Pull from the bottom left of the Organizer &gt; Repositories window.</li>
-			</ul></li>
-		</ul></li>
-		<li>select branch 'artist'<ul>
-			<li>Merge: <span class='blurb'>combine changes from the updated 'master' branch with your working branch</span><ul>
-				<li>Choose menu item File &gt; Source Control &gt; Merge</li>
+		<li>Update your Master branch <span class='blurb'>get any changes that have been made to Administrator's repository on GitHub, so you have an up-to-date copy</span><ul>
+			<li>select branch 'master'</li>
+			<li>Pull: View your Repository; click Pull from the bottom left of the Organizer &gt; Repositories window.</li>
+			<li>Merge: <span class='blurb'>combine the changes from your 'artist' branch with the updated 'master' branch</span><ul>
+				<li>Choose menu item File &gt; Source Control &gt; Merge; choose your 'artist' branch</li>
 				<li>Xcode will show you what changes will be made, and tell you if there are conflicts.<ul>
 					<li>If there are no conflicts, click 'Merge' to accept the changes.</li>
-					<li>If Xcode says that there are conflicts or that the Merge did not succeed, notify Administrator.</li>
+					<li>If Xcode says that there are conflicts or that the Merge did not succeed, contact Administrator.</li>
 				</ul></li>
 			</ul></li>
-			<li>Continue to make another group of changes to some files.</li>
 		</ul></li>
+		<li>Push: <span class='blurb'>publish your changes up to your repository on GitHub</span><ul>
+			<li>Choose menu item File &gt; Source Control &gt; Push</li>
+			<li>select branch 'master'</li>
+		</ul></li>
+		<li>Update your Artist branch <span class='blurb'>update your working branch with any changes from the updated master branch</span><ul>
+			<li>select branch 'artist'</li>
+			<li>Merge: <span class='blurb'>combine the changes from the updated 'master' branch with your 'artist' branch</span><ul>
+				<li>Choose menu item File &gt; Source Control &gt; Merge; choose your 'master' branch</li>
+				<li>Xcode will show you what changes will be made, and tell you if there are conflicts.<ul>
+					<li>If there are no conflicts, click 'Merge' to accept the changes.</li>
+					<li>If Xcode says that there are conflicts or that the Merge did not succeed, contact Administrator.</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>repeat from Develop above</li>
 	</ul>
+</div>
 
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Develop</h5><ul>
-			<li>create or move work to branch<span class='blurb'>Terminal</span></li>
+			<li>select branch<ul>
+				<li>create or checkout branch</li>
+				<li>if a pre-existing branch, <span class='em'>Update Branch</span></li>
+			</ul></li>
 			<li>repeat<ul>
-				<li>repeat until commit<ul>
-					<li>edit/test<span class='blurb'>Xcode</span></li>
-					<li>status; [add/stage]<span class='blurb'>Terminal</span></li>
-				</ul></li>
-				<li>construct and save commit message<span class='blurb'>Xcode / Stickies</span></li>
-				<li>verify modifications (diff tool)<span class='blurb'>Terminal</span></li>
+				<li>repeat until commit; edit/test; status; [add/stage]</li>
+				<li>construct and save commit message; verify modifications (diff tool)</li>
 				<li>status: check branch; add / review files to be committed</li>
 				<li>check for stray spaces (diff --cached --check)</li>
 				<li>review commit msgfile</li>
 				<li>commit</li>
-				<li>status; show --name-only; log; [amend]<ul>
-					<li><span class='em'>Amend:</span> [reset --soft lastCommit; restage]; commit</li>
+				<li>status; show --name-only; log; [amend (reset --soft lastCommit)]</li>
+				<li>check stash list; check for unmerged branches</li>
+				<li><span class='em'>Update Branch</span><ul>
+					<li><span class='em'>Update Master</span> from remotes<ul>
+						<li>checkout master; log --oneline master..origin/master; [log --oneline artist..lm/artist]</li>
+						<li><span class='mono'>git remote update [--prune]</span>; merge</li>
+						<li>[retest if changed]</li>
+					</ul></li>
+					<li>checkout branch; log --oneline $cb..master; merge master</li>
+					<li>[retest if changed]</li>
 				</ul></li>
-				<li>check stash list</li>
-				<li>diff --name-status with master</li>
 			</ul></li>
 		</ul>
 		<h5>Merge</h5><ul>
-			<li>from branch to be merged: check for status clear<span class='blurb'>Terminal</span></li>
+			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 			<li>checkout master</li>
-			<li><span class='em'>Fetch</span><ul>
-				<li>checkout branch artist; fetch from remote branch laura/artist</li>
-				<li>checkout master; review changes; [rebase]</li>
-				<li><b>Merge</b> artist</li>
-			</ul></li>
 			<li>diff (--name-status) branch</li>
 			<li><span class='mono'>merge &lt;branch&gt;</span><ul>
 				<li>[OR to merge in files only, use <span class='mono'>merge &lt;branch&gt; --no-ff --no-commit</span>]; then commit or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
@@ -94,16 +129,16 @@
 				<li>use <span class='mono'>merge tool</span> to resolve conflicts; add / review files to be committed; commit</li>
 				<li>[OR to undo attempted merge, use <span class='mono'>git reset --merge</span>]</li>
 			</ul></li>
+			<li>show --name-only</li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
-				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>):<br />
-					<span class='mono'>git log --graph --left-right --cherry-pick --oneline master...$cb</span></li>
+				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
 			</ul></li>
+			<li>retest</li>
 		</ul>
 		<h5>Push</h5><ul>
 			<li>check for stashes, unmerged branches</li>
 			<li>[tag]</li>
 			<li>push [push tags]</li>
-			<li>[push master to remote laura; [push tags]] </li>
 		</ul>
 	</div>
 </div>

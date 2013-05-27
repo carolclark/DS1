@@ -342,8 +342,14 @@ resource restype_Slate (resid_gitShowBranch, "") { {
 
 #pragma mark gitRemote
 resource restype_Slate (resid_gitRemote, "") { {
-	Slate { "gitRemote",	{
+	Slate { "remote",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
 		Event { "verbose", "" },		TypeText { "--verbose " },
+		Event { "list", "" },			TypeText { "--verbose " },
+		Event { "show", "" },			TypeText { "--show " },
+		Event { "update", "" },			TypeText { "--update " },
+		Event { "prune", "" },			TypeText { "--prune " },
 		_GitStandards_,
 		_TypeVariable_,
 		_StandardBranches_,
@@ -436,7 +442,7 @@ resource restype_Slate (resid_gitStash, "") { {
 		ExitEvent { "list", "" },		Sequence{}, TypeText { "list " }, _return, endSequence{},
 		Event { "show", "" },			TypeText { "show " },
 		Event { "keep index", "" },		TypeText { "--keep-index " },
-		Event { "to branch", "" },		TypeText { "branch " },
+		Event { "pop to branch", "" },	TypeText { "branch " },
 		Event { "stash", "" },			Sequence{}, TypeText { "stash@{}" }, _left, ResSubslate { resid_gitType }, endSequence{},
 		Event { "top stash", "" },		TypeText { "stash@{0} " },
 	} }
@@ -570,7 +576,6 @@ resource restype_Slate (resid_gitMerge, "") { {
 		Event { "no fast forward", "" },	TypeText { "--no-ff " },
 		Event { "no commit", "" },			TypeText { "--no-commit " },
 		Event { "abort", "" },				TypeText { "--abort " },
-		Event { "remote", "" },				Sequence{}, TypeText { "--no-ff FETCH_HEAD -m \"merge artist: " }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "tool", "" },				Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
 		Event { "file merge", "" },			Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{},
 		_TypeVariable_,

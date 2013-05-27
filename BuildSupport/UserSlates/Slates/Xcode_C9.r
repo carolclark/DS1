@@ -78,11 +78,12 @@
 #define resid_GitHub				resid_Xcode+650
 	#define resid_ghMyPage				resid_GitHub+1
 	#define resid_ghRepository			resid_GitHub+2
-	#define resid_ghRepoButtons			resid_GitHub+3
 	#define resid_ghDashIssues			resid_GitHub+5
 	#define resid_ghRepoIssues			resid_GitHub+6
 	#define resid_ghOpenIssue			resid_GitHub+7
 	#define resid_ghEditIssue			resid_GitHub+8
+	#define resid_ghRepoButtons			resid_GitHub+20
+		#define resid_ghRepoBtn_Label		resid_ghRepoButtons+1
 
 #define resid_BrowseDoxygen			resid_Xcode+700
 
@@ -1324,18 +1325,31 @@ resource restype_Slate (resid_ghRepository, "") { {
 
 #pragma mark ghRepoButtons
 resource restype_Slate (resid_ghRepoButtons, "") { {
-	Slate { "ghRepoButtons",	{
+	Slate { "buttons",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "unfiltered", "" },		Click { 0, 0, -36, _cursor },
-		Event { "clear filter", "" },	Sequence{}, Click { 1, 0, -36, _cursor }, Click { 0, 0, -36, _cursor }, endSequence{},
-		Event { "unclosed", "" },		Click { 1, 0, 0, _cursor },
-		Event { "closed", "" },			Click { 1, 75, 0, _cursor },
-		Event { "sort", "" },			Click { 1, 210, 0, _cursor },
-		Event { "open", "" },			Click { 1, 0, 50, _cursor },
-		Event { "label", "" },			Click { 1, 70, 50, _cursor },
-		Event { "assign", "" },			Click { 1, 150, 50, _cursor },
-		Event { "milestone", "" },		Click { 1, 240, 50, _cursor },
+		Event { "clear filter", "" },	Click { 1, 0, -45, _cursor },
+		Event { "unclosed", "" },		Click { 1, 0, -35, _cursor },
+		Event { "closed", "" },			Click { 1, 75, -35, _cursor },
+		Event { "sort", "" },			Click { 1, 210, -35, _cursor },
+		Event { "open", "" },			Click { 1, 0, 45, _cursor },
+		Event { "label", "" },			Sequence{}, Click { 1, 70, 45, _cursor }, ResSubslate { resid_ghRepoBtn_Label }, endSequence{},
+		Event { "assign", "" },			Click { 1, 150, 45, _cursor },
+		Event { "milestone", "" },		Click { 1, 240, 45, _cursor },
+	} }
+} };
+
+#pragma mark ghRepoBtn_Label
+resource restype_Slate (resid_ghRepoBtn_Label, "") { {
+	Slate { "label",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "cancel", "" },		Keypress { kc_escape, 0 },
+		ExitEvent { "update", "" },		Click { 1, 83, 190, _cursor },
+		_LetterKeys_,
+		_NumberKeys_,
+		_DirectionKeys_,
+		Event { "toggle", "" },			Keypress { kc_return, mf_command },
 	} }
 } };
 
@@ -1366,7 +1380,8 @@ resource restype_Slate (resid_ghDashIssues, "") { {
 		Event { "filter 1", "" },		Click { 1, -500, 393, _window, _topCenter },
 		Event { "filter 2", "" },		Click { 1, -500, 418, _window, _topCenter },
 		Event { "filter 3", "" },		Click { 1, -500, 443, _window, _topCenter },
-		Event { "button", "" },			Sequence{}, Click { 0, -170, 334, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
+		Event { "button", "" },			Sequence{}, Click { 0, -170, 325, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
+		Event { "button 2", "" },		Sequence{}, Click { 0, -170, 355, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
 	} }
 } };
 
@@ -1380,8 +1395,11 @@ resource restype_Slate (resid_ghRepoIssues, "") { {
 		_ghIssueBar_,
 		_ghIssueListStandards_,
 		Event { "select", "" },			Keypress { kc_X, 0 },
+		Event { "all", "" },			Click { 1, -406, 306, _window, _topCenter },
 		Event { "assigned", "" },		Click { 1, -406, 347, _window, _topCenter },
-		Event { "button", "" },			Sequence{}, Click { 0, -170, 334, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
+		Event { "clear filter", "" },	Click { 1, -160, 300, _window, _topCenter },
+		Event { "button", "" },			Sequence{}, Click { 0, -170, 325, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
+		Event { "button 2", "" },		Sequence{}, Click { 0, -170, 355, _window, _topCenter }, ResSubslate { resid_ghRepoButtons }, endSequence{},
 		Event { "search", "" },			Sequence{}, Click { 1, 230, 250, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
 		Event { "milestone", "" },		Sequence{}, Click { 1, -360, 490, _window, _topCenter }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
 		Event { "label", "" },			Subslate { "label" },

@@ -782,12 +782,12 @@ resource restype_Slate (resid_Discover, "Discover Slate") { {
 		_CloseSubslate_,
 		Event { "type", "" },		TypeText { "Discover" },
 		Event { "name", "" },		TypeText { "Carol L Clark" },
-		Event { "number", "" },		TypeText { "6011499463079978" },
-		Event { "month", "" },		TypeText { "07" },
+		Event { "number", "" },		TypeText { "6011007828580224" },
+		Event { "month", "" },		TypeText { "04" },
 		Event { "long year", "" },	TypeText { "2016" },
 		Event { "year", "" },		TypeText { "16" },
 		Event { "zip", "" },		TypeText { "67220" },
-		Event { "security", "" },	TypeText { "983" },
+		Event { "security", "" },	TypeText { "829" },
 		Event { "tab", "" },		Keypress { kc_tab, 0 },
 	 } }
 } };
@@ -914,7 +914,7 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 		ExitEvent { "ten", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, endSequence{},	\
 		endSubslate{}
 
-#define _pzlTop		-422
+#define _pzlTop		-495
 resource restype_Slate (resid_sudokuTimes, "") { {
 	Slate { "Times", {
 		ExitEvent { "exit", "" },		NilAction{},
