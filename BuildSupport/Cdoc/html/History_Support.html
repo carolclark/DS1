@@ -43,16 +43,15 @@
 </pre>
 
 <h4 id='gitWorkflow'><a href="http://github.com/carolclark/Support/issues/21">(#21)</a> add git workflow support</h4><pre>
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* configuration
 		* add more colorization to Terminal
 			* *technique used to add color to terminal prompt also works to add color and special effects to UNIX output*
-			* see <a href="http://antesarkkinen.com/blog/add-colors-to-os-x-terminal-including-ls-and-nano/">Add Colors To OSX Terminal</a>, <a href="http://linux-sxs.org/housekeeping/lscolors.html">COLORS-Lscolors</a>
-			* print "\033[1;33mcarolclark !\033[0m \033[1;35m$\033[0m" for terminal prompt (or color 34 (dark pink)) for '$'
+			* *see <a href="http://antesarkkinen.com/blog/add-colors-to-os-x-terminal-including-ls-and-nano/">Add Colors To OSX Terminal</a>, <a href="http://linux-sxs.org/housekeeping/lscolors.html">COLORS-Lscolors</a>, <a href="http://softwaregravy.wordpress.com/2010/10/16/ls-colors-for-mac/">LS_COLORS for MAC OS X</a>*
+			* print "\033[1;33mcarolclark !\033[0m \033[1;35m$\033[0m" for terminal prompt
 			* also add additional settings to colorize <span class='mono'>ls</span> and <span class='mono'>grep</span>
-		* configure remotes
-			* Collaborator: push to their private repository, fetch from shared repository
-			* Administrator: push to shared repository; include Collaborator's repository on update
+	* add support for using <span class='mono'>git remote update</span> instead of <span class='mono'>git pull</span>
+		* *updates from all remotes; then supports merge process that preserves merge commits, and stops to allow re-base rather than continuing with a merge that is not fast-forward; see <a href="http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop">How to avoid these merge commits in the future</a>*
+	<li class='tlmark'>&lt;--</li>
 </pre>
 
 <h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
@@ -62,7 +61,7 @@
 	* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
 	* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin#1</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor#1</a>, item "replace deprecated scripts"
 	* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
-	<li class='tlmark'>&lt;--</li>
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* refactor ccInstall
 		* *make needed changes only; probably will be converted to another language (Python?)*
 		* use errorMessage for error returns as indicated

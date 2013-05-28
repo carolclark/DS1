@@ -44,9 +44,9 @@ function envProfile {
 
 #^	envKsh				Korn shell configuration
 function envKsh {
-	DEV="${DEV}"; export DEV							# folder containing development projects
+	DEV="${DEV}"; export DEV								# folder containing development projects
 	print "DEV=${DEV}; export DEV"
-	CCDev="${CCDev}"; export CCDev						# C & C derived data
+	CCDev="${CCDev}"; export CCDev							# C & C derived data
 	print "CCDev=${CCDev}; export CCDev"
 	if [[ $(print ":$PATH:" | grep ":$CCDev/bin:") = "" ]] ; then
 		PATH="$PATH:$CCDev/bin:"
@@ -54,15 +54,21 @@ function envKsh {
 	if [[ $(print ":$PATH:" | grep ":$CCDev/func:") = "" ]] ; then
 		PATH="$PATH:$CCDev/func:"
 	fi
-	export PATH											# path to search for unix scripts
+	export PATH												# path to search for unix scripts
 	print "PATH=${PATH}; export PATH"
-	SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit	# third-party library used for unix testing
+	SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit		# third-party library used for unix testing
 	print "SHUnit=${SHUnit}; export SHUnit"
 	if [[ ${configureTerminal} = "yes" ]] ; then
-		PS1="$LOGNAME ! $ "; export PS1					# terminal prompt: "<username> <lineno> $ "
+		PS1="\033[1;33m$LOGNAME !\033[0m \033[1;34m$\033[0m "; export PS1		# colorized terminal prompt: "<username> <lineno> $ "
 		print "PS1=\"${PS1}\"; export PS1"
-		VISUAL="\"$(whereis emacs)\""; export VISUAL	# emacs editor
+		VISUAL="\"$(whereis emacs)\""; export VISUAL		# emacs editor
 		print "VISUAL=${VISUAL}; export VISUAL"
+		CLICOLOR=1; export CLICOLOR							# color ls output
+		print "CLICOLOR=${CLICOLOR}; export CLICOLOR"
+		LSCOLORS=exfxcxdxbxegedabagacad; export LSCOLORS
+		print "LSCOLORS=${LSCOLORS}; export LSCOLORS"
+		GREP_OPTIONS='--color=auto'; export GREP_OPTIONS	# highlight grep matches
+		print "GREP_OPTIONS=${GREP_OPTIONS}; export GREP_OPTIONS"
 	fi
 }
 
@@ -75,6 +81,9 @@ function envLaunchctl {
 	if [[ ${configureTerminal} = "yes" ]] ; then
 		print "setenv PS1 ${PS1}"
 		print "setenv VISUAL ${VISUAL}"
+		print "setenv CLICOLOR ${CLICOLOR}"
+		print "setenv LSCOLORS ${LSCOLORS}"
+		print "setenv GREP_OPTIONS ${GREP_OPTIONS}"
 	fi
 }
 
@@ -95,6 +104,9 @@ function gitPrintConfig {
 	git config --global difftool.prompt false
 
 	git config --global merge.tool opendiff
+
+	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative"
+	git config --global alias.fetchup '!git remote update -p; git merge --ff-only @{u}'
 }
 
 #^	gitPrintExclude

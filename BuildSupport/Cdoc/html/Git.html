@@ -24,7 +24,7 @@
 <!-- @marker "Workflows" -->
 <h2>Workflows</h2><ul>
 	<li>Workflows: Technical Notes<ul>
-		<li>The workflows described below assume that Collaborator works with a private fork of a shared repository managed by Administrator. Collaborator pushes to their private repository, and fetches from the shared repository. Administrator pushes to the shared repository, and has Collaborator's repository included in their update list.</li>
+		<li>The workflows described below assume that Collaborator works with a private fork of a shared repository managed by Administrator. Collaborator pushes to their private repository, and fetches <span class='mono'>master</span>from the shared repository. Administrator pushes to the shared repository, and has Collaborator's repository included in their update list.</li>
 		<li>With these workflows, Collaborator pushes their private branch <span class='ital'>before</span> it has had changes from <span class='mono'>master</span> merged in. The intent is to make it easier for Administrator to help with merge conflicts. If it turns out to cause more trouble than it saves, we should have Collaborator push <span class='ital'>after</span> their private branch is updated from <span class='mono'>master</span>.</li>
 	</ul></li>
 </ul>
@@ -73,7 +73,7 @@
 				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li>Push: <span class='blurb'>publish your changes up to your repository on GitHub</span><ul>
+		<li>Push: <span class='blurb'>publish your work up to your repository on GitHub</span><ul>
 			<li>Choose menu item File &gt; Source Control &gt; Push</li>
 			<li>select branch 'master'</li>
 		</ul></li>
@@ -110,7 +110,9 @@
 				<li><span class='em'>Update Branch</span><ul>
 					<li><span class='em'>Update Master</span> from remotes<ul>
 						<li>checkout master; log --oneline master..origin/master; [log --oneline artist..lm/artist]</li>
-						<li><span class='mono'>git remote update [--prune]</span>; merge</li>
+						<li>fetch updates: <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
+							<li>if that merge fails: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+						</ul></li>
 						<li>[retest if changed]</li>
 					</ul></li>
 					<li>checkout branch; log --oneline $cb..master; merge master</li>
