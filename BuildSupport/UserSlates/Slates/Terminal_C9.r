@@ -439,15 +439,17 @@ resource restype_Slate (resid_gitGrep, "") { {
 resource restype_Slate (resid_gitStash, "") { {
 	Slate { "stash",	{
 		_GitStandards_,
-		Event { "save", "" },			Sequence{}, TypeText { "save " }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "save", "" },			TypeText { "save " },
+		Event { "keep index", "" },		TypeText { "--keep-index " },
+		Event { "patch", "" },			TypeText { "--patch " },
 		Event { "apply", "" },			TypeText { "apply " },
 		Event { "drop", "" },			TypeText { "drop " },
 		ExitEvent { "list", "" },		Sequence{}, TypeText { "list " }, _return, endSequence{},
 		Event { "show", "" },			TypeText { "show " },
-		Event { "keep index", "" },		TypeText { "--keep-index " },
 		Event { "pop to branch", "" },	TypeText { "branch " },
 		Event { "stash", "" },			Sequence{}, TypeText { "stash@{}" }, _left, ResSubslate { resid_gitType }, endSequence{},
 		Event { "top stash", "" },		TypeText { "stash@{0} " },
+		_TypeSlate_,
 	} }
 } };
 

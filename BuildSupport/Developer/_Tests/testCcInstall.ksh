@@ -8,8 +8,8 @@
 #  Confidential and Proprietary.
 
 setUp() {
-	projectPath="${CCDev}/TestData/ProjA"
-	target=Tar1
+	projectPath="${CCDev}/TestData/WorkspaceA"
+	target=ProjA/Tar1
 }
 
 . "${CCDev}/bin/resultCodes.ksh"
@@ -69,19 +69,40 @@ testCciGetActions() {
 #^ Paths
 testCciPaths() {
 	str=$(ccInstall --getBasePath)
-	st=$?
-	assertEquals "$LINENO: expected error RC_MissingArgument" $RC_MissingArgument "${st}"
+	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
+
+	str=$(ccInstall --getProjectPath "${projectPath}" "${target}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect project path: " "${CCDev}/TestData/WorkspaceA" "${str}"
+
+	str=$(ccInstall --getTarget "${projectPath}" "${target}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect target: " "ProjA/Tar1" "${str}"
+
+	str=$(ccInstall --getTargetName "${projectPath}" "${target}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect target name: " "Tar1" "${str}"
 
 	str=$(ccInstall --getBasePath "${projectPath}" "${target}")
-	st=$?
-	assertEquals "$LINENO: ${str}" 0 "${st}"
-	assertEquals "$LINENO: incorrect base path: " "${CCDev}/TestData" "${str}"
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect target: " "${CCDev}/TestData" "${str}"
+
+	str=$(ccInstall --getProject "${projectPath}" "${target}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect project: " "WorkspaceA" "${str}"
+
 	str=$(ccInstall --getSourcePath "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect source path: " "${CCDev}/TestData/ProjA/Tar1" "${str}"
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect source path: " "${CCDev}/TestData/WorkspaceA/ProjA/Tar1" "${str}"
+
 	str=$(ccInstall --getTargetScript "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/ProjA/Tar1/Tar1_install.ksh" "${str}"
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/WorkspaceA/ProjA/Tar1/Tar1_install.ksh" "${str}"
+
 	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/ProjA/Tar1.lastbuilt" "${lastbuilt}"
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/WorkspaceA/ProjA/Tar1.lastbuilt" "${lastbuilt}"
+
 	ccInstall --updateLastbuilt "${projectPath}" "${target}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
 	ccInstall --clearLastbuilt "${projectPath}" "${target}"
@@ -178,6 +199,7 @@ testFind() {
 	rm "${projectPath}/${target}/B/blue"
 	rmdir "${projectPath}/${target}/B"
 	rmdir "${projectPath}/${target}"
+	rmdir "${projectPath}/ProjA"
 	rmdir "${projectPath}"
 }
 

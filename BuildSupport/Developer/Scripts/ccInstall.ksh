@@ -82,11 +82,14 @@ function getPath {
 	setPaths "${projectPath}" "${target}"
 	typeset -i index=-1
 	case "${command}" in
+		"--getProjectPath" )	path="${projectPath}";;
+		"--getTarget" )			path="${target}";;
+		"--getTargetName" )		path="${targetName}";;
 		"--getBasePath" )		path="${basePath}";;
+		"--getProject" )		path="${project}";;
 		"--getSourcePath" )		path="${sourcePath}";;
 		"--getTargetScript" )	path="${targetScript}";;
 		"--getLastbuilt" )		path="${lastbuilt}";;
-		"--getTargetName" )		path="${targetName}";;
 		* ) 					return $RC_InvalidParameter;;
 	esac
 	print "${path}"

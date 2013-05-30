@@ -106,7 +106,7 @@
 				<li>review commit msgfile</li>
 				<li>commit</li>
 				<li>status; show --name-only; log; [amend (reset --soft lastCommit)]</li>
-				<li>check stash list; check for unmerged branches</li>
+				<li>check stash list</li>
 				<li><span class='em'>Update Branch</span><ul>
 					<li><span class='em'>Update Master</span> from remotes<ul>
 						<li>checkout master; log --oneline master..origin/master; [log --oneline artist..lm/artist]</li>
@@ -122,7 +122,7 @@
 		</ul>
 		<h5>Merge</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-			<li>checkout master</li>
+			<li>checkout master; check for unmerged branches</li>
 			<li>diff (--name-status) branch</li>
 			<li><span class='mono'>merge &lt;branch&gt;</span><ul>
 				<li>[OR to merge in files only, use <span class='mono'>merge &lt;branch&gt; --no-ff --no-commit</span>]; then commit or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
