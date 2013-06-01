@@ -194,6 +194,8 @@ resource restype_Slate (resid_Type, "Type") { {
 		Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 		Event { "paste", "" },			Keypress { kc_V, mf_command },	\
 		_EmacsKeys_,													\
+		Event { "less more", "" },		Keypress { kc_space, 0 },		\
+		Event { "less end", "" },		Keypress { kc_Q, 0 },			\
 		Event { "continue", "" },		Keypress { kc_space, 0 },		\
 		Event { "end display", "" },	Keypress { kc_Q, 0 },			\
 		Event { "type", "" },			ResSubslate { resid_gitType }
@@ -218,7 +220,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "commit", "" },			Sequence{}, TypeText { "git commit " }, ResSubslate { resid_gitCommit }, endSequence{},
 		Event { "revert", "" },			Sequence{}, TypeText { "git revert HEAD" }, _left, ResSubslate { resid_gitType },  endSequence{},
 		Event { "log", "" },			Sequence{}, TypeText { "git log " }, ResSubslate { resid_gitLog }, endSequence{},
-		Event { "log pretty", "" },		Sequence{}, TypeText { "git lg " }, ResSubslate { resid_gitLog }, endSequence{},
+		Event { "log oneline", "" },	Sequence{}, TypeText { "git lg " }, ResSubslate { resid_gitLog }, endSequence{},
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
@@ -227,7 +229,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "push", "" },			Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
 		Event { "fetch updates", "" },	Sequence{}, TypeText { "git fetchup " }, _return, endSequence{},
 		Event { "reset", "" },			Sequence{}, TypeText { "git reset " }, ResSubslate { resid_gitReset }, endSequence{},
-		Event { "clean", "" },			Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
+		Event { "clean files", "" },	Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
 		Event { "bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_gitBisect }, endSequence{},
 		Event { "blame", "" },			Sequence{}, TypeText { "git blame " }, ResSubslate { resid_gitBlame }, endSequence{},
 		Event { "patch", "" },			Subslate { "patch" },
@@ -632,7 +634,8 @@ resource restype_Slate (resid_gitFetch, "") { {
 resource restype_Slate (resid_gitClean, "") { {
 	Slate { "Clean",	{
 		_GitStandards_,
-		Event { "force", "" },			TypeText { "--force " },
+		Event { "dry run", "" },		TypeText { "--dry-run " },
+		Event { "do clean", "" },		TypeText { "--force " },
 	} }
 } };
 

@@ -29,11 +29,13 @@ ccInstall commandFlag [argument(s)]
 #		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
 #			default: -it
 #			resultObject: object to contain results
-#	--findTests 		projectPath target
-#		result: 		path to file containing list of tests for <projectPath>/<target>
+#	--findTests 		testPath
+#		result: 		path to file containing list of shunit tests on <testPath>
 #	--findSources		projectPath target
 #		result: 		path to file containing list of source files for <projectPath>/<target>
 #	--removeFolder		removes contents and folder for the folder specified
+#	--runShunitTests	folder
+#						runs all shunit tests found in folder
 #	--processActions	projectPath target actionFlags
 #	--ccInstall			projectPath target actionFlags
 #						performs specified action on target
@@ -271,19 +273,63 @@ function getActions {
 	fi
 }
 
+#pragma mark 6 === runShunitTests
+function runShunitTests {
+	if [[ -n "${1}" ]] ; then
+		testPath="${1}"
+	else
+		print "USAGE: ccInstall runShunitTests testPath"
+		return $RC_MissingArgument
+	fi
+
+	errout="$CCDev/tmp/errout"
+	errinfo="$CCDev/tmp/errinfo"
+	errtmp="$CCDev/tmp/errtmp"
+	iofile=$(findTests "${testPath}")
+	cd ${projectPath}
+	typeset -i failcnt=0
+	typeset -i errcnt=0
+	echo "" > "$errinfo"
+
+	while read ln ; do
+		print "== ${testPath}/${ln}"
+		"${testPath}/${ln}" 2>"$errout"
+		st=$?
+		if [[ "${st}" > 0 ]] ; then
+			failcnt=$failcnt+1
+		fi
+		grep -v "EXPECTED ERROR" $errout > $errtmp
+		if [[ $(cat "$errtmp") != "" ]] ; then										# file is not empty
+			if [[ $(cat "$errtmp" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
+							# appears that long EXPECTED ERROR can output an extra CR into $errout
+				errcnt=$errcnt+1
+				cat $errtmp >> $errinfo
+			fi
+		fi
+	done < "${iofile}"
+	if [[ $failcnt > 0 ]] ; then
+		echo "FAILURES ($failcnt test files encountered failing tests)"
+	fi
+	if [[ $errcnt > 0 ]] ; then
+		echo "ERRORS ($errcnt test files encountered execution errors):"
+		cat "$errinfo"
+	fi
+	return $(($failcnt+$errcnt))
+
+}
+
 #^ 5 === Find ...
 function findTests {
-	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		projectPath="${1}"
-		target="${2}"
+	if [[ -n "${1}" ]] ; then
+		testPath="${1}"
 	else
-		print "USAGE: ccInstall findTests pathToProject target"
+		print "USAGE: ccInstall findTests testPath"
 		return $RC_MissingArgument
 	fi
 
 	origdir=$(pwd)
 	iofile="${CCDev}/tmp/found"
-	cd "${projectPath}/${target}"
+	cd "${testPath}"
 	find . -type f -and -name "test*.ksh"| sed 's|\./||' > "${iofile}"
 	chmod a+r "${iofile}"
 	cd "${origdir}"
@@ -570,40 +616,8 @@ function processActions {
 #	returns nonzero exit status if test failures are encountered or messages not including "EXPECTED ERROR" are sent to stderr.
 
 	if [[ ${actions.doTest} > 0 ]] ; then
-		errout="$CCDev/tmp/errout"
-		errinfo="$CCDev/tmp/errinfo"
-		errtmp="$CCDev/tmp/errtmp"
-		iofile=$(findTests "${projectPath}" "${target}")
-		cd ${projectPath}
-		typeset -i failcnt=0
-		typeset -i errcnt=0
-		echo "" > "$errinfo"
-
-		while read ln ; do
-			print "== ${target}/${ln}"
-			"${target}/${ln}" 2>"$errout"
-			st=$?
-			if [[ "${st}" > 0 ]] ; then
-				failcnt=$failcnt+1
-			fi
-			grep -v "EXPECTED ERROR" $errout > $errtmp
-			if [[ $(cat "$errtmp") != "" ]] ; then										# file is not empty
-				if [[ $(cat "$errtmp" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
-								# appears that long EXPECTED ERROR can output an extra CR into $errout
-					errcnt=$errcnt+1
-					cat $errtmp >> $errinfo
-				fi
-			fi
-		done < "${iofile}"
+		runShunitTests "${projectPath}/${target}"
 	fi
-	if [[ $failcnt > 0 ]] ; then
-		echo "FAILURES ($failcnt test files encountered failing tests)"
-	fi
-	if [[ $errcnt > 0 ]] ; then
-		echo "ERRORS ($errcnt test files encountered execution errors):"
-		cat "$errinfo"
-	fi
-	return $(($failcnt+$errcnt))
 }
 
 #^ 8 === ccInstall
@@ -627,7 +641,7 @@ function ccInstall {
 			print "${HELP}"
 			;;
 		"--findTests" )
-			msg=$(findTests "${2}" "${3}")
+			msg=$(findTests "${2}")
 			es=$?
 			print "${msg}"
 			return "${es}"
@@ -667,6 +681,9 @@ function ccInstall {
 			es=$?
 			print "${msg}"
 			return "${es}"
+			;;
+		"--runShunitTests" )
+			runShunitTests "${2}"
 			;;
 		"--"* )
 			print "invalid subcommand $1"

@@ -1511,6 +1511,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "In House", "" },		Sequence{}, _targetPopup, TypeText { "InHouse" }, _down, _return, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, _targetPopup, TypeText { "Doxygen" }, _down, _return, endSequence{},
 		Event { "C doc", "" },			Sequence{}, _targetPopup, TypeText { "Cdoc" }, _down, _return, endSequence{},
+		Event { "All Tests", "" },		Sequence{}, _targetPopup, TypeText { "AllTests" }, _down, _return, endSequence{},
 		Event { "User Slates", "" },	Sequence{}, _targetPopup, TypeText { "UserSlates" }, _down, _return, endSequence{},
 		Event { "Words", "" },			Sequence{}, _targetPopup, TypeText { "Words" }, _down, _return, endSequence{},
 		_SlateGlobals_,

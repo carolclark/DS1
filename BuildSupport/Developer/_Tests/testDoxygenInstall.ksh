@@ -23,7 +23,7 @@ testTargetName() {
 	str=$(ccInstall --getBasePath)
 	st=$?
 	assertEquals "$LINENO: expected error RC_MissingArgument" $RC_MissingArgument "${st}"
-	
+
 	str=$(ccInstall --getBasePath "${projectPath}" "${target}")
 	st=$?
 	assertEquals "$LINENO: ${str}" 0 "${st}"

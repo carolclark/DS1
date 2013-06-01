@@ -66,6 +66,9 @@
 		* *make needed changes only; probably will be converted to another language (Python?)*
 		* use errorMessage for error returns as indicated
 		* --set/getPath: add sourceRoot, sourceFolder
+		* add target AllTests
+			* ccInstall: findTests takes single $path; add command --runShunitTests
+			* testDoxygenInstall: tests only functions of ccInstall; move to Developer/_Tests
 		* change ccInstall to take same parameters as ccInstallAction
 			* Then: Is ccInstallAction still necessary?
 	* ?? ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument

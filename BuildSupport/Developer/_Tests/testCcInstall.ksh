@@ -144,7 +144,7 @@ testFind() {
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected: " $RC_MissingArgument "${st}"
 
-	fl=$(ccInstall --findTests "${projectPath}" "${target}")
+	fl=$(ccInstall --findTests "${projectPath}/${target}")
 	set -A lines
 	while read ln ; do
 		lines+=("${ln}")
