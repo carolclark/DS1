@@ -197,10 +197,6 @@
 #define _hideFindBar			Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Hide Find Bar" }, _return, endSequence{}
 #define _clickOptionsButton		Click { 1, -281, 132, _window, _topRight }
 
-// macros for switching among Editors
-#define _switchStandardEditor_		Event { "standard", "" },		Sequence{}, CloseSubslate{}, Keypress { kc_return, mf_command }, ResSubslate { resid_StandardEditor }, endSequence{}
-#define _switchAssistantEditor_		Event { "assist", "" },			Sequence{}, CloseSubslate{}, Keypress { kc_return, mf_command + mf_option }, ResSubslate { resid_AssistantEditor }, endSequence{}
-#define _switchVersionEditor_		Event { "version", "" },		Sequence{}, CloseSubslate{}, Keypress { kc_return, mf_command + mf_shift + mf_option }, ResSubslate { resid_VersionEditor }, endSequence{}
 // macros for changing Editor displays
 #define	_standardEditor		Keypress { kc_return, mf_command }
 #define _assistantEditor	Keypress { kc_return, mf_command + mf_option }
@@ -373,9 +369,10 @@ resource restype_Slate (resid_JumpBar, "JumpBar") { {
 		Event { "related", "" },	Sequence{},	Keypress { kc_1, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
 		Event { "previous", "" },	Sequence{},	Keypress { kc_2, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
 		Event { "next", "" },		Sequence{},	Keypress { kc_3, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
-		Event { "top", "" },		Sequence{},	Keypress { kc_4, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
-		Event { "group", "" },		Sequence{},	Keypress { kc_5, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
-		Event { "symbols", "" },	Sequence{},	Keypress { kc_6, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
+		Event { "project", "" },	Sequence{},	Keypress { kc_4, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
+		Event { "manual", "" },		Sequence{},	Keypress { kc_4, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
+		Event { "file", "" },		Sequence{},	Keypress { kc_5, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
+		Event { "symbol", "" },		Sequence{},	Keypress { kc_6, mf_control }, ResSubslate { resid_jumpPopup }, endSequence{},
 	} }
 } };
 
@@ -1454,10 +1451,10 @@ resource restype_Slate (resid_ghEditIssue, "") { {
 resource restype_Slate (resid_Target, "Target") { {
 	Slate { "Target",	{
 		ExitEvent { "okay", "" },		NilAction{},
-		ExitEvent { "cancel", "" },		Keypress { kc_escape, 0 },	
-		_switchStandardEditor_,
-		_switchVersionEditor_,
-		_switchAssistantEditor_,
+		ExitEvent { "cancel", "" },		Keypress { kc_escape, 0 },
+		Event { "assistant", "" },		_assistantEditor,
+		Event { "version", "" },		_versionEditor,
+		Event { "standard", "" },		_standardEditor,
 		Event { "Workspace", "" },		ResSubslate { resid_Workspace },
 		Event { "save files", "" },		Keypress { kc_S, mf_command + mf_option },
 		Event { "test", "" },			Keypress { kc_U, mf_command },
@@ -1739,7 +1736,7 @@ resource restype_Slate (resid_Macro, "") { {
 #pragma mark 6 === Editors
 // inside: _EditorStandards_, 1 Marker, 2 Standard, 3 Assistant, 4 Version, 5 ProjectSettings, 6 Workspace, 7 Interface Builder, 8 Data Model Editor
 // Editor Standards
-#define	_Editors_ _switchAssistantEditor_, _switchVersionEditor_, _switchStandardEditor_,	\
+#define	_Editors_ 	 				\
 		Event { "Interface", "" },		ResSubslate { resid_InterfaceBuilder },	\
 		Event { "Data Model", "" },		ResSubslate { resid_DataModel },		\
 		Event { "Workspace", "" },		ResSubslate { resid_Workspace }
@@ -1841,7 +1838,8 @@ resource restype_Slate (resid_StandardEditor, "") { {
 resource restype_Slate (resid_AssistantEditor, "") { {
 	Slate { "asst",	{
 		Event { "split panel", "" },	Sequence{}, ClickMenu { "View" }, _down, TypeText { "Assistant Editor" }, _right, ResSubslate { resid_asstSplit }, endSequence{},
-		Event { "select right", "" },	Sequence{}, Keypress { kc_1, mf_control }, _down, _right, endSequence{},
+		Event { "other side", "" },		Keypress { kc_comma, mf_command + mf_option },
+		_JumpBar_,
 		Event { "target", "" },			ResSubslate { resid_Target },
  		_EditorStandards_,
 	} }
@@ -2065,10 +2063,10 @@ resource restype_Slate (resid_InterfaceBuilder, "") { {
 		Event { "canvas", "" },			Click { 1, -275, 130, _window, _topRight },
 		Event { "size to fit", "" },	Keypress { kc_equal, mf_command },
 		Event { "Menu", "" },			Sequence{}, ClickMenu { "Editor" }, _down, ResSubslate { resid_IBMenu }, endSequence{},
+		ExitEvent { "assistant", "" },		_assistantEditor,
+		ExitEvent { "version", "" },		_versionEditor,
+		ExitEvent { "standard", "" },		_standardEditor,
 		Event { "document", "" },		ResSubslate { resid_IBDocument },
-		_switchAssistantEditor_,
-		_switchVersionEditor_,
-		_switchStandardEditor_,
 		Event { "Data Model", "" },		ResSubslate { resid_DataModel },
 		Event { "Workspace", "" },		ResSubslate { resid_Workspace },
 		_IMouseSlate_,
@@ -2531,7 +2529,6 @@ resource restype_Slate (resid_Search, "Search") { {
 	Slate { "Search", {
 		_SlateGlobals_,
 		_CloseSubslate_,
-		_TypeXcodeSlate_,
 		Event { "enter find string", "" },		Keypress { kc_E, mf_command },
 		Event { "enter replace string", "" },	Keypress { kc_E, mf_command + mf_shift },
 		Event { "hide find bar", "" },			_hideFindBar,

@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 setUp() {
-	projectPath="${CCDev}/TestData/WorkspaceA"
+	workspaceRoot="${CCDev}/TestData/WorkspaceA"
 	target=ProjA/Tar1
 }
 
@@ -71,41 +71,41 @@ testCciPaths() {
 	str=$(ccInstall --getBasePath)
 	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
 
-	str=$(ccInstall --getProjectPath "${projectPath}" "${target}")
+	str=$(ccInstall --getWorkspaceRoot "${workspaceRoot}" "${target}")
 	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect project path: " "${CCDev}/TestData/WorkspaceA" "${str}"
+	assertEquals "$LINENO: incorrect workspace root: " "${CCDev}/TestData/WorkspaceA" "${str}"
 
-	str=$(ccInstall --getTarget "${projectPath}" "${target}")
+	str=$(ccInstall --getTarget "${workspaceRoot}" "${target}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target: " "ProjA/Tar1" "${str}"
 
-	str=$(ccInstall --getTargetName "${projectPath}" "${target}")
+	str=$(ccInstall --getTargetName "${workspaceRoot}" "${target}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target name: " "Tar1" "${str}"
 
-	str=$(ccInstall --getBasePath "${projectPath}" "${target}")
+	str=$(ccInstall --getBasePath "${workspaceRoot}" "${target}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target: " "${CCDev}/TestData" "${str}"
 
-	str=$(ccInstall --getProject "${projectPath}" "${target}")
+	str=$(ccInstall --getProject "${workspaceRoot}" "${target}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect project: " "WorkspaceA" "${str}"
 
-	str=$(ccInstall --getSourcePath "${projectPath}" "${target}")
+	str=$(ccInstall --getSourcePath "${workspaceRoot}" "${target}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect source path: " "${CCDev}/TestData/WorkspaceA/ProjA/Tar1" "${str}"
 
-	str=$(ccInstall --getTargetScript "${projectPath}" "${target}")
+	str=$(ccInstall --getTargetScript "${workspaceRoot}" "${target}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/WorkspaceA/ProjA/Tar1/Tar1_install.ksh" "${str}"
 
-	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
+	lastbuilt=$(ccInstall --getLastbuilt "${workspaceRoot}" "${target}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/WorkspaceA/ProjA/Tar1.lastbuilt" "${lastbuilt}"
 
-	ccInstall --updateLastbuilt "${projectPath}" "${target}"
+	ccInstall --updateLastbuilt "${workspaceRoot}" "${target}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
-	ccInstall --clearLastbuilt "${projectPath}" "${target}"
+	ccInstall --clearLastbuilt "${workspaceRoot}" "${target}"
 	assertFalse "$LINENO: file ${lastbuilt} still present" "[ -e ${lastbuilt} ]"
 }
 
@@ -126,25 +126,25 @@ fileContainsLine() {		# returns 1 iff file "${1}" contains line "${2}"
 
 #^ find
 testFind() {
-	mkdir -p ${projectPath}/${target}/_Tests
-	print "Tom" > "${projectPath}/${target}/_Tests/testTom.ksh"
-	print "Dick" > "${projectPath}/${target}/_Tests/testDick.ksh"
-	print "Harry" > "${projectPath}/${target}/_Tests/testHarry.ksh"
-	print "Jane" > "${projectPath}/${target}/_Tests/Jane.ksh"
-	mkdir -p ${projectPath}/${target}/A
-	print "One" > "${projectPath}/${target}/A/One"
-	print "Two" > "${projectPath}/${target}/A/Two"
-	print "store" > "${projectPath}/${target}/A/.DS_Store"
-	mkdir -p ${projectPath}/${target}/B
-	print "red" > "${projectPath}/${target}/B/red"
-	print "blue" > "${projectPath}/${target}/B/blue"
+	mkdir -p ${workspaceRoot}/${target}/_Tests
+	print "Tom" > "${workspaceRoot}/${target}/_Tests/testTom.ksh"
+	print "Dick" > "${workspaceRoot}/${target}/_Tests/testDick.ksh"
+	print "Harry" > "${workspaceRoot}/${target}/_Tests/testHarry.ksh"
+	print "Jane" > "${workspaceRoot}/${target}/_Tests/Jane.ksh"
+	mkdir -p ${workspaceRoot}/${target}/A
+	print "One" > "${workspaceRoot}/${target}/A/One"
+	print "Two" > "${workspaceRoot}/${target}/A/Two"
+	print "store" > "${workspaceRoot}/${target}/A/.DS_Store"
+	mkdir -p ${workspaceRoot}/${target}/B
+	print "red" > "${workspaceRoot}/${target}/B/red"
+	print "blue" > "${workspaceRoot}/${target}/B/blue"
 	
-	ccInstall --clearLastbuilt "${projectPath}" "${target}"
+	ccInstall --clearLastbuilt "${workspaceRoot}" "${target}"
 	fl=$(ccInstall --findTests)
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected: " $RC_MissingArgument "${st}"
 
-	fl=$(ccInstall --findTests "${projectPath}/${target}")
+	fl=$(ccInstall --findTests "${workspaceRoot}/${target}")
 	set -A lines
 	while read ln ; do
 		lines+=("${ln}")
@@ -161,7 +161,7 @@ testFind() {
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected: " $RC_MissingArgument "${st}"
 
-	fl=$(ccInstall --findSources "${projectPath}" "${target}")
+	fl=$(ccInstall --findSources "${workspaceRoot}" "${target}")
 	fileContainsLine "${fl}" "A/One"
 	result=$?
 	assertEquals "$LINENO: line missing: " 1 "${result}"
@@ -174,60 +174,60 @@ testFind() {
 	done < "${fl}"
 	assertEquals "$LINENO: incorrect line count: " 4 "${#lines[*]}"
 
-	ccInstall --updateLastbuilt "${projectPath}" "${target}"
-	fl=$(ccInstall --findSources "${projectPath}" "${target}")
+	ccInstall --updateLastbuilt "${workspaceRoot}" "${target}"
+	fl=$(ccInstall --findSources "${workspaceRoot}" "${target}")
 	fileContainsLine "${fl}" "A/One"
 	result=$?
 	assertEquals "$LINENO: file A/One is now up-to-date: " 0 "${result}"
-	ccInstall --clearLastbuilt "${projectPath}" "${target}"
-	print "One" > "${projectPath}/${target}/A/One"
-	fl=$(ccInstall --findSources "${projectPath}" "${target}")
+	ccInstall --clearLastbuilt "${workspaceRoot}" "${target}"
+	print "One" > "${workspaceRoot}/${target}/A/One"
+	fl=$(ccInstall --findSources "${workspaceRoot}" "${target}")
 	fileContainsLine "${fl}" "A/One"
 	result=$?
 	assertEquals "$LINENO: file A/One is now changed: " 1 "${result}"
 
-	rm "${projectPath}/${target}/_Tests/testTom.ksh"
-	rm "${projectPath}/${target}/_Tests/testDick.ksh"
-	rm "${projectPath}/${target}/_Tests/testHarry.ksh"
-	rm "${projectPath}/${target}/_Tests/Jane.ksh"
-	rmdir "${projectPath}/${target}/_Tests/"
-	rm "${projectPath}/${target}/A/One"
-	rm "${projectPath}/${target}/A/Two"
-	rm "${projectPath}/${target}/A/.DS_Store"
-	rmdir "${projectPath}/${target}/A"
-	rm "${projectPath}/${target}/B/red"
-	rm "${projectPath}/${target}/B/blue"
-	rmdir "${projectPath}/${target}/B"
-	rmdir "${projectPath}/${target}"
-	rmdir "${projectPath}/ProjA"
-	rmdir "${projectPath}"
+	rm "${workspaceRoot}/${target}/_Tests/testTom.ksh"
+	rm "${workspaceRoot}/${target}/_Tests/testDick.ksh"
+	rm "${workspaceRoot}/${target}/_Tests/testHarry.ksh"
+	rm "${workspaceRoot}/${target}/_Tests/Jane.ksh"
+	rmdir "${workspaceRoot}/${target}/_Tests/"
+	rm "${workspaceRoot}/${target}/A/One"
+	rm "${workspaceRoot}/${target}/A/Two"
+	rm "${workspaceRoot}/${target}/A/.DS_Store"
+	rmdir "${workspaceRoot}/${target}/A"
+	rm "${workspaceRoot}/${target}/B/red"
+	rm "${workspaceRoot}/${target}/B/blue"
+	rmdir "${workspaceRoot}/${target}/B"
+	rmdir "${workspaceRoot}/${target}"
+	rmdir "${workspaceRoot}/ProjA"
+	rmdir "${workspaceRoot}"
 }
 
 #^ removeFolder
 testRemoveFolder() {
-	projectPath="${CCDev}/TestData/ProjB"
+	workspaceRoot="${CCDev}/TestData/ProjB"
 	str=$(ccInstall --removeFolder)
 	st=$?
 	assertEquals "$LINENO: error RC_MissingArgument expected" $RC_MissingArgument "${st}"
 
-	mkdir -p "${projectPath}/Corlan"
-	mkdir -p "${projectPath}/Emily"
-	mkdir -p "${projectPath}/Corlan/Two"
-	print "red" > "${projectPath}/Corlan/Two/red"
-	print "green" > "${projectPath}/Corlan/Two/green"
-	mkdir -p "${projectPath}/Emily/Nine"
-	print "pink" > "${projectPath}/Emily/Nine/pink"
-	print "blue" > "${projectPath}/Emily/Nine/blue"
+	mkdir -p "${workspaceRoot}/Corlan"
+	mkdir -p "${workspaceRoot}/Emily"
+	mkdir -p "${workspaceRoot}/Corlan/Two"
+	print "red" > "${workspaceRoot}/Corlan/Two/red"
+	print "green" > "${workspaceRoot}/Corlan/Two/green"
+	mkdir -p "${workspaceRoot}/Emily/Nine"
+	print "pink" > "${workspaceRoot}/Emily/Nine/pink"
+	print "blue" > "${workspaceRoot}/Emily/Nine/blue"
 
 	if [[ ! -e "${fl}" ]] ; then
-		fail "$LINENO: file ${projectPath}/Emily/Nine/blue missing"
+		fail "$LINENO: file ${workspaceRoot}/Emily/Nine/blue missing"
 	fi
 
-	fl="${projectPath}/Emily/Nine/blue"
+	fl="${workspaceRoot}/Emily/Nine/blue"
 	if [[ ! -e "${fl}" ]] ; then
-		fail "$LINENO: file ${projectPath}/Emily/Nine/blue missing"
+		fail "$LINENO: file ${workspaceRoot}/Emily/Nine/blue missing"
 	fi
-	fl="${projectPath}/Corlan/Two"
+	fl="${workspaceRoot}/Corlan/Two"
 	if [[ ! -e "${fl}" ]] ; then
 		fail "$LINENO: file ${fl} missing"
 	fi
@@ -235,8 +235,8 @@ testRemoveFolder() {
 		fail "$LINENO: file ${fl}: directory expected" 
 	fi
 
-	d1="${projectPath}/Corlan/Two"
-	d2="${projectPath}/Emily/Nine/blue"
+	d1="${workspaceRoot}/Corlan/Two"
+	d2="${workspaceRoot}/Emily/Nine/blue"
 	str=$(ccInstall --removeFolder "${d1}")
 	if [[ -e "${d1}" ]] ; then
 		fail "$LINENO: file ${d1} should have been removed"
@@ -246,18 +246,18 @@ testRemoveFolder() {
 		fail "$LINENO: file ${d2} should still be present"
 	fi
 
-	d3="${projectPath}/Emily/Nine/blue"
+	d3="${workspaceRoot}/Emily/Nine/blue"
 	str=$(ccInstall --removeFolder "${d3}")
 	st=$?
 	assertEquals "$LINENO: error: ${d3} is not a directory" $RC_NoSuchFileOrDirectory "${st}"
 
-	str=$(ccInstall --removeFolder "${projectPath}/Corlan")
-	str=$(ccInstall --removeFolder "${projectPath}/Emily")
-	dr="${projectPath}/Corlan"
+	str=$(ccInstall --removeFolder "${workspaceRoot}/Corlan")
+	str=$(ccInstall --removeFolder "${workspaceRoot}/Emily")
+	dr="${workspaceRoot}/Corlan"
 	if [[ -e "${dr}" ]] ; then
 		fail "$LINENO: directory ${dr} should have been removed"
 	fi
-	dr="${projectPath}/Emily"
+	dr="${workspaceRoot}/Emily"
 	if [[ -e "${dr}" ]] ; then
 		fail "$LINENO: directory ${dr} should have been removed"
 	fi

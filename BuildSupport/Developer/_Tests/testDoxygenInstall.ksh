@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 setUp() {
-	projectPath="${DEV}/Support"
+	workspaceRoot="${DEV}/Support"
 	target="BuildSupport/Doxygen"
 }
 
@@ -17,29 +17,29 @@ setUp() {
 
 testTargetName() {
 	assertEquals "$LINENO: " 1 1
-	targetScript=$(ccInstall --getTargetScript "${projectPath}" "${target}")
-	assertEquals "$LINENO: incorrect target" "${targetScript}" "${projectPath}/${target}/Doxygen_install.ksh"
+	targetScript=$(ccInstall --getTargetScript "${workspaceRoot}" "${target}")
+	assertEquals "$LINENO: incorrect target" "${targetScript}" "${workspaceRoot}/${target}/Doxygen_install.ksh"
 
 	str=$(ccInstall --getBasePath)
 	st=$?
 	assertEquals "$LINENO: expected error RC_MissingArgument" $RC_MissingArgument "${st}"
 
-	str=$(ccInstall --getBasePath "${projectPath}" "${target}")
+	str=$(ccInstall --getBasePath "${workspaceRoot}" "${target}")
 	st=$?
 	assertEquals "$LINENO: ${str}" 0 "${st}"
 	assertEquals "$LINENO: incorrect base path: " "${DEV}" "${str}"
 	str=$(ccInstall --getSourcePath "${DEV}/Support" "${target}")
 	assertEquals "$LINENO: incorrect source path: " "${DEV}/Support/BuildSupport/Doxygen" "${str}"
-	str=$(ccInstall --getTargetScript "${projectPath}" "${target}")
+	str=$(ccInstall --getTargetScript "${workspaceRoot}" "${target}")
 	assertEquals "$LINENO: incorrect target script: " "${DEV}/Support/BuildSupport/Doxygen/Doxygen_install.ksh" "${str}"
-	lastbuilt=$(ccInstall --getLastbuilt "${projectPath}" "${target}")
+	lastbuilt=$(ccInstall --getLastbuilt "${workspaceRoot}" "${target}")
 	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/Support/BuildSupport/Doxygen.lastbuilt" "${lastbuilt}"
-	ccInstall --updateLastbuilt "${projectPath}" "${target}"
+	ccInstall --updateLastbuilt "${workspaceRoot}" "${target}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
-	ccInstall --clearLastbuilt "${projectPath}" "${target}"
+	ccInstall --clearLastbuilt "${workspaceRoot}" "${target}"
 	assertFalse "$LINENO: file ${lastbuilt} still present" "[ -e ${lastbuilt} ]"
 
-	targetName=$(ccInstall --getTargetName "${projectPath}" "${target}")
+	targetName=$(ccInstall --getTargetName "${workspaceRoot}" "${target}")
 	assertEquals "$LINENO: incorrect target name" "${targetName}" "Doxygen"
 }
 
