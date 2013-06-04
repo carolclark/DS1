@@ -46,30 +46,30 @@ testTargetName() {
 testDoxygenGetActions() {
 	typeset str
 
-	ccInstall --getActions result
+	ccInstall --getActions result "${workspaceRoot}" "${target}"
 	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect default action string: " "it" "${result.actionString}"
+	assertEquals "$0#$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
+	assertEquals "$0#$LINENO: incorrect default action string: " "it" "${result.actionString}"
 
-	str=$(ccInstall --getActions result abc)
+	str=$(ccInstall --getActions result "${workspaceRoot}" "${target}" abc)
 	st=$?
-	assertEquals "$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
-	assertNotNull "$LINENO: expected error message" "${str}"
+	assertEquals "$0#$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
+	assertNotNull "$0#$LINENO: expected error message" "${str}"
 
-	ccInstall --getActions result -ciu
+	ccInstall --getActions result "${workspaceRoot}" "${target}" -ciu
 	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result -ciu' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect action string: " "ciu" "${result.actionString}"
-	assertEquals "$LINENO: expected doInstall=0: " 0 "${result.doInstall}"
-	assertEquals "$LINENO: expected doDoxygen=1: " 1 "${result.doDoxygen}"
-	assertEquals "$LINENO: expected doTest=0: " 0 "${result.doTest}"
+	assertEquals "$0#$LINENO: 'ccInstall --getActions result -ciu' failed with code $st" 0 $st
+	assertEquals "$0#$LINENO: incorrect action string: " "ciu" "${result.actionString}"
+	assertEquals "$0#$LINENO: expected doInstall=0: " 0 "${result.doInstall}"
+	assertEquals "$0#$LINENO: expected doDoxygen=1: " 1 "${result.doDoxygen}"
+	assertEquals "$0#$LINENO: expected doTest=0: " 0 "${result.doTest}"
 
-	str=$(ccInstall --getActions result -xyz)
+	str=$(ccInstall --getActions result "${workspaceRoot}" "${target}" -xyz)
 	st=$?
-	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
-	assertNotNull "$LINENO: error message expected" "${str}"
+	assertEquals "$0#$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
+	assertNotNull "$0#$LINENO: error message expected" "${str}"
 	errstr="--getActions xyz: 3 invalid action flags"
-	assertNotEquals "$LINENO: incorrect error message" "${str%${errstr}}" "${str}"
+	assertNotEquals "$0#$LINENO: incorrect error message" "${str%${errstr}}" "${str}"
 }
 
 

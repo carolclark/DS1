@@ -25,7 +25,7 @@ ccInstall commandFlag [argument(s)]
 #						copy source file to the specified destination
 #	--translateCdoc		sourceFile destinationPath
 #						translate Cdoc markers in source file and store result at the specified destination
-#	--getActions		resultObject [actionString]
+#	--getActions		resultObject workspaceRoot targetFolder [actionString]
 #		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
 #			default: -it
 #			resultObject: object to contain results
@@ -235,7 +235,7 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 }
 
 #^ 4 === getActions
-function getActions {
+function getActions {			# resultObject workspaceRoot targetFolder actionString
 	typeset -n resultObj=$1
 	resultObj=(
 		actionString=""
@@ -245,11 +245,16 @@ function getActions {
 		doUpload=0
 		doDoxygen=0
 	)
-
-	if [[ -n ${2} ]] ; then
-		actionString="${2#-}"
-		if [[ ${actionString} = ${2} ]] ; then
-			print "$0#$LINENO: actionString $2: expected first character '-'"
+	workspaceRoot="${2}"
+	targetFolder="${3}"
+	if [[ ! -n "${workspaceRoot}" ]] || [[ ! -n "${targetFolder}" ]]; then
+		print "USAGE: ccInstall --getActions resultObject workspaceRoot targetFolder actionString"
+		return $RC_MissingArgument
+	fi
+	if [[ -n ${4} ]] ; then
+		actionString="${4#-}"
+		if [[ ${actionString} = ${4} ]] ; then
+			print "$0#$LINENO: actionString $4: expected first character '-'"
 			return $RC_SyntaxError
 		fi
 	else
@@ -263,7 +268,7 @@ function getActions {
 		case "${ch}" in
 			"c" )	resultObj.doClean=1;;
 			"i" )
-				if [[ $(ccInstall --getTargetName "${workspaceRoot}" "${target}") = "Doxygen" ]] ; then
+				if [[ $(ccInstall --getTargetName "${workspaceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
 					resultObj.doDoxygen=1
 				else
 					resultObj.doInstall=1
@@ -444,7 +449,7 @@ function processActions {
 		print "USAGE: ccInstall processActions pathToProject targetFolder [-actionFlags]"
 		return $RC_MissingArgument
 	fi
-	getActions actions ${actionFlags}
+	getActions actions "${workspaceRoot}" "${targetFolder}" ${actionFlags}
 	st=$?
 	if [[ ${st} > 0 ]] ; then
 		print "$0#$LINENO: could not read action flags"
@@ -636,7 +641,7 @@ function ccInstall {
 	fi
 	case "${1}" in
 		"--getActions" )
-			getActions "${2}" "${3}"
+			getActions "${2}" "${3}" "${4}" "${5}"
 			return $?
 			;;
 		"--get"* )

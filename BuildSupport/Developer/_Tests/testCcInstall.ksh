@@ -41,24 +41,24 @@ testCciGeneral() {
 testCciGetActions() {
 	typeset str
 
-	ccInstall --getActions result
+	ccInstall --getActions result "${workspaceRoot}" "${target}"
 	st=$?
 	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
 	assertEquals "$LINENO: incorrect default action string: " "it" "${result.actionString}"
 
-	str=$(ccInstall --getActions result abc)
+	str=$(ccInstall --getActions result "${workspaceRoot}" "${target}" abc)
 	st=$?
 	assertEquals "$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
 	assertNotNull "$LINENO: expected error message" "${str}"
 
-	ccInstall --getActions result -ciu
+	ccInstall --getActions result "${workspaceRoot}" "${target}" -ciu
 	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result -ciu' failed with code $st" 0 $st
+	assertEquals "$LINENO: 'ccInstall --getActions result ... -ciu' failed with code $st" 0 $st
 	assertEquals "$LINENO: incorrect action string: " "ciu" "${result.actionString}"
 	assertEquals "$LINENO: expected doInstall=1: " 1 "${result.doInstall}"
 	assertEquals "$LINENO: expected doTest=0: " 0 "${result.doTest}"
 
-	str=$(ccInstall --getActions result -xyz)
+	str=$(ccInstall --getActions result "${workspaceRoot}" "${target}" -xyz)
 	st=$?
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 	assertNotNull "$LINENO: error message expected" "${str}"
