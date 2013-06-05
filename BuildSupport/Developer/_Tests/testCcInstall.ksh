@@ -9,7 +9,7 @@
 
 setUp() {
 	workspaceRoot="${CCDev}/TestData/WorkspaceA"
-	target=ProjA/Tar1
+	targetFolder=ProjA/Tar1
 }
 
 . "${CCDev}/bin/resultCodes.ksh"
@@ -41,24 +41,24 @@ testCciGeneral() {
 testCciGetActions() {
 	typeset str
 
-	ccInstall --getActions result "${workspaceRoot}" "${target}"
+	ccInstall --getActions result "${workspaceRoot}" "${targetFolder}"
 	st=$?
 	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
 	assertEquals "$LINENO: incorrect default action string: " "it" "${result.actionString}"
 
-	str=$(ccInstall --getActions result "${workspaceRoot}" "${target}" abc)
+	str=$(ccInstall --getActions result "${workspaceRoot}" "${targetFolder}" abc)
 	st=$?
 	assertEquals "$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
 	assertNotNull "$LINENO: expected error message" "${str}"
 
-	ccInstall --getActions result "${workspaceRoot}" "${target}" -ciu
+	ccInstall --getActions result "${workspaceRoot}" "${targetFolder}" -ciu
 	st=$?
 	assertEquals "$LINENO: 'ccInstall --getActions result ... -ciu' failed with code $st" 0 $st
 	assertEquals "$LINENO: incorrect action string: " "ciu" "${result.actionString}"
 	assertEquals "$LINENO: expected doInstall=1: " 1 "${result.doInstall}"
 	assertEquals "$LINENO: expected doTest=0: " 0 "${result.doTest}"
 
-	str=$(ccInstall --getActions result "${workspaceRoot}" "${target}" -xyz)
+	str=$(ccInstall --getActions result "${workspaceRoot}" "${targetFolder}" -xyz)
 	st=$?
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 	assertNotNull "$LINENO: error message expected" "${str}"
@@ -68,44 +68,44 @@ testCciGetActions() {
 
 #^ Paths
 testCciPaths() {
-	str=$(ccInstall --getBasePath)
+	str=$(ccInstall --getSourceRoot)
 	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
 
-	str=$(ccInstall --getWorkspaceRoot "${workspaceRoot}" "${target}")
+	str=$(ccInstall --getSourceRoot "${workspaceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect workspace root: " "${CCDev}/TestData/WorkspaceA" "${str}"
+	assertEquals "$LINENO: incorrect source root: " "${CCDev}/TestData/WorkspaceA/ProjA" "${str}"
 
-	str=$(ccInstall --getTarget "${workspaceRoot}" "${target}")
+	str=$(ccInstall --getOldTargetFolder "${workspaceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect target: " "ProjA/Tar1" "${str}"
+	assertEquals "$LINENO: incorrect oldTargetFolder: " "ProjA/Tar1" "${str}"
 
-	str=$(ccInstall --getTargetName "${workspaceRoot}" "${target}")
+	str=$(ccInstall --getSourceRoot "${workspaceRoot}" "${targetFolder}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect source root: " "${CCDev}/TestData/WorkspaceA/ProjA" "${str}"
+
+	str=$(ccInstall --getTargetFolder "${workspaceRoot}" "${targetFolder}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect targetFolder: " "Tar1" "${str}"
+
+	str=$(ccInstall --getTargetName "${workspaceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target name: " "Tar1" "${str}"
 
-	str=$(ccInstall --getBasePath "${workspaceRoot}" "${target}")
+	str=$(ccInstall --getWorkspaceName "${workspaceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect target: " "${CCDev}/TestData" "${str}"
+	assertEquals "$LINENO: incorrect workspaceName: " "WorkspaceA" "${str}"
 
-	str=$(ccInstall --getProject "${workspaceRoot}" "${target}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect project: " "WorkspaceA" "${str}"
-
-	str=$(ccInstall --getSourcePath "${workspaceRoot}" "${target}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect source path: " "${CCDev}/TestData/WorkspaceA/ProjA/Tar1" "${str}"
-
-	str=$(ccInstall --getTargetScript "${workspaceRoot}" "${target}")
+	str=$(ccInstall --getTargetScript "${workspaceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/WorkspaceA/ProjA/Tar1/Tar1_install.ksh" "${str}"
 
-	lastbuilt=$(ccInstall --getLastbuilt "${workspaceRoot}" "${target}")
+	lastbuilt=$(ccInstall --getLastbuilt "${workspaceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/WorkspaceA/ProjA/Tar1.lastbuilt" "${lastbuilt}"
 
-	ccInstall --updateLastbuilt "${workspaceRoot}" "${target}"
+	ccInstall --updateLastbuilt "${workspaceRoot}" "${targetFolder}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
-	ccInstall --clearLastbuilt "${workspaceRoot}" "${target}"
+	ccInstall --clearLastbuilt "${workspaceRoot}" "${targetFolder}"
 	assertFalse "$LINENO: file ${lastbuilt} still present" "[ -e ${lastbuilt} ]"
 }
 
@@ -126,25 +126,25 @@ fileContainsLine() {		# returns 1 iff file "${1}" contains line "${2}"
 
 #^ find
 testFind() {
-	mkdir -p ${workspaceRoot}/${target}/_Tests
-	print "Tom" > "${workspaceRoot}/${target}/_Tests/testTom.ksh"
-	print "Dick" > "${workspaceRoot}/${target}/_Tests/testDick.ksh"
-	print "Harry" > "${workspaceRoot}/${target}/_Tests/testHarry.ksh"
-	print "Jane" > "${workspaceRoot}/${target}/_Tests/Jane.ksh"
-	mkdir -p ${workspaceRoot}/${target}/A
-	print "One" > "${workspaceRoot}/${target}/A/One"
-	print "Two" > "${workspaceRoot}/${target}/A/Two"
-	print "store" > "${workspaceRoot}/${target}/A/.DS_Store"
-	mkdir -p ${workspaceRoot}/${target}/B
-	print "red" > "${workspaceRoot}/${target}/B/red"
-	print "blue" > "${workspaceRoot}/${target}/B/blue"
+	mkdir -p ${workspaceRoot}/${targetFolder}/_Tests
+	print "Tom" > "${workspaceRoot}/${targetFolder}/_Tests/testTom.ksh"
+	print "Dick" > "${workspaceRoot}/${targetFolder}/_Tests/testDick.ksh"
+	print "Harry" > "${workspaceRoot}/${targetFolder}/_Tests/testHarry.ksh"
+	print "Jane" > "${workspaceRoot}/${targetFolder}/_Tests/Jane.ksh"
+	mkdir -p ${workspaceRoot}/${targetFolder}/A
+	print "One" > "${workspaceRoot}/${targetFolder}/A/One"
+	print "Two" > "${workspaceRoot}/${targetFolder}/A/Two"
+	print "store" > "${workspaceRoot}/${targetFolder}/A/.DS_Store"
+	mkdir -p ${workspaceRoot}/${targetFolder}/B
+	print "red" > "${workspaceRoot}/${targetFolder}/B/red"
+	print "blue" > "${workspaceRoot}/${targetFolder}/B/blue"
 	
-	ccInstall --clearLastbuilt "${workspaceRoot}" "${target}"
+	ccInstall --clearLastbuilt "${workspaceRoot}" "${targetFolder}"
 	fl=$(ccInstall --findTests)
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected: " $RC_MissingArgument "${st}"
 
-	fl=$(ccInstall --findTests "${workspaceRoot}/${target}")
+	fl=$(ccInstall --findTests "${workspaceRoot}/${targetFolder}")
 	set -A lines
 	while read ln ; do
 		lines+=("${ln}")
@@ -161,7 +161,7 @@ testFind() {
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected: " $RC_MissingArgument "${st}"
 
-	fl=$(ccInstall --findSources "${workspaceRoot}" "${target}")
+	fl=$(ccInstall --findSources "${workspaceRoot}" "${targetFolder}")
 	fileContainsLine "${fl}" "A/One"
 	result=$?
 	assertEquals "$LINENO: line missing: " 1 "${result}"
@@ -174,31 +174,31 @@ testFind() {
 	done < "${fl}"
 	assertEquals "$LINENO: incorrect line count: " 4 "${#lines[*]}"
 
-	ccInstall --updateLastbuilt "${workspaceRoot}" "${target}"
-	fl=$(ccInstall --findSources "${workspaceRoot}" "${target}")
+	ccInstall --updateLastbuilt "${workspaceRoot}" "${targetFolder}"
+	fl=$(ccInstall --findSources "${workspaceRoot}" "${targetFolder}")
 	fileContainsLine "${fl}" "A/One"
 	result=$?
 	assertEquals "$LINENO: file A/One is now up-to-date: " 0 "${result}"
-	ccInstall --clearLastbuilt "${workspaceRoot}" "${target}"
-	print "One" > "${workspaceRoot}/${target}/A/One"
-	fl=$(ccInstall --findSources "${workspaceRoot}" "${target}")
+	ccInstall --clearLastbuilt "${workspaceRoot}" "${targetFolder}"
+	print "One" > "${workspaceRoot}/${targetFolder}/A/One"
+	fl=$(ccInstall --findSources "${workspaceRoot}" "${targetFolder}")
 	fileContainsLine "${fl}" "A/One"
 	result=$?
 	assertEquals "$LINENO: file A/One is now changed: " 1 "${result}"
 
-	rm "${workspaceRoot}/${target}/_Tests/testTom.ksh"
-	rm "${workspaceRoot}/${target}/_Tests/testDick.ksh"
-	rm "${workspaceRoot}/${target}/_Tests/testHarry.ksh"
-	rm "${workspaceRoot}/${target}/_Tests/Jane.ksh"
-	rmdir "${workspaceRoot}/${target}/_Tests/"
-	rm "${workspaceRoot}/${target}/A/One"
-	rm "${workspaceRoot}/${target}/A/Two"
-	rm "${workspaceRoot}/${target}/A/.DS_Store"
-	rmdir "${workspaceRoot}/${target}/A"
-	rm "${workspaceRoot}/${target}/B/red"
-	rm "${workspaceRoot}/${target}/B/blue"
-	rmdir "${workspaceRoot}/${target}/B"
-	rmdir "${workspaceRoot}/${target}"
+	rm "${workspaceRoot}/${targetFolder}/_Tests/testTom.ksh"
+	rm "${workspaceRoot}/${targetFolder}/_Tests/testDick.ksh"
+	rm "${workspaceRoot}/${targetFolder}/_Tests/testHarry.ksh"
+	rm "${workspaceRoot}/${targetFolder}/_Tests/Jane.ksh"
+	rmdir "${workspaceRoot}/${targetFolder}/_Tests/"
+	rm "${workspaceRoot}/${targetFolder}/A/One"
+	rm "${workspaceRoot}/${targetFolder}/A/Two"
+	rm "${workspaceRoot}/${targetFolder}/A/.DS_Store"
+	rmdir "${workspaceRoot}/${targetFolder}/A"
+	rm "${workspaceRoot}/${targetFolder}/B/red"
+	rm "${workspaceRoot}/${targetFolder}/B/blue"
+	rmdir "${workspaceRoot}/${targetFolder}/B"
+	rmdir "${workspaceRoot}/${targetFolder}"
 	rmdir "${workspaceRoot}/ProjA"
 	rmdir "${workspaceRoot}"
 }

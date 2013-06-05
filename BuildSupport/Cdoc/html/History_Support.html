@@ -72,9 +72,13 @@
 		* rename parameters to more accurately reflect their current use
 			* projectPath -&gt; workspaceRoot; target -&gt; targetFolder
 			* getActions: refactor to take workspaceRoot, targetFolder parameters
-			* complete rename of  target -&gt; targetFolder
+			* complete rename of key ccInstall variables
 		* change ccInstall to take same parameters as ccInstallAction
-			* Then: Is ccInstallAction still necessary?
+			* *current for ccInstall: workspaceRoot targetFolder, where targetFolder is path from workspaceRoot*
+			* *new for ccInstall: sourceRoot targetFolder, where targetFolder is path from sourceRoot*
+			* within ccInstall, rename existing targetFolder to oldTargetFolder
+			* ccInstall: calculate key variables based on sourceRoot, targetFolder
+		* Then: Is ccInstallAction still necessary?
 	* ?? ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
 	* remove file /private/etc/launchd.conf from scripts and disk
 </pre>

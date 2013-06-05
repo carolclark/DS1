@@ -1828,6 +1828,7 @@ resource restype_Slate (resid_Marker, "") { {
 #pragma mark 2 - StandardEditor
 resource restype_Slate (resid_StandardEditor, "") { {
 	Slate { "std",	{
+		Event { "standard", "" },			_standardEditor,
 		Event { "target", "" },				ResSubslate { resid_Target },
 		Event { "project settings", "" },	Sequence{}, Keypress { kc_return, mf_command }, _showHideNavigator, ResSubslate { resid_ProjectSettings }, endSequence{},
 		_EditorStandards_,
@@ -1837,6 +1838,7 @@ resource restype_Slate (resid_StandardEditor, "") { {
 #pragma mark 3 - AssistantEditor
 resource restype_Slate (resid_AssistantEditor, "") { {
 	Slate { "asst",	{
+		Event { "assistant", "" },		_assistantEditor,
 		Event { "split panel", "" },	Sequence{}, ClickMenu { "View" }, _down, TypeText { "Assistant Editor" }, _right, ResSubslate { resid_asstSplit }, endSequence{},
 		Event { "other side", "" },		Keypress { kc_comma, mf_command + mf_option },
 		_JumpBar_,
@@ -1857,6 +1859,7 @@ resource restype_Slate (resid_asstSplit, "") { {
 #pragma mark 4 - VersionEditor
 resource restype_Slate (resid_VersionEditor, "") { {
 	Slate { "vers",	{
+		Event { "version", "" },		_versionEditor,
 		Event { "compare", "" },		Click { 1, -100, -20, _window, _bottomRight },
 		Event { "annotate", "" },		Click { 1, -73, -20, _window, _bottomRight },
 		Event { "revisions", "" },		Click { 1, -46, -20, _window, _bottomRight },
@@ -2063,9 +2066,9 @@ resource restype_Slate (resid_InterfaceBuilder, "") { {
 		Event { "canvas", "" },			Click { 1, -275, 130, _window, _topRight },
 		Event { "size to fit", "" },	Keypress { kc_equal, mf_command },
 		Event { "Menu", "" },			Sequence{}, ClickMenu { "Editor" }, _down, ResSubslate { resid_IBMenu }, endSequence{},
-		ExitEvent { "assistant", "" },		_assistantEditor,
-		ExitEvent { "version", "" },		_versionEditor,
-		ExitEvent { "standard", "" },		_standardEditor,
+		ExitEvent { "assistant", "" },	_assistantEditor,
+		ExitEvent { "version", "" },	_versionEditor,
+		ExitEvent { "standard", "" },	_standardEditor,
 		Event { "document", "" },		ResSubslate { resid_IBDocument },
 		Event { "Data Model", "" },		ResSubslate { resid_DataModel },
 		Event { "Workspace", "" },		ResSubslate { resid_Workspace },
@@ -3431,7 +3434,6 @@ resource restype_Slate (resid_typeSearch, "") { {
 		Event { "previous", "" },		Keypress { kc_G, mf_command + mf_shift },
 		Event { "change", "" },			Click { 1, -454, 154, _window, _topRight },
 		Event { "change again", "" },	Click { 1, -364, 154, _window, _topRight },
-		_TypeXcodeSlate_,
 	} }
 } };
 
@@ -3475,7 +3477,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		Event { "navigate", "" },		ResSubslate { resid_Navigate },
 		Event { "top row", "" },		_topRow,
 		Event { "standard", "" },		Sequence{}, Keypress { kc_return, mf_command }, ResSubslate { resid_StandardEditor }, endSequence{},
-		Event { "assist", "" },			Sequence{}, Keypress { kc_return, mf_command + mf_option }, ResSubslate { resid_AssistantEditor }, endSequence{},
+		Event { "assistant", "" },		Sequence{}, Keypress { kc_return, mf_command + mf_option }, ResSubslate { resid_AssistantEditor }, endSequence{},
 		Event { "version", "" },		Sequence{}, Keypress { kc_return, mf_command + mf_option + mf_shift }, ResSubslate { resid_VersionEditor }, endSequence{},
 		Event { "Organizer", "" },		Sequence{}, Keypress { kc_2, mf_command + mf_shift },
 			ResSubslate { resid_Organizer }, endSequence{},

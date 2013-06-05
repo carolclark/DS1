@@ -142,6 +142,17 @@
 			<li>[tag]</li>
 			<li>push [push tags]</li>
 		</ul>
+		<h5>Morning/Working Report</h5><pre>
+			set $cb to name of current branch (should not be master)
+			git status; verify branch not master
+			git show --name-only
+			git stash list
+			git branch
+			git branch --no-merged
+			git checkout master; git status; git checkout $cb
+			git lg master..$cb
+			git lg master..origin/master
+		</pre>
 	</div>
 </div>
 
