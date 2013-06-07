@@ -109,7 +109,7 @@
 				<li>check stash list</li>
 				<li><span class='em'>Update Branch</span><ul>
 					<li><span class='em'>Update Master</span> from remotes<ul>
-						<li>checkout master; log --oneline master..origin/master; [log --oneline artist..lm/artist]</li>
+						<li>checkout master; status; log --oneline master..origin/master; [log --oneline artist..lm/artist]</li>
 						<li>fetch updates: <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
 							<li>if that merge fails: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
 						</ul></li>
@@ -131,7 +131,7 @@
 				<li>use <span class='mono'>merge tool</span> to resolve conflicts; add / review files to be committed; commit</li>
 				<li>[OR to undo attempted merge, use <span class='mono'>git reset --merge</span>]</li>
 			</ul></li>
-			<li>show --name-only</li>
+			<li>show --name-only; lg compare</li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
 				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
 			</ul></li>
@@ -144,14 +144,10 @@
 		</ul>
 		<h5>Morning/Working Report</h5><pre>
 			set $cb to name of current branch (should not be master)
-			git status; verify branch not master
-			git show --name-only
-			git stash list
-			git branch
-			git branch --no-merged
+			git status; verify branch not master; git show --name-only
+			git stash list; git branch; git branch --no-merged
 			git checkout master; git status; git checkout $cb
-			git lg master..$cb
-			git lg master..origin/master
+			git lg master..$cb; git lg master..origin/master
 		</pre>
 	</div>
 </div>
