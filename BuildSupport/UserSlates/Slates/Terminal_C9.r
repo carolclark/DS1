@@ -609,15 +609,10 @@ resource restype_Slate (resid_gitMergeBase, "") { {
 #pragma mark Push
 resource restype_Slate (resid_gitPush, "") { {
 	Slate { "Push",	{
-		ExitEvent { "cancel", "" },		_cancel,
-		ExitEvent { "finish	", "" },	_return,
 		Event { "origin", "" },			TypeText { "origin " },
 		Event { "tags", "" },			TypeText { "--tags " },
 		Event { "authorize", "" },		TypeText { "gh6868cc" },
-		Event { "execute", "" },		_return,
-		Event { "copy", "" },			Keypress { kc_C, mf_command },
-		Event { "paste", "" },			Keypress { kc_V, mf_command },
-		_SlateGlobals_,
+		_GitStandards_,
 	} }
 } };
 
