@@ -119,7 +119,7 @@ function gitPrintExclude {
 
 #^	gitPrintAttributes
 function gitPrintAttributes {
-	print 'content.pcode text'
+	print 'content.pcode -crlf'
 	print '*.png binary'
 	print 'snippets.dash binary'
 	print '*./pbxproj merge=union'		# include changes from both parents when merging project files
