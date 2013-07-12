@@ -1221,7 +1221,7 @@ gh/dashboard
 #pragma mark Github
 #define	_ghup_				Keypress { kc_K, 0 }
 #define	_ghdn_				Keypress { kc_J, 0 }
-#define _ghClickDashboard	Click { 1, -450, 90, _window, _topCenter }
+#define _ghClickDashboard	Click { 1, -475, 90, _window, _topCenter }
 
 #define	_GitHubStandards_		\
 		Event { "back to host", "" },	Launch { _homeApp, _homeAppSlate },		\

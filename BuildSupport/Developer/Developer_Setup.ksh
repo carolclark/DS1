@@ -119,9 +119,9 @@ function gitPrintExclude {
 
 #^	gitPrintAttributes
 function gitPrintAttributes {
-	print 'content.pcode -crlf'
-	print '*.png binary'
+	print '*.png binary'				# identify some binary files
 	print 'snippets.dash binary'
+	print 'content.pcode -crlf'			# do not change line endings in PaintCode files
 	print '*./pbxproj merge=union'		# include changes from both parents when merging project files
 }
 

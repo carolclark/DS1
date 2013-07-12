@@ -4,6 +4,9 @@
    <FileRef
       location = "group:BuildSupport/BuildSupport.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Support_ghissues.json">
+   </FileRef>
    <Group
       location = "group:Website"
       name = "9 Website">
