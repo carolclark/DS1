@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		67364A7F16C0363900940D94 /* FixWindow.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67364A6D16C0345900940D94 /* FixWindow.applescript */; };
 		673A579416C0578C0000BEE2 /* Snippet.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DB232C169E0A2900A6E910 /* Snippet.applescript */; };
+		6773C4141791FB03005E4CAB /* SetMarkers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6773C4131791F844005E4CAB /* SetMarkers.applescript */; };
 		67DB22EB169CD82300A6E910 /* AccessLibTypes.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22CF169CD82300A6E910 /* AccessLibTypes.r */; };
 		67DB22EC169CD82300A6E910 /* ArbonnePrototype_c9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D0169CD82300A6E910 /* ArbonnePrototype_c9.r */; };
 		67DB22ED169CD82300A6E910 /* Automator_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D1169CD82300A6E910 /* Automator_C9.r */; };
@@ -123,6 +124,7 @@
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
 		67692458141EB921005D3E68 /* XcodeScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
 		67BDF869175967DC006C0B75 /* AllTests.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTests.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BDF86D175967DC006C0B75 /* AllTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AllTests-Info.plist"; sourceTree = "<group>"; };
 		67BDF86F175967DC006C0B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1013,6 +1015,7 @@
 				67DD774316A4C2BA00BECCD5 /* BBEditUtil.applescript */,
 				67DD774416A4C2BA00BECCD5 /* CheckLinks.applescript */,
 				67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */,
+				6773C4131791F844005E4CAB /* SetMarkers.applescript */,
 			);
 			path = AppleScripts;
 			sourceTree = "<group>";
@@ -1397,6 +1400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6773C4141791FB03005E4CAB /* SetMarkers.applescript in Sources */,
 				67DD774716A4C4FB00BECCD5 /* BBEditUtil.applescript in Sources */,
 				67DD774816A4C4FB00BECCD5 /* CheckLinks.applescript in Sources */,
 				67DD774916A4C4FB00BECCD5 /* CheckSyntax.applescript in Sources */,

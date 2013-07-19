@@ -76,7 +76,7 @@
 #define resid_PackageMaker				20000
 #define resid_Eclipse					21000
 #define resid_BBEdit					22000
-	#define resid_BBEdit_External			resid_BBEdit+1
+	#define resid_XCBBEdit			resid_BBEdit+1
 
 #define resid_FileMaker					23000
 #define resid_AppleWorks				24000

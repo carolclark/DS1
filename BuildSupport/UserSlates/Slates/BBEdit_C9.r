@@ -1,13 +1,19 @@
 // =================================================================================
-//	BBEdit.r					�2005-12 C & C Software, Inc. All rights reserved.
+//	BBEdit.r					�2005-132 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
 #include "CommonSlates_C9.h"
 
+#pragma mark === Markers ===
+// Git
+//	2 Git, Type, Specify, Checkout, Branch, Remote, Difference, Show, Grep, Stash; 3 Add, Commit, Log, Rebase, Tag, Merge, Push, Fetch; 4 Clean; Bisect; Blame; SelectFile, Reset, Browser, FileMerge
+// Other
+//	1 Standards; Type; Emacs; Defines; 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
+
 #pragma mark 0 ===
 // #defined in CommonSlates_C9.h
-//	#define resid_BBEdit_External			resid_BBEdit+1
+//	#define resid_XCBBEdit					resid_BBEdit+1
 	
 // resid_
 #define resid_WindowBBEdit				resid_BBEdit+10
@@ -46,6 +52,7 @@
 
 #define resid_Project					resid_BBEdit+80
 	#define resid_ProjectContents			resid_Project+1
+	#define resid_ProjectActions			resid_Project+2
 
 #define resid_FileMenu					resid_BBEdit+200
 	#define resid_FileOpenDialog			resid_FileMenu+1
@@ -69,8 +76,7 @@
 	#define resid_teList					resid_Markup+4
 
 	#define resid_ValidateMarkup			resid_Markup+40
-		#define resid_ContinueCheckAll			resid_ValidateMarkup+41
-		#define resid_ContinueCheckProject		resid_ValidateMarkup+42
+		#define resid_ContinueCheckTechnical	resid_Markup+41
 
 	#define resid_InsertElement				resid_Markup+50
 	#define resid_InsertStyle				resid_Markup+51
@@ -129,6 +135,8 @@
 	_JumpDownSubslate_,                                                                    \
 	_IMouseSlate_,																		\
 	_TypeBBEditSlate_
+
+#define	_cutNextLine	_down, Keypress { kc_L, mf_command }, Keypress { kc_X, mf_command }
 
 #pragma mark Browser
 	#define	_BrowseCdocResID_	resid_Browser
@@ -350,6 +358,7 @@ resource restype_Slate (resid_TypeBBEditSlate, "Type Slate") { {
 			Keypress { kc_right, mf_option + mf_shift }, endSequence{},
 		Event { "select line", "" },	Keypress { kc_L, mf_command },
 		Event { "select paragraph", "" },	Keypress { kc_L, mf_command + mf_option },
+		Event { "cut next line", "" },	Sequence{}, _cutNextLine, endSequence{},
 		_NextPanel,
 		_PreviousPanel,
 		Event { "next field", "" },		Keypress { kc_accent, mf_control },
@@ -740,7 +749,7 @@ resource restype_Slate (resid_DrawerActions, "Actions") { {
 // main document toolbar
 #define	dtools_x	263
 // project panel
-#define _row1_v		94
+#define _row1_v		47
 #define _row1_h		35
 #define _rsp		18
 #define _csp		18	
@@ -753,33 +762,14 @@ resource restype_Slate (resid_Project, "Project") { {
 		_CloseSubslate_,
 		ExitEvent { "select", "" },		Click { 1, 0, 0, _cursor },
 		ExitEvent { "open", "" },		Click { 2, 0, 0, _cursor },
-		ExitEvent { "Top", "" },			Launch { Dev_"Support/Top.bbprojectd", 0 },
-		ExitEvent { "old Support", "" },	Launch { Dev_"Support_svn/Support_svn.bbprojectd", 0 },
-		ExitEvent { "Support", "" },		Launch { Dev_"Support/Support.bbprojectd", 0 },
-		ExitEvent { "Punkin", "" },			Launch { Dev_"Punkin/Punkin.bbprojectd", 0 },
-		ExitEvent { "Web Gen", "" },		Launch { Dev_"WebGen/WebGen.bbprojectd", 0 },
-		ExitEvent { "Dev Support", "" },	Launch { Dev_"DevSupport/DevSupport.bbprojectd", 0 },
-		ExitEvent { "Carbon", "" },			Launch { Dev_"Accessor_C9/Accessor_C9.bbprojectd", 0 },
-		ExitEvent { "Try 2", "" },			Launch { Dev_"Koala_Try2/Koala_Try2.bbprojectd", 0 },
-		ExitEvent { "Try 1", "" },			Launch { Dev_"Koala_Try1/Koala_Try1.bbprojectd", 0 },
-		ExitEvent { "My Library", "" },		Launch { Dev_"MyLibrary/MyLibrary.bbprojectd", 0 },
-		ExitEvent { "Prototype", "" },		Launch { Dev_"ArbonneProto/ArbonneProto.bbprojectd", 0 },
-		Event { "Drawer", "" },			ResSubslate { resid_Drawer },
+		ExitEvent { "Support", "" },	Launch { Dev_"Support/SupportDocs.bbprojectd", 0 },
+		ExitEvent { "Punkin", "" },		Launch { Dev_"Punkin/PunkinDocs.bbprojectd", 0 },
+		ExitEvent { "Accessor", "" },	Launch { Dev_"Accessor/AccessorDocs.bbprojectd", 0 },
 		Event { "close", "" },			Keypress { kc_W, mf_command + mf_shift },
 		Event { "close top", "" },		Keypress { kc_W, mf_command },
-		Event { "open Xcode", "" },		Sequence{}, Click { 2, 0, 0, _cursor }, 
-			Launch { "/Developer/Applications/XCode.app", resid_Xcode }, endSequence{},
-		Event { "Add Items", "" },		Sequence{}, Click { 1, 22, 44, _window, _topLeft },
-			ResSubslate { resid_FileOpenDialog }, endSequence{},
-		Event { "Add Collection", "" },	Sequence{}, Click { 1, 70, 44, _window, _topLeft },
-			ResSubslate { resid_TypeBBEditSlate }, endSequence{},
-		Event { "Rename", "" },			Sequence{}, Click { 1, 118, 44, _window, _topLeft },
-			ResSubslate { resid_TypeBBEditSlate }, endSequence{},
-		Event { "Remove", "" },			Click { 0, 146, 44, _window, _topLeft },
-		Event { "Actions", "" },		Click { 1, 43, -9, _window, _bottomLeft },
+		Event { "Actions", "" },		Sequence{}, Click { 1, 43, -11, _window, _bottomLeft }, _up, ResSubslate { resid_ProjectActions }, endSequence{},
 		Event { "Subversion", "" },		Click { 1, 75, -9, _window, _bottomLeft },
 		Event { "Contents", "" },		ResSubslate { resid_ProjectContents },
-		ExitEvent { "FileMaker", "" },		Launch { Dev_"ArbonneFM/ArbonneFM.bbprojectd", 0 },
 		Event { "row one", "" },		Click { 0, _row1_h, _row1_v+0*_rsp, _window, _topLeft },
 		Event { "row two", "" },		Click { 0, _row1_h, _row1_v+1*_rsp, _window, _topLeft },
 		Event { "row three ", "" },		Click { 0, _row1_h, _row1_v+2*_rsp, _window, _topLeft },
@@ -807,6 +797,19 @@ resource restype_Slate (resid_Project, "Project") { {
 		Event { "row twenty five", "" },	Click { 0, _row1_h, _row1_v+24*_rsp, _window, _topLeft },
 	} },
 } };
+
+#pragma mark ProjectActions
+resource restype_Slate (resid_ProjectActions, "") { {
+	Slate { "ProjectActions",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "Add Items", "" },		Sequence{}, TypeText { "Add Items" }, _return, ResSubslate { resid_FileOpenDialog }, endSequence{},
+		Event { "Add Collection", "" },	Sequence{}, TypeText { "Add Collection" }, _return, ResSubslate { resid_TypeBBEditSlate }, endSequence{},
+		Event { "Rename", "" },			Sequence{}, TypeText { "Rename" }, _return, ResSubslate { resid_TypeBBEditSlate }, endSequence{},
+		Event { "Remove", "" },			TypeText { "Remove" },
+	} }
+} };
+
 
 #pragma mark Project Contents
 resource restype_Slate (resid_ProjectContents, "Project Contents") { {
@@ -1196,34 +1199,18 @@ resource restype_Slate (resid_ValidateMarkup, "Validate Markup") { {
 		_DirectionKeys_,
 		_NextPanel,
 		_PreviousPanel,
-		Event { "project", "" },	 Sequence{}, _clickScriptsMenu, _down,
-			TypeText { "ValidateHTML" }, _right, TypeText { "CheckSyntaxProject" }, _return,
-			ResSubslate { resid_ContinueCheckProject }, endSequence{},
-		Event { "all", "" },	 Sequence{}, _clickScriptsMenu, _down,
-			TypeText { "ValidateHTML" }, _right, TypeText { "CheckSyntaxAll" }, _return,
-			ResSubslate { resid_ContinueCheckAll }, endSequence{},
+		Event { "technical", "" },	 Sequence{}, _clickScriptsMenu, _down, TypeText { "CheckSyntax" }, _return,
+			ResSubslate { resid_ContinueCheckTechnical }, endSequence{},
 	} }
 } };
 
-resource restype_Slate (resid_ContinueCheckAll, "resid_ContinueCheckAll") { {
-	Slate { "Continue",	{
-		_SlateGlobals_,
-		ExitEvent { "cancel", "" },		NilAction{},
-		ExitEvent { "exit", "" },		NilAction{},
-		ExitEvent { "continue", "" },	Sequence{}, _return, _clickScriptsMenu, _down,
-			TypeText { "ValidateHTML" }, _right, TypeText { "CheckLinksAll" }, _return,
-			endSequence{},
-	} }
-} };
-
-resource restype_Slate (resid_ContinueCheckProject, "resid_ContinueCheckProject") { {
-	Slate { "Continue",	{
+resource restype_Slate (resid_ContinueCheckTechnical, "continue check links") { {
+	Slate { "continue",	{
 		_SlateGlobals_,
 		ExitEvent { "cancel", "" },		_return,
+		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
 		ExitEvent { "exit", "" },		NilAction{},
-		ExitEvent { "continue", "" },	Sequence{}, _return, _clickScriptsMenu, _down,
-			TypeText { "ValidateHTML" }, _right, TypeText { "CheckLinksProject" }, _return,
-			endSequence{},
+		ExitEvent { "continue", "" },	Sequence{}, _return, _clickScriptsMenu, _down, TypeText { "CheckLinks" }, _return, endSequence{},
 	} }
 } };
 
@@ -1329,11 +1316,6 @@ resource restype_Slate (resid_Script, "script menu") { {
 		_CloseSubslate_,
 		ExitEvent { "cancel", "" },					Keypress { kc_escape, 0 },
 		ExitEvent { "set markers", "" },			Sequence{}, TypeText { "SetMarkers" }, _return, endSequence{},
-		ExitEvent { "open with Finder", "" },		Sequence{}, TypeText { "OpenWithFinder" }, _return, endSequence{},
-		ExitEvent { "build dox", "" },				Sequence{}, TypeText { "BuildDocumentation" }, _return, endSequence{},
-		ExitEvent { "build BBEdit", "" },			Sequence{}, TypeText { "BuildBBEdit" }, _return, endSequence{},
-		ExitEvent { "Snippet", "" },				Sequence{}, TypeText { "Snippet" }, _return, endSequence{},
-		ExitEvent { "View in Browser", "" },		Sequence{}, TypeText { "ViewInBrowser" }, _return, endSequence{},
 	} }
 } };
 
@@ -1426,7 +1408,7 @@ resource restype_Slate (resid_Snippet, "") { {
 	} }
 } };
 
-//_BBEditBase_: shared by resid_BBEdit and resid_BBEdit_External
+//_BBEditBase_: shared by resid_BBEdit and resid_XCBBEdit
 #define _BBEditBase_	\
 		_SlateGlobals_,		\
 		_DefaultBase_,		\
@@ -1441,35 +1423,57 @@ resource restype_Slate (resid_Snippet, "") { {
 		Event { "Shell", "" }, 		Sequence{}, Launch { Dev_"DevSupport/BBEdit/Shell.worksheet", 0 }, ResSubslate { resid_Shell }, endSequence{},		\
 		Event { "Search", "" },		ResSubslate { resid_Search }
 
-#pragma mark BBEdit_External
-resource restype_Slate (resid_BBEdit_External, "BBEdit from Xcode") { {
-	Slate { "extBBEdit",	{
-		_BBEditBase_,
-		Event { "okay", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
-	 } }
+#pragma mark 9 === BBEdit
+#define	_BBEditItems_			\
+		_TypeBBEditSlate_,		\
+		Event { "Menu", "access menus" },	Subslate { "Menu" },	\
+			_SlateGlobals_,		\
+			_CloseSubslate_,	\
+			Event { "File", "" }, 	Sequence{}, ClickMenu { "File" }, ResSubslate { resid_FileMenu }, endSequence{},	\
+			ExitEvent { "Text", "" }, ClickMenu { "Text" },			\
+			ExitEvent { "View", "" }, ClickMenu { "View" },			\
+			ExitEvent { "Search", "" }, ClickMenu { "Search" },		\
+			ExitEvent { "Tools", "" }, ClickMenu { "Tools" },		\
+			ExitEvent { "Markup", "" }, ClickMenu { "Markup" },		\
+			ExitEvent { "Window", "" }, ClickMenu { "Window" },		\
+			ExitEvent { "Help", "" }, ClickMenu { "Help" },			\
+			endSubslate{},		\
+		_Markers_,				\
+		Event { "Contents", "" },	ResSubslate { resid_ProjectContents },	\
+		Event { "Project", "" },	ResSubslate { resid_Project },		\
+		Event { "Browser", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},		\
+		Event { "Validate", "" },	ResSubslate { resid_ValidateMarkup },		\
+		Event { "Script", "" },		Sequence{}, _clickScriptsMenu, _down, ResSubslate { resid_Script }, endSequence{},		\
+		Event { "Search", "" },		ResSubslate { resid_Search }
+
+
+
+resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
+	Slate { "BBEdit",	{
+		_SlateGlobals_,
+		_DefaultBase_,
+		_BBEditItems_
+	} }
 } };
 
-#pragma mark BBEdit
-resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
+resource restype_Slate (resid_XCBBEdit, "XcodeBBEdit Slate") { {
+	Slate { "BBEdit",	{
+		_SlateGlobals_,
+		_DefaultBase_,
+		_BBEditItems_,
+		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
+		Event { "okay", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
+	} }
+} };
+
+/*
+ resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
 	Slate { "BBEdit",	{
 		_BBEditBase_,	
 		Event { "close document", "" },	Keypress { kc_W, mf_command },
 		Event { "Macro", "" },			ResSubslate { resid_Macro },
 		Event { "Contents", "" },	ResSubslate { resid_ProjectContents },
 		Event { "Doc Window", "" },	ResSubslate { resid_DocWindow },
-		Event { "Menu", "access menus" },	Subslate { "Menu" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			Event { "File", "" }, 	Sequence{}, ClickMenu { "File" }, ResSubslate { resid_FileMenu }, endSequence{},
-			ExitEvent { "Text", "'Text' menu" }, ClickMenu { "Text" },
-			ExitEvent { "View", "'View' menu" }, ClickMenu { "View" },
-			ExitEvent { "Search", "'Search' menu" }, ClickMenu { "Search" },
-			ExitEvent { "Tools", "'Tools' menu" }, ClickMenu { "Tools" },
-			ExitEvent { "Markup", "'Markup' menu" }, ClickMenu { "Markup" },
-			ExitEvent { "Window", "'Window' menu" }, ClickMenu { "Window" },
-			ExitEvent { "Version", "'Version' menu" }, ClickMenu { "CVS" },
-			ExitEvent { "Help", "'Help' menu" }, ClickMenu { "Help" },
-			endSubslate{},
 		Event { "Window", "" },			ResSubslate { resid_WindowBBEdit },
 		Event { "Preferences", "" },	Sequence{}, Keypress { kc_comma, mf_command }, ResSubslate { resid_Preferences }, endSequence{},
 		Event { "Accessor", "" },			Subslate { "Accessor" },
@@ -1488,3 +1492,4 @@ resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
 		Event { "Action", "" },			ResSubslate { resid_Action },
 	 } }
 } };
+ */
