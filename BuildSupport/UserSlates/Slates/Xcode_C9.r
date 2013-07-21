@@ -17,46 +17,10 @@
 	#define resid_JumpBar				resid_Navigate+10
 		#define resid_jumpPopup				resid_JumpBar+1
 
-#define resid_Browser				resid_Xcode+11
-#define resid_Workspace				resid_Xcode+12
-#define resid_Snapshots				resid_Xcode+13
-
-#define resid_Stickies				resid_Xcode+42
-#define resid_Console				resid_Xcode+43
-#define resid_BBValidate			resid_Xcode+45
-	#define resid_BBContinueCheckAll	resid_BBValidate+1
-
-#pragma mark Menus
-#define resid_FileMenu				resid_Xcode+50
-	#define resid_NewFile				resid_FileMenu+1
-	#define resid_OpenFile				resid_FileMenu+2
-	#define resid_AddFiles				resid_FileMenu+3
-	#define resid_SourceControl			resid_FileMenu+4
-	#define resid_Commit				resid_FileMenu+5
-
-#define resid_firstFileDialog		resid_Xcode+60
-	#define resid_FileOpen				resid_firstFileDialog+0
-	#define resid_FileSave				resid_firstFileDialog+1
-
-#define resid_SelectTargetsAdd			resid_Xcode+70
-#define resid_SelectTargetsNew			resid_Xcode+71
-
-#define resid_EditMenu				resid_Xcode+80
-
-#define resid_DataModel				resid_Xcode+90
-	#define resid_DataModelUtility		resid_DataModel+1
-	#define resid_utilModel				resid_DataModel+2
-
-#define resid_Scripts				resid_Xcode+150
-
-#define resid_Search				resid_Xcode+300
-	#define resid_FindReplace			resid_Search+1
-	#define resid_FindOptions			resid_Search+2
-
 #define resid_Utilities				resid_Xcode+370
 	#define resid_utilFile				resid_Utilities+5
 		#define resid_utilFileLocate		resid_utilFile+1
-	#define resid_utilHelp				resid_Xcode+10
+	#define resid_utilHelp				resid_Utilities+10
 
 #define resid_Organizer				resid_Xcode+400
 	#define resid_Repositories			resid_Organizer+10
@@ -65,25 +29,26 @@
 		#define resid_SwitchBranch			resid_Repositories+3
 	#define resid_Documentation			resid_Organizer+20
 
+#pragma mark Menus
+#define resid_FileMenu				resid_Xcode+50
+		#define resid_SelectTargetsAdd		resid_Xcode+70
+		#define resid_SelectTargetsNew		resid_Xcode+71
+	#define resid_NewFile				resid_FileMenu+1
+	#define resid_OpenFile				resid_FileMenu+2
+	#define resid_AddFiles				resid_FileMenu+3
+	#define resid_SourceControl			resid_FileMenu+4
+		#define resid_Commit				resid_FileMenu+5
+		#define resid_SaveFile				resid_FileMenu+6
+
+#define resid_EditMenu				resid_Xcode+80
+
 #define resid_Refactor				resid_Xcode+600
 	#define resid_refactorPreview		resid_Refactor+1
 	#define resid_refactorView			resid_Refactor+2
 
-#define resid_BrowseDoxygen			resid_Xcode+650
+#define resid_Scripts				resid_Xcode+150
 
-#define resid_GitHub				resid_Xcode+700
-	#define resid_ghMyPage				resid_GitHub+1
-	#define resid_ghRepository			resid_GitHub+2
-	#define resid_ghDashIssues			resid_GitHub+5
-	#define resid_ghRepoIssues			resid_GitHub+6
-	#define resid_ghOpenIssue			resid_GitHub+7
-	#define resid_ghEditIssue			resid_GitHub+8
-	#define resid_ghRepoButtons			resid_GitHub+20
-		#define resid_ghRepoBtn_Label		resid_ghRepoButtons+1
-
-#define resid_Macro					resid_Xcode+750
-#define resid_Copyright				resid_Xcode+780
-
+#pragma mark Target
 #define resid_Target				resid_Xcode+900
 	#define resid_Profile				resid_Target+1
 	#define	resid_TargetScheme			resid_Target+2
@@ -108,22 +73,28 @@
 	#define resid_VersionEditor			resid_Editor+300
 
 	#define	resid_ProjectSettings		resid_Editor+400
-		#define resid_projTargetList		resid_ProjectSettings+1
-		#define resid_projAddTarget			resid_ProjectSettings+2
-		#define resid_projAddPhase			resid_ProjectSettings+3
-			#define resid_phaseRunScript		resid_ProjectSettings+10
+		#define resid_projTargetList		resid_ProjectSettings+10
+		#define resid_projAddTarget			resid_ProjectSettings+20
+		#define resid_projAddPhase			resid_ProjectSettings+30
+		#define resid_phaseRunScript		resid_ProjectSettings+40
+
+	#define resid_Workspace				resid_Xcode+12
 
 	#define resid_InterfaceBuilder		resid_Editor+450
-		#define resid_utilSize				resid_InterfaceBuilder+1
-		#define resid_utilAttributes		resid_InterfaceBuilder+2
-		#define resid_utilObject			resid_InterfaceBuilder+3
 		#define resid_IBMenu				resid_InterfaceBuilder+10
-			#define resid_IBDocument			resid_IBMenu+1
-			#define resid_IBUtility				resid_IBMenu+2
-			#define resid_IBPin					resid_IBMenu+3
-			#define resid_IBAlign				resid_IBMenu+4
-			#define resid_IBEmbed				resid_IBMenu+5
-			#define	resid_WaitQuit				resid_IBMenu+6
+			#define	resid_WaitQuit				resid_IBMenu+1
+			#define resid_IBPin					resid_IBMenu+2
+			#define resid_IBAlign				resid_IBMenu+3
+			#define resid_IBEmbed				resid_IBMenu+4
+			#define resid_IBDocument			resid_IBMenu+5
+			#define resid_IBUtility				resid_IBMenu+6
+				#define resid_utilAttributes		resid_InterfaceBuilder+2
+				#define resid_utilSize				resid_InterfaceBuilder+1
+				#define resid_utilObject			resid_InterfaceBuilder+3
+
+	#define resid_DataModel				resid_Xcode+90
+		#define resid_DataModelUtility		resid_DataModel+1
+		#define resid_utilModel				resid_DataModel+2
 
 #pragma mark Index Slates
 #define resid_Index						resid_Xcode+1500
@@ -133,6 +104,9 @@
 	#define resid_SymbolIndex				resid_Index+40
 	#define	resid_SearchIndex				resid_Index+50
 		#define resid_MultFindOptions			resid_SearchIndex+1
+		#define resid_Search					resid_Xcode+300
+		#define resid_FindReplace				resid_Search+1
+		#define resid_FindOptions				resid_Search+2
 	#define	resid_IssueIndex				resid_Index+60
 	#define resid_DebugIndex				resid_Index+70
 		#define resid_Threads					resid_DebugIndex+1
@@ -142,18 +116,39 @@
 #pragma mark Typing Slates
 #define resid_TypeXcodeSlate			resid_Xcode+1600
 	#define resid_TypeSpecialXcodeSlate		resid_TypeXcodeSlate+1
-	#define resid_TypeDebugConsole			resid_TypeXcodeSlate+2
+	#define resid_Copyright					resid_Xcode+780
+	#define resid_Macro						resid_Xcode+750
 	#define resid_TypeDialog				resid_TypeXcodeSlate+3
+	#define resid_Package					resid_TypeXcodeSlate+8
+	#define resid_TypeDebugConsole			resid_TypeXcodeSlate+2
+	#define	resid_InsertSnippet				resid_TypeXcodeSlate+20
+		#define resid_ucLevel	resid_InsertSnippet+1
+		#define resid_ucActor	resid_InsertSnippet+2
 	#define	resid_InsertElement				resid_TypeXcodeSlate+4
 	#define	resid_InsertStyle				resid_TypeXcodeSlate+5
 	#define	resid_InsertTag					resid_TypeXcodeSlate+6
 	#define	resid_InsertSlateText			resid_TypeXcodeSlate+7
-	#define resid_Package					resid_TypeXcodeSlate+8
 	#define resid_Doxygen					resid_TypeXcodeSlate+9
 	#define resid_typeSearch				resid_TypeXcodeSlate+10
-	#define	resid_InsertSnippet				resid_TypeXcodeSlate+20
-		#define resid_ucLevel	resid_InsertSnippet+1
-		#define resid_ucActor	resid_InsertSnippet+2
+
+#pragma mark External Slates
+#define resid_Browser				resid_Xcode+11
+#define resid_BrowseDoxygen			resid_Xcode+650
+#define resid_GitHub				resid_Xcode+700
+	#define resid_ghMyPage				resid_GitHub+1
+	#define resid_ghRepository			resid_GitHub+2
+		#define resid_ghRepoButtons			resid_GitHub+20
+			#define resid_ghRepoBtn_Label		resid_ghRepoButtons+1
+	#define resid_ghDashIssues			resid_GitHub+5
+	#define resid_ghRepoIssues			resid_GitHub+6
+	#define resid_ghOpenIssue			resid_GitHub+7
+	#define resid_ghEditIssue			resid_GitHub+8
+
+#define resid_Stickies				resid_Xcode+42
+#define resid_Console				resid_Xcode+43
+#define resid_BBValidate			resid_Xcode+45
+	#define resid_BBContinueCheckAll	resid_BBValidate+1
+
 
 #define _splitter_x		260
 
@@ -458,20 +453,20 @@ resource restype_Slate (resid_utilFile, "file util") { {
 	} }
 } };
 
+#define	flt_h	350		// filter field, from _window _topCenter
+#define	flt_v	150
+resource restype_Slate (resid_utilFileLocate, "locate file") { {
+	Slate { "locate", {
+		_FileOpenStandards_,
+	} }
+} };
+
 #pragma mark utilHelp
 resource restype_Slate (resid_utilHelp, "") { {
 	Slate { "help",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
 		Event { "open", "" },			Sequence{}, Click { 1, -200, 155, _window, _topRight }, CloseSubslate{}, CloseSubslate{}, ResSubslate { resid_Documentation }, endSequence{},
-	} }
-} };
-
-#define	flt_h	350		// filter field, from _window _topCenter
-#define	flt_v	150
-resource restype_Slate (resid_utilFileLocate, "locate file") { {
-	Slate { "locate", {
-		_FileOpenStandards_,
 	} }
 } };
 
@@ -593,7 +588,7 @@ resource restype_Slate (resid_AddRepository, "Add Repository") { {
 		Event { "git path", "" },		Sequence{}, TypeText { "https://carolclark@github.com/carolclark" }, _left, _left, _left, _left, endSequence{},
 		Event { "working path", "" },	TypeText { "/Users/carolclark/Dev/" },
 		Event { "next", "" },			_return,
-		Event { "finish", "" },			Sequence{}, _return, ResSubslate { resid_FileSave }, endSequence{},
+		Event { "finish", "" },			Sequence{}, _return, ResSubslate { resid_SaveFile }, endSequence{},
 	} }
 } };
 
@@ -744,7 +739,7 @@ resource restype_Slate (resid_FileMenu, "File") { {
 		ExitEvent { "close document", "" },		Keypress { kc_W, mf_command + mf_control },
 		ExitEvent { "close workspace", "" },	Keypress { kc_W, mf_command + mf_option },
 		ExitEvent { "Save All", "" },			Keypress { kc_S, mf_command + mf_option },
-		Event { "Save As", "" },				Sequence{}, Keypress { kc_S, mf_command + mf_shift }, ResSubslate { resid_FileSave }, endSequence{},
+		Event { "Save As", "" },				Sequence{}, Keypress { kc_S, mf_command + mf_shift }, ResSubslate { resid_SaveFile }, endSequence{},
 		Event { "Open Recent", "" },			Sequence{}, TypeText { "Open Recent" }, _right, endSequence{},
 		ExitEvent { "Open External", "" },		Sequence{}, TypeText { "Open with External Editor" }, _return, endSequence{},
 		Event { "BBEdit", "" },					Sequence{}, TypeText { "Open with External Editor" }, _return, Launch { MainApps_"BBEdit.app", 0 }, ResSubslate { resid_XCBBEdit }, endSequence{},
@@ -806,16 +801,8 @@ resource restype_Slate (resid_AddFiles, "Add Files") { {
 	} }
 } };
 
-#define _headerHt	0
-resource restype_Slate (resid_FileOpen, "Open File Dialog") { {
-	Slate { "Open", {
-		_SlateGlobals_,
-		_FileOpenStandards_,
-	} }
-} };
-
 #define _headerHt	60
-resource restype_Slate (resid_FileSave, "Save File Dialog") { {
+resource restype_Slate (resid_SaveFile, "Save File Dialog") { {
 	Slate { "Save", {
 		_SlateGlobals_,
 		_FileSaveStandards_,
@@ -2002,66 +1989,6 @@ resource restype_Slate (resid_SymbolIndex, "") { {
 } };
 
 #pragma mark 3 --- Search
-#pragma mark Search
-resource restype_Slate (resid_Search, "Search") { {
-	Slate { "Search", {
-		_SlateGlobals_,
-		_CloseSubslate_,
-		Event { "enter find string", "" },		Keypress { kc_E, mf_command },
-		Event { "enter replace string", "" },	Keypress { kc_E, mf_command + mf_shift },
-		Event { "hide find bar", "" },			_hideFindBar,
-		Event { "multiple", "" },				Sequence{}, Keypress { kc_F, mf_command + mf_shift }, ResSubslate { resid_SearchIndex }, _right, endSequence{},
-		Event { "find", "" },					Sequence{}, Keypress { kc_F, mf_command }, ResSubslate { resid_FindReplace }, endSequence{},
-		Event { "replace", "" },				Sequence{}, Keypress { kc_F, mf_command + mf_option }, ResSubslate { resid_FindReplace }, endSequence{},
-		Event { "find again", "" },				Keypress { kc_G, mf_command },
-		Event { "find previous", "" },			Keypress { kc_G, mf_command + mf_shift },
-		Event { "change", "" },					Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Replace" }, _return, endSequence{},
-		Event { "change again", "" },			Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Replace and Find Again" }, _return, endSequence{},
-		_IndexStandards_,
-		_IMouseSlate_,
-	} }
-} };
-
-#pragma mark ..Single
-#define _r1_v	132
-#define	_r2_v	154
-resource restype_Slate (resid_FindReplace, "FindReplace") { {
-	Slate { "file", {
-		_SlateGlobals_,
-		ExitEvent { "exit", "" },			NilAction{},
-		ExitEvent { "close", "" },			Click { 1, -31, _r1_v, _window, _topRight },
-		ExitEvent { "done", "" },			Click { 1, -31, _r1_v, _window, _topRight },
-		Event { "options", "" },			Sequence{}, _clickOptionsButton, _down, _return, ResSubslate { resid_findOptions }, endSequence{},
-		Event { "search field", "" },		Sequence{}, Click { 1, -94, _r1_v, _window, _topRight }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
-		Event { "replace field", "" },		Sequence{}, Click { 1, -94, _r2_v, _window, _topRight }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
-		Event { "find again", "" },			Keypress { kc_G, mf_command },
-		Event { "replace all", "" },		Click { 0, -542, _r2_v, _window, _topRight },
-		Event { "replace", "" },			Click { 1, -454, _r2_v, _window, _topRight },
-		Event { "replace and find", "" },	Click { 1, -364, _r2_v, _window, _topRight },
-		Event { "change", "" },				Click { 1, -454, _r2_v, _window, _topRight },
-		Event { "change again", "" },		Click { 1, -364, _r2_v, _window, _topRight },
-		_TypeXcodeSlate_,
-		_IMouseSlate_,
-	} }
-} };
-
-resource restype_Slate (resid_findOptions, "Find Options") { {
-	Slate { "opt", {
-		_SlateGlobals_,
-		ExitEvent { "close", "" },		Sequence{}, _clickOptionsButton, _down, _return, endSequence{},
-		ExitEvent { "exit", "" },		NilAction{},
-		Event { "style", "" },			Click { 1, -450, _r2_v, _window, _topRight },
-		Event { "hits", "" },			Click { 1, -240, _r2_v, _window, _topRight },
-		Event { "match", "" },			Click { 1, -110, _r2_v, _window, _topRight },
-		Event { "wrap", "" },			Click { 1, -35, _r2_v, _window, _topRight },
-		_TypeXcodeSlate_,
-		_IMouseSlate_,
-		_ReturnKey_,
-		_DirectionKeys_,
-	} }
-} };
-
-#pragma mark ..Multiple
 #define _clickOptionsButton		Click { 1, 90, 132, _window, _topLeft }
 #define	_rsp	32
 resource restype_Slate (resid_SearchIndex, "Search Multiple") { {
@@ -2125,6 +2052,64 @@ resource restype_Slate (resid_MultFindOptions, "edFind Options") { {
 		Event { "match", "" },			Click { 1, 120, 196, _window, _topLeft },
 		Event { "find in", "" },		Click { 1, 120, 218, _window, _topLeft },
 		Event { "frameworks", "" },		Click { 1, 120, 239, _window, _topLeft },
+		_TypeXcodeSlate_,
+		_IMouseSlate_,
+		_ReturnKey_,
+		_DirectionKeys_,
+	} }
+} };
+
+#pragma mark Search
+resource restype_Slate (resid_Search, "Search") { {
+	Slate { "Search", {
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "enter find string", "" },		Keypress { kc_E, mf_command },
+		Event { "enter replace string", "" },	Keypress { kc_E, mf_command + mf_shift },
+		Event { "hide find bar", "" },			_hideFindBar,
+		Event { "multiple", "" },				Sequence{}, Keypress { kc_F, mf_command + mf_shift }, ResSubslate { resid_SearchIndex }, _right, endSequence{},
+		Event { "find", "" },					Sequence{}, Keypress { kc_F, mf_command }, ResSubslate { resid_FindReplace }, endSequence{},
+		Event { "replace", "" },				Sequence{}, Keypress { kc_F, mf_command + mf_option }, ResSubslate { resid_FindReplace }, endSequence{},
+		Event { "find again", "" },				Keypress { kc_G, mf_command },
+		Event { "find previous", "" },			Keypress { kc_G, mf_command + mf_shift },
+		Event { "change", "" },					Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Replace" }, _return, endSequence{},
+		Event { "change again", "" },			Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Find" }, _right, Wait { 10 }, TypeText { "Replace and Find Again" }, _return, endSequence{},
+		_IndexStandards_,
+		_IMouseSlate_,
+	} }
+} };
+
+#define _r1_v	132
+#define	_r2_v	154
+resource restype_Slate (resid_FindReplace, "FindReplace") { {
+	Slate { "file", {
+		_SlateGlobals_,
+		ExitEvent { "exit", "" },			NilAction{},
+		ExitEvent { "close", "" },			Click { 1, -31, _r1_v, _window, _topRight },
+		ExitEvent { "done", "" },			Click { 1, -31, _r1_v, _window, _topRight },
+		Event { "options", "" },			Sequence{}, _clickOptionsButton, _down, _return, ResSubslate { resid_findOptions }, endSequence{},
+		Event { "search field", "" },		Sequence{}, Click { 1, -94, _r1_v, _window, _topRight }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		Event { "replace field", "" },		Sequence{}, Click { 1, -94, _r2_v, _window, _topRight }, ResSubslate { resid_TypeXcodeSlate }, endSequence{},
+		Event { "find again", "" },			Keypress { kc_G, mf_command },
+		Event { "replace all", "" },		Click { 0, -542, _r2_v, _window, _topRight },
+		Event { "replace", "" },			Click { 1, -454, _r2_v, _window, _topRight },
+		Event { "replace and find", "" },	Click { 1, -364, _r2_v, _window, _topRight },
+		Event { "change", "" },				Click { 1, -454, _r2_v, _window, _topRight },
+		Event { "change again", "" },		Click { 1, -364, _r2_v, _window, _topRight },
+		_TypeXcodeSlate_,
+		_IMouseSlate_,
+	} }
+} };
+
+resource restype_Slate (resid_findOptions, "Find Options") { {
+	Slate { "opt", {
+		_SlateGlobals_,
+		ExitEvent { "close", "" },		Sequence{}, _clickOptionsButton, _down, _return, endSequence{},
+		ExitEvent { "exit", "" },		NilAction{},
+		Event { "style", "" },			Click { 1, -450, _r2_v, _window, _topRight },
+		Event { "hits", "" },			Click { 1, -240, _r2_v, _window, _topRight },
+		Event { "match", "" },			Click { 1, -110, _r2_v, _window, _topRight },
+		Event { "wrap", "" },			Click { 1, -35, _r2_v, _window, _topRight },
 		_TypeXcodeSlate_,
 		_IMouseSlate_,
 		_ReturnKey_,
@@ -2231,7 +2216,7 @@ resource restype_Slate (resid_LogIndex, "Log") { {
 } };
 
 #pragma mark 7 === Typing
-// inside: 1 Special; Copyright; Macro 2 _TypeDialogItems_; 3 _TypeXcodeItems_; Package; 4 TypeXcode, unix; TypeDebugConsole; 5 InsertSnippet; 6 InsertElement; Styles; InsertTag; 7 UserSlate; 8 Doxygen; 9 typeSearch
+// inside: 1 Special; Copyright; Macro 2 TypeDialog; 3 _TypeXcodeItems_; Package; 4 TypeXcode [unix]; TypeDebugConsole; 5 InsertSnippet; 6 InsertElement; Styles; InsertTag; 7 UserSlate; 8 Doxygen; 9 typeSearch
 #define _quote Keypress { kc_quote, mf_shift }
 #define _uc1		Keypress { kc_tab, 0 }, TypeText { "<p><b>" }
 #define _uc2		TypeText { ": </b><" }, Keypress { kc_3, mf_shift }
@@ -3398,7 +3383,6 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 				Event { "return", "" },			_return,
 				Event { "File", "" }, 			Sequence{}, _clickFile, _down, ResSubslate { resid_FileMenu }, endSequence{},
 				Event { "Source Control", "" },	Sequence{}, ClickMenu { "File" }, _down, TypeText { "Source Control" }, _right, ResSubslate { resid_SourceControl }, endSequence{},
-				Event { "Snapshots", "" },		Sequence{}, ClickMenu { "File" }, _down, TypeText { "Snapshots" }, _return, ResSubslate { resid_Snapshots }, endSequence{},
 				Event { "Edit", "" }, 			Sequence{}, ClickMenu { "Edit" }, _down, ResSubslate { resid_EditMenu }, endSequence{},
 				Event { "Refactor", "" }, 		Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Refactor" }, _return, ResSubslate { resid_Refactor }, endSequence{},
 				ExitEvent { "View", "" }, 		ClickMenu { "View" },
