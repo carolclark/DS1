@@ -11,18 +11,18 @@
 #define resid_TypeSafariSlate			resid_Safari+2
 
 /* resid_ */	// Xcode has 2000 resid's reserved
-#define resid_Navigate				resid_Xcode+350
+#define resid_Navigate				resid_Xcode+100
 	#define resid_navFilter				resid_Navigate+1
-	#define resid_GoTab					resid_Navigate+6
+	#define resid_GoTab					resid_Navigate+2
 	#define resid_JumpBar				resid_Navigate+10
 		#define resid_jumpPopup				resid_JumpBar+1
 
-#define resid_Utilities				resid_Xcode+370
-	#define resid_utilFile				resid_Utilities+5
+#define resid_Utilities				resid_Xcode+150
+	#define resid_utilFile				resid_Utilities+10
 		#define resid_utilFileLocate		resid_utilFile+1
-	#define resid_utilHelp				resid_Utilities+10
+	#define resid_utilHelp				resid_Utilities+20
 
-#define resid_Organizer				resid_Xcode+400
+#define resid_Organizer				resid_Xcode+200
 	#define resid_Repositories			resid_Organizer+10
 		#define resid_AddRepository			resid_Repositories+1
 		#define resid_Update				resid_Repositories+2
@@ -30,26 +30,26 @@
 	#define resid_Documentation			resid_Organizer+20
 
 #pragma mark Menus
-#define resid_FileMenu				resid_Xcode+50
-		#define resid_SelectTargetsAdd		resid_Xcode+70
-		#define resid_SelectTargetsNew		resid_Xcode+71
-	#define resid_NewFile				resid_FileMenu+1
-	#define resid_OpenFile				resid_FileMenu+2
-	#define resid_AddFiles				resid_FileMenu+3
-	#define resid_SourceControl			resid_FileMenu+4
-		#define resid_Commit				resid_FileMenu+5
-		#define resid_SaveFile				resid_FileMenu+6
+#define resid_FileMenu				resid_Xcode+250
+		#define resid_SelectTargetsAdd		resid_FileMenu+1
+		#define resid_SelectTargetsNew		resid_FileMenu+2
+	#define resid_NewFile				resid_FileMenu+10
+	#define resid_OpenFile				resid_FileMenu+20
+	#define resid_AddFiles				resid_FileMenu+30
+	#define resid_SourceControl			resid_FileMenu+40
+		#define resid_Commit				resid_SourceControl+1
+		#define resid_SaveFile				resid_SourceControl+2
 
-#define resid_EditMenu				resid_Xcode+80
+#define resid_EditMenu				resid_Xcode+300
 
-#define resid_Refactor				resid_Xcode+600
+#define resid_Refactor				resid_Xcode+350
 	#define resid_refactorPreview		resid_Refactor+1
 	#define resid_refactorView			resid_Refactor+2
 
-#define resid_Scripts				resid_Xcode+150
+#define resid_Scripts				resid_Xcode+400
 
 #pragma mark Target
-#define resid_Target				resid_Xcode+900
+#define resid_Target				resid_Xcode+500
 	#define resid_Profile				resid_Target+1
 	#define	resid_TargetScheme			resid_Target+2
 	#define	resid_TargetPopup			resid_Target+3
@@ -64,89 +64,90 @@
 		#define resid_wordsWords			resid_RunWords+2
 
 #pragma mark Editor Slates
-#define	resid_Editor				resid_Xcode+1000
+#define	resid_Editor				resid_Xcode+600
 	#define resid_Marker				resid_Editor+1
 
-	#define resid_StandardEditor		resid_Editor+100
-	#define resid_AssistantEditor		resid_Editor+200
+	#define resid_StandardEditor		resid_Editor+10
+	#define resid_AssistantEditor		resid_Editor+20
 		#define resid_asstSplit				resid_AssistantEditor+1
-	#define resid_VersionEditor			resid_Editor+300
+	#define resid_VersionEditor			resid_Editor+30
 
-	#define	resid_ProjectSettings		resid_Editor+400
-		#define resid_projTargetList		resid_ProjectSettings+10
-		#define resid_projAddTarget			resid_ProjectSettings+20
-		#define resid_projAddPhase			resid_ProjectSettings+30
-		#define resid_phaseRunScript		resid_ProjectSettings+40
+	#define	resid_ProjectSettings		resid_Editor+40
+		#define resid_projTargetList		resid_ProjectSettings+1
+		#define resid_projAddTarget			resid_ProjectSettings+2
+		#define resid_projAddPhase			resid_ProjectSettings+3
+		#define resid_phaseRunScript		resid_ProjectSettings+4
 
-	#define resid_Workspace				resid_Xcode+12
+	#define resid_Workspace				resid_Editor+50
 
-	#define resid_InterfaceBuilder		resid_Editor+450
+	#define resid_InterfaceBuilder		resid_Editor+60
 		#define resid_IBMenu				resid_InterfaceBuilder+10
 			#define	resid_WaitQuit				resid_IBMenu+1
 			#define resid_IBPin					resid_IBMenu+2
 			#define resid_IBAlign				resid_IBMenu+3
 			#define resid_IBEmbed				resid_IBMenu+4
 			#define resid_IBDocument			resid_IBMenu+5
-			#define resid_IBUtility				resid_IBMenu+6
-				#define resid_utilAttributes		resid_InterfaceBuilder+2
-				#define resid_utilSize				resid_InterfaceBuilder+1
-				#define resid_utilObject			resid_InterfaceBuilder+3
+			#define resid_IBUtility				resid_IBMenu+10
+				#define resid_utilAttributes		resid_IBMenu+11
+				#define resid_utilSize				resid_IBMenu+12
+				#define resid_utilObject			resid_IBMenu+13
 
 	#define resid_DataModel				resid_Xcode+90
 		#define resid_DataModelUtility		resid_DataModel+1
 		#define resid_utilModel				resid_DataModel+2
 
 #pragma mark Index Slates
-#define resid_Index						resid_Xcode+1500
+#define resid_Index						resid_Xcode+700
 	#define resid_IndexMouse				resid_Index+10
-	#define resid_ProjectIndex				resid_Index+30
+	#define resid_ProjectIndex				resid_Index+20
 		#define resid_NewGroup					resid_ProjectIndex+1
-	#define resid_SymbolIndex				resid_Index+40
-	#define	resid_SearchIndex				resid_Index+50
+	#define resid_SymbolIndex				resid_Index+30
+	#define	resid_SearchIndex				resid_Index+40
 		#define resid_MultFindOptions			resid_SearchIndex+1
-		#define resid_Search					resid_Xcode+300
-		#define resid_FindReplace				resid_Search+1
-		#define resid_FindOptions				resid_Search+2
-	#define	resid_IssueIndex				resid_Index+60
-	#define resid_DebugIndex				resid_Index+70
+		#define resid_Search					resid_SearchIndex+2
+		#define resid_FindReplace				resid_SearchIndex+3
+		#define resid_FindOptions				resid_SearchIndex+4
+	#define	resid_IssueIndex				resid_Index+50
+	#define resid_DebugIndex				resid_Index+60
 		#define resid_Threads					resid_DebugIndex+1
-	#define resid_BreakpointIndex			resid_Index+80
-	#define	resid_LogIndex					resid_Index+90
+	#define resid_BreakpointIndex			resid_Index+70
+	#define	resid_LogIndex					resid_Index+80
 
 #pragma mark Typing Slates
-#define resid_TypeXcodeSlate			resid_Xcode+1600
+#define resid_TypeXcodeSlate			resid_Xcode+800
 	#define resid_TypeSpecialXcodeSlate		resid_TypeXcodeSlate+1
-	#define resid_Copyright					resid_Xcode+780
-	#define resid_Macro						resid_Xcode+750
-	#define resid_TypeDialog				resid_TypeXcodeSlate+3
-	#define resid_Package					resid_TypeXcodeSlate+8
-	#define resid_TypeDebugConsole			resid_TypeXcodeSlate+2
-	#define	resid_InsertSnippet				resid_TypeXcodeSlate+20
-		#define resid_ucLevel	resid_InsertSnippet+1
-		#define resid_ucActor	resid_InsertSnippet+2
-	#define	resid_InsertElement				resid_TypeXcodeSlate+4
-	#define	resid_InsertStyle				resid_TypeXcodeSlate+5
-	#define	resid_InsertTag					resid_TypeXcodeSlate+6
-	#define	resid_InsertSlateText			resid_TypeXcodeSlate+7
-	#define resid_Doxygen					resid_TypeXcodeSlate+9
-	#define resid_typeSearch				resid_TypeXcodeSlate+10
+	#define resid_Copyright					resid_TypeXcodeSlate+2
+	#define resid_Macro						resid_TypeXcodeSlate+3
+	#define resid_TypeDialog				resid_TypeXcodeSlate+4
+	#define resid_Package					resid_TypeXcodeSlate+5
+	#define resid_TypeDebugConsole			resid_TypeXcodeSlate+6
+	#define	resid_InsertSnippet				resid_TypeXcodeSlate+10
+		#define resid_ucLevel					resid_InsertSnippet+1
+		#define resid_ucActor					resid_InsertSnippet+2
+	#define	resid_InsertElement				resid_TypeXcodeSlate+20
+	#define	resid_InsertStyle				resid_TypeXcodeSlate+21
+	#define	resid_InsertTag					resid_TypeXcodeSlate+22
+	#define	resid_InsertSlateText			resid_TypeXcodeSlate+23
+	#define resid_Doxygen					resid_TypeXcodeSlate+24
+	#define resid_typeSearch				resid_TypeXcodeSlate+25
 
 #pragma mark External Slates
-#define resid_Browser				resid_Xcode+11
-#define resid_BrowseDoxygen			resid_Xcode+650
-#define resid_GitHub				resid_Xcode+700
+#define resid_External				resid_Xcode+900
+#define resid_Browser				resid_External+0
+#define resid_BrowseDoxygen			resid_External+10
+#define resid_GitHub				resid_External+20
 	#define resid_ghMyPage				resid_GitHub+1
 	#define resid_ghRepository			resid_GitHub+2
-		#define resid_ghRepoButtons			resid_GitHub+20
-			#define resid_ghRepoBtn_Label		resid_ghRepoButtons+1
+		#define resid_ghRepoButtons			resid_GitHub+3
+			#define resid_ghRepoBtn_Label		resid_GitHub+4
 	#define resid_ghDashIssues			resid_GitHub+5
 	#define resid_ghRepoIssues			resid_GitHub+6
 	#define resid_ghOpenIssue			resid_GitHub+7
 	#define resid_ghEditIssue			resid_GitHub+8
 
-#define resid_Stickies				resid_Xcode+42
-#define resid_Console				resid_Xcode+43
-#define resid_BBValidate			resid_Xcode+45
+#define resid_Stickies				resid_External+40
+#define resid_Console				resid_External+50
+#define resid_BBValidate			resid_External+60
 	#define resid_BBContinueCheckAll	resid_BBValidate+1
 
 
