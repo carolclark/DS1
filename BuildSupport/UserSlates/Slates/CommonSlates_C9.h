@@ -97,6 +97,7 @@
 #define resid_Numbers					36000
 #define resid_Dash						37000
 	#define resid_XcodeDash					resid_Dash+1
+#define resid_GitHub					38000
 
 #define resid_ArbProto					40000
 

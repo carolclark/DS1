@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		67364A7F16C0363900940D94 /* FixWindow.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67364A6D16C0345900940D94 /* FixWindow.applescript */; };
 		673A579416C0578C0000BEE2 /* Snippet.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DB232C169E0A2900A6E910 /* Snippet.applescript */; };
+		676C9305179F326200876265 /* GitHub_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 676C9304179F326200876265 /* GitHub_C9.r */; };
 		6773C4141791FB03005E4CAB /* SetMarkers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6773C4131791F844005E4CAB /* SetMarkers.applescript */; };
 		67DB22EB169CD82300A6E910 /* AccessLibTypes.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22CF169CD82300A6E910 /* AccessLibTypes.r */; };
 		67DB22EC169CD82300A6E910 /* ArbonnePrototype_c9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D0169CD82300A6E910 /* ArbonnePrototype_c9.r */; };
@@ -124,6 +125,7 @@
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
 		67692458141EB921005D3E68 /* XcodeScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		676C9304179F326200876265 /* GitHub_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = GitHub_C9.r; sourceTree = "<group>"; };
 		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
 		67BDF869175967DC006C0B75 /* AllTests.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTests.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BDF86D175967DC006C0B75 /* AllTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AllTests-Info.plist"; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				67DB22E8169CD82300A6E910 /* UIBrower_C9.r */,
 				67DB22E9169CD82300A6E910 /* UMLet_C9.r */,
 				67DB22EA169CD82300A6E910 /* Xcode_C9.r */,
+				676C9304179F326200876265 /* GitHub_C9.r */,
 			);
 			path = Slates;
 			sourceTree = "<group>";
@@ -1359,6 +1362,7 @@
 				67DB2302169CD82300A6E910 /* UIBrower_C9.r in Rez */,
 				67DB2303169CD82300A6E910 /* UMLet_C9.r in Rez */,
 				67DB2304169CD82300A6E910 /* Xcode_C9.r in Rez */,
+				676C9305179F326200876265 /* GitHub_C9.r in Rez */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
