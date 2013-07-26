@@ -1,5 +1,5 @@
 // =================================================================================
-//	BBEdit.r					�2005-132 C & C Software, Inc. All rights reserved.
+//	BBEdit.r					©2005-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

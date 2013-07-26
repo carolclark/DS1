@@ -4,6 +4,7 @@
 
 #include "AccessLibTypes.r"
 #include "CommonSlates_C9.h"
+#include "GitHub_C9.h"
 
 #pragma mark === Markers ===
 // 1 Navigation; Utility; 2 Organizer; 3 Menus; 4 Target; 5 Editors; 6 Indexes; 7 Typing; 8 External; 9 Xcode
@@ -135,19 +136,13 @@
 #define resid_External				resid_Xcode+900
 #define resid_Browser				resid_External+0
 #define resid_BrowseDoxygen			resid_External+10
-#define resid_GitHub				resid_External+20		// Xcode+920
-	#define resid_ghMyPage				resid_GitHub+1
-	#define resid_ghRepository			resid_GitHub+2
-		#define resid_ghRepoButtons			resid_GitHub+3
-			#define resid_ghRepoBtn_Label		resid_GitHub+4
-	#define resid_ghDashIssues			resid_GitHub+5
-	#define resid_ghRepoIssues			resid_GitHub+6
-	#define resid_ghOpenIssue			resid_GitHub+7
-	#define resid_ghEditIssue			resid_GitHub+8
+#define resid_GitHubXC				resid_External+20
+	#define resid_ghRepository			resid_GitHub+1
+	#define resid_ghOpenIssue			resid_GitHub+2
 
-#define resid_Stickies				resid_External+40
-#define resid_Console				resid_External+50
-#define resid_BBValidate			resid_External+60
+#define resid_Stickies				resid_External+30
+#define resid_Console				resid_External+40
+#define resid_BBValidate			resid_External+50
 	#define resid_BBContinueCheckAll	resid_BBValidate+1
 
 
@@ -1013,7 +1008,6 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "view Doxygen", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
 		Event { "marker", "" },			ResSubslate { resid_Marker },
-		Event { "goto line", "" },		Keypress { kc_L, mf_command },
 		gotoReference_,
 		Event { "top row", "" },		_topRow,
 		Event { "project", "" },		Keypress { kc_1, mf_command },
@@ -3000,7 +2994,7 @@ resource restype_Slate (resid_typeSearch, "") { {
 	} }
 } };
 
-#pragma mark 9 === External
+#pragma mark 8 === External
 // inside: Safari Browsers;
 // GitHub
 //	1 GitHub; MyPage; 2 Repository; RepoButtons; 5 Issues
@@ -3021,6 +3015,12 @@ _BrowseCdocSlate_
 _BrowseDoxygenSlate_
 
 #pragma mark 1 --- Github
+#define	_GitHubID_			resid_GitHubXC
+	#define _GitHubRepoID_		resid_ghRepository
+	#define _GitHubOpenIssueID_	resid_ghOpenIssue
+_GitHubSlate_
+_GitHubRepoSlate_
+_GitHubOpenIssueSlate_
 
 #pragma mark 4 --- Stickies
 resource restype_Slate (resid_Stickies, "") { {
@@ -3107,8 +3107,8 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 			_WindowItems_,
 			endSubslate{},
 		_openDash,
-		Event { "open git hub", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, OpenURL { "https://github.com" }, ResSubslate { resid_GitHub }, endSequence{},
-		Event { "git hub", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_GitHub }, endSequence{},
+		Event { "open git hub", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, OpenURL { "https://github.com" }, ResSubslate { resid_GitHubXC }, endSequence{},
+		Event { "git hub", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_GitHubXC }, endSequence{},
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
 		focus_,

@@ -126,6 +126,7 @@
 		67692458141EB921005D3E68 /* XcodeScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		676C9304179F326200876265 /* GitHub_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = GitHub_C9.r; sourceTree = "<group>"; };
+		676C9306179F478A00876265 /* GitHub_C9.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitHub_C9.h; sourceTree = "<group>"; };
 		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
 		67BDF869175967DC006C0B75 /* AllTests.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTests.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BDF86D175967DC006C0B75 /* AllTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AllTests-Info.plist"; sourceTree = "<group>"; };
@@ -477,6 +478,8 @@
 				67DB22DA169CD82300A6E910 /* FileMaker_C9.r */,
 				67DB22DB169CD82300A6E910 /* Finder_C9.r */,
 				67DB22DC169CD82300A6E910 /* Games_C9.r */,
+				676C9304179F326200876265 /* GitHub_C9.r */,
+				676C9306179F478A00876265 /* GitHub_C9.h */,
 				67DB22DD169CD82300A6E910 /* InterfaceBuilder_C9.r */,
 				67DB22DE169CD82300A6E910 /* Keyboard_AL.h */,
 				67DB22DF169CD82300A6E910 /* Mail_C9.r */,
@@ -491,7 +494,6 @@
 				67DB22E8169CD82300A6E910 /* UIBrower_C9.r */,
 				67DB22E9169CD82300A6E910 /* UMLet_C9.r */,
 				67DB22EA169CD82300A6E910 /* Xcode_C9.r */,
-				676C9304179F326200876265 /* GitHub_C9.r */,
 			);
 			path = Slates;
 			sourceTree = "<group>";
