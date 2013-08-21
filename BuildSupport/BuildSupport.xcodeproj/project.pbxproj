@@ -11,6 +11,7 @@
 		673A579416C0578C0000BEE2 /* Snippet.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DB232C169E0A2900A6E910 /* Snippet.applescript */; };
 		676C9305179F326200876265 /* GitHub_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 676C9304179F326200876265 /* GitHub_C9.r */; };
 		6773C4141791FB03005E4CAB /* SetMarkers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6773C4131791F844005E4CAB /* SetMarkers.applescript */; };
+		6787407317C16A4F000190D4 /* Developer_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 6787407217C02602000190D4 /* Developer_C9.r */; };
 		67DB22EB169CD82300A6E910 /* AccessLibTypes.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22CF169CD82300A6E910 /* AccessLibTypes.r */; };
 		67DB22EC169CD82300A6E910 /* ArbonnePrototype_c9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D0169CD82300A6E910 /* ArbonnePrototype_c9.r */; };
 		67DB22ED169CD82300A6E910 /* Automator_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D1169CD82300A6E910 /* Automator_C9.r */; };
@@ -128,6 +129,8 @@
 		676C9304179F326200876265 /* GitHub_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = GitHub_C9.r; sourceTree = "<group>"; };
 		676C9306179F478A00876265 /* GitHub_C9.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitHub_C9.h; sourceTree = "<group>"; };
 		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
+		6787406F17C02189000190D4 /* Developer_C9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Developer_C9.h; sourceTree = "<group>"; };
+		6787407217C02602000190D4 /* Developer_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Developer_C9.r; sourceTree = "<group>"; };
 		67BDF869175967DC006C0B75 /* AllTests.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTests.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BDF86D175967DC006C0B75 /* AllTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AllTests-Info.plist"; sourceTree = "<group>"; };
 		67BDF86F175967DC006C0B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -474,6 +477,8 @@
 				67DB22D6169CD82300A6E910 /* CommonSlates_C9.r */,
 				67DB22D7169CD82300A6E910 /* Dash_C9.r */,
 				67DB22D8169CD82300A6E910 /* Dashcode_C9.r */,
+				6787406F17C02189000190D4 /* Developer_C9.h */,
+				6787407217C02602000190D4 /* Developer_C9.r */,
 				67DB22D9169CD82300A6E910 /* Eclipse_C9.r */,
 				67DB22DA169CD82300A6E910 /* FileMaker_C9.r */,
 				67DB22DB169CD82300A6E910 /* Finder_C9.r */,
@@ -1338,6 +1343,7 @@
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6787407317C16A4F000190D4 /* Developer_C9.r in Rez */,
 				67DB22EB169CD82300A6E910 /* AccessLibTypes.r in Rez */,
 				67DB22EC169CD82300A6E910 /* ArbonnePrototype_c9.r in Rez */,
 				67DB22ED169CD82300A6E910 /* Automator_C9.r in Rez */,

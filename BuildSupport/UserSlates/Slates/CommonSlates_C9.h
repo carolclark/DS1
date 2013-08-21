@@ -57,7 +57,10 @@
 #define resid_LinkContentSlate			1019
 #define resid_Sleep						1020
 
-#define resid_DoScan					1030
+#define resid_WordLeft					1030
+#define resid_WordRight					1031
+
+#define resid_DoScan					1050
 	#define resid_ScanAhead					resid_DoScan+1
 	#define resid_ScanBack					resid_DoScan+2	
 	#define resid_DoTab						resid_DoScan+3
@@ -98,10 +101,10 @@
 #define resid_Dash						37000
 	#define resid_XcodeDash					resid_Dash+1
 #define resid_GitHub					38000
+#define resid_Developer					39000
+#define resid_ArbProto					50000
 
-#define resid_ArbProto					40000
-
-#define	resid_LaunchGamesSlate			50000
+#define	resid_LaunchGamesSlate			55000
 	#define resid_Solitaire		resid_LaunchGamesSlate + 100
 		#define resid_solSpider		resid_Solitaire + 1
 #define resid_Games						60000
@@ -797,141 +800,6 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		ExitEvent { "check mark", "" }, TypeText { "&radic;" },		\
 		ExitEvent { "bullet", "" }, TypeText { "&bull;" },		\
 		ExitEvent { "diamond", "" }, TypeText { "&loz;" }
-
-#define	_StyleItems_	\
-		ExitEvent { "not yet implemented", "" }, Sequence{}, TypeText { " class='nyi'" }, _right, endSequence{},		\
-		ExitEvent { "not yet", "" }, Sequence{}, TypeText { " class='nyi'" }, _right, endSequence{},		\
-		ExitEvent { "design question", "" }, Sequence{}, TypeText { " class='dq'" }, _right, endSequence{},		\
-		ExitEvent { "deprecated", "" }, Sequence{}, TypeText { " class='depr'" }, _right, endSequence{},		\
-		ExitEvent { "expand", "" }, Sequence{}, TypeText { " class='expand'" }, _right, endSequence{},		\
-		ExitEvent { "code", "" }, Sequence{}, TypeText { " class='cod'" }, _right, endSequence{},		\
-		ExitEvent { "emphasize", "" }, Sequence{}, TypeText { " class='em'" }, _right, endSequence{},		\
-		ExitEvent { "italic", "" }, Sequence{}, TypeText { " class='ital'" }, _right, endSequence{},		\
-		ExitEvent { "blurb", "" }, Sequence{}, TypeText { " class='blurb'" }, _right, endSequence{},		\
-		ExitEvent { "small", "" }, Sequence{}, TypeText { " class='small'" }, _right, endSequence{},		\
-		ExitEvent { "center", "" }, Sequence{}, TypeText { " class='center'" }, _right, endSequence{},		\
-		ExitEvent { "mono", "" }, Sequence{}, TypeText { " class='mono'" }, _right, endSequence{},		\
-		ExitEvent { "technical", "" }, Sequence{}, TypeText { " class='tech'" }, _right, endSequence{},		\
-		ExitEvent { "remove", "" }, Sequence{}, TypeText { " class='remove'" }, _right, endSequence{},		\
-		ExitEvent { "future", "" }, Sequence{}, TypeText { " class='future'" }, _right, endSequence{},		\
-		ExitEvent { "subitems", "" }, Sequence{}, TypeText { " class='subitems'" }, _right, endSequence{},		\
-		ExitEvent { "glossary", "" }, Sequence{}, TypeText { " class='glossary'" }, _right, endSequence{},		\
-		ExitEvent { "pseudo link", "" }, Sequence{}, TypeText { " class='pslink'" }, _right, endSequence{},		\
-		ExitEvent { "implement", "" }, Sequence{}, TypeText { " class='impl'" }, _right, endSequence{},		\
-		ExitEvent { "done", "" }, Sequence{}, TypeText { " class='done'" }, _right, endSequence{},		\
-		ExitEvent { "todo", "" }, Sequence{}, TypeText { " class='todo'" }, _right, endSequence{},	\
-		ExitEvent { "target", "" },	Sequence{}, TypeText { " class='tltarget'" }, _right, endSequence{}
-
-#define _TagItems_	\
-		ExitEvent { "comment", "" }, Sequence{}, TypeText		\
-			{ "<!--  -->" }, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "break", "" }, TypeText		\
-			{ "<br />" },		\
-		ExitEvent { "boldface", "" }, Sequence{}, TypeText		\
-			{ "<b></b>" }, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "italic", "" }, Sequence{}, TypeText		\
-			{ "<i></i>" }, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "paragraph", "" }, Sequence{}, TypeText		\
-			{ "<p></p>" }, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "code", "" }, Sequence{}, TypeText		\
-			{ "<code></code>" }, _left, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "emphasize", "" }, Sequence{}, TypeText		\
-			{ "<em></em>" }, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "plain list", "" }, Sequence{}, TypeText		\
-			{ "<ul></ul>" }, _left, _left, _left, _left, _left,		\
-			Keypress { kc_return, 0 }, Keypress { kc_return, 0 },		\
-			Keypress { kc_up, 0 }, Keypress { kc_tab, 0 },		\
-			endSequence{},		\
-		ExitEvent { "ordered list", "" }, Sequence{}, TypeText		\
-			{ "<ol></ol>" }, _left, _left, _left, _left, _left,		\
-			Keypress { kc_return, 0 }, Keypress { kc_return, 0 },		\
-			Keypress { kc_up, 0 }, Keypress { kc_tab, 0 },		\
-			endSequence{},		\
-		ExitEvent { "list item", "" }, Sequence{}, TypeText		\
-			{ "<li></li>" }, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "plain line", "" }, Sequence{}, TypeText		\
-			{ "<hr>" }, Keypress { kc_return, 0 },		\
-			endSequence{},		\
-		ExitEvent { "wide line", "" }, Sequence{}, TypeText		\
-			{ "<hr size=\"4\" noshade>" }, Keypress { kc_return, 0 },		\
-			endSequence{},		\
-		ExitEvent { "anchor", "" }, Sequence{}, TypeText		\
-			{ "<a></a>" }, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "table row", "", },  Sequence{}, TypeText		\
-			{ "<tr> <##></tr>" }, _previous,		\
-			endSequence{},		\
-		ExitEvent { "table data", "", },  Sequence{}, TypeText		\
-			{ "<td><##></td> " }, _previous,		\
-			endSequence{},		\
-		ExitEvent { "centered data", "", },  Sequence{}, TypeText		\
-			{ "<td align='center'><##></td> " }, _previous,		\
-			endSequence{},		\
-		ExitEvent { "table column header", "", },  Sequence{}, TypeText		\
-			{ "<th></th> " }, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "dictionary list", "", },  Sequence{}, TypeText		\
-			{ "<dl></dl>" }, _left, _left, _left, _left, _left, _return,		\
-			_return, Keypress { kc_up, 0 }, Keypress { kc_tab, 0 },		\
-			endSequence{},		\
-		ExitEvent { "dictionary item", "", },  Sequence{}, TypeText		\
-			{ "<dt><##></dt><dd><##></dd>" }, Keypress { kc_left, mf_command }, _previous, 		\
-			endSequence{},		\
-		ExitEvent { "style", "", },  Sequence{}, TypeText		\
-			{ "<style type=\"text/css\">" }, Keypress { kc_return, 0 }, TypeText { "</style>" }, Keypress { kc_return, 0 }, _left, _left, _left, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "span", "", },  Sequence{}, TypeText		\
-			{ "<span></span>" }, _left, _left, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "division", "", },  Sequence{}, TypeText		\
-			{ "<div></div>" }, _left, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "link", "" }, Sequence{}, TypeText		\
-			{ "<a href=\"<##>\"><##></a>" }, _previous, endSequence{},		\
-		ExitEvent { "identifier", "" }, Sequence{}, _left, TypeText { " id=''" }, _left, endSequence{},		\
-		ExitEvent { "glossary link", "" }, Sequence{}, TypeText		\
-			{ "<a class='glosslink' href=\"<#which#>_gloss.html#def_<#term#>\"><#text#></a>" },		\
-			_previous, _previous, _previous, endSequence{},		\
-		ExitEvent { "refactor link", "" }, Sequence{}, TypeText		\
-			{ "<a href=\"../Support/DevelopingProjects.html#<#name#>\"><#title#></a>" },		\
-			_previous, endSequence{},		\
-		ExitEvent { "name", "" }, Sequence{}, TypeText		\
-			{ "<a name=''><##></a>" }, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "monospace", "" }, Sequence{}, TypeText		\
-			{ "<p class='mono'></p>" }, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "block quote", "" }, Sequence{}, TypeText		\
-			{ "<blockquote></blockquote>" }, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "line tag", "" }, Sequence{}, TypeText		\
-			{ "<span class='linetag'></span>" }, _left, _left, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "header one", "" }, Sequence{}, TypeText		\
-			{ "<h1></h1>" }, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "header two", "" }, Sequence{}, TypeText		\
-			{ "<h2></h2>" }, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "header three", "" }, Sequence{}, TypeText		\
-			{ "<h3></h3>" }, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "header four", "" }, Sequence{}, TypeText		\
-			{ "<h4></h4>" }, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "header five", "" }, Sequence{}, TypeText		\
-			{ "<h5></h5>" }, _left, _left, _left, _left, _left,		\
-			endSequence{},		\
-		ExitEvent { "header six", "" }, Sequence{}, TypeText		\
-			{ "<h6></h6>" }, _left, _left, _left, _left, _left,		\
-		\			endSequence{}
 
 #pragma mark _JumpNorthSubslate_
 #define	_JumpNorthSubslate_	\
