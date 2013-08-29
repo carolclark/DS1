@@ -4,72 +4,49 @@
 
 #include "AccessLibTypes.r"
 #include "CommonSlates_C9.h"
+#include "Developer_C9.h"
 
 #pragma mark === Markers ===
-// Git
-//	2 Git, Type, Specify, Checkout, Branch, Remote, Difference, Show, Grep, Stash; 3 Add, Commit, Log, Rebase, Tag, Merge, Push, Fetch; 4 Clean; Bisect; Blame; SelectFile, Reset, Browser, FileMerge
-// Other
-//	1 Standards; Type; Emacs; Defines; 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
+// 1 Windows; 3 Menus; 5 Documentation; 8 Type; 9 BBEdit
 
 #pragma mark 0 ===
 // #defined in CommonSlates_C9.h
 //	#define resid_XCBBEdit					resid_BBEdit+1
 	
 // resid_
-#define resid_WindowBBEdit				resid_BBEdit+10
-
-#define resid_Browser					resid_BBEdit+12
-
-#define resid_TypeBBEditSlate			resid_BBEdit+20
-	#define resid_TypeSpecialBBEdit			resid_TypeBBEditSlate+1
-	#define resid_Dictate					resid_TypeBBEditSlate+2
-	#define resid_Macro						resid_TypeBBEditSlate+3
-	#define resid_Snippet					resid_TypeBBEditSlate+4
-	#define resid_Placeholder				resid_TypeBBEditSlate+5
-
-	#define resid_Document					resid_TypeBBEditSlate+10
-	#define resid_Markers					resid_TypeBBEditSlate+11
-	#define resid_Symbol					resid_TypeBBEditSlate+12
-
-#define resid_Shell						resid_BBEdit+40
-	#define resid_shellSvn					resid_Shell+1
-	#define resid_shellLs					resid_Shell+2
-
-#define resid_Preferences				resid_BBEdit+50
-	#define resid_prefsMenus				resid_Preferences+1
-
-#define resid_Subversion				resid_BBEdit+60
-	#define resid_Commit					resid_Subversion+1
-	#define resid_DoCommit					resid_Subversion+2
-	#define resid_svnStatus					resid_Subversion+3
-	#define resid_svnSelect					resid_Subversion+4
-	#define resid_Differences				resid_Subversion+5
-	#define resid_SelectCompare				resid_Subversion+6
-
-#define resid_DocWindow					resid_BBEdit+70
+#pragma mark # Windows
+#define resid_DocWindow					resid_BBEdit+10
 	#define resid_Drawer					resid_DocWindow+1
 	#define	resid_DrawerActions				resid_DocWindow+2
 
-#define resid_Project					resid_BBEdit+80
-	#define resid_ProjectContents			resid_Project+1
+#define resid_Project					resid_BBEdit+20
 	#define resid_ProjectActions			resid_Project+2
+	#define resid_ProjectContents			resid_Project+1
 
-#define resid_FileMenu					resid_BBEdit+200
+#pragma mark # Menus
+#define resid_FileMenu					resid_BBEdit+100
 	#define resid_FileOpenDialog			resid_FileMenu+1
 	#define resid_FileSaveDialog			resid_FileMenu+2
-	#define resid_FileNew					resid_FileMenu+3
-	#define resid_FileTemplate				resid_FileMenu+4
+	#define resid_FileTemplate				resid_FileMenu+3
 
-#define resid_EditMenu					resid_BBEdit+300
+#define resid_EditMenu					resid_BBEdit+200
 	#define	resid_Search					resid_EditMenu+1
 	#define resid_Find						resid_EditMenu+2
 	#define resid_FindMultiple				resid_EditMenu+3
 	#define resid_SearchBrowser				resid_EditMenu+4
 	#define resid_SearchPattern				resid_EditMenu+5
-	#define resid_Clipboard					resid_EditMenu+6
+	#define resid_SelectCompare				resid_EditMenu+6
+	#define resid_Clipboard					resid_EditMenu+7
 
+#define resid_WindowBBEdit				resid_BBEdit+230
 
-#define resid_Markup					resid_BBEdit+400
+#define resid_Preferences				resid_BBEdit+250
+	#define resid_prefsMenus				resid_Preferences+1
+
+#pragma mark # Documentation
+#define resid_Browser					resid_BBEdit+400
+
+#define resid_Markup					resid_BBEdit+450
 	#define resid_MakeTag					resid_Markup+1
 	#define resid_EditTag					resid_Markup+2
 	#define resid_teAnchor					resid_Markup+3
@@ -78,25 +55,35 @@
 	#define resid_ValidateMarkup			resid_Markup+40
 		#define resid_ContinueCheckTechnical	resid_Markup+41
 
-	#define resid_InsertElement				resid_Markup+50
-	#define resid_InsertStyle				resid_Markup+51
-
+#pragma mark # Scripting
 #define resid_Script					resid_BBEdit+500
 #define resid_Action					resid_BBEdit+550
 	#define resid_Output					resid_Action+1
+#define resid_Shell						resid_BBEdit+600
+	#define resid_shellLs					resid_Shell+2
 
-//#define	resid_Dictate					resid_BBEdit+900
-#define resid_MoviePlayer				resid_BBEdit+950
+#pragma mark # Type
+#define resid_TypeBBEditSlate			resid_BBEdit+800
+	#define resid_Markers					resid_TypeBBEditSlate+1
+	#define resid_Symbol					resid_TypeBBEditSlate+2
+	#define resid_Doxygen					resid_TypeBBEditSlate+3
+	#define resid_Macro						resid_TypeBBEditSlate+4
+	#define resid_Placeholder				resid_TypeBBEditSlate+5
+	#define resid_Document					resid_TypeBBEditSlate+6
 
-#pragma mark #define
+#pragma mark #defines
+#define _TypeBBEditSlate_ 	Event { "Type", "" },	ResSubslate { resid_TypeBBEditSlate }
+
 #define _next		Keypress { kc_accent, mf_control }
 #define _previous	Keypress { kc_accent, mf_control + mf_shift }	
 #define _clickScriptsMenu	Click { 1, 628, 11, _screen, _topLeft }
 #define _clickSvnMenu	Click { 1, 575, 11, _screen, _topLeft }
 #define _NextPanel	Event { "next panel", "" },	Keypress { kc_tab, mf_control }
 #define _PreviousPanel	Event { "previous panel", "" },	Keypress { kc_tab, mf_control + mf_shift }
-
-#define _TypeProjectName_
+#define _capitalize		Keypress { kc_C, mf_command + mf_shift + mf_option }
+#define _lowercase		Keypress { kc_C, mf_command + mf_shift + mf_option }
+#define	_selword		Sequence{}, Keypress { kc_right, 0 }, Keypress { kc_left, mf_option }, Keypress { kc_right, mf_option + mf_shift }, endSequence{}
+#define	_selline		Keypress { kc_L, mf_command }
 
 #define _BBEditStandards_		\
 	_SlateGlobals_,                                                                                             \
@@ -138,552 +125,7 @@
 
 #define	_cutNextLine	_down, Keypress { kc_L, mf_command }, Keypress { kc_X, mf_command }
 
-#pragma mark Browser
-	#define	_BrowseCdocResID_	resid_Browser
-	#define _mainFrame_h		0
-	#define _mainFrame_v		75
-	#define _homeApp			MainApps_"BBEdit.app"
-_BrowseCdocSlate_
-
-#pragma mark Type =
-#pragma mark TypeSpecial
-resource restype_Slate (resid_TypeSpecialBBEdit, "Type Special BBEdit Slate") { {
-	Slate { "Special",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		_TypeSpecialBaseItems_,
-		ExitEvent { "define", "" },			TypeText { "#define" },
-		ExitEvent { "resource id", "" },	TypeText { "resid_" },
-		ExitEvent { "end event", "" },		Sequence{},
-			_quote, TypeText { ", " }, _quote, _quote, Keypress { kc_space, 0 },
-			Keypress { kc_closebracket, mf_shift }, Keypress { kc_comma, 0 }, 
-			Keypress { kc_tab, 0 }, Keypress { kc_tab, 0 }, endSequence{},
-		ExitEvent { "in use development", "" },	TypeText
-			{ "in-use development" },
-		ExitEvent { "pragma mark", "" },	TypeText { "#pragma mark " },
-		ExitEvent { "mark spot", "" },		TypeText { "<##>" },
-	} }
-} };
-
-
-#pragma mark 1 === Dictate
-#pragma mark Dictate
-resource restype_Slate (resid_Dictate, "Dictate") { {
-	Slate { "Dictate",	{
-		_SlateGlobals_,
-		ExitEvent { "okay", "" },			NilAction{},
-		ExitEvent { "go back", "" },		Launch { MainApps_"BBEdit.app", 0 },
-		ExitEvent { "cut back", "" },		Sequence{}, Keypress { kc_A, mf_command }, Keypress { kc_X, mf_command }, 
-			Launch { MainApps_"BBEdit.app", 0 }, endSequence{},
-		Event { "microphone off", "and hide recognition window" }, _CloseRecognitionWindow_,
-		Event { "microphone on", "" },
-			Sequence{}, Click { 1, -55, 55, _screen, _topRight }, ResSubslate { resid_DictateSlate },
-			endSequence{},
-		Event { "recognition window", "" },	_CloseRecognitionWindow_,
-		Event { "new window", "" },			Keypress { kc_N, mf_command },
-		Event { "go to sleep", "" },		NilAction{},
-	} }
-} };
-
-#pragma mark Popups
-#define _Document_	\
-	Event { "document", "" },	Sequence{},	Keypress { kc_F, mf_option + mf_control },		\
-		ResSubslate { resid_Document }, endSequence{},										\
-	Event { "doc list", "" },	Sequence{},	Keypress { kc_F, mf_option + mf_control },		\
-		ResSubslate { resid_Document }, endSequence{}
-
-#define _GoFile_	\
-	Event { "go file", "" },	Sequence{},	Keypress { kc_D, mf_command },		\
-		ResSubslate { resid_GoFile }, endSequence{}
-
-#define _Markers_	\
-	Event { "markers", "" },		Sequence{},	Keypress { kc_M, mf_option + mf_control }, 		\
-		ResSubslate { resid_Markers }, endSequence{}
-
-#define _Symbol_	\
-	Event { "symbol", "" },		Sequence{},	Click { 1, 30, 75, _window, _topCenter }, 		\
-		ResSubslate { resid_Symbol }, endSequence{}
-
-#define _PopupStandards_	\
-		_SlateGlobals_,		\
-		ExitEvent { "okay", "" },		Keypress { kc_return, 0 }, 								\
-		ExitEvent { "return", "" },		Keypress { kc_return, 0 },                             	\
-		ExitEvent { "cancel", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, \
-			endSequence{},     																	\
-		ExitEvent { "close", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, \
-			endSequence{},       																\
-		ExitEvent { "exit", "" },		CloseSubslate{},										\
-		Event { "page top", "" },		Keypress { kc_home, 0 },								\
-		Event { "page end", "" },		Keypress { kc_end, 0 },                                 \
-		Event { "page north", "" },		Keypress { kc_pageup, 0 },                              \
-		Event { "page down", "" },		Keypress { kc_pagedown, 0 },                            \
-		_JumpDownSubslate_,                     \
-		_JumpNorthSubslate_,                    \
-		_DoJumpSubslate_,                       \
-		_DirectionKeys_,                        \
-		_LetterKeys_,                           \
-		_NumberKeys_
-
-resource restype_Slate (resid_Document, "") { {
-	Slate { "Document", {
-		_PopupStandards_,
-		ExitEvent { "Support", "" },	Subslate { "Support" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "support", "" },	Sequence{}, TypeText { "Support.html" }, _return, endSequence{},
-			ExitEvent { "history", "" },	Sequence{}, TypeText { "Support_hist" }, _return, endSequence{},
-			ExitEvent { "versions", "" },	Sequence{}, TypeText { "Support_vers" }, _return, endSequence{},
-			ExitEvent { "development", "" },Sequence{}, TypeText { "Development.html" }, _return, endSequence{},
-			ExitEvent { "top history", "" },	Sequence{}, TypeText { "Development_hist" }, _return, endSequence{},
-			ExitEvent { "git", "" },	Sequence{}, TypeText { "Git.html" }, _return, endSequence{},
-			ExitEvent { "Cdoc", "" },	Sequence{}, TypeText { "Cdoc" }, _return, endSequence{},
-			ExitEvent { "tools", "" },	Sequence{}, TypeText { "Tools" }, _return, endSequence{},
-			ExitEvent { "subversion config", "" },	Sequence{}, TypeText { "subversion_config" }, _return, endSequence{},
-			ExitEvent { "apache errors", "" },	Sequence{}, TypeText { "/opt/local/apache2/logs/error_log" }, _return, endSequence{},
-			ExitEvent { "apache access", "" },	Sequence{}, TypeText { "/opt/local/apache2/logs/access_log" }, _return, endSequence{},
-			ExitEvent { "apache config", "" },	Sequence{}, TypeText { "/opt/local/apache2/conf/httpd.conf" }, _return, endSequence{},
-			endSubslate{},
-		ExitEvent { "old Support", "" },	Subslate { "old Support" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "support", "" },	Sequence{}, TypeText { "Support.html" }, _return, endSequence{},
-			ExitEvent { "history", "" },	Sequence{}, TypeText { "Support_hist" }, _return, endSequence{},
-			ExitEvent { "versions", "" },	Sequence{}, TypeText { "Support_vers" }, _return, endSequence{},
-			ExitEvent { "development", "" },Sequence{}, TypeText { "Development.html" }, _return, endSequence{},
-			ExitEvent { "top history", "" },	Sequence{}, TypeText { "Development_hist" }, _return, endSequence{},
-			ExitEvent { "tools	", "" },	Sequence{}, TypeText { "Tools" }, _return, endSequence{},
-			ExitEvent { "subversion config", "" },	Sequence{}, TypeText { "subversion_config" }, _return, endSequence{},
-			ExitEvent { "apache errors", "" },	Sequence{}, TypeText { "/opt/local/apache2/logs/error_log" }, _return, endSequence{},
-			ExitEvent { "apache access", "" },	Sequence{}, TypeText { "/opt/local/apache2/logs/access_log" }, _return, endSequence{},
-			ExitEvent { "apache config", "" },	Sequence{}, TypeText { "/opt/local/apache2/conf/httpd.conf" }, _return, endSequence{},
-			endSubslate{},
-		ExitEvent { "Punkin", "" },	Subslate { "Punkin" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "Punkin", "" },	Sequence{}, TypeText { "Punkin.html" }, _return, endSequence{},
-			ExitEvent { "history", "" },	Sequence{}, TypeText { "Punkin_hist" }, _return, endSequence{},
-			ExitEvent { "versions", "" },	Sequence{}, TypeText { "Punkin_vers" }, _return, endSequence{},
-			ExitEvent { "Agenda", "" },	Sequence{}, TypeText { "Agenda" }, _return, endSequence{},
-			ExitEvent { "User Interface", "" },	Sequence{}, TypeText { "UserInterface" }, _return, endSequence{},
-			ExitEvent { "glossary", "" },	Sequence{}, TypeText { "Punkin_gloss" }, _return, endSequence{},
-			ExitEvent { "Expenses", "" },	Sequence{}, TypeText { "PunkinExpenses" }, _return, endSequence{},
-			ExitEvent { "Technology", "" },	Sequence{}, TypeText { "Technology" }, _return, endSequence{},
-			endSubslate{},
-		ExitEvent { "Web Gen", "" },	Subslate { "WebGen" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "Web Gen", "" },	Sequence{}, TypeText { "WebGen.html" }, _return, endSequence{},
-			ExitEvent { "history", "" },	Sequence{}, TypeText { "WebGen_hist" }, _return, endSequence{},
-			ExitEvent { "versions", "" },	Sequence{}, TypeText { "WebGen_vers" }, _return, endSequence{},
-			endSubslate{},
-		ExitEvent { "Personal", "" },	Subslate { "Personal" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "Site", "" },	Sequence{}, TypeText { "PersonalSite.html" }, _return, endSequence{},
-			ExitEvent { "versions", "" },	Sequence{}, TypeText { "PersonalSite_vers" }, _return, endSequence{},
-			endSubslate{},
-		ExitEvent { "DevSupport", "" },	Subslate { "DevSupport" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "history", "" },	Sequence{}, TypeText { "DevSupport_hist" }, _return, endSequence{},
-			ExitEvent { "versions", "" },	Sequence{}, TypeText { "DevSupport_vers" }, _return, endSequence{},
-			ExitEvent { "development", "" },Sequence{}, TypeText { "Development.html" }, _return, endSequence{},
-			ExitEvent { "top history", "" },	Sequence{}, TypeText { "Development_hist" }, _return, endSequence{},
-			endSubslate{},
-		ExitEvent { "Carbon", "" },		Subslate { "Carbon" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "history", "" },	Sequence{}, TypeText { "Accessor_C9_hist" }, _return, endSequence{},
-			ExitEvent { "BBEdit", "" },	Sequence{}, TypeText { "BBEdit" }, _return, endSequence{},
-			ExitEvent { "Terminal", "" },	Sequence{}, TypeText { "Terminal" }, _return, endSequence{},
-			ExitEvent { "Xcode", "" },	Sequence{}, TypeText { "Xcode" }, _return, endSequence{},
-			ExitEvent { "Mail", "" },	Sequence{}, TypeText { "Mail" }, _return, endSequence{},
-			endSubslate{},
-	} }
-} };
-
-resource restype_Slate (resid_Markers, "") { {
-	Slate { "Markers", {
-		_PopupStandards_,
-	} }
-} };
-
-resource restype_Slate (resid_Symbol, "") { {
-	Slate { "Symbol", {
-		_PopupStandards_,
-	} }
-} };
-
-#pragma mark Type
-#define	_completionItems				\
-	Event { "choose two", "" }, _down,	\
-	Event { "choose three", "" }, Sequence{}, _down, _down, endSequence{},			\
-	Event { "choose four", "" }, Sequence{}, _down, _down, _down, endSequence{},	\
-	Event { "choose five", "" }, Sequence{}, _down, _down, _down, _down, endSequence{},			\
-	Event { "choose six", "" }, Sequence{}, _down, _down, _down, _down, _down, endSequence{},	\
-	Event { "choose seven", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, endSequence{},			\
-	Event { "choose eight", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, endSequence{},	\
-	Event { "choose nine", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, _down, endSequence{},			\
-	Event { "choose ten", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, _down, _down, endSequence{},	\
-	Event { "choose eleven", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, endSequence{},			\
-	Event { "choose twelve", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, endSequence{},	\
-	Event { "choose thirteen", "" }, Sequence{}, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, _down, endSequence{}
-
-resource restype_Slate (resid_TypeBBEditSlate, "Type Slate") { {
-	Slate { "Type",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		_DoJumpSubslate_,
-		_DoSelectSubslate_,
-		_JumpDownSubslate_,
-		_JumpNorthSubslate_,
-		_JumpLeftSubslate_,
-		_JumpRightSubslate_,
-		Event { "dictate", "" },		Sequence{},
-			Launch { MainApps_"Dragon Dictate.app", 0 }, ResSubslate { resid_Dictate }, endSequence{},
-		Event { "clipboard", "" },		ResSubslate { resid_Clipboard },
-		Event { "Clipping", "" },		Keypress { kc_C, mf_command + mf_option + mf_control },
-		Event { "Placeholder", "" },	ResSubslate { resid_Placeholder },
-		Event { "Special", "type predefined text shortcuts" },
-			ResSubslate { resid_TypeSpecialBBEdit },
-		Event { "undo", "" },			Keypress { kc_Z, mf_command },
-		Event { "copy", "" },			Keypress { kc_C, mf_command },
-		Event { "paste", "" },			Keypress { kc_V, mf_command },
-		Event { "insert tag", "" },		ResSubslate { resid_Markup }, 
-		Event { "element", "" },		ResSubslate { resid_InsertElement }, 
-		Event { "insert element", "" },	ResSubslate { resid_InsertElement }, 
-		Event { "add style", "" },		ResSubslate { resid_InsertStyle },
-		Event { "list item", "" },		Sequence{}, TypeText { "<li><#item#></li>" }, _previous, endSequence{},
-		Event { "select word", "" },	Sequence{}, Keypress { kc_left, mf_option },
-			Keypress { kc_right, mf_option + mf_shift }, endSequence{},
-		Event { "select line", "" },	Keypress { kc_L, mf_command },
-		Event { "select paragraph", "" },	Keypress { kc_L, mf_command + mf_option },
-		Event { "cut next line", "" },	Sequence{}, _cutNextLine, endSequence{},
-		_NextPanel,
-		_PreviousPanel,
-		Event { "next field", "" },		Keypress { kc_accent, mf_control },
-		Event { "previous field", "" },	Keypress { kc_accent, mf_control + mf_shift },
-		_Document_,
-		_Markers_,
-		_Symbol_,
-		Event { "go previous", "" },	Keypress { kc_bracket, mf_command + mf_option },
-		Event { "go forward", "" },		Keypress { kc_closebracket, mf_command + mf_option },
-		Event { "goto line", "" },		Keypress { kc_J, mf_command },
-		Event { "scroll down", "" },	Keypress { kc_down, mf_control + mf_command + mf_option },
-		Event { "scroll north", "" },	Keypress { kc_up, mf_control + mf_command + mf_option },
-		Event { "next window", "" },	Keypress { kc_accent, mf_command },
-		Event { "previous window", "" }, Keypress { kc_accent, mf_command + mf_shift },
-		Event { "enter find string", "" },		Keypress { kc_E, mf_command },
-		Event { "enter replace string", "" },	Keypress { kc_E, mf_command + mf_option },
-		Event { "Macro", "" },			ResSubslate { resid_Macro },
-		Event { "Snippet", "" },		ResSubslate { resid_Snippet },
-		Event { "complete", "" },		Keypress { kc_fn5, 0 },
-		Event { "add space", "" },		Sequence{}, Keypress { kc_return, 0 },
-			Keypress { kc_space, 0 }, endSequence{},
-		Event { "add comma", "" },		Sequence{}, Keypress { kc_return, 0 },
-			Keypress { kc_comma, 0 }, endSequence{},
-		Event { "add brace", "" },		Sequence{}, Keypress { kc_return, 0 },
-			Keypress { kc_bracket, mf_shift }, endSequence{},
-		_completionItems,
-		_TypeSlateItems_,
-	} }
-} };
-
-#pragma mark _TypeBBEditSlate_
-#define _TypeBBEditSlate_ 		\
-	Event { "Type", "simulate keypresses" },	\
-		ResSubslate { resid_TypeBBEditSlate }
-
-#pragma mark 2 === Preferences
-#define _SelectPrefsList_	Click { 1, 20, -20, _window, _bottomLeft }
-resource restype_Slate (resid_Preferences, "Preferences") { {
-	Slate { "Preferences",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "close", "" },	Keypress { kc_W, mf_command },
-		_IMouseSlate_,
-		_CommandSlate_,
-		_WhitespaceKeys_,
-		_DirectionKeys_,
-		_JumpDownSubslate_,
-		_JumpNorthSubslate_,
-		_LetterKeys_,
-		Event { "select", "" },		_SelectPrefsList_,
-		Event { "menus", "" },		Sequence{}, TypeText { "Menus" }, _tab,
-			ResSubslate { resid_prefsMenus }, endSequence{},
-	} }
-} };
-
-#pragma mark prefsMenus
-resource restype_Slate (resid_prefsMenus, "Menus") { {
-	Slate { "MenuKeys",	{
-		_SlateGlobals_,
-		ExitEvent { "okay", "" },	_SelectPrefsList_,
-		_IMouseSlate_,
-		_CommandSlate_,
-		_WhitespaceKeys_,
-		_DirectionKeys_,
-		_JumpDownSubslate_,
-		_JumpNorthSubslate_,
-		_LetterKeys_,
-		Event { "set", "" },			Click { 1, -80, 115, _window, _topRight },
-		Event { "clear", "" },			Click { 1, -80, 150, _window, _topRight },
-		Event { "allow repeat", "" },	Click { 1, 215, 410, _window, _topLeft },
-		ExitEvent { "save", "" },		Keypress { kc_return, 0 },
-		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
-	} }
-} };
-
-#pragma mark 3 === Subversion
-#define subversionMenu_		Click { 1, 590, 10, _screen, _topLeft }
-resource restype_Slate (resid_Subversion, "BBEdit Subversion Menu") { {
-	Slate { "Subversion",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
-		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
-		ExitEvent { "exit", "" },		NilAction{},
-		_WhitespaceKeys_,
-		Event { "select", "" },			Sequence{}, 
-			_space, ResSubslate { resid_svnSelect }, endSequence{},
-		Event { "status", "" },			Sequence{}, Keypress { kc_S, mf_option + mf_control },
-			ResSubslate { resid_svnStatus }, endSequence{},
-		Event { "difference", "" },		Sequence{}, Keypress { kc_D, mf_option + mf_control },
-			ResSubslate { resid_Differences }, endSequence{},
-		Event { "commit", "" },			Sequence{},
-			ResSubslate { resid_Commit }, Keypress { kc_C, mf_option + mf_control }, endSequence{},
-		Event { "update", "" },			Sequence{}, subversionMenu_, TypeText { "Update Working Copy" },
-			_return, endSequence{},
-		Event { "history", "" },		Sequence{}, subversionMenu_, TypeText { "Show Revision History" },
-			_return, endSequence{},
-	} }
-} };
-
-#pragma mark Status
-resource restype_Slate (resid_svnStatus, "Status") { {
-	Slate { "Status", {
-		_SlateGlobals_,
-		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
-		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
-		ExitEvent { "okay", "" },		NilAction{},
-		_DirectionKeys_,
-		_DoJumpSubslate_,
-		_CommandSlate_,
-		_IMouseSlate_,
-		_TypeBBEditSlate_,
-		Event { "return", "" },			_return,
-		Event { "show", "" },			_return,
-		Event { "select", "" },			Sequence{}, 
-			_space, ResSubslate { resid_svnSelect }, endSequence{},
-		Event { "compare", "" },		_return,
-		Event { "commit", "" },			Sequence{},
-			ResSubslate { resid_Commit }, Keypress { kc_C, mf_option + mf_control }, endSequence{},
-		Event { "next panel", "" },		Keypress { kc_tab, mf_control },
-		Event { "difference", "" },		Sequence{}, Keypress { kc_D, mf_option + mf_control },
-			ResSubslate { resid_Differences }, endSequence{},
-		Event { "save", "" },			Keypress { kc_S, mf_command },
-		Event { "add to repository", "" },	Sequence{}, _clickSvnMenu,
-			TypeText { "add" },	_return, endSequence{},
-	} }
-} };
-
-#pragma mark SelectStatus
-resource restype_Slate (resid_svnSelect, "Select") { {
-	Slate { "Select", {
-		_SlateGlobals_,
-		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
-		ExitEvent { "select", "" },		_return,
-		_TypeProjectName_,
-		Event { "okay", "" },			_return,
-		Event { "return", "" },			_return,
-		_DirectionKeys_,
-		_CommandSlate_,
-		_IMouseSlate_,
-		_TypeBBEditSlate_,
-	} }
-} };
-
-#pragma mark Differences
-resource restype_Slate (resid_Differences, "Differences") { {
-	Slate { "Diff", {
-		_SlateGlobals_,
-		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
-		ExitEvent { "okay", "" },		NilAction{},
-		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
-		Event { "return", "" },			_return,
-		Event { "compare", "" },		_return,
-		_DirectionKeys_,
-		_CommandSlate_,
-		_IMouseSlate_,
-		_TypeBBEditSlate_,
-		Event { "differences", "" },	Click { 1, -100, -245, _screen, _bottomCenter },
-		Event { "fix window", "" },		Sequence{}, Click { 0, -5, -5, _window, _bottomRight },
-			Click { -1, 0, -60, _cursor }, endSequence{},
-		Event { "refresh", "" },		Click { 1, 0, 40, _window, _topCenter },
-		Event { "apply left", "" },		Keypress { kc_left, mf_command },
-		Event { "apply right", "" },	Keypress { kc_right, mf_command },
-	} }
-} };
-
-#pragma mark Select Compare
-resource restype_Slate (resid_SelectCompare, "SelectCompare") { {
-	Slate { "Select Compare", {
-		_SlateGlobals_,
-		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
-		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
-		ExitEvent { "okay", "" },		_return,
-		ExitEvent { "exit", "" },		NilAction{},
-		_TypeBBEditSlate_,
-		_CommandSlate_,
-		_IMouseSlate_,
-		Event { "Files", "" },			Click { 1, 120, 45, _window, _topLeft },
-		Event { "Folders", "" },		Click { 1, 290, 45, _window, _topLeft },
-		Event { "New Other", "" },		Sequence{}, Click { 1, -65, 110, _window, _topRight },
-			ResSubslate { resid_FileOpenDialog }, endSequence{},
-		Event { "Old Other", "" },		Sequence{}, Click { 1, -65, 195, _window, _topRight },
-			ResSubslate { resid_FileOpenDialog }, endSequence{},
-		Event { "Compare", "" },		Sequence{}, Keypress { kc_return, 0 },
-			ResSubslate { resid_Differences }, endSequence{},
-	} }
-} };
-
-#pragma mark Commit
-resource restype_Slate (resid_Commit, "BBEdit Subversion Commit") { {
-	Slate { "Commit",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		_DirectionKeys_,
-		_WhitespaceKeys_,
-		Event { "commit", "" },			Sequence{}, ResSubslate { resid_DoCommit },
-			Keypress { kc_return, 0 }, endSequence{},
-		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
-	} }
-} };
-
-resource restype_Slate (resid_DoCommit, "complete Subversion Commit") { {
-	Slate { "do",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		_TypeBBEditSlate_,
-		Event { "clipboard", "" },			ResSubslate { resid_Clipboard },
-		Event { "paste", "" },				Keypress { kc_V, mf_command },
-		Event { "strike", "" },				Keypress { kc_delete, 0 },
-		Event { "type", "" },				ResSubslate { resid_TypeBBEditSlate },
-		ExitEvent { "commit", "" },			Click { 1, -40, 40, _window, _topRight },
-		ExitEvent { "cancel", "" },			Click { 1, -120, 40, _window, _topRight },
-	} }
-} };
-
-#pragma mark 4 === Shell
-resource restype_Slate (resid_Shell, "Shell Worksheet") { {
-	Slate { "Shell",	{
-		_CloseSubslate_,
-		ExitEvent { "close", "" },			Keypress { kc_W, mf_command },
-		_BBEditStandards_,
-		Event { "execute", "" },			Keypress { kc_return, mf_command },
-		Event { "next field", "" },			Keypress { kc_accent, mf_control },
-		Event { "previous field", "" },		Keypress { kc_accent, mf_control + mf_shift },
-		Event { "Special", "" }, 			ResSubslate { resid_TypeSpecialBBEdit },
-		Event { "element", "" },			ResSubslate { resid_InsertElement }, 
-		Event { "insert element", "" },		ResSubslate { resid_InsertElement }, 
-		Event { "select word", "" },		Sequence{}, Keypress { kc_left, mf_option },
-			Keypress { kc_right, mf_option + mf_shift }, endSequence{},
-		Event { "select line", "" },		Keypress { kc_L, mf_command },
-		Event { "clipboard", "" },			ResSubslate { resid_Clipboard },
-		Event { "status line", "use status line to provide file argument" },	Sequence{},
-			Keypress { kc_left, mf_command }, _right, _right, _right, _right, Keypress { kc_left, mf_command + mf_shift }, _delete, endSequence{},
-		Event { "subversion", "" },			Sequence{}, TypeText { "svn " }, ResSubslate { resid_shellSvn }, endSequence{},
-		Event { "edit subversion", "" },	ResSubslate { resid_shellSvn },
-		Event { "set directory", "" },		TypeText { "cd  " },
-		Event { "project", "" },			Subslate { "project" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "Support", "" },		TypeText { "${DEV}/Support" },
-			ExitEvent { "Punkin", "" },			TypeText { "${DEV}/Punkin" },
-			ExitEvent { "Accessor", "" },		TypeText { "${DEV}/Accessor" },
-			endSubslate{},
-		Event { "list", "" },				Sequence{}, TypeText { "ls  " }, ResSubslate { resid_shellLs }, endSequence{},
-		Event { "directory", "" },			TypeText { "pwd" },
-		Event { "pop out", "" },			TypeText { "cd ../" },
-		Event { "BBEdit", "" },				TypeText { "bbedit " },
-		Event { "change permissions", "" },	TypeText { "chmod " },
-		Event { "make executable", "" },	TypeText { "chmod a+x " },
-		Event { "iWeb directory", "" },		TypeText { "a+rx " },
-		Event { "iWeb file", "" },			TypeText { "a-x,a+r " },
-		Event { "undo", "" },				Keypress { kc_Z, mf_command },
-		_completionItems,
-		_TypeSlateItems_,
-		_CommandSlate_,
-	} }
-} };
-
-resource restype_Slate (resid_shellSvn, "svn") { {
-	Slate { "svn",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "okay", "" },				NilAction{},
-		ExitEvent { "execute", "" },			Keypress { kc_return, mf_command },
-		Event { "next field", "" },				Keypress { kc_accent, mf_control },
-		Event { "previous field", "" },			Keypress { kc_accent, mf_control + mf_shift },
-		Event { "Special", "" }, 				ResSubslate { resid_TypeSpecialBBEdit },
-		Event { "subversion", "" },				TypeText { "svn " },
-		Event { "undo", "" },					Keypress { kc_Z, mf_command },
-		Event { "status", "" },					TypeText { "status " },
-		Event { "list", "" },					TypeText { "list " },
-		Event { "remove", "" },					TypeText { "remove " },
-		Event { "show branch", "" },			TypeText { "info | grep URL" },
-		Event { "revert", "" },					TypeText { "revert " },
-		Event { "remove from repository", "" },	TypeText { "remove " },
-		Event { "make directory", "" },			TypeText { "mkdir " },
-		Event { "move or rename", "" },			TypeText { "move " },
-		Event { "show updates", "" },			TypeText { "--show-updates" },
-		Event { "recursive", "" },				TypeText { "--recursive " },
-		Event { "nonrecursive", "" },			TypeText { "--non-recursive " },
-		Event { "verbose", "" },				TypeText { "--verbose " },
-		Event { "repository", "" },				TypeText { "file:///Users/carolclark/Dev/svnrep/" },
-		Event { "trunk", "" },					TypeText { "/trunk " },
-		Event { "property", "" },				Subslate { "prop" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			Event { "undo", "" },			Keypress { kc_Z, mf_command },
-			Event { "get", "" },			TypeText { "propget " },
-			Event { "set", "" },			TypeText { "propset " },
-			Event { "ignore", "" },			TypeText { "svn:ignore " },
-			Event { "line ends", "" },		TypeText { "svn:eol-style " },
-			Event { "native", "" },			TypeText { "native " },
-			Event { "mime type", "" },		TypeText { "svn:mime-type " },
-			Event { "markup", "" },			TypeText { "text/html " },
-			Event { "XML", "" },			TypeText { "text/xml " },
-			Event { "plain text", "" },		TypeText { "text/plain " },
-			Event { "keywords", "" },		TypeText { "svn:keywords " },
-			Event { "ID", "" },				TypeText { "Id " },
-			Event { "executable", "" },		TypeText { "svn:executable " },
-			Event { "on", "" },				TypeText { "* " },
-			Event { "off", "" },			TypeText { "\"\" " },
-			_TypeBBEditSlate_,
-			endSubslate{},
-		_TypeProjectName_,
-		_TypeBBEditSlate_,
-		_CommandSlate_,
-	} }
-} };
-
-resource restype_Slate (resid_shellLs, "ls") { {
-	Slate { "ls",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "okay", "" },			NilAction{},
-		ExitEvent { "execute", "" },		Keypress { kc_return, mf_command },
-		Event { "undo", "" },				Keypress { kc_Z, mf_command },
-		Event { "all", "" },				TypeText { "-a " },
-		Event { "long", "" },				TypeText { "-l " },
-		Event { "recursive", "" },			TypeText { "-R " },
-		_TypeBBEditSlate_,
-		_CommandSlate_,
-	} }
-} };
-
-#pragma mark 5 === Document Windows
+#pragma mark 1 === Windows
 
 #define _DocumentWindowStandards_			\
 	_SlateGlobals_,                                                                         \
@@ -870,8 +312,8 @@ resource restype_Slate (resid_ProjectContents, "Project Contents") { {
 	} },
 } };
 
-#pragma mark 7 === Menus
-#pragma mark File Menu
+#pragma mark 3 === Menus
+#pragma mark -- File Menu
 resource restype_Slate (resid_FileMenu, "File Menu") { {
 	Slate { "File",		{
 		_SlateGlobals_,
@@ -939,21 +381,7 @@ resource restype_Slate (resid_FileTemplate, "File > New > Markup") { {
 	} },
 } };
 
-#pragma mark Clipboard
-resource restype_Slate (resid_Clipboard, "Clipboard") { {
-	Slate { "Clipboard",		{
-		_SlateGlobals_,
-		ExitEvent { "okay", "" },	NilAction{},
-		ExitEvent { "close", "" },	Keypress { kc_W, mf_command },
-		ExitEvent { "exit", "" },	NilAction{},
-		Event { "show", "" },		Sequence{}, ClickMenu { "Edit" }, TypeText { "Show Clipboard" },
-			_return, endSequence{},
-		Event { "previous", "" },	Keypress { kc_bracket, mf_control },
-		Event { "next", "" },		Keypress { kc_closebracket, mf_control },
-		Event { "paste", "" },		Keypress { kc_V, mf_command },
-	} },
-} };
-
+#pragma mark -- Edit
 #pragma mark Find
 #define _SearchStandards_		\
 		_SlateGlobals_,			\
@@ -1001,14 +429,8 @@ resource restype_Slate (resid_Search, "Search") { {
 			Keypress { kc_down, 0 },
 			TypeText { "Find Differences" }, Keypress { kc_return, 0 },
 			ResSubslate { resid_SelectCompare }, endSequence{},
-		Event { "compare disk", "" },	Sequence{}, ClickMenu { "Search" },
-			Keypress { kc_down, 0 },
-			TypeText { "Compare Against Disk File" }, Keypress { kc_return, 0 }, 
-			ResSubslate { resid_Differences }, endSequence{},
-		Event { "compare front", "" },	Sequence{}, ClickMenu { "Search" },
-			Keypress { kc_down, 0 },
-			TypeText { "Compare Two Front Documents" }, Keypress { kc_return, 0 }, 
-			ResSubslate { resid_Differences }, endSequence{},
+		Event { "compare disk", "" },	Sequence{}, ClickMenu { "Search" }, Keypress { kc_down, 0 }, TypeText { "Compare Against Disk File" }, Keypress { kc_return, 0 }, endSequence{},
+		Event { "compare front", "" },	Sequence{}, ClickMenu { "Search" }, Keypress { kc_down, 0 }, TypeText { "Compare Two Front Documents" }, Keypress { kc_return, 0 }, endSequence{},
 	} }
 } };
 
@@ -1082,7 +504,43 @@ resource restype_Slate (resid_SearchPattern, "Pattern") { {
 	} }
 } };
 
-#pragma mark Window
+#pragma mark Select Compare
+resource restype_Slate (resid_SelectCompare, "SelectCompare") { {
+	Slate { "Select Compare", {
+		_SlateGlobals_,
+		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
+		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
+		ExitEvent { "okay", "" },		_return,
+		ExitEvent { "exit", "" },		NilAction{},
+		_TypeBBEditSlate_,
+		_CommandSlate_,
+		_IMouseSlate_,
+		Event { "Files", "" },			Click { 1, 120, 45, _window, _topLeft },
+		Event { "Folders", "" },		Click { 1, 290, 45, _window, _topLeft },
+		Event { "New Other", "" },		Sequence{}, Click { 1, -65, 110, _window, _topRight },
+			ResSubslate { resid_FileOpenDialog }, endSequence{},
+		Event { "Old Other", "" },		Sequence{}, Click { 1, -65, 195, _window, _topRight },
+			ResSubslate { resid_FileOpenDialog }, endSequence{},
+		Event { "Compare", "" },		Keypress { kc_return, 0 },
+	} }
+} };
+
+#pragma mark Clipboard
+resource restype_Slate (resid_Clipboard, "Clipboard") { {
+	Slate { "Clipboard",		{
+		_SlateGlobals_,
+		ExitEvent { "okay", "" },	NilAction{},
+		ExitEvent { "close", "" },	Keypress { kc_W, mf_command },
+		ExitEvent { "exit", "" },	NilAction{},
+		Event { "show", "" },		Sequence{}, ClickMenu { "Edit" }, TypeText { "Show Clipboard" },
+			_return, endSequence{},
+		Event { "previous", "" },	Keypress { kc_bracket, mf_control },
+		Event { "next", "" },		Keypress { kc_closebracket, mf_control },
+		Event { "paste", "" },		Keypress { kc_V, mf_command },
+	} },
+} };
+
+#pragma mark -- Window
 resource restype_Slate (resid_WindowBBEdit, "BBEdit Window Slate") { {
 	Slate { "Window",	{
 		_SlateGlobals_,
@@ -1094,27 +552,55 @@ resource restype_Slate (resid_WindowBBEdit, "BBEdit Window Slate") { {
 	} }
 } };
 
-#pragma mark 8 === Markup
-#pragma mark InsertElement
-resource restype_Slate (resid_InsertElement, "") { {
-	Slate { "Element",	{
+#pragma mark -- Preferences
+#define _SelectPrefsList_	Click { 1, 20, -20, _window, _bottomLeft }
+resource restype_Slate (resid_Preferences, "Preferences") { {
+	Slate { "Preferences",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		ExitEvent { "snippet", "" },				Sequence{},
-			TypeText { "@snippet <#name#>; <#params...#>" }, _return, _up, _next, endSequence{},
-		_ElementItems_,
+		ExitEvent { "close", "" },	Keypress { kc_W, mf_command },
+		_IMouseSlate_,
+		_CommandSlate_,
+		_WhitespaceKeys_,
+		_DirectionKeys_,
+		_JumpDownSubslate_,
+		_JumpNorthSubslate_,
+		_LetterKeys_,
+		Event { "select", "" },		_SelectPrefsList_,
+		Event { "menus", "" },		Sequence{}, TypeText { "Menus" }, _tab,
+			ResSubslate { resid_prefsMenus }, endSequence{},
 	} }
 } };
 
-#pragma mark Styles
-resource restype_Slate (resid_InsertStyle, "css Styles") { {
-	Slate { "Style",	{
+#pragma mark prefsMenus
+resource restype_Slate (resid_prefsMenus, "Menus") { {
+	Slate { "MenuKeys",	{
 		_SlateGlobals_,
-		_CloseSubslate_,
-		_StyleItems_,
+		ExitEvent { "okay", "" },	_SelectPrefsList_,
+		_IMouseSlate_,
+		_CommandSlate_,
+		_WhitespaceKeys_,
+		_DirectionKeys_,
+		_JumpDownSubslate_,
+		_JumpNorthSubslate_,
+		_LetterKeys_,
+		Event { "set", "" },			Click { 1, -80, 115, _window, _topRight },
+		Event { "clear", "" },			Click { 1, -80, 150, _window, _topRight },
+		Event { "allow repeat", "" },	Click { 1, 215, 410, _window, _topLeft },
+		ExitEvent { "save", "" },		Keypress { kc_return, 0 },
+		ExitEvent { "cancel", "" },		Keypress { kc_period, mf_command },
 	} }
 } };
 
+#pragma mark 5 === Documentation
+#pragma mark Browser
+	#define	_BrowseCdocResID_	resid_Browser
+	#define _mainFrame_h		0
+	#define _mainFrame_v		75
+	#define _homeApp			MainApps_"BBEdit.app"
+_BrowseCdocSlate_
+
+#pragma mark Markup
 resource restype_Slate (resid_Markup, "Markup Menu") { {
 	Slate { "tag",	{
 		_SlateGlobals_,
@@ -1130,7 +616,6 @@ resource restype_Slate (resid_Markup, "Markup Menu") { {
 			endSequence{},
 		Event { "List Dialog", "" },		Sequence{}, Keypress { kc_L, mf_command + mf_control },
 			ResSubslate { resid_teList }, endSequence{},
-		_TagItems_,
 	} }
 } };
 
@@ -1214,16 +699,14 @@ resource restype_Slate (resid_ContinueCheckTechnical, "continue check links") { 
 	} }
 } };
 
-#pragma mark 9 ===
-#pragma mark Placeholder
-resource restype_Slate (resid_Placeholder, "BBEdit Placeholders") { {
-	Slate { "Placeholder",	{
+#pragma mark 7 === Scripting
+#pragma mark Script
+resource restype_Slate (resid_Script, "script menu") { {
+	Slate { "Script",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		ExitEvent { "base name", "" },		TypeText { "#BASENAME#" },
-		ExitEvent { "user name", "" },		TypeText { "#USERNAME#" },
-		ExitEvent { "date time", "" },		Sequence{}, TypeText { "#DATETIME <##>#" },
-			Keypress { kc_accent, mf_control + mf_shift }, endSequence{},
+		ExitEvent { "cancel", "" },					Keypress { kc_escape, 0 },
+		ExitEvent { "set markers", "" },			Sequence{}, TypeText { "SetMarkers" }, _return, endSequence{},
 	} }
 } };
 
@@ -1237,68 +720,8 @@ resource restype_Slate (resid_Action, "scripts and other actions") { {
 	} }
 } };
 
-/*
-#define goBack_		Event { "go back", "" },	Launch { MainApps_"BBEdit.app", resid_BBEdit }
-#pragma mark Build
-resource restype_Slate (resid_Build, "") { {
-	Slate { "Build",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "cancel", "" },	Keypress { kc_C, mf_control },
-		Event { "execute", "" },	Keypress { kc_return, 0 },
-		goBack_,
-		Event { "Support", "" },	Sequence{}, TypeText { "Support" }, Keypress { kc_enter, 0 }, endSequence{}, 
-		Event { "Punkin", "" },		Sequence{}, TypeText { "Punkin" }, Keypress { kc_enter, 0 }, endSequence{},	
-		Event { "Web Gen", "" },	Sequence{}, TypeText { "WebGen" }, Keypress { kc_enter, 0 }, endSequence{},
-		ExitEvent { "one", "" },	Sequence{}, Keypress { kc_1, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		ExitEvent { "two", "" },	Sequence{}, Keypress { kc_2, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		ExitEvent { "three", "" },	Sequence{}, Keypress { kc_3, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		ExitEvent { "four", "" },	Sequence{}, Keypress { kc_4, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		ExitEvent { "five", "" },	Sequence{}, Keypress { kc_5, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		ExitEvent { "six", "" },	Sequence{}, Keypress { kc_6, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		ExitEvent { "seven", "" },	Sequence{}, Keypress { kc_7, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		ExitEvent { "eight", "" },	Sequence{}, Keypress { kc_8, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-	} }
-} };
-
-#pragma mark Archive
-resource restype_Slate (resid_Archive, "") { {
-	Slate { "Archive",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "cancel", "" },	Keypress { kc_C, mf_control },
-		ExitEvent { "execute", "" },	Keypress { kc_return, 0 },
-		goBack_,
-		Event { "project", "" },		TypeText { "project " },
-		Event { "to retire", "" },		TypeText { "toRetire " },
-		Event { "repositories", "" },	TypeText { "repositories " },
-		_TypeProjectName_,
-	} }
-} };
-
-#pragma mark Old Build
-resource restype_Slate (resid_OldBuild, "") { {		// not a Subslate
-	Slate { "Old Build",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		Event { "cancel", "" },		Keypress { kc_C, mf_control },
-		Event { "build", "" },		Sequence{}, TypeText { "build.uia" }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "one", "" },		Sequence{}, Keypress { kc_1, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "two", "" },		Sequence{}, Keypress { kc_2, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "three", "" },		Sequence{}, Keypress { kc_3, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "four", "" },		Sequence{}, Keypress { kc_4, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "five", "" },		Sequence{}, Keypress { kc_5, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "six", "" },		Sequence{}, Keypress { kc_6, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "seven", "" },		Sequence{}, Keypress { kc_7, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "eight", "" },		Sequence{}, Keypress { kc_8, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "nine", "" },		Sequence{}, Keypress { kc_9, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-		Event { "ten", "" },		Sequence{}, Keypress { kc_1, 0 }, Keypress { kc_0, 0 }, Keypress { kc_enter, 0 }, endSequence{},
-	} }
-} };
-*/
-
 #pragma mark Output
-resource restype_Slate (resid_Output, "") { {		// not a Subslate
+resource restype_Slate (resid_Output, "") { {		// not a Subslate (what did that mean?)
 	Slate { "Output",	{
 		_SlateGlobals_,
 		Event { "okay", "" },			Sequence{}, Launch { MainApps_"BBEdit.app", resid_BBEdit }, Keypress { kc_accent, mf_command }, endSequence{},
@@ -1309,76 +732,116 @@ resource restype_Slate (resid_Output, "") { {		// not a Subslate
 	} }
 } };
 
-#pragma mark Script
-resource restype_Slate (resid_Script, "script menu") { {
-	Slate { "Script",	{
-		_SlateGlobals_,
+#pragma mark -- Shell
+resource restype_Slate (resid_Shell, "Shell Worksheet") { {
+	Slate { "Shell",	{
 		_CloseSubslate_,
-		ExitEvent { "cancel", "" },					Keypress { kc_escape, 0 },
-		ExitEvent { "set markers", "" },			Sequence{}, TypeText { "SetMarkers" }, _return, endSequence{},
+		ExitEvent { "close", "" },			Keypress { kc_W, mf_command },
+		_BBEditStandards_,
+		Event { "execute", "" },			Keypress { kc_return, mf_command },
+		Event { "next field", "" },			Keypress { kc_accent, mf_control },
+		Event { "previous field", "" },		Keypress { kc_accent, mf_control + mf_shift },
+		Event { "select word", "" },		Sequence{}, Keypress { kc_left, mf_option },
+			Keypress { kc_right, mf_option + mf_shift }, endSequence{},
+		Event { "select line", "" },		Keypress { kc_L, mf_command },
+		Event { "clipboard", "" },			ResSubslate { resid_Clipboard },
+		Event { "status line", "use status line to provide file argument" },	Sequence{},
+			Keypress { kc_left, mf_command }, _right, _right, _right, _right, Keypress { kc_left, mf_command + mf_shift }, _delete, endSequence{},
+		Event { "set directory", "" },		TypeText { "cd  " },
+		Event { "project", "" },			Subslate { "project" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "Support", "" },		TypeText { "${DEV}/Support" },
+			ExitEvent { "Punkin", "" },			TypeText { "${DEV}/Punkin" },
+			ExitEvent { "Accessor", "" },		TypeText { "${DEV}/Accessor" },
+			endSubslate{},
+		Event { "list", "" },				Sequence{}, TypeText { "ls  " }, ResSubslate { resid_shellLs }, endSequence{},
+		Event { "directory", "" },			TypeText { "pwd" },
+		Event { "pop out", "" },			TypeText { "cd ../" },
+		Event { "BBEdit", "" },				TypeText { "bbedit " },
+		Event { "change permissions", "" },	TypeText { "chmod " },
+		Event { "make executable", "" },	TypeText { "chmod a+x " },
+		Event { "iWeb directory", "" },		TypeText { "a+rx " },
+		Event { "iWeb file", "" },			TypeText { "a-x,a+r " },
+		Event { "undo", "" },				Keypress { kc_Z, mf_command },
+		_TypeSlateItems_,
+		_CommandSlate_,
 	} }
 } };
 
-//#pragma mark Dictate
-//resource restype_Slate (resid_Dictate, "Dictate") { {
-//	Slate { "Dictate", {
-//		_BBEditStandards_,
-//		_MicrophoneOn_,
-//		ExitEvent { "okay", "" },		NilAction{},
-//		Event { "Safari", "" },			Sequence{},
-//			Launch { MainApps_"Safari.app", 0 }, ResSubslate { resid_MoviePlayer }, endSequence{},
-//		Event { "QuickTime", "" },		Sequence{},
-//			Launch { MainApps_"QuickTime Player.app", 0 }, ResSubslate { resid_MoviePlayer }, endSequence{},
-//		Event { "BBEdit", "" },			Launch { MainApps_"BBEdit.app", 0 },
-//		_DirectionKeys_,
-//		_WhitespaceKeys_,
-//		_CommandSlate_,
-//		_IMouseSlate_,
-//		Event { "Type", "" },			ResSubslate { resid_TypeBBEditSlate },
-//	} }
-//} };
-
-#pragma mark MoviePlayer
-resource restype_Slate (resid_MoviePlayer, "MoviePlayer") { {
-	Slate { "MoviePlayer", {
+resource restype_Slate (resid_shellLs, "ls") { {
+	Slate { "ls",	{
 		_SlateGlobals_,
-		ExitEvent { "exit player", "" },	NilAction{},
-		Event { "pause movie", "" },		Keypress { kc_space, 0 },
-		ExitEvent { "take notes", "" },		Launch { MainApps_"BBEdit.app", 0 },
+		_CloseSubslate_,
+		ExitEvent { "okay", "" },			NilAction{},
+		ExitEvent { "execute", "" },		Keypress { kc_return, mf_command },
+		Event { "undo", "" },				Keypress { kc_Z, mf_command },
+		Event { "all", "" },				TypeText { "-a " },
+		Event { "long", "" },				TypeText { "-l " },
+		Event { "recursive", "" },			TypeText { "-R " },
+		_TypeBBEditSlate_,
+		_CommandSlate_,
+	} }
+} };
+
+#pragma mark 8 === Type
+#pragma mark Popups
+#define _Markers_	\
+	Event { "markers", "" },		Sequence{},	Keypress { kc_M, mf_option + mf_control }, 		\
+		ResSubslate { resid_Markers }, endSequence{}
+
+#define _Symbol_	\
+	Event { "symbol", "" },		Sequence{},	Click { 1, 30, 75, _window, _topCenter }, 		\
+		ResSubslate { resid_Symbol }, endSequence{}
+
+#define _PopupStandards_	\
+		_SlateGlobals_,		\
+		ExitEvent { "okay", "" },		NilAction{}, 								\
+		ExitEvent { "go", "" },			Keypress { kc_return, 0 },                             	\
+		ExitEvent { "cancel", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, \
+			endSequence{},     																	\
+		ExitEvent { "close", "" },		Sequence{}, Keypress { kc_escape, 0 }, CloseSubslate{}, \
+			endSequence{},       																\
+		ExitEvent { "exit", "" },		CloseSubslate{},										\
+		Event { "page top", "" },		Keypress { kc_home, 0 },								\
+		Event { "page end", "" },		Keypress { kc_end, 0 },                                 \
+		Event { "page north", "" },		Keypress { kc_pageup, 0 },                              \
+		Event { "page down", "" },		Keypress { kc_pagedown, 0 },                            \
+		_JumpDownSubslate_,                     \
+		_JumpNorthSubslate_,                    \
+		_DoJumpSubslate_,                       \
+		_DirectionKeys_,                        \
+		_LetterKeys_,                           \
+		_NumberKeys_
+
+resource restype_Slate (resid_Markers, "") { {
+	Slate { "Markers", {
+		_PopupStandards_,
+	} }
+} };
+
+resource restype_Slate (resid_Symbol, "") { {
+	Slate { "Symbol", {
+		_PopupStandards_,
+	} }
+} };
+
+#define _insertTab	Keypress { kc_tab, 0 }
+#pragma mark Doxygen
+resource restype_Slate (resid_Doxygen, "Doxygen") { {
+	Slate { "Doxygen", {
+		_DoxygenItems_
 	} }
 } };
 
 #pragma mark Macro
 resource restype_Slate (resid_Macro, "") { {
 	Slate { "Macro",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		_DirectionKeys_,
-		_CommandSlate_,
-		_JumpDownSubslate_,
-		_JumpNorthSubslate_,
-		_DoSelectSubslate_,
-		_NextPanel,
-		_PreviousPanel,
-		ExitEvent { "cut next line", "" },		Sequence{},
-			_down, Keypress { kc_L, mf_command }, Keypress { kc_X, mf_command }, endSequence{},
-		ExitEvent { "blurb", "" },	Sequence{}, _left, _left, TypeText { " class='blurb'" }, _previous, endSequence{},
-		Event { "check copyright", "" },		Sequence{},
-			Keypress { kc_F, mf_command }, TypeText { "C & C Software" }, Keypress { kc_return, 0 }, _left, _left,
-			endSequence{},
-		Event { "step tag", "" },				Sequence{},
-			TypeText { "<a href=\"<##>_hist.html#" }, Keypress { kc_V, mf_command }, TypeText { "\">" }, Keypress { kc_V, mf_command }, 
-			TypeText { "</a>" }, _previous, endSequence{},
-		Event { "indent items", "" },		Sequence{},
-			Keypress { kc_closebracket, mf_command }, Keypress { kc_left, mf_shift },
-			Keypress { kc_X, mf_command }, _return, Keypress { kc_left, mf_option }, Keypress { kc_left, mf_option }, Keypress { kc_left, mf_option },
-			TypeText { "<ul>" }, Keypress { kc_V, mf_command }, _delete, _return, _delete,
-			TypeText { "</ul>" }, Keypress { kc_right, mf_command }, _right, endSequence{},
 		Event { "one", "temp" },				Sequence{},
-			TypeText { "Workspace-r54" },
+			TypeText { "_insert_row, " },
 			endSequence{},
 		Event { "two", "temp" },				Sequence{},
-			TypeText { "Users/Shared/Cdoc" },
+			Keypress { kc_left, mf_command }, TypeText { "//" }, Keypress { kc_left, mf_command }, _down,
 			endSequence{},
 		Event { "three", "temp" },				Sequence{},
 			Keypress { kc_C, mf_command }, _right, Keypress { kc_comma, 0 }, _return,
@@ -1394,38 +857,139 @@ resource restype_Slate (resid_Macro, "") { {
 			endSequence{},
 		Event { "six", "temp" },				Sequence{},
 			Keypress { kc_left, mf_command }, _down, _down, _down, _down,
-			Keypress { kc_left, mf_option }, Keypress { kc_left, mf_option }, _right, Keypress { kc_O, mf_control },		
+			Keypress { kc_left, mf_option }, Keypress { kc_left, mf_option }, _right, Keypress { kc_O, mf_control },
 			endSequence{},
+		_DevMacroItems_,
 	} }
 } };
 
-#pragma mark Snippet
-resource restype_Slate (resid_Snippet, "") { {
-	Slate { "Snippet",	{
+#pragma mark Placeholder
+resource restype_Slate (resid_Placeholder, "BBEdit Placeholders") { {
+	Slate { "Placeholder",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		_TypeBBEditSlate_,
+		ExitEvent { "base name", "" },		TypeText { "#BASENAME#" },
+		ExitEvent { "user name", "" },		TypeText { "#USERNAME#" },
+		ExitEvent { "date time", "" },		Sequence{}, TypeText { "#DATETIME <##>#" },
+			Keypress { kc_accent, mf_control + mf_shift }, endSequence{},
 	} }
 } };
 
-//_BBEditBase_: shared by resid_BBEdit and resid_XCBBEdit
-#define _BBEditBase_	\
-		_SlateGlobals_,		\
-		_DefaultBase_,		\
-		_TypeBBEditSlate_,		\
-		_Markers_,			\
-		Event { "Drawer", "" },		ResSubslate { resid_Drawer },		\
-		Event { "Project", "" },	ResSubslate { resid_Project },		\
-		Event { "File menu", "" },	ResSubslate { resid_FileMenu },		\
-		Event { "Browser", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},		\
-		Event { "Validate", "" },	ResSubslate { resid_ValidateMarkup },		\
-		Event { "Script", "" },		Sequence{}, _clickScriptsMenu, _down, ResSubslate { resid_Script }, endSequence{},		\
-		Event { "Shell", "" }, 		Sequence{}, Launch { Dev_"DevSupport/BBEdit/Shell.worksheet", 0 }, ResSubslate { resid_Shell }, endSequence{},		\
-		Event { "Search", "" },		ResSubslate { resid_Search }
+resource restype_Slate (resid_Document, "") { {
+	Slate { "Document", {
+		_PopupStandards_,
+		ExitEvent { "Support", "" },	Subslate { "Support" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "support", "" },	Sequence{}, TypeText { "Support.html" }, _return, endSequence{},
+			ExitEvent { "history", "" },	Sequence{}, TypeText { "Support_hist" }, _return, endSequence{},
+			ExitEvent { "versions", "" },	Sequence{}, TypeText { "Support_vers" }, _return, endSequence{},
+			ExitEvent { "development", "" },Sequence{}, TypeText { "Development.html" }, _return, endSequence{},
+			ExitEvent { "top history", "" },	Sequence{}, TypeText { "Development_hist" }, _return, endSequence{},
+			ExitEvent { "git", "" },	Sequence{}, TypeText { "Git.html" }, _return, endSequence{},
+			ExitEvent { "Cdoc", "" },	Sequence{}, TypeText { "Cdoc" }, _return, endSequence{},
+			ExitEvent { "tools", "" },	Sequence{}, TypeText { "Tools" }, _return, endSequence{},
+			ExitEvent { "subversion config", "" },	Sequence{}, TypeText { "subversion_config" }, _return, endSequence{},
+			ExitEvent { "apache errors", "" },	Sequence{}, TypeText { "/opt/local/apache2/logs/error_log" }, _return, endSequence{},
+			ExitEvent { "apache access", "" },	Sequence{}, TypeText { "/opt/local/apache2/logs/access_log" }, _return, endSequence{},
+			ExitEvent { "apache config", "" },	Sequence{}, TypeText { "/opt/local/apache2/conf/httpd.conf" }, _return, endSequence{},
+			endSubslate{},
+		ExitEvent { "old Support", "" },	Subslate { "old Support" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "support", "" },	Sequence{}, TypeText { "Support.html" }, _return, endSequence{},
+			ExitEvent { "history", "" },	Sequence{}, TypeText { "Support_hist" }, _return, endSequence{},
+			ExitEvent { "versions", "" },	Sequence{}, TypeText { "Support_vers" }, _return, endSequence{},
+			ExitEvent { "development", "" },Sequence{}, TypeText { "Development.html" }, _return, endSequence{},
+			ExitEvent { "top history", "" },	Sequence{}, TypeText { "Development_hist" }, _return, endSequence{},
+			ExitEvent { "tools	", "" },	Sequence{}, TypeText { "Tools" }, _return, endSequence{},
+			ExitEvent { "subversion config", "" },	Sequence{}, TypeText { "subversion_config" }, _return, endSequence{},
+			ExitEvent { "apache errors", "" },	Sequence{}, TypeText { "/opt/local/apache2/logs/error_log" }, _return, endSequence{},
+			ExitEvent { "apache access", "" },	Sequence{}, TypeText { "/opt/local/apache2/logs/access_log" }, _return, endSequence{},
+			ExitEvent { "apache config", "" },	Sequence{}, TypeText { "/opt/local/apache2/conf/httpd.conf" }, _return, endSequence{},
+			endSubslate{},
+		ExitEvent { "Punkin", "" },	Subslate { "Punkin" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "Punkin", "" },	Sequence{}, TypeText { "Punkin.html" }, _return, endSequence{},
+			ExitEvent { "history", "" },	Sequence{}, TypeText { "Punkin_hist" }, _return, endSequence{},
+			ExitEvent { "versions", "" },	Sequence{}, TypeText { "Punkin_vers" }, _return, endSequence{},
+			ExitEvent { "Agenda", "" },	Sequence{}, TypeText { "Agenda" }, _return, endSequence{},
+			ExitEvent { "User Interface", "" },	Sequence{}, TypeText { "UserInterface" }, _return, endSequence{},
+			ExitEvent { "glossary", "" },	Sequence{}, TypeText { "Punkin_gloss" }, _return, endSequence{},
+			ExitEvent { "Expenses", "" },	Sequence{}, TypeText { "PunkinExpenses" }, _return, endSequence{},
+			ExitEvent { "Technology", "" },	Sequence{}, TypeText { "Technology" }, _return, endSequence{},
+			endSubslate{},
+		ExitEvent { "Web Gen", "" },	Subslate { "WebGen" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "Web Gen", "" },	Sequence{}, TypeText { "WebGen.html" }, _return, endSequence{},
+			ExitEvent { "history", "" },	Sequence{}, TypeText { "WebGen_hist" }, _return, endSequence{},
+			ExitEvent { "versions", "" },	Sequence{}, TypeText { "WebGen_vers" }, _return, endSequence{},
+			endSubslate{},
+		ExitEvent { "Personal", "" },	Subslate { "Personal" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "Site", "" },	Sequence{}, TypeText { "PersonalSite.html" }, _return, endSequence{},
+			ExitEvent { "versions", "" },	Sequence{}, TypeText { "PersonalSite_vers" }, _return, endSequence{},
+			endSubslate{},
+		ExitEvent { "DevSupport", "" },	Subslate { "DevSupport" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "history", "" },	Sequence{}, TypeText { "DevSupport_hist" }, _return, endSequence{},
+			ExitEvent { "versions", "" },	Sequence{}, TypeText { "DevSupport_vers" }, _return, endSequence{},
+			ExitEvent { "development", "" },Sequence{}, TypeText { "Development.html" }, _return, endSequence{},
+			ExitEvent { "top history", "" },	Sequence{}, TypeText { "Development_hist" }, _return, endSequence{},
+			endSubslate{},
+		ExitEvent { "Carbon", "" },		Subslate { "Carbon" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "history", "" },	Sequence{}, TypeText { "Accessor_C9_hist" }, _return, endSequence{},
+			ExitEvent { "BBEdit", "" },	Sequence{}, TypeText { "BBEdit" }, _return, endSequence{},
+			ExitEvent { "Terminal", "" },	Sequence{}, TypeText { "Terminal" }, _return, endSequence{},
+			ExitEvent { "Xcode", "" },	Sequence{}, TypeText { "Xcode" }, _return, endSequence{},
+			ExitEvent { "Mail", "" },	Sequence{}, TypeText { "Mail" }, _return, endSequence{},
+			endSubslate{},
+	} }
+} };
+
+#define _closeDocument				Keypress { kc_W, mf_command }
+#define _TypeBBEditItems_	\
+	Event { "goto line", "" },		Keypress { kc_J, mf_command },	\
+	Event { "select word", "" },	_selword,		\
+	Event { "select line", "" },	_selline,		\
+	Event { "capitalize", "" },		_capitalize,	\
+	Event { "lower case", "" },		_lowercase,		\
+	Event { "balance", "" },		Keypress { kc_M, 0 },	\
+	Event { "paste", "" },			Keypress { kc_V, mf_command + mf_option + mf_shift },	\
+	Event { "clipboard", "" },		ResSubslate { resid_Clipboard },		\
+	Event { "Clipping", "" },		Keypress { kc_C, mf_command + mf_option + mf_control },		\
+	Event { "Markup", "" },			ResSubslate { resid_Markup },	\
+	_TypeDevItems_
+
+#pragma mark TypeBBEdit
+resource restype_Slate (resid_TypeBBEditSlate, "Type Slate") { {
+	Slate { "Type",	{
+		_TypeDevSlateItems_,
+		Event { "Doxygen", "" },				ResSubslate { resid_Doxygen },
+		Event { "Macro", "" },					ResSubslate { resid_Macro },
+		Event { "Placeholder", "" },			ResSubslate { resid_Placeholder },
+		Event { "enter find string", "" },		Keypress { kc_E, mf_command },
+		Event { "enter replace string", "" },	Keypress { kc_E, mf_command + mf_shift },
+		Event { "save files", "" },				Keypress { kc_S, mf_command + mf_option },
+		Event { "show selection", "" },			Keypress { kc_D, mf_command + mf_option + mf_shift },
+		_NextPanel,
+		_PreviousPanel,
+		Event { "document", "" },		Sequence{},	Keypress { kc_F, mf_option + mf_control }, ResSubslate { resid_Document }, endSequence{},
+		Event { "symbol", "" },			Sequence{},	Click { 1, 30, 75, _window, _topCenter }, ResSubslate { resid_Symbol }, endSequence{},
+		_TypeBBEditItems_,
+	} }
+} };
 
 #pragma mark 9 === BBEdit
 #define	_BBEditItems_			\
 		_TypeBBEditSlate_,		\
+		Event { "save files", "" },			Keypress { kc_S, mf_command + mf_option },		\
 		Event { "Menu", "access menus" },	Subslate { "Menu" },	\
 			_SlateGlobals_,		\
 			_CloseSubslate_,	\
@@ -1438,14 +1002,18 @@ resource restype_Slate (resid_Snippet, "") { {
 			ExitEvent { "Window", "" }, ClickMenu { "Window" },		\
 			ExitEvent { "Help", "" }, ClickMenu { "Help" },			\
 			endSubslate{},		\
+		_NextPanel,				\
+		_PreviousPanel,			\
 		_Markers_,				\
+		_Symbol_,				\
 		Event { "Contents", "" },	ResSubslate { resid_ProjectContents },	\
 		Event { "Project", "" },	ResSubslate { resid_Project },		\
 		Event { "Browser", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},		\
 		Event { "Validate", "" },	ResSubslate { resid_ValidateMarkup },		\
+		Event { "Search", "" },		ResSubslate { resid_Search },		\
+		Event { "Doc Window", "" },	ResSubslate { resid_DocWindow },	\
 		Event { "Script", "" },		Sequence{}, _clickScriptsMenu, _down, ResSubslate { resid_Script }, endSequence{},		\
-		Event { "Search", "" },		ResSubslate { resid_Search }
-
+		Event { "Action", "" },			ResSubslate { resid_Action }
 
 
 resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
@@ -1461,35 +1029,7 @@ resource restype_Slate (resid_XCBBEdit, "XcodeBBEdit Slate") { {
 		_SlateGlobals_,
 		_DefaultBase_,
 		_BBEditItems_,
-		ExitEvent { "quit", "" },	Keypress { kc_Q, mf_command },
+		ExitEvent { "close", "" },	Keypress { kc_Q, mf_command },
 		Event { "okay", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
 	} }
 } };
-
-/*
- resource restype_Slate (resid_BBEdit, "BBEdit Slate") { {
-	Slate { "BBEdit",	{
-		_BBEditBase_,	
-		Event { "close document", "" },	Keypress { kc_W, mf_command },
-		Event { "Macro", "" },			ResSubslate { resid_Macro },
-		Event { "Contents", "" },	ResSubslate { resid_ProjectContents },
-		Event { "Doc Window", "" },	ResSubslate { resid_DocWindow },
-		Event { "Window", "" },			ResSubslate { resid_WindowBBEdit },
-		Event { "Preferences", "" },	Sequence{}, Keypress { kc_comma, mf_command }, ResSubslate { resid_Preferences }, endSequence{},
-		Event { "Accessor", "" },			Subslate { "Accessor" },
-			_SlateGlobals_,
-			Event { "build", "" },			Sequence{}, _clickScriptsMenu, _down,
-				TypeText { "BuildAccessor" }, _return, endSequence{},
-			ExitEvent { "force exit", "" },		NilAction{},
-			ExitEvent { "cancel", "for failed build" },	_return,
-			Event { "run original", "" },	Sequence{}, _return, 
-				Launch { HomeApps_"Accessor_C9.app", 0 }, endSequence{},
-			Event { "quit", "" },			Keypress { kc_Q, mf_command },
-			endSubslate{},
-		Event { "Markup", "" },			ResSubslate { resid_Markup },
-		Event { "Subversion", "switch to subslate 'Subversion'" },
-			ResSubslate { resid_Subversion },
-		Event { "Action", "" },			ResSubslate { resid_Action },
-	 } }
-} };
- */

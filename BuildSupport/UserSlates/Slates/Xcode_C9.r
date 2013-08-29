@@ -185,7 +185,6 @@
 #define _JumpBar_	\
 	Event { "jump bar", "" },	ResSubslate { resid_JumpBar }
 
-#define jump_right_ Keypress { kc_right, mf_option }
 #define	_XcodeStandards_	\
 		Event { "main panel", "" },		Keypress { kc_J, mf_command }
 
@@ -2459,7 +2458,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		_JumpBar_,
 		Event { "context menu", "" },	ClickMod { 1, 0, 0, _cursor, mf_control },
 		Event { "Terminal", "" },		Sequence{}, ResSubslate { resid_XCTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},
-		Event { "BBEdit", "" },			Sequence{}, Launch { MainApps_"BBEdit.app", 0 }, ResSubslate { resid_BBEdit }, endSequence{},
+		Event { "BBEdit", "" },			Sequence{}, Launch { MainApps_"BBEdit.app", 0 }, ResSubslate { resid_XCBBEdit }, endSequence{},
 		Event { "Validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { MainApps_"BBEdit.app", 0 }, endSequence{},
 		Event { "Stickies", "" },		Sequence{}, ResSubslate { resid_Stickies }, Launch { Apps_"Stickies.app", 0 }, endSequence{},
 		Event { "Console", "" },		Sequence{}, ResSubslate { resid_Console }, Launch { Apps_"Utilities/Console.app", 0 },  endSequence{},

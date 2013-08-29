@@ -29,6 +29,7 @@
 #define _indent				Keypress { kc_closebracket, mf_command }
 #define _indentBack			Keypress { kc_bracket, mf_command }
 #define _cutNextLine		Keypress { kc_right, mf_command }, Keypress { kc_right, 0 }, Keypress { kc_right, mf_command + mf_shift }, Keypress { kc_X, mf_command }, Keypress { kc_delete, 0 }
+#define jump_right_ 		Keypress { kc_right, mf_option }
 
 #pragma mark Use Cases
 #define _uc1		Keypress { kc_tab, 0 }, TypeText { "<p><b>" }
