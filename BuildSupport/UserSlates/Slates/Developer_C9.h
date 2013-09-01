@@ -53,7 +53,7 @@
 #define _TypeDevItems_	\
 	Event { "add space", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_space, 0 }, endSequence{},	\
 	Event { "add comma", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_comma, 0 }, endSequence{},	\
-	Event { "list item", "" },	Sequence{}, TypeText { "<li><#item#></li>" }, _previous, endSequence{},	\
+	Event { "list item", "" },	Sequence{}, TypeText { "<li><#item#></li>" }, _previousField, endSequence{},	\
 	Event { "page top", "" },	Keypress { kc_home, 0 },	\
 	Event { "page bottom", "" },	Keypress { kc_end, 0 },	\
 	Event { "page north", "" },	Keypress { kc_pageup, 0 },	\
@@ -122,9 +122,9 @@
 		Event { "comment", "" },					Sequence{}, TypeText { "/*!  */" }, _left, _left, _left, endSequence{},		\
 		ExitEvent { "trailing", "trailing comment" }, Sequence{}, TypeText { "/*!< \\brief" }, _insertTab, TypeText { " */" }, _left, _left, _left, endSequence{},		\
 		ExitEvent { "brief", "" },					Sequence{}, TypeText { "\\brief" }, _insertTab, _insertTab, endSequence{},		\
-		ExitEvent { "category", "" },				Sequence{}, TypeText { "\\category <#className#>(<#categoryName#>" }, _insertTab, _previous, _previous, endSequence{},		\
+		ExitEvent { "category", "" },				Sequence{}, TypeText { "\\category <#className#>(<#categoryName#>" }, _insertTab, _previousField, _previousField, endSequence{},		\
 		ExitEvent { "details", "" },				Sequence{}, TypeText { "\\details" }, _insertTab, endSequence{},		\
-		ExitEvent { "parameter", "" },				Sequence{}, TypeText { "\\param" }, _insertTab, _insertTab, TypeText { "<#paramName#>" }, _insertTab, TypeText { "<#description#>" }, _previous, _previous, endSequence{},		\
+		ExitEvent { "parameter", "" },				Sequence{}, TypeText { "\\param" }, _insertTab, _insertTab, TypeText { "<#paramName#>" }, _insertTab, TypeText { "<#description#>" }, _previousField, _previousField, endSequence{},		\
 		ExitEvent { "result", "" },					Sequence{}, TypeText { "\\result" }, _insertTab, _insertTab, endSequence{},		\
 		ExitEvent { "file", "" },					Sequence{}, TypeText { "\\file" }, _insertTab, _insertTab, TypeText { "<#filename#>" }, _insertTab, TypeText { "<#description#>" }, endSequence{},		\
 		ExitEvent { "internal", "" },				Sequence{}, TypeText { "\\internal" }, _insertTab, endSequence{},		\
@@ -135,26 +135,26 @@
 		ExitEvent { "invariant", "" },				Sequence{}, TypeText { "\\invariant" }, _insertTab, endSequence{},		\
 		ExitEvent { "note", "" },					Sequence{}, TypeText { "\\note" }, _insertTab, _insertTab, endSequence{},		\
 		ExitEvent { "to do", "" },					Sequence{}, TypeText { "\\todo" }, _insertTab, _insertTab, endSequence{},		\
-		ExitEvent { "paragraph", "" },				Sequence{}, TypeText { "\\par" }, _insertTab, TypeText { "<#title#>" }, _previous, endSequence{},		\
+		ExitEvent { "paragraph", "" },				Sequence{}, TypeText { "\\par" }, _insertTab, TypeText { "<#title#>" }, _previousField, endSequence{},		\
 		ExitEvent { "postconditions", "" },			Sequence{}, TypeText { "\\post" }, _insertTab, endSequence{},		\
 		ExitEvent { "preconditions", "" },			Sequence{}, TypeText { "\\pre" }, _insertTab, endSequence{},		\
 		ExitEvent { "see also", "" },				Sequence{}, TypeText { "\\sa" }, _insertTab, endSequence{},		\
-		ExitEvent { "since", "" },					Sequence{}, TypeText { "\\since" }, _insertTab, _insertTab, TypeText { "<#version#>" }, _previous, endSequence{},		\
+		ExitEvent { "since", "" },					Sequence{}, TypeText { "\\since" }, _insertTab, _insertTab, TypeText { "<#version#>" }, _previousField, endSequence{},		\
 		ExitEvent { "test", "" },					Sequence{}, TypeText { "\\test" }, _insertTab, endSequence{},		\
-		ExitEvent { "throw", "" },					Sequence{}, TypeText { "\\throw" }, _insertTab, _insertTab, TypeText { "<#exceptionObject#>" }, _insertTab, TypeText { "<#because#>" }, _previous, _previous, endSequence{},		\
-		ExitEvent { "copydoc", "" },				Sequence{}, TypeText { "\\copydoc" }, _insertTab, TypeText { "<#class#>::<#member#>\\n" }, _previous, _previous, endSequence{},		\
+		ExitEvent { "throw", "" },					Sequence{}, TypeText { "\\throw" }, _insertTab, _insertTab, TypeText { "<#exceptionObject#>" }, _insertTab, TypeText { "<#because#>" }, _previousField, _previousField, endSequence{},		\
+		ExitEvent { "copydoc", "" },				Sequence{}, TypeText { "\\copydoc" }, _insertTab, TypeText { "<#class#>::<#member#>\\n" }, _previousField, _previousField, endSequence{},		\
 		ExitEvent { "markup", "" },					Sequence{}, TypeText { "\\htmlonly" }, _return, TypeText { "\\endhtmlonly" }, _up, endSequence{},		\
 		ExitEvent { "list item", "" },				Sequence{}, TypeText { "\\li" }, _insertTab, _insertTab, endSequence{},		\
 		ExitEvent { "group", "" },					Sequence{}, TypeText { "#pragma mark" }, _insertTab, TypeText	{ "<#groupName#>" }, _return, TypeText { "/*! \\name" }, _insertTab, _insertTab, TypeText { "<#groupName#>" }, _return, TypeText { "*/" }, _return, TypeText { "//@{" }, _return, TypeText { "//@}" }, _return, Keypress { kc_up, mf_shift }, endSequence{},		\
-		ExitEvent { "mainpage", "" },				Sequence{}, TypeText { "\\mainpage" }, _insertTab, TypeText { "<#optTitle#>" }, _insertTab, _previous, endSequence{},		\
-		ExitEvent { "page", "" },					Sequence{}, TypeText { "\\page" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previous, _previous, endSequence{},		\
-		ExitEvent { "anchor", "" },					Sequence{}, TypeText { "\\anchor" }, _insertTab, TypeText { "<#name#>" }, _insertTab, _previous, endSequence{},		\
-		ExitEvent { "reflink", "" },				Sequence{}, TypeText { "\\ref" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previous, _previous, endSequence{},		\
-		ExitEvent { "subpage", "" },				Sequence{}, TypeText { "\\subpage" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previous, _previous, endSequence{},		\
-		ExitEvent { "section", "" },				Sequence{}, TypeText { "\\section" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previous, _previous, endSequence{},		\
-		ExitEvent { "subsection", "" },				Sequence{}, TypeText { "\\subsection" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previous, _previous, endSequence{},		\
-		ExitEvent { "subsubsection", "" },			Sequence{}, TypeText { "\\subsubsection" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previous, _previous, endSequence{},		\
-		ExitEvent { "page paragraph", "" },			Sequence{}, TypeText { "\\paragraph" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previous, _previous, endSequence{},		\
+		ExitEvent { "mainpage", "" },				Sequence{}, TypeText { "\\mainpage" }, _insertTab, TypeText { "<#optTitle#>" }, _insertTab, _previousField, endSequence{},		\
+		ExitEvent { "page", "" },					Sequence{}, TypeText { "\\page" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previousField, _previousField, endSequence{},		\
+		ExitEvent { "anchor", "" },					Sequence{}, TypeText { "\\anchor" }, _insertTab, TypeText { "<#name#>" }, _insertTab, _previousField, endSequence{},		\
+		ExitEvent { "reflink", "" },				Sequence{}, TypeText { "\\ref" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previousField, _previousField, endSequence{},		\
+		ExitEvent { "subpage", "" },				Sequence{}, TypeText { "\\subpage" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previousField, _previousField, endSequence{},		\
+		ExitEvent { "section", "" },				Sequence{}, TypeText { "\\section" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previousField, _previousField, endSequence{},		\
+		ExitEvent { "subsection", "" },				Sequence{}, TypeText { "\\subsection" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previousField, _previousField, endSequence{},		\
+		ExitEvent { "subsubsection", "" },			Sequence{}, TypeText { "\\subsubsection" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previousField, _previousField, endSequence{},		\
+		ExitEvent { "page paragraph", "" },			Sequence{}, TypeText { "\\paragraph" }, _insertTab, TypeText { "<#name#>" }, _insertTab, TypeText { "<#title#>" }, _previousField, _previousField, endSequence{},		\
 		ExitEvent { "less than", "" },				TypeText { "&lt;" },		\
 		ExitEvent { "greater than", "" },			TypeText { "&gt;" },		\
 		ExitEvent { "ampersand", "" },				TypeText { "&amp;" }
