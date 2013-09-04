@@ -10,6 +10,9 @@
 setUp() {
 	workspaceRoot="${DEV}/Support"
 	targetFolder="BuildSupport/Doxygen"
+
+	arg1="${workspaceRoot}"
+	arg2="${targetFolder}"
 }
 
 . "${CCDev}/bin/resultCodes.ksh"
@@ -17,40 +20,46 @@ setUp() {
 
 testTargetName() {
 	assertEquals "$LINENO: " 1 1
-	targetScript=$(ccInstall --getTargetScript "${workspaceRoot}" "${targetFolder}")
-	assertEquals "$LINENO: incorrect target script" "${targetScript}" "${workspaceRoot}/${targetFolder}/Doxygen_install.ksh"
+	targetScript=$(ccInstall --getTargetScript "${arg1}" "${arg2}")
+	assertEquals "$LINENO: incorrect target script" "${targetScript}" "${arg1}/${arg2}/Doxygen_install.ksh"
 
 	str=$(ccInstall --getTargetScript)
 	st=$?
 	assertEquals "$LINENO: expected error RC_MissingArgument" $RC_MissingArgument "${st}"
 
-	str=$(ccInstall --getTargetScript "${workspaceRoot}" "${targetFolder}")
+	str=$(ccInstall --getTargetScript "${arg1}" "${arg2}")
 	assertEquals "$LINENO: incorrect target script: " "${DEV}/Support/BuildSupport/Doxygen/Doxygen_install.ksh" "${str}"
-	lastbuilt=$(ccInstall --getLastbuilt "${workspaceRoot}" "${targetFolder}")
+	sourceRoot=$(ccInstall --getSourceRoot "${arg1}" "${arg2}")
+	assertEquals "$LINENO: incorrect sourceRoot: " "${DEV}/Support/BuildSupport" "${sourceRoot}"
+	workspacePath=$(ccInstall --getWorkspacePath "${arg1}" "${arg2}")
+	assertEquals "$LINENO: incorrect workspacePath: " "${DEV}/Support" "${workspacePath}"
+	workspaceName=$(ccInstall --getWorkspaceName "${arg1}" "${arg2}")
+	assertEquals "$LINENO: incorrect workspaceName: " "Support" "${workspaceName}"
+	lastbuilt=$(ccInstall --getLastbuilt "${arg1}" "${arg2}")
 	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/Support/BuildSupport/Doxygen.lastbuilt" "${lastbuilt}"
-	ccInstall --updateLastbuilt "${workspaceRoot}" "${targetFolder}"
+	ccInstall --updateLastbuilt "${arg1}" "${arg2}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
-	ccInstall --clearLastbuilt "${workspaceRoot}" "${targetFolder}"
+	ccInstall --clearLastbuilt "${arg1}" "${arg2}"
 	assertFalse "$LINENO: file ${lastbuilt} still present" "[ -e ${lastbuilt} ]"
 
-	targetName=$(ccInstall --getTargetName "${workspaceRoot}" "${targetFolder}")
+	targetName=$(ccInstall --getTargetName "${arg1}" "${arg2}")
 	assertEquals "$LINENO: incorrect target name" "${targetName}" "Doxygen"
 }
 
 testDoxygenGetActions() {
 	typeset str
 
-	ccInstall --getActions result "${workspaceRoot}" "${targetFolder}"
+	ccInstall --getActions result "${arg1}" "${arg2}"
 	st=$?
 	assertEquals "$0#$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
 	assertEquals "$0#$LINENO: incorrect default action string: " "it" "${result.actionString}"
 
-	str=$(ccInstall --getActions result "${workspaceRoot}" "${targetFolder}" abc)
+	str=$(ccInstall --getActions result "${arg1}" "${arg2}" abc)
 	st=$?
 	assertEquals "$0#$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
 	assertNotNull "$0#$LINENO: expected error message" "${str}"
 
-	ccInstall --getActions result "${workspaceRoot}" "${targetFolder}" -ciu
+	ccInstall --getActions result "${arg1}" "${arg2}" -ciu
 	st=$?
 	assertEquals "$0#$LINENO: 'ccInstall --getActions result -ciu' failed with code $st" 0 $st
 	assertEquals "$0#$LINENO: incorrect action string: " "ciu" "${result.actionString}"
@@ -58,7 +67,7 @@ testDoxygenGetActions() {
 	assertEquals "$0#$LINENO: expected doDoxygen=1: " 1 "${result.doDoxygen}"
 	assertEquals "$0#$LINENO: expected doTest=0: " 0 "${result.doTest}"
 
-	str=$(ccInstall --getActions result "${workspaceRoot}" "${targetFolder}" -xyz)
+	str=$(ccInstall --getActions result "${arg1}" "${arg2}" -xyz)
 	st=$?
 	assertEquals "$0#$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 	assertNotNull "$0#$LINENO: error message expected" "${str}"

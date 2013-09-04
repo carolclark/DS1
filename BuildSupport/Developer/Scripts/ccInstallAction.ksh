@@ -17,7 +17,7 @@ USAGE='
 
 # for target ${DEV}/Support/BuildSupport/Developer:
 #	old params: workspacePath ${DEV}/Support; projectTarget BuildSupport/Developer
-#	new params: srcroot $SRCROOT; targetPath Developer
+#	new params: sourceRoot $SRCROOT; targetFolder Developer
 
 if [[ ! -n "${1}" ]] ; then
 	print "missing SRCROOT parameter"
