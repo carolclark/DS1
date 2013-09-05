@@ -8,10 +8,10 @@
 #  Confidential and Proprietary.
 
 setUp() {
-	workspaceRoot="${DEV}/Support"
-	targetFolder="BuildSupport/Doxygen"
+	sourceRoot="${DEV}/Support/BuildSupport"
+	targetFolder="Doxygen"
 
-	arg1="${workspaceRoot}"
+	arg1="${sourceRoot}"
 	arg2="${targetFolder}"
 }
 

@@ -8,10 +8,10 @@
 #  Confidential and Proprietary.
 
 setUp() {
-	workspaceRoot="${CCDev}/TestData/WorkspaceA"
-	targetFolder=ProjA/Tar1
+	sourceRoot="${CCDev}/TestData/WorkspaceA/ProjA"
+	targetFolder=Tar1
 
-	arg1="${workspaceRoot}"
+	arg1="${sourceRoot}"
 	arg2="${targetFolder}"
 }
 

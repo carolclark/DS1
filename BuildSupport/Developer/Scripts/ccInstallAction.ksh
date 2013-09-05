@@ -20,6 +20,30 @@ USAGE='
 #	new params: sourceRoot $SRCROOT; targetFolder Developer
 
 if [[ ! -n "${1}" ]] ; then
+	print "missing sourceRoot parameter"
+	exit 1
+fi
+sourceRoot="${1}"
+
+if [[ ! -n "${2}" ]] ; then
+	print "missing targetFolder parameter"
+	exit 1
+fi
+targetFolder="${2}"
+
+actionFlags="-it"
+if [[ "${3}" = "clean" ]] ; then
+	actionFlags="-c"
+fi
+
+print "ccInstall ${sourceRoot} ${targetFolder} ${actionFlags}"
+msg=$(ccInstall "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+st="${?}"
+print "${msg}"
+exit "${st}"
+
+# previous
+if [[ ! -n "${1}" ]] ; then
 	print "missing SRCROOT parameter"
 	exit 1
 fi

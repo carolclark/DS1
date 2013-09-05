@@ -651,7 +651,7 @@ function ccInstall {
 			return $?
 			;;
 		"--get"* )
-			val=$(getPath "${1}" "${srcroot}" "${tarfldr}")
+			val=$(getPath "${1}" "${2}" "${3}")
 			es=$?
 			print "${val}"
 			return "${es}"
