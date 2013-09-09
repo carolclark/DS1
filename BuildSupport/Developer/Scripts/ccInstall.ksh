@@ -27,7 +27,7 @@ ccInstall commandFlag [argument(s)]
 #						translate Cdoc markers in source file and store result at the specified destination
 #	--getActions		resultObject arg1 arg2 [actionString]
 #		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
-#			default: -it
+#			default: -it, or -c if "clean" passed
 #			resultObject: object to contain results
 #	--findTests 		testPath
 #		result: 		path to file containing list of shunit tests on <testPath>
@@ -253,14 +253,13 @@ function getActions {			# resultObject arg1 arg2 actionString
 		print "USAGE: ccInstall --getActions resultObject arg1 arg2 actionString"
 		return $RC_MissingArgument
 	fi
-	if [[ -n ${4} ]] ; then
-		actionString="${4#-}"
-		if [[ ${actionString} = ${4} ]] ; then
-			print "$0#$LINENO: actionString $4: expected first character '-'"
-			return $RC_SyntaxError
+	actionString="it"
+	if [[ -n "${4}" ]] ; then
+		if [[ "{$4}" = "clean" ]] ; then
+			actionString="c"
+		elif [[ ! "${4}" = "${4#-}" ]] ; then		# does not start with '-'
+			actionString="${4#-}"
 		fi
-	else
-		actionString="it"
 	fi
 	resultObj.actionString=${actionString}
 	typeset -i i=${#actionString}
@@ -647,65 +646,65 @@ function ccInstall {
 
 	case "${1}" in
 		"--getActions" )
-			getActions "${2}" "${3}" "${4}" "${5}"
+			getActions "${2}" "${3}" "${4}" "${5}"		# resultObject arg1 arg2 [actionString]
 			return $?
 			;;
 		"--get"* )
-			val=$(getPath "${1}" "${2}" "${3}")
+			val=$(getPath "${1}" "${2}" "${3}")			# command arg1 arg2
 			es=$?
 			print "${val}"
 			return "${es}"
 			;;
 		"--help" )
-			print "${HELP}"
+			print "${HELP}"								# <no args>
 			;;
 		"--findTests" )
-			msg=$(findTests "${2}")
+			msg=$(findTests "${2}")						# testPath
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--findSources" )
-			msg=$(findSources "${2}" "${3}")
+			msg=$(findSources "${2}" "${3}")			# arg1 arg2
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--updateLastbuilt" )
-			msg=$(updateLastbuilt "${2}" "${3}")
+			msg=$(updateLastbuilt "${2}" "${3}")		# arg1 arg2
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--clearLastbuilt" )
-			msg=$(clearLastbuilt "${2}" "${3}")
+			msg=$(clearLastbuilt "${2}" "${3}")			# arg1 arg2
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--removeFolder" )
-			msg=$(removeFolder "${2}")
+			msg=$(removeFolder "${2}")					# folder
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--copyFile" )
-			msg=$(copyFile "${2}" "${3}")
+			msg=$(copyFile "${2}" "${3}")				# sourceForCopy destinationForCopy
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--translateCdoc" )
-			msg=$(translateCdoc "${2}" "${3}")
+			msg=$(translateCdoc "${2}" "${3}")			# arg1 arg2
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--runShunitTests" )
-			runShunitTests "${2}"
+			runShunitTests "${2}"						# testPath
 			;;
 		"--"* )
-			print "invalid subcommand $1"
+			print "invalid subcommand $1"				# <invalid arg>
 			return $RC_InvalidArgument
 			;;
 		* )
