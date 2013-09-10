@@ -254,11 +254,15 @@ function getActions {			# resultObject arg1 arg2 actionString
 		return $RC_MissingArgument
 	fi
 	actionString="it"
-	if [[ -n "${4}" ]] ; then
-		if [[ "{$4}" = "clean" ]] ; then
+	if [[ -n ${4} ]] ; then
+		if [[ "${4}" = "clean" ]] ; then
 			actionString="c"
-		elif [[ ! "${4}" = "${4#-}" ]] ; then		# does not start with '-'
+		else
 			actionString="${4#-}"
+			if [[ ${actionString} = ${4} ]] ; then
+				print "$0#$LINENO: actionString $4: expected first character '-'"
+				return $RC_SyntaxError
+			fi
 		fi
 	fi
 	resultObj.actionString=${actionString}
@@ -708,7 +712,7 @@ function ccInstall {
 			return $RC_InvalidArgument
 			;;
 		* )
-			msg=$(processActions "${1}" "${2}" "${3}")
+			msg=$(processActions "${1}" "${2}" "${3}")	# arg1 arg2 actionString
 			es=$?
 			print "${msg}"
 			return "${es}"

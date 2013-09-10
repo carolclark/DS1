@@ -64,9 +64,6 @@
 	* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
 	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* refactor ccInstall
-		* *make needed changes only; probably will be converted to another language (Python?)*
-		* use errorMessage for error returns as indicated
-		* --set/getPath: add sourceRoot, sourceFolder
 		* add target AllTests
 			* ccInstall: findTests takes single $path; add command --runShunitTests
 			* testDoxygenInstall: tests only functions of ccInstall; move to Developer/_Tests
@@ -80,8 +77,8 @@
 			* within ccInstall, rename existing targetFolder to oldTargetFolder
 			* ccInstall: calculate key variables based on sourceRoot, targetFolder
 			* ccInstall, tests: change internal parameters to new values
-		* Then: Is ccInstallAction still necessary?
-	* ?? ccInstall targets: change calling syntax to use /bin/ksh as a build tool, pass command as argument
+		* targets call ccInstall directly; remove ccInstallAction
+		* use errorMessage for error returns as indicated
 	* remove file /private/etc/launchd.conf from scripts and disk
 </pre>
 

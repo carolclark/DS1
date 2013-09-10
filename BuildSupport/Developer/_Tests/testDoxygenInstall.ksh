@@ -54,6 +54,11 @@ testDoxygenGetActions() {
 	assertEquals "$0#$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
 	assertEquals "$0#$LINENO: incorrect default action string: " "it" "${result.actionString}"
 
+	str=$(ccInstall --getActions result "${arg1}" "${arg2}" abc)
+	st=$?
+	assertEquals "$0#$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
+	assertNotNull "$0#$LINENO: expected error message" "${str}"
+
 	ccInstall --getActions result "${arg1}" "${arg2}" -ciu
 	st=$?
 	assertEquals "$0#$LINENO: 'ccInstall --getActions result -ciu' failed with code $st" 0 $st

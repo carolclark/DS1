@@ -49,6 +49,11 @@ testCciGetActions() {
 	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
 	assertEquals "$LINENO: incorrect default action string: " "it" "${result.actionString}"
 
+	str=$(ccInstall --getActions result "${arg1}" "${targetFolder}" abc)
+	st=$?
+	assertEquals "$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
+	assertNotNull "$LINENO: expected error message" "${str}"
+
 	ccInstall --getActions result "${arg1}" "${targetFolder}" -ciu
 	st=$?
 	assertEquals "$LINENO: 'ccInstall --getActions result ... -ciu' failed with code $st" 0 $st
@@ -275,6 +280,10 @@ testInstall() {
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument "${st}"
 	
+	str=$(ccInstall a b abc)
+	st=$?
+	assertEquals "$LINENO: RC_SyntaxError expected" $RC_SyntaxError "${st}"
+
 	str=$(ccInstall a b -abc)
 	st=$?
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"

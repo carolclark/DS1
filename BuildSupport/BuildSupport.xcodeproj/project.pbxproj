@@ -1137,7 +1137,7 @@
 			buildConfigurationList = 67043DC616B7331400E43F90 /* Build configuration list for PBXLegacyTarget "BBEdit" */;
 			buildPhases = (
 			);
-			buildToolPath = ccInstall;
+			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
 				67ED6F8D175A87CB00CCE9EB /* PBXTargetDependency */,
@@ -1153,7 +1153,7 @@
 			buildConfigurationList = 671B546D16B1E610009C2B17 /* Build configuration list for PBXLegacyTarget "Xcode" */;
 			buildPhases = (
 			);
-			buildToolPath = ccInstall;
+			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
 				67BDF87F175A806E006C0B75 /* PBXTargetDependency */,
@@ -1169,7 +1169,7 @@
 			buildConfigurationList = 673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */;
 			buildPhases = (
 			);
-			buildToolPath = ccInstall;
+			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
 			);
@@ -1183,7 +1183,7 @@
 			buildConfigurationList = 67BE04BA16B06EFF0065BFDE /* Build configuration list for PBXLegacyTarget "Cdoc" */;
 			buildPhases = (
 			);
-			buildToolPath = ccInstall;
+			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
 			);
@@ -1197,7 +1197,7 @@
 			buildConfigurationList = 67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */;
 			buildPhases = (
 			);
-			buildToolPath = ccInstall;
+			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
 				67645A0D16EFD181004F37F1 /* PBXTargetDependency */,
