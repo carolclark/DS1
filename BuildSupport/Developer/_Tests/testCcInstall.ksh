@@ -205,9 +205,9 @@ testFind() {
 	rm "${arg1}/${targetFolder}/B/blue"
 	rmdir "${arg1}/${targetFolder}/B"
 	rmdir "${arg1}/${targetFolder}"
-	rmdir "${CCDev}/TestData/WorkspaceA/ProjA"
-	rmdir "${CCDev}/TestData/WorkspaceA"
 
+	rmdir "${arg1}"
+	rmdir "${CCDev}/TestData/WorkspaceA"
 	rmdir "${CCDev}/build/WorkspaceA/ProjA"
 	rmdir "${CCDev}/build/WorkspaceA"
 }

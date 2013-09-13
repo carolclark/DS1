@@ -109,21 +109,23 @@
 				<li>check stash list</li>
 				<li><span class='em'>Update Branch</span><ul>
 					<li><span class='em'>Update Master</span> from remotes<ul>
-						<li>checkout master; status; log --oneline master..origin/master; [log --oneline artist..lm/artist]</li>
+						<li>set $cb; checkout master; status; log --oneline master..origin/master; [log --oneline artist..lm/artist]</li>
 						<li>fetch updates: <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
 							<li>if that merge fails: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
 						</ul></li>
-						<li>[retest if changed]</li>
 					</ul></li>
-					<li>[checkout branch; log --oneline $cb..master; merge master]</li>
-					<li>[retest if changed]</li>
+					<li>if changed:<ul>
+						<li>retest</li>
+						<li>[checkout branch; log --oneline $cb..master; merge master]</li>
+						<li>retest if changed</li>
+					</ul></li>
 				</ul></li>
 			</ul></li>
 		</ul>
 		<h5>Merge</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 			<li>checkout master; check for unmerged branches</li>
-			<li>diff (--name-status) branch</li>
+			<li>diff (--name-status) master..$cb; lg master..$cb</li>
 			<li><span class='mono'>merge &lt;branch&gt;</span><ul>
 				<li>[OR to merge in files only, use <span class='mono'>merge &lt;branch&gt; --no-ff --no-commit</span>]; then commit or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			</ul></li>
@@ -131,7 +133,7 @@
 				<li>use <span class='mono'>merge tool</span> to resolve conflicts; add / review files to be committed; commit</li>
 				<li>[OR to undo attempted merge, use <span class='mono'>git reset --merge</span>]</li>
 			</ul></li>
-			<li>show --name-only; lg compare</li>
+			<li>show --name-only; lg compare; lg origin/master..master</li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
 				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
 			</ul></li>

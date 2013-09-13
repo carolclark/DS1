@@ -74,8 +74,8 @@
 #pragma mark #defines
 #define _TypeBBEditSlate_ 	Event { "Type", "" },	ResSubslate { resid_TypeBBEditSlate }
 
-#define _next		Keypress { kc_accent, mf_control }
-#define _previous	Keypress { kc_accent, mf_control + mf_shift }	
+#define _nextField		Keypress { kc_accent, mf_control }
+#define _previousField	Keypress { kc_accent, mf_control + mf_shift }
 #define _clickScriptsMenu	Click { 1, 628, 11, _screen, _topLeft }
 #define _clickSvnMenu	Click { 1, 575, 11, _screen, _topLeft }
 #define _NextPanel	Event { "next panel", "" },	Keypress { kc_tab, mf_control }

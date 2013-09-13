@@ -114,9 +114,6 @@
 		67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		67364A6D16C0345900940D94 /* FixWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = FixWindow.applescript; sourceTree = "<group>"; };
 		67364A7316C0362C00940D94 /* DeveloperScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeveloperScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		67364A7716C0362C00940D94 /* DeveloperScripts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DeveloperScripts-Info.plist"; sourceTree = "<group>"; };
-		67364A7916C0362C00940D94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		67364A7B16C0362C00940D94 /* DeveloperScripts-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DeveloperScripts-Prefix.pch"; sourceTree = "<group>"; };
 		673D580A16B9A1450001DFF2 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
 		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
 		673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
@@ -335,24 +332,6 @@
 			path = InstallCdoc.xctemplate;
 			sourceTree = "<group>";
 		};
-		67364A7516C0362C00940D94 /* DeveloperScripts */ = {
-			isa = PBXGroup;
-			children = (
-				67364A7616C0362C00940D94 /* Supporting Files */,
-			);
-			path = DeveloperScripts;
-			sourceTree = "<group>";
-		};
-		67364A7616C0362C00940D94 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				67364A7716C0362C00940D94 /* DeveloperScripts-Info.plist */,
-				67364A7816C0362C00940D94 /* InfoPlist.strings */,
-				67364A7B16C0362C00940D94 /* DeveloperScripts-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		673D580916B9A1450001DFF2 /* Doxygen */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,7 +361,6 @@
 				67DD76CB16A4AF9300BECCD5 /* 5 Applications */,
 				67DB22CA169CD82300A6E910 /* 8 UserSlates */,
 				673D580916B9A1450001DFF2 /* Doxygen */,
-				67364A7516C0362C00940D94 /* DeveloperScripts */,
 				67BDF86B175967DC006C0B75 /* AllTests */,
 				6769245A141EB921005D3E68 /* Frameworks */,
 				67692459141EB921005D3E68 /* Products */,
@@ -1486,14 +1464,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		67364A7816C0362C00940D94 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				67364A7916C0362C00940D94 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		67BDF86E175967DC006C0B75 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

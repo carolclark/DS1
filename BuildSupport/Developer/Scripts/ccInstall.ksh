@@ -66,8 +66,8 @@ function setPaths {
 	workspaceRoot="${sourceRoot%/*}"
 	oldTargetFolder="${sourceRoot##*/}/${targetFolder##*/}"
 
-	arg1="${workspaceRoot}"
-	arg2="${oldTargetFolder}"
+	arg1="${sourceRoot}"
+	arg2="${targetFolder}"
 
 	targetName="${targetFolder%%/*}"
 	workspacePath="${sourceRoot%/*}"

@@ -145,8 +145,6 @@
 #define	focus_			Event { "focus", "" },			Keypress { kc_accent, mf_command + mf_option }
 #define	focusBack_		Event { "focus back", "" },		Keypress { kc_accent, mf_command + mf_option + mf_shift }
 
-#define	_next			Keypress { kc_slash, mf_control }
-#define	_previous		Keypress { kc_slash, mf_control + mf_shift }
 #define	_selword		Keypress { kc_W, mf_option + mf_control }
 #define	_selline		Keypress { kc_W, mf_option + mf_control + mf_shift }
 #define _capitalize		Keypress { kc_up, mf_control + mf_shift }
@@ -2199,7 +2197,7 @@ resource restype_Slate (resid_Macro, "") { {
 		focus_,
 		focusBack_,
 		Event { "one", "temp" },				Sequence{},
-			TypeText { "arg1" },
+			Keypress { kc_accent, mf_control + mf_shift },
 			endSequence{},
 		Event { "two", "temp" },				Sequence{},
 			TypeText { "arg2" },
