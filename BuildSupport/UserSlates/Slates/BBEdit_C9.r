@@ -1030,6 +1030,7 @@ resource restype_Slate (resid_XCBBEdit, "XcodeBBEdit Slate") { {
 		_DefaultBase_,
 		_BBEditItems_,
 		ExitEvent { "close", "" },	Keypress { kc_Q, mf_command },
+		ExitEvent { "save back", "" }, Sequence{}, Keypress { kc_S, mf_command + mf_option }, Launch { DevApps_"XCode.app", resid_Xcode }, endSequence{},
 		Event { "okay", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
 	} }
 } };

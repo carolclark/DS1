@@ -9,36 +9,36 @@
 
 NAME='ccInstall -- installation script and supporting functions'
 USAGE='
-ccInstall arg1 arg2 [actionFlags]
+ccInstall sourceRoot targetFolder [actionFlags]
 #	build the specified project target
 #		actionFlags: [-[citud]+] - actions requested (clean, install, test, upload, doxygen); default: -it
 ccInstall commandFlag [argument(s)]
 #	--setPaths			set derived paths from arguments
-#	--get<Path>			arg1 arg2
-#		<Path>: 		arg1 | TargetFolder | WorkspaceName | TargetName | TargetScript | lastbuilt
+#	--get<Path>			sourceRoot targetFolder
+#		<Path>: 		sourceRoot | TargetFolder | WorkspaceName | TargetName | TargetScript | lastbuilt
 #		result: 		string containing specified path
-#	--updateLastbuilt	arg1 arg2
+#	--updateLastbuilt	sourceRoot targetFolder
 #						set last built flag to the current date and time
-#	--clearLastbuilt	arg1 arg2
+#	--clearLastbuilt	sourceRoot targetFolder
 #						clear last built flag; forces for rebuild on next install operation
 #	--copyFile			sourceFile destinationPath
 #						copy source file to the specified destination
 #	--translateCdoc		sourceFile destinationPath
 #						translate Cdoc markers in source file and store result at the specified destination
-#	--getActions		resultObject arg1 arg2 [actionString]
+#	--getActions		resultObject sourceRoot targetFolder [actionString]
 #		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
 #			default: -it, or -c if "clean" passed
 #			resultObject: object to contain results
 #	--findTests 		testPath
 #		result: 		path to file containing list of shunit tests on <testPath>
-#	--findSources		arg1 arg2
-#		result: 		path to file containing list of source files for <arg1>/<arg2>
+#	--findSources		sourceRoot targetFolder
+#		result: 		path to file containing list of source files for <sourceRoot>/<targetFolder>
 #	--removeFolder		removes contents and folder for the folder specified
 #	--runShunitTests	folder
 #						runs all shunit tests found in folder
-#	--processActions	arg1 arg2 actionFlags
-#	--ccInstall			arg1 arg2 actionFlags
-#						performs specified action on arg2
+#	--processActions	sourceRoot targetFolder actionFlags
+#	--ccInstall			sourceRoot targetFolder actionFlags
+#						performs specified action on targetFolder
 #	--help				<no args>
 #						print this information
 '
@@ -48,8 +48,6 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 #^ 1 === top
 
-workspaceRoot=""		# full path to folder containing Workspace file
-oldTargetFolder=""		# path from workspaceRoot to folder containing sources
 sourceRoot=""			# path to folder containing project (Xcode's $SRCROOT)
 targetFolder=""			# path from sourceRoot to folder containing sources
 workspaceName=""		# name of Xcode workspace
@@ -62,12 +60,6 @@ lastbuilt=""			# path to internal file that knows when a target was last built
 function setPaths {
 	sourceRoot="${1}"
 	targetFolder="${2}"
-
-	workspaceRoot="${sourceRoot%/*}"
-	oldTargetFolder="${sourceRoot##*/}/${targetFolder##*/}"
-
-	arg1="${sourceRoot}"
-	arg2="${targetFolder}"
 
 	targetName="${targetFolder%%/*}"
 	workspacePath="${sourceRoot%/*}"
@@ -91,7 +83,6 @@ function getPath {
 	typeset -i index=-1
 	case "${command}" in
 		"--getTargetFolder" )	path="${targetFolder}";;
-		"--getOldTargetFolder" ) path="${oldTargetFolder}";;
 		"--getSourceRoot" )		path="${sourceRoot}";;
 		"--getTargetName" )		path="${targetName}";;
 		"--getWorkspacePath" )	path="${workspacePath}";;
@@ -106,12 +97,12 @@ function getPath {
 #^ 3 === actions
 #^ updateLastbuilt
 function updateLastbuilt {
-	arg1="${1}"
-	arg2="${2}"
-	lastbuilt=$(ccInstall --getLastbuilt "${arg1}" "${arg2}")
+	sourceRoot="${1}"
+	targetFolder="${2}"
+	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall --getLastbuilt ${arg1} ${arg2} failed"
+		print "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
 		return ${st}
 	fi
 	mkdir -p "$(dirname ${lastbuilt})"
@@ -122,12 +113,12 @@ function updateLastbuilt {
 
 #^ clearLastbuilt
 function clearLastbuilt {
-	arg1="${1}"
-	arg2="${2}"
-	lastbuilt=$(ccInstall --getLastbuilt "${arg1}" "${arg2}")
+	sourceRoot="${1}"
+	targetFolder="${2}"
+	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall --getLastbuilt ${arg1} ${arg2} failed"
+		print "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
 		return ${st}
 	fi
 	if [[ -e "${lastbuilt}" ]] ; then
@@ -237,7 +228,7 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 }
 
 #^ 4 === getActions
-function getActions {			# resultObject arg1 arg2 actionString
+function getActions {			# resultObject sourceRoot targetFolder actionString
 	typeset -n resultObj=$1
 	resultObj=(
 		actionString=""
@@ -247,10 +238,10 @@ function getActions {			# resultObject arg1 arg2 actionString
 		doUpload=0
 		doDoxygen=0
 	)
-	arg1="${2}"
-	arg2="${3}"
-	if [[ ! -n "${arg1}" ]] || [[ ! -n "${arg2}" ]]; then
-		print "USAGE: ccInstall --getActions resultObject arg1 arg2 actionString"
+	sourceRoot="${2}"
+	targetFolder="${3}"
+	if [[ ! -n "${sourceRoot}" ]] || [[ ! -n "${targetFolder}" ]]; then
+		print "USAGE: ccInstall --getActions resultObject sourceRoot targetFolder actionString"
 		return $RC_MissingArgument
 	fi
 	actionString="it"
@@ -273,7 +264,7 @@ function getActions {			# resultObject arg1 arg2 actionString
 		case "${ch}" in
 			"c" )	resultObj.doClean=1;;
 			"i" )
-				if [[ $(ccInstall --getTargetName "${arg1}" "${arg2}") = "Doxygen" ]] ; then
+				if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
 					resultObj.doDoxygen=1
 				else
 					resultObj.doInstall=1
@@ -356,20 +347,20 @@ function findTests {
 
 function findSources {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		arg1="${1}"
-		arg2="${2}"
+		sourceRoot="${1}"
+		targetFolder="${2}"
 	else
-		print "error: USAGE: ccInstall findSources arg1 arg2"
+		print "error: USAGE: ccInstall findSources sourceRoot targetFolder"
 		return $RC_MissingArgument
 	fi
 
 	origdir=$(pwd)
 	iofile="${CCDev}/tmp/sources"
-	cd "${arg1}/${arg2}"
-	lastbuilt=$(ccInstall --getLastbuilt "${arg1}" "${arg2}")
+	cd "${sourceRoot}/${targetFolder}"
+	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall --getLastbuilt ${arg1} ${arg2} failed"
+		print "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
 		return ${st}
 	fi
 	if [[ -e "${lastbuilt}" ]] ; then
@@ -446,30 +437,30 @@ function removeFolder {
 #^ 7 === processActions
 function processActions {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		arg1="${1}"
-		arg2="${2}"
+		sourceRoot="${1}"
+		targetFolder="${2}"
 		actionFlags="${3}"
 	else
-		print "USAGE: ccInstall processActions arg1 arg2 [-actionFlags]"
+		print "USAGE: ccInstall processActions sourceRoot targetFolder [-actionFlags]"
 		return $RC_MissingArgument
 	fi
-	getActions actions "${arg1}" "${arg2}" ${actionFlags}
+	getActions actions "${sourceRoot}" "${targetFolder}" ${actionFlags}
 	st=$?
 	if [[ ${st} > 0 ]] ; then
 		print "$0#$LINENO: could not read action flags"
 		return ${st}
 	fi
 
-	targetScript=$(ccInstall --getTargetScript "${arg1}" "${arg2}")
+	targetScript=$(ccInstall --getTargetScript "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall --getTargetScript ${arg1} ${arg2} failed"
+		print "$LINENO: ccInstall --getTargetScript ${sourceRoot} ${targetFolder} failed"
 		return ${st}
 	fi
 
 # clean
 	if [[ ${actions.doClean} > 0 ]] ; then
-		print "== cleaning ${arg1##*/}/${arg2}..."
+		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
 		msg=$("${targetScript}" --cleanTarget)
 		st=$?
 		if [[ ${st} > 0 ]] ; then
@@ -478,18 +469,18 @@ function processActions {
 		else
 			print ${msg}
 		fi
-		lastbuilt=$(ccInstall --getLastbuilt "${arg1}" "${arg2}")
+		lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			print "$LINENO: ccInstall --getLastbuilt ${arg1} ${arg2} failed"
+			print "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
 			return ${st}
 		fi
-		ccInstall --clearLastbuilt "${arg1}" "${arg2}"
+		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 	fi
 
 # doxygen
 	if [[ ${actions.doDoxygen} > 0 ]] ; then
-		targetName=$(ccInstall --getTargetName "${arg1}" "${arg2}")
+		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
 		outputDir=$("${targetScript}" --getSubtargetDestination "Doxygen")
 		installName="${outputDir##*/}"
 		print "== installing ${installName} documentation"
@@ -502,7 +493,7 @@ function processActions {
 		fi
 
 	#  Run doxygen on the config file (builds local site)
-		$doxygenPath "${arg1}/${arg2}/${installName}_doxygen.txt"
+		$doxygenPath "${sourceRoot}/${targetFolder}/${installName}_doxygen.txt"
 		st=$?
 		if [[ $st > 0 ]] ; then
 			print "error while generating Doxygen docs"
@@ -539,8 +530,8 @@ function processActions {
 
 # install
 	if [[ ${actions.doInstall} > 0 ]] ; then
-		print "== installing ${arg1##*/}/${arg2}..."
-		iofile=$(findSources "${arg1}" "${arg2}")
+		print "== installing ${sourceRoot##*/}/${targetFolder}..."
+		iofile=$(findSources "${sourceRoot}" "${targetFolder}")
 		typeset -i failcnt=0
 		prevFolder=""
 		while read fl ; do
@@ -557,7 +548,7 @@ function processActions {
 					prevFolder="${sourceFolder}"
 				fi
 				if [[ -n "${destination}" ]] ; then
-					print "=${arg1##*/}/${arg2}/${sourceFolder}:"
+					print "=${sourceRoot##*/}/${targetFolder}/${sourceFolder}:"
 				fi
 			fi
 			if [[ ${st} > 0 ]] ; then
@@ -611,7 +602,7 @@ function processActions {
 			fi
 		done < "${iofile}"
 		if [[ ${failcnt} = 0 ]] ; then
-			ccInstall --updateLastbuilt "${arg1}" "${arg2}"
+			ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
 			print "build succeeded"
 		else
 			pl="s"
@@ -632,7 +623,7 @@ function processActions {
 #	returns nonzero exit status if test failures are encountered or messages not including "EXPECTED ERROR" are sent to stderr.
 
 	if [[ ${actions.doTest} > 0 ]] ; then
-		runShunitTests "${arg1}/${arg2}"
+		runShunitTests "${sourceRoot}/${targetFolder}"
 	fi
 }
 
@@ -650,11 +641,11 @@ function ccInstall {
 
 	case "${1}" in
 		"--getActions" )
-			getActions "${2}" "${3}" "${4}" "${5}"		# resultObject arg1 arg2 [actionString]
+			getActions "${2}" "${3}" "${4}" "${5}"		# resultObject sourceRoot targetFolder [actionString]
 			return $?
 			;;
 		"--get"* )
-			val=$(getPath "${1}" "${2}" "${3}")			# command arg1 arg2
+			val=$(getPath "${1}" "${2}" "${3}")			# command sourceRoot targetFolder
 			es=$?
 			print "${val}"
 			return "${es}"
@@ -669,19 +660,19 @@ function ccInstall {
 			return "${es}"
 			;;
 		"--findSources" )
-			msg=$(findSources "${2}" "${3}")			# arg1 arg2
+			msg=$(findSources "${2}" "${3}")			# sourceRoot targetFolder
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--updateLastbuilt" )
-			msg=$(updateLastbuilt "${2}" "${3}")		# arg1 arg2
+			msg=$(updateLastbuilt "${2}" "${3}")		# sourceRoot targetFolder
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--clearLastbuilt" )
-			msg=$(clearLastbuilt "${2}" "${3}")			# arg1 arg2
+			msg=$(clearLastbuilt "${2}" "${3}")			# sourceRoot targetFolder
 			es=$?
 			print "${msg}"
 			return "${es}"
@@ -699,7 +690,7 @@ function ccInstall {
 			return "${es}"
 			;;
 		"--translateCdoc" )
-			msg=$(translateCdoc "${2}" "${3}")			# arg1 arg2
+			msg=$(translateCdoc "${2}" "${3}")			# sourceRoot targetFolder
 			es=$?
 			print "${msg}"
 			return "${es}"
@@ -712,7 +703,7 @@ function ccInstall {
 			return $RC_InvalidArgument
 			;;
 		* )
-			msg=$(processActions "${1}" "${2}" "${3}")	# arg1 arg2 actionString
+			msg=$(processActions "${1}" "${2}" "${3}")	# sourceRoot targetFolder actionString
 			es=$?
 			print "${msg}"
 			return "${es}"
