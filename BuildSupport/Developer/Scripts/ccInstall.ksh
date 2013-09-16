@@ -15,7 +15,7 @@ ccInstall sourceRoot targetFolder [actionFlags]
 ccInstall commandFlag [argument(s)]
 #	--setPaths			set derived paths from arguments
 #	--get<Path>			sourceRoot targetFolder
-#		<Path>: 		sourceRoot | TargetFolder | WorkspaceName | TargetName | TargetScript | lastbuilt
+#		<Path>: 		SourceRoot | TargetFolder | TargetName | TargetScript | Lastbuilt
 #		result: 		string containing specified path
 #	--updateLastbuilt	sourceRoot targetFolder
 #						set last built flag to the current date and time
@@ -50,7 +50,6 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 sourceRoot=""			# path to folder containing project (Xcode's $SRCROOT)
 targetFolder=""			# path from sourceRoot to folder containing sources
-workspaceName=""		# name of Xcode workspace
 targetName=""			# name of Xcode target
 targetScript=""			# path to script that customizes this build
 lastbuilt=""			# path to internal file that knows when a target was last built
@@ -62,9 +61,9 @@ function setPaths {
 	targetFolder="${2}"
 
 	targetName="${targetFolder%%/*}"
-	workspacePath="${sourceRoot%/*}"
-	workspaceName="${workspacePath##/*/}"
 	targetScript="${sourceRoot}/${targetFolder}/${targetFolder##*/}_install.ksh"
+	workspacePath="${sourceRoot%/*}"			# local var
+	workspaceName="${workspacePath##/*/}"		# local var
 	lastbuilt="${CCDev}/build/${workspaceName}/${sourceRoot##*/}/${targetName}.lastbuilt"
 }
 
@@ -85,8 +84,6 @@ function getPath {
 		"--getTargetFolder" )	path="${targetFolder}";;
 		"--getSourceRoot" )		path="${sourceRoot}";;
 		"--getTargetName" )		path="${targetName}";;
-		"--getWorkspacePath" )	path="${workspacePath}";;
-		"--getWorkspaceName" )	path="${workspaceName}";;
 		"--getTargetScript" )	path="${targetScript}";;
 		"--getLastbuilt" )		path="${lastbuilt}";;
 		* ) 					return $RC_InvalidParameter;;
@@ -633,11 +630,6 @@ function ccInstall {
 		print "$0: missing commandFlag"
 		return $RC_MissingArgument
 	fi
-
-	workspcRoot="${2}"
-	oldTarfldr="${3}"
-	srcroot="${workspcRoot}/${oldTarfldr%%/*}"
-	tarfldr="${oldTarfldr#*/}"
 
 	case "${1}" in
 		"--getActions" )

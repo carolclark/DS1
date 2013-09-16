@@ -28,10 +28,6 @@ testTargetName() {
 	assertEquals "$LINENO: incorrect target script: " "${DEV}/Support/BuildSupport/Doxygen/Doxygen_install.ksh" "${str}"
 	sourceRoot=$(ccInstall --getSourceRoot "${sourceRoot}" "${targetFolder}")
 	assertEquals "$LINENO: incorrect sourceRoot: " "${DEV}/Support/BuildSupport" "${sourceRoot}"
-	workspacePath=$(ccInstall --getWorkspacePath "${sourceRoot}" "${targetFolder}")
-	assertEquals "$LINENO: incorrect workspacePath: " "${DEV}/Support" "${workspacePath}"
-	workspaceName=$(ccInstall --getWorkspaceName "${sourceRoot}" "${targetFolder}")
-	assertEquals "$LINENO: incorrect workspaceName: " "Support" "${workspaceName}"
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/Support/BuildSupport/Doxygen.lastbuilt" "${lastbuilt}"
 	ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"

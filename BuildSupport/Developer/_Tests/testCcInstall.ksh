@@ -83,14 +83,6 @@ testCciPaths() {
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target name: " "Tar1" "${str}"
 
-	str=$(ccInstall --getWorkspacePath "${sourceRoot}" "${targetFolder}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect workspacePath: " "${CCDev}/TestData/WorkspaceA" "${str}"
-
-	str=$(ccInstall --getWorkspaceName "${sourceRoot}" "${targetFolder}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect workspaceName: " "WorkspaceA" "${str}"
-
 	str=$(ccInstall --getTargetScript "${sourceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/WorkspaceA/ProjA/Tar1/Tar1_install.ksh" "${str}"
