@@ -44,7 +44,7 @@ ccInstall commandFlag [argument(s)]
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "${CCDev}/bin/errcc"
 
 #^ 1 === top
 
@@ -74,8 +74,8 @@ function getPath {
 		sourceRoot="${2}"
 		targetFolder="${3}"
 	else
-		print "USAGE: ccInstall --get<Path> SRCROOT targetFolder"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --get<Path> SRCROOT targetFolder"
+		return
 	fi
 
 	setPaths "${sourceRoot}" "${targetFolder}"
@@ -86,7 +86,7 @@ function getPath {
 		"--getTargetName" )		path="${targetName}";;
 		"--getTargetScript" )	path="${targetScript}";;
 		"--getLastbuilt" )		path="${lastbuilt}";;
-		* ) 					return $RC_InvalidParameter;;
+		* ) 					errorMessage $RC_InvalidParameter "$0#$LINENO:"; return;;
 	esac
 	print "${path}"
 }
@@ -135,8 +135,8 @@ function copyFile {
 		sourceForCopy="${1}"
 		destinationForCopy="${2}"
 	else
-		print "USAGE: ccInstall --copyFile sourceForCopy destinationForCopy"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --copyFile sourceForCopy destinationForCopy"
+		return
 	fi
 
 	dir="${destinationForCopy%/*}"
@@ -163,8 +163,8 @@ function translateCdoc {
 		in="${1}"
 		out="${2}"
 	else
-		print "USAGE: ccInstall --translateCdoc in out"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --translateCdoc in out"
+		return
 	fi
 	mkdir -p $(dirname "${out}")
 	st=$?
@@ -238,8 +238,8 @@ function getActions {			# resultObject sourceRoot targetFolder actionString
 	sourceRoot="${2}"
 	targetFolder="${3}"
 	if [[ ! -n "${sourceRoot}" ]] || [[ ! -n "${targetFolder}" ]]; then
-		print "USAGE: ccInstall --getActions resultObject sourceRoot targetFolder actionString"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --getActions resultObject sourceRoot targetFolder actionString"
+		return
 	fi
 	actionString="it"
 	if [[ -n ${4} ]] ; then
@@ -248,8 +248,8 @@ function getActions {			# resultObject sourceRoot targetFolder actionString
 		else
 			actionString="${4#-}"
 			if [[ ${actionString} = ${4} ]] ; then
-				print "$0#$LINENO: actionString $4: expected first character '-'"
-				return $RC_SyntaxError
+				errorMessage $RC_SyntaxError "$0#$LINENO:" "actionString $4: expected first character '-'"
+				return
 			fi
 		fi
 	fi
@@ -274,8 +274,8 @@ function getActions {			# resultObject sourceRoot targetFolder actionString
 		i=i-1
 	done
 	if [[ ${errorCount} > 0 ]] ; then
-		print "$0#$LINENO: --getActions ${actionString}: ${errorCount} invalid action flags"
-		return $RC_InvalidInput
+		errorMessage $RC_InvalidInput "$0#$LINENO:" "--getActions ${actionString}: ${errorCount} invalid action flags"
+		return
 	fi
 }
 
@@ -284,8 +284,8 @@ function runShunitTests {
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
 	else
-		print "USAGE: ccInstall runShunitTests testPath"
-		return $RC_MissingArgument
+		errorMessage $USAGE: ccInstall processActions sourceRoot targetFolder [-actionFlags]_MissingArgument "$0#$LINENO:" "USAGE: ccInstall runShunitTests testPath"
+		return
 	fi
 
 	errout="$CCDev/tmp/errout"
@@ -328,8 +328,8 @@ function findTests {
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
 	else
-		print "USAGE: ccInstall findTests testPath"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall findTests testPath"
+		return
 	fi
 
 	origdir=$(pwd)
@@ -347,8 +347,8 @@ function findSources {
 		sourceRoot="${1}"
 		targetFolder="${2}"
 	else
-		print "error: USAGE: ccInstall findSources sourceRoot targetFolder"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall findSources sourceRoot targetFolder"
+		return
 	fi
 
 	origdir=$(pwd)
@@ -375,13 +375,13 @@ function removeFolder {
 	if [[ -n "${1}" ]] ; then
 		folder="${1}"
 	else
-		print "error: USAGE: ccInstall folder"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall folder"
+		return
 	fi
 	if [[ -e ${folder} ]]; then			# folder exists
 		if ! [[ -d ${folder} ]]; then
-			print "error: ${folder} is not a directory"
-			return $RC_NoSuchFileOrDirectory
+			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
+			return
 		fi
 		iofile="${CCDev}/tmp/found3"
 		origdir=$(pwd)
@@ -438,8 +438,8 @@ function processActions {
 		targetFolder="${2}"
 		actionFlags="${3}"
 	else
-		print "USAGE: ccInstall processActions sourceRoot targetFolder [-actionFlags]"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processActions sourceRoot targetFolder [-actionFlags]"
+		return
 	fi
 	getActions actions "${sourceRoot}" "${targetFolder}" ${actionFlags}
 	st=$?
@@ -627,8 +627,8 @@ function processActions {
 #^ 8 === ccInstall
 function ccInstall {
 	if [[ $# = 0 ]] ; then
-		print "$0: missing commandFlag"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "$0: missing commandFlag"
+		return
 	fi
 
 	case "${1}" in
@@ -691,8 +691,8 @@ function ccInstall {
 			runShunitTests "${2}"						# testPath
 			;;
 		"--"* )
-			print "invalid subcommand $1"				# <invalid arg>
-			return $RC_InvalidArgument
+			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid subcommand $1"	# <invalid arg>
+			return
 			;;
 		* )
 			msg=$(processActions "${1}" "${2}" "${3}")	# sourceRoot targetFolder actionString

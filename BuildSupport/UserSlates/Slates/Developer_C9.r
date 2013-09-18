@@ -462,7 +462,7 @@ resource restype_Slate (resid_Unix, "") { {
 				_previousField, _previousField, endSequence{},
 			ExitEvent { "where", "" },				TypeText { _where_ },
 			ExitEvent { "error exit", "" },			Sequence{}, TypeText { "errorExit $?<##> "_where_" \"<#msg#>\"" }, _previousField, _previousField, endSequence{},
-			ExitEvent { "error message", "" },		Sequence{}, TypeText { "errorMessage $?<##> "_where_" \"<#msg#>\"" }, _previousField, _previousField, endSequence{},
+			ExitEvent { "error message", "" },		Sequence{}, TypeText { "errorMessage $<##> "_where_" \"<#msg#>\"" }, _previousField, _previousField, endSequence{},
 			ExitEvent { "function", "" },			TypeText { "gFunction#" },
 			ExitEvent { "test", "" },				TypeText { "unixTest#" },
 			ExitEvent { "test function", "" },		TypeText { "unixTestFunction#" },

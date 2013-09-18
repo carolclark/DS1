@@ -64,7 +64,7 @@ testDoxygenGetActions() {
 	st=$?
 	assertEquals "$0#$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 	assertNotNull "$0#$LINENO: error message expected" "${str}"
-	errstr="--getActions xyz: 3 invalid action flags"
+	errstr="--getActions xyz: 3 invalid action flags \[RC_InvalidInput:#67]"
 	assertNotEquals "$0#$LINENO: incorrect error message" "${str%${errstr}}" "${str}"
 }
 

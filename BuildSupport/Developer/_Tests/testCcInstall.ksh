@@ -62,7 +62,7 @@ testCciGetActions() {
 	st=$?
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 	assertNotNull "$LINENO: error message expected" "${str}"
-	errstr="--getActions xyz: 3 invalid action flags"
+	errstr="--getActions xyz: 3 invalid action flags \[RC_InvalidInput:#67]"
 	assertNotEquals "$LINENO: incorrect error message" "${str%${errstr}}" "${str}"
 }
 

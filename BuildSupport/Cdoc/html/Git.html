@@ -109,15 +109,13 @@
 				<li>check stash list</li>
 				<li><span class='em'>Update Branch</span><ul>
 					<li><span class='em'>Update Master</span> from remotes<ul>
-						<li>set $cb; checkout master; status; log --oneline master..origin/master; [log --oneline artist..lm/artist]</li>
+						<li>set $cb; checkout master; status; lg master..origin/master; [lg artist..lm/artist]</li>
 						<li>fetch updates: <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
 							<li>if that merge fails: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
 						</ul></li>
 					</ul></li>
-					<li>if changed:<ul>
-						<li>retest</li>
-						<li>[checkout branch; log --oneline $cb..master; merge master]</li>
-						<li>retest if changed</li>
+					<li>if changed: retest<ul>
+						<li>then if changed: checkout $cb; lg $cb..master; merge master; retest if changed</li>
 					</ul></li>
 				</ul></li>
 			</ul></li>
@@ -144,13 +142,12 @@
 			<li>[tag]</li>
 			<li>push [push tags]</li>
 		</ul>
-		<h5>Morning/Working Report</h5><pre>
-			set $cb to name of current branch (should not be master)
-			git status; verify branch not master; git show --name-only
-			git stash list; git branch; git branch --no-merged
-			git checkout master; git status; git checkout $cb
-			git lg master..$cb; git lg master..origin/master
-		</pre>
+		<h5>Morning/Working Report</h5><ul>
+			<li>branch list; set $cb to name of current branch (should not be master)</li>
+			<li>status; verify branch not master; show --name-onlygit checkout </li>
+			<li>for master..$cb, origin/master..master, master..origin/master: lg; diff --name-status</li>
+			<li>checkout master; status; branch unmerged; stash list; checkout $cb</li>
+		</ul>
 	</div>
 </div>
 
