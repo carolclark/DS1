@@ -12,7 +12,6 @@ setUp() {
 	targetFolder="Doxygen"
 }
 
-. "${CCDev}/bin/resultCodes.ksh"
 . "${CCDev}/bin/ccInstall"
 
 testTargetName() {

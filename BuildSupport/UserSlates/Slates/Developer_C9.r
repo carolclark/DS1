@@ -296,6 +296,7 @@ resource restype_Slate (resid_InsertTag, "HTML tag") { {
 		ExitEvent { "paragraph", "" }, Sequence{}, TypeText { "<p></p>" }, _left, _left, _left, _left, endSequence{},
 		ExitEvent { "code", "" }, Sequence{}, TypeText { "<code></code>" }, _left, _left, _left, _left, _left, _left, _left, endSequence{},
 		ExitEvent { "emphasize", "" }, Sequence{}, TypeText { "<em></em>" }, _left, _left, _left, _left, _left, endSequence{},
+		ExitEvent { "preformat", "" }, Sequence{}, TypeText { "<pre></pre>" }, _left, _left, _left, _left, _left, _left, Keypress { kc_return, 0 }, Keypress { kc_return, 0 }, Keypress { kc_up, 0 }, Keypress { kc_tab, 0 }, endSequence{},
 		ExitEvent { "plain list", "" }, Sequence{}, TypeText { "<ul></ul>" }, _left, _left, _left, _left, _left, Keypress { kc_return, 0 }, Keypress { kc_return, 0 }, Keypress { kc_up, 0 }, Keypress { kc_tab, 0 }, endSequence{},
 		ExitEvent { "ordered list", "" }, Sequence{}, TypeText { "<ol></ol>" }, _left, _left, _left, _left, _left, Keypress { kc_return, 0 }, Keypress { kc_return, 0 }, Keypress { kc_up, 0 }, Keypress { kc_tab, 0 }, endSequence{},
 		ExitEvent { "list item", "" }, Sequence{}, TypeText { "<li></li>" }, _left, _left, _left, _left, _left, endSequence{},

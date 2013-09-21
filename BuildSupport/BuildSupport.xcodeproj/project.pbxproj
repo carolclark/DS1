@@ -91,20 +91,6 @@
 			remoteGlobalIDString = 671B546C16B1E610009C2B17;
 			remoteInfo = Xcode;
 		};
-		67BDF87E175A806E006C0B75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 67BE04BF16B08DE30065BFDE;
-			remoteInfo = Developer;
-		};
-		67ED6F8C175A87CB00CCE9EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6769244D141EB818005D3E68 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 67BE04BF16B08DE30065BFDE;
-			remoteInfo = Developer;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +107,7 @@
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6761489016A8B93F00FE431B /* toBBEdit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
+		6766325F17EA5813004B5A4F /* testBBEdit.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = testBBEdit.ksh; sourceTree = "<group>"; };
 		67692458141EB921005D3E68 /* XcodeScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		676C9304179F326200876265 /* GitHub_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = GitHub_C9.r; sourceTree = "<group>"; };
@@ -350,6 +337,14 @@
 				6761489116A8B93F00FE431B /* toTEXT.applescript */,
 			);
 			path = Finder;
+			sourceTree = "<group>";
+		};
+		6766325E17EA5813004B5A4F /* _Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6766325F17EA5813004B5A4F /* testBBEdit.ksh */,
+			);
+			path = _Tests;
 			sourceTree = "<group>";
 		};
 		6769244B141EB818005D3E68 = {
@@ -984,6 +979,7 @@
 				67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */,
 				67DD774216A4C2BA00BECCD5 /* AppleScripts */,
 				67DD774016A4C2BA00BECCD5 /* _plist */,
+				6766325E17EA5813004B5A4F /* _Tests */,
 			);
 			name = "6 BBEdit";
 			path = BBEdit;
@@ -1118,7 +1114,6 @@
 			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
-				67ED6F8D175A87CB00CCE9EB /* PBXTargetDependency */,
 				67043DCA16B7333F00E43F90 /* PBXTargetDependency */,
 			);
 			name = BBEdit;
@@ -1134,7 +1129,6 @@
 			buildToolPath = ccInstallAction;
 			buildWorkingDirectory = "";
 			dependencies = (
-				67BDF87F175A806E006C0B75 /* PBXTargetDependency */,
 				671B547116B1E91D009C2B17 /* PBXTargetDependency */,
 			);
 			name = Xcode;
@@ -1450,16 +1444,6 @@
 			isa = PBXTargetDependency;
 			target = 671B546C16B1E610009C2B17 /* Xcode */;
 			targetProxy = 67BDF878175A7DB8006C0B75 /* PBXContainerItemProxy */;
-		};
-		67BDF87F175A806E006C0B75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 67BE04BF16B08DE30065BFDE /* Developer */;
-			targetProxy = 67BDF87E175A806E006C0B75 /* PBXContainerItemProxy */;
-		};
-		67ED6F8D175A87CB00CCE9EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 67BE04BF16B08DE30065BFDE /* Developer */;
-			targetProxy = 67ED6F8C175A87CB00CCE9EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -12,7 +12,6 @@ setUp() {
 	targetFolder=Tar1
 }
 
-. "${CCDev}/bin/resultCodes.ksh"
 . "${CCDev}/bin/ccInstall"
 
 #^	1 === General
@@ -199,7 +198,7 @@ testFind() {
 
 #^ removeFolder
 testRemoveFolder() {
-	folder="${CCDev}/TestData/ProjB"
+	folder="${CCDev}/TestData/Proj B"
 	str=$(ccInstall --removeFolder)
 	st=$?
 	assertEquals "$LINENO: error RC_MissingArgument expected" $RC_MissingArgument "${st}"

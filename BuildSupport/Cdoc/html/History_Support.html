@@ -79,8 +79,10 @@
 			* ccInstall: clean up from refactoring
 		* use errorMessage for error returns as indicated
 	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-	* remove file /private/etc/launchd.conf from scripts and disk
 	* *Target*_install.ksh files handle ccInstallAction functionality; remove ccInstallAction
+		* *Target*_install.ksh files include ${CCDev}/bin/ccInstall instead of resultCodes.ksh
+			* then rename installed file resultCodes.ksh to resultCodes
+	* remove file /private/etc/launchd.conf from scripts and disk
 </pre>
 
 <h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>

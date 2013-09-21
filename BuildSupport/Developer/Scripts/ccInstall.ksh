@@ -378,8 +378,8 @@ function removeFolder {
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall folder"
 		return
 	fi
-	if [[ -e ${folder} ]]; then			# folder exists
-		if ! [[ -d ${folder} ]]; then
+	if [[ -e "${folder}" ]]; then			# folder exists
+		if ! [[ -d "${folder}" ]]; then
 			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
 			return
 		fi

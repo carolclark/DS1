@@ -19,7 +19,7 @@ USAGE='
 #		return 0 to have caller continue by updating last built data
 '
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
 

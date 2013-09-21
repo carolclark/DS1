@@ -29,7 +29,7 @@ errcc			subcommand
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
-. resultCodes
+. "${CCDev}/bin/resultCodes.ksh"
 
 #pragma mark 1 === errorMessage
 function errorMessage {

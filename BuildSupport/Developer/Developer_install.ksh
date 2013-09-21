@@ -19,7 +19,7 @@ CCDev_install.ksh -- provide functions for ccInstall to support CCDev installati
 #		return 0 to have caller continue by updating last built data
 '
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
 
