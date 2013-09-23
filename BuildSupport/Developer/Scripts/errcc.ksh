@@ -14,7 +14,7 @@ NAME='errcc -- error handling'
 USAGE='
 errorMessage	[errorCode [location [message]]]
 #		errorCode:	numeric error code
-#						if errorCode is defined in resultCodes.ksh, message includes text equivalent
+#						if errorCode is defined in resultCodes, message includes text equivalent
 #						if errorCode is not a number, it is ignored
 #		location: 	source file and line ($0#$LINENO)
 #		message:	string to be displayed; default "Error encountered"
@@ -29,7 +29,7 @@ errcc			subcommand
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
-. "${CCDev}/bin/resultCodes.ksh"
+. "${CCDev}/bin/resultCodes"
 
 #pragma mark 1 === errorMessage
 function errorMessage {

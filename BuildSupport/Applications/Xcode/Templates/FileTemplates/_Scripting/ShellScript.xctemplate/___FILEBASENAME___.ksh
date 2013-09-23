@@ -18,7 +18,7 @@ ___FILEBASENAME___ -- <#parameters#>
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
-. resultCodes.ksh"
+. resultCodes"
 
 #pragma mark 0 === Top
 #pragma mark === Markers ===

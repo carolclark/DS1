@@ -265,7 +265,7 @@ mkdir -p $CCDev/tmp
 
 print "installing files ..."
 # install bootstrap scripts
-install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin"
+install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin" "resultCodes"
 install "${srcdir}/Scripts/errcc.ksh" "$CCDev/bin" "errcc"
 install "${srcdir}/Scripts/ccInstall.ksh" "$CCDev/bin" "ccInstall"
 install "${srcdir}/Scripts/ccInstallAction.ksh" "$CCDev/bin" "ccInstallAction"
