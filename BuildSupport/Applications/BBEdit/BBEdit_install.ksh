@@ -23,15 +23,15 @@ BBEdit_install.ksh -- provide functions for ccInstall to support CCDev installat
 
 #^ 1 === top
 
-projectPath="${DEV}/Support"
-target="BuildSupport/Applications/BBEdit"
+sourceRoot="${DEV}/Support/BuildSupport"
+targetFolder="Applications/BBEdit"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
 		subtarget="${1}"
 	else
-		print "USAGE: ${target}_install.ksh --getSubtargetDestination subtarget"
+		print "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
 		return $RC_MissingArgument
 	fi
 	destinationFolder=""
@@ -42,7 +42,7 @@ function getSubtargetDestination {
 		"_plist" )
 			;;	# used by Xcode build system
 		* )
-			print "source folder ${projectPath}/${target}/${subtarget} not handled"
+			print "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
 			return $RC_InputNotHandled
 			;;
 	esac
@@ -57,7 +57,7 @@ function handleFile {
 		filepath="${2}"
 		destinationFolder="${3}"
 	else
-		print "USAGE: ${target}_install.ksh --handleFile subtarget filepath destinationFolder"
+		print "USAGE: ${targetFolder}_install.ksh --handleFile subtarget filepath destinationFolder"
 		return $RC_MissingArgument
 	fi
 
@@ -70,7 +70,7 @@ function handleFile {
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
 		action="copy"
-		sourceForCopy="${projectPath}/${target}/${subtarget}/${filepath}"
+		sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
 		destinationForCopy="${destinationFolder}/${destname}"
 	else
 		action="ignore"

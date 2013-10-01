@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 USAGE='
-Codc_install.ksh -- provide functions for ccInstall to support CCDev installation
+Cdoc_install.ksh -- provide functions for ccInstall to support CCDev installation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--handleFile subtarget filepath destinationFolder
@@ -23,8 +23,8 @@ Codc_install.ksh -- provide functions for ccInstall to support CCDev installatio
 
 #^ 1 === top
 
-projectPath="${DEV}/Support"
-target="BuildSupport/Cdoc"
+sourceRoot="${DEV}/Support/BuildSupport"
+targetFolder="Cdoc"
 
 technicalDocs="${CCDev}/Sites/TechnicalDocs"
 
@@ -33,7 +33,7 @@ function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
 		subtarget="${1}"
 	else
-		print "USAGE: ${target}_install.ksh --getSubtargetDestination subtarget"
+		print "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
 		return $RC_MissingArgument
 	fi
 	destinationFolder=""
@@ -46,10 +46,10 @@ function getSubtargetDestination {
 			;;
 		"Cdoc_install.ksh" )
 			;&	# this script
-	"plist" )
+		"plist" )
 			;;	# used by Xcode build system
 		* )
-			print "source folder ${projectPath}/${target}/${subtarget} not handled"
+			print "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
 			return $RC_InputNotHandled
 			;;
 	esac
@@ -64,7 +64,7 @@ function handleFile {
 		filepath="${2}"
 		destinationFolder="${3}"
 	else
-		print "USAGE: ${target}_install.ksh --handleFile subtarget filepath destinationFolder"
+		print "USAGE: ${targetFolder}_install.ksh --handleFile subtarget filepath destinationFolder"
 		return $RC_MissingArgument
 	fi
 
@@ -76,7 +76,7 @@ function handleFile {
 		else
 			action="translateCdoc"
 		fi
-		sourceForCopy="${projectPath}/${target}/${subtarget}/${filepath}"
+		sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
 		destinationForCopy="${destinationFolder}/${destname}"
 	else
 		action="ignore"
