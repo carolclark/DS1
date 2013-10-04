@@ -17,7 +17,7 @@
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 		<!-- @topicItem "&radic;replaceKshFPATH" "#replaceKshFPATH" "1" "" -->
 		<!-- @topicItem "Xclean up UNIX error handling" "#UNIXerror" "1" "" -->
-		<!-- @topicItem "&radic;UserSlates: improve Developer workflow" "#devWorkflow" "1" "" -->
+		<!-- @topicItem "&radic;UserSlates:improve Devel workflow" "#devWorkflow" "1" "" -->
 		<!-- @topicItem "resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
 		<!-- @topicItem "&radic;use GitHub Issues" "#useGitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
@@ -85,7 +85,9 @@
 		* BBEdit_install handles ccInstallAction functionality
 		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		* add ccInstall params to *Target*_install callback params
-			* also rename --handleFile to --prepareFileOperation
+			* BBEdit_install.ksh: improve argument processing structure
+			* add ccInstall params to callbacks; also rename to --handleFile to --prepareFileOperation
+			* extract execInstallScript from BBEdit_install.ksh; call from remaining scripts
 	* remove file /private/etc/launchd.conf from scripts and disk
 </pre>
 

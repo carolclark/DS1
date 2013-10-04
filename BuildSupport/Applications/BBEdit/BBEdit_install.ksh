@@ -22,6 +22,7 @@ BBEdit_install.ksh -- provide functions for ccInstall to support CCDev installat
 . "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
+command=""
 sourceRoot=""
 targetFolder=""
 actionFlags=""
@@ -98,42 +99,48 @@ function cleanTarget {
 
 #^ 8 === main
 
-if [[ $# = 0 ]] ; then
-	print "$0: missing commandFlag"
-	return $RC_MissingArgument
+if [[ "${1}" = -* ]] ; then
+	command="${1}"
+	shift
 fi
-case "${1}" in
-	"--getSubtargetDestination" )
-		msg=$(getSubtargetDestination "${2}")
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	"--handleFile" )
-		msg=$(handleFile "${2}" "${3}" "${4}")
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	"--cleanTarget" )
-		msg=$(cleanTarget)
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	* )
-		if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-			sourceRoot="${1}"
-			targetFolder="${2}"
-			actionFlags="${3}"
-		else
-			errorMessage $RC_MissingArgument "$0#$LINENO:" "expected arguments: sourceRoot targetFolder [-actionFlags | 'clean']"
-			return
-		fi
-
-		msg=$(ccInstall "${sourceRoot}" "${targetFolder}" "${actionFlags}")
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-esac
+if [[ "${command}" != "--getSubtargetDestination" ]] && [[ "${command}" != "--handleFile" ]] && [[ "${command}" != "--cleanTarget" ]] ; then
+	;
+fi
+if [[ -n "${command}" ]] ; then
+	case "${command}" in
+		"--getSubtargetDestination" )
+			msg=$(getSubtargetDestination "${1}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--handleFile" )
+			msg=$(handleFile "${1}" "${2}" "${3}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--cleanTarget" )
+			msg=$(cleanTarget)
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		* )
+			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid commandFlag ${command}"
+			exit $?
+			;;
+	esac
+fi
+if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+	sourceRoot="${1}"
+	targetFolder="${2}"
+	actionFlags="${3}"
+	msg=$(ccInstall "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+	es=$?
+	print "${msg}"
+	return "${es}"
+else
+	errorMessage $RC_InvalidInput "$0#$LINENO:" "USAGE: $0 [--commandFlag] sourceRoot targetFolder [-actionFlags | 'clean']"
+	return
+fi
