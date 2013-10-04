@@ -144,7 +144,7 @@ function copyFile {
 	mkdir -p "${dir}"
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "error: could not create directory ${dir}"
+		print "error #{st}: could not create directory ${dir}"
 		return ${st}
 	fi
 	cp "${sourceForCopy}" "${destinationForCopy}"
@@ -284,7 +284,7 @@ function runShunitTests {
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
 	else
-		errorMessage $USAGE: ccInstall processActions sourceRoot targetFolder [-actionFlags]_MissingArgument "$0#$LINENO:" "USAGE: ccInstall runShunitTests testPath"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall runShunitTests testPath"
 		return
 	fi
 

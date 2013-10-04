@@ -1111,7 +1111,7 @@
 			buildConfigurationList = 67043DC616B7331400E43F90 /* Build configuration list for PBXLegacyTarget "BBEdit" */;
 			buildPhases = (
 			);
-			buildToolPath = ccInstallAction;
+			buildToolPath = Applications/BBEdit/BBEdit_install.ksh;
 			buildWorkingDirectory = "";
 			dependencies = (
 				67043DCA16B7333F00E43F90 /* PBXTargetDependency */,

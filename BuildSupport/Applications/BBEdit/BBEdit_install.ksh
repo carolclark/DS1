@@ -22,9 +22,9 @@ BBEdit_install.ksh -- provide functions for ccInstall to support CCDev installat
 . "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
-
-sourceRoot="${DEV}/Support/BuildSupport"
-targetFolder="Applications/BBEdit"
+sourceRoot=""
+targetFolder=""
+actionFlags=""
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -122,8 +122,18 @@ case "${1}" in
 		return "${es}"
 		;;
 	* )
-		print "invalid subcommand $1"
-		return $RC_InvalidArgument
+		if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+			sourceRoot="${1}"
+			targetFolder="${2}"
+			actionFlags="${3}"
+		else
+			errorMessage $RC_MissingArgument "$0#$LINENO:" "expected arguments: sourceRoot targetFolder [-actionFlags | 'clean']"
+			return
+		fi
+
+		msg=$(ccInstall "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+		es=$?
+		print "${msg}"
+		return "${es}"
 		;;
 esac
-return 0

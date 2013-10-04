@@ -78,10 +78,14 @@
 			* ccInstall, tests: change internal parameters to new values
 			* ccInstall: clean up from refactoring
 		* use errorMessage for error returns as indicated
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* *Target*_install.ksh files handle ccInstallAction functionality; remove ccInstallAction
 		* *Target*_install.ksh files include ${CCDev}/bin/ccInstall instead of resultCodes.ksh
 			* then rename installed file resultCodes.ksh to resultCodes
+		* *Target*_install scripts: script params match ccInstall params
+		* BBEdit_install handles ccInstallAction functionality
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		* add ccInstall params to *Target*_install callback params
+			* also rename --handleFile to --prepareFileOperation
 	* remove file /private/etc/launchd.conf from scripts and disk
 </pre>
 
