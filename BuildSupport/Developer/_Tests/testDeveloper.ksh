@@ -53,20 +53,20 @@ testDeveloperInstall() {
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination xxx: " $RC_InputNotHandled ${st}
 
-	str=$(${script} --handleFile)
+	str=$(${script} --prepareFileOperation)
 	st=$?
-	assertEquals "$LINENO: --handleFile (no args): " $RC_MissingArgument ${st}	
+	assertEquals "$LINENO: --prepareFileOperation (no args): " $RC_MissingArgument ${st}
 	
-	targetScript=$(ccInstall --getTargetScript "${DEV}/Support" "BuildSupport/Developer")
+	targetScript=$(ccInstall --getTargetScript "${DEV}/Support/BuildSupport" "Developer")
 	assertEquals "$LINENO: incorrect target script: " "${script}" "${targetScript}"
 	# test Functions/ccInstall.ksh
 	dest=$("${targetScript}" --getSubtargetDestination Functions)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination Functions: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination Functions" "${CCDev}/func" "${dest}"
-	fl=$(${script} --handleFile "Functions" "ccInstall.ksh" "${dest}")
+	fl=$(${script} --prepareFileOperation "${DEV}/Support/BuildSupport" "Developer" "-i" "Functions" "ccInstall.ksh" "${dest}")
 	st=$?
-	assertEquals "$LINENO: --handleFile failed with code $st" 0 $st
+	assertEquals "$LINENO: --prepareFileOperation failed with code $st" 0 $st
 	set -A copyInfo
 	while read ln ; do
 		copyInfo+=("${ln}")
@@ -82,9 +82,9 @@ testDeveloperInstall() {
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination Environment: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination Environment" "" "${dest}"
-	fl=$(${script} --handleFile "Environment" "kshrc.ksh" "${dest}")
+	fl=$(${script} --prepareFileOperation 0 0 0 "Environment" "kshrc.ksh" "${dest}")
 	st=$?
-	assertEquals "$LINENO: --handleFile failed with code $st" 0 $st
+	assertEquals "$LINENO: --prepareFileOperation failed with code $st" 0 $st
 	set -A copyInfo
 	while read ln ; do
 		copyInfo+=("${ln}")

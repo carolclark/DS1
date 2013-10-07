@@ -11,7 +11,7 @@ USAGE='
 BBEdit_install.ksh -- provide functions for ccInstall to support CCDev installation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
-#	--handleFile subtarget filepath destinationFolder
+#	--prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder
 #		perform any preprocessing indicated for the specified file
 #		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
 #	--cleanFiles
@@ -51,14 +51,17 @@ function getSubtargetDestination {
 	return 0
 }
 
-#^ 5 === handleFile
-function handleFile {
-	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		subtarget="${1}"
-		filepath="${2}"
-		destinationFolder="${3}"
+#^ 5 === prepareFileOperation
+function prepareFileOperation {
+	if [[ -n "${4}" ]] && [[ -n "${5}" ]] ; then
+		sourceRoot="${1}"
+		targetFolder="${2}"
+		actionFlags="${3}"
+		subtarget="${4}"
+		filepath="${5}"
+		destinationFolder="${6}"
 	else
-		print "USAGE: ${targetFolder}_install.ksh --handleFile subtarget filepath destinationFolder"
+		print "USAGE: ${targetFolder}_install.ksh --prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder"
 		return $RC_MissingArgument
 	fi
 
@@ -103,8 +106,15 @@ if [[ "${1}" = -* ]] ; then
 	command="${1}"
 	shift
 fi
-if [[ "${command}" != "--getSubtargetDestination" ]] && [[ "${command}" != "--handleFile" ]] && [[ "${command}" != "--cleanTarget" ]] ; then
-	;
+if [[ "${command}" != "--getSubtargetDestination" ]] && [[ "${command}" != "--cleanTarget" ]] ; then
+	sourceRoot="${1}"
+	shift
+	targetFolder="${1}"
+	shift
+	if [[ $# > 0 ]] ; then
+		actionFlags="${1}"
+		shift
+	fi
 fi
 if [[ -n "${command}" ]] ; then
 	case "${command}" in
@@ -114,8 +124,8 @@ if [[ -n "${command}" ]] ; then
 			print "${msg}"
 			return "${es}"
 			;;
-		"--handleFile" )
-			msg=$(handleFile "${1}" "${2}" "${3}")
+		"--prepareFileOperation" )
+			msg=$(prepareFileOperation "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${1}" "${2}" "${3}")
 			es=$?
 			print "${msg}"
 			return "${es}"
@@ -132,10 +142,7 @@ if [[ -n "${command}" ]] ; then
 			;;
 	esac
 fi
-if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-	sourceRoot="${1}"
-	targetFolder="${2}"
-	actionFlags="${3}"
+if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
 	msg=$(ccInstall "${sourceRoot}" "${targetFolder}" "${actionFlags}")
 	es=$?
 	print "${msg}"

@@ -553,7 +553,7 @@ function processActions {
 				print "error: ${msg}"
 			else
 				print -n "${fpath}: "
-				msg=$("${targetScript}" --handleFile "${sourceFolder}" "${fpath}" "${destination}")
+				msg=$("${targetScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}" "${fpath}" "${destination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1

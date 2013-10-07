@@ -87,7 +87,8 @@
 		* add ccInstall params to *Target*_install callback params
 			* BBEdit_install.ksh: improve argument processing structure
 			* add ccInstall params to callbacks; also rename to --handleFile to --prepareFileOperation
-			* extract execInstallScript from BBEdit_install.ksh; call from remaining scripts
+			* *Target*_install scripts (internal): params 1-3 already set; do not pass again
+		* extract execInstallScript from BBEdit_install.ksh; call from remaining *Target*_install scripts
 	* remove file /private/etc/launchd.conf from scripts and disk
 </pre>
 
