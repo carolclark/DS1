@@ -478,7 +478,7 @@ function processActions {
 # doxygen
 	if [[ ${actions.doDoxygen} > 0 ]] ; then
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-		outputDir=$("${targetScript}" --getSubtargetDestination "Doxygen")
+		outputDir=$("${targetScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "Doxygen")
 		installName="${outputDir##*/}"
 		print "== installing ${installName} documentation"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
@@ -535,7 +535,7 @@ function processActions {
 			sourceFolder="${fl%%/*}"
 			fpath="${fl#*/}"
 			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
-				msg=$("${targetScript}" --getSubtargetDestination "${sourceFolder}")
+				msg=$("${targetScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1

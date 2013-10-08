@@ -49,9 +49,9 @@ testDeveloperInstall() {
 	str=$(${script} --getSubtargetDestination)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination (no args): " $RC_MissingArgument ${st}
-	str=$(${script} --getSubtargetDestination xxx)
+	str=$(${script} --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i xxx)
 	st=$?
-	assertEquals "$LINENO: --getSubtargetDestination xxx: " $RC_InputNotHandled ${st}
+	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i xxx: " $RC_InputNotHandled ${st}
 
 	str=$(${script} --prepareFileOperation)
 	st=$?
@@ -60,10 +60,10 @@ testDeveloperInstall() {
 	targetScript=$(ccInstall --getTargetScript "${DEV}/Support/BuildSupport" "Developer")
 	assertEquals "$LINENO: incorrect target script: " "${script}" "${targetScript}"
 	# test Functions/ccInstall.ksh
-	dest=$("${targetScript}" --getSubtargetDestination Functions)
+	dest=$("${targetScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Functions)
 	st=$?
-	assertEquals "$LINENO: --getSubtargetDestination Functions: error: " 0 ${st}
-	assertEquals "$LINENO: --getSubtargetDestination Functions" "${CCDev}/func" "${dest}"
+	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Functions: error: " 0 ${st}
+	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Functions" "${CCDev}/func" "${dest}"
 	fl=$(${script} --prepareFileOperation "${DEV}/Support/BuildSupport" "Developer" "-i" "Functions" "ccInstall.ksh" "${dest}")
 	st=$?
 	assertEquals "$LINENO: --prepareFileOperation failed with code $st" 0 $st
@@ -78,7 +78,7 @@ testDeveloperInstall() {
 	assertEquals "$LINENO: incorrect destinationForCopy: " "${CCDev}/func/ccInstall" "${copyInfo[2]}"
 
 	# test Environment/kshrc.ksh
-	dest=$("${targetScript}" --getSubtargetDestination Environment)
+	dest=$("${targetScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Environment)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination Environment: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination Environment" "" "${dest}"

@@ -9,7 +9,7 @@
 
 USAGE='
 BBEdit_install.ksh -- provide functions for ccInstall to support CCDev installation
-#	--getSubtargetDestination subtarget
+#	--getSubtargetDestination sourceRoot targetFolder actionFlags subtarget
 #		output destination location for files of subtarget
 #	--prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder
 #		perform any preprocessing indicated for the specified file
@@ -29,10 +29,13 @@ actionFlags=""
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
-	if [[ -n "${1}" ]] ; then
-		subtarget="${1}"
+	if [[ -n "${4}" ]] ; then
+		sourceRoot="${1}"
+		targetFolder="${2}"
+		actionFlags="${3}"
+		subtarget="${4}"
 	else
-		print "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
+		print "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination sourceRoot targetFolder actionFlags subtarget"
 		return $RC_MissingArgument
 	fi
 	destinationFolder=""
@@ -106,7 +109,7 @@ if [[ "${1}" = -* ]] ; then
 	command="${1}"
 	shift
 fi
-if [[ "${command}" != "--getSubtargetDestination" ]] && [[ "${command}" != "--cleanTarget" ]] ; then
+if [[ "${command}" != "--cleanTarget" ]] ; then
 	sourceRoot="${1}"
 	shift
 	targetFolder="${1}"
@@ -119,7 +122,7 @@ fi
 if [[ -n "${command}" ]] ; then
 	case "${command}" in
 		"--getSubtargetDestination" )
-			msg=$(getSubtargetDestination "${1}")
+			msg=$(getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${1}")
 			es=$?
 			print "${msg}"
 			return "${es}"

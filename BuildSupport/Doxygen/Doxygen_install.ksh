@@ -9,7 +9,7 @@
 
 USAGE='
 Doxygen_install.ksh -- provide functions for ccInstall to support CCDev installation
-#	--getSubtargetDestination subtarget
+#	--getSubtargetDestination sourceRoot targetFolder actionFlags subtarget
 #		output destination location for files of subtarget
 #	--prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder
 #		perform any preprocessing indicated for the specified file
@@ -28,11 +28,14 @@ targetFolder="Doxygen"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
-	if [[ -n "${1}" ]] ; then
-		subtarget="${1}"
+	if [[ -n "${4}" ]] ; then
+		sourceRoot="${1}"
+		targetFolder="${2}"
+		actionFlags="${3}"
+		subtarget="${4}"
 	else
-		print "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination sourceRoot targetFolder actionFlags subtarget"
+		return
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
@@ -94,7 +97,7 @@ if [[ $# = 0 ]] ; then
 fi
 case "${1}" in
 	"--getSubtargetDestination" )
-		msg=$(getSubtargetDestination "${2}")
+		msg=$(getSubtargetDestination "${2}" "${3}" "${4}" "${5}")
 		es=$?
 		print "${msg}"
 		return "${es}"
