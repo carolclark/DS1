@@ -458,7 +458,7 @@ function processActions {
 # clean
 	if [[ ${actions.doClean} > 0 ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		msg=$("${targetScript}" --cleanTarget)
+		msg=$("${targetScript}" --cleanTarget "${sourceRoot}" "${targetFolder}" "${actionFlags}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			print "error: ${targetScript} --cleanTarget failed: ${msg}"

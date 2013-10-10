@@ -14,7 +14,7 @@ Xcode_install.ksh -- provide functions for ccInstall to support CCDev installati
 #	--prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder
 #		perform any preprocessing indicated for the specified file
 #		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
-#	--cleanFiles
+#	--cleanTarget sourceRoot targetFolder actionFlags
 #		perform any cleanup indicated for files that this target installs
 #		return 0 to have caller continue by updating last built data
 '

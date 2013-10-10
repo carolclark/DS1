@@ -14,7 +14,7 @@ BBEdit_install.ksh -- provide functions for ccInstall to support CCDev installat
 #	--prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder
 #		perform any preprocessing indicated for the specified file
 #		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
-#	--cleanFiles
+#	--cleanTarget sourceRoot targetFolder actionFlags
 #		perform any cleanup indicated for files that this target installs
 #		return 0 to have caller continue by updating last built data
 '
@@ -109,15 +109,13 @@ if [[ "${1}" = -* ]] ; then
 	command="${1}"
 	shift
 fi
-if [[ "${command}" != "--cleanTarget" ]] ; then
-	sourceRoot="${1}"
+sourceRoot="${1}"
+shift
+targetFolder="${1}"
+shift
+if [[ $# > 0 ]] ; then
+	actionFlags="${1}"
 	shift
-	targetFolder="${1}"
-	shift
-	if [[ $# > 0 ]] ; then
-		actionFlags="${1}"
-		shift
-	fi
 fi
 if [[ -n "${command}" ]] ; then
 	case "${command}" in
@@ -151,6 +149,6 @@ if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
 	print "${msg}"
 	return "${es}"
 else
-	errorMessage $RC_InvalidInput "$0#$LINENO:" "USAGE: $0 [--commandFlag] sourceRoot targetFolder [-actionFlags | 'clean']"
+	errorMessage $RC_InvalidInput "$0#$LINENO:" "USAGE: $0 --commandFlag sourceRoot targetFolder (-actionFlags | 'clean') [...]"
 	return
 fi
