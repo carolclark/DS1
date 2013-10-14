@@ -113,6 +113,7 @@
 		676C9304179F326200876265 /* GitHub_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = GitHub_C9.r; sourceTree = "<group>"; };
 		676C9306179F478A00876265 /* GitHub_C9.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitHub_C9.h; sourceTree = "<group>"; };
 		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
+		6777600B1808AE3200A8FA5A /* execInstallScript.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = execInstallScript.ksh; sourceTree = "<group>"; };
 		6787406F17C02189000190D4 /* Developer_C9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Developer_C9.h; sourceTree = "<group>"; };
 		6787407217C02602000190D4 /* Developer_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Developer_C9.r; sourceTree = "<group>"; };
 		67BDF869175967DC006C0B75 /* AllTests.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTests.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -533,6 +534,7 @@
 				67BE04B116B062F00065BFDE /* ccInstallAction.ksh */,
 				67E6AE1E173D97C3005A30D0 /* errcc.ksh */,
 				67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */,
+				6777600B1808AE3200A8FA5A /* execInstallScript.ksh */,
 			);
 			name = "3 Scripts";
 			path = Scripts;

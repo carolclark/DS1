@@ -269,6 +269,7 @@ install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin" "resultCodes"
 install "${srcdir}/Scripts/errcc.ksh" "$CCDev/bin" "errcc"
 install "${srcdir}/Scripts/ccInstall.ksh" "$CCDev/bin" "ccInstall"
 install "${srcdir}/Scripts/ccInstallAction.ksh" "$CCDev/bin" "ccInstallAction"
+install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScript"
 
 # install shunit (third party)
 shunitInstall

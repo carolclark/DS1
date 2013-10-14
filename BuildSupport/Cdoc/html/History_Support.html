@@ -83,19 +83,20 @@
 			* then rename installed file resultCodes.ksh to resultCodes
 		* *Target*_install scripts: script params match ccInstall params
 		* BBEdit_install handles ccInstallAction functionality
-		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 		* add ccInstall params to *Target*_install callback params
 			* BBEdit_install.ksh: improve argument processing structure
 			* add ccInstall params to callbacks; also rename to --handleFile to --prepareFileOperation
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		* extract execInstallScript from BBEdit_install.ksh
 		* ccInstallAction
-			* builds call &lt;Target&gt;_install instead
+			* &lt;Target&gt;_install scripts: replace ccInstallAction as build script; use execInstallScript
 			* ccInstallAction no longer needed - remove
+	* update templates InstallTarget, InstallCdoc
 	* remove file /private/etc/launchd.conf from scripts and disk
 	* refactor
 		* use errorMessage as indicated
 		* *Target*_install scripts (internal): params 1-3 already set; do not pass again
 		* pass callback script as argument to ccInstall for processActions
-		* extract execInstallScript from BBEdit_install.ksh; call from remaining *Target*_install scripts
 </pre>
 
 <h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
