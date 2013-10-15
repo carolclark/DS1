@@ -1171,7 +1171,7 @@
 			buildConfigurationList = 67BE04C016B08DE30065BFDE /* Build configuration list for PBXLegacyTarget "Developer" */;
 			buildPhases = (
 			);
-			buildToolPath = ccInstallAction;
+			buildToolPath = Developer/Developer_install.ksh;
 			buildWorkingDirectory = "";
 			dependencies = (
 				67645A0D16EFD181004F37F1 /* PBXTargetDependency */,

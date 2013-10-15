@@ -15,21 +15,36 @@ include at end of <Target>_install scripts
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
+#pragma mark 0 === Top
 . resultCodes
 
-#pragma mark 0 === Top
 #pragma mark 8 === execInstallScript
-if [[ "${1}" = -* ]] ; then
-	command="${1}"
-	shift
-fi
-sourceRoot="${1}"
-shift
-targetFolder="${1}"
-shift
+
+missingArgumentMessage="USAGE: $0 [--commandFlag] sourceRoot targetFolder (-actionFlags | 'clean') [...]"
+
+#pragma mark 8 === execInstallScript
+
 if [[ $# > 0 ]] ; then
-	actionFlags="${1}"
+	if [[ "${1}" = -* ]] ; then
+		command="${1}"
+		shift
+	fi
+else
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
+	return
+fi
+if [[ $# > 1 ]] ; then
+	sourceRoot="${1}"
 	shift
+	targetFolder="${1}"
+	shift
+	if [[ $# > 0 ]] ; then
+		actionFlags="${1}"
+		shift
+	fi
+else
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
+	return
 fi
 if [[ -n "${command}" ]] ; then
 	case "${command}" in
@@ -63,6 +78,6 @@ if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
 	print "${msg}"
 	return "${es}"
 else
-	errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: $0 [--commandFlag] sourceRoot targetFolder (-actionFlags | 'clean') [...]"
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
 	return
 fi
