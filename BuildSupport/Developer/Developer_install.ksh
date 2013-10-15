@@ -29,7 +29,6 @@ actionFlags=""
 
 servicesFolder="${HOME}/Library/Services"
 scriptsFolder="${CCDev}/bin"
-functionsFolder="${CCDev}/func"
 applescriptsFolder="${HOME}/Library/Scripts/Developer"
 
 #^ 3 === getSubtargetDestination
@@ -47,9 +46,6 @@ function getSubtargetDestination {
 	case "${subtarget}" in
 		"Scripts" )
 			destinationFolder="${scriptsFolder}"
-			;;
-		"Functions" )
-			destinationFolder="${functionsFolder}"
 			;;
 		"Services" )
 			destinationFolder="${servicesFolder}"
@@ -122,7 +118,7 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${applescriptsFolder}"  "${scriptsFolder}" "${functionsFolder}"; do
+	for folder in "${applescriptsFolder}"  "${scriptsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then

@@ -36,8 +36,8 @@ testScripts() {
 	if [[ ! -e ${CCDev}/bin/ccInstall ]] ; then
 		fail "$LINENO: function file ccInstall missing"
 	fi
-	if [[ ! -e ${CCDev}/bin/ccInstallAction ]] ; then
-		fail "$LINENO: script file ccInstallAction missing"
+	if [[ ! -e ${CCDev}/bin/execInstallScript ]] ; then
+		fail "$LINENO: script file execInstallScript missing"
 	fi
 }
 

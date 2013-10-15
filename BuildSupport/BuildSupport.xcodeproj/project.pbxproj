@@ -120,7 +120,6 @@
 		67BDF86D175967DC006C0B75 /* AllTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AllTests-Info.plist"; sourceTree = "<group>"; };
 		67BDF86F175967DC006C0B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		67BDF871175967DC006C0B75 /* AllTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AllTests-Prefix.pch"; sourceTree = "<group>"; };
-		67BE04B116B062F00065BFDE /* ccInstallAction.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstallAction.ksh; sourceTree = "<group>"; };
 		67BE04C416B095780065BFDE /* XcodeScripts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XcodeScripts-Info.plist"; sourceTree = "<group>"; };
 		67BE04C616B09CB50065BFDE /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67BE04C716B09CB50065BFDE /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
@@ -531,7 +530,6 @@
 				67DB233B169E0A2900A6E910 /* archive.ksh */,
 				67DB233D169E0A2900A6E910 /* ccBackup.ksh */,
 				67DB2340169E0A2900A6E910 /* resultCodes.ksh */,
-				67BE04B116B062F00065BFDE /* ccInstallAction.ksh */,
 				67E6AE1E173D97C3005A30D0 /* errcc.ksh */,
 				67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */,
 				6777600B1808AE3200A8FA5A /* execInstallScript.ksh */,

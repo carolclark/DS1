@@ -59,12 +59,12 @@ testDeveloperInstall() {
 	
 	targetScript=$(ccInstall --getTargetScript "${DEV}/Support/BuildSupport" "Developer")
 	assertEquals "$LINENO: incorrect target script: " "${script}" "${targetScript}"
-	# test Functions/ccInstall.ksh
-	dest=$("${targetScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Functions)
+	# test Scripts/ccInstall.ksh
+	dest=$("${targetScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Scripts)
 	st=$?
-	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Functions: error: " 0 ${st}
-	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Functions" "${CCDev}/func" "${dest}"
-	fl=$(${script} --prepareFileOperation "${DEV}/Support/BuildSupport" "Developer" "-i" "Functions" "ccInstall.ksh" "${dest}")
+	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Scripts: error: " 0 ${st}
+	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Scripts" "${CCDev}/bin" "${dest}"
+	fl=$(${script} --prepareFileOperation "${DEV}/Support/BuildSupport" "Developer" "-i" "Scripts" "ccInstall.ksh" "${dest}")
 	st=$?
 	assertEquals "$LINENO: --prepareFileOperation failed with code $st" 0 $st
 	set -A copyInfo
@@ -74,8 +74,8 @@ testDeveloperInstall() {
 	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
 	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
 	assertEquals "$LINENO: incorrect action: " "copy" "${copyInfo[0]}"
-	assertEquals "$LINENO: incorrect sourceForCopy: " "${DEV}/Support/BuildSupport/Developer/Functions/ccInstall.ksh" "${copyInfo[1]}"
-	assertEquals "$LINENO: incorrect destinationForCopy: " "${CCDev}/func/ccInstall" "${copyInfo[2]}"
+	assertEquals "$LINENO: incorrect sourceForCopy: " "${DEV}/Support/BuildSupport/Developer/Scripts/ccInstall.ksh" "${copyInfo[1]}"
+	assertEquals "$LINENO: incorrect destinationForCopy: " "${CCDev}/bin/ccInstall" "${copyInfo[2]}"
 
 	# test Environment/kshrc.ksh
 	dest=$("${targetScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Environment)
