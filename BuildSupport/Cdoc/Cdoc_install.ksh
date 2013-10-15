@@ -22,9 +22,10 @@ Cdoc_install.ksh -- provide functions for ccInstall to support CCDev installatio
 . "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
-
-sourceRoot="${DEV}/Support/BuildSupport"
-targetFolder="Cdoc"
+command=""
+sourceRoot=""
+targetFolder=""
+actionFlags=""
 
 technicalDocs="${CCDev}/Sites/TechnicalDocs"
 
@@ -110,32 +111,4 @@ function cleanTarget {
 
 #^ 8 === main
 
-if [[ $# = 0 ]] ; then
-	print "$0: missing commandFlag"
-	return $RC_MissingArgument
-fi
-case "${1}" in
-	"--getSubtargetDestination" )
-		msg=$(getSubtargetDestination "${2}" "${3}" "${4}" "${5}")
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	"--prepareFileOperation" )
-		msg=$(prepareFileOperation "${2}" "${3}" "${4}" "${5}" "${6}" "${7}")
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	"--cleanTarget" )
-		msg=$(cleanTarget)
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	* )
-		print "invalid subcommand $1"
-		return $RC_InvalidArgument
-		;;
-esac
-return 0
+. "${CCDev}/bin/execInstallScript"
