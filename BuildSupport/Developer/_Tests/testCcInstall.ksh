@@ -7,12 +7,12 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+. "${CCDev}/bin/ccInstall"
+
 setUp() {
 	sourceRoot="${CCDev}/TestData/WorkspaceA/ProjA"
 	targetFolder=Tar1
 }
-
-. "${CCDev}/bin/ccInstall"
 
 #^	1 === General
 testCciGeneral() {

@@ -51,9 +51,6 @@ function envKsh {
 	if [[ $(print ":$PATH:" | grep ":$CCDev/bin:") = "" ]] ; then
 		PATH="$PATH:$CCDev/bin:"
 	fi
-	if [[ $(print ":$PATH:" | grep ":$CCDev/func:") = "" ]] ; then
-		PATH="$PATH:$CCDev/func:"
-	fi
 	export PATH												# path to search for unix scripts
 	print "PATH=${PATH}; export PATH"
 	SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit		# third-party library used for unix testing
@@ -259,7 +256,6 @@ fi
 # set up to install $CCDev files
 print "creating CCDev (${CCDev}) subdirectories"
 srcdir="$(dirname $0)"; export srcdir
-mkdir -p $CCDev/func
 mkdir -p $CCDev/bin
 mkdir -p $CCDev/tmp
 
@@ -268,7 +264,6 @@ print "installing files ..."
 install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin" "resultCodes"
 install "${srcdir}/Scripts/errcc.ksh" "$CCDev/bin" "errcc"
 install "${srcdir}/Scripts/ccInstall.ksh" "$CCDev/bin" "ccInstall"
-install "${srcdir}/Scripts/ccInstallAction.ksh" "$CCDev/bin" "ccInstallAction"
 install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScript"
 
 # install shunit (third party)
