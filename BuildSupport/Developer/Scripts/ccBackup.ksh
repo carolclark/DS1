@@ -177,6 +177,7 @@ function processCustomFolder {
 	done
 
 	# Carol's custom folders
+	DEV="${HOME}/Dev"
 	for fl in $(ls "${DEV}") ; do
 		if [[ ${fl} = "svnrep" ]] ; then
 			folder="${DEV}/svnrep"

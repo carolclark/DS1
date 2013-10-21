@@ -39,6 +39,10 @@ ccInstall commandFlag [argument(s)]
 #	--processActions	sourceRoot targetFolder actionFlags
 #	--ccInstall			sourceRoot targetFolder actionFlags
 #						performs specified action on targetFolder
+#	--DEV				short user name (name of $HOME folder)
+#						return path containing development projects for this user
+#	--SHUnit			<no args>
+#						return path to SHUnit test driver
 #	--help				<no args>
 #						print this information
 '
@@ -624,6 +628,32 @@ function processActions {
 	fi
 }
 
+function DEV {
+	if [[ -n "${1}" ]] ; then
+		username="${1}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --DEV user"
+		return
+	fi
+
+	case "${username}" in
+		"lauramartinez" )
+			DEV="/Users/${username}/Documents/Projects"
+			;;
+		"carolclark" )
+			DEV="/Volumes/Mac/Users/${username}/Dev"
+			;;
+		* )
+			DEV="/Users/${username}/Dev"
+			;;
+	esac
+	print "${DEV}"
+}
+
+function SHUnit {
+	print "${CCDev}/shunit/src/shunit2"
+}
+
 #^ 8 === ccInstall
 function ccInstall {
 	if [[ $# = 0 ]] ; then
@@ -689,6 +719,18 @@ function ccInstall {
 			;;
 		"--runShunitTests" )
 			runShunitTests "${2}"						# testPath
+			;;
+		"--DEV" )										# short user name
+			msg=$(DEV "${2}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--SHUnit" )									# <no args>
+			msg=$(SHUnit)
+			es=$?
+			print "${msg}"
+			return "${es}"
 			;;
 		"--"* )
 			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid subcommand $1"	# <invalid arg>

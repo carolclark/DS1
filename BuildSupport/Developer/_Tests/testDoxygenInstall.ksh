@@ -10,6 +10,7 @@
 . "${CCDev}/bin/ccInstall"
 
 setUp() {
+	DEV="$(ccInstall --DEV ${USER})"
 	sourceRoot="${DEV}/Support/BuildSupport"
 	targetFolder="Doxygen"
 }
@@ -68,5 +69,5 @@ testDoxygenGetActions() {
 }
 
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

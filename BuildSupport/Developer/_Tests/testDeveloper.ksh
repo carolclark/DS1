@@ -41,7 +41,8 @@ testInstallation() {
 
 #^ Developer_install.ksh
 testDeveloperInstall() {
-	script=${DEV}/Support/BuildSupport/Developer/Developer_install.ksh
+	DEV=$(ccInstall --DEV ${USER})
+	script="${DEV}/Support/BuildSupport/Developer/Developer_install.ksh"
 	str=$(${script})
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
@@ -93,5 +94,5 @@ testDeveloperInstall() {
 	assertEquals "$LINENO: incorrect action: " "ignore" "${copyInfo[0]}"
 }
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

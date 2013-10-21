@@ -7,6 +7,8 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+. ${CCDev}/bin/ccInstall
+
 testEnvironment() {
 	assertEquals "$LINENO: incorrect '${CCDev}'" "${CCDev}" "${HOME}/Library/CCDev"
 	if [[ ! -e ${CCDev}/tmp ]] ; then
@@ -42,10 +44,10 @@ testScripts() {
 }
 
 testThirdParty() {
-	if [[ ! -e ${SHUnit} ]] ; then
+	if [[ ! -e $(ccInstall --SHUnit) ]] ; then
 		fail "$LINENO: shunit2 binary missing" 
 	fi
 }
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

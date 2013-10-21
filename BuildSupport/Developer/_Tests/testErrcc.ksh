@@ -11,6 +11,7 @@
 #pragma mark === Markers ===
 
 . "${CCDev}/bin/errcc"
+. "${CCDev}/bin/ccInstall"
 
 #pragma mark 2 === test for text in message
 function assertTextInMessage {	# _where_ expectedText message
@@ -80,5 +81,5 @@ testErrorExit() {
 	assertEquals "$0#$LINENO:" "" "$msg"
 }
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)
