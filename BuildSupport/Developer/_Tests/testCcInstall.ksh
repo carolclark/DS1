@@ -7,12 +7,13 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+CCDev="${HOME}/Library/CCDev"
+. "${CCDev}/bin/ccInstall"
+
 setUp() {
 	sourceRoot="${CCDev}/TestData/WorkspaceA/ProjA"
 	targetFolder=Tar1
 }
-
-. "${CCDev}/bin/ccInstall"
 
 #^	1 === General
 testCciGeneral() {
@@ -97,6 +98,29 @@ testCciPaths() {
 
 	rmdir "${CCDev}/build/WorkspaceA/ProjA"
 	rmdir "${CCDev}/build/WorkspaceA"
+}
+
+testSpecialPaths() {
+	assertEquals "$0#$LINENO:" "${HOME}/Library/CCDev" "${CCDev}"
+
+	DEV=$(ccInstall --DEV)
+	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
+
+	DEV=$(ccInstall --DEV "lauramartinez")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect DEV for "lauramartinez" " "/Users/lauramartinez/Documents/Projects" "${DEV}"
+
+	DEV=$(ccInstall --DEV "carolclark")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect DEV for carolclark: " "/Volumes/Mac/Users/carolclark/Dev" "${DEV}"
+
+	DEV=$(ccInstall --DEV "xxx")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect DEV for xxx: " "/Users/xxx/Dev" "${DEV}"
+
+	SHUnit=$(ccInstall --SHUnit)
+	assertEquals "$0#$LINENO:" "${CCDev}/shunit/src/shunit2" "${SHUnit}"
+	assertTrue "$0#$LINENO: no file exists at ${SHUnit}" "[ -e ${SHUnit} ]"
 }
 
 fileContainsLine() {		# returns 1 iff file "${1}" contains line "${2}"
@@ -273,5 +297,5 @@ testInstall() {
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 }
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

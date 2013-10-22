@@ -29,6 +29,7 @@ errcc			subcommand
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
+CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/resultCodes"
 
 #pragma mark 1 === errorMessage

@@ -7,12 +7,14 @@
 #  Copyright 2013 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+CCDev="${HOME}/Library/CCDev"
+. "${CCDev}/bin/ccInstall"
+
 setUp() {
+	DEV="$(ccInstall --DEV ${USER})"
 	sourceRoot="${DEV}/Support/BuildSupport"
 	targetFolder="Doxygen"
 }
-
-. "${CCDev}/bin/ccInstall"
 
 testTargetName() {
 	assertEquals "$LINENO: " 1 1
@@ -68,5 +70,5 @@ testDoxygenGetActions() {
 }
 
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

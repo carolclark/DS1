@@ -16,7 +16,8 @@ include at end of <Target>_install scripts
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 #pragma mark 0 === Top
-. resultCodes
+CCDev="${HOME}/Library/CCDev"
+. ${CCDev}/bin/resultCodes
 
 #pragma mark 8 === execInstallScript
 

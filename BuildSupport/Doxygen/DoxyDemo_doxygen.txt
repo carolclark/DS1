@@ -6,10 +6,10 @@
 #	see Support/BuildSupport/Doxygen/Default.doxygen or the Doxygen application.
 
 PROJECT_NAME			= DoxyDemo
-OUTPUT_DIRECTORY		= $(CCDev)/Sites/Doxygen/DoxyDemo
-STRIP_FROM_PATH			= $(DEV)/Support/BuildSupport/Doxygen/DoxyDemo
+OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/DoxyDemo
+STRIP_FROM_PATH			= $(HOME)/Dev/Support/BuildSupport/Doxygen/DoxyDemo
 EXTRACT_ALL				= YES
-INPUT					= $(DEV)/Support/BuildSupport/Doxygen/DoxyDemo
+INPUT					= $(HOME)/Dev/Support/BuildSupport/Doxygen/DoxyDemo
 EXCLUDE_PATTERNS		= *.plist *.pch
 EXCLUDE					= en.lproj
 RECURSIVE				= YES
@@ -19,4 +19,4 @@ DOCSET_FEEDNAME			= DoxyDemo
 DOCSET_BUNDLE_ID		= com.candcsoft.DoxyDemo
 DOCSET_PUBLISHER_ID		= com.candcsoft.Publisher
 GENERATE_LATEX			= NO
-IMAGE_PATH				= $(DEV)/Support/BuildSupport/Doxygen/DoxyDemo
+IMAGE_PATH				= $(HOME)/Dev/Support/BuildSupport/Doxygen/DoxyDemo

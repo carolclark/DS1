@@ -26,6 +26,7 @@ USAGE='
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
+CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 
 #pragma mark 0 === Top

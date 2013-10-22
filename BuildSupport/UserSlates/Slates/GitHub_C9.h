@@ -72,9 +72,9 @@ resource restype_Slate (_GitHubID_, "") { {	\
 		Event { "issues", "" },			Sequence{}, Click { 1, 125, 220, _window, _topCenter }, ResSubslate { resid_DashIssues }, endSequence{},	\
 		Event { "my page", "" },		Sequence{}, Click { 1, 313, 90, _window, _topCenter }, ResSubslate { resid_MyPage }, endSequence{},	\
 		Event { "repo 1", "" },			Sequence{}, Click { 1, gh_h, gh_row1+gh_rsp*0, _window, _topCenter }, ResSubslate { _GitHubRepoID_ },  endSequence{},	\
-		Event { "repo 2", "" },			Sequence{}, Click { 1, gh_h, gh_row1+gh_rsp*0, _window, _topCenter }, ResSubslate { _GitHubRepoID_ },  endSequence{},	\
-		Event { "repo 3", "" },			Sequence{}, Click { 1, gh_h, gh_row1+gh_rsp*0, _window, _topCenter }, ResSubslate { _GitHubRepoID_ },  endSequence{},	\
-		Event { "repo 4", "" },			Sequence{}, Click { 1, 200, 753, _window, _topCenter }, ResSubslate { _GitHubRepoID_ },  endSequence{},	\
+		Event { "repo 2", "" },			Sequence{}, Click { 1, gh_h, gh_row1+gh_rsp*1, _window, _topCenter }, ResSubslate { _GitHubRepoID_ },  endSequence{},	\
+		Event { "repo 3", "" },			Sequence{}, Click { 1, gh_h, gh_row1+gh_rsp*2, _window, _topCenter }, ResSubslate { _GitHubRepoID_ },  endSequence{},	\
+		Event { "repo 4", "" },			Sequence{}, Click { 1, gh_h, gh_row1+gh_rsp*3, _window, _topCenter }, ResSubslate { _GitHubRepoID_ },  endSequence{},	\
 		Event { "broadcast", "" },		Subslate { "broadcast" },	\
 			_SlateGlobals_,	\
 			_CloseSubslate_,	\

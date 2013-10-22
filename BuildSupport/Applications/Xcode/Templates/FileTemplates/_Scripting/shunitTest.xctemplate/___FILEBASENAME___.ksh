@@ -10,7 +10,9 @@
 #pragma mark 0 === Top
 #pragma mark === Markers ===
 
+CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
+. "${CCDev}/bin/ccInstall"
 
 testEquality() {
 	assertEquals "$LINENO: " 1 1
@@ -18,5 +20,5 @@ testEquality() {
 
 <#body#>
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

@@ -11,6 +11,8 @@ USAGE='
 # Developer_Setup.ksh -- set up basic C & C Software development environment
 '
 
+CCDev="${HOME}/Library/CCDev"
+
 #^	install
 function install {
 	src="${1}"
@@ -50,9 +52,6 @@ function envKsh {
 	print "CCDev=${CCDev}; export CCDev"
 	if [[ $(print ":$PATH:" | grep ":$CCDev/bin:") = "" ]] ; then
 		PATH="$PATH:$CCDev/bin:"
-	fi
-	if [[ $(print ":$PATH:" | grep ":$CCDev/func:") = "" ]] ; then
-		PATH="$PATH:$CCDev/func:"
 	fi
 	export PATH												# path to search for unix scripts
 	print "PATH=${PATH}; export PATH"
@@ -259,7 +258,6 @@ fi
 # set up to install $CCDev files
 print "creating CCDev (${CCDev}) subdirectories"
 srcdir="$(dirname $0)"; export srcdir
-mkdir -p $CCDev/func
 mkdir -p $CCDev/bin
 mkdir -p $CCDev/tmp
 

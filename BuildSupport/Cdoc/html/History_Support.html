@@ -91,6 +91,13 @@
 			* &lt;Target&gt;_install scripts: replace ccInstallAction as build script; use execInstallScript
 			* ccInstallAction no longer needed - remove
 	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+<<<<<<< HEAD
+=======
+	* remove Xcode's dependence on custom environment variables defined in deprecated file /private/etc./launchd.conf
+		* define CCDev in each script that needs it
+			* environment variables defined in BuildSettings are apparently not available to scripts
+		* ccInstall: add and use subcommands DEV, SHUnit to return those values
+>>>>>>> DEV_SHUnit
 	* remove file /private/etc/launchd.conf from scripts and disk
 	* refactor
 		* *Target*_install scripts use errorMessage as indicated

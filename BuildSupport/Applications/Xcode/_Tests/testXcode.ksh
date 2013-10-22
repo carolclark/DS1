@@ -1,11 +1,14 @@
-#!/bin/sh
+#!/bin/ksh
 
 #  testXcodeBuild.ksh
 #  Support
 #
 #  Created by Carol Clark on 9/13/11.
-#  Copyright 2011 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
+
+CCDev="${HOME}/Library/CCDev"
+. "${CCDev}/bin/ccInstall"
 
 testEquality() {
 	assertEquals "$LINENO: " 1 1
@@ -27,5 +30,5 @@ testXcodeInstall() {
 	fi
 }
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

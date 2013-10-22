@@ -9,6 +9,8 @@
 
 #pragma mark 0 === Top
 #pragma mark === Markers ===
+CCDev="${HOME}/Library/CCDev"
+. ${CCDev}/bin/ccInstall
 
 testData="${CCDev}/TestData/tarTest"
 archiveDestination="${CCDev}/TestData/tarArchives"; export archiveDestination
@@ -100,5 +102,5 @@ testEquality() {
 }
 
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

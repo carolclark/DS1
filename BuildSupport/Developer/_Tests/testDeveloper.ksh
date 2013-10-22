@@ -7,6 +7,7 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
 #^ Installation
@@ -15,16 +16,16 @@ testInstallation() {
 	assertEquals "$LINENO: incorrect "'$SHELL' /bin/ksh $(launchctl getenv SHELL)
 
 	# launchd settings
-	dev=$(launchctl getenv DEV)
-	if [[ ${USER} = carolclark ]] ; then
-		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
-	elif [[ ${USER} = lauramartinez ]] ; then
-		assertEquals "$LINENO"': incorrect $DEV' "{HOME}/Documents/Projects" ${dev}
-	else
-		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
-	fi
-	assertEquals "$LINENO"': incorrect $CCDev' ${HOME}/Library/CCDev $(launchctl getenv CCDev)
-	assertEquals "$LINENO"': incorrect $VISUAL' \"/usr/bin/emacs\" $(launchctl getenv VISUAL)
+	#	dev=$(launchctl getenv DEV)
+	#	if [[ ${USER} = carolclark ]] ; then
+	#		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
+	#	elif [[ ${USER} = lauramartinez ]] ; then
+	#		assertEquals "$LINENO"': incorrect $DEV' "{HOME}/Documents/Projects" ${dev}
+	#	else
+	#		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
+	#	fi
+	#	assertEquals "$LINENO"': incorrect $CCDev' ${HOME}/Library/CCDev $(launchctl getenv CCDev)
+	#	assertEquals "$LINENO"': incorrect $VISUAL' \"/usr/bin/emacs\" $(launchctl getenv VISUAL)
 
 	# Scripts/errcc
 	fl="${CCDev}/bin/errcc"
@@ -41,7 +42,8 @@ testInstallation() {
 
 #^ Developer_install.ksh
 testDeveloperInstall() {
-	script=${DEV}/Support/BuildSupport/Developer/Developer_install.ksh
+	DEV=$(ccInstall --DEV ${USER})
+	script="${DEV}/Support/BuildSupport/Developer/Developer_install.ksh"
 	str=$(${script})
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
@@ -93,5 +95,5 @@ testDeveloperInstall() {
 	assertEquals "$LINENO: incorrect action: " "ignore" "${copyInfo[0]}"
 }
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/ksh
 
 #  testBBEdit.ksh
 #  Support
@@ -7,6 +7,9 @@
 #  Copyright 2013 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+CCDev="${HOME}/Library/CCDev"
+. ${CCDev}/bin/ccInstall
+
 testBBEditInstall() {
 	# CheckSyntax.scpt
 	if [[ ! -e "${HOME}/Library/Application Support/BBEdit/Scripts/CheckSyntax.scpt" ]] ; then
@@ -14,5 +17,5 @@ testBBEditInstall() {
 	fi
 }
 
-# load shunit2
-. ${SHUnit}
+# run tests
+. $(ccInstall --SHUnit)
