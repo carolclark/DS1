@@ -9,6 +9,7 @@
 
 #pragma mark 0 === Top
 #pragma mark === Markers ===
+CCDev="${HOME}/Library/CCDev"
 . ${CCDev}/bin/ccInstall
 
 testData="${CCDev}/TestData/tarTest"

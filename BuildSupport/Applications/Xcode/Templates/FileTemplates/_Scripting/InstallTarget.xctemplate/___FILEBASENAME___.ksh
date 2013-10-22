@@ -19,6 +19,7 @@ USAGE='
 #		return 0 to have caller continue by updating last built data
 '
 
+CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
 #^ 1 === top

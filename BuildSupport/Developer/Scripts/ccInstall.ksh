@@ -48,6 +48,7 @@ ccInstall commandFlag [argument(s)]
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
+CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 
 #^ 1 === top

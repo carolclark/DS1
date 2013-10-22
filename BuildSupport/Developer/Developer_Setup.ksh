@@ -11,6 +11,8 @@ USAGE='
 # Developer_Setup.ksh -- set up basic C & C Software development environment
 '
 
+CCDev="${HOME}/Library/CCDev"
+
 #^	install
 function install {
 	src="${1}"

@@ -92,7 +92,8 @@
 			* ccInstallAction no longer needed - remove
 	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* remove Xcode's dependence on custom environment variables defined in deprecated file /private/etc./launchd.conf
-		* define CCDev in Build Settings
+		* define CCDev in each script that needs it
+			* environment variables defined in BuildSettings are apparently not available to scripts
 		* ccInstall: add and use subcommands DEV, SHUnit to return those values
 	* remove file /private/etc/launchd.conf from scripts and disk
 	* refactor
