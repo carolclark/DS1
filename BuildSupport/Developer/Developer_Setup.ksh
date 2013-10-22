@@ -281,13 +281,3 @@ print "${result}"
 if [[ $failcnt > 0 ]] ; then
 	exit $failcnt
 fi
-
-# print instructions for completing configuration
-print "***"
-print "*** To finish setting up your environment:"
-print "*** from Terminal:"
-print "sudo cp ${HOME}/.launchd.conf /private/etc/launchd.conf"
-	# supposedly ${HOME}/.launchd.conf should suffice, but for now (2/22/13) it does not work in Xcode
-print "*** Then shut down your computer and reboot."
-print "*** Then reopen workspace Support and build target Developer."
-print "***"

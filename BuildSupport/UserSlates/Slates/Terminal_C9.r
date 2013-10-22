@@ -116,8 +116,7 @@
 	Event { "cancel", "" },			_cancel,						\
 	Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 	Event { "paste", "" },			Keypress { kc_V, mf_command },	\
-	_EmacsKeys_,													\
-	Event { "system config", "" },	TypeText { "/private/etc/launchd.conf " },
+	_EmacsKeys_,
 
 #pragma mark emacs
 resource restype_Slate (resid_Emacs, "") { {

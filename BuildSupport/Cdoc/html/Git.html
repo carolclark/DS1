@@ -105,7 +105,7 @@
 				<li>check for stray spaces (diff --cached --check)</li>
 				<li>review commit msgfile</li>
 				<li>commit</li>
-				<li>status; show --name-only; log; [amend (reset --soft lastCommit)]</li>
+				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
 				<li>check stash list</li>
 				<li><span class='em'>Update Branch</span><ul>
 					<li><span class='em'>Update Master</span> from remotes<ul>
@@ -128,8 +128,10 @@
 				<li>[OR to merge in files only, use <span class='mono'>merge &lt;branch&gt; --no-ff --no-commit</span>]; then commit or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			</ul></li>
 			<li>[<b>Resolve Conflicts</b>]<ul>
-				<li>use <span class='mono'>merge tool</span> to resolve conflicts; add / review files to be committed; commit</li>
-				<li>[OR to undo attempted merge, use <span class='mono'>git reset --merge</span>]</li>
+				<li>to undo attempted merge: <span class='mono'>git reset --merge</span><ul>
+					<li>[ OR ?? use <span class='mono'>merge tool</span> to resolve conflicts; add / review files to be committed; commit]</li>
+				</ul></li>
+				<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
 			</ul></li>
 			<li>show --name-only; lg compare; lg origin/master..master</li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
