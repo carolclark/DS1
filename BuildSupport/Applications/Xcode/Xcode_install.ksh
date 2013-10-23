@@ -54,8 +54,8 @@ function getSubtargetDestination {
 		"_Tests" )
 			;;	#handled elsewhere
 		* )
-			print "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return $RC_InputNotHandled
+			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
+			return
 			;;
 	esac
 	print "${destinationFolder}"
@@ -72,8 +72,8 @@ function prepareFileOperation {
 		filepath="${5}"
 		destinationFolder="${6}"
 	else
-		print "USAGE: ${targetFolder}_install.ksh --prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder"
+		return
 	fi
 
 	if [[ "${subtarget}" = "AppleScripts" ]] ; then
@@ -104,8 +104,8 @@ function cleanTarget {
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
-			print "error: ${msg}"
-			return ${st}
+			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+			return
 		fi
 	done
 	return 0

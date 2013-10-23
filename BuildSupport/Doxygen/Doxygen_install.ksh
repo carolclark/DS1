@@ -46,8 +46,8 @@ function getSubtargetDestination {
 			;;
 		# Doxygen: local folders not processed
 		* )
-			print "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return $RC_InputNotHandled
+			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
+			return
 			;;
 	esac
 	print "${destinationFolder}"
@@ -64,8 +64,8 @@ function prepareFileOperation {
 		filepath="${5}"
 		destinationFolder="${6}"
 	else
-		print "USAGE: ${targetFolder}_install.ksh --prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder"
+		return
 	fi
 
 	if [[ -n "${destinationFolder}" ]] ; then
