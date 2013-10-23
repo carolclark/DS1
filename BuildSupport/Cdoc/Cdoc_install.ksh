@@ -32,11 +32,8 @@ technicalDocs="${CCDev}/Sites/TechnicalDocs"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
-	if [[ -n "${4}" ]] ; then
-		sourceRoot="${1}"
-		targetFolder="${2}"
-		actionFlags="${3}"
-		subtarget="${4}"
+	if [[ -n "${1}" ]] ; then
+		subtarget="${1}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination sourceRoot targetFolder actionFlags subtarget"
 		return
@@ -64,13 +61,10 @@ function getSubtargetDestination {
 
 #^ 5 === prepareFileOperation
 function prepareFileOperation {
-	if [[ -n "${4}" ]] && [[ -n "${5}" ]] ; then
-		sourceRoot="${1}"
-		targetFolder="${2}"
-		actionFlags="${3}"
-		subtarget="${4}"
-		filepath="${5}"
-		destinationFolder="${6}"
+	if [[ -n "${1}" ]] && [[ -n "${1}" ]] ; then
+		subtarget="${1}"
+		filepath="${2}"
+		destinationFolder="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder"
 		return

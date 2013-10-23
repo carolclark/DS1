@@ -50,13 +50,13 @@ fi
 if [[ -n "${command}" ]] ; then
 	case "${command}" in
 		"--getSubtargetDestination" )
-			msg=$(getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${1}")
+			msg=$(getSubtargetDestination "${1}")
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
 		"--prepareFileOperation" )
-			msg=$(prepareFileOperation "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${1}" "${2}" "${3}")
+			msg=$(prepareFileOperation "${1}" "${2}" "${3}")
 			es=$?
 			print "${msg}"
 			return "${es}"
