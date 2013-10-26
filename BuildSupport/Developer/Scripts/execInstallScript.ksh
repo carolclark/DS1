@@ -74,7 +74,7 @@ if [[ -n "${command}" ]] ; then
 	esac
 fi
 if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
-	msg=$(ccInstall "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+	msg=$(ccInstall "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
 	es=$?
 	print "${msg}"
 	return "${es}"

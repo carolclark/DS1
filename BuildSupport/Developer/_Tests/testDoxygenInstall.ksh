@@ -17,16 +17,6 @@ setUp() {
 }
 
 testTargetName() {
-	assertEquals "$LINENO: " 1 1
-	targetScript=$(ccInstall --getTargetScript "${sourceRoot}" "${targetFolder}")
-	assertEquals "$LINENO: incorrect target script" "${targetScript}" "${sourceRoot}/${targetFolder}/Doxygen_install.ksh"
-
-	str=$(ccInstall --getTargetScript)
-	st=$?
-	assertEquals "$LINENO: expected error RC_MissingArgument" $RC_MissingArgument "${st}"
-
-	str=$(ccInstall --getTargetScript "${sourceRoot}" "${targetFolder}")
-	assertEquals "$LINENO: incorrect target script: " "${DEV}/Support/BuildSupport/Doxygen/Doxygen_install.ksh" "${str}"
 	sourceRoot=$(ccInstall --getSourceRoot "${sourceRoot}" "${targetFolder}")
 	assertEquals "$LINENO: incorrect sourceRoot: " "${DEV}/Support/BuildSupport" "${sourceRoot}"
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")

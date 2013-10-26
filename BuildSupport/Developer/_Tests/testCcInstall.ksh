@@ -83,10 +83,6 @@ testCciPaths() {
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect target name: " "Tar1" "${str}"
 
-	str=$(ccInstall --getTargetScript "${sourceRoot}" "${targetFolder}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect target script: " "${CCDev}/TestData/WorkspaceA/ProjA/Tar1/Tar1_install.ksh" "${str}"
-
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/WorkspaceA/ProjA/Tar1.lastbuilt" "${lastbuilt}"
@@ -288,11 +284,11 @@ testInstall() {
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument "${st}"
 	
-	str=$(ccInstall a b abc)
-	st=$?
-	assertEquals "$LINENO: RC_SyntaxError expected" $RC_SyntaxError "${st}"
+#	str=$(ccInstall cb a b abc)
+#	st=$?
+#	assertEquals "$LINENO: RC_SyntaxError expected" $RC_SyntaxError "${st}"
 
-	str=$(ccInstall a b -abc)
+	str=$(ccInstall cb a b -abc)
 	st=$?
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 }

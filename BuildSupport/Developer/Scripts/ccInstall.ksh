@@ -15,7 +15,7 @@ ccInstall sourceRoot targetFolder [actionFlags]
 ccInstall commandFlag [argument(s)]
 #	--setPaths			set derived paths from arguments
 #	--get<Path>			sourceRoot targetFolder
-#		<Path>: 		SourceRoot | TargetFolder | TargetName | TargetScript | Lastbuilt
+#		<Path>: 		SourceRoot | TargetFolder | TargetName | Lastbuilt
 #		result: 		string containing specified path
 #	--updateLastbuilt	sourceRoot targetFolder
 #						set last built flag to the current date and time
@@ -36,7 +36,7 @@ ccInstall commandFlag [argument(s)]
 #	--removeFolder		removes contents and folder for the folder specified
 #	--runShunitTests	folder
 #						runs all shunit tests found in folder
-#	--processActions	sourceRoot targetFolder actionFlags
+#	--processActions	callbackScript sourceRoot targetFolder actionFlags
 #	--ccInstall			sourceRoot targetFolder actionFlags
 #						performs specified action on targetFolder
 #	--DEV				short user name (name of $HOME folder)
@@ -56,7 +56,6 @@ CCDev="${HOME}/Library/CCDev"
 sourceRoot=""			# path to folder containing project (Xcode's $SRCROOT)
 targetFolder=""			# path from sourceRoot to folder containing sources
 targetName=""			# name of Xcode target
-targetScript=""			# path to script that customizes this build
 lastbuilt=""			# path to internal file that knows when a target was last built
 
 #^ 2 === Paths
@@ -66,7 +65,6 @@ function setPaths {
 	targetFolder="${2}"
 
 	targetName="${targetFolder%%/*}"
-	targetScript="${sourceRoot}/${targetFolder}/${targetFolder##*/}_install.ksh"
 	workspacePath="${sourceRoot%/*}"			# local var
 	workspaceName="${workspacePath##/*/}"		# local var
 	lastbuilt="${CCDev}/build/${workspaceName}/${sourceRoot##*/}/${targetName}.lastbuilt"
@@ -89,7 +87,6 @@ function getPath {
 		"--getTargetFolder" )	path="${targetFolder}";;
 		"--getSourceRoot" )		path="${sourceRoot}";;
 		"--getTargetName" )		path="${targetName}";;
-		"--getTargetScript" )	path="${targetScript}";;
 		"--getLastbuilt" )		path="${lastbuilt}";;
 		* ) 					errorMessage $RC_InvalidParameter "$0#$LINENO:"; return;;
 	esac
@@ -438,12 +435,14 @@ function removeFolder {
 
 #^ 7 === processActions
 function processActions {
-	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		sourceRoot="${1}"
-		targetFolder="${2}"
-		actionFlags="${3}"
+	callbackScript=""
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
+		callbackScript="${1}"
+		sourceRoot="${2}"
+		targetFolder="${3}"
+		actionFlags="${4}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processActions sourceRoot targetFolder [-actionFlags]"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processActions callbackScript sourceRoot targetFolder [-actionFlags]"
 		return
 	fi
 	getActions actions "${sourceRoot}" "${targetFolder}" ${actionFlags}
@@ -453,20 +452,19 @@ function processActions {
 		return ${st}
 	fi
 
-	targetScript=$(ccInstall --getTargetScript "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall --getTargetScript ${sourceRoot} ${targetFolder} failed"
+		print "$LINENO: ccInstall ${callbackScript} ${sourceRoot} ${targetFolder} failed"
 		return ${st}
 	fi
 
 # clean
 	if [[ ${actions.doClean} > 0 ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		msg=$("${targetScript}" --cleanTarget "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}" "${actionFlags}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			print "error: ${targetScript} --cleanTarget failed: ${msg}"
+			print "error: ${callbackScript} --cleanTarget failed: ${msg}"
 			return ${st}
 		else
 			print ${msg}
@@ -483,7 +481,7 @@ function processActions {
 # doxygen
 	if [[ ${actions.doDoxygen} > 0 ]] ; then
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-		outputDir=$("${targetScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "Doxygen")
+		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "Doxygen")
 		installName="${outputDir##*/}"
 		print "== installing ${installName} documentation"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
@@ -540,7 +538,7 @@ function processActions {
 			sourceFolder="${fl%%/*}"
 			fpath="${fl#*/}"
 			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
-				msg=$("${targetScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}")
+				msg=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -558,7 +556,7 @@ function processActions {
 				print "error: ${msg}"
 			else
 				print -n "${fpath}: "
-				msg=$("${targetScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}" "${fpath}" "${destination}")
+				msg=$("${callbackScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}" "${fpath}" "${destination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -738,7 +736,7 @@ function ccInstall {
 			return
 			;;
 		* )
-			msg=$(processActions "${1}" "${2}" "${3}")	# sourceRoot targetFolder actionString
+			msg=$(processActions "${1}" "${2}" "${3}" "${4}")	# callbackScript sourceRoot targetFolder actionString
 			es=$?
 			print "${msg}"
 			return "${es}"

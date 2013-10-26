@@ -43,30 +43,28 @@ testInstallation() {
 #^ Developer_install.ksh
 testDeveloperInstall() {
 	DEV=$(ccInstall --DEV ${USER})
-	script="${DEV}/Support/BuildSupport/Developer/Developer_install.ksh"
-	str=$(${script})
+	callbackScript="${DEV}/Support/BuildSupport/Developer/Developer_install.ksh"
+	str=$(${callbackScript})
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
 
-	str=$(${script} --getSubtargetDestination)
+	str=$(${callbackScript} --getSubtargetDestination)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination (no args): " $RC_MissingArgument ${st}
-	str=$(${script} --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i xxx)
+	str=$(${callbackScript} --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i xxx)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i xxx: " $RC_InputNotHandled ${st}
 
-	str=$(${script} --prepareFileOperation)
+	str=$(${callbackScript} --prepareFileOperation)
 	st=$?
 	assertEquals "$LINENO: --prepareFileOperation (no args): " $RC_MissingArgument ${st}
 	
-	targetScript=$(ccInstall --getTargetScript "${DEV}/Support/BuildSupport" "Developer")
-	assertEquals "$LINENO: incorrect target script: " "${script}" "${targetScript}"
 	# test Scripts/ccInstall.ksh
-	dest=$("${targetScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Scripts)
+	dest=$("${callbackScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Scripts)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Scripts: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Scripts" "${CCDev}/bin" "${dest}"
-	fl=$(${script} --prepareFileOperation "${DEV}/Support/BuildSupport" "Developer" "-i" "Scripts" "ccInstall.ksh" "${dest}")
+	fl=$(${callbackScript} --prepareFileOperation "${DEV}/Support/BuildSupport" "Developer" "-i" "Scripts" "ccInstall.ksh" "${dest}")
 	st=$?
 	assertEquals "$LINENO: --prepareFileOperation failed with code $st" 0 $st
 	set -A copyInfo
@@ -80,11 +78,11 @@ testDeveloperInstall() {
 	assertEquals "$LINENO: incorrect destinationForCopy: " "${CCDev}/bin/ccInstall" "${copyInfo[2]}"
 
 	# test Environment/kshrc.ksh
-	dest=$("${targetScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Environment)
+	dest=$("${callbackScript}" --getSubtargetDestination ${DEV}/Support/BuildSupport Developer -i  Environment)
 	st=$?
 	assertEquals "$LINENO: --getSubtargetDestination Environment: error: " 0 ${st}
 	assertEquals "$LINENO: --getSubtargetDestination Environment" "" "${dest}"
-	fl=$(${script} --prepareFileOperation 0 0 0 "Environment" "kshrc.ksh" "${dest}")
+	fl=$(${callbackScript} --prepareFileOperation 0 0 0 "Environment" "kshrc.ksh" "${dest}")
 	st=$?
 	assertEquals "$LINENO: --prepareFileOperation failed with code $st" 0 $st
 	set -A copyInfo

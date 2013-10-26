@@ -96,12 +96,12 @@
 			* environment variables defined in BuildSettings are apparently not available to scripts
 		* ccInstall: add and use subcommands DEV, SHUnit to return those values
 	* remove file /private/etc/launchd.conf from scripts and disk
-	* refactor
+	* refactor install scripts
 		* *Target*_install scripts use errorMessage as indicated
 		* *Target*_install scripts (internal): params 1-3 already set; do not pass again
 		* pass callback script as argument to ccInstall for building; --getTargetScript out
 		* update all _Scripting templates
-		* Developer_install: setup at top if build is clean; --clean cleans only if build is not clean
+	* Developer_install: setup at top if build is clean; --clean cleans only if build is not clean
 </pre>
 
 <h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
