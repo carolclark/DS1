@@ -74,7 +74,7 @@ function getSubtargetDestination {
 
 #^ 5 === prepareFileOperation
 function prepareFileOperation {
-	if [[ -n "${1}" ]] && [[ -n "${1}" ]] ; then
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		subtarget="${1}"
 		filepath="${2}"
 		destinationFolder="${3}"
