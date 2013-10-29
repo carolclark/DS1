@@ -9,12 +9,12 @@
 
 USAGE='
 BBEdit_install.ksh -- provide functions for ccInstall to support CCDev installation
-#	--getSubtargetDestination sourceRoot targetFolder actionFlags subtarget
+#	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
-#	--prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder
+#	--prepareFileOperation subtarget filepath destinationFolder
 #		perform any preprocessing indicated for the specified file
 #		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
-#	--cleanTarget sourceRoot targetFolder actionFlags
+#	--cleanTarget
 #		perform any cleanup indicated for files that this target installs
 #		return 0 to have caller continue by updating last built data
 '
@@ -33,7 +33,7 @@ function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
 		subtarget="${1}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination sourceRoot targetFolder actionFlags subtarget"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
 		return
 	fi
 	destinationFolder=""
@@ -59,7 +59,7 @@ function prepareFileOperation {
 		filepath="${2}"
 		destinationFolder="${3}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
 		return
 	fi
 

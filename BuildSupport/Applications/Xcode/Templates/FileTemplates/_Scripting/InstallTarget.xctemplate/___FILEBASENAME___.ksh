@@ -11,10 +11,10 @@ USAGE='
 <#Target#>_install.ksh -- provide functions for ccInstall to support CCDev installation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
-#	--prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder
+#	--prepareFileOperation subtarget filepath destinationFolder
 #		perform any preprocessing indicated for the specified file
 #		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
-#	--cleanFiles
+#	--cleanTarget
 #		perform any cleanup indicated for files that this target installs
 #		return 0 to have caller continue by updating last built data
 '
@@ -23,17 +23,18 @@ CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
-
-sourceRoot="${SRCROOT}"
-targetFolder="<#TargetFolder#>"
+command=""
+sourceRoot=""
+targetFolder=""
+actionFlags=""
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
 		subtarget="${1}"
 	else
-		print "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
+		return
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
@@ -46,8 +47,8 @@ function getSubtargetDestination {
 		"_Tests" )
 			;;	#handled elsewhere
 		* )
-			print "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return $RC_InputNotHandled
+			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
+			return
 			;;
 	esac
 	print "${destinationFolder}"
@@ -56,22 +57,19 @@ function getSubtargetDestination {
 
 #^ 5 === prepareFileOperation
 function prepareFileOperation {
-	if [[ -n "${4}" ]] && [[ -n "${5}" ]] ; then
-		sourceRoot="${1}"
-		targetFolder="${2}"
-		actionFlags="${3}"
-		subtarget="${4}"
-		filepath="${5}"
-		destinationFolder="${6}"
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+		subtarget="${1}"
+		filepath="${2}"
+		destinationFolder="${3}"
 	else
-		print "USAGE: ${targetFolder}_install.ksh --prepareFileOperation sourceRoot targetFolder actionFlags subtarget filepath destinationFolder"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
+		return
 	fi
 
 	if [[ "${subtarget}" = "AppleScripts" ]] ; then
 		fname="${filepath%.applescript}.scpt"
 		action="copy"
-		sourceForCopy="${CCDev}/build/Support/BuildSupport/Applications/Xcode/XcodeScripts.bundle/Contents/Resources/${fname}"
+		sourceForCopy="${CCDev}/build/Support/BuildSupport/Applications/<#Target#>/<#Target#>Scripts.bundle/Contents/Resources/${fname}"
 		destinationForCopy="${destinationFolder}/${fname}"
 	elif [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
@@ -96,41 +94,12 @@ function cleanTarget {
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
-			print "error: ${msg}"
-			return ${st}
+			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+			return
 		fi
 	done
 	return 0
 }
 
 #^ 8 === main
-
-if [[ $# = 0 ]] ; then
-	print "$0: missing commandFlag"
-	return $RC_MissingArgument
-fi
-case "${1}" in
-	"--getSubtargetDestination" )
-		msg=$(getSubtargetDestination "${2}")
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	"--prepareFileOperation" )
-		msg=$(prepareFileOperation "${2}" "${3}" "${4}" "${5}" "${6}" "${7}")
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	"--cleanTarget" )
-		msg=$(cleanTarget)
-		es=$?
-		print "${msg}"
-		return "${es}"
-		;;
-	* )
-		print "invalid subcommand $1"
-		return $RC_InvalidArgument
-		;;
-esac
-return 0
+. "${CCDev}/bin/execInstallScript"

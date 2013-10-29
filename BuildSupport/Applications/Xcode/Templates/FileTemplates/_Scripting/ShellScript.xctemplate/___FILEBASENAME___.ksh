@@ -18,7 +18,8 @@ ___FILEBASENAME___ -- <#parameters#>
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
-. resultCodes
+CCDev="${HOME}/Library/CCDev"
+. "${CCDev}/bin/errcc"
 
 #pragma mark 0 === Top
 #pragma mark === Markers ===
@@ -28,16 +29,16 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 #pragma mark 8 === ___FILEBASENAME___
 function ___FILEBASENAME___ {
 	if [[ $# = 0 ]] ; then
-		print "$0: missing commandFlag"
-		return $RC_MissingArgument
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "$0: missing commandFlag"
+		return
 	fi
 	case "${1}" in
 		"--help" )
 			print "${HELP}"
 			;;
 		"--"* )
-			print "invalid subcommand $1"
-			return $RC_InvalidArgument
+			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid subcommand $1"	# <invalid arg>
+			return
 			;;
 		* )
 			;;

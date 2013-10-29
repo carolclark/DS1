@@ -11,7 +11,6 @@
 #pragma mark === Markers ===
 
 CCDev="${HOME}/Library/CCDev"
-. "${CCDev}/bin/errcc"
 . "${CCDev}/bin/ccInstall"
 
 testEquality() {
