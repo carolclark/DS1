@@ -101,8 +101,8 @@ function updateLastbuilt {
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-		return ${st}
+		errorMessage ${st} "$0#$LINENO:" "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
+		return
 	fi
 	mkdir -p "$(dirname ${lastbuilt})"
 	st=$?
@@ -117,15 +117,15 @@ function clearLastbuilt {
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-		return ${st}
+		errorMessage ${st} "$0#$LINENO:" "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
+		return
 	fi
 	if [[ -e "${lastbuilt}" ]] ; then
 		rm "${lastbuilt}"
 		st="$?"
 		if [[ ${st} > 0 ]] ; then
-			print "error: error ${st} attempting to remove file ${lastbuilt}"
-			return ${st}
+			errorMessage ${st} "$0#$LINENO:" "error: error ${st} attempting to remove file ${lastbuilt}"
+			return
 		fi
 	fi
 	return ${st}
@@ -146,14 +146,14 @@ function copyFile {
 	mkdir -p "${dir}"
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "error #{st}: could not create directory ${dir}"
-		return ${st}
+		errorMessage ${st} "$0#$LINENO:" "error #{st}: could not create directory ${dir}"
+		return
 	fi
 	cp "${sourceForCopy}" "${destinationForCopy}"
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "error: could not copy to ${destinationForCopy}"
-		return ${st}
+		errorMessage ${st} "$0#$LINENO:" "error: could not copy to ${destinationForCopy}"
+		return
 	fi
 	print "copied to ${destinationForCopy}"
 	return 0
@@ -171,8 +171,8 @@ function translateCdoc {
 	mkdir -p $(dirname "${out}")
 	st=$?
 	if [[ $st > 0 ]] ; then
-		print "error: could not create directory $(dirname ${destinationForCopy})"
-		return ${st}
+		errorMessage ${st} "$0#$LINENO:" "error: could not create directory $(dirname ${destinationForCopy})"
+		return
 	fi
 	sed '
 		s|<!-- @navhead "\([^"][^"]*\)" "\([^"][^"]*\)" "\([^"][^"]*\)" -->|<div class="navhead"><a name="Top"></a><table class="navhead"><col class="navhead_c1" /><tr> <td>[<a href="\1">\2</a>]</td> <td >[<a href="\3#Contents">History</a>]</td><td class="right">[<a href="#Contents">Contents</a>]</td></tr></table></div>|
@@ -192,16 +192,16 @@ function translateCdoc {
 		s|<!-- @CrcCard "\([^"][^"]*\)" -->|<div class="crcholder"><table class="crc" border="0" cellspacing="0" cellpadding="5" width="100%"><caption></caption><tr><th colspan="2">\1</th> </tr>|
 		s|<!-- @/CrcCard -->|</table></div>|
 	' <"$in" >"$out"
-	if [[ "${?}" > 0 ]] ; then
-		print "\nerror: attempt to generate output file ${out} failed"
-		return 1
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		errorMessage ${st} "$0#$LINENO:" "error: attempt to generate output file ${out} failed"
+		return
 	fi
 	# check for untranslated tokens
 	x=$(sed -n 's|<!-- @|&|p' <"$out")
 	if [[ -n "${x}" ]] ; then
-		print "\nerror: unrecognized translator token(s):"
-		print "$x"
-		return 1
+		errorMessage $RC_SyntaxError "$0#$LINENO:" "error: unrecognized translator token(s): ${x}"
+		return
 	fi
 	return 0
 }
@@ -359,8 +359,8 @@ function findSources {
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-		return ${st}
+		errorMessage ${st} "$0#$LINENO:" "ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
+		return
 	fi
 	if [[ -e "${lastbuilt}" ]] ; then
 		find . -path '*/.git' -prune -or -type f -newer ${lastbuilt} | grep -v .git | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
@@ -391,9 +391,9 @@ function removeFolder {
 		cd "${folder}"
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
-			print "error: could set directory to ${folder} because it does not exist or is not a directory"
 			cd "${origdir}"
-			return ${st}
+			errorMessage ${st} "$0#$LINENO:" "error: could not set directory to ${folder} because it does not exist or is not a directory"
+			return
 		fi
 		find . -path -prune -or -type f | sed 's|\./||' > "${iofile}"
 		chmod a+r "${iofile}"
@@ -403,9 +403,9 @@ function removeFolder {
 			rm "${fl}"
 			st=$?
 			if [[ ${st} > 0 ]] ; then
-				print "error: could not remove"
 				cd "${origdir}"
-				return ${st}
+				errorMessage ${st} "$0#$LINENO:" "error: could not remove"
+				return
 			fi
 			print "removed"
 		done < "${iofile}"
@@ -421,9 +421,9 @@ function removeFolder {
 			rmdir "${fl}"
 			st=$?
 			if [[ ${st} > 0 ]] ; then
-				print "error: could not remove"
 				cd "${origdir}"
-				return ${st}
+				errorMessage ${st} "$0#$LINENO:" "error: could not remove"
+				return
 			fi
 			print "removed"
 		done < "${iofile}"
@@ -448,14 +448,14 @@ function processActions {
 	getActions actions "${sourceRoot}" "${targetFolder}" ${actionFlags}
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$0#$LINENO: could not read action flags"
-		return ${st}
+		errorMessage ${st} "$0#$LINENO:" "could not read action flags"
+		return
 	fi
 
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		print "$LINENO: ccInstall ${callbackScript} ${sourceRoot} ${targetFolder} failed"
-		return ${st}
+		errorMessage ${st} "$0#$LINENO:" "ccInstall ${callbackScript} ${sourceRoot} ${targetFolder} failed"
+		return
 	fi
 
 # clean
@@ -464,16 +464,16 @@ function processActions {
 		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}" "${actionFlags}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			print "error: ${callbackScript} --cleanTarget failed: ${msg}"
-			return ${st}
+			errorMessage ${st} "$0#$LINENO:" "error: ${callbackScript} --cleanTarget failed: ${msg}"
+			return
 		else
 			print ${msg}
 		fi
 		lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			print "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-			return ${st}
+			errorMessage ${st} "$0#$LINENO:" "ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
+			return
 		fi
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 	fi
@@ -488,16 +488,16 @@ function processActions {
 		mkdir -p "${outputDir}"
 		st=$?
 		if [[ $st > 0 ]] ; then
-			print "failed to create output directory $outputDir"
-			return $st
+			errorMessage ${st} "$0#$LINENO:" "failed to create output directory $outputDir"
+			return
 		fi
 
 	#  Run doxygen on the config file (builds local site)
 		$doxygenPath "${sourceRoot}/${targetFolder}/${installName}_doxygen.txt"
 		st=$?
 		if [[ $st > 0 ]] ; then
-			print "error while generating Doxygen docs"
-			return $st
+			errorMessage ${st} "$0#$LINENO:" "error while generating Doxygen docs"
+			return
 		fi
 
 	# Make docset using the Makefile that just generated
@@ -505,8 +505,8 @@ function processActions {
 		make -C $outputDir/html install
 		st=$?
 		if [[ $st > 0 ]] ; then
-			print "error while creating $workspaceName.docset"
-			return $st
+			errorMessage ${st} "$0#$LINENO:" "error while creating $workspaceName.docset"
+			return
 		fi
 
 	# Copy the docset to the location expected by Xcode
@@ -514,16 +514,16 @@ function processActions {
 		cp -r $outputDir/html/com.candcsoft.${installName}.docset $docsetPath
 		st=$?
 		if [[ $st > 0 ]] ; then
-			print "could not copy docset to $docsetPath"
-			return $st
+			errorMessage ${st} "$0#$LINENO:" "could not copy docset to $docsetPath"
+			return
 		fi
 
 	# Tell Xcode to load the docset
 		osascript -e "tell application \"Xcode\" to load documentation set with path \"$docsetPath\""
 		st=$?
 		if [[ $st > 0 ]] ; then
-			print "error loading $docsetPath into Xcode"
-			return $st
+			errorMessage ${st} "$0#$LINENO:" "error loading $docsetPath into Xcode"
+			return
 		fi
 
 	fi
@@ -542,7 +542,7 @@ function processActions {
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
-					print "error: ${msg}"
+					errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 				else
 					destination="${msg}"
 					prevFolder="${sourceFolder}"
@@ -553,14 +553,14 @@ function processActions {
 			fi
 			if [[ ${st} > 0 ]] ; then
 				failcnt="${failcnt}"+1
-				print "error: ${msg}"
+				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 			else
 				print -n "${fpath}: "
 				msg=$("${callbackScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}" "${fpath}" "${destination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
-					print "error: ${msg}"
+					errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 				else
 					hfile="${msg}"
 					set -A copyInfo
@@ -580,7 +580,7 @@ function processActions {
 						st=$?
 						if [[ ${st} > 0 ]] ; then
 							failcnt="${failcnt}"+1
-							print "error: ${msg}"
+							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 						else
 							print "succeeded"
 						fi
@@ -590,13 +590,13 @@ function processActions {
 						st=$?
 						if [[ ${st} > 0 ]] ; then
 							failcnt="${failcnt}"+1
-							print "error: ${msg}"
+							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 						else
 							print "succeeded"
 						fi
 						;;
 					* )
-						print "error: Unrecognized action string ${action}"
+						errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}"
 						;;
 				esac
 			fi
@@ -609,7 +609,7 @@ function processActions {
 			if [[ ${failcnt} = 1 ]] ; then
 				pl=""
 			fi
-			print "error: Build Failed: ${errcnt} error${pl} encountered; tests not run"
+			errorMessage 1 "$0#$LINENO:" "error: Build Failed: ${errcnt} error${pl} encountered; tests not run"
 			exit "${failcnt}"
 		fi
 	fi
