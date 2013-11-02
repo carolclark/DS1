@@ -82,6 +82,7 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
+	print "no clean action for Doxygen target"
 	return 0
 }
 

@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 USAGE='
-# Developer_Setup.ksh -- set up basic C & C Software development environment
+# Developer_Setup.ksh -- set up and configure C & C Software development environment
 '
 
 CCDev="${HOME}/Library/CCDev"
@@ -128,6 +128,12 @@ function gitPrintAttributes {
 function shunitInstall {
 	src=${srcdir}/ThirdParty/shunit
 	dst=${CCDev}/shunit
+	if [[ -e ${dst} ]] ; then
+		if [[ ! "${src}/src/shunit2" -nt "${dst}/src/shunit2" ]] ; then
+			print "skipping shunit installation"
+			return
+		fi
+	fi
 	mkdir -p ${dst}
 	if [[ "${?}" != "0" ]] ; then
 		print "failure while installing shunit"
@@ -218,6 +224,7 @@ if [[ "${1}" = clean ]] ; then
 	exit
 fi
 
+print
 # configure environment
 print "configuring environment"
 envProfile > "${HOME}/.profile"

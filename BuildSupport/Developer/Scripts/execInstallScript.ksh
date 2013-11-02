@@ -23,8 +23,6 @@ CCDev="${HOME}/Library/CCDev"
 
 missingArgumentMessage="USAGE: $0 [--commandFlag] sourceRoot targetFolder (-actionFlags | 'clean') [...]"
 
-#pragma mark 8 === execInstallScript
-
 if [[ $# > 0 ]] ; then
 	if [[ "${1}" = -* ]] ; then
 		command="${1}"

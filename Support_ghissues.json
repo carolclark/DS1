@@ -1,17 +1,17 @@
 [
   {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/25",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/25/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/25/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/25/events",
-    "html_url": "https://github.com/carolclark/Support/issues/25",
-    "id": 15400606,
-    "number": 25,
-    "title": "add Finder target",
+    "url": "https://api.github.com/repos/carolclark/Support/issues/30",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/30/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/30/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/30/events",
+    "html_url": "https://github.com/carolclark/Support/issues/30",
+    "id": 21286104,
+    "number": 30,
+    "title": "Convert to ARC",
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -24,17 +24,311 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/upgrade",
+        "name": "upgrade",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
+    "comments": 0,
+    "created_at": "2013-10-20T19:49:44Z",
+    "updated_at": "2013-10-20T20:54:06Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "* *garbage collection now deprecated - *What's New in Xcode 13#400@29:00*\r\n* see also Modern Objective-C 12#405, Adopting Automatic Reference Counting 12#406*\r\n* see also carolclark/Accessor#8 :migrate to ARC"
+  },
+  {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/29",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/29/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/29/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/29/events",
+    "html_url": "https://github.com/carolclark/Support/issues/29",
+    "id": 20967816,
+    "number": 29,
+    "title": "Mavericks",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/upgrade",
+        "name": "upgrade",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
+    "comments": 0,
+    "created_at": "2013-10-14T16:44:35Z",
+    "updated_at": "2013-10-23T23:42:24Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [ ] rename Xcode 4 app; install Xcode 5 alongside\r\n- [ ] update all projects and targets for compatiblity with Xcode 5\r\n- [ ] switch to Xcode 5\r\n- [ ] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [ ] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [ ] auto configuration / provisioning 5:20\r\n- [ ] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [ ] Doc comments 27:20\r\n- [ ] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [ ] Test navigator 44:30\r\n\r\n### Mavericks\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n### Interface Builder\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
+  },
+  {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/27",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/27/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/27/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/27/events",
+    "html_url": "https://github.com/carolclark/Support/issues/27",
+    "id": 19228087,
+    "number": 27,
+    "title": "Tag v0.1",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
 
     ],
     "state": "open",
+    "assignee": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
+    "comments": 0,
+    "created_at": "2013-09-09T22:53:19Z",
+    "updated_at": "2013-10-07T17:00:33Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "Establish comfortable development environment, including:\n* Xcode\n* git and GitHub\n* Technical documentation: Cdoc and markdown supported; BBEdit for editing\n    * History files: in markdown; per-tag\n        * Transfer existing planning information into GitHub issues\n\nUpgrade to OS X 10.9\n*10.9 Mavericks; includes adopting Xcode 5, Continuous Integration*\n\n- [x] #14 ccInstall --cleanFiles not always working as expected\n- [ ] #1 resolve User assumptions in Xcode builds\n- [ ] #3 adopt GitHub Issues and Markdown\n- [ ] #21 git workflow support\n- [ ] #23 rebuild simpler Xcode projects\n- [ ] #2 support collaborator configuration"
+  },
+  {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/25",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/25/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/25/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/25/events",
+    "html_url": "https://github.com/carolclark/Support/issues/25",
+    "id": 15400606,
+    "number": 25,
+    "title": "add Finder target",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/automate",
+        "name": "automate",
+        "color": "aeceff"
+      }
+    ],
+    "state": "open",
     "assignee": null,
-    "milestone": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
     "comments": 0,
     "created_at": "2013-06-11T14:09:48Z",
-    "updated_at": "2013-06-11T14:10:21Z",
+    "updated_at": "2013-10-11T00:14:22Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -55,7 +349,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -68,16 +362,21 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
-
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/docs",
+        "name": "docs",
+        "color": "fad8c7"
+      }
     ],
     "state": "open",
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -90,7 +389,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
@@ -102,7 +402,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -115,25 +415,26 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 3,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-06-05T14:50:08Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-06-05T14:28:35Z",
-    "updated_at": "2013-07-08T18:28:06Z",
+    "updated_at": "2013-10-08T00:19:42Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "* upload TechnicalDocs website\n    * switch from Cyberduck (not scriptable; in Java; quirky and/or buggy) to Transmit ($34 app; solid; good support; routinely enhanced/improved)\n    * add Upload (activates/uses Transmit) to workflow at Xcode's ValidateHTML slate"
+    "body": "* upload TechnicalDocs website\n    * switch from Cyberduck (not scriptable; in Java; quirky and/or buggy) to Transmit ($34 app; solid; good support; routinely enhanced/improved)\n    * add Upload (activates/uses Transmit) to workflow at Xcode's ValidateHTML slate\n\n    * *see also unix scp command*"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/23",
@@ -143,11 +444,11 @@
     "html_url": "https://github.com/carolclark/Support/issues/23",
     "id": 14762184,
     "number": 23,
-    "title": " simplify Xcode projects",
+    "title": "rebuild simpler Xcode projects",
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -160,7 +461,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
@@ -170,7 +472,25 @@
       }
     ],
     "state": "open",
-    "assignee": null,
+    "assignee": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
       "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
@@ -181,7 +501,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -194,25 +514,26 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 3,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-06-05T14:50:08Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-05-25T19:49:55Z",
-    "updated_at": "2013-05-25T20:22:21Z",
+    "updated_at": "2013-10-19T19:22:24Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "*Xcode project files are fragile and easily corrupted.  According to forum discussions, corrupted project files sometimes require rebuilding from scratch, and contain information that is not saved elsewhere.*\r\n*The problem is compounded by version control, since any change to the files or settings of a project causes the project to be changed, and therefore possibly subject to merge conflicts. This is of particular concern for Punkin, which has an Artist collaborator.*\r\n*We set the git attributes for project files to `merge=union`, which helps but does not solve the problem.*\r\n\r\nsee  [Merging Xcode project files](http://stackoverflow.com/questions/4022362/merging-xcode-project-files), [Google example config files](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/XcodeConfig/)"
+    "body": "*Xcode project files are fragile and easily corrupted.  According to forum discussions, corrupted project files sometimes require rebuilding from scratch, and contain information that is not saved elsewhere.*\r\n*The problem is compounded by version control, since any change to the files or settings of a project causes the project to be changed, and therefore possibly subject to merge conflicts. This is of particular concern for Punkin, which has an Artist collaborator.*\r\n*We set the git attributes for project files to `merge=union`, which helps but does not solve the problem.*\r\n\r\n* minimize dependence on information stored in project files\r\n    * use configuration files to replace most build settings\r\n    * document each Workspace's Targets and dependencies\r\n* use modules to replace pch files (ObjC only?) *What's New in Xcode 5 13#400@22:20*\r\n\r\nsee  [Merging Xcode project files](http://stackoverflow.com/questions/4022362/merging-xcode-project-files), [Google example config files](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/XcodeConfig/)"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/22",
@@ -226,7 +547,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -239,13 +560,14 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
         "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
         "name": "Shell",
-        "color": "FFFFFF"
+        "color": "bfdadc"
       }
     ],
     "state": "open",
@@ -253,14 +575,14 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2013-05-23T22:43:04Z",
-    "updated_at": "2013-07-12T20:21:25Z",
+    "updated_at": "2013-09-09T22:53:20Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "* *Python appears a better choice for producing robust, testable shell scripts; see also #18 \"clean up UNIX error handling\"*\r\n* *Python also is used to customize LLDB, and has the capability to be extended in embedded in a way that looks practical as a way to replace the Rez language as a way to define Slates in Accessor.*\r\n* *Cdoc html files were placed in a separate folder to accommodate ccInstall's limitations. Those files are now harder to preview because the source folder has a different structure from the target site.*\r\n"
+    "body": "* *Python appears a better choice for producing robust, testable shell scripts; see also #18 \"clean up UNIX error handling\"*\n* *Python also is used to customize LLDB, and has the capability to be extended in embedded in a way that looks practical as a way to replace the Rez language as a way to define Slates in Accessor.*\n* *Cdoc html files were placed in a separate folder to accommodate ccInstall's limitations. Those files are now harder to preview because the source folder has a different structure from the target site.*\n\nsee [Python for Bash Scripters](http://magazine.redhat.com/2008/02/07/python-for-bash-scripters-a-well-kept-secret/), [A Clean Python Shell Script](http://www.jperla.com/blog/post/a-clean-python-shell-script)\n\n- [ ] [Python Tutorial](http://docs.python.org/2/tutorial/)"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/21",
@@ -270,11 +592,11 @@
     "html_url": "https://github.com/carolclark/Support/issues/21",
     "id": 14457946,
     "number": 21,
-    "title": "add git workflow support",
+    "title": "git workflow support",
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -287,7 +609,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
@@ -296,16 +619,21 @@
         "color": "ffc9b4"
       },
       {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/automate",
+        "name": "automate",
+        "color": "aeceff"
+      },
+      {
         "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
         "name": "Shell",
-        "color": "FFFFFF"
+        "color": "bfdadc"
       }
     ],
     "state": "open",
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -318,19 +646,52 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
-    "milestone": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
     "comments": 0,
     "created_at": "2013-05-17T15:33:41Z",
-    "updated_at": "2013-06-08T16:35:36Z",
+    "updated_at": "2013-10-07T18:10:54Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop), [Python for Bash Scripters](http://magazine.redhat.com/2008/02/07/python-for-bash-scripters-a-well-kept-secret/), [A Clean Python Shell Script](http://www.jperla.com/blog/post/a-clean-python-shell-script), [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/)\n\n- [x] [Python Tutorial](http://docs.python.org/2/tutorial/)"
+    "body": "see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop), [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/), [github/hub](https://github.com/github/hub)\r\n\r\n- [ ] handle items that now enter scripts via user slate (eg. diff/list)"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/20",
@@ -344,7 +705,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -357,33 +718,39 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/automate",
+        "name": "automate",
+        "color": "aeceff"
+      },
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       },
       {
         "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
         "name": "Shell",
-        "color": "FFFFFF"
+        "color": "bfdadc"
       }
     ],
     "state": "open",
     "assignee": null,
     "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "v0.2",
-      "description": null,
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -396,18 +763,19 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 0,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2013-06-05T14:53:50Z",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-05-14T16:56:54Z",
-    "updated_at": "2013-06-05T14:53:50Z",
+    "updated_at": "2013-10-07T18:10:54Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -428,7 +796,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -441,17 +809,22 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
-
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/docs",
+        "name": "docs",
+        "color": "fad8c7"
+      }
     ],
     "state": "open",
     "assignee": null,
     "milestone": null,
     "comments": 0,
     "created_at": "2013-05-13T19:43:41Z",
-    "updated_at": "2013-05-13T19:47:03Z",
+    "updated_at": "2013-10-08T00:20:37Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -472,7 +845,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -485,33 +858,66 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
-      },
-      {
         "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
         "name": "Shell",
-        "color": "FFFFFF"
+        "color": "bfdadc"
+      },
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/standards",
+        "name": "standards",
+        "color": "fef2c0"
       }
     ],
     "state": "open",
     "assignee": null,
-    "milestone": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
     "comments": 0,
     "created_at": "2013-04-28T19:38:03Z",
-    "updated_at": "2013-06-08T18:41:13Z",
+    "updated_at": "2013-10-11T00:14:22Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "Tasks:\n* backup github issues\n* support daily builds and testing\n    * Terminal: automate xcodebuild and xcode-select\n        * see list of tools in #404: Building from the Command Line 22:23; also see environment variable for developer directory 25:55\n        *Also check out Continuous Integration tools\n\nsee:\n[wakeup and execute using cron or launchd](http://superuser.com/questions/14836/crontab-to-wake-osx-from-sleep)\n[cron basics](http://www.tldp.org/LDP/intro-linux/html/sect_04_04.html)\n[cron email](http://www.nixtutor.com/linux/sending-email-alerts-through-cron//)\n"
+    "body": "Tasks:\r\n* backup github issues\r\n* support daily builds and testing with Continuous Integration tools (CI requires Xcode 5, Mavericks, OS X Server)\r\n    * Terminal: automate xcodebuild and xcode-select if still applicable\r\n        * see list of tools in #404: Building from the Command Line 22:23; also see environment variable for developer directory 25:55 \r\n\r\nsee:\r\n[wakeup and execute using cron or launchd](http://superuser.com/questions/14836/crontab-to-wake-osx-from-sleep)\r\n[cron basics](http://www.tldp.org/LDP/intro-linux/html/sect_04_04.html)\r\n[cron email](http://www.nixtutor.com/linux/sending-email-alerts-through-cron//)\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/16",
@@ -525,7 +931,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -538,92 +944,18 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       }
     ],
     "state": "open",
     "assignee": null,
-    "milestone": null,
-    "comments": 0,
-    "created_at": "2013-04-26T15:06:53Z",
-    "updated_at": "2013-04-28T19:53:33Z",
-    "closed_at": null,
-    "pull_request": {
-      "html_url": null,
-      "diff_url": null,
-      "patch_url": null
-    },
-    "body": "see [Code Organization in Xcode Projects](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/) (akosma), WWDC12#305 What's New in iTunes Connect"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/14",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/14/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/14/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/14/events",
-    "html_url": "https://github.com/carolclark/Support/issues/14",
-    "id": 13598327,
-    "number": 14,
-    "title": "ccInstall --cleanFiles not always working as expected",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
-    },
-    "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/bug",
-        "name": "bug",
-        "color": "fc2929"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
-        "name": "Shell",
-        "color": "FFFFFF"
-      }
-    ],
-    "state": "open",
-    "assignee": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
-    },
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
       "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
@@ -634,7 +966,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -647,25 +979,26 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 3,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-06-05T14:50:08Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
-    "created_at": "2013-04-24T16:54:02Z",
-    "updated_at": "2013-04-26T17:23:40Z",
+    "created_at": "2013-04-26T15:06:53Z",
+    "updated_at": "2013-10-11T00:14:22Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "Clean action correctly forces rebuild, but at least some folders and their contents are not correctly removed."
+    "body": "see [Code Organization in Xcode Projects](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/) (akosma)\r\n\r\n*Techniques from \"WWDC12#305 What's New in iTunes Connect\"\r\n superseded by new Configuration information from WWDC13*"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/13",
@@ -679,7 +1012,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -692,7 +1025,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
@@ -701,29 +1035,56 @@
         "color": "cc317c"
       },
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       }
     ],
     "state": "open",
     "assignee": null,
-    "milestone": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
     "comments": 0,
     "created_at": "2013-04-22T20:40:02Z",
-    "updated_at": "2013-04-22T20:43:04Z",
+    "updated_at": "2013-10-11T00:14:22Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "see WWDC 2012 sessions 408; 235 238, 242; 506"
+    "body": "see WWDC 2012 sessions 408; 235 238, 242; 506\r\nWWDC13: debug gauges may change the toward adopting more profiling\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/12",
@@ -737,7 +1098,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -750,33 +1111,29 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       }
     ],
     "state": "open",
     "assignee": null,
     "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "v0.2",
-      "description": null,
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -789,25 +1146,26 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 0,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2013-06-05T14:53:50Z",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-04-22T18:14:38Z",
-    "updated_at": "2013-06-11T14:07:31Z",
+    "updated_at": "2013-10-19T19:41:20Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "adopt C++ 11\r\nwarnings and analyzer preferences\r\nsee WWCD2012:405 - Modern Objective-C, :413 - Migrating to Modern Objective-C\r\n"
+    "body": "* see *Modern Objective-C12#405*, *Migrating to Modern Objective-C 12#413*,*What's New in Xcode 5  13#400@25:00*\r\n* also see carolclark/Accessor#7 for Objective-C++ ivars\r\n\r\nadopt C++ 11\r\n\r\nwarnings and analyzer preferences\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/11",
@@ -817,11 +1175,11 @@
     "html_url": "https://github.com/carolclark/Support/issues/11",
     "id": 13136963,
     "number": 11,
-    "title": "testing: adopt a code coverage tool",
+    "title": "testing: code coverage tool",
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -834,33 +1192,61 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       }
     ],
     "state": "open",
     "assignee": null,
-    "milestone": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
     "comments": 0,
     "created_at": "2013-04-12T20:02:07Z",
-    "updated_at": "2013-04-22T20:44:08Z",
+    "updated_at": "2013-10-11T00:14:22Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": ""
+    "body": "Consider adoption"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/10",
@@ -874,7 +1260,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -887,33 +1273,29 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       }
     ],
     "state": "open",
     "assignee": null,
     "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "v0.2",
-      "description": null,
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -926,18 +1308,19 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 0,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2013-06-05T14:53:50Z",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-04-12T19:53:16Z",
-    "updated_at": "2013-05-13T15:40:37Z",
+    "updated_at": "2013-10-08T00:18:25Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -958,7 +1341,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -971,33 +1354,34 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       },
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/standards",
+        "name": "standards",
+        "color": "fef2c0"
       }
     ],
     "state": "open",
     "assignee": null,
     "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "v0.2",
-      "description": null,
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1010,18 +1394,19 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 0,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2013-06-05T14:53:50Z",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-04-11T20:16:51Z",
-    "updated_at": "2013-05-13T15:41:01Z",
+    "updated_at": "2013-10-08T00:18:25Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -1042,7 +1427,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1055,33 +1440,29 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       }
     ],
     "state": "open",
     "assignee": null,
     "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "v0.2",
-      "description": null,
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1094,18 +1475,19 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 0,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2013-06-05T14:53:50Z",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-04-11T20:09:35Z",
-    "updated_at": "2013-05-13T15:41:12Z",
+    "updated_at": "2013-10-08T00:18:25Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -1126,7 +1508,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1139,33 +1521,34 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
       },
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/ObjC",
-        "name": "ObjC",
-        "color": "FFFFFF"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/standards",
+        "name": "standards",
+        "color": "fef2c0"
       }
     ],
     "state": "open",
     "assignee": null,
     "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "v0.2",
-      "description": null,
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1178,18 +1561,19 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 0,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2013-06-05T14:53:50Z",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-04-11T20:01:34Z",
-    "updated_at": "2013-05-13T15:45:37Z",
+    "updated_at": "2013-10-08T00:18:25Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -1210,7 +1594,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1223,13 +1607,14 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/docs",
+        "name": "docs",
+        "color": "fad8c7"
       }
     ],
     "state": "open",
@@ -1237,7 +1622,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2013-04-11T19:54:18Z",
-    "updated_at": "2013-04-11T19:57:40Z",
+    "updated_at": "2013-10-08T00:18:25Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -1258,7 +1643,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1271,7 +1656,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
@@ -1282,15 +1668,47 @@
       {
         "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
         "name": "Shell",
-        "color": "FFFFFF"
+        "color": "bfdadc"
       }
     ],
     "state": "open",
     "assignee": null,
-    "milestone": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
+      "id": 296939,
+      "number": 1,
+      "title": "v0.1",
+      "description": "Support collaborator configuration; transition to GitHub",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 21,
+      "closed_issues": 6,
+      "state": "open",
+      "created_at": "2013-03-26T18:42:32Z",
+      "updated_at": "2013-10-20T20:17:27Z",
+      "due_on": null
+    },
     "comments": 0,
     "created_at": "2013-03-26T18:58:37Z",
-    "updated_at": "2013-06-11T13:57:58Z",
+    "updated_at": "2013-10-11T00:14:22Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -1311,7 +1729,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1324,7 +1742,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
@@ -1333,21 +1752,16 @@
         "color": "ffc9b4"
       },
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/stanmod",
-        "name": "stanmod",
-        "color": "0b02e1"
-      },
-      {
         "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
         "name": "Shell",
-        "color": "FFFFFF"
+        "color": "bfdadc"
       }
     ],
     "state": "open",
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1360,7 +1774,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
@@ -1372,7 +1787,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1385,25 +1800,26 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 3,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-06-05T14:50:08Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-03-26T18:48:51Z",
-    "updated_at": "2013-07-11T20:20:58Z",
+    "updated_at": "2013-11-01T22:05:42Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "see [Marked](http://markedapp.com) editing app\r\n\r\n- [x] <a id=\"begin\">[begin]</a> begin using GitHub Issues; synchronize with History files (Support; Punkin; Accessor)\r\n    * History file: begin to adapt toward simpler content to synchronize with Issues; use HTML `pre` tag to simulate markdown text\r\n        * *see [Markdown / Cdoc Notes][MarkdownCdocNotes]*\r\n- [x] <a id=\"backup\">[backup]</a> backup GitHub issue content\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/issues` gets assigned issues\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/repos/carolclark/Accessor/issues` gets open issues\r\n- [ ] script to backup open issues for each project to <Project>Issues.json in project's root folder and for all projects to /Aux/GitHubIssues.json\r\n- [ ] move documentation editing to BBEdit\r\n    * *BBEdit does syntax coloring for markdown files; Xcode does not*\r\n    * use Marked to preview Markdown output\r\n        * *BBEdit preview does not work for Markdown*\r\n- [ ] allow markdown files to be included in the source for Cdoc sites\r\n    * cInstall:translateCdoc also handles markdown source\r\n    * make sure valid HTML is produced\r\n- [ ] use a separate markdown file to contain history for each milestone\r\n    * *eg. Support_v0_1.md for work on milestone v0.1; probably also includes bugfix versions 0.1.1, etc.*\r\n- [ ] create new issues for future plans from existing History.html files\r\n\r\nsee also #19 migrate from HTML/sed to Markdown for further Markdown work"
+    "body": "see [Marked](http://markedapp.com) editing app\n\n- [x] <a id=\"begin\">[begin]</a> begin using GitHub Issues; synchronize with History files (Support; Punkin; Accessor)\n    * History file: begin to adapt toward simpler content to synchronize with Issues; use HTML `pre` tag to simulate markdown text\n        * *see [Markdown / Cdoc Notes][MarkdownCdocNotes]*\n- [x] <a id=\"backup\">[backup]</a> backup GitHub issue content\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/issues` gets assigned issues\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/repos/carolclark/Accessor/issues` gets open issues\n- [ ] script to backup open issues for each project to <Project>Issues.json in project's root folder and for all projects to /Aux/GitHubIssues.json\n- [ ] move documentation editing to BBEdit\n    * *BBEdit does syntax coloring for markdown files; Xcode does not*\n    * use Marked to preview Markdown output\n        * *BBEdit preview does not work for Markdown*\n- [ ] allow markdown files to be included in the source for Cdoc sites\n    * cInstall: Cdoc translation also handles markdown source\n    * make sure valid HTML is produced\n- [ ] use a separate markdown file to contain history for each tag\n    * *eg. Support_v0_1.md for work on tag v0.1; probably also includes bugfix versions 0.1.1, etc.*\n- [ ] create new issues for future plans from existing History.html files\n\nsee also #19 migrate from HTML/sed to Markdown for further Markdown work"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/2",
@@ -1417,7 +1833,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1430,7 +1846,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
@@ -1441,14 +1858,14 @@
       {
         "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
         "name": "Shell",
-        "color": "FFFFFF"
+        "color": "bfdadc"
       }
     ],
     "state": "open",
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1461,7 +1878,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
@@ -1473,7 +1891,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1486,25 +1904,26 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 3,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-06-05T14:50:08Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-03-14T17:55:31Z",
-    "updated_at": "2013-06-09T23:05:12Z",
+    "updated_at": "2013-10-22T21:42:11Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "provide collaborator-friendly Xcode and git setup and configuration\r\n    *collaborator can build all targets*\r\nsee also [Making OS X Installer Packages like a Pro](http://stackoverflow.com/questions/11487596/making-os-x-installer-packages-like-a-pro-xcode4-developer-id-mountain-lion-re) \r\n- [ ] requires #1 resolve User assumptions in Xcode build\r\n- [ ] configure collaborator's `git update`; see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop)\r\n- [ ] new target CCDev: replaces targets Developer_Setup and Developer\r\n    * clean install refreshes configuration\r\n- [ ] new target CCDevInstaller: Cocoa-AppleScript wrapper for CCDev for use by collaborators"
+    "body": "provide collaborator-friendly Xcode and git setup and configuration\r\n* *collaborator can build all targets*\r\nsee also [Making OS X Installer Packages like a Pro](http://stackoverflow.com/questions/11487596/making-os-x-installer-packages-like-a-pro-xcode4-developer-id-mountain-lion-re) \r\n- [ ] requires #1 resolve User assumptions in Xcode build\r\n- [ ] configure collaborator's `git update`; see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop)\r\n- [ ] new target CCDev: replaces targets Developer_Setup and Developer\r\n    * clean install refreshes configuration\r\n\r\n*** as of 10/22/13, Doxygen config files rely on Developer directory at ${HOME}/Dev"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/1",
@@ -1518,7 +1937,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1531,7 +1950,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "labels": [
       {
@@ -1542,14 +1962,14 @@
       {
         "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
         "name": "Shell",
-        "color": "FFFFFF"
+        "color": "bfdadc"
       }
     ],
     "state": "open",
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1562,7 +1982,8 @@
       "repos_url": "https://api.github.com/users/carolclark/repos",
       "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
       "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User"
+      "type": "User",
+      "site_admin": false
     },
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
@@ -1574,7 +1995,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://secure.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1587,24 +2008,25 @@
         "repos_url": "https://api.github.com/users/carolclark/repos",
         "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
         "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User"
+        "type": "User",
+        "site_admin": false
       },
-      "open_issues": 6,
-      "closed_issues": 3,
+      "open_issues": 21,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-06-05T14:50:08Z",
+      "updated_at": "2013-10-20T20:17:27Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-03-14T17:42:27Z",
-    "updated_at": "2013-06-08T16:36:28Z",
+    "updated_at": "2013-10-14T16:49:04Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "* *assumptions about locations of key folders including $DEV, $CCDev, $HOME*\n* *assumption that Xcode projects can access variables defined in launchd configuration*\n\n```\nPrevious support for global environment variables used file Environment.plist, which is no longer read.\nApparently, no new method of supporting custom environment variables for Xcode is as yet officially supported. (Other applications, including Terminal recognize user's config file in $HOME, which is more accessible.\nCurrent workaround uses file /private/etc/launchd.conf, which is difficult to support, especially for collaborators, because it requires sudo access.\n```\n### ${CCDev}: address for folder of scripts, derived files, etc.\n*location had been user-configurable via user definitions in Developer_Setup*\n- [x] move folder to ~/Library and enter path directly in Xcode\n\n- [x] correct merge conflicts (Punkin; Accessor)\n*problem introduced at last merge by following bad internet advice to use `merge -i`*\n\n### functions $(DEV), $(CCDev)\n- [x] remove references to deprecated functions; remove function definitions\n\n### ${DEV}: used to build a parameter to custom build scripts\n- [x] change `ccInstallAction` parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)\n\n### ${HOME}\n- [x] remove all occurrences of `carolclark` from build specifications, most scripts (Support; Punkin; Accessor)\n\n### refactor to correct $FPATH issue\n- [x] #5 replace ksh $FPATH calls with dot syntax\n\n### deprecated scripts\n- [x] replace uses of deprecated scripts doxygenBuild, buildCdoc (see carolclark/Punkin#1, carolclark/Accessor#1)\n\n### refactor ccInstall\n- [x] file ccInstall.ksh: move from $CCDev/func to $CCDev/bin\n- [ ] change ccInstall to take same parameters as ccInstallAction\n    * *Then: is ccInstallAction still necessary?*\n\n### ccInstallAction targets\n- [ ] ?? if necessary: change calling syntax to use /bin/ksh as build tool, pass command as argument\n\n### launchd configuration\n- [ ] remove file `/private/etc/launchd.conf` from scripts and disk\n"
+    "body": "* *assumptions about locations of key folders including $DEV, $CCDev, $HOME*\n* *assumption that Xcode projects can access variables defined in launchd configuration*\n\n```\nPrevious support for global environment variables used file Environment.plist, which is no longer read.\nApparently, no new method of supporting custom environment variables for Xcode is as yet officially supported. (Other applications, including Terminal recognize user's config file in $HOME, which is more accessible.\nCurrent workaround uses file /private/etc/launchd.conf, which is difficult to support, especially for collaborators, because it requires sudo access.\n```\n### ${CCDev}: address for folder of scripts, derived files, etc.\n*location had been user-configurable via user definitions in Developer_Setup*\n- [x] move folder to ~/Library and enter path directly in Xcode\n\n- [x] correct merge conflicts (Punkin; Accessor)\n*problem introduced at last merge by following bad internet advice to use `merge -i`*\n\n### functions $(DEV), $(CCDev)\n- [x] remove references to deprecated functions; remove function definitions\n\n### ${DEV}: used to build a parameter to custom build scripts\n- [x] change `ccInstallAction` parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)\n\n### ${HOME}\n- [x] remove all occurrences of `carolclark` from build specifications, most scripts (Support; Punkin; Accessor)\n\n### refactor to correct $FPATH issue\n- [x] #5 replace ksh $FPATH calls with dot syntax\n\n### deprecated scripts\n- [x] replace uses of deprecated scripts doxygenBuild, buildCdoc (see carolclark/Punkin#1, carolclark/Accessor#1)\n\n### refactor ccInstall\n- [x] file ccInstall.ksh: move from $CCDev/func to $CCDev/bin\n- [x] change ccInstall to take same parameters as ccInstallAction\n- [x] use errorMessage for error returns as indicated\n\n### ccInstallAction targets\n- [ ] *Target*_install.ksh files handle ccInstallAction functionality; remove ccInstallAction\n\n### launchd configuration\n- [ ] remove file `/private/etc/launchd.conf` from scripts and disk\n"
   }
 ]

@@ -20,6 +20,37 @@ CCDev_install.ksh -- provide functions for ccInstall to support CCDev installati
 '
 
 CCDev="${HOME}/Library/CCDev"
+
+# setup and configure if necessary
+typeset -i buildIsClean					# > 0 if clean
+if [[ -e "${CCDev}/build/Support/BuildSupport/Developer.lastbuilt" ]] ; then
+	buildIsClean=0
+else
+	buildIsClean=1
+fi
+if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
+	if [[ $# < 3 ]] || [[ "${3}" != "clean" ]] ; then	# not a clean action
+		# installing
+		print -n "== Setup and Configure: "
+		if [[ ${buildIsClean} > 0 ]] ; then
+			. Developer/Developer_Setup.ksh
+			st=$?
+			if [[ ${st} > 0 ]] ; then
+				errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
+				return
+			fi
+			print "Setup and Configuration successful"
+		else
+			print "skipped"
+		fi
+	fi
+fi
+
+if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
+	print "== clean skipped: target Developer has already been cleaned"
+	return
+fi
+
 . "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
@@ -113,6 +144,9 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
+	if [[ ${buildIsClean} > 0 ]] ; then
+		return
+	fi
 	for folder in "${applescriptsFolder}"  "${scriptsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}

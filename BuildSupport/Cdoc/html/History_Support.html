@@ -18,7 +18,7 @@
 		<!-- @topicItem "&radic;replaceKshFPATH" "#replaceKshFPATH" "1" "" -->
 		<!-- @topicItem "Xclean up UNIX error handling" "#UNIXerror" "1" "" -->
 		<!-- @topicItem "&radic;UserSlates:improve Devel workflow" "#devWorkflow" "1" "" -->
-		<!-- @topicItem "resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
+		<!-- @topicItem "&radic;resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
 		<!-- @topicItem "&radic;use GitHub Issues" "#useGitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
@@ -55,58 +55,9 @@
 	<li class='tlmark'>&lt;--</li>
 </pre>
 
-<h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
-	* correct merge conflicts (Punkin; Accessor)
-	* remove references to deprecated functions $(DEV), $(CCDev); remove function definitions
-	* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
-	* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
-	* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin#1</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor#1</a>, item "replace deprecated scripts"
-	* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
-	* refactor ccInstall
-		* add target AllTests
-			* ccInstall: findTests takes single $path; add command --runShunitTests
-			* testDoxygenInstall: tests only functions of ccInstall; move to Developer/_Tests
-		* rename parameters to more accurately reflect their current use
-			* projectPath -&gt; workspaceRoot; target -&gt; targetFolder
-			* getActions: refactor to take workspaceRoot, targetFolder parameters
-			* complete rename of key ccInstall variables
-		* change ccInstall to take same parameters as ccInstallAction
-			* *current for ccInstall: workspaceRoot targetFolder, where targetFolder is path from workspaceRoot*
-			* *new for ccInstall: sourceRoot targetFolder, where targetFolder is path from sourceRoot*
-			* within ccInstall, rename existing targetFolder to oldTargetFolder
-			* ccInstall: calculate key variables based on sourceRoot, targetFolder
-			* ccInstall, tests: change internal parameters to new values
-			* ccInstall: clean up from refactoring
-		* use errorMessage for error returns as indicated
-	* *Target*_install.ksh files handle ccInstallAction functionality; remove ccInstallAction
-		* *Target*_install.ksh files include ${CCDev}/bin/ccInstall instead of resultCodes.ksh
-			* then rename installed file resultCodes.ksh to resultCodes
-		* *Target*_install scripts: script params match ccInstall params
-		* BBEdit_install handles ccInstallAction functionality
-		* add ccInstall params to *Target*_install callback params
-			* BBEdit_install.ksh: improve argument processing structure
-			* add ccInstall params to callbacks; also rename to --handleFile to --prepareFileOperation
-		* extract execInstallScript from BBEdit_install.ksh
-		* ccInstallAction
-			* &lt;Target&gt;_install scripts: replace ccInstallAction as build script; use execInstallScript
-			* ccInstallAction no longer needed - remove
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
-	* remove Xcode's dependence on custom environment variables defined in deprecated file /private/etc./launchd.conf
-		* define CCDev in each script that needs it
-			* environment variables defined in BuildSettings are apparently not available to scripts
-		* ccInstall: add and use subcommands DEV, SHUnit to return those values
-	* remove file /private/etc/launchd.conf from scripts and disk
-	* refactor install scripts
-		* *Target*_install scripts use errorMessage as indicated
-		* *Target*_install scripts (internal): params 1-3 already set; do not pass again
-		* pass callback script as argument to ccInstall for building; --getTargetScript out
-		* update all _Scripting templates
-	* Developer_install: setup at top if build is clean; --clean cleans only if build is not clean
-</pre>
-
 <h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
 	* backup GitHub issue content
-	<li class='tlmark'>&lt;--</li>
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* script to automate backup of GitHub issue content
 	* allow markdown files to be included in the source for Cdoc sites
 		* cInstall:translateCdoc also handles markdown source
@@ -167,6 +118,55 @@
 		* * We have already recognized a need to learn Python for customizing the Xcode debugger, and probably using the Python interpreter to generate user-customizable Slates for Accessor.*
 		* * Now, after spending an inordinate amount of time trying to make script `archive.ksh` more robust and testable, we are recognizing that this work may be contributing to significant fragility with Xcode and Terminal, with per-file syntax-coloring issues in Xcode, preferences being incorrect for no apparent reason, very frequent need to quit Xcode and delete its cache file, and quite a few required reboots (at least 5 today).*
 		* ccBackup is already scheduled for replacement. Add a new issue to convert scripts ccInstall and archive to Python.
+</pre>
+
+<h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
+	* correct merge conflicts (Punkin; Accessor)
+	* remove references to deprecated functions $(DEV), $(CCDev); remove function definitions
+	* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
+	* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
+	* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin#1</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor#1</a>, item "replace deprecated scripts"
+	* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
+	* refactor ccInstall
+		* add target AllTests
+			* ccInstall: findTests takes single $path; add command --runShunitTests
+			* testDoxygenInstall: tests only functions of ccInstall; move to Developer/_Tests
+		* rename parameters to more accurately reflect their current use
+			* projectPath -&gt; workspaceRoot; target -&gt; targetFolder
+			* getActions: refactor to take workspaceRoot, targetFolder parameters
+			* complete rename of key ccInstall variables
+		* change ccInstall to take same parameters as ccInstallAction
+			* *current for ccInstall: workspaceRoot targetFolder, where targetFolder is path from workspaceRoot*
+			* *new for ccInstall: sourceRoot targetFolder, where targetFolder is path from sourceRoot*
+			* within ccInstall, rename existing targetFolder to oldTargetFolder
+			* ccInstall: calculate key variables based on sourceRoot, targetFolder
+			* ccInstall, tests: change internal parameters to new values
+			* ccInstall: clean up from refactoring
+		* use errorMessage for error returns as indicated
+	* *Target*_install.ksh files handle ccInstallAction functionality; remove ccInstallAction
+		* *Target*_install.ksh files include ${CCDev}/bin/ccInstall instead of resultCodes.ksh
+			* then rename installed file resultCodes.ksh to resultCodes
+		* *Target*_install scripts: script params match ccInstall params
+		* BBEdit_install handles ccInstallAction functionality
+		* add ccInstall params to *Target*_install callback params
+			* BBEdit_install.ksh: improve argument processing structure
+			* add ccInstall params to callbacks; also rename to --handleFile to --prepareFileOperation
+		* extract execInstallScript from BBEdit_install.ksh
+		* ccInstallAction
+			* &lt;Target&gt;_install scripts: replace ccInstallAction as build script; use execInstallScript
+			* ccInstallAction no longer needed - remove
+	* remove Xcode's dependence on custom environment variables defined in deprecated file /private/etc./launchd.conf
+		* define CCDev in each script that needs it
+			* environment variables defined in BuildSettings are apparently not available to scripts
+		* ccInstall: add and use subcommands DEV, SHUnit to return those values
+	* remove file /private/etc/launchd.conf from scripts and disk
+	* refactor install scripts
+		* *Target*_install scripts use errorMessage as indicated
+		* *Target*_install scripts (internal): params 1-3 already set; do not pass again
+		* pass callback script as argument to ccInstall for building; --getTargetScript out
+		* update all _Scripting templates
+	* Developer_install: setup at top if build is clean; --clean cleans only if build is not clean
+		* target DeveloperSetup no longer needed; remove
 </pre>
 
 <!-- @marker "Open Topics" -->
