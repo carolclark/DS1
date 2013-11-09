@@ -74,6 +74,7 @@ function errorCodeText {
 			$RC_InputNotHandled );	echo "[RC_InputNotHandled:#$RC_InputNotHandled]"	;;
 			$RC_NoSuchFileOrDirectory );	echo "[RC_NoSuchFileOrDirectory:#$RC_NoSuchFileOrDirectory]"	;;
 			$RC_UnknownError );	echo "[RC_UnknownError:#$RC_UnknownError]"	;;
+			$RC_CURLError ); echo "[RC_CURLError:#$RC_CURLError]" ;;
 			* );	echo "[UnknownErrorCode:#$errorCode]"	;;
 		esac
 	else

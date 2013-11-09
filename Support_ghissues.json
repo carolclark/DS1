@@ -11,7 +11,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -46,7 +46,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -62,16 +62,16 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-10-20T19:49:44Z",
-    "updated_at": "2013-10-20T20:54:06Z",
+    "updated_at": "2013-11-07T00:35:57Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
@@ -92,7 +92,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -127,7 +127,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -143,23 +143,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-10-14T16:44:35Z",
-    "updated_at": "2013-10-23T23:42:24Z",
+    "updated_at": "2013-11-06T04:04:26Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [ ] rename Xcode 4 app; install Xcode 5 alongside\r\n- [ ] update all projects and targets for compatiblity with Xcode 5\r\n- [ ] switch to Xcode 5\r\n- [ ] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [ ] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [ ] auto configuration / provisioning 5:20\r\n- [ ] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [ ] Doc comments 27:20\r\n- [ ] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [ ] Test navigator 44:30\r\n\r\n### Mavericks\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n### Interface Builder\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
+    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [ ] rename Xcode 4 app; install Xcode 5 alongside\r\n- [ ] update all projects and targets for compatiblity with Xcode 5\r\n- [ ] switch to Xcode 5\r\n- [ ] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [ ] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [ ] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [ ] Doc comments 27:20\r\n- [ ] Modules replace pch files in ObjC projects 22:20\r\n- [ ] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [ ] Test navigator 44:30\r\n- [ ] Auto config - provisioning 5:20\r\n    * *Punkin: initial Nanny for iOS*\r\n\r\n### Mavericks\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n### Interface Builder\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/27",
@@ -173,7 +173,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -196,7 +196,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -222,7 +222,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -238,11 +238,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -268,7 +268,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -303,7 +303,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -319,11 +319,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -349,7 +349,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -376,7 +376,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -402,7 +402,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -418,11 +418,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -448,7 +448,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -475,7 +475,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -501,7 +501,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -517,11 +517,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -547,7 +547,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -596,7 +596,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -633,7 +633,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -659,7 +659,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -675,23 +675,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-05-17T15:33:41Z",
-    "updated_at": "2013-10-07T18:10:54Z",
+    "updated_at": "2013-11-05T20:38:58Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop), [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/), [github/hub](https://github.com/github/hub)\r\n\r\n- [ ] handle items that now enter scripts via user slate (eg. diff/list)"
+    "body": "see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop), [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/), [github/hub](https://github.com/github/hub)\r\n\r\n*11/02/2013 github/hub not used for now; what we know well enough to abbreviate, we already automate; Tips has some additional ideas that might be useful later*\r\n\r\n#### Add to Accessor Slates\r\n*From [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/)*\r\n- [ ] add --decorate to lg alias to included tags, and possibly additional branch information\r\n- [ ] add --word-diff option to diff; document\r\n- [ ] pushing branches with tracking\r\n    * add --set-upstream (establish tracking) to push options \r\n    * git config --global push.default tracking - to push only the current branch\r\n    * document\r\n- [ ] add --track to checkout options; document\r\n- [ ] add name-rev to show where among tags a specific commit was made; document\r\n\r\n*Other*\r\n\r\n#### Additional Scripting and Alias support\r\n- [ ] handle items for which Slates now enter scripts (eg. diff/list)\r\n    * branch / getCurrent\r\n    * tag / annotate\r\n    * difference / (specs) / listFiles; selectFile\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/20",
@@ -705,7 +705,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -750,7 +750,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -766,11 +766,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -796,7 +796,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -845,7 +845,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -885,7 +885,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -901,11 +901,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -931,7 +931,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -966,7 +966,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -982,11 +982,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1012,7 +1012,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1052,7 +1052,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1068,11 +1068,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1098,7 +1098,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1133,7 +1133,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1149,11 +1149,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1179,7 +1179,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1214,7 +1214,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1230,11 +1230,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1260,7 +1260,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1295,7 +1295,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1311,11 +1311,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1341,7 +1341,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1381,7 +1381,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1397,11 +1397,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1427,7 +1427,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1462,7 +1462,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1478,11 +1478,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1508,7 +1508,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1548,7 +1548,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1564,11 +1564,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1594,7 +1594,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1643,7 +1643,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1683,7 +1683,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1699,11 +1699,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1729,7 +1729,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1761,7 +1761,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1787,7 +1787,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1803,23 +1803,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-03-26T18:48:51Z",
-    "updated_at": "2013-11-01T22:05:42Z",
+    "updated_at": "2013-11-05T21:05:11Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "see [Marked](http://markedapp.com) editing app\n\n- [x] <a id=\"begin\">[begin]</a> begin using GitHub Issues; synchronize with History files (Support; Punkin; Accessor)\n    * History file: begin to adapt toward simpler content to synchronize with Issues; use HTML `pre` tag to simulate markdown text\n        * *see [Markdown / Cdoc Notes][MarkdownCdocNotes]*\n- [x] <a id=\"backup\">[backup]</a> backup GitHub issue content\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/issues` gets assigned issues\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/repos/carolclark/Accessor/issues` gets open issues\n- [ ] script to backup open issues for each project to <Project>Issues.json in project's root folder and for all projects to /Aux/GitHubIssues.json\n- [ ] move documentation editing to BBEdit\n    * *BBEdit does syntax coloring for markdown files; Xcode does not*\n    * use Marked to preview Markdown output\n        * *BBEdit preview does not work for Markdown*\n- [ ] allow markdown files to be included in the source for Cdoc sites\n    * cInstall: Cdoc translation also handles markdown source\n    * make sure valid HTML is produced\n- [ ] use a separate markdown file to contain history for each tag\n    * *eg. Support_v0_1.md for work on tag v0.1; probably also includes bugfix versions 0.1.1, etc.*\n- [ ] create new issues for future plans from existing History.html files\n\nsee also #19 migrate from HTML/sed to Markdown for further Markdown work"
+    "body": "see [Marked](http://markedapp.com) editing app\r\n\r\n- [x] <a id=\"begin\">[begin]</a> begin using GitHub Issues; synchronize with History files (Support; Punkin; Accessor)\r\n    * History file: begin to adapt toward simpler content to synchronize with Issues; use HTML `pre` tag to simulate markdown text\r\n        * *see [Markdown / Cdoc Notes][MarkdownCdocNotes]*\r\n- [x] <a id=\"backup\">[backup]</a> backup GitHub issue content\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/issues` gets assigned issues\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/repos/carolclark/Accessor/issues` gets open issues\r\n- [ ] script to backup open issues for each project to <Project>Issues.json in project's root folder and for all projects to /Aux/GitHubIssues.json\r\n- [ ] move documentation editing to BBEdit *** *first check Xcode 5 syntax coloring*\r\n    * *BBEdit does syntax coloring for markdown files; Xcode does not*\r\n    * use Marked to preview Markdown output\r\n        * *BBEdit preview does not work for Markdown*\r\n- [ ] allow markdown files to be included in the source for Cdoc sites\r\n    * cInstall: Cdoc translation also handles markdown source\r\n    * make sure valid HTML is produced\r\n- [ ] use a separate markdown file to contain history for each tag\r\n    * *eg. Support_v0_1.md for work on tag v0.1; probably also includes bugfix versions 0.1.1, etc.*\r\n- [ ] create new issues for future plans from existing History.html files\r\n\r\nsee also #19 migrate from HTML/sed to Markdown for further Markdown work"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/2",
@@ -1833,7 +1833,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1865,7 +1865,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1891,7 +1891,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1907,11 +1907,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 6,
+      "open_issues": 20,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
+      "updated_at": "2013-11-02T20:49:18Z",
       "due_on": null
     },
     "comments": 0,
@@ -1924,109 +1924,5 @@
       "patch_url": null
     },
     "body": "provide collaborator-friendly Xcode and git setup and configuration\r\n* *collaborator can build all targets*\r\nsee also [Making OS X Installer Packages like a Pro](http://stackoverflow.com/questions/11487596/making-os-x-installer-packages-like-a-pro-xcode4-developer-id-mountain-lion-re) \r\n- [ ] requires #1 resolve User assumptions in Xcode build\r\n- [ ] configure collaborator's `git update`; see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop)\r\n- [ ] new target CCDev: replaces targets Developer_Setup and Developer\r\n    * clean install refreshes configuration\r\n\r\n*** as of 10/22/13, Doxygen config files rely on Developer directory at ${HOME}/Dev"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/1",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/1/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/1/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/1/events",
-    "html_url": "https://github.com/carolclark/Support/issues/1",
-    "id": 12029948,
-    "number": 1,
-    "title": "resolve User assumptions in Xcode builds",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/collaborate",
-        "name": "collaborate",
-        "color": "ffc9b4"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
-        "name": "Shell",
-        "color": "bfdadc"
-      }
-    ],
-    "state": "open",
-    "assignee": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/1",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/1/labels",
-      "id": 296939,
-      "number": 1,
-      "title": "v0.1",
-      "description": "Support collaborator configuration; transition to GitHub",
-      "creator": {
-        "login": "carolclark",
-        "id": 3742721,
-        "avatar_url": "https://1.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
-        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-        "url": "https://api.github.com/users/carolclark",
-        "html_url": "https://github.com/carolclark",
-        "followers_url": "https://api.github.com/users/carolclark/followers",
-        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-        "organizations_url": "https://api.github.com/users/carolclark/orgs",
-        "repos_url": "https://api.github.com/users/carolclark/repos",
-        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "open_issues": 21,
-      "closed_issues": 6,
-      "state": "open",
-      "created_at": "2013-03-26T18:42:32Z",
-      "updated_at": "2013-10-20T20:17:27Z",
-      "due_on": null
-    },
-    "comments": 0,
-    "created_at": "2013-03-14T17:42:27Z",
-    "updated_at": "2013-10-14T16:49:04Z",
-    "closed_at": null,
-    "pull_request": {
-      "html_url": null,
-      "diff_url": null,
-      "patch_url": null
-    },
-    "body": "* *assumptions about locations of key folders including $DEV, $CCDev, $HOME*\n* *assumption that Xcode projects can access variables defined in launchd configuration*\n\n```\nPrevious support for global environment variables used file Environment.plist, which is no longer read.\nApparently, no new method of supporting custom environment variables for Xcode is as yet officially supported. (Other applications, including Terminal recognize user's config file in $HOME, which is more accessible.\nCurrent workaround uses file /private/etc/launchd.conf, which is difficult to support, especially for collaborators, because it requires sudo access.\n```\n### ${CCDev}: address for folder of scripts, derived files, etc.\n*location had been user-configurable via user definitions in Developer_Setup*\n- [x] move folder to ~/Library and enter path directly in Xcode\n\n- [x] correct merge conflicts (Punkin; Accessor)\n*problem introduced at last merge by following bad internet advice to use `merge -i`*\n\n### functions $(DEV), $(CCDev)\n- [x] remove references to deprecated functions; remove function definitions\n\n### ${DEV}: used to build a parameter to custom build scripts\n- [x] change `ccInstallAction` parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)\n\n### ${HOME}\n- [x] remove all occurrences of `carolclark` from build specifications, most scripts (Support; Punkin; Accessor)\n\n### refactor to correct $FPATH issue\n- [x] #5 replace ksh $FPATH calls with dot syntax\n\n### deprecated scripts\n- [x] replace uses of deprecated scripts doxygenBuild, buildCdoc (see carolclark/Punkin#1, carolclark/Accessor#1)\n\n### refactor ccInstall\n- [x] file ccInstall.ksh: move from $CCDev/func to $CCDev/bin\n- [x] change ccInstall to take same parameters as ccInstallAction\n- [x] use errorMessage for error returns as indicated\n\n### ccInstallAction targets\n- [ ] *Target*_install.ksh files handle ccInstallAction functionality; remove ccInstallAction\n\n### launchd configuration\n- [ ] remove file `/private/etc/launchd.conf` from scripts and disk\n"
   }
 ]

@@ -231,13 +231,6 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "clean files", "" },	Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
 		Event { "bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_gitBisect }, endSequence{},
 		Event { "blame", "" },			Sequence{}, TypeText { "git blame " }, ResSubslate { resid_gitBlame }, endSequence{},
-		Event { "patch", "" },			Subslate { "patch" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			Event { "check", "" },			TypeText { "git apply --check _patches/000* " },
-			Event { "apply plain", "" },	TypeText { "git apply _patches/000* " },
-			Event { "apply mail", "" },		TypeText { "git am -3 _patches/000* " },
-			endSubslate{},
 		Event { "set my variable", "" },	TypeText { "mv=" },
 		Event { "show message file", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
 		Event { "make executable", "" },	Sequence{}, TypeText { "chmod a+x " }, ResSubslate { resid_Type }, endSequence{},
@@ -257,6 +250,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "select file", "" },		Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_gitSelectFile }, endSequence{},
 		Event { "parse revision", "" },		TypeText { "git rev-parse " },
 		Event { "browser", "" },			Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_gitBrowser }, endSequence{},
+		Event { "backup issues", "" },		TypeText { "ghubUtil --backupIssues" },
 	} }
 } };
 

@@ -296,6 +296,7 @@
 		67EB1F8F16BC477800B3DBB9 /* mainpage.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mainpage.dox; sourceTree = "<group>"; };
 		67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresenterDD.h; sourceTree = "<group>"; };
 		67EB1F9216BC4A1800B3DBB9 /* AlertPresenterDD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPresenterDD.m; sourceTree = "<group>"; };
+		67FD0562182C330F00BAA1AF /* ghubUtil.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -504,6 +505,7 @@
 				67E6AE1E173D97C3005A30D0 /* errcc.ksh */,
 				67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */,
 				6777600B1808AE3200A8FA5A /* execInstallScript.ksh */,
+				67FD0562182C330F00BAA1AF /* ghubUtil.ksh */,
 			);
 			name = "3 Scripts";
 			path = Scripts;
