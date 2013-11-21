@@ -186,9 +186,15 @@ resource restype_Slate (resid_TypeSpecialDefaultSlate, "Type Special Default Sla
 } };
 
 #pragma mark Dictate
-resource restype_Slate (resid_DictateSlate, "Dragon Dictate Active") { {
-	Slate { "Dictate", {
+resource restype_Slate (resid_DragonSlate, "Dragon Dictate active") { {
+	Slate { "Dragon", {
 		ExitEvent { "Microphone Off", "and hide recognition window" },	_CloseRecognitionWindow_,
+	} }
+} };
+
+resource restype_Slate (resid_DictateSlate, "Mac dictation active") { {
+	Slate { "Dictate", {
+		ExitEvent { "dictate off", "" },	NilAction{},
 	} }
 } };
 

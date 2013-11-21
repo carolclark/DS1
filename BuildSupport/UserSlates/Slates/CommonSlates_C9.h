@@ -16,8 +16,8 @@
 #endif
 
 #define bootvol_        mainvol_
-#ifdef MOUNTAIN
-#define bootvol_        "/Volumes/Mountain"
+#ifdef MAVERICKS
+#define bootvol_        "/Volumes/Mavericks"
 #endif
 
 #define mainhome_       mainvol_"/Users/carolclark/"
@@ -52,10 +52,11 @@
 #define resid_IMouseSlate				1013
 #define resid_TestClicksSlate			1015
 #define resid_TestTypeSlate				1016
-#define resid_DictateSlate				1017
-#define	resid_GoToFolder				1018
-#define resid_LinkContentSlate			1019
-#define resid_Sleep						1020
+#define resid_DragonSlate				1017
+#define resid_DictateSlate				1018
+#define	resid_GoToFolder				1019
+#define resid_LinkContentSlate			1020
+#define resid_Sleep						1021
 
 #define resid_WordLeft					1030
 #define resid_WordRight					1031
@@ -1532,9 +1533,10 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 		endSubslate{}
 
 #pragma mark 7 === Item Groups
-#define _MicrophoneOn_		\
-	Event { "microphone on", "" },	Sequence{}, Click { 1, -55, 55, _screen, _topRight }, ResSubslate { resid_DictateSlate }, endSequence{}
+#define _MicrophoneOn_		Event { "microphone on", "" },	Sequence{}, Click { 1, -55, 55, _screen, _topRight }, ResSubslate { resid_DragonSlate }, endSequence{}
 #define _CloseRecognitionWindow_	Click { 1, -420, -385, _screen, _bottomRight }
+
+#define _DictateOn_		Event { "dictate on", "" },	Sequence{}, Keypress { kc_6, mf_command + mf_option + mf_control + mf_shift }, ResSubslate { resid_DictateSlate }, endSequence{}
 
 #pragma mark _TypeSlateItems_
 #define _TypeSlateItemsWithoutDictation_	\
@@ -1560,6 +1562,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define _TypeSlateItems_	\
 	_TypeSlateItemsWithoutDictation_,	\
 	_MicrophoneOn_,						\
+	_DictateOn_,						\
 	Event { "close recognition window", "" },		_CloseRecognitionWindow_
 
 #pragma mark _TypeSpecialBaseItems_

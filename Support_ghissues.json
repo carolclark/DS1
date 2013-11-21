@@ -11,7 +11,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -46,7 +46,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -92,7 +92,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -127,7 +127,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -152,14 +152,14 @@
     },
     "comments": 0,
     "created_at": "2013-10-14T16:44:35Z",
-    "updated_at": "2013-11-06T04:04:26Z",
+    "updated_at": "2013-11-11T21:28:01Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [ ] rename Xcode 4 app; install Xcode 5 alongside\r\n- [ ] update all projects and targets for compatiblity with Xcode 5\r\n- [ ] switch to Xcode 5\r\n- [ ] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [ ] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [ ] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [ ] Doc comments 27:20\r\n- [ ] Modules replace pch files in ObjC projects 22:20\r\n- [ ] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [ ] Test navigator 44:30\r\n- [ ] Auto config - provisioning 5:20\r\n    * *Punkin: initial Nanny for iOS*\r\n\r\n### Mavericks\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n### Interface Builder\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
+    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [x] rename Xcode 4 app; install Xcode 5 alongside\r\n- [x] switch to Xcode 5\r\n- [ ] update all projects and targets for compatiblity with Xcode 5\r\n- [ ] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [ ] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [ ] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [ ] Doc comments 27:20\r\n- [ ] Modules replace pch files in ObjC projects 22:20\r\n- [ ] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [ ] Test navigator 44:30\r\n- [ ] Auto config - provisioning 5:20\r\n    * *Punkin: initial Nanny for iOS*\r\n\r\n### Mavericks\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n### Interface Builder\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/27",
@@ -173,7 +173,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -196,7 +196,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -222,7 +222,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -268,7 +268,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -303,7 +303,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -349,7 +349,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -376,7 +376,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -402,7 +402,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -448,7 +448,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -475,7 +475,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -501,7 +501,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -547,7 +547,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -596,7 +596,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -633,7 +633,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -659,7 +659,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -684,14 +684,14 @@
     },
     "comments": 0,
     "created_at": "2013-05-17T15:33:41Z",
-    "updated_at": "2013-11-05T20:38:58Z",
+    "updated_at": "2013-11-17T19:26:25Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop), [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/), [github/hub](https://github.com/github/hub)\r\n\r\n*11/02/2013 github/hub not used for now; what we know well enough to abbreviate, we already automate; Tips has some additional ideas that might be useful later*\r\n\r\n#### Add to Accessor Slates\r\n*From [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/)*\r\n- [ ] add --decorate to lg alias to included tags, and possibly additional branch information\r\n- [ ] add --word-diff option to diff; document\r\n- [ ] pushing branches with tracking\r\n    * add --set-upstream (establish tracking) to push options \r\n    * git config --global push.default tracking - to push only the current branch\r\n    * document\r\n- [ ] add --track to checkout options; document\r\n- [ ] add name-rev to show where among tags a specific commit was made; document\r\n\r\n*Other*\r\n\r\n#### Additional Scripting and Alias support\r\n- [ ] handle items for which Slates now enter scripts (eg. diff/list)\r\n    * branch / getCurrent\r\n    * tag / annotate\r\n    * difference / (specs) / listFiles; selectFile\r\n"
+    "body": "see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop), [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/), [github/hub](https://github.com/github/hub)\r\n\r\n*11/02/2013 github/hub not used for now; what we know well enough to abbreviate, we already automate; Tips has some additional ideas that might be useful later*\r\n\r\n#### Add to Accessor Slates\r\n*From [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/)*\r\n- [ ] add --decorate to lg alias to included tags, and possibly additional branch information\r\n- [ ] add --word-diff option to diff; document\r\n- [ ] pushing branches with tracking\r\n    * add --set-upstream (establish tracking) to push options \r\n    * git config --global push.default tracking - to push only the current branch\r\n    * document\r\n- [ ] add --track to checkout options; document\r\n- [ ] add name-rev to show where among tags a specific commit was made; document\r\n\r\n*Other*\r\n- [ ] compare: diff --name-status and lg for arg1-..arg2 (eg. \"compare master currentBranch\")\r\n\r\n#### Additional Scripting and Alias support\r\n- [ ] handle items for which Slates now enter scripts (eg. diff/list)\r\n    * branch / getCurrent\r\n    * tag / annotate\r\n    * difference / (specs) / listFiles; selectFile\r\n- [ ] customize terminal prompt with git branch\r\n    * see [Put Your Git Branch in Your Bash Prompt](http://code-worrier.com/blog/git-branch-in-bash-prompt/)\r\n\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/20",
@@ -705,7 +705,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -750,7 +750,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -796,7 +796,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -845,7 +845,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -885,7 +885,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -931,7 +931,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -966,7 +966,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1012,7 +1012,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1052,7 +1052,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1098,7 +1098,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1133,7 +1133,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1179,7 +1179,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1214,7 +1214,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1260,7 +1260,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1295,7 +1295,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1341,7 +1341,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1381,7 +1381,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1427,7 +1427,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1462,7 +1462,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1508,7 +1508,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1548,7 +1548,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1594,7 +1594,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1643,7 +1643,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1683,7 +1683,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1729,7 +1729,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1761,7 +1761,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1787,7 +1787,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1833,7 +1833,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1865,7 +1865,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1891,7 +1891,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://0.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",

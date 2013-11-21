@@ -20,6 +20,7 @@
 		<!-- @topicItem "&radic;UserSlates:improve Devel workflow" "#devWorkflow" "1" "" -->
 		<!-- @topicItem "&radic;resolve Xcode build user" "#resolveXcodeBuildUser" "1" "" -->
 		<!-- @topicItem "&radic;use GitHub Issues" "#useGitHubIssues" "1" "" -->
+		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
 			<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
@@ -38,6 +39,21 @@
 <!-- @marker "Active Issues" -->
 <h2 id='ActiveIssues'>Active Issues</h2>
 
+<!-- @marker "upgrade to Mavericks" -->
+<h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/Support/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
+	* Xcode 5
+		* install Xcode 5
+		* update all projects and targets for compatiblity with Xcode 5
+			* update project settings to recommended architecture (automatic update)
+		* add '*.xccheckout' to git excludes
+		* Slates
+			* Typing: support OS X dictation as well as Dragon
+			* Xcode: organize macros; add Test index; update search/find
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	* support Xcode 5
+		* Source Control Slates
+</pre>
+
 <h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
 	<li class='tlmark'>&lt;--</li>
 </pre>
@@ -51,7 +67,6 @@
 			* also add additional settings to colorize <span class='mono'>ls</span> and <span class='mono'>grep</span>
 	* add support for using <span class='mono'>git remote update</span> instead of <span class='mono'>git pull</span>
 		* *updates from all remotes; then supports merge process that preserves merge commits, and stops to allow re-base rather than continuing with a merge that is not fast-forward; see <a href="http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop">How to avoid these merge commits in the future</a>*
-	<li class='tlmark'>&lt;--</li>
 	* handle items that now enter scripts via user slate
 </pre>
 
@@ -59,7 +74,7 @@
 	* backup GitHub issue content
 	* script to automate backup of GitHub issue content
 		* new script file githUtil: utility functions for git and GitHub
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	<li class='tlmark'>&lt;--</li>
 	* refactor: for all unix files, includes come before help info to keep file's help from being overwritten by that from includes
 	* allow markdown files to be included in the source for Cdoc sites
 		* cInstall:translateCdoc also handles markdown source
