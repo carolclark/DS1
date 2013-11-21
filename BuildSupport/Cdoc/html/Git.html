@@ -100,14 +100,19 @@
 			<li>select branch<ul>
 				<li>create or checkout branch</li>
 				<li>if a pre-existing branch, <span class='em'>Update Branch</span></li>
+				<li><span class='em'>[Release*]</span><ul>
+					<li>select and assign version: branch release-&lt;vid&gt;; bump version; commit ("bump version to &lt;vid&gt;")</li>
+					<li>bug fixes as indicated; update history files, issue milestones</li>
+					<li>merge release branch into 'production'; tag; push 'production' and tags</li>
+					<li>merge release branch into 'master'; push 'master'; delete release branch</li>
+				</ul></li>
 			</ul></li>
 			<li>repeat<ul>
 				<li>repeat until commit; edit/test; status; [add/stage]</li>
+				<li>[backup GitHub issues; add, OR if failure, checkout original]</li>
 				<li>construct and save commit message; verify modifications (diff tool)</li>
-				<li>status: check branch; add / review files to be committed</li>
-				<li>check for stray spaces (diff --cached --check)</li>
-				<li>review commit msgfile</li>
-				<li>commit</li>
+				<li>status: check branch; add / review files to be committed; check for stray spaces (diff --cached --check)</li>
+				<li>review commit msgfile; commit</li>
 				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
 				<li>check stash list</li>
 				<li><span class='em'>Update Branch</span><ul>
@@ -116,25 +121,21 @@
 						<li>fetch updates: <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
 							<li>if that merge fails: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
 						</ul></li>
+						<li>retest if changed</li>
 					</ul></li>
-					<li>if changed: retest<ul>
-						<li>then if changed: checkout $cb; lg $cb..master; merge master; retest if changed</li>
-					</ul></li>
+					<li>checkout branch ($cb); <span class='em'>Merge</span> master</li>
 				</ul></li>
 			</ul></li>
 		</ul>
-		<h5>Merge</h5><ul>
-			<li>backup GitHub issues</li>
+		<h5>[Merge]</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-			<li>checkout master; check for unmerged branches</li>
-			<li>diff (--name-status) master..$cb; lg master..$cb</li>
-			<li><span class='mono'>merge &lt;branch&gt;</span><ul>
-				<li>[OR to merge in files only, use <span class='mono'>merge &lt;branch&gt; --no-ff --no-commit</span>]; then commit or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
+			<li>checkout master; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>
+			<li><span class='mono'>merge &lt;branch&gt; --no-ff [--no-commit]</span><ul>
+				<li>after --no-commit: commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			</ul></li>
 			<li>[<b>Resolve Conflicts</b>]<ul>
-				<li><span class='mono'>git merge --abort</span>; use FileMerge to merge conflicted files; reattempt merge (or ? <span class='mono'>git reset --merge</span>)<ul>
-					<li>[ OR ?? use <span class='mono'>merge tool</span> to resolve conflicts; add / review files to be committed; commit]</li>
-				</ul></li>
+				<li>status; <span class='mono'>merge tool</span> to resolve conflicts, saving successfully merged files; commit</li>
+				<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
 				<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
 			</ul></li>
 			<li>show --name-only; lg compare; lg origin/master..master</li>
@@ -143,17 +144,17 @@
 			</ul></li>
 			<li>retest</li>
 		</ul>
-		<h5>Push</h5><ul>
+		<h5>[Push]</h5><ul>
 			<li>check for stashes, unmerged branches</li>
 			<li>[tag]</li>
 			<li>push [push tags]</li>
 		</ul>
 		<h5>Morning/Working Report</h5><ul>
-			<li>branch list; set $cb to name of current branch (should not be master)</li>
-			<li>status; verify branch not master; show --name-onlygit checkout </li>
+			<li>branch list; status; set $cb to current branch; show --name-only</li>
 			<li>for master..$cb, origin/master..master, master..origin/master: lg; diff --name-status</li>
 			<li>checkout master; status; branch unmerged; stash list; checkout $cb</li>
 		</ul>
+		<p class='ital'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p>
 	</div>
 </div>
 
@@ -235,6 +236,11 @@
 
 <!-- @marker "Bisect" -->
 <h4 id='tsk_Bisect'>Bisect</h4><ul>
+	<li><span class='mono'>git checkout -b &lt;newbranch&gt;</span>&nbsp;&nbsp;# checkout a new branch<ul>
+		<li><b>Detached Head</b><ul>
+			<li>If accidentally done from the master branch, a detached head is possible. Correct by checking the work out into  new branch, which restores master to its previous state.</li>
+		</ul></li>
+	</ul></li>
 	<li><span class='mono'>git bisect start</span>&nbsp;&nbsp;# start a bisect operation<ul>
 		<li class='blurb'>then execute <span class='mono'>good</span> and <span class='mono'>bad</span> to establish range</li>
 	</ul></li>

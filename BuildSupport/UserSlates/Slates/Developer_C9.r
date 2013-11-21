@@ -173,6 +173,7 @@ resource restype_Slate (resid_InsertSnippet, "") { {
 		Event { "user slate", "" },						TypeText { "userSlate#" },
 		ExitEvent { "heading with name", "" },			TypeText { "headingWithName#" },
 		ExitEvent { "heading with topics", "" },		TypeText { "headingWithTopics#" },
+		ExitEvent { "heading for issue", "" },			TypeText { "headingForIssue#" },
 		Event { "developer link", "" },					TypeText { "developerLink#" },
 		ExitEvent { "developer item", "" },				TypeText { "developerItem#" },
 		ExitEvent { "glossary item", "" },				TypeText { "glossaryItem#" },

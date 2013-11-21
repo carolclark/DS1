@@ -28,8 +28,9 @@
 	#define resid_gitSpecify			resid_Git+40
 	#define resid_gitCheckout			resid_Git+50
 	#define	resid_gitBranch				resid_Git+80
-	#define resid_gitShowBranch			resid_Git+85
-	#define resid_gitRemote				resid_Git+88
+		#define resid_gitShowBranch			resid_gitBranch+1
+		#define resid_gitStandardBranch		resid_gitBranch+2
+	#define resid_gitRemote				resid_Git+85
 	#define	resid_gitDiff				resid_Git+100
 	#define resid_gitShow				resid_Git+110
 	#define resid_gitGrep				resid_Git+120
@@ -169,7 +170,9 @@ resource restype_Slate (resid_Emacs, "") { {
 #define	_StandardBranches_	\
 	Event { "master", "" },			TypeText { "master " },		\
 	Event { "artist", "" },			TypeText { "artist " },		\
-	Event { "slates", "" },			TypeText { "slates " }
+	Event { "production", "" },		TypeText { "production " },	\
+	Event { "release", "" },		Sequence{}, TypeText { "release-" }, ResSubslate { resid_gitType }, endSequence{}, 	\
+	Event { "hotfix", "" },			Sequence{}, TypeText { "hotfix-" }, ResSubslate { resid_gitType }, endSequence{}
 
 #define	_specifyWhich	Sequence{}, Keypress { kc_delete, 0 }, TypeText { "@{" }, ResSubslate { resid_gitSpecify }, endSequence{}
 
@@ -261,9 +264,8 @@ resource restype_Slate (resid_gitType, "Type") { {
 		_CloseSubslate_,
 		_TypeSlateItems_,
 		_TypeTermItems_,
-		Event { "master", "" },			TypeText { "master " },
 		_TypeVariable_,
-		Event { "project locker", "" },	TypeText { "ssh git-CCSoftware@pl5.projectlocker.com" },
+		Event { "branch", "" },			ResSubslate { resid_gitStandardBranch },
 		Event { "shell", "" },			TypeText { "sealsea v3ejc 6868" },
 		Event { "version 3", "" },		TypeText { "4YZHqz5pq1" },
 		Event { "dry run", "" },		TypeText { "--dry-run " },
@@ -324,6 +326,15 @@ resource restype_Slate (resid_gitBranch, "") { {
 		_TypeVariable_,
 		_StandardBranches_,
 		_Remotes_,
+	} }
+} };
+
+#pragma mark gitStandardBranch
+resource restype_Slate (resid_gitStandardBranch, "") { {
+	Slate { "gitStandardBranch",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_StandardBranches_,
 	} }
 } };
 

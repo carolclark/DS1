@@ -98,6 +98,8 @@ function gitPrintConfig {
 
 	git config --global core.editor emacs
 
+	git config --global push.default simple			# push only the current branch
+
 	git config --global diff.tool opendiff
 
 	git config --global difftool.prompt false
@@ -112,6 +114,7 @@ function gitPrintConfig {
 function gitPrintExclude {
 	print '.DS_Store'
 	print '*.bbprojectsettings'
+	print '*.xccheckout'
 	print 'xcuserdata/'
 	print '_patches'
 }
