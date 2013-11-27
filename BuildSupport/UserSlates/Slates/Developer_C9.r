@@ -367,6 +367,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 			ExitEvent { "key down", "" },			TypeText { "down" },
 			ExitEvent { "key comma", "" },			TypeText { "comma" },
 			ExitEvent { "key period", "" },			TypeText { "period" },
+			ExitEvent { "key slash", "" },			TypeText { "slash" },
 			ExitEvent { "key backslash", "" },		TypeText { "backslash" },
 			ExitEvent { "modify command", "" },		TypeText { "mf_command" },
 			ExitEvent { "modify shift", "" },		TypeText { "mf_shift" },
