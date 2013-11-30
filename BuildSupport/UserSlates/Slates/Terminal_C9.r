@@ -152,10 +152,12 @@ resource restype_Slate (resid_Emacs, "") { {
 } };
 
 #define	_CurrentBranch_			Event { "current branch", "" },	TypeText { "$cb " }
+#define _RevisionNumber_		Event { "revision number", "" }, TypeText { "$vn " },
 #define	_GitFile_				Event { "git file", "" },	TypeText { "$gf " }
 #define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
 #define _CompareMasterCurrent_	Event { "compare", "" },	TypeText { "master..$cb" }
 #define _TypeVariable_		_CurrentBranch_,	\
+							_RevisionNumber_,	\
 							_GitFile_, 			\
 							_MyVariable_,		\
 							_CompareMasterCurrent_
@@ -169,8 +171,10 @@ resource restype_Slate (resid_Emacs, "") { {
 
 #define	_StandardBranches_	\
 	Event { "master", "" },			TypeText { "master " },		\
-	Event { "artist", "" },			TypeText { "artist " },		\
 	Event { "production", "" },		TypeText { "production " },	\
+	Event { "artist", "" },			TypeText { "artist " },		\
+	Event { "origin", "" },			TypeText { "origin " },		\
+	Event { "origin master", "" },	TypeText { "origin/master " },	\
 	Event { "release", "" },		Sequence{}, TypeText { "release-" }, ResSubslate { resid_gitType }, endSequence{}, 	\
 	Event { "hotfix", "" },			Sequence{}, TypeText { "hotfix-" }, ResSubslate { resid_gitType }, endSequence{}
 
@@ -226,7 +230,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
-		Event { "merge", "" },			Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
+		Event { "merge", "" },			Sequence{}, TypeText { "git merge --no-ff " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "merge base", "" },		Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },			Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
 		Event { "fetch updates", "" },	Sequence{}, TypeText { "git fetchup " }, _return, endSequence{},
@@ -248,7 +252,7 @@ resource restype_Slate (resid_Git, "") { {
 			ExitEvent { "Punkin", "" },			Sequence{}, TypeText { "cd ${DEV}/Punkin" }, _return, endSequence{},
 			endSubslate{},
 		Event { "print directory", "" },	Sequence{}, TypeText { "pwd" }, _return, endSequence{},
-		Event { "print variables", "" },	TypeText { "print DEV: ${DEV}; print CCDev: ${CCDev}; print mv: $mv; print cb: $cb; print gf: $gf" },
+		Event { "print variables", "" },	TypeText { "print DEV: ${DEV}; print CCDev: ${CCDev}; print mv: $mv; print cb: $cb; print vn: $vn print gf: $gf" },
 		Event { "print", "" },				Sequence{}, TypeText { "print " }, ResSubslate { resid_Type }, endSequence{},
 		Event { "select file", "" },		Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_gitSelectFile }, endSequence{},
 		Event { "parse revision", "" },		TypeText { "git rev-parse " },
@@ -270,6 +274,7 @@ resource restype_Slate (resid_gitType, "Type") { {
 		Event { "version 3", "" },		TypeText { "4YZHqz5pq1" },
 		Event { "dry run", "" },		TypeText { "--dry-run " },
 		Event { "source", "" },			TypeText { ". \"${CCDev}\"/bin/" },
+		Event { "github path", "" },	TypeText { "https://carolclark@github.com/carolclark " },
 	} }
 } };
 
@@ -576,7 +581,8 @@ resource restype_Slate (resid_gitTag, "") { {
 		ExitEvent { "annotate ", "" },		Sequence{}, Keypress { kc_C, mf_control }, TypeText { "git for-each-ref refs/tags --sort=-taggerdate -- format=\"%(objectname:short) %(taggerdate:short) %(refname:short)%09%09%(subject) %(body)\"" }, endSequence{},
 		ExitEvent { "list ", "" },	_return,
 		Event { "show", "" },				Sequence{}, _cancel, TypeText { "git show --name-status " }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "make", "" },				Sequence{}, TypeText { "git tag -a "}, ResSubslate { resid_gitType }, endSequence{},
+		Event { "make", "" },				Sequence{}, TypeText { "-a '"}, ResSubslate { resid_gitType }, endSequence{},
+		Event { "add message", "" },		Sequence{}, TypeText { "' -m \"\""}, _left, ResSubslate { resid_gitType }, endSequence{},
 		Event { "delete", "" },				Sequence{}, TypeText { "-d " }, ResSubslate { resid_gitType }, endSequence{},
 		_TypeVariable_,
 		_GitStandards_,
@@ -613,9 +619,10 @@ resource restype_Slate (resid_gitMergeBase, "") { {
 #pragma mark Push
 resource restype_Slate (resid_gitPush, "") { {
 	Slate { "Push",	{
-		Event { "origin", "" },			TypeText { "origin " },
 		Event { "tags", "" },			TypeText { "--tags " },
 		Event { "authorize", "" },		TypeText { "gh6868cc" },
+		Event { "set upstream", "" },	TypeText { "--set-upstream " },
+		_StandardBranches_,
 		_GitStandards_,
 	} }
 } };
