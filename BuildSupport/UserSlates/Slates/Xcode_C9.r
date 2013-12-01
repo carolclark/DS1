@@ -1001,7 +1001,7 @@ resource restype_Slate (resid_Accessor, "") { {
 	Slate { "Accessor",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "Target", "" },			ResSubslate { resid_Target },
+		Event { "InHouse", "" },		Sequence{}, _targetPopup, TypeText { "InHouse" }, _down, _return, endSequence{},
 		Event { "analyze", "" },		Keypress { kc_B, mf_command + mf_shift },
 		Event { "clean", "" },			Keypress { kc_K, mf_command + mf_shift },
 		Event { "build", "" },			Sequence{}, Keypress { kc_B, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
@@ -2297,6 +2297,7 @@ resource restype_Slate (resid_BBContinueCheckAll, "resid_BBContinueCheckAll") { 
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
 		ExitEvent { "exit", "" },		NilAction{},
 		ExitEvent { "continue", "" },	Sequence{}, _return, _BBClickScriptsMenu, _down, TypeText { "CheckLinks" }, _return, endSequence{},
+		Event { "close window", "" },	Keypress { kc_W, mf_command },
 	} }
 } };
 

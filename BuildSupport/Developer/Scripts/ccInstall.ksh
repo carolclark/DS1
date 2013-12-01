@@ -363,9 +363,9 @@ function findSources {
 		return
 	fi
 	if [[ -e "${lastbuilt}" ]] ; then
-		find . -path '*/.git' -prune -or -type f -newer ${lastbuilt} | grep -v .git | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
+		find . -type f -newer ${lastbuilt} | grep -v '\.git' | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
 	else
-		find . -path '*/.git' -prune -or -type f | grep -v .git | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
+		find . -type f | grep -v '\.git' | grep -v .DS_Store | grep -v _install.ksh | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
 	fi
 	chmod a+r "${iofile}"
 	cd "${origdir}"
