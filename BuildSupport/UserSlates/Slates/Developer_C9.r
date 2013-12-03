@@ -289,6 +289,7 @@ resource restype_Slate (resid_InsertStyle, "css Styles") { {
 resource restype_Slate (resid_InsertTag, "HTML tag") { {
 	Slate { "tag",	{
 		_SlateGlobals_,
+		_CloseSubslate_,
 		_DirectionKeys_,
 		ExitEvent { "comment", "" }, Sequence{}, TypeText { "<!--  -->" }, _left, _left, _left, _left, endSequence{},
 		ExitEvent { "break", "" }, TypeText { "<br />" },

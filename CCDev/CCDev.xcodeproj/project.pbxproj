@@ -1,0 +1,301 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		6786D8A8184E8BB900255EE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67976C0A184D24C200F09A53 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6786D89A184E899A00255EE9;
+			remoteInfo = ccdevTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6782203B184E88D3002F27D9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		6786D89B184E899A00255EE9 /* ccdevTest.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccdevTest.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67976C16184D2A5800F09A53 /* ccdev_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ccdev_install.ksh; path = ccdev/ccdev_install.ksh; sourceTree = "<group>"; };
+		67976C17184D2E2D00F09A53 /* testScm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = testScm.py; path = ccdev/ccdev/testScm.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		67822039184E88D3002F27D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6786D89B184E899A00255EE9 /* ccdevTest.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6782203A184E88D3002F27D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6782203B184E88D3002F27D9 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67976C09184D24C200F09A53 = {
+			isa = PBXGroup;
+			children = (
+				67976C16184D2A5800F09A53 /* ccdev_install.ksh */,
+				67976C14184D280400F09A53 /* ccdev */,
+				6782203A184E88D3002F27D9 /* Frameworks */,
+				67822039184E88D3002F27D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67976C14184D280400F09A53 /* ccdev */ = {
+			isa = PBXGroup;
+			children = (
+				67976C17184D2E2D00F09A53 /* testScm.py */,
+			);
+			name = ccdev;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		67976C0E184D24C200F09A53 /* ccdev */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "\"${SRCROOT}\" ccdev $(ACTION)";
+			buildConfigurationList = 67976C11184D24C200F09A53 /* Build configuration list for PBXLegacyTarget "ccdev" */;
+			buildPhases = (
+			);
+			buildToolPath = ccdev/ccdev_install.ksh;
+			buildWorkingDirectory = "";
+			dependencies = (
+				6786D8A9184E8BB900255EE9 /* PBXTargetDependency */,
+			);
+			name = ccdev;
+			passBuildSettingsInEnvironment = 0;
+			productName = CCDev;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		6786D89A184E899A00255EE9 /* ccdevTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6786D8A4184E899A00255EE9 /* Build configuration list for PBXNativeTarget "ccdevTest" */;
+			buildPhases = (
+				6786D8A7184E89B600255EE9 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ccdevTest;
+			productName = ccdevTest;
+			productReference = 6786D89B184E899A00255EE9 /* ccdevTest.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67976C0A184D24C200F09A53 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Carol Clark";
+			};
+			buildConfigurationList = 67976C0D184D24C200F09A53 /* Build configuration list for PBXProject "CCDev" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 67976C09184D24C200F09A53;
+			productRefGroup = 67822039184E88D3002F27D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67976C0E184D24C200F09A53 /* ccdev */,
+				6786D89A184E899A00255EE9 /* ccdevTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6786D8A7184E89B600255EE9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/ksh;
+			shellScript = ccdev/ccdev/testScm.py;
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6786D8A9184E8BB900255EE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6786D89A184E899A00255EE9 /* ccdevTest */;
+			targetProxy = 6786D8A8184E8BB900255EE9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6786D8A5184E899A00255EE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		6786D8A6184E899A00255EE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		67976C0F184D24C200F09A53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		67976C10184D24C200F09A53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		67976C12184D24C200F09A53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67976C13184D24C200F09A53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6786D8A4184E899A00255EE9 /* Build configuration list for PBXNativeTarget "ccdevTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6786D8A5184E899A00255EE9 /* Debug */,
+				6786D8A6184E899A00255EE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		67976C0D184D24C200F09A53 /* Build configuration list for PBXProject "CCDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67976C0F184D24C200F09A53 /* Debug */,
+				67976C10184D24C200F09A53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67976C11184D24C200F09A53 /* Build configuration list for PBXLegacyTarget "ccdev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67976C12184D24C200F09A53 /* Debug */,
+				67976C13184D24C200F09A53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67976C0A184D24C200F09A53 /* Project object */;
+}

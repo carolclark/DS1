@@ -260,7 +260,7 @@
 	Event { "new folder", "" },			Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, _tab, endSequence{},		\
 	Event { "parent", "" },				Click { 1, 310, 340, _window, _topCenter },					\
 	Event { "subclass of", "" },		Click { 1, 310, 340, _window, _topCenter },					\
-	Event { "template groups", "" },	Click { 1, -270, 530, _window, _topCenter },				\
+	Event { "template groups", "" },	Click { 1, -337, 506, _window, _topCenter },				\
 	_FileDialogStandards_
 
 #pragma mark 9 --- Standards
@@ -928,6 +928,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "All Tests", "" },		Sequence{}, _targetPopup, TypeText { "AllTests" }, _down, _return, endSequence{},
 		Event { "User Slates", "" },	Sequence{}, _targetPopup, TypeText { "UserSlates" }, _down, _return, endSequence{},
 		Event { "Words", "" },			Sequence{}, _targetPopup, TypeText { "Words" }, _down, _return, endSequence{},
+		Event { "CCDev", "" },			Sequence{}, _targetPopup, TypeText { "CCDev" }, _down, _return, endSequence{},
 		_SlateGlobals_,
 		_DirectionKeys_,
 		_WhitespaceKeys_,
