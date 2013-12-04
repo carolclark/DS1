@@ -18,20 +18,12 @@
 
 /* Begin PBXFileReference section */
 		6782203B184E88D3002F27D9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		6786D89B184E899A00255EE9 /* ccdevTest.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccdevTest.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		6786D89B184E899A00255EE9 /* ccdevTest.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ccdevTest.bundle; path = /Users/carolclark/Dev/Support/CCDev/build/Debug/ccdevTest.bundle; sourceTree = "<absolute>"; };
 		67976C16184D2A5800F09A53 /* ccdev_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ccdev_install.ksh; path = ccdev/ccdev_install.ksh; sourceTree = "<group>"; };
 		67976C17184D2E2D00F09A53 /* testScm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = testScm.py; path = ccdev/ccdev/testScm.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		67822039184E88D3002F27D9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6786D89B184E899A00255EE9 /* ccdevTest.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		6782203A184E88D3002F27D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -46,7 +38,6 @@
 				67976C16184D2A5800F09A53 /* ccdev_install.ksh */,
 				67976C14184D280400F09A53 /* ccdev */,
 				6782203A184E88D3002F27D9 /* Frameworks */,
-				67822039184E88D3002F27D9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,7 +102,7 @@
 				en,
 			);
 			mainGroup = 67976C09184D24C200F09A53;
-			productRefGroup = 67822039184E88D3002F27D9 /* Products */;
+			productRefGroup = 67976C09184D24C200F09A53;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -133,7 +124,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = ccdev/ccdev/testScm.py;
+			shellScript = "python -m unittest discover --start-directory ccdev/ccdev";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -155,7 +155,7 @@ resource restype_Slate (resid_Emacs, "") { {
 #define _RevisionNumber_		Event { "revision number", "" }, TypeText { "$vn " },
 #define	_GitFile_				Event { "git file", "" },	TypeText { "$gf " }
 #define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
-#define _CompareMasterCurrent_	Event { "compare", "" },	TypeText { "master..$cb" }
+#define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb" }
 #define _TypeVariable_		_CurrentBranch_,	\
 							_RevisionNumber_,	\
 							_GitFile_, 			\

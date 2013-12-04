@@ -39,7 +39,7 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"ccdev" )
-			destinationFolder="${CCDev}/bin"
+			destinationFolder="${CCDev}/bin/ccdev"
 			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
@@ -80,21 +80,15 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	if [[ -d "${HOME}/Library/CCDev/bin" ]] ; then
-		for fl in $(ls "${HOME}/Library/CCDev/bin") ; do
-			case $fl in
-				*.py )
-					rm $fl
-					;;
-			esac
-		done
-	fi
-	st=${?}
-	if [[ ${st} > 0 ]] ; then
-		errorMessage ${st} "$0#$LINENO:" "error while removing files: ${msg}"
-		return
-	fi
-	return
+	for folder in "${CCDev}/bin/ccdev"; do
+		msg=$(ccInstall --removeFolder "${folder}")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			errorMessage $${st} "$0#$LINENO:" "error: ${msg}"
+			return
+		fi
+	done
+	return 0
 }
 
 #^ 8 === main
