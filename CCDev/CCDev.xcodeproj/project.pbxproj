@@ -19,6 +19,7 @@
 /* Begin PBXFileReference section */
 		6782203B184E88D3002F27D9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		6786D89B184E899A00255EE9 /* ccdevTest.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ccdevTest.bundle; path = /Users/carolclark/Dev/Support/CCDev/build/Debug/ccdevTest.bundle; sourceTree = "<absolute>"; };
+		6786D8AB184FE15500255EE9 /* scm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = scm.py; path = ccdev/ccdev/scm.py; sourceTree = "<group>"; };
 		67976C16184D2A5800F09A53 /* ccdev_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ccdev_install.ksh; path = ccdev/ccdev_install.ksh; sourceTree = "<group>"; };
 		67976C17184D2E2D00F09A53 /* testScm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = testScm.py; path = ccdev/ccdev/testScm.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				67976C17184D2E2D00F09A53 /* testScm.py */,
+				6786D8AB184FE15500255EE9 /* scm.py */,
 			);
 			name = ccdev;
 			sourceTree = "<group>";

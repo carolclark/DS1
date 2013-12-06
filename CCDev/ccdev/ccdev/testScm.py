@@ -8,6 +8,7 @@
 #  Confidential and Proprietary.
 
 import unittest
+import scm
 
 class TestEquality(unittest.TestCase):
 
@@ -18,12 +19,16 @@ class TestEquality(unittest.TestCase):
 
 class TestScm(unittest.TestCase):
 
-	def test_equality(self):
-		""" This test can be easily modified to verify system behavior with a passing or a failing test. """
+	def testMergeMessage(self):
+		""" test mergeMessage(branchName="", issueNum=0) """
 
-		self.assertTrue(1 == 1)
+		self.assertEqual(scm.mergeMessage("abc", 55), "Merge branch 'abc' (#55)")
+		self.assertEqual(scm.mergeMessage(), "Merge branch")
+		self.assertEqual(scm.mergeMessage("abc"), "Merge branch 'abc'")
+		self.assertEqual(scm.mergeMessage(55), "Merge branch '55'")
+		self.assertEqual(scm.mergeMessage(issueNum=55), "Merge branch (#55)")
+
 
 if __name__ == '__main__':
-	suite = unittest.TestLoader().loadTestsFromTestCase(TestEquality)
-	suite = unittest.TestLoader().loadTestsFromTestCase(TestScm)
+	suite = unittest.TestLoader().loadTestsFromNames(["testScm.TestEquality", "testScm.TestScm"])
 	unittest.TextTestRunner(verbosity=2).run(suite)
