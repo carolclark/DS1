@@ -17,8 +17,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		674791F11854F40A00452FA5 /* ccdevTest.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ccdevTest.bundle; path = /Users/carolclark/Dev/Support/CCDev/build/Debug/ccdevTest.bundle; sourceTree = "<absolute>"; };
 		6782203B184E88D3002F27D9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		6786D89B184E899A00255EE9 /* ccdevTest.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ccdevTest.bundle; path = /Users/carolclark/Dev/Support/CCDev/build/Debug/ccdevTest.bundle; sourceTree = "<absolute>"; };
 		6786D8AB184FE15500255EE9 /* scm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = scm.py; path = ccdev/ccdev/scm.py; sourceTree = "<group>"; };
 		67976C16184D2A5800F09A53 /* ccdev_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ccdev_install.ksh; path = ccdev/ccdev_install.ksh; sourceTree = "<group>"; };
 		67976C17184D2E2D00F09A53 /* testScm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = testScm.py; path = ccdev/ccdev/testScm.py; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			);
 			name = ccdevTest;
 			productName = ccdevTest;
-			productReference = 6786D89B184E899A00255EE9 /* ccdevTest.bundle */;
+			productReference = 674791F11854F40A00452FA5 /* ccdevTest.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -269,6 +269,7 @@
 				6786D8A6184E899A00255EE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67976C0D184D24C200F09A53 /* Build configuration list for PBXProject "CCDev" */ = {
 			isa = XCConfigurationList;

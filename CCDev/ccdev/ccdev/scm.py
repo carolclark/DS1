@@ -7,10 +7,9 @@
 #  Copyright 2013 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
-def mergeMessage(branchName="", issueNum=0):
+def merge_message(branchName="", issueNum=0):
 	""" construct scm merge message for the specified branch, including issue number if supplied """
 
-	msg = ""
 	msg = "Merge branch"
 	if (len(str(branchName))) > 0:
 		msg = msg + " '" + str(branchName) + "'"
@@ -19,4 +18,4 @@ def mergeMessage(branchName="", issueNum=0):
 	return msg
 
 if __name__ == '__main__':
-	print mergeMessage ("abc", 55)
+	print merge_message ("abc", 55)

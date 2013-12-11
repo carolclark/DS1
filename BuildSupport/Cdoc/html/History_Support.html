@@ -50,13 +50,19 @@
 </pre>
 
 <h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
 	* add python function mergeMessage(branchName="",issueNum=0)
 		* new project CCDev with initial passing Python test testScm.py
 			* move python scripts to folder ${CCDev}/bin/ccdev; use test suites and discovery
+	* add file templates for python scripts and test cases
+	* merge_message accepts command-line arguments
+		* rename mergeMessage to merge_message for style compatiblity
+		* add and test cmdline access to merge_message
+		<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+		* extract ccdev.parse_cmdline
+		* scm.main handles multiple subcommands
 
 	* fix find 'git' issue in ccInstall findSources
-		* function filterSourceFiles(filenames)
+		* function find_source_files (path)
 </pre>
 
 <h4 id='gitWorkflow'><a href="http://github.com/carolclark/Support/issues/21">(#21)</a> add git workflow support</h4><pre>

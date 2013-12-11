@@ -17,16 +17,17 @@ class TestEquality(unittest.TestCase):
 
 		self.assertTrue(1 == 1)
 
+
 class TestScm(unittest.TestCase):
 
-	def testMergeMessage(self):
-		""" test mergeMessage(branchName="", issueNum=0) """
+	def test_merge_message(self):
+		""" test merge_message(branchName="", issueNum=0) """
 
-		self.assertEqual(scm.mergeMessage("abc", 55), "Merge branch 'abc' (#55)")
-		self.assertEqual(scm.mergeMessage(), "Merge branch")
-		self.assertEqual(scm.mergeMessage("abc"), "Merge branch 'abc'")
-		self.assertEqual(scm.mergeMessage(55), "Merge branch '55'")
-		self.assertEqual(scm.mergeMessage(issueNum=55), "Merge branch (#55)")
+		self.assertEqual(scm.merge_message("abc", 55), "Merge branch 'abc' (#55)")
+		self.assertEqual(scm.merge_message(), "Merge branch")
+		self.assertEqual(scm.merge_message("abc"), "Merge branch 'abc'")
+		self.assertEqual(scm.merge_message(55), "Merge branch '55'")
+		self.assertEqual(scm.merge_message(issueNum=55), "Merge branch (#55)")
 
 
 if __name__ == '__main__':
