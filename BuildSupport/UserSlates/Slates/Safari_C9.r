@@ -17,6 +17,7 @@
 #define resid_Login						resid_Safari+30
 #define resid_Discover					resid_Safari+35
 #define resid_AirTran					resid_Safari+36
+#define resid_Chase						resid_Safari+37
 #define resid_XcodeJavadoc				resid_Safari+100
 #define resid_Javadoc						resid_XcodeJavadoc+1
 #define resid_ScanLinks					resid_Safari+120
@@ -796,19 +797,35 @@ resource restype_Slate (resid_AirTran, "AirTran Slate") { {
 	Slate { "AirTran",	{
 		_SafariStandards_,
 		_CloseSubslate_,
-		Event { "type", "" },		TypeText { "Master" },
+		Event { "type", "" },		TypeText { "Visa" },
 		Event { "name", "" },		TypeText { "Carol Lynne Clark" },
-		Event { "number", "" },		TypeText { "4327470004698976" },
+		Event { "number", "" },		TypeText { "4011353100162959" },
 		Event { "month", "" },		TypeText { "04" },
-		Event { "long year", "" },	TypeText { "2013" },
-		Event { "year", "" },		TypeText { "13" },
+		Event { "long year", "" },	TypeText { "2016" },
+		Event { "year", "" },		TypeText { "16" },
 		Event { "zip", "" },		TypeText { "67220" },
-		Event { "security", "" },	TypeText { "686" },
+		Event { "security", "" },	TypeText { "058" },
 		Event { "tab", "" },		Keypress { kc_tab, 0 },
 	 } }
 } };
 
-#pragma mark Puzzles	
+resource restype_Slate (resid_Chase, "Chase Slate") { {
+	Slate { "Chase",	{
+		_SafariStandards_,
+		_CloseSubslate_,
+		Event { "type", "" },		TypeText { "Visa" },
+		Event { "name", "" },		TypeText { "Carol L Clark" },
+		Event { "number", "" },		TypeText { "4147202122387275" },
+		Event { "month", "" },		TypeText { "03" },
+		Event { "long year", "" },	TypeText { "2016" },
+		Event { "year", "" },		TypeText { "16" },
+		Event { "zip", "" },		TypeText { "67220" },
+		Event { "security", "" },	TypeText { "055" },
+		Event { "tab", "" },		Keypress { kc_tab, 0 },
+	 } }
+} };
+
+#pragma mark Puzzles
 #define _SudokuBase_		\
 		_SlateGlobals_,		\
 		_DirectionKeys_,	\
@@ -1425,6 +1442,7 @@ resource restype_Slate (resid_Safari, "Safari Slate") { {
 		Event { "Login", "" },				ResSubslate { resid_Login },
 		Event { "Discover", "" },			ResSubslate { resid_Discover },
 		Event { "AirTran", "" },			ResSubslate { resid_AirTran },
+		Event { "Chase", "" },				ResSubslate { resid_Chase },
 		Event { "Layout", "" },				ResSubslate { resid_Layout },
 		Event { "Browser", "" },			ResSubslate { resid_DocBrowser },
 	 } }

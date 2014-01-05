@@ -723,15 +723,14 @@ resource restype_Slate (resid_SourceControl, "Source Control") { {
 } };
 
 #pragma mark Branch
+// NOTE: Switching Branches with this menu command does checkout with --merge flag, which we do not want
 resource restype_Slate (resid_Branch, "") { {
 	Slate { "Branch",	{
 		_SlateGlobals_,
-		ExitEvent { "okay", "" },			Keypress { kc_escape, 0 },
 		ExitEvent { "cancel", "" },			Keypress { kc_escape, 0 },
-		Event { "execute", "" },			_return,
-		Event { "return	", "" },			_return,
-		Event { "new", "" },				Sequence{}, _right, TypeText { "New Branch" }, endSequence{},
-		Event { "switch", "" },				Sequence{}, _right, TypeText { "Switch to Branch" }, endSequence{},
+		ExitEvent { "execute", "" },		_return,
+		_DirectionKeys_,
+		_WhitespaceKeys_,
 		_TypeXcodeSlate_,
 	} }
 } };
