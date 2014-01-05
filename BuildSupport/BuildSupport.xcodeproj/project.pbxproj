@@ -97,6 +97,12 @@
 		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
 		673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		6741F2FB1743F2AB00F4FF6D /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
+		674791F318567B7500452FA5 /* ___FILEBASENAME___.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = "___FILEBASENAME___.py"; path = "PythonScript.xctemplate/___FILEBASENAME___.py"; sourceTree = "<group>"; };
+		674791F418567B7500452FA5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = PythonScript.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
+		674791F518567B7500452FA5 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TemplateInfo.plist; path = PythonScript.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
+		674791F718567E5400452FA5 /* ___FILEBASENAME___.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = "___FILEBASENAME___.py"; path = "PythonTestCase.xctemplate/___FILEBASENAME___.py"; sourceTree = "<group>"; };
+		674791F818567E5400452FA5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = PythonTestCase.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
+		674791F918567E5400452FA5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TemplateInfo.plist; path = PythonTestCase.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
 		674BF6BA15B7287A0093786D /* UserSlates.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSlates.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6761489016A8B93F00FE431B /* toBBEdit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
@@ -319,6 +325,26 @@
 				67EB1F9016BC4A1800B3DBB9 /* DoxyDemo */,
 			);
 			path = Doxygen;
+			sourceTree = "<group>";
+		};
+		674791F218567B4000452FA5 /* PythonModule.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				674791F318567B7500452FA5 /* ___FILEBASENAME___.py */,
+				674791F418567B7500452FA5 /* TemplateIcon.icns */,
+				674791F518567B7500452FA5 /* TemplateInfo.plist */,
+			);
+			name = PythonModule.xctemplate;
+			sourceTree = "<group>";
+		};
+		674791F618567E3A00452FA5 /* PythonTestCase.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				674791F718567E5400452FA5 /* ___FILEBASENAME___.py */,
+				674791F818567E5400452FA5 /* TemplateIcon.icns */,
+				674791F918567E5400452FA5 /* TemplateInfo.plist */,
+			);
+			name = PythonTestCase.xctemplate;
 			sourceTree = "<group>";
 		};
 		6761488F16A8B93F00FE431B /* Finder */ = {
@@ -908,6 +934,8 @@
 		67DD772316A4AF9300BECCD5 /* _Scripting */ = {
 			isa = PBXGroup;
 			children = (
+				674791F618567E3A00452FA5 /* PythonTestCase.xctemplate */,
+				674791F218567B4000452FA5 /* PythonModule.xctemplate */,
 				67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */,
 				67DD772416A4AF9300BECCD5 /* InstallTarget.xctemplate */,
 				67DD772816A4AF9300BECCD5 /* ShellScript.xctemplate */,

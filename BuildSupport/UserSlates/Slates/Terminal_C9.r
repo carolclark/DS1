@@ -155,7 +155,7 @@ resource restype_Slate (resid_Emacs, "") { {
 #define _RevisionNumber_		Event { "revision number", "" }, TypeText { "$vn " },
 #define	_GitFile_				Event { "git file", "" },	TypeText { "$gf " }
 #define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
-#define _CompareMasterCurrent_	Event { "compare", "" },	TypeText { "master..$cb" }
+#define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb" }
 #define _TypeVariable_		_CurrentBranch_,	\
 							_RevisionNumber_,	\
 							_GitFile_, 			\
@@ -230,21 +230,22 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
-		Event { "merge", "" },			Sequence{}, TypeText { "git merge --no-ff " }, ResSubslate { resid_gitMerge }, endSequence{},
-		Event { "merge base", "" },		Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
-		Event { "push", "" },			Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
-		Event { "fetch updates", "" },	Sequence{}, TypeText { "git fetchup " }, _return, endSequence{},
-		Event { "reset", "" },			Sequence{}, TypeText { "git reset " }, ResSubslate { resid_gitReset }, endSequence{},
-		Event { "clean files", "" },	Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
-		Event { "bisect", "" },			Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_gitBisect }, endSequence{},
-		Event { "blame", "" },			Sequence{}, TypeText { "git blame " }, ResSubslate { resid_gitBlame }, endSequence{},
+		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issue number: \"; read inum; mm=$(${CCDev}/bin/ccdev/scm.py $cb $inum); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "merge", "" },				Sequence{}, TypeText { "git merge --no-ff " }, ResSubslate { resid_gitMerge }, endSequence{},
+		Event { "merge base", "" },			Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
+		Event { "push", "" },				Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
+		Event { "fetch updates", "" },		Sequence{}, TypeText { "git fetchup " }, _return, endSequence{},
+		Event { "reset", "" },				Sequence{}, TypeText { "git reset " }, ResSubslate { resid_gitReset }, endSequence{},
+		Event { "clean files", "" },		Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
+		Event { "bisect", "" },				Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_gitBisect }, endSequence{},
+		Event { "blame", "" },				Sequence{}, TypeText { "git blame " }, ResSubslate { resid_gitBlame }, endSequence{},
 		Event { "set my variable", "" },	TypeText { "mv=" },
 		Event { "show message file", "" },	Sequence{}, TypeText { "cat $CCDev/tmp/gitmessage.txt" }, _return, endSequence{},
 		Event { "make executable", "" },	Sequence{}, TypeText { "chmod a+x " }, ResSubslate { resid_Type }, endSequence{},
 		Event { "list markers", "" },		Sequence{}, TypeText { "cat $gf | grep '#pragma mark' | sed 's|#pragma mark ||'" }, _return, endSequence{},
 		Event { "list tree", "" },			TypeText { "git ls-tree -r " },
 		Event { "show", "" },				TypeText { "git show --pretty=\"format:\" --name-only " },
-		Event { "set directory", "" },	Subslate { "set directory" },
+		Event { "set directory", "" },		Subslate { "set directory" },
 			_SlateGlobals_,
 			_CloseSubslate_,
 			ExitEvent { "Support", "" },		Sequence{}, TypeText { "cd ${DEV}/Support" }, _return, endSequence{},

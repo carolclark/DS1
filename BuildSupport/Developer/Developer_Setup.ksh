@@ -115,6 +115,7 @@ function gitPrintExclude {
 	print '.DS_Store'
 	print '*.bbprojectsettings'
 	print '*.xccheckout'
+	print '*.pyc'
 	print 'xcuserdata/'
 	print '_patches'
 }

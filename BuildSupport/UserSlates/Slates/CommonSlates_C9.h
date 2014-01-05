@@ -645,7 +645,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 	Event { "comma",			"," },	Keypress { kc_comma, 0 },			\
 	Event { "period",			"." },	Keypress { kc_period, 0 },		\
 	Event { "slash mark",		"/" },	Keypress { kc_slash, 0 },			\
-	Event { "stroke",			"/" },	Keypress { kc_slash, 0 },
+	Event { "stroke",			"/" },	Keypress { kc_slash, 0 },			\
+	Event { "asterisk", 		"*" },	Keypress { kc_8, mf_shift }
 
 //	Event { "pipe",				"\\" },	Keypress { kc_backslash, 0 },		\
 			

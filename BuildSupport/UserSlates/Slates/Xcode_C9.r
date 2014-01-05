@@ -260,7 +260,7 @@
 	Event { "new folder", "" },			Sequence{}, _clickFilter, _tab, _tab, _tab, _tab, _tab, endSequence{},		\
 	Event { "parent", "" },				Click { 1, 310, 340, _window, _topCenter },					\
 	Event { "subclass of", "" },		Click { 1, 310, 340, _window, _topCenter },					\
-	Event { "template groups", "" },	Click { 1, -270, 530, _window, _topCenter },				\
+	Event { "template groups", "" },	Click { 1, -337, 506, _window, _topCenter },				\
 	_FileDialogStandards_
 
 #pragma mark 9 --- Standards
@@ -723,15 +723,14 @@ resource restype_Slate (resid_SourceControl, "Source Control") { {
 } };
 
 #pragma mark Branch
+// NOTE: Switching Branches with this menu command does checkout with --merge flag, which we do not want
 resource restype_Slate (resid_Branch, "") { {
 	Slate { "Branch",	{
 		_SlateGlobals_,
-		ExitEvent { "okay", "" },			Keypress { kc_escape, 0 },
 		ExitEvent { "cancel", "" },			Keypress { kc_escape, 0 },
-		Event { "execute", "" },			_return,
-		Event { "return	", "" },			_return,
-		Event { "new", "" },				Sequence{}, _right, TypeText { "New Branch" }, endSequence{},
-		Event { "switch", "" },				Sequence{}, _right, TypeText { "Switch to Branch" }, endSequence{},
+		ExitEvent { "execute", "" },		_return,
+		_DirectionKeys_,
+		_WhitespaceKeys_,
 		_TypeXcodeSlate_,
 	} }
 } };
@@ -928,6 +927,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "All Tests", "" },		Sequence{}, _targetPopup, TypeText { "AllTests" }, _down, _return, endSequence{},
 		Event { "User Slates", "" },	Sequence{}, _targetPopup, TypeText { "UserSlates" }, _down, _return, endSequence{},
 		Event { "Words", "" },			Sequence{}, _targetPopup, TypeText { "Words" }, _down, _return, endSequence{},
+		Event { "CCDev", "" },			Sequence{}, _targetPopup, TypeText { "CCDev" }, _down, _return, endSequence{},
 		_SlateGlobals_,
 		_DirectionKeys_,
 		_WhitespaceKeys_,
@@ -1001,7 +1001,7 @@ resource restype_Slate (resid_Accessor, "") { {
 	Slate { "Accessor",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "Target", "" },			ResSubslate { resid_Target },
+		Event { "InHouse", "" },		Sequence{}, _targetPopup, TypeText { "InHouse" }, _down, _return, endSequence{},
 		Event { "analyze", "" },		Keypress { kc_B, mf_command + mf_shift },
 		Event { "clean", "" },			Keypress { kc_K, mf_command + mf_shift },
 		Event { "build", "" },			Sequence{}, Keypress { kc_B, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
@@ -2297,6 +2297,7 @@ resource restype_Slate (resid_BBContinueCheckAll, "resid_BBContinueCheckAll") { 
 		ExitEvent { "close", "" },		Keypress { kc_W, mf_command },
 		ExitEvent { "exit", "" },		NilAction{},
 		ExitEvent { "continue", "" },	Sequence{}, _return, _BBClickScriptsMenu, _down, TypeText { "CheckLinks" }, _return, endSequence{},
+		Event { "close window", "" },	Keypress { kc_W, mf_command },
 	} }
 } };
 

@@ -245,7 +245,7 @@ resource restype_Slate (resid_InsertElement, "") { {
 		ExitEvent { "ampersand", "" }, 		TypeText { "&amp;" },
 		ExitEvent { "less than", "" }, 		TypeText { "&lt;" },
 		ExitEvent { "greater than", "" }, 	TypeText { "&gt;" },
-		ExitEvent { "angle brackets", "" },	Sequence{}, TypeText { "&lt;&gt;<##> " }, _left, _left, _left, _left, _left, _left, _left, _left, _left, endSequence{},
+		ExitEvent { "angle brackets", "" },	Sequence{}, TypeText { "&lt;&gt;<##> " }, Keypress { kc_left, mf_option }, Keypress { kc_left, mf_option }, _left, endSequence{},
 		ExitEvent { "hard space", "" }, 	TypeText { "&nbsp;" },
 		ExitEvent { "arrow left", "" }, 	TypeText { "&larr;" },
 		ExitEvent { "arrow right", "" },	TypeText { "&rarr;" },
@@ -289,6 +289,7 @@ resource restype_Slate (resid_InsertStyle, "css Styles") { {
 resource restype_Slate (resid_InsertTag, "HTML tag") { {
 	Slate { "tag",	{
 		_SlateGlobals_,
+		_CloseSubslate_,
 		_DirectionKeys_,
 		ExitEvent { "comment", "" }, Sequence{}, TypeText { "<!--  -->" }, _left, _left, _left, _left, endSequence{},
 		ExitEvent { "break", "" }, TypeText { "<br />" },
