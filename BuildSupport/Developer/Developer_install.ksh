@@ -29,26 +29,22 @@ else
 	buildIsClean=1
 fi
 if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
-	if [[ $# < 3 ]] || [[ "${3}" != "clean" ]] ; then	# not a clean action
+	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
+		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
+			print "== clean skipped: target Developer has already been cleaned"
+			return
+		fi
+	else												# not a clean action
 		# installing
 		print -n "== Setup and Configure: "
-		if [[ ${buildIsClean} > 0 ]] ; then
-			. Developer/Developer_Setup.ksh
-			st=$?
-			if [[ ${st} > 0 ]] ; then
-				errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
-				return
-			fi
-			print "Setup and Configuration successful"
-		else
-			print "skipped"
+		. Developer/Developer_Setup.ksh
+		st=$?
+		if [[ ${st} > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
+			return
 		fi
+		print "Setup and Configuration successful"
 	fi
-fi
-
-if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
-	print "== clean skipped: target Developer has already been cleaned"
-	return
 fi
 
 . "${CCDev}/bin/ccInstall"
