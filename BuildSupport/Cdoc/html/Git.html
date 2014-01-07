@@ -111,7 +111,7 @@
 				<li>repeat until commit; edit/test; status; [add/stage]</li>
 				<li>[backup GitHub issues; add, OR if failure, checkout original]</li>
 				<li>construct and save commit message; verify modifications (diff tool)</li>
-				<li>status: check branch; add / review files to be committed; check for stray spaces (diff --cached --check)</li>
+				<li>status: check branch, issue number; add / review files to be committed; check for stray spaces (diff --cached --check)</li>
 				<li>review commit msgfile, and check for #issue; commit</li>
 				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
 				<li>check stash list</li>
@@ -130,7 +130,7 @@
 		<h5>[Merge]</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 			<li>checkout master; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>
-			<li><span class='mono'>merge &lt;branch&gt; --no-ff [--no-commit]</span><ul>
+			<li><span class='mono'>getMergeMessage; merge &lt;branch&gt; --no-ff -m "$mm" &lt;branch[$cb]&gt;</span><ul>
 				<li>after --no-commit: commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			</ul></li>
 			<li>[<b>Resolve Conflicts</b>]<ul>
