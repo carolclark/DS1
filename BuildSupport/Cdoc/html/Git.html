@@ -97,11 +97,10 @@
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Develop</h5><ul>
-			<li>select branch<ul>
-				<li>create or checkout branch</li>
+			<li>create or checkout branch<ul>
 				<li>if a pre-existing branch, <span class='em'>Update Branch</span></li>
 				<li><span class='em'>[Release*]</span><ul>
-					<li>select and set version $vn (eg. 1.0); branch release-$vn; bump version; commit ("bump version to $vn")</li>
+					<li>select and set $vn (eg. 1.0); branch release-$vn; bump version; commit ("bump version to $vn")</li>
 					<li>bug fixes as indicated; update history files, issue milestones</li>
 					<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
 					<li>merge release branch into 'master'; push 'master'; delete release branch</li>
@@ -111,7 +110,7 @@
 				<li>repeat until commit; edit/test; status; [add/stage]</li>
 				<li>[backup GitHub issues; add, OR if failure, checkout original]</li>
 				<li>construct and save commit message; verify modifications (diff tool)</li>
-				<li>status: check branch, issue number; add / review files to be committed; check for stray spaces (diff --cached --check)</li>
+				<li>status: check branch; add / review files to be committed; check for stray spaces (diff --cached --check)</li>
 				<li>review commit msgfile, and check for #issue; commit</li>
 				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
 				<li>check stash list</li>

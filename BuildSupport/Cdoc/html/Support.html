@@ -25,21 +25,23 @@ heading with name: Task Name; tsk_TaskName;5
 
 <!-- @marker "0 ===" -->
 <!-- @topicList "Support" "Contents" -->
-	<!-- @topicGroup "Policies and Techniques" "1" -->
+	<!-- @topicItem "Projects and Targets" "#ProjectsAndTargets" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Policies and Techniques" "3" -->
 		<!-- @topicItem "CCDev" "#tp_CCDev" "0" "" -->
 		<!-- @topicItem "Source Control" "#tp_SourceControl" "0" "" -->
 		<!-- @topicItem "Backup" "#tp_Backup" "0" "" -->
-		<!-- @topicGroup "" "5" -->
+		<!-- @topicGroup "" "7" -->
 		<!-- @topicItem "New System Setup" "#tp_NewSystemSetup" "0" "" -->
 		<!-- @topicItem "System Installation" "#tp_SystemInstallation" "0" "" -->
 		<!-- @topicItem "Web Sites" "#tp_WebSites" "0" "" -->
 		<!-- @topicItem "File Server" "#tp_FileServer" "0" "" -->
-		<!-- @topicGroup "" "10" -->
+		<!-- @topicGroup "" "12" -->
 		<!-- @topicItem "Unix" "#tp_Unix" "0" "" -->
 		<!-- @topicItem "Tools for Compiled Code" "#tp_CompileTools" "0" "" -->
 	<!-- @topicItem "Support Targets" "#Targets" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Related Project Files" "15" -->
+	<!-- @topicGroup "Related Project Files" "17" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
 		<!-- @topicItem "Developing Projects" "DevelopingProjects.html#Contents" "0" "tasks and refactorings" -->
 		<!-- @topicItem "Git" "Git.html#Contents" "0" "adopted source control system" -->
@@ -51,7 +53,155 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicItem "Personal" "Personal.html#Contents" "0" "Arbonne, ..." -->
 <!-- @/topicList -->
 
-<!-- @marker "1 === CCDev" -->
+<!-- @marker "1 === Projects and Targets" -->
+<h2>Projects and Targets</h2>
+<!-- @topicList "Projects and Targets" "ProjectsAndTargets" -->
+	<!-- @topicItem "BuildSupport" "#project_BuildSupport" "0" "" -->
+		<!-- @topicItem "Developer" "#target_Developer" "1" "" -->
+		<!-- @topicItem "UserSlates" "#target_UserSlates" "1" "" -->
+		<!-- @topicItem "Cdoc" "#target_Cdoc" "1" "" -->
+		<!-- @topicItem "Xcode" "#target_Xcode" "1" "" -->
+		<!-- @topicItem "BBEdit" "#target_BBEdit" "1" "" -->
+		<!-- @topicItem "XcodeScripts" "#target_XcodeScripts" "1" "" -->
+		<!-- @topicItem "BBEditScripts" "#target_BBEditScripts" "1" "" -->
+		<!-- @topicItem "DeveloperScripts" "#target_DeveloperScripts" "1" "" -->
+		<!-- @topicItem "Doxygen" "#target_Doxygen" "1" "" -->
+		<!-- @topicItem "AllTests" "#target_AllTests" "1" "" -->
+	<!-- @topicGroup "" "12" -->
+	<!-- @topicItem "CCDev" "#project_CCDev" "0" "" -->
+		<!-- @topicItem "CCDev" "#target_ccdev" "1" "" -->
+		<!-- @topicItem "CCDevTests" "#target_ccdevTest" "1" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "= BuildSupport" -->
+<div class='depr'>
+<h4 id='project_BuildSupport'>project BuildSupport</h4><pre>
+	*set up development environment and support, including: developer configuration and scripts; application Support; Accessor Slates*
+</pre>
+
+<!-- @marker "Developer" -->
+<h5 id='target_Developer'>target Developer</h5><pre>
+	*set up development environment, including developer configuration and scripts*
+	* external target with script `Developer/Developer_install.ksh "${SRCROOT}" Developer $(ACTION)`
+	* dependency relationships: <a href="#target_DeveloperScripts">DeveloperScripts</a>
+	* configuration: &lt;defaults&gt;
+	* integration: shunit tests run as part of build process
+		* todo: consider sequencing; integration should use a clean build
+</pre>
+
+<!-- @marker "UserSlates" -->
+<h5 id='target_UserSlates'>target_UserSlates</h5><pre>
+	*Resources that generate User Slates for application Accessor*
+	* Bundle target with build phases:
+		* CompileCarbonResources (CompileSources) containing *.r files
+		* RunScript (ksh):
+			* `mkdir -p ${HOME}/Library/CCDev/UserSlates`
+			* `cp ${BUILT_PRODUCTS_DIR}/UserSlates.bundle/Contents/Resources/UserSlates.rsrc ${HOME}/Library/CCDev/UserSlates/Accessor.rsrc`
+	* dependency relationships: used by Accessor target <a href="../Accessor/Accessor.html#target_Accessor">Accessor</a>
+	* configuration: todo
+	* integration: build and use only (todo: ?? for Carbon Resources)
+</pre>
+
+<!-- @marker "target_Cdoc" -->
+<h5 id='target_Cdoc'>target Cdoc</h5><pre>
+	*technical documentation for this repository*
+	* external target with script `Cdoc/Cdoc_install.ksh "${SRCROOT}" Cdoc $(ACTION)`
+	* dependency relationships: &lt;none&gt;
+	* configuration: &lt;defaults&gt;
+	* integration: Script ValidateHTML uses BBEdit to validate syntax and check links
+</pre>
+
+<!-- @marker "target_Xcode" -->
+<h5 id='target_Xcode'>target Xcode</h5><pre>
+	*scripts and templates to support Xcode application*
+	* external target with script `Xcode/Xcode_install.ksh "${SRCROOT}" Xcode $(ACTION)`
+	* dependency relationships: <a href="#target_XcodeScripts">XcodeScripts</a>
+	* configuration: &lt;defaults&gt;
+	* integration: shunit tests run as part of build process
+</pre>
+
+<!-- @marker "target_BBEdit" -->
+<h5 id='target_BBEdit'>target BBEdit</h5><pre>
+	*scripts to support BBEdit application*
+	* external target with script `BBEdit/BBEdit_install.ksh "${SRCROOT}" BBEdit $(ACTION)`
+	* dependency relationships: <a href="#target_BBEditScripts">BBEditScripts</a>
+	* configuration: &lt;defaults&gt;
+	* integration: shunit tests run as part of build process
+</pre>
+
+<!-- @marker "target_XcodeScripts" -->
+<h5 id='target_XcodeScripts'>target XcodeScripts</h5><pre>
+	*AppleScripts installed by target <a href="#target_Xcode">Xcode</a>*
+	* bundle target with CompileSources build phase containing *.applescript files
+	* dependency relationships: used by target <a href="#target_Xcode">Xcode</a>
+	* configuration: &lt;defaults&gt;
+	* integration: no testing yet for AppleScript (ASUnit to be implemented)
+</pre>
+
+<!-- @marker "target_BBEditScripts" -->
+<h5 id='target_BBEditScripts'>target BBEditScripts</h5><pre>
+	*AppleScripts installed by target <a href="#target_BBEdit">BBEdit</a>*
+	* bundle target with CompileSources build phase containing *.applescript files
+	* dependency relationships: used by target <a href="#target_BBEdit">BBEdit</a>
+	* configuration: &lt;defaults&gt;
+	* integration: no testing yet for AppleScript (ASUnit to be implemented)
+</pre>
+
+<!-- @marker "target DeveloperScripts" -->
+<h5 id='target_DeveloperScripts'>target DeveloperScripts</h5><pre>
+	*AppleScripts installed by target <a href="#target_Developer">Developer</a>*
+	* bundle target with CompileSources build phase containing *.applescript files
+	* dependency relationships: used by target <a href="#target_Developer">Developer</a>
+	* configuration
+		* ?why? CONFIGURATION_BUILD_DIR (Per-Configuration Build Products Path): ${HOME}/Library/CCDev/build/Support/BuildSupport/Developer
+		* ?why? INSTALL_PATH (Installation Directory) = $(LOCAL_LIBRARY_DIR)/Bundles
+		* ?why? MACOSX_DEPLOYMENT_TARGET ( OS X Deployment Target)= 10.8
+	* integration: build target Development only (todo: for each, deprecate if indicated, or add AppleScript testing)
+</pre>
+
+<!-- @marker "target_Doxygen" -->
+<h5 id='target_Doxygen'>target Doxygen</h5><pre>
+	*builds Doxygen documentation for sample project*
+	* external target with script `Doxygen/Doxygen_install.ksh "${SRCROOT}" Doxygen $(ACTION)`
+	* dependency relationships: &lt;none&gt;
+	* configuration: &lt;defaults&gt;
+	* integration: building Doxygen documentation checks Doxygen comments in source files
+</pre>
+
+<!-- @marker "target_AllTests" -->
+<h5 id='target_AllTests'>target AllTests</h5><pre>
+	*actually runs only Developer and Xcode tests*
+	* Bundle target
+	* dependency relationships: <a href="#target_Developer">Developer</a>, <a href="#target_Xcode">Xcode</a>
+	* configuration: &lt;defaults&gt;
+	* integration: runs some tests
+</pre>
+
+<!-- @marker "= CCDev" -->
+<h4 id='project_CCDev'>project CCDev</h4><pre>
+	*initial Python scripts*
+</pre>
+
+<!-- @marker "target_ccdev" -->
+<h5 id='target_ccdev'>target ccdev</h5><pre>
+	*initial Python scripts intended for module ccdev*
+	* external target with script `ccdev/ccdev_install.ksh "${SRCROOT}" ccdev $(ACTION)`
+	* dependency relationships: <a href="#target_ccdevTest">ccdevTest</a>
+	* configuration: &lt;defaults&gt;
+	* integration: ccdevTest run on build
+</pre>
+
+<!-- @marker "target_ccevTest" -->
+<h5 id='target_ccdevTest'>target ccdevTest</h5><pre>
+	*tests for target ccdev*
+	* Bundle target with Run Script build phase `python -m unittest discover --start-directory ccdev/ccdev`
+	* dependency relationships: used by target <a href="#target_ccdev">ccdev</a>
+	* configuration: &lt;defaults&gt;
+	* integration: Python tests run as part of build process
+</pre>
+</div>
+
+<!-- @marker "2 === CCDev" -->
 <h2>CCDev</h2>
 <!-- @topicList "CCDev" "tp_CCDev" -->
 	<!-- @topicItem "Scripting" "#Scripting" "0" "" -->
@@ -129,7 +279,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h4><a name="ScriptingSnippets">Snippets</a></h4>
 <p class='expand'>expand</p>
 
-<!-- @marker "2 ===" -->
+<!-- @marker "3 ===" -->
 <!-- @marker "ccInstall" -->
 <h3><a name="ccInstall">ccInstall</a></h3>
 <p>CCDev supports an installation system used to process script-based targets. It is used primarily to install technical documentation, application configuration automation support, and general developer scripting support.</p>
@@ -149,7 +299,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <p>ccInstall provides support for install scripts.</p>
 <p><a class='glosslink' href='Glossary_Support.html#def_Cdoc'>Cdoc</a> (technical documentation) targets  can normally be installed directly by ccInstall, instead of requiring a script Cdoc_install.ksh. If the Cdoc folder contains a script &lt;ProjectName&gt;Additions.ksh, it will be executed as part of the install process.</p>
 
-<!-- @marker "3 ===" -->
+<!-- @marker "4 ===" -->
 <div class='todo'>
 <!-- @marker "Source Control" -->
 <h2>Source Control</h2>
@@ -369,7 +519,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 </ul>
 </div>
 	
-<!-- "4 ==="-->
+<!-- "5 ==="-->
 <!-- @marker "Backup" -->
 <h2>Backup</h2>
 <!-- @topicList "Backup" "tp_Backup" -->
@@ -599,7 +749,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	</ul></li>
 </ul>
 
-<!-- @marker "5 ===" -->
+<!-- @marker "6 ===" -->
 <!-- @marker "Web Sites" -->
 <h2>Web Sites</h2>
 <!-- @topicList "Web Sites" "tp_WebSites" -->

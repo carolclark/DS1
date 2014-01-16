@@ -2274,7 +2274,7 @@ resource restype_Slate (resid_Console, "") { {
 } };
 
 #pragma mark 6 --- BBEdit
-#define _BBClickScriptsMenu	Click { 1, 628, 11, _screen, _topLeft }
+#define _BBClickScriptsMenu	Click { 1, 580, 10, _screen, _topLeft }
 resource restype_Slate (resid_BBValidate, "html validation support") { {
 	Slate { "ValidateHTML",	{
 		_SlateGlobals_,

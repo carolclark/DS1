@@ -97,7 +97,7 @@ function cleanTarget {
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
-			errorMessage $${st} "$0#$LINENO:" "error: ${msg}"
+			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 			return
 		fi
 	done

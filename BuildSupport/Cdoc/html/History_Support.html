@@ -15,8 +15,9 @@
 
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
+	<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
+		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
 		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
-			<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
 		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
@@ -34,6 +35,14 @@
 <!-- @marker "Active Issues" -->
 <h2 id='ActiveIssues'>Active Issues</h2>
 
+<!-- @marker "restructure Xcode projects" -->
+<h4 id='restructureXcodeProjects'><a href="http://github.com/carolclark/Accessor/issues/23">(#23)</a>restructure Xcode projects</h4><pre>
+	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	* use shared build output directory for all Xcode projects; see <a href="http://www.clintharris.net/2009/iphone-app-shared-libraries/">Easy, Modular: Static Libraries and Cross-Project References</a>
+	* rename Python target CCDev to CCDevPy to avoid confusion with new project CCDev, which will replace existing target Developer
+	* (new) project CCDev
+</pre>
+
 <!-- @marker "upgrade to Mavericks" -->
 <h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/Support/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
 	* Xcode 5
@@ -46,12 +55,11 @@
 			* Xcode: organize macros; add Test index; update search/find
 	* support Xcode 5
 		* improve/add branch model support, slates Source Control, Documentation, all Indexes
-	<li class='tlmark'>&lt;--</li>
 	* Mavericks
 		* Slates: support Safari Bookmarks/Sidebar button, Finder tabs
 		* for all Repositories / all Targets: test and analyze; document full testing and analysis process
-		* <a href="http://github.com/carolclark/Accessor/issues/9">(Accessor#9) fix Mouse:ShowPosition
-
+	<li class='tlmark'>&lt;--</li>
+	* <a href="#restructureXcodeProjects">restructure Xcode projects</a> (#23)
 </pre>
 
 <h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
@@ -66,7 +74,7 @@
 	* refactor
 		* simplify &amp; refactor Developer build
 			* Developer build: Developer_Setup always runs
-			<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+			<li class='tlmark'>&lt;--</li>
 			* include Python scripts and tests in targets Developer, AllTests
 			* refactor ksh scripts: for files dotted in at the top, move help information to follow them so included help info does not replace file's info
 			* rename Python tests to sort with their module
