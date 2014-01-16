@@ -224,8 +224,9 @@ resource restype_Slate (resid_Bookmarks, "Bookmarks") { {
 		_JumpNorthSubslate_,
 		_DoJumpSubslate_,
 		_LetterKeys_,
-		Event { "Edit", "" },			Sequence{}, Keypress { kc_B, mf_command+ mf_option },
-			ResSubslate { resid_EditBookmarks }, endSequence{},
+		ExitEvent { "show", "" },				Sequence{}, _down, _return, endSequence{},
+		ExitEvent { "hide", "" },				Sequence{}, _down, _return, endSequence{},
+		Event { "edit", "" },					Sequence{}, Keypress { kc_B, mf_command+ mf_option }, ResSubslate { resid_EditBookmarks }, endSequence{},
 	} }
 } };
 
