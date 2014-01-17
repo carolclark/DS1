@@ -117,6 +117,7 @@ function gitPrintExclude {
 	print '*.xccheckout'
 	print '*.pyc'
 	print 'xcuserdata/'
+	print '.idea/'
 	print '_patches'
 }
 
