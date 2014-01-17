@@ -103,6 +103,7 @@
 	#define resid_XcodeDash					resid_Dash+1
 #define resid_GitHub					38000
 #define resid_Developer					39000
+#define resid_AppCode					40000
 #define resid_ArbProto					50000
 
 #define	resid_LaunchGamesSlate			55000
