@@ -105,7 +105,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Carol Clark";
 			};
-			buildConfigurationList = 67976C0D184D24C200F09A53 /* Build configuration list for PBXProject "CCDev" */;
+			buildConfigurationList = 67976C0D184D24C200F09A53 /* Build configuration list for PBXProject "CCDevPy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -280,7 +280,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67976C0D184D24C200F09A53 /* Build configuration list for PBXProject "CCDev" */ = {
+		67976C0D184D24C200F09A53 /* Build configuration list for PBXProject "CCDevPy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67976C0F184D24C200F09A53 /* Debug */,

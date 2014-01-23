@@ -17,7 +17,7 @@
                BlueprintIdentifier = "6786D89A184E899A00255EE9"
                BuildableName = "ccdevTest.bundle"
                BlueprintName = "ccdevTest"
-               ReferencedContainer = "container:CCDev.xcodeproj">
+               ReferencedContainer = "container:CCDevPy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
