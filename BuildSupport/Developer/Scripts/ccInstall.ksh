@@ -67,7 +67,7 @@ function setPaths {
 	targetName="${targetFolder%%/*}"
 	workspacePath="${sourceRoot%/*}"			# local var
 	workspaceName="${workspacePath##/*/}"		# local var
-	lastbuilt="${CCDev}/build/${workspaceName}/${sourceRoot##*/}/${targetName}.lastbuilt"
+	lastbuilt="${CCDev}/build_output/${workspaceName}/${sourceRoot##*/}/${targetName}.lastbuilt"
 }
 
 #^ getPath

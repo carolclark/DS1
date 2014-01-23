@@ -20,7 +20,7 @@ testTargetName() {
 	sourceRoot=$(ccInstall --getSourceRoot "${sourceRoot}" "${targetFolder}")
 	assertEquals "$LINENO: incorrect sourceRoot: " "${DEV}/Support/BuildSupport" "${sourceRoot}"
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
-	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/Support/BuildSupport/Doxygen.lastbuilt" "${lastbuilt}"
+	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build_output/Support/BuildSupport/Doxygen.lastbuilt" "${lastbuilt}"
 	ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
 	ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"

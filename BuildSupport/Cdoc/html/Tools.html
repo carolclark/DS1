@@ -418,8 +418,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 
 <!-- @marker "Xcode" -->
 <h2><a name="_Xcode">Xcode</a></h2>
-	<p><b>Application</b> v. 4.0.2 at /Developer/Xcode4; downloaded from Apple</p>
-	<p><b>Critical Data</b> SnapshotRepository at ~/Library/Application Support/Developer/Shared/SnapshotRepository.sparseimage</p>
+	<p><b>Application</b> Xcode v. 5.0.2 (5A4005); from AppStore</p>
 	<p><b>Configuration</b> </p>
 	<ul>
 		<li><b>Text Editing:</b><ul>
@@ -434,59 +433,25 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<ul>
 			<li><b>Xcode</b> Hide Xcode [none]; Hide Others [none]</li>
 			<li><b>Window</b> Minimize [none]</li>
-			<li><b>Edit &gt; Format</b> Balance [cM]</li>
-			<li><b>Edit &gt; Find</b> Replace [cH]; Replace and Find Next [csH]; Hide Find Bar [croG]</li>
-			<li><b>Editor &gt; Code Folding</b> Unfold All [coDown]</li>
-			<li><b>Text</b> Select Line [rM], Select Word [roW]; Capitalize Word [srUp]; Lowercase Word [srDown]</li>
+			<li><b>Edit &gt; Structure</b> Balance Delimiter [cM]</li>
+			<li><b>Version Editor Views:</b> &gt; Conparison osC; &gt; Blame osB; Log osL</li>
+			<li><b>Text</b> Select Line [rosW], Select Word [roW]; Capitalize Word [srUp]; Lowercase Word [srDown]</li>
 		</ul></li>
 		<li>Behaviors<ul>
-			<li>Build Fails: show bezel alert; show tab Build; show Issue Navigator; navigate to first new issue</li>
+			<li>Build Fails: show bezel alert; show tab Build; show Log Navigator; navigate to first current log</li>
 			<li>Build Generates New Issues: show tab Build; show Issue Navigator; navigate to first new issue</li>
-			<li>Testing Fails: show bezel alert; show tab Build; show Log Navigator; navigate to current log</li>
-			<li>Testing Succeeds: show bezel alert; show tab Build; show Log Navigator; navigate to current log</li>
-			<li>Run Pauses: show tab Debug; show Debug Navigator; show Variables &amp; Console</li>
+			<li>Run Pauses: show tab Debug; show Debug Navigator; show debugger with Variables &amp; Console</li>
+		</ul></li>
+		<li>Source Control: local revision on: right</li>
+		<li>Locations<ul>
+			<li>Derived Data (Advanced): Products, Intermediates: custom absolute location ${CCDev}/build_output</li>
+			<li>Source Trees: CC_BUILD_OUTPUT ${CCDev}/build_output</li>
 		</ul></li>
 		<li>Assistive Access<ul>
-			<li>shell scripts: add to Behaviors</li>
-			<li>AppleScripts, Workflows: add to scripts menu; Slates call file directly</li>
-			<li>to call ruby from Accessor: <span class='mono'>do shell script "/usr/bin/ruby ~/Library/CCDev/hello.rb"</span></li>
+			<li>AppleScripts: add to Scripts &gt; Xcode menu; Slates call file directly</li>
+			<li>Workflows: add to Services menu with hotkey</li>
 		</ul></li>
 	</ul>
-	<ul class='depr'>
-		<li class='dq'><b>Code Sense</b> Always Suggest, with delay .2 sec</li>
-		<li><b>Building</b> (new defaults/placement?)<ul>
-			<li>Place Build Products In: Customized Location: /Users/carolclark/Dev/build</li>
-			<li>For Unsaved Files: always save</li>
-		</ul></li>
-		<li><b>Alerts</b><ul>
-			<li>Build Fails: Show Issue Navigator; Navigate to first issue</li>
-		</ul></li>
-		<li><b>Debugging</b> (new defaults/placement?)<br />
-			On Start: Show Console; In Editor Debugging Controls: off</li>
-		<li><b>Key Bindings</b> Carol's Key Bindings: start with copy of Xcode Default<br />
-		<ul>
-			<li><b>Xcode</b> Hide Xcode [none]; Hide Others [none]</li>
-			<li><b>Window</b> Minimize [none], Minimize All [none]</li>
-			<li><b>File</b> New Tab [corN]</li>
-			<li><b>Edit &gt; Format</b> Balance [cM]</li>
-			<li><b>Edit &gt; Find</b> Replace [cH]; Replace and Find Next [csH]</li>
-			<li><b>Text</b> Select Line [rM], Select Word [rO]; Capitalize Word [srC]; Lowercase Word [srL]</li>
-		</ul></li>
-		<li><b>Text Editing</b> Show Line Numbers: on</li>
-		<li class='dq'><b>Fonts &amp; Colors</b> Carol's Theme: start with copy of default; All Editor Fonts: Monaco 9</li>
-		<li><b>File Types</b> text.plist: source code</li>
-		<li><b>Source Trees</b> add CCDEV_DIR; CCDev Directory; /Users/Shared/CCDev</li>
-		<li><b>SCM</b> add repository for each project with URL file:///Users/carolclark/Dev/svnrep/&lt;projectName&gt;</li>
-	</ul>
-	<p><b>Window Toolbars</b> expected by Xcode Slate</p>
-	<ul class='depr'>
-		<li><b>Project Window</b> icons only<br />
-		Active Target; Active Executable; Active Build Configuration; Flexible Space; Search; Editor; Action; Tasks</li>
-		<li><b>Reference Window</b> icons only<br />
-		Back/Forward; Home; Bookmarks; man Page; Flexible Space; Preferences; Search</li>
-	</ul>
-
-	<p><b>Custom Menus</b> custom Scripts menu installed by target DevSupport:Xcode</p>
 
 <!-- @marker "3 === Tools and Libraries" -->
 <h2>Tools and Libraries</h2>
