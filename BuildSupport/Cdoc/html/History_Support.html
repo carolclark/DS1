@@ -37,7 +37,7 @@
 
 <!-- @marker "restructure Xcode projects" -->
 <h4 id='restructureXcodeProjects'><a href="http://github.com/carolclark/Support/issues/23">(#23)</a>restructure Xcode projects</h4><pre>
-	<!-- @marker "3 === Current" --><li class='tlhead' id='hmark_Current'>&lt;-- Current</li>
+	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 	* use shared build output directory for all Xcode projects; see <a href="http://www.clintharris.net/2009/iphone-app-shared-libraries/">Easy, Modular: Static Libraries and Cross-Project References</a>
 	* rename Python target CCDev to CCDevPy to avoid confusion with new project CCDev, which will replace existing target Developer
 	* (new) project CCDev
@@ -58,7 +58,7 @@
 	* Mavericks
 		* Slates: support Safari Bookmarks/Sidebar button, Finder tabs
 		* for all Repositories / all Targets: test and analyze; document full testing and analysis process
-	<li class='tlmark'>&lt;--</li>
+	<span class='tlmark'>&lt;--</span>
 	* <a href="#restructureXcodeProjects">restructure Xcode projects</a> (#23)
 </pre>
 
@@ -74,7 +74,7 @@
 	* refactor
 		* simplify &amp; refactor Developer build
 			* Developer build: Developer_Setup always runs
-			<li class='tlmark'>&lt;--</li>
+			<span class='tlmark'>&lt;--</span>
 			* include Python scripts and tests in targets Developer, AllTests
 			* refactor ksh scripts: for files dotted in at the top, move help information to follow them so included help info does not replace file's info
 			* rename Python tests to sort with their module
@@ -92,7 +92,7 @@
 	* backup GitHub issue content
 	* script to automate backup of GitHub issue content
 		* new script file githUtil: utility functions for git and GitHub
-	<li class='tlmark'>&lt;--</li>
+	<span class='tlmark'>&lt;--</span>
 	* use separate history file Support_v0_1.html for work on milestone v0.1
 		* add Development Overview section for planning
 	* allow markdown files to be included in the source for Cdoc sites
@@ -111,7 +111,7 @@
 			* also add additional settings to colorize <span class='mono'>ls</span> and <span class='mono'>grep</span>
 	* add support for using <span class='mono'>git remote update</span> instead of <span class='mono'>git pull</span>
 		* *updates from all remotes; then supports merge process that preserves merge commits, and stops to allow re-base rather than continuing with a merge that is not fast-forward; see <a href="http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop">How to avoid these merge commits in the future</a>*
-	<li class='tlmark'>&lt;--</li>
+	<span class='tlmark'>&lt;--</span>
 	* refactor: for all unix files, includes come before help info to keep file's help from being overwritten by that from includes
 	* handle items that now enter scripts via user slate
 </pre>
@@ -119,7 +119,7 @@
 <!-- @marker "Automation" -->
 <h4 id='Automation'>Ongoing Automation</h4><pre>
 	* GitHub subslate for Xcode
-	<li class='tlmark'>&lt;--</li>
+	<span class='tlmark'>&lt;--</span>
 	* assistance for typing Markdown (Maybe Dash snippets accessed with `Type > markdown`?)
 </pre>
 
@@ -128,7 +128,7 @@
 
 <h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>
 	* adapt History_Support.html to synchronize with GitHub issues
-	<li class='tlmark'>&lt;--</li>
+	<span class='tlmark'>&lt;--</span>
 </pre>
 
 <h4 id='replaceKshFPATH'><a href="http://github.com/carolclark/Support/issues/5">(#5)</a> replace ksh $FPATH calls with dot syntax</h4><pre>
@@ -143,7 +143,7 @@
 			* trap 'echo "$0#$LINENO: Command exited with status $?." 1>&amp;2' ERR
 		* script files: move ccInstall.ksh to Scripts; delete function errtrap.ksh and obsolete script cleanProjectTarget.ksh
 		* delete now-empty folder at $FPATH; remove variable $FPATH
-	<li class='tldate'>[05/03/2013]</li>
+	<span class='tldate'>[05/03/2013]</span>
 </pre>
 
 <h4 id='UNIXerror'><a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling</h4><pre>
@@ -1054,7 +1054,7 @@
 	* Xcode: resort for improved Marker navigation; resort Slate #defines to match code; renumber resorted Slates
 	* GitHub: move GitHub Slates from Xcode to new file; support Xcode-specific GitHub Slate
 	* GitHub: update Slates for revised layouts
-	<li class='tlmark'>&lt;--</li>
+	<span class='tlmark'>&lt;--</span>
 	* BBEdit: support Developer Slates as for Xcode
 		* extract Developer #define's and slates from Xcode
 		* clean up and resort BBEdit Slate

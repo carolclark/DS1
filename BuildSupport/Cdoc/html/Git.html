@@ -129,7 +129,7 @@
 		<h5>[Merge]</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 			<li>checkout master; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>
-			<li><span class='mono'>getMergeMessage; merge &lt;branch&gt; --no-ff -m "$mm" &lt;branch[$cb]&gt;</span><ul>
+			<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span><ul>
 				<li>after --no-commit: commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			</ul></li>
 			<li>[<b>Resolve Conflicts</b>]<ul>
@@ -137,7 +137,7 @@
 				<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
 				<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
 			</ul></li>
-			<li>show --name-only; lg compare; lg origin/master..master</li>
+			<li>show --name-only; diff --name-status origin/master..master; lg origin/master..master</li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
 				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
 			</ul></li>
