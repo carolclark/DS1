@@ -1,5 +1,140 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/36",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/36/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/36/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/36/events",
+    "html_url": "https://github.com/carolclark/Support/issues/36",
+    "id": 25845932,
+    "number": 36,
+    "title": "remove non-ascii characters",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-01-17T23:31:44Z",
+    "updated_at": "2014-01-17T23:36:04Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "special non-ascii characters bullets and copyright symbols are used; they are not recommended and have caused some problems in the past\r\nAppCode replaces them with special '?' characters\r\n\r\nreplace bullets with *, copyright symbols with (c)"
+  },
+  {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/35",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/35/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/35/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/35/events",
+    "html_url": "https://github.com/carolclark/Support/issues/35",
+    "id": 25355489,
+    "number": 35,
+    "title": "AppleScript testing",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-01-09T21:03:21Z",
+    "updated_at": "2014-01-09T21:14:24Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "[ASUnit](https://github.com/lifepillar/ASUnit)\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/34",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/34/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/34/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/34/events",
+    "html_url": "https://github.com/carolclark/Support/issues/34",
+    "id": 25198328,
+    "number": 34,
+    "title": "TV as monitor",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-01-07T21:27:10Z",
+    "updated_at": "2014-01-07T21:27:10Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "AppleTV as a monitor with bluetooth keyboard and mouse?\r\nStatus 1/07/14\r\n    keyboard, mouse appear to work fine from living room\r\n    bluetooth microphone works from hall but not living room - insufficient range?\r\n   cannot airplay from screen with computer from 2009 (2011 required)\r\n "
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/33",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/33/labels{/name}",
     "comments_url": "https://api.github.com/repos/carolclark/Support/issues/33/comments",
@@ -58,23 +193,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-12-31T21:01:27Z",
-    "updated_at": "2014-01-03T22:14:07Z",
+    "updated_at": "2014-01-17T23:36:04Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "### Status 12/31/2014\r\n* OS X 10.9 Mavericks is current; recommended Mavericks upgrades have not been done\r\n* some recommended tasks from previous OS X versions were not completed\r\n* we have also learned a lot in some areas, especially testing, that we need to implement\r\n\r\nThis issue collects multiple github issues relating to these items for planning, organizing and tracking.\r\n\r\n\r\n\r\n##### Upgrade History Files\r\n#3 adopt GitHub Issues and Markdown\r\n\r\n##### Rebuild Projects\r\n\r\n##### Backup and Maintenance\r\n#4 establish and implement full backup procedure\r\n\r\n\r\n\r\n- [ ] #7 establish Objective-C coding standards\r\n#8 establish stronger compiler error recognition\r\n#9 organize Objective-C code consistently\r\n#10 implement Private Categories\r\n#11 testing: code coverage tool\r\n#12 modernize Objective-C\r\n#13 profile with Instruments\r\n#16 distribution and entitlements\r\n#17 implement scheduled maintenance\r\n#20 upgrade LLDB debugging support\r\n#21 git workflow support\r\n#22 convert scripts ccInstall and archive to Python\r\n#23 rebuild simpler Xcode projects\r\n#24 improve TechnicalDocs upload\r\n#25 add Finder target\r\n#29 Mavericks\r\n#30 Convert to ARC\r\n#31 Python and Workflow support\r\n#32 Doxygen install script generates config file\r\ncarolclark/Punkin#2 configure for AppStore\r\ncarolclark/Punkin#5 refactor for testability\r\ncarolclark/Punkin#6 handle PaintCode files\r\ncarolclark/Accessor#5 adopt a C++ unit testing tool\r\ncarolclark/Accessor#6 secure automation\r\ncarolclark/Accessor#7 upgrade C++ wrapper classes to use ivars\r\ncarolclark/Accessor#8 migrate to ARC\r\n\r\n\r\n\r\n\r\n\r\n"
+    "body": "### Status 12/31/2014\r\n* OS X 10.9 Mavericks is current as of WWDC13\r\n* Xcode 5 his been adopted; Mavericks to be installed soon\r\n* some recommended tasks from previous OS X versions were not completed\r\n* we have also learned a lot in some areas, especially testing, that we need to implement\r\n\r\nThis issue collects multiple github issues relating to these items for planning, organizing and tracking.\r\n\r\n\r\n\r\n##### Rebuild Projects\r\n- [ ] #23 rebuild simpler Xcode projects\r\n\r\n##### Upgrade History Files\r\n- [ ] #3 adopt GitHub Issues and Markdown\r\n\r\n##### Backup and Maintenance\r\n- [ ] #4 establish and implement full backup procedure\r\n\r\n##### By Project\r\n- [ ] #11 testing: code coverage tool\r\n\r\n##### C-based languages\r\n- [ ] #12 modernize Objective-C\r\n- [ ] #8 establish stronger compiler error recognition\r\n- [ ] #7 establish Objective-C coding standards\r\n- [ ] #9 organize Objective-C code consistently\r\n- [ ] #10 implement Private Categories\r\n\r\n##### Unclassified\r\n\r\n- [ ] #13 profile with Instruments\r\n- [ ] #16 distribution and entitlements\r\n- [ ] #17 implement scheduled maintenance\r\n- [ ] #20 upgrade LLDB debugging support\r\n- [ ] #21 git workflow support\r\n- [ ] #22 convert scripts ccInstall and archive to Python\r\n- [ ] #24 improve TechnicalDocs upload\r\n- [ ] #25 add Finder target\r\n- [ ] #29 Mavericks\r\n- [ ] #30 Convert to ARC\r\n- [ ] #31 Python and Workflow support\r\n- [ ] #32 Doxygen install script generates config file\r\n- [ ] #35 AppleScript testing\r\n- [ ] #36 remove non-ascii characters\r\n- [ ] carolclark/Punkin#2 configure for AppStore\r\n- [ ] carolclark/Punkin#5 refactor for testability\r\n- [ ] carolclark/Punkin#6 handle PaintCode files\r\n- [ ] carolclark/Accessor#5 adopt a C++ unit testing tool\r\n- [ ] carolclark/Accessor#6 secure automation\r\n- [ ] carolclark/Accessor#7 upgrade C++ wrapper classes to use ivars\r\n- [ ] carolclark/Accessor#8 migrate to ARC\r\n\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/32",
@@ -139,11 +274,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -216,11 +351,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -297,11 +432,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -378,23 +513,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-10-14T16:44:35Z",
-    "updated_at": "2014-01-03T19:33:20Z",
+    "updated_at": "2014-01-16T19:56:03Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "### Xcode 5\nsee *What's New in Xcode 13#400*\n##### Install and Switch\n- [x] rename Xcode 4 app; install Xcode 5 alongside\n- [x] switch to Xcode 5\n- [x] update all projects and targets for compatiblity with Xcode 5\n- [x] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\n\n##### Adopt Standard Features\n- [x] Source Control 4:40\n    * configure source control 5:00\n    * consider how branch support fits in\n- [x] Asset catalog 9:25\n    * Move existing content into new asset catalog 13:15\n- [x] Doc comments 27:20\n- [ ] use modules to replace/augment pch files in ObjC projects 22:20\n- [x] Debugging\n    * Debug bar, except layouts 32:00\n    * Debug gauges 32:50\n- [x] Test navigator 44:30\n\n### Mavericks\n\n### Continuous Integration\n\n*see \"What's New in Xcode\" 13#400@44:30\n\n*iOS 6 will continue to require OCUnit; Xcode has a tool to migrate to XCTest when that is no longer an issue\n\n### iOS and Interface Builder\n* *Punkin: initial Nanny for iOS*\n- [ ] Auto config - provisioning 5:20\n- [ ] Interface design 7:30\n- [ ] Interface preview: select from assistant jumpbar 16:20\n- [ ] Turn on auto layout 17:20\n- [ ] Debug bar layout support 32:00"
+    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [x] rename Xcode 4 app; install Xcode 5 alongside\r\n- [x] switch to Xcode 5\r\n- [x] update all projects and targets for compatiblity with Xcode 5\r\n- [x] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [x] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [x] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [x] Doc comments 27:20\r\n- [x] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [x] Test navigator 44:30\r\n\r\n### Mavericks\r\n- [x] install\r\n- [x] Slates: support Safari: Bookmarks/Sidebar button, Finder tabs\r\n\r\n###### for all Repositories / all Targets: test and analyze; document current process, todos\r\n\r\n### Rebuild Projects and Targets\r\n###### for all Repositories / all Projects / all Targets\r\n- [ ] #23 rebuild simpler Xcode projects\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n*iOS 6 will continue to require OCUnit; Xcode has a tool to migrate to XCTest when that is no longer an issue\r\n\r\n###### for all Repositories / all Targets\r\n- [ ] add bots for each step in testing and analysis process; document\r\n\r\n### iOS and Interface Builder\r\n* *???Punkin: initial Nanny for iOS*\r\n- [ ] Auto config - provisioning 5:20\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/25",
@@ -459,11 +594,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -558,11 +693,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -584,7 +719,7 @@
     "html_url": "https://github.com/carolclark/Support/issues/23",
     "id": 14762184,
     "number": 23,
-    "title": "rebuild simpler Xcode projects",
+    "title": "restructure Xcode projects",
     "user": {
       "login": "carolclark",
       "id": 3742721,
@@ -657,23 +792,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-05-25T19:49:55Z",
-    "updated_at": "2014-01-03T19:32:09Z",
+    "updated_at": "2014-01-24T00:52:10Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "*Xcode project files are fragile and easily corrupted.  According to forum discussions, corrupted project files sometimes require rebuilding from scratch, and contain information that is not saved elsewhere.*\n*The problem is compounded by version control, since any change to the files or settings of a project causes the project to be changed, and therefore possibly subject to merge conflicts. This is of particular concern for Punkin, which has an Artist collaborator.*\n*We set the git attributes for project files to `merge=union`, which helps but does not solve the problem.*\n\n* minimize dependence on information stored in project files\n    * use configuration files to replace most build settings\n    * document each Repository's Projects, Targets and dependencies\n* use modules to replace pch files (ObjC only?) *What's New in Xcode 5 13#400@22:20*\n\nsee  [Merging Xcode project files](http://stackoverflow.com/questions/4022362/merging-xcode-project-files), [Google example config files](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/XcodeConfig/), [Easy, Modular: Static Libraries and Cross-Project References](http://www.clintharris.net/2009/iphone-app-shared-libraries/)"
+    "body": "*Xcode project files are fragile and easily corrupted.  According to forum discussions, corrupted project files sometimes require rebuilding from scratch, and contain information that is not saved elsewhere.*\r\n*The problem is compounded by version control, since any change to the files or settings of a project causes the project to be changed, and therefore possibly subject to merge conflicts. This is of particular concern for Punkin, which has an Artist collaborator.*\r\n*We set the git attributes for project files to `merge=union`, which helps but does not solve the problem.*\r\n*In addition, the new Continuous Integration support expects targets to have their test targets attached, which is not always what we have done.*\r\n\r\n* set up to support cross-product references\r\n* reorganize so:\r\n    * repositories contain multiple focused projects as indicated\r\n    * use modules to replace/augment pch files in ObjC projects (13#400 22:20)\r\n    * each main target has a corresponding test target\r\n         * also add targets AllTargets for now (until CI implemented)\r\n* minimize dependence on information stored in project files\r\n    * use configuration files to replace most build settings\r\n    * document each Repository's Projects, Targets and dependencies\r\n* use modules to replace pch files (ObjC only?) *What's New in Xcode 5 13#400@22:20*\r\n* have Accessor build use cross-product reference to handle the dependency on Support/UserSlates\r\n\r\n- [ ] carolclark/Punkin#7\r\n- [ ] carolclark/Accessor#10\r\n\r\nSee\r\n* [Merging Xcode project files](http://stackoverflow.com/questions/4022362/merging-xcode-project-files)\r\n* [Google example config files](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/XcodeConfig/)\r\n* [Easy, Modular: Static Libraries and Cross-Project References](http://www.clintharris.net/2009/iphone-app-shared-libraries/)\r\n* [Xcode 5 and iOS 7: Architecture and Valid architectures](http://stackoverflow.com/questions/18913906/xcode-5-and-ios-7-architecture-and-valid-architectures)\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/22",
@@ -815,11 +950,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -906,11 +1041,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -1041,11 +1176,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -1122,11 +1257,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -1208,11 +1343,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -1289,23 +1424,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-04-22T18:14:38Z",
-    "updated_at": "2014-01-03T19:28:27Z",
+    "updated_at": "2014-01-18T18:41:35Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "* see *Modern Objective-C12#405*, *Migrating to Modern Objective-C 12#413*,*What's New in Xcode 5  13#400@25:00*\r\n* also see carolclark/Accessor#7 for Objective-C++ ivars\r\n\r\nadopt C++ 11\r\n\r\nwarnings and analyzer preferences\r\n"
+    "body": "* see *Modern Objective-C12#405*, *Migrating to Modern Objective-C 12#413*,*What's New in Xcode 5  13#400@25:00*\r\n* also see carolclark/Accessor#7 for Objective-C++ ivars\r\n\r\n- [ ] adopt C++ 11 (already done?)\r\n\r\n- [ ] use typed enums:\r\ntypedef enum NSNumberFormatterStyle : NSUInteger {\r\n    ...\r\n} NSNumberFormatterStyle;\r\nverify with -Wconversion?\r\n\r\n- [ ] property synthesis: declare property only; declaration of ivar, @synthesize statement no longer needed (ivar for property name is _name)\r\n    *Core Data NSManagedObject opts out of synthesize by default*\r\n\r\nwarnings and analyzer settings\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/11",
@@ -1315,7 +1450,7 @@
     "html_url": "https://github.com/carolclark/Support/issues/11",
     "id": 13136963,
     "number": 11,
-    "title": "testing: code coverage tool",
+    "title": "testing: code coverage tools",
     "user": {
       "login": "carolclark",
       "id": 3742721,
@@ -1370,23 +1505,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-04-12T20:02:07Z",
-    "updated_at": "2014-01-03T19:28:27Z",
+    "updated_at": "2014-01-12T20:38:58Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "Consider adoption\r\n\r\nSee [How to Measure Code Coverage in Xcode](http://qualitycoding.org/xcode-code-coverage/)\r\n"
+    "body": "Consider adoption\r\n\r\nSee [How to Measure Code Coverage in Xcode](http://qualitycoding.org/xcode-code-coverage/)\r\n[Code coverage for Python](https://pypi.python.org/pypi/coverage)\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/10",
@@ -1451,109 +1586,23 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-04-12T19:53:16Z",
-    "updated_at": "2014-01-03T19:28:27Z",
+    "updated_at": "2014-01-12T22:33:16Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "Use Category Private, in a separate header included in both implementation and unit test files, to support Unit Testing while keeping private information private. See [Unit testing of private methods in Xcode](http://stackoverflow.com/questions/1098550/unit-testing-of-private-methods-in-xcode)\nSee also #9"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/9",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/9/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/9/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/9/events",
-    "html_url": "https://github.com/carolclark/Support/issues/9",
-    "id": 13087042,
-    "number": 9,
-    "title": "organize Objective-C code consistently",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
-        "name": "clang",
-        "color": "006b75"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/standards",
-        "name": "standards",
-        "color": "fef2c0"
-      }
-    ],
-    "state": "open",
-    "assignee": null,
-    "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "next",
-      "description": "",
-      "creator": {
-        "login": "carolclark",
-        "id": 3742721,
-        "avatar_url": "https://gravatar.com/avatar/7869b0fad4894ed309c118232a3152d4?d=https%3A%2F%2Fidenticons.github.com%2F48aa6b974ad0c654d59af866dec11b72.png&r=x",
-        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-        "url": "https://api.github.com/users/carolclark",
-        "html_url": "https://github.com/carolclark",
-        "followers_url": "https://api.github.com/users/carolclark/followers",
-        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-        "organizations_url": "https://api.github.com/users/carolclark/orgs",
-        "repos_url": "https://api.github.com/users/carolclark/repos",
-        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "open_issues": 21,
-      "closed_issues": 1,
-      "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
-      "due_on": null
-    },
-    "comments": 0,
-    "created_at": "2013-04-11T20:16:51Z",
-    "updated_at": "2014-01-03T19:28:27Z",
-    "closed_at": null,
-    "pull_request": {
-      "html_url": null,
-      "diff_url": null,
-      "patch_url": null
-    },
-    "body": "see [Code Organization in Xcode Projects](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/) (akosma), #10"
+    "body": "Use Category Private, in a separate header included in both implementation and unit test files, to support Unit Testing while keeping private information private.\r\n\r\nNote:compiler will find private methods defined in the implementation file when compiling that file; not necessary to declare all private methods in Category Private (per Modern Objective-C 12#405)\r\nSee [Unit testing of private methods in Xcode](http://stackoverflow.com/questions/1098550/unit-testing-of-private-methods-in-xcode)\r\nSee also #9"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/8",
@@ -1618,11 +1667,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -1704,11 +1753,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -1839,11 +1888,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
@@ -1943,22 +1992,22 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
-      "closed_issues": 1,
+      "open_issues": 20,
+      "closed_issues": 2,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-01-03T20:17:15Z",
+      "updated_at": "2014-01-10T18:32:51Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-03-26T18:48:51Z",
-    "updated_at": "2014-01-03T17:54:34Z",
+    "updated_at": "2014-01-29T23:30:09Z",
     "closed_at": null,
     "pull_request": {
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "see [Marked](http://markedapp.com) editing app\r\n\r\n- [x] <a id=\"begin\">[begin]</a> begin using GitHub Issues; synchronize with History files (Support; Punkin; Accessor)\r\n    * History file: begin to adapt toward simpler content to synchronize with Issues; use HTML `pre` tag to simulate markdown text\r\n        * *see [Markdown / Cdoc Notes][MarkdownCdocNotes]*\r\n- [x] <a id=\"backup\">[backup]</a> backup GitHub issue content\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/issues` gets assigned issues\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/repos/carolclark/Accessor/issues` gets open issues\r\n- [x] script to backup open issues for each project to <Project>Issues.json in project's root folder and for all projects to /Aux/GitHubIssues.json\r\n- [ ] add repository argument; update <Project>Issues for that repository only\r\n- [x] support documentation editing in BBEdit\r\n    * use Marked to preview Markdown output\r\n        * *BBEdit preview does not work for Markdown*\r\n- [ ] use a separate file to contain history for each version\r\n    * *eg. Support_v0_1.html for work on v0.1; probably also includes bugfix versions 0.1.1, etc.*\r\n- [ ] allow markdown files to be included in the source for Cdoc sites\r\n    * cInstall: Cdoc translation also handles markdown source\r\n    * make sure valid HTML is produced\r\n- [ ] switch history files to markdown\r\n- [ ] create new issues for future plans from existing History.html files\r\n\r\nsee also #19 migrate from HTML/sed to Markdown for further Markdown work"
+    "body": "see [Marked](http://markedapp.com) editing app\r\n\r\n- [x] <a id=\"begin\">[begin]</a> begin using GitHub Issues; synchronize with History files (Support; Punkin; Accessor)\r\n    * History file: begin to adapt toward simpler content to synchronize with Issues; use HTML `pre` tag to simulate markdown text\r\n        * *see [Markdown / Cdoc Notes][MarkdownCdocNotes]*\r\n- [x] <a id=\"backup\">[backup]</a> backup GitHub issue content\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/issues` gets assigned issues\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/repos/carolclark/Accessor/issues` gets open issues\r\n- [x] script to backup open issues for each project to <Project>Issues.json in project's root folder and for all projects to /Aux/GitHubIssues.json\r\n- [ ] add repository argument; update <Project>Issues for that repository only\r\n- [x] support documentation editing in BBEdit\r\n    * use Marked to preview Markdown output\r\n        * *BBEdit preview does not work for Markdown*\r\n- [x] change *_History.html files to use 'span' instead on 'li' tags for markers of style 'tlmark' and 'tldate'\r\n- [ ] use a separate file to contain history for each version\r\n    * *eg. Support_v0_1.html for work on v0.1; probably also includes bugfix versions 0.1.1, etc.*\r\n- [ ] allow markdown files to be included in the source for Cdoc sites\r\n    * cInstall: Cdoc translation also handles markdown source\r\n    * make sure valid HTML is produced\r\n- [ ] switch history files to markdown\r\n- [ ] create new issues for future plans from existing History.html files\r\n\r\nsee also #19 migrate from HTML/sed to Markdown for further Markdown work"
   }
 ]
