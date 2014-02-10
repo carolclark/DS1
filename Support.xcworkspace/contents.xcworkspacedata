@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CCDev/CCDev.xcodeproj">
+      location = "group:CCDevPy/CCDevPy.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:BuildSupport/BuildSupport.xcodeproj">

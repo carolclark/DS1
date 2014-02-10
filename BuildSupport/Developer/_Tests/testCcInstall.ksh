@@ -85,15 +85,15 @@ testCciPaths() {
 
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build/WorkspaceA/ProjA/Tar1.lastbuilt" "${lastbuilt}"
+	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build_output/WorkspaceA/ProjA/Tar1.lastbuilt" "${lastbuilt}"
 
 	ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
 	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
 	ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 	assertFalse "$LINENO: file ${lastbuilt} still present" "[ -e ${lastbuilt} ]"
 
-	rmdir "${CCDev}/build/WorkspaceA/ProjA"
-	rmdir "${CCDev}/build/WorkspaceA"
+	rmdir "${CCDev}/build_output/WorkspaceA/ProjA"
+	rmdir "${CCDev}/build_output/WorkspaceA"
 }
 
 testSpecialPaths() {
@@ -212,8 +212,8 @@ testFind() {
 
 	rmdir "${sourceRoot}"
 	rmdir "${CCDev}/TestData/WorkspaceA"
-	rmdir "${CCDev}/build/WorkspaceA/ProjA"
-	rmdir "${CCDev}/build/WorkspaceA"
+	rmdir "${CCDev}/build_output/WorkspaceA/ProjA"
+	rmdir "${CCDev}/build_output/WorkspaceA"
 }
 
 #^ removeFolder

@@ -5,16 +5,6 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "${HOME}/Library/CCDev/bin/testScm.py"
-               shellToInvoke = "/bin/ksh">
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -24,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67976C0E184D24C200F09A53"
-               BuildableName = "ccdev"
-               BlueprintName = "ccdev"
-               ReferencedContainer = "container:CCDev.xcodeproj">
+               BlueprintIdentifier = "6786D89A184E899A00255EE9"
+               BuildableName = "ccdevTest.bundle"
+               BlueprintName = "ccdevTest"
+               ReferencedContainer = "container:CCDevPy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
