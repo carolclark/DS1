@@ -63,10 +63,10 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		67976C0E184D24C200F09A53 /* ccdev */ = {
+		67976C0E184D24C200F09A53 /* ccdevPy */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "\"${SRCROOT}\" ccdev $(ACTION)";
-			buildConfigurationList = 67976C11184D24C200F09A53 /* Build configuration list for PBXLegacyTarget "ccdev" */;
+			buildConfigurationList = 67976C11184D24C200F09A53 /* Build configuration list for PBXLegacyTarget "ccdevPy" */;
 			buildPhases = (
 			);
 			buildToolPath = ccdev/ccdev_install.ksh;
@@ -74,7 +74,7 @@
 			dependencies = (
 				6786D8A9184E8BB900255EE9 /* PBXTargetDependency */,
 			);
-			name = ccdev;
+			name = ccdevPy;
 			passBuildSettingsInEnvironment = 0;
 			productName = CCDev;
 		};
@@ -117,7 +117,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				67976C0E184D24C200F09A53 /* ccdev */,
+				67976C0E184D24C200F09A53 /* ccdevPy */,
 				6786D89A184E899A00255EE9 /* ccdevTest */,
 			);
 		};
@@ -289,7 +289,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67976C11184D24C200F09A53 /* Build configuration list for PBXLegacyTarget "ccdev" */ = {
+		67976C11184D24C200F09A53 /* Build configuration list for PBXLegacyTarget "ccdevPy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67976C12184D24C200F09A53 /* Debug */,
