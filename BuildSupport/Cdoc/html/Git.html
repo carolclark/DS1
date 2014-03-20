@@ -15,7 +15,8 @@
 	<!-- @topicGroup "Workflows" "1" -->
 	<!-- @topicItem "Collaborator" "#WorkflowCollab" "0" "" -->
 	<!-- @topicItem "Administrator" "#WorkflowAdmin" "0" "" -->
-	<!-- @topicGroup "" "4" -->
+		<!-- @topicItem "Admin Subtasks" "#adminSubtasks" "1" "" -->
+	<!-- @topicGroup "" "5" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
@@ -96,64 +97,83 @@
 
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
-		<h5>Develop</h5><ul>
-			<li>create or checkout branch<ul>
-				<li>if a pre-existing branch, <span class='em'>Update Branch</span></li>
-				<li><span class='em'>[Release*]</span><ul>
-					<li>select and set $vn (eg. 1.0); branch release-$vn; bump version; commit ("bump version to $vn")</li>
-					<li>bug fixes as indicated; update history files, issue milestones</li>
-					<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
-					<li>merge release branch into 'master'; push 'master'; delete release branch</li>
-				</ul></li>
-			</ul></li>
-			<li>repeat<ul>
-				<li>repeat until commit; edit/test; status; [add/stage]</li>
-				<li>[backup GitHub issues; add, OR if failure, checkout original]</li>
-				<li>construct and save commit message; verify modifications (diff tool)</li>
-				<li>status: check branch; add / review files to be committed; check for stray spaces (diff --cached --check)</li>
+		<h5>Branch</h5><ul>
+			<li>pre-existing branch: <span class='em'>Update Branch</span></li>
+			<li>new branch: set current branch; <span class='mono'>git push --set-upstream origin $cb</span>; <br />create new bot '&lt;targetName&gt; &lt;branchName&gt; Bot'</li>
+			<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
+		</ul>
+		<h5>Repeat</h5>
+			<h6>Develop</h6><ul>
+				<li>repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</li>
+			</ul>
+			<h6>Commit</h6><ul>
+				<li>[backup GitHub issues; add, OR if failure checkout, original]</li>
+				<li>construct and save commit message; verify modifications (diff --cached)</li>
+				<li>status: check branch; add / review files to be committed</li>
+				<li>check for stray spaces (diff --cached --check)</li>
 				<li>review commit msgfile, and check for #issue; commit</li>
 				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
 				<li>check stash list</li>
 				<li><span class='em'>Update Branch</span><ul>
-					<li><span class='em'>Update Master</span> from remotes<ul>
-						<li>set $cb; checkout master; status; lg master..origin/master; [lg artist..lm/artist]</li>
-						<li>fetch updates: <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
-							<li>if that merge fails: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
-						</ul></li>
-						<li>retest if changed</li>
-					</ul></li>
+					<li>check for stashes, unmerged branches</li>
+					<li><a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a></li>
 					<li>checkout branch ($cb); <span class='em'>Merge</span> master</li>
 				</ul></li>
-			</ul></li>
-		</ul>
+			</ul>
+			<h6>[Push]</h6>
 		<h5>[Merge]</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 			<li>checkout master; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>
 			<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span><ul>
 				<li>after --no-commit: commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			</ul></li>
-			<li>[<b>Resolve Conflicts</b>]<ul>
-				<li>status; <span class='mono'>merge tool</span> to resolve conflicts, saving successfully merged files; commit</li>
-				<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
-				<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
-			</ul></li>
+			<li><a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
 			<li>show --name-only; diff --name-status origin/master..master; lg origin/master..master</li>
-			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;; [delete branch]<ul>
+			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;<ul>
 				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
 			</ul></li>
 			<li>retest</li>
+			<li><span class='em'>[Push; [delete branch]]</span></li>
 		</ul>
-		<h5>[Push]</h5><ul>
-			<li>check for stashes, unmerged branches</li>
-			<li>[tag]</li>
-			<li>push [push tags]</li>
-		</ul>
-		<h5>Morning/Working Report</h5><ul>
+
+<hr />
+	<h5>Morning/Working Report</h5><ul>
 			<li>branch list; status; set $cb to current branch; show --name-only</li>
 			<li>for master..$cb, origin/master..master, master..origin/master: lg; diff --name-status</li>
 			<li>checkout master; status; branch unmerged; stash list; checkout $cb</li>
 		</ul>
-		<p class='ital'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p>
+	</div>
+</div>
+
+<div style="page-break-before: always">
+<h5 id="adminSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
+		<!-- @marker "adminReleaseBranch" -->
+		<h6 id='adminReleaseBranch'>Release Branch</h6>
+		<p class='blurb'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p><ul>
+			<li>select version number (eg. "1.0"); set $vn; create branch release-$vn</li>
+			<li>bump version: make changes to code and resources to match new version number</li>
+			<li>commit ("bump version to $vn")</li>
+			<li>bug fixes as indicated</li>
+			<li>update history files, issue milestones</li>
+			<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
+			<li>merge release branch into 'master'; push 'master'; delete release branch</li>
+		</ul>
+
+		<!-- @marker "adminUpdateMaster" -->
+		<h6 id='adminUpdateMaster'>Update Master from Remotes</h6><ul>
+			<li>set $cb; checkout master; status; lg master..origin/master; [lg artist..lm/artist]</li>
+			<li>fetch updates (fetchup): <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
+				<li>if that merge fails, can: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+			</ul></li>
+			<li>retest if changed</li>
+		</ul>
+
+		<!-- @marker "adminResolveConflicts" -->
+		<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
+			<li>status; <span class='mono'>merge tool</span> to resolve conflicts, saving successfully merged files; commit</li>
+			<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
+			<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
+		</ul>
 	</div>
 </div>
 
@@ -276,9 +296,11 @@
 <h4 id="tsk_Undo">Undo</h4><ul>
 	<li><span class='mono'>git checkout -- &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in index</li>
 	<li><span class='mono'>git checkout HEAD &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in HEAD revision</li>
-	<li><span class='mono'>git reset --soft HEAD@{1}</span>&nbsp;&nbsp;# discard all changes since last commit; restores index and files (causes the results of "git diff" and "git diff --cached" to both be empty)</li>
+	<li><span class='mono'>git reset --soft HEAD@{1}</span>&nbsp;&nbsp;# undo last commit (set HEAD to point to parent of HEAD)</li>
+	<li><span class='mono'>git reset --mixed HEAD@{1} (default)</span>&nbsp;&nbsp;# also update index to match new HEAD; same as unstaging everything</li>
 	<li><span class='mono'>git reset --hard HEAD</span>&nbsp;&nbsp;# discard all changes since last commit; restores index and files (causes the results of "git diff" and "git diff --cached" to both be empty)</li>
 	<li><span class='mono'>git revert [HEAD|&lt;commit&gt;]</span>&nbsp;&nbsp;# creates a new commit that undoes the most recent or a previous commit</li>
+	<li><span class='mono'>git reflog; git checkout &lt;sha&gt;; git checkout -b &lt;branch&gt;</span> find and restore recently deleted branch</li>
 </ul>
 
 <!-- @marker "Managing Repositories" -->

@@ -91,12 +91,12 @@ function gitPrintConfig {
 	git config --global user.name "${USER}"
 	git config --global user.email "${email}"
 
+	git config --global core.autocrlf input
+	git config --global core.editor emacs
 	git config --global core.excludesfile "${exclude}"
 	git config --global core.attributesfile "${attributes}"
 
 	git config --global color.ui true
-
-	git config --global core.editor emacs
 
 	git config --global push.default simple			# push only the current branch
 

@@ -322,7 +322,7 @@ resource restype_Slate (resid_gitBranch, "") { {
 		ExitEvent { "print current", "" },	Sequence{}, _cancel, TypeText { "print $cb" }, _return, endSequence{},
 		Event { "remotes", "" },			TypeText { "--remotes " },
 		Event { "all", "" },				TypeText { "--all " },
-		Event { "unmerged", "" },			TypeText { "--no-merged " },
+		Event { "no merge", "" },			TypeText { "--no-merged " },
 		Event { "verbose", "" },			TypeText { "--verbose " },
 		Event { "move", "" },				TypeText { "--move " },
 		Event { "rename", "" },				TypeText { "--move " },
@@ -620,9 +620,9 @@ resource restype_Slate (resid_gitMergeBase, "") { {
 #pragma mark Push
 resource restype_Slate (resid_gitPush, "") { {
 	Slate { "Push",	{
+		Event { "set upstream", "" },	TypeText { "--set-upstream origin $cb " },
 		Event { "tags", "" },			TypeText { "--tags " },
 		Event { "authorize", "" },		TypeText { "gh6868cc" },
-		Event { "set upstream", "" },	TypeText { "--set-upstream " },
 		_StandardBranches_,
 		_GitStandards_,
 	} }

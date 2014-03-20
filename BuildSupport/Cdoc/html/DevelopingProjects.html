@@ -11,40 +11,24 @@
 <h1>Developing Projects</h1>
 
 <!-- @topicList "DevelopingProjects" "Contents" -->
-	<!-- @topicItem "System Configuration" "#SystemConfig" "0" "" -->
-	<!-- @topicItem "Naming Conventions" "#NamingConventions" "0" "" -->
-	<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
-	<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
-	<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
+	<!-- @topicGroup "Standards and Conventions" "1" -->
+		<!-- @topicItem "Naming Conventions" "#NamingConventions" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Configuration" "4" -->
+		<!-- @topicItem "System Configuration" "#SystemConfig" "0" "" -->
+		<!-- @topicItem "Xcode Project and Target Settings" "#pbxproj" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Refactorings and Tasks" "7" -->
+		<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
+		<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
+		<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
 <!-- @/topicList -->
 
-<p>tasks and refactorings related to development with Xcode projects</p>
-
-<!-- @marker "System Configuration" -->
-<h2>System Configuration</h2>
-<!-- @topicList "System Configuration" "SystemConfig" -->
-	<!-- @topicItem "Initial Configuration" "#InitialConfig" "0" "" -->
-	<!-- @topicItem "Test System Configuration" "#TestSystemConfig" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Initial Configuration" -->
-<h4 id='InitialConfig'>Initial Configuration</h4><ul>
-	<li>open workspace Support</li>
-	<li>build target Developer</li>
-</ul>
-
-<!-- @marker "Test System Configuration" -->
-<h4 id='TestSystemConfig'  class='depr'>Test System Configuration</h4><ul class='depr'>
-	<li>clean targets Developer and Developer_Setup<ul>
-		<li class='blurb'>If Xcode calls clean twice on target Developer, the second clean fails because file ccInstallAction has been cleaned and is missing.</li>
-	</ul></li>
-	<li>sudo rm /private/etc/launchd.conf</li>
-	<li>reboot computer; verify configuration issues such as missing DEV and CCDev variables</li>
-	<li>complete <a href="#InitialConfig">Initial Configuration</a>; verify configuration okay</li>
-</ul>
+<!-- @marker "Standards and Conventions" -->
+<h2>Standards and Conventions</h2>
 
 <!-- @marker "Naming Conventions" -->
-<h2>Naming Conventions</h2>
+<h3>Naming Conventions</h3>
 	<!-- @topicList "Naming Conventions" "NamingConventions" -->
 		<!-- @topicItem "Controller and Delegate Classes" "#ControllerNDelegateClasses" "0" "" -->
 	<!-- @/topicList -->
@@ -56,23 +40,18 @@
 	<li>Window and View Controller classes: name &lt;Name&gt;WindowC, &lt;Name&gt;ViewC, &lt;Name&gt;SheetC and so on.</li>
 </ul>
 
-<!-- @marker "Targets and Build Phases" -->
-<h2>Targets and Build Phases</h2>
+<!-- @marker "Configuration" -->
+<h2>Configuration</h2>
 
-<!-- @topicList "Projects and Targets" "Target_" -->
-	<!-- @topicItem "Xcode Project Settings" "#pbxproj" "0" "" -->
-	<!-- @topicItem "Add Cocoa Target" "#AddCocoaTarget" "0" "" -->
-	<!-- @topicItem "Workspace Mirrors Project Files" "#WorkspaceMirrorsFiles" "0" "" -->
-	<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
-	<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
-	<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
-	<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
-	<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
-	<!-- @topicItem "Add Doxygen Target" "#AddDoxygenTarget" "0" "" -->
-<!-- @/topicList -->
+<!-- @marker "System Configuration" -->
+<h3 id='SystemConfig'>System Configuration</h3><ul>
+	<li>open workspace Support</li>
+	<li>build target Developer <span class='future'>CCDev</span></li>
+	<li class='expand'>document what it does</li>
+</ul>
 
-<!-- @marker "Xcode Project Settings" -->
-<h4 id='pbxproj'>Xcode Project Settings</h4><ul>
+<!-- @marker "Xcode Project and Target Settings" -->
+<h3 id='pbxproj'>Xcode Project and Target Settings</h3><ul>
 	<li><b>Project</b><ul>
 		<li>start with an empty project and add targets to it</li>
 		<li><b>ProjectName</b> for generic project, use Build&lt;ProjectName&gt;</li>
@@ -107,6 +86,23 @@
 		</ul></li>
 	</ul></li>
 </ul>
+
+<!-- @marker "Refactorings and Tasks" -->
+<h2>Refactorings and Tasks</h2>
+
+<!-- @marker "Targets and Build Phases" -->
+<h3>Targets and Build Phases</h3>
+
+<!-- @topicList "Projects and Targets" "Target_" -->
+	<!-- @topicItem "Add Cocoa Target" "#AddCocoaTarget" "0" "" -->
+	<!-- @topicItem "Workspace Mirrors Project Files" "#WorkspaceMirrorsFiles" "0" "" -->
+	<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
+	<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
+	<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
+	<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
+	<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
+	<!-- @topicItem "Add Doxygen Target" "#AddDoxygenTarget" "0" "" -->
+<!-- @/topicList -->
 
 <!-- @marker "Add Cocoa Target" -->
 <h4 id='AddCocoaTarget'>Add Cocoa Target</h4><ul>

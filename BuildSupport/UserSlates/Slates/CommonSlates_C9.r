@@ -78,6 +78,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 			Event { "PaintCode", "" }, Launch { Apps_"PaintCode.app", resid_DefaultSlate },
 			Event { "Xcode", "" }, Launch { DevApps_"Xcode.app", resid_Xcode },
 			Event { "AppCode", "" }, Launch { Apps_"AppCode.app", resid_AppCode },
+			Event { "Server", "" }, Launch { Apps_"Server.app", resid_Server },
 			Event { "Dash", "" }, Launch { Apps_"Dash.app", resid_Dash },
 			Event { "Instruments", "" }, Launch { DevApps_"Instruments.app", resid_DefaultSlate },
 			Event { "Dashcode", "" }, Launch { DevApps_"Dashcode.app", resid_Dashcode },
