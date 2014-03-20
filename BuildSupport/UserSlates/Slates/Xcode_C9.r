@@ -130,9 +130,10 @@
 	#define resid_ghRepository			resid_GitHub+1
 	#define resid_ghOpenIssue			resid_GitHub+2
 
-#define resid_Stickies				resid_External+30
-#define resid_Console				resid_External+40
-#define resid_BBValidate			resid_External+50
+#define resid_XcodeServer			resid_External+30
+#define resid_Stickies				resid_External+40
+#define resid_Console				resid_External+50
+#define resid_BBValidate			resid_External+60
 	#define resid_BBContinueCheckAll	resid_BBValidate+1
 
 
@@ -716,8 +717,9 @@ resource restype_Slate (resid_SourceControl, "Source Control") { {
 		ExitEvent { "cancel", "" },			Keypress { kc_escape, 0 },
 		Event { "execute", "" },			_return,
 		Event { "return	", "" },			_return,
-		Event { "branch", "" },				Sequence{}, _down, ResSubslate { resid_Branch }, endSequence{},
+		Event { "check branch", "" },		Keypress { kc_escape, 0 },
 		Event { "refresh", "" },			TypeText { "Refresh Status" },
+		Event { "history", "" },			TypeText { "History" },
 		Event { "commit", "" },				Sequence{}, TypeText { "Commit" }, _return, ResSubslate { resid_Commit }, endSequence{},
 	} }
 } };
@@ -2210,11 +2212,7 @@ resource restype_Slate (resid_typeSearch, "") { {
 } };
 
 #pragma mark 8 === External
-// inside: Safari Browsers;
-// GitHub
-//	1 GitHub; MyPage; 2 Repository; RepoButtons; 5 Issues
-// Other
-//	4 Stickies; 5 Console; 6 BBEdit
+// inside: Safari Browsers; 1 GitHub; 2 Xcode Server; 4 Stickies; 5 Console; 6 BBEdit
 
 #define _mainFrame_h		0
 #define _mainFrame_v		75
@@ -2236,6 +2234,35 @@ _BrowseDoxygenSlate_
 _GitHubSlate_
 _GitHubRepoSlate_
 _GitHubOpenIssueSlate_
+
+#pragma mark 2 --- XcodeServer
+#define	_XcodeServerStandards_		\
+		Event { "enter", "" },			Keypress { kc_enter, 0 },		\
+		Event { "refresh", "" },		Keypress { kc_R, mf_command },		\
+		Event { "address", "" },		Click { 1, 0, 35, _window, _topCenter },		\
+		Event { "copy address", "" },	Sequence{}, Click { 1, 0, 35, _window, _topCenter }, Keypress { kc_A, mf_command }, Keypress { kc_C, mf_command }, endSequence{},		\
+		Event { "go back", "" },		Keypress { kc_bracket, mf_command },		\
+		Event { "go forward", "" },		Keypress { kc_closebracket, mf_command },		\
+		Event { "page down", "" },		Keypress { kc_pagedown, 0 },	\
+		Event { "page north", "" },		Keypress { kc_pageup, 0 },		\
+		Event { "page top", "" },		Keypress { kc_home, 0 },		\
+		Event { "page end", "" },		Keypress { kc_end, 0 },		\
+		Event { "help", "" },			Keypress { kc_slash, 0 },		\
+		Event { "north", "" },			_ghup_,		\
+		Event { "down", "" },			_ghdn_,		\
+		_SlateGlobals_,		\
+		_WindowSlate_,		\
+		_IMouseSlate_
+
+resource restype_Slate (resid_XcodeServer, "") { {
+	Slate { "XcodeServer",	{
+		ExitEvent { "okay", "" },		Launch { DevApps_"Xcode.app", 0 },
+		ExitEvent { "close", "" },		Sequence{}, Keypress { kc_W, mf_command }, Launch { DevApps_"Xcode.app", 0 },  endSequence{},
+		Event { "big screen", "" },		OpenURL { "http://carol-clarks-imac.local/xcode/bigscreen" },
+		_XcodeServerStandards_,
+		_SlateGlobals_,
+	} }
+} };
 
 #pragma mark 4 --- Stickies
 resource restype_Slate (resid_Stickies, "") { {
@@ -2324,6 +2351,8 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		_openDash,
 		Event { "open git hub", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, OpenURL { "https://github.com" }, ResSubslate { resid_GitHubXC }, endSequence{},
 		Event { "git hub", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_GitHubXC }, endSequence{},
+		Event { "open server", "" },	OpenURL { "http://carol-clarks-imac.local/xcode" },
+		Event { "server", "" },			Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_XcodeServer }, endSequence{},
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "Doxygen", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
 		_Focus_,

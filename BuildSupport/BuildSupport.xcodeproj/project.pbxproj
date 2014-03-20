@@ -10,6 +10,7 @@
 		6720A6341889D64900C4ED0A /* AppCode_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 6720A6331889D64900C4ED0A /* AppCode_C9.r */; };
 		67364A7F16C0363900940D94 /* FixWindow.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67364A6D16C0345900940D94 /* FixWindow.applescript */; };
 		673A579416C0578C0000BEE2 /* Snippet.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DB232C169E0A2900A6E910 /* Snippet.applescript */; };
+		673F9BAA18DA517F00E06A16 /* Server_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 673F9BA918DA517F00E06A16 /* Server_C9.r */; };
 		676C9305179F326200876265 /* GitHub_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 676C9304179F326200876265 /* GitHub_C9.r */; };
 		6773C4141791FB03005E4CAB /* SetMarkers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6773C4131791F844005E4CAB /* SetMarkers.applescript */; };
 		6787407317C16A4F000190D4 /* Developer_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 6787407217C02602000190D4 /* Developer_C9.r */; };
@@ -98,6 +99,8 @@
 		673D580A16B9A1450001DFF2 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
 		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
 		673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
+		673F9BA518DA4F2F00E06A16 /* Server_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Server_C9.r; sourceTree = "<group>"; };
+		673F9BA918DA517F00E06A16 /* Server_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Server_C9.r; sourceTree = "<group>"; };
 		6741F2FB1743F2AB00F4FF6D /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
 		674791F318567B7500452FA5 /* ___FILEBASENAME___.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = "___FILEBASENAME___.py"; path = "PythonScript.xctemplate/___FILEBASENAME___.py"; sourceTree = "<group>"; };
 		674791F418567B7500452FA5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = PythonScript.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
@@ -295,7 +298,6 @@
 		67DD779516A71F5700BECCD5 /* Personal.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Personal.html; sourceTree = "<group>"; };
 		67DD779616A71F5700BECCD5 /* Support.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Support.html; sourceTree = "<group>"; };
 		67DD779716A71F5700BECCD5 /* Tools.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
-		67DD779A16A71F5700BECCD5 /* Cdoc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cdoc-Info.plist"; sourceTree = "<group>"; };
 		67E1DD0317346C60009FC377 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67E6ADF817384360005A30D0 /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
 		67E6AE1E173D97C3005A30D0 /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 		67DB22CA169CD82300A6E910 /* 8 UserSlates */ = {
 			isa = PBXGroup;
 			children = (
+				673F9BA518DA4F2F00E06A16 /* Server_C9.r */,
 				67DB22CD169CD82300A6E910 /* Slates */,
 				67DB22CB169CD82300A6E910 /* OtherSources */,
 			);
@@ -466,6 +469,7 @@
 				67DB22E1169CD82300A6E910 /* Preview_C9.r */,
 				67DB22E2169CD82300A6E910 /* Safari_C9.r */,
 				67DB22E3169CD82300A6E910 /* ScriptEditor_C9.r */,
+				673F9BA918DA517F00E06A16 /* Server_C9.r */,
 				67DB22E4169CD82300A6E910 /* SystemPrefs_C9.r */,
 				67DB22E5169CD82300A6E910 /* Terminal_C9.r */,
 				67DB22E6169CD82300A6E910 /* TextEdit_C9.r */,
@@ -1022,7 +1026,6 @@
 				67DD778E16A71F5700BECCD5 /* html */,
 				67DD778D16A71F5700BECCD5 /* Cdoc_install.ksh */,
 				67DD777C16A71F5700BECCD5 /* _tech */,
-				67DD779816A71F5700BECCD5 /* Resources */,
 			);
 			name = "0 Cdoc";
 			path = Cdoc;
@@ -1078,22 +1081,6 @@
 				67DD779716A71F5700BECCD5 /* Tools.html */,
 			);
 			path = html;
-			sourceTree = "<group>";
-		};
-		67DD779816A71F5700BECCD5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				67DD779916A71F5700BECCD5 /* plist */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		67DD779916A71F5700BECCD5 /* plist */ = {
-			isa = PBXGroup;
-			children = (
-				67DD779A16A71F5700BECCD5 /* Cdoc-Info.plist */,
-			);
-			path = plist;
 			sourceTree = "<group>";
 		};
 		67EB1F9016BC4A1800B3DBB9 /* DoxyDemo */ = {
@@ -1330,6 +1317,7 @@
 				67DB2302169CD82300A6E910 /* UIBrower_C9.r in Rez */,
 				6720A6341889D64900C4ED0A /* AppCode_C9.r in Rez */,
 				67DB2303169CD82300A6E910 /* UMLet_C9.r in Rez */,
+				673F9BAA18DA517F00E06A16 /* Server_C9.r in Rez */,
 				67DB2304169CD82300A6E910 /* Xcode_C9.r in Rez */,
 				676C9305179F326200876265 /* GitHub_C9.r in Rez */,
 			);
