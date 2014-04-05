@@ -18,7 +18,7 @@
 		<!-- @topicItem "System Configuration" "#SystemConfig" "0" "" -->
 		<!-- @topicItem "Xcode Project and Target Settings" "#pbxproj" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Refactorings and Tasks" "7" -->
+	<!-- @topicGroup "Refactorings and Tasks" "8" -->
 		<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
 		<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
 		<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
@@ -94,44 +94,81 @@
 <h3>Targets and Build Phases</h3>
 
 <!-- @topicList "Projects and Targets" "Target_" -->
-	<!-- @topicItem "Add Cocoa Target" "#AddCocoaTarget" "0" "" -->
-	<!-- @topicItem "Workspace Mirrors Project Files" "#WorkspaceMirrorsFiles" "0" "" -->
-	<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
-	<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
-	<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
-	<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
-	<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
-	<!-- @topicItem "Add Doxygen Target" "#AddDoxygenTarget" "0" "" -->
+	<!-- @topicGroup "Projects" "1" -->
+		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Create Cocoa Targets" "4" -->
+		<!-- @topicItem "Add Cocoa Target" "#AddCocoaTarget" "0" "" -->
+		<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
+		<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Create Other Targets" "9" -->
+		<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
+		<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
+		<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
+		<!-- @topicItem "Add Doxygen Target" "#AddDoxygenTarget" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Target Tasks" "15" -->
+		<!-- @topicItem "Rename Target" "#RenameTarget" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "Xcode Project Mirrors Files" -->
+<h4 id='XcodeProjectMirrorsFiles'>Xcode Project Mirrors Files</h4><pre>
+	* *see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a>*
+
+	* for all projects
+		* in Finder: organize source files and resources in folders and mirror them in Xcode
+		* in Xcode Project
+			* remove existing groups, if any, removing resources only
+			* add folder(s) to Xcode project, recursively creating groups for every subfolder
+
+	* New Cocoa project
+		* Application folder &lt;ApplicationName&gt;
+			* Classes: AppDelegate; Controllers; Models; Helpers
+			* OtherSources (*-main.m, *.pch, *-Info.plist)
+			* Resources: DataModels; Images.xcassets (created by Xcode); Nibs
+				* Nibs/*.lproj folders also contain *-InfoPlist.strings and Credits.rtf
+		* Test Target folders &lt;ApplicationName&gt;&lt;Tests&gt;, &lt;ApplicationName&gt;_&lt;AppTests&gt;
+			* as for Application, but use Tests instead of Classes; include other folders as indicated
+</pre>
 
 <!-- @marker "Add Cocoa Target" -->
 <h4 id='AddCocoaTarget'>Add Cocoa Target</h4><ul>
 	<li>open the Project that will contain the target</li>
-	<li>add Target from indicated template; check ARC (only) as indicated</li>
+	<li>add Target from indicated template<ul>
+		<li>if it changes any existing schemes, check them back out again</li>
+	</ul></li>
 	<li>mark scheme "shared"</li>
-	<li class='depr'>add <span class='mono'>\rConfidential and Proprietary.</span> to copyright notice</li>
-	<li class='depr'>USER_HEADER_SEARCH_PATHS = ${SRCROOT}/Source/**</li>
-	<li>AppDelegate: rename to &lt;Target&gt;AppDelegate; update AppDelegate object in xib</li>
-	<li>Application: in xib, set Application's delegate outlet to the AppDelegate object</li>
-	<li>add a source group for &lt;Target&gt;; add file references to group &lt;Target&gt;</li>
+
+	<li><a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a></li>
+
+	<li>AppDelegate<ul>
+		<li>rename to &lt;Target&gt;App</li>
+		<li>update Application Delegate object in xib</li>
+		<li>set Application's delegate outlet to the AppDelegate object</li>
+	</ul></li>
+
 	<li><a href="#AddUnitTesting">Add Unit Testing</a></li>
 	<li>if there is not already a Doxygen target for this project, <a href="#AddDoxygenTarget">Add Doxygen Target</a></li>
 	<li><a href="#ReplaceDefaultWindow">Replace Default Window</a></li>
-	<li><a href="#WorkspaceMirrorsFiles">Workspace Mirrors Project Files</a></li>
 </ul>
 
-<!-- @marker "Workspace Mirrors Project Files" -->
-<h4 id='WorkspaceMirrorsFiles'>Workspace Mirrors Project Files</h4><ul>
-	<li>see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a></li>
-	<li>Classes<ul>
-		<li>AppDelegate</li>
-		<li>Controllers</li>
-		<li>Models</li>
-		<li>Helpers</li>
+<!-- @marker "Add Unit Testing" -->
+<h4 id='AddUnitTesting'>Add Unit Testing</h4><ul>
+	<li class='blurb'>from iPhoneUnitsSample ReadMe: "Important: Application targets with unit tests cannot be built or run using the iPhone Simulator SDK; they can be built and run only using the iPhone Device SDK." The sample produces two copies of the app, one with Unit Tests and one without.</li>
+	<li>Add Logic and App Test Targets<ul>
+		<li>for each: add a new target from Cocoa Unit Testing Bundle template; mark scheme "shared"; add to &lt;Target&gt; scheme's Test specification</li>
+		<li>for App Tests, also:<ul>
+			<li>set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR(?CONFIGURATION_BUILD_DIR))/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
+			<li>add test case testAppDelegate (testAppDelegate#)</li>
+		</ul></li>
+		<li>for Logic Tests, also:<ul>
+			<li>edit &lt;Target&gt;LogicTests: use testNothing<span class='blurb'>Xcode may get confused and issue a warning if it doesn't find &lt;Target&gt;LogicTests with at least one test</span></li>
+		</ul></li>
 	</ul></li>
-	<li>OtherSources</li>
-	<li>Resources<ul>
-		<li>(separate folder for each resource type)</li>
+	<li>set up debugging<ul>
+		<li>add Exception breakpoint with action Debugger Command <span class='mono'>log message</span></li>
+		<li>add Symbolic breakpoint at -[SenTestCase failWithException:]</li>
 	</ul></li>
 </ul>
 
@@ -186,30 +223,22 @@
 		<li>in the original target, remove the Run Script build phase that has been replaced</li>
 	</ul>
 
-<!-- @marker "Add Unit Testing" -->
-<h4 id='AddUnitTesting'>Add Unit Testing</h4><ul>
-	<li class='blurb'>from iPhoneUnitsSample ReadMe: "Important: Application targets with unit tests cannot be built or run using the iPhone Simulator SDK; they can be built and run only using the iPhone Device SDK." The sample produces two copies of the app, one with Unit Tests and one without.</li>
-	<li>Add Logic and App Test Targets<ul>
-		<li>for each: add a new target from Cocoa Unit Testing Bundle template; mark scheme "shared"; add to &lt;Target&gt; scheme's Test specification</li>
-		<li>for App Tests, also:<ul>
-			<li>set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR(?CONFIGURATION_BUILD_DIR))/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
-			<li>add test case testAppDelegate (testAppDelegate#)</li>
-		</ul></li>
-		<li>for Logic Tests, also:<ul>
-			<li>edit &lt;Target&gt;LogicTests: use testNothing<span class='blurb'>Xcode may get confused and issue a warning if it doesn't find &lt;Target&gt;LogicTests with at least one test</span></li>
-		</ul></li>
-	</ul></li>
-	<li>set up debugging<ul>
-		<li>add Exception breakpoint with action Debugger Command <span class='mono'>log message</span></li>
-		<li>add Symbolic breakpoint at -[SenTestCase failWithException:]</li>
-	</ul></li>
-</ul>
-	
 <!-- @marker "Add Doxygen Target" -->
 <h4 id='AddDoxygenTarget'>Add Doxygen Target</h4><ul>
 	<li>add Run Script build phase or <a href="#AddRunScriptTarget">target</a>: doxygenBuild &lt;ProjectName&gt;</li>
 	<li>add file &lt;Project&gt;.doxygen from template; set parameters as indicated, using Dev/Support/Default.doxygen as a reference</li>
 </ul>
+
+<!-- @marker "RenameTarget" -->
+<h4 id='RenameTarget'>Rename Target</h4><pre>
+	* rename target(s)
+	* for Cocoa targets, also:
+		* [rename *-info.plist and *.pch files; update their pointers in Settings]
+		* edit Settings: Bundle Loader for AppTest target
+	* rename scheme(s)
+	* test new scheme(s)
+	* close and reopen Xcode project
+</pre>
 
 <!-- @marker "Interface Builder" -->
 <h2>Interface Builder</h2>

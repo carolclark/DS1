@@ -22,6 +22,8 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 	Slate { _DEFAULT_NAME_,	{
 		_SlateGlobals_,
 		_DefaultBase_,
+		_ClickOne_,
+		_ClickTwo_,
 		_TypeSlate_,
 		_WindowSlate_,
 	} }

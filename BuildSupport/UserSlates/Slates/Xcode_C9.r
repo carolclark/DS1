@@ -48,7 +48,9 @@
 	#define resid_refactorPreview		resid_Refactor+1
 	#define resid_refactorView			resid_Refactor+2
 
-#define resid_Scripts				resid_Xcode+400
+#define resid_ProductMenu			resid_Xcode+400
+
+#define resid_Scripts				resid_Xcode+450
 
 #pragma mark Target
 #define resid_Target				resid_Xcode+500
@@ -588,7 +590,7 @@ resource restype_Slate (resid_Documentation, "Xcode Reference Documentation") { 
 } };
 
 #pragma mark 3 === Menus
-// inside: File Menu, 1 Source Control, 2 Edit Menu, 3 Refactor, 4 Scripts
+// inside: File Menu, 1 Source Control, 2 Edit Menu, 3 Refactor, 4 Product, 5 Scripts
 #pragma mark File Menu
 resource restype_Slate (resid_FileMenu, "File") { {
 	Slate { "File", {
@@ -846,7 +848,23 @@ resource restype_Slate (resid_refactorView, "") { {
 	} }
 } };
 
-#pragma mark 4 --- Scripts
+#pragma mark 4 --- ProductMenu
+resource restype_Slate (resid_ProductMenu, "") { {
+	Slate { "Product",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "archive", "" },					TypeText { "Archive" },
+		Event { "perform action", "" },				Sequence{}, TypeText { "Perform Action" }, _right, endSequence{},
+		Event { "create bot", "" },					TypeText { "Create Bot" },
+		Event { "scheme", "" },						Sequence{}, TypeText { "Scheme" }, _right, endSequence{},
+		ExitEvent { "next scheme", "" },			Keypress { kc_closebracket, mf_command + mf_control },
+		ExitEvent { "previous scheme", "" },		Keypress { kc_bracket, mf_command + mf_control },
+		ExitEvent { "next destination", "" },		Keypress { kc_closebracket, mf_command + mf_control },
+		ExitEvent { "previous destination", "" },	Keypress { kc_bracket, mf_command + mf_control },
+	} }
+} };
+
+#pragma mark 5 --- Scripts
 resource restype_Slate (resid_Scripts, "Scripts") { {
 	Slate { "Scripts", {
 		_SlateGlobals_,
@@ -868,6 +886,7 @@ resource restype_Slate (resid_Scripts, "Scripts") { {
 #define _rtop	142
 #define _rsp	18
 #define	_targetPopup	Click { 1, 125, 40, _window, _topLeft }
+#define _targetList		ClickMenu { "Product" }, TypeText { "Scheme" }, _right
 #pragma mark Target
 resource restype_Slate (resid_Target, "Target") { {
 	Slate { "Target",	{
@@ -917,19 +936,19 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "next issue", "" },		_nextIssue,
 		Event { "previous issue", "" },	_previousIssue,
 		Event { "build Accessor", "" },	Sequence{}, Keypress { kc_S, mf_command + mf_option }, Launch { Dev_"Accessor/Accessor.xcworkspace", 0 }, ResSubslate { resid_Accessor }, endSequence{},
-		Event { "Test Target", "" },	Sequence{}, _targetPopup, TypeText { "Test" }, _down, _return, endSequence{},
-		Event { "Setup", "" },			Sequence{}, _targetPopup, TypeText { "Developer_Setup" }, _down, _return, endSequence{},
-		Event { "Developer", "" },		Sequence{}, _targetPopup, TypeText { "Developer" }, _down, _return, endSequence{},
-		Event { "Xcode", "" },			Sequence{}, _targetPopup, TypeText { "Xcode" }, _down, _return, endSequence{},
-		Event { "BBEdit", "" },			Sequence{}, _targetPopup, TypeText { "BBEdit" }, _down, _return, endSequence{},
-		Event { "Accessor", "" },		Sequence{}, _targetPopup, TypeText { "Accessor" }, _down, _return, endSequence{},
-		Event { "In House", "" },		Sequence{}, _targetPopup, TypeText { "InHouse" }, _down, _return, endSequence{},
-		Event { "Doxygen", "" },		Sequence{}, _targetPopup, TypeText { "Doxygen" }, _down, _return, endSequence{},
-		Event { "C doc", "" },			Sequence{}, _targetPopup, TypeText { "Cdoc" }, _down, _return, endSequence{},
-		Event { "All Tests", "" },		Sequence{}, _targetPopup, TypeText { "AllTests" }, _down, _return, endSequence{},
-		Event { "User Slates", "" },	Sequence{}, _targetPopup, TypeText { "UserSlates" }, _down, _return, endSequence{},
-		Event { "Words", "" },			Sequence{}, _targetPopup, TypeText { "Words" }, _down, _return, endSequence{},
-		Event { "CCDev", "" },			Sequence{}, _targetPopup, TypeText { "CCDev" }, _down, _return, endSequence{},
+		Event { "Test Target", "" },	Sequence{}, _targetList, TypeText { "Test" }, _return, endSequence{},
+		Event { "Setup", "" },			Sequence{}, _targetList, TypeText { "Developer_Setup" }, _return, endSequence{},
+		Event { "Developer", "" },		Sequence{}, _targetList, TypeText { "Developer" }, _return, endSequence{},
+		Event { "Xcode", "" },			Sequence{}, _targetList, TypeText { "Xcode" }, _return, endSequence{},
+		Event { "BBEdit", "" },			Sequence{}, _targetList, TypeText { "BBEdit" }, _return, endSequence{},
+		Event { "Accessor", "" },		Sequence{}, _targetList, TypeText { "Accessor" }, _return, endSequence{},
+		Event { "In House", "" },		Sequence{}, _targetList, TypeText { "InHouse" }, _return, endSequence{},
+		Event { "Doxygen", "" },		Sequence{}, _targetList, TypeText { "Doxygen" }, _return, endSequence{},
+		Event { "C doc", "" },			Sequence{}, _targetList, TypeText { "Cdoc" }, _return, endSequence{},
+		Event { "All Tests", "" },		Sequence{}, _targetList, TypeText { "AllTests" }, _return, endSequence{},
+		Event { "User Slates", "" },	Sequence{}, _targetList, TypeText { "UserSlates" }, _return, endSequence{},
+		Event { "Words", "" },			Sequence{}, _targetList, TypeText { "Words" }, _return, endSequence{},
+		Event { "CCDev", "" },			Sequence{}, _targetList, TypeText { "CCDev" }, _return, endSequence{},
 		_SlateGlobals_,
 		_DirectionKeys_,
 		_WhitespaceKeys_,
@@ -1003,7 +1022,7 @@ resource restype_Slate (resid_Accessor, "") { {
 	Slate { "Accessor",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
-		Event { "InHouse", "" },		Sequence{}, _targetPopup, TypeText { "InHouse" }, _down, _return, endSequence{},
+		Event { "InHouse", "" },		Sequence{}, _targetList, TypeText { "InHouse" }, _return, endSequence{},
 		Event { "analyze", "" },		Keypress { kc_B, mf_command + mf_shift },
 		Event { "clean", "" },			Keypress { kc_K, mf_command + mf_shift },
 		Event { "build", "" },			Sequence{}, Keypress { kc_B, mf_command }, ResSubslate { resid_BuildAccessor }, endSequence{},
@@ -1016,7 +1035,7 @@ resource restype_Slate (resid_BuildAccessor, "") { {
 		_SlateGlobals_,
 		ExitEvent { "exit", "" },		NilAction{},
 		Event { "Target", "" },			Sequence{}, CloseSubslate{}, CloseSubslate{}, ResSubslate { resid_Target }, endSequence{},
-		Event { "run original", "" },	Launch { HomeApps_"Accessor.app", 0 },
+		Event { "run original", "" },	Sequence{}, Click { 0, 1335, 365, _screen, _topLeft }, Launch { HomeApps_"Accessor.app", 0 }, endSequence{},
 		Event { "return", "" },			_return,
 		Event { "quit", "" },			Keypress { kc_Q, mf_command },
 	} }
@@ -2394,6 +2413,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 				Event { "Source Control", "" },	Sequence{}, ClickMenu { "Source Control" }, ResSubslate { resid_SourceControl }, endSequence{},
 				Event { "Edit", "" }, 			Sequence{}, ClickMenu { "Edit" }, _down, ResSubslate { resid_EditMenu }, endSequence{},
 				Event { "Refactor", "" }, 		Sequence{}, ClickMenu { "Edit" }, _down, TypeText { "Refactor" }, _return, ResSubslate { resid_Refactor }, endSequence{},
+				Event { "Product", "" },		Sequence{}, ClickMenu { "Product" }, _down, ResSubslate { resid_ProductMenu }, endSequence{},
 				ExitEvent { "View", "" }, 		ClickMenu { "View" },
 				ExitEvent { "Find", "" }, 		ClickMenu { "Find" },
 				ExitEvent { "Build", "" }, 		ClickMenu { "Build" },

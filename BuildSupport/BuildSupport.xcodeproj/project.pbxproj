@@ -99,7 +99,6 @@
 		673D580A16B9A1450001DFF2 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
 		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
 		673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
-		673F9BA518DA4F2F00E06A16 /* Server_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Server_C9.r; sourceTree = "<group>"; };
 		673F9BA918DA517F00E06A16 /* Server_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Server_C9.r; sourceTree = "<group>"; };
 		6741F2FB1743F2AB00F4FF6D /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
 		674791F318567B7500452FA5 /* ___FILEBASENAME___.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = "___FILEBASENAME___.py"; path = "PythonScript.xctemplate/___FILEBASENAME___.py"; sourceTree = "<group>"; };
@@ -423,7 +422,6 @@
 		67DB22CA169CD82300A6E910 /* 8 UserSlates */ = {
 			isa = PBXGroup;
 			children = (
-				673F9BA518DA4F2F00E06A16 /* Server_C9.r */,
 				67DB22CD169CD82300A6E910 /* Slates */,
 				67DB22CB169CD82300A6E910 /* OtherSources */,
 			);

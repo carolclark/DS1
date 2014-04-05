@@ -458,6 +458,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define _quote		Keypress { kc_quote, mf_shift }
 
 #define	_ClickOne_	Event { "click one", "" },		Click { 1, 0, 0, _cursor }
+#define	_ClickTwo_	Event { "click two", "" },		Click { 2, 0, 0, _cursor }
 #define	_PageKeys_	Event { "page top", "" },		Keypress { kc_home, 0 },		\
 					Event { "page end", "" },		Keypress { kc_end, 0 },			\
 					Event { "page north", "" },		Keypress { kc_pageup, 0 },		\

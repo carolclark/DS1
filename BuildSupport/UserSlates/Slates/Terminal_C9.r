@@ -255,7 +255,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "print directory", "" },	Sequence{}, TypeText { "pwd" }, _return, endSequence{},
 		Event { "print variables", "" },	TypeText { "print DEV: ${DEV}; print CCDev: ${CCDev}; print mv: $mv; print cb: $cb; print vn: $vn print gf: $gf" },
 		Event { "print", "" },				Sequence{}, TypeText { "print " }, ResSubslate { resid_Type }, endSequence{},
-		Event { "select file", "" },		Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_gitSelectFile }, endSequence{},
+		Event { "select file", "" },		Sequence{}, TypeText { "read lineno; gf=`cat $CCDev/tmp/gitstatus | grep \"^$lineno:\" | cut -c 5-`; print $gf" }, _return, ResSubslate { resid_gitSelectFile }, endSequence{},
 		Event { "parse revision", "" },		TypeText { "git rev-parse " },
 		Event { "browser", "" },			Sequence{}, TypeText { "gitk" }, _return, ResSubslate { resid_gitBrowser }, endSequence{},
 		Event { "backup issues", "" },		TypeText { "ghubUtil --backupIssues" },

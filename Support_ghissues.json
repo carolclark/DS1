@@ -38,6 +38,7 @@
     "updated_at": "2014-03-19T22:00:39Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -83,6 +84,7 @@
     "updated_at": "2014-02-12T20:45:51Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -128,6 +130,7 @@
     "updated_at": "2014-01-17T23:36:04Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -173,6 +176,7 @@
     "updated_at": "2014-01-09T21:14:24Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -218,6 +222,7 @@
     "updated_at": "2014-01-07T21:27:10Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -292,14 +297,15 @@
     },
     "comments": 0,
     "created_at": "2013-12-31T21:01:27Z",
-    "updated_at": "2014-02-24T21:23:56Z",
+    "updated_at": "2014-03-31T21:46:19Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "### Status 12/31/2014\r\n* OS X 10.9 Mavericks is current as of WWDC13\r\n* Xcode 5 his been adopted; Mavericks to be installed soon\r\n* some recommended tasks from previous OS X versions were not completed\r\n* we have also learned a lot in some areas, especially testing, that we need to implement\r\n\r\nThis issue collects multiple github issues relating to these items for planning, organizing and tracking.\r\n\r\n\r\n\r\n##### Rebuild Projects\r\n- [ ] #23 rebuild simpler Xcode projects\r\n\r\n##### Upgrade History Files\r\n- [ ] #3 adopt GitHub Issues and Markdown\r\n\r\n##### Backup and Maintenance\r\n- [ ] #4 establish and implement full backup procedure\r\n\r\n##### By Project\r\n- [ ] #11 testing: code coverage tool\r\n\r\n##### C-based languages\r\n- [ ] #12 modernize Objective-C\r\n- [ ] #8 establish stronger compiler error recognition\r\n- [ ] #7 establish Objective-C coding standards\r\n- [ ] #9 organize Objective-C code consistently\r\n- [ ] #10 implement Private Categories\r\n\r\n##### Unclassified\r\n\r\n- [ ] #13 profile with Instruments\r\n- [ ] #16 distribution and entitlements\r\n- [ ] #17 implement scheduled maintenance\r\n- [ ] #20 upgrade LLDB debugging support\r\n- [ ] #21 git workflow support\r\n- [ ] #22 convert scripts ccInstall and archive to Python\r\n- [ ] #24 improve TechnicalDocs upload\r\n- [ ] #25 add Finder target\r\n- [ ] #29 Mavericks\r\n- [ ] #30 Convert to ARC\r\n- [ ] #31 Python and Workflow support\r\n- [ ] #32 Doxygen: build for supported collaborator environments\r\n- [ ] #35 AppleScript testing\r\n- [ ] #36 remove non-ascii characters\r\n- [ ] carolclark/Punkin#2 configure for AppStore\r\n- [ ] carolclark/Punkin#5 refactor for testability\r\n- [ ] carolclark/Punkin#6 handle PaintCode files\r\n- [ ] carolclark/Accessor#5 adopt a C++ unit testing tool\r\n- [ ] carolclark/Accessor#6 secure automation\r\n- [ ] carolclark/Accessor#7 upgrade C++ wrapper classes to use ivars\r\n- [ ] carolclark/Accessor#8 migrate to ARC\r\n\r\n"
+    "body": "### Status 12/31/2014\r\n* OS X 10.9 Mavericks is current as of WWDC13\r\n* Xcode 5 his been adopted; Mavericks to be installed soon\r\n* some recommended tasks from previous OS X versions were not completed\r\n* we have also learned a lot in some areas, especially testing, that we need to implement\r\n\r\nThis issue collects multiple github issues relating to these items for planning, organizing and tracking.\r\n\r\n\r\n\r\n##### Rebuild Projects\r\n- [ ] #23 rebuild simpler Xcode projects\r\n\r\n##### Upgrade History Files\r\n- [ ] #3 adopt GitHub Issues and Markdown\r\n\r\n##### Backup and Maintenance\r\n- [ ] #4 establish and implement full backup procedure\r\n\r\n##### By Project\r\n- [ ] #11 testing: code coverage tool(s)\r\n\r\n##### C-based languages\r\n- [ ] #12 modernize Objective-C\r\n- [ ] #8 establish stronger compiler error recognition\r\n- [ ] #7 establish Objective-C coding standards\r\n- [ ] #9 organize Objective-C code consistently\r\n- [ ] #10 implement Private Categories\r\n\r\n##### iOS; Interface Builder\r\n\r\n##### Unclassified\r\n\r\n- [ ] #13 profile with Instruments\r\n- [ ] #16 distribution and entitlements\r\n- [ ] #17 implement scheduled maintenance\r\n- [ ] #20 upgrade LLDB debugging support\r\n- [ ] #21 git workflow support\r\n- [ ] #22 convert scripts ccInstall and archive to Python\r\n- [ ] #24 improve TechnicalDocs upload\r\n- [ ] #25 add Finder target\r\n- [ ] #29 Mavericks\r\n- [ ] #30 Convert to ARC\r\n- [ ] #31 Python and Workflow support\r\n- [ ] #32 Doxygen: build for supported collaborator environments\r\n- [ ] #35 AppleScript testing\r\n- [ ] #36 remove non-ascii characters\r\n- [ ] carolclark/Punkin#2 configure for AppStore\r\n- [ ] carolclark/Punkin#5 refactor for testability\r\n- [ ] carolclark/Punkin#6 handle PaintCode files\r\n- [ ] carolclark/Accessor#5 adopt a C++ unit testing tool\r\n- [ ] carolclark/Accessor#6 secure automation\r\n- [ ] carolclark/Accessor#7 upgrade C++ wrapper classes to use ivars\r\n- [ ] carolclark/Accessor#8 migrate to ARC\r\n\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/32",
@@ -376,6 +382,7 @@
     "updated_at": "2014-02-24T21:23:06Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -453,6 +460,7 @@
     "updated_at": "2014-01-03T19:33:20Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -534,6 +542,7 @@
     "updated_at": "2014-01-03T19:33:20Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -612,14 +621,15 @@
     },
     "comments": 0,
     "created_at": "2013-10-14T16:44:35Z",
-    "updated_at": "2014-01-16T19:56:03Z",
+    "updated_at": "2014-03-29T21:40:37Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [x] rename Xcode 4 app; install Xcode 5 alongside\r\n- [x] switch to Xcode 5\r\n- [x] update all projects and targets for compatiblity with Xcode 5\r\n- [x] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [x] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [x] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [x] Doc comments 27:20\r\n- [x] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [x] Test navigator 44:30\r\n\r\n### Mavericks\r\n- [x] install\r\n- [x] Slates: support Safari: Bookmarks/Sidebar button, Finder tabs\r\n\r\n###### for all Repositories / all Targets: test and analyze; document current process, todos\r\n\r\n### Rebuild Projects and Targets\r\n###### for all Repositories / all Projects / all Targets\r\n- [ ] #23 rebuild simpler Xcode projects\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n*iOS 6 will continue to require OCUnit; Xcode has a tool to migrate to XCTest when that is no longer an issue\r\n\r\n###### for all Repositories / all Targets\r\n- [ ] add bots for each step in testing and analysis process; document\r\n\r\n### iOS and Interface Builder\r\n* *???Punkin: initial Nanny for iOS*\r\n- [ ] Auto config - provisioning 5:20\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
+    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [x] rename Xcode 4 app; install Xcode 5 alongside\r\n- [x] switch to Xcode 5\r\n- [x] update all projects and targets for compatiblity with Xcode 5\r\n- [x] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [x] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [x] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [x] Doc comments 27:20\r\n- [x] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [x] Test navigator 44:30\r\n\r\n### Mavericks\r\n- [x] install\r\n- [x] Slates: support Safari: Bookmarks/Sidebar button, Finder tabs\r\n- [ ] view Cdoc: correct issue where calculated target file name is incorrect\r\n- [ ] script selectFiles: correct issue where all trailing filenames are included in result\r\n\r\n###### for all Repositories / all Targets: test and analyze; document current process, todos\r\n\r\n### Xcode 5.1\r\n- [ ] Accessor: clear Xcode's attempt to switch to 64-bit (clear offer to update settings)\r\n- [ ] Punkin: replace deprecated OCUnit with XCTest\r\n- [ ] clear new compiler warnings\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n*iOS 6 will continue to require OCUnit; Xcode has a tool to migrate to XCTest when that is no longer an issue\r\n\r\n###### for all Repositories / all Targets\r\n- [ ] add bots for each step in testing and analysis process; document\r\n\r\n### iOS and Interface Builder\r\n* *???tool for WWDC videos? (probably no DB for new; use hard-coded session list)*\r\n- [ ] Auto config - provisioning 5:20\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/25",
@@ -696,6 +706,7 @@
     "updated_at": "2014-01-03T19:32:09Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -795,6 +806,7 @@
     "updated_at": "2014-01-03T19:32:09Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -894,6 +906,7 @@
     "updated_at": "2014-02-24T18:08:11Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -943,6 +956,7 @@
     "updated_at": "2014-01-03T19:32:09Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1052,6 +1066,7 @@
     "updated_at": "2014-01-03T19:32:09Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1143,6 +1158,7 @@
     "updated_at": "2014-01-03T19:32:09Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1192,6 +1208,7 @@
     "updated_at": "2013-10-08T00:20:37Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1278,6 +1295,7 @@
     "updated_at": "2014-01-03T19:29:30Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1356,14 +1374,15 @@
     },
     "comments": 0,
     "created_at": "2013-04-26T15:06:53Z",
-    "updated_at": "2014-01-03T19:29:30Z",
+    "updated_at": "2014-04-02T20:48:56Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "see [Code Organization in Xcode Projects](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/) (akosma)\r\n\r\n*Techniques from \"WWDC12#305 What's New in iTunes Connect\"\r\n superseded by new Configuration information from WWDC13*"
+    "body": "see \"From Zero to App Store in Xcode 5\" [13#403]\r\n\r\nalso see:\r\n\"What's New in Xcode\" [13#400@5:20]\r\n\"Continuous integration\" [13#412]\r\n\"Understanding source control in Xcode\" [13#414@24:40]\r\n[Code Organization in Xcode Projects](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/) (akosma), Add an “Entiitlements.plist” (now &lt;Name&gt;.entitlements?) file to the project\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/13",
@@ -1445,6 +1464,7 @@
     "updated_at": "2014-01-03T19:28:27Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1526,6 +1546,7 @@
     "updated_at": "2014-01-18T18:41:35Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1604,14 +1625,15 @@
     },
     "comments": 0,
     "created_at": "2013-04-12T20:02:07Z",
-    "updated_at": "2014-01-12T20:38:58Z",
+    "updated_at": "2014-03-27T21:25:09Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
     },
-    "body": "Consider adoption\r\n\r\nSee [How to Measure Code Coverage in Xcode](http://qualitycoding.org/xcode-code-coverage/)\r\n[Code coverage for Python](https://pypi.python.org/pypi/coverage)\r\n"
+    "body": "Consider adoption\r\n\r\nat least as of Xcode 5, gcov is included; use xcrun to invoke\r\n\r\nSee [How to Measure Code Coverage in Xcode](http://qualitycoding.org/xcode-code-coverage/)\r\n[Code coverage for Python](https://pypi.python.org/pypi/coverage)\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/10",
@@ -1688,6 +1710,7 @@
     "updated_at": "2014-01-12T22:33:16Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1774,6 +1797,7 @@
     "updated_at": "2014-02-24T18:13:19Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1855,6 +1879,7 @@
     "updated_at": "2014-01-03T17:54:34Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1941,6 +1966,7 @@
     "updated_at": "2014-01-03T17:54:34Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -1990,6 +2016,7 @@
     "updated_at": "2014-01-03T21:10:40Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -2076,6 +2103,7 @@
     "updated_at": "2014-01-03T17:54:34Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null
@@ -2180,6 +2208,7 @@
     "updated_at": "2014-01-29T23:30:09Z",
     "closed_at": null,
     "pull_request": {
+      "url": null,
       "html_url": null,
       "diff_url": null,
       "patch_url": null

@@ -37,10 +37,10 @@
 
 <!-- @marker "restructure Xcode projects" -->
 <h4 id='restructureXcodeProjects'><a href="http://github.com/carolclark/Support/issues/23">(#23)</a>restructure Xcode projects</h4><pre>
-	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 	* use shared build output directory for all Xcode projects; see <a href="http://www.clintharris.net/2009/iphone-app-shared-libraries/">Easy, Modular: Static Libraries and Cross-Project References</a>
 	* rename Python target CCDev to CCDevPy to avoid confusion with new project CCDev, which will replace existing target Developer
 	<span class='tldate'>[02/10/2014]</span>
+	<span class='tlmark'>&lt;--</span>
 	* Punkin: Words (from KidsCorner Words and WordsTest)
 
 	* Punkin: Cdoc
@@ -75,7 +75,14 @@
 	* Mavericks
 		* Slates: support Safari Bookmarks/Sidebar button, Finder tabs
 		* for all Repositories / all Targets: test and analyze; document full testing and analysis process
-	<span class='tlmark'>&lt;--</span>
+	* Xcode 5.1
+		* view Cdoc: correct issue where calculated target file name is incorrect
+			* frontWindow.applescript: adjust for apparently changed Xcode workspace window title
+		* script selectFiles: correct issue where all trailing filenames are included in result
+			* Terminal Slate: make grep command more precise
+		* Xcode Slate: Product menu;  use  instead of popup for Target selection
+		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+		* clear new compiler warnings
 	* <a href="#restructureXcodeProjects">restructure Xcode projects</a> (#23)
 </pre>
 
