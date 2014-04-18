@@ -1,5 +1,5 @@
 // =================================================================================
-//	CommonSlates_C9.r			©2004-13 C & C Software, Inc. All rights reserved.
+//	CommonSlates_C9.r			(c)2004-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

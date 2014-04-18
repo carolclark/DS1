@@ -1,5 +1,5 @@
 // =================================================================================
-//	Developer_C9.h					©2013 C & C Software, Inc. All rights reserved.
+//	Developer_C9.h					(c)2013 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "CommonSlates_C9.h"

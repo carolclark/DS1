@@ -1,5 +1,5 @@
 // =================================================================================
-//	AccessLibTypes.r			©2002-08 C & C Software, Inc. All rights reserved.
+//	AccessLibTypes.r			(c)2002-08 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLib_rsrc.h"

@@ -1,5 +1,5 @@
 // =================================================================================
-//	Finder.r					©2006-13 C & C Software, Inc. All rights reserved.
+//	Finder.r					(c)2006-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

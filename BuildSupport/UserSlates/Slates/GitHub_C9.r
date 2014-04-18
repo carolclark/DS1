@@ -1,5 +1,5 @@
 // =================================================================================
-//	GitHub_C9.r					©2013 C & C Software, Inc. All rights reserved.
+//	GitHub_C9.r					(c)2013 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

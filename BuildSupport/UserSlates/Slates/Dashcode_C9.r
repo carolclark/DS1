@@ -1,5 +1,5 @@
 // =================================================================================
-//	Dashcode_C9.r					©2011 C & C Software, Inc. All rights reserved.
+//	Dashcode_C9.r					(c)2011 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

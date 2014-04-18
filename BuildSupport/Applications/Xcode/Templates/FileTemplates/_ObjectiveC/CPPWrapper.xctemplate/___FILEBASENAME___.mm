@@ -1,5 +1,5 @@
 // =================================================================================
-//  ___FILEBASENAME___.mm		©___YEAR___ C & C Software, Inc. All rights reserved.
+//  ___FILEBASENAME___.mm		(c)___YEAR___ C & C Software, Inc. All rights reserved.
 //  							Confidential and Proprietary.
 // =================================================================================
 
@@ -38,7 +38,7 @@ al::___FILEBASENAME___ ___FILEBASENAMEASIDENTIFIER___;
 
 <#Interface File#>
 // =================================================================================
-//  ___FILEBASENAME___.h		©___YEAR___ C & C Software, Inc. All rights reserved.
+//  ___FILEBASENAME___.h		(c)___YEAR___ C & C Software, Inc. All rights reserved.
 //  							Confidential and Proprietary.
 // =================================================================================
 
@@ -55,7 +55,7 @@ struct ___FILEBASENAME___Opaque *_cpp;
 @end
 <#Test Implementation#>
 // =================================================================================
-//  ___FILEBASENAME___Test.mm					©___YEAR___ C & C Software, Inc. All rights reserved.
+//  ___FILEBASENAME___Test.mm					(c)___YEAR___ C & C Software, Inc. All rights reserved.
 //  							Confidential and Proprietary.
 // =================================================================================
 
@@ -72,7 +72,7 @@ struct ___FILEBASENAME___Opaque *_cpp;
 }
 <#Test Interface#>
 // =================================================================================
-//  ___FILEBASENAME___Test.h					©___YEAR___ C & C Software, Inc. All rights reserved.
+//  ___FILEBASENAME___Test.h					(c)___YEAR___ C & C Software, Inc. All rights reserved.
 //  							Confidential and Proprietary.
 // =================================================================================
 

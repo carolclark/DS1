@@ -1,5 +1,5 @@
 // =================================================================================
-//	ScriptEditor_C9.r			©2009-10 C & C Software, Inc. All rights reserved.
+//	ScriptEditor_C9.r			(c)2009-10 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

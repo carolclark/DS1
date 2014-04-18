@@ -1,5 +1,5 @@
 // =================================================================================
-//	CommonSlates_C9.h			©1997-2013 C & C Software, Inc. All rights reserved.
+//	CommonSlates_C9.h			(c)1997-2013 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma once
@@ -1941,10 +1941,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 
 #pragma mark _TestTypeItems_
 #define _TestTypeItems_	\
-	Event { "hello", "type 'Hello, World!'" },	\
-		TypeText { "Hello, World!" },	\
-	Event { "options", "type 'Œº¶Ã´Áª¥²³õ‚ë×çÚÛ¡áøù'" },	\
-		TypeText { "Œº¶Ã´Áª¥²³õ‚ë×çÚÛ¡áøù" }
+	Event { "hello", "type 'Hello, World!'" }, TypeText { "Hello, World!" }
 
 #pragma mark _DefaultBase_
 #define _StarterBase_	\

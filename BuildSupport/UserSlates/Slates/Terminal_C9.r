@@ -1,5 +1,5 @@
 // =================================================================================
-//	Terminal_C9.r				©2008-13 C & C Software, Inc. All rights reserved.
+//	Terminal_C9.r				(c)2008-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

@@ -1,5 +1,5 @@
 // =================================================================================
-//	Numbers_C9.r				©2008-12 C & C Software, Inc. All rights reserved.
+//	Numbers_C9.r				(c)2008-12 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
