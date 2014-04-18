@@ -105,6 +105,7 @@
 #define resid_Developer					39000
 #define resid_AppCode					40000
 #define resid_Server					41000
+#define resid_Pages						42000
 #define resid_ArbProto					50000
 
 #define	resid_LaunchGamesSlate			55000
