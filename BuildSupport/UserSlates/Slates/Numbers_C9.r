@@ -384,6 +384,7 @@ resource restype_Slate (resid_Arbonne, "") { {
 resource restype_Slate (resid_Numbers, "Numbers Slate") { {
 	Slate { "Numbers",	{
 		_SlateGlobals_,
+		Event { "convert", "convert to 09 format" },	Sequence{}, Keypress { kc_S, mf_command }, Wait { 10 }, _return, Wait { 2 }, Keypress { kc_W, mf_command }, endSequence{},
 		_DefaultBase_,
 		_TypeNumbersSlate_,
 		_JumpNorthSubslate_,

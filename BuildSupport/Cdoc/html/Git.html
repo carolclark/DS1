@@ -197,7 +197,14 @@
 		<li><span class='mono'>--remotes</span>&nbsp;&nbsp;# to list remote branches</li>
 		<li><span class='mono'>--all</span>&nbsp;&nbsp;# to list both local and remote branches</li>
 		<li><span class='mono'>--no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
-		<li><span class='mono'>--move [&lt;oldbranch&gt;] &lt;newbranch&gt;</span>&nbsp;&nbsp;# to rename a branch</li>
+		<li><span class='mono'>--move [&lt;oldbranch&gt;] &lt;newbranch&gt;</span>&nbsp;&nbsp;# to rename a branch<ul>
+			<li>then, to rename remote branch to match:<ul>
+				<li class='blurb'>this assumes remote branch is named 'origin'; can use <span class='mono'>git remote -v</span> to verify</li>
+				<li><span class='mono'>git push origin :&lt;oldBranch&gt;&nbsp;&nbsp;# delete old remote branch</span></li>
+				<li><span class='mono'>git push --set-upstream origin &lt;newBranch&gt;&nbsp;&nbsp;# recreate remote branch with new name</span></li>
+			</ul>
+		</li>
+		</ul></li>
 		<li><span class='mono'>--delete &lt;branchname&gt;</span>&nbsp;&nbsp;# delete a branch<ul>
 			<li class='blurb'>also see git docs for information about deleting and cleaning up remote branches</li>
 		</ul></li>
