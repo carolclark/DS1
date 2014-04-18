@@ -1,5 +1,5 @@
 // =================================================================================
-//	CommonSlates_C9.r			©2004-13 C & C Software, Inc. All rights reserved.
+//	CommonSlates_C9.r			(c)2004-13 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -22,6 +22,8 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 	Slate { _DEFAULT_NAME_,	{
 		_SlateGlobals_,
 		_DefaultBase_,
+		_ClickOne_,
+		_ClickTwo_,
 		_TypeSlate_,
 		_WindowSlate_,
 	} }
@@ -91,9 +93,10 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 				Launch { Apps_"Utilities/Grab.app", resid_DefaultSlate },
 			Event { "Backup", "" },
 				Launch { MainApps_"Backup.app", resid_Backup },
-			Event { "Pages", "" },
-				Launch { MainApps_"iWork '08/Pages.app", resid_DefaultSlate },
+//			Event { "Pages", "" }, Launch { Apps_"Pages.app", resid_Pages },
+			Event { "Pages", "" }, Launch { MainApps_"iWork '09/Pages.app", resid_Pages },
 			Event { "Numbers", "" },	Launch { MainApps_"Numbers.app", resid_Numbers },
+			Event { "Numbers 9", "" },	Launch { MainApps_"iWork '09/Numbers.app", resid_Numbers },
 			Event { "Dictation", "" },	Launch { MainApps_"Dragon Dictate.app", resid_DefaultSlate },
 			Event { "Windows", "launch Parallels" },
 				Launch { Home_"Parallels/Microsoft Windows XP.pvm", resid_Parallels },

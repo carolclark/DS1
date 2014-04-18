@@ -1,5 +1,5 @@
 // =================================================================================
-//	Preview_C9.r					©2008 C & C Software, Inc. All rights reserved.
+//	Preview_C9.r					(c)2008 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"

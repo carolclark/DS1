@@ -1,5 +1,5 @@
 // =================================================================================
-//	CommonSlates_C9.h			©1997-2013 C & C Software, Inc. All rights reserved.
+//	CommonSlates_C9.h			(c)1997-2013 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #pragma once
@@ -105,6 +105,7 @@
 #define resid_Developer					39000
 #define resid_AppCode					40000
 #define resid_Server					41000
+#define resid_Pages						42000
 #define resid_ArbProto					50000
 
 #define	resid_LaunchGamesSlate			55000
@@ -458,6 +459,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define _quote		Keypress { kc_quote, mf_shift }
 
 #define	_ClickOne_	Event { "click one", "" },		Click { 1, 0, 0, _cursor }
+#define	_ClickTwo_	Event { "click two", "" },		Click { 2, 0, 0, _cursor }
 #define	_PageKeys_	Event { "page top", "" },		Keypress { kc_home, 0 },		\
 					Event { "page end", "" },		Keypress { kc_end, 0 },			\
 					Event { "page north", "" },		Keypress { kc_pageup, 0 },		\
@@ -1939,10 +1941,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 
 #pragma mark _TestTypeItems_
 #define _TestTypeItems_	\
-	Event { "hello", "type 'Hello, World!'" },	\
-		TypeText { "Hello, World!" },	\
-	Event { "options", "type 'Œº¶Ã´Áª¥²³õ‚ë×çÚÛ¡áøù'" },	\
-		TypeText { "Œº¶Ã´Áª¥²³õ‚ë×çÚÛ¡áøù" }
+	Event { "hello", "type 'Hello, World!'" }, TypeText { "Hello, World!" }
 
 #pragma mark _DefaultBase_
 #define _StarterBase_	\

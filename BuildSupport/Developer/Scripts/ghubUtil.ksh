@@ -41,7 +41,7 @@ function backupIssues {
 		fi
 		echo "==${repo}"
 		echo " -${repo}_ghissues.json:"
-		curl --user "carolclark:gh6868cc" "https://api.github.com/repos/carolclark/${repo}/issues" > "${DEV}/${repo}/${repo}_ghissues.json"
+		curl --user "carolclark:cc6868gh" "https://api.github.com/repos/carolclark/${repo}/issues" > "${DEV}/${repo}/${repo}_ghissues.json"
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage $RC_CURLError "$0#$LINENO:" "curl error: ${repo} -> ${repo}_ghissues.json"
