@@ -2231,7 +2231,7 @@ resource restype_Slate (resid_typeSearch, "") { {
 } };
 
 #pragma mark 8 === External
-// inside: Safari Browsers; 1 GitHub; 2 Xcode Server; 4 Stickies; 5 Console; 6 BBEdit
+// inside: Safari Browsers; 1 GitHub; 2 Xcode Server; 4 Stickies; 5 Console; 6 BBEdit; 7 AppCode
 
 #define _mainFrame_h		0
 #define _mainFrame_v		75
@@ -2398,6 +2398,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		_JumpBar_,
 		Event { "context menu", "" },	ClickMod { 1, 0, 0, _cursor, mf_control },
 		Event { "Terminal", "" },		Sequence{}, ResSubslate { resid_XCTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},
+		Event { "go AppCode", "" },		Sequence{}, Launch { MainApps_"AppCode.app", 0 }, ResSubslate { resid_XCAppCode }, endSequence{},
 		Event { "BBEdit", "" },			Sequence{}, Launch { MainApps_"BBEdit.app", 0 }, ResSubslate { resid_XCBBEdit }, endSequence{},
 		Event { "Validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { MainApps_"BBEdit.app", 0 }, endSequence{},
 		Event { "Stickies", "" },		Sequence{}, ResSubslate { resid_Stickies }, Launch { Apps_"Stickies.app", 0 }, endSequence{},

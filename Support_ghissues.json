@@ -1,5 +1,45 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/39",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/39/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/39/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/39/events",
+    "html_url": "https://github.com/carolclark/Support/issues/39",
+    "id": 32094306,
+    "number": 39,
+    "title": "Xcode: new test class template does not create a file ",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-04-23T20:02:26Z",
+    "updated_at": "2014-04-23T20:02:26Z",
+    "closed_at": null,
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/38",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/38/labels{/name}",
     "comments_url": "https://api.github.com/repos/carolclark/Support/issues/38/comments",
@@ -78,46 +118,6 @@
     "updated_at": "2014-02-12T20:45:51Z",
     "closed_at": null,
     "body": "*see 13#406 Taking Control of Auto Layout in Xcode 5*\r\n\r\n"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/36",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/36/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/36/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/36/events",
-    "html_url": "https://github.com/carolclark/Support/issues/36",
-    "id": 25845932,
-    "number": 36,
-    "title": "remove non-ascii characters",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-
-    ],
-    "state": "open",
-    "assignee": null,
-    "milestone": null,
-    "comments": 0,
-    "created_at": "2014-01-17T23:31:44Z",
-    "updated_at": "2014-04-18T17:05:37Z",
-    "closed_at": null,
-    "body": "special non-ascii characters bullets and copyright symbols are used; they are not recommended and have caused some problems in the past\r\nAppCode replaces them with special '?' characters\r\n\r\nremove headers containing bullets; replace copyright symbols with (c)"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/35",
@@ -267,9 +267,9 @@
     },
     "comments": 0,
     "created_at": "2013-12-31T21:01:27Z",
-    "updated_at": "2014-03-31T21:46:19Z",
+    "updated_at": "2014-04-18T22:27:00Z",
     "closed_at": null,
-    "body": "### Status 12/31/2014\r\n* OS X 10.9 Mavericks is current as of WWDC13\r\n* Xcode 5 his been adopted; Mavericks to be installed soon\r\n* some recommended tasks from previous OS X versions were not completed\r\n* we have also learned a lot in some areas, especially testing, that we need to implement\r\n\r\nThis issue collects multiple github issues relating to these items for planning, organizing and tracking.\r\n\r\n\r\n\r\n##### Rebuild Projects\r\n- [ ] #23 rebuild simpler Xcode projects\r\n\r\n##### Upgrade History Files\r\n- [ ] #3 adopt GitHub Issues and Markdown\r\n\r\n##### Backup and Maintenance\r\n- [ ] #4 establish and implement full backup procedure\r\n\r\n##### By Project\r\n- [ ] #11 testing: code coverage tool(s)\r\n\r\n##### C-based languages\r\n- [ ] #12 modernize Objective-C\r\n- [ ] #8 establish stronger compiler error recognition\r\n- [ ] #7 establish Objective-C coding standards\r\n- [ ] #9 organize Objective-C code consistently\r\n- [ ] #10 implement Private Categories\r\n\r\n##### iOS; Interface Builder\r\n\r\n##### Unclassified\r\n\r\n- [ ] #13 profile with Instruments\r\n- [ ] #16 distribution and entitlements\r\n- [ ] #17 implement scheduled maintenance\r\n- [ ] #20 upgrade LLDB debugging support\r\n- [ ] #21 git workflow support\r\n- [ ] #22 convert scripts ccInstall and archive to Python\r\n- [ ] #24 improve TechnicalDocs upload\r\n- [ ] #25 add Finder target\r\n- [ ] #29 Mavericks\r\n- [ ] #30 Convert to ARC\r\n- [ ] #31 Python and Workflow support\r\n- [ ] #32 Doxygen: build for supported collaborator environments\r\n- [ ] #35 AppleScript testing\r\n- [ ] #36 remove non-ascii characters\r\n- [ ] carolclark/Punkin#2 configure for AppStore\r\n- [ ] carolclark/Punkin#5 refactor for testability\r\n- [ ] carolclark/Punkin#6 handle PaintCode files\r\n- [ ] carolclark/Accessor#5 adopt a C++ unit testing tool\r\n- [ ] carolclark/Accessor#6 secure automation\r\n- [ ] carolclark/Accessor#7 upgrade C++ wrapper classes to use ivars\r\n- [ ] carolclark/Accessor#8 migrate to ARC\r\n\r\n"
+    "body": "### Status 12/31/2014\r\n* OS X 10.9 Mavericks is current as of WWDC13\r\n* Xcode 5 his been adopted; Mavericks to be installed soon\r\n* some recommended tasks from previous OS X versions were not completed\r\n* we have also learned a lot in some areas, especially testing, that we need to implement\r\n\r\nThis issue collects multiple github issues relating to these items for planning, organizing and tracking.\r\n\r\n\r\n\r\n##### Rebuild Projects\r\n- [ ] #23 rebuild simpler Xcode projects\r\n\r\n##### Upgrade History Files\r\n- [ ] #3 adopt GitHub Issues and Markdown\r\n\r\n##### Backup and Maintenance\r\n- [ ] #4 establish and implement full backup procedure\r\n\r\n##### By Project\r\n- [ ] #11 testing: code coverage tool(s)\r\n\r\n##### C-based languages\r\n- [ ] #12 modernize Objective-C\r\n- [ ] #8 establish stronger compiler error recognition\r\n- [ ] #7 establish Objective-C coding standards\r\n- [ ] #9 organize Objective-C code consistently\r\n- [ ] #10 implement Private Categories\r\n\r\n##### iOS; Interface Builder\r\n\r\n##### Unclassified\r\n\r\n- [ ] #13 profile with Instruments\r\n- [ ] #16 distribution and entitlements\r\n- [ ] #17 implement scheduled maintenance\r\n- [ ] #20 upgrade LLDB debugging support\r\n- [ ] #21 git workflow support\r\n- [ ] #22 convert scripts ccInstall and archive to Python\r\n- [ ] #24 improve TechnicalDocs upload\r\n- [ ] #25 add Finder target\r\n- [ ] #29 Mavericks\r\n- [ ] #30 Convert to ARC\r\n- [ ] #31 Python and Workflow support\r\n- [ ] #32 Doxygen: build for supported collaborator environments\r\n- [ ] #35 AppleScript testing\r\n- [x] #36 remove non-ascii characters\r\n- [ ] carolclark/Punkin#2 configure for AppStore\r\n- [ ] carolclark/Punkin#5 refactor for testability\r\n- [ ] carolclark/Punkin#6 handle PaintCode files\r\n- [ ] carolclark/Accessor#5 adopt a C++ unit testing tool\r\n- [ ] carolclark/Accessor#6 secure automation\r\n- [ ] carolclark/Accessor#7 upgrade C++ wrapper classes to use ivars\r\n- [ ] carolclark/Accessor#8 migrate to ARC\r\n\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/32",
@@ -567,9 +567,9 @@
     },
     "comments": 0,
     "created_at": "2013-10-14T16:44:35Z",
-    "updated_at": "2014-03-29T21:40:37Z",
+    "updated_at": "2014-04-25T22:19:31Z",
     "closed_at": null,
-    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [x] rename Xcode 4 app; install Xcode 5 alongside\r\n- [x] switch to Xcode 5\r\n- [x] update all projects and targets for compatiblity with Xcode 5\r\n- [x] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [x] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [x] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [x] Doc comments 27:20\r\n- [x] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [x] Test navigator 44:30\r\n\r\n### Mavericks\r\n- [x] install\r\n- [x] Slates: support Safari: Bookmarks/Sidebar button, Finder tabs\r\n- [ ] view Cdoc: correct issue where calculated target file name is incorrect\r\n- [ ] script selectFiles: correct issue where all trailing filenames are included in result\r\n\r\n###### for all Repositories / all Targets: test and analyze; document current process, todos\r\n\r\n### Xcode 5.1\r\n- [ ] Accessor: clear Xcode's attempt to switch to 64-bit (clear offer to update settings)\r\n- [ ] Punkin: replace deprecated OCUnit with XCTest\r\n- [ ] clear new compiler warnings\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n*iOS 6 will continue to require OCUnit; Xcode has a tool to migrate to XCTest when that is no longer an issue\r\n\r\n###### for all Repositories / all Targets\r\n- [ ] add bots for each step in testing and analysis process; document\r\n\r\n### iOS and Interface Builder\r\n* *???tool for WWDC videos? (probably no DB for new; use hard-coded session list)*\r\n- [ ] Auto config - provisioning 5:20\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
+    "body": "### Xcode 5\r\nsee *What's New in Xcode 13#400*\r\n##### Install and Switch\r\n- [x] rename Xcode 4 app; install Xcode 5 alongside\r\n- [x] switch to Xcode 5\r\n- [x] update all projects and targets for compatiblity with Xcode 5\r\n- [x] automation: smaller toolbar; new documentation window; Source control is its own menu;adjust for added navigator; nav kb shortcut should now enable arrow selection\r\n\r\n##### Adopt Standard Features\r\n- [x] Source Control 4:40\r\n    * configure source control 5:00\r\n    * consider how branch support fits in\r\n- [x] Asset catalog 9:25\r\n    * Move existing content into new asset catalog 13:15\r\n- [x] Doc comments 27:20\r\n- [x] Debugging\r\n    * Debug bar, except layouts 32:00\r\n    * Debug gauges 32:50\r\n- [x] Test navigator 44:30\r\n\r\n### Mavericks\r\n- [x] install\r\n- [x] Slates: support Safari: Bookmarks/Sidebar button, Finder tabs\r\n- [x] view Cdoc: correct issue where calculated target file name is incorrect\r\n- [x] script selectFiles: correct issue where all trailing filenames are included in result\r\n\r\n###### for all Repositories / all Targets: test and analyze; document current process, todos\r\n\r\n### Xcode 5.1\r\n- [x] Accessor: clear Xcode's attempt to switch to 64-bit (clear offer to update settings)\r\n- [x] Punkin, Accessor: replace deprecated OCUnit with XCTest\r\n- [x] clear new compiler warnings\r\n\r\n### Continuous Integration\r\n\r\n*see \"What's New in Xcode\" 13#400@44:30\r\n\r\n*iOS 6 will continue to require OCUnit; Xcode has a tool to migrate to XCTest when that is no longer an issue\r\n\r\n###### for all Repositories / all Targets\r\n- [ ] add bots for each step in testing and analysis process; document\r\n\r\n### iOS and Interface Builder\r\n* *???tool for WWDC videos? (probably no DB for new; use hard-coded session list)*\r\n- [ ] Auto config - provisioning 5:20\r\n- [ ] Interface design 7:30\r\n- [ ] Interface preview: select from assistant jumpbar 16:20\r\n- [ ] Turn on auto layout 17:20\r\n- [ ] Debug bar layout support 32:00"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/25",
@@ -1423,9 +1423,9 @@
     },
     "comments": 0,
     "created_at": "2013-04-22T18:14:38Z",
-    "updated_at": "2014-04-07T22:33:05Z",
+    "updated_at": "2014-04-24T16:24:53Z",
     "closed_at": null,
-    "body": "* see [Modern Objective-C12#405](https://developer.apple.com/videos/wwdc/2012/index.php?id=405), [Migrating to Modern Objective-C 12#413](https://developer.apple.com/videos/wwdc/2012/index.php?id=405),*What's New in Xcode 5  13#400@25:00*\r\n\r\n* also see carolclark/Accessor#7 for Objective-C++ ivars\r\n\r\n- [ ] adopt C++ 11 (already done?)\r\n\r\n- [ ] use typed enums:\r\ntypedef enum NSNumberFormatterStyle : NSUInteger {\r\n    ...\r\n} NSNumberFormatterStyle;\r\nverify with -Wconversion?\r\n\r\n- [ ] use object literals; see http://clang.llvm.org/docs/ObjectiveCLiterals.html\r\n- [ ] property synthesis: declare property only; declaration of ivar, @synthesize statement no longer needed (ivar for property name is _name)\r\n    *Core Data NSManagedObject opts out of synthesize by default*\r\n\r\nwarnings and analyzer settings\r\n"
+    "body": "* see [Modern Objective-C12#405](https://developer.apple.com/videos/wwdc/2012/index.php?id=405), [Migrating to Modern Objective-C 12#413](https://developer.apple.com/videos/wwdc/2012/index.php?id=405),*What's New in Xcode 5  13#400@25:00*\r\n\r\n* also see carolclark/Accessor#7 for Objective-C++ ivars\r\n\r\n- [x] adopt C++ 11 (already done?)\r\n\r\n- [ ] use typed enums:\r\ntypedef enum NSNumberFormatterStyle : NSUInteger {\r\n    ...\r\n} NSNumberFormatterStyle;\r\nverify with -Wconversion?\r\n\r\n- [ ] use object literals; see http://clang.llvm.org/docs/ObjectiveCLiterals.html\r\n- [ ] property synthesis: declare property only; declaration of ivar, @synthesize statement no longer needed (ivar for property name is _name)\r\n    *Core Data NSManagedObject opts out of synthesize by default*\r\n\r\nwarnings and analyzer settings\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/11",
