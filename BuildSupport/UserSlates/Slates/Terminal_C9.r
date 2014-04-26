@@ -82,6 +82,7 @@
 
 #define	_TerminalItems_			\
 		_StarterBase_,			\
+		Event { "activate", "" },		Launch { Apps_"Utilities/Terminal.app", 0 },	\
 		Event { "Type", "" },			ResSubslate { resid_Type },		\
 		Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 		Event { "paste", "" },			Keypress { kc_V, mf_command },	\
@@ -210,6 +211,7 @@ resource restype_Slate (resid_Type, "Type") { {
 resource restype_Slate (resid_Git, "") { {
 	Slate { "Git",	{
 		_GitStandards_,
+		Event { "activate", "" },		Launch { Apps_"Utilities/Terminal.app", 0 },
 		Event { "specify", "" },		_specifyWhich,
 		Event { "go back", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
 		Event { "FileMerge", "" },		Sequence{}, Launch { DevApps_"XCode.app/Contents/Applications/FileMerge.app", 0 }, ResSubslate { resid_FileMerge },  endSequence{},

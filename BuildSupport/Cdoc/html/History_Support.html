@@ -40,24 +40,19 @@
 	* use shared build output directory for all Xcode projects; see <a href="http://www.clintharris.net/2009/iphone-app-shared-libraries/">Easy, Modular: Static Libraries and Cross-Project References</a>
 	* rename Python target CCDev to CCDevPy to avoid confusion with new project CCDev, which will replace existing target Developer
 	<span class='tldate'>[02/10/2014]</span>
-	<span class='tlmark'>&lt;--</span>
-	* Punkin: Words (from KidsCorner Words and WordsTest)
-
-	* Punkin: Cdoc
-	* Punkin: Doxygen
-	* Accessor: Accessor and AccessorTest
-	* Accessor: InHouse
-	* Accessor: Cdoc
-	* Accessor: Doxygen
-	* Support: CCDev (from Developer)
-	* Support: Python (from CCDevPy; built by CCDev)
-	* Support: BBEdit (in folder Applications?)
-	* Support: Xcode
-	* Support: Cdoc
-	* Support: Doxygen
-	* Support: UserSlates
-
-	* (new) project CCDev
+	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+	* Cocoa Projects
+		* *Punkin: Words (from KidsCorner Words and WordsTest)*
+		* *Accessor: Accessor (from BuildAccessor Accessor, AccessorApp/LogicTest, InHouse)*
+	* Docs
+		* *Support, Accessor, Punkin Docs: from Cdoc, Doxygen, Other Documents*
+	* Developer
+		* *Support: CCDev (from Developer)*
+		* *Support: Python (from CCDevPy; built by CCDev)*
+	* Application Support
+		* *Applications/BBEdit*
+		* *Applications/Xcode*
+	* UserSlates
 </pre>
 
 <!-- @marker "upgrade to Mavericks" -->
@@ -81,9 +76,9 @@
 		* script selectFiles: correct issue where all trailing filenames are included in result
 			* Terminal Slate: make grep command more precise
 		* Xcode Slate: Product menu;  use  instead of popup for Target selection
-		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 		* remove non-ascii characters (<a href="http://github.com/carolclark/Support/issues/36">Support#36</a>)
 		* clear new compiler warnings
+	<span class='tlmark'>&lt;--</span>
 	* <a href="#restructureXcodeProjects">restructure Xcode projects</a> (#23)
 </pre>
 

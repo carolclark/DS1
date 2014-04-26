@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67976C0E184D24C200F09A53"
-               BuildableName = "ccdevPy"
+               BuildableName = "CCDev"
                BlueprintName = "ccdevPy"
                ReferencedContainer = "container:CCDevPy.xcodeproj">
             </BuildableReference>
