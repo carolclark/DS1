@@ -98,7 +98,7 @@
 		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Create Cocoa Targets" "4" -->
-		<!-- @topicItem "Add Cocoa Target" "#AddCocoaTarget" "0" "" -->
+		<!-- @topicItem "Add Cocoa Project" "#AddCocoaProject" "0" "" -->
 		<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
 		<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
 	<!-- @topicSep -->
@@ -115,38 +115,53 @@
 <!-- @marker "Xcode Project Mirrors Files" -->
 <h4 id='XcodeProjectMirrorsFiles'>Xcode Project Mirrors Files</h4><pre>
 	* *see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a>*
-
-	* for all projects
-		* in Finder: organize source files and resources in folders and mirror them in Xcode
+	* for all projects: organize source files and resources in folders and mirror them in Xcode
+		* in Finder: organize source files and resources in folders
 		* in Xcode Project
-			* remove existing groups, if any, removing resources only
-			* add folder(s) to Xcode project, recursively creating groups for every subfolder
-
+			* remove existing groups, if any, removing references only
+			* add new folder(s) to Xcode project, recursively creating groups for every subfolder
+			* mark all schemes as shared
 	* New Cocoa project
-		* Application folder &lt;ApplicationName&gt;
+		* Application Target folder &lt;ApplicationName&gt;
+			* AppDelegate: rename to &lt;Target&gt;App
 			* Classes: AppDelegate; Controllers; Models; Helpers
 			* OtherSources (*-main.m, *.pch, *-Info.plist)
 			* Resources: DataModels; Images.xcassets (created by Xcode); Nibs
 				* Nibs/*.lproj folders also contain *-InfoPlist.strings and Credits.rtf
-		* Test Target folders &lt;ApplicationName&gt;&lt;Tests&gt;, &lt;ApplicationName&gt;_&lt;AppTests&gt;
-			* as for Application, but use Tests instead of Classes; include other folders as indicated
+		* Test Target
+			* rename &lt;ApplicationName&gt;Tests to &lt;ApplicationName&gt;_AppTests
+			* organize files as for Application, but use Tests instead of Classes; include other folders as indicated
+		* add reorganized files
+			* remove existing groups, if any, removing references only
+			* add new folder(s) to Xcode project, recursively creating groups for every subfolder
+			* rename target &lt;ApplicationName&gt;Tests to &lt;ApplicationName&gt;_AppTests
+			* remove added *Info.plist files from targets
+		* update Build Settings for paths to Prefix Header, Info.plist
+		* in xib
+			* update class of Application Delegate object
+			* set Application's delegate outlet to the renamed &lt;Target&gt;App
+		* scheme editor
+			* make Test scheme visible
+			* mark all schemes as "shared"
 </pre>
 
-<!-- @marker "Add Cocoa Target" -->
-<h4 id='AddCocoaTarget'>Add Cocoa Target</h4><ul>
-	<li>open the Project that will contain the target</li>
-	<li>add Target from indicated template<ul>
-		<li>if it changes any existing schemes, check them back out again</li>
+<!-- @marker "Add Cocoa Project" -->
+<h4 id='AddCocoaProject'>Add Cocoa Project</h4><ul>
+	<li>create Project from indicated template<ul>
+		<li classical='blurb'>do not add to Workspace file yet</li>
 	</ul></li>
 	<li>mark scheme "shared"</li>
 
-	<li><a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a></li>
+	<li>apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a></li>
 
 	<li>AppDelegate<ul>
 		<li>rename to &lt;Target&gt;App</li>
 		<li>update Application Delegate object in xib</li>
 		<li>set Application's delegate outlet to the AppDelegate object</li>
 	</ul></li>
+
+	<li>scheme editor: make Test scheme visible; mark schemes as "shared"</li>
+	<li>apply <a href="../Support/DevelopingProjects.html#RenameTarget">Rename Target</a> to rename &lt;Target&gt;Tests to &lt;Target&gt;_AppTests</li>
 
 	<li><a href="#AddUnitTesting">Add Unit Testing</a></li>
 	<li>if there is not already a Doxygen target for this project, <a href="#AddDoxygenTarget">Add Doxygen Target</a></li>
@@ -231,7 +246,7 @@
 
 <!-- @marker "RenameTarget" -->
 <h4 id='RenameTarget'>Rename Target</h4><pre>
-	* rename target(s)
+	* rename target, its corresponding folder, and its Xcode group
 	* for Cocoa targets, also:
 		* [rename *-info.plist and *.pch files; update their pointers in Settings]
 		* edit Settings: Bundle Loader for AppTest target

@@ -4,8 +4,7 @@
 #  <#Project#>
 #
 #  Created by ___FULLUSERNAME___ on ___DATE___.
-#  Copyright ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
-#  Confidential and Proprietary.
+#  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 
 USAGE='
 <#Target#>_install.ksh -- provide functions for ccInstall to support CCDev installation

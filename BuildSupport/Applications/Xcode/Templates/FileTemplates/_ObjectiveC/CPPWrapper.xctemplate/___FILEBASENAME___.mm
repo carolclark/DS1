@@ -1,6 +1,7 @@
 // =================================================================================
-//  ___FILEBASENAME___.mm		(c)___YEAR___ C & C Software, Inc. All rights reserved.
-//  							Confidential and Proprietary.
+//  ___FILEBASENAME___.mm
+//
+//	Copyright (c) ___YEAR___ C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #import "___FILEBASENAME___.h"
@@ -38,8 +39,9 @@ al::___FILEBASENAME___ ___FILEBASENAMEASIDENTIFIER___;
 
 <#Interface File#>
 // =================================================================================
-//  ___FILEBASENAME___.h		(c)___YEAR___ C & C Software, Inc. All rights reserved.
-//  							Confidential and Proprietary.
+//  ___FILEBASENAME___.h
+//
+//	Copyright (c) ___YEAR___ C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 struct ___FILEBASENAME___Opaque;
