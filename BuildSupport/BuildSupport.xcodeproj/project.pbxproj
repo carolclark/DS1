@@ -90,6 +90,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67147FBE191449C400B85587 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
+		67147FBF191449C400B85587 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
+		67147FC0191449C400B85587 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		671C4824159CFF3800214A9E /* BBEditScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEditScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		671EC78218F5C1A900E2DDEB /* Pages_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Pages_C9.r; sourceTree = "<group>"; };
 		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
@@ -311,6 +314,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		67147FBD191449C400B85587 /* InstallDoxygen.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				67147FBE191449C400B85587 /* ___FILEBASENAME___.ksh */,
+				67147FBF191449C400B85587 /* TemplateIcon.icns */,
+				67147FC0191449C400B85587 /* TemplateInfo.plist */,
+			);
+			name = InstallDoxygen.xctemplate;
+			path = ../_Scripting/InstallDoxygen.xctemplate;
+			sourceTree = "<group>";
+		};
 		67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,7 +332,8 @@
 				67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */,
 				67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */,
 			);
-			path = InstallCdoc.xctemplate;
+			name = InstallCdoc.xctemplate;
+			path = ../_Scripting/InstallCdoc.xctemplate;
 			sourceTree = "<group>";
 		};
 		673D580916B9A1450001DFF2 /* Doxygen */ = {
@@ -706,6 +721,8 @@
 				67DD76DD16A4AF9300BECCD5 /* DesignDoc.xctemplate */,
 				67DD76E016A4AF9300BECCD5 /* DoxygenConfig.xctemplate */,
 				67DD76E416A4AF9300BECCD5 /* HistoryFile.xctemplate */,
+				67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */,
+				67147FBD191449C400B85587 /* InstallDoxygen.xctemplate */,
 				67DD76E716A4AF9300BECCD5 /* ReadMe.xctemplate */,
 				67DD76EA16A4AF9300BECCD5 /* RequirementsDoc.xctemplate */,
 				67DD76ED16A4AF9300BECCD5 /* UseCasesDoc.xctemplate */,
@@ -944,7 +961,6 @@
 			children = (
 				674791F618567E3A00452FA5 /* PythonTestCase.xctemplate */,
 				674791F218567B4000452FA5 /* PythonModule.xctemplate */,
-				67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */,
 				67DD772416A4AF9300BECCD5 /* InstallTarget.xctemplate */,
 				67DD772816A4AF9300BECCD5 /* ShellScript.xctemplate */,
 				67DD772C16A4AF9300BECCD5 /* shunitTest.xctemplate */,

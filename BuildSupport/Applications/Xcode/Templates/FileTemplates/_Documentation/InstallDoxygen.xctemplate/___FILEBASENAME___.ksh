@@ -4,11 +4,10 @@
 #  <#Project#>
 #
 #  Created by ___FULLUSERNAME___ on ___DATE___.
-#  Copyright ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
-#  Confidential and Proprietary.
+#  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 
 USAGE='
-Cdoc_install.ksh -- provide functions for ccInstall to support CCDev installation
+Doxygen_install.ksh -- provide functions for ccInstall to support building Doxygen documentation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--prepareFileOperation subtarget filepath destinationFolder
@@ -28,8 +27,6 @@ sourceRoot=""
 targetFolder=""
 actionFlags=""
 
-technicalDocs="${CCDev}/Sites/TechnicalDocs"
-
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
@@ -40,13 +37,10 @@ function getSubtargetDestination {
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
-		"html" )
-			destinationFolder="${CCDev}/Sites/TechnicalDocs/<#Project#>"
+		"Doxygen" )
+			destinationFolder="${CCDev}/Sites/Doxygen/<#WorkspaceName#>"
 			;;
-		"Cdoc_install.ksh" )
-			;&	# this script
-		"plist" )
-			;;	# used by Xcode build system
+		# Doxygen: local folders not processed
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
 			return
@@ -70,11 +64,7 @@ function prepareFileOperation {
 	if [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
-		if [[ "${srcname%.html}" = "${srcname}" ]] ; then
-			action="copy"
-		else
-			action="translateCdoc"
-		fi
+		action="copy"
 		sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
 		destinationForCopy="${destinationFolder}/${destname}"
 	else
@@ -90,17 +80,9 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${technicalDocs}/<#Target#>" ; do
-		msg=$(ccInstall --removeFolder "${folder}")
-		st=${?}
-		if [[ ${st} > 0 ]] ; then
-			errorMessage $${st} "$0#$LINENO:" "error: ${msg}"
-			return
-		fi
-	done
+	print "no clean action for Doxygen target"
 	return 0
 }
 
 #^ 8 === main
-
 . "${CCDev}/bin/execInstallScript"

@@ -19,4 +19,4 @@ DOCSET_FEEDNAME			= <#ProjectName#>
 DOCSET_BUNDLE_ID		= com.candcsoft.<#ProjectName#>
 DOCSET_PUBLISHER_ID		= com.candcsoft.Publisher
 GENERATE_LATEX			= NO
-IMAGE_PATH				= $(DEV)/<#ProjectName#>/Doxygen
+IMAGE_PATH				= $(DEV)/<#ProjectName#>/Docs/Images
