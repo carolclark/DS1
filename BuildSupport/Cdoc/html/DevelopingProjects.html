@@ -98,11 +98,13 @@
 		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Create Cocoa Targets" "4" -->
-		<!-- @topicItem "Add Cocoa Target" "#AddCocoaTarget" "0" "" -->
+		<!-- @topicItem "New Cocoa Project" "#NewCocoaProject" "0" "" -->
 		<!-- @topicItem "Add Unit Testing" "#AddUnitTesting" "0" "" -->
 		<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Create Other Targets" "9" -->
+		<!-- @topicItem "Add Docs Project" "#AddDocsProject" "0" "" -->
+		<!-- @topicItem "Add ccInstall Target" "#AddCcInstallTarget" "0" "" -->
 		<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
 		<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 		<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
@@ -114,61 +116,69 @@
 
 <!-- @marker "Xcode Project Mirrors Files" -->
 <h4 id='XcodeProjectMirrorsFiles'>Xcode Project Mirrors Files</h4><pre>
-	* *see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a>*
-
-	* for all projects
-		* in Finder: organize source files and resources in folders and mirror them in Xcode
-		* in Xcode Project
-			* remove existing groups, if any, removing resources only
-			* add folder(s) to Xcode project, recursively creating groups for every subfolder
-
-	* New Cocoa project
-		* Application folder &lt;ApplicationName&gt;
-			* Classes: AppDelegate; Controllers; Models; Helpers
-			* OtherSources (*-main.m, *.pch, *-Info.plist)
-			* Resources: DataModels; Images.xcassets (created by Xcode); Nibs
-				* Nibs/*.lproj folders also contain *-InfoPlist.strings and Credits.rtf
-		* Test Target folders &lt;ApplicationName&gt;&lt;Tests&gt;, &lt;ApplicationName&gt;_&lt;AppTests&gt;
-			* as for Application, but use Tests instead of Classes; include other folders as indicated
+	* *organize source files and resources in folders and mirror them in Xcode*
+		* *see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a>*
+	* in Finder: organize source files and resources in folders
+	* in Xcode Project
+		* remove existing groups, if any, removing references only
+		* add new folder(s) to Xcode project, recursively creating groups for every subfolder
+		* remove any added plists from their targets
 </pre>
 
-<!-- @marker "Add Cocoa Target" -->
-<h4 id='AddCocoaTarget'>Add Cocoa Target</h4><ul>
-	<li>open the Project that will contain the target</li>
-	<li>add Target from indicated template<ul>
-		<li>if it changes any existing schemes, check them back out again</li>
-	</ul></li>
-	<li>mark scheme "shared"</li>
-
-	<li><a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a></li>
-
-	<li>AppDelegate<ul>
-		<li>rename to &lt;Target&gt;App</li>
-		<li>update Application Delegate object in xib</li>
-		<li>set Application's delegate outlet to the AppDelegate object</li>
-	</ul></li>
-
-	<li><a href="#AddUnitTesting">Add Unit Testing</a></li>
-	<li>if there is not already a Doxygen target for this project, <a href="#AddDoxygenTarget">Add Doxygen Target</a></li>
-	<li><a href="#ReplaceDefaultWindow">Replace Default Window</a></li>
-</ul>
+<!-- @marker "New Cocoa Project" -->
+<h4 id='NewCocoaProject'>New Cocoa Project</h4><pre>
+	* create Project from indicated template
+		* *do not add to Workspace file yet*
+	* customize project structure
+		* reorganize Application Target folder &lt;ApplicationName&gt;
+			* reorganize Sources
+				* Classes: AppDelegate; Controllers; Models; Helpers
+				* OtherSources (*-main.m, *.pch, *-Info.plist)
+				* Resources: DataModels; Images.xcassets (created by Xcode); Nibs
+					* Nibs/*.lproj folders also contain *-InfoPlist.strings and Credits.rtf
+			* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+			* update Build Settings for paths to Prefix Header, Info.plist
+		* replace AppDelegate
+			* new files &lt;Target&gt;/Classes/AppDelegate/&lt;Target&gt;App from Cocoa Application Delegate template
+				* check against supplied files AppDelegate, updating template if indicated
+			* remove files AppDelegate
+			* MainMenu.xib
+				* update name and class of Application Delegate object
+				* set Application's delegate outlet to the renamed &lt;Target&gt;App
+		* reorganize AppTest target folder
+			* rename &lt;ApplicationName&gt;Tests to &lt;ApplicationName&gt;_AppTests in target folder, test class, *Info.plist
+			* reorganize sources as for Application, but use AppTests instead of Classes
+			* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+			* rename target &lt;ApplicationName&gt;Tests to &lt;ApplicationName&gt;_AppTests
+			* update Build Setting for path to Info.plist
+		* replace AppTests file
+			* new file &lt;ApplicationName&gt;_AppTests from template
+				* check against supplied file &lt;ApplicationName&gt;Tests, updating template if indicated
+			* remove files &lt;ApplicationName&gt;Tests
+		* edit Schemes
+			* add AppTests scheme to visible schemes
+			* mark all schemes as "shared"
+	* <a href="#AddUnitTesting">add Unit Test target</a> &lt;ApplicationName&gt;Tests
+	* <a href="#AddDoxygenTarget">Add Doxygen Target</a>, or include in existing Doxygen target
+	* <a href="#ReplaceDefaultWindow">Replace Default Window</a>
+</pre>
 
 <!-- @marker "Add Unit Testing" -->
 <h4 id='AddUnitTesting'>Add Unit Testing</h4><ul>
 	<li class='blurb'>from iPhoneUnitsSample ReadMe: "Important: Application targets with unit tests cannot be built or run using the iPhone Simulator SDK; they can be built and run only using the iPhone Device SDK." The sample produces two copies of the app, one with Unit Tests and one without.</li>
-	<li>Add Logic and App Test Targets<ul>
+	<li>Add Unit and App Test Targets<ul>
 		<li>for each: add a new target from Cocoa Unit Testing Bundle template; mark scheme "shared"; add to &lt;Target&gt; scheme's Test specification</li>
 		<li>for App Tests, also:<ul>
 			<li>set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR(?CONFIGURATION_BUILD_DIR))/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
 			<li>add test case testAppDelegate (testAppDelegate#)</li>
 		</ul></li>
-		<li>for Logic Tests, also:<ul>
+		<li>for Unit Tests, also:<ul>
 			<li>edit &lt;Target&gt;LogicTests: use testNothing<span class='blurb'>Xcode may get confused and issue a warning if it doesn't find &lt;Target&gt;LogicTests with at least one test</span></li>
 		</ul></li>
 	</ul></li>
 	<li>set up debugging<ul>
 		<li>add Exception breakpoint with action Debugger Command <span class='mono'>log message</span></li>
-		<li>add Symbolic breakpoint at -[SenTestCase failWithException:]</li>
+		<li>add Symbolic breakpoint at -[XCTestCase failWithException:]</li>
 	</ul></li>
 </ul>
 
@@ -180,6 +190,41 @@
 		<li>for Core Data tests, use private template _ObjectiveC/CocoaTestClass/NSManagedObject; see <a href="http://stackoverflow.com/questions/1849802/how-to-unit-test-my-models-now-that-i-am-using-core-data">Testing Core Data discussion</a></li>
 	</ul></li>
 </ul>
+
+<!-- @marker "AddDocsProject" -->
+<h4 id='AddDocsProject'>Add Docs Project</h4><ul>
+	<li class='blurb'>project to build technical and Doxygen targets and contain additional documents as needed</li>
+	<li>create new empty project Docs</li>
+	<li>inside the Docs folder:<ul>
+		<li>add empty folders OtherDocuments and Images</li>
+		<li>Doxygen<ul>
+			<li><a href="#AddCcInstallTarget">Add ccInstall Target</a> Doxygen</li>
+			<li>add Doxygen configuration file &lt;WorkspaceName&gt;_doxygen.txt from template</li>
+		</ul></li>
+		<li>Cdoc<ul>
+			<li><a href="#AddCcInstallTarget">Add ccInstall Target</a> Cdoc</li>
+			<li>add starter History file html/History_&lt;WorkspaceName&gt;.html from template</li>
+		</ul></li>
+	</ul></li>
+	<li>mark all schemes shared</li>
+</ul>
+
+<!-- @marker "Add ccInstall Target" -->
+<h4 id='AddCcInstallTarget'>Add ccInstall Target</h4><pre>
+	* *ccInstall is an in-house script for installing groups of files*
+	* *ccInstall is normally called by a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
+		* *variants for Doxygen and Cdoc documentation are provided*
+	* add External Build System target &lt;TargetName&gt; with configuration:
+		* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
+		* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
+		* directory: "None"
+		* Pass Build Settings in Environment: NO
+	* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template
+		* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
+		* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
+	* add new Xcode group from folder &lt;TargetName&gt;; do not add to any target
+</pre>
+
 
 <!-- @marker "Add Build Script Target" -->
 <h4 id='AddBuildScriptTarget'>Add Build Script Target</h4><ul>
@@ -205,8 +250,6 @@
 <h4 id='AddRunScriptTarget'>Add Run Script Target</h4><ul>
 	<li>create new Aggregate target<ul>
 		<li>mark scheme as shared</li>
-		<li class='depr'>delete files *.pch, InfoPlist.strings from target's SupportingFiles group</li>
-		<li class='depr'>remove build phases Compile Sources, Link Binary with Libraries, Copy Bundle resources</li>
 		<li>add Run Script build phase</li>
 	</ul></li>
 </ul>
@@ -231,7 +274,7 @@
 
 <!-- @marker "RenameTarget" -->
 <h4 id='RenameTarget'>Rename Target</h4><pre>
-	* rename target(s)
+	* rename target, its corresponding folder, and its Xcode group
 	* for Cocoa targets, also:
 		* [rename *-info.plist and *.pch files; update their pointers in Settings]
 		* edit Settings: Bundle Loader for AppTest target

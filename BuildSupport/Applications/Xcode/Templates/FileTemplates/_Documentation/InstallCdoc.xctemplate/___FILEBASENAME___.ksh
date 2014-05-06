@@ -7,7 +7,7 @@
 #  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 
 USAGE='
-<#Target#>_install.ksh -- provide functions for ccInstall to support CCDev installation
+Cdoc_install.ksh -- provide functions for ccInstall to support CCDev installation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--prepareFileOperation subtarget filepath destinationFolder
@@ -27,6 +27,8 @@ sourceRoot=""
 targetFolder=""
 actionFlags=""
 
+technicalDocs="${CCDev}/Sites/TechnicalDocs"
+
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
@@ -37,14 +39,13 @@ function getSubtargetDestination {
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
-		"Scripts" )
-			destinationFolder="${CCDev}/bin"
+		"html" )
+			destinationFolder="${technicalDocs}/<#Project#>"
 			;;
-		"AppleScripts" )
-			destinationFolder="${HOME}/Library/Scripts/<#Target#>"
-			;;
-		"_Tests" )
-			;;	#handled elsewhere
+		"Cdoc_install.ksh" )
+			;&	# this script
+		"plist" )
+			;;	# used by Xcode build system
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
 			return
@@ -65,15 +66,14 @@ function prepareFileOperation {
 		return
 	fi
 
-	if [[ "${subtarget}" = "AppleScripts" ]] ; then
-		fname="${filepath%.applescript}.scpt"
-		action="copy"
-		sourceForCopy="${CCDev}/build/Support/BuildSupport/Applications/<#Target#>/<#Target#>Scripts.bundle/Contents/Resources/${fname}"
-		destinationForCopy="${destinationFolder}/${fname}"
-	elif [[ -n "${destinationFolder}" ]] ; then
+	if [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
-		action="copy"
+		if [[ "${srcname%.html}" = "${srcname}" ]] ; then
+			action="copy"
+		else
+			action="translateCdoc"
+		fi
 		sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
 		destinationForCopy="${destinationFolder}/${destname}"
 	else
@@ -89,11 +89,11 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${HOME}/Library/Scripts/<#Target#>" ; do
+	for folder in "${technicalDocs}/<#Target#>" ; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+			errorMessage $${st} "$0#$LINENO:" "error: ${msg}"
 			return
 		fi
 	done
@@ -101,4 +101,5 @@ function cleanTarget {
 }
 
 #^ 8 === main
+
 . "${CCDev}/bin/execInstallScript"

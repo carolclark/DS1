@@ -2,12 +2,12 @@
 //  ___FILENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___ for project ___PROJECTNAME___.
-//	(c)___YEAR___ C & C Software, Inc. All rights reserved. Confidential and Proprietary.
+//	Copyright (c) ___YEAR___ C & C Software, Inc. All rights reserved.
 // =================================================================================
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface ___FILEBASENAMEASIDENTIFIER___ : SenTestCase {
+@interface ___FILEBASENAMEASIDENTIFIER___ : XCTestCase {
 	NSPersistentStoreCoordinator * psc;
 	NSManagedObjectContext * moc;
 	NSManagedObjectModel * mom;

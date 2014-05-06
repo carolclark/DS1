@@ -1,5 +1,45 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/40",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/40/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/40/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/40/events",
+    "html_url": "https://github.com/carolclark/Support/issues/40",
+    "id": 32734161,
+    "number": 40,
+    "title": "Imports and Modules",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-05-02T23:36:27Z",
+    "updated_at": "2014-05-03T00:15:17Z",
+    "closed_at": null,
+    "body": "use modules to replace/augment pch files in ObjC projects (What's New in Xcode 5 13#400@22:20)\r\n\r\n* Motivation\r\n    * modules are more advanced technology available for use in Objective-C code\r\n    * due to reliance on prefix files, files do not #include or #import the headers as they should\r\n    * in Accessor, the prefix file is apparently interfering with creation of pure Objective-C and files because the automatically-included code is not valid Objective-C code\r\n\r\n- [ ] add the appropriate include/import statements to existing class headers to explicitly include the files from the prefix header\r\n- [ ] use modules instead of the prefix header for Objective-C code\r\n\r\n    * *in Accessor, #if guards will make the prefix header do nothing for Objective-C code*\r\n    * *this should allow top-level Objective-C files to be pure Objective-C (extension .m instead of .mm)*"
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/39",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/39/labels{/name}",
     "comments_url": "https://api.github.com/repos/carolclark/Support/issues/39/comments",
@@ -831,9 +871,9 @@
     },
     "comments": 0,
     "created_at": "2013-05-25T19:49:55Z",
-    "updated_at": "2014-02-24T18:08:11Z",
+    "updated_at": "2014-05-02T23:37:59Z",
     "closed_at": null,
-    "body": "*Xcode project files are fragile and easily corrupted.  According to forum discussions, corrupted project files sometimes require rebuilding from scratch, and contain information that is not saved elsewhere.*\r\n*The problem is compounded by version control, since any change to the files or settings of a project causes the project to be changed, and therefore possibly subject to merge conflicts. This is of particular concern for Punkin, which has an Artist collaborator.*\r\n*We set the git attributes for project files to `merge=union`, which helps but does not solve the problem.*\r\n*In addition, the new Continuous Integration support expects targets to have their test targets attached, which is not always what we have done.*\r\n\r\n* set up to support cross-product references\r\n* switch to Base Internationalization\r\n\t* *for compatibility with new project template's file structure; new localization technique uses a different organization for nib files*\r\n* reorganize so:\r\n    * repositories contain multiple focused projects as indicated\r\n    * files are organized:\r\n        * within Projects, by target\r\n        * within Targets, with subfolders Classes/ (AppDelegate, Controllers, Models, Helpers, ...),  Resources/ (Nibs, Assets, DataModels, ...), Other Sources\r\n    * use modules to replace/augment pch files in ObjC projects (13#400 22:20)\r\n    * each main target has a corresponding test target\r\n         * also add targets AllTargets for now (until CI implemented)\r\n* minimize dependence on information stored in project files\r\n    * use configuration files to replace most build settings\r\n    * document each Repository's Projects, Targets and dependencies\r\n* use modules to replace pch files (ObjC only?) *What's New in Xcode 5 13#400@22:20*\r\n* have Accessor build use cross-product reference to handle the dependency on Support/UserSlates\r\n\r\n- [ ] carolclark/Punkin#7\r\n- [ ] carolclark/Accessor#10\r\n\r\nSee\r\n* [Code Organization in Xcode Projects (akosma)](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/)\r\n* [Merging Xcode project files](http://stackoverflow.com/questions/4022362/merging-xcode-project-files)\r\n* [Google example config files](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/XcodeConfig/)\r\n* [Easy, Modular: Static Libraries and Cross-Project References](http://www.clintharris.net/2009/iphone-app-shared-libraries/)\r\n* [Xcode 5 and iOS 7: Architecture and Valid architectures](http://stackoverflow.com/questions/18913906/xcode-5-and-ios-7-architecture-and-valid-architectures)\r\n"
+    "body": "*Xcode project files are fragile and easily corrupted.  According to forum discussions, corrupted project files sometimes require rebuilding from scratch, and contain information that is not saved elsewhere.*\r\n*The problem is compounded by version control, since any change to the files or settings of a project causes the project to be changed, and therefore possibly subject to merge conflicts. This is of particular concern for Punkin, which has an Artist collaborator.*\r\n*We set the git attributes for project files to `merge=union`, which helps but does not solve the problem.*\r\n*In addition, the new Continuous Integration support expects targets to have their test targets attached, which is not always what we have done.*\r\n\r\n* set up to support cross-product references\r\n* switch to Base Internationalization\r\n\t* *for compatibility with new project template's file structure; new localization technique uses a different organization for nib files*\r\n* reorganize so:\r\n    * repositories contain multiple focused projects as indicated\r\n    * files are organized:\r\n        * within Projects, by target\r\n        * within Targets, with subfolders Classes/ (AppDelegate, Controllers, Models, Helpers, ...),  Resources/ (Nibs, Assets, DataModels, ...), Other Sources\r\n    * each main target has a corresponding test target\r\n         * also add targets AllTargets for now (until CI implemented)\r\n* minimize dependence on information stored in project files\r\n    * use configuration files to replace most build settings\r\n    * document each Repository's Projects, Targets and dependencies\r\n* use modules to replace pch files (ObjC only?) *What's New in Xcode 5 13#400@22:20*\r\n* have Accessor build use cross-product reference to handle the dependency on Support/UserSlates\r\n\r\n- [ ] carolclark/Punkin#7\r\n- [ ] carolclark/Accessor#10\r\n\r\nSee\r\n* [Code Organization in Xcode Projects (akosma)](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/)\r\n* [Merging Xcode project files](http://stackoverflow.com/questions/4022362/merging-xcode-project-files)\r\n* [Google example config files](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/XcodeConfig/)\r\n* [Easy, Modular: Static Libraries and Cross-Project References](http://www.clintharris.net/2009/iphone-app-shared-libraries/)\r\n* [Xcode 5 and iOS 7: Architecture and Valid architectures](http://stackoverflow.com/questions/18913906/xcode-5-and-ios-7-architecture-and-valid-architectures)\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/22",
