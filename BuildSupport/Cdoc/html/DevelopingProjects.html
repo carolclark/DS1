@@ -104,6 +104,7 @@
 	<!-- @topicSep -->
 	<!-- @topicGroup "Create Other Targets" "9" -->
 		<!-- @topicItem "Add Docs Project" "#AddDocsProject" "0" "" -->
+		<!-- @topicItem "Add ccInstall Target" "#AddCcInstallTarget" "0" "" -->
 		<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
 		<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 		<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
@@ -193,32 +194,37 @@
 <!-- @marker "AddDocsProject" -->
 <h4 id='AddDocsProject'>Add Docs Project</h4><ul>
 	<li class='blurb'>project to build technical and Doxygen targets and contain additional documents as needed</li>
-	<li>create new External Build System project named Docs</li>
+	<li>create new empty project Docs</li>
 	<li>inside the Docs folder:<ul>
 		<li>add empty folders OtherDocuments and Images</li>
-		<li>new folder and target Doxygen<ul>
-			<li>add new folder Doxygen; add new files &lt;WorkspaceName&gt;_doxygen.txt, Doxygen_install.ksh from templates</li>
-			<li>rename existing External Build System target Doxygen</li>
-			<li>External Build System Configuration:<ul>
-				<li>script: Doxygen/Doxygen_install.ksh</li>
-				<li>arguments: "${SRCROOT}" Doxygen $(ACTION)</li>
-				<li>directory "None"; do not pass build settings in environment</li>
-			</ul></li>
+		<li>Doxygen<ul>
+			<li><a href="#AddCcInstallTarget">Add ccInstall Target</a> Doxygen</li>
+			<li>add Doxygen configuration file &lt;WorkspaceName&gt;_doxygen.txt from template</li>
 		</ul></li>
-		<li>new folder and target Cdoc<ul>
-			<li>add new folder Cdoc<ul>
-				<li>new file Cdoc_install.ksh from template</li>
-				<li>new file html/History_&lt;WorkspaceName&gt;.html from template</li>
-			</ul></li>
-			<li>project Docs: add External Build System target Cdoc with configuration:<ul>
-				<li>script: Cdoc/Cdoc_install.ksh</li>
-				<li>arguments: "${SRCROOT}" Cdoc $(ACTION)</li>
-				<li>directory "None"; do not pass build settings in environment</li>
-			</ul></li>
+		<li>Cdoc<ul>
+			<li><a href="#AddCcInstallTarget">Add ccInstall Target</a> Cdoc</li>
+			<li>add starter History file html/History_&lt;WorkspaceName&gt;.html from template</li>
 		</ul></li>
 	</ul></li>
 	<li>mark all schemes shared</li>
 </ul>
+
+<!-- @marker "Add ccInstall Target" -->
+<h4 id='AddCcInstallTarget'>Add ccInstall Target</h4><pre>
+	* *ccInstall is an in-house script for installing groups of files*
+	* *ccInstall is normally called by a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
+		* *variants for Doxygen and Cdoc documentation are provided*
+	* add External Build System target &lt;TargetName&gt; with configuration:
+		* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
+		* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
+		* directory: "None"
+		* Pass Build Settings in Environment: NO
+	* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template
+		* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
+		* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
+	* add new Xcode group from folder &lt;TargetName&gt;; do not add to any target
+</pre>
+
 
 <!-- @marker "Add Build Script Target" -->
 <h4 id='AddBuildScriptTarget'>Add Build Script Target</h4><ul>

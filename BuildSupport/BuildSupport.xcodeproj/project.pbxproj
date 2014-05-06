@@ -90,14 +90,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		67147FBE191449C400B85587 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
-		67147FBF191449C400B85587 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
-		67147FC0191449C400B85587 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
+		67147FBE191449C400B85587 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; lastKnownFileType = file; name = "___FILEBASENAME___.ksh"; path = "Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
+		67147FBF191449C400B85587 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
+		67147FC0191449C400B85587 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = TemplateInfo.plist; path = Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
 		671C4824159CFF3800214A9E /* BBEditScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEditScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		671EC78218F5C1A900E2DDEB /* Pages_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Pages_C9.r; sourceTree = "<group>"; };
-		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
-		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
-		67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
+		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "___FILEBASENAME___.ksh"; path = "../../_Documentation/InstallCdoc.xctemplate/___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
+		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = ../../_Documentation/InstallCdoc.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
+		67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TemplateInfo.plist; path = ../../_Documentation/InstallCdoc.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
 		6720A6331889D64900C4ED0A /* AppCode_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = AppCode_C9.r; sourceTree = "<group>"; };
 		67364A6D16C0345900940D94 /* FixWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = FixWindow.applescript; sourceTree = "<group>"; };
 		67364A7316C0362C00940D94 /* DeveloperScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeveloperScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };

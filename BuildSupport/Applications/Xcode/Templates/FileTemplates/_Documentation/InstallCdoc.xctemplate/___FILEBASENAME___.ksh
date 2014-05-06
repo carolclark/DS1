@@ -40,7 +40,7 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"html" )
-			destinationFolder="${CCDev}/Sites/TechnicalDocs/<#Project#>"
+			destinationFolder="${technicalDocs}/<#Project#>"
 			;;
 		"Cdoc_install.ksh" )
 			;&	# this script
