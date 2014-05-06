@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>DefaultCompletionName</key>
-	<string>_Doxygen</string>
+	<string>_doxygen</string>
 	<key>Description</key>
 	<string>A Doxygen configuration file.</string>
 	<key>Kind</key>

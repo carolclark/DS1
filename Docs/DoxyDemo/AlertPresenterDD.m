@@ -12,14 +12,14 @@
 AlertPresenterDD * _sharedInstance = nil;
 
 /*! \brief		mockable alert and error presenter
- 	\details	intended for use by Application object to display a customized error message
+	\details	intended for use by Application object to display a customized error message
 	\note		This mockable class is not intended to be used directly except by a host object that maintains a reference to it. For testing, a different class can be substituted.
  */
 @implementation AlertPresenterDD
 
 /*! \brief		present message to user
 	\details	uses a sheet for the specified window, if any; otherwise, displays modal alert\n
- 				for testing, see MockAlertPresenter
+				for testing, see MockAlertPresenter
  */
 + (void)presentMessage:(NSString *)message withTitle:(NSString *)title forWindow:(NSWindow *)window {
 	NSAlert * alert = [NSAlert alertWithMessageText:title
@@ -31,7 +31,7 @@ AlertPresenterDD * _sharedInstance = nil;
 
 /*! \brief		present Alert to user
 	\details	uses a sheet for the specified window, if any; otherwise, displays modal alert\n
- 				for testing, see MockAlertPresenter
+				for testing, see MockAlertPresenter
  */
 + (long)presentAlert:(NSAlert *)alert forWindow:(NSWindow *)window {
 	return [[AlertPresenterDD sharedInstance] doPresentAlert:alert forWindow:window];
@@ -39,21 +39,21 @@ AlertPresenterDD * _sharedInstance = nil;
 
 /*! \brief		present error to user
 	\details	uses a sheet for the specified window, if any; otherwise, displays modal alert\n
- 				for testing, see MockAlertPresenter
+				for testing, see MockAlertPresenter
  */
 + (int)presentError:(NSError *)error forWindow:(NSWindow *)window {
 	return [[AlertPresenterDD sharedInstance] doPresentError:error forWindow:window];
 /*
- 	NSAlert * alert = [NSAlert alertWithError:error];
+	NSAlert * alert = [NSAlert alertWithError:error];
 	return [[AlertPresenterDD sharedInstance] doPresentAlert:alert forWindow:window];
  */
 }
 
 /*! \brief		present a document-modal alert if window is open, else present modal alert
- 	\details	This method is used to present both Errors and Alerts.
- 	\result		user's response
- 	\note		Currently, the document-modal alert does not return the user's response; 
-		 		see http://stackoverflow.com/questions/604768/wait-for-nsalert-beginsheetmodalforwindow
+	\details	This method is used to present both Errors and Alerts.
+	\result		user's response
+	\note		Currently, the document-modal alert does not return the user's response;
+				see http://stackoverflow.com/questions/604768/wait-for-nsalert-beginsheetmodalforwindow
 			\n If we need the response before Apple fixes the problem, we could switch to modal alerts.
  */
 - (long)doPresentAlert:(NSAlert *)alert forWindow:(NSWindow *)window {
@@ -99,7 +99,7 @@ AlertPresenterDD * _sharedInstance = nil;
 	return _sharedInstance;
 }
 
-/*! \brief		intended for use by testing systems to preset a mock AlertPresenterDD object */	
+/*! \brief	intended for use by testing systems to preset a mock AlertPresenterDD object */
 + (void)mockSharedPresenter:(AlertPresenterDD *)presenter {
 	_sharedInstance = presenter;
 }
