@@ -1,0 +1,416 @@
+<!-- Git.html -->
+<!-- Created by Carol Clark on 24 Aug 2011 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Git</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+</head>
+<body>
+<!-- @navhead "Support.html" "Support" "History_Support.html" -->
+<h1>Git</h1>
+
+<!-- @topicList "Git" "Contents" -->
+	<!-- @topicGroup "Workflows" "1" -->
+	<!-- @topicItem "Collaborator" "#WorkflowCollab" "0" "" -->
+	<!-- @topicItem "Administrator" "#WorkflowAdmin" "0" "" -->
+		<!-- @topicItem "Admin Subtasks" "#adminSubtasks" "1" "" -->
+	<!-- @topicGroup "" "5" -->
+	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
+	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
+	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Workflows" -->
+<h2>Workflows</h2><ul>
+	<li>Workflows: Technical Notes<ul>
+		<li>The workflows described below assume that Collaborator works with a private fork of a shared repository managed by Administrator. Collaborator pushes to their private repository, and fetches <span class='mono'>master</span>from the shared repository. Administrator pushes to the shared repository, and has Collaborator's repository included in their update list.</li>
+		<li>With these workflows, Collaborator pushes their private branch <span class='ital'>before</span> it has had changes from <span class='mono'>master</span> merged in. The intent is to make it easier for Administrator to help with merge conflicts. If it turns out to cause more trouble than it saves, we should have Collaborator push <span class='ital'>after</span> their private branch is updated from <span class='mono'>master</span>.</li>
+	</ul></li>
+</ul>
+
+<div style="page-break-before: always">
+	<h4 id="WorkflowCollab">Workflow: Collaborator</h4><ul style="background-color: #d8ffe8">
+		<li class='blurb'>Xcode Tasks:<ul>
+			<li>To view your Repository<ul>
+				<li>Choose File &gt; Source Control &gt; Repositories OR choose Window &gt; Organizer &gt; Repositories.</li>
+				<li>From the left panel of that window, choose the blue folder associated with your project.</li>
+				<li>The current branch is now displayed at the upper right of the window. If that is not the branch you want, see "To select a branch" below.</li>
+			</ul></li>
+			<li>To see which files have been changed since they were last committed:<ul>
+				<li>In your project's main window, there is a row of small icons near the bottom left. The third icon, which looks like a folder with the square on it, turns on or off a state that shows only modified files. Click that icon to show only modified files; click again to return to showing all files.<ul>
+					<li>Modified files are also marked with a badge to the right (usually the letter 'M' for modified)'</li>
+				</ul></li>
+			</ul></li>
+			<li>To see which branch you are on:<ul>
+				<li>View your Repository.</li>
+				<li>The current branch is displayed at the upper right corner of the window.</li>
+			</ul></li>
+			<li>To select a branch<ul>
+				<li>Make sure that you do not currently have any modified files.</li>
+				<li>View your Repository.</li>
+				<li>Click "Switch Branch" near the bottom right of the Repository window; make sure that the window that comes up does not have a warning about changed files</li>
+				<li>Choose the branch to switch to.</li>
+			</ul></li>
+		</ul></li>
+		<li>Develop <span class='blurb'>do some work</span><ul>
+			<li>select branch 'artist'</li>
+			<li>Make a group of changes to some files. (This may include adding new files and deleting old ones.)</li>
+			<li>Commit: <span class='blurb'>makes a record of these changes in the git repository on your computer</span><ul>
+				<li>View your Repository.</li>
+				<li>Click Commit from the bottom left of the Organizer &gt; Repositories window.</li>
+				<li>It will ask for a message describing what you did. First line should be fairly short (no more that 50 characters). If there's more to say, add a blank line and then just keep going.</li>
+			</ul></li>
+		</ul></li>
+		<li>Update your Master branch <span class='blurb'>get any changes that have been made to Administrator's repository on GitHub, so you have an up-to-date copy</span><ul>
+			<li>select branch 'master'</li>
+			<li>Pull<ul>
+				<li>View your Repository; click Pull from the bottom left of the Organizer &gt; Repositories window.</li>
+				<li>OR (preferred ***): use <span class='mono'>git fetchup</span> from Terminal</li>
+			</ul></li>
+			<li>Merge: <span class='blurb'>combine the changes from your 'artist' branch with the updated 'master' branch</span><ul>
+				<li>Choose menu item File &gt; Source Control &gt; Merge; choose your 'artist' branch</li>
+				<li>Xcode will show you what changes will be made, and tell you if there are conflicts.<ul>
+					<li>If there are no conflicts, click 'Merge' to accept the changes.</li>
+					<li>If Xcode says that there are conflicts or that the Merge did not succeed, contact Administrator.</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>Push: <span class='blurb'>publish your work up to your repository on GitHub</span><ul>
+			<li>Choose menu item File &gt; Source Control &gt; Push</li>
+			<li>select branch 'master'</li>
+		</ul></li>
+		<li>Update your Artist branch <span class='blurb'>update your working branch with any changes from the updated master branch</span><ul>
+			<li>select branch 'artist'</li>
+			<li>Merge: <span class='blurb'>combine the changes from the updated 'master' branch with your 'artist' branch</span><ul>
+				<li>Choose menu item File &gt; Source Control &gt; Merge; choose your 'master' branch</li>
+				<li>Xcode will show you what changes will be made, and tell you if there are conflicts.<ul>
+					<li>If there are no conflicts, click 'Merge' to accept the changes.</li>
+					<li>If Xcode says that there are conflicts or that the Merge did not succeed, contact Administrator.</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>repeat from Develop above</li>
+	</ul>
+</div>
+
+<div style="page-break-before: always">
+	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
+		<h5>Branch</h5><ul>
+			<li>pre-existing branch: <span class='em'>Update Branch</span></li>
+			<li>new branch: set current branch; <span class='mono'>git push --set-upstream origin $cb</span>; <br />create new bot '&lt;targetName&gt; &lt;branchName&gt; Bot'</li>
+			<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
+		</ul>
+		<h5>Repeat</h5>
+			<h6>Develop</h6><ul>
+				<li>repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</li>
+			</ul>
+			<h6>Commit</h6><ul>
+				<li>[backup GitHub issues; add, OR if failure checkout, original]</li>
+				<li>construct and save commit message; verify modifications (diff --cached)</li>
+				<li>status: check branch; add / review files to be committed</li>
+				<li>check for stray spaces (diff --cached --check)</li>
+				<li>review commit msgfile, and check for #issue; commit</li>
+				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
+				<li>check stash list</li>
+				<li><span class='em'>Update Branch</span><ul>
+					<li>check for stashes, unmerged branches</li>
+					<li><a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a></li>
+					<li>checkout branch ($cb); <span class='em'>Merge</span> master</li>
+				</ul></li>
+			</ul>
+			<h6>[Push]</h6>
+		<h5>[Merge]</h5><ul>
+			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
+			<li>checkout master; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>
+			<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span><ul>
+				<li>after --no-commit: commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
+			</ul></li>
+			<li><a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
+			<li>show --name-only; diff --name-status origin/master..master; lg origin/master..master</li>
+			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;<ul>
+				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
+			</ul></li>
+			<li>retest</li>
+			<li>[[<span class='em'>Push</span>]; delete branch]</li>
+		</ul>
+
+<hr />
+	<h5>Morning/Working Report</h5><ul>
+			<li>branch list; status; set $cb to current branch; show --name-only</li>
+			<li>for master..$cb, origin/master..master, master..origin/master: lg; diff --name-status</li>
+			<li>checkout master; status; branch unmerged; stash list; checkout $cb</li>
+		</ul>
+	</div>
+</div>
+
+<div style="page-break-before: always">
+<h5 id="adminSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
+		<!-- @marker "adminReleaseBranch" -->
+		<h6 id='adminReleaseBranch'>Release Branch</h6>
+		<p class='blurb'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p><ul>
+			<li>select version number (eg. "1.0"); set $vn; create branch release-$vn</li>
+			<li>bump version: make changes to code and resources to match new version number</li>
+			<li>commit ("bump version to $vn")</li>
+			<li>bug fixes as indicated</li>
+			<li>update history files, issue milestones</li>
+			<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
+			<li>merge release branch into 'master'; push 'master'; delete release branch</li>
+		</ul>
+
+		<!-- @marker "adminUpdateMaster" -->
+		<h6 id='adminUpdateMaster'>Update Master from Remotes</h6><ul>
+			<li>set $cb; checkout master; status; lg master..origin/master; [lg artist..lm/artist]</li>
+			<li>fetch updates (fetchup): <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
+				<li>if that merge fails, can: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+			</ul></li>
+			<li>retest if changed</li>
+		</ul>
+
+		<!-- @marker "adminResolveConflicts" -->
+		<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
+			<li>status; <span class='mono'>merge tool</span> to resolve conflicts, saving successfully merged files; commit</li>
+			<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
+			<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
+		</ul>
+	</div>
+</div>
+
+<!-- @marker "Git Tasks" -->
+<div style="page-break-before: always">
+<h2>Git Tasks</h2>
+</div>
+<!-- @topicList "Git Tasks" "GitTasks_" -->
+	<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
+	<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
+	<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
+	<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
+	<!-- @topicItem "Bisect" "#tsk_Bisect" "1" "" -->
+	<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
+	<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Branch" -->
+<h4 id="tsk_Branch">Branch</h4><ul>
+	<li><span class='mono'>git branch</span>&nbsp;&nbsp;# to list current branches<ul>
+		<li><span class='mono'>--remotes</span>&nbsp;&nbsp;# to list remote branches</li>
+		<li><span class='mono'>--all</span>&nbsp;&nbsp;# to list both local and remote branches</li>
+		<li><span class='mono'>--no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
+		<li><span class='mono'>--move [&lt;oldbranch&gt;] &lt;newbranch&gt;</span>&nbsp;&nbsp;# to rename a branch<ul>
+			<li>then, to rename remote branch to match:<ul>
+				<li class='blurb'>this assumes remote branch is named 'origin'; can use <span class='mono'>git remote -v</span> to verify</li>
+				<li><span class='mono'>git push origin :&lt;oldBranch&gt;&nbsp;&nbsp;# delete old remote branch</span></li>
+				<li><span class='mono'>git push --set-upstream origin &lt;newBranch&gt;&nbsp;&nbsp;# recreate remote branch with new name</span></li>
+			</ul>
+		</li>
+		</ul></li>
+		<li><span class='mono'>--delete &lt;branchname&gt;</span>&nbsp;&nbsp;# delete a branch<ul>
+			<li class='blurb'>also see git docs for information about deleting and cleaning up remote branches</li>
+		</ul></li>
+	</ul></li>
+	<li><span class='mono'>git checkout -b &lt;new-branch&gt; [&lt;start_point&gt;]</span>&nbsp;&nbsp;# move existing work to a new branch, rooted at commit &lt;start_point&gt; if specified</li>
+</ul>
+
+<!-- @marker "Stash" -->
+<h4 id="tsk_Stash">Stash</h4><ul>
+	<li><span class='mono'>git stash save &lt;name&gt;</span>&nbsp;&nbsp;# save stash named &lt;name&gt;; leave working directory clean<ul>
+			<li><span class='mono'>add --keep-index</span>&nbsp;&nbsp;# to leave all changes already added to the index intact</li>
+	</ul></li>
+	<li>apply:<ul>
+		<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash to the current working copy</li>
+		<li><span class='mono'>git stash branch</span>&nbsp;&nbsp;# to apply the top stash to a new branch based in the stash's base revision</li>
+		<li>add <span class='mono'>stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  to specify a different stash</li>
+	</ul></li>
+	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# list all stashes in repository</li>
+	<li><span class='mono'>git stash drop</span>&nbsp;&nbsp;# remove the specified stash</li>
+	<li><span class='mono'>git stash show [stash@{n}]</span>&nbsp;&nbsp;# show details for the top or a specified stash</li>
+</ul>
+
+<!-- @marker "Diff" -->
+<h4 id="tsk_Diff">Diff</h4>
+	<h5>Diff Commands</h5><ul>
+		<li><span class='mono'>git diff</span>&nbsp;&nbsp;# working copy and index (unstaged)</li>
+		<li><span class='mono'>git diff --cached</span>&nbsp;&nbsp;# index and last commit (staged)</li>
+		<li><span class='mono'>git diff HEAD</span>&nbsp;&nbsp;# working directory since your last commit (unstaged and staged)</li>
+		<li><span class='mono'>git diff &lt;branch&gt;</span>&nbsp;&nbsp;# working copy and another branch</li>
+		<li><span class='mono'>git diff &lt;branch1&gt;..&lt;branch2&gt;</span>&nbsp;&nbsp;# tips of the two branches</li>
+		<li><span class='mono'>git diff &lt;branch1&gt;...&lt;branch2&gt;</span>&nbsp;&nbsp;# from their common ancestor to branch</li>
+		<li><span class='mono'>git difftool &lt;arguments as above&gt;</span>&nbsp;&nbsp;# display results using FileMerge</li>
+	</ul>
+	<h5>Diff Options</h5><ul>
+		<li><span class='mono'>-- ./path</span>&nbsp;&nbsp;# restrict to a path</li>
+		<li><span class='mono'>--name-status</span>&nbsp;&nbsp;# one line per file (like svn status)</li>
+		<li><span class='mono'>--pretty=oneline</span>&nbsp;&nbsp;# to show just sha and one-line comment</li>
+		<li><span class='mono'>--graph</span>&nbsp;&nbsp;#  to show branch relationships<ul>
+			<li>with <span class='mono'>--topo-order</span>&nbsp;&nbsp;# shows top-down so tree is clearer</li>
+		</ul></li>
+		<li><span class='mono'>--date-order</span>&nbsp;&nbsp;# to show chronologically</li>
+	</ul>
+
+<p><br /><br /><br /></p>
+<!-- @marker "Tag" -->
+<h4 id="tsk_Tag">Tag</h4><ul>
+	<li><span class='mono'>git tag</span>&nbsp;&nbsp;# list<ul>
+		<li><span class='mono'>-l</span>&nbsp;&nbsp;# to match a pattern</li>
+	</ul></li>
+	<li><span class='mono'>git tag -a &lt;tag&gt; -m '&lt;msg&gt;'</span>&nbsp;&nbsp;# create</li>
+	<li><span class='mono'>git tag -d &lt;tag&gt;</span>&nbsp;&nbsp;# delete</li>
+	<li><span class='mono'>git show &lt;tag&gt;</span>&nbsp;&nbsp;# show information about &lt;tag&gt;</li>
+	<li><span class='mono'>git push --tags</span>&nbsp;&nbsp;# push tags</li>
+</ul>
+
+<!-- @marker "Bisect" -->
+<h4 id='tsk_Bisect'>Bisect</h4><ul>
+	<li><span class='mono'>git checkout -b &lt;newbranch&gt;</span>&nbsp;&nbsp;# checkout a new branch<ul>
+		<li><b>Detached Head</b><ul>
+			<li>If accidentally done from the master branch, a detached head is possible. Correct by checking the work out into  new branch, which restores master to its previous state.</li>
+		</ul></li>
+	</ul></li>
+	<li><span class='mono'>git bisect start</span>&nbsp;&nbsp;# start a bisect operation<ul>
+		<li class='blurb'>then execute <span class='mono'>good</span> and <span class='mono'>bad</span> to establish range</li>
+	</ul></li>
+	<li><span class='mono'>git bisect bad</span>&nbsp;&nbsp;# mark current bisect commit as bad</li>
+	<li><span class='mono'>git bisect good</span>&nbsp;&nbsp;# mark current bisect commit as good</li>
+	<li><span class='mono'>git bisect skip</span>&nbsp;&nbsp;# skip current bisect commit</li>
+	<li><span class='mono'>git bisect reset</span>&nbsp;&nbsp;# clean up from a bisection</li>
+	<li><span class='mono'>git bisect log</span>&nbsp;&nbsp;# show log of current bisection</li>
+	<li><span class='mono'>git bisect replay</span>&nbsp;&nbsp; &lt;logfile&gt; # replay bisection from edited log output &lt;logfile&gt;</li>
+</ul>
+
+<!-- @marker "Information" -->
+<h4 id="tsk_Information">Information</h4>
+	<h5>Log Commands</h5><ul>
+		<li><span class='mono'>git log &lt;tag&gt;..</span>&nbsp;&nbsp;# commits since (not reachable from) &lt;tag&gt;</li>
+		<li><span class='mono'>git log &lt;branch&gt;..master</span>&nbsp;&nbsp;# commits reachable from master but not &lt;branch&gt;</li>
+		<li><span class='mono'>git log master..&lt;branch&gt;</span>&nbsp;&nbsp;# commits reachable from &lt;branch&gt; but not master</li>
+		<li><span class='mono'>git log master...&lt;branch&gt;</span>&nbsp;&nbsp;# commits reachable from either &lt;branch&gt; or master, but not both</li>
+		<li><span class='mono'>git log &lt;folder&gt;/</span>&nbsp;&nbsp;# commits that modify any file under &lt;folder&gt;/</li>
+	</ul>
+	<h5>Log Options</h5><ul>
+		<li><span class='mono'>git log --since="2 weeks ago"</span>&nbsp;&nbsp;# commits from the last 2 weeks</li>
+		<li><span class='mono'>git log &lt;filename&gt;</span>&nbsp;&nbsp;# commits that modify &lt;filename&gt;</li>
+		<li><span class='mono'>git log -S'&lt;pattern&gt;'</span>&nbsp;&nbsp;# commits that add or remove any file data matching the string '&lt;pattern&gt;'</li>
+		<li><span class='mono'>git log --no-merges</span>&nbsp;&nbsp;# skip merge commits</li>
+	</ul>
+	<h5>Other Information Commands</h5><ul>
+		<li><span class='mono'>git ls-files --other --exclude-standard</span>&nbsp;&nbsp;# untracked files</li>
+		<li><span class='mono'>git branch --no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
+		<li><span class='mono'>git reflog [log options | with dates(custom)]</span>&nbsp;&nbsp;# show reflog</li>
+	</ul>
+
+<!-- @marker "Undo" -->
+<h4 id="tsk_Undo">Undo</h4><ul>
+	<li><span class='mono'>git checkout -- &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in index</li>
+	<li><span class='mono'>git checkout HEAD &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in HEAD revision</li>
+	<li><span class='mono'>git reset --soft HEAD@{1}</span>&nbsp;&nbsp;# undo last commit (set HEAD to point to parent of HEAD)</li>
+	<li><span class='mono'>git reset --mixed HEAD@{1} (default)</span>&nbsp;&nbsp;# also update index to match new HEAD; same as unstaging everything</li>
+	<li><span class='mono'>git reset --hard HEAD</span>&nbsp;&nbsp;# discard all changes since last commit; restores index and files (causes the results of "git diff" and "git diff --cached" to both be empty)</li>
+	<li><span class='mono'>git revert [HEAD|&lt;commit&gt;]</span>&nbsp;&nbsp;# creates a new commit that undoes the most recent or a previous commit</li>
+	<li><span class='mono'>git reflog; git checkout &lt;sha&gt;; git checkout -b &lt;branch&gt;</span> find and restore recently deleted branch</li>
+</ul>
+
+<!-- @marker "Managing Repositories" -->
+<h2>Managing Repositories</h2>
+<!-- @topicList "Managing Repositories" "ManagingRepositories" -->
+	<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "1" "" -->
+	<!-- @topicItem "Fetch Working Copy of Repository" "#FetchWorkingCopy" "1" "" -->
+	<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
+	<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
+	<!-- @topicItem "Set Up User SSH" "#setupSSH" "1" "" -->
+	<!-- @topicItem "Add User to ProjectLocker Account" "#AddPLUser" "1" "" -->
+	<!-- @topicGroup "" "7" -->
+<!-- @/topicList -->
+
+<!-- @marker "Create Bare Repository" -->
+<h4 id='tsk_CreateBareRepository'>Create Bare Repository</h4><ul>
+	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/gitrep/&lt;ProjectName&gt;; https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;Remote)</li>
+	<li class='mono'>mkdir -p ${path}; cd ${path}</li>
+	<li class='mono'>git init --bare</li>
+</ul>
+
+<!-- @marker "Fetch Working Copy of Repository" -->
+<h4 id='FetchWorkingCopy'>Fetch Working Copy of Repository</h4><ul>
+	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
+		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
+		<li><b>name:</b> &lt;ProjectName&gt;</li>
+		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Create New Repository" -->
+<h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
+	<li>create an empty local or ProjectLocker repository<ul>
+		<li>local: <a href="#tsk_CreateBareRepository">Create Bare Repository</a> at ~/Dev/gitrep/&lt;ProjectName&gt;</li>
+		<li>ProjectLocker: add project to ProjectLocker account</li>
+	</ul></li>
+	<li>Xcode: <a href="#FetchWorkingCopy">Fetch Working Copy of Repository</a></li>
+	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
+	<li>add new or existing content<ul>
+		<li>in working copy, either add existing files or create new ones (eg. Xcode workspace and initial history file Cdoc/History_&lt;ProjectName&gt;.html)</li>
+		<li>Terminal: <span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add <span class='depr'>--all</span> --interactive</span></li>
+		<li>Xcode: commit; push</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add Remote Repository" -->
+<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul class='depr'>
+	<li class='blurb'>Add Remote Repository from existing working copy ~/Dev/&lt;ProjectName&gt;</li>
+	<li>add repository to ProjectLocker account</li>
+	<li>push working copy's master branch to remote/master (create)</li>
+</ul>
+<ul>
+	<li>remote addresses: https://carolclark@github.com/carolclark/Punkin.git; https://github.com/lauracello/Punkin</li>
+</ul>
+
+<!-- @marker "Set Up User SSH" -->
+<h4 id='setupSSH'>Set Up User SSH</h4><ul>
+	<li>on User's computer, login to user account</li>
+	<li>Terminal:<ul>
+		<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
+		<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add User to ProjectLocker Account" -->
+<h4 id='AddPLUser'>Add User to ProjectLocker Account</h4><ul>
+	<li>ProjectLocker admin: add user to account (List Account Users)</li>
+	<li>User<ul>
+		<li><a href="#setupSSH">User: Set Up User SSH</a></li>
+		<li>copy the contents (without the carriage return at the end) of the file ${HOME}/.ssh/authorized_keys to the clipboard</li>
+		<li>login to <a href="https://portal.projectlocker.com/">ProjectLocker</a> with your username and our password</li>
+		<li>select Manage Public Keys; click Edit next to the account with your name</li>
+		<li>paste the contents of the clipboard into the large field labeled Key</li>
+		<li>At the end of the new key field is some text starting with &lt;username&gt;@. Copy from username to the end of the field into the User Name field.</li>
+		<li>click Save Public Key</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Policies and Notes" -->
+<h2>Policies and Notes</h2>
+<!-- @topicList "Policies and Notes" "GitPolicies_" -->
+<!-- @/topicList -->
+
+<ul>
+	<li>do not use squash merges; rebase only to rebase an existing branch on more current code <span class='dq'>or clean up a current, unmerged branch</span>; see <a href="http://paul.stadig.name/2010/12/thou-shalt-not-lie-git-rebase-ammend.html">Paul Stadig: Thou Shalt Not Lie</a></li>
+	<li class='dq'>sha/date marker: used in history and thread files to support matching history with repository<ul>
+		<li>Setting the sha/date marker replaces the clearly-visible (from source code) commit message and notes with the sha/date marker. A branch's sha/date is often updated from another branch.</li>
+		<li><span class='mono'>print "[$(cd /Users/carolclark/Dev/${proj}; git log -1 --pretty=format:'%h') $(date +%m/%d/20%y) &lt;placeholder&gt;]"</span></li>
+	</ul></li>
+</ul>
+
+<p>
+config, admin only: git remote add remote /Volumes/carollclark/gitrep/PunkinRemote	# adds PunkinRemote as remote "remote"
+to replace an existing working copy with a newly-cloned one, first remove the existing repository from Xcode's repository list, close the Xcode workspace, and quit Terminal (BBEdit project?)<br />
+my working copy has a branch for Laura's stuff (she pushes to Remote; I integrate and push to Main)<br />
+internal: threads; branches; compound (here or with source control?)<br />
+git diff master origin/master (same as master..origin/master?)<br />
+see git-rev-parse<br />
+see <a href="http://grit.rubyforge.org/">grit</a> for ruby scripting<br />
+</p>
+
+<hr class='footer' />
+<p class='footer'>Copyright 2011-12 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Confidential and Proprietary.</p>
+</body>
+</html>

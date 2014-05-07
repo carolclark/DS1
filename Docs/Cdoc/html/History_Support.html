@@ -1,0 +1,1096 @@
+<!-- History_Support.html -->
+<!-- Created by Carol Clark on 17 Aug 2011 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Support History</title>
+	<link rel="stylesheet" type="text/css" href="../css/history.css" />
+	<style type="text/css">
+		.break { page-break-before: always; }
+	</style>
+</head>
+<body>
+<div class='navhead'><a name='Top'></a><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="History_Support.html#hmark_Current">Current</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<h1>Support History</h1>
+
+<!-- @topicList "Support History" "Contents" -->
+	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
+	<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
+		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
+		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
+		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
+		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
+		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
+		<!-- @topicGroup "" "7" -->
+		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
+	<!-- @topicGroup "" "9" -->
+	<!-- @topicItem "Completed" "#Completed" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Topics" "12" -->
+	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Active Issues" -->
+<h2 id='ActiveIssues'>Active Issues</h2>
+
+<!-- @marker "restructure Xcode projects" -->
+<h4 id='restructureXcodeProjects'><a href="http://github.com/carolclark/Support/issues/23">(#23)</a>restructure Xcode projects</h4><pre>
+	* use shared build output directory for all Xcode projects; see <a href="http://www.clintharris.net/2009/iphone-app-shared-libraries/">Easy, Modular: Static Libraries and Cross-Project References</a>
+	* rename Python target CCDev to CCDevPy to avoid confusion with new project CCDev, which will replace existing target Developer
+	<span class='tldate'>[02/10/2014]</span>
+	* Punkin: Words
+	* Punkin: Docs
+		* add support for Docs targets
+	* Accessor: Docs
+	* Support
+		* Docs
+			* Docs project and content
+			* move Website Structure files to Docs/OtherDocuments
+		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+		* Developer
+			* Support: CCDev (from Developer)
+			* Support: Python (from CCDevPy; built by CCDev)
+		* Application Support
+			* Applications/BBEdit
+			* Applications/Xcode
+		* UserSlates
+	* Accessor: Accessor (from BuildAccessor Accessor, AccessorApp/LogicTest, InHouse)
+</pre>
+
+<!-- @marker "upgrade to Mavericks" -->
+<h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/Support/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
+	* Xcode 5
+		* install Xcode 5
+		* update all projects and targets for compatiblity with Xcode 5
+			* update project settings to recommended architecture (automatic update)
+		* add '*.xccheckout' to git excludes
+		* Slates
+			* Typing: support OS X dictation as well as Dragon
+			* Xcode: organize macros; add Test index; update search/find
+	* support Xcode 5
+		* improve/add branch model support, slates Source Control, Documentation, all Indexes
+	* Mavericks
+		* Slates: support Safari Bookmarks/Sidebar button, Finder tabs
+		* for all Repositories / all Targets: test and analyze; document full testing and analysis process
+	* Xcode 5.1
+		* view Cdoc: correct issue where calculated target file name is incorrect
+			* frontWindow.applescript: adjust for apparently changed Xcode workspace window title
+		* script selectFiles: correct issue where all trailing filenames are included in result
+			* Terminal Slate: make grep command more precise
+		* Xcode Slate: Product menu;  use  instead of popup for Target selection
+		* remove non-ascii characters (<a href="http://github.com/carolclark/Support/issues/36">Support#36</a>)
+		* clear new compiler warnings
+	<span class='tlmark'>&lt;--</span>
+	* <a href="#restructureXcodeProjects">restructure Xcode projects</a> (#23)
+</pre>
+
+<h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
+	* add python function mergeMessage(branchName="",issueNum=0)
+		* new project CCDev with initial passing Python test testScm.py
+			* move python scripts to folder ${CCDev}/bin/ccdev; use test suites and discovery
+	* add file templates for python scripts and test cases
+	* merge_message accepts command-line arguments
+		* rename mergeMessage to merge_message for style compatiblity
+		* add and test cmdline access to merge_message
+		* Slate command git:getMergeMessage
+	* refactor
+		* simplify &amp; refactor Developer build
+			* Developer build: Developer_Setup always runs
+			<span class='tlmark'>&lt;--</span>
+			* include Python scripts and tests in targets Developer, AllTests
+			* refactor ksh scripts: for files dotted in at the top, move help information to follow them so included help info does not replace file's info
+			* rename Python tests to sort with their module
+	* Slates: Python subslate with def's for functions and tests
+	* scm.main handles multiple subcommands
+		* extract ccdev.parse_cmdline
+	* scm methods &lt;function&gt;_cmd handle parameter passing and result display for command-line use of &lt;function&gt;; consider testing with shunit
+	* scm.changes: diff --name-status and lg for arg1..arg2 (eg. "changes master currentBranch") (see <a href="http://github.com/carolclark/Support/issues/29">(#29)</a> git workflow support)
+	* fix find 'git' issue in ccInstall findS1ources
+		* function find_source_files (path)
+	* ?add ccdev.dir, ccdev.help - shell command-line versions of python dir, help
+</pre>
+
+<h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
+	* backup GitHub issue content
+	* script to automate backup of GitHub issue content
+		* new script file githUtil: utility functions for git and GitHub
+	<span class='tlmark'>&lt;--</span>
+	* use separate history file Support_v0_1.html for work on milestone v0.1
+		* add Development Overview section for planning
+	* allow markdown files to be included in the source for Cdoc sites
+		* cInstall:translateCdoc also handles markdown source
+		* make sure it produces valid HTML
+	* change Support_v0_1.html to Support_v0_1.md
+	* create new issues for future plans from existing *_History.html files
+</pre>
+
+<h4 id='gitWorkflow'><a href="http://github.com/carolclark/Support/issues/21">(#21)</a> add git workflow support</h4><pre>
+	* configuration
+		* add more colorization to Terminal
+			* *technique used to add color to terminal prompt also works to add color and special effects to UNIX output*
+			* *see <a href="http://antesarkkinen.com/blog/add-colors-to-os-x-terminal-including-ls-and-nano/">Add Colors To OSX Terminal</a>, <a href="http://linux-sxs.org/housekeeping/lscolors.html">COLORS-Lscolors</a>, <a href="http://softwaregravy.wordpress.com/2010/10/16/ls-colors-for-mac/">LS_COLORS for MAC OS X</a>*
+			* print "\033[1;33mcarolclark !\033[0m \033[1;35m$\033[0m" for terminal prompt
+			* also add additional settings to colorize <span class='mono'>ls</span> and <span class='mono'>grep</span>
+	* add support for using <span class='mono'>git remote update</span> instead of <span class='mono'>git pull</span>
+		* *updates from all remotes; then supports merge process that preserves merge commits, and stops to allow re-base rather than continuing with a merge that is not fast-forward; see <a href="http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop">How to avoid these merge commits in the future</a>*
+	<span class='tlmark'>&lt;--</span>
+	* refactor: for all unix files, includes come before help info to keep file's help from being overwritten by that from includes
+	* handle items that now enter scripts via user slate
+</pre>
+
+<!-- @marker "Automation" -->
+<h4 id='Automation'>Ongoing Automation</h4><pre>
+	* GitHub subslate for Xcode
+	<span class='tlmark'>&lt;--</span>
+	* assistance for typing Markdown (Maybe Dash snippets accessed with `Type > markdown`?)
+</pre>
+
+<!-- @marker "Completed" -->
+<h2 id='Completed'>Completed</h2>
+
+<h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>
+	* adapt History_Support.html to synchronize with GitHub issues
+	<span class='tlmark'>&lt;--</span>
+</pre>
+
+<h4 id='replaceKshFPATH'><a href="http://github.com/carolclark/Support/issues/5">(#5)</a> replace ksh $FPATH calls with dot syntax</h4><pre>
+	* testCcInstall, ccInstallAction use "&lt;. path&gt;" syntax
+	* get all builds working again
+		* testDoxygenInstall: correct typo
+		* Punkin: replace deprecated script doxygenBuild; for <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+		* Accessor: replace deprecated scripts doxygenBuild, buildCdoc; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
+		* Support: remove deprecated scripts doxygenBuild, buildCdoc
+	* remove $FPATH
+		* function errtrap: replace calls
+			* trap 'echo "$0#$LINENO: Command exited with status $?." 1>&amp;2' ERR
+		* script files: move ccInstall.ksh to Scripts; delete function errtrap.ksh and obsolete script cleanProjectTarget.ksh
+		* delete now-empty folder at $FPATH; remove variable $FPATH
+	<span class='tldate'>[05/03/2013]</span>
+</pre>
+
+<h4 id='UNIXerror'><a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling</h4><pre>
+	* new file testErrsig.ksh: test and demonstrate improved error handling functionality
+		* initial errorExit function
+	* shunit tests should fail on errors in test scripts
+		* remove error traps
+			* *main impact now is generating multiple "Command exited with status 0." messages to stderr, which obscures detection of real errors*
+		* ccInstall: make testing fail if shunit generates error output
+	* new file errsig.ksh; errorExit, errorMessage functions
+	* new file trapSigDemo: demonstrate trapping interrupt signals
+	* rename errsig.ksh -&gt; errcc.ksh
+	* errcc error codes: renumber custom codes to 64-113 to avoid conflicts with standard codes; also do not intrepret errno.h codes
+	* refactor existing code to use errorMessage on return, errorExit on exit as indicated
+		* archive.ksh:
+			* add testArchive.ksh
+			* --folder: check for invalid folder name
+				* rename error RC_NoSuchDirectory to RC_NoSuchFileOrDirectory
+			* (deprecated) disallow direct calls to functions intended to be called from 'archive --&lt;command&gt;...'
+			* always define variables so that functions can be called independently
+	* stop here with work on "<a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling"
+		* * We have already recognized a need to learn Python for customizing the Xcode debugger, and probably using the Python interpreter to generate user-customizable Slates for Accessor.*
+		* * Now, after spending an inordinate amount of time trying to make script `archive.ksh` more robust and testable, we are recognizing that this work may be contributing to significant fragility with Xcode and Terminal, with per-file syntax-coloring issues in Xcode, preferences being incorrect for no apparent reason, very frequent need to quit Xcode and delete its cache file, and quite a few required reboots (at least 5 today).*
+		* ccBackup is already scheduled for replacement. Add a new issue to convert scripts ccInstall and archive to Python.
+</pre>
+
+<h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
+	* correct merge conflicts (Punkin; Accessor)
+	* remove references to deprecated functions $(DEV), $(CCDev); remove function definitions
+	* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
+	* remove all occurrences of carolclark from build specifications and most scripts (Support; Punkin; Accessor)
+	* replace uses of deprecated scripts doxygenBuild, buildCdoc (<a href="http://github.com/carolclark/Punkin/issues/1">Punkin#1</a>, <a href="http://github.com/carolclark/Accessor/issues/1">Accessor#1</a>, item "replace deprecated scripts"
+	* file ccInstall.ksh: move from $CCDev/func to $CCDev/bin
+	* refactor ccInstall
+		* add target AllTests
+			* ccInstall: findTests takes single $path; add command --runShunitTests
+			* testDoxygenInstall: tests only functions of ccInstall; move to Developer/_Tests
+		* rename parameters to more accurately reflect their current use
+			* projectPath -&gt; workspaceRoot; target -&gt; targetFolder
+			* getActions: refactor to take workspaceRoot, targetFolder parameters
+			* complete rename of key ccInstall variables
+		* change ccInstall to take same parameters as ccInstallAction
+			* *current for ccInstall: workspaceRoot targetFolder, where targetFolder is path from workspaceRoot*
+			* *new for ccInstall: sourceRoot targetFolder, where targetFolder is path from sourceRoot*
+			* within ccInstall, rename existing targetFolder to oldTargetFolder
+			* ccInstall: calculate key variables based on sourceRoot, targetFolder
+			* ccInstall, tests: change internal parameters to new values
+			* ccInstall: clean up from refactoring
+		* use errorMessage for error returns as indicated
+	* *Target*_install.ksh files handle ccInstallAction functionality; remove ccInstallAction
+		* *Target*_install.ksh files include ${CCDev}/bin/ccInstall instead of resultCodes.ksh
+			* then rename installed file resultCodes.ksh to resultCodes
+		* *Target*_install scripts: script params match ccInstall params
+		* BBEdit_install handles ccInstallAction functionality
+		* add ccInstall params to *Target*_install callback params
+			* BBEdit_install.ksh: improve argument processing structure
+			* add ccInstall params to callbacks; also rename to --handleFile to --prepareFileOperation
+		* extract execInstallScript from BBEdit_install.ksh
+		* ccInstallAction
+			* &lt;Target&gt;_install scripts: replace ccInstallAction as build script; use execInstallScript
+			* ccInstallAction no longer needed - remove
+	* remove Xcode's dependence on custom environment variables defined in deprecated file /private/etc./launchd.conf
+		* define CCDev in each script that needs it
+			* environment variables defined in BuildSettings are apparently not available to scripts
+		* ccInstall: add and use subcommands DEV, SHUnit to return those values
+	* remove file /private/etc/launchd.conf from scripts and disk
+	* refactor install scripts
+		* *Target*_install scripts use errorMessage as indicated
+		* *Target*_install scripts (internal): params 1-3 already set; do not pass again
+		* pass callback script as argument to ccInstall for building; --getTargetScript out
+		* update all _Scripting templates
+	* Developer_install: setup at top if build is clean; --clean cleans only if build is not clean
+		* target DeveloperSetup no longer needed; remove
+</pre>
+
+<h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
+</pre>
+
+<!-- @marker "Open Topics" -->
+<h2 id='OpenTopics'>Open Topics</h2>
+
+<h1>Support History</h1>
+
+<!-- @topicList "Support History: Previous Content" "PreviousContent" -->
+	<!-- @topicItem "Development Overview" "#DevelopmentOverview" "0" "" -->
+	<!-- @topicGroup "" "2" -->
+	<!-- @topicItem "Active" "#hmark_Active" "0" "" -->
+	<!-- @topicItem "Current" "#hmark_Current" "1" "" -->
+	<!-- @topicGroup "" "5" -->
+		<!-- @topicItem "Collaborator Support" "#CollaboratorSupport" "0" "" -->
+			<!-- @topicItem "Remove Xcode Env Dependency" "#RemoveXcodeEnvDependency" "1" "" -->
+		<!-- @topicSep -->
+		<!-- @topicItem "Switch to MountainLion" "#MountainLion" "1" "" -->
+			<!-- @topicItem "Backups and Volumes" "#BackupsVolumes" "2" "" -->
+		<!-- @topicGroup "" "11" -->
+		<!-- @topicItem "Switch Web Hosts" "#webHost" "1" "" -->
+			<!-- @topicItem "Script Site Installation" "#installSite" "2" "" -->
+			<!-- @topicItem "Add TechnicalDocs Area" "#addTechnicalDocs" "2" "" -->
+			<!-- @topicItem "Add Family Area" "#addFamily" "2" "" -->
+		<!-- @topicGroup "" "16" -->
+		<!-- @topicItem "Transfer Existing Development Work" "#transferExisting" "1" "" -->
+			<!-- @topicItem "Recover DevSupport Scripts" "#DevSupport" "2" "" -->
+			<!-- @topicItem "In-House Documentation" "#cdocCleanup" "2" "" -->
+		<!-- @topicGroup "" "20" -->
+		<!-- @topicItem "General" "#General" "1" "" -->
+			<!-- @topicItem "Upgrade/Add Xcode File Templates" "#XcodeTemplates_8_12" "2" "" -->
+			<!-- @topicItem "Improve Git Access" "#ImproveGitAccess" "2" "" -->
+			<!-- @topicItem "General Support" "#_general" "2" "" -->
+			<!-- @topicItem "Automation Support" "#_automation" "2" "" -->
+		<!-- @topicGroup "" "25" -->
+		<!-- @topicItem "Personal" "#Personal_" "0" "" -->
+	<!-- @topicGroup "" "28" -->
+	<!-- @topicItem "ToDo" "#hmark_ToDo" "0" "" -->
+	<!-- @topicGroup "" "30" -->
+	<!-- @topicItem "Completed" "#hmark_Completed" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Development Overview" -->
+<div style="page-break-before: always">
+<h3 id='DevelopmentOverview'>Development Overview</h3>
+</div>
+
+<div class="tableholder"><table class="goaltabl" border="0" cellspacing="0" cellpadding="5"><caption>Development Overview</caption>
+	<tr><th>Project</th> <th>Goal</th> <th>Comments</th> <th>When</th></tr>
+	<tr> <td>Punkin</td> <td>start Words tool [<a href="../Punkin/History_Punkin.html#WordsStart">WordsStart</a>]</td> <td class='small'>Core Data-based application; Mac OS X</td> <td align="center">&radic;1</td> </tr>
+	<tr> <td>Punkin</td> <td>support testing for expected errors [<a href="../Punkin/History_Punkin.html#SupportErrorTesting">SupportErrorTesting</a>]</td> <td class='small'></td> <td align="center">1</td> </tr>
+	<tr> <td>Punkin</td> <td>Add LayerMO [<a href="../Punkin/History_Punkin.html#AddLayerMO">AddLayerMO</a>]</td> <td class='small'>Core Data object to store a name and image data for a graphic layer</td> <td align="center">1</td> </tr>
+	<tr> <td>Punkin</td> <td>establish iOS Cocoa development environment [<a href="../Punkin/History_Punkin.html#InitialiOSApp">InitialiOSApp</a>]</td> <td class='small'>with testing, provisioning and Doxygen support</td> <td align="center">2</td> </tr>
+	<tr> <td>Punkin</td> <td>framework for cross-platform mobile and desktop websites [<a href="../Punkin/History_Punkin.html#SampleSite">Sample Site</a>]</td> <td class='small'>work from sample sites in iOS and Android tutorials</td> <td align="center">3</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Upgrade to MountainLion</span></td></tr>
+	<tr> <td>Support</td> <td>Establish Mountain Volume</td> <td class='small'></td> <td align="center">&radic;1</td> </tr>
+	<tr> <td>Support</td> <td>Install MountainLion on Primary Partition</td> <td class='small'></td> <td align="center">&radic;2</td> </tr>
+	<tr> <td>All</td> <td>Build Projects for MountainLion</td> <td class='small'>make Accessor build; update Support scripts; all targets: compile; clear warnings; clear static analysis; update settings for C++ 11, high-resolution artwork</td> <td align="center">1</td> </tr>
+	<tr> <td>All</td> <td>Upgrade Projects for MountainLion</td> <td class='small'>warning settings and static analyzer preferences; Objective-C modernization (see WWCD 2012 Session 405 - Modern Objective-C, Session 413 - Migrating to Modern Objective-C)</td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td><a href="#BackupsVolumes">Backups and Volumes</a></td> <td class='small'>update backup procedures and external drive</td> <td align="center">3</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Replace MobileMe and iDisk</span></td></tr>
+	<tr> <td>Support</td> <td><a href="#webHost">Finish Switching Web Hosts</a></td> <td class='small'>switch TechnicalDocs to new host</td> <td align="center">2</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Developer Support and Automation</span></td></tr>
+	<tr> <td>Accessor</td> <td>Refactor Class and ResType Maps [<a href="../Accessor/History_Accessor.html#RefactorRegistry">RefactorRegistry</a>]</td> <td class='small'>needed to switch to 64-bit architecture</td> <td align="center">2</td> </tr>
+	<tr> <td>Accessor</td> <td>Switch to 64-bit architecture [<a href="../Accessor/History_Accessor.html#ChangeTo64bit">ChangeTo64bit</a>]</td> <td class='small'>needed to migrate to ARC</td> <td align="center">3</td> </tr>
+	<tr> <td>Accessor</td> <td>migrate to ARC [<a href="../Accessor/History_Accessor.html#MigrateARC">MigrateARC</a>]</td> <td class='small'></td> <td align="center">3</td> </tr>
+    <tr> <td>Accessor</td> <td>improve <a href="../Accessor/History_Accessor.html#ErrorCommunication">Error Communication</a></td> <td class='small'>will improve identification of Faults</td> <td align="center">4</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Moderization and Adoption</span></td></tr>
+	<tr> <td>Punkin</td> <td>Add LLDB Support [<a href="../Punkin/History_Punkin.html#AddLLDBSupport">AddLLDBSupport</a>]</td> <td class='small'>improves efficiency and automation capability</td> <td align="center">1</td> </tr>
+	<tr> <td>Punkin</td> <td>adopt and apply test coverage tools [<a href="../Punkin/History_Punkin.html#ExpandTesting">ExpandTesting</a>]</td> <td class='small'></td> <td align="center">1</td> </tr>
+	<tr> <td>Punkin</td> <td>begin adding interaction tests [<a href="../Punkin/History_Punkin.html#ExpandTesting">ExpandTesting</a>]</td> <td class='small'>use NSAccessibility</td> <td align="center">3</td> </tr>
+	<tr> <td>Punkin</td> <td>add performance analysis to workflow [<a href="../Punkin/History_Punkin.html#PerformanceAnalysis">PerformanceAnalysis</a>]</td> <td class='small'>Memory; Responsiveness</td> <td align="center">3</td> </tr>
+	<tr> <td>Punkin</td> <td>Performance: add categories [<a href="../Punkin/History_Punkin.html#PerformanceAnalysis">PerformanceAnalysis</a>]</td> <td class='small'>add Core Data, Graphics, Animation as coding progress permits</td> <td align="center">5</td> </tr>
+	<tr> <td>Punkin</td> <td>try auto-layout again</td> <td class='small'>best alternative for the future; under Lion 10.7, it was too buggy to use</td> <td align="center">3</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Transfer Existing Development Work</span></td></tr>
+	<tr> <td>Support</td> <td>import remaining Support features [<a href="#DevSupport">Recover DevSupport Scripts</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td>Cdoc cleanup [<a href="#cdocCleanup">In-House Documentation</a>]</td> <td class='small'></td> <td align="center">2</td> </tr>
+	<tr> <td>Support</td> <td>ccInstall: incorporate buildCdoc</td> <td class='small'></td> <td align="center">3</td> </tr>
+<tr><td colspan="4" align="center"><span class='ital'>Personal</span></td></tr>
+	<tr> <td>iPhoto</td> <td>establish Events</td> <td class='small'>correct dates; organize into realistic sequence of Events</td> <td align="center">3</td> </tr>
+	<tr> <td>Mail</td> <td>sort old Mail</td> <td class='small'></td> <td align="center">4</td> </tr>
+</table></div>
+
+<!-- @marker "1 === Active" --><p class='tlhead'>&lt;-- Active</p>
+<div style="page-break-before: always">
+<h2 id='hmark_Active'>Active</h2>
+</div>
+
+<!-- @marker "Collaborator Support" -->
+<h4>Collaborator Support</h4>
+<!-- @topicList "Collaborator Support" "CollaboratorSupport" -->
+	<!-- @topicItem "initial candcsoftCollaborate" "#initialCandcsoftCollaborate" "0" "" -->
+	<!-- @topicItem "Remove Xcode Env Dependency" "#RemoveXcodeEnvDependency" "0" "" -->
+<!-- @/topicList -->
+<p>candcsoftCollaborate is intended to be an archived folder containing an AppleScript that can be run to set up a Collaborator's development environment to support accessing git via Xcode, building projects, and other functionality as indicated.</p>
+
+	<!-- @marker "initial candcsoftCollaborate" -->
+	<h5 id='initialCandcsoftCollaborate'>initial candcsoftCollaborate</h5><ul>
+		<li>see <a href="#moveCCDev">move $CCDev folder</a></li>
+	</ul>
+
+	<!-- @marker "Remove Xcode Environment Dependency" -->
+	<h5 id='RemoveXcodeEnvDependency'>Remove Xcode Environment Dependency</h5><ul>
+		<li class='blurb'>Previous support for accessing custom environment variables from Xcode used file Environment.plist, which is no longer read. Apparently, no new method of supporting custom environment variables is as yet officially supported. Current workaround uses file /private/etc/launchd.conf, which is difficult to support, especially for collaborators, because it requires sudo access.</li>
+		<li>remove obsolete files<ul>
+			<li>Developer/Environment/environment.plist; Xcode/Workflows</li>
+		</ul></li>
+		<li class='depr'>replace environment variables ${DEV}, ${CCDev} with functions $(DEV), $(CCDev)<ul>
+			<li class='blurb'>This strategy failed because Xcode could not find the ksh functions folder, possibly because we can no longer find a way to tell Xcode which shell we are using.</li>
+		</ul></li>
+		<li>revert "use functions $(DEV), $(CCDev)"</li>
+		<li id='moveCCDev'>move ${CCDev} to standard location<ul>
+			<li class='blurb'>${CCDev} contains path to folder containing scripts, derived files, etc.; has been customizable per user</li>
+			<li>standardize folder location at ~/Library/CCDev<ul>
+				<li>replace definition in Developer_Setup; update in Developer tests</li>
+				<li>update AppleScripts in targets Xcode, BBEdit</li>
+				<li>update UserSlates script and Slates, service GitSaveMessage, DoxyDemo address, Cdoc</li>
+			</ul></li>
+			<li>update project scripts; Doxygen configuration file (Doxygen expects forms $(DEV) and $(CCDev))</li>
+		</ul></li>
+		<li class='tldate'>[fixDevCCDev 03/20/2013]</li>
+		<li class='tlmark'>&lt;--</li>
+		<li id='fixUserSpecificBuilds'>replace user-specific build scripts<ul>
+			<li>convert Cdoc, Doxygen targets in Punkin, Accessor to use External targets, ccInstallAction</li>
+			<li>retire obsolete scripts buildCdoc.ksh, doxygenBuild.ksh, cleanProjectTarget.ksh</li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "Switch to MountainLion" -->
+<h4 id='MountainLion'>Switch to MountainLion</h4>
+
+	<!-- @marker "Backups and Volumes" -->
+	<h5 id='BackupsVolumes'>Backups and Volumes</h5><ul>
+		<li>buildDoxygen: additional argument path-to-config-file</li>
+		<li>Dev<ul>
+			<li>reimplement <a href="#archive">Archive script</a></li>
+			<li>archive and retire existing obsolete projects; see <a href="#devImport">Import Existing Projects</a></li>
+			<li>upload git repositories for Accessor and Support to ProjectLocker</li>
+		</ul></li>
+		<li class='tlmark'>&lt;--</li>
+		<li>Update backup support procedures, including usage of our external volumes<ul>
+			<li class='blurb'>QuickPicks<ul>
+				<li>our current backup utility, obtained from MobileMe, identifies critical data for some standard applications; it looks like a good list</li>
+			</ul></li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "Switch Web Hosts" -->
+<h4 id='webHost'>Switch Web Hosts</h4><ul>
+	<li class='blurb'>Status 1/17/2012<ul>
+		<li>We have been using MobileMe to host:<ul>
+			<li>a remote Punkin git repository on iDisk</li>
+			<li>candcsoft.com (stub; forwarded from Go Daddy to web.me.com/carollclark/candcsoft)</li>
+			<li>a family photos website (http://web.me.com/carollclark/Family/ClarksHome.html)</li>
+			<li>file Punkin_index.html that was intended to link to developer documentation; the link is dead, but the intention is to provide such a link, with password protection, for Punkin team members</li>
+		</ul></li>
+		<li>MobileMe is obsolete, and will be unavailable effective June 30, 2012.</li>
+		<li>We will be switching to Go Daddy to host website, ProjectLocker to host git repository.</li>
+		<li>Tentative Site Plan<ul>
+			<li>candcsoft.com: hosted site</li>
+			<li>candcsoft.com/TechnicalDocs: password-protected technical documentation site</li>
+			<li>candcsoft.com/Family: family photos site</li>
+				<li>git-CCSoftware@pl5.projectlocker.com:&lt;ProjectName&gt;.git: active project repositories</li>
+			<li>later: We also own domains EverydaySpanish.net and EverydaySpanishForKids.com, and intend to eventually forward at least one of those via Go Daddy to a site within candcsoft.com.</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+	<!-- @marker "Script Site Installation" -->
+	<h5 id='installSite'>Script Site Installation</h5><ul>
+		<li class='blurb'>implement script and target to install site content (leave other template files for now)<ul>
+			<li><span class='mono'>build</span> builds local copy; <span class='mono'>upload</span> updates hosted site from local copy (function <span class='mono'>upload</span>, similar to <span class='mono'>install</span>, generates and executes ruby ftp script</li>
+		</ul></li>
+		<li class='blurb'>see <a href="http://4loc.wordpress.com/2008/12/04/using-ftp-in-ruby/">Using FTP in Ruby</a></li>
+		<li class='depr'>see <a href="http://oreilly.com/catalog/expect/chapter/ch03.html">Exploring Expect: Chapter 3</a>, <a href="http://www.cs.colostate.edu/helpdocs/ftp.html">Basic FTP Commands</a>; <a href="http://myithaca.wordpress.com/2009/06/21/expect-scripting-tutorial/">Expect scripting tutorial</a> (expect is included on Mac); (<a href="http://www.stratigery.com/scripting.ftp.html">Using ftp in a shell script</a>, if needed)</li>
+		<li class='tlmark'>&lt;--</li>
+	</ul>
+
+	<!-- @marker "Add TechnicalDocs Area" -->
+	<h5 id='addTechnicalDocs'>Add TechnicalDocs Area</h5><ul>
+		<li><a href="Support.html#WebHosting">Support: WebHosting</a><ul>
+			<li>update to reflect changing hosting</li>
+			<li>plan revised site structure</li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Add Family Area" -->
+	<h5 id='addFamily'>Add Family Area</h5><ul>
+		<li>Family site</li>
+	</ul>
+
+<!-- @marker "Transfer Existing Development Work" -->
+<h4 id="transferExisting">Transfer Existing Development Work</h4>
+
+	<!-- @marker "Recover DevSupport Scripts" -->
+	<h5 id='DevSupport'>Recover DevSupport Scripts</h5><ul>
+        <li id='ValidateHTML'>&radic;BBEdit support: recover active scripts including ValidateHTML</li>
+		<li id='archive'>&radic;Archive script: based on archiveProject, archiveRepository, archiveToRetire, openArchives from DevSupport:Xcode.sh</li>
+		<li>&radic;add Snippet and Finder scripts and data from old project DevSupport for later incorporation</li>
+		<li>Finder: recover script toTEXT; include documentation for changing creator and/or file type</li>
+		<li>Snippet script: translate to Automator Service</li>
+	</ul>
+
+	<!-- @marker "In-House Documentation" -->
+	<h4 id='cdocCleanup'>In-House Documentation</h4><ul>
+		<li>replace Subversion $Id fields with filenames</li>
+		<li>update for git/Subversion<ul>
+			<li>Source Control: add git</li>
+			<li>new file Subversion for information, mostly obsolete, about that topic; includes Server info</li>
+			<li>Support_svn history: move content to be preserved into Support files</li>
+		</ul></li>
+		<li>update sections with class 'todo'</li>
+		<li>Tools.html: clean up headings within topics (search for "Installation and Configuration")</li>
+	</ul>
+
+<!-- @marker "General" -->
+<h4 id="General">General</h4>
+
+	<!-- @marker "Upgrade/Add Xcode File Templates" -->
+	<h5 id='XcodeTemplates_8_12'>Upgrade and Add Xcode File Templates</h5><ul>
+		<li>rename our custom folders with leading "_"</li>
+		<li>use Objective_C icons for CPPWrapper template</li>
+		<li>new templates<ul>
+			<li>CocoaClass: copied from Xcode's Objective-C template; replace file headers; adjust block style</li>
+			<li>ManagedObject: copied from Xcode's NSManagedObject subclass template; replace file headers; adjust block style</li>
+			<li>CocoaTestClass: start with CocoaClass; reduce options to NSObject, NSManagedObject (managed memory version); update code</li>
+			<li>CocoaClass: add NSApplicationDelegate, NSApplicationDelegatewithCoreData</li>
+		</ul></li>
+		<li>after CocoaTestClass:NSManagedObject has been tested in use, add option Use Reference Counting to separate ARC and Managed Memory templates</li>
+	</ul>
+
+	<!-- @marker "Improve Git Access" -->
+	<h5 id='ImproveGitAccess'>Improve Git Access</h5><ul>
+		<li class='blurb'>add support for more advanced git functionality; improve git accessibility</li>
+		<li class='blurb'>much of this functionality has been supported by Accessor's Terminal slate</li>
+		<li>Git Slates<ul>
+			<li>add git grep</li>
+			<li>add between, ancestor specifiers; log/reflog --stat, --before, --after</li>
+		</ul></li>
+		<li>Developer_Setup<ul>
+			<li>Stabilize Developer_Setup<ul>
+				<li class='blurb'>For at least a month, the code that establishes variable CCDev was written before it was defined in the script. This continued to work as long as CCDev had already been defined before the script was run.</li>
+				<li>Developer_Setup.ksh: correct CCDev definition issue - use existing predefined value until CCDev has been defined in the script</li>
+				<li class='blurb'>Change to support more complete testing: to start up a system with no setup variables defined: clean targets Developer_Setup and Developer; delete file /private/etc/launchd.conf; reboot</li>
+				<li>Build Run Script Phase: do not depend on variable Dev</li>
+				<li>implement Developer_Setup clean<ul>
+					<li>change to External Target</li>
+					<li>pass $ACTION to script</li>
+				</ul></li>
+			</ul></li>
+			<li>fetch Configuration and Collaborator changes made previously<ul>
+				<li class='blurb'>These changes were made once before Developer_Setup was stabilized, then reintroduced here.</li>
+				<li>UserSlates: improve git access</li>
+				<li>test environment and git configurations</li>
+				<li>remove ~/.MacOSX/environment.plist; add ~/.launchd.conf; user copies ~/.launchd.conf to /private/etc/launchd.conf<ul>
+					<li>see <a href="http://stackoverflow.com/questions/603785/environment-variables-in-mac-os-x/4567308#4567308">Environment variables in Mac OS X</a></li>
+				</ul></li>
+				<li>refactor Developer_install, Developer_Setup</li>
+				<li>git configuration: configuration, excludes; add attributes support. Includes:<ul>
+					<li>configuration: add core.editor emacs, merge.tool opendiff</li>
+					<li>gitattributes: *./pbxproj merge=union tells Xcode to use changes from both parents when merging Xcode project files</li>
+					<li>gitexclude: ignore folder _patches/</li>
+				</ul></li>
+			</ul></li>
+			<li class='tlmark'>&lt;--</li>
+		</ul></li>
+		<li><a href="#RemoveXcodeEnvDependency">Remove Xcode Environment Dependency</a></li>
+		<li>Collaboration<ul>
+			<li>Switch to GitHub<ul>
+				<li class='blurb'>Motivation<ul>
+					<li>current git host: ProjectLocker<ul>
+						<li>has been a free host for projects Support, Punkin, and Accessor</li>
+						<li>multiple projects grandfathered - free account now supports only one project; we won't be able to add projects, and rules may change in the future to disallow what we are doing</li>
+						<li>Carol's access has been smooth, but we have repeatedly been unable to get Laura's access working</li>
+						<li>supports only Trak (Microsoft) for issue tracking, which we investigated and rejected</li>
+						<li>smallest paid account is $20/mo for up to 15 repositories</li>
+					</ul></li>
+					<li>GitHub<ul>
+						<li>$7/mo for 5 private repositories, unlimited public repositories</li>
+						<li>current standard git host; compatible with huge collection of existing publicly available repositories</li>
+						<li>same location for private and public repositories</li>
+						<li>appears to have excellent, flexible tools for issue tracking, documentation, discussion</li>
+						<li>supports viewing repositories online</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>Collaboration<ul>
+			<li>Switch to GitHub<ul>
+				<li class='blurb'>Motivation<ul>
+					<li>current git host: ProjectLocker<ul>
+						<li>has been a free host for projects Support, Punkin, and Accessor</li>
+						<li>multiple projects grandfathered - free account now supports only one project; we won't be able to add projects, and rules may change in the future to disallow what we are doing</li>
+						<li>Carol's access has been smooth, but we have repeatedly been unable to get Laura's access working</li>
+						<li>supports only Trak (Microsoft) for issue tracking, which we investigated and rejected</li>
+						<li>smallest paid account is $20/mo for up to 15 repositories</li>
+					</ul></li>
+					<li>GitHub<ul>
+						<li>$7/mo for 5 private repositories, unlimited public repositories</li>
+						<li>current standard git host; compatible with huge collection of existing publicly available repositories</li>
+						<li>same location for private and public repositories</li>
+						<li>appears to have excellent, flexible tools for issue tracking, documentation, discussion</li>
+						<li>supports viewing repositories online</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+			<li>script CreatePunkinPatches; see <a href="#ccgit_do">ccgit.ksh</a></li>
+			<li>makeCollaboratorSetup.ksh: script to make tarball at ~/Archives/collatoratorSetup.tar.gz with script Developer_Setup, along with the files it needs to set up a Collaborator's system for development<ul>
+				<li>handle GitSaveMessage.workflow, CreatePunkinPatches.scpt in Developer_Setup</li>
+				<li>target folder includes sources for Developer_Setup</li>
+				<li>archive</li>
+			</ul></li>
+		</ul></li>
+		<li id='ccgit_do'>ccgit.ksh: scripts to support git and git accessibility<ul>
+			<li>--createPatches &lt;Workspace&gt;: creates patches (<span class='mono'>git format-patch --output-directory _patches origin</span>) at ${DEV}/&lt;Workspace&gt;/_patches<ul>
+				<li>Developer Menu script CreatePunkinPatches creates patches for Punkin at ${DEV}/Punkin/_patches; used by collaborators to prepare patches for submission</li>
+			</ul></li>
+			<li>--listFiles:  convert input from an abbreviated diff to a numbered file list stored at $CCDev/Git/gitFileList</li>
+			<li>--fileSelect: display contents of $CCDev/Git/gitFileList; allow user to select a file by number; return name of selected file</li>
+			<li>--branchCurrent: return name of current branch</li>
+			<li>--tagAnnotate: list tags in chronological order with annotations</li>
+		</ul></li>
+		<li>git aliases<ul>
+			<li>tagannotate: lists tags in chronological order with annotations</li>
+			<li>fileselect: gitaccess --selectFile; print result</li>
+			<li>branchcurrent: gitaccess --branchCurrent; print result</li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "General Support" -->
+	<h5 id='_general'>General Support</h5><ul>
+		<li>expandTerminalGit: git taking over scm responsibilities previously handled by Xcode</li>
+		<li class='tldate'>[12/19/2012]</li>
+		<li>add Use Case support<ul>
+			<li>ccInstall.ksh: translateCdoc: update @UseCase</li>
+			<li>default.css: add/update Use Case styles</li>
+			<li>rename use case image ucgl_p.tiff to ucgl_f.tiff</li>
+			<li>add Snippets useCase, useCaseLink, glossaryItem</li>
+		</ul></li>
+		<li class='tldate'>UseCaseSupport [01/22/2013]</li>
+		<li class='tlmark'>&lt;--</li>
+		<li>replace bundle/kshScript targets with external targets to provide clean support<ul>
+			<li class='blurb'>see <a href="http://yeahrightkeller.com/2009/run-script-while-cleaning-in-xcode/">Run Script While Cleaning in Xcode</a></li>
+			<li>ccInstall: reformat error messages so they begin with error:, since that is Xcode's mechanism for identifying error messages</li>
+			<li>new script ccInstallAction.ksh to call ccInstall on behalf of external targets; replace Cdoc Bundle/script target with External target</li>
+			<li>Developer<ul>
+				<li>replace Developer Bundle/script target with External target</li>
+				<li>move Services from target Xcode to target Developer</li>
+			</ul></li>
+			<li>Xcode<ul>
+				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to ${CCDev}/build/Support/BuildSupport/Applications/Xcode</li>
+				<li>move ccInstall functionality from Scripts target to new External target</li>
+				<li>Xcode_install.ksh: add folders to function cleanTarget<ul>
+					<li>ccInstall: add --removeFolder</li>
+				</ul></li>
+			</ul></li>
+			<li>BBEdit: use External target BBEdit with dependency on script bundle target BBEditScripts</li>
+			<li>targets BBEdit, Cdoc: Clean operation cleans up installed files<ul>
+				<li>move function removeFolder from Xcode_install.ksh to ccInstall.ksh</li>
+				<li>ccInstall<ul>
+					<li>--removeFolder: check for argument exists but is not a directory</li>
+					<li>--copyFiles: do not use unix <span class='mono'>dirname</span>, since it cannot handle folders inside "Application Support"</li>
+				</ul></li>
+			</ul></li>
+			<li>expand ccInstallAction.ksh to support Doxygen builds<ul>
+				<li>new target Doxygen; new files testDoxygenInstall.ksh, Doxygen_install.ksh; move file Default.doxygen in</li>
+				<li>ccInstall: implement --getTargetName; add action doDoxygen</li>
+				<li>testDoxygenInstall.ksh, Doxygen_install.ksh: implement</li>
+				<li>ccInstall: set up to run doxygen</li>
+				<li>new files DoxyDemo_doxygen.txt, mainpage.dox: configuration and main page files for sample Doxygen docs</li>
+				<li>Doxygen target: build docs</li>
+				<li>Doxygen: load docset into Xcode<ul>
+					<li>rename Doxygen demonstration files AlertPresenter -&gt; AlertPresenterDD to avoid confusion with the real class</li>
+				</ul></li>
+			</ul></li>
+			<li><a href="#fixUserSpecificBuilds">replace user-specific build scripts</a></li>
+		</ul></li>
+		<li class='tldate'>[useExternalTargets ...]</li>
+	</ul>
+
+	<!-- @marker "Automation Support" -->
+	<h5 id="_automation">Automation Support</h5><ul>
+		<li>Xcode: add slate GoTab</li>
+		<li>Replacing deprecated mouse calls in AccessorC9 also corrected screen coordinates so they start from the top instead of the bottom of the menu bar. Change all active FixWindow events accordingly. (CommonSlates, Xcode, Safari, Automator, TextEdit)</li>
+		<li class='tldate'>[03/21/2012]</li>
+		<li>Xcode subslate Markers supports moving around within UserSlates<ul>
+			<li>Xcode: add Marker support; reorganize Xcode slates to utilize markers and to improve organization and maintainability</li>
+		</ul></li>
+		<li>Safari subslates: It is now possible to use the Filter field to anchor moving among links using the tab option-tab keys. For Doxygen pages, the Doxygen Filter field can be used in the same way. Update Safari slates accordingly.</li>
+		<li>Accessor (new): add copies of files AccessLib_rsrc.h, Keyboard_AL.h to UserSlates folder</li>
+		<li class='tlmark'>&lt;--</li>
+		<li>FixWindow.applescript: changes window position, and size if necessary, to avoid blocking Accessor window; stored at top level of Scripts folder, but code is per application<ul>
+			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="DevelopingProjects.html#AddBuildScriptTarget">Add Build Script Target</a></li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "Personal" -->
+<h4 id='Personal_'>Personal</h4>
+
+<!-- @marker "5 === ToDo" --><p class='tlhead'>&lt;-- ToDo</p>
+<h2>ToDo</h2>
+<!-- @topicList "ToDo" "hmark_ToDo" -->
+<!-- @/topicList -->
+
+<!-- @marker "7 === Completed" --><p class='tlhead'>&lt;-- Completed</p>
+<h2 id='hmark_Completed'>Completed</h2>
+
+	<!-- @marker "Transfer Existing Development Work [completed]" -->
+	<h5 id="transferExisting_compl">Transfer Existing Development Work</h5><ul>
+		<li>new Git project Support<ul>
+			<li>commit and archive existing project Support; rename to Support_svn</li>
+			<li>create <a href="Git.html#tsk_CreateNewRepository">new repository</a>; add file Support_hist.html with simplified history structure</li>
+			<li>add files Support.xcworkspace, Support.bbprojectd</li>
+			<li>from previous project Support_svn, import existing documentation, excluding history-related files; build and validate</li>
+			<li>update existing documentation<ul>
+				<li>use class='todo' to mark sections requiring updates</li>
+				<li>replace all instances of single quotes inside href tags double quotes<ul>
+					<li class='blurb'>because Xcode does not handle single quotes in href tags correctly</li>
+				</ul></li>
+				<li>new file Git.html: establish workflows for project setup; status and commit; stash; remove squash; branch; merge; undo<ul>
+					<li class='blurb'>Contains notes made during creation of this Support repository.</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>move Accessor's UserSlates into Support<ul>
+			<li class='blurb'>These Slates used by Accessor to provide speech recognition support were previously stored with application Accessor. They are developed as part of each application's workflow, and compiled by Accessor_C9. They will be edited and versioned with any other work being done in their workflow, and compiled from their Support folder by target Accessor.</li>
+			<li>document and commit last Accessor_C9 revision of UserSlates</li>
+			<li>import active User Slates from project Accessor_C9 to Support/UserSlates; add to workspace Support</li>
+			<li>Xcode Source Trees: UserSlates now @ ${HOME}/Dev/Support/UserSlates</li>
+		</ul></li>
+		<li class='tldate'>[withUpdatedDocs 08/31/2011]</li>
+		<li>updates to Xcode Configuration and UserSlates<ul>
+			<li>Configuration: Behaviors<ul>
+				<li>document: Build Fails: show tab Build; show Log Navigator; navigate to current log</li>
+				<li>add Build Generates New Issues: show tab Build; show Issue Navigator; navigate to first new issue</li>
+			</ul></li>
+			<li>Xcode.r (User Slate)<ul>
+				<li>Workaround for Xcode Key Bindings bug 'xckbbug'<ul>
+					<li class='blurb'>Key Bindings do not currently work in Xcode (rdar:10029381)</li>
+				</ul></li>
+				<li>use standard/assistant/version to switch editors</li>
+				<li>Accessor: Add Repository; search/find structure; View: Utilities</li>
+			</ul></li>
+		</ul></li>
+		<li class='tldate'>[slate_Xcode4 09/01/2011]</li>
+		<li>Initial Documentation of Git Workflow</li>
+		<li>new git project Punkin [<a href="../Punkin/History_Punkin.html#Contents">Punkin]</a></li>
+		<li class='tldate'>[09/02/2011]</li>
+		<li>revise history styles<ul>
+			<li>Support_hist.html: add markers; test in BBEdit</li>
+			<li>Threads and Timelines (history.css and client files)<ul>
+				<li>thread label: colored to stand out and highlight heading lines for threads</li>
+				<li>Timeline header: based on existing <span class='mono'>hmark</span>; for sections Active (active planning and coding), Threads (existing and projected threads of development), Current (recording current work), Completed (stuff that has been done)</li>
+				<li>update datemark: allows/expects list item</li>
+				<li>tlmark: for smaller markers inside lists</li>
+			</ul></li>
+			<li class='tldate'>[09/07/2011]</li>
+			<li>Cdoc history files: standardize; add file template<ul>
+				<li>Support, Punkin: history files: standardize; improve formatting</li>
+				<li>revise history styles [_cdocdev]</li>
+				<li>Support, Punkin histories: standardize; improve formatting [_cdocdev]</li>
+				<li>BuildSupport: <a href="Support.html#tsk_NewInstallerTarget">add target</a> Xcode</li>
+				<li>add template for history files [_xcode]</li>
+			</ul></li>
+		</ul></li>
+		<li class='tldate'>[09/20/2011]</li>
+		<li>Xcode: automation support; file templates<ul>
+			<li>support BBEdit as an External Editor for Xcode</li>
+			<li>capitalize, lowercase via Transform submenu</li>
+			<li>Xcode subslate Build</li>
+			<li>Accessor slate: expand resid_phaseRunScript; add access to resid_edIssues; add go next/previous to resid_BuildAccessor and resid_edIssues</li>
+			<li>add empty project BuildSupport at ~/Dev/Support; <a href="Support.html#tsk_NewInstallerTarget">add Xcode target</a> BuildSupport<ul>
+				<li>script Xcode.install<ul>
+					<li>check exit status, log output</li>
+					<li>define and process parameters, adding &lt;Project&gt; argument</li>
+					<li>run shunit tests from folder _Tests</li>
+					<li>use deprecated buildsource code from previous Support to handle copying files and clean for now</li>
+				</ul></li>
+				<li>copy Xcode/Templates/FileTemplates to ~/Library/Developer/Xcode/Templates/File Templates<ul>
+					<li>use added files template ShellScript.xctemplate - copy of Xcode's default</li>
+				</ul></li>
+			</ul></li>
+			<li>Xcode_C9.r: finish multiple search Slate resid_edSearch; add Slate resid_Panel for use with panel selection window, eg. for Move Focus to Editor... (cmd-J); add Slate resid_XCTerminal; revise resid_Editor</li>
+			<li>Initial Template Files<ul>
+				<li>rename ShellScript template file and folder<ul>
+					<li>rename Other_CC/ShellScript/___FILEBASENAME___.sh to Scripting/ShellScript/___FILEBASENAME___.ksh</li>
+					<li>___FILEBASENAME___.ksh: change shebang line</li>
+					<li>TemplateInfo.plist: change MainTemplateFile name; add Korn to description and summary</li>
+				</ul></li>
+				<li>add file template(s) Cdoc:CdocFile and Cdoc:HistoryFile</li>
+			</ul></li>
+		</ul></li>
+		<li class='tldate'>[09/20/2011]</li>
+		<li>[historyWorkflow] Improve Cdoc History File Workflow [_cdocdev]<ul>
+			<li>standardize existing history documents</li>
+			<li>add file templates ReadMe.html, CdocFile.html, HistoryFile.html</li>
+			<li>revert creation of new project TechnicalDocs (a false start)</li>
+			<li>Restructure this file to tie history information more effectively with associated branches and to reduce detail recorded within a development cycle.</li>
+			<li>Support_hist.html: reorder to do sections; move completed tasks into their section</li>
+			<li>synchronize Punkin_hist.html</li>
+			<li>Xcode:Script:go marker: workflow goMarker supports moving within a document to predefined markers [_xcode]<ul>
+				<li>Accessor event<ul>
+					<li>Automator action<ul>
+						<li>AppleScript: get contents of Xcode's front document</li>
+						<li>ruby: grep and process list of markers</li>
+						<li>new BBEdit document with contents</li>
+					</ul></li>
+					<li>BBEdit: go to line; accept line number; select line's content; enter find string; go to Xcode; find again</li>
+				</ul></li>
+				<li>Xcode.install: install workflows at ~/Library/Scripts/Xcode</li>
+			</ul></li>
+			<li>goMarker.workflow: remove code specific to HTML markers in preparation for extending to other file types</li>
+			<li>Xcode.install: correct problems with creating derived directory folder and excluding *.install files; change expected directory and drop Project parameter; continued refactoring</li>
+			<li>Xcode.r: clean up _FileNewStandards_</li>
+			<li>TechnicalDocs<ul>
+				<li>history documents: add a header level to section Active to provide for splitting larger topics into smaller sections</li>
+				<li>corrections to Support_svn (this project's predecessor) docs to allow BBEdit:Validate All to pass</li>
+			</ul></li>
+		</ul></li>
+		<li class='tldate'>[10/14/2011]</li>
+		<li>[cdocWorkflow] improve Cdoc workflow<ul>
+			<li>ViewInBrowser: new workflow to open, in Safari, the file in our TechnicalDocs site that corresponds to Xcode's front text document</li>
+			<li>Xcode.r: _FileNewStandards_: extend to _FileSaveStandards_ and _FileOpenStandards_; extract _FileDialogStandards_; add File:Open</li>
+			<li>rename Cdoc files for as indicated to form Topic_Project.html for improved keyboard access<ul>
+				<li class='blurb'>Currently, many documentation files have names that start with the name of their project. This is inconvenient for file access from Xcode, where one can type the beginning of the file name to select that file. Also, some standard files have unusual abbreviations (eg. Support_hist) for historical reasons.</li>
+				<li>renamed: Support_gloss.html -&gt; Glossary_Support.html, Support_hist.html -&gt; History_Support.html</li>
+				<li>change default file name for FileTemplate HistoryFile</li>
+				<li>also rename Cdoc files in project Punkin as indicated</li>
+			</ul></li>
+			<li>add templates for files Requirements_.html, UseCases_.html, Design_.html<ul>
+				<li>based on files Koala_Requirements.html, Koala_Design.html from deprecated project Koala_Try2; to be used for project Punkin</li>
+			</ul></li>
+		</ul></li>
+		<li>[refactorInstall] refactor Xcode.install to enable extension for other targets<ul>
+			<li>Support: add reference files for CCDev; see <a href="Support.html#ReferenceFiles">Support: Reference Files</a></li>
+			<li>target <a href="Support.html#tar_Developer_Setup">Developer_Setup</a>; script CCDev_Setup.ksh<ul>
+				<li>new file CCDev_Setup.ksh based on code from Support_svn:CCDev.build and Punkin_svn:Collaborator.build</li>
+				<li>add File Template Scripting/shunitTest</li>
+				<li>add CCDev/_Tests/testCCDev_Setup.ksh; run from CCDev_Setup.ksh</li>
+				<li>initial critical files: add tests; add files based on existing Support_svn files<ul>
+					<li>CCDev/Environment: profile.ksh, kshrc.ksh, environment.plist; CCDev/Scripts: errtrap.func; all based on previously existing Support_svn files</li>
+				</ul></li>
+				<li>install shunit 2.1.6 test framework from downloaded source</li>
+			</ul></li>
+			<li>CCDev.install<ul>
+				<li>refactor reusable functionality from Xcode.install into separate script ccInstall<ul>
+					<li>new target CCDev uses new function ccInstall<ul>
+						<li>new file CCDev.install, target CCDev</li>
+						<li>new file ccInstall.func installed by CCDev_Setup and CCDev to ~/CCDev/func/ccInstall</li>
+						<li>new file CCDev/_Tests/testCCDev.ksh run by CCDev.install</li>
+					</ul></li>
+					<li>obtain status code from within errtrap function instead of passing by parameter</li>
+					<li>Xcode_C9.r: correct bug while moving among targets in project window</li>
+					<li class='tldate'>[11/04/2011]</li>
+					<li>ccInstall: implement --getActions<ul>
+						<li>use in Xcode.install</li>
+					</ul></li>
+					<li>extract/refactor code from Xcode.install using ccInstall<ul>
+						<li>ccInstall --getActions</li>
+						<li>ccInstall --get&lt;Path&gt;: encapsulate path calculations</li>
+						<li class='tldate'>[10/11/2011]</li>
+						<li>rename/move script files to use standard extensions<ul>
+							<li class='blurb'>At this time, it appears that Xcode's XCCodeSenseAllowAutoCompletionInPlainFiles works to support code completion only in files with extensions it recognizes.</li>
+							<li>files Scripts/*.func: rename to Functions/*.ksh</li>
+							<li>files *.install: rename to *_install.ksh</li>
+							<li>ccInstall, Xcode_install: update for renamed files</li>
+						</ul></li>
+						<li>add script <span class='mono'>cleanProjectTarget &lt;Project&gt; &lt;Target&gt;</span></li>
+						<li>CCDev: make ccInstall, not the folder-specific code, the controlling script<ul>
+							<li>target CCDev: set script to "ccInstall ${HOME}/Dev/Support CCDev"</li>
+							<li>ccInstall.ksh, testCcInstall.ksh<ul>
+								<li>setPaths takes "projectPath target" instead of "scriptpath"</li>
+								<li>add functions findTests, processActions</li>
+							</ul></li>
+							<li>Xcode_install.ksh: update for changes to ccInstall</li>
+						</ul></li>
+						<li>ccInstall handles install action<ul>
+							<li>ccInstall.ksh, testCcInstall.ksh<ul>
+								<li>--getTargetScript</li>
+								<li>--findSources</li>
+							</ul></li>
+							<li>add file resultCodes.ksh</li>
+							<li>CCDev_install.ksh, testCCDev.ksh<ul>
+								<li>--getSubtargetDestination</li>
+								<li>--handleFile</li>
+							</ul></li>
+							<li>ccInstall.ksh: processActions handles install action</li>
+						</ul></li>
+						<li>ccInstall: implement clean action<ul>
+							<li>ccInstall.ksh, testCcInstall.ksh: --updateLastbuilt, --clearLastbuilt</li>
+							<li>ccInstall.ksh processActions: handle clean action; update $lastbuilt on successful build</li>
+						</ul></li>
+						<li>cleanProjectTarget.ksh: use ccInstall -c</li>
+						<li>add InstallTarget template</li>
+						<li>refactor Xcode_install.ksh to use ccInstall</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Set Up Remote Punkin Repository" -->
+	<h5 id='remotePunkinRepo'>Set Up Remote Punkin Repository</h5><ul>
+		<li>update Carol's Punkin working copy to include content from both Carol's and Laura's existing repositories</li>
+		<li>ssh setup<ul>
+			<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
+			<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing my public key</li>
+		</ul></li>
+		<li>new account at ProjectLocker: CCSoftware; initial project Punkin; ssh address git-CCSoftware@pl5.projectlocker.com/Punkin.git</li>
+		<li>add that repository as a remote to Carol's Punkin working copy; push Carol's working copy to remote</li>
+		<li>clone new working repositories for Carol and Laura from the new remote</li>
+	</ul>
+
+	<!-- @marker "Initial Web Host Setup" -->
+	<h5 id='webHostSetup'>Initial Web Host Setup</h5><ul>
+		<li>candcsoft.com<ul>
+			<li>add Go Daddy hosting; reconnect candcsoft.com there, which sets up a starter site</li>
+			<li>document and track contents of starter site</li>
+			<li>welcome.html uses our starter content</li>
+		</ul></li>
+		<li>add TechnicalDocs and Family areas with index.html files</li>
+		<li>add password protection for TechnicalDocs site<ul>
+			<li>use form at <a href="http://www.password-protection.com/">Easy Website Password Protection Tutorial</a>, with user names and Punkin password, to generate crypt codes carolclark:sNdw6YfVKsBhQ; lauramartinez:XfhfvKRc7AdfA; scottclark:hpqwU9HjAtzVw; ginaclark:mHA6/NOjriqmQ</li>
+			<li>create files htpasswd, TechnicalDocs/htaccess; upload to .htpasswd, TechnicalDocs/.htaccess<ul>
+				<li class='blurb'>see <a href="http://support.godaddy.com/help/1641/using-htpasswd-with-your-linux-shared-hosting-account">GoDaddy: Using .htpasswd with Your Linux Shared Hosting Account</a></li>
+			</ul></li>
+		</ul></li>
+	</ul>
+	<p class='tldate'>[02/01/2012]</p>
+
+	<h5>Update UserSlates for AccessorC9 revisions</h5><ul>
+		<li>RemoteOperator has just been updated to remove deprecated calls</li>
+	</ul>
+
+	<!-- @marker "Transfer Existing: Setup" -->
+	<h5 id="transferExisting_setup">Transfer Existing: Setup</h5><ul>
+		<li class='blurb'>There have been major changes in our development environment, including replacing Subversion with Git for Source Control. All existing projects, along with any still-active functionality, will be transferred into the new system.</li>
+		<li><a href="#transferExisting_compl"><i>(completed)</i></a><ul>
+			<li class='blurb'>ccInstall now handles actions clean, install, and test for non-Cdoc targets</li>
+		</ul></li>
+		<li class='tldate'>[implCcInstall 11/29/2011]</li>
+		<li>support new project Accessor<ul>
+			<li>History_Support: add Development Overview section</li>
+			<li>default.css: add italic style</li>
+			<li>update Cdoc File, HistoryFile templates</li>
+			<li class='tldate'>[12/05/11]</li>
+			<li>Accessor: support both Carbon (AccessorC9) and Accessor for project selection</li>
+			<li>add default annotated Doxygen configuration file Default.doxygen for reference</li>
+			<li>Xcode UserSlate: add macros for several common type actions</li>
+			<li>Cdoc: add file DevelopingProjects.html<ul>
+				<li class='blurb'>tasks and refactorings related to development with (Xcode) projects</li>
+			</ul></li>
+			<li>rename Xcode FileTemplate group Cdoc to Documentation</li>
+			<li>ccInstall: call mkdir before attempting to copy files; and error checks on file copy</li>
+			<li class='tldate'>[12/19/2011]</li>
+			<li>Doxygen support<ul>
+				<li>add template file Documentation/DoxygenConfig for customized Doxygen configuration file</li>
+				<li>add script buildDocset.sh; used as Run Script script to build Doxygen documentation</li>
+			</ul></li>
+			<li>viewDoxygen.workflow<ul>
+				<li>refactor viewInBrowser.workflow to viewCdoc.workflow, which uses a template format that can easily be replicated for viewDoxygen.workflow</li>
+				<li>new viewDoxygen.workflow based on refactored viewCdoc.workflow</li>
+			</ul></li>
+		</ul></li>
+		<li>update ccBackup<ul>
+			<li class='blurb'>Backup script from Support_svn; currently fails on .zip files; also have had some problems with .git folders</li>
+			<li> import existing script; skip .zip files</li>
+		</ul></li>
+		<li><a id="CdocBuild">support Cdoc build/clean</a><ul>
+			<li class='blurb'>build Cdoc targets from run script that calls buildCdoc; clean using cleanProjectTarget from Terminal as for other targets</li>
+			<li class='blurb'>replaces Support_svn scripts build.uia, currently called from Terminal, and buildCdoc, called by build.uia</li>
+			<li>new script buildCdoc from existing Support_svn script buildCdoc</li>
+			<li><a href="DevelopingProjects.html#AddRunScriptTarget">Add Run Script Target</a> Cdoc with script buildCdoc Support</li>
+			<li>cleanProjectTarget: add special handling to clean targets Cdoc</li>
+			<li>Xcode.r: support cleanProjectTarget &lt;Project&gt; Cdoc</li>
+			<li class='tldate'>[targetCdoc 12/22/2011]</li>
+			<li>switch to Cdoc targets for Punkin, AccessorC9, Accessor</li>
+		</ul></li>
+		<li class='tldate'>[cdocTargets 11/23/2011]</li>
+		<li>Support import: plan import of remaining Support features [<a href="#devImport">DevImport</a>]</li>
+		<li>add existing Pages document UseCaseImages.pages (from DevSupport)</li>
+		<li>plan import of remaining existing projects and features [<a href="#DevSupport">DevSupport</a>] [<a href="#devImport">devImport</a>]</li>
+	</ul>
+	<p class='tldate'>[06/20/2012]</p>
+
+	<!-- @marker "Establish Lion Volume" -->
+	<h5 id='LionVolume'>Establish Lion Volume</h5><ul>
+		<li class='blurb'>set up extra partition Lion for testing</li>
+		<li>Accessor <a href="../Accessor/History_Accessor.html#estWorkflow">Establish Workflow</a>: finalize Lion-compatible version of Accessor; make it compatible with booting from either primary volume Mac ora test volume Lion</li>
+		<li>upgrade CCDev installation and environment variables to support Dev folder not on boot volume</li>
+		<li>set up Lion partition for testing: <a href="Support.html#tp_NewSystemSetup">New System Setup</a></li>
+		<li>all targets: switch to LLDB debugger to avoid build system warning</li>
+		<li>unlink documentation for Legacy projects from active documentation<ul>
+			<li>move documentation for inactive projects to Legacy folder; edit active Cdoc to remove references to those projects</li>
+		</ul></li>
+		<li>restore <a href="#ValidateHTML">ValidateHTML</a> support<ul>
+			<li>new target BBEdit, based on DevSupport's BBEdit, installs features that are still active</li>
+		</ul></li>
+		<li>rebuild Xcode scripts<ul>
+			<li>restore View Cdoc/Doxygen scripts<ul>
+				<li class='blurb'>The only Script Menu items we still use are to open Doxygen and Cdoc files. They were implemented as workflows containing AppleScript and Ruby scripts. The Ruby scripts don't work in Lion.</li>
+				<li>_systemScriptsMenu: Script action to click the System Scripts (iconic) menu; independent of screen location</li>
+				<li>AppleScripts viewCdoc/Doxygen, frontWindow</li>
+				<li class='tldate'>[07/05/2012]</li>
+				<li>Xcode, BBEdit: change source scripts to .applescript text format; compile AppleScripts; install from bundle</li>
+			</ul></li>
+			<li>BBEditUtil:validateHTML: reset path to check on first pass only</li>
+		</ul></li>
+		<li class='tldate'>[rebuildXcodeScripts 07/12/2012]</li>
+	</ul>
+
+	<!-- @marker "Install Lion on Primary Partition" -->
+	<h5 id='LionPrimary'>Install Lion on Primary Partition</h5><ul>
+		<li>&radic;after testing, install Lion on primary volume</li>
+		<li>&radic;Accessor: AccessorErrorTest: uncomment two tests that failed on external partition due to problems with <span class='mono'>__FILE__</span> comparison</li>
+		<li class='tldate'>[07/12/2012]</li>
+	</ul>
+
+	<!-- @marker "Initial Arbonne Spreadsheets" -->
+	<h5 id='initArbonne'>Initial Arbonne Spreadsheets</h5><ul>
+		<li>establish <a href="Personal.html#file_Arbonne">Arbonne</a> spreadsheet structure<ul>
+			<li>add files Personal.html, Arbonne.numbers, Arbonne_C9.r</li>
+			<li>sheet Create Invoice creates skeleton invoice containing data looked up from People and Catalog, contains summary line for posting to Invoices</li>
+		</ul></li>
+		<li>commit deletion of files from previous version of Numbers</li>
+		<li>upgrade to Numbers 2.1; file format changed</li>
+		<li>import and look up from actual catalog data</li>
+		<li>use reference labels in formulas</li>
+		<li>move invoice line information from invoice summary line to a separate table<ul>
+			<li>use table display in sheet Create Invoice</li>
+			<li>add sheet Invoice Lines</li>
+		</ul></li>
+		<li>add invoice calculations to Create Invoice sheet; add results to Invoice summary line</li>
+		<li>rename Arbonne.numbers to ArbonneStruct.numbers; active file to be stored at ~/Documents</li>
+		<li>establish <a href="Personal.html#file_Arbonne_FM">Arbonne_FM</a>: stores all existing data from existing FileMaker database</li>
+		<li>import existing customers</li>
+		<li>test by creating invoices matching contents of recent orders</li>
+		<li>add sheet Delivery Slip</li>
+		<li>import existing Invoices and Items Ordered starting with 2009</li>
+		<li>Invoices: add TotalRV data</li>
+		<li>clean up; copy ArbonneStruct.numbers to ~/Documents/Arbonne.numbers</li>
+		<li class='tldate'>[initialArbonne 2/20/2012]</li>
+		<li>correct formulas to recognize ProductType set as product</li>
+	</ul>
+
+	<!-- @marker "Target UserSlates" -->
+	<h5 id='targetUserSlates'>Target UserSlates</h5><ul>
+		<li>new target UserSlates: compile UserSlates resources; copy output to ../Accessor/UserSlates</li>
+	</ul>
+	<p class='tldate'>[supportBuildsUserSlates 07/19/2012]</p>
+
+	<!-- @marker "Import Existing Projects" -->
+	<h5 id='devImport'>Import Existing Projects</h5><ul>
+		<li>&radic;AccessorC9: new workspace AccessorC9 contains existing Xcode project Accessor_C9 ( ! existing svn repository is not working)</li>
+		<li>&radic;Accessor: new workspace Accessor contains Cocoa import of AccessorC9</li>
+		<li>&radic;Arbonne: new Numbers worksheet replaces existing Xcode projects ArbonneProto and ArbonneFM</li>
+		<li>&radic;WebGen: just use iWeb for now; use utility iWebSites with iWeb to generate multiple sites (?or could also have iWeb generate the Family site as from a single iWeb site)</li>
+		<li>&radic;Koala: archive and retire Koala_Try2, Koala_Try1, MyLibrary: These were an attempt to establish building and using a Framework. However, iOS requires apps to be self-contained, so code sharing will need to be done another way, probably with static libraries, in the future.</li>
+		<li>&radic;Accessor predecessors: archive and retire Accessor_svn; Accessor_C9/C9</li>
+		<li>&radic;Support predecessors<ul>
+			<li>add copies of DevSupport's Finder and Snippet scripts as is to current Support workspace; to be incorporated at <a href="#DevSupport">Recover DevSupport Scripts</a></li>
+			<li>archive and retire Support_svn; DevSupport</li>
+		</ul></li>
+		<li>&radic;Arbonne: archive and retire ArbonneFM; ArbonneProto</li>
+	</ul>
+	<p class='tldate'>[07/20/2012]</p>
+
+	<p>move UserSlates/Accessor.rsrc (Support/UserSlates output; Accessor/Accessor input) to CCDev</p>
+	<p class='tldate'>[UserSlatesCCDev 07/20/2012]</p>
+
+	<!-- @marker "Build for MountainLion" -->
+	<h4 id='BuildForMountainLion'>Build for MountainLion</h4><ul>
+		<li>update Support scripts<ul>
+			<li class='blurb'>buildCdoc works from Terminal</li>
+			<li>CCDev_Setup.ksh<ul>
+				<li>in addition to .profile, .krsrc, and Environment.plist, create file /etc/launchctl.conf that also defines our environment variables<ul>
+					<li>for now, creates file at CCDev/tmp and instructs user to paste its contents into /private/etc/launchctl.conf</li>
+				</ul></li>
+				<li>git: configure to use FileMerge for diffs</li>
+			</ul></li>
+			<li>tweak CCDev_Setup.ksh, buildCdoc.ksh to remove quotes from some environment paths</li>
+		</ul></li>
+		<li>pass compilation; clear warnings; clear static analysis for each target</li>
+		<li>update all settings for C++ 11, high-resolution artwork</li>
+	</ul>
+
+	<!-- @marker "Workspace Mirrors Project Files" -->
+	<h4 id='workspaceMirrorsFiles'>Workspace Mirrors Project Files</h4><ul>
+		<li class='blurb'>We now have an experience to move source files within an Xcode project and not break the build. Having the Workspace mirror project file structure may now be essential, since some descriptions of dealing with Xcode 4.5's code completion bug recommend removing some workspace file.</li>
+		<li>target UserSlates: workspace mirrors file structure<ul>
+			<li>move Slate resources from UserSlates to BuildSupport/UserSlates/Slates; move UserSlates/UserSlates-Info.plist to BuildSupport/UserSlates/OtherSources</li>
+		</ul></li>
+		<li>targets CCDev_Setup, CCDev =&gt; Developer_Setup, Developer<ul>
+			<li>move Developer files from CCDev and ThirdParty info Developer</li>
+			<li>update build scripts to for renamed files<ul>
+				<li>temporary changes to allow for CCDev, CCDev_Setup scripts not yet renamed: ccInstall.ksh: custom setting for script name; testCcInstall.ksh: comment out test for Developer script name</li>
+			</ul></li>
+			<li>testCCDev.ksh: extract script path as variable</li>
+			<li>undo temporary changes to ccInstall.ksh, testCcInstall.ksh</li>
+		</ul></li>
+		<li>target Xcode: workspace mirrors file structure<ul>
+			<li>Xcode_install.ksh, AppleScripts: replace $BUILT_PRODUCTS_DIR with $CONFIGURATION_BUILD_DIR</li>
+		</ul></li>
+		<li>target BBEdit: workspace mirrors file structure<ul>
+			<li>BBEdit_install.ksh, AppleScripts: replace $BUILT_PRODUCTS_DIR with $CONFIGURATION_BUILD_DIR</li>
+		</ul></li>
+		<li>Website: folder candcsoft contains site structure; hidden password file stored separately</li>
+		<li>move Dash, Finder support folders into BuildSupport/Applications</li>
+		<li>move ArbonneStruct.numbers, UseCaseImages.pages to OtherDocument</li>
+		<li>refactor Cdoc build to fit within new project structure<ul>
+			<li>buildCdoc: refactor to remove buildsource variables (for readability)</li>
+			<li>ccInstall: extend to handle Cdoc builds<ul>
+				<li>extract function --copyFile</li>
+				<li>add function --translateCdoc</li>
+			</ul></li>
+		</ul></li>
+		<li>move Cdoc files into BuildSupport folder<ul>
+			<li>move existing files; move .html documents into a separate folder</li>
+			<li>Developer_Setup.ksh: Terminal editing mode: emacs</li>
+			<li>update cleanProjectTarget.ksh for new Cdoc structure</li>
+			<li>ccInstall.ksh: clean up return values and output</li>
+			<li>add file Cdoc_install.ksh</li>
+			<li>build Cdoc from new location using ccInstall</li>
+			<li>move Finder's script folder into BuildSupport/Applications</li>
+		</ul></li>
+		<li>Xcode: add Cdoc_install template</li>
+		<li class='tldate'>[workspaceMirrorsFiles 01/18/2013]</li>
+	</ul>
+
+<!-- @marker "UserSlates: improve Developer workflow [#26]" -->
+<h4 id='devWorkflow'><a href="http://github.com/carolclark/Support/issues/26">(#26)</a> UserSlates: improve Developer workflow</h4><pre>
+	* Support editing Cdoc files with BBEdit
+	* Xcode: resort for improved Marker navigation; resort Slate #defines to match code; renumber resorted Slates
+	* GitHub: move GitHub Slates from Xcode to new file; support Xcode-specific GitHub Slate
+	* GitHub: update Slates for revised layouts
+	<span class='tlmark'>&lt;--</span>
+	* BBEdit: support Developer Slates as for Xcode
+		* extract Developer #define's and slates from Xcode
+		* clean up and resort BBEdit Slate
+</pre>
+
+	<!-- @marker "[end]" -->
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Confidential and Proprietary.</p>
+</body>
+</html>

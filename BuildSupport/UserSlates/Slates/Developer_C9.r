@@ -87,6 +87,12 @@ resource restype_Slate (resid_TypeSpecialDevSlate, "Type Special Developer Slate
 			_CloseSubslate_,
 			_UseCaseItems_,
 			endSubslate{},
+		ExitEvent { "install target", "" },			Subslate { "installTarget" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			ExitEvent { "build tool", "" },			TypeText { "${TARGET_NAME}/${TARGET_NAME}_install.ksh" },
+			ExitEvent { "arguments", "" },				TypeText { "\"${SRCROOT}\" ${TARGET_NAME} $(ACTION)" },
+			endSubslate{},
 	} }
 } };
 

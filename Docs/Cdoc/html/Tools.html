@@ -1,0 +1,1119 @@
+<!-- Tools.html -->
+<!-- Created by Carol Clark on 19 Jun 2011 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Tools</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+</head>
+<body>
+<!-- @navhead "../Support/Support.html" "Support" "History_Support.html" -->
+<h1>Tools</h1>
+
+<!-- @topicList "Tools" "Contents" -->
+	<!-- @topicItem "Applications" "#Apps_Current" "0" "" -->
+	<!-- @topicItem "Tools and Libraries" "#Tools_Libs_Current" "0" "" -->
+	<!-- @topicItem "Inactive" "#Inactive" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "1 === Applications" -->
+<h2>Applications</h2>
+<!-- @topicList "Applications" "Apps_Current" -->
+		<!-- @topicItem "Address Book" "#AddressBook" "0" "" -->
+		<!-- @topicItem "AppleScript" "#_AppleScript" "0" "" -->
+		<!-- @topicItem "Automator" "#_Automator" "0" "" -->
+		<!-- @topicItem "Backup" "#Backup_" "0" "" -->
+		<!-- @topicItem "BBEdit" "#BBEdit" "0" "" -->
+		<!-- @topicItem "Cyberduck" "#Cyberduck" "0" "" -->
+		<!-- @topicItem "Dash" "#Dash" "0" "" -->
+		<!-- @topicItem "Dashboard" "#Dashboard" "0" "" -->
+		<!-- @topicItem "DragonDictate" "#DragonDictate" "0" "" -->
+	<!-- @topicGroup "" "10" -->
+		<!-- @topicItem "Eclipse" "#Eclipse_" "0" "" -->
+		<!-- @topicItem "FileMaker" "#FileMaker" "0" "" -->
+		<!-- @topicItem "Finder" "#Finder" "0" "" -->
+		<!-- @topicItem "iCal" "#iCal" "0" "" -->
+		<!-- @topicItem "iTunes" "#iTunes" "0" "" -->
+		<!-- @topicItem "Mail" "#Mail" "0" "" -->
+		<!-- @topicItem "Safari" "#Safari" "0" "" -->
+		<!-- @topicItem "Stickies" "#Stickies" "0" "" -->
+		<!-- @topicItem "System Preferences" "#SystemPreferences" "0" "" -->
+	<!-- @topicGroup "" "20" -->
+		<!-- @topicItem "Terminal" "#Terminal" "0" "" -->
+		<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
+		<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "AddressBook" -->
+<h2><a name="AddressBook">Address Book</a></h2>
+<p><b>Application</b> Apple app at /Applications</p>
+<p><b>Critical Data</b> ~/Library/Application Support/AddressBook<br />
+also backups at ~/Documents/Address Book Backups</p>
+<p><b>Configuration</b> </p>
+
+<!-- @marker "AppleScript" -->
+<h2><a name="_AppleScript">AppleScript</a></h2>
+<p><b>Application</b> application AppleScript Editor at /Applications/Utilities</p>
+<p><b>Critical Data</b> menu uses ~/Library/Scripts; scripts should all be derivative</p>
+<p><b>Configuration</b></p>
+<ul>
+	<li><b>AppleScript Editor Preferences</b> <ul>
+		<li>General: Show script menu in menu bar: on; application scripts at top</li>
+		<li>Editing: Use Script Assistant</li>
+	</ul></li>
+	<li><b>/Library/Scripts</b> move scripts into new folder Supplied; make sure GUI Scripting is enabled</li>
+</ul>
+<p><b>Customization &amp; Automation</b> </p>
+
+<!-- @marker "Automator" -->
+<h2><a name="_Automator">Automator</a></h2>
+<p><b>Application</b> Apple app at /Applications</p>
+<p><b>Critical Data</b><br />
+default document location ~/Library/Workflows does not seem to have any special advantage<br />
+workflows stored at ~/Library/Scripts are available from the global scripts menu<br />
+we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/Scripts</p>
+<p><b>Configuration</b> </p>
+<p><b>Customization &amp; Automation</b> </p>
+
+<!-- @marker "Backup" -->
+<h2><a name="Backup_">Backup</a></h2>
+<p>backup utility provided by Apple with MobileMe account</p>
+
+<h3><a name="Backup_config"></a>Installation and Configuration</h3>
+	<p><b>Application</b> /Applications/Backup; v 3.2</p>
+	<p><b>Source</b> <a href="http://www.me.com/idisk/">MobileMe: iDisk</a>/Software</p>
+	<p><b>License</b> free with Mobile Me account</p>
+	<p><b>Critical Data</b> ~/Library/Application Support/Backup</p>
+
+<!-- @marker "BBEdit" -->
+<h2><a name="BBEdit">BBEdit</a></h2>
+<p><b>Application</b> at /Applications</p>
+<p><b>Critical Data</b> </p>
+<ul>
+	<li>~/Library/Application Support/BBEdit</li>
+	<li>~/Library/Preferences/com.barebones.bbedit.PreferenceData (grep patterns)</li>
+</ul>
+<p><b>Configuration</b></p>
+<ul>
+	<li><b>Application</b> At Startup: Do Nothing; Reopen documents that were open at last quit: off</li>
+	<li><b>Documents &amp; Drawer</b><ul>
+		<li>Allow Documents Drawer to acquire keyboard focus: On</li>
+	</ul></li>
+	<li><b>Editing: General</b> <ul>
+		<li>Include dictionary words in completion list: ON</li>
+		<li>Soft wrapped line indentation: Reverse</li>
+	</ul></li>
+	<li><b>Editing: Keyboard</b> <ul>
+		<li>Use Tab key to navigate Placeholders: Off</li>
+	</ul></li>
+	<li><b>HTML Web Sites</b> <ul>
+		<li>add site TechicalDocs<ul>
+			<li>Web server name: ~/Library/CCDev/Sites/TechnicalDocs/</li>
+			<li>Site path on server: ~carolclark/Library/CCDev/Sites/TechnicalDocs/</li>
+			<li>Default page name: Development.html</li>
+			<li>Local site root: ~/Library/CCDev/Sites/TechnicalDocs</li>
+		</ul></li>
+		<li>manually check Syntax and Links for folder TechnicalDocs<ul>
+			<li class='blurb'>so it will be set as needed for script ValidateHTML</li>
+		</ul></li>
+	</ul></li>
+	<li><b>Menus</b><ul>
+		<li><b>File</b> Revert cU; Save a Copy csoS</li>
+		<li><b>Text</b> Change Case... coC; Change Case csoC</li>
+		<li><b>View</b> Text Display: Soft Wrap Text: crW</li>
+		<li><b>Search</b> Replace and Find Next cs=</li>
+	</ul></li>
+	<li><b>Text Status Display</b><ul>
+		<li>Show line numbers: On</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Cyberduck" -->
+<h2><a name="Cyberduck">Cyberduck</a></h2>
+	<p><b>Application</b>v4.2.1 downloaded from <a href="http://cyberduck.ch/">Cyberduck</a></p>
+<p><b>Configuration</b> </p>
+<p><b>Customization &amp; Automation</b> </p>
+
+<!-- @marker "Dash" -->
+<h2><a name="Dash">Dash</a></h2>
+<p><b>Application</b> AppStore app at /Applications</p>
+	<p><b>Critical Data</b> active snippets library inside ${DEV}/Support; supplied snippet examples at ~/Library/Application Support/Dash </p>
+<p><b>Configuration</b> </p>
+<p><b>Customization &amp; Automation</b> </p><ul>
+	<li>Dash Preferences<ul>
+		<li>General: Open Main Window: crs`</li>
+		<li>Downloads: download docsets as indicated</li>
+		<li>Docsets: set abbreviations osx:, ios:, dev:, pun:, acc: for primary docsets</li>
+		<li>Snippets: enable snippet detection; open library ${DEV}/Support/Dash/snippets.dash</li>
+		<li>Advanced: normally use Window style HUD</li>
+	</ul></li>
+	<li>System Preferences: Keyboard: Services: Look up in Dash: cr`</li>
+</ul>
+
+	<!-- @marker "Dashboard" -->
+<h2><a name="Dashboard">Dashboard</a></h2>
+<p><b>Application</b> Apple app at /Applications</p>
+<p><b>Critical Data</b> uses widgets at ~/Library/Widgets</p>
+<p><b>Configuration</b> </p>
+<p><b>Customization &amp; Automation</b> </p>
+
+<!-- @marker "DragonDictate" -->
+<h2><a name="DragonDictate">DragonDictate</a></h2>
+	<p><b>Application</b> /Applications/DragonDictate</p>
+	<p><b>Installation</b></p><ul>
+		<li>install from DVD</li>
+		<li>copy "Carol Clark.dictateprofile", "Carol Clark.dictatelicense" to ~/Documents</li>
+		<li>run application; select license and provide Data Disk as requested</li>
+	</ul>
+	<p><b>Critical Data</b> </p>
+	<ul>
+		<li>~/Library/Application Support/Dragon</li>
+		<li>profile is in ~/Documents</li>
+	</ul>
+	<p><b>Configuration</b></p><ul>
+		<li>General <ul>
+			<li>On Startup: Show Profiles Window: off</li>
+			<li>When Activating a profile:Open a new Notepad window: off</li>
+		</ul></li>
+		<li>Recognition <ul>
+			<li>Always Show Recognition Window When Dictating: On</li>
+			<li>Close Recognition Window After Each Choice: Off</li>
+		</ul></li>
+		<li>Command <ul>
+			<li>Command Generation: Generate Application Launch Commands: Off</li>
+		</ul></li>
+	</ul>
+	<p><b>Custom Commands</b></p><ul>
+		<li>BBEdit <ul>
+			<li>history suffix: _hist</li>
+			<li>jump line end: cRight</li>
+			<li>list item: &lt;li&gt;&lt;##&gt;&lt;/li&gt;</li>
+			<li>next field: rAccent</li>
+			<li>previous field: srAccent</li>
+			<li>plain list: "&lt;ul&gt;&lt;##&gt;$lt;/ul&gt;"</li>
+			<li>spot marker: &lt;##&gt;</li>
+		</ul></li>
+	</ul>
+	<p><b>Custom Vocabulary</b></p><ul>
+		<li>/ (slash)</li>
+		<li>.hist (tag history)</li>
+		<li>Arbonne</li>
+		<li>BBEdit</li>
+		<li>candcsoft (CNC soft; Lower case in titles)</li>
+		<li>carollclark (Carol L Clark; Lower case in titles)</li>
+		<li>CCDev (see-see-dev)</li>
+		<li>Cdoc (see-doc)</li>
+		<li>Corlan</li>
+		<li>git</li>
+		<li>iDisk (Lower case in titles)</li>
+		<li>iOS (Lower case in titles)</li>
+		<li>Koala</li>
+		<li>Punkin</li>
+		<li>refactor</li>
+		<li>refactoring</li>
+		<li>subslates</li>
+		<li>subtarget</li>
+		<li>Unix</li>
+		<li>unversioned</li>
+	</ul>
+
+<!-- @marker "Eclipse" -->
+<h2 id="Eclipse_">Eclipse</h2>
+<p>IDE for Java development</p>
+
+<h3 id="Eclipse_config">Installation and Configuration</h3>
+	<p><b>Application</b> /JavaDeveloper/Applications/eclipse/Eclipse.app v	1.4.0 (Indigo)</p>
+	<p><b>Source</b> <a href="http://www.eclipse.org/downloads/">Eclipse IDE for Java Developers, Mac 64-bit</a></p>
+	<p><b>License</b> <a href="http://www.eclipse.org/legal/epl/notice.php">Eclipse Foundation Software User Agreement</a></p>
+	<p><b>Critical Data</b> workspaces at ~/Documents/Eclipse</p>
+	<p><b>Installation and Configuration</b></p><ul>
+		<li>Preferences: Java: Compiler: 1.6</li>
+	</ul>
+
+<!-- @marker "FileMaker" -->
+<h2><a name="FileMaker">FileMaker Pro 9 Advanced</a></h2>
+	<p><b>Application</b> at /Application</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Configuration</b></p>
+	<p><b>Layouts</b> Add New Fields - no; Save Changes Automatically - yes</p>
+	<p><b>Customization &amp; Automation</b> </p>
+
+<!-- @marker "Finder" -->
+<h2><a name="Finder">Finder</a></h2>
+	<p><b>Application</b> system application</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Configuration</b></p>
+	<ul>
+		<li>General: Open new windows in Column View</li>
+	</ul>
+	<p><b>Customization &amp; Automation</b> <br />
+	script applications to operate on dropped files:</p>
+	<ul class='todo'>
+		<li><b>Set Mac Info Scripts</b> set file and/or creator type as indicated<br />
+		toBBEdit; toFileGroup (BBEdit); toTypeTEXT</li>
+	</ul>
+
+<!-- @marker "iCal" -->
+	<div class='todo'>
+<h2><a name="iCal">iCal</a></h2>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b> ~/Library/Application Support/iCal; calendars exportable</p>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+	</div>
+
+<!-- marker "iTunes" -->
+<h2><a name="iTunes">iTunes</a></h2>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b> ~/Music</p>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+
+<!-- marker "Mail" -->
+<div class='todo'>
+<h2><a name="Mail">Mail</a></h2>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b> ~/Library/Mail</p>
+	<p><b>Configuration</b></p>
+	<ul>
+		<li><b>Accounts</b><ul>
+			<li>POP  account; my email; in: pop.central.cox.net; out: smtp.central.cox.net; cc3x</li>
+			<li>MobileMe; carollclark@me.com, carollclark@mac.com; in: mail.me.com; out: smtp.me.com.carollclark; pw to be reset</li>
+			<li> Gmail; caroljimclark@gmail.com; in: imap.gmail.com; out: smtp.gmail.com:caroljimclark$gmail.com; cc3x</li>
+		</ul>
+		</li>
+		<li><b>Signatures</b> Carol default; Carol Mom; Carol Punkin, contains copyright notice</li>
+		<li><b>Junk Mail</b> Move to Junk Mailbox</li>
+		<li><b>Mailboxes</b> <ul>
+			<li><b>Inbox</b>  ultimately, this should contain only incoming messages and current action items</li>
+			<li><b>Sent</b>  items transferred to applicable Mailboxes or deleted</li>
+			<li><b>Junk</b>  screen and delete regularly <ul>
+				<li>also add: From is equal to friends@pens.com or contains iTravel@bestwestern.com</li>
+			</ul></li>
+			<li><b>Apple News</b> RSS</li>
+			<li><b>Top Stories - Google News</b> RSS</li>
+			<li><b>Advertising</b> all items should be transferred to Shopping or deleted within a couple of months <ul>
+				<li>add rules as needed</li>
+			</ul></li>
+			<li><b>Apple</b> <ul>
+				<li>From contains noreply@adc.apple.com or mailman-owner@lists.apple.com</li>
+			</ul></li>
+			<li><b>Church</b>  items not added automatically; normally retained</li>
+			<li><b>Clubs</b>  items not added automatically; normally retained</li>
+			<li><b>Family &amp; Friends</b> items not added automatically; normally retained</li>
+			<li><b>Humor &amp; Inspiration</b> items not added automatically; normally retained</li>
+			<li><b>Punkin</b></li>
+			<li>Shopping &amp; Business <ul>
+				<li><b>Arbonne</b> </li>
+				<li><b>C &amp; C Software</b> items not added automatically; normally retained</li>
+				<li><b>Cox</b> <ul>
+					<li>From contains Cox_Kansas@updates.cox.com</li>
+				</ul></li>
+				<li><b>Netflix</b> <ul>
+					<li>From contains discship@netflix.com or netflix@email.netflix.com</li>
+				</ul></li>
+				<li><b>Receipts, etc.</b> contains records of transactions; items not added automatically; normally retained</li>
+			</ul></li>
+			<li><b>RSS</b> all RSS article <ul>
+				<li>Message type is RSS article</li>
+			</ul></li>
+			<li><b>Technical</b> <ul>
+				<li><b>Accessibility List</b>  items to be retained should be transferred to Technical Saved; others should be routinely deleted;
+					archives are maintained by Apple <ul>
+					<li>/ accessibility-dev</li>
+				</ul></li>
+				<li><b>Cocoa List</b> (currently inactive) items to be retained should be transferred to Technical Saved; others should be routinely deleted;
+					archives are maintained by Apple <ul>
+					<li>From, To, CC or Subject contains cocoa-dev</li>
+				</ul></li>
+				<li><b>Technical Saved</b>  contains technical support records, messages from threads in which we participated,
+					and other messages we decided to save; normally retained</li>
+				<li><b>Xcode List</b>  items to be retained should be transferred to Technical Saved; others should be routinely deleted;
+					archives are maintained by Apple <ul>
+					<li>From, To, CC or Subject contains xcode-users</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+	</ul>
+	<p><b>Customization &amp; Automation</b> </p>
+</div>
+
+<!-- @marker "Safari" -->
+<h2><a name="Safari">Safari</a></h2>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b> ~/Library/Safari</p>
+	<p><b>Configuration</b> </p>
+	<ul>
+		<li>downloads to ~/Downloads</li>
+		<li>home page to ~/Library/CCDev/Sites/TechnicalDocs/Support/Development.html</li>
+		<li>alias to ~/Library/CCDev/Sites/TechnicalDocs/Support/Development.html to ~/Documents</li>
+	</ul>
+
+<!-- @marker "Stickies" -->
+<h2 id='Stickies'>Stickies</h2>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b> database at ~/Library/StickiesDatabase</p>
+	<p><b>Configuration</b></p>
+	<ul>
+		<li><b>Font</b>: Menlo regular 11</li>
+		<li><b>Default Window</b>: gray; exactly 50 characters wide (for git comments)</li>
+	</ul>
+
+<!-- @marker "SystemPreferences" -->
+<h2><a name="SystemPreferences">System Preferences</a></h2>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Configuration</b></p>
+	<ul>
+		<li><b>Accessor</b>: connect to its trigger key or mouse action</li>
+		<li><b>Universal Access</b>: Enable access for assistive devices: ON (otherwise, mouse events that show position or are window-relative fail)</li>
+		<li><b>Dock</b>: fairly small (about 10%); on right</li>
+		<li><b>Mission Control</b>: topRight: Put Display to Sleep</li>
+		<li class='depr'><b>Language &amp; Text</b>: Input Sources: Show Keyboard &amp; Character Viewer: ON</li>
+		<li><b>Displays</b>: minimum brightness</li>
+		<li><b>Keyboard</b>: Keyboard Shortcuts <ul>
+			<li>Keyboard: Use all F1, F2 keys as standard function keys: On <ul>
+				<li class='blurb'>then press &lt;fn&gt; to perfom the special function on the key</li>
+				<li>Show Keyboard and Character Viewer in menu bar: On</li>
+			</ul></li>
+			<li class='depr'>Keyboard Shortcuts: Full Keyboard Access: All Controls</li>
+		</ul></li>
+		<li><b>Sound</b> <ul>
+			<li>Output: volume ~20%</li>
+			<li>Input: external microphone; input volume (???)~67%</li>
+		</ul></li>
+		<li><b>Accounts</b> Login Items: Mail, iCal, Activity Monitor (Hide); <span class='depr'>iTunes Helper (Hide)</span>; in Account Context Menu: set system shell to /bin/ksh</li>
+		<li><b>Software Update</b>: Download Updates Automatically: off</li>
+		<li><b>Speech</b>: Speech Recognition: External Microphone; Calibrate: adjust	</li>
+		<li><b>Date &amp; Time</b><ul>
+			<li>Time Zone: select</li>
+			<li>Clock: Show date and time in menu bar</li>
+		</ul></li>
+		<li><b>Time Machine</b>: on; uses volume TimeMachine</li>
+	</ul>
+
+<!-- @marker "Terminal" -->
+<h2><a name="Terminal">Terminal</a></h2>
+	<p><b>Application</b> Apple app at /Applications/Utilities</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Configuration</b></p><ul>
+		<li>Custom Tabs<ul>
+			<li><b>Support:</b> Font Courier 12; text {59; 35; 34}; background {243; 237; 219}; command <span class='mono'>cd ${DEV}/Support</span></li>
+			<li><b>Accessor:</b> Font Andale Mono 11; text {0; 0; 255}; background {174; 206; 255}; command <span class='mono'>cd ${DEV}/Accessor</span></li>
+			<li><b>Punkin:</b> Font Menlo Regular 11; text {85; 48; 0}; background {255; 201; 180}; command <span class='mono'>cd ${DEV}/Punkin</span></li>
+		</ul></li>
+		<li>Window Group: Workspaces, containing custom tabs</li>
+		<li>Startup: open window group Workspaces</li>
+	</ul>
+	<p><b>Customization &amp; Automation</b>: set shell ksh (<span class='mono'>chsh -s /bin/ksh</span>) </p>
+
+<!-- @marker "UIBrowser" -->
+<h2><a name="UIBrowser">UI Browser</a></h2>
+	<p><b>Application</b> /Applications/UI Browser downloaded from <a href="http://prefabsoftware.com/uibrowser/">PreFab Software</a></p>
+	<p><b>Installation</b> UI Browser at Applications; UI Element Scripts (PreFab) at /Library/Scripts</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+
+<!-- @marker "Xcode" -->
+<h2><a name="_Xcode">Xcode</a></h2>
+	<p><b>Application</b> Xcode v. 5.0.2 (5A4005); from AppStore</p>
+	<p><b>Configuration</b> </p>
+	<ul>
+		<li><b>Text Editing:</b><ul>
+			<li>Editing<ul>
+				<li>Show line numbers: on</li>
+			</ul></li>
+			<li>Indentation<ul>
+				<li>Prefer indent using: tabs</li>
+			</ul></li>
+		</ul></li>
+		<li><b>Key Bindings</b> duplicate default to Carol<br />
+		<ul>
+			<li><b>Xcode</b> Hide Xcode [none]; Hide Others [none]</li>
+			<li><b>Window</b> Minimize [none]</li>
+			<li><b>Edit &gt; Structure</b> Balance Delimiter [cM]</li>
+			<li><b>Version Editor Views:</b> &gt; Conparison osC; &gt; Blame osB; Log osL</li>
+			<li><b>Text</b> Select Line [rosW], Select Word [roW]; Capitalize Word [srUp]; Lowercase Word [srDown]</li>
+		</ul></li>
+		<li>Behaviors<ul>
+			<li>Build Fails: show bezel alert; show tab Build; show Log Navigator; navigate to first current log</li>
+			<li>Build Generates New Issues: show tab Build; show Issue Navigator; navigate to first new issue</li>
+			<li>Run Pauses: show tab Debug; show Debug Navigator; show debugger with Variables &amp; Console</li>
+		</ul></li>
+		<li>Source Control: local revision on: right</li>
+		<li>Locations<ul>
+			<li>Derived Data (Advanced): Products, Intermediates: custom absolute location ${CCDev}/build_output</li>
+			<li>Source Trees: CC_BUILD_OUTPUT ${CCDev}/build_output</li>
+		</ul></li>
+		<li>Assistive Access<ul>
+			<li>AppleScripts: add to Scripts &gt; Xcode menu; Slates call file directly</li>
+			<li>Workflows: add to Services menu with hotkey</li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "3 === Tools and Libraries" -->
+<h2>Tools and Libraries</h2>
+<!-- @topicList "Tools and Libraries" "Tools_Libs_Current" -->
+		<!-- @topicItem "Android for Eclipse" "#AndroidForEclipse_" "0" "" -->
+		<!-- @topicItem "Ant" "#Ant_" "0" "" -->
+		<!-- @topicItem "Apache" "#Apache_" "0" "" -->
+		<!-- @topicItem "CrashReporterPrefs" "#CrashReporterPrefs_" "0" "" -->
+		<!-- @topicItem "Disk Inventory X" "#DiskInventoryX_" "0" "" -->
+		<!-- @topicItem "Doxygen" "#Doxygen_" "0" "" -->
+		<!-- @topicItem "Full Key Codes" "#FullKeyCodes_" "0" "" -->
+		<!-- @topicItem "GHUnit" "#GHUnit_" "0" "" -->
+		<!-- @topicItem "Lingon" "#Lingon_" "0" "" -->
+	<!-- @topicGroup "" "10" -->
+		<!-- @topicItem "MacPorts" "#_MacPorts" "0" "" -->
+		<!-- @topicItem "Markdown" "#Markdown" "0" "" -->
+		<!-- @topicItem "Ruby Gems" "#RubyGems_" "0" "" -->
+		<!-- @topicItem "RubyOSA" "#RubyOSA_" "0" "" -->
+		<!-- @topicItem "PHP" "#PHP_" "0" "" -->
+		<!-- @topicItem "SQLite" "#_SQLite" "0" "" -->
+		<!-- @topicItem "StuffIt Expander" "#StuffItExpander_" "0" "" -->
+		<!-- @topicItem "Subversion" "#_Subversion" "0" "" -->
+		<!-- @topicItem "Tar" "#Tar_" "0" "" -->
+	<!-- @topicGroup "" "20" -->
+		<!-- @topicItem "UMLet" "#_UMLet" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "AndroidForEclipse" -->
+<h2 id="AndroidForEclipse_">Android for Eclipse</h2>
+<p>collection of Eclipse software packages and virtual devices to support Android development</p>
+
+<h3 id="AndroidForEclipse_config">Installation and Configuration</h3>
+<div style="margin-left:24px">
+	<h4 id="AndroidSDK_">AndroidSDK</h4>
+		<p>Android software development kit</p>
+
+		<h5 id="AndroidSDK_config">Installation and Configuration</h5>
+			<p><b>Eclipse SDK</b> folder /JavaDeveloper/SDKs/android-sdk-mac_x86; downloaded 07/24/2011</p>
+			<p><b>Source</b> <a href="http://developer.android.com/sdk/index.html">Download the Android SDK</a></p>
+			<p><b>Configuration</b> Preferences: Android: set SDK folder location</p>
+
+	<h4 id="ADT_">ADT Plugin</h4>
+		<p>Android Developer Tools</p>
+
+		<h5 id="ADT_config">Installation and Configuration</h5>
+			<p><b>Eclipse Plugin</b> downloaded 07/24/2011</p>
+			<p><b>Source</b> Eclipse download from address specified at <a href="http://developer.android.com/sdk/index.html">Download the Android SDK</a></p>
+			<p><b>Installation and Configuration</b> Eclipse: Help: Install New Software...: add available software location "ADT Plugin" @ https://dlssl.google.com/android/eclipse/; install all</p>
+
+	<h4 id="AndroidPackages_">AndroidPackages</h4>
+		<p>Android SDK Platform Tools, documentation, device platforms</p>
+
+		<h5 id="AndroidPackages_config">Installation and Configuration</h5>
+			<p><b>Source</b> Window Menu: Eclipse SDK and AVD Manager: Available Packages</p>
+			<p><b>SDK Packages</b></p><ul>
+				<li>Android SDK Platform Tools, revision 6</li>
+				<li>Documentation for Android SDK; API 13, revision 1</li>
+				<li>SDK Platform Android 2.2; API 8, revision 2</li>
+				<li>SDK Platform Android 2.3.3; API 10, revision 1</li>
+				<li>SDK Platform Android 3.0, API 11, revision 1</li>
+				<li>SDK Platform Android 3.1, API 12, revision 2</li>
+				<li>SDK Platform Android 3.2, API 13, revision 1</li>
+				<li class='blurb'>platforms 3.x are currently for tablets; later in 2011, the phone and tablet SDKs are expected to merge</li>
+				<li>Samples for SDK API 8, revision 2</li>
+				<li>Samples for SDK API 10, revision 1</li>
+				<li>Samples for SDK API 11, revision 1</li>
+				<li>Samples for SDK API 12, revision 1</li>
+				<li>Samples for SDK API 13, revision 1</li>
+				<li>Android Compatibly Package, revision 3</li>
+				<li>Third Party Add-Ons<ul>
+					<li>Google<ul>
+						<li>Google APIs; API 8, revision 2</li>
+						<li>Google APIs; API 10, revision 1</li>
+						<li>Google APIs; API 11, revision 1</li>
+						<li>Google APIs; API 12, revision 1</li>
+						<li>Google APIs; API 13, revision 1</li>
+						<li>Google Admob Ads SKD Package, revision 3</li>
+						<li>Google Market Licensing Package, revision 1</li>
+						<li>Google Market Billing Package, revision 1</li>
+					</ul></li>
+				</ul></li>
+			</ul>
+
+	<h4 id="AndroidVirtualDevices_">AndroidVirtualDevices</h4>
+		<p>virtual test devices for Android development</p>
+
+		<h5 id="AndroidVirtualDevices_config">Installation and Configuration</h5>
+			<p><b>Source</b> Window Menu: Eclipse SDK and AVD Manager: Virtual Devices</p>
+			<p><b>Installation and Configuration</b> add virtual devices:</p><ul>
+				<li class='blurb'>all AVDs: Enable Snapshots (caches booted device for faster loading); Start after creating to preload</li>
+				<li>Droid (phone); target Android 2.2 (API 8); skin WVGA854 (=&gt; high density 854x480 px)</li>
+				<li>NexusSamsung (phone); target Android 2.3.3 (API 10); skin WVGA800 (=&gt; high density 800x480 px)</li>
+				<li>MotorolaZoom (tablet); target Android 3.0 (API 11); skin WXGA (=&gt; standard tablet screen); device RAM size 1024</li>
+			</ul>
+			<p>To set up for testing on a real device: set up device for debugging</p><ul>
+				<li>Device Settings: Applications: Development: Enable USB Debugging</li>
+			</ul>
+
+</div>
+
+<!-- @marker "Ant" -->
+<h2><a name='Ant_'>Ant</a></h2>
+<p>from manual: "Apache Ant is a Java-based build tool. In theory, it is kind of like make, without make's wrinkles."</p>
+<h3>Installation and Configuration</h3>
+	<p><b>installed with system</b></p>
+	<p><b>License</b> Apache License -- open</p>
+<h3>Reference</h3> <p><a href="http://ant.apache.org/manual/">Apache Ant Manual</a></p>
+
+<!-- @marker "Apache" -->
+<h2 id="Apache_">Apache</h2>
+<p>server With Subversion module</p>
+<h3 id="Apache_config">Installation and Configuration</h3>
+	<p><b>Library</b> /usr/local/apache; 2.2.19</p>
+	<p><b>Source</b> MacPorts</p>
+	<p><b>License</b> <a href="http://www.apache.org/licenses/">Apache Licenses</a></p>
+	<p><b>Installation and Configuration</b></p><ul class='todo'>
+		<li>Installation<ul>
+			<li>install PHP via <a href="http://www.macports.org/index.php">MacPorts &gt; Available Ports</a><ul>
+				<li class='blurb'>According to Stoyan Stefanov (author of "Object-Oriented JavaScript") in 2009 at <a href="http://www.phpied.com/installing-php-and-apache-on-mac-osx-that-was-pretty-easy/">Installing PHP and Apache on Mac OSX</a>, Apache comes installed on a Mac, but you don't know what version you have. It's also disabled unless Web Sharing has been turned on in System Preferences. He recommends simply installing a current version of PHP5, which has apache2 as a dependency, through MacPorts, ignoring the versions of each that are already there. It appears to work well.</li>
+			</ul></li>
+			<li>start apache, and set launch daemon on startup:<br />
+				<span class='mono'>sudo launchctl load -w /Library/LaunchDaemons/org.macports.apache2.plist</span></li>
+			<li>Subversion module<ul>
+				<li>copy files mod_dav_svn.so and mod_authz_svn.so from /opt/subversion/lib/svn-apache to /opt/local/apache2/modules<ul>
+					<li class='mono'>sudo cp /opt/subversion/lib/svn-apache/*.so /opt/local/apache2/modules</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>Configuration<ul>
+			<li class='blurb'>to edit Apache configuration file httpd.conf:<br />
+				<span class='mono'>sudo pico /opt/local/apache2/conf/httpd.conf</span></li>
+			<li>if desired, change the directory for the Web server host; see <a href="Support.html#tsk_ChangeHostDirectory">Change Host Directory</a></li>
+			<li>edit Apache configuration file httpd.conf to recognize Subversion and find repositories at &lt;reposPath&gt;<ul>
+				<li>LoadModule: immediately after existing line to load mod_dav:<br /><span class='blurb'>LoadModule dav_svn_module modules/mod_dav_svn.so</span></li>
+				<li>after the LoadModule directives:<ul class='mono'>
+					<li># Subversion Configuration</li>
+					<li>&lt;Location /svn&gt; DAV svn<ul>
+						<li>SVNParentPath &lt;reposPath&gt;</li>
+					</ul></li>
+					<li>&lt;/Location&gt;</li>
+				</ul></li>
+			</ul></li>
+			<li class='blurb'>test</li>
+		</ul></li>
+	<li>see also <a href="Support.html#Server_Apache">Support: Apache</a></li>
+	</ul>
+
+<!-- @marker "CrashReporterPrefs" -->
+<h2><a name="CrashReporterPrefs_">CrashReporterPrefs</a></h2>
+<p>used to set preferences regarding frequency of Crash Reporter windows being opened</p>
+
+<h3><a name="CrashReporterPrefs_config"></a>Installation and Configuration</h3>
+	<p><b>Application</b> /Developer/Applications/Utilities/CrashReporterPrefs; 10.5.0</p>
+	<p><b>Source</b> system tool</p>
+	<p><b>Installation and Configuration</b> set mode of operation to Developer</p>
+
+<!-- @marker "Disk Inventory X" -->
+<h2><a name="DiskInventoryX_">Disk Inventory X</a></h2>
+<p>disk usage utility for Mac OS X 10.3 and later that shows the sizes of files and folders, including those not visible in Finder, graphically</p>
+
+<h3><a name="DiskInventoryX_config"></a>Installation and Configuration</h3>
+	<p><b>Application</b> /Applications/Utilities; 1.0</p>
+	<p><b>Source</b> <a href="http://www.derlien.com/">Disk Inventory X</a></p>
+	<p><b>License</b> shareware</p>
+
+<!-- @marker "Doxygen" -->
+<h2><a name="Doxygen_">Doxygen</a></h2>
+<p>Documentation generator for source files including Objective-C</p>
+
+<h3><a name="Doxygen_config"></a>Installation and Configuration</h3>
+	<p><b>tool</b> /Applications/doxygen/Doxygen</p>
+	<p><b>Source</b> binary and pdf documentation downloaded from <a href="http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc">Doxygen Download Page</a></p>
+	<p><b>License</b> GPL</p>
+
+<!--
+<h3><a name='Doxygen_setup'></a>Setting Up a Project</h3><ul>
+	<li>Doxygen Application Settings <ul>
+		<li>Wizard <ul>
+			<li>Project <ul>
+				<li>Working Directory: ~/Dev (??)</li>
+				<li>Project Name: $PROJECT_NAME</li>
+				<li>Destination Directory: $TARGET_TEMP_DIR/DoxygenDocs.docset</li>
+			</ul></li>
+			<li>Output: plain HTML</li>
+			<li>Diagrams: use built-in class diagram generator</li>
+		</ul></li>
+		<li>Expert <ul>
+			<li>Project: set $PROJECT_NAME, $OUTPUT_DIRECTORY (/Users/carolclark/Dev/Arbonne/build/Arbonne.build/Debug/Docsets.build/DoxygenDocs.docset???),
+				$STRIP_FROM_PATH from config</li>
+			<li>Build: set $INPUT from config</li>
+			<li>HTML: GENERATE_DOCSET = YES; set DOCSET_FEEDNAME (with standard ampersand), DOCSET_BUNDLE_ID from config</li>
+			<li>LaTeX: GENERATE_LATEX = NO</li>
+		</ul></li>
+	</ul></li>
+</ul>
+-->
+
+<!-- @marker "Full Key Codes" -->
+<h2><a name="FullKeyCodes_">Full Key Codes</a></h2>
+<p>utility to display code information about each key of the keyboard</p>
+
+<h3><a name="FullKeyCodes_config"></a>Installation and Configuration</h3>
+	<p><b>Application</b> /Applications/Utilities/Full Key Codes 1.1/Full Key Codes; v1.1</p>
+	<p><b>Source</b> <a href="http://softwares.bajram.com/utilities/#Full_Key_Codes">Bajram Utilities</a></p>
+	<p><b>License</b> free</p>
+
+<!-- @marker "GHUnit" -->
+<h2><a name="GHUnit_">GHUnit</a></h2>
+<p>Objective-C testing framework</p>
+
+<h3><a name="GHUnit_config"></a>Installation and Configuration</h3>
+	<p><b>Framework</b> /Library/Frameworks/GHUnit.framework; version 0.4.19 (created 1/25/10)</p>
+	<p><b>Source</b> <a href="http://github.com/gabriel/gh-unit#readme'">github.com</a></p>
+	<p><b>License</b> open</p>
+	<p><b>Installation and Configuration</b> see comment in source for old target setup instructions</p>
+<!--
+<h5>OCUnit</h5><ul>
+	<li>add new target &lt;ProductName&gt;Test from template Unit Test Bundle</li>
+	<li>add dependency on &lt;ProductName&gt;</li>
+	<li>&lt;TargetName&gt;:Build:Linking:Bundle Loader:
+		$(BUILT_PRODUCTS_DIR)/&lt;AppName&gt;.app/Contents/MacOS/&lt;ProductName&gt;</li>
+	<li>&lt;TargetName&gt;:Build:Unit Testing:Test Host: $(BUNDLE_LOADER)</li>
+	<li class='dq'>&lt;TargetName&gt;.Build.GCC 4.0 - Code Generation: Garbage Collection: set to match application being tested <ul>
+		<li class='blurb'>apparently need a failed build before this will appear on the Build settings list</li>
+	</ul></li>
+	<li>to set up Executable for debugging <ul>
+		<li>application Executable (in Executables smart group) <ul>
+			<li>add argument -SenTest All</li>
+			<li>add variable DYLD_INSERT_LIBRARIES $(DEVELOPER_LIBRARY_DIR)/PrivateFrameworks/DevToolsBundleInjection.framework/DevToolsBundleInjection</li>
+			<li>add variable XCInjectBundle &lt;TargetName&gt;.octest</li>
+			<li>add variable XCInjectBundleInto &lt;ProductName&gt;.app/Contents/MacOS/&lt;ProductName&gt;</li>
+			<li>add variable DYLD_FALLBACK_FRAMEWORK_PATH $(DEVELOPER_LIBRARY_DIR)/Frameworks</li>
+		</ul></li>
+		<li class='blurb'>see <a href="http://chanson.livejournal.com/120740.html">
+			Xcode: Debugging Cocoa application unit tests</a></li>
+	</ul></li>
+</ul>
+
+<h5>GHUnit</h5><ul>
+	<li>add new Cocoa application target AllTests <ul>
+		<li>Target Info: General <ul>
+			<li>add linked library GHUnit.framework</li>
+			<li>add target being tested as a linked library</li>
+			<li>add target being tested as a direct dependency</li>
+		</ul></li>
+		<li>Target Info: Build <ul>
+			<li>Framework Search Paths, Runtime Search Paths: add $(DEVELOPER_LIBRARY_DIR)/Frameworks</li>
+			<li>Other Linker Flags: add -framework SenTestingKit</li>
+		</ul></li>
+		<li>add GHUnit-supplied file GHUnitTestMain.m to this test target</li>
+	</ul></li>
+	<li>add existing test files to this test target; add files with extended tests to GHUnit target only</li>
+	<li>Executable Settings (must be reset if executable file had been removed, eg. for clean)<ul>
+		<li>Executable arguments: <ul>
+			<li>set NSDebugEnabled, NSZombieEnabled, NSHangOnUncaughtException, NSAutoreleaseFreedObjectCheckEnabled to YES</li>
+			<li>NSDeallocateZombies: normally NO so messages to zombies get caught; YES to debug leaks</li>
+		</ul></li>
+		<li>Executable environment variables: <ul>
+			<li>GHUNIT_AUTORUN (start tests automatically)</li>
+			<li>Optional: GHUNIT_RERAISE (reraise exceptions - causes crash into debugger)</li>
+			<li>MallocStackLogging 1; enable call stack information from Leaks command line tool</li>
+		</ul></li>
+		<li>see <a href="http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html">GHUnit:NSDebug.h</a>
+		for more information</li>
+	</ul></li>
+</ul>
+-->
+
+<!-- @marker "Lingon" -->
+<h2 id="Lingon_">Lingon</h2>
+<p>editor for launchd items</p>
+<h3 id="Lingon_config">Installation and Configuration</h3>
+	<p><b>Application</b> /Applications/Utilities; 1.2</p>
+	<p><b>Source</b> <a href="http://www.apple.com/downloads/macosx/system_disk_utilities/lingon.html">MacOS Downloads</a></p>
+	<p><b>License</b> freeware</p>
+	<p><b>Critical Data</b> edits data at: /Library/Agents; /Library/LaunchDaemons; ~/Library/LaunchAgents</p>
+
+<!-- @marker "MacPorts" -->
+<h2><a name="_MacPorts">MacPorts</a></h2>
+	<p>open-source project for compiling, installing, and upgrading open-source software on Mac OS X</p>
+	<h3><a name="MacPorts_config"></a>Installation and Configuration</h3>
+		<p><b>Library</b> /opt/local/bin/port; version 1.9.2</p>
+		<p><b>Files</b> opt/local/var/MacPorts</p>
+		<p><b>License</b> BSD</p>
+		<p><b>Installation and Configuration</b> automatically installed by	download</p>
+		<p><b>References</b> <a href="http://www.macports.org/index.php">MacPorts Home Page</a>; <a href="http://www.macports.org/install.php">Downloads and Installation</a></p>
+
+<!-- @marker "PHP" -->
+<h2 id="PHP_">PHP</h2>
+<p>scripting language used in web development, especially for server-side code</p>
+<h3 id="PHP_config">Installation and Configuration</h3>
+	<p><b>Library</b> /usr/local/bin/php, with related sibling files; php5</p>
+	<p><b>Source</b> MacPorts</p>
+	<p><b>License</b> PHP license; free</p>
+	<p><b>Installation and Configuration</b></p><ul>
+		<li class='blurb'>PHP5 was installed with Apache in June 2011. It was not immediately used, and no configuration was completed. Configuration instructions are from the Mac ports installation.</li>
+		<li>tell Apache that php exists: <span class='mono'>sudo /opt/local/apache2/bin/apxs -a -e -n "php5" libphp5.so</span><ul>
+			<li>this apparently adds the line <span class='mono'>LoadModule php5_module modules/libphp5.so</span> to Apache's httpd.conf</li>
+		</ul></li>
+		<li>configure PHP: choose one of the initialization files at /opt/local/etc/php5 (see comments in the files for more information); put a copy of chosen file in <span class='mono'>/opt/local/etc/php.ini</span></li>
+		<li>configure Apache to handle *.php files with php<ul>
+			<li>in httpd.conf, add <ul>
+				<li class='mono'>AddHandler application/x-httpd-php .php</li>
+			</ul></li>
+			<li>immediately after the line<ul>
+				<li class='mono'>LoadModule php5_module modules/libphp5.so</li>
+			</ul></li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "Markdown" -->
+<h2 id='Markdown'>Markdown</h2>
+<p>markup tool for converting structured2 plain text to HTML</p>
+	<h3 id="Markdown_config">Installation and Configuration</h3>
+		<p><b>Executable</b> /usr/bin/Markup.pl; v 1.0.1; Dec 7 2004</p>
+		<p><b>Source</b> <a href="http://daringfireball.net/projects/markdown/">Daring Fireball/projects/markdown</a></p>
+		<p><b>License</b> free for use; basic restrictions on distribution</p>
+
+<!-- @marker "Ruby Gems" -->
+<h2 id="RubyGems_">Ruby Gems</h2>
+<p>package management framework for Ruby</p>
+	<h3 id="RubyGems_config">Installation and Configuration</h3>
+		<p><b>Executable</b> /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/gem; v 1.8.10</p>
+		<p><b>Source</b> <a href="http://rubygems.org/pages/download">RubyGems.org</a></p>
+		<p><b>License</b> Open Source Initiative - MIT</p>
+		<p><b>Installation</b> unpack download and cd there; sudo ruby setup.rb</p>
+
+<!-- @marker "RubyOSA" -->
+<h2 id="RubyOSA_">Ruby OSA</h2>
+<p>bridge from Ruby to the Apple Event Manager; allows Ruby programs to automate Mac OS X applications in the same way as AppleScript</p>
+	<h3 id="RubyOSA_config">Installation and Configuration</h3>
+		<p><b>Executable</b> ?; v 0.4.0</p>
+		<p><b>Source</b> instructions at <a href="http://rubyosa.rubyforge.org/install.html">RubyOSA</a></p>
+		<p><b>License</b> free BSD</p>
+		<p><b>Installation</b> sudo gem install rubyosa</p>
+
+<!-- @marker "SQLite" -->
+<h2>SQLite</h2>
+	<!-- @topicList "SQLite" "_SQLite" -->
+		<!-- @topicItem "Installation and Configuration" "#SQLite_config" "0" "" -->
+		<!-- @topicSep -->
+		<!-- @topicGroup "References" "3" -->
+			<!-- @topicItem "SQLiteJDBC" "http://www.zentus.com/sqlitejdbc/" "0" "page from which jdbc driver is downloaded" -->
+			<!-- @topicItem "SQLiteJDBC javadoc" "http://www.zentus.com/sqlitejdbc/api/" "0" "" -->
+			<!-- @topicSep -->
+			<!-- @topicGroup "general; not needed for java access" "7" -->
+				<!-- @topicItem "SQLite Home" "http://www.sqlite.org/" "1" "SQLite home page" -->
+	<!-- @/topicList -->
+	<p>supports SQL database contained in a single file that does not require setup by the user</p>
+
+	<h3><a name="SQLite_config"></a>Installation and Configuration</h3>
+		<p><b>Library Jar</b> sqlitejdbc-v037-nested.jar at ${DEV}/ccsjava/lib<br />
+		version 37, for SQLite 3.5.6 or 3.5.7 (later version available)<br />
+		this is the pure java version; platform-specific versions are also available</p>
+
+<!-- @marker "StuffIt Expander" -->
+<h2><a name="StuffItExpander_">StuffIt Expander</a></h2>
+<p>free utility to decompress StuffIt archives</p>
+
+<h3><a name="StuffItExpander_config"></a>Installation and Configuration</h3>
+	<p><b>Application</b> /Applications/StuffIt/StuffIt Expander; v13.0.3</p>
+	<p><b>Source</b> <a href="http://my.smithmicro.com/downloads/trials/expander_mac.html">Smith Micro</a></p>
+	<p><b>License</b> free</p>
+	<p><b>Installation and Configuration</b> keep in Dock for drop access</p>
+
+<!-- @marker "Subversion" -->
+<h2><a name="_Subversion">Subversion</a></h2>
+<p>source code control system</p>
+
+<h3><a name="_Subversion_conf"></a>Installation and Configuration</h3>
+	<p><b>Subversion Tools</b> included in Developer Tools; installed at /usr/local/bin</p>
+	<p><b>Critical Data</b> repositories at ~/Dev/svnrep<br />
+		<span class='blurb'>Xcode had once recommended directory /User/Shared
+			for subversion repositories, but Backup utility will not back it up if it's not in ~</span></p>
+	<p><b>Configuration</b> see DevSupport target Xcode, build phase Copy Config Files;
+		project files _subversion_config, _profile</p>
+	<p><b>Documentation</b> <a href="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</a></p>
+
+<!-- @marker "Tar" -->
+<h2><a name="Tar_">Tar</a></h2>
+<p>archiving utility</p>
+
+<h3><a name="Tar_config"></a>Installation and Configuration</h3>
+	<p><b>Tool</b> v1.14</p>
+	<p><b>Source</b> system tool</p>
+	<p><b>Reference</b> <a href="http://developer.apple.com/documentation/Darwin/Reference/ManPages/man1/tar.1.html">tar man page</a></p>
+
+<!-- @marker "UMLet" -->
+<h2>UMLet</h2>
+	<!-- @topicList "UMLet" "_UMLet" -->
+		<!-- @topicItem "Installation and Configuration" "#_UMLet_config" "0" "" -->
+		<!-- @topicSep -->
+		<!-- @topicGroup "References" "3" -->
+			<!-- @topicItem "UML - Unified Modelling Language" "http://en.wikipedia.org/wiki/Unified_Modeling_Language" "0" "Wikipedia article" -->
+			<!-- @topicItem "UMLet Home Page" "http://www.umlet.com/" "0" "download from here" -->
+			<!-- @topicItem "Help Site" "http://www.itmeyer.at/umlet/faq/FAQ.htm" "0" "" -->
+			<!-- @topicItem "Sample Diagrams" "http://www.itmeyer.at/umlet/uml2/" "0" "" -->
+			<!-- @topicItem "More Samples" "http://www.itmeyer.at/umlet/" "0" "" -->
+	<!-- @/topicList -->
+	<p>tool for producing <a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> models</p>
+
+	<h3><a name="_UMLet_config"></a>Installation and Configuration</h3>
+		<p><b>Eclipse Plugin</b> UMLet version 9.03 downloaded 10/01/08 from <a href="http://www.umlet.com/changes.htm">umlet.com</a></p>
+		<p><b>Installation</b> Download includes source (flyweight, so it uses libraries we do not have) and executables.<br />
+		Install UMLet folder at ~/Reference; move plugin below.<br />
+		To install: <br />
+		- put UMLet folder in /Applications <br />
+		- put existing items in palettes folder into UMLet folder Supplied <br />
+		- build DevSupport target UMLet to install custom palettes</p>
+		<p><b>License</b> open source</p>
+		<p><b>Palettes</b> supplied palettes are really just usage samples, and are too big for the palette window provided anyway <br />
+		they also have many versions of basic types to show they can do<br />
+		save supplied palettes in palettes/Supplied for future reference;
+		replace with our palettes main_palette.uxf and secondary_palette.uxf, which do not duplicate elements</p>
+		<p><b>Recompilation</b>Using precompiled version; recompilation may be beneficial at some point</p><ul>
+			<li>Potential Advantages <ul>
+				<li>hook up to Apple's application library <ul>
+					<li>reopen existing window without Dock</li>
+					<li>System Events accessibility</li>
+					<li>maybe multiple windows</li>
+				</ul></li>
+			</ul></li>
+			<li>Issues <ul>
+				<li>flyweight - requires several libraries we do not now have, but they can probably be obtained</li>
+			</ul></li>
+		</ul>
+
+<!-- @marker "9 === Inactive" -->
+<h2>Inactive</h2>
+<!-- @topicList "Inactive" "Inactive" -->
+		<!-- @topicItem "AppleWorks" "#AppleWorks" "0" "" -->
+		<!-- @topicItem "CodeWarrior" "#CodeWarrior" "0" "" -->
+		<!-- @topicItem "Dreamweaver" "#Dreamweaver" "0" "" -->
+		<!-- @topicItem "Eclipse" "#_Eclipse" "0" "" -->
+		<!-- @topicItem "ffcall" "#_ffcall" "0" "" -->
+		<!-- @topicItem "Flip4Mac" "#_Flip4Mac" "0" "" -->
+		<!-- @topicItem "GNUStep" "#_GNUStep" "0" "" -->
+		<!-- @topicItem "gnustep-make-cocoa" "#_gnustepMakeCocoa" "0" "" -->
+		<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
+	<!-- @topicGroup "" "10" -->
+		<!-- @topicItem "JUnit" "#_JUnit" "0" "" -->
+		<!-- @topicItem "libffi" "#_libffi" "0" "" -->
+		<!-- @topicItem "libtiff" "#_libtiff" "0" "" -->
+		<!-- @topicItem "MaskRAid" "#_MaskRAid" "0" "" -->
+		<!-- @topicItem "Parallels" "#_Parallels" "0" "" -->
+		<!-- @topicItem "plutil" "#plutil_" "0" "" -->
+		<!-- @topicItem "QuicKeys" "#QuicKeys" "0" "" -->
+		<!-- @topicItem "Renaissance" "#_Renaissance" "0" "" -->
+		<!-- @topicItem "Retrospect" "#Retrospect" "0" "" -->
+	<!-- @topicGroup "" "20" -->
+		<!-- @topicItem "StuffIt" "#StuffIt" "0" "" -->
+		<!-- @topicItem "UISpec4j" "#_UISpec4j" "0" "" -->
+<!-- @/topicList -->
+
+<h2><a name="AppleWorks">AppleWorks</a></h2>
+	<p><b>Application</b> /Applications/AppleWorks 6</p>
+	<p><b>Inactive</b> replaced by iWork</p>
+	<p><b>Critical Data</b> ~/Documents/AppleWorks User Data</p>
+	<p><b>Configuration</b></p>
+	<ul>
+		<li><b>General: Files</b> turn off Auto Save (saves into ~/Documents)</li>
+	</ul>
+	<p><b>Customization &amp; Automation</b> </p>
+
+<h2><a name="CodeWarrior">CodeWarrior</a></h2>
+	<p><b>Application</b> /Applications/Metrowerks CodeWarrior 9.0</p>
+	<p><b>Inactive</b> used CodeWarrior 9.0; purchased CodeWarrior 10, but couldn't get anything to compile<br />
+	switching to Xcode<br />
+	kept installation copy of CodeWarrior 9 for access to legacy projects; won't accept our valid registration number, so installation just creates a 15-day demo</p>
+
+<h2><a name="Dreamweaver">Dreamweaver</a></h2>
+	<p><b>Application</b> at /Applications</p>
+	<p><b>Inactive</b> using standard web development tools</p>
+	<p><b>Critical Data</b></p>
+	<ul>
+		<li>~/Libraries/Application Support/Macromedia</li>
+		<li>queries stored at ~/Dev/Workspace/Dreamweaver/Queries</li>
+	</ul>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+
+<h2><a name="_Eclipse">Eclipse</a></h2>
+	<p><b>Application</b> eclipse-jee: Java version 3.4 from 12/23/08 download at /Application; main Workspace ~/Dev/espace</p>
+	<p><b>Inactive</b> inactive 5/11/2010 - no longer using Java; using iCal instead of Mylyn;
+		maintaining valid installation requires lots of maintanance</p>
+	<p><b>Plugins</b></p><ul>
+		<li>Subversion <ul>
+			<li>Software Updates: add update site http://subclipse.tigris.org/update_1.4.x</li>
+			<li>install Supclipse, JavaHL adapter, SVNKit adapter</li>
+		</ul></li>
+	</ul>
+	<p><b>Critical Data</b> </p><ul>
+		<li>workspace: Preferences, Mylyn Task List Data: export to ~/Archives/Eclipse</li>
+	</ul>
+	<p><b>Configuration</b></p><ul>
+		<li>Keys <ul>
+			<li>Views: soQ N: Navigator; soQ T: Tasks; soQ J: JUnit; soQ X: Expressions; soQ A: Ant; soQ R: SVN Repository</li>
+			<li>Perspectives: noP L: list all; noP J: Java; noP E: Java EE; noP P: Planning; noP B: Java Browsing; noP D: Debug; coP S: Team Synchronization</li>
+			<li>New Local Task: c6</li>
+		</ul></li>
+		<li>Perspectives <ul>
+			<li>save copies with prefix zorig_ of original Java, Java EE, Java Browsing, Debug, Planning, Resources, Team Synchronization perspectives</li>
+			<li>Planning: enlarge edit panel to clear horizontal scroll bar</li>
+			<li>Synchronize: resize left panel (divider at 348); add view SVN Repository to left panel</li>
+		</ul></li>
+		<li>Classpath Variables <ul>
+			<li>JUNIT: path to junit.jar</li>
+		</ul></li>
+		<li>Ant properties <ul>
+			<li>ccs.extjars: /Users/carolclark/Dev/JavaDev/lib</li>
+		</ul></li>
+		<li>General &gt; Editors &gt; Text Editors: Show line numbers: on</li>
+		<li>Automatic Updates: enable; remind every 30 minutes</li>
+		<li>Tasks &gt; Timing: deselect "Enable inactivity timeouts" <ul>
+			<li class='blurb'>so it doesn't stop timing when we leave Eclipse</li>
+		</ul></li>
+		<li>Java &gt; Compiler &gt; Errors/Warnings <ul>
+			<li>Potential Programming Problems &gt; Serializable Class without serialVersionUID: Ignore</li>
+			<li>Unnecessary	Code &gt; Local variable is never read: Ignore</li>
+			<li>Unnecessary	Code &gt; unused Local or private member: Ignore</li>
+		</ul></li>
+	</ul>
+	<p><b>Customization &amp; Automation</b> </p><ul>
+		<li>Custom Templates <ul>
+			<li>Java: New Class File</li>
+		</ul></li>
+	</ul>
+
+<h2><a name="_ffcall">ffcall</a></h2>
+	<p>foreign function library; required by GNUstep core</p>
+	<p><b>Inactive</b> was for Renaissance</p>
+	<h3><a name="ffcall_config"></a>Installation and Configuration</h3>
+		<p><b>library</b> ffcall; 1.10_0 <br />
+			<span class='blurb'>MacPorts indicated successful install, but neither whereis nor a search of $PATH found a file
+			either by that name or avcall, one of the subpackages</span></p>
+		<p><b>Source</b> MacPorts</p>
+		<p><b>License</b> GNU General Public License</p>
+		<p>replaced 11/25/2008 by <a href="#_libffi">libffi</a>, which has just become available for darwin x86</p>
+
+<h2><a name="_GNUStep">GNUStep</a></h2>
+	<p><b>Inactive</b> was for Renaissance</p>
+	<p>cross-platform implementation of OpenStep from GNU</p>
+	<h3><a name="GNUStep_config"></a>Installation and Configuration</h3>
+		<p><b>Libraries</b> /usr/local/GNUstep; Startup package v 0.20.0</p>
+		<p><b>License</b> GNUStep Lesser (Library) Public License; tools standard GNU Public License</p>
+		<p><b>Installation</b></p><ul></ul>
+
+<h2><a name="_gnustepMakeCocoa">gnustep-make-cocoa</a></h2>
+	<p><b>Inactive</b> was for Renaissance</p>
+	<h2>gnustep-make-cocoa</h2>
+	<p>GNUstep make package; MacPorts lists it as a dependency for Renaissance</p>
+	<h3><a name="gnustep-make-cocoa_config"></a>Installation and Configuration</h3>
+		<p><b>MacPorts package</b> 1.13.0</p>
+
+<h2><a name="_libffi">libffi</a></h2>
+	<p><b>Inactive</b> was for Renaissance</p>
+	<p>portable, high level programming interface to various calling conventions; required by GNUStep</p>
+	<h3><a name="libffi_config"></a>Installation and Configuration</h3>
+		<p><b>llibrary</b> version 3.0.7</p>
+		<p><b>Source</b> <a href="http://sourceware.org/libffi/">sourceware.org</a></p>
+		<p><b>License</b> include notice in any distribution</p>
+		<p><b>Installation and Configuration</b> Terminal: ./configure; make; make install</p>
+
+<h2><a name="_libtiff">libtiff</a></h2>
+	<p><b>Inactive</b> was for Renaissance</p>
+	<p>support for the Tag Image File Format (TIFF), a widely used format for storing image data; required by GNUStep</p>
+	<h3><a name="libtiff_config"></a>Installation and Configuration</h3>
+		<p><b>library</b> version 3.8.2</p>
+		<p><b>Source</b> mirror site linked from <a href="http://www.libtiff.org/">libtiff.org</a></p>
+		<p><b>License</b> include notice in any distribution; limits on use in any advertising</p>
+		<p><b>Installation and Configuration</b> Terminal: ./configure; make; make install</p>
+		<p class='blurb'>We also found instructions  <a href="http://groups.google.com/group/hugin-ptx/msg/72dbefc28ba4842a">somewhere</a> for producing a	universal binary of this library. We therefore expect that this version works with i386 only.</p>
+
+<!-- @marker "InterfaceBuilder" -->
+<h2><a name="InterfaceBuilder">Interface Builder</a></h2>
+	<p><b>Application</b> Apple app at /Developer/Applications</p>
+	<p><b>Inactive</b> as of Xcode 4, Interface Builder is incorporated into Xcode</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Configuration</b></p>
+	<ul>
+		<li>General: Palette/Info Windows are Utility Windows: off</li>
+		<li>Toolbar: Small Icons &amp; Text</li>
+	</ul>
+	<p><b>Customization &amp; Automation</b> </p>
+
+<!-- @marker "JUnit" -->
+<h2><a name="_JUnit">JUnit</a></h2>
+	<p>supports unit testing in Java</p>
+	<p><b>Inactive</b> not currently using Java</p>
+	<h3><a name="JUnit_config"></a>Installation and Configuration</h3>
+		<p><b>Library jar</b> junit-4.4.jar at <span class='depr'>~/Dev/ccsjava/lib</span></p>
+		<p><b>License</b> open source</p>
+
+<!-- @marker "MaskRAid" -->
+<h2><a name="_MaskRAid">MaskRAid</a></h2>
+	<p><b>Application</b> Mask-R-Aid at /Applications; documentation at ~/Reference <br />
+		purchased ($19.95) 2/26/10 from <a href="http://www.truenorthsoftware.com/maskraid/">True North Software</a></p>
+	<p><b>Inactive</b> intended for masking icons; we now have a proper artist with tools</p>
+
+<!-- @marker "Parallels" -->
+<h2><a name="_Parallels">Parallels</a></h2>
+	<p><b>Application</b> Parallels Desktop and utilities at /Application/Parallels</p>
+	<p><b>Inactive</b> testing capability for Windows not currently needed</p>
+	<p><b>Critical Data</b> ~/Parallels contains virtual machine(s) - backup by archiving manually</p>
+	<p><b>Installation and Configuration</b> install and activate Parallels 3; then upgrade to 4<br />
+	move folder Parallels from ~/Documents to ~/<br />
+	Windows: restore .pvm file OR install from disk and run &gt; cmd.exe for command prompt</p>
+
+<!-- @marker "plutil" -->
+<h2><a name='plutil_'>plutil</a></h2>
+	<p>utility to convert a list files from binary to XML format</p>
+	<p><b>example</b><br />
+	<span class='mono'>plutil -convert xml1 /path/To/plist</span></p>
+	<p><b>Inactive</b> do not know what this was used for; seems to be a standard tool anyway</p>
+
+<h2><a name="QuicKeys">QuicKeys</a></h2>
+	<p><b>Inactive</b> no longer worked well; may no longer be supported</p>
+	<p><b>Application</b> QuicKeys X2 v. 2.0.2; sn#2200470</p>
+	<p><b>Critical Data</b> ~/Library/QuicKeys/Shortcuts (export/importable)</p>
+	<p><b>Configuration</b> </p>
+
+<h2><a name="_Renaissance">Renaissance</a></h2>
+	<p><b>Inactive</b> switched to Cocoa with Interface Builder</p>
+	<p class='blurb'><a href="http://www.gnustep.org/">GNUStep</a> library for creating Cocoa user interfaces without Interface Builder</p>
+	<h3><a name="Renaissance_config"> Installation and Configuration</a></h3>
+		<p><b>prebuilt Framework</b> Renaissance.framework version 0.8.0 at /Library/Frameworks<br />
+			downloaded from mirror site link at <a href="http://mac.softpedia.com/progDownload/GNUstep-Renaissance-Download-35049.html"> Softpedia Renaissance download page</a><br />
+			<span class='blurb'>10/29/08 MacPorts install failed due to missing dependencies</span>
+		</p>
+
+<h2><a name="Retrospect">Retrospect</a></h2>
+	<p><b>Inactive</b> switched to MobileMe backup</p>
+	<p><b>Application</b> v. 5.1</p>
+	<p><b>Critical Data</b> /Library/Preferences/Retrospect</p>
+	<p><b>Configuration</b> </p>
+
+<h2><a name="StuffIt">StuffIt</a></h2>
+	<p><b>Inactive</b> using .zip</p>
+	<p><b>Application</b> /Applications/StuffIt 10.0</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+
+<h2><a name="_Flip4Mac">Flip4Mac</a></h2>
+	<p><b>Inactive</b> do not remember what this was used for</p>
+	<p><b>Application</b> WMV Player at /Applications/Flip4Mac downloaded from <a href="http://www.microsoft.com/downloads">
+	Microsoft site</a> reached from <a href="http://www.apple.com/downloads/macosx/video/flip4macwindowsmediacomponentsforquicktime.html">
+	Apple Downloads</a></p>
+
+<h2><a name='_UISpec4j'>UISpec4j</a></h2>
+	<p><b>Inactive</b> no longer using Java for ui development</p>
+	<p>JUnit addition for user Interface testing</p>
+	<h3><a name="UISpec4j_config"></a>Installation and Configuration</h3>
+		<p><b>Library jar</b> ~/Dev/ccsjava/lib; v1.5; <b>full download with examples</b> ~/Library</p>
+		<p><b>License</b> open source</p>
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Confidential and Proprietary.</p>
+</body>
+</html>
