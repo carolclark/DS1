@@ -199,11 +199,10 @@
 		67DB236A169E0A2900A6E910 /* shunit2_test_macros.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_macros.sh; sourceTree = "<group>"; };
 		67DB236B169E0A2900A6E910 /* shunit2_test_misc.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_misc.sh; sourceTree = "<group>"; };
 		67DB236C169E0A2900A6E910 /* shunit2_test_standalone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_standalone.sh; sourceTree = "<group>"; };
-		67DB240A16A1CBE500A6E910 /* Developer_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Developer_install.ksh; sourceTree = "<group>"; };
-		67DB240B16A1CBE500A6E910 /* Developer_Setup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Developer_Setup.ksh; sourceTree = "<group>"; };
+		67DB240A16A1CBE500A6E910 /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_install.ksh; sourceTree = "<group>"; };
+		67DB240B16A1CBE500A6E910 /* CCDevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDevConfig.ksh; sourceTree = "<group>"; };
 		67DB240C16A1CBF900A6E910 /* testDeveloper_Setup.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testDeveloper_Setup.ksh; sourceTree = "<group>"; };
 		67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testDeveloper.ksh; sourceTree = "<group>"; };
-		67DB240E16A1CC0C00A6E910 /* Developer_Setup-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Developer_Setup-Info.plist"; sourceTree = "<group>"; };
 		67DD76CE16A4AF9300BECCD5 /* testXcode.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = testXcode.ksh; sourceTree = "<group>"; };
 		67DD76D016A4AF9300BECCD5 /* frontWindow.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = frontWindow.applescript; sourceTree = "<group>"; };
 		67DD76D116A4AF9300BECCD5 /* viewCdoc.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = viewCdoc.applescript; sourceTree = "<group>"; };
@@ -456,13 +455,12 @@
 		67DB2326169E0A2900A6E910 /* 2 Developer */ = {
 			isa = PBXGroup;
 			children = (
-				67DB240A16A1CBE500A6E910 /* Developer_install.ksh */,
-				67DB240B16A1CBE500A6E910 /* Developer_Setup.ksh */,
+				67DB240A16A1CBE500A6E910 /* CCDev_install.ksh */,
+				67DB240B16A1CBE500A6E910 /* CCDevConfig.ksh */,
 				67DB2327169E0A2900A6E910 /* _Tests */,
 				67DB232B169E0A2900A6E910 /* AppleScripts */,
 				67DB233A169E0A2900A6E910 /* 3 Scripts */,
 				67BE04C516B09CB50065BFDE /* 4 Services */,
-				67DB2337169E0A2900A6E910 /* plist */,
 				67DB2341169E0A2900A6E910 /* ThirdParty */,
 			);
 			name = "2 Developer";
@@ -490,14 +488,6 @@
 				67DB232D169E0A2900A6E910 /* Snippets.txt */,
 			);
 			path = AppleScripts;
-			sourceTree = "<group>";
-		};
-		67DB2337169E0A2900A6E910 /* plist */ = {
-			isa = PBXGroup;
-			children = (
-				67DB240E16A1CC0C00A6E910 /* Developer_Setup-Info.plist */,
-			);
-			path = plist;
 			sourceTree = "<group>";
 		};
 		67DB233A169E0A2900A6E910 /* 3 Scripts */ = {

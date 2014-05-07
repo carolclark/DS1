@@ -174,7 +174,7 @@ function shunitInstall {
 			print "failure while installing shunit"
 			exit 1
 		fi
-	done	
+	done
 }
 
 #^	removeFileIfPresent
@@ -259,7 +259,7 @@ if [[ "${?}" != "0" ]] ; then
 fi
 
 if [[ "${USER}" = "carolclark" ]] ; then
-	print "configuring XCCodeSenseAllowAutoCompletionInPlainFiles"	
+	print "configuring XCCodeSenseAllowAutoCompletionInPlainFiles"
 	defaults write com.apple.Xcode XCCodeSenseAllowAutoCompletionInPlainFiles YES
 	if [[ "${?}" != "0" ]] ; then
 		print "failed to write XCCodeSenseAllowAutoCompletionInPlainFiles"

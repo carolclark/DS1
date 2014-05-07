@@ -45,11 +45,11 @@
 		676695DA191ACD05005D3CED /* missing.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = missing.html; sourceTree = "<group>"; };
 		676695DB191ACD05005D3CED /* php.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = php.ini; sourceTree = "<group>"; };
 		676695DD191ACD05005D3CED /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		676695DF191ACD05005D3CED /* htaccess */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htaccess; sourceTree = "<group>"; };
-		676695E0191ACD05005D3CED /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		676695E1191ACD05005D3CED /* webformmailer.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = webformmailer.php; sourceTree = "<group>"; };
 		676695E2191ACD05005D3CED /* welcome.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = welcome.html; sourceTree = "<group>"; };
 		676695E3191ACD05005D3CED /* htpasswd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htpasswd; sourceTree = "<group>"; };
+		676695E5191AE03D005D3CED /* htaccess */ = {isa = PBXFileReference; lastKnownFileType = text; path = htaccess; sourceTree = "<group>"; };
+		676695E6191AE03D005D3CED /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		67B4601119199472007FB11A /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +166,7 @@
 				676695DA191ACD05005D3CED /* missing.html */,
 				676695DB191ACD05005D3CED /* php.ini */,
 				676695DC191ACD05005D3CED /* stats */,
-				676695DE191ACD05005D3CED /* TechnicalDocs */,
+				676695E4191AE03D005D3CED /* TechnicalDocs */,
 				676695E1191ACD05005D3CED /* webformmailer.php */,
 				676695E2191ACD05005D3CED /* welcome.html */,
 			);
@@ -189,11 +189,11 @@
 			path = stats;
 			sourceTree = "<group>";
 		};
-		676695DE191ACD05005D3CED /* TechnicalDocs */ = {
+		676695E4191AE03D005D3CED /* TechnicalDocs */ = {
 			isa = PBXGroup;
 			children = (
-				676695DF191ACD05005D3CED /* htaccess */,
-				676695E0191ACD05005D3CED /* index.html */,
+				676695E5191AE03D005D3CED /* htaccess */,
+				676695E6191AE03D005D3CED /* index.html */,
 			);
 			path = TechnicalDocs;
 			sourceTree = "<group>";
