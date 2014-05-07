@@ -52,7 +52,7 @@
 	p.footer {
 		text-align: center;
 		font-size: 10px;
-		color: gray	
+		color: gray
 	}
 	hr.footer {
 		width: 70%;
@@ -179,7 +179,7 @@
 		border-left: 1px solid #919699;
 		caption-side: bottom;
 		}
-		
+
 	.tabl th {
 		padding: 4px 8px 4px 8px;
 		text-align: left;
@@ -201,12 +201,12 @@
 	}
 
 	/* attribute table */
-	td.attributeGroup { 
+	td.attributeGroup {
 		text-align: center;
 		font-style: italic;
 		font-weight: bold;
 	}
-	td.attributeGroupComment { 
+	td.attributeGroupComment {
 		text-align: center;
 		font-style: italic;
 	}
@@ -245,14 +245,14 @@
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
 	}
-	
+
 	/* goal table */
 	.goaltabl {
 		border-top: 1px solid #919699;
 		border-left: 1px solid #919699;
 		caption-side: bottom;
 		}
-		
+
 	.goaltabl th {
 		padding: 4px 8px 4px 8px;
 		background-color: #ccccdd;
@@ -305,7 +305,7 @@
 		padding-left: 20px;
 		color: #777799;
 	}
-	
+
 	.tick {							/* tick mark for every fifth row */
 		background-color: #ddddff;
 		rules: bottom;

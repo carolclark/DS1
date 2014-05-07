@@ -101,9 +101,7 @@
 		6720A6331889D64900C4ED0A /* AppCode_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = AppCode_C9.r; sourceTree = "<group>"; };
 		67364A6D16C0345900940D94 /* FixWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = FixWindow.applescript; sourceTree = "<group>"; };
 		67364A7316C0362C00940D94 /* DeveloperScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeveloperScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		673D580A16B9A1450001DFF2 /* Default.doxygen */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
 		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
-		673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		673F9BA918DA517F00E06A16 /* Server_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Server_C9.r; sourceTree = "<group>"; };
 		6741F2FB1743F2AB00F4FF6D /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
 		674791F318567B7500452FA5 /* ___FILEBASENAME___.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = "___FILEBASENAME___.py"; path = "PythonScript.xctemplate/___FILEBASENAME___.py"; sourceTree = "<group>"; };
@@ -278,38 +276,10 @@
 		67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckSyntax.applescript; sourceTree = "<group>"; };
 		67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBEdit_install.ksh; sourceTree = "<group>"; };
 		67DD777716A4D6A700BECCD5 /* snippets.dash */ = {isa = PBXFileReference; lastKnownFileType = file; path = snippets.dash; sourceTree = "<group>"; };
-		67DD777E16A71F5700BECCD5 /* default.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
-		67DD777F16A71F5700BECCD5 /* history.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = history.css; sourceTree = "<group>"; };
-		67DD778016A71F5700BECCD5 /* technical.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = technical.css; sourceTree = "<group>"; };
-		67DD778216A71F5700BECCD5 /* space.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = space.tiff; sourceTree = "<group>"; };
-		67DD778316A71F5700BECCD5 /* ucds_1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_1.tiff; sourceTree = "<group>"; };
-		67DD778416A71F5700BECCD5 /* ucds_2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_2.tiff; sourceTree = "<group>"; };
-		67DD778516A71F5700BECCD5 /* ucds_3.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_3.tiff; sourceTree = "<group>"; };
-		67DD778616A71F5700BECCD5 /* ucds_4.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_4.tiff; sourceTree = "<group>"; };
-		67DD778716A71F5700BECCD5 /* ucds_5.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucds_5.tiff; sourceTree = "<group>"; };
-		67DD778816A71F5700BECCD5 /* ucgl_h.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_h.tiff; sourceTree = "<group>"; };
-		67DD778916A71F5700BECCD5 /* ucgl_f.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_f.tiff; sourceTree = "<group>"; };
-		67DD778A16A71F5700BECCD5 /* ucgl_s.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_s.tiff; sourceTree = "<group>"; };
-		67DD778B16A71F5700BECCD5 /* ucgl_u.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_u.tiff; sourceTree = "<group>"; };
-		67DD778C16A71F5700BECCD5 /* ucgl_x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_x.tiff; sourceTree = "<group>"; };
-		67DD778D16A71F5700BECCD5 /* Cdoc_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cdoc_install.ksh; sourceTree = "<group>"; };
-		67DD778F16A71F5700BECCD5 /* Cdoc.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Cdoc.html; sourceTree = "<group>"; };
-		67DD779016A71F5700BECCD5 /* DevelopingProjects.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = DevelopingProjects.html; sourceTree = "<group>"; };
-		67DD779116A71F5700BECCD5 /* Development.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Development.html; sourceTree = "<group>"; };
-		67DD779216A71F5700BECCD5 /* Git.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Git.html; sourceTree = "<group>"; };
-		67DD779316A71F5700BECCD5 /* Glossary_Support.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Glossary_Support.html; sourceTree = "<group>"; };
-		67DD779416A71F5700BECCD5 /* History_Support.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = History_Support.html; path = Cdoc/html/History_Support.html; sourceTree = "<group>"; };
-		67DD779516A71F5700BECCD5 /* Personal.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Personal.html; sourceTree = "<group>"; };
-		67DD779616A71F5700BECCD5 /* Support.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Support.html; sourceTree = "<group>"; };
-		67DD779716A71F5700BECCD5 /* Tools.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
 		67E1DD0317346C60009FC377 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67E6ADF817384360005A30D0 /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
 		67E6AE1E173D97C3005A30D0 /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
 		67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
-		67EB1F8D16BC41DC00B3DBB9 /* DoxyDemo_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_doxygen.txt; sourceTree = "<group>"; };
-		67EB1F8F16BC477800B3DBB9 /* mainpage.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mainpage.dox; sourceTree = "<group>"; };
-		67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresenterDD.h; sourceTree = "<group>"; };
-		67EB1F9216BC4A1800B3DBB9 /* AlertPresenterDD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPresenterDD.m; sourceTree = "<group>"; };
 		67FD0562182C330F00BAA1AF /* ghubUtil.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -334,17 +304,6 @@
 			);
 			name = InstallCdoc.xctemplate;
 			path = ../_Scripting/InstallCdoc.xctemplate;
-			sourceTree = "<group>";
-		};
-		673D580916B9A1450001DFF2 /* Doxygen */ = {
-			isa = PBXGroup;
-			children = (
-				673D580A16B9A1450001DFF2 /* Default.doxygen */,
-				673D581A16B9D22B0001DFF2 /* Doxygen_install.ksh */,
-				67EB1F8D16BC41DC00B3DBB9 /* DoxyDemo_doxygen.txt */,
-				67EB1F9016BC4A1800B3DBB9 /* DoxyDemo */,
-			);
-			path = Doxygen;
 			sourceTree = "<group>";
 		};
 		674791F218567B4000452FA5 /* PythonModule.xctemplate */ = {
@@ -387,12 +346,9 @@
 		6769244B141EB818005D3E68 = {
 			isa = PBXGroup;
 			children = (
-				67DD779416A71F5700BECCD5 /* History_Support.html */,
-				67DD777B16A71F5700BECCD5 /* 0 Cdoc */,
 				67DB2326169E0A2900A6E910 /* 2 Developer */,
 				67DD76CB16A4AF9300BECCD5 /* 5 Applications */,
 				67DB22CA169CD82300A6E910 /* 8 UserSlates */,
-				673D580916B9A1450001DFF2 /* Doxygen */,
 				6769245A141EB921005D3E68 /* Frameworks */,
 				67692459141EB921005D3E68 /* Products */,
 			);
@@ -1037,79 +993,6 @@
 			path = Dash;
 			sourceTree = "<group>";
 		};
-		67DD777B16A71F5700BECCD5 /* 0 Cdoc */ = {
-			isa = PBXGroup;
-			children = (
-				67DD778E16A71F5700BECCD5 /* html */,
-				67DD778D16A71F5700BECCD5 /* Cdoc_install.ksh */,
-				67DD777C16A71F5700BECCD5 /* _tech */,
-			);
-			name = "0 Cdoc";
-			path = Cdoc;
-			sourceTree = "<group>";
-		};
-		67DD777C16A71F5700BECCD5 /* _tech */ = {
-			isa = PBXGroup;
-			children = (
-				67DD777D16A71F5700BECCD5 /* css */,
-				67DD778116A71F5700BECCD5 /* img */,
-			);
-			path = _tech;
-			sourceTree = "<group>";
-		};
-		67DD777D16A71F5700BECCD5 /* css */ = {
-			isa = PBXGroup;
-			children = (
-				67DD777E16A71F5700BECCD5 /* default.css */,
-				67DD777F16A71F5700BECCD5 /* history.css */,
-				67DD778016A71F5700BECCD5 /* technical.css */,
-			);
-			path = css;
-			sourceTree = "<group>";
-		};
-		67DD778116A71F5700BECCD5 /* img */ = {
-			isa = PBXGroup;
-			children = (
-				67DD778216A71F5700BECCD5 /* space.tiff */,
-				67DD778316A71F5700BECCD5 /* ucds_1.tiff */,
-				67DD778416A71F5700BECCD5 /* ucds_2.tiff */,
-				67DD778516A71F5700BECCD5 /* ucds_3.tiff */,
-				67DD778616A71F5700BECCD5 /* ucds_4.tiff */,
-				67DD778716A71F5700BECCD5 /* ucds_5.tiff */,
-				67DD778816A71F5700BECCD5 /* ucgl_h.tiff */,
-				67DD778916A71F5700BECCD5 /* ucgl_f.tiff */,
-				67DD778A16A71F5700BECCD5 /* ucgl_s.tiff */,
-				67DD778B16A71F5700BECCD5 /* ucgl_u.tiff */,
-				67DD778C16A71F5700BECCD5 /* ucgl_x.tiff */,
-			);
-			path = img;
-			sourceTree = "<group>";
-		};
-		67DD778E16A71F5700BECCD5 /* html */ = {
-			isa = PBXGroup;
-			children = (
-				67DD778F16A71F5700BECCD5 /* Cdoc.html */,
-				67DD779016A71F5700BECCD5 /* DevelopingProjects.html */,
-				67DD779116A71F5700BECCD5 /* Development.html */,
-				67DD779216A71F5700BECCD5 /* Git.html */,
-				67DD779316A71F5700BECCD5 /* Glossary_Support.html */,
-				67DD779516A71F5700BECCD5 /* Personal.html */,
-				67DD779616A71F5700BECCD5 /* Support.html */,
-				67DD779716A71F5700BECCD5 /* Tools.html */,
-			);
-			path = html;
-			sourceTree = "<group>";
-		};
-		67EB1F9016BC4A1800B3DBB9 /* DoxyDemo */ = {
-			isa = PBXGroup;
-			children = (
-				67EB1F8F16BC477800B3DBB9 /* mainpage.dox */,
-				67EB1F9116BC4A1800B3DBB9 /* AlertPresenterDD.h */,
-				67EB1F9216BC4A1800B3DBB9 /* AlertPresenterDD.m */,
-			);
-			path = DoxyDemo;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -1142,34 +1025,6 @@
 			name = Xcode;
 			passBuildSettingsInEnvironment = 0;
 			productName = Xcode;
-		};
-		673D581016B9CAF20001DFF2 /* Doxygen */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "\"${SRCROOT}\" Doxygen $(ACTION)";
-			buildConfigurationList = 673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */;
-			buildPhases = (
-			);
-			buildToolPath = Doxygen/Doxygen_install.ksh;
-			buildWorkingDirectory = "";
-			dependencies = (
-			);
-			name = Doxygen;
-			passBuildSettingsInEnvironment = 0;
-			productName = Doxygen;
-		};
-		67BE04B916B06EFF0065BFDE /* Cdoc */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "\"${SRCROOT}\" Cdoc $(ACTION)";
-			buildConfigurationList = 67BE04BA16B06EFF0065BFDE /* Build configuration list for PBXLegacyTarget "Cdoc" */;
-			buildPhases = (
-			);
-			buildToolPath = Cdoc/Cdoc_install.ksh;
-			buildWorkingDirectory = "";
-			dependencies = (
-			);
-			name = Cdoc;
-			passBuildSettingsInEnvironment = 0;
-			productName = Cdoc;
 		};
 		67BE04BF16B08DE30065BFDE /* Developer */ = {
 			isa = PBXLegacyTarget;
@@ -1290,13 +1145,11 @@
 			targets = (
 				67BE04BF16B08DE30065BFDE /* Developer */,
 				674BF6B915B7287A0093786D /* UserSlates */,
-				67BE04B916B06EFF0065BFDE /* Cdoc */,
 				671B546C16B1E610009C2B17 /* Xcode */,
 				67043DC516B7331400E43F90 /* BBEdit */,
 				67692457141EB921005D3E68 /* XcodeScripts */,
 				671C4823159CFF3800214A9E /* BBEditScripts */,
 				67364A7216C0362C00940D94 /* DeveloperScripts */,
-				673D581016B9CAF20001DFF2 /* Doxygen */,
 				67BDF868175967DC006C0B75 /* AllTests */,
 			);
 		};
@@ -1679,65 +1532,6 @@
 			};
 			name = Release;
 		};
-		673D581216B9CAF20001DFF2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUGGING_SYMBOLS = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		673D581316B9CAF20001DFF2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
 		674BF6C315B7287B0093786D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1932,65 +1726,6 @@
 			};
 			name = Release;
 		};
-		67BE04BB16B06EFF0065BFDE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUGGING_SYMBOLS = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		67BE04BC16B06EFF0065BFDE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
 		67BE04C116B08DE30065BFDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2089,15 +1824,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		673D581116B9CAF20001DFF2 /* Build configuration list for PBXLegacyTarget "Doxygen" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				673D581216B9CAF20001DFF2 /* Debug */,
-				673D581316B9CAF20001DFF2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		674BF6C515B7287B0093786D /* Build configuration list for PBXNativeTarget "UserSlates" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2130,15 +1856,6 @@
 			buildConfigurations = (
 				67BDF873175967DC006C0B75 /* Debug */,
 				67BDF874175967DC006C0B75 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		67BE04BA16B06EFF0065BFDE /* Build configuration list for PBXLegacyTarget "Cdoc" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				67BE04BB16B06EFF0065BFDE /* Debug */,
-				67BE04BC16B06EFF0065BFDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

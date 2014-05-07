@@ -344,7 +344,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li>Human-Edited Text Files<ul>
 		<li>These are the ideal type of file to use with version control system because:<ul>
 			<li>different versions of a file can easily be compared side-by-side, with differences highlighted</li>
-			<li>files are also stored by tracking only the differences, which allows storage of a lot of information in a compact form</li>	
+			<li>files are also stored by tracking only the differences, which allows storage of a lot of information in a compact form</li>
 		<li>Normally, all files of this type are versioned; we know of no exceptions at this time.</li>
 		</ul></li>
 	</ul></li>
@@ -381,10 +381,10 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li>the fact that text files in these packages are zipped is an inconvenience for source control that might or might not be worth the trouble to work around</li>
 	<li>one possible way to handle versioning for these files might be:<ul>
 		<li>"building" an iWork file would:<ul>
-		 	<li>create a sibling folder with the same base file name; copy PkgInfo, any .xml.gz files, and any graphics files with possible exclusions for thumbnails, to that folder</li>
-		 	<li>in the new folder, unzip any zipped files and remove their originals</li>
+			<li>create a sibling folder with the same base file name; copy PkgInfo, any .xml.gz files, and any graphics files with possible exclusions for thumbnails, to that folder</li>
+			<li>in the new folder, unzip any zipped files and remove their originals</li>
 		</ul></li>
-		<li>have the source control system ignore the iWork package but check in the sibling folder</li> 
+		<li>have the source control system ignore the iWork package but check in the sibling folder</li>
 		<li>"building" the sibling folder would reconstruct the iWork file</li>
 	</ul></li>
 </ul>
@@ -518,7 +518,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	</ul></li>
 </ul>
 </div>
-	
+
 <!-- "5 ==="-->
 <!-- @marker "Backup" -->
 <h2>Backup</h2>
@@ -561,9 +561,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li>by folder, with exclusions supported</li>
 	</ul></li>
 	<li class='blurb'>Scheduling and Incremental Backups <ul>
-		<li>Only incremental backups can be scheduled. Full backups must be run manually often enough to control space required 
-		by incremental backups. For many items, including many of the Quick Picks, incremental backups are not much smaller than 
-		the full backups on which they depend; however, all incremental backups since the last full backup must be saved.</li>
+		<li>Only incremental backups can be scheduled. Full backups must be run manually often enough to control space required by incremental backups. For many items, including many of the Quick Picks, incremental backups are not much smaller than the full backups on which they depend; however, all incremental backups since the last full backup must be saved.</li>
 	</ul></li>
 	<li><a name='BackupPlans'>Backup Plans</a> <ul>
 		<li>Personal Data &amp; Settings <ul>
@@ -715,7 +713,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 				<li>BBEdit: open file Collaborator/Collaborator.build; run from shebang menu</li>
 				<li>Terminal: build.uia to build Cdoc</li>
 			</ul></li>
- 		</ul></li>
+		</ul></li>
 		<li class='depr'><a href="Tools.html#DragonDictate">DragonDictate</a></li>
 		<li><a href="Tools.html#Doxygen_">Doxygen</a></li>
 		<li>Dev Projects: checkout and build remaining current projects</li>
@@ -843,7 +841,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li>TechnicalDocs: @~/Dev/&lt;ProjectName&gt;/Cdoc<ul>
 		<li>_tech: @~/Dev/Support/Cdoc</li>
 		<li>Legacy: @~/Dev/&lt;ProjectName&gt;/cdocsrc/Tech</li>
-	</ul></li>	
+	</ul></li>
 	<li>C &amp; C Software: @~/Dev/Support/Sites/CandC<ul>
 		<li>_pnkn: @~/Dev/Punkin/PunkinSite</li>
 		<li>_cnc: @~/Dev/Support/Sites/CandC</li>
@@ -856,7 +854,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li>site pages, _prsn: @~/Dev/Support/PersonalSite</li>
 		<li>generated pages: @~/Dev/WebGen/(Personal)Pages</li>
 	</ul></li>
-	<li>_comn: @~/Dev/Support/Sites</li>	
+	<li>_comn: @~/Dev/Support/Sites</li>
 </ul>
 
 <!-- @marker "Local and Installed Sites" -->
@@ -1084,7 +1082,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li class='blurb'>Apache can be stopped and restarted, is currently configured to start automatically; test with <span class='mono'>svn list http://192.168.0.104/svn/Test</span>; expected result on 3 lines: /branches /tags /trunk</li>
 	<li>Carol's computer; FW Strict: [apacheCouldNotConnect] from any computer tested including Carol's</li>
 	<li>Carol's computer FW Standard; Jim's FW Standard: works from Carol's or Jim's computer</li>
-	<li>Laura's computer; computer FW off, wifi FW probably on; [apacheCouldNotConnect]</li>	
+	<li>Laura's computer; computer FW off, wifi FW probably on; [apacheCouldNotConnect]</li>
 </ul>
 
 <h6>Observations</h6><ul>
@@ -1180,7 +1178,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 			<li>Safari http://192.168.0.104/~carolclark: [safariCcNotFound]</li>
 		</ul></li>
 		<li>server off / web sharing on is not a valid state, since Web Sharing activates the server</li>
-	</ul></li>		
+	</ul></li>
 	<li id='blockDocumentRoot'>Block Access to Document Root<ul>
 		<li>server and web sharing off<ul>
 			<li><span class='mono'>telnet 192.168.0.104 80</span>: [telnetNoConnection]</li>

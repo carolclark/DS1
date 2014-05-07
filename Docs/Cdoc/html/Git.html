@@ -1,4 +1,4 @@
-<!-- Git.html -->	
+<!-- Git.html -->
 <!-- Created by Carol Clark on 24 Aug 2011 for project Support. -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -298,7 +298,7 @@
 		<li><span class='mono'>git branch --no-merged</span>&nbsp;&nbsp;# check for unmerged branches</li>
 		<li><span class='mono'>git reflog [log options | with dates(custom)]</span>&nbsp;&nbsp;# show reflog</li>
 	</ul>
-	 
+
 <!-- @marker "Undo" -->
 <h4 id="tsk_Undo">Undo</h4><ul>
 	<li><span class='mono'>git checkout -- &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in index</li>
@@ -321,7 +321,7 @@
 	<!-- @topicItem "Add User to ProjectLocker Account" "#AddPLUser" "1" "" -->
 	<!-- @topicGroup "" "7" -->
 <!-- @/topicList -->
-		
+
 <!-- @marker "Create Bare Repository" -->
 <h4 id='tsk_CreateBareRepository'>Create Bare Repository</h4><ul>
 	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/gitrep/&lt;ProjectName&gt;; https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;Remote)</li>
@@ -335,7 +335,7 @@
 		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
 		<li><b>name:</b> &lt;ProjectName&gt;</li>
 		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
-	</ul></li>	
+	</ul></li>
 </ul>
 
 <!-- @marker "Create New Repository" -->
@@ -368,7 +368,7 @@
 	<li>on User's computer, login to user account</li>
 	<li>Terminal:<ul>
 		<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
-		<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>	
+		<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>
 	</ul></li>
 </ul>
 
@@ -395,7 +395,7 @@
 	<li>do not use squash merges; rebase only to rebase an existing branch on more current code <span class='dq'>or clean up a current, unmerged branch</span>; see <a href="http://paul.stadig.name/2010/12/thou-shalt-not-lie-git-rebase-ammend.html">Paul Stadig: Thou Shalt Not Lie</a></li>
 	<li class='dq'>sha/date marker: used in history and thread files to support matching history with repository<ul>
 		<li>Setting the sha/date marker replaces the clearly-visible (from source code) commit message and notes with the sha/date marker. A branch's sha/date is often updated from another branch.</li>
-		<li><span class='mono'>print "[$(cd /Users/carolclark/Dev/${proj}; git log -1 --pretty=format:'%h') $(date +%m/%d/20%y) &lt;placeholder&gt;]"</span></li>		
+		<li><span class='mono'>print "[$(cd /Users/carolclark/Dev/${proj}; git log -1 --pretty=format:'%h') $(date +%m/%d/20%y) &lt;placeholder&gt;]"</span></li>
 	</ul></li>
 </ul>
 
