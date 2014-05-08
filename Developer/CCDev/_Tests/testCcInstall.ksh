@@ -30,7 +30,7 @@ testCciGeneral() {
 	str=$(ccInstall --xxx)
 	assertEquals "$LINENO: incorrect return code for action param '--xxx': " $RC_InvalidArgument $?
 	assertNotNull "$LINENO: empty error string: " "${str}"
-	
+
 	str=$(ccInstall abc)
 	st=$?
 	assertEquals "$LINENO: expected result code RC_MissingArgument:" $RC_MissingArgument "${st}"
@@ -148,7 +148,7 @@ testFind() {
 	mkdir -p ${sourceRoot}/${targetFolder}/B
 	print "red" > "${sourceRoot}/${targetFolder}/B/red"
 	print "blue" > "${sourceRoot}/${targetFolder}/B/blue"
-	
+
 	ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 	fl=$(ccInstall --findTests)
 	st=$?
@@ -245,7 +245,7 @@ testRemoveFolder() {
 		fail "$LINENO: file ${fl} missing"
 	fi
 	if [[ ! -d "${fl}" ]] ; then
-		fail "$LINENO: file ${fl}: directory expected" 
+		fail "$LINENO: file ${fl}: directory expected"
 	fi
 
 	d1="${folder}/Corlan/Two"
@@ -283,7 +283,7 @@ testInstall() {
 	str=$(ccInstall a)
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument "${st}"
-	
+
 #	str=$(ccInstall cb a b abc)
 #	st=$?
 #	assertEquals "$LINENO: RC_SyntaxError expected" $RC_SyntaxError "${st}"

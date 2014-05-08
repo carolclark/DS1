@@ -101,9 +101,7 @@
 		6720A6331889D64900C4ED0A /* AppCode_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = AppCode_C9.r; sourceTree = "<group>"; };
 		67364A6D16C0345900940D94 /* FixWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = FixWindow.applescript; sourceTree = "<group>"; };
 		67364A7316C0362C00940D94 /* DeveloperScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeveloperScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
 		673F9BA918DA517F00E06A16 /* Server_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Server_C9.r; sourceTree = "<group>"; };
-		6741F2FB1743F2AB00F4FF6D /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
 		674791F318567B7500452FA5 /* ___FILEBASENAME___.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = "___FILEBASENAME___.py"; path = "PythonScript.xctemplate/___FILEBASENAME___.py"; sourceTree = "<group>"; };
 		674791F418567B7500452FA5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = PythonScript.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
 		674791F518567B7500452FA5 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TemplateInfo.plist; path = PythonScript.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 		67DB22E8169CD82300A6E910 /* UIBrower_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = UIBrower_C9.r; sourceTree = "<group>"; };
 		67DB22E9169CD82300A6E910 /* UMLet_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = UMLet_C9.r; sourceTree = "<group>"; };
 		67DB22EA169CD82300A6E910 /* Xcode_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Xcode_C9.r; sourceTree = "<group>"; };
-		67DB232A169E0A2900A6E910 /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
 		67DB232C169E0A2900A6E910 /* Snippet.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = Snippet.applescript; sourceTree = "<group>"; };
 		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
 		67DB233B169E0A2900A6E910 /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
@@ -270,7 +267,6 @@
 		67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckSyntax.applescript; sourceTree = "<group>"; };
 		67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBEdit_install.ksh; sourceTree = "<group>"; };
 		67DD777716A4D6A700BECCD5 /* snippets.dash */ = {isa = PBXFileReference; lastKnownFileType = file; path = snippets.dash; sourceTree = "<group>"; };
-		67E6ADF817384360005A30D0 /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
 		67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67FD0562182C330F00BAA1AF /* ghubUtil.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -462,10 +458,6 @@
 			isa = PBXGroup;
 			children = (
 				67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */,
-				67DB232A169E0A2900A6E910 /* testCcInstall.ksh */,
-				67E6ADF817384360005A30D0 /* testErrcc.ksh */,
-				6741F2FB1743F2AB00F4FF6D /* testArchive.ksh */,
-				673D580F16B9C7220001DFF2 /* testDoxygenInstall.ksh */,
 			);
 			path = _Tests;
 			sourceTree = "<group>";

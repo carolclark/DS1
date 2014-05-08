@@ -8,6 +8,14 @@
 
 /* Begin PBXFileReference section */
 		67B10DD2191C0AC4006D96BD /* testCCDevConfig.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testCCDevConfig.ksh; sourceTree = "<group>"; };
+		67B10DD5191C0EAB006D96BD /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
+		67B10DD6191C0EAB006D96BD /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
+		67B10DD7191C0EAB006D96BD /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
+		67B10DD8191C10B7006D96BD /* testArchive.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
+		67B10DD9191C1174006D96BD /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
+		67B10DDA191C1174006D96BD /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
+		67B10DDB191C1174006D96BD /* ghubUtil.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
+		67B10DDC191C1174006D96BD /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67CBDB7B191AF32000B8164A /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_install.ksh; sourceTree = "<group>"; };
 		67CBDB7E191AF4E400B8164A /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67CBDB7F191AF4E400B8164A /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
@@ -20,6 +28,10 @@
 		67B10DD1191C0AC4006D96BD /* _Tests */ = {
 			isa = PBXGroup;
 			children = (
+				67B10DD8191C10B7006D96BD /* testArchive.ksh */,
+				67B10DD5191C0EAB006D96BD /* testCcInstall.ksh */,
+				67B10DD6191C0EAB006D96BD /* testDoxygenInstall.ksh */,
+				67B10DD7191C0EAB006D96BD /* testErrcc.ksh */,
 				67B10DD2191C0AC4006D96BD /* testCCDevConfig.ksh */,
 			);
 			name = _Tests;
@@ -47,6 +59,10 @@
 		67CBDB7D191AF4E400B8164A /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				67B10DD9191C1174006D96BD /* archive.ksh */,
+				67B10DDA191C1174006D96BD /* ccBackup.ksh */,
+				67B10DDB191C1174006D96BD /* ghubUtil.ksh */,
+				67B10DDC191C1174006D96BD /* trapSigDemo.ksh */,
 				67CBDB7E191AF4E400B8164A /* ccInstall.ksh */,
 				67CBDB7F191AF4E400B8164A /* errcc.ksh */,
 				67CBDB80191AF4E400B8164A /* execInstallScript.ksh */,
