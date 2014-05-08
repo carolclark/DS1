@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>346</string>
+	<string>381</string>
 	<key>AMApplicationVersion</key>
-	<string>2.3</string>
+	<string>2.4</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -51,14 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}		set accessorPath to "Users:carolclark:Applications:Accessor.app"	tell application accessorPath to activate	end run</string>
-				</dict>
-				<key>ActionRuntimeParameters</key>
-				<dict>
-					<key>source</key>
-					<string>on run {input, parameters}		set accessorPath to "Users:carolclark:Applications:Accessor.app"	tell application accessorPath to activate	end run</string>
-					<key>temporary items path</key>
-					<string>/var/folders/35/xjsqq05d7lb9hrkqq5yd4kth0000gn/T/2AD7E9B2-F612-46DA-A6C9-FB2D8153A24A/1/com.apple.Automator.RunScript</string>
+					<string>on run {input, parameters}	set accessorPath to "Users:carolclark:Applications:Accessor.app"	tell application accessorPath to activateend run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -112,7 +105,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>398.500000:630.000000</string>
+				<string>398.500000:780.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>

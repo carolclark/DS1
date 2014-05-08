@@ -23,7 +23,7 @@ CCDev="${HOME}/Library/CCDev"
 
 # setup and configure if necessary
 typeset -i buildIsClean					# > 0 if clean
-if [[ -e "${CCDev}/build/Support/Developer/CCDev.lastbuilt" ]] ; then
+if [[ -e "${CCDev}/build_output/Support/Developer/CCDev.lastbuilt" ]] ; then
 	buildIsClean=0
 else
 	buildIsClean=1
@@ -31,7 +31,7 @@ fi
 if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
 		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
-			print "== clean skipped: target Developer has already been cleaned"
+			print "== clean skipped: target CCDev has already been cleaned"
 			return
 		fi
 	else												# not a clean action
@@ -143,7 +143,7 @@ function cleanTarget {
 	if [[ ${buildIsClean} > 0 ]] ; then
 		return
 	fi
-	for folder in "${applescriptsFolder}"  "${scriptsFolder}"; do
+	for folder in "${servicesFolder}" "${applescriptsFolder}"  "${scriptsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
