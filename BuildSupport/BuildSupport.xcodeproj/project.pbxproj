@@ -119,7 +119,6 @@
 		676C9304179F326200876265 /* GitHub_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = GitHub_C9.r; sourceTree = "<group>"; };
 		676C9306179F478A00876265 /* GitHub_C9.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitHub_C9.h; sourceTree = "<group>"; };
 		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
-		6777600B1808AE3200A8FA5A /* execInstallScript.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = execInstallScript.ksh; sourceTree = "<group>"; };
 		6787406F17C02189000190D4 /* Developer_C9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Developer_C9.h; sourceTree = "<group>"; };
 		6787407217C02602000190D4 /* Developer_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Developer_C9.r; sourceTree = "<group>"; };
 		67BDF869175967DC006C0B75 /* AllTests.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTests.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +160,6 @@
 		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
 		67DB233B169E0A2900A6E910 /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
 		67DB233D169E0A2900A6E910 /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
-		67DB2340169E0A2900A6E910 /* resultCodes.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = resultCodes.ksh; sourceTree = "<group>"; };
 		67DB2344169E0A2900A6E910 /* gen_test_results.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gen_test_results.sh; sourceTree = "<group>"; };
 		67DB2345169E0A2900A6E910 /* which */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = which; sourceTree = "<group>"; };
 		67DB2347169E0A2900A6E910 /* CHANGES-2.1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CHANGES-2.1.txt"; sourceTree = "<group>"; };
@@ -199,9 +197,6 @@
 		67DB236A169E0A2900A6E910 /* shunit2_test_macros.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_macros.sh; sourceTree = "<group>"; };
 		67DB236B169E0A2900A6E910 /* shunit2_test_misc.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_misc.sh; sourceTree = "<group>"; };
 		67DB236C169E0A2900A6E910 /* shunit2_test_standalone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_standalone.sh; sourceTree = "<group>"; };
-		67DB240A16A1CBE500A6E910 /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_install.ksh; sourceTree = "<group>"; };
-		67DB240B16A1CBE500A6E910 /* CCDevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDevConfig.ksh; sourceTree = "<group>"; };
-		67DB240C16A1CBF900A6E910 /* testDeveloper_Setup.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testDeveloper_Setup.ksh; sourceTree = "<group>"; };
 		67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testDeveloper.ksh; sourceTree = "<group>"; };
 		67DD76CE16A4AF9300BECCD5 /* testXcode.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = testXcode.ksh; sourceTree = "<group>"; };
 		67DD76D016A4AF9300BECCD5 /* frontWindow.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = frontWindow.applescript; sourceTree = "<group>"; };
@@ -275,9 +270,7 @@
 		67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckSyntax.applescript; sourceTree = "<group>"; };
 		67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBEdit_install.ksh; sourceTree = "<group>"; };
 		67DD777716A4D6A700BECCD5 /* snippets.dash */ = {isa = PBXFileReference; lastKnownFileType = file; path = snippets.dash; sourceTree = "<group>"; };
-		67E1DD0317346C60009FC377 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
 		67E6ADF817384360005A30D0 /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
-		67E6AE1E173D97C3005A30D0 /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
 		67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67FD0562182C330F00BAA1AF /* ghubUtil.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -455,8 +448,6 @@
 		67DB2326169E0A2900A6E910 /* 2 Developer */ = {
 			isa = PBXGroup;
 			children = (
-				67DB240A16A1CBE500A6E910 /* CCDev_install.ksh */,
-				67DB240B16A1CBE500A6E910 /* CCDevConfig.ksh */,
 				67DB2327169E0A2900A6E910 /* _Tests */,
 				67DB232B169E0A2900A6E910 /* AppleScripts */,
 				67DB233A169E0A2900A6E910 /* 3 Scripts */,
@@ -470,7 +461,6 @@
 		67DB2327169E0A2900A6E910 /* _Tests */ = {
 			isa = PBXGroup;
 			children = (
-				67DB240C16A1CBF900A6E910 /* testDeveloper_Setup.ksh */,
 				67DB240D16A1CBF900A6E910 /* testDeveloper.ksh */,
 				67DB232A169E0A2900A6E910 /* testCcInstall.ksh */,
 				67E6ADF817384360005A30D0 /* testErrcc.ksh */,
@@ -493,13 +483,9 @@
 		67DB233A169E0A2900A6E910 /* 3 Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				67E1DD0317346C60009FC377 /* ccInstall.ksh */,
 				67DB233B169E0A2900A6E910 /* archive.ksh */,
 				67DB233D169E0A2900A6E910 /* ccBackup.ksh */,
-				67DB2340169E0A2900A6E910 /* resultCodes.ksh */,
-				67E6AE1E173D97C3005A30D0 /* errcc.ksh */,
 				67E6AE28173DB9F7005A30D0 /* trapSigDemo.ksh */,
-				6777600B1808AE3200A8FA5A /* execInstallScript.ksh */,
 				67FD0562182C330F00BAA1AF /* ghubUtil.ksh */,
 			);
 			name = "3 Scripts";

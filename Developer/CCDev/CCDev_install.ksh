@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  Developer_install.ksh
+#  CCDev_install.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
@@ -23,7 +23,7 @@ CCDev="${HOME}/Library/CCDev"
 
 # setup and configure if necessary
 typeset -i buildIsClean					# > 0 if clean
-if [[ -e "${CCDev}/build/Support/BuildSupport/Developer.lastbuilt" ]] ; then
+if [[ -e "${CCDev}/build/Support/Developer/CCDev.lastbuilt" ]] ; then
 	buildIsClean=0
 else
 	buildIsClean=1
@@ -37,7 +37,7 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	else												# not a clean action
 		# installing
 		print -n "== Setup and Configure: "
-		. Developer/Developer_Setup.ksh
+		. CCDev/CCDevConfig.ksh
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
@@ -82,13 +82,13 @@ function getSubtargetDestination {
 			;;
 		"Doxygen" )				# files for reference only
 			;&
-		"plist" )				# used by Xcode build system for Developer_Setup.ksh
+		"plist" )				# used by Xcode build system for CCDevConfig.ksh
 			;&
-		"Developer_Setup.ksh" )	# custom setup script Developer_Setup.ksh
+		"CCDevConfig.ksh" )		# custom setup script CCDevConfig.ksh
 			;&
-		"ThirdParty" )			# handled by Developer_Setup.ksh
+		"ThirdParty" )			# handled by CCDevConfig.ksh
 			;&
-		"Environment" )			# handled by Developer_Setup.ksh
+		"Environment" )			# handled by CCDevConfig.ksh
 			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
@@ -117,7 +117,7 @@ function prepareFileOperation {
 			else
 				fname="${filepath%.applescript}.scpt"
 				action="copy"
-				sourceForCopy="${CCDev}/build/Support/BuildSupport/Developer/DeveloperScripts.bundle/Contents/Resources/${fname}"
+				sourceForCopy="${CCDev}/build/Support/Developer/CCDev/DeveloperScripts.bundle/Contents/Resources/${fname}"
 				destinationForCopy="${destinationFolder}/${fname}"
 			fi
 		else
