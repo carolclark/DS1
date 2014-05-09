@@ -43,7 +43,7 @@ function processFolder {
 		print "*** could not write file list"
 		return 1
 	fi
-	
+
 	while read fl ; do
 		print -n "${fl}: "
 		fl="${fl:?*** missing filename}"
@@ -106,13 +106,13 @@ function processCustomFolder {
 	if [[ -n "${msg}" ]] ; then
 		print "*** ${msg}"
 		exit 1
-	fi	
+	fi
 
 # set up
 	destination="${dstvol}/ccBackup"
 	mkdir -p "${destination}/tmp"
 	flist="${destination}/tmp/flist"
-	
+
 	set -A filesGeneral "Library/Application Support/AddressBook" "Library/Preferences" "Library/Keychains" "Library/Calendars" "Documents"
 	set -A filesMail "Library/Mail"
 	set -A filesMedia "Library/iTunes" "Music" "Movies" "Pictures"
@@ -187,7 +187,7 @@ function processCustomFolder {
 				for rep in $(ls "$folder") ; do
 					print -n "Dev/svnrep/${rep}: "
 					dst="${target}/${rep}"
-					mkdir -p "${dst}"		
+					mkdir -p "${dst}"
 					svnadmin hotcopy "${folder}/${rep}" "${dst}"
 					if [[ ${?} > 0 ]] ; then
 						print "*** processing of subversion repository ${rep} failed"
@@ -260,7 +260,7 @@ function processCustomFolder {
 		print "*** processing of custom folder ${fldr} failed"
 		exit 1
 	fi
-	
+
 	# Laura's custom folders
 	processCustomFolder "Library/Application Support/Adobe"
 	if [[ ${?} > 0 ]] ; then

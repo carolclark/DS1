@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 USAGE='
-CCDev_install.ksh -- provide functions for ccInstall to support CCDev installation
+Developer_install.ksh -- provide functions for ccInstall to support Developer installation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--prepareFileOperation subtarget filepath destinationFolder
@@ -23,7 +23,7 @@ CCDev="${HOME}/Library/CCDev"
 
 # setup and configure if necessary
 typeset -i buildIsClean					# > 0 if clean
-if [[ -e "${CCDev}/build/Support/BuildSupport/Developer.lastbuilt" ]] ; then
+if [[ -e "${CCDev}/build_output/Support/Developer/Developer.lastbuilt" ]] ; then
 	buildIsClean=0
 else
 	buildIsClean=1
@@ -37,7 +37,7 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	else												# not a clean action
 		# installing
 		print -n "== Setup and Configure: "
-		. Developer/Developer_Setup.ksh
+		. Developer/DevConfig.ksh
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
@@ -82,13 +82,13 @@ function getSubtargetDestination {
 			;;
 		"Doxygen" )				# files for reference only
 			;&
-		"plist" )				# used by Xcode build system for Developer_Setup.ksh
+		"plist" )				# used by Xcode build system for DevConfig.ksh
 			;&
-		"Developer_Setup.ksh" )	# custom setup script Developer_Setup.ksh
+		"DevConfig.ksh" )		# custom setup script DevConfig.ksh
 			;&
-		"ThirdParty" )			# handled by Developer_Setup.ksh
+		"ThirdParty" )			# handled by DevConfig.ksh
 			;&
-		"Environment" )			# handled by Developer_Setup.ksh
+		"Environment" )			# handled by DevConfig.ksh
 			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
@@ -117,7 +117,7 @@ function prepareFileOperation {
 			else
 				fname="${filepath%.applescript}.scpt"
 				action="copy"
-				sourceForCopy="${CCDev}/build/Support/BuildSupport/Developer/DeveloperScripts.bundle/Contents/Resources/${fname}"
+				sourceForCopy="${CCDev}/build/Support/Developer/Developer/AppleScripts.bundle/Contents/Resources/${fname}"
 				destinationForCopy="${destinationFolder}/${fname}"
 			fi
 		else
@@ -143,7 +143,7 @@ function cleanTarget {
 	if [[ ${buildIsClean} > 0 ]] ; then
 		return
 	fi
-	for folder in "${applescriptsFolder}"  "${scriptsFolder}"; do
+	for folder in "${servicesFolder}" "${applescriptsFolder}"  "${scriptsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then

@@ -1,6 +1,6 @@
 #! /bin/ksh
 
-#  Developer_Setup.ksh
+#  DevConfig.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/18/11.
@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 USAGE='
-# Developer_Setup.ksh -- set up and configure C & C Software development environment
+# DevConfig.ksh -- set up and configure C & C Software development environment
 '
 
 CCDev="${HOME}/Library/CCDev"
@@ -174,7 +174,7 @@ function shunitInstall {
 			print "failure while installing shunit"
 			exit 1
 		fi
-	done	
+	done
 }
 
 #^	removeFileIfPresent
@@ -259,7 +259,7 @@ if [[ "${?}" != "0" ]] ; then
 fi
 
 if [[ "${USER}" = "carolclark" ]] ; then
-	print "configuring XCCodeSenseAllowAutoCompletionInPlainFiles"	
+	print "configuring XCCodeSenseAllowAutoCompletionInPlainFiles"
 	defaults write com.apple.Xcode XCCodeSenseAllowAutoCompletionInPlainFiles YES
 	if [[ "${?}" != "0" ]] ; then
 		print "failed to write XCCodeSenseAllowAutoCompletionInPlainFiles"
@@ -284,8 +284,8 @@ install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScrip
 shunitInstall
 
 # test
-print "== Developer/_Tests/testDeveloper_Setup.ksh"
-result=$(Developer/_Tests/testDeveloper_Setup.ksh)
+print "== Developer/_Tests/testDevConfig.ksh"
+result=$(Developer/_Tests/testDevConfig.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi

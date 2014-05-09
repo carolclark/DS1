@@ -39,7 +39,7 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicGroup "" "12" -->
 		<!-- @topicItem "Unix" "#tp_Unix" "0" "" -->
 		<!-- @topicItem "Tools for Compiled Code" "#tp_CompileTools" "0" "" -->
-	<!-- @topicItem "Support Targets" "#Targets" "0" "" -->
+	<!-- @topicItem "Support Projects" "#_Projects" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Related Project Files" "17" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
@@ -1315,31 +1315,76 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li>reference file Xcode &gt; Defaults.doxygen describes available options</li>
 </ul>
 
-<!-- @marker "9 === Support Targets" -->
-<h2>SupportTargets</h2>
-<!-- @topicList "Support Targets" "Targets" -->
-	<!-- @topicItem "Developer_Setup" "#tar_Developer_Setup" "0" "" -->
-	<!-- @topicItem "CCDev" "#tar_CCDev" "0" "" -->
-	<!-- @topicItem "Xcode" "#tar_Xcode" "0" "" -->
+<!-- @marker "9 === Support Projects" -->
+<h2>Support Projects</h2>
+<!-- @topicList "Support Projects" "_Projects" -->
+	<!-- @topicItem "Docs" "#proj_Docs" "0" "" -->
+	<!-- @topicItem "Developer" "#proj_Developer" "0" "" -->
+	<!-- @topicItem "Xcode" "#proj_Xcode" "0" "" -->
 <!-- @/topicList -->
+<p>Targets shown in parentheses below do not normally appear in the Targets menus.</p>
 
-<!-- @marker "Developer_Setup" -->
-<h4 id="tar_Developer_Setup">Developer_Setup</h4>
-<p>Developer_Setup.ksh is a Unix script that sets up our development environment. Script is run prior to attempting to build any other targets or do other development work. It can be run from Terminal or by building Xcode target Support:Devekioer_Setup.</p>
-<p>Developer_Setup is available to collaborators. Script sets up basic environment including git support, installs additional environment files, third-party tools, and starter scripts required for targets to build and test.</p>
-<p>Normally, Developer_Setup is run once only, with subsequent maintenance as files change handled by Developer_install. Developer_Setup does not avoid overwriting existing files.</p>
-	<h5>Notes</h5>
-	<h6 id='ReferenceFiles'>Reference Files</h6>
-		<p>Reference Files are read-only copies of external files, usually from another repository, that are included in a workspace for reference. Reference filenames are prefixed with "_rf_" to allow git to ignore them.</p><ul class='blurb'>
-			<li>Files not included in a workspace cannot be displayed by Assistant.</li>
-			<li>References to external files can be placed in a workspace. However, then Xcode knows about them and tries to support git operations with their projects, which makes Merge, at least, more complicated and much more error-prone.</li>
-		</ul>
-<!-- @marker "CCDev" -->
-<h4 id="tar_CCDev">CCDev</h4>
-<p>General C &amp; C Software developer and automation support</p>
+<!-- @marker "Docs" -->
+<h4 id='proj_Docs'>Docs</h4><ul>
+	<li class='blurb'>contains documentation projects and files</li>
+	<li class='blurb'>a project like this is included in each repository / workspace</li>
+	<li class='blurb'>in addition to the targets listed below, is for OtherDocuments and Images are provided</li>
+	<li>Targets<ul>
+		<li>Cdoc<ul>
+			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target</li>
+			<li>installs technical documentation at ${HOME}/Library/CCDev/Sites/TechnicalDocs</li>
+		</ul></li>
+		<li>Doxygen<ul>
+			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target</li>
+			<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/Doxygen</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Developer" -->
+<h4 id="proj_Developer">Developer</h4><ul>
+	<li>general C &amp; C Software developer and automation support</li>
+	<li>Targets<ul>
+		<li>DevConfig<ul>
+			<li class='blurb'>handles environment configuration; must be built before any other targets are built</li>
+			<li>run script target (Developer/DevConfig.ksh)</li>
+			<li>DevConfig.ksh<ul>
+				<li>Unix script that sets up our development environment. Script is run prior to attempting to build any other targets or do other development work. It is run by target Support:Developer, or can be run from Terminal.</li>
+				<li>DevConfig.ksh sets up basic environment including git support, installs additional environment files, third-party tool shunit, and starter scripts required for targets to build and test</li>
+			</ul></li>
+		</ul></li>
+		<li>Developer<ul>
+			<li class='blurb'>top-level build target</li>
+			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target</li>
+			<li>depends on targets DevConfig, AppleScripts</li>
+		</ul></li>
+		<li>AllTests<ul>
+			<li class='blurb'>DeveloperTests, DevConfigTests, PythonTests, <span class='expand'>AppleScriptTests</span></li>
+		</ul></li>
+		<li>(AppleScripts)<ul>
+			<li class='blurb'>compiles AppleScripts</li>
+			<li><a href="DevelopingProjects.html#AddBuildScriptTarget">Build Script Target</a><ul>
+				<li>precompiles scripts from Developer/AppleScripts into target's bundle; Developer_install.ksh then installs them from bundle</li>
+			</ul></li>
+		</ul></li>
+		<li>(DevConfigTests)<ul>
+			<li class='blurb'>test target for _Tests/DevConfigTests</li>
+			<li>...</li>
+		</ul></li>
+		<li>(DeveloperTests)<ul>
+			<li class='blurb'>runs Developer tests from folder _Tests, as well as DevConfigTests, PythonTests, <span class='expand'>AppleScriptTests</span></li>
+			<li>...</li>
+		</ul></li>
+		<li>(PythonTests)<ul>
+			<li class='blurb'>test target for DeveloperConfig script</li>
+			<li>Run Script target with script <span class='mono'>python -m unittest discover --start-directory ${HOME}/Library/CCDev/bin/python</span></li>
+			<li>...</li>
+		</ul></li>
+	</ul></li>
+</ul>
 
 <!-- @marker "Xcode" -->
-<h4 id="tar_Xcode">Xcode</h4>
+<h4 id="proj_Xcode">Xcode</h4>
 <p>Xcode developer and automation support</p>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

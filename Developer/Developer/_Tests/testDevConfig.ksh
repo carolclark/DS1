@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  testDeveloper_Setup.ksh
+#  testDevConfig.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/19/11.
@@ -13,13 +13,13 @@ CCDev="${HOME}/Library/CCDev"
 testEnvironment() {
 	assertEquals "$LINENO: incorrect '${CCDev}'" "${CCDev}" "${HOME}/Library/CCDev"
 	if [[ ! -e ${CCDev}/tmp ]] ; then
-		fail "$LINENO: file ${CCDev}/tmp missing" 
+		fail "$LINENO: file ${CCDev}/tmp missing"
 	fi
 	if [[ ! -e ${HOME}/.profile ]] ; then
-		fail "$LINENO: file .profile missing" 
+		fail "$LINENO: file .profile missing"
 	fi
 	if [[ ! -e ${CCDev}/bin/.kshrc ]] ; then
-		fail "$LINENO: file .kshrc missing" 
+		fail "$LINENO: file .kshrc missing"
 	fi
 }
 
@@ -46,7 +46,7 @@ testScripts() {
 
 testThirdParty() {
 	if [[ ! -e $(ccInstall --SHUnit) ]] ; then
-		fail "$LINENO: shunit2 binary missing" 
+		fail "$LINENO: shunit2 binary missing"
 	fi
 }
 
