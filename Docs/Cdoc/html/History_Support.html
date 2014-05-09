@@ -57,6 +57,8 @@
 					* install and test CCDevConfig
 					* install &amp; test remaining shell scripts
 					* install Services, ThirdParty (shunit)
+					* rename target and folder CCDev to Developer, files CCDev_install.ksh to Developer_install.ksh, CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
+					* Support/Developer: PythonTests (from CCDevPy; built by CCDev)
 			* Support: Python (from CCDevPy; built by CCDev)
 		* Application Support
 			* Applications/BBEdit
@@ -783,8 +785,8 @@
 			</ul></li>
 		</ul></li>
 		<li>[refactorInstall] refactor Xcode.install to enable extension for other targets<ul>
-			<li>Support: add reference files for CCDev; see <a href="Support.html#ReferenceFiles">Support: Reference Files</a></li>
-			<li>target <a href="Support.html#tar_Developer_Setup">Developer_Setup</a>; script CCDev_Setup.ksh<ul>
+			<li>Support: add reference files for CCDev; see Support: Reference Files</li>
+			<li>target Developer_Setup; script CCDev_Setup.ksh<ul>
 				<li>new file CCDev_Setup.ksh based on code from Support_svn:CCDev.build and Punkin_svn:Collaborator.build</li>
 				<li>add File Template Scripting/shunitTest</li>
 				<li>add CCDev/_Tests/testCCDev_Setup.ksh; run from CCDev_Setup.ksh</li>

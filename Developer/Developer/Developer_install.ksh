@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  CCDev_install.ksh
+#  Developer_install.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 USAGE='
-CCDev_install.ksh -- provide functions for ccInstall to support CCDev installation
+Developer_install.ksh -- provide functions for ccInstall to support Developer installation
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--prepareFileOperation subtarget filepath destinationFolder
@@ -23,7 +23,7 @@ CCDev="${HOME}/Library/CCDev"
 
 # setup and configure if necessary
 typeset -i buildIsClean					# > 0 if clean
-if [[ -e "${CCDev}/build_output/Support/Developer/CCDev.lastbuilt" ]] ; then
+if [[ -e "${CCDev}/build_output/Support/Developer/Developer.lastbuilt" ]] ; then
 	buildIsClean=0
 else
 	buildIsClean=1
@@ -31,13 +31,13 @@ fi
 if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
 		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
-			print "== clean skipped: target CCDev has already been cleaned"
+			print "== clean skipped: target Developer has already been cleaned"
 			return
 		fi
 	else												# not a clean action
 		# installing
 		print -n "== Setup and Configure: "
-		. CCDev/CCDevConfig.ksh
+		. Developer/DevConfig.ksh
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
@@ -82,13 +82,13 @@ function getSubtargetDestination {
 			;;
 		"Doxygen" )				# files for reference only
 			;&
-		"plist" )				# used by Xcode build system for CCDevConfig.ksh
+		"plist" )				# used by Xcode build system for DevConfig.ksh
 			;&
-		"CCDevConfig.ksh" )		# custom setup script CCDevConfig.ksh
+		"DevConfig.ksh" )		# custom setup script DevConfig.ksh
 			;&
-		"ThirdParty" )			# handled by CCDevConfig.ksh
+		"ThirdParty" )			# handled by DevConfig.ksh
 			;&
-		"Environment" )			# handled by CCDevConfig.ksh
+		"Environment" )			# handled by DevConfig.ksh
 			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
@@ -117,7 +117,7 @@ function prepareFileOperation {
 			else
 				fname="${filepath%.applescript}.scpt"
 				action="copy"
-				sourceForCopy="${CCDev}/build/Support/Developer/CCDev/DeveloperScripts.bundle/Contents/Resources/${fname}"
+				sourceForCopy="${CCDev}/build/Support/Developer/Developer/AppleScripts.bundle/Contents/Resources/${fname}"
 				destinationForCopy="${destinationFolder}/${fname}"
 			fi
 		else

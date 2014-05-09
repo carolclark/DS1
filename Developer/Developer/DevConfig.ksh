@@ -1,6 +1,6 @@
 #! /bin/ksh
 
-#  CCDevConfig.ksh
+#  DevConfig.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/18/11.
@@ -8,7 +8,7 @@
 #  Confidential and Proprietary.
 
 USAGE='
-# CCDevConfig.ksh -- set up and configure C & C Software development environment
+# DevConfig.ksh -- set up and configure C & C Software development environment
 '
 
 CCDev="${HOME}/Library/CCDev"
@@ -284,8 +284,8 @@ install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScrip
 shunitInstall
 
 # test
-print "== CCDev/_Tests/testCCDevConfig.ksh"
-result=$(CCDev/_Tests/testCCDevConfig.ksh)
+print "== Developer/_Tests/testDevConfig.ksh"
+result=$(Developer/_Tests/testDevConfig.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi

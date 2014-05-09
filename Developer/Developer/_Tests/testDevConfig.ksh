@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  testDeveloper_Setup.ksh
+#  testDevConfig.ksh
 #  Support
 #
 #  Created by Carol Clark on 10/19/11.
