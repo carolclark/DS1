@@ -214,6 +214,7 @@
 	* *ccInstall is an in-house script for installing groups of files*
 	* *ccInstall is normally called by a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
 		* *variants for Doxygen and Cdoc documentation are provided*
+	<h6>Target &lt;TargetName&gt;</h6>
 	* add External Build System target &lt;TargetName&gt; with configuration:
 		* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
 		* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
@@ -222,7 +223,18 @@
 	* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template
 		* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
 		* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
-	* add new Xcode group from folder &lt;TargetName&gt;; do not add to any target
+	<h6>Target &lt;TargetName&gt;Tests</h6>
+	* add External Build System target &lt;TargetName&gt;Tests with configuration:
+		* script: TARGET_TESTED=""; &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh
+		* arguments: "${SRCROOT}" &lt;TargetName&gt; -t
+		* directory: "None"
+		* Pass Build Settings in Environment: NO
+	* move file ContentInfo.plist to &lt;TargetName&gt;/plist;
+	* in Xcode
+		* add new Xcode group from folder &lt;TargetName&gt;; do not add to any target
+		* update plist Build Settings pointer to match new location
+		* remove group &lt;TargetName&gt;Tests; add folder plist to group &lt;TargetName&gt;; see <a href="DevelopingProjects.html#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+		* add shunit test files in folder _Tests
 </pre>
 
 

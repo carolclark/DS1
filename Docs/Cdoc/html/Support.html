@@ -1345,38 +1345,32 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h4 id="proj_Developer">Developer</h4><ul>
 	<li>general C &amp; C Software developer and automation support</li>
 	<li>Targets<ul>
-		<li>DevConfig<ul>
-			<li class='blurb'>handles environment configuration; must be built before any other targets are built</li>
-			<li>run script target (Developer/DevConfig.ksh)</li>
-			<li>DevConfig.ksh<ul>
-				<li>Unix script that sets up our development environment. Script is run prior to attempting to build any other targets or do other development work. It is run by target Support:Developer, or can be run from Terminal.</li>
-				<li>DevConfig.ksh sets up basic environment including git support, installs additional environment files, third-party tool shunit, and starter scripts required for targets to build and test</li>
+		<li>DeveloperAll<ul>
+			<li class='blurb'>top-level build target; builds and tests all Developer support items</li>
+			<li>Aggregate target: Developer; DeveloperTests<ul>
+				<li>DeveloperAll is normally the only target visible from Xcode; DeveloperTests is also used directly for continuous integration</li>
 			</ul></li>
 		</ul></li>
 		<li>Developer<ul>
-			<li class='blurb'>top-level build target</li>
-			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target</li>
-			<li>depends on targets DevConfig, AppleScripts</li>
-		</ul></li>
-		<li>AllTests<ul>
-			<li class='blurb'>DeveloperTests, DevConfigTests, PythonTests, <span class='expand'>AppleScriptTests</span></li>
-		</ul></li>
-		<li>(AppleScripts)<ul>
-			<li class='blurb'>compiles AppleScripts</li>
-			<li><a href="DevelopingProjects.html#AddBuildScriptTarget">Build Script Target</a><ul>
-				<li>precompiles scripts from Developer/AppleScripts into target's bundle; Developer_install.ksh then installs them from bundle</li>
+			<li class='blurb'>installs Developer scripts and related items for use</li>
+			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target; depends on target AppleScripts/li>
+			<li>DevConfig.ksh<ul>
+				<li>Unix script that sets up our development environment. Script is run at the beginning of execution of Developer_install.ksh, or can be run from Terminal.</li>
+				<li>DevConfig.ksh sets up basic environment including git support, installs additional environment files, third-party tool shunit, and starter scripts required for targets to build and test</li>
 			</ul></li>
 		</ul></li>
-		<li>(DevConfigTests)<ul>
-			<li class='blurb'>test target for _Tests/DevConfigTests</li>
+		<li>AppleScripts<ul>
+			<li class='blurb'>compiles AppleScripts</li>
+			<li><a href="DevelopingProjects.html#AddBuildScriptTarget">Build Script Target</a><ul>
+				<li>precompiles scripts from Developer/AppleScripts into target's bundle; Developer_install.ksh then installs them from that bundle</li>
+			</ul></li>
+		</ul></li>
+		<li>DeveloperTests<ul>
+			<li class='blurb'>runs: Developer shunit tests from folder _Tests; PythonTests; <span class='expand'>AppleScriptTests</span></li>
 			<li>...</li>
 		</ul></li>
-		<li>(DeveloperTests)<ul>
-			<li class='blurb'>runs Developer tests from folder _Tests, as well as DevConfigTests, PythonTests, <span class='expand'>AppleScriptTests</span></li>
-			<li>...</li>
-		</ul></li>
-		<li>(PythonTests)<ul>
-			<li class='blurb'>test target for DeveloperConfig script</li>
+		<li>PythonTests<ul>
+			<li class='blurb'>test target for Developer python scripts</li>
 			<li>Run Script target with script <span class='mono'>python -m unittest discover --start-directory ${HOME}/Library/CCDev/bin/python</span></li>
 			<li>...</li>
 		</ul></li>
