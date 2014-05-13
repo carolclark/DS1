@@ -105,6 +105,7 @@
 	<!-- @topicGroup "Create Other Targets" "9" -->
 		<!-- @topicItem "Add Docs Project" "#AddDocsProject" "0" "" -->
 		<!-- @topicItem "Add ccInstall Target" "#AddCcInstallTarget" "0" "" -->
+		<!-- @topicItem "Add Cocoa Test Bundle Target" "#AddCocoaTestBundleTarget" "0" "" -->
 		<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
 		<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 		<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
@@ -210,7 +211,7 @@
 </ul>
 
 <!-- @marker "Add ccInstall Target" -->
-<h4 id='AddCcInstallTarget'>Add ccInstall Target</h4><pre>
+<h4 id='AddCcInstallTarget'>Add ccInstall Target with Tests</h4><pre>
 	* *ccInstall is an in-house script for installing groups of files*
 	* *ccInstall is normally called by a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
 		* *variants for Doxygen and Cdoc documentation are provided*
@@ -224,19 +225,30 @@
 		* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
 		* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
 	<h6>Target &lt;TargetName&gt;Tests</h6>
-	* add External Build System target &lt;TargetName&gt;Tests with configuration:
-		* script: TARGET_TESTED=""; &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh
-		* arguments: "${SRCROOT}" &lt;TargetName&gt; -t
-		* directory: "None"
-		* Pass Build Settings in Environment: NO
-	* move file ContentInfo.plist to &lt;TargetName&gt;/plist;
-	* in Xcode
-		* add new Xcode group from folder &lt;TargetName&gt;; do not add to any target
-		* update plist Build Settings pointer to match new location
-		* remove group &lt;TargetName&gt;Tests; add folder plist to group &lt;TargetName&gt;; see <a href="DevelopingProjects.html#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
-		* add shunit test files in folder _Tests
 </pre>
 
+<!-- @marker "Add Cocoa Test Bundle Target" -->
+<h4 id='AddCocoaTestBundleTarget'>Add Cocoa Test Bundle Target</h4><pre>
+	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior, including Project &lt; Test menu item and Bots for continuous integration*
+	* add Cocoa Unit Testing Bundle target &lt;TargetName&gt;Tests
+	* reorganize files
+		* remove pch file, en.lproj folder
+		* rename required Cocoa tests file to RequiredCocoaTests.m
+		* rename folder &lt;TargetName&gt;Tests to CocoaTestBundle; move to folder &lt;TargetName&gt;
+		* Build Settings
+			* Precompile Prefix Header: no; remove Precompiled Header path
+			* remove en.lproj folder from Copy Build Sources build phase
+			* update path to Info.plist file
+		* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+		* edit RequiredCocoaTests.m
+			* replace file header with snippet
+			* use @import for XCTest
+			* remove setUp and tearDown methods
+			* replace test with <span class='mono'>- (void)testRequiredEmpty { }</span>
+	* add Run Script build phase: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t
+	* add shunit test files in folder &lt;TargetName&gt;/_Tests
+	* add &lt;TargetName&gt; as a dependency; add &lt;TargetName&gt;Tests as a test for scheme &lt;TargetName&gt;
+</pre>
 
 <!-- @marker "Add Build Script Target" -->
 <h4 id='AddBuildScriptTarget'>Add Build Script Target</h4><ul>

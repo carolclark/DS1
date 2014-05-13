@@ -34,6 +34,8 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 			print "== clean skipped: target Developer has already been cleaned"
 			return
 		fi
+	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action
+		break
 	else												# not a clean action
 		# installing
 		print -n "== Setup and Configure: "

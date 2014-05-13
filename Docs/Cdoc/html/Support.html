@@ -1345,15 +1345,11 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h4 id="proj_Developer">Developer</h4><ul>
 	<li>general C &amp; C Software developer and automation support</li>
 	<li>Targets<ul>
-		<li>DeveloperAll<ul>
-			<li class='blurb'>top-level build target; builds and tests all Developer support items</li>
-			<li>Aggregate target: Developer; DeveloperTests<ul>
-				<li>DeveloperAll is normally the only target visible from Xcode; DeveloperTests is also used directly for continuous integration</li>
-			</ul></li>
-		</ul></li>
 		<li>Developer<ul>
 			<li class='blurb'>installs Developer scripts and related items for use</li>
-			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target; depends on target AppleScripts/li>
+			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target; depends on target AppleScripts<ul>
+				<li>normally the only target visible from Xcode</li>
+			</ul></li>
 			<li>DevConfig.ksh<ul>
 				<li>Unix script that sets up our development environment. Script is run at the beginning of execution of Developer_install.ksh, or can be run from Terminal.</li>
 				<li>DevConfig.ksh sets up basic environment including git support, installs additional environment files, third-party tool shunit, and starter scripts required for targets to build and test</li>
@@ -1366,13 +1362,14 @@ This decision was made on the advice of Scott Clark, and has been working very w
 			</ul></li>
 		</ul></li>
 		<li>DeveloperTests<ul>
-			<li class='blurb'>runs: Developer shunit tests from folder _Tests; PythonTests; <span class='expand'>AppleScriptTests</span></li>
-			<li>...</li>
-		</ul></li>
-		<li>PythonTests<ul>
-			<li class='blurb'>test target for Developer python scripts</li>
-			<li>Run Script target with script <span class='mono'>python -m unittest discover --start-directory ${HOME}/Library/CCDev/bin/python</span></li>
-			<li>...</li>
+			<li class='blurb'>main test target; runs: Developer shunit tests from folder _Tests; PythonTests; <span class='expand'>AppleScriptTests</span></li>
+			<li><a href="DevelopingProjects.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
+				<li>Run Script build phases with ksh scripts:<ul>
+					<li>shunit tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
+					<li>python tests on installed python scripts: <span class='mono'><span class='mono'>python -m unittest discover --start-directory ${HOME}/Library/CCDev/bin/python</span></span></li>
+				</ul></li>
+				<li>depends on Developer; Developer scheme set to DeveloperTests</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -1386,7 +1383,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-14 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>
