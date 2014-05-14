@@ -44,7 +44,7 @@ testCciGetActions() {
 	ccInstall --getActions result "${sourceRoot}" "${targetFolder}"
 	st=$?
 	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect default action string: " "it" "${result.actionString}"
+	assertEquals "$LINENO: incorrect default action string: " "i" "${result.actionString}"
 
 	str=$(ccInstall --getActions result "${sourceRoot}" "${targetFolder}" abc)
 	st=$?

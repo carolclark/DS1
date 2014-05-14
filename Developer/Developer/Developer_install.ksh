@@ -34,6 +34,8 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 			print "== clean skipped: target Developer has already been cleaned"
 			return
 		fi
+	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action
+		break
 	else												# not a clean action
 		# installing
 		print -n "== Setup and Configure: "
@@ -82,7 +84,7 @@ function getSubtargetDestination {
 			;;
 		"Doxygen" )				# files for reference only
 			;&
-		"plist" )				# used by Xcode build system for DevConfig.ksh
+		"CocoaTestBundle" )		# used by Xcode build system for these tests
 			;&
 		"DevConfig.ksh" )		# custom setup script DevConfig.ksh
 			;&

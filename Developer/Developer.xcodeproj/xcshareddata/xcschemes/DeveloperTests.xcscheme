@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67CBDB6F191AF21900B8164A"
-               BuildableName = "Developer"
-               BlueprintName = "Developer"
+               BlueprintIdentifier = "6755BCE11922CC28005DC27D"
+               BuildableName = "DeveloperTests.xctest"
+               BlueprintName = "DeveloperTests"
                ReferencedContainer = "container:Developer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6755BCE11922CC28005DC27D"
-               BuildableName = "DeveloperTests.xctest"
-               BlueprintName = "DeveloperTests"
-               ReferencedContainer = "container:Developer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

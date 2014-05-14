@@ -36,7 +36,7 @@ testDoxygenGetActions() {
 	ccInstall --getActions result "${sourceRoot}" "${targetFolder}"
 	st=$?
 	assertEquals "$0#$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
-	assertEquals "$0#$LINENO: incorrect default action string: " "it" "${result.actionString}"
+	assertEquals "$0#$LINENO: incorrect default action string: " "i" "${result.actionString}"
 
 	str=$(ccInstall --getActions result "${sourceRoot}" "${targetFolder}" abc)
 	st=$?

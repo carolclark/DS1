@@ -11,7 +11,7 @@ NAME='ccInstall -- installation script and supporting functions'
 USAGE='
 ccInstall sourceRoot targetFolder [actionFlags]
 #	build the specified project target
-#		actionFlags: [-[citud]+] - actions requested (clean, install, test, upload, doxygen); default: -it
+#		actionFlags: [-[citud]+] - actions requested (clean, install, test, upload, doxygen); default: -i
 ccInstall commandFlag [argument(s)]
 #	--setPaths			set derived paths from arguments
 #	--get<Path>			sourceRoot targetFolder
@@ -27,7 +27,7 @@ ccInstall commandFlag [argument(s)]
 #						translate Cdoc markers in source file and store result at the specified destination
 #	--getActions		resultObject sourceRoot targetFolder [actionString]
 #		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
-#			default: -it, or -c if "clean" passed
+#			default: -i, or -c if "clean" passed
 #			resultObject: object to contain results
 #	--findTests 		testPath
 #		result: 		path to file containing list of shunit tests on <testPath>
@@ -243,7 +243,7 @@ function getActions {			# resultObject sourceRoot targetFolder actionString
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --getActions resultObject sourceRoot targetFolder actionString"
 		return
 	fi
-	actionString="it"
+	actionString="i"
 	if [[ -n ${4} ]] ; then
 		if [[ "${4}" = "clean" ]] ; then
 			actionString="c"

@@ -1345,40 +1345,31 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h4 id="proj_Developer">Developer</h4><ul>
 	<li>general C &amp; C Software developer and automation support</li>
 	<li>Targets<ul>
-		<li>DevConfig<ul>
-			<li class='blurb'>handles environment configuration; must be built before any other targets are built</li>
-			<li>run script target (Developer/DevConfig.ksh)</li>
+		<li>Developer<ul>
+			<li class='blurb'>installs Developer scripts and related items for use</li>
+			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target; depends on target AppleScripts<ul>
+				<li>normally the only target visible from Xcode</li>
+			</ul></li>
 			<li>DevConfig.ksh<ul>
-				<li>Unix script that sets up our development environment. Script is run prior to attempting to build any other targets or do other development work. It is run by target Support:Developer, or can be run from Terminal.</li>
+				<li>Unix script that sets up our development environment. Script is run at the beginning of execution of Developer_install.ksh, or can be run from Terminal.</li>
 				<li>DevConfig.ksh sets up basic environment including git support, installs additional environment files, third-party tool shunit, and starter scripts required for targets to build and test</li>
 			</ul></li>
 		</ul></li>
-		<li>Developer<ul>
-			<li class='blurb'>top-level build target</li>
-			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target</li>
-			<li>depends on targets DevConfig, AppleScripts</li>
-		</ul></li>
-		<li>AllTests<ul>
-			<li class='blurb'>DeveloperTests, DevConfigTests, PythonTests, <span class='expand'>AppleScriptTests</span></li>
-		</ul></li>
-		<li>(AppleScripts)<ul>
+		<li>AppleScripts<ul>
 			<li class='blurb'>compiles AppleScripts</li>
 			<li><a href="DevelopingProjects.html#AddBuildScriptTarget">Build Script Target</a><ul>
-				<li>precompiles scripts from Developer/AppleScripts into target's bundle; Developer_install.ksh then installs them from bundle</li>
+				<li>precompiles scripts from Developer/AppleScripts into target's bundle; Developer_install.ksh then installs them from that bundle</li>
 			</ul></li>
 		</ul></li>
-		<li>(DevConfigTests)<ul>
-			<li class='blurb'>test target for _Tests/DevConfigTests</li>
-			<li>...</li>
-		</ul></li>
-		<li>(DeveloperTests)<ul>
-			<li class='blurb'>runs Developer tests from folder _Tests, as well as DevConfigTests, PythonTests, <span class='expand'>AppleScriptTests</span></li>
-			<li>...</li>
-		</ul></li>
-		<li>(PythonTests)<ul>
-			<li class='blurb'>test target for DeveloperConfig script</li>
-			<li>Run Script target with script <span class='mono'>python -m unittest discover --start-directory ${HOME}/Library/CCDev/bin/python</span></li>
-			<li>...</li>
+		<li>DeveloperTests<ul>
+			<li class='blurb'>main test target; runs: Developer shunit tests from folder _Tests; PythonTests; <span class='expand'>AppleScriptTests</span></li>
+			<li><a href="DevelopingProjects.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
+				<li>Run Script build phases with ksh scripts:<ul>
+					<li>shunit tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
+					<li>python tests on installed python scripts: <span class='mono'><span class='mono'>python -m unittest discover --start-directory ${HOME}/Library/CCDev/bin/python</span></span></li>
+				</ul></li>
+				<li>depends on Developer; Developer scheme set to DeveloperTests</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -1392,7 +1383,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-14 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>
