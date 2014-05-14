@@ -1235,7 +1235,7 @@ resource restype_Slate (resid_ProjectSettings, "Project") { {
 		ExitEvent { "okay", "" },		_showHideNavigator,
 		ExitEvent { "exit", "" },		NilAction{},
 		Event { "click one", "" },		Click { 1, 0, 0, _cursor },
-		Event { "add target", "" },		Sequence{}, Click { 1, 86, -36, _window, _bottomLeft }, ResSubslate { resid_projAddTarget }, endSequence{},
+		Event { "add target", "" },		Sequence{}, Click { 1, 12, -10, _window, _bottomLeft }, ResSubslate { resid_projAddTarget }, endSequence{},
 		Event { "add build phase", "" },	Sequence{}, Click { 1, -72, -36, _window, _bottomRight }, ResSubslate { resid_projAddPhase }, endSequence{},
 		Event { "modernize", "" },		Click { 1, 0, -36, _window, _bottomCenter },
 		Event { "target list", "" },	ResSubslate { resid_projTargetList },

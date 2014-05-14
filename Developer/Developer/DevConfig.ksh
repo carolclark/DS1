@@ -133,9 +133,12 @@ function gitPrintAttributes {
 function shunitInstall {
 	src=${srcdir}/ThirdParty/shunit
 	dst=${CCDev}/shunit
-	if [[ -e ${dst} ]] ; then
-		if [[ ! "${src}/src/shunit2" -nt "${dst}/src/shunit2" ]] ; then
-			print "skipping shunit installation"
+
+	if [[ -e ${dst}/lib/versions ]] ; then
+		v_dst=$(${dst}/lib/versions | grep "bin/ksh")
+		v_src=$(${src}/lib/versions | grep "bin/ksh")
+		if [[ "${v_dst}" = "${v_src}" ]] ; then
+			print "shunit installation up-to-date - skipping"
 			return
 		fi
 	fi

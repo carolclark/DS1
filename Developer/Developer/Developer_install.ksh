@@ -84,7 +84,7 @@ function getSubtargetDestination {
 			;;
 		"Doxygen" )				# files for reference only
 			;&
-		"plist" )				# used by Xcode build system for DeveloperTests
+		"CocoaTestBundle" )		# used by Xcode build system for these tests
 			;&
 		"DevConfig.ksh" )		# custom setup script DevConfig.ksh
 			;&
