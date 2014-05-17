@@ -49,23 +49,28 @@
 			* Docs project and content
 			* move Website Structure files to Docs/OtherDocuments
 		* Developer
-			* Support: CCDev (from Developer)
+			* Developer (from Developer)
 				* rename Developer_install.ksh to CCDev_install.ksh, Developer_Setup.ksh to CCDevConfig.ksh
 				* new project Developer; new target CCDev
 				* move files from BuildSupport to CCDev
 					* install and test CCDevConfig
 					* install &amp; test remaining shell scripts
 					* install Services, ThirdParty (shunit)
-					* rename target and folder CCDev to Developer, files CCDev_install.ksh to Developer_install.ksh, CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
-					<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+					* rename target and folder CCDev back to Developer, files CCDev_install.ksh to Developer_install.ksh, CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
+				* add target DeveloperTests
 					* ccInstall: by default, build only instead of build and test
 					* add target DeveloperTests; see <a href="DevelopingProjects.html#AddCcInstallTarget">AddCcInstallTarget</a>
-					* Support/Developer: PythonTests (from CCDevPy; built by CCDev)
-			* Support: Python (from CCDevPy; built by CCDev)
-		* Application Support
-			* Applications/BBEdit
-			* Applications/Xcode
-		* UserSlates
+				* handle Python code and tests (from ccdevPy)
+					* add Python code and tests
+				<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+				* AppleScript
+					* add third-party AppleScript test script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
+					* add AppleScripts
+					* add AppleScript tests
+			* Application Support
+				* Applications/BBEdit
+				* Applications/Xcode
+			* UserSlates
 	* Accessor: Accessor (from BuildAccessor Accessor, AccessorApp/LogicTest, InHouse)
 </pre>
 
@@ -1100,7 +1105,7 @@
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-14 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>

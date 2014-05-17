@@ -1365,8 +1365,8 @@ This decision was made on the advice of Scott Clark, and has been working very w
 			<li class='blurb'>main test target; runs: Developer shunit tests from folder _Tests; PythonTests; <span class='expand'>AppleScriptTests</span></li>
 			<li><a href="DevelopingProjects.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
 				<li>Run Script build phases with ksh scripts:<ul>
-					<li>shunit tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
-					<li>python tests on installed python scripts: <span class='mono'><span class='mono'>python -m unittest discover --start-directory ${HOME}/Library/CCDev/bin/python</span></span></li>
+					<li>'shunit Tests': runs tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
+					<li>'Python Tests': tests installed python scripts: <span class='mono'>python -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"</span></li>
 				</ul></li>
 				<li>depends on Developer; Developer scheme set to DeveloperTests</li>
 			</ul></li>

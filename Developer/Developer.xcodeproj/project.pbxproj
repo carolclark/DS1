@@ -26,6 +26,8 @@
 		6755BCE51922CC28005DC27D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6755BCF61922CDB6005DC27D /* DeveloperTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DeveloperTests-Info.plist"; sourceTree = "<group>"; };
 		6755BCF71922CDB6005DC27D /* RequiredCocoaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequiredCocoaTests.m; sourceTree = "<group>"; };
+		67B35C3B19256A6100C0C9A7 /* scm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = scm.py; sourceTree = "<group>"; };
+		67B35C3C19256A6100C0C9A7 /* testScm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testScm.py; sourceTree = "<group>"; };
 		67FDF6EB191D776C002560CF /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
 		67FDF6EC191D776C002560CF /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
 		67FDF6ED191D776C002560CF /* testDevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDevConfig.ksh; sourceTree = "<group>"; };
@@ -120,6 +122,15 @@
 			path = CocoaTestBundle;
 			sourceTree = "<group>";
 		};
+		67B35C3A19256A6100C0C9A7 /* Python */ = {
+			isa = PBXGroup;
+			children = (
+				67B35C3B19256A6100C0C9A7 /* scm.py */,
+				67B35C3C19256A6100C0C9A7 /* testScm.py */,
+			);
+			path = Python;
+			sourceTree = "<group>";
+		};
 		67CBDB68191AF1F700B8164A = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +146,7 @@
 				67FDF6EA191D776C002560CF /* _Tests */,
 				67FDF6F3191D776C002560CF /* Scripts */,
 				67FDF6FC191D776C002560CF /* Services */,
+				67B35C3A19256A6100C0C9A7 /* Python */,
 				67FDF6FF191D776C002560CF /* ThirdParty */,
 				6755BCF51922CDB6005DC27D /* CocoaTestBundle */,
 				67FDF6F2191D776C002560CF /* Developer_install.ksh */,
@@ -299,7 +311,8 @@
 				6755BCDE1922CC28005DC27D /* Sources */,
 				6755BCDF1922CC28005DC27D /* Frameworks */,
 				6755BCE01922CC28005DC27D /* Resources */,
-				6755BCFA1922CE90005DC27D /* ShellScript */,
+				6755BCFA1922CE90005DC27D /* shunit Tests */,
+				67B35C3D19256B1300C0C9A7 /* Python Tests */,
 			);
 			buildRules = (
 			);
@@ -353,18 +366,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6755BCFA1922CE90005DC27D /* ShellScript */ = {
+		6755BCFA1922CE90005DC27D /* shunit Tests */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "shunit Tests";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
 			shellScript = "Developer/Developer_install.ksh \"${SRCROOT}\" Developer -t";
+			showEnvVarsInLog = 0;
+		};
+		67B35C3D19256B1300C0C9A7 /* Python Tests */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Python Tests";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/ksh;
+			shellScript = "python -m unittest discover --start-directory \"${HOME}/Library/CCDev/bin/python\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -575,6 +604,7 @@
 				6755BCF31922CC28005DC27D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67CBDB6C191AF1F700B8164A /* Build configuration list for PBXProject "Developer" */ = {
 			isa = XCConfigurationList;
