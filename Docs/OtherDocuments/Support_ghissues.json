@@ -1978,9 +1978,9 @@
     },
     "comments": 0,
     "created_at": "2013-03-26T18:58:37Z",
-    "updated_at": "2014-01-03T17:54:34Z",
+    "updated_at": "2014-05-17T12:30:31Z",
     "closed_at": null,
-    "body": "Update backup support procedures, including usage of our external volumes\r\n    * see QuickPicks: our current backup utility, obtained from MobileMe, identifies critical data for some standard applications; it looks like a good list\r\n    * Backup itself - Is it still usable under 10.9?\r\n\r\n"
+    "body": "Update backup support procedures, including usage of our external volumes\r\n    * see QuickPicks: our current backup utility, obtained from MobileMe, identifies critical data for some standard applications; it looks like a good list\r\n    * Backup itself - Is it still usable under 10.9?\r\n[2014 Mac Backup Software Comparisons and Reviews](http://mac-backup-software-review.toptenreviews.com) -- probably try ChronoSync\r\n\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/3",

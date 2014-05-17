@@ -80,6 +80,9 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${applescriptsFolder}"
 			;;
+		"Python" )
+			destinationFolder="${scriptsFolder}/python"
+			;;
 		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
 			;;
 		"Doxygen" )				# files for reference only

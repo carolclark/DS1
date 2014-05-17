@@ -5,9 +5,6 @@
       location = "group:Docs/Docs.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:CCDevPy/CCDevPy.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:BuildSupport/BuildSupport.xcodeproj">
    </FileRef>
 </Workspace>
