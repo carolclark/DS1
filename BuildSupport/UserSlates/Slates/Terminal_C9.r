@@ -232,7 +232,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
-		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issue number: \"; read inum; mm=$(${CCDev}/bin/ccdev/scm.py $cb $inum); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issue number: \"; read inum; mm=$(${CCDev}/bin/python/scm.py $cb $inum); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "merge", "" },				Sequence{}, TypeText { "git merge --no-ff -m \"$mm\" " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "merge base", "" },			Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },				Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
