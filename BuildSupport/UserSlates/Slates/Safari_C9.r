@@ -1407,7 +1407,7 @@ resource restype_Slate (resid_Safari, "Safari Slate") { {
 			Event { "Facebook", "" },		Sequence{}, 
 				OpenURL { "http://www.facebook.com/" }, ResSubslate { resid_Facebook }, endSequence{},
 			Event { "Arbonne", "" },		Sequence{},
-				OpenURL { "https://arbonne.com/ic/index.asp" }, ResSubslate { resid_Arbonne }, endSequence{},
+				OpenURL { "http://www.arbonne.com" }, ResSubslate { resid_Arbonne }, endSequence{},
 			Event { "Sudoku Times", "" },		Sequence{}, 
 				OpenURL { "http://www.nytimes.com/ref/crosswords/sudoku/hard.html" }, ResSubslate { resid_sudokuTimes }, 
 				endSequence{},

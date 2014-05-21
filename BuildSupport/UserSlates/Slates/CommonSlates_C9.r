@@ -197,7 +197,7 @@ resource restype_Slate (resid_DragonSlate, "Dragon Dictate active") { {
 
 resource restype_Slate (resid_DictateSlate, "Mac dictation active") { {
 	Slate { "Dictate", {
-		ExitEvent { "dictate off", "" },	NilAction{},
+		ExitEvent { "okay", "" },		NilAction{},
 	} }
 } };
 
