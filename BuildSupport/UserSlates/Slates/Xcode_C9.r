@@ -181,7 +181,7 @@
 
 
 #pragma mark 7 --- Search/Find
-#define _HideFindBar_			Event { "hide find bar", "" },			Sequence{}, ClickMenu { "Find" }, TypeText { "Hide Find Bar" }, _return, endSequence{}
+#define _HideFindBar_			Event { "hide find bar", "" },			Keypress { kc_G, mf_command + mf_control + mf_shift }
 
 #define _clickReplace			Click { 1, -30, 130, _window, _topRight }
 #define _clickFindOptions		Click { 1, -281, 132, _window, _topRight }
@@ -1139,9 +1139,9 @@ resource restype_Slate (resid_wordsWords, "") { {
 		_PageKeys_,				\
 		_TypeXcodeSlate_
 
-#define _hideOpenFindBar		Click { 1, -30, 110, _window, _topRight }
+#define _hideFindBar			Keypress { kc_G, mf_command + mf_control + mf_shift }
 #define	_findMarkerStart		Sequence{}, Keypress { kc_F, mf_command }
-#define _findMarkerEnd			_hideOpenFindBar, endSequence{}
+#define _findMarkerEnd			_hideFindBar, endSequence{}
 #pragma mark 1 --- Marker
 resource restype_Slate (resid_Marker, "") { {
 	Slate { "Marker",	{
@@ -1175,7 +1175,7 @@ resource restype_Slate (resid_Marker, "") { {
 			ExitEvent { "eight", "" },		_findMarkerStart, Keypress { kc_3, mf_shift }, TypeText { "pragma mark 8 -" }, _findMarkerEnd,
 			ExitEvent { "nine", "" },		_findMarkerStart, Keypress { kc_3, mf_shift }, TypeText { "pragma mark 9 -" }, _findMarkerEnd,
 			endSubslate{},
-		Event { "hide find bar", "" },	_hideOpenFindBar,
+		Event { "hide find bar", "" },	_hideFindBar,
 		Event { "next", "" },			Keypress { kc_G, mf_command },
 		Event { "previous", "" },		Keypress { kc_G, mf_command + mf_shift },
 	} }
@@ -1239,10 +1239,10 @@ resource restype_Slate (resid_ProjectSettings, "Project") { {
 		Event { "add build phase", "" },	Sequence{}, Click { 1, -72, -36, _window, _bottomRight }, ResSubslate { resid_projAddPhase }, endSequence{},
 		Event { "modernize", "" },		Click { 1, 0, -36, _window, _bottomCenter },
 		Event { "target list", "" },	ResSubslate { resid_projTargetList },
-		Event { "info", "" },			Click { 1, -80, 134, _window, _topCenter },
-		Event { "build settings", "" },	Click { 1, -5, 134, _window, _topCenter },
-		Event { "build phases", "" },	Click { 1, 115, 134, _window, _topCenter },
-		Event { "build rules", "" },	Click { 1, 250, 134, _window, _topCenter },
+		Event { "info", "" },			Click { 1, -80, 107, _window, _topCenter },
+		Event { "build settings", "" },	Click { 1, -5, 107, _window, _topCenter },
+		Event { "build phases", "" },	Click { 1, 115, 107, _window, _topCenter },
+		Event { "build rules", "" },	Click { 1, 250, 107, _window, _topCenter },
 		Event { "open run script", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, ResSubslate { resid_phaseRunScript }, endSequence{},
 		Event { "open dependencies", "" },		Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
 		Event { "open compile sources", "" },	Sequence{}, Click { 1, 0, 0, _cursor }, endSequence{},
@@ -2225,8 +2225,8 @@ resource restype_Slate (resid_typeSearch, "") { {
 		Event { "this", "" },			Sequence{}, Keypress { kc_left, mf_option }, Keypress { kc_right, mf_option + mf_shift }, Keypress { kc_E, mf_command }, Keypress { kc_G, mf_command }, endSequence{},
 		Event { "next", "" },			Keypress { kc_G, mf_command },
 		Event { "previous", "" },		Keypress { kc_G, mf_command + mf_shift },
-		Event { "change", "" },			_clickReplace,
-		Event { "change again", "" },	_clickReplace,
+		Event { "change", "" },			Keypress { kc_G, mf_command + mf_option },
+		Event { "change again", "" },	Keypress { kc_G, mf_command + mf_option + mf_shift },
 	} }
 } };
 
@@ -2358,6 +2358,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		_DefaultBase_,
 		_TypeXcodeSlate_,
 		_XcodeStandards_,
+		Event { "the script", "" },		Script { "run (load script POSIX file \"/Users/carolclark/Library/CCDev/AppleScripts/Hello.scpt\")", "" },
 		Event { "test click", "" },		Subslate { "test clicks" },
 			_SlateGlobals_,
 			_CloseSubslate_,

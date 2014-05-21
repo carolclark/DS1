@@ -1542,7 +1542,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define _MicrophoneOn_		Event { "microphone on", "" },	Sequence{}, Click { 1, -55, 55, _screen, _topRight }, ResSubslate { resid_DragonSlate }, endSequence{}
 #define _CloseRecognitionWindow_	Click { 1, -420, -385, _screen, _bottomRight }
 
-#define _DictateOn_		Event { "dictate on", "" },	Sequence{}, Keypress { kc_6, mf_command + mf_option + mf_control + mf_shift }, ResSubslate { resid_DictateSlate }, endSequence{}
+#define _Dictate_		Event { "dictate", "" },	Sequence{}, Keypress { kc_6, mf_command + mf_option + mf_control + mf_shift }, ResSubslate { resid_DictateSlate }, endSequence{}
 
 #pragma mark _TypeSlateItems_
 #define _TypeSlateItemsWithoutDictation_	\
@@ -1568,7 +1568,7 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define _TypeSlateItems_	\
 	_TypeSlateItemsWithoutDictation_,	\
 	_MicrophoneOn_,						\
-	_DictateOn_,						\
+	_Dictate_,						\
 	Event { "close recognition window", "" },		_CloseRecognitionWindow_
 
 #pragma mark _TypeSpecialBaseItems_

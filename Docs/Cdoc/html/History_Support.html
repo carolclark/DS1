@@ -16,17 +16,19 @@
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 	<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
+		<!-- @topicItem "Fix RemoveFolder with Python" "#RemoveFolderWPython" "1" "" -->
+		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
 		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
 		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
-		<!-- @topicGroup "" "7" -->
+		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
-	<!-- @topicGroup "" "9" -->
+	<!-- @topicGroup "" "12" -->
 	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "12" -->
+	<!-- @topicGroup "Topics" "14" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
@@ -34,6 +36,38 @@
 
 <!-- @marker "Active Issues" -->
 <h2 id='ActiveIssues'>Active Issues</h2>
+
+<!-- @marker "Fix RemoveFolder with Python" -->
+<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python
+</h4><pre>
+	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+	* setup python logging and debugging
+		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
+	* filesys.remove_folder
+		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/2/library/os.path.html">os.path</a>; <a href="https://docs.python.org/2/library/os.path.html">shutil</a>.rmtree() with copytree example*
+		* rename Python tests to sort with their module
+</pre>
+
+<!-- @marker "AppleScript Testing" -->
+<h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/Support/issues/35">(#35)</a>AppleScript Testing</h4><pre>
+	* move ThirdParty folder (now contains shunit2) to ~/Dev, out of our version control
+		* move ThirdParty installation from DevConfig.ksh to new target ThirdParty
+			* Developer does not currently need access to third-party assets until testing
+		* *At this point, we cannot test fully because the clean action is not working, probably because of a previously noticed problem with ccInstall:removeFolder*
+		<span class='tlmark'>&lt;-- 05/19/2014</span>
+		* <a href="#RemoveFolderWPython">Fix RemoveFolder with Python</a>
+		* move content of target ThirdParty to ~/Dev/ThirdParty
+		* add Run Script build phase to Developer to trigger ThirdParty update
+		* (commit)
+		* update shunit2 to the latest version
+	* add third-party AppleScript testing script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
+		* fork <a href="https://github.com/lifepillar/ASUnit">ASUnit</a> into ThirdParty folder
+		* ThirdParty_install.ksh also installs ASUnit script
+	* new AppleScript target
+		* Initial Tests
+			* add TestLoader and TestVarTypes tests based on scripts from ASUnit examples
+				* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
+</pre>
 
 <!-- @marker "restructure Xcode projects" -->
 <h4 id='restructureXcodeProjects'><a href="http://github.com/carolclark/Support/issues/23">(#23)</a>restructure Xcode projects</h4><pre>
@@ -62,11 +96,10 @@
 					* add target DeveloperTests; see <a href="DevelopingProjects.html#AddCcInstallTarget">AddCcInstallTarget</a>
 				* handle Python code and tests (from ccdevPy)
 					* add Python code and tests
-				<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 				* AppleScript
-					* add third-party AppleScript test script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
-					* add AppleScripts
-					* add AppleScript tests
+					<span class='tlmark'>&lt;-- 05/17/2014</span>
+					* <a href="#AppleScriptTesting">AppleScript Testing</a>
+					* add AppleScript scripts
 			* Application Support
 				* Applications/BBEdit
 				* Applications/Xcode
@@ -114,9 +147,7 @@
 		* simplify &amp; refactor Developer build
 			* Developer build: Developer_Setup always runs
 			<span class='tlmark'>&lt;--</span>
-			* include Python scripts and tests in targets Developer, AllTests
 			* refactor ksh scripts: for files dotted in at the top, move help information to follow them so included help info does not replace file's info
-			* rename Python tests to sort with their module
 	* Slates: Python subslate with def's for functions and tests
 	* scm.main handles multiple subcommands
 		* extract ccdev.parse_cmdline
