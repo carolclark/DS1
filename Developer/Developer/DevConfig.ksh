@@ -129,57 +129,6 @@ function gitPrintAttributes {
 	print '*./pbxproj merge=union'		# include changes from both parents when merging project files
 }
 
-#^	shunitInstall
-function shunitInstall {
-	src=${srcdir}/ThirdParty/shunit
-	dst=${CCDev}/shunit
-
-	if [[ -e ${dst}/lib/versions ]] ; then
-		v_dst=$(${dst}/lib/versions | grep "bin/ksh")
-		v_src=$(${src}/lib/versions | grep "bin/ksh")
-		if [[ "${v_dst}" = "${v_src}" ]] ; then
-			print "shunit installation up-to-date - skipping"
-			return
-		fi
-	fi
-	mkdir -p ${dst}
-	if [[ "${?}" != "0" ]] ; then
-		print "failure while installing shunit"
-		exit 1
-	fi
-	mkdir -p ${dst}/bin
-	if [[ "${?}" != "0" ]] ; then
-		print "failure while installing shunit"
-		exit 1
-	fi
-	for fl in $(ls "${src}/bin") ; do
-		print "${src}/bin/${fl} => ${dst}/bin"
-		cp "${src}/bin/${fl}" "${dst}/bin"
-		if [[ "${?}" != "0" ]] ; then
-			print "failure while installing shunit"
-			exit 1
-		fi
-	done
-	mkdir -p ${dst}/lib
-	for fl in $(ls "${src}/lib") ; do
-		print "${src}/lib/${fl} => ${dst}/lib"
-		cp "${src}/lib/${fl}" "${dst}/lib"
-		if [[ "${?}" != "0" ]] ; then
-			print "failure while installing shunit"
-			exit 1
-		fi
-	done
-	mkdir -p ${dst}/src
-	for fl in $(ls "${src}/src") ; do
-		print "${src}/src/${fl} => ${dst}/src"
-		cp "${src}/src/${fl}" "${dst}/src"
-		if [[ "${?}" != "0" ]] ; then
-			print "failure while installing shunit"
-			exit 1
-		fi
-	done
-}
-
 #^	removeFileIfPresent
 function removeFileIfPresent {
 	if [[ -e "${1}" ]] ; then
