@@ -232,9 +232,6 @@ install "${srcdir}/Scripts/errcc.ksh" "$CCDev/bin" "errcc"
 install "${srcdir}/Scripts/ccInstall.ksh" "$CCDev/bin" "ccInstall"
 install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScript"
 
-# install shunit (third party)
-shunitInstall
-
 # test
 print "== Developer/_Tests/testDevConfig.ksh"
 result=$(Developer/_Tests/testDevConfig.ksh)
