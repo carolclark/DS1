@@ -30,6 +30,8 @@ function shunitInstall {
 			return
 		fi
 	fi
+
+	print "= installing shunit"
 	mkdir -p ${dst}
 	if [[ "${?}" != "0" ]] ; then
 		print "failure while installing shunit"
@@ -111,6 +113,7 @@ if [[ -n "${command}" ]] ; then
 			return "${es}"
 			;;
 		"*" )
+			print "== installing third-party software ..."
 			msg=$(shunitInstall)
 			es=$?
 			print "${msg}"
