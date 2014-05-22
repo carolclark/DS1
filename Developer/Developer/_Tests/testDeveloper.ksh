@@ -77,12 +77,12 @@ testDeveloperInstall() {
 	assertEquals "$LINENO: incorrect sourceForCopy: " "${DEV}/Support/Developer/Developer/Scripts/ccInstall.ksh" "${copyInfo[1]}"
 	assertEquals "$LINENO: incorrect destinationForCopy: " "${CCDev}/bin/ccInstall" "${copyInfo[2]}"
 
-	# test Environment/kshrc.ksh
-	dest=$("${callbackScript}" --getSubtargetDestination ${DEV}/Support/Developer Developer -i  Environment)
+	# test AppleScripts/FixWindow.applescript
+	dest=$("${callbackScript}" --getSubtargetDestination ${DEV}/Support/Developer Developer -i  AppleScripts)
 	st=$?
-	assertEquals "$LINENO: --getSubtargetDestination Environment: error: " 0 ${st}
-	assertEquals "$LINENO: --getSubtargetDestination Environment" "" "${dest}"
-	fl=$(${callbackScript} --prepareFileOperation 0 0 0 "Environment" "kshrc.ksh" "${dest}")
+	assertEquals "$LINENO: --getSubtargetDestination AppleScripts: error: " 0 ${st}
+	assertEquals "$LINENO: --getSubtargetDestination AppleScripts" "${HOME}/Library/Scripts/Developer" "${dest}"
+	fl=$(${callbackScript} --prepareFileOperation 0 0 0 "AppleScripts" "FixWindow.applescript" "${dest}")
 	st=$?
 	assertEquals "$LINENO: --prepareFileOperation failed with code $st" 0 $st
 	set -A copyInfo
@@ -90,7 +90,7 @@ testDeveloperInstall() {
 		copyInfo+=("${ln}")
 	done < "${fl}"
 	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
-	assertEquals "$LINENO: incorrect action: " "ignore" "${copyInfo[0]}"
+	assertEquals "$LINENO: incorrect action: " "copy" "${copyInfo[0]}"
 }
 
 # run tests
