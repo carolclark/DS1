@@ -1,5 +1,5 @@
 // =================================================================================
-//	Developer_C9.h					(c)2013 C & C Software, Inc. All rights reserved.
+//	Developer_C9.h				(c) 2013-14 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "CommonSlates_C9.h"
@@ -8,17 +8,17 @@
 // 1
 
 /* resid_ */
-#define resid_Assert				resid_Developer+0
-#define resid_TypeSpecialDevSlate	resid_Developer+1
-#define resid_Copyright				resid_Developer+2
+#define resid_TypeSpecialDevSlate	resid_Developer+0
+#define resid_Copyright				resid_Developer+1
+#define resid_Package				resid_Developer+2
 #define resid_ChooseUp				resid_Developer+3
-#define resid_Package				resid_Developer+4
-#define	resid_InsertElement			resid_Developer+5
-#define	resid_InsertStyle			resid_Developer+6
-#define	resid_InsertTag				resid_Developer+7
-#define	resid_InsertSlateText		resid_Developer+8
-#define resid_Doxygen				resid_Developer+9
-#define resid_Unix					resid_Developer+10
+#define resid_Assert				resid_Developer+4
+#define	resid_InsertTag				resid_Developer+8
+#define	resid_InsertStyle			resid_Developer+9
+#define	resid_InsertElement			resid_Developer+10
+#define	resid_InsertSlateText		resid_Developer+11
+#define resid_Doxygen				resid_Developer+12
+#define resid_Unix					resid_Developer+14
 
 #define	resid_InsertSnippet			resid_Developer+30
 	#define resid_ucLevel				resid_InsertSnippet+1
@@ -62,8 +62,6 @@
 	Event { "previous field", "" },	Keypress { kc_slash, mf_control + mf_shift },	\
 	Event { "copy", "" },			Keypress { kc_C, mf_command },	\
 	Event { "undo", "" },			Keypress { kc_Z, mf_command },	\
-	Event { "Snippet", "" },			ResSubslate { resid_InsertSnippet }, \
-	Event { "Special", "" },			ResSubslate { resid_TypeSpecialDevSlate }, \
 	Event { "choose two", "" }, _down,	\
 	Event { "choose three", "" }, Sequence{}, _down, _down, endSequence{},	\
 	Event { "choose four", "" }, Sequence{}, _down, _down, _down, endSequence{},	\
@@ -165,11 +163,13 @@
 		Event { "cut next line", "" },			Sequence{}, _cutNextLine, endSequence{},	\
 		Event { "indent", "" },					_indent,	\
 		Event { "indent back", "" },			_indentBack,	\
-		Event { "Package", "" },				ResSubslate { resid_Package },	\
+		Event { "Special", "" },				ResSubslate { resid_TypeSpecialDevSlate }, \
 		Event { "Copyright", "" },				ResSubslate { resid_Copyright },	\
+		Event { "Package", "" },				ResSubslate { resid_Package },	\
 		Event { "Assert", "" },					ResSubslate { resid_Assert },	\
 		Event { "Insert Tag", "" },				ResSubslate { resid_InsertTag },	\
 		Event { "Add Style", "" },				ResSubslate { resid_InsertStyle },	\
 		Event { "Insert Element", "" },			ResSubslate { resid_InsertElement },	\
+		Event { "Snippet", "" },				ResSubslate { resid_InsertSnippet }, \
 		Event { "User", "" },					ResSubslate { resid_InsertSlateText },	\
 		Event { "Unix", "" },					ResSubslate { resid_Unix }
