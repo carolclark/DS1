@@ -8,7 +8,10 @@
 
 
 import unittest
+import logging
 import <#module#>
+
+logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 
 class Test<#Module#>(unittest.TestCase):
