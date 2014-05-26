@@ -153,11 +153,13 @@ resource restype_Slate (resid_Emacs, "") { {
 } };
 
 #define	_CurrentBranch_			Event { "current branch", "" },	TypeText { "$cb " }
+#define	_TargetBranch_			Event { "target branch", "" },	TypeText { "$tb " }
 #define _RevisionNumber_		Event { "revision number", "" }, TypeText { "$vn " },
 #define	_GitFile_				Event { "git file", "" },	TypeText { "$gf " }
 #define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
 #define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb" }
 #define _TypeVariable_		_CurrentBranch_,	\
+							_TargetBranch_,		\
 							_RevisionNumber_,	\
 							_GitFile_, 			\
 							_MyVariable_,		\
@@ -233,7 +235,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
 		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issue number: \"; read inum; mm=$(${CCDev}/bin/python/scm.py $cb $inum); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "merge", "" },				Sequence{}, TypeText { "git merge --no-ff -m \"$mm\" " }, ResSubslate { resid_gitMerge }, endSequence{},
+		Event { "merge", "" },				Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "merge base", "" },			Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },				Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
 		Event { "fetch updates", "" },		Sequence{}, TypeText { "git fetchup " }, _return, endSequence{},
@@ -328,8 +330,11 @@ resource restype_Slate (resid_gitBranch, "") { {
 		Event { "verbose", "" },			TypeText { "--verbose " },
 		Event { "move", "" },				TypeText { "--move " },
 		Event { "rename", "" },				TypeText { "--move " },
+		Event { "delete remote", "" },		Sequence{}, TypeText { "git push origin :" }, endSequence{},
 		Event { "delete", "" },				TypeText { "--delete " },
 		Event { "master", "" },				TypeText { "master " },
+		Event { "menu", "" },				Sequence{}, TypeText { "| grep -n \"[a-z,A-Z]\" > $CCDev/tmp/gitbranches; cat $CCDev/tmp/gitbranches" }, _return, endSequence{},
+		Event { "select", "" },				Sequence{}, TypeText { "read lineno; tb=`cat $CCDev/tmp/gitbranches | grep \"^$lineno:\" | cut -c 5-`; print $tb" }, _return, ResSubslate { resid_gitSelectFile }, endSequence{},
 		_GitStandards_,
 		_TypeVariable_,
 		_StandardBranches_,
@@ -595,10 +600,11 @@ resource restype_Slate (resid_gitTag, "") { {
 #pragma mark 5 -- Merge
 resource restype_Slate (resid_gitMerge, "") { {
 	Slate { "Merge",	{
+		Event { "merge", "" },				TypeText { "--no-ff -m \"$mm\" " },
 		Event { "no fast forward", "" },	TypeText { "--no-ff " },
 		Event { "no commit", "" },			TypeText { "--no-commit " },
 		Event { "abort", "" },				TypeText { "--abort " },
-		Event { "tool", "" },				Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
+		Event { "resolve", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
 		Event { "file merge", "" },			Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{},
 		_TypeVariable_,
 		_StandardBranches_,
