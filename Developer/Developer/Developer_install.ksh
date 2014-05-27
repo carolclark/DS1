@@ -91,9 +91,7 @@ function getSubtargetDestination {
 			;&
 		"DevConfig.ksh" )		# custom setup script DevConfig.ksh
 			;&
-		"ThirdParty" )			# handled by DevConfig.ksh
-			;&
-		"Environment" )			# handled by DevConfig.ksh
+		"ThirdParty" )			# handled elsewhere
 			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
