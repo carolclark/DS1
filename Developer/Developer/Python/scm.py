@@ -9,12 +9,16 @@
 
 
 import argparse
+import logging
 import shlex
+
+logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 
 def merge_message(branchName="", issueNum=0):
 	""" construct scm merge message for the specified branch, including issue number if supplied """
 
+	import pdb; pdb.set_trace()
 	msg = "Merge branch"
 	if (len(str(branchName))) > 0:
 		msg = msg + " '" + str(branchName) + "'"
@@ -26,6 +30,7 @@ def merge_message(branchName="", issueNum=0):
 def main(cmdline=None):
 	""" process command-line arguments and dispatch to selected function """
 
+	logging.warning('Here is a pretend warning.')
 	parser = argparse.ArgumentParser()
 	parser.add_argument("branchName")
 	parser.add_argument("issueNum")

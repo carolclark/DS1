@@ -8,8 +8,10 @@
 #pragma mark === Markers ===
 // Git
 //	2 Git, Type, Specify, Checkout, Branch, Remote, Difference, Show, Grep, Stash; 3 Add, Commit, Log, Rebase, Tag, Merge, Push, Fetch; 4 Clean; Bisect; Blame; SelectFile, Reset, Browser, FileMerge
+// Python, ...
+//	5 Python
 // Other
-//	1 Standards; Type; Emacs; Defines; 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
+//	1 Standards; Type; Emacs; Defines; 6 Archive; Clean; Build; 7 MacPorts; Apache; Telnet; 8 Shell; 9 Terminal
 
 //#define resid_XCTerminal		resid_Terminal+1
 #define resid_Type				resid_Terminal+20
@@ -22,6 +24,9 @@
 #define resid_MacPorts			resid_Terminal+250
 #define resid_Apache			resid_Terminal+300
 #define resid_Telnet			resid_Terminal+350
+
+#define resid_Python			resid_Terminal+360
+	#define resid_PythonDebug		resid_Python+10
 
 #define resid_Git				resid_Terminal+400
 	#define resid_gitType				resid_Git+10
@@ -101,6 +106,7 @@
 			ExitEvent { "Window", "'Window' menu" }, ClickMenu { "Window" },		\
 			endSubslate{},		\
 		Event { "git", "" },			ResSubslate { resid_Git },			\
+		Event { "Python", "" },			ResSubslate { resid_Python },		\
 		Event { "clean", "" },			Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_Clean }, endSequence{},		\
 		Event { "archive", "" },		Sequence{}, TypeText { "archive " }, ResSubslate { resid_Archive }, endSequence{},		\
 		Event { "backup", "" },			TypeText { "ccBackup Backup " },	\
@@ -803,7 +809,7 @@ resource restype_Slate (resid_FileMergeEdit, "") { {
 	} }
 } };
 
-#pragma mark 5 === Archive
+#pragma mark 7 === Archive
 resource restype_Slate (resid_Archive, "") { {
 	Slate { "Archive",	{
 		_SlateGlobals_,
@@ -855,6 +861,45 @@ resource restype_Slate (resid_Build, "") { {
 	} }
 } };
 
+#pragma mark 5 === Python
+resource restype_Slate (resid_Python, "") { {
+	Slate { "Python",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_StarterBase_,
+		Event { "go back", "" },	Launch { DevApps_"XCode.app", resid_Xcode },
+		Event { "debug", "" },		Sequence{}, TypeText { "python -m pdb ${CCDev}/bin/python/" }, ResSubslate { resid_PythonDebug }, endSequence{},
+	} }
+} };
+
+#pragma mark Debug
+resource restype_Slate (resid_PythonDebug, "") { {
+	Slate { "debug",	{
+		_SlateGlobals_,
+		ExitEvent { "close", "" },	NilAction{},
+		Event { "Type", "" },		ResSubslate { resid_Type },
+		Event { "list", "" },		Sequence{}, Keypress { kc_L, 0 }, _return, endSequence{},
+		Event { "where", "" },		Sequence{}, Keypress { kc_W, 0 }, _return, endSequence{},
+		Event { "in", "" },			Sequence{}, Keypress { kc_S, 0 }, _return, endSequence{},
+		Event { "over", "" },		Sequence{}, Keypress { kc_N, 0 }, _return, endSequence{},
+		Event { "out", "" },		Sequence{}, Keypress { kc_R, 0 }, _return, endSequence{},
+		Event { "go", "" },			_return,
+		Event { "break", "" },		Sequence{}, TypeText { "# break examples: fib.main; fib.py:4" }, _return, TypeText { "break " },endSequence{},
+		Event { "continue", "" },	Sequence{}, Keypress { kc_C, 0 }, _return, endSequence{},
+		Event { "up", "" },			Sequence{}, Keypress { kc_U, 0 }, _return, endSequence{},
+		Event { "down", "" },		Sequence{}, Keypress { kc_D, 0 }, _return, endSequence{},
+		Event { "args", "" },		Sequence{}, Keypress { kc_A, 0 }, _return, endSequence{},
+		Event { "print", "" },		Sequence{}, TypeText { "p " }, ResSubslate { resid_Type }, endSequence{},
+		Event { "statement", "" },	Sequence{}, TypeText { "!" }, ResSubslate { resid_Type }, endSequence{},
+		Event { "execute", "" },	_return,
+		ExitEvent { "quit", "" },	Sequence{}, Keypress { kc_Q, 0 }, _return, endSequence{},
+		Event { "reset", "" },		Sequence{}, TypeText { "reset" }, _return, endSequence{},
+		_CommandSlate_,
+		_DirectionKeys_,
+		_WhitespaceKeys_,
+	} }
+} };
+
 #pragma mark 6 === MacPorts
 resource restype_Slate (resid_MacPorts, "MacPorts Slate") { {
 	Slate { "MacPorts", {
@@ -869,7 +914,7 @@ resource restype_Slate (resid_MacPorts, "MacPorts Slate") { {
 	} },
 } };
 
-#pragma mark 7 === Apache
+#pragma Apache
 #define	_ApacheWrapperPath_ 	"/opt/local/etc/LaunchDaemons/org.macports.apache2/apache2.wrapper"
 resource restype_Slate (resid_Apache, "Apache Slate") { {
 	Slate { "Apache", {

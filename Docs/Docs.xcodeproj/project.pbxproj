@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		6739B60E192EB33E00D659B6 /* Python.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Python.html; sourceTree = "<group>"; };
 		676695A41919973E005D3CED /* Support_ghissues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Support_ghissues.json; sourceTree = "<group>"; };
 		676695A519199779005D3CED /* DoxyDemo_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DoxyDemo_doxygen.txt; sourceTree = "<group>"; };
 		676695A719199997005D3CED /* AlertPresenterDD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertPresenterDD.h; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 				676695CF1919A759005D3CED /* Personal.html */,
 				676695D01919A759005D3CED /* Support.html */,
 				676695D11919A759005D3CED /* Tools.html */,
+				6739B60E192EB33E00D659B6 /* Python.html */,
 			);
 			path = html;
 			sourceTree = "<group>";
