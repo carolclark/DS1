@@ -95,6 +95,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 				Launch { MainApps_"Backup.app", resid_Backup },
 			Event { "Pages", "" }, Launch { Apps_"Pages.app", resid_Pages },
 			Event { "Numbers", "" },	Launch { MainApps_"Numbers.app", resid_Numbers },
+			Event { "Transmit", "" },	Launch {MainApps_"Transmit.app", 0 },
 			Event { "Dictation", "" },	Launch { MainApps_"Dragon Dictate.app", resid_DefaultSlate },
 			Event { "Windows", "launch Parallels" },
 				Launch { Home_"Parallels/Microsoft Windows XP.pvm", resid_Parallels },

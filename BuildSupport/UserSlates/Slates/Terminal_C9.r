@@ -163,7 +163,7 @@ resource restype_Slate (resid_Emacs, "") { {
 #define _RevisionNumber_		Event { "revision number", "" }, TypeText { "$vn " },
 #define	_GitFile_				Event { "git file", "" },	TypeText { "$gf " }
 #define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
-#define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb" }
+#define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb " }
 #define _TypeVariable_		_CurrentBranch_,	\
 							_TargetBranch_,		\
 							_RevisionNumber_,	\
@@ -464,16 +464,17 @@ resource restype_Slate (resid_gitGrep, "") { {
 resource restype_Slate (resid_gitStash, "") { {
 	Slate { "stash",	{
 		_GitStandards_,
-		Event { "save", "" },			TypeText { "save " },
-		Event { "keep index", "" },		TypeText { "--keep-index " },
-		Event { "patch", "" },			TypeText { "--patch " },
-		Event { "apply", "" },			TypeText { "apply " },
-		Event { "drop", "" },			TypeText { "drop " },
-		ExitEvent { "list", "" },		Sequence{}, TypeText { "list " }, _return, endSequence{},
-		Event { "show", "" },			TypeText { "show " },
-		Event { "pop to branch", "" },	TypeText { "branch " },
-		Event { "stash", "" },			Sequence{}, TypeText { "stash@{}" }, _left, ResSubslate { resid_gitType }, endSequence{},
-		Event { "top stash", "" },		TypeText { "stash@{0} " },
+		Event { "save", "" },				TypeText { "save " },
+		Event { "work in progress", "" },	TypeText { "wip" },
+		Event { "keep index", "" },			TypeText { "--keep-index " },
+		Event { "patch", "" },				TypeText { "--patch " },
+		Event { "apply", "" },				TypeText { "apply " },
+		Event { "drop", "" },				TypeText { "drop " },
+		ExitEvent { "list", "" },			Sequence{}, TypeText { "list " }, _return, endSequence{},
+		Event { "show", "" },				TypeText { "show " },
+		Event { "pop to branch", "" },		TypeText { "branch " },
+		Event { "stash", "" },				Sequence{}, TypeText { "stash@{}" }, _left, ResSubslate { resid_gitType }, endSequence{},
+		Event { "top stash", "" },			TypeText { "stash@{0} " },
 		_TypeSlate_,
 	} }
 } };
@@ -606,7 +607,8 @@ resource restype_Slate (resid_gitTag, "") { {
 #pragma mark 5 -- Merge
 resource restype_Slate (resid_gitMerge, "") { {
 	Slate { "Merge",	{
-		Event { "merge", "" },				TypeText { "--no-ff -m \"$mm\" " },
+		Event { "standard", "" },			TypeText { "--no-ff -m \"$mm\" " },
+		Event { "master", "" },				TypeText { "--no-ff -m \"merge master\" master" },
 		Event { "no fast forward", "" },	TypeText { "--no-ff " },
 		Event { "no commit", "" },			TypeText { "--no-commit " },
 		Event { "abort", "" },				TypeText { "--abort " },
@@ -809,7 +811,7 @@ resource restype_Slate (resid_FileMergeEdit, "") { {
 	} }
 } };
 
-#pragma mark 7 === Archive
+#pragma mark 5 === Archive
 resource restype_Slate (resid_Archive, "") { {
 	Slate { "Archive",	{
 		_SlateGlobals_,
