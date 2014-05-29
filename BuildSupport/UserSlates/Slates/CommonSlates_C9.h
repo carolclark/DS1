@@ -1948,10 +1948,8 @@ resource restype_Slate (_BrowseDoxygenResID_, "browse Doxygen documentation") { 
 #define _StarterBase_	\
 	_CommandSlate_,		\
 	_IMouseSlate_,		\
-	Event { "click one", "single click" },	\
-		IMouse { im_Click, 1 },	\
-	Event { "click two", "double click" },	\
-		IMouse { im_Click, 2 },	\
+	Event { "click one", "single click" },	IMouse { im_Click, 1 },	\
+	Event { "click two", "double click" },		IMouse { im_Click, 2 },	\
 	_FullAccessSlate_,	\
 	_MenuBarSlate_,		\
 	_DockWindowSlate_,	\

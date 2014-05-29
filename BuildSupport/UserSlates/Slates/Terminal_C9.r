@@ -8,8 +8,10 @@
 #pragma mark === Markers ===
 // Git
 //	2 Git, Type, Specify, Checkout, Branch, Remote, Difference, Show, Grep, Stash; 3 Add, Commit, Log, Rebase, Tag, Merge, Push, Fetch; 4 Clean; Bisect; Blame; SelectFile, Reset, Browser, FileMerge
+// Python, ...
+//	5 Python
 // Other
-//	1 Standards; Type; Emacs; Defines; 5 Archive; Clean; Build; 6 MacPorts; 7 Apache; Telnet; 8 Shell; 9 Terminal
+//	1 Standards; Type; Emacs; Defines; 6 Archive; Clean; Build; 7 MacPorts; Apache; Telnet; 8 Shell; 9 Terminal
 
 //#define resid_XCTerminal		resid_Terminal+1
 #define resid_Type				resid_Terminal+20
@@ -22,6 +24,9 @@
 #define resid_MacPorts			resid_Terminal+250
 #define resid_Apache			resid_Terminal+300
 #define resid_Telnet			resid_Terminal+350
+
+#define resid_Python			resid_Terminal+360
+	#define resid_PythonDebug		resid_Python+10
 
 #define resid_Git				resid_Terminal+400
 	#define resid_gitType				resid_Git+10
@@ -101,6 +106,7 @@
 			ExitEvent { "Window", "'Window' menu" }, ClickMenu { "Window" },		\
 			endSubslate{},		\
 		Event { "git", "" },			ResSubslate { resid_Git },			\
+		Event { "Python", "" },			ResSubslate { resid_Python },		\
 		Event { "clean", "" },			Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_Clean }, endSequence{},		\
 		Event { "archive", "" },		Sequence{}, TypeText { "archive " }, ResSubslate { resid_Archive }, endSequence{},		\
 		Event { "backup", "" },			TypeText { "ccBackup Backup " },	\
@@ -153,11 +159,13 @@ resource restype_Slate (resid_Emacs, "") { {
 } };
 
 #define	_CurrentBranch_			Event { "current branch", "" },	TypeText { "$cb " }
+#define	_TargetBranch_			Event { "target branch", "" },	TypeText { "$tb " }
 #define _RevisionNumber_		Event { "revision number", "" }, TypeText { "$vn " },
 #define	_GitFile_				Event { "git file", "" },	TypeText { "$gf " }
 #define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
-#define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb" }
+#define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb " }
 #define _TypeVariable_		_CurrentBranch_,	\
+							_TargetBranch_,		\
 							_RevisionNumber_,	\
 							_GitFile_, 			\
 							_MyVariable_,		\
@@ -233,7 +241,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
 		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issue number: \"; read inum; mm=$(${CCDev}/bin/python/scm.py $cb $inum); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
-		Event { "merge", "" },				Sequence{}, TypeText { "git merge --no-ff -m \"$mm\" " }, ResSubslate { resid_gitMerge }, endSequence{},
+		Event { "merge", "" },				Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "merge base", "" },			Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },				Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
 		Event { "fetch updates", "" },		Sequence{}, TypeText { "git fetchup " }, _return, endSequence{},
@@ -328,8 +336,11 @@ resource restype_Slate (resid_gitBranch, "") { {
 		Event { "verbose", "" },			TypeText { "--verbose " },
 		Event { "move", "" },				TypeText { "--move " },
 		Event { "rename", "" },				TypeText { "--move " },
+		Event { "delete remote", "" },		Sequence{}, TypeText { "git push origin :" }, endSequence{},
 		Event { "delete", "" },				TypeText { "--delete " },
 		Event { "master", "" },				TypeText { "master " },
+		Event { "menu", "" },				Sequence{}, TypeText { "| grep -n \"[a-z,A-Z]\" > $CCDev/tmp/gitbranches; cat $CCDev/tmp/gitbranches" }, _return, endSequence{},
+		Event { "select", "" },				Sequence{}, TypeText { "read lineno; tb=`cat $CCDev/tmp/gitbranches | grep \"^$lineno:\" | cut -c 5-`; print $tb" }, _return, ResSubslate { resid_gitSelectFile }, endSequence{},
 		_GitStandards_,
 		_TypeVariable_,
 		_StandardBranches_,
@@ -453,16 +464,17 @@ resource restype_Slate (resid_gitGrep, "") { {
 resource restype_Slate (resid_gitStash, "") { {
 	Slate { "stash",	{
 		_GitStandards_,
-		Event { "save", "" },			TypeText { "save " },
-		Event { "keep index", "" },		TypeText { "--keep-index " },
-		Event { "patch", "" },			TypeText { "--patch " },
-		Event { "apply", "" },			TypeText { "apply " },
-		Event { "drop", "" },			TypeText { "drop " },
-		ExitEvent { "list", "" },		Sequence{}, TypeText { "list " }, _return, endSequence{},
-		Event { "show", "" },			TypeText { "show " },
-		Event { "pop to branch", "" },	TypeText { "branch " },
-		Event { "stash", "" },			Sequence{}, TypeText { "stash@{}" }, _left, ResSubslate { resid_gitType }, endSequence{},
-		Event { "top stash", "" },		TypeText { "stash@{0} " },
+		Event { "save", "" },				TypeText { "save " },
+		Event { "work in progress", "" },	TypeText { "wip" },
+		Event { "keep index", "" },			TypeText { "--keep-index " },
+		Event { "patch", "" },				TypeText { "--patch " },
+		Event { "apply", "" },				TypeText { "apply " },
+		Event { "drop", "" },				TypeText { "drop " },
+		ExitEvent { "list", "" },			Sequence{}, TypeText { "list " }, _return, endSequence{},
+		Event { "show", "" },				TypeText { "show " },
+		Event { "pop to branch", "" },		TypeText { "branch " },
+		Event { "stash", "" },				Sequence{}, TypeText { "stash@{}" }, _left, ResSubslate { resid_gitType }, endSequence{},
+		Event { "top stash", "" },			TypeText { "stash@{0} " },
 		_TypeSlate_,
 	} }
 } };
@@ -595,10 +607,12 @@ resource restype_Slate (resid_gitTag, "") { {
 #pragma mark 5 -- Merge
 resource restype_Slate (resid_gitMerge, "") { {
 	Slate { "Merge",	{
+		Event { "standard", "" },			TypeText { "--no-ff -m \"$mm\" " },
+		Event { "master", "" },				TypeText { "--no-ff -m \"merge master\" master" },
 		Event { "no fast forward", "" },	TypeText { "--no-ff " },
 		Event { "no commit", "" },			TypeText { "--no-commit " },
 		Event { "abort", "" },				TypeText { "--abort " },
-		Event { "tool", "" },				Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
+		Event { "resolve", "" },			Sequence{}, Keypress { kc_delete, 0 }, TypeText { "tool " }, endSequence{},
 		Event { "file merge", "" },			Sequence{}, _return, ResSubslate { resid_FileMerge }, endSequence{},
 		_TypeVariable_,
 		_StandardBranches_,
@@ -849,6 +863,45 @@ resource restype_Slate (resid_Build, "") { {
 	} }
 } };
 
+#pragma mark 5 === Python
+resource restype_Slate (resid_Python, "") { {
+	Slate { "Python",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		_StarterBase_,
+		Event { "go back", "" },	Launch { DevApps_"XCode.app", resid_Xcode },
+		Event { "debug", "" },		Sequence{}, TypeText { "python -m pdb ${CCDev}/bin/python/" }, ResSubslate { resid_PythonDebug }, endSequence{},
+	} }
+} };
+
+#pragma mark Debug
+resource restype_Slate (resid_PythonDebug, "") { {
+	Slate { "debug",	{
+		_SlateGlobals_,
+		ExitEvent { "close", "" },	NilAction{},
+		Event { "Type", "" },		ResSubslate { resid_Type },
+		Event { "list", "" },		Sequence{}, Keypress { kc_L, 0 }, _return, endSequence{},
+		Event { "where", "" },		Sequence{}, Keypress { kc_W, 0 }, _return, endSequence{},
+		Event { "in", "" },			Sequence{}, Keypress { kc_S, 0 }, _return, endSequence{},
+		Event { "over", "" },		Sequence{}, Keypress { kc_N, 0 }, _return, endSequence{},
+		Event { "out", "" },		Sequence{}, Keypress { kc_R, 0 }, _return, endSequence{},
+		Event { "go", "" },			_return,
+		Event { "break", "" },		Sequence{}, TypeText { "# break examples: fib.main; fib.py:4" }, _return, TypeText { "break " },endSequence{},
+		Event { "continue", "" },	Sequence{}, Keypress { kc_C, 0 }, _return, endSequence{},
+		Event { "up", "" },			Sequence{}, Keypress { kc_U, 0 }, _return, endSequence{},
+		Event { "down", "" },		Sequence{}, Keypress { kc_D, 0 }, _return, endSequence{},
+		Event { "args", "" },		Sequence{}, Keypress { kc_A, 0 }, _return, endSequence{},
+		Event { "print", "" },		Sequence{}, TypeText { "p " }, ResSubslate { resid_Type }, endSequence{},
+		Event { "statement", "" },	Sequence{}, TypeText { "!" }, ResSubslate { resid_Type }, endSequence{},
+		Event { "execute", "" },	_return,
+		ExitEvent { "quit", "" },	Sequence{}, Keypress { kc_Q, 0 }, _return, endSequence{},
+		Event { "reset", "" },		Sequence{}, TypeText { "reset" }, _return, endSequence{},
+		_CommandSlate_,
+		_DirectionKeys_,
+		_WhitespaceKeys_,
+	} }
+} };
+
 #pragma mark 6 === MacPorts
 resource restype_Slate (resid_MacPorts, "MacPorts Slate") { {
 	Slate { "MacPorts", {
@@ -863,7 +916,7 @@ resource restype_Slate (resid_MacPorts, "MacPorts Slate") { {
 	} },
 } };
 
-#pragma mark 7 === Apache
+#pragma Apache
 #define	_ApacheWrapperPath_ 	"/opt/local/etc/LaunchDaemons/org.macports.apache2/apache2.wrapper"
 resource restype_Slate (resid_Apache, "Apache Slate") { {
 	Slate { "Apache", {
