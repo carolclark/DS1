@@ -1,22 +1,22 @@
 # ___FILENAME___
-# Created by ___FULLUSERNAME___ on ___DATE___ for project <#ProjectName#>.
+# Created by ___FULLUSERNAME___ on ___DATE___ for repository <#RepositoryName#>.
 
 # This configuration file includes only the settings we wish to set or change.
 # For more information about these settings, or about the many additional settings available,
 #	see Support/BuildSupport/Doxygen/Default.doxygen or the Doxygen application.
 
-PROJECT_NAME			= <#ProjectName#>
-OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/<#ProjectName#>
-STRIP_FROM_PATH			= $(HOME)/Dev/<#ProjectName#>
+PROJECT_NAME			= <#RepositoryName#>
+OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/<#RepositoryName#>
+STRIP_FROM_PATH			= $(HOME)/Dev/<#RepositoryName#>
 EXTRACT_ALL				= YES
-INPUT					= $(HOME)/Dev/<#ProjectName#>/<#SourcePath#>
+INPUT					= $(HOME)/Dev/<#RepositoryName#>/<#SourcePath#>
 EXCLUDE_PATTERNS		= *.plist *.pch
 EXCLUDE					= en.lproj
 RECURSIVE				= YES
 EXAMPLE_PATTERNS		= *
 GENERATE_DOCSET			= YES
-DOCSET_FEEDNAME			= <#ProjectName#>
-DOCSET_BUNDLE_ID		= com.candcsoft.<#ProjectName#>
+DOCSET_FEEDNAME			= <#RepositoryName#>
+DOCSET_BUNDLE_ID		= com.candcsoft.<#RepositoryName#>
 DOCSET_PUBLISHER_ID		= com.candcsoft.Publisher
 GENERATE_LATEX			= NO
-IMAGE_PATH				= $(HOME)/Dev/<#ProjectName#>/Docs/Images
+IMAGE_PATH				= $(HOME)/Dev/<#RepositoryName#>/Docs/Images

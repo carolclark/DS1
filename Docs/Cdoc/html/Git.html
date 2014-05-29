@@ -98,8 +98,18 @@
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Branch</h5><ul>
-			<li>pre-existing branch: <span class='em'>Update Branch</span></li>
-			<li>new branch: set current branch; <span class='mono'>git push --set-upstream origin $cb</span>; <br />create new bot '&lt;targetName&gt; &lt;branchName&gt; Bot'</li>
+			<li>pre-existing branch<ul>
+				<li><span class='em'>Update Branch</span><ul>
+					<li>check for stashes, unmerged branches</li>
+					<li><a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a></li>
+					<li>checkout branch ($cb); <span class='em'>Merge</span> master</li>
+				</ul></li>
+			</ul></li>
+			<li>new branch<ul>
+				<li>[checkout master]; checkout new branch; set current branch</li>
+				<li><span class='mono'>git push --set-upstream origin $cb</span></li>
+				<li>create new bot '&lt;targetName&gt; &lt;branchName&gt; Bot'</li>
+			</ul></li>
 			<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
 		</ul>
 		<h5>Repeat</h5>
@@ -107,40 +117,33 @@
 				<li>repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</li>
 			</ul>
 			<h6>Commit</h6><ul>
-				<li>[backup GitHub issues; add, OR if failure checkout, original]</li>
 				<li>construct and save commit message; verify modifications (diff --cached)</li>
+				<li>[backup GitHub issues; add, OR if failure checkout, original]</li>
 				<li>status: check branch; add / review files to be committed</li>
 				<li>check for stray spaces (diff --cached --check)</li>
 				<li>review commit msgfile, and check for #issue; commit</li>
 				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
 				<li>check stash list</li>
-				<li><span class='em'>Update Branch</span><ul>
-					<li>check for stashes, unmerged branches</li>
-					<li><a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a></li>
-					<li>checkout branch ($cb); <span class='em'>Merge</span> master</li>
-				</ul></li>
+				<li>[Update Branch]</li>
 			</ul>
 			<h6>[Push]</h6>
 		<h5>[Merge]</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-			<li>checkout master; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>
+			<li>checkout master; [push]; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>
 			<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span><ul>
 				<li>after --no-commit: commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			</ul></li>
-			<li><a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
+			<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
 			<li>show --name-only; diff --name-status origin/master..master; lg origin/master..master</li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;<ul>
 				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
 			</ul></li>
 			<li>retest</li>
-			<li>[[<span class='em'>Push</span>]; delete branch]</li>
-		</ul>
-
-<hr />
-	<h5>Morning/Working Report</h5><ul>
-			<li>branch list; status; set $cb to current branch; show --name-only</li>
-			<li>for master..$cb, origin/master..master, master..origin/master: lg; diff --name-status</li>
-			<li>checkout master; status; branch unmerged; stash list; checkout $cb</li>
+			<li>[[<span class='em'>Push</span>];<ul>
+				<li>delete branch]<ul>
+					<li>check for stashes; delete branch; push-delete remote</li>
+				</ul></li>
+			</ul></li>
 		</ul>
 	</div>
 </div>
@@ -148,6 +151,12 @@
 <div style="page-break-before: always">
 <h5 id="adminSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
 		<!-- @marker "adminReleaseBranch" -->
+		<h6>Morning/Working Report</h6><ul>
+			<li>branch list; status; set $cb to current branch; show --name-only</li>
+			<li>for master..$cb, origin/master..master, master..origin/master: lg; diff --name-status</li>
+			<li>checkout master; status; branch unmerged; stash list; checkout $cb</li>
+		</ul>
+
 		<h6 id='adminReleaseBranch'>Release Branch</h6>
 		<p class='blurb'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p><ul>
 			<li>select version number (eg. "1.0"); set $vn; create branch release-$vn</li>
@@ -161,7 +170,7 @@
 
 		<!-- @marker "adminUpdateMaster" -->
 		<h6 id='adminUpdateMaster'>Update Master from Remotes</h6><ul>
-			<li>set $cb; checkout master; status; lg master..origin/master; [lg artist..lm/artist]</li>
+			<li>set $cb; checkout master; status; diff --name-status master..origin/master; lg master..origin/master; [lg artist..lm/artist]</li>
 			<li>fetch updates (fetchup): <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
 				<li>if that merge fails, can: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
 			</ul></li>

@@ -1,7 +1,7 @@
 #!/bin/ksh
 
 #  ___FILENAME___
-#  <#Project#>
+#  <#Repository#>
 #
 #  Created by ___FULLUSERNAME___ on ___DATE___.
 #  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
@@ -40,7 +40,7 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"html" )
-			destinationFolder="${technicalDocs}/<#Project#>"
+			destinationFolder="${technicalDocs}/<#Repository#>"
 			;;
 		"Cdoc_install.ksh" )
 			;&	# this script
@@ -89,7 +89,7 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${technicalDocs}/<#Target#>" ; do
+	for folder in "${technicalDocs}/<#Repository#>" ; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
