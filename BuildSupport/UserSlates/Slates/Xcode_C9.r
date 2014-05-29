@@ -137,6 +137,7 @@
 #define resid_Console				resid_External+50
 #define resid_BBValidate			resid_External+60
 	#define resid_BBContinueCheckAll	resid_BBValidate+1
+#define resid_Transmit				resid_External+70
 
 
 #pragma mark 6 --- Macros
@@ -905,6 +906,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "profile", "" },		Sequence{}, Keypress { kc_I	, mf_command }, ResSubslate { resid_Profile }, endSequence{},
 		Event { "terminate", "" },		Keypress { kc_period, mf_command },
 		Event { "validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { MainApps_"BBEdit.app", 0 }, endSequence{},
+		Event { "Transmit", "" },		Sequence{}, Launch { MainApps_"Transmit.app", 0 }, ResSubslate { resid_Transmit }, endSequence{},
 		Event { "open Dash", "" },		_openDash,
 		Event { "Browser", "" },		Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_Browser }, endSequence{},
 		Event { "view Doxygen", "" },	Sequence{}, Launch { Apps_"Safari.app", 0 }, ResSubslate { resid_BrowseDoxygen }, endSequence{},
@@ -931,6 +933,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "go tab", "" },			_goTab,
 		Event { "new tab", "" },		_newTab,
 		Event { "close tab", "" },		_closeTab,
+		Event { "reveal file", "" },	Keypress { kc_J, mf_command + mf_shift },
 		Event { "skip ahead", "" },		_skipAhead,
 		Event { "skip back", "" },		_skipBack,
 		Event { "next issue", "" },		_nextIssue,
@@ -2231,7 +2234,7 @@ resource restype_Slate (resid_typeSearch, "") { {
 } };
 
 #pragma mark 8 === External
-// inside: Safari Browsers; 1 GitHub; 2 Xcode Server; 4 Stickies; 5 Console; 6 BBEdit; 7 AppCode
+// inside: Safari Browsers; 1 GitHub; 2 Xcode Server; 4 Stickies; 5 Console; 6 BBEdit; 7 Transmit
 
 #define _mainFrame_h		0
 #define _mainFrame_v		75
@@ -2344,6 +2347,18 @@ resource restype_Slate (resid_BBContinueCheckAll, "resid_BBContinueCheckAll") { 
 		ExitEvent { "exit", "" },		NilAction{},
 		ExitEvent { "continue", "" },	Sequence{}, _return, _BBClickScriptsMenu, _down, TypeText { "CheckLinks" }, _return, endSequence{},
 		Event { "close window", "" },	Keypress { kc_W, mf_command },
+	} }
+} };
+
+#pragma mark 7 --- Transmit
+resource restype_Slate (resid_Transmit, "") { {
+	Slate { "Transmit",	{
+		_SlateGlobals_,
+		ExitEvent { "exit", "" },		NilAction{},
+		ExitEvent { "go back", "" },	Launch { DevApps_"XCode.app", resid_Xcode },
+		Event { "synchronize", "" },	Click { 1, 70, 35, _window, _topCenter },
+		Event { "cancel", "" },			Keypress { kc_period, mf_command },
+		Event { "continue", "" },		_return,
 	} }
 } };
 
