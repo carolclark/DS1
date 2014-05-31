@@ -188,7 +188,7 @@
 #define _clickFindOptions		Click { 1, -281, 132, _window, _topRight }
 #define _clickFindDone			Click { 1, -31, 105, _window, _topRight }
 
-#define	_openDash			Event { "open Dash", "" },			Launch { MainApps_"Dash.app", resid_XcodeDash },
+#define	_openDash			Event { "open Dash", "" },			Sequence{}, Launch { MainApps_"Dash.app", 0 }, ResSubslate { resid_XcodeDash }, endSequence{}
 #define _lookup				Event { "lookup Dash", "" },		Sequence{}, Keypress { kc_accent, mf_command + mf_control }, ResSubslate { resid_XcodeDash }, endSequence{}
 
 #pragma mark Popup macros
@@ -915,6 +915,7 @@ resource restype_Slate (resid_Target, "Target") { {
 		Event { "project", "" },		Keypress { kc_1, mf_command },
 		Event { "symbol", "" },			Keypress { kc_2, mf_command },
 		Event { "issue", "" },			Sequence{}, Keypress { kc_4, mf_command }, ResSubslate { resid_IssueIndex }, endSequence{},
+		Event { "first issue", "" },	Sequence{}, Keypress { kc_4, mf_command }, Wait { 10 }, _down, _down, endSequence{},
 		Event { "debug", "" },			Sequence{}, Keypress { kc_6, mf_command }, ResSubslate { resid_DebugIndex }, endSequence{},
 		Event { "log", "" },			Sequence{}, Keypress { kc_8, mf_command }, ResSubslate { resid_LogIndex }, endSequence{},
 		Event { "Index", ""	},			ResSubslate { resid_Index },
@@ -2355,7 +2356,7 @@ resource restype_Slate (resid_Transmit, "") { {
 	Slate { "Transmit",	{
 		_SlateGlobals_,
 		ExitEvent { "exit", "" },		NilAction{},
-		ExitEvent { "go back", "" },	Launch { DevApps_"XCode.app", resid_Xcode },
+		ExitEvent { "go back", "" },	Sequence{}, Keypress { kc_M, mf_command }, Launch { DevApps_"XCode.app", resid_Xcode }, endSequence{},
 		Event { "synchronize", "" },	Click { 1, 70, 35, _window, _topCenter },
 		Event { "cancel", "" },			Keypress { kc_period, mf_command },
 		Event { "continue", "" },		_return,

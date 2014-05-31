@@ -15,6 +15,7 @@
 		676C9305179F326200876265 /* GitHub_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 676C9304179F326200876265 /* GitHub_C9.r */; };
 		6773C4141791FB03005E4CAB /* SetMarkers.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6773C4131791F844005E4CAB /* SetMarkers.applescript */; };
 		6787407317C16A4F000190D4 /* Developer_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 6787407217C02602000190D4 /* Developer_C9.r */; };
+		67A8265C193A72E2004F1F56 /* CheckHTML.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67BB9CCD1933DC3300219B61 /* CheckHTML.applescript */; };
 		67DB22EB169CD82300A6E910 /* AccessLibTypes.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22CF169CD82300A6E910 /* AccessLibTypes.r */; };
 		67DB22EC169CD82300A6E910 /* ArbonnePrototype_c9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D0169CD82300A6E910 /* ArbonnePrototype_c9.r */; };
 		67DB22ED169CD82300A6E910 /* Automator_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D1169CD82300A6E910 /* Automator_C9.r */; };
@@ -1032,6 +1033,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A8265C193A72E2004F1F56 /* CheckHTML.applescript in Sources */,
 				6773C4141791FB03005E4CAB /* SetMarkers.applescript in Sources */,
 				67DD774716A4C4FB00BECCD5 /* BBEditUtil.applescript in Sources */,
 				67DD774816A4C4FB00BECCD5 /* CheckLinks.applescript in Sources */,
