@@ -305,9 +305,26 @@ resource restype_Slate (resid_InsertSnippet, "") { {
 		Event { "developer link", "" },					TypeText { "developerLink#" },
 		ExitEvent { "developer item", "" },				TypeText { "developerItem#" },
 		ExitEvent { "glossary item", "" },				TypeText { "glossaryItem#" },
+		Event { "document project", "" },				TypeText { "documentProject#" },
+		Event { "document target", "" },				Sequence{}, TypeText { "documentTarget#" }, ResSubslate { resid_snTargetType }, endSequence{},
 		Event { "use case", "" },						Sequence{}, TypeText { "useCase#" }, ResSubslate { resid_ucActor }, endSequence{},
 		Event { "use case link", "" },					Sequence{}, TypeText { "useCaseLink#" }, endSequence{},
 		Event { "level", "" },							ResSubslate { resid_ucLevel },
+	} }
+} };
+
+#pragma mark snTargetType
+resource restype_Slate (resid_snTargetType, "") { {
+	Slate { "target type",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		Event { "next field", "" },			_nextField,
+		Event { "previous field", "" },		_previousField,
+		_DirectionKeys_,
+		ExitEvent { "Cocoa Test Bundle", "" },	TypeText { "<a href=\"DevelopingProjects.html#AddCocoaTestBundleTarget\">Cocoa Test Bundle</a>" },
+		Event { "Docs Project", "" },	TypeText { "<a href=\"DevelopingProjects.html#AddDocsProject\">Docs Project</a>" },
+		ExitEvent { "Cdoc", "" },		TypeText { "install technical documentation for repository projects" },
+		ExitEvent { "Doxygen", "" },	TypeText { "compile and install Doxygen documentation" },
 	} }
 } };
 
@@ -345,6 +362,8 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 	Slate { "UserSlate",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
+		Event { "next field", "" },				_nextField,
+		Event { "previous field", "" },			_previousField,
 		ExitEvent { "define", "" },				Sequence{}, TypeText { "#define" }, Keypress { kc_tab, mf_option }, endSequence{},
 		ExitEvent { "exit event", "" },			TypeText { "ExitEvent { \"" },
 		ExitEvent { "event", "" },				TypeText { "Event { \"" },

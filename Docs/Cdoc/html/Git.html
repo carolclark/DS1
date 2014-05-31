@@ -98,19 +98,22 @@
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Branch</h5><ul>
-			<li>pre-existing branch<ul>
-				<li><span class='em'>Update Branch</span><ul>
-					<li>check for stashes, unmerged branches</li>
-					<li><a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a></li>
-					<li>checkout branch ($cb); <span class='em'>Merge</span> master</li>
+			<li>checkout master; fetch updates<ul>
+				<li>also see <a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a> for more details</li>
+			</ul></li>
+			<li>checkout branch<ul>
+				<li>pre-existing branch<ul>
+					<li><span class='em'>Update Branch</span><ul>
+						<li>checkout branch ($cb); <span class='em'>Merge</span> master; recover any stashes</li>
+					</ul></li>
 				</ul></li>
+				<li>new branch<ul>
+					<li>checkout new branch; set current branch</li>
+					<li><span class='mono'>git push --set-upstream origin $cb</span></li>
+				</ul></li>
+				<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
 			</ul></li>
-			<li>new branch<ul>
-				<li>[checkout master]; checkout new branch; set current branch</li>
-				<li><span class='mono'>git push --set-upstream origin $cb</span></li>
-				<li>create new bot '&lt;targetName&gt; &lt;branchName&gt; Bot'</li>
-			</ul></li>
-			<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
+			<li>create new bot(s) '&lt;targetName&gt; &lt;branchName&gt;'</li>
 		</ul>
 		<h5>Repeat</h5>
 			<h6>Develop</h6><ul>
@@ -134,17 +137,19 @@
 				<li>after --no-commit: commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
 			</ul></li>
 			<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
-			<li>show --name-only; diff --name-status origin/master..master; lg origin/master..master</li>
+			<li>show --name-only; lg</li>
 			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;<ul>
 				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
 			</ul></li>
 			<li>retest</li>
+			<li>diff --name-status origin/master..master; lg origin/master..master</li>
 			<li>[[<span class='em'>Push</span>];<ul>
 				<li>delete branch]<ul>
 					<li>check for stashes; delete branch; push-delete remote</li>
 				</ul></li>
 			</ul></li>
 		</ul>
+		<h5>[Archive Repository]</h5>
 	</div>
 </div>
 

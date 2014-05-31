@@ -21,8 +21,9 @@
 #define resid_Unix					resid_Developer+14
 
 #define	resid_InsertSnippet			resid_Developer+30
-	#define resid_ucLevel				resid_InsertSnippet+1
-	#define resid_ucActor				resid_InsertSnippet+2
+	#define resid_snTargetType			resid_InsertSnippet+1
+	#define resid_ucLevel				resid_InsertSnippet+2
+	#define resid_ucActor				resid_InsertSnippet+3
 
 #define	_nextField			Keypress { kc_slash, mf_control }
 #define	_previousField		Keypress { kc_slash, mf_control + mf_shift }

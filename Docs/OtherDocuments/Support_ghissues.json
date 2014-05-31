@@ -1,5 +1,45 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/41",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/41/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/41/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/41/events",
+    "html_url": "https://github.com/carolclark/Support/issues/41",
+    "id": 34714740,
+    "number": 41,
+    "title": "archive script not working",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-05-31T20:44:08Z",
+    "updated_at": "2014-05-31T20:47:58Z",
+    "closed_at": null,
+    "body": "no message, but no action is taken"
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/40",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/40/labels{/name}",
     "comments_url": "https://api.github.com/repos/carolclark/Support/issues/40/comments",
@@ -35,9 +75,9 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2014-05-02T23:36:27Z",
-    "updated_at": "2014-05-03T00:15:17Z",
+    "updated_at": "2014-05-26T23:13:50Z",
     "closed_at": null,
-    "body": "use modules to replace/augment pch files in ObjC projects (What's New in Xcode 5 13#400@22:20)\r\n\r\n* Motivation\r\n    * modules are more advanced technology available for use in Objective-C code\r\n    * due to reliance on prefix files, files do not #include or #import the headers as they should\r\n    * in Accessor, the prefix file is apparently interfering with creation of pure Objective-C and files because the automatically-included code is not valid Objective-C code\r\n\r\n- [ ] add the appropriate include/import statements to existing class headers to explicitly include the files from the prefix header\r\n- [ ] use modules instead of the prefix header for Objective-C code\r\n\r\n    * *in Accessor, #if guards will make the prefix header do nothing for Objective-C code*\r\n    * *this should allow top-level Objective-C files to be pure Objective-C (extension .m instead of .mm)*"
+    "body": "use modules to replace/augment pch files in ObjC projects (What's New in Xcode 5 13#400@22:20)\r\n\r\n* Motivation\r\n    * modules are more advanced technology available for use in Objective-C code\r\n    * due to reliance on prefix files, files do not #include or #import the headers as they should\r\n    * in Accessor, the prefix file is apparently interfering with creation of pure Objective-C and files because the automatically-included code is not valid Objective-C code\r\n\r\n- [ ] add the appropriate include/import statements to existing class headers to explicitly include the files from the prefix header\r\n- [ ] use modules instead of the prefix header for Objective-C code\r\n\r\n* *see also carolclark/Accessor#12*\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/39",
@@ -1981,104 +2021,5 @@
     "updated_at": "2014-05-17T12:30:31Z",
     "closed_at": null,
     "body": "Update backup support procedures, including usage of our external volumes\r\n    * see QuickPicks: our current backup utility, obtained from MobileMe, identifies critical data for some standard applications; it looks like a good list\r\n    * Backup itself - Is it still usable under 10.9?\r\n[2014 Mac Backup Software Comparisons and Reviews](http://mac-backup-software-review.toptenreviews.com) -- probably try ChronoSync\r\n\r\n"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/3",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/3/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/3/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/3/events",
-    "html_url": "https://github.com/carolclark/Support/issues/3",
-    "id": 12464674,
-    "number": 3,
-    "title": "adopt GitHub Issues and Markdown",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/collaborate",
-        "name": "collaborate",
-        "color": "ffc9b4"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
-        "name": "Shell",
-        "color": "bfdadc"
-      }
-    ],
-    "state": "open",
-    "assignee": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "next",
-      "description": "",
-      "creator": {
-        "login": "carolclark",
-        "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
-        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-        "url": "https://api.github.com/users/carolclark",
-        "html_url": "https://github.com/carolclark",
-        "followers_url": "https://api.github.com/users/carolclark/followers",
-        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-        "organizations_url": "https://api.github.com/users/carolclark/orgs",
-        "repos_url": "https://api.github.com/users/carolclark/repos",
-        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "open_issues": 21,
-      "closed_issues": 1,
-      "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
-      "due_on": null
-    },
-    "comments": 0,
-    "created_at": "2013-03-26T18:48:51Z",
-    "updated_at": "2014-01-29T23:30:09Z",
-    "closed_at": null,
-    "body": "see [Marked](http://markedapp.com) editing app\r\n\r\n- [x] <a id=\"begin\">[begin]</a> begin using GitHub Issues; synchronize with History files (Support; Punkin; Accessor)\r\n    * History file: begin to adapt toward simpler content to synchronize with Issues; use HTML `pre` tag to simulate markdown text\r\n        * *see [Markdown / Cdoc Notes][MarkdownCdocNotes]*\r\n- [x] <a id=\"backup\">[backup]</a> backup GitHub issue content\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/issues` gets assigned issues\r\n    * `curl --user \"carolclark:gh6868cc\" https://api.github.com/repos/carolclark/Accessor/issues` gets open issues\r\n- [x] script to backup open issues for each project to <Project>Issues.json in project's root folder and for all projects to /Aux/GitHubIssues.json\r\n- [ ] add repository argument; update <Project>Issues for that repository only\r\n- [x] support documentation editing in BBEdit\r\n    * use Marked to preview Markdown output\r\n        * *BBEdit preview does not work for Markdown*\r\n- [x] change *_History.html files to use 'span' instead on 'li' tags for markers of style 'tlmark' and 'tldate'\r\n- [ ] use a separate file to contain history for each version\r\n    * *eg. Support_v0_1.html for work on v0.1; probably also includes bugfix versions 0.1.1, etc.*\r\n- [ ] allow markdown files to be included in the source for Cdoc sites\r\n    * cInstall: Cdoc translation also handles markdown source\r\n    * make sure valid HTML is produced\r\n- [ ] switch history files to markdown\r\n- [ ] create new issues for future plans from existing History.html files\r\n\r\nsee also #19 migrate from HTML/sed to Markdown for further Markdown work"
   }
 ]

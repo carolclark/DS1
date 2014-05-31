@@ -21,7 +21,7 @@
 	}
 	h3	{
 		border-bottom: 1px solid #555555;
-		width: 65%;
+		width: 75%;
 		margin-top: 2.1em;
 		margin-bottom: .5em;
 		font-size: 21px;
@@ -557,4 +557,7 @@
 	}
 	.todo {
 		background-color: #ffd8d8;
+	}
+	.indent {
+		margin-left: 2em;
 	}
