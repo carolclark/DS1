@@ -41,7 +41,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<!-- @topicSep -->
 	<!-- @topicGroup "Related Project Files" "15" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
-		<!-- @topicItem "Developing Projects" "DevelopingProjects.html#Contents" "0" "tasks and refactorings" -->
+		<!-- @topicItem "Developing Projects" "XcodeDevelopment.html#Contents" "0" "tasks and refactorings" -->
 		<!-- @topicItem "Git" "Git.html#Contents" "0" "adopted source control system" -->
 		<!-- @topicItem "Cdoc" "Cdoc.html#Contents" "0" "in-house documentation system" -->
 		<!-- @topicItem "Tools" "Tools.html#Contents" "0" "installed applications, tools, and libraries" -->
@@ -88,7 +88,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<h5>Cdoc</h5>
 	<p class='ital'>install technical documentation</p><div class='indent'>
 		<p><b>Target:</b></p><ul>
-			<li><a href="DevelopingProjects.html#AddDocsProject">Docs Target</a> technical documentation for repository projects</li>
+			<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a> technical documentation for repository projects</li>
 			<li>installs technical documentation at ${HOME}/Library/CCDev/Sites/TechnicalDocs</li>
 		</ul>
 		<p><b>Tests:</b> </p>
@@ -99,7 +99,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<h5>Doxygen</h5>
 	<p class='ital'>install Doxygen 8documentation</p><div class='indent'>
 		<p><b>Target:</b></p><ul>
-			<li><a href="DevelopingProjects.html#AddDocsProject">Docs Target</a> compile and install Doxygen documentation</li>
+			<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a> compile and install Doxygen documentation</li>
 			<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/Doxygen</li>
 		</ul>
 		<p><b>Tests:</b> </p>
@@ -118,14 +118,14 @@ heading with name: Task Name; tsk_TaskName;5
 	<h5>Developer</h5>
 	<p class='ital'>Developer configuration, scripts and related items</p><div class='indent'>
 		<p><b>Target:</b></p><ul>
-			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target; <span class='depr'>depends on target AppleScripts</span></li>
+			<li><a href="XcodeDevelopment.html#AddCcInstallTarget">ccInstall</a> target; <span class='depr'>depends on target AppleScripts</span></li>
 			<li>DevConfig.ksh<ul>
 				<li>Unix script that sets up our development environment. Script is run at the beginning of execution of Developer_install.ksh, or can be run from Terminal.</li>
 				<li>DevConfig.ksh sets up basic environment including git support, installs additional environment files, third-party tool shunit, and starter scripts required for targets to build and test</li>
 			</ul></li>
 		</ul>
 		<p><b>Tests:</b> </p><ul>
-			<li>DeveloperTests: <a href="DevelopingProjects.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
+			<li>DeveloperTests: <a href="XcodeDevelopment.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
 				<li>runs: Developer shunit tests from folder _Tests; PythonTests; <span class='expand'>AppleScriptTests</span></li>
 				<li>Run Script build phases with ksh scripts:<ul>
 					<li>'shunit Tests': runs tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
@@ -139,7 +139,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<h5>AppleScripts</h5>
 	<p class='ital'>compiles AppleScripts</p><div class='indent'>
 		<p><b>Target:</b></p><ul>
-			<li><a href="DevelopingProjects.html#AddBuildScriptTarget">Build Script Target</a> precompiles scripts from Developer/AppleScripts into target's bundle</li>
+			<li><a href="XcodeDevelopment.html#AddBuildScriptTarget">Build Script Target</a> precompiles scripts from Developer/AppleScripts into target's bundle</li>
 			<li><span class='todo'>AppleScript_install.ksh</span> called from Run Script build phase to install them from that bundle</li>
 		</ul>
 		<p><b>Tests:</b> </p>

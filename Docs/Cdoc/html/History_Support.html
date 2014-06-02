@@ -97,7 +97,7 @@
 					* rename target and folder CCDev back to Developer, files CCDev_install.ksh to Developer_install.ksh, CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
 				* add target DeveloperTests
 					* ccInstall: by default, build only instead of build and test
-					* add target DeveloperTests; see <a href="DevelopingProjects.html#AddCcInstallTarget">AddCcInstallTarget</a>
+					* add target DeveloperTests; see <a href="XcodeDevelopment.html#AddCcInstallTarget">AddCcInstallTarget</a>
 				* handle Python code and tests (from ccdevPy)
 					* add Python code and tests
 			<span class='tlmark'>&lt;-- 05/17/2014</span>
@@ -693,7 +693,7 @@
 		<li>Accessor (new): add copies of files AccessLib_rsrc.h, Keyboard_AL.h to UserSlates folder</li>
 		<li class='tlmark'>&lt;--</li>
 		<li>FixWindow.applescript: changes window position, and size if necessary, to avoid blocking Accessor window; stored at top level of Scripts folder, but code is per application<ul>
-			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="DevelopingProjects.html#AddBuildScriptTarget">Add Build Script Target</a></li>
+			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="XcodeDevelopment.html#AddBuildScriptTarget">Add Build Script Target</a></li>
 		</ul></li>
 	</ul>
 
@@ -950,7 +950,7 @@
 			<li>Accessor: support both Carbon (AccessorC9) and Accessor for project selection</li>
 			<li>add default annotated Doxygen configuration file Default.doxygen for reference</li>
 			<li>Xcode UserSlate: add macros for several common type actions</li>
-			<li>Cdoc: add file DevelopingProjects.html<ul>
+			<li>Cdoc: add file XcodeDevelopment.html<ul>
 				<li class='blurb'>tasks and refactorings related to development with (Xcode) projects</li>
 			</ul></li>
 			<li>rename Xcode FileTemplate group Cdoc to Documentation</li>
@@ -973,7 +973,7 @@
 			<li class='blurb'>build Cdoc targets from run script that calls buildCdoc; clean using cleanProjectTarget from Terminal as for other targets</li>
 			<li class='blurb'>replaces Support_svn scripts build.uia, currently called from Terminal, and buildCdoc, called by build.uia</li>
 			<li>new script buildCdoc from existing Support_svn script buildCdoc</li>
-			<li><a href="DevelopingProjects.html#AddRunScriptTarget">Add Run Script Target</a> Cdoc with script buildCdoc Support</li>
+			<li><a href="XcodeDevelopment.html#AddRunScriptTarget">Add Run Script Target</a> Cdoc with script buildCdoc Support</li>
 			<li>cleanProjectTarget: add special handling to clean targets Cdoc</li>
 			<li>Xcode.r: support cleanProjectTarget &lt;Project&gt; Cdoc</li>
 			<li class='tldate'>[targetCdoc 12/22/2011]</li>
