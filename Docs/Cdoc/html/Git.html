@@ -241,6 +241,7 @@
 	<li><span class='mono'>git stash show [stash@{n}]</span>&nbsp;&nbsp;# show details for the top or a specified stash</li>
 </ul>
 
+<p><br /><br /><br /><br /><br /></p>
 <!-- @marker "Diff" -->
 <h4 id="tsk_Diff">Diff</h4>
 	<h5>Diff Commands</h5><ul>
@@ -261,8 +262,20 @@
 		</ul></li>
 		<li><span class='mono'>--date-order</span>&nbsp;&nbsp;# to show chronologically</li>
 	</ul>
+	<h5>diff a previous version of a file</h5><ul>
+		<li><span class='mono'>git lg --follow &lt;filename&gt;</span>&nbsp;&nbsp;# show changes to this file</li>
+		<li><span class='mono'>st=&lt;shaTag&gt;</span>&nbsp;&nbsp;# set tag to target sha</li>
+		<li><span class='mono'>git show --name-only &lt;shaTag&gt; </span>&nbsp;&nbsp;# see commit message; get file path<ul>
+			<li>if file path is the same as current path:<ul>
+				<li><span class='mono'>git difftool &lt;shaTag&gt; &lt;filename&gt;</span>&nbsp;&nbsp;# diff revisions</li>
+			</ul></li>
+			<li>else<ul>
+				<li><span class='mono'>git checkout &lt;shaTag&gt; &lt;filename&gt;</span>&nbsp;&nbsp;# checkout file to compare</li>
+				<li>use BBEdit to compare files</li>
+			</ul></li>
+		</ul></li>
+	</ul>
 
-<p><br /><br /><br /></p>
 <!-- @marker "Tag" -->
 <h4 id="tsk_Tag">Tag</h4><ul>
 	<li><span class='mono'>git tag</span>&nbsp;&nbsp;# list<ul>
@@ -300,12 +313,14 @@
 		<li><span class='mono'>git log master..&lt;branch&gt;</span>&nbsp;&nbsp;# commits reachable from &lt;branch&gt; but not master</li>
 		<li><span class='mono'>git log master...&lt;branch&gt;</span>&nbsp;&nbsp;# commits reachable from either &lt;branch&gt; or master, but not both</li>
 		<li><span class='mono'>git log &lt;folder&gt;/</span>&nbsp;&nbsp;# commits that modify any file under &lt;folder&gt;/</li>
+		<li><span class='mono'>git lg</span>&nbsp;&nbsp;# in-house alias to display single-line log output</li>
 	</ul>
 	<h5>Log Options</h5><ul>
 		<li><span class='mono'>git log --since="2 weeks ago"</span>&nbsp;&nbsp;# commits from the last 2 weeks</li>
 		<li><span class='mono'>git log &lt;filename&gt;</span>&nbsp;&nbsp;# commits that modify &lt;filename&gt;</li>
 		<li><span class='mono'>git log -S'&lt;pattern&gt;'</span>&nbsp;&nbsp;# commits that add or remove any file data matching the string '&lt;pattern&gt;'</li>
 		<li><span class='mono'>git log --no-merges</span>&nbsp;&nbsp;# skip merge commits</li>
+		<li><span class='mono'>git log --follow</span>&nbsp;&nbsp;# follow file through renames if any</li>
 	</ul>
 	<h5>Other Information Commands</h5><ul>
 		<li><span class='mono'>git ls-files --other --exclude-standard</span>&nbsp;&nbsp;# untracked files</li>

@@ -16,6 +16,7 @@
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 	<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
+		<!-- @topicItem "Backup Prodecure and Support" "#BackupProdecureAndSupport" "1" "" -->
 		<!-- @topicItem "Fix RemoveFolder with Python" "#RemoveFolderWPython" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
@@ -23,12 +24,12 @@
 		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
-		<!-- @topicGroup "" "10" -->
+		<!-- @topicGroup "" "11" -->
 		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
-	<!-- @topicGroup "" "12" -->
+	<!-- @topicGroup "" "13" -->
 	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "14" -->
+	<!-- @topicGroup "Topics" "16" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
@@ -37,11 +38,24 @@
 <!-- @marker "Active Issues" -->
 <h2 id='ActiveIssues'>Active Issues</h2>
 
-<!-- @marker "Fix RemoveFolder with Python" -->
-<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python
-</h4><pre>
-	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+<!-- @marker "Backup Prodecure and Support" -->
+<h4 id='BackupProdecureAndSupport'><a href="http://github.com/carolclark/Support/issues/4">(#4)</a>Backup Prodecure and Support</h4><pre>
 	* <a href="http://github.com/carolclark/Support/issues/41">(#41)</a>Fix Archive Script
+		* *script archive does not currently work; it does have tests that pass*
+			* *commit aa224e6 from May 15, 2013 works, but does not work with the tests*
+			* *We suspect that the problem is with the mechanism used to let the test override the normal source and destination for the archive. We should probably just pass more parameters.*
+		* revert archive.ksh to commit aa224e6 from May 15, 2013; disable tests
+			* *now the archive command is successful, but the tests are empty*
+		<span class='tlmark'>&lt;-- 06/04/2014</span>
+		* archive.ksh
+			* restore formatting, comments, etc.
+
+</pre>
+
+
+<!-- @marker "Fix RemoveFolder with Python" -->
+<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
+	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 	* setup python logging, error handling and debugging
 		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
 		* new file Python.html to document

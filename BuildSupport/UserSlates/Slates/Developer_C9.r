@@ -305,6 +305,7 @@ resource restype_Slate (resid_InsertSnippet, "") { {
 		Event { "developer link", "" },					TypeText { "developerLink#" },
 		ExitEvent { "developer item", "" },				TypeText { "developerItem#" },
 		ExitEvent { "glossary item", "" },				TypeText { "glossaryItem#" },
+		ExitEvent { "annotate code", "" },				TypeText { "annotateCode#" },
 		Event { "document project", "" },				TypeText { "documentProject#" },
 		Event { "document target", "" },				Sequence{}, TypeText { "documentTarget#" }, ResSubslate { resid_snTargetType }, endSequence{},
 		Event { "use case", "" },						Sequence{}, TypeText { "useCase#" }, ResSubslate { resid_ucActor }, endSequence{},
