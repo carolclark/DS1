@@ -17,11 +17,16 @@ USAGE='
 #		current repository: git repository for Terminal workspace
 #	--folder folderName
 #		contents of specified folder in working directory
+#	--getArchiveDestination
+#		returns current destination folder for archives; used for testing
+#	--getLastArchivePath
+#		returns path to last archive constructed archive
 #	--help	<no args>
 #		print this information
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
+CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 
 #pragma mark 0 === Top
@@ -32,67 +37,72 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 function archiveCode {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
-	tar --file="${HOME}/Archives/${archivePath}" --create --exclude ".git" "${projectName}"/*
+	tar --file="${archiveDestination}/${archivePath}" --create --exclude ".git" "${projectName}"/*
 	st=$?
 	cd ${baseDir}
-	[[ $st = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
-	echo "${projectName}: new archive ${HOME}/Archives/${archivePath} created"
+	[[ $st = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
+	echo "${projectName}: new archive ${archiveDestination}/${archivePath} created"
 }
 
 #pragma mark 2 === archiveRepository
 function archiveRepository {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
-	tar --file="${HOME}/Archives/${archivePath}" --create "${projectName}/.git"/*
+	tar --file="${archiveDestination}/${archivePath}" --create "${projectName}/.git"/*
 	st=$?
 	cd ${baseDir}
-	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
-	print "${projectName}: new archive ${HOME}/Archives/${archivePath} created"
+	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
+	print "${projectName}: new archive ${archiveDestination}/${archivePath} created"
 }
 
 #pragma mark 3 === appendRepository
 function appendRepository {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
-	tar --file="${HOME}/Archives/${archivePath}" --append "${projectName}/.git"/*
+	tar --file="${archiveDestination}/${archivePath}" --append "${projectName}/.git"/*
 	st=$?
 	cd ${baseDir}
-	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
-	print "repository ${projectName}/.git: appended to ${HOME}/Archives/${archivePath}"
+	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
+	print "repository ${projectName}/.git: appended to ${archiveDestination}/${archivePath}"
 }
 
 #pragma mark 4 === appendGitReadMe
 function appendGitReadMe {	# archivePath projectName
 	print  "This archive contains a git repository in invisible folder .git." > "${CCDev}/tmp/gitReadMe"
 	cd "${CCDev}/tmp"
-	tar --file="${HOME}/Archives/${archivePath}" --append "gitReadMe"
+	tar --file="${archiveDestination}/${archivePath}" --append "gitReadMe"
 	st=$?
 	cd ${basedir}
-	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
+	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
 	print "repository ${projectName}/.git: gitReadMe appended"
 }
 
 #pragma mark 5 === appendCdoc
 function appendCdoc {	# archivePath projectName
 	cd ${CCDev}/Sites
-	tar --file="${HOME}/Archives/${archivePath}" --append "TechnicalDocs/${projectName}"/* "TechnicalDocs/css" "TechnicalDocs/img"
+	tar --file="${archiveDestination}/${archivePath}" --append "TechnicalDocs/${projectName}"/* "TechnicalDocs/css" "TechnicalDocs/img"
 	st=$?
 	cd ${baseDir}
-	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
-	print "${projectName} Cdoc: appended to ${HOME}/Archives/${archivePath}"
+	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
+	print "${projectName} Cdoc: appended to ${archiveDestination}/${archivePath}"
 }
 
 #pragma mark 6 === archiveFolder
 function archiveFolder {	# archivePath folderName
-	tar --file="${HOME}/Archives/${archivePath}" --create "${folderName}"/*
+	tar --file="${archiveDestination}/${archivePath}" --create "${folderName}"/*
 	st=$?
-	[[ ${st} = 0 ]] || errorExit "$0#$LINENO:" 'tar error' $st
-	print "${folderName}: new archive ${HOME}/Archives/${archivePath} created"
+	if [[ ${st} ]] ; then
+		msg="${folderName}: new archive ${archiveDestination}/${archivePath} created"
+	else
+		msg=$(errorMessage $st "$0#$LINENO:" 'tar error')
+	fi
+	echo "$msg"
+	return $st
 }
 
 #pragma mark 7 === revealArchive
 function revealArchive {	# archivePath
-	osascript -e "tell application \"Finder\" to reveal POSIX file \"${HOME}/Archives/${archivePath}\""
+	osascript -e "tell application \"Finder\" to reveal POSIX file \"${archiveDestination}/${archivePath}\""
 	osascript -e "tell application \"Finder\" to activate"
 }
 
@@ -104,8 +114,9 @@ if [[ $# = 0 ]] ; then
 fi
 baseDir="$(pwd)"
 projectName="${baseDir##/*/}"
+archiveDestination="${HOME}/Archives"
 
-archivePath=""		# path from ${HOME}/Archives
+archivePath=""		# path from ${archiveDestination}
 
 case "${arg}" in
 	"--project" )
