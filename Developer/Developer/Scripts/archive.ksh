@@ -37,6 +37,10 @@ CCDev="${HOME}/Library/CCDev"
 function archiveCode {	# archivePath projectName
 	cd ${baseDir}
 	cd ..
+	if [[ ! -d "${projectName}" ]] ; then
+		echo $(errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder '$projectName' does not exist in directory $pwd")
+		return
+	fi
 	tar --file="${archiveDestination}/${archivePath}" --create --exclude ".git" "${projectName}"/*
 	st=$?
 	cd ${baseDir}
@@ -88,7 +92,18 @@ function appendCdoc {	# archivePath projectName
 }
 
 #pragma mark 6 === archiveFolder
-function archiveFolder {	# archivePath folderName
+function archiveFolder {	# folderName
+	if [[ $# = 0 ]] || [[ ! -n "$1" ]] ; then
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "argument <folderName> not specified"
+		return
+	fi
+	folderName="${1}"
+	if [[ ! -d "${folderName}" ]] ; then
+		errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder \"$folderName\" does not exist"
+		return
+	fi
+	archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
+	echo "$archivePath" > "${CCDev}/tmp/lastArchivePath"
 	tar --file="${archiveDestination}/${archivePath}" --create "${folderName}"/*
 	st=$?
 	if [[ ${st} ]] ; then
@@ -106,119 +121,118 @@ function revealArchive {	# archivePath
 	osascript -e "tell application \"Finder\" to activate"
 }
 
-#pragma mark 8 === main
+#pragma mark 8 === archive
+function archive {
+	arg="${1:---project}"
 
-arg="${1}"
-if [[ $# = 0 ]] ; then
-	arg="--project"
-fi
-baseDir="$(pwd)"
-projectName="${baseDir##/*/}"
-archiveDestination="${HOME}/Archives"
+	baseDir="$(pwd)"
+	projectName="${baseDir##/*/}"
+	archiveDestination="${HOME}/Archives"
 
-archivePath=""		# path from ${archiveDestination}
+	archivePath=""		# path from ${archiveDestination}
 
-case "${arg}" in
-	"--project" )
-		archivePath="Dev/${projectName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
-		msg=$(archiveCode)
-		es=$?
-		print "${msg}"
-		if [[ ${es} > 0 ]] ; then
-			return "${es}"
-		fi
-		msg=$(appendRepository)
-		es=$?
-		print "${msg}"
-		if [[ ${es} > 0 ]] ; then
-			return "${es}"
-		fi
-		msg=$(appendGitReadMe)
-		es=$?
-		print "${msg}"
-		if [[ ${es} > 0 ]] ; then
-			return "${es}"
-		fi
-		msg=$(appendCdoc)
-		es=$?
-		print "${msg}"
-		if [[ ${es} > 0 ]] ; then
-			return "${es}"
-		fi
-		msg=$(revealArchive)
-		es=$?
-		if [[ ${es} > 0 ]] ; then
+	case "${arg}" in
+		"--project" )
+			archivePath="Dev/${projectName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
+			msg=$(archiveCode)
+			es=$?
 			print "${msg}"
-		fi
-		return "${es}"
-		;;
-	"--code" )
-		archivePath="Dev/${projectName}_code-`date "+%Y-%m-%d-%H%M%S"`.tar"
-		msg=$(archiveCode)
-		es=$?
-		print "${msg}"
-		if [[ ${es} > 0 ]] ; then
-			return "${es}"
-		fi
-		msg=$(revealArchive)
-		es=$?
-		if [[ ${es} > 0 ]] ; then
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			msg=$(appendRepository)
+			es=$?
 			print "${msg}"
-		fi
-		return "${es}"
-		;;
-	"--repository" )
-		archivePath="Dev/${projectName}_Git-`date "+%Y-%m-%d-%H%M%S"`.tar"
-		msg=$(archiveRepository)
-		es=$?
-		print "${msg}"
-		if [[ ${es} > 0 ]] ; then
-			return "${es}"
-		fi
-		msg=$(appendGitReadMe)
-		es=$?
-		print "${msg}"
-		if [[ ${es} > 0 ]] ; then
-			return "${es}"
-		fi
-		msg=$(revealArchive)
-		es=$?
-		if [[ ${es} > 0 ]] ; then
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			msg=$(appendGitReadMe)
+			es=$?
 			print "${msg}"
-		fi
-		return "${es}"
-		;;
-	"--folder" )
-		if [[ $# < 2 ]] ; then
-			print "expected --folder <folderName>"
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			msg=$(appendCdoc)
+			es=$?
+			print "${msg}"
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			msg=$(revealArchive)
+			es=$?
+			if [[ ${es} > 0 ]] ; then
+				print "${msg}"
+			fi
+			return "${es}"
+			;;
+		"--code" )
+			archivePath="Dev/${projectName}_code-`date "+%Y-%m-%d-%H%M%S"`.tar"
+			msg=$(archiveCode)
+			es=$?
+			print "${msg}"
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			msg=$(revealArchive)
+			es=$?
+			if [[ ${es} > 0 ]] ; then
+				print "${msg}"
+			fi
+			return "${es}"
+			;;
+		"--repository" )
+			archivePath="Dev/${projectName}_Git-`date "+%Y-%m-%d-%H%M%S"`.tar"
+			msg=$(archiveRepository)
+			es=$?
+			print "${msg}"
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			msg=$(appendGitReadMe)
+			es=$?
+			print "${msg}"
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			msg=$(revealArchive)
+			es=$?
+			if [[ ${es} > 0 ]] ; then
+				print "${msg}"
+			fi
+			return "${es}"
+			;;
+		"--folder" )
+			if [[ $# < 2 ]] ; then
+				print "expected --folder <folderName>"
+				return $RC_InvalidArgument
+			fi
+			folderName="${2}"
+			archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
+			msg=$(archiveFolder)
+			es=$?
+			print "${msg}"
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			msg=$(revealArchive)
+			es=$?
+			if [[ ${es} > 0 ]] ; then
+				print "${msg}"
+			fi
+			return "${es}"
+			;;
+		"--help" )
+			print "${HELP}"
+			;;
+		"--"* )
+			print "invalid subcommand $1"
 			return $RC_InvalidArgument
-		fi
-		folderName="${2}"
-		archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
-		msg=$(archiveFolder)
-		es=$?
-		print "${msg}"
-		if [[ ${es} > 0 ]] ; then
-			return "${es}"
-		fi
-		msg=$(revealArchive)
-		es=$?
-		if [[ ${es} > 0 ]] ; then
-			print "${msg}"
-		fi
-		return "${es}"
-		;;
-	"--help" )
-		print "${HELP}"
-		;;
-	"--"* )
-		print "invalid subcommand $1"
-		return $RC_InvalidArgument
-		;;
-	* )
-		print "invalid argument $1"
-		print "expected (no arg) | --project | --code | --repositories | --folder..."
-		return $RC_InvalidArgument
-		;;
-esac
-return 0
+			;;
+		* )
+			print "invalid argument $1"
+			print "expected (no arg) | --project | --code | --repositories | --folder..."
+			return $RC_InvalidArgument
+			;;
+	esac
+	return 0
+}

@@ -108,7 +108,7 @@
 		Event { "git", "" },			ResSubslate { resid_Git },			\
 		Event { "Python", "" },			ResSubslate { resid_Python },		\
 		Event { "clean", "" },			Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_Clean }, endSequence{},		\
-		Event { "archive", "" },		Sequence{}, TypeText { "archive " }, ResSubslate { resid_Archive }, endSequence{},		\
+		Event { "archive", "" },		Sequence{}, TypeText { ". ${CCDev}/bin/archive; archive " }, ResSubslate { resid_Archive }, endSequence{},		\
 		Event { "backup", "" },			TypeText { "ccBackup Backup " },	\
 		Event { "export", "" },			TypeText { "export " },				\
 		Event { "ports", "" },			ResSubslate { resid_MacPorts },		\
