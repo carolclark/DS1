@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 5/15/13.
-#  Copyright 2013 C & C Software, Inc. All rights reserved.
+#  Copyright 2013-14 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 #pragma mark 0 === Top
@@ -61,6 +61,8 @@ testArchiveFolder() {
 	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
 	exp="argument <folderName> not specified \[RC_MissingArgument:#$RC_MissingArgument\]"
 	assertTextInMessage "$0#$LINENO:" "$exp" "$msg"
+
+return 0
 
 	msg=$(archive --getArchiveDestination)
 	assertEquals "$0#$LINENO:" 0 $?

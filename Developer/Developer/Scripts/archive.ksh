@@ -7,7 +7,7 @@
 #  Copyright 2012-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
-NAME='archive -- create tar archive for specified content of the current working directory'
+NAME='archive -- create tar archive for specified content'
 USAGE='
 #	--project (default)
 #		current Terminal workspace: includes code and git repository, associated technical docs
@@ -17,6 +17,8 @@ USAGE='
 #		current repository: git repository for Terminal workspace
 #	--folder folderName
 #		contents of specified folder in working directory
+#	--revealLastArchive
+#		reveal last created archive in Finder
 #	--getArchiveDestination
 #		returns current destination folder for archives; used for testing
 #	--getLastArchivePath
@@ -31,19 +33,7 @@ CCDev="${HOME}/Library/CCDev"
 
 #pragma mark 0 === Top
 #pragma mark === Markers ===
-# 1 archiveCode; 2 archiveRepository; 3 appendRepository; 4 appendGitReadMe; 5 appendCdoc; 6 archiveFolder; 7 revealArchive; 8 main
-
-baseDir="$(pwd)"
-projectName="${baseDir##/*/}"
-
-__testing__=0
-if [[ -n "${archiveDestination}" ]] ; then
-	__testing__=1
-else
-	archiveDestination="${HOME}/Archives"
-fi
-mkdir -p "$archiveDestination"
-archivePath=""				# path from ${archiveDestination}
+# 1 archiveCode; 2 archiveRepository; 3 appendRepository; 4 appendGitReadMe; 5 appendCdoc; 6 archiveFolder; 7 revealLastArchive; 8 main
 
 #pragma mark 1 === archiveCode
 function archiveCode {	# archivePath projectName
@@ -115,7 +105,6 @@ function archiveFolder {	# folderName
 		return
 	fi
 	archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
-	echo "$archivePath" > "${CCDev}/tmp/lastArchivePath"
 	tar --file="${archiveDestination}/${archivePath}" --create "${folderName}"/*
 	st=$?
 	if [[ ${st} ]] ; then
@@ -127,19 +116,25 @@ function archiveFolder {	# folderName
 	return $st
 }
 
-#pragma mark 7 === revealArchive
-function revealArchive {	# archivePath
-	if [[ __testing__ = 0 ]] ; then
-		osascript -e "tell application \"Finder\" to reveal POSIX file \"${archiveDestination}/${archivePath}\""
-		osascript -e "tell application \"Finder\" to activate"
-	fi
+#pragma mark 7 === revealLastArchive
+function revealLastArchive {	# archivePath
+	lastArchivePath=$(archive --getLastArchivePath)
+	osascript -e "tell application \"Finder\" to reveal POSIX file \"${lastArchivePath}\""
+	osascript -e "tell application \"Finder\" to activate"
 }
 
 #pragma mark 8 === archive
 function archive {
-	cmd="${1:---project}"
+	arg="${1:---project}"
 
-	case "${cmd}" in
+	baseDir="$(pwd)"
+	projectName="${baseDir##/*/}"
+	archiveDestination="${HOME}/Archives"
+	lastArchivePath="${CCDev}/tmp/lastArchivePath"
+
+	archivePath=""		# path from ${archiveDestination}
+
+	case "${arg}" in
 		"--project" )
 			archivePath="Dev/${projectName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
 			msg=$(archiveCode)
@@ -166,13 +161,7 @@ function archive {
 			if [[ ${es} > 0 ]] ; then
 				return "${es}"
 			fi
-			msg=$(revealArchive)
-			es=$?
-			if [[ ${es} > 0 ]] ; then
-				print "${msg}"
-			fi
-			echo "$archivePath" > "${CCDev}/tmp/lastArchivePath"
-			return "${es}"
+			print "${archiveDestination}/${archivePath}" > "${lastArchivePath}"
 			;;
 		"--code" )
 			archivePath="Dev/${projectName}_code-`date "+%Y-%m-%d-%H%M%S"`.tar"
@@ -182,13 +171,7 @@ function archive {
 			if [[ ${es} > 0 ]] ; then
 				return "${es}"
 			fi
-			msg=$(revealArchive)
-			es=$?
-			if [[ ${es} > 0 ]] ; then
-				print "${msg}"
-			fi
-			echo "$archivePath" > "${CCDev}/tmp/lastArchivePath"
-			return "${es}"
+			print "${archiveDestination}/${archivePath}" > "${lastArchivePath}"
 			;;
 		"--repository" )
 			archivePath="Dev/${projectName}_Git-`date "+%Y-%m-%d-%H%M%S"`.tar"
@@ -204,23 +187,36 @@ function archive {
 			if [[ ${es} > 0 ]] ; then
 				return "${es}"
 			fi
-			msg=$(revealArchive)
+			print "${archiveDestination}/${archivePath}" > "${lastArchivePath}"
+			;;
+		"--folder" )
+			if [[ $# < 2 ]] ; then
+				print "expected --folder <folderName>"
+				return $RC_InvalidArgument
+			fi
+			folderName="${2}"
+			archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
+			msg=$(archiveFolder ${folderName})
+			es=$?
+			print "${msg}"
+			if [[ ${es} > 0 ]] ; then
+				return "${es}"
+			fi
+			print "${archiveDestination}/${archivePath}" > "${lastArchivePath}"
+			;;
+		"--revealLastArchive" )
+			msg=$(revealLastArchive)
 			es=$?
 			if [[ ${es} > 0 ]] ; then
 				print "${msg}"
 			fi
-			echo "$archivePath" > "${CCDev}/tmp/lastArchivePath"
 			return "${es}"
-			;;
-		"--folder" )
-			archiveFolder "$2" || return $?
-			revealArchive
 			;;
 		"--getArchiveDestination" )
 			echo "$archiveDestination"
 			;;
 		"--getLastArchivePath" )
-			cat "${CCDev}/tmp/lastArchivePath"
+			cat "${lastArchivePath}"
 			;;
 		"--help" )
 			print "${HELP}"
@@ -231,7 +227,7 @@ function archive {
 			;;
 		* )
 			print "invalid argument $1"
-			print "expected (no arg) | --project | --code | --repositories | --folder..."
+			print "expected (no arg) | --project | --code | --repositories | --folder ..."
 			return $RC_InvalidArgument
 			;;
 	esac

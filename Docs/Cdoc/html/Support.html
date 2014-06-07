@@ -41,7 +41,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<!-- @topicSep -->
 	<!-- @topicGroup "Related Project Files" "15" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
-		<!-- @topicItem "Developing Projects" "DevelopingProjects.html#Contents" "0" "tasks and refactorings" -->
+		<!-- @topicItem "Developing Projects" "XcodeDevelopment.html#Contents" "0" "tasks and refactorings" -->
 		<!-- @topicItem "Git" "Git.html#Contents" "0" "adopted source control system" -->
 		<!-- @topicItem "Cdoc" "Cdoc.html#Contents" "0" "in-house documentation system" -->
 		<!-- @topicItem "Tools" "Tools.html#Contents" "0" "installed applications, tools, and libraries" -->
@@ -88,7 +88,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<h5>Cdoc</h5>
 	<p class='ital'>install technical documentation</p><div class='indent'>
 		<p><b>Target:</b></p><ul>
-			<li><a href="DevelopingProjects.html#AddDocsProject">Docs Target</a> technical documentation for repository projects</li>
+			<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a> technical documentation for repository projects</li>
 			<li>installs technical documentation at ${HOME}/Library/CCDev/Sites/TechnicalDocs</li>
 		</ul>
 		<p><b>Tests:</b> </p>
@@ -99,7 +99,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<h5>Doxygen</h5>
 	<p class='ital'>install Doxygen 8documentation</p><div class='indent'>
 		<p><b>Target:</b></p><ul>
-			<li><a href="DevelopingProjects.html#AddDocsProject">Docs Target</a> compile and install Doxygen documentation</li>
+			<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a> compile and install Doxygen documentation</li>
 			<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/Doxygen</li>
 		</ul>
 		<p><b>Tests:</b> </p>
@@ -118,14 +118,14 @@ heading with name: Task Name; tsk_TaskName;5
 	<h5>Developer</h5>
 	<p class='ital'>Developer configuration, scripts and related items</p><div class='indent'>
 		<p><b>Target:</b></p><ul>
-			<li><a href="DevelopingProjects.html#AddCcInstallTarget">ccInstall</a> target; <span class='depr'>depends on target AppleScripts</span></li>
+			<li><a href="XcodeDevelopment.html#AddCcInstallTarget">ccInstall</a> target; <span class='depr'>depends on target AppleScripts</span></li>
 			<li>DevConfig.ksh<ul>
 				<li>Unix script that sets up our development environment. Script is run at the beginning of execution of Developer_install.ksh, or can be run from Terminal.</li>
 				<li>DevConfig.ksh sets up basic environment including git support, installs additional environment files, third-party tool shunit, and starter scripts required for targets to build and test</li>
 			</ul></li>
 		</ul>
 		<p><b>Tests:</b> </p><ul>
-			<li>DeveloperTests: <a href="DevelopingProjects.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
+			<li>DeveloperTests: <a href="XcodeDevelopment.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
 				<li>runs: Developer shunit tests from folder _Tests; PythonTests; <span class='expand'>AppleScriptTests</span></li>
 				<li>Run Script build phases with ksh scripts:<ul>
 					<li>'shunit Tests': runs tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
@@ -139,7 +139,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<h5>AppleScripts</h5>
 	<p class='ital'>compiles AppleScripts</p><div class='indent'>
 		<p><b>Target:</b></p><ul>
-			<li><a href="DevelopingProjects.html#AddBuildScriptTarget">Build Script Target</a> precompiles scripts from Developer/AppleScripts into target's bundle</li>
+			<li><a href="XcodeDevelopment.html#AddBuildScriptTarget">Build Script Target</a> precompiles scripts from Developer/AppleScripts into target's bundle</li>
 			<li><span class='todo'>AppleScript_install.ksh</span> called from Run Script build phase to install them from that bundle</li>
 		</ul>
 		<p><b>Tests:</b> </p>
@@ -424,13 +424,59 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <!-- @marker "Backup" -->
 <h2>Backup</h2>
 <!-- @topicList "Backup" "tp_Backup" -->
-	<!-- @topicItem "Backup Schedules by Tool" "#BackupTools" "0" "" -->
+	<!-- @topicItem "Volumes and Folders" "#VolumesAndFolders" "0" "" -->
+	<!-- @topicItem "Backup Tools" "#BackupTools" "0" "" -->
+	<!-- @topicItem "Backup Schedules" "#BackupSchedules" "0" "" -->
+	<!-- @topicItem "Cleanup and Maintenance" "#Maintenance" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Previous Organization" "6" -->
+	<!-- @topicItem "Backup Schedules by Tool" "#oldBackupTools" "0" "" -->
 		<!-- @topicItem "Time Machine" "#BackupTimeMachine" "1" "" -->
 		<!-- @topicItem "MobileMe Backup" "#BackupMobileMeBackup" "1" "" -->
 		<!-- @topicItem "Tar" "#BackupTar" "1" "" -->
 <!-- @/topicList -->
 
-<h3><a name="BackupTools">Backup Schedules by Tool</a></h3>
+<!-- @marker "Volumes and Folders" -->
+<h3 id='VolumesAndFolders'>Volumes and Folders</h3><ul>
+	<li>Mac (primary drive)<ul>
+		<li>Full Volume: Backed up by Time Machine; bootable mirror maintained by ChronoSync</li>
+		<li>Home Folder<ul>
+			<li>Application Preferences: ~/Library/Preferences</li>
+			<li>Application Data to backup:<ul>
+				<li>Safari: ~/Library/Safari/Bookmarks.plist</li>
+				<li>Address Book: ~/Library/Application Support/Address Book</li>
+				<li>iCal: ~/Library/Calendars</li>
+				<li>Keychains: ~/Library/Keychains</li>
+				<li>Stickies: ~/Library/StickiesDatabase</li>
+			</ul></li>
+			<li>Archives</li>
+			<li>Dev</li>
+			<li>Documents</li>
+			<li>Downloads</li>
+			<li>Movies (contains videos from iPhone and iPad)</li>
+			<li>Music (contains iTunes library, Amazon purchases)</li>
+			<li>Pictures (contains iPhoto library)</li>
+			<li>...</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Backup Tools" -->
+<h3 id='BackupTools'>Backup Tools</h3>
+
+<!-- @marker "Backup Schedules" -->
+<h3 id='BackupSchedules'>Backup Schedules</h3>
+
+<!-- @marker "Maintenance" -->
+<h3 id='Maintenance'>Cleanup and Maintenance</h3><pre>
+	Mail: delete or archive old data
+	iCal: delete old data
+	Xcode organizer: delete old data
+	iTunes: content no longer needed may have to be deleted from ~/Music
+	Archives: make folders by date; burn to disk
+</pre>
+
+<h3><a name="oldBackupTools">Backup Schedules by Tool</a></h3>
 <!-- @marker "Time Machine" -->
 <h4><a name="BackupTimeMachine">Time Machine</a></h4><ul>
 	<li class='blurb'>Maintains current and previous hard drive images on a separate drive.</li>

@@ -108,7 +108,7 @@
 		Event { "git", "" },			ResSubslate { resid_Git },			\
 		Event { "Python", "" },			ResSubslate { resid_Python },		\
 		Event { "clean", "" },			Sequence{}, TypeText { "cleanProjectTarget " }, ResSubslate { resid_Clean }, endSequence{},		\
-		Event { "archive", "" },		Sequence{}, TypeText { "archive " }, ResSubslate { resid_Archive }, endSequence{},		\
+		Event { "archive", "" },		Sequence{}, TypeText { ". ${CCDev}/bin/archive; archive " }, ResSubslate { resid_Archive }, endSequence{},		\
 		Event { "backup", "" },			TypeText { "ccBackup Backup " },	\
 		Event { "export", "" },			TypeText { "export " },				\
 		Event { "ports", "" },			ResSubslate { resid_MacPorts },		\
@@ -162,12 +162,15 @@ resource restype_Slate (resid_Emacs, "") { {
 #define	_TargetBranch_			Event { "target branch", "" },	TypeText { "$tb " }
 #define _RevisionNumber_		Event { "revision number", "" }, TypeText { "$vn " },
 #define	_GitFile_				Event { "git file", "" },	TypeText { "$gf " }
+#define	_ShaTag_				Event { "sha tag", "" },	TypeText { "$st " }
 #define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
 #define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb " }
+#define _CompareOriginMaster_	Event { "origin master ", "" },	TypeText { "origin/master..master " }
 #define _TypeVariable_		_CurrentBranch_,	\
 							_TargetBranch_,		\
 							_RevisionNumber_,	\
 							_GitFile_, 			\
+							_ShaTag_,			\
 							_MyVariable_,		\
 							_CompareMasterCurrent_
 
@@ -539,6 +542,7 @@ resource restype_Slate (resid_gitLog, "") { {
 		Event { "ancestor", "" },		Sequence{}, Keypress { kc_delete, 0 }, TypeText { "..." }, endSequence{},
 		Event { "string", "" },			Sequence{}, TypeText { "-S''" }, _left, ResSubslate { resid_gitType }, endSequence{},
 		Event { "add path", "" },		TypeText { "-- " },
+		Event { "follow", "" },			TypeText { "--follow " },
 		Event { "oneline", "" },		TypeText { "--oneline " },
 		Event { "before", "" },			TypeText { "--before " },
 		Event { "after", "" },			TypeText { "--after " },
@@ -816,8 +820,9 @@ resource restype_Slate (resid_Archive, "") { {
 	Slate { "Archive",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
+		ExitEvent { "reveal", "" },			Sequence{}, TypeText { ". ${CCDev}/bin/archive; archive --revealLastArchive " }, _return, endSequence{},
 		ExitEvent { "cancel", "" },			_cancel,
-		ExitEvent { "execute", "" },		Keypress { kc_return, 0 },
+		Event { "execute", "" },			Keypress { kc_return, 0 },
 		Event { "project", "" },			TypeText { "--project " },
 		Event { "code", "" },				TypeText { "--code " },
 		Event { "repository", "" },			TypeText { "--repository " },

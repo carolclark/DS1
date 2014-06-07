@@ -18,7 +18,7 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 def merge_message(branchName="", issueNum=0):
 	""" construct scm merge message for the specified branch, including issue number if supplied """
 
-	import pdb; pdb.set_trace()
+#	import pdb; pdb.set_trace()
 	msg = "Merge branch"
 	if (len(str(branchName))) > 0:
 		msg = msg + " '" + str(branchName) + "'"

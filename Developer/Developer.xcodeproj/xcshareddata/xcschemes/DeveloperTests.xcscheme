@@ -28,6 +28,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference>
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6755BCE11922CC28005DC27D"
+               BuildableName = "DeveloperTests.xctest"
+               BlueprintName = "DeveloperTests"
+               ReferencedContainer = "container:Developer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
