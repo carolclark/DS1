@@ -820,8 +820,9 @@ resource restype_Slate (resid_Archive, "") { {
 	Slate { "Archive",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
+		ExitEvent { "reveal", "" },			Sequence{}, TypeText { ". ${CCDev}/bin/archive; archive --revealLastArchive " }, _return, endSequence{},
 		ExitEvent { "cancel", "" },			_cancel,
-		ExitEvent { "execute", "" },		Keypress { kc_return, 0 },
+		Event { "execute", "" },			Keypress { kc_return, 0 },
 		Event { "project", "" },			TypeText { "--project " },
 		Event { "code", "" },				TypeText { "--code " },
 		Event { "repository", "" },			TypeText { "--repository " },
