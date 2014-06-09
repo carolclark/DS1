@@ -51,8 +51,11 @@
 			* *When testing was added, it interfered with normal operation. We need to update with most of the changes from the latest version, but without the changes made for testing support.*
 			* introduce variable ${archiveDestination}; update errorExit syntax; restore some error checking
 			* replace main command with archive function
-			* add command --revealArchive; call separately
-
+		* add command --revealLastArchive; call separately
+		* --folder also uses the current directory
+			* rename var $projectName to $folderName
+		* add optional argument 'destination'
+		* reenable tests
 </pre>
 
 <!-- @marker "Fix RemoveFolder with Python" -->
