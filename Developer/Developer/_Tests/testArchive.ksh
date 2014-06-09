@@ -13,7 +13,7 @@ CCDev="${HOME}/Library/CCDev"
 . ${CCDev}/bin/ccInstall
 
 testData="${CCDev}/TestData/tarTest"
-archiveDestination="${CCDev}/TestData/tarArchives"; export archiveDestination
+archiveDestination="${CCDev}/TestData/tarArchives"
 . "${CCDev}/bin/archive"
 
 #pragma mark 1 === oneTimeSetUp
@@ -57,14 +57,13 @@ function verify_Missing {		# _where_, archivePath, item
 testArchiveFolder() {
 	cd "${testData}"
 
-	msg=$(archiveFolder)
-	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
-	exp="argument <folderName> not specified \[RC_MissingArgument:#$RC_MissingArgument\]"
-	assertTextInMessage "$0#$LINENO:" "$exp" "$msg"
+	msg=$(archive --getArchiveDestination)
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$0#$LINENO:" "${HOME}/Archives" "$msg"
 
 return 0
 
-	msg=$(archive --getArchiveDestination)
+	msg=$(archive --getArchiveDestination $archiveDestination)
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$0#$LINENO:" "$archiveDestination" "$msg"
 

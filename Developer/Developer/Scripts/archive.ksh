@@ -4,27 +4,30 @@
 #  Support
 #
 #  Created by Carol Clark on 7/13/12.
-#  Copyright 2012-13 C & C Software, Inc. All rights reserved.
+#  Copyright 2012-14 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
-NAME='archive -- create tar archive for specified content'
+NAME='archive -- create tar archive of the current folder ($pwd)'
 USAGE='
+#	archive [archiveType [archiveDestination]]
 #	--project (default)
-#		current Terminal workspace: includes code and git repository, associated technical docs
+#		includes code and git repository with associated technical docs
 #	--code
-#		current Terminal workspace: code only
+#		code only
 #	--repository
-#		current repository: git repository for Terminal workspace
-#	--folder folderName
-#		contents of specified folder in working directory
+#		git repository only
+#	--folder
+#		contents of current folder
 #	--revealLastArchive
-#		reveal last created archive in Finder
+#		reveal in Finder the last created archive
 #	--getArchiveDestination
 #		returns current destination folder for archives; used for testing
 #	--getLastArchivePath
-#		returns path to last archive constructed archive
+#		returns path to the last created archive
 #	--help	<no args>
 #		print this information
+#	archiveDestination
+#		optional additional parameter; current default ~/Archives
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
@@ -36,84 +39,69 @@ CCDev="${HOME}/Library/CCDev"
 # 1 archiveCode; 2 archiveRepository; 3 appendRepository; 4 appendGitReadMe; 5 appendCdoc; 6 archiveFolder; 7 revealLastArchive; 8 main
 
 #pragma mark 1 === archiveCode
-function archiveCode {	# archivePath projectName
+function archiveCode {	# archivePath folderName
 	cd ${baseDir}
 	cd ..
-	if [[ ! -d "${projectName}" ]] ; then
-		echo $(errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder '$projectName' does not exist in directory $pwd")
+	if [[ ! -d "${folderName}" ]] ; then
+		echo $(errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder '$folderName' does not exist in directory $pwd")
 		return
 	fi
-	tar --file="${archiveDestination}/${archivePath}" --create --exclude ".git" "${projectName}"/*
+	tar --file="${archiveDestination}/${archivePath}" --create --exclude ".git" "${folderName}"/*
 	st=$?
 	cd ${baseDir}
 	[[ $st = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
-	echo "${projectName}: new archive ${archiveDestination}/${archivePath} created"
+	echo "${folderName}: new archive ${archiveDestination}/${archivePath} created"
 }
 
 #pragma mark 2 === archiveRepository
-function archiveRepository {	# archivePath projectName
+function archiveRepository {	# archivePath folderName
 	cd ${baseDir}
 	cd ..
-	tar --file="${archiveDestination}/${archivePath}" --create "${projectName}/.git"/*
+	tar --file="${archiveDestination}/${archivePath}" --create "${folderName}/.git"/*
 	st=$?
 	cd ${baseDir}
 	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
-	print "${projectName}: new archive ${archiveDestination}/${archivePath} created"
+	print "${folderName}: new archive ${archiveDestination}/${archivePath} created"
 }
 
 #pragma mark 3 === appendRepository
-function appendRepository {	# archivePath projectName
+function appendRepository {	# archivePath folderName
 	cd ${baseDir}
 	cd ..
-	tar --file="${archiveDestination}/${archivePath}" --append "${projectName}/.git"/*
+	tar --file="${archiveDestination}/${archivePath}" --append "${folderName}/.git"/*
 	st=$?
 	cd ${baseDir}
 	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
-	print "repository ${projectName}/.git: appended to ${archiveDestination}/${archivePath}"
+	print "repository ${folderName}/.git: appended to ${archiveDestination}/${archivePath}"
 }
 
 #pragma mark 4 === appendGitReadMe
-function appendGitReadMe {	# archivePath projectName
+function appendGitReadMe {	# archivePath folderName
 	print  "This archive contains a git repository in invisible folder .git." > "${CCDev}/tmp/gitReadMe"
 	cd "${CCDev}/tmp"
 	tar --file="${archiveDestination}/${archivePath}" --append "gitReadMe"
 	st=$?
 	cd ${basedir}
 	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
-	print "repository ${projectName}/.git: gitReadMe appended"
+	print "repository ${folderName}/.git: gitReadMe appended"
 }
 
 #pragma mark 5 === appendCdoc
-function appendCdoc {	# archivePath projectName
+function appendCdoc {	# archivePath folderName
 	cd ${CCDev}/Sites
-	tar --file="${archiveDestination}/${archivePath}" --append "TechnicalDocs/${projectName}"/* "TechnicalDocs/css" "TechnicalDocs/img"
+	tar --file="${archiveDestination}/${archivePath}" --append "TechnicalDocs/${folderName}"/* "TechnicalDocs/css" "TechnicalDocs/img"
 	st=$?
 	cd ${baseDir}
 	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
-	print "${projectName} Cdoc: appended to ${archiveDestination}/${archivePath}"
+	print "${folderName} Cdoc: appended to ${archiveDestination}/${archivePath}"
 }
 
 #pragma mark 6 === archiveFolder
 function archiveFolder {	# folderName
-	if [[ $# = 0 ]] || [[ ! -n "$1" ]] ; then
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "argument <folderName> not specified"
-		return
-	fi
-	folderName="${1}"
-	if [[ ! -d "${folderName}" ]] ; then
-		errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder \"$folderName\" does not exist"
-		return
-	fi
-	archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
 	tar --file="${archiveDestination}/${archivePath}" --create "${folderName}"/*
 	st=$?
-	if [[ ${st} ]] ; then
-		msg="${folderName}: new archive ${archiveDestination}/${archivePath} created"
-	else
-		msg=$(errorMessage $st "$0#$LINENO:" 'tar error')
-	fi
-	echo "$msg"
-	return $st
+	[[ ${st} = 0 ]] || errorExit $st "$0#$LINENO:" 'tar error'
+	print "${folderName}: new archive ${archiveDestination}/${archivePath} created"
 }
 
 #pragma mark 7 === revealLastArchive
@@ -128,7 +116,7 @@ function archive {
 	arg="${1:---project}"
 
 	baseDir="$(pwd)"
-	projectName="${baseDir##/*/}"
+	folderName="${baseDir##/*/}"
 	archiveDestination="${HOME}/Archives"
 	lastArchivePath="${CCDev}/tmp/lastArchivePath"
 
@@ -136,7 +124,7 @@ function archive {
 
 	case "${arg}" in
 		"--project" )
-			archivePath="Dev/${projectName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
+			archivePath="Dev/${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
 			msg=$(archiveCode)
 			es=$?
 			print "${msg}"
@@ -164,7 +152,7 @@ function archive {
 			print "${archiveDestination}/${archivePath}" > "${lastArchivePath}"
 			;;
 		"--code" )
-			archivePath="Dev/${projectName}_code-`date "+%Y-%m-%d-%H%M%S"`.tar"
+			archivePath="Dev/${folderName}_code-`date "+%Y-%m-%d-%H%M%S"`.tar"
 			msg=$(archiveCode)
 			es=$?
 			print "${msg}"
@@ -174,7 +162,7 @@ function archive {
 			print "${archiveDestination}/${archivePath}" > "${lastArchivePath}"
 			;;
 		"--repository" )
-			archivePath="Dev/${projectName}_Git-`date "+%Y-%m-%d-%H%M%S"`.tar"
+			archivePath="Dev/${folderName}_Git-`date "+%Y-%m-%d-%H%M%S"`.tar"
 			msg=$(archiveRepository)
 			es=$?
 			print "${msg}"
@@ -190,11 +178,6 @@ function archive {
 			print "${archiveDestination}/${archivePath}" > "${lastArchivePath}"
 			;;
 		"--folder" )
-			if [[ $# < 2 ]] ; then
-				print "expected --folder <folderName>"
-				return $RC_InvalidArgument
-			fi
-			folderName="${2}"
 			archivePath="${folderName}-`date "+%Y-%m-%d-%H%M%S"`.tar"
 			msg=$(archiveFolder ${folderName})
 			es=$?
