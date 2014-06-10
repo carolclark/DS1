@@ -38,7 +38,8 @@
 	#define resid_gitRemote				resid_Git+85
 	#define	resid_gitDiff				resid_Git+100
 	#define resid_gitShow				resid_Git+110
-	#define resid_gitGrep				resid_Git+120
+	#define resid_showCompare			resid_Git+120
+	#define resid_gitGrep				resid_Git+130
 	#define	resid_gitStash				resid_Git+150
 	#define	resid_gitAdd				resid_Git+170
 		#define resid_gitAddInteract		resid_gitAdd+1
@@ -165,13 +166,12 @@ resource restype_Slate (resid_Emacs, "") { {
 #define	_ShaTag_				Event { "sha tag", "" },	TypeText { "$st " }
 #define _MyVariable_			Event { "my variable", "" },	TypeText { "$mv " }
 #define _CompareMasterCurrent_	Event { "master current", "" },	TypeText { "master..$cb " }
-#define _CompareOriginMaster_	Event { "origin master ", "" },	TypeText { "origin/master..master " }
-#define _TypeVariable_		_CurrentBranch_,	\
-							_TargetBranch_,		\
-							_RevisionNumber_,	\
-							_GitFile_, 			\
-							_ShaTag_,			\
-							_MyVariable_,		\
+#define _TypeVariable_		_CurrentBranch_,		\
+							_TargetBranch_,			\
+							_RevisionNumber_,		\
+							_GitFile_, 				\
+							_ShaTag_,				\
+							_MyVariable_,			\
 							_CompareMasterCurrent_
 
 #define	_Remotes_			\
@@ -243,11 +243,13 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
-		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issue number: \"; read inum; mm=$(${CCDev}/bin/python/scm.py $cb $inum); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "get merge message", "" },	Sequence{}, TypeText { "getMergeMessage#" }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "merge", "" },				Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "merge base", "" },			Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },				Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
 		Event { "fetch updates", "" },		Sequence{}, TypeText { "git fetchup " }, _return, endSequence{},
+		Event { "show compare", "" },		Sequence{}, TypeText { "git show --name-only" }, _return, Wait { 20 },
+			TypeText { "git difftool --name-status " }, ResSubslate { resid_showCompare }, endSequence{},
 		Event { "reset", "" },				Sequence{}, TypeText { "git reset " }, ResSubslate { resid_gitReset }, endSequence{},
 		Event { "clean files", "" },		Sequence{}, TypeText { "git clean " }, ResSubslate { resid_gitClean }, endSequence{},
 		Event { "bisect", "" },				Sequence{}, TypeText { "git bisect " }, ResSubslate { resid_gitBisect }, endSequence{},
@@ -316,9 +318,10 @@ resource restype_Slate (resid_gitCheckout, "") { {
 	Slate { "checkout",	{
 		Event { "new branch", "" },		TypeText { "-b " },
 		Event { "head", "" },			Sequence{}, TypeText { "HEAD " }, _left, ResSubslate { resid_gitType }, endSequence{},
+		Event { "specify", "" },		_specifyWhich,
+		Event { "top stash", "" },		TypeText { "stash@{0} " },
 		Event { "master", "" },			TypeText { "master " },
 		Event { "path ", "" },			TypeText { "-- " },
-		Event { "specify", "" },		_specifyWhich,
 		_TypeVariable_,
 		_GitStandards_,
 		_StandardBranches_,
@@ -416,6 +419,17 @@ resource restype_Slate (resid_gitDiff, "") { {
 		_NumberKeys_,
 	} }
 } };
+
+#pragma mark showCompare
+resource restype_Slate (resid_showCompare, "") { {
+	Slate { "showCompare",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "master current", "" },		Sequence{}, TypeText { "master..$cb " }, _return, Wait { 40 }, TypeText { "git lg master..$cb" }, _return, endSequence{},
+		ExitEvent { "origin master", "" },		Sequence{}, TypeText { "origin/master..master " }, _return, Wait { 40 }, TypeText { "git lg origin/master..master" }, _return, endSequence{},
+	} }
+} };
+
 
 #pragma mark 7 -- Show
 resource restype_Slate (resid_gitShow, "") { {

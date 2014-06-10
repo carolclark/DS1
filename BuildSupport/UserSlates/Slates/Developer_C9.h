@@ -12,18 +12,20 @@
 #define resid_Copyright				resid_Developer+1
 #define resid_Package				resid_Developer+2
 #define resid_ChooseUp				resid_Developer+3
-#define resid_Assert				resid_Developer+4
-#define	resid_InsertTag				resid_Developer+8
-#define	resid_InsertStyle			resid_Developer+9
-#define	resid_InsertElement			resid_Developer+10
-#define	resid_InsertSlateText		resid_Developer+11
-#define resid_Doxygen				resid_Developer+12
-#define resid_Unix					resid_Developer+14
 
-#define	resid_InsertSnippet			resid_Developer+30
-	#define resid_snTargetType			resid_InsertSnippet+1
-	#define resid_ucLevel				resid_InsertSnippet+2
-	#define resid_ucActor				resid_InsertSnippet+3
+#define	resid_InsertSnippet			resid_Developer+80
+
+/* Text and Snippets */
+#define resid_Assert				resid_Developer+100
+#define	resid_InsertTag				resid_Developer+150
+#define	resid_InsertStyle			resid_Developer+200
+#define	resid_Markup				resid_Developer+250
+	#define resid_TargetType			resid_Markup+1
+	#define resid_ucLevel				resid_Markup+2
+	#define resid_ucActor				resid_Markup+3
+#define	resid_InsertSlateText		resid_Developer+300
+#define resid_Doxygen				resid_Developer+350
+#define resid_Unix					resid_Developer+400
 
 #define	_nextField			Keypress { kc_slash, mf_control }
 #define	_previousField		Keypress { kc_slash, mf_control + mf_shift }
@@ -162,15 +164,24 @@
 		_SlateGlobals_,	\
 		_CloseSubslate_,	\
 		Event { "cut next line", "" },			Sequence{}, _cutNextLine, endSequence{},	\
+		Event { "set clipboard", "" },			Sequence{}, Keypress { kc_right, mf_command }, Keypress { kc_left, mf_command + mf_shift }, Keypress { kc_X, mf_command }, endSequence{},	\
 		Event { "indent", "" },					_indent,	\
 		Event { "indent back", "" },			_indentBack,	\
+		Event { "repository", "" },				Subslate { "repo" },	\
+			_SlateGlobals_,		\
+			_CloseSubslate_,	\
+			ExitEvent { "Support", "" },			TypeText { "Support" },		\
+			ExitEvent { "Accessor", "" },			TypeText { "Accessor" },	\
+			ExitEvent { "Punkin", "" },				TypeText { "Punkin" },		\
+			endSubslate{},		\
 		Event { "Special", "" },				ResSubslate { resid_TypeSpecialDevSlate }, \
 		Event { "Copyright", "" },				ResSubslate { resid_Copyright },	\
 		Event { "Package", "" },				ResSubslate { resid_Package },	\
 		Event { "Assert", "" },					ResSubslate { resid_Assert },	\
 		Event { "Insert Tag", "" },				ResSubslate { resid_InsertTag },	\
 		Event { "Add Style", "" },				ResSubslate { resid_InsertStyle },	\
-		Event { "Insert Element", "" },			ResSubslate { resid_InsertElement },	\
+		Event { "Insert Element", "" },			ResSubslate { resid_Markup },	\
+		Event { "Markup", "" },					ResSubslate { resid_Markup },	\
 		Event { "Snippet", "" },				ResSubslate { resid_InsertSnippet }, \
 		Event { "User", "" },					ResSubslate { resid_InsertSlateText },	\
 		Event { "Unix", "" },					ResSubslate { resid_Unix }

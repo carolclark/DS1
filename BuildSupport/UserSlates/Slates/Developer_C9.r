@@ -219,9 +219,9 @@ resource restype_Slate (resid_InsertStyle, "css Styles") { {
 	} }
 } };
 
-#pragma mark 3 --- Element
-resource restype_Slate (resid_InsertElement, "") { {
-	Slate { "Element",	{
+#pragma mark 3 --- Markup
+resource restype_Slate (resid_Markup, "") { {
+	Slate { "Markup",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
 		ExitEvent { "marker", "" },					Sequence{}, TypeText { "<!-- @marker \"p\" -->" }, _return, _up, _nextField, endSequence{},
@@ -229,16 +229,10 @@ resource restype_Slate (resid_InsertElement, "") { {
 			TypeText { "<!-- @topicItem \"<#title#>\" \"<#linkDestination#>\" \"<#indent0-3#>\" \"<#[description]#>\" -->" }, _up, _nextField, endSequence{},
 		ExitEvent { "topic Group", "" },	Sequence{},
 			TypeText { "<!-- @topicGroup \"<#title#>\" \"<#linenum#>\" -->" }, _previousField, _previousField, endSequence{},
-		ExitEvent { "topic Separator", "" },	TypeText { "<!-- @topicSep -->" },
-		ExitEvent { "goal", "" },		Sequence{}, TypeText { "<tr> <td><#Project#></td> <td><#goal#></td> <td class='small'><#comments#></td> <td align=\"center\"><#priority#></td> </tr>" }, _previousField,  _previousField, _previousField, _previousField, endSequence{},
-		ExitEvent { "heading with topics", "" },		Sequence{},
-			TypeText { "<#=== -> topicList [1]#>" }, _indentBack, _return,
-			TypeText { "<!-- @topicItem \"<#title#>\" \"#<#name#>\" \"0\" \"\" -->" }, _return,
-			TypeText { "<!-- @marker \"<#title#>\" -->" }, _indentBack, _return,
-			TypeText { "<h<#level#>><#title#></h<#level#>><##>" }, _indentBack, _return,
-			TypeText { "<!-- @topicList \"<#title#>\" \"<#name#>\" -->" }, _indentBack, _return,
-			TypeText { "<!-- @/topicList --><##>" }, _indentBack, _return,
-			_indentBack, _nextField, endSequence{},
+		ExitEvent { "topic Separator", "" },		TypeText { "<!-- @topicSep -->" },
+		ExitEvent { "heading with name", "" },		TypeText { "headingWithName#" },
+		ExitEvent { "heading with topics", "" },	TypeText { "headingWithTopics#" },
+		ExitEvent { "heading for issue", "" },		TypeText { "headingForIssue#" },
 		ExitEvent { "bug or issue", "" },	Sequence{},
 			TypeText { "<!-- @topicItem \"<#title#>\" \"#BI_<#abbreviatedDate#>-01\" \"0\" \"[BI_<#abbreviatedDate#>-01]\" -->" }, _indent, _return,
 			TypeText { "<h5 id='BI_<#abbreviatedDate#>-01'>__title__ [BI_<#abbreviatedDate#>-01] new</h5>" }, _return,
@@ -246,7 +240,15 @@ resource restype_Slate (resid_InsertElement, "") { {
 		ExitEvent { "current tag", "" },	Sequence{},	TypeText { "<span class='tlmark'>&lt;--</span>" }, _previousField, endSequence{},
 		ExitEvent { "date mark", "" },		Sequence{},	TypeText { "<span class='tldate'>[<#date#>]</span>" }, _previousField, endSequence{},
 		ExitEvent { "version marker", "" },	Sequence{}, TypeText { "<p class='tlversion'>[v<#version#> <#milestone#>]</p>" }, _previousField, _previousField, endSequence{},
-		ExitEvent { "unix selection", "" }, TypeText { "%%%{PBXSelection}%%%" },
+		Event { "developer link", "" },					TypeText { "developerLink#" },
+		ExitEvent { "developer item", "" },				TypeText { "developerItem#" },
+		ExitEvent { "glossary item", "" },				TypeText { "glossaryItem#" },
+		ExitEvent { "annotate code", "" },				TypeText { "annotateCode#" },
+		Event { "document project", "" },				TypeText { "documentProject#" },
+		Event { "document target", "" },				Sequence{}, TypeText { "documentTarget#" }, ResSubslate { resid_TargetType }, endSequence{},
+		Event { "use case", "" },						Sequence{}, TypeText { "useCase#" }, ResSubslate { resid_ucActor }, endSequence{},
+		Event { "use case link", "" },					Sequence{}, TypeText { "useCaseLink#" }, endSequence{},
+		Event { "use case level", "" },					ResSubslate { resid_ucLevel },
 		ExitEvent { "ampersand", "" }, 		TypeText { "&amp;" },
 		ExitEvent { "less than", "" }, 		TypeText { "&lt;" },
 		ExitEvent { "greater than", "" }, 	TypeText { "&gt;" },
@@ -262,60 +264,8 @@ resource restype_Slate (resid_InsertElement, "") { {
 	} }
 } };
 
-#pragma mark 4 --- Snippet
-resource restype_Slate (resid_InsertSnippet, "") { {
-	Slate { "snippet",	{
-		_SlateGlobals_,
-		ExitEvent { "exit", "" },						NilAction{},
-		ExitEvent { "okay", "" },						_return,
-		Event { "continue", "" },						_return,
-		Event { "clipboard", "" },						Sequence{}, Keypress { kc_right, mf_command }, Keypress { kc_left, mf_command + mf_shift }, Keypress { kc_X, mf_command }, endSequence{},
-		ExitEvent { "file header", "" },	 			TypeText { "fileHeader#" },
-		ExitEvent { "window controller property", "" },	TypeText { "windowControllerProperty#" },
-		ExitEvent { "dynamic property", "" },			TypeText { "dynamicProperty#" },
-		ExitEvent { "accessor retain", "" },			TypeText { "accessorRetain#" },
-		ExitEvent { "category accessors", "" },			TypeText { "categoryAccessors#" },
-		ExitEvent { "relationship accessors", "" },		TypeText { "relationshipAccessors#" },
-		ExitEvent { "file images sheet", "" },			TypeText { "fileImagesSheet#" },
-		ExitEvent { "table view", "" },					TypeText { "tableView#" },
-		ExitEvent { "init", "" },						TypeText { "init#" },
-		ExitEvent { "constant", "" },					TypeText { "constant#" },
-		Event { "property", "" },						TypeText { "property#" },
-		Event { "attribute", "" },						Subslate { "attribute" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			Event { "read only", "" },						TypeText { "readonly, " },
-			ExitEvent { "strong", "" },						TypeText { "strong" },
-			ExitEvent { "weak", "" },						TypeText { "weak" },
-			ExitEvent { "retain", "" },						TypeText { "retain" },
-			ExitEvent { "assign", "" },						TypeText { "assign" },
-			ExitEvent { "copy", "" },						TypeText { "copy" },
-			endSubslate{},
-		Event { "project", "" },						Subslate { "project" },
-			_SlateGlobals_,
-			_CloseSubslate_,
-			ExitEvent { "Support", "" },					TypeText { "Support" },
-			ExitEvent { "Accessor", "" },					TypeText { "Accessor" },
-			ExitEvent { "Punkin", "" },						TypeText { "Punkin" },
-			endSubslate{},
-		Event { "user slate", "" },						TypeText { "userSlate#" },
-		ExitEvent { "heading with name", "" },			TypeText { "headingWithName#" },
-		ExitEvent { "heading with topics", "" },		TypeText { "headingWithTopics#" },
-		ExitEvent { "heading for issue", "" },			TypeText { "headingForIssue#" },
-		Event { "developer link", "" },					TypeText { "developerLink#" },
-		ExitEvent { "developer item", "" },				TypeText { "developerItem#" },
-		ExitEvent { "glossary item", "" },				TypeText { "glossaryItem#" },
-		ExitEvent { "annotate code", "" },				TypeText { "annotateCode#" },
-		Event { "document project", "" },				TypeText { "documentProject#" },
-		Event { "document target", "" },				Sequence{}, TypeText { "documentTarget#" }, ResSubslate { resid_snTargetType }, endSequence{},
-		Event { "use case", "" },						Sequence{}, TypeText { "useCase#" }, ResSubslate { resid_ucActor }, endSequence{},
-		Event { "use case link", "" },					Sequence{}, TypeText { "useCaseLink#" }, endSequence{},
-		Event { "level", "" },							ResSubslate { resid_ucLevel },
-	} }
-} };
-
-#pragma mark snTargetType
-resource restype_Slate (resid_snTargetType, "") { {
+#pragma mark TargetType
+resource restype_Slate (resid_TargetType, "") { {
 	Slate { "target type",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
@@ -355,6 +305,40 @@ resource restype_Slate (resid_ucActor, "") { {
 		Event { "Picture", "" },			TypeText { "Picture" },
 		Event { "Image", "" },				TypeText { "Image" },
 		Event { "Layer", "" },				TypeText { "Layer" },
+	} }
+} };
+
+#pragma mark 4 --- Snippet
+resource restype_Slate (resid_InsertSnippet, "") { {
+	Slate { "snippet",	{
+		_SlateGlobals_,
+		ExitEvent { "exit", "" },						NilAction{},
+		ExitEvent { "okay", "" },						_return,
+		Event { "continue", "" },						_return,
+		Event { "clipboard", "" },						Sequence{}, Keypress { kc_right, mf_command }, Keypress { kc_left, mf_command + mf_shift }, Keypress { kc_X, mf_command }, endSequence{},
+		ExitEvent { "file header", "" },	 			TypeText { "fileHeader#" },
+		ExitEvent { "window controller property", "" },	TypeText { "windowControllerProperty#" },
+		ExitEvent { "dynamic property", "" },			TypeText { "dynamicProperty#" },
+		ExitEvent { "accessor retain", "" },			TypeText { "accessorRetain#" },
+		ExitEvent { "category accessors", "" },			TypeText { "categoryAccessors#" },
+		ExitEvent { "relationship accessors", "" },		TypeText { "relationshipAccessors#" },
+		ExitEvent { "file images sheet", "" },			TypeText { "fileImagesSheet#" },
+		ExitEvent { "table view", "" },					TypeText { "tableView#" },
+		ExitEvent { "init", "" },						TypeText { "init#" },
+		ExitEvent { "constant", "" },					TypeText { "constant#" },
+		Event { "property", "" },						TypeText { "property#" },
+		Event { "attribute", "" },						Subslate { "attribute" },
+			_SlateGlobals_,
+			_CloseSubslate_,
+			Event { "read only", "" },						TypeText { "readonly, " },
+			ExitEvent { "strong", "" },						TypeText { "strong" },
+			ExitEvent { "weak", "" },						TypeText { "weak" },
+			ExitEvent { "retain", "" },						TypeText { "retain" },
+			ExitEvent { "assign", "" },						TypeText { "assign" },
+			ExitEvent { "copy", "" },						TypeText { "copy" },
+			endSubslate{},
+		ExitEvent { "unix selection", "" }, 			TypeText { "%%%{PBXSelection}%%%" },
+		Event { "user slate", "" },						TypeText { "userSlate#" },
 	} }
 } };
 

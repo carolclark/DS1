@@ -1039,7 +1039,7 @@ resource restype_Slate (resid_BuildAccessor, "") { {
 		_SlateGlobals_,
 		ExitEvent { "exit", "" },		NilAction{},
 		Event { "Target", "" },			Sequence{}, CloseSubslate{}, CloseSubslate{}, ResSubslate { resid_Target }, endSequence{},
-		Event { "run original", "" },	Sequence{}, Click { 0, 1335, 365, _screen, _topLeft }, Launch { HomeApps_"Accessor.app", 0 }, endSequence{},
+		Event { "run original", "" },	Sequence{}, Click { 0, 1335, 365, _screen, _topLeft }, Launch { MainApps_"Finder", 0 }, Launch { HomeApps_"Accessor.app", 0 }, endSequence{},
 		Event { "return", "" },			_return,
 		Event { "quit", "" },			Keypress { kc_Q, mf_command },
 	} }
@@ -2111,11 +2111,11 @@ resource restype_Slate (resid_LogIndex, "Log") { {
 } };
 
 #pragma mark 7 === Typing
-// inside: 1 Special; Copyright; Macro 2 TypeDialog; 3 _TypeXcodeItems_; Package; 4 TypeXcode [unix]; TypeDebugConsole; 5 InsertSnippet; 6 InsertElement; Styles; InsertTag; 7 UserSlate; 8 Doxygen; 9 typeSearch
+// inside: 1 Special; Copyright; Macro 2 TypeDialog; 3 _TypeXcodeItems_; Package; 4 TypeXcode [unix]; TypeDebugConsole; 5 InsertSnippet; 6 Markup; Styles; InsertTag; 7 UserSlate; 8 Doxygen; 9 typeSearch
 
 #pragma mark Macro
 resource restype_Slate (resid_Macro, "") { {
-	Slate { "Macro",	{
+	Slate { "Insert Macro",	{
 		_Focus_,
 		_FocusBack_,
 		Event { "one", "temp" },				Sequence{},
@@ -2157,6 +2157,7 @@ resource restype_Slate (resid_Doxygen, "Doxygen") { {
 	Event { "complete", "" },	Keypress { kc_escape, 0 },	\
 	Event { "finish", "" },		Keypress { kc_escape, 0 },	\
 	Event { "choose north", "" }, ResSubslate { resid_ChooseUp },		\
+	Event { "set clipboard", "" },	Sequence{}, Keypress { kc_left, mf_command }, Keypress { kc_right, mf_command + mf_shift }, Keypress { kc_X, mf_command }, endSequence{},	\
 	_GoToReference_,	\
 	_JumpBar_,		\
 	_CloseDocument_,	\
