@@ -63,8 +63,11 @@
 <h4 id='ReorganizeSnippets'><a href="http://github.com/carolclark/Support/issues/38">(#38)</a>Reorganize Snippets</h4><pre>
 	* *sort slate typing features by language instead of by whether or not implemented as Dash snippet*
 	* Markup slate (from insertElement)
-	* terminal: getMergeMessage# (done), messageFile# (path); list files; select(file?)
 	* also add SystemPrefs as external from Xcode; automate Privacy &gt; Accessibility for Accessor
+	* use aliases for long commands in Slates:
+		* add python path to $PATH`
+		* alias gmm='print -n "issueNumber: "; read issueNumber; mm=$(${CCDev}/bin/python/scm.py $cb $issueNumber); print "$mm"'
+		* also list/select files/branches
 </pre>
 
 <!-- @marker "Fix RemoveFolder with Python" -->

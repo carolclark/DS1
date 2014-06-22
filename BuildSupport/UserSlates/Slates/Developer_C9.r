@@ -194,6 +194,7 @@ resource restype_Slate (resid_InsertTag, "HTML tag") { {
 resource restype_Slate (resid_InsertStyle, "css Styles") { {
 	Slate { "Style",	{
 		_SlateGlobals_,
+		_CloseSubslate_,
 		ExitEvent { "not yet implemented", "" }, Sequence{}, TypeText { " class='nyi'" }, _right, endSequence{},
 		ExitEvent { "not yet", "" }, Sequence{}, TypeText { " class='nyi'" }, _right, endSequence{},
 		ExitEvent { "design question", "" }, Sequence{}, TypeText { " class='dq'" }, _right, endSequence{},
@@ -205,6 +206,7 @@ resource restype_Slate (resid_InsertStyle, "css Styles") { {
 		ExitEvent { "blurb", "" }, Sequence{}, TypeText { " class='blurb'" }, _right, endSequence{},
 		ExitEvent { "small", "" }, Sequence{}, TypeText { " class='small'" }, _right, endSequence{},
 		ExitEvent { "center", "" }, Sequence{}, TypeText { " class='center'" }, _right, endSequence{},
+		ExitEvent { "indent", "" },	Sequence{}, TypeText { " class='indent'" }, _right, endSequence{},
 		ExitEvent { "mono", "" }, Sequence{}, TypeText { " class='mono'" }, _right, endSequence{},
 		ExitEvent { "technical", "" }, Sequence{}, TypeText { " class='tech'" }, _right, endSequence{},
 		ExitEvent { "remove", "" }, Sequence{}, TypeText { " class='remove'" }, _right, endSequence{},
@@ -246,6 +248,7 @@ resource restype_Slate (resid_Markup, "") { {
 		ExitEvent { "annotate code", "" },				TypeText { "annotateCode#" },
 		Event { "document project", "" },				TypeText { "documentProject#" },
 		Event { "document target", "" },				Sequence{}, TypeText { "documentTarget#" }, ResSubslate { resid_TargetType }, endSequence{},
+		Event { "Tools item", "" },						TypeText { "toolsItem#" },
 		Event { "use case", "" },						Sequence{}, TypeText { "useCase#" }, ResSubslate { resid_ucActor }, endSequence{},
 		Event { "use case link", "" },					Sequence{}, TypeText { "useCaseLink#" }, endSequence{},
 		Event { "use case level", "" },					ResSubslate { resid_ucLevel },
