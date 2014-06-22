@@ -46,14 +46,15 @@
 <!-- @/topicList -->
 
 <!-- @marker "AddressBook" -->
-<h2><a name="AddressBook">Address Book</a></h2>
+<h4><a name="AddressBook">Address Book</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> ~/Library/Application Support/AddressBook<br />
 	also backups at ~/Documents/Address Book Backups</p>
 	<p><b>Configuration</b> </p>
+</div>
 
 <!-- @marker "AppleScript" -->
-<h2><a name="_AppleScript">AppleScript</a></h2>
+<h4><a name="_AppleScript">AppleScript</a></h4><div class='indent'>
 	<p><b>Application</b> application AppleScript Editor at /Applications/Utilities</p>
 	<p><b>Critical Data</b> menu uses ~/Library/Scripts; scripts should all be derivative</p>
 	<p><b>Configuration</b></p>
@@ -65,19 +66,21 @@
 		<li><b>/Library/Scripts</b> move scripts into new folder Supplied; make sure GUI Scripting is enabled</li>
 	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- @marker "Automator" -->
-<h2><a name="_Automator">Automator</a></h2>
-<p><b>Application</b> Apple app at /Applications</p>
-<p><b>Critical Data</b><br />
-default document location ~/Library/Workflows does not seem to have any special advantage<br />
-workflows stored at ~/Library/Scripts are available from the global scripts menu<br />
-we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/Scripts</p>
-<p><b>Configuration</b> </p>
-<p><b>Customization &amp; Automation</b> </p>
+<h4><a name="_Automator">Automator</a></h4><div class='indent'>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b><br />
+	default document location ~/Library/Workflows does not seem to have any special advantage<br />
+	workflows stored at ~/Library/Scripts are available from the global scripts menu<br />
+	we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/Scripts</p>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- @marker "Backup" -->
-<h2><a name="Backup_">Backup</a></h2><div class='indent'>
+<h4><a name="Backup_">Backup</a></h4><div class='indent'>
 	<p class='blurb'>backup utility provided by Apple with MobileMe account</p>
 	<p><b>Application</b> /Applications/Backup; v 3.2</p>
 	<p><b>Source</b> <a href="http://www.me.com/idisk/">MobileMe: iDisk</a>/Software</p>
@@ -86,79 +89,83 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "BBEdit" -->
-<h2><a name="BBEdit">BBEdit</a></h2>
-<p><b>Application</b> at /Applications</p>
-<p><b>Critical Data</b> </p>
-<ul>
-	<li>~/Library/Application Support/BBEdit</li>
-	<li>~/Library/Preferences/com.barebones.bbedit.PreferenceData (grep patterns)</li>
-</ul>
-<p><b>Configuration</b></p>
-<ul>
-	<li><b>Application</b> At Startup: Do Nothing; Reopen documents that were open at last quit: off</li>
-	<li><b>Documents &amp; Drawer</b><ul>
-		<li>Allow Documents Drawer to acquire keyboard focus: On</li>
-	</ul></li>
-	<li><b>Editing: General</b> <ul>
-		<li>Include dictionary words in completion list: ON</li>
-		<li>Soft wrapped line indentation: Reverse</li>
-	</ul></li>
-	<li><b>Editing: Keyboard</b> <ul>
-		<li>Use Tab key to navigate Placeholders: Off</li>
-	</ul></li>
-	<li><b>HTML Web Sites</b> <ul>
-		<li>add site TechicalDocs<ul>
-			<li>Web server name: ~/Library/CCDev/Sites/TechnicalDocs/</li>
-			<li>Site path on server: ~carolclark/Library/CCDev/Sites/TechnicalDocs/</li>
-			<li>Default page name: Development.html</li>
-			<li>Local site root: ~/Library/CCDev/Sites/TechnicalDocs</li>
+<h4><a name="BBEdit">BBEdit</a></h4><div class='indent'>
+	<p><b>Application</b> at /Applications</p>
+	<p><b>Critical Data</b> </p>
+	<ul>
+		<li>~/Library/Application Support/BBEdit</li>
+		<li>~/Library/Preferences/com.barebones.bbedit.PreferenceData (grep patterns)</li>
+	</ul>
+	<p><b>Configuration</b></p>
+	<ul>
+		<li><b>Application</b> At Startup: Do Nothing; Reopen documents that were open at last quit: off</li>
+		<li><b>Documents &amp; Drawer</b><ul>
+			<li>Allow Documents Drawer to acquire keyboard focus: On</li>
 		</ul></li>
-		<li>manually check Syntax and Links for folder TechnicalDocs<ul>
-			<li class='blurb'>so it will be set as needed for script ValidateHTML</li>
+		<li><b>Editing: General</b> <ul>
+			<li>Include dictionary words in completion list: ON</li>
+			<li>Soft wrapped line indentation: Reverse</li>
 		</ul></li>
-	</ul></li>
-	<li><b>Menus</b><ul>
-		<li><b>File</b> Revert cU; Save a Copy csoS</li>
-		<li><b>Text</b> Change Case... coC; Change Case csoC</li>
-		<li><b>View</b> Text Display: Soft Wrap Text: crW</li>
-		<li><b>Search</b> Replace and Find Next cs=</li>
-	</ul></li>
-	<li><b>Text Status Display</b><ul>
-		<li>Show line numbers: On</li>
-	</ul></li>
-</ul>
+		<li><b>Editing: Keyboard</b> <ul>
+			<li>Use Tab key to navigate Placeholders: Off</li>
+		</ul></li>
+		<li><b>HTML Web Sites</b> <ul>
+			<li>add site TechicalDocs<ul>
+				<li>Web server name: ~/Library/CCDev/Sites/TechnicalDocs/</li>
+				<li>Site path on server: ~carolclark/Library/CCDev/Sites/TechnicalDocs/</li>
+				<li>Default page name: Development.html</li>
+				<li>Local site root: ~/Library/CCDev/Sites/TechnicalDocs</li>
+			</ul></li>
+			<li>manually check Syntax and Links for folder TechnicalDocs<ul>
+				<li class='blurb'>so it will be set as needed for script ValidateHTML</li>
+			</ul></li>
+		</ul></li>
+		<li><b>Menus</b><ul>
+			<li><b>File</b> Revert cU; Save a Copy csoS</li>
+			<li><b>Text</b> Change Case... coC; Change Case csoC</li>
+			<li><b>View</b> Text Display: Soft Wrap Text: crW</li>
+			<li><b>Search</b> Replace and Find Next cs=</li>
+		</ul></li>
+		<li><b>Text Status Display</b><ul>
+			<li>Show line numbers: On</li>
+		</ul></li>
+	</ul>
+</div>
 
 <!-- @marker "Cyberduck" -->
-<h2><a name="Cyberduck">Cyberduck</a></h2>
+<h4><a name="Cyberduck">Cyberduck</a></h4><div class='indent'>
 	<p><b>Application</b>v4.2.1 downloaded from <a href="http://cyberduck.ch/">Cyberduck</a></p>
-<p><b>Configuration</b> </p>
-<p><b>Customization &amp; Automation</b> </p>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- @marker "Dash" -->
-<h2><a name="Dash">Dash</a></h2>
-<p><b>Application</b> AppStore app at /Applications</p>
+<h4><a name="Dash">Dash</a></h4><div class='indent'>
+	<p><b>Application</b> AppStore app at /Applications</p>
 	<p><b>Critical Data</b> active snippets library inside ${DEV}/Support; supplied snippet examples at ~/Library/Application Support/Dash </p>
-<p><b>Configuration</b> </p>
-<p><b>Customization &amp; Automation</b> </p><ul>
-	<li>Dash Preferences<ul>
-		<li>General: Open Main Window: crs`</li>
-		<li>Downloads: download docsets as indicated</li>
-		<li>Docsets: set abbreviations osx:, ios:, dev:, pun:, acc: for primary docsets</li>
-		<li>Snippets: enable snippet detection; open library ${DEV}/Support/Dash/snippets.dash</li>
-		<li>Advanced: normally use Window style HUD</li>
-	</ul></li>
-	<li>System Preferences: Keyboard: Services: Look up in Dash: cr`</li>
-</ul>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p><ul>
+		<li>Dash Preferences<ul>
+			<li>General: Open Main Window: crs`</li>
+			<li>Downloads: download docsets as indicated</li>
+			<li>Docsets: set abbreviations osx:, ios:, dev:, pun:, acc: for primary docsets</li>
+			<li>Snippets: enable snippet detection; open library ${DEV}/Support/Dash/snippets.dash</li>
+			<li>Advanced: normally use Window style HUD</li>
+		</ul></li>
+		<li>System Preferences: Keyboard: Services: Look up in Dash: cr`</li>
+	</ul>
+</div>
 
-	<!-- @marker "Dashboard" -->
-<h2><a name="Dashboard">Dashboard</a></h2>
-<p><b>Application</b> Apple app at /Applications</p>
-<p><b>Critical Data</b> uses widgets at ~/Library/Widgets</p>
-<p><b>Configuration</b> </p>
-<p><b>Customization &amp; Automation</b> </p>
+<!-- @marker "Dashboard" -->
+<h4><a name="Dashboard">Dashboard</a></h4><div class='indent'>
+	<p><b>Application</b> Apple app at /Applications</p>
+	<p><b>Critical Data</b> uses widgets at ~/Library/Widgets</p>
+	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- @marker "DragonDictate" -->
-<h2><a name="DragonDictate">DragonDictate</a></h2><div class='indent'>
+<h4><a name="DragonDictate">DragonDictate</a></h4><div class='indent'>
 	<p><b>Application</b> /Applications/DragonDictate</p>
 	<p><b>Installation</b></p><ul>
 		<li>install from DVD</li>
@@ -219,7 +226,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Eclipse" -->
-<h2 id="Eclipse_">Eclipse</h2><div class='indent'>
+<h4 id="Eclipse_">Eclipse</h4><div class='indent'>
 	<p class='blurb'>IDE for Java development</p>
 	<p><b>Application</b> /JavaDeveloper/Applications/eclipse/Eclipse.app v	1.4.0 (Indigo)</p>
 	<p><b>Source</b> <a href="http://www.eclipse.org/downloads/">Eclipse IDE for Java Developers, Mac 64-bit</a></p>
@@ -231,15 +238,16 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "FileMaker" -->
-<h2><a name="FileMaker">FileMaker Pro 9 Advanced</a></h2>
+<h4><a name="FileMaker">FileMaker Pro 9 Advanced</a></h4><div class='indent'>
 	<p><b>Application</b> at /Application</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b></p>
 	<p><b>Layouts</b> Add New Fields - no; Save Changes Automatically - yes</p>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- @marker "Finder" -->
-<h2><a name="Finder">Finder</a></h2>
+<h4><a name="Finder">Finder</a></h4><div class='indent'>
 	<p><b>Application</b> system application</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b></p>
@@ -248,34 +256,46 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 	</ul>
 	<p><b>Customization &amp; Automation</b> <br />
 	script applications to operate on dropped files:</p>
-	<ul class='todo'>
-		<li><b>Set Mac Info Scripts</b> set file and/or creator type as indicated<br />
-		toBBEdit; toFileGroup (BBEdit); toTypeTEXT</li>
-	</ul>
+</div>
 
 <!-- @marker "iCal" -->
-	<div class='todo'>
-<h2><a name="iCal">iCal</a></h2>
+<h4><a name="iCal">iCal</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> ~/Library/Application Support/iCal; calendars exportable</p>
-	<p><b>Configuration</b> </p>
+	<p><b>Configuration</b> </p><ul>
+		<li>General<ul>
+			<li>Week: 7 days; start Sunday; scroll by Week</li>
+			<li>Day: 7AM to 9PM; show 14 hours</li>
+			<li>Calendar: Calendar (iCloud; shared with Laura; Laura's Home also shared with me)</li>
+			<li>show Birthdays and Holidays calendars; refresh <span class='dq'>Push</span></li>
+		</ul></li>
+		<li>Accounts<ul>
+			<li>iCloud CalDAV; AppleID carolclark@cox.net</li>
+		</ul></li>
+		<li>Advanced<ul>
+			<li>Show events in year view; Ask before sending changes to events</li>
+		</ul></li>
+		<li>Alerts<ul>
+			<li>iCloud: Events: 20 minutes before; All Day Events: 1 day before (9 AM); Birthdays: 1 week before</li>
+		</ul></li>
+	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
-	</div>
+</div>
 
 <!-- marker "iTunes" -->
-<h2><a name="iTunes">iTunes</a></h2>
+<h4><a name="iTunes">iTunes</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> ~/Music</p>
 	<p><b>Configuration</b> </p>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- marker "Mail" -->
-<div class='todo'>
-<h2><a name="Mail">Mail</a></h2>
+<h4><a name="Mail">Mail</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications</p>
-	<p><b>Critical Data</b> ~/Library/Mail</p>
+	<p><b>Critical Data</b> <span class='depr'>~/Library/Mail</span></p>
 	<p><b>Configuration</b></p>
-	<ul>
+	<ul class='todo'>
 		<li><b>Accounts</b><ul>
 			<li>POP  account; my email; in: pop.central.cox.net; out: smtp.central.cox.net; cc3x</li>
 			<li>MobileMe; carollclark@me.com, carollclark@mac.com; in: mail.me.com; out: smtp.me.com.carollclark; pw to be reset</li>
@@ -339,7 +359,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Safari" -->
-<h2><a name="Safari">Safari</a></h2>
+<h4><a name="Safari">Safari</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> ~/Library/Safari</p>
 	<p><b>Configuration</b> </p>
@@ -348,9 +368,10 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<li>home page to ~/Library/CCDev/Sites/TechnicalDocs/Support/Development.html</li>
 		<li>alias to ~/Library/CCDev/Sites/TechnicalDocs/Support/Development.html to ~/Documents</li>
 	</ul>
+</div>
 
 <!-- @marker "Stickies" -->
-<h2 id='Stickies'>Stickies</h2>
+<h4 id='Stickies'>Stickies</h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> database at ~/Library/StickiesDatabase</p>
 	<p><b>Configuration</b></p>
@@ -358,9 +379,10 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<li><b>Font</b>: Menlo regular 11</li>
 		<li><b>Default Window</b>: gray; exactly 50 characters wide (for git comments)</li>
 	</ul>
+</div>
 
 <!-- @marker "SystemPreferences" -->
-<h2><a name="SystemPreferences">System Preferences</a></h2>
+<h4><a name="SystemPreferences">System Preferences</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b></p>
@@ -391,9 +413,10 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		</ul></li>
 		<li><b>Time Machine</b>: on; uses volume TimeMachine</li>
 	</ul>
+</div>
 
 <!-- @marker "Terminal" -->
-<h2><a name="Terminal">Terminal</a></h2>
+<h4><a name="Terminal">Terminal</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications/Utilities</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b></p><ul>
@@ -406,17 +429,19 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<li>Startup: open window group Workspaces</li>
 	</ul>
 	<p><b>Customization &amp; Automation</b>: set shell ksh (<span class='mono'>chsh -s /bin/ksh</span>) </p>
+</div>
 
 <!-- @marker "UIBrowser" -->
-<h2><a name="UIBrowser">UI Browser</a></h2>
+<h4><a name="UIBrowser">UI Browser</a></h4><div class='indent'>
 	<p><b>Application</b> /Applications/UI Browser downloaded from <a href="http://prefabsoftware.com/uibrowser/">PreFab Software</a></p>
 	<p><b>Installation</b> UI Browser at Applications; UI Element Scripts (PreFab) at /Library/Scripts</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b> </p>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- @marker "Xcode" -->
-<h2><a name="_Xcode">Xcode</a></h2>
+<h4><a name="_Xcode">Xcode</a></h4><div class='indent'>
 	<p><b>Application</b> Xcode v. 5.0.2 (5A4005); from AppStore</p>
 	<p><b>Configuration</b> </p>
 	<ul>
@@ -452,6 +477,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 			<li>Workflows: add to Services menu with hotkey</li>
 		</ul></li>
 	</ul>
+</div>
 
 <!-- @marker "3 === Tools and Libraries" -->
 <h2>Tools and Libraries</h2>
@@ -469,9 +495,10 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<!-- @topicItem "Lingon" "#Lingon_" "0" "" -->
 		<!-- @topicItem "MacPorts" "#_MacPorts" "0" "" -->
 		<!-- @topicItem "Markdown" "#Markdown" "0" "" -->
+		<!-- @topicItem "OCUnit" "#OCUnit_" "0" "" -->
+		<!-- @topicItem "PHP" "#PHP_" "0" "" -->
 		<!-- @topicItem "Ruby Gems" "#RubyGems_" "0" "" -->
 		<!-- @topicItem "RubyOSA" "#RubyOSA_" "0" "" -->
-		<!-- @topicItem "PHP" "#PHP_" "0" "" -->
 		<!-- @topicItem "SQLite" "#_SQLite" "0" "" -->
 		<!-- @topicItem "StuffIt Expander" "#StuffItExpander_" "0" "" -->
 		<!-- @topicItem "Subversion" "#_Subversion" "0" "" -->
@@ -481,7 +508,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 <!-- @/topicList -->
 
 <!-- @marker "AndroidForEclipse" -->
-<h2 id="AndroidForEclipse_">Android for Eclipse</h2><div class='indent'>
+<h4 id="AndroidForEclipse_">Android for Eclipse</h4><div class='indent'>
 <p>collection of Eclipse software packages and virtual devices to support Android development</p>
 
 <div style="margin-left:24px">
@@ -549,12 +576,11 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 			<p>To set up for testing on a real device: set up device for debugging</p><ul>
 				<li>Device Settings: Applications: Development: Enable USB Debugging</li>
 			</ul>
-
-</div>
+	</div>
 </div>
 
 <!-- @marker "Ant" -->
-<h2><a name='Ant_'>Ant</a></h2><div class='indent'>
+<h4><a name='Ant_'>Ant</a></h4><div class='indent'>
 	<p class='blurb'>from manual: "Apache Ant is a Java-based build tool. In theory, it is kind of like make, without make's wrinkles."</p>
 	<p><b>installed with system</b></p>
 	<p><b>License</b> Apache License -- open</p>
@@ -562,7 +588,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Apache" -->
-<h2 id="Apache_">Apache</h2><div class='indent'>
+<h4 id="Apache_">Apache</h4><div class='indent'>
 	<p class='blurb'>server With Subversion module</p>
 	<p><b>Library</b> /usr/local/apache; 2.2.19</p>
 	<p><b>Source</b> MacPorts</p>
@@ -601,7 +627,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "CrashReporterPrefs" -->
-<h2><a name="CrashReporterPrefs_">CrashReporterPrefs</a></h2><div class='indent'>
+<h4><a name="CrashReporterPrefs_">CrashReporterPrefs</a></h4><div class='indent'>
 	<p class='blurb'>used to set preferences regarding frequency of Crash Reporter windows being opened</p>
 	<p><b>Application</b> /Developer/Applications/Utilities/CrashReporterPrefs; 10.5.0</p>
 	<p><b>Source</b> system tool</p>
@@ -609,7 +635,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Disk Inventory X" -->
-<h2><a name="DiskInventoryX_">Disk Inventory X</a></h2><div class='indent'>
+<h4><a name="DiskInventoryX_">Disk Inventory X</a></h4><div class='indent'>
 	<p class='blurb'>disk usage utility for Mac OS X 10.3 and later that shows the sizes of files and folders, including those not visible in Finder, graphically</p>
 	<p><b>Application</b> /Applications/Utilities; 1.0</p>
 	<p><b>Source</b> <a href="http://www.derlien.com/">Disk Inventory X</a></p>
@@ -617,7 +643,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Doxygen" -->
-<h2><a name="Doxygen_">Doxygen</a></h2><div class='indent'>
+<h4><a name="Doxygen_">Doxygen</a></h4><div class='indent'>
 	<p class='blurb'>Documentation generator for source files including Objective-C</p>
 	<p><b>tool</b> /Applications/doxygen/Doxygen</p>
 	<p><b>Source</b> binary and pdf documentation downloaded from <a href="http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc">Doxygen Download Page</a></p>
@@ -625,7 +651,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Full Key Codes" -->
-<h2><a name="FullKeyCodes_">Full Key Codes</a></h2><div class='indent'>
+<h4><a name="FullKeyCodes_">Full Key Codes</a></h4><div class='indent'>
 	<p class='blurb'>utility to display code information about each key of the keyboard</p>
 	<p><b>Application</b> /Applications/Utilities/Full Key Codes 1.1/Full Key Codes; v1.1</p>
 	<p><b>Source</b> <a href="http://softwares.bajram.com/utilities/#Full_Key_Codes">Bajram Utilities</a></p>
@@ -633,68 +659,44 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "GHUnit" -->
-<h2><a name="GHUnit_">GHUnit</a></h2><div class='indent'>
+<h4><a name="GHUnit_">GHUnit</a></h4><div class='indent'>
 	<p class='blurb'>Objective-C testing framework</p>
 	<p><b>Framework</b> /Library/Frameworks/GHUnit.framework; version 0.4.19 (created 1/25/10)</p>
 	<p><b>Source</b> <a href="http://github.com/gabriel/gh-unit#readme'">github.com</a></p>
 	<p><b>License</b> open</p>
 	<p><b>Installation and Configuration</b> see comment in source for old target setup instructions</p>
+	<p><b>Usage</b></p><ul>
+		<li>add new Cocoa application target AllTests <ul>
+			<li>Target Info: General <ul>
+				<li>add linked library GHUnit.framework</li>
+				<li>add target being tested as a linked library</li>
+				<li>add target being tested as a direct dependency</li>
+			</ul></li>
+			<li>Target Info: Build <ul>
+				<li>Framework Search Paths, Runtime Search Paths: add $(DEVELOPER_LIBRARY_DIR)/Frameworks</li>
+				<li>Other Linker Flags: add -framework SenTestingKit</li>
+			</ul></li>
+			<li>add GHUnit-supplied file GHUnitTestMain.m to this test target</li>
+		</ul></li>
+		<li>add existing test files to this test target; add files with extended tests to GHUnit target only</li>
+		<li>Executable Settings (must be reset if executable file had been removed, eg. for clean)<ul>
+			<li>Executable arguments: <ul>
+				<li>set NSDebugEnabled, NSZombieEnabled, NSHangOnUncaughtException, NSAutoreleaseFreedObjectCheckEnabled to YES</li>
+				<li>NSDeallocateZombies: normally NO so messages to zombies get caught; YES to debug leaks</li>
+			</ul></li>
+			<li>Executable environment variables: <ul>
+				<li>GHUNIT_AUTORUN (start tests automatically)</li>
+				<li>Optional: GHUNIT_RERAISE (reraise exceptions - causes crash into debugger)</li>
+				<li>MallocStackLogging 1; enable call stack information from Leaks command line tool</li>
+			</ul></li>
+			<li>see <a href="http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html">GHUnit:NSDebug.h</a>
+			for more information</li>
+		</ul></li>
+	</ul>
 </div>
-<!--
-<h5>OCUnit</h5><ul>
-	<li>add new target &lt;ProductName&gt;Test from template Unit Test Bundle</li>
-	<li>add dependency on &lt;ProductName&gt;</li>
-	<li>&lt;TargetName&gt;:Build:Linking:Bundle Loader:
-		$(BUILT_PRODUCTS_DIR)/&lt;AppName&gt;.app/Contents/MacOS/&lt;ProductName&gt;</li>
-	<li>&lt;TargetName&gt;:Build:Unit Testing:Test Host: $(BUNDLE_LOADER)</li>
-	<li class='dq'>&lt;TargetName&gt;.Build.GCC 4.0 - Code Generation: Garbage Collection: set to match application being tested <ul>
-		<li class='blurb'>apparently need a failed build before this will appear on the Build settings list</li>
-	</ul></li>
-	<li>to set up Executable for debugging <ul>
-		<li>application Executable (in Executables smart group) <ul>
-			<li>add argument -SenTest All</li>
-			<li>add variable DYLD_INSERT_LIBRARIES $(DEVELOPER_LIBRARY_DIR)/PrivateFrameworks/DevToolsBundleInjection.framework/DevToolsBundleInjection</li>
-			<li>add variable XCInjectBundle &lt;TargetName&gt;.octest</li>
-			<li>add variable XCInjectBundleInto &lt;ProductName&gt;.app/Contents/MacOS/&lt;ProductName&gt;</li>
-			<li>add variable DYLD_FALLBACK_FRAMEWORK_PATH $(DEVELOPER_LIBRARY_DIR)/Frameworks</li>
-		</ul></li>
-		<li class='blurb'>see <a href="http://chanson.livejournal.com/120740.html">
-			Xcode: Debugging Cocoa application unit tests</a></li>
-	</ul></li>
-</ul>
-
-<h5>GHUnit</h5><ul>
-	<li>add new Cocoa application target AllTests <ul>
-		<li>Target Info: General <ul>
-			<li>add linked library GHUnit.framework</li>
-			<li>add target being tested as a linked library</li>
-			<li>add target being tested as a direct dependency</li>
-		</ul></li>
-		<li>Target Info: Build <ul>
-			<li>Framework Search Paths, Runtime Search Paths: add $(DEVELOPER_LIBRARY_DIR)/Frameworks</li>
-			<li>Other Linker Flags: add -framework SenTestingKit</li>
-		</ul></li>
-		<li>add GHUnit-supplied file GHUnitTestMain.m to this test target</li>
-	</ul></li>
-	<li>add existing test files to this test target; add files with extended tests to GHUnit target only</li>
-	<li>Executable Settings (must be reset if executable file had been removed, eg. for clean)<ul>
-		<li>Executable arguments: <ul>
-			<li>set NSDebugEnabled, NSZombieEnabled, NSHangOnUncaughtException, NSAutoreleaseFreedObjectCheckEnabled to YES</li>
-			<li>NSDeallocateZombies: normally NO so messages to zombies get caught; YES to debug leaks</li>
-		</ul></li>
-		<li>Executable environment variables: <ul>
-			<li>GHUNIT_AUTORUN (start tests automatically)</li>
-			<li>Optional: GHUNIT_RERAISE (reraise exceptions - causes crash into debugger)</li>
-			<li>MallocStackLogging 1; enable call stack information from Leaks command line tool</li>
-		</ul></li>
-		<li>see <a href="http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html">GHUnit:NSDebug.h</a>
-		for more information</li>
-	</ul></li>
-</ul>
--->
 
 <!-- @marker "Homebrew" -->
-<h2 id='_Homebrew'>Homebrew</h2><div class='indent'>
+<h4 id='_Homebrew'>Homebrew</h4><div class='indent'>
 	<p class='blurb'>OS X package manager</p>
 	<p><b>Executable</b> at /usr/local/bin; 0.9.5</p>
 	<p><b>Critical Data</b> </p>
@@ -703,7 +705,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Lingon" -->
-<h2 id="Lingon_">Lingon</h2><div class='indent'>
+<h4 id="Lingon_">Lingon</h4><div class='indent'>
 	<p class='blurb'>editor for launchd items</p>
 	<p><b>Application</b> /Applications/Utilities; 1.2</p>
 	<p><b>Source</b> <a href="http://www.apple.com/downloads/macosx/system_disk_utilities/lingon.html">MacOS Downloads</a></p>
@@ -712,7 +714,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "MacPorts" -->
-<h2><a name="_MacPorts">MacPorts</a></h2><div class='indent'>
+<h4><a name="_MacPorts">MacPorts</a></h4><div class='indent'>
 	<p class='blurb'>open-source project for compiling, installing, and upgrading open-source software on Mac OS X</p>
 	<p><b>Library</b> /opt/local/bin/port; version 1.9.2</p>
 	<p><b>Files</b> opt/local/var/MacPorts</p>
@@ -721,8 +723,36 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 	<p><b>References</b> <a href="http://www.macports.org/index.php">MacPorts Home Page</a>; <a href="http://www.macports.org/install.php">Downloads and Installation</a></p>
 </div>
 
+<!-- @marker "OCUnit" -->
+<h4><a name="OCUnit_">OCUnit</a></h4><div class='indent'>
+	<p class='blurb'>Objective-C testing framework</p>
+	<p><b>Framework</b> </p>
+	<p><b>Source</b> part of Xcode</p>
+	<p><b>Usage</b></p><ul>
+		<li>add new target &lt;ProductName&gt;Test from template Unit Test Bundle</li>
+		<li>add dependency on &lt;ProductName&gt;</li>
+		<li>&lt;TargetName&gt;:Build:Linking:Bundle Loader:
+			$(BUILT_PRODUCTS_DIR)/&lt;AppName&gt;.app/Contents/MacOS/&lt;ProductName&gt;</li>
+		<li>&lt;TargetName&gt;:Build:Unit Testing:Test Host: $(BUNDLE_LOADER)</li>
+		<li class='dq'>&lt;TargetName&gt;.Build.GCC 4.0 - Code Generation: Garbage Collection: set to match application being tested <ul>
+			<li class='blurb'>apparently need a failed build before this will appear on the Build settings list</li>
+		</ul></li>
+		<li>to set up Executable for debugging <ul>
+			<li>application Executable (in Executables smart group) <ul>
+				<li>add argument -SenTest All</li>
+				<li>add variable DYLD_INSERT_LIBRARIES $(DEVELOPER_LIBRARY_DIR)/PrivateFrameworks/DevToolsBundleInjection.framework/DevToolsBundleInjection</li>
+				<li>add variable XCInjectBundle &lt;TargetName&gt;.octest</li>
+				<li>add variable XCInjectBundleInto &lt;ProductName&gt;.app/Contents/MacOS/&lt;ProductName&gt;</li>
+				<li>add variable DYLD_FALLBACK_FRAMEWORK_PATH $(DEVELOPER_LIBRARY_DIR)/Frameworks</li>
+			</ul></li>
+			<li class='blurb'>see <a href="http://chanson.livejournal.com/120740.html">
+				Xcode: Debugging Cocoa application unit tests</a></li>
+		</ul></li>
+	</ul>
+</div>
+
 <!-- @marker "PHP" -->
-<h2 id="PHP_">PHP</h2><div class='indent'>
+<h4 id="PHP_">PHP</h4><div class='indent'>
 	<p class='blurb'>scripting language used in web development, especially for server-side code</p>
 	<p><b>Library</b> /usr/local/bin/php, with related sibling files; php5</p>
 	<p><b>Source</b> MacPorts</p>
@@ -745,7 +775,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Markdown" -->
-<h2 id='Markdown'>Markdown</h2><div class='indent'>
+<h4 id='Markdown'>Markdown</h4><div class='indent'>
 	<p class='blurb'>markup tool for converting structured plain text to HTML</p>
 	<p><b>Executable</b> /usr/bin/Markup.pl; v 1.0.1; Dec 7 2004</p>
 	<p><b>Source</b> <a href="http://daringfireball.net/projects/markdown/">Daring Fireball/projects/markdown</a></p>
@@ -753,7 +783,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Ruby Gems" -->
-<h2 id="RubyGems_">Ruby Gems</h2><div class='indent'>
+<h4 id="RubyGems_">Ruby Gems</h4><div class='indent'>
 	<p class='blurb'>package management framework for Ruby</p>
 	<p><b>Executable</b> /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/gem; v 1.8.10</p>
 	<p><b>Source</b> <a href="http://rubygems.org/pages/download">RubyGems.org</a></p>
@@ -762,7 +792,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "RubyOSA" -->
-<h2 id="RubyOSA_">Ruby OSA</h2><div class='indent'>
+<h4 id="RubyOSA_">Ruby OSA</h4><div class='indent'>
 	<p class='blurb'>bridge from Ruby to the Apple Event Manager; allows Ruby programs to automate Mac OS X applications in the same way as AppleScript</p>
 	<p><b>Executable</b> ?; v 0.4.0</p>
 	<p><b>Source</b> instructions at <a href="http://rubyosa.rubyforge.org/install.html">RubyOSA</a></p>
@@ -771,7 +801,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "SQLite" -->
-<h2>SQLite</h2>
+<h4>SQLite</h4>
 	<!-- @topicList "SQLite" "_SQLite" -->
 		<!-- @topicGroup "References" "" -->
 			<!-- @topicItem "SQLiteJDBC" "http://www.zentus.com/sqlitejdbc/" "0" "page from which jdbc driver is downloaded" -->
@@ -780,7 +810,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 			<!-- @topicGroup "general; not needed for java access" "7" -->
 				<!-- @topicItem "SQLite Home" "http://www.sqlite.org/" "1" "SQLite home page" -->
 	<!-- @/topicList -->
-	<div class='indent'>
+<div class='indent'>
 	<p class='blurb'>supports SQL database contained in a single file that does not require setup by the user</p>
 	<p><b>Library Jar</b> sqlitejdbc-v037-nested.jar at ${DEV}/ccsjava/lib<br />
 		version 37, for SQLite 3.5.6 or 3.5.7 (later version available)<br />
@@ -788,7 +818,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "StuffIt Expander" -->
-<h2><a name="StuffItExpander_">StuffIt Expander</a></h2><div class='indent'>
+<h4><a name="StuffItExpander_">StuffIt Expander</a></h4><div class='indent'>
 	<p class='blurb'>free utility to decompress StuffIt archives</p>
 	<p><b>Application</b> /Applications/StuffIt/StuffIt Expander; v13.0.3</p>
 	<p><b>Source</b> <a href="http://my.smithmicro.com/downloads/trials/expander_mac.html">Smith Micro</a></p>
@@ -797,8 +827,8 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Subversion" -->
-<h2><a name="_Subversion">Subversion</a></h2><div class='indent'>
-	<p>source code control system</p>
+<h4><a name="_Subversion">Subversion</a></h4><div class='indent'>
+	<p class='blurb'>source code control system</p>
 	<p><b>Subversion Tools</b> included in Developer Tools; installed at /usr/local/bin</p>
 	<p><b>Critical Data</b> repositories at ~/Dev/svnrep<br />
 		<span class='blurb'>Xcode had once recommended directory /User/Shared
@@ -809,7 +839,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "Tar" -->
-<h2><a name="Tar_">Tar</a></h2><div class='indent'>
+<h4><a name="Tar_">Tar</a></h4><div class='indent'>
 	<p class='blurb'>archiving utility</p>
 	<p><b>Tool</b> v1.14</p>
 	<p><b>Source</b> system tool</p>
@@ -817,7 +847,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "UMLet" -->
-<h2>UMLet</h2>
+<h4>UMLet</h4>
 	<!-- @topicList "UMLet" "_UMLet" -->
 		<!-- @topicGroup "References" "" -->
 			<!-- @topicItem "UML - Unified Modelling Language" "http://en.wikipedia.org/wiki/Unified_Modeling_Language" "0" "Wikipedia article" -->
@@ -826,8 +856,8 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 			<!-- @topicItem "Sample Diagrams" "http://www.itmeyer.at/umlet/uml2/" "0" "" -->
 			<!-- @topicItem "More Samples" "http://www.itmeyer.at/umlet/" "0" "" -->
 	<!-- @/topicList -->
-	<div class='indent'>
-	<p>tool for producing <a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> models</p>
+<div class='indent'>
+	<p class='blurb'>tool for producing <a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> models</p>
 	<p><b>Eclipse Plugin</b> UMLet version 9.03 downloaded 10/01/08 from <a href="http://www.umlet.com/changes.htm">umlet.com</a></p>
 		<p><b>Installation</b> Download includes source (flyweight, so it uses libraries we do not have) and executables.<br />
 		Install UMLet folder at ~/Reference; move plugin below.<br />
@@ -881,25 +911,27 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<!-- @topicItem "UISpec4j" "#_UISpec4j" "0" "" -->
 <!-- @/topicList -->
 
-<h2><a name="AppleWorks">AppleWorks</a></h2>
-	<p><b>Application</b> /Applications/AppleWorks 6</p>
+<h4><a name="AppleWorks">AppleWorks</a></h4><div class='indent'>
 	<p><b>Inactive</b> replaced by iWork</p>
+	<p><b>Application</b> /Applications/AppleWorks 6</p>
 	<p><b>Critical Data</b> ~/Documents/AppleWorks User Data</p>
 	<p><b>Configuration</b></p>
 	<ul>
 		<li><b>General: Files</b> turn off Auto Save (saves into ~/Documents)</li>
 	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
-<h2><a name="CodeWarrior">CodeWarrior</a></h2>
-	<p><b>Application</b> /Applications/Metrowerks CodeWarrior 9.0</p>
+<h4><a name="CodeWarrior">CodeWarrior</a></h4><div class='indent'>
 	<p><b>Inactive</b> used CodeWarrior 9.0; purchased CodeWarrior 10, but couldn't get anything to compile<br />
 	switching to Xcode<br />
 	kept installation copy of CodeWarrior 9 for access to legacy projects; won't accept our valid registration number, so installation just creates a 15-day demo</p>
+	<p><b>Application</b> /Applications/Metrowerks CodeWarrior 9.0</p>
+</div>
 
-<h2><a name="Dreamweaver">Dreamweaver</a></h2>
-	<p><b>Application</b> at /Applications</p>
+<h4><a name="Dreamweaver">Dreamweaver</a></h4><div class='indent'>
 	<p><b>Inactive</b> using standard web development tools</p>
+	<p><b>Application</b> at /Applications</p>
 	<p><b>Critical Data</b></p>
 	<ul>
 		<li>~/Libraries/Application Support/Macromedia</li>
@@ -907,11 +939,12 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 	</ul>
 	<p><b>Configuration</b> </p>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
-<h2><a name="_Eclipse">Eclipse</a></h2>
-	<p><b>Application</b> eclipse-jee: Java version 3.4 from 12/23/08 download at /Application; main Workspace ~/Dev/espace</p>
+<h4><a name="_Eclipse">Eclipse</a></h4><div class='indent'>
 	<p><b>Inactive</b> inactive 5/11/2010 - no longer using Java; using iCal instead of Mylyn;
-		maintaining valid installation requires lots of maintanance</p>
+	maintaining valid installation requires lots of maintanance</p>
+	<p><b>Application</b> eclipse-jee: Java version 3.4 from 12/23/08 download at /Application; main Workspace ~/Dev/espace</p>
 	<p><b>Plugins</b></p><ul>
 		<li>Subversion <ul>
 			<li>Software Updates: add update site http://subclipse.tigris.org/update_1.4.x</li>
@@ -954,34 +987,35 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 			<li>Java: New Class File</li>
 		</ul></li>
 	</ul>
-
-<h2><a name="_ffcall">ffcall</a></h2><div class='indent'>
-	<p>foreign function library; required by GNUstep core</p>
-	<p><b>Inactive</b> was for Renaissance</p>
-		<p><b>library</b> ffcall; 1.10_0 <br />
-			<span class='blurb'>MacPorts indicated successful install, but neither whereis nor a search of $PATH found a file
-			either by that name or avcall, one of the subpackages</span></p>
-		<p><b>Source</b> MacPorts</p>
-		<p><b>License</b> GNU General Public License</p>
-		<p>replaced 11/25/2008 by <a href="#_libffi">libffi</a>, which has just become available for darwin x86</p>
 </div>
 
-<h2><a name="_GNUStep">GNUStep</a></h2><div class='indent'>
+<h4><a name="_ffcall">ffcall</a></h4><div class='indent'>
+	<p class='blurb'>foreign function library; required by GNUstep core</p>
 	<p><b>Inactive</b> was for Renaissance</p>
-	<p>cross-platform implementation of OpenStep from GNU</p>
-		<p><b>Libraries</b> /usr/local/GNUstep; Startup package v 0.20.0</p>
-		<p><b>License</b> GNUStep Lesser (Library) Public License; tools standard GNU Public License</p>
-		<p><b>Installation</b></p><ul></ul>
+	<p><b>library</b> ffcall; 1.10_0 <br />
+		<span class='blurb'>MacPorts indicated successful install, but neither whereis nor a search of $PATH found a file
+		either by that name or avcall, one of the subpackages</span></p>
+	<p><b>Source</b> MacPorts</p>
+	<p><b>License</b> GNU General Public License</p>
+	<p>replaced 11/25/2008 by <a href="#_libffi">libffi</a>, which has just become available for darwin x86</p>
 </div>
 
-<h2><a name="_gnustepMakeCocoa">gnustep-make-cocoa</a></h2><div class='indent'>
+<h4><a name="_GNUStep">GNUStep</a></h4><div class='indent'>
+	<p class='blurb'>cross-platform implementation of OpenStep from GNU</p>
 	<p><b>Inactive</b> was for Renaissance</p>
-	<h2>gnustep-make-cocoa</h2>
+	<p><b>Libraries</b> /usr/local/GNUstep; Startup package v 0.20.0</p>
+	<p><b>License</b> GNUStep Lesser (Library) Public License; tools standard GNU Public License</p>
+	<p><b>Installation</b></p><ul></ul>
+</div>
+
+<h4><a name="_gnustepMakeCocoa">gnustep-make-cocoa</a></h4><div class='indent'>
+	<p><b>Inactive</b> was for Renaissance</p>
+	<h6>gnustep-make-cocoa</h6>
 	<p>GNUstep make package; MacPorts lists it as a dependency for Renaissance</p>
 		<p><b>MacPorts package</b> 1.13.0</p>
 </div>
 
-<h2><a name="_libffi">libffi</a></h2><div class='indent'>
+<h4><a name="_libffi">libffi</a></h4><div class='indent'>
 	<p class='blurb'>portable, high level programming interface to various calling conventions; required by GNUStep</p>
 	<p><b>Inactive</b> was for Renaissance</p>
 	<p><b>llibrary</b> version 3.0.7</p>
@@ -990,7 +1024,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 	<p><b>Installation and Configuration</b> Terminal: ./configure; make; make install</p>
 </div>
 
-<h2><a name="_libtiff">libtiff</a></h2><div class='indent'>
+<h4><a name="_libtiff">libtiff</a></h4><div class='indent'>
 	<p class='blurb'>support for the Tag Image File Format (TIFF), a widely used format for storing image data; required by GNUStep</p>
 	<p><b>Inactive</b> was for Renaissance</p>
 	<p><b>library</b> version 3.8.2</p>
@@ -1001,9 +1035,9 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "InterfaceBuilder" -->
-<h2><a name="InterfaceBuilder">Interface Builder</a></h2>
-	<p><b>Application</b> Apple app at /Developer/Applications</p>
+<h4><a name="InterfaceBuilder">Interface Builder</a></h4><div class='indent'>
 	<p><b>Inactive</b> as of Xcode 4, Interface Builder is incorporated into Xcode</p>
+	<p><b>Application</b> Apple app at /Developer/Applications</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b></p>
 	<ul>
@@ -1011,9 +1045,10 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 		<li>Toolbar: Small Icons &amp; Text</li>
 	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
 <!-- @marker "JUnit" -->
-<h2><a name="_JUnit">JUnit</a></h2><div class='indent'>
+<h4><a name="_JUnit">JUnit</a></h4><div class='indent'>
 	<p class='blurb'>supports unit testing in Java</p>
 	<p><b>Inactive</b> not currently using Java</p>
 	<p><b>Library jar</b> junit-4.4.jar at <span class='depr'>~/Dev/ccsjava/lib</span></p>
@@ -1021,64 +1056,71 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 </div>
 
 <!-- @marker "MaskRAid" -->
-<h2><a name="_MaskRAid">MaskRAid</a></h2>
+<h4><a name="_MaskRAid">MaskRAid</a></h4><div class='indent'>
+	<p><b>Inactive</b> intended for masking icons; we now have a proper artist with tools, as well as PaintCode</p>
 	<p><b>Application</b> Mask-R-Aid at /Applications; documentation at ~/Reference <br />
 		purchased ($19.95) 2/26/10 from <a href="http://www.truenorthsoftware.com/maskraid/">True North Software</a></p>
-	<p><b>Inactive</b> intended for masking icons; we now have a proper artist with tools</p>
+</div>
 
 <!-- @marker "Parallels" -->
-<h2><a name="_Parallels">Parallels</a></h2>
-	<p><b>Application</b> Parallels Desktop and utilities at /Application/Parallels</p>
+<h4><a name="_Parallels">Parallels</a></h4><div class='indent'>
 	<p><b>Inactive</b> testing capability for Windows not currently needed</p>
+	<p><b>Application</b> Parallels Desktop and utilities at /Application/Parallels</p>
 	<p><b>Critical Data</b> ~/Parallels contains virtual machine(s) - backup by archiving manually</p>
 	<p><b>Installation and Configuration</b> install and activate Parallels 3; then upgrade to 4<br />
 	move folder Parallels from ~/Documents to ~/<br />
 	Windows: restore .pvm file OR install from disk and run &gt; cmd.exe for command prompt</p>
+</div>
 
 <!-- @marker "plutil" -->
-<h2><a name='plutil_'>plutil</a></h2>
-	<p>utility to convert a list files from binary to XML format</p>
+<h4><a name='plutil_'>plutil</a></h4><div class='indent'>
+	<p class='blurb'>utility to convert a list files from binary to XML format</p>
+	<p><b>Inactive</b> do not know what this was used for; seems to be a standard tool anyway</p>
 	<p><b>example</b><br />
 	<span class='mono'>plutil -convert xml1 /path/To/plist</span></p>
-	<p><b>Inactive</b> do not know what this was used for; seems to be a standard tool anyway</p>
+</div>
 
-<h2><a name="QuicKeys">QuicKeys</a></h2>
+<h4><a name="QuicKeys">QuicKeys</a></h4><div class='indent'>
 	<p><b>Inactive</b> no longer worked well; may no longer be supported</p>
 	<p><b>Application</b> QuicKeys X2 v. 2.0.2; sn#2200470</p>
 	<p><b>Critical Data</b> ~/Library/QuicKeys/Shortcuts (export/importable)</p>
 	<p><b>Configuration</b> </p>
-
-<h2><a name="_Renaissance">Renaissance</a></h2><div class='indent'>
-	<p><b>Inactive</b> switched to Cocoa with Interface Builder</p>
-	<p class='blurb'><a href="http://www.gnustep.org/">GNUStep</a> library for creating Cocoa user interfaces without Interface Builder</p>
-		<p><b>prebuilt Framework</b> Renaissance.framework version 0.8.0 at /Library/Frameworks<br />
-			downloaded from mirror site link at <a href="http://mac.softpedia.com/progDownload/GNUstep-Renaissance-Download-35049.html"> Softpedia Renaissance download page</a><br />
-			<span class='blurb'>10/29/08 MacPorts install failed due to missing dependencies</span>
-		</p>
 </div>
 
-<h2><a name="Retrospect">Retrospect</a></h2>
+<h4><a name="_Renaissance">Renaissance</a></h4><div class='indent'>
+	<p class='blurb'><a href="http://www.gnustep.org/">GNUStep</a> library for creating Cocoa user interfaces without Interface Builder</p>
+	<p><b>Inactive</b> switched to Cocoa with Interface Builder</p>
+	<p><b>prebuilt Framework</b> Renaissance.framework version 0.8.0 at /Library/Frameworks<br />
+		downloaded from mirror site link at <a href="http://mac.softpedia.com/progDownload/GNUstep-Renaissance-Download-35049.html"> Softpedia Renaissance download page</a><br />
+		<span class='blurb'>10/29/08 MacPorts install failed due to missing dependencies</span>
+	</p>
+</div>
+
+<h4><a name="Retrospect">Retrospect</a></h4><div class='indent'>
 	<p><b>Inactive</b> switched to MobileMe backup</p>
 	<p><b>Application</b> v. 5.1</p>
 	<p><b>Critical Data</b> /Library/Preferences/Retrospect</p>
 	<p><b>Configuration</b> </p>
+</div>
 
-<h2><a name="StuffIt">StuffIt</a></h2>
+<h4><a name="StuffIt">StuffIt</a></h4><div class='indent'>
 	<p><b>Inactive</b> using .zip</p>
 	<p><b>Application</b> /Applications/StuffIt 10.0</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b> </p>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
 
-<h2><a name="_Flip4Mac">Flip4Mac</a></h2>
+<h4><a name="_Flip4Mac">Flip4Mac</a></h4><div class='indent'>
 	<p><b>Inactive</b> do not remember what this was used for</p>
 	<p><b>Application</b> WMV Player at /Applications/Flip4Mac downloaded from <a href="http://www.microsoft.com/downloads">
 	Microsoft site</a> reached from <a href="http://www.apple.com/downloads/macosx/video/flip4macwindowsmediacomponentsforquicktime.html">
 	Apple Downloads</a></p>
+</div>
 
-<h2><a name='_UISpec4j'>UISpec4j</a></h2><div class='indent'>
-	<p><b>Inactive</b> no longer using Java for ui development</p>
+<h4><a name='_UISpec4j'>UISpec4j</a></h4><div class='indent'>
 	<p class='blurb'>JUnit addition for user Interface testing</p>
+	<p><b>Inactive</b> no longer using Java for ui development</p>
 	<p><b>Library jar</b> ~/Dev/ccsjava/lib; v1.5; <b>full download with examples</b> ~/Library</p>
 	<p><b>License</b> open source</p>
 </div>
@@ -1088,7 +1130,7 @@ we store originals in ~/Dev/DevSupport; build normally copies them to ~/Library/
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-13 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-14 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>
