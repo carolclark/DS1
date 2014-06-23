@@ -63,16 +63,21 @@
 <h4 id='ReorganizeSnippets'><a href="http://github.com/carolclark/Support/issues/38">(#38)</a>Reorganize Snippets</h4><pre>
 	* *sort slate typing features by language instead of by whether or not implemented as Dash snippet*
 	* Markup slate (from insertElement)
-	* also add SystemPrefs as external from Xcode; automate Privacy &gt; Accessibility for Accessor
-	* use aliases for long commands in Slates:
-		* add python path to $PATH`
-		* alias gmm='print -n "issueNumber: "; read issueNumber; mm=$(${CCDev}/bin/python/scm.py $cb $issueNumber); print "$mm"'
-		* also list/select files/branches
+	* also:
+		* install <a href="Tools.html#_Homebrew">Homebrew</a>; update Tools.html
+		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+		* add SystemPrefs as external from Xcode; automate Privacy &gt; Accessibility for Accessor
+		* use aliases for long commands in Slates:
+			* add python path to $PATH`
+			* alias gmm='print -n "issueNumber: "; read issueNumber; mm=$(${CCDev}/bin/python/scm.py $cb $issueNumber); print "$mm"'
+			* also list/select files/branches
+	* add Slate Cocoa
+	* move remaining items from Snippets slate; remove Snippets slate
 </pre>
 
 <!-- @marker "Fix RemoveFolder with Python" -->
 <h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
-	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+	<span class='tlmark'>&lt;--</span>
 	* setup python logging, error handling and debugging
 		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
 		* new file Python.html to document
