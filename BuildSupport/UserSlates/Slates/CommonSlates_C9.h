@@ -70,6 +70,7 @@
 
 #define resid_Finder					10000
 #define resid_SystemPrefs				11000
+	#define resid_XCSystemPrefs		resid_SystemPrefs+1
 #define resid_AddressBook				12000
 #define resid_Mail						13000
 #define resid_Safari					14000
@@ -81,14 +82,13 @@
 #define resid_Eclipse					21000
 #define resid_BBEdit					22000
 	#define resid_XCBBEdit			resid_BBEdit+1
-
 #define resid_FileMaker					23000
 #define resid_AppleWorks				24000
 #define resid_Backup					25000
 #define resid_Parallels					26000
 #define resid_UMLet						27000
-	#define resid_LaunchUMLet			resid_UMLet+1
-	#define resid_UMLetSubslate			resid_UMLet+2
+	#define resid_LaunchUMLet		resid_UMLet+1
+	#define resid_UMLetSubslate		resid_UMLet+2
 #define resid_Preview					28000
 #define resid_Terminal					29000
 	#define resid_XCTerminal		resid_Terminal+1
@@ -96,15 +96,14 @@
 #define resid_Automator					31000
 #define resid_TextEdit					32000
 #define resid_ScriptEditor				33000
-#define resid_SystemPrefs				34000
 #define resid_Dashcode					35000
 #define resid_Numbers					36000
 #define resid_Dash						37000
-	#define resid_XcodeDash					resid_Dash+1
+	#define resid_XcodeDash			resid_Dash+1
 #define resid_GitHub					38000
 #define resid_Developer					39000
 #define resid_AppCode					40000
-	#define resid_XCAppCode					resid_AppCode+1
+	#define resid_XCAppCode			resid_AppCode+1
 #define resid_Server					41000
 #define resid_Pages						42000
 #define resid_ArbProto					50000
