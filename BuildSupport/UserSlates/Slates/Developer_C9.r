@@ -7,7 +7,7 @@
 #include "Developer_C9.h"
 
 #pragma mark === Markers ===
-// 1 Type Special; Copyright; Package; ChooseUp; 2 XCTAssert; 3 HTML: Tag; Style; Element; Snippet; 4 UserSlate; 5 Python; 6 Unix
+// 1 Type Special; Copyright; Package; ChooseUp; 3 HTML: Tag; Style; Element(Markup); 4 UserSlate; 5 Cocoa; 7 Python(reserved); 8 Unix
 
 #pragma mark 1 === TypeSpecial
 resource restype_Slate (resid_TypeSpecialDevSlate, "Type Special Developer Slate") { {
@@ -118,31 +118,8 @@ resource restype_Slate (resid_ChooseUp, "") { {
 	} }
 } };
 
-#pragma mark 2 === Testing
-#pragma mark XCTAssert
-resource restype_Slate (resid_Assert, "") { {
-	Slate { "Assert",	{
-		_SlateGlobals_,
-		_CloseSubslate_,
-		ExitEvent { "true", "" },			Sequence{}, TypeText { "XCTAssertTrue (<#expression#><#optMsg#>);" }, _previousField, endSequence{},
-		ExitEvent { "fail", "" },			Sequence{}, TypeText { "XCTFail (<#msgFormat#>)" }, _previousField, endSequence{},
-		ExitEvent { "equal objects", "" },	Sequence{}, TypeText { "XCTAssertEqualObjects (<#object_1#>, <#object_2#><#optMsg#>));" }, _previousField, _previousField, endSequence{},
-		ExitEvent { "equals", "" },			Sequence{}, TypeText { "XCTAssertEquals (<#value_1#>, <#value_2#><#optMsg#>));" }, _previousField, _previousField, endSequence{},
-		ExitEvent { "equals with accuracy", "" }, Sequence{}, TypeText { "XCTAssertEqualsWithAccuracy (<#value_1#>, <#value_2#>, <#accuracy#><#optMsg#>));" }, _previousField, _previousField, _previousField, endSequence{},
-		ExitEvent { "nil", "" },			Sequence{}, TypeText { "XCTAssertNil (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
-		ExitEvent { "not nil", "" },		Sequence{}, TypeText { "XCTAssertNotNil (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
-		ExitEvent { "true", "" },			Sequence{}, TypeText { "XCTAssertTrue (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
-		ExitEvent { "false", "" },			Sequence{}, TypeText { "XCTAssertFalse (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
-		ExitEvent { "throw", "" },			Sequence{}, TypeText { "XCTAssertThrows (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
-		ExitEvent { "no throw", "" },		Sequence{}, TypeText { "XCTAssertNoThrow (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
-		ExitEvent { "true no throw", "" },	Sequence{}, TypeText { "XCTAssertTrueNoThrow (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
-		ExitEvent { "false no throw", "" },	Sequence{}, TypeText { "XCTAssertFalseNoThrow (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
-		ExitEvent { "verify", "" },			TypeText { "XCTAssertTrue ([verifier verify], [verifier message]);" },
-	} }
-} };
-
 #pragma mark 3 === HTML
-// inside: 1 Tag; 2 Style; 3 Element; 4 Snippet
+// inside: 1 Tag; 2 Style; 3 Element
 
 #pragma mark 1 --- Tag
 resource restype_Slate (resid_InsertTag, "HTML tag") { {
@@ -311,12 +288,13 @@ resource restype_Slate (resid_ucActor, "") { {
 	} }
 } };
 
-#pragma mark 4 --- Snippet
-resource restype_Slate (resid_InsertSnippet, "") { {
-	Slate { "snippet",	{
+#pragma mark 5 === Cocoa
+// inside: Cocoa; 1 XCTest; 2 Doxygen
+resource restype_Slate (resid_Cocoa, "") { {
+	Slate { "Cocoa",	{
 		_SlateGlobals_,
-		ExitEvent { "exit", "" },						NilAction{},
-		ExitEvent { "okay", "" },						_return,
+		_CloseSubslate_,
+		ExitEvent { "return", "" },						_return,
 		Event { "continue", "" },						_return,
 		Event { "clipboard", "" },						Sequence{}, Keypress { kc_right, mf_command }, Keypress { kc_left, mf_command + mf_shift }, Keypress { kc_X, mf_command }, endSequence{},
 		ExitEvent { "file header", "" },	 			TypeText { "fileHeader#" },
@@ -340,16 +318,45 @@ resource restype_Slate (resid_InsertSnippet, "") { {
 			ExitEvent { "assign", "" },						TypeText { "assign" },
 			ExitEvent { "copy", "" },						TypeText { "copy" },
 			endSubslate{},
-		ExitEvent { "unix selection", "" }, 			TypeText { "%%%{PBXSelection}%%%" },
-		Event { "user slate", "" },						TypeText { "userSlate#" },
+		Event { "Assert", "" },							ResSubslate { resid_XCTAssert },
+	} }
+} };
+
+#pragma mark 1 --- XCTAssert
+resource restype_Slate (resid_XCTAssert, "") { {
+	Slate { "Assert",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "true", "" },			Sequence{}, TypeText { "XCTAssertTrue (<#expression#><#optMsg#>);" }, _previousField, endSequence{},
+		ExitEvent { "fail", "" },			Sequence{}, TypeText { "XCTFail (<#msgFormat#>)" }, _previousField, endSequence{},
+		ExitEvent { "equal objects", "" },	Sequence{}, TypeText { "XCTAssertEqualObjects (<#object_1#>, <#object_2#><#optMsg#>));" }, _previousField, _previousField, endSequence{},
+		ExitEvent { "equals", "" },			Sequence{}, TypeText { "XCTAssertEquals (<#value_1#>, <#value_2#><#optMsg#>));" }, _previousField, _previousField, endSequence{},
+		ExitEvent { "equals with accuracy", "" }, Sequence{}, TypeText { "XCTAssertEqualsWithAccuracy (<#value_1#>, <#value_2#>, <#accuracy#><#optMsg#>));" }, _previousField, _previousField, _previousField, endSequence{},
+		ExitEvent { "nil", "" },			Sequence{}, TypeText { "XCTAssertNil (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
+		ExitEvent { "not nil", "" },		Sequence{}, TypeText { "XCTAssertNotNil (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
+		ExitEvent { "true", "" },			Sequence{}, TypeText { "XCTAssertTrue (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
+		ExitEvent { "false", "" },			Sequence{}, TypeText { "XCTAssertFalse (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
+		ExitEvent { "throw", "" },			Sequence{}, TypeText { "XCTAssertThrows (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
+		ExitEvent { "no throw", "" },		Sequence{}, TypeText { "XCTAssertNoThrow (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
+		ExitEvent { "true no throw", "" },	Sequence{}, TypeText { "XCTAssertTrueNoThrow (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
+		ExitEvent { "false no throw", "" },	Sequence{}, TypeText { "XCTAssertFalseNoThrow (<#expression#><#optMsg#>));" }, _previousField, endSequence{},
+		ExitEvent { "verify", "" },			TypeText { "XCTAssertTrue ([verifier verify], [verifier message]);" },
+	} }
+} };
+
+#pragma mark 2 --- Doxygen
+resource restype_Slate (resid_Doxygen, "Doxygen") { {
+	Slate { "Doxygen", {
+		_DoxygenItems_
 	} }
 } };
 
 #pragma mark 4 === UserSlate
-resource restype_Slate (resid_InsertSlateText, "Slate text") { {
+resource restype_Slate (resid_UserSlate, "Slate text") { {
 	Slate { "UserSlate",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
+		Event { "slate resource", "" },			TypeText { "userSlate#" },
 		Event { "next field", "" },				_nextField,
 		Event { "previous field", "" },			_previousField,
 		ExitEvent { "define", "" },				Sequence{}, TypeText { "#define" }, Keypress { kc_tab, mf_option }, endSequence{},
@@ -452,7 +459,7 @@ resource restype_Slate (resid_InsertSlateText, "Slate text") { {
 	} }
 } };
 
-#pragma mark 6 === Unix
+#pragma mark 8 === Unix
 #define _where_	"\"$0#$LINENO:\""
 resource restype_Slate (resid_Unix, "") { {
 	Slate { "Unix",	{
@@ -483,9 +490,10 @@ resource restype_Slate (resid_Unix, "") { {
 			ExitEvent { "where", "" },				TypeText { _where_ },
 			ExitEvent { "error exit", "" },			Sequence{}, TypeText { "errorExit $?<##> "_where_" \"<#msg#>\"" }, _previousField, _previousField, endSequence{},
 			ExitEvent { "error message", "" },		Sequence{}, TypeText { "errorMessage $<##> "_where_" \"<#msg#>\"" }, _previousField, _previousField, endSequence{},
-			ExitEvent { "function", "" },			TypeText { "gFunction#" },
+			ExitEvent { "function", "" },			TypeText { "unixFunction#" },
 			ExitEvent { "test", "" },				TypeText { "unixTest#" },
 			ExitEvent { "test function", "" },		TypeText { "unixTestFunction#" },
+			ExitEvent { "unix selection", "" }, 	TypeText { "%%%{PBXSelection}%%%" },
 			ExitEvent { "assert equal", "" },		Sequence{}, TypeText { "assertEquals "_where_" <#expected#> <#actual#>" }, _previousField, _previousField, endSequence{},
 			ExitEvent { "assert not equal", "" },	Sequence{}, TypeText { "assertNotEquals "_where_" <#unexpected#> <#actual#>" }, _previousField, _previousField, endSequence{},
 			ExitEvent { "assert null", "" },		Sequence{}, TypeText { "assertNull "_where_" <#value#>" }, _previousField, endSequence{},

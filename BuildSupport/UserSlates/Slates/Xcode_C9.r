@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					(c)2006-13 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					(c)2006-14 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -2143,14 +2143,6 @@ resource restype_Slate (resid_Macro, "") { {
 	} }
 } };
 
-#define _insertTab	Keypress { kc_tab, mf_option }
-#pragma mark 8 --- Doxygen
-resource restype_Slate (resid_Doxygen, "Doxygen") { {
-	Slate { "Doxygen", {
-		_DoxygenItems_
-	} }
-} };
-
 #pragma mark 3 --- _TypeXcodeItems_
 #define _TypeXcodeItems_	\
 	Event { "complete", "" },	Keypress { kc_escape, 0 },	\
@@ -2175,7 +2167,6 @@ resource restype_Slate (resid_Doxygen, "Doxygen") { {
 resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 	Slate { "Type",	{
 		_TypeDevSlateItems_,
-		Event { "Doxygen", "" },				ResSubslate { resid_Doxygen },
 		Event { "Macro", "" },					ResSubslate { resid_Macro },
 		_JumpBar_,
 		Event { "enter find string", "" },		Keypress { kc_E, mf_command },

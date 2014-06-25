@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/18/11.
-#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-14 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -52,6 +52,11 @@ function envKsh {
 	print "CCDev=${CCDev}; export CCDev"
 	if [[ $(print ":$PATH:" | grep ":$CCDev/bin:") = "" ]] ; then
 		PATH="$PATH:$CCDev/bin:"
+		export PATH											# path to search for unix scripts
+	fi
+	if [[ $(print ":$PYTHONPATH:" | grep ":$CCDev/bin/python:") = "" ]] ; then
+		PYTHONPATH="$PYTHONPATH:$CCDev/bin/python:"
+		export PYTHONPATH									# path to search for python scripts
 	fi
 	export PATH												# path to search for unix scripts
 	print "PATH=${PATH}; export PATH"
@@ -68,6 +73,11 @@ function envKsh {
 		print "LSCOLORS=${LSCOLORS}; export LSCOLORS"
 		GREP_OPTIONS='--color=auto'; export GREP_OPTIONS	# highlight grep matches
 		print "GREP_OPTIONS=${GREP_OPTIONS}; export GREP_OPTIONS"
+# Terminal Aliases
+															# alias gmm: get merge message
+#	GET_MERGE_MESSAGE='print "''scm.py currentBranch issueNumber''"''; print -n issueNumber: ; read issueNumber;'
+#	print -n gmm="'"; print -n "$GET_MERGE_MESSAGE"; print "'; export gmm"
+#print -n "gmm='"print scm.py currentBranch issueNumber"; print -n issueNumber: ; read issueNumber; mm=$" #; print '(${CCDev}/bin/python/scm.py $cb $issueNumber)'"# print "$mm"'
 	fi
 }
 

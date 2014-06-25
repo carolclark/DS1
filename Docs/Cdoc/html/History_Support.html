@@ -67,10 +67,7 @@
 		* install <a href="Tools.html#_Homebrew">Homebrew</a>; update Tools.html
 		* add SystemPrefs as external from Xcode; automate Security &gt; Privacy for Accessor
 		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
-		* use aliases for long commands in Slates:
-			* add python path to $PATH`
-			* alias gmm='print -n "issueNumber: "; read issueNumber; mm=$(${CCDev}/bin/python/scm.py $cb $issueNumber); print "$mm"'
-			* also list/select files/branches
+		* add local python path to $PYTHONPATH
 	* add Slate Cocoa
 	* move remaining items from Snippets slate; remove Snippets slate
 </pre>
@@ -84,6 +81,11 @@
 		* set up logging format and add to existing files and Python templates
 		* add snippets for logging and breakpoints
 		* update Slates, including adding new Terminal &gt; Python slate
+	* handle long commands in Slates:
+		* getMergeMessage: print command summary
+		* cmd.py: interface from Terminal to our python scripts
+		* add argument --merge_message to scm.py
+		* also handle list/select files/branches
 	* filesys.remove_folder
 		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/2/library/os.path.html">os.path</a>; <a href="https://docs.python.org/2/library/os.path.html">shutil</a>.rmtree() with copytree example*
 </pre>
