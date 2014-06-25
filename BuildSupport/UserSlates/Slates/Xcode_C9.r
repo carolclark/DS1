@@ -1,5 +1,5 @@
 // =================================================================================
-//	Xcode_C9.r					(c)2006-13 C & C Software, Inc. All rights reserved.
+//	Xcode_C9.r					(c)2006-14 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #include "AccessLibTypes.r"
@@ -131,7 +131,6 @@
 #define resid_GitHubXC				resid_External+20
 	#define resid_ghRepository			resid_GitHub+1
 	#define resid_ghOpenIssue			resid_GitHub+2
-
 #define resid_XcodeServer			resid_External+30
 #define resid_Stickies				resid_External+40
 #define resid_Console				resid_External+50
@@ -1039,7 +1038,7 @@ resource restype_Slate (resid_BuildAccessor, "") { {
 		_SlateGlobals_,
 		ExitEvent { "exit", "" },		NilAction{},
 		Event { "Target", "" },			Sequence{}, CloseSubslate{}, CloseSubslate{}, ResSubslate { resid_Target }, endSequence{},
-		Event { "run original", "" },	Sequence{}, Click { 0, 1335, 365, _screen, _topLeft }, Launch { MainApps_"Finder", 0 }, Launch { HomeApps_"Accessor.app", 0 }, endSequence{},
+		Event { "run original", "" },	Sequence{}, Click { 0, 1335, 365, _screen, _topLeft }, Launch { HomeApps_"Accessor.app", 0 }, endSequence{},
 		Event { "return", "" },			_return,
 		Event { "quit", "" },			Keypress { kc_Q, mf_command },
 	} }
@@ -2144,14 +2143,6 @@ resource restype_Slate (resid_Macro, "") { {
 	} }
 } };
 
-#define _insertTab	Keypress { kc_tab, mf_option }
-#pragma mark 8 --- Doxygen
-resource restype_Slate (resid_Doxygen, "Doxygen") { {
-	Slate { "Doxygen", {
-		_DoxygenItems_
-	} }
-} };
-
 #pragma mark 3 --- _TypeXcodeItems_
 #define _TypeXcodeItems_	\
 	Event { "complete", "" },	Keypress { kc_escape, 0 },	\
@@ -2176,7 +2167,6 @@ resource restype_Slate (resid_Doxygen, "Doxygen") { {
 resource restype_Slate (resid_TypeXcodeSlate, "Type Slate") { {
 	Slate { "Type",	{
 		_TypeDevSlateItems_,
-		Event { "Doxygen", "" },				ResSubslate { resid_Doxygen },
 		Event { "Macro", "" },					ResSubslate { resid_Macro },
 		_JumpBar_,
 		Event { "enter find string", "" },		Keypress { kc_E, mf_command },
@@ -2416,6 +2406,7 @@ resource restype_Slate (resid_Xcode, "Xcode Slate") { {
 		_JumpBar_,
 		Event { "context menu", "" },	ClickMod { 1, 0, 0, _cursor, mf_control },
 		Event { "Terminal", "" },		Sequence{}, ResSubslate { resid_XCTerminal }, Launch { Apps_"Utilities/Terminal.app", 0 }, endSequence{},
+		Event { "System Prefs", "" }, 	Sequence{}, Launch { Apps_"System Preferences.app", 0 }, ResSubslate { resid_XCSystemPrefs }, endSequence{},
 		Event { "go AppCode", "" },		Sequence{}, Launch { MainApps_"AppCode.app", 0 }, ResSubslate { resid_XCAppCode }, endSequence{},
 		Event { "BBEdit", "" },			Sequence{}, Launch { MainApps_"BBEdit.app", 0 }, ResSubslate { resid_XCBBEdit }, endSequence{},
 		Event { "Validate", "" },		Sequence{}, ResSubslate { resid_BBValidate }, Launch { MainApps_"BBEdit.app", 0 }, endSequence{},

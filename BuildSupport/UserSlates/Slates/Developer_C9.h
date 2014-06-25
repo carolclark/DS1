@@ -13,19 +13,18 @@
 #define resid_Package				resid_Developer+2
 #define resid_ChooseUp				resid_Developer+3
 
-#define	resid_InsertSnippet			resid_Developer+80
-
 /* Text and Snippets */
-#define resid_Assert				resid_Developer+100
-#define	resid_InsertTag				resid_Developer+150
-#define	resid_InsertStyle			resid_Developer+200
-#define	resid_Markup				resid_Developer+250
+#define	resid_InsertTag				resid_Developer+100
+#define	resid_InsertStyle			resid_Developer+120
+#define	resid_Markup				resid_Developer+140
 	#define resid_TargetType			resid_Markup+1
 	#define resid_ucLevel				resid_Markup+2
 	#define resid_ucActor				resid_Markup+3
-#define	resid_InsertSlateText		resid_Developer+300
-#define resid_Doxygen				resid_Developer+350
-#define resid_Unix					resid_Developer+400
+#define	resid_UserSlate				resid_Developer+160
+#define resid_Doxygen				resid_Developer+180
+#define resid_Unix					resid_Developer+200
+#define resid_Cocoa					resid_Developer+220
+	#define resid_XCTAssert				resid_Cocoa+1
 
 #define	_nextField			Keypress { kc_slash, mf_control }
 #define	_previousField		Keypress { kc_slash, mf_control + mf_shift }
@@ -33,6 +32,7 @@
 #define _indentBack			Keypress { kc_bracket, mf_command }
 #define _cutNextLine		Keypress { kc_right, mf_command }, Keypress { kc_right, 0 }, Keypress { kc_right, mf_command + mf_shift }, Keypress { kc_X, mf_command }, Keypress { kc_delete, 0 }
 #define jump_right_ 		Keypress { kc_right, mf_option }
+#define _insertTab			Keypress { kc_tab, mf_option }
 
 #pragma mark Use Cases
 #define _uc1		Keypress { kc_tab, 0 }, TypeText { "<p><b>" }
@@ -177,11 +177,11 @@
 		Event { "Special", "" },				ResSubslate { resid_TypeSpecialDevSlate }, \
 		Event { "Copyright", "" },				ResSubslate { resid_Copyright },	\
 		Event { "Package", "" },				ResSubslate { resid_Package },	\
-		Event { "Assert", "" },					ResSubslate { resid_Assert },	\
 		Event { "Insert Tag", "" },				ResSubslate { resid_InsertTag },	\
 		Event { "Add Style", "" },				ResSubslate { resid_InsertStyle },	\
 		Event { "Insert Element", "" },			ResSubslate { resid_Markup },	\
-		Event { "Markup", "" },					ResSubslate { resid_Markup },	\
-		Event { "Snippet", "" },				ResSubslate { resid_InsertSnippet }, \
-		Event { "User", "" },					ResSubslate { resid_InsertSlateText },	\
+		Event { "Insert Markup", "" },			ResSubslate { resid_Markup },	\
+		Event { "Cocoa", "" },					ResSubslate { resid_Cocoa },		\
+		Event { "Doxygen", "" },				ResSubslate { resid_Doxygen },		\
+		Event { "User", "" },					ResSubslate { resid_UserSlate },	\
 		Event { "Unix", "" },					ResSubslate { resid_Unix }
