@@ -7,7 +7,7 @@
 #include "Developer_C9.h"
 
 #pragma mark === Markers ===
-// 1 Type Special; Copyright; Package; ChooseUp; 3 HTML: Tag; Style; Element(Markup); 4 UserSlate; 5 Cocoa; 7 Python(reserved); 8 Unix
+// 1 Type Special; Copyright; Package; ChooseUp; 3 HTML: Tag; Style; Element(Markup); 4 UserSlate; 5 Cocoa; 7 Python; 8 Unix
 
 #pragma mark 1 === TypeSpecial
 resource restype_Slate (resid_TypeSpecialDevSlate, "Type Special Developer Slate") { {
@@ -458,6 +458,21 @@ resource restype_Slate (resid_UserSlate, "Slate text") { {
 			endSubslate{},
 	} }
 } };
+
+#pragma mark 7 === Python
+resource restype_Slate (resid_Python, "") { {
+	Slate { "Python",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "add breakpoint", "" },		Sequence{}, TypeText { "import pdb; pdb.set_trace()" }, _return, endSequence{},
+		ExitEvent { "log debug", "" },			Sequence{}, TypeText { "logging.debug('')" }, _left, _left, endSequence{},
+		ExitEvent { "log info", "" },			Sequence{}, TypeText { "logging.info('')" }, _left, _left, endSequence{},
+		ExitEvent { "log warning", "" },		Sequence{}, TypeText { "logging.warning('')" }, _left, _left, endSequence{},
+		ExitEvent { "log error", "" },			Sequence{}, TypeText { "logging.error('')" }, _left, _left, endSequence{},
+		ExitEvent { "log critical", "" },		Sequence{}, TypeText { "logging.critical('')" }, _left, _left, endSequence{},
+	} }
+} };
+
 
 #pragma mark 8 === Unix
 #define _where_	"\"$0#$LINENO:\""

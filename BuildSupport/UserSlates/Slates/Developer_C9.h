@@ -22,9 +22,10 @@
 	#define resid_ucActor				resid_Markup+3
 #define	resid_UserSlate				resid_Developer+160
 #define resid_Doxygen				resid_Developer+180
-#define resid_Unix					resid_Developer+200
-#define resid_Cocoa					resid_Developer+220
+#define resid_Cocoa					resid_Developer+200
 	#define resid_XCTAssert				resid_Cocoa+1
+#define resid_Python				resid_Developer+220
+#define resid_Unix					resid_Developer+240
 
 #define	_nextField			Keypress { kc_slash, mf_control }
 #define	_previousField		Keypress { kc_slash, mf_control + mf_shift }
@@ -184,4 +185,5 @@
 		Event { "Cocoa", "" },					ResSubslate { resid_Cocoa },		\
 		Event { "Doxygen", "" },				ResSubslate { resid_Doxygen },		\
 		Event { "User", "" },					ResSubslate { resid_UserSlate },	\
+		Event { "Python", "" },					ResSubslate { resid_Python },		\
 		Event { "Unix", "" },					ResSubslate { resid_Unix }
