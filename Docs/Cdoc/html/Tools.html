@@ -33,6 +33,7 @@
 	<!-- @topicItem "MacPorts" "#_MacPorts" "0" "" -->
 	<!-- @topicItem "Markdown" "#Markdown" "0" "" -->
 <!-- @topicGroup "" "20" -->
+	<!-- @topicItem "Python" "#_Python" "0" "" -->
 	<!-- @topicItem "Safari" "#Safari" "0" "" -->
 	<!-- @topicItem "Stickies" "#Stickies" "0" "" -->
 	<!-- @topicItem "StuffIt Expander" "#StuffItExpander_" "0" "" -->
@@ -41,8 +42,10 @@
 	<!-- @topicItem "Terminal" "#Terminal" "0" "" -->
 	<!-- @topicItem "Transmit" "#_Transmit" "0" "" -->
 	<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
+<!-- @topicGroup "" "30" -->
 	<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
-<!-- @topicGroup "Inactive" "30" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Inactive" "33" -->
 	<!-- @topicItem "Inactive Tools" "Tools_Inactive.html#Contents" "0" "inactive applications, tools, and libraries" -->
 <!-- @/topicList -->
 
@@ -260,6 +263,8 @@
 	<p><b>Critical Data</b> </p>
 	<p><b>Installation and Configuration</b> <span class='mono'>ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</span></p>
 	<p><b>Customization &amp; Automation</b> </p>
+	<p><b>Usage</b> <span class='mono'>brew install &lt;packageName&gt;</span></p>
+	<p><b>Documentation</b> <a href="http://brew.sh">Homebrew</a></p>
 </div>
 
 <!-- @marker "iCal" -->
@@ -379,6 +384,19 @@
 	<p><b>Source</b> <a href="http://daringfireball.net/projects/markdown/">Daring Fireball/projects/markdown</a></p>
 	<p><b>License</b> free for use; basic restrictions on distribution</p>
 </div>
+
+<!-- @marker "Python" -->
+<h2 id='_Python'>Python</h2>
+	<p class='blurb'>Python language support</p>
+	<p class='blurb'>on our System (Mavericks, Xcode 5), Python been installed, but that was Python version 2.7</p>
+	<p><b>Executable</b> python3 at /usr/local/bin; version 3.3.3</p>
+	<p><b>Critical Data</b> local scripts at ${CCDev}/bin/python3</p>
+	<p><b>Installation and Configuration</b> </p><ul>
+		<li>install with Homebrew</li>
+		<li>~/.profile: set $PYTHONPATH to ${CCDev}/bin/python; add ${CCDev}/bin/python to $PATH</li>
+		<li>rename /usr/bin/python to python2 so we know cmdline does not run it</li>
+	</ul>
+	<p><b>Customization &amp; Automation</b> </p>
 
 <!-- @marker "Safari" -->
 <h4><a name="Safari">Safari</a></h4><div class='indent'>

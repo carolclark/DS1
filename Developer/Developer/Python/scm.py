@@ -1,10 +1,10 @@
-#! /usr/bin/python
+#! /usr/local/bin/python3
 
 #  scm.py
 #  Developer
 #
 #  Created by Carol Clark on 12/4/13.
-#  Copyright 2013 C & C Software, Inc. All rights reserved.
+#  Copyright 2013-14 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 
@@ -33,7 +33,7 @@ def main(cmdline=None):
 	logging.warning('Here is a pretend warning.')
 	parser = argparse.ArgumentParser()
 	parser.add_argument("branchName")
-	parser.add_argument("issueNum")
+	parser.add_argument("issueNum", type=int)
 	if cmdline is None:
 		args = parser.parse_args()
 	else:
@@ -42,4 +42,4 @@ def main(cmdline=None):
 
 
 if __name__ == '__main__':
-	print main()
+	print (main())

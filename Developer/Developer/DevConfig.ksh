@@ -42,6 +42,10 @@ function install {
 function envProfile {
 	print "SHELL=/bin/ksh"
 	print "export ENV=${CCDev}/bin/.kshrc"
+	if [[ $(print "$PYTHONPATH") = "" ]] ; then
+		PYTHONPATH="${CCDev}/bin/python"
+	fi
+	print "PYTHONPATH=${PYTHONPATH}; export PYTHONPATH"		# path to search for python scripts
 }
 
 #^	envKsh				Korn shell configuration
@@ -50,16 +54,10 @@ function envKsh {
 	print "DEV=${DEV}; export DEV"
 	CCDev="${CCDev}"; export CCDev							# C & C derived data
 	print "CCDev=${CCDev}; export CCDev"
-	if [[ $(print ":$PATH:" | grep ":$CCDev/bin:") = "" ]] ; then
-		PATH="$PATH:$CCDev/bin:"
-		export PATH											# path to search for unix scripts
+	if [[ $(print ":$PATH:" | grep ":/usr/local/bin:") = "" ]] ; then
+		PATH="$PATH:/usr/local/bin:$CCDev/bin:$CCDev/bin/python:"
 	fi
-	if [[ $(print ":$PYTHONPATH:" | grep ":$CCDev/bin/python:") = "" ]] ; then
-		PYTHONPATH="$PYTHONPATH:$CCDev/bin/python:"
-		export PYTHONPATH									# path to search for python scripts
-	fi
-	export PATH												# path to search for unix scripts
-	print "PATH=${PATH}; export PATH"
+	print "PATH=${PATH}; export PATH"						# path to search for scripts
 	SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit		# third-party library used for unix testing
 	print "SHUnit=${SHUnit}; export SHUnit"
 	if [[ ${configureTerminal} = "yes" ]] ; then

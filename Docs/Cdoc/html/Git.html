@@ -104,7 +104,7 @@
 			<li>checkout branch<ul>
 				<li>pre-existing branch<ul>
 					<li><span class='em'>Update Branch</span><ul>
-						<li>checkout branch ($cb); <span class='em'>Merge</span> master; recover any stashes</li>
+						<li>checkout branch ($cb); <span class='em'>Merge</span> master; push; recover any stashes</li>
 					</ul></li>
 				</ul></li>
 				<li>new branch<ul>
@@ -145,7 +145,7 @@
 			<li>diff --name-status origin/master..master; lg origin/master..master</li>
 			<li>[[<span class='em'>Push</span>];<ul>
 				<li>delete branch]<ul>
-					<li>check for stashes; delete branch; push-delete remote</li>
+					<li>check for stashes; delete branch; delete remote: <span class='mono'>push origin :&lt;branchName&gt;</span></li>
 				</ul></li>
 			</ul></li>
 		</ul>

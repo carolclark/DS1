@@ -16,8 +16,7 @@
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 	<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
-		<!-- @topicItem "Backup Prodecure and Support" "#BackupProdecureAndSupport" "1" "" -->
-		<!-- @topicItem "Reorganize Snippets" "#ReorganizeSnippets" "1" "" -->
+		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
 		<!-- @topicItem "Fix RemoveFolder with Python" "#RemoveFolderWPython" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
@@ -25,12 +24,12 @@
 		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
-		<!-- @topicGroup "" "11" -->
+		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
-	<!-- @topicGroup "" "13" -->
+	<!-- @topicGroup "" "12" -->
 	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "16" -->
+	<!-- @topicGroup "Topics" "15" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
@@ -39,8 +38,8 @@
 <!-- @marker "Active Issues" -->
 <h2 id='ActiveIssues'>Active Issues</h2>
 
-<!-- @marker "Backup Prodecure and Support" -->
-<h4 id='BackupProdecureAndSupport'><a href="http://github.com/carolclark/Support/issues/4">(#4)</a>Backup Prodecure and Support</h4><pre>
+<!-- @marker "Backup Procedure and Support" -->
+<h4 id='BackupProcedureAndSupport'><a href="http://github.com/carolclark/Support/issues/4">(#4)</a>Backup Prodecure and Support</h4><pre>
 	* <a href="http://github.com/carolclark/Support/issues/41">(#41)</a>Fix Archive Script
 		* *script archive does not currently work; it does have tests that pass*
 			* *commit aa224e6 from May 15, 2013 works, but does not work with the tests*
@@ -59,33 +58,26 @@
 		* reenable tests
 </pre>
 
-<!-- @marker "Reorganize Snippets" -->
-<h4 id='ReorganizeSnippets'><a href="http://github.com/carolclark/Support/issues/38">(#38)</a>Reorganize Snippets</h4><pre>
-	* *sort slate typing features by language instead of by whether or not implemented as Dash snippet*
-	* Markup slate (from insertElement)
-	* also:
-		* install <a href="Tools.html#_Homebrew">Homebrew</a>; update Tools.html
-		* add SystemPrefs as external from Xcode; automate Security &gt; Privacy for Accessor
-		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
-		* add local python path to $PYTHONPATH
-	* add Slate Cocoa
-	* move remaining items from Snippets slate; remove Snippets slate
-</pre>
-
 <!-- @marker "Fix RemoveFolder with Python" -->
 <h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
 	<span class='tlmark'>&lt;--</span>
 	* setup python logging, error handling and debugging
 		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
 		* new file Python.html to document
+		* upgrade to python3
+			* <span class='mono'>homebrew install python3</span>
+			* rename python to python2 so cmdline will not run it
+			* move $PYTHONPATH definition to ~/.profile; add same path to ${PATH}
+			* document installation
 		* set up logging format and add to existing files and Python templates
-		* add snippets for logging and breakpoints
-		* update Slates, including adding new Terminal &gt; Python slate
-	* handle long commands in Slates:
-		* getMergeMessage: print command summary
-		* cmd.py: interface from Terminal to our python scripts
-		* add argument --merge_message to scm.py
-		* also handle list/select files/branches
+		* add Slate items for logging and breakpoints
+	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+	* handle long commands in Slates
+		* scm.getMergeMessage
+			* handle input if args not supplied
+			* print command summary
+			* main takes (argc, argv*[]); handle subcommand parameters by command
+		* handle select/list branches/files
 	* filesys.remove_folder
 		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/2/library/os.path.html">os.path</a>; <a href="https://docs.python.org/2/library/os.path.html">shutil</a>.rmtree() with copytree example*
 </pre>
@@ -1178,6 +1170,19 @@
 	* BBEdit: support Developer Slates as for Xcode
 		* extract Developer #define's and slates from Xcode
 		* clean up and resort BBEdit Slate
+</pre>
+
+<!-- @marker "Reorganize Snippets" -->
+<h4 id='ReorganizeSnippets'><a href="http://github.com/carolclark/Support/issues/38">(#38)</a>Reorganize Snippets</h4><pre>
+	* *sort slate typing features by language instead of by whether or not implemented as Dash snippet*
+	* Markup slate (from insertElement)
+	* also:
+		* install <a href="Tools.html#_Homebrew">Homebrew</a>; update Tools.html
+		* add SystemPrefs as external from Xcode; automate Security &gt; Privacy for Accessor
+		* add local python path to $PYTHONPATH
+	* add Slate Cocoa
+	* move remaining items from Snippets slate; remove Snippets slate
+	<span class='tldate'>[06/22/2014]</span>
 </pre>
 
 	<!-- @marker "[end]" -->
