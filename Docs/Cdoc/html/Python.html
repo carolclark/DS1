@@ -11,13 +11,14 @@
 <h1>Python</h1>
 
 <!-- @topicList "Python" "Contents" -->
-	<!-- @topicItem "Error Handling and Debugging" "#ErrorsAndDebugging" "0" "" -->
+	<!-- @topicItem "Errors, Logging, and Debugging" "#ErrorLogDebug" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Error Handling and Debugging" -->
-<h2>Error Handling and Debugging</h2>
-<!-- @topicList "Error Handling and Debugging" "ErrorsAndDebugging" -->
-	<!-- @topicItem "Error Handling and Debugging" "#ErrorsAndDebugging" "0" "" -->
+<!-- @marker "Errors, Logging, and Debugging" -->
+<h2>Errors, Logging, and Debugging</h2>
+<!-- @topicList "Errors, Logging, and Debugging" "ErrorLogDebug" -->
+	<!-- @topicItem "Errors, Logging, and Debugging" "#ErrorLogDebug" "0" "" -->
+		<!-- @topicItem "Logging" "#Logging" "1" "" -->
 		<!-- @topicItem "Python Debugging" "#PythonDebugging" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "References" "4" -->
@@ -32,6 +33,15 @@
 	</ul></li>
 </ul>
 
+<!-- @marker "Logging" -->
+<h4 id='Logging'>Logging</h4><pre>
+	* standard Python template imports logging module and configures logging
+	* logging levels: CRITICAL, ERROR, WARNING, INFO, DEBUG
+	* can also:
+		* pass extra information for use with logging format; see <a href="https://docs.python.org/2/library/logging.html#logging.debug">logging.debug</a>
+		* pass exception to be added to logging message;  see <a href="https://docs.python.org/2/library/logging.html#logging.debug">logging.debug &gt; logging.exception</a>
+			* for use only from an exception handler
+</pre>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

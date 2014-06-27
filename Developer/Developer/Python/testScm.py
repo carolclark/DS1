@@ -4,7 +4,7 @@
 #  Developer
 #
 #  Created by Carol Clark on 12/1/13.
-#  Copyright 2013 C & C Software, Inc. All rights reserved.
+#  Copyright 2013-14 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 
