@@ -889,7 +889,7 @@ resource restype_Slate (resid_Python, "") { {
 		_CloseSubslate_,
 		_StarterBase_,
 		Event { "go back", "" },	Launch { DevApps_"XCode.app", resid_Xcode },
-		Event { "debug", "" },		Sequence{}, TypeText { "python -m pdb ${CCDev}/bin/python/" }, ResSubslate { resid_PythonDebug }, endSequence{},
+		Event { "debug", "" },		Sequence{}, TypeText { "python3 -m pdb ${CCDev}/bin/python/" }, ResSubslate { resid_PythonDebug }, endSequence{},
 	} }
 } };
 

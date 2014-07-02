@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/local/bin/python3
 
 #  testScm.py
 #  Developer
@@ -32,12 +32,13 @@ class TestScm(unittest.TestCase):
 		self.assertEqual(scm.merge_message(issueNum=55), "Merge branch (#55)")
 
 	def test_merge_message_cmd(self):
-		""" test scm.main(--merge_message branchName="", issueNum=0)
+		""" test scm.main(--merge_message branchName issueNum)
 
 			equivalent to command line: scm.py --mergeMessage branchName issueNum
 		"""
 
-		self.assertEqual(scm.main("abc 40"), "Merge branch 'abc' (#40)")
+		self.assertEqual(scm.main([]), "Merge branch")
+		self.assertEqual(scm.main(['abc', 40]), "Merge branch 'abc' (#40)")
 
 
 if __name__ == '__main__':

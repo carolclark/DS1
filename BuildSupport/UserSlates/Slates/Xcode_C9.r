@@ -1391,13 +1391,10 @@ resource restype_Slate (resid_phaseRunScript, "resid_phaseRunScript") { {
 #pragma mark 6 --- Workspace
 resource restype_Slate (resid_Workspace, "") { {
 	Slate { "Workspace",	{
-		ExitEvent { "Carbon", "" },			Launch { Dev_"AccessorC9/AccessorC9.xcworkspace", 0 },
 		ExitEvent { "Accessor", "" },		Launch { Dev_"Accessor/Accessor.xcworkspace", 0 },
 		ExitEvent { "Punkin", "" },			Launch { Dev_"Punkin/Punkin.xcworkspace", 0 },
 		ExitEvent { "Support", "" },		Launch { Dev_"Support/Support.xcworkspace", 0 },
-		ExitEvent { "Technical", "" },		Launch { Dev_"TechnicalDocs/TechnicalDocs.xcworkspace", 0 },
-		ExitEvent { "old Support", "" },	Launch { Dev_"Support_svn/Support_svn.xcworkspace", 0 },
-		ExitEvent { "Dev Support", "" },	Launch { Dev_"DevSupport/DevSupport.xcodeproj", 0 },
+		ExitEvent { "Developer", "" },		Launch { Dev_"Support/Developer/Developer.xcodeproj", 0 },
 		Event { "next", "" },				Keypress { kc_accent, mf_command },
 		Event { "close", "" },				Keypress { kc_W, mf_command + mf_option },
 		ExitEvent { "assistant", "" },		_assistantEditor,

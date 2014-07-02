@@ -410,7 +410,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "python -m unittest discover --start-directory \"${HOME}/Library/CCDev/bin/python\"\n";
+			shellScript = "/usr/local/bin/python3 -m unittest discover --start-directory \"/Users/carolclark/Library/CCDev/bin/python\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -708,6 +708,7 @@
 				676A611C19295A3F004BA77B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67CBDB6C191AF1F700B8164A /* Build configuration list for PBXProject "Developer" */ = {
 			isa = XCConfigurationList;
