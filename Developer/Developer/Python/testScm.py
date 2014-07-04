@@ -37,8 +37,11 @@ class TestScm(unittest.TestCase):
 			equivalent to command line: scm.py --mergeMessage branchName issueNum
 		"""
 
-		self.assertEqual(scm.main([]), "Merge branch")
-		self.assertEqual(scm.main(['abc', 40]), "Merge branch 'abc' (#40)")
+		self.assertEqual(scm.main([]), "Usage Message")
+		with self.assertRaises(SyntaxError):
+			scm.main(['abc'])
+		self.assertEqual(scm.main(['--merge-message']), "Merge branch")
+		self.assertEqual(scm.main(['--merge-message', 'abc', '40']), "Merge branch 'abc' (#40)")
 
 
 if __name__ == '__main__':

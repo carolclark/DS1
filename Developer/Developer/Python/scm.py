@@ -30,22 +30,22 @@ def merge_message(branchName="", issueNum=0):
 def main(*argsin):
 	""" process command-line arguments and dispatch to selected function """
 
-	args = argsin[0]
-	branchName = ""
-	issueNum = 0
-	if len(args) == 1:
-		if type(args[0]) is str:
+	arglist = argsin[0]
+	if not arglist:
+		return ("Usage Message")
+	cmd = arglist[0]
+	args = arglist[1:]
+	if cmd == '--merge-message':
+		branchName = ""
+		issueNum = 0
+		if len(args) > 0:
 			branchName = args[0]
-		else:
-			if type(args[0]) is int:
-				issueNum = args[0]
-	if len(args) == 2:
-		branchName = args[0]
-		issueNum = args[1]
-
-	mm = merge_message(branchName, issueNum)
-	return mm
-
+		if len(args) > 1:
+			issueNum = args[1]
+		mm = merge_message(branchName, issueNum)
+		return mm
+	else:
+		raise SyntaxError('unrecognized command: {}'.format(cmd))
 
 if __name__ == '__main__':
 	print (main(sys.argv[1:]))
