@@ -13,7 +13,7 @@ import logging
 import shlex
 import sys
 
-logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=logging.INFO)
 
 
 def merge_message(branchName="", issueNum=0):
@@ -27,22 +27,25 @@ def merge_message(branchName="", issueNum=0):
 	return msg
 
 
-def main(*argsin):
-	""" process command-line arguments and dispatch to selected function """
+def main(cmdlist=None):
+	""" process command-line input and dispatch to selected function """
 
-	arglist = argsin[0]
-	if not arglist:
-		return ("Usage Message")
-	cmd = arglist[0]
-	args = arglist[1:]
+	logging.info("cmdlist argument: {}".format(cmdlist))
+	parser = argparse.ArgumentParser()
+	parser.add_argument("branchName")
+	parser.add_argument("issueNum")
+	args=None
+	if cmdlist:
+		try:
+			args = parser.parse_args(cmdlist)
+		except:
+			raise SyntaxError("parsing failed")
+	else:
+		raise SyntaxError("missing argument list")
+	logging.info("parse result: {}".format(args))
+	cmd = "--merge-message"
 	if cmd == '--merge-message':
-		branchName = ""
-		issueNum = 0
-		if len(args) > 0:
-			branchName = args[0]
-		if len(args) > 1:
-			issueNum = args[1]
-		mm = merge_message(branchName, issueNum)
+		mm = merge_message(args.branchName, args.issueNum)
 		return mm
 	else:
 		raise SyntaxError('unrecognized command: {}'.format(cmd))

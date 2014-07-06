@@ -76,8 +76,10 @@
 		* scm.getMergeMessage
 			* add test for scm.main (simulates Terminal scm.py) with no arguments
 				* improve 'main' calling syntax
+				* does not now use ArgumentParser - tests for incorrect arguments did not work because they checked for syntax and crashed the test instead of calling it
 			* handle subcommand parameters by command
 			* handle input if args not supplied
+			* try ArgumentParser again - 'optional' arguments only expected with flags
 			* print command summary
 		* handle select/list branches/files
 	* filesys.remove_folder

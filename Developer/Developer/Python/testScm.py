@@ -30,6 +30,7 @@ class TestScm(unittest.TestCase):
 		self.assertEqual(scm.merge_message("abc"), "Merge branch 'abc'")
 		self.assertEqual(scm.merge_message(55), "Merge branch '55'")
 		self.assertEqual(scm.merge_message(issueNum=55), "Merge branch (#55)")
+		with self.assertRaises(TypeError): scm.merge_message ("abc", "55", "more")
 
 	def test_merge_message_cmd(self):
 		""" test scm.main(--merge_message branchName issueNum)
@@ -37,12 +38,10 @@ class TestScm(unittest.TestCase):
 			equivalent to command line: scm.py --mergeMessage branchName issueNum
 		"""
 
-		self.assertEqual(scm.main([]), "Usage Message")
-		with self.assertRaises(SyntaxError):
-			scm.main(['abc'])
-		self.assertEqual(scm.main(['--merge-message']), "Merge branch")
-		self.assertEqual(scm.main(['--merge-message', 'abc', '40']), "Merge branch 'abc' (#40)")
-
+		self.assertEqual(scm.main(['abc', '40']), "Merge branch 'abc' (#40)")
+		with self.assertRaises(SyntaxError): scm.main(["abc"])
+		with self.assertRaises(SyntaxError): scm.main([])
+		with self.assertRaises(SyntaxError): scm.main(['--merge-message', 40])
 
 if __name__ == '__main__':
 	suite = unittest.TestLoader().loadTestsFromNames(["testScm.TestEquality", "testScm.TestScm"])
