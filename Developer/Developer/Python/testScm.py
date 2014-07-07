@@ -5,7 +5,6 @@
 #
 #  Created by Carol Clark on 12/1/13.
 #  Copyright 2013-14 C & C Software, Inc. All rights reserved.
-#  Confidential and Proprietary.
 
 
 import unittest
@@ -31,14 +30,16 @@ class TestScm(unittest.TestCase):
 		self.assertEqual(scm.merge_message(55), "Merge branch '55'")
 		self.assertEqual(scm.merge_message(issueNum=55), "Merge branch (#55)")
 		with self.assertRaises(TypeError): scm.merge_message ("abc", "55", "more")
+		self.assertEqual(scm.merge_message(), "Merge branch")
 
 	def test_merge_message_cmd(self):
-		""" test scm.main(--merge_message branchName issueNum)
+		""" test scm.main(['--flag', 'foo', 'bar'])
 
-			equivalent to command line: scm.py --mergeMessage branchName issueNum
+			equivalent to command line: scm.py --flag foo bar
 		"""
 
-		self.assertEqual(scm.main(['abc', '40']), "Merge branch 'abc' (#40)")
+		self.assertEqual(scm.main(['--merge-message', 'abc', '40']), "Merge branch 'abc' (#40)")
+		self.assertEqual(scm.main(['-m', 'xyz', '24']), "Merge branch 'xyz' (#24)")
 		with self.assertRaises(SyntaxError): scm.main(["abc"])
 		with self.assertRaises(SyntaxError): scm.main([])
 		with self.assertRaises(SyntaxError): scm.main(['--merge-message', 40])
