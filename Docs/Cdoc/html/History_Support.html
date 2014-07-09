@@ -71,17 +71,17 @@
 			* document installation
 		* set up logging format and add to existing files and Python templates
 		* add Slate items for logging and breakpoints
-	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 	* handle long commands in Slates
 		* scm.getMergeMessage
 			* add test for scm.main (simulates Terminal scm.py) with no arguments
 				* improve 'main' calling syntax
 				* does not now use ArgumentParser - tests for incorrect arguments did not work because they checked for syntax and crashed the test instead of calling it
 			* handle subcommand parameters by command
-			* handle input if args not supplied
 			* try ArgumentParser again - 'optional' arguments only expected with flags
-			* print command summary
+			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+			* handle input if args not supplied
 		* handle select/list branches/files
+	* extract module util.py with function parse_cmdlist(parser, cmdlist=None)
 	* filesys.remove_folder
 		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/2/library/os.path.html">os.path</a>; <a href="https://docs.python.org/2/library/os.path.html">shutil</a>.rmtree() with copytree example*
 </pre>

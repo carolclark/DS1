@@ -243,7 +243,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
-		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issueNumber: \"; read issueNumber; mm=$(scm.py \"${cb}\" $issueNumber); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issueNumber: \"; read issueNumber; mm=$(scm.py mergemessage \"${cb}\" $issueNumber); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "merge", "" },				Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "merge base", "" },			Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },				Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},

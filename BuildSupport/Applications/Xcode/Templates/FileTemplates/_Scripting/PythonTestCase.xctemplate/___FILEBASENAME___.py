@@ -1,4 +1,4 @@
-#!/bin/python
+#! /usr/local/bin/python3
 
 #  ___FILENAME___
 #  <#Repository#>/___PROJECTNAME___
@@ -11,15 +11,24 @@ import unittest
 import logging
 import <#module#>
 
-logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+loglevel=logging.WARNING
+logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
+
+
+class TestEquality(unittest.TestCase):
+
+	def test_equality(self):
+		""" test: can be easily modified to verify system behavior with a passing or a failing test """
+
+		self.assertTrue(1 == 1)
 
 
 class Test<#Module#>(unittest.TestCase):
 
 	def test_<#methodOrTestname#>(self):
-		""" test <#description#>) """
+		""" test: <#description#>) """
 
 
 if __name__ == '__main__':
-	suite = unittest.TestLoader().loadTestsFromName(["test<#Module#>.Test<#Module#>"])
+	suite = unittest.TestLoader().loadTestsFromName(["test<#Module#>.TestEquality", "test<#Module#>.Test<#Module#>"])
 	unittest.TextTestRunner(verbosity=2).run(suite)
