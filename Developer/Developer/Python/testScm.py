@@ -29,26 +29,27 @@ class TestScm(unittest.TestCase):
 		args = scm.parse_scm_args(['mm', 'hello', '678'])
 		self.assertEqual(args.cmd, 'mm')
 		self.assertEqual(args.branchName, 'hello')
-		self.assertEqual(args.issueNum, 678)
+		self.assertEqual(args.repoIssue, '678')
 
 
 	def test_merge_message(self):
-		""" test: merge_message(branchName="", issueNum=0) """
+		""" test: merge_message(branchName="", repoIssue=0) """
 
 		self.assertEqual(scm.merge_message("abc", 55), "Merge branch 'abc' (#55)")
+		self.assertEqual(scm.merge_message("aBranch3", 'Repo#76'), "Merge branch 'aBranch3' (Repo#76)")
 		self.assertEqual(scm.merge_message(), "Merge branch")
 		self.assertEqual(scm.merge_message("abc"), "Merge branch 'abc'")
 		self.assertEqual(scm.merge_message(55), "Merge branch '55'")
-		self.assertEqual(scm.merge_message(issueNum=55), "Merge branch (#55)")
+		self.assertEqual(scm.merge_message(repoIssue=55), "Merge branch (#55)")
 		with self.assertRaises(TypeError): scm.merge_message ("abc", "55", "more")
 		self.assertEqual(scm.merge_message(), "Merge branch")
 
 
 	def test_merge_message_cmd(self):
-		""" test: scm.main(['mergemessage', 'branchName', '(int)issueNum'])
+		""" test: scm.main(['mergemessage', 'branchName', 'repoIssue'])
 
 			equivalent to command line:
-				scm.py mergemessage <branchName> <issueNum>
+				scm.py mergemessage <branchName> <repoIssue>
 		"""
 
 		self.assertEqual(scm.main(['mergemessage', 'abc', '40']), "Merge branch 'abc' (#40)")

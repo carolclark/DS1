@@ -80,6 +80,8 @@
 			* try ArgumentParser again - 'optional' arguments only expected with flags
 			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 			* handle input if args not supplied
+				* allow string for repoIssue; prepend '#' only if repoIssue is int
+				* main expects branchName on command line, prompts for and accepts user input for repoIssue
 		* handle select/list branches/files
 	* extract module util.py with function parse_cmdlist(parser, cmdlist=None)
 	* filesys.remove_folder
