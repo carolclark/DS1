@@ -15,26 +15,22 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-def merge_message(branchName="", repoIssue=""):
+def merge_message(branchName="", repoIssue="", repository=""):
 	""" construct scm merge message for the specified branch
 
-		includes branchName and GitHub repoIssue if supplied
-		prepends '#' to repoIssue if an integer
+		includes branchName, and GitHub repoIssue if nonzero
+		if present, repository specifies repository for repoIssue
 	"""
 
 	msg = "Merge branch"
 	if (len(str(branchName))) > 0:
 		msg = msg + " '" + str(branchName) + "'"
-	if (len(str(repoIssue))) > 0:
+
+	if repoIssue and int(repoIssue):
 		msg = msg + ' ('
-		try:
-			if int(repoIssue) > 0:
-				repoIssueIsInt=True
-		except:
-			repoIssueIsInt=False
-		if repoIssueIsInt:
-			msg = msg + '#'
-		msg = msg + str(repoIssue) + ')'
+		if repository and len(repository) > 0:
+			msg = msg + repository
+		msg = msg + '#' + str(repoIssue) + ")"
 	return msg
 
 
@@ -74,6 +70,8 @@ def parse_scm_args(cmdlist=None):
 	parser_mm = subparsers.add_parser('mergemessage', aliases=['mm'], help="generate commit message for merging 'branchName' into master")
 	parser_mm.add_argument("branchName", help="name of branch to be merged")
 	parser_mm.add_argument("repoIssue",  help="applicable GitHub issue")
+	parser_mm.add_argument("--repository", '-r', nargs=1,
+		help="name of repository for this issue")
 
 	# create sync_branch parser
 	parser_sb = subparsers.add_parser('syncbranch', aliases=['sb'], help="sync  branch with master (merge master into current branch)")
@@ -90,7 +88,10 @@ def main(cmdlist=None):
 		return
 
 	if args.cmd == 'mergemessage' or args.cmd == 'mm':
-		mm = merge_message(args.branchName, args.repoIssue)
+		repoArg=None
+		if args.repository:
+			repoArg=args.repository[0]
+		mm = merge_message(args.branchName, args.repoIssue, repoArg)
 		return mm
 
 if __name__ == '__main__':

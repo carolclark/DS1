@@ -31,18 +31,22 @@ class TestScm(unittest.TestCase):
 		self.assertEqual(args.branchName, 'hello')
 		self.assertEqual(args.repoIssue, '678')
 
+		args = scm.parse_scm_args(['mm', 'aTask', '567', '-r', "Repo"])
+		self.assertEqual(args.repository, ['Repo'])
+
 
 	def test_merge_message(self):
 		""" test: merge_message(branchName="", repoIssue=0) """
 
 		self.assertEqual(scm.merge_message("abc", 55), "Merge branch 'abc' (#55)")
-		self.assertEqual(scm.merge_message("aBranch3", 'Repo#76'), "Merge branch 'aBranch3' (Repo#76)")
+		self.assertEqual(scm.merge_message("aBranch3", '76', 'Repo'), "Merge branch 'aBranch3' (Repo#76)")
 		self.assertEqual(scm.merge_message(), "Merge branch")
 		self.assertEqual(scm.merge_message("abc"), "Merge branch 'abc'")
 		self.assertEqual(scm.merge_message(55), "Merge branch '55'")
 		self.assertEqual(scm.merge_message(repoIssue=55), "Merge branch (#55)")
-		with self.assertRaises(TypeError): scm.merge_message ("abc", "55", "more")
+		self.assertEqual(scm.merge_message ("abc", "55", "more"), "Merge branch 'abc' (more#55)")
 		self.assertEqual(scm.merge_message(), "Merge branch")
+		self.assertEqual(scm.merge_message('aTask', '567', "Repo"), "Merge branch 'aTask' (Repo#567)")
 
 
 	def test_merge_message_cmd(self):
@@ -54,7 +58,10 @@ class TestScm(unittest.TestCase):
 
 		self.assertEqual(scm.main(['mergemessage', 'abc', '40']), "Merge branch 'abc' (#40)")
 		self.assertEqual(scm.main(['mm', 'xyz', '24']), "Merge branch 'xyz' (#24)")
+		self.assertEqual(scm.main(['mm', 'aTask', '567', '-r', "Repo"]), "Merge branch 'aTask' (Repo#567)")
+		self.assertEqual(scm.main(['mm', 'abc', '0']), "Merge branch 'abc'")
 		with self.assertRaises(SyntaxError): scm.main([])
+		with self.assertRaises(ValueError): scm.main(['mm', 'abc', 'def'])
 		with self.assertRaises(SyntaxError): scm.main(['mergemessage', 40])
 		# following pass, but generate superfluous error messages
 		#with self.assertRaises(SyntaxError): scm.main(["abc"])
