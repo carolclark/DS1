@@ -21,7 +21,7 @@ def parse_<#module#>_args(cmdlist=None):
 	"""
 
 	# create <#module#> parser
-	parser = argparse.ArgumentParser(description="source control utility functions")
+	parser = argparse.ArgumentParser(description="<#desc#>")
 	subparsers = parser.add_subparsers(help="subcommand info - <subcommand> --help for details", dest='cmd')
 
 	# create <#firstCmd#> parser

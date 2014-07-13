@@ -16,7 +16,7 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-class TestScm(unittest.TestCase):
+class TestMergeMessage(unittest.TestCase):
 
 	def test_parse_command_list(self):
 		""" test: parse_scm_args(cmdlist=None) parses arguments as expected"""
@@ -68,5 +68,5 @@ class TestScm(unittest.TestCase):
 		#with self.assertRaises(SyntaxError): scm.main(["-hi"])
 
 if __name__ == '__main__':
-	suite = unittest.TestLoader().loadTestsFromNames(["testScm.TestScm"])
+	suite = unittest.TestLoader().loadTestsFromNames(["testScm.TestMergeMessage"])
 	unittest.TextTestRunner(verbosity=2).run(suite)
