@@ -7,9 +7,10 @@
 #  Copyright {c} 2013-14 C & C Software, Inc. All rights reserved.
 
 
-import argparse
-import logging
 import sys
+import logging
+import argparse
+import util
 
 loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
@@ -34,28 +35,6 @@ def merge_message(branchName="", repoIssue="", repository=""):
 	return msg
 
 
-def parse_cmdlist(parser, cmdlist=None):
-	""" parse 'cmdlist' with 'parser', generating exception if unsuccessful
-
-		on help request: returns False; request already handled by parser
-		else on success: return successfully parsed args
-		on error: raise SyntaxError with appropriate message
-	"""
-	try:
-		if cmdlist:
-			try:
-				args = parser.parse_args(cmdlist)
-			except:
-				if ('-h' in cmdlist or '--help' in cmdlist):
-					return False	# may cause 'None' to be printed after help
-				raise SyntaxError("parsing failed: {}".format(cmdlist))
-		else:
-			raise SyntaxError("missing argument list")
-	except:
-		raise SyntaxError("invalid command list '{}'".format(cmdlist))
-	return args
-
-
 def parse_scm_args(cmdlist=None):
 	""" process argments for Source Control commands
 
@@ -76,7 +55,7 @@ def parse_scm_args(cmdlist=None):
 	# create sync_branch parser
 	parser_sb = subparsers.add_parser('syncbranch', aliases=['sb'], help="sync  branch with master (merge master into current branch)")
 
-	args = parse_cmdlist(parser, cmdlist)
+	args = util.parse_cmdlist(parser, cmdlist)
 	return args
 
 

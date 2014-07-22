@@ -14,6 +14,29 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
+def parse_cmdlist(parser, cmdlist=None):
+	""" parse 'cmdlist' with 'parser', generating exception if unsuccessful
+
+		on help request: returns False; request already handled by parser
+		else on success: return successfully parsed args
+		on error: raise SyntaxError with appropriate message
+	"""
+
+	try:
+		if cmdlist:
+			try:
+				args = parser.parse_args(cmdlist)
+			except:
+				if ('-h' in cmdlist or '--help' in cmdlist):
+					return False	# may cause 'None' to be printed after help
+				raise SyntaxError("parsing failed: {}".format(cmdlist))
+		else:
+			raise SyntaxError("missing argument list")
+	except:
+		raise SyntaxError("invalid command list '{}'".format(cmdlist))
+	return args
+
+
 def parse_utility_args(cmdlist=None):
 	""" process argments for util commands
 

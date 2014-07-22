@@ -8,6 +8,7 @@
 
 
 import unittest
+import argparse
 import logging
 import util
 
@@ -26,9 +27,34 @@ class TestEquality(unittest.TestCase):
 class TestParseCmdlist(unittest.TestCase):
 
 	def test_parse_cmdlist(self):
-		""" test: test command-list parser) """
+		""" test: parse_cmdlist, including help and error handling """
 
-		self.assertTrue(1 == 1)
+		# make a parser
+		parser = argparse.ArgumentParser(description="test argparser")
+		parser.add_argument ("arg1")
+
+		# success
+		args = util.parse_cmdlist(parser, ['abc'])
+		self.assertEqual(args.arg1, 'abc')
+
+		# syntax errors
+		with self.assertRaises(SyntaxError): util.parse_cmdlist(parser, [])
+		with self.assertRaises(SyntaxError): util.parse_cmdlist(parser, ['abc', 123])
+
+		# help: does not generate error; does output help-type string
+			# capture output from --help
+		from io import StringIO
+		import sys
+		import re
+		old_stdout = sys.stdout
+		redirectedOutput = StringIO()
+		sys.stdout = redirectedOutput
+		self.assertFalse(util.parse_cmdlist(parser, ['--help']))
+		sys.stdout = old_stdout
+		result_string = redirectedOutput.getvalue()
+
+			# test result
+		self.assertTrue(result_string.startswith('usage: '))
 
 
 if __name__ == '__main__':
