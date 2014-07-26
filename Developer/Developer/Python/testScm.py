@@ -24,8 +24,8 @@ class TestMergeMessage(unittest.TestCase):
 		args = scm.parse_scm_args(['sb'])
 		self.assertEqual(args.cmd, 'sb')
 
-		args = scm.parse_scm_args(['mergemessage', 'hello', '678'])
-		self.assertEqual(args.cmd, 'mergemessage')
+		args = scm.parse_scm_args(['merge_message', 'hello', '678'])
+		self.assertEqual(args.cmd, 'merge_message')
 		args = scm.parse_scm_args(['mm', 'hello', '678'])
 		self.assertEqual(args.cmd, 'mm')
 		self.assertEqual(args.branchName, 'hello')
@@ -50,22 +50,24 @@ class TestMergeMessage(unittest.TestCase):
 
 
 	def test_merge_message_cmd(self):
-		""" test: scm.main(['mergemessage', 'branchName', 'repoIssue'])
+		""" test: scm.main(['merge_message', 'branchName', 'repoIssue'])
 
 			equivalent to command line:
-				scm.py mergemessage <branchName> <repoIssue>
+				scm.py merge_message <branchName> <repoIssue>
 		"""
 
-		self.assertEqual(scm.main(['mergemessage', 'abc', '40']), "Merge branch 'abc' (#40)")
+		self.assertEqual(scm.main(['merge_message', 'abc', '40']), "Merge branch 'abc' (#40)")
 		self.assertEqual(scm.main(['mm', 'xyz', '24']), "Merge branch 'xyz' (#24)")
 		self.assertEqual(scm.main(['mm', 'aTask', '567', '-r', "Repo"]), "Merge branch 'aTask' (Repo#567)")
 		self.assertEqual(scm.main(['mm', 'abc', '0']), "Merge branch 'abc'")
 		with self.assertRaises(SyntaxError): scm.main([])
 		with self.assertRaises(ValueError): scm.main(['mm', 'abc', 'def'])
-		with self.assertRaises(SyntaxError): scm.main(['mergemessage', 40])
-		# following pass, but generate superfluous error messages
+		with self.assertRaises(SyntaxError): scm.main(['merge_message', 40])
+
+		# following tests pass, but clutter output with error messages 07/25/2014
 		#with self.assertRaises(SyntaxError): scm.main(["abc"])
 		#with self.assertRaises(SyntaxError): scm.main(["-hi"])
+
 
 if __name__ == '__main__':
 	suite = unittest.TestLoader().loadTestsFromNames(["testScm.TestMergeMessage"])

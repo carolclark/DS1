@@ -96,17 +96,16 @@
 		* *At this point, we cannot test fully because the clean action is not working, probably because of a previously noticed problem with ccInstall:removeFolder*
 		<span class='tlmark'>&lt;-- 05/19/2014</span>
 		* <a href="#RemoveFolderWPython">Fix RemoveFolder with Python</a>
-		* move content of target ThirdParty to ~/Dev/ThirdParty
-		* add Run Script build phase to Developer to trigger ThirdParty update
 		* (commit)
 		* update shunit2 to the latest version
 	* add third-party AppleScript testing script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
 		* fork <a href="https://github.com/lifepillar/ASUnit">ASUnit</a> into ThirdParty folder
 		* ThirdParty_install.ksh also installs ASUnit script
-	* new AppleScript target
-		* Initial Tests
-			* add TestLoader and TestVarTypes tests based on scripts from ASUnit examples
-				* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
+	* new Compile AppleScripts target; depended on by target Developer
+	* Developer_install installs compiled AppleScripts
+	* Initial AppleScript Tests
+		* add TestLoader and TestVarTypes tests based on scripts from ASUnit examples
+			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
 </pre>
 
 <!-- @marker "restructure Xcode projects" -->
@@ -138,21 +137,15 @@
 					* add Python code and tests
 			<span class='tlmark'>&lt;-- 05/17/2014</span>
 			* add ReadMe files to all repositories and new projects
-			* Split Developer
-				* * developer tests are too slow to have to run them to test Python*
-				* * simpler projects are probably better anyway*
-				* new project Python inside folder Developer
-				* new project CCDev inside folder Developer
-				* replace Developer with a new project aggregating Python and Dev
-			Developing projects, reorganizing sources: add ReadMe file in the same folder as the Xcode project
-				* AppleScript
-					* <a href="#AppleScriptTesting">AppleScript Testing</a>
-					* add AppleScript scripts
-			* Application Support
-				* Applications/BBEdit
-				* Applications/Xcode
-			* UserSlates
-	* Accessor: Accessor (from BuildAccessor Accessor, AccessorApp/LogicTest, InHouse)
+				* Developing projects, reorganizing sources: add ReadMe file in the same folder as the Xcode project
+			* AppleScript
+				* <a href="#AppleScriptTesting">AppleScript Testing</a>
+				* add AppleScript scripts
+		* Application Support
+			* Applications/BBEdit
+			* Applications/Xcode
+		* UserSlates
+	* Accessor: Accessor (from BuildAccessor: Accessor, AccessorApp/LogicTest, InHouse)
 </pre>
 
 <!-- @marker "upgrade to Mavericks" -->

@@ -45,7 +45,6 @@ class TestParseCmdlist(unittest.TestCase):
 			# capture output from --help
 		from io import StringIO
 		import sys
-		import re
 		old_stdout = sys.stdout
 		redirectedOutput = StringIO()
 		sys.stdout = redirectedOutput
@@ -57,6 +56,64 @@ class TestParseCmdlist(unittest.TestCase):
 		self.assertTrue(result_string.startswith('usage: '))
 
 
+	def test_parse_cmdlist_cmd(self):
+		""" test: scm.main(['parse_cmdlist', ...]) not supported from command line """
+
+		with self.assertRaises(SyntaxError): util.main(['ps', 'abc'])
+
+
+class TestRemoveFolder(unittest.TestCase):
+
+	def test_parse_removefolder(self):
+		""" test: parse_utility_args(cmdlist=None) parses arguments as expected"""
+
+		args = util.parse_utility_args(['rf', 'fldr'])
+		self.assertEqual(args.cmd, 'rf')
+
+		args = util.parse_utility_args(['remove_folder', 'aPath'])
+		self.assertEqual(args.cmd, 'remove_folder')
+		args = util.parse_utility_args(['rf', 'somewhere'])
+		self.assertEqual(args.cmd, 'rf')
+		self.assertEqual(args.folder, 'somewhere')
+
+		args = util.parse_utility_args(['remove_folder', 'aPath', '--parent', 'parentArg'])
+		self.assertEqual(args.cmd, 'remove_folder')
+		self.assertEqual(args.parent, ['parentArg'])
+
+
+	def test_remove_folder_cmd(self):
+		""" test: scm.main(['remove_folder', 'folder'[, '--parent PARENT']]) """
+
+		self.assertEqual(util.main(['remove_folder', 'abc']), 0)
+		self.assertEqual(util.main(['rf', 'aFolder', '-p', "parent"]), 0)
+		with self.assertRaises(SyntaxError): util.main([])
+
+
+	def test_path_to_remove(self):
+		""" test calculation and verification of path_to_remove """
+
+		from os.path import expanduser
+		home = expanduser("~")
+
+		# success
+		self.assertEqual(util.path_to_remove('CCDev/bin'), home + '/Library/CCDev/bin')
+		self.assertEqual(util.path_to_remove('bin', '~/Library/CCDev'), home + '/Library/CCDev/bin')
+
+		# raises error if path does not start with '~/' or if path exists but is not a directory
+		with self.assertRaises(SyntaxError): util.path_to_remove('ab', '/c')
+		with self.assertRaises(SyntaxError): util.path_to_remove('', '/c')
+		with self.assertRaises(IOError): util.path_to_remove('CCDev/bin/errcc')
+
+		# returns None if path does not exist
+		self.assertEqual(util.path_to_remove('fake_name_xyz987'), None)
+
+
+	def test_remove_folder_at_home_path(self):
+		""" test: remove_folder_at_home_path(folder, parent=None) """
+
+		self.assertFalse(util.remove_folder_at_home_path("xxxxx"))
+
+
 if __name__ == '__main__':
-	suite = unittest.TestLoader().loadTestsFromNames(["testUtil.TestEquality", "testUtil.TestParseCmdlist"])
+	suite = unittest.TestLoader().loadTestsFromNames(["testUtil.TestEquality", "testUtil.TestParseCmdlist", "testUtil.TestRemoveFolder"])
 	unittest.TextTestRunner(verbosity=2).run(suite)

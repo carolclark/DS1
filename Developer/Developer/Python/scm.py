@@ -46,14 +46,14 @@ def parse_scm_args(cmdlist=None):
 	subparsers = parser.add_subparsers(help="subcommand info - <subcommand> --help for details", dest='cmd')
 
 	# create merge_message parser
-	parser_mm = subparsers.add_parser('mergemessage', aliases=['mm'], help="generate commit message for merging 'branchName' into master")
+	parser_mm = subparsers.add_parser('merge_message', aliases=['mm'], help="generate commit message for merging 'branchName' into master")
 	parser_mm.add_argument("branchName", help="name of branch to be merged")
 	parser_mm.add_argument("repoIssue",  help="applicable GitHub issue")
 	parser_mm.add_argument("--repository", '-r', nargs=1,
 		help="name of repository for this issue")
 
 	# create sync_branch parser
-	parser_sb = subparsers.add_parser('syncbranch', aliases=['sb'], help="sync  branch with master (merge master into current branch)")
+	parser_sb = subparsers.add_parser('sync_branch', aliases=['sb'], help="sync  branch with master (merge updated master into current branch)")
 
 	args = util.parse_cmdlist(parser, cmdlist)
 	return args
@@ -66,7 +66,7 @@ def main(cmdlist=None):
 	if not args:		# help request
 		return
 
-	if args.cmd == 'mergemessage' or args.cmd == 'mm':
+	if args.cmd == 'merge_message' or args.cmd == 'mm':
 		repoArg=None
 		if args.repository:
 			repoArg=args.repository[0]
