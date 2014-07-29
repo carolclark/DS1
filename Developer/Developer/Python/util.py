@@ -16,12 +16,27 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-def remove_folder_at_home_path(folder, parent=None):
+def remove_folder_at_home_path(folder, parent=None, dry_run=None):
 	""" test: removes <folder> and its contents from inside directory ~/
 
 	if supplied, parent must begin with ~/; default: ~/Library
 		intended to protect against unintended deletion
 	"""
+
+	dry_run = False
+	if dry_run and dry_run == 'DRY_RUN':
+		dry_run = True
+	try:
+		targetPath = path_to_remove(folder, parent)
+	except:
+		raise
+
+#for root, dirs, files in os.walk(targetPath, topdown=False):
+#		print (root)
+#		for name in files:
+#			print(os.path.join(root, name))
+#		for name in dirs:
+#			print(os.path.join(root, name))
 	return False
 
 
@@ -106,6 +121,7 @@ def parse_utility_args(cmdlist=None):
 	parser_rf = subparsers.add_parser('remove_folder', aliases=['rf'], help="removes a folder and its contents from inside ${HOME}/Library")
 	parser_rf.add_argument("folder", help="folder to remove")
 	parser_rf.add_argument("--parent", '-p', nargs=1, help="parent folder ~/<path>; default: ~/Library")
+	parser_rf.add_argument("--dry-run", '-d', action='store_const', const='DRY_RUN', help="take no action, but report what the command would do")
 
 	# parse the command list
 	args = parse_cmdlist(parser, cmdlist)
@@ -122,7 +138,10 @@ def main(cmdlist=None):
 	if args.cmd == 'parse_cmdlist' or args.cmd == 'ps':
 		raise SyntaxError("parse_cmdlist not supported from command line")
 	if args.cmd == 'remove_folder' or args.cmd == 'rf':
-		return remove_folder_at_home_path(args.folder)
+		parent = None
+		if args.parent:
+			parent = args.parent[0]
+		return remove_folder_at_home_path(args.folder, parent, args.dry_run)
 
 
 if __name__ == '__main__':

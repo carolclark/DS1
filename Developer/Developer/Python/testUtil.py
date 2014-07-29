@@ -67,7 +67,7 @@ class TestRemoveFolder(unittest.TestCase):
 	def test_parse_removefolder(self):
 		""" test: parse_utility_args(cmdlist=None) parses arguments as expected"""
 
-		args = util.parse_utility_args(['rf', 'fldr'])
+		args = util.parse_utility_args(['rf', 'fldr', '--dry-run'])
 		self.assertEqual(args.cmd, 'rf')
 
 		args = util.parse_utility_args(['remove_folder', 'aPath'])
@@ -80,12 +80,19 @@ class TestRemoveFolder(unittest.TestCase):
 		self.assertEqual(args.cmd, 'remove_folder')
 		self.assertEqual(args.parent, ['parentArg'])
 
+		args = util.parse_utility_args(['remove_folder', 'aPath', '--parent', 'parentArg', '--dry-run'])
+		self.assertTrue(args.dry_run)
+		args = util.parse_utility_args(['remove_folder', 'aPath', '--parent', 'parentArg'])
+		self.assertFalse(args.dry_run)
+
 
 	def test_remove_folder_cmd(self):
-		""" test: scm.main(['remove_folder', 'folder'[, '--parent PARENT']]) """
+		""" test: scm.main(['remove_folder', 'folder'[, '--parent PARENT'], ['--dry-run]]) """
 
-		self.assertEqual(util.main(['remove_folder', 'abc']), 0)
-		self.assertEqual(util.main(['rf', 'aFolder', '-p', "parent"]), 0)
+		self.assertEqual(util.main(['remove_folder', 'abc', '--dry-run']), 0)
+		self.assertEqual(util.main(['rf', 'aFolder', '-p', "~/parent", '--dry-run']), 0)
+		with self.assertRaises(SyntaxError):
+			util.main(['rf', 'aFolder', '-p', "parent", '--dry-run'])
 		with self.assertRaises(SyntaxError): util.main([])
 
 
@@ -98,6 +105,8 @@ class TestRemoveFolder(unittest.TestCase):
 		# success
 		self.assertEqual(util.path_to_remove('CCDev/bin'), home + '/Library/CCDev/bin')
 		self.assertEqual(util.path_to_remove('bin', '~/Library/CCDev'), home + '/Library/CCDev/bin')
+		self.assertEqual(util.remove_folder_at_home_path('CCDev/tmp', 'dry_run'), home + '/Library/CCDev/tmp')
+		self.assertEqual(util.remove_folder_at_home_path("CCDev/tmpX"), None)
 
 		# raises error if path does not start with '~/' or if path exists but is not a directory
 		with self.assertRaises(SyntaxError): util.path_to_remove('ab', '/c')
@@ -111,7 +120,11 @@ class TestRemoveFolder(unittest.TestCase):
 	def test_remove_folder_at_home_path(self):
 		""" test: remove_folder_at_home_path(folder, parent=None) """
 
-		self.assertFalse(util.remove_folder_at_home_path("xxxxx"))
+		self.assertFalse(util.remove_folder_at_home_path("xxxxx",
+														 dry_run='DRY_RUN'))
+
+		# takes no action if error in path specification
+#		with self.assertRaises(SyntaxError): util.remove_folder_at_home_path("CCDev/tmpX", None, dry_run='DRY_RUN')
 
 
 if __name__ == '__main__':
