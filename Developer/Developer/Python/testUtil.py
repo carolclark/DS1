@@ -64,11 +64,14 @@ class TestParseCmdlist(unittest.TestCase):
 
 class TestRemoveFolder(unittest.TestCase):
 
+
 	def test_parse_removefolder(self):
 		""" test: parse_utility_args(cmdlist=None) parses arguments as expected"""
 
 		args = util.parse_utility_args(['rf', 'fldr', '--dry-run'])
 		self.assertEqual(args.cmd, 'rf')
+		self.assertEqual(args.parent, None)
+		self.assertEqual(args.dry_run, 'DRY_RUN')
 
 		args = util.parse_utility_args(['remove_folder', 'aPath'])
 		self.assertEqual(args.cmd, 'remove_folder')
@@ -89,15 +92,24 @@ class TestRemoveFolder(unittest.TestCase):
 	def test_remove_folder_cmd(self):
 		""" test: scm.main(['remove_folder', 'folder'[, '--parent PARENT'], ['--dry-run]]) """
 
-		self.assertEqual(util.main(['remove_folder', 'abc', '--dry-run']), 0)
-		self.assertEqual(util.main(['rf', 'aFolder', '-p', "~/parent", '--dry-run']), 0)
+		from os.path import expanduser
+		home = expanduser("~")
+
+		# folder not present; no action
+		self.assertEqual(util.main(['remove_folder', 'abc', '--dry-run']), None)
+		self.assertEqual(util.main(['rf', 'aFolder', '-p', "~/parent", '--dry-run']), None)
+
+		# folder present; would have been removed
+		self.assertEqual(util.main(['remove_folder', 'CCDev/tmp', '--dry-run']), home + '/Library/CCDev/tmp')
+
+		# syntax errors for invalid input
 		with self.assertRaises(SyntaxError):
 			util.main(['rf', 'aFolder', '-p', "parent", '--dry-run'])
 		with self.assertRaises(SyntaxError): util.main([])
 
 
 	def test_path_to_remove(self):
-		""" test calculation and verification of path_to_remove """
+		""" test: calculation and verification of path_to_remove """
 
 		from os.path import expanduser
 		home = expanduser("~")
@@ -105,26 +117,30 @@ class TestRemoveFolder(unittest.TestCase):
 		# success
 		self.assertEqual(util.path_to_remove('CCDev/bin'), home + '/Library/CCDev/bin')
 		self.assertEqual(util.path_to_remove('bin', '~/Library/CCDev'), home + '/Library/CCDev/bin')
-		self.assertEqual(util.remove_folder_at_home_path('CCDev/tmp', 'dry_run'), home + '/Library/CCDev/tmp')
-		self.assertEqual(util.remove_folder_at_home_path("CCDev/tmpX"), None)
+
+		# returns None if path does not exist
+		self.assertEqual(util.path_to_remove('fake_name_xyz987'), None)
+		self.assertEqual(util.path_to_remove('abc'), None)
 
 		# raises error if path does not start with '~/' or if path exists but is not a directory
 		with self.assertRaises(SyntaxError): util.path_to_remove('ab', '/c')
 		with self.assertRaises(SyntaxError): util.path_to_remove('', '/c')
 		with self.assertRaises(IOError): util.path_to_remove('CCDev/bin/errcc')
 
-		# returns None if path does not exist
-		self.assertEqual(util.path_to_remove('fake_name_xyz987'), None)
-
-
 	def test_remove_folder_at_home_path(self):
-		""" test: remove_folder_at_home_path(folder, parent=None) """
+		""" test: dry-runs; verify action that would have been taken """
 
-		self.assertFalse(util.remove_folder_at_home_path("xxxxx",
-														 dry_run='DRY_RUN'))
+		from os.path import expanduser
+		home = expanduser("~")
 
-		# takes no action if error in path specification
-#		with self.assertRaises(SyntaxError): util.remove_folder_at_home_path("CCDev/tmpX", None, dry_run='DRY_RUN')
+		# success - would remove folder
+		self.assertEqual(util.remove_folder_at_home_path('CCDev/tmp', dry_run='DRY_RUN'), home + '/Library/CCDev/tmp')
+
+		# no action (returns None) if specified folder not present; may already have been removed
+		self.assertEqual(util.remove_folder_at_home_path("xxxxx", dry_run='DRY_RUN'), None)
+
+		# raises IOError if error in path specification
+		with self.assertRaises(IOError): util.remove_folder_at_home_path("CCDev///bin/python/util.py", None, 'DRY_RUN')
 
 
 if __name__ == '__main__':

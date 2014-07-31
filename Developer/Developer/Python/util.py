@@ -23,9 +23,9 @@ def remove_folder_at_home_path(folder, parent=None, dry_run=None):
 		intended to protect against unintended deletion
 	"""
 
-	dry_run = False
+	is_dry_run = False
 	if dry_run and dry_run == 'DRY_RUN':
-		dry_run = True
+		is_dry_run = True
 	try:
 		targetPath = path_to_remove(folder, parent)
 	except:
@@ -37,12 +37,13 @@ def remove_folder_at_home_path(folder, parent=None, dry_run=None):
 #			print(os.path.join(root, name))
 #		for name in dirs:
 #			print(os.path.join(root, name))
-	return False
+	return targetPath
 
 
 def path_to_remove(folder, parent=None):
-	""" constructs and verifies path to the folder to be removed by remove_folder
+	""" constructs and verifies path to the folder to be removed by remove_folder_at_home_path
 
+		returns path to folder to be removed
 		returns None if path does not exist (folder may already have been removed)
 		raises SyntaxError if parent not in directory ~/, IOError if <folder> is not a directory
 	"""

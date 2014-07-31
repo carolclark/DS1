@@ -11,7 +11,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -32,10 +32,42 @@
     ],
     "state": "open",
     "assignee": null,
-    "milestone": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
+      "id": 332757,
+      "number": 2,
+      "title": "next",
+      "description": "",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
+        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 22,
+      "closed_issues": 1,
+      "state": "open",
+      "created_at": "2013-05-13T15:38:31Z",
+      "updated_at": "2014-07-30T02:41:14Z",
+      "due_on": null
+    },
     "comments": 0,
     "created_at": "2014-05-31T20:44:08Z",
-    "updated_at": "2014-06-07T00:58:23Z",
+    "updated_at": "2014-07-30T02:41:14Z",
     "closed_at": null,
     "body": "no message, but no action is taken"
   },
@@ -51,7 +83,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -91,7 +123,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -131,7 +163,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -171,7 +203,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -211,7 +243,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -251,7 +283,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -291,7 +323,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -322,7 +354,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -338,11 +370,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -363,7 +395,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -398,7 +430,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -414,11 +446,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -439,7 +471,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -470,7 +502,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -486,18 +518,18 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
     "created_at": "2013-11-29T19:55:57Z",
-    "updated_at": "2014-05-19T17:38:18Z",
+    "updated_at": "2014-07-29T23:30:53Z",
     "closed_at": null,
-    "body": "* *Python appears a better choice than unix for producing robust, testable shell scripts; see also #18 \"clean up UNIX error handling\"*\r\n* *Python also is used to customize LLDB, and has the capability to be extended in embedded in a way that looks practical as a way to replace the Rez language as a way to define Slates in Accessor.*\r\n* *Cdoc html files were placed in a separate folder to accommodate ccInstall's limitations. Those files are now harder to preview because the source folder has a different structure from the target site.*\r\n\r\nWe will set up an environment for working in Python, and use that environment to make some initial improvements and corrections to our developer workflow.\r\n\r\nsee [Python for Bash Scripters](http://magazine.redhat.com/2008/02/07/python-for-bash-scripters-a-well-kept-secret/), [A Clean Python Shell Script](http://www.jperla.com/blog/post/a-clean-python-shell-scrip), [Python Tutorial](http://docs.python.org/2/tutorial/), [Python in Xcode](http://stackoverflow.com/questions/5276967/python-in-xcode-4-or-xcode-5), [Python Unit Testing Framework](http://docs.python.org/2/library/unittest.html), [GitPython](http://pythonhosted.org/GitPython/0.3.1/tutorial.html#and-even-more).\r\n\r\n### Python start\r\n- [x] initial Python project with test\r\n- [ ] debugging and logging support\r\n   * *[Python Debugging Techniques](https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html)*\r\n- [ ] function removeFiles\r\n\r\n### Workflow\r\n- [x] merge_message\r\n- [ ] extract function ccdev.parse_cmdline\r\n- [ ] scm.changes: diff --name-status and lg for arg1..arg2 (eg. \"changes master current_branch\") \r\n- [ ] Slates: FileMerge handles non-ascii dialog; Python subslate with def's for functions and tests\r\n- [ ] ?add ccdev.dir, ccdev.help - shell command-line versions of python dir, help\r\n    * *Python's built-in help is marginally usable due to the need to constantly change directories and to figure out what module is needed from an excessive list in order to look up something. Try to wrap the commands in a useable script.*\r\n\r\n##### Find \"git\" issue\r\n* ccInstall findSources tries to skip directory\".git\", but actually skips all files containing \"git\"\r\n\r\n* *example showing how to skip hidden files does not work as advertised; we found a way to filter out the \".git\" files at the grep stage instead that worked from Terminal, but still failed from the script*\r\n- [ ] Python function find_source_files (path)"
+    "body": "* *Python appears a better choice than unix for producing robust, testable shell scripts; see also #18 \"clean up UNIX error handling\"*\r\n* *Python also is used to customize LLDB, and has the capability to be extended in embedded in a way that looks practical as a way to replace the Rez language as a way to define Slates in Accessor.*\r\n* *Cdoc html files were placed in a separate folder to accommodate ccInstall's limitations. Those files are now harder to preview because the source folder has a different structure from the target site.*\r\n\r\nWe will set up an environment for working in Python, and use that environment to make some initial improvements and corrections to our developer workflow.\r\n\r\nsee [Python for Bash Scripters](http://magazine.redhat.com/2008/02/07/python-for-bash-scripters-a-well-kept-secret/), [A Clean Python Shell Script](http://www.jperla.com/blog/post/a-clean-python-shell-scrip), [Python Tutorial](http://docs.python.org/2/tutorial/), [Python in Xcode](http://stackoverflow.com/questions/5276967/python-in-xcode-4-or-xcode-5), [Python Unit Testing Framework](http://docs.python.org/2/library/unittest.html), [GitPython](http://pythonhosted.org/GitPython/0.3.1/tutorial.html#and-even-more).\r\n\r\n### Python start\r\n- [x] initial Python project with test\r\n- [x] debugging and logging support\r\n   * *[Python Debugging Techniques](https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html)*\r\n- [ ] function removeFiles\r\n\r\n### Workflow\r\n- [x] merge_message\r\n- [ ] extract function ccdev.parse_cmdline\r\n- [ ] scm.changes: diff --name-status and lg for arg1..arg2 (eg. \"changes master current_branch\") \r\n- [ ] Slates: FileMerge handles non-ascii dialog; Python subslate with def's for functions and tests\r\n- [ ] ?add ccdev.dir, ccdev.help - shell command-line versions of python dir, help\r\n    * *Python's built-in help is marginally usable due to the need to constantly change directories and to figure out what module is needed from an excessive list in order to look up something. Try to wrap the commands in a useable script.*\r\n\r\n##### Find \"git\" issue\r\n* ccInstall findSources tries to skip directory\".git\", but actually skips all files containing \"git\"\r\n\r\n* *example showing how to skip hidden files does not work as advertised; we found a way to filter out the \".git\" files at the grep stage instead that worked from Terminal, but still failed from the script*\r\n- [ ] Python function find_source_files (path)"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/30",
@@ -511,7 +543,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -546,7 +578,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -562,11 +594,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -587,7 +619,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -622,7 +654,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -638,11 +670,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -663,7 +695,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -698,7 +730,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -714,11 +746,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -739,7 +771,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -766,7 +798,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -792,7 +824,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -808,11 +840,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -833,7 +865,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -860,7 +892,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -886,7 +918,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -902,11 +934,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -927,7 +959,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -971,7 +1003,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1008,7 +1040,7 @@
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1034,7 +1066,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1050,11 +1082,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1075,7 +1107,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1120,7 +1152,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1136,11 +1168,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1161,7 +1193,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1205,7 +1237,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1245,7 +1277,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1261,11 +1293,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1286,7 +1318,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1321,7 +1353,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1337,11 +1369,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1362,7 +1394,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1402,7 +1434,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1418,11 +1450,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1443,7 +1475,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1478,7 +1510,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1494,11 +1526,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1519,7 +1551,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1554,7 +1586,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1570,11 +1602,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1595,7 +1627,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1630,7 +1662,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1646,11 +1678,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1671,7 +1703,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1711,7 +1743,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1727,11 +1759,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1752,7 +1784,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1787,7 +1819,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1803,11 +1835,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1828,7 +1860,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1868,7 +1900,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -1884,11 +1916,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
@@ -1909,7 +1941,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1953,7 +1985,7 @@
     "user": {
       "login": "carolclark",
       "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
       "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
       "url": "https://api.github.com/users/carolclark",
       "html_url": "https://github.com/carolclark",
@@ -1993,7 +2025,7 @@
       "creator": {
         "login": "carolclark",
         "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=1",
         "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
         "url": "https://api.github.com/users/carolclark",
         "html_url": "https://github.com/carolclark",
@@ -2009,11 +2041,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 21,
+      "open_issues": 22,
       "closed_issues": 1,
       "state": "open",
       "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-02-24T18:13:19Z",
+      "updated_at": "2014-07-30T02:41:14Z",
       "due_on": null
     },
     "comments": 0,
