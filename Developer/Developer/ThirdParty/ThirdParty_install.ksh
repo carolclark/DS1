@@ -32,6 +32,7 @@ function shunitInstall {
 	fi
 
 	print "= installing shunit"
+	chmod a+x ${src}/src/shunit2		# make sure shunit app is executable
 	mkdir -p ${dst}
 	if [[ "${?}" != "0" ]] ; then
 		print "failure while installing shunit"

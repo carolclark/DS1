@@ -9,7 +9,8 @@
 import sys
 import argparse
 import logging
-import os.path
+import os
+import stat
 from io import StringIO
 
 loglevel=logging.WARNING
@@ -23,21 +24,51 @@ def remove_folder_at_home_path(folder, parent=None, dry_run=None):
 		intended to protect against unintended deletion
 	"""
 
-	is_dry_run = False
-	if dry_run and dry_run == 'DRY_RUN':
-		is_dry_run = True
 	try:
 		targetPath = path_to_remove(folder, parent)
 	except:
 		raise
 
-#for root, dirs, files in os.walk(targetPath, topdown=False):
-#		print (root)
-#		for name in files:
-#			print(os.path.join(root, name))
-#		for name in dirs:
-#			print(os.path.join(root, name))
-	return targetPath
+	is_dry_run = False
+	if dry_run and dry_run == 'DRY_RUN':
+		is_dry_run = True
+	dry_run = True		# ***
+
+	remove_items = 0
+	if (targetPath):
+		info = StringIO()
+		info.write('=== {}:\n'.format(targetPath))
+
+		if dry_run:
+			info.write("This command would:\n")
+		else:
+			info.write("Actions taken:\n")
+		for root, dirs, files in os.walk(targetPath, topdown=False):
+			for name in files:
+				fullname = os.path.join(root, name)
+				st = os.stat(fullname)
+				if not (st.st_mode & stat.S_IWRITE):
+					if dry_run:
+						info.write('make writable: {}\n'.format(fullname))
+				if dry_run:
+					info.write('remove file {}\n'.format(fullname))
+					remove_items += 1
+			for name in dirs:
+				fullname = os.path.join(root, name)
+				st = os.stat(fullname)
+				if not (st.st_mode & stat.S_IWRITE):
+					if dry_run:
+						info.write('make writable: {}\n'.format(fullname))
+				if dry_run:
+					info.write('remove directory {}\n'.format(fullname))
+					remove_items += 1
+		if dry_run:
+			info.write('remove target directory {}\n'.format(targetPath))
+			remove_items += 1
+		output = info.getvalue()
+	else:
+		output = "Folder '" + folder + "' not present; no action taken."
+	return {'output':output, 'remove_items':remove_items}
 
 
 def path_to_remove(folder, parent=None):
@@ -142,7 +173,8 @@ def main(cmdlist=None):
 		parent = None
 		if args.parent:
 			parent = args.parent[0]
-		return remove_folder_at_home_path(args.folder, parent, args.dry_run)
+		result = remove_folder_at_home_path(args.folder, parent, args.dry_run)
+		return result['output'] + '\n(remove_items: ' + str(result['remove_items']) + ')'
 
 
 if __name__ == '__main__':

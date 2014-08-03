@@ -119,6 +119,7 @@ testSpecialPaths() {
 	assertTrue "$0#$LINENO: no file exists at ${SHUnit}" "[ -e ${SHUnit} ]"
 }
 
+# remaining tests access disk - should move to separate test target
 fileContainsLine() {		# returns 1 iff file "${1}" contains line "${2}"
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		file="${1}"
