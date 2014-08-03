@@ -27,6 +27,8 @@
 		6755BCF61922CDB6005DC27D /* DeveloperTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DeveloperTests-Info.plist"; sourceTree = "<group>"; };
 		6755BCF71922CDB6005DC27D /* RequiredCocoaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequiredCocoaTests.m; sourceTree = "<group>"; };
 		676A611E19295C95004BA77B /* ThirdParty_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ThirdParty_install.ksh; sourceTree = "<group>"; };
+		676E4AE21971CDD200636255 /* testUtil.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testUtil.py; sourceTree = "<group>"; };
+		676E4AE31971CF9A00636255 /* util.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = util.py; sourceTree = "<group>"; };
 		67B35C3B19256A6100C0C9A7 /* scm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = scm.py; sourceTree = "<group>"; };
 		67B35C3C19256A6100C0C9A7 /* testScm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testScm.py; sourceTree = "<group>"; };
 		67FDF6EB191D776C002560CF /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
@@ -128,6 +130,8 @@
 			children = (
 				67B35C3B19256A6100C0C9A7 /* scm.py */,
 				67B35C3C19256A6100C0C9A7 /* testScm.py */,
+				676E4AE31971CF9A00636255 /* util.py */,
+				676E4AE21971CDD200636255 /* testUtil.py */,
 			);
 			path = Python;
 			sourceTree = "<group>";

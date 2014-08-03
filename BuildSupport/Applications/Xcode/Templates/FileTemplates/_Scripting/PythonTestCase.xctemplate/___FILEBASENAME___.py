@@ -23,12 +23,16 @@ class TestEquality(unittest.TestCase):
 		self.assertTrue(1 == 1)
 
 
-class Test<#Module#>(unittest.TestCase):
+class Test<#Method#>(unittest.TestCase):
+
+	def test_parse_command_list(self):
+		""" test: parse_<#method#>_args(cmdlist=None) parses arguments as expected"""
+
 
 	def test_<#methodOrTestname#>(self):
 		""" test: <#description#>) """
 
 
 if __name__ == '__main__':
-	suite = unittest.TestLoader().loadTestsFromName(["test<#Module#>.TestEquality", "test<#Module#>.Test<#Module#>"])
+	suite = unittest.TestLoader().loadTestsFromName(["test<#Module#>.TestEquality", "test<#Module#>.Test<#Method#>"])
 	unittest.TextTestRunner(verbosity=2).run(suite)

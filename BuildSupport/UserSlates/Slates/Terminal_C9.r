@@ -26,7 +26,9 @@
 #define resid_Telnet			resid_Terminal+350
 
 #define resid_Python			resid_Terminal+360
-	#define resid_PythonDebug		resid_Python+10
+	#define resid_PythonDebug		resid_Python+1
+	#define resid_PythonScm			resid_Python+10
+	#define resid_PythonUtil		resid_Python+11
 
 #define resid_Git				resid_Terminal+400
 	#define resid_gitType				resid_Git+10
@@ -243,7 +245,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "reflog", "" },			Sequence{}, TypeText { "git reflog " }, ResSubslate { resid_gitReflog }, endSequence{},
 		Event { "rebase", "" },			Sequence{}, TypeText { "git rebase " }, ResSubslate { resid_gitRebase }, endSequence{},
 		Event { "tag", "" },			Sequence{}, TypeText { "git tag " }, ResSubslate { resid_gitTag }, endSequence{},
-		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issueNumber: \"; read issueNumber; mm=$(scm.py mergemessage \"${cb}\" $issueNumber); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
+		Event { "get merge message", "" },	Sequence{}, TypeText { "print -n \"issueNumber: \"; read issueNumber; mm=$(scm.py merge_message \"${cb}\" $issueNumber); print \"$mm\"" }, Keypress { kc_enter, 0 }, ResSubslate { resid_gitType }, endSequence{},
 		Event { "merge", "" },				Sequence{}, TypeText { "git merge " }, ResSubslate { resid_gitMerge }, endSequence{},
 		Event { "merge base", "" },			Sequence{}, TypeText { "git merge-base" }, ResSubslate { resid_gitMergeBase }, endSequence{},
 		Event { "push", "" },				Sequence{}, TypeText { "git push " }, ResSubslate { resid_gitPush }, endSequence{},
@@ -260,6 +262,7 @@ resource restype_Slate (resid_Git, "") { {
 		Event { "list markers", "" },		Sequence{}, TypeText { "cat $gf | grep '#pragma mark' | sed 's|#pragma mark ||'" }, _return, endSequence{},
 		Event { "list tree", "" },			TypeText { "git ls-tree -r " },
 		Event { "show", "" },				TypeText { "git show --pretty=\"format:\" --name-only " },
+		Event { "Python", "" },				ResSubslate { resid_Python },
 		Event { "set directory", "" },		Subslate { "set directory" },
 			_SlateGlobals_,
 			_CloseSubslate_,
@@ -883,13 +886,17 @@ resource restype_Slate (resid_Build, "") { {
 } };
 
 #pragma mark 5 === Python
+#define	PYTHON_DEBUG_STRING		"python3 -m pdb ${CCDev}/bin/python/"
 resource restype_Slate (resid_Python, "") { {
 	Slate { "Python",	{
 		_SlateGlobals_,
 		_CloseSubslate_,
 		_StarterBase_,
-		Event { "go back", "" },	Launch { DevApps_"XCode.app", resid_Xcode },
-		Event { "debug", "" },		Sequence{}, TypeText { "python3 -m pdb ${CCDev}/bin/python/" }, ResSubslate { resid_PythonDebug }, endSequence{},
+		Event { "go back", "" },		Launch { DevApps_"XCode.app", resid_Xcode },
+		Event { "debug script", "" },	Sequence{}, TypeText { PYTHON_DEBUG_STRING }, ResSubslate { resid_PythonDebug }, endSequence{},
+		Event { "debug", "" },			ResSubslate { resid_PythonDebug },
+		Event { "source control", "" },	Sequence{}, TypeText { "scm.py " }, ResSubslate { resid_PythonScm }, endSequence{},
+		Event { "utility", "" },		Sequence{}, TypeText { "util.py " }, ResSubslate { resid_PythonUtil }, endSequence{},
 	} }
 } };
 
@@ -918,6 +925,35 @@ resource restype_Slate (resid_PythonDebug, "") { {
 		_CommandSlate_,
 		_DirectionKeys_,
 		_WhitespaceKeys_,
+	} }
+} };
+
+#pragma mark PythonScm
+resource restype_Slate (resid_PythonScm, "") { {
+	Slate { "PythonScm",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "test", "" },			Sequence{}, Keypress { kc_C, mf_control }, TypeText { "testScm.py " }, _return, endSequence{},
+		ExitEvent { "help", "" },			Sequence{}, TypeText { "--help" }, _return, endSequence{},
+		ExitEvent { "execute", "" },		Keypress { kc_return, 0 },
+		Event { "merge message", "" },		Sequence{}, TypeText { "merge_message " }, endSequence{},
+		Event { "sink branch", "" },		Sequence{}, TypeText { "sync_branch " }, endSequence{},
+		Event { "Type", "" },				ResSubslate { resid_Type },
+	} }
+} };
+
+#pragma mark PythonUtil
+resource restype_Slate (resid_PythonUtil, "") { {
+	Slate { "PythonUtil",	{
+		_SlateGlobals_,
+		_CloseSubslate_,
+		ExitEvent { "test", "" },			Sequence{}, Keypress { kc_C, mf_control }, TypeText { "testUtil.py " }, _return, endSequence{},
+		ExitEvent { "help", "" },			Sequence{}, TypeText { "--help" }, _return, endSequence{},
+		ExitEvent { "execute", "" },		Keypress { kc_return, 0 },
+		Event { "parse command list", "" },	Sequence{}, TypeText { "parse_cmdlist " }, endSequence{},
+		Event { "remove folder", "only help allowed here as a safety mechanism" },
+			Sequence{}, TypeText { "remove_folder --help" }, endSequence{},
+		Event { "Type", "" },				ResSubslate { resid_Type },
 	} }
 } };
 
