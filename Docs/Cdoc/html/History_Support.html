@@ -83,13 +83,15 @@
 				* main expects branchName on command line, prompts for and accepts user input for repoIssue
 				* ??? (do not yet see a way that is better than what we have) handle select/list branches/files
 	* extract module util.py with function parse_cmdlist(parser, cmdlist=None)
-	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 	* util.remove_folder
 		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/3/library/os.path.html">os.path</a>; <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.rmtree() with copytree example*
 		* util.path_to_remove
 		* util.remove_folder_at_home_path - add --dry-run
 		* output to string instead of to log
-		* extract util.do_remove_folder(path, --dry-run)
+		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+		* extract util.do_remove_folder_with_contents(path, --dry-run)
+			* extract util.do_remove_fs_item(path, dry_run, output)
+			* finish tests
 </pre>
 
 <!-- @marker "AppleScript Testing" -->
