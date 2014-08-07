@@ -20,8 +20,8 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 def remove_folder_at_home_path(folder, parent=None, dry_run=None):
 	""" test: removes <folder> and its contents from inside directory ~/
 
-	if supplied, parent must begin with ~/; default: ~/Library
-		intended to protect against unintended deletion
+		if supplied, parent must begin with ~/; default: ~/Library
+			intended to protect against unintended deletion
 	"""
 
 	try:
@@ -29,46 +29,7 @@ def remove_folder_at_home_path(folder, parent=None, dry_run=None):
 	except:
 		raise
 
-	is_dry_run = False
-	if dry_run and dry_run == 'DRY_RUN':
-		is_dry_run = True
-	dry_run = True		# ***
-
-	remove_items = 0
-	if (targetPath):
-		info = StringIO()
-		info.write('=== {}:\n'.format(targetPath))
-
-		if dry_run:
-			info.write("This command would:\n")
-		else:
-			info.write("Actions taken:\n")
-		for root, dirs, files in os.walk(targetPath, topdown=False):
-			for name in files:
-				fullname = os.path.join(root, name)
-				st = os.stat(fullname)
-				if not (st.st_mode & stat.S_IWRITE):
-					if dry_run:
-						info.write('make writable: {}\n'.format(fullname))
-				if dry_run:
-					info.write('remove file {}\n'.format(fullname))
-					remove_items += 1
-			for name in dirs:
-				fullname = os.path.join(root, name)
-				st = os.stat(fullname)
-				if not (st.st_mode & stat.S_IWRITE):
-					if dry_run:
-						info.write('make writable: {}\n'.format(fullname))
-				if dry_run:
-					info.write('remove directory {}\n'.format(fullname))
-					remove_items += 1
-		if dry_run:
-			info.write('remove target directory {}\n'.format(targetPath))
-			remove_items += 1
-		output = info.getvalue()
-	else:
-		output = "Folder '" + folder + "' not present; no action taken."
-	return {'output':output, 'remove_items':remove_items}
+	return do_remove_folder_with_contents(targetPath, dry_run)
 
 
 def path_to_remove(folder, parent=None):
@@ -110,6 +71,100 @@ def path_to_remove(folder, parent=None):
 		raise SyntaxError("target folder not in home directory")
 
 	return targetPath
+
+
+def do_remove_folder_with_contents(targetPath, dry_run):
+	""" removes the specified folder and its contents
+
+	adjusts write permissions if necessary
+	returns ( output, remove_count ), where remove_count is count of items removed
+	"""
+
+	is_dry_run = False
+	if dry_run and dry_run == 'DRY_RUN':
+		is_dry_run = True
+
+	remove_count = 0
+	if (targetPath):
+		info = StringIO()
+		info.write('=== {}:\n'.format(targetPath))
+
+		if is_dry_run:
+			info.write("This command would:\n")
+		else:
+			info.write("Actions taken:\n")
+		for root, dirs, files in os.walk(targetPath, topdown=False):
+			for name in files:
+				fullname = os.path.join(root, name)
+				st = os.stat(fullname)
+				if not (st.st_mode & stat.S_IWRITE):
+					if not is_dry_run:
+						os.chmod(fullname, st.st_mode | stat.S_IWRITE)
+					info.write('make writable: {}\n'.format(fullname))
+				if not is_dry_run:
+					os.remove(fullname)
+				info.write('remove file {}\n'.format(fullname))
+				remove_count += 1
+			for name in dirs:
+				fullname = os.path.join(root, name)
+				st = os.stat(fullname)
+				if not (st.st_mode & stat.S_IWRITE):
+					if not is_dry_run:
+						os.chmod(fullname, st.st_mode | stat.S_IWRITE)
+					info.write('make writable: {}\n'.format(fullname))
+				if not is_dry_run:
+					os.rmdir(fullname)
+				info.write('remove directory {}\n'.format(fullname))
+				remove_count += 1
+			if os.path.isdir(targetPath):
+				if not is_dry_run:
+					os.rmdir(targetPath)
+				info.write('remove target directory {}\n'.format(targetPath))
+				remove_count += 1
+		output = info.getvalue()
+	else:
+		output = "targetPath not present; no action taken."
+	return (output, remove_count)
+
+
+def do_remove_fs_item(path, dry_run):
+	""" remove file or empty directory from file system
+
+		adjusts write permissions if necessary
+	"""
+
+	remove_count = 0
+	info = StringIO()
+	perform_action = not dry_run
+	if os.path.isdir(path):
+		if perform_action:
+			os.rmdir(path)
+		info.write('remove directory {}\n'.format(path))
+		remove_count += 1
+	elif os.path.exists(path):
+		if perform_action:
+			os.remove(path)
+		info.write('remove file {}\n'.format(path))
+		remove_count += 1
+	else:
+		info.write('item {} does not exist\n'.format(path))
+	return(info.getvalue(), remove_count)
+
+
+def ensure_directory(path, dry_run):
+	""" ensure directory at <path> exists
+
+		uses permissions rw all for any folders created
+		no action if regular file is at <path>
+	"""
+
+	info = StringIO()
+	perform_action = not dry_run
+	if not os.path.exists(path):
+		if perform_action:
+			os.makedirs(path)
+		info.write('directory {} created\n'.format(path))
+	return info.getvalue()
 
 
 def parse_cmdlist(parser, cmdlist=None):
@@ -173,8 +228,8 @@ def main(cmdlist=None):
 		parent = None
 		if args.parent:
 			parent = args.parent[0]
-		result = remove_folder_at_home_path(args.folder, parent, args.dry_run)
-		return result['output'] + '\n(remove_items: ' + str(result['remove_items']) + ')'
+		output, remove_count = remove_folder_at_home_path(args.folder, parent, args.dry_run)
+		return output + '\n(remove_count: ' + str(remove_count) + ')'
 
 
 if __name__ == '__main__':
