@@ -32,13 +32,6 @@ def remove_folder_at_home_path(folder, parent=None, dry_run=None):
 	return do_remove_folder_with_contents(targetPath, dry_run)
 
 
-def remove_fs_item(path, dry_run):
-	""" remove file or empty directory from file system
-
-		adjusts write permissions if necessary
-	"""
-
-
 def path_to_remove(folder, parent=None):
 	""" constructs and verifies path to the folder to be removed by remove_folder_at_home_path
 
@@ -84,7 +77,7 @@ def do_remove_folder_with_contents(targetPath, dry_run):
 	""" removes the specified folder and its contents
 
 	adjusts write permissions if necessary
-	returns { output, remove_count (count of items removed) }
+	returns ( output, remove_count ), where remove_count is count of items removed
 	"""
 
 	is_dry_run = False
@@ -131,7 +124,47 @@ def do_remove_folder_with_contents(targetPath, dry_run):
 		output = info.getvalue()
 	else:
 		output = "targetPath not present; no action taken."
-	return {'output':output, 'remove_count':remove_count}
+	return (output, remove_count)
+
+
+def do_remove_fs_item(path, dry_run):
+	""" remove file or empty directory from file system
+
+		adjusts write permissions if necessary
+	"""
+
+	remove_count = 0
+	info = StringIO()
+	perform_action = not dry_run
+	if os.path.isdir(path):
+		if perform_action:
+			os.rmdir(path)
+		info.write('remove directory {}\n'.format(path))
+		remove_count += 1
+	elif os.path.exists(path):
+		if perform_action:
+			os.remove(path)
+		info.write('remove file {}\n'.format(path))
+		remove_count += 1
+	else:
+		info.write('item {} does not exist\n'.format(path))
+	return(info.getvalue(), remove_count)
+
+
+def ensure_directory(path, dry_run):
+	""" ensure directory at <path> exists
+
+		uses permissions rw all for any folders created
+		no action if regular file is at <path>
+	"""
+
+	info = StringIO()
+	perform_action = not dry_run
+	if not os.path.exists(path):
+		if perform_action:
+			os.makedirs(path)
+		info.write('directory {} created\n'.format(path))
+	return info.getvalue()
 
 
 def parse_cmdlist(parser, cmdlist=None):
@@ -195,8 +228,8 @@ def main(cmdlist=None):
 		parent = None
 		if args.parent:
 			parent = args.parent[0]
-		result = remove_folder_at_home_path(args.folder, parent, args.dry_run)
-		return result['output'] + '\n(remove_count: ' + str(result['remove_count']) + ')'
+		output, remove_count = remove_folder_at_home_path(args.folder, parent, args.dry_run)
+		return output + '\n(remove_count: ' + str(remove_count) + ')'
 
 
 if __name__ == '__main__':

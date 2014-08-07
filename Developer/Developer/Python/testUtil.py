@@ -67,6 +67,7 @@ class TestRemoveFolder(unittest.TestCase):
 
 	def setUp(self):
 		self.home = os.path.expanduser("~")
+		self.testFolder = self.home + "/Library/CCDev/TestData/util_py"	# used by conformance tests
 
 
 	def test_parse_removefolder(self):
@@ -124,25 +125,83 @@ class TestRemoveFolder(unittest.TestCase):
 		with self.assertRaises(IOError): util.path_to_remove('CCDev/bin/errcc')
 
 
+	def test_ensure_directory(self):
+		""" test that directory is created; no action if directory or file already present """
+
+		# ensure test folder
+		folder = self.testFolder + "/EnsureDirectory"
+		util.ensure_directory(folder, False)
+
+		# ok if directory already present
+		util.ensure_directory(folder, False)
+
+		# add a regular file inside test folder
+		textfile = folder + '/textfile'
+		f = open(textfile, 'w')
+		f.write(textfile)
+		f.close()
+		self.assertTrue(os.path.exists(textfile))
+
+		# does nothing if regular file already present at path
+		util.ensure_directory(textfile, False)
+		self.assertTrue(os.path.exists(textfile))
+
+		# can add another folder inside
+		util.ensure_directory(folder + '/textfile2', False)
+		self.assertTrue(os.path.exists(folder + '/textfile2'))
+
+		# clean up
+		os.rmdir(folder + '/textfile2')
+		os.remove(textfile)
+		os.rmdir(folder)
+		self.assertFalse(os.path.isdir(folder))
+
+
+	def test_do_remove_fs_item(self):
+		""" test: remove single item, changing permissions if necessary """
+
+		# set up TestData folder
+		folder = self.testFolder + "/RemoveItem"
+		self.assertEqual(folder, "/Users/carolclark/Library/CCDev/TestData/util_py/RemoveItem")
+		util.ensure_directory(folder, False)
+
+		# dry-run remove top folder: check values returned, actual file status
+		self.assertTrue(os.path.isdir(folder))
+		output, remove_count = util.do_remove_fs_item(folder, 'DRY_RUN')
+		self.assertEqual(output, 'remove directory {}\n'.format(folder))
+		self.assertEqual(remove_count, 1)
+		self.assertTrue(os.path.isdir(folder))
+
+		# remove top folder without dry-run: check values returned, actual file status
+		output, remove_count = util.do_remove_fs_item(folder, False)
+		self.assertEqual(output, 'remove directory {}\n'.format(folder))
+		self.assertEqual(remove_count, 1)
+		self.assertFalse(os.path.isdir(folder))
+
+
 	def test_remove_folder_at_home_path(self):
 		""" test: dry-runs; verify action that would have been taken """
 
 		# success - would remove folder
-		self.assertNotEqual(util.remove_folder_at_home_path('CCDev/tmp', dry_run='DRY_RUN')['remove_count'], 0)
+		_, remove_count = util.remove_folder_at_home_path('CCDev/tmp', dry_run='DRY_RUN')
+		self.assertNotEqual(remove_count, 0)
 
-		# no action (returns None) if specified folder not present; may already have been removed
-		self.assertEqual(util.remove_folder_at_home_path("xxxxx", dry_run='DRY_RUN')['remove_count'], 0)
-		self.assertEqual(util.remove_folder_at_home_path('aFolder', "~/parent", 'DRY_RUN')['remove_count'], 0)
+		# no action if specified folder not present; may already have been removed
+		_, remove_count = util.remove_folder_at_home_path("xxxxx", dry_run='DRY_RUN')
+		self.assertEqual(remove_count, 0)
+		_, remove_count = util.remove_folder_at_home_path('aFolder', "~/parent", 'DRY_RUN')
+		self.assertEqual(remove_count, 0)
 
 
 	def test_do_remove_folder_with_contents(self):
 		""" test that specified files are actually removed """
 
 		# set test folder path
-		folder = self.home + "/Library/CCDev/TestData/Proj C"
+		folder = self.testFolder + "/RemoveFolder/Proj C"
 
 		# does nothing if folder does not exist
-		self.assertEqual(util.do_remove_folder_with_contents(folder + '/xxxxx', dry_run='DRY_RUN')['remove_count'], 0)
+		_, remove_count = util.do_remove_folder_with_contents(folder + '/xxxxx', dry_run='DRY_RUN')
+		self.assertEqual(remove_count, 0)
 
 		# set up TestData folder
 		if not os.path.exists(folder):
@@ -154,8 +213,8 @@ class TestRemoveFolder(unittest.TestCase):
 
 		# remove TestData folder
 		#		import pdb; pdb.set_trace()
-		result = util.do_remove_folder_with_contents(folder, None)
-		self.assertFalse(os.path.isdir(folder))
+		#		result = util.do_remove_folder_with_contents(folder, None)
+#		self.assertFalse(os.path.isdir(folder))
 
 
 if __name__ == '__main__':
