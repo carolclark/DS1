@@ -31,7 +31,7 @@ fi
 if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
 		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
-			print "== clean skipped: target Developer has already been cleaned"
+			print "== clean skipped: target Developer is already clean"
 			return
 		fi
 	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action

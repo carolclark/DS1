@@ -73,7 +73,7 @@ function shunitInstall {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${HOME}/Library/AppleScripts/ThirdParty" "${HOME}/Library/${CCDev}/shunit"; do
+	for folder in "${HOME}/Library/AppleScripts/ThirdParty" "${CCDev}/shunit"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then

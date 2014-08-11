@@ -17,7 +17,6 @@
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 	<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
 		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
-		<!-- @topicItem "Fix RemoveFolder with Python" "#RemoveFolderWPython" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
 		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
@@ -58,45 +57,6 @@
 		* reenable tests
 </pre>
 
-<!-- @marker "Fix RemoveFolder with Python" -->
-<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
-	<span class='tlmark'>&lt;--</span>
-	* setup python logging, error handling and debugging
-		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
-		* new file Python.html to document
-		* upgrade to python3
-			* <span class='mono'>homebrew install python3</span>
-			* rename python to python2 so cmdline will not run it
-			* move $PYTHONPATH definition to ~/.profile; add same path to ${PATH}
-			* document installation
-		* set up logging format and add to existing files and Python templates
-		* add Slate items for logging and breakpoints
-	* handle long commands in Slates
-		* scm.getMergeMessage
-			* add test for scm.main (simulates Terminal scm.py) with no arguments
-				* improve 'main' calling syntax
-				* does not now use ArgumentParser - tests for incorrect arguments did not work because they checked for syntax and crashed the test instead of calling it
-			* handle subcommand parameters by command
-			* try ArgumentParser again - 'optional' arguments only expected with flags
-			* handle input if args not supplied
-				* add optional argument --repository
-				* main expects branchName on command line, prompts for and accepts user input for repoIssue
-				* ??? (do not yet see a way that is better than what we have) handle select/list branches/files
-	* extract module util.py with function parse_cmdlist(parser, cmdlist=None)
-	* util.remove_folder
-		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/3/library/os.path.html">os.path</a>; <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.rmtree() with copytree example*
-		* util.path_to_remove
-		* util.remove_folder_at_home_path - add --dry-run
-		* output to string instead of to log
-		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
-		* extract util.do_remove_folder_with_contents(path, --dry-run)
-			* extract util.do_remove_fs_item(path, dry_run)
-			* extract util.ensure_directory(path, dry_run)
-			* finish do_remove_folder_with_contents tests
-		* improve util.py dry_run syntax
-		* call util.do_remove_folder_with_contents from ccInstall.removeF1older
-</pre>
-
 <!-- @marker "AppleScript Testing" -->
 <h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/Support/issues/35">(#35)</a>AppleScript Testing</h4><pre>
 	* move ThirdParty folder (now contains shunit2) to ~/Dev, out of our version control
@@ -105,7 +65,7 @@
 		* *At this point, we cannot test fully because the clean action is not working, probably because of a previously noticed problem with ccInstall:removeFolder*
 		<span class='tlmark'>&lt;-- 05/19/2014</span>
 		* <a href="#RemoveFolderWPython">Fix RemoveFolder with Python</a>
-		* (commit)
+		* ThirdParty clean does remove content
 		* update shunit2 to the latest version
 	* add third-party AppleScript testing script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
 		* fork <a href="https://github.com/lifepillar/ASUnit">ASUnit</a> into ThirdParty folder
@@ -341,6 +301,46 @@
 
 <h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
 </pre>
+
+<!-- @marker "Fix RemoveFolder with Python" -->
+<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
+	<span class='tlmark'>&lt;--</span>
+	* setup python logging, error handling and debugging
+		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
+		* new file Python.html to document
+		* upgrade to python3
+			* <span class='mono'>homebrew install python3</span>
+			* rename python to python2 so cmdline will not run it
+			* move $PYTHONPATH definition to ~/.profile; add same path to ${PATH}
+			* document installation
+		* set up logging format and add to existing files and Python templates
+		* add Slate items for logging and breakpoints
+	* handle long commands in Slates
+		* scm.getMergeMessage
+			* add test for scm.main (simulates Terminal scm.py) with no arguments
+				* improve 'main' calling syntax
+				* does not now use ArgumentParser - tests for incorrect arguments did not work because they checked for syntax and crashed the test instead of calling it
+			* handle subcommand parameters by command
+			* try ArgumentParser again - 'optional' arguments only expected with flags
+			* handle input if args not supplied
+				* add optional argument --repository
+				* main expects branchName on command line, prompts for and accepts user input for repoIssue
+				* ??? (do not yet see a way that is better than what we have) handle select/list branches/files
+	* extract module util.py with function parse_cmdlist(parser, cmdlist=None)
+	* util.remove_folder
+		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/3/library/os.path.html">os.path</a>; <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.rmtree() with copytree example*
+		* util.path_to_remove
+		* util.remove_folder_at_home_path - add --dry-run
+		* output to string instead of to log
+		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+		* extract util.do_remove_folder_with_contents(path, --dry-run)
+			* extract util.do_remove_fs_item(path, dry_run)
+			* extract util.ensure_directory(path, dry_run)
+			* finish do_remove_folder_with_contents tests
+		* improve util.py dry_run syntax
+		* call util.do_remove_folder_with_contents from ccInstall.removeF1older
+</pre>
+<p><span class='tldate'>[08/10/2014]</span></p>
 
 <!-- @marker "Open Topics" -->
 <h2 id='OpenTopics'>Open Topics</h2>
