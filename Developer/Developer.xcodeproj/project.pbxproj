@@ -31,6 +31,43 @@
 		676E4AE31971CF9A00636255 /* util.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = util.py; sourceTree = "<group>"; };
 		67B35C3B19256A6100C0C9A7 /* scm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = scm.py; sourceTree = "<group>"; };
 		67B35C3C19256A6100C0C9A7 /* testScm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testScm.py; sourceTree = "<group>"; };
+		67C2EDB719996B00002E8C58 /* gen_test_results.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = gen_test_results.sh; sourceTree = "<group>"; };
+		67C2EDB819996B00002E8C58 /* which */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = which; sourceTree = "<group>"; };
+		67C2EDBA19996B00002E8C58 /* CHANGES-2.1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CHANGES-2.1.txt"; sourceTree = "<group>"; };
+		67C2EDBB19996B00002E8C58 /* coding_standards.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coding_standards.txt; sourceTree = "<group>"; };
+		67C2EDBC19996B00002E8C58 /* contributors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = contributors.txt; sourceTree = "<group>"; };
+		67C2EDBD19996B00002E8C58 /* design_doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = design_doc.txt; sourceTree = "<group>"; };
+		67C2EDBE19996B00002E8C58 /* LGPL-2.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = "LGPL-2.1"; sourceTree = "<group>"; };
+		67C2EDBF19996B00002E8C58 /* README.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = README.html; sourceTree = "<group>"; };
+		67C2EDC019996B00002E8C58 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		67C2EDC119996B00002E8C58 /* RELEASE_NOTES-2.1.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.0.txt"; sourceTree = "<group>"; };
+		67C2EDC219996B00002E8C58 /* RELEASE_NOTES-2.1.1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.1.txt"; sourceTree = "<group>"; };
+		67C2EDC319996B00002E8C58 /* RELEASE_NOTES-2.1.2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.2.txt"; sourceTree = "<group>"; };
+		67C2EDC419996B00002E8C58 /* RELEASE_NOTES-2.1.3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.3.txt"; sourceTree = "<group>"; };
+		67C2EDC519996B00002E8C58 /* RELEASE_NOTES-2.1.4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.4.txt"; sourceTree = "<group>"; };
+		67C2EDC619996B00002E8C58 /* RELEASE_NOTES-2.1.5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.5.txt"; sourceTree = "<group>"; };
+		67C2EDC719996B00002E8C58 /* RELEASE_NOTES-2.1.6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.6.txt"; sourceTree = "<group>"; };
+		67C2EDC819996B00002E8C58 /* rst2html.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = rst2html.css; sourceTree = "<group>"; };
+		67C2EDC919996B00002E8C58 /* shunit2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = shunit2.html; sourceTree = "<group>"; };
+		67C2EDCA19996B00002E8C58 /* shunit2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shunit2.txt; sourceTree = "<group>"; };
+		67C2EDCB19996B00002E8C58 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		67C2EDCD19996B00002E8C58 /* equality_test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = equality_test.sh; sourceTree = "<group>"; };
+		67C2EDCE19996B00002E8C58 /* lineno_test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = lineno_test.sh; sourceTree = "<group>"; };
+		67C2EDCF19996B00002E8C58 /* math.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = math.inc; sourceTree = "<group>"; };
+		67C2EDD019996B00002E8C58 /* math_test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = math_test.sh; sourceTree = "<group>"; };
+		67C2EDD119996B00002E8C58 /* mkdir_test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = mkdir_test.sh; sourceTree = "<group>"; };
+		67C2EDD219996B00002E8C58 /* party_test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = party_test.sh; sourceTree = "<group>"; };
+		67C2EDD419996B00002E8C58 /* shflags */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shflags; sourceTree = "<group>"; };
+		67C2EDD519996B00002E8C58 /* shlib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shlib; sourceTree = "<group>"; };
+		67C2EDD619996B00002E8C58 /* versions */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = versions; sourceTree = "<group>"; };
+		67C2EDD819996B00002E8C58 /* shunit2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shunit2; sourceTree = "<group>"; };
+		67C2EDD919996B00002E8C58 /* shunit2_test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shunit2_test.sh; sourceTree = "<group>"; };
+		67C2EDDA19996B00002E8C58 /* shunit2_test_asserts.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shunit2_test_asserts.sh; sourceTree = "<group>"; };
+		67C2EDDB19996B00002E8C58 /* shunit2_test_failures.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shunit2_test_failures.sh; sourceTree = "<group>"; };
+		67C2EDDC19996B00002E8C58 /* shunit2_test_helpers */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shunit2_test_helpers; sourceTree = "<group>"; };
+		67C2EDDD19996B00002E8C58 /* shunit2_test_macros.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shunit2_test_macros.sh; sourceTree = "<group>"; };
+		67C2EDDE19996B00002E8C58 /* shunit2_test_misc.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shunit2_test_misc.sh; sourceTree = "<group>"; };
+		67C2EDDF19996B00002E8C58 /* shunit2_test_standalone.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shunit2_test_standalone.sh; sourceTree = "<group>"; };
 		67FDF6EB191D776C002560CF /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
 		67FDF6EC191D776C002560CF /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
 		67FDF6ED191D776C002560CF /* testDevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDevConfig.ksh; sourceTree = "<group>"; };
@@ -136,6 +173,90 @@
 			path = Python;
 			sourceTree = "<group>";
 		};
+		67C2EDB519996B00002E8C58 /* shunit2-2.1.6 */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EDB619996B00002E8C58 /* bin */,
+				67C2EDB919996B00002E8C58 /* doc */,
+				67C2EDCC19996B00002E8C58 /* examples */,
+				67C2EDD319996B00002E8C58 /* lib */,
+				67C2EDD719996B00002E8C58 /* src */,
+			);
+			path = "shunit2-2.1.6";
+			sourceTree = "<group>";
+		};
+		67C2EDB619996B00002E8C58 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EDB719996B00002E8C58 /* gen_test_results.sh */,
+				67C2EDB819996B00002E8C58 /* which */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		67C2EDB919996B00002E8C58 /* doc */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EDBA19996B00002E8C58 /* CHANGES-2.1.txt */,
+				67C2EDBB19996B00002E8C58 /* coding_standards.txt */,
+				67C2EDBC19996B00002E8C58 /* contributors.txt */,
+				67C2EDBD19996B00002E8C58 /* design_doc.txt */,
+				67C2EDBE19996B00002E8C58 /* LGPL-2.1 */,
+				67C2EDBF19996B00002E8C58 /* README.html */,
+				67C2EDC019996B00002E8C58 /* README.txt */,
+				67C2EDC119996B00002E8C58 /* RELEASE_NOTES-2.1.0.txt */,
+				67C2EDC219996B00002E8C58 /* RELEASE_NOTES-2.1.1.txt */,
+				67C2EDC319996B00002E8C58 /* RELEASE_NOTES-2.1.2.txt */,
+				67C2EDC419996B00002E8C58 /* RELEASE_NOTES-2.1.3.txt */,
+				67C2EDC519996B00002E8C58 /* RELEASE_NOTES-2.1.4.txt */,
+				67C2EDC619996B00002E8C58 /* RELEASE_NOTES-2.1.5.txt */,
+				67C2EDC719996B00002E8C58 /* RELEASE_NOTES-2.1.6.txt */,
+				67C2EDC819996B00002E8C58 /* rst2html.css */,
+				67C2EDC919996B00002E8C58 /* shunit2.html */,
+				67C2EDCA19996B00002E8C58 /* shunit2.txt */,
+				67C2EDCB19996B00002E8C58 /* TODO.txt */,
+			);
+			path = doc;
+			sourceTree = "<group>";
+		};
+		67C2EDCC19996B00002E8C58 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EDCD19996B00002E8C58 /* equality_test.sh */,
+				67C2EDCE19996B00002E8C58 /* lineno_test.sh */,
+				67C2EDCF19996B00002E8C58 /* math.inc */,
+				67C2EDD019996B00002E8C58 /* math_test.sh */,
+				67C2EDD119996B00002E8C58 /* mkdir_test.sh */,
+				67C2EDD219996B00002E8C58 /* party_test.sh */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		67C2EDD319996B00002E8C58 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EDD419996B00002E8C58 /* shflags */,
+				67C2EDD519996B00002E8C58 /* shlib */,
+				67C2EDD619996B00002E8C58 /* versions */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		67C2EDD719996B00002E8C58 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EDD819996B00002E8C58 /* shunit2 */,
+				67C2EDD919996B00002E8C58 /* shunit2_test.sh */,
+				67C2EDDA19996B00002E8C58 /* shunit2_test_asserts.sh */,
+				67C2EDDB19996B00002E8C58 /* shunit2_test_failures.sh */,
+				67C2EDDC19996B00002E8C58 /* shunit2_test_helpers */,
+				67C2EDDD19996B00002E8C58 /* shunit2_test_macros.sh */,
+				67C2EDDE19996B00002E8C58 /* shunit2_test_misc.sh */,
+				67C2EDDF19996B00002E8C58 /* shunit2_test_standalone.sh */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		67CBDB68191AF1F700B8164A = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +321,7 @@
 		67FDF6FF191D776C002560CF /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				67C2EDB519996B00002E8C58 /* shunit2-2.1.6 */,
 				67FDF700191D776C002560CF /* shunit */,
 				676A611E19295C95004BA77B /* ThirdParty_install.ksh */,
 			);

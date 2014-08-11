@@ -19,7 +19,7 @@ missingArgumentMessage="USAGE: $0 pathToTargetFolder targetFolder ['clean']"
 
 #^ 2 ===  shunitInstall
 function shunitInstall {
-	src=${sourceRoot}/${targetFolder}/shunit
+	src=${sourceRoot}/${targetFolder}/shunit2-2.1.6
 	dst=${CCDev}/shunit
 
 	if [[ -e ${dst}/lib/versions ]] ; then
@@ -73,7 +73,7 @@ function shunitInstall {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${HOME}/Library/AppleScripts/ThirdParty" "${HOME}/Library/${CCDev}/shunit"; do
+	for folder in "${HOME}/Library/AppleScripts/ThirdParty" "${CCDev}/shunit"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
