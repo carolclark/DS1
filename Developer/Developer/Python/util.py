@@ -12,12 +12,13 @@ import logging
 import os
 import stat
 from io import StringIO
+import re
 
 loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-def remove_folder_at_home_path(folder, parent=None, dry_run=None):
+def remove_folder_at_home_path(folder, parent=None, dry_run=False):
 	""" test: removes <folder> and its contents from inside directory ~/
 
 		if supplied, parent must begin with ~/; default: ~/Library
@@ -40,19 +41,21 @@ def path_to_remove(folder, parent=None):
 		raises SyntaxError if parent not in directory ~/, IOError if <folder> is not a directory
 	"""
 
+	if folder == None:
+		raise SyntaxError("subfolder not specified")
+
 	# calculate target path
 	#	verify: parent is in directory '~'; targetPath is not parent
 	home = os.path.expanduser("~")
 	if parent:
-		if parent.startswith('~/'):
-			parent = os.path.expanduser(parent)
+		tempParent = os.path.expanduser(parent)
+		if tempParent.startswith(home):
+			parent = tempParent
 		else:
 			raise SyntaxError("parent '{}' not a folder in home directory".format(parent))
 	else:
-		parent = home + '/Library'
-	targetPath = parent + '/' + folder
-	if targetPath == parent + '/':
-		raise SyntaxError("subfolder not specified")
+		parent = os.path.join(home, 'Library')
+	targetPath = os.path.join(parent, folder)
 
 	# return None if targetPath does not exist
 	# raise SyntaxError if targetPath exists but is not a directory
@@ -73,7 +76,22 @@ def path_to_remove(folder, parent=None):
 	return targetPath
 
 
-def do_remove_folder_with_contents(targetPath, dry_run):
+def scan_directories(path):
+	""" recursively lists all directories and files inside <path>
+
+		list order is inside-out, as needed for removing files
+	"""
+
+	import glob
+	itemlist = StringIO()
+	for currentItem in glob.glob( os.path.join(path, '*') ):
+		if os.path.isdir(currentItem):
+			itemlist.write(scan_directories(currentItem))
+		itemlist.write(currentItem + ',')
+	return itemlist.getvalue()
+
+
+def do_remove_folder_with_contents(targetPath, dry_run=False):
 	""" removes the specified folder and its contents
 
 	adjusts write permissions if necessary
@@ -93,41 +111,25 @@ def do_remove_folder_with_contents(targetPath, dry_run):
 			info.write("This command would:\n")
 		else:
 			info.write("Actions taken:\n")
-		for root, dirs, files in os.walk(targetPath, topdown=False):
-			for name in files:
-				fullname = os.path.join(root, name)
-				st = os.stat(fullname)
-				if not (st.st_mode & stat.S_IWRITE):
-					if not is_dry_run:
-						os.chmod(fullname, st.st_mode | stat.S_IWRITE)
-					info.write('make writable: {}\n'.format(fullname))
-				if not is_dry_run:
-					os.remove(fullname)
-				info.write('remove file {}\n'.format(fullname))
-				remove_count += 1
-			for name in dirs:
-				fullname = os.path.join(root, name)
-				st = os.stat(fullname)
-				if not (st.st_mode & stat.S_IWRITE):
-					if not is_dry_run:
-						os.chmod(fullname, st.st_mode | stat.S_IWRITE)
-					info.write('make writable: {}\n'.format(fullname))
-				if not is_dry_run:
-					os.rmdir(fullname)
-				info.write('remove directory {}\n'.format(fullname))
-				remove_count += 1
-			if os.path.isdir(targetPath):
-				if not is_dry_run:
-					os.rmdir(targetPath)
-				info.write('remove target directory {}\n'.format(targetPath))
-				remove_count += 1
+
+		itemlist = scan_directories (targetPath)
+		for item in re.split(',', itemlist):
+			if item != '':
+				out, count = do_remove_fs_item(item, dry_run)
+				info.write(out)
+				remove_count += count
+		if os.path.isdir(targetPath):
+			if not is_dry_run:
+				os.rmdir(targetPath)
+			info.write('remove target directory {}\n'.format(targetPath))
+			remove_count += 1
 		output = info.getvalue()
 	else:
 		output = "targetPath not present; no action taken."
 	return (output, remove_count)
 
 
-def do_remove_fs_item(path, dry_run):
+def do_remove_fs_item(path, dry_run=False):
 	""" remove file or empty directory from file system
 
 		adjusts write permissions if necessary
@@ -151,7 +153,7 @@ def do_remove_fs_item(path, dry_run):
 	return(info.getvalue(), remove_count)
 
 
-def ensure_directory(path, dry_run):
+def ensure_directory(path, dry_run=False):
 	""" ensure directory at <path> exists
 
 		uses permissions rw all for any folders created
@@ -165,6 +167,15 @@ def ensure_directory(path, dry_run):
 			os.makedirs(path)
 		info.write('directory {} created\n'.format(path))
 	return info.getvalue()
+
+
+def make_small_textfile(folder, filename):
+	""" make textfile containing its name; useful for testing """
+
+	textfile = os.path.join(folder, filename)
+	f = open(textfile, 'w')
+	f.write(filename)
+	f.close()
 
 
 def parse_cmdlist(parser, cmdlist=None):

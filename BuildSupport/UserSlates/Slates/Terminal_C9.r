@@ -904,7 +904,7 @@ resource restype_Slate (resid_Python, "") { {
 resource restype_Slate (resid_PythonDebug, "") { {
 	Slate { "debug",	{
 		_SlateGlobals_,
-		ExitEvent { "close", "" },	NilAction{},
+		ExitEvent { "close", "" },	Keypress { kc_D, mf_control },
 		Event { "Type", "" },		ResSubslate { resid_Type },
 		Event { "list", "" },		Sequence{}, Keypress { kc_L, 0 }, _return, endSequence{},
 		Event { "where", "" },		Sequence{}, Keypress { kc_W, 0 }, _return, endSequence{},

@@ -57,6 +57,7 @@
 #define _TypeDevItems_	\
 	Event { "add space", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_space, 0 }, endSequence{},	\
 	Event { "add comma", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_comma, 0 }, endSequence{},	\
+	Event { "add period", "" },	Sequence{}, Keypress { kc_return, 0 }, Keypress { kc_period, 0 }, endSequence{},	\
 	Event { "list item", "" },	Sequence{}, TypeText { "<li><#item#></li>" }, _previousField, endSequence{},	\
 	Event { "page top", "" },	Keypress { kc_home, 0 },	\
 	Event { "page bottom", "" },	Keypress { kc_end, 0 },	\

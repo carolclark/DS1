@@ -64,6 +64,7 @@ resource restype_Slate (resid_Unlock, "") { {
 		_SlateGlobals_,
 		_CloseSubslate_,
 		Event { "next", "" },				Keypress { kc_tab, 0 },
+		Event { "back", "" },				Keypress { kc_tab, mf_shift },
 		Event { "switch", "" },				Keypress { kc_space, 0 },
 		ExitEvent { "authenticate", "" },	Sequence{}, TypeText { "6868" }, _return, endSequence{},
 	} }
@@ -124,24 +125,25 @@ resource restype_Slate (resid_TypeSystemPrefsSlate, "Type Slate") { {
 		Event { "Show All", "" },			_showAll,		\
 		Event { "Unlock", "" },				ResSubslate { resid_Unlock },		\
 		Event { "okay", "" },				_return,		\
-		Event { "Desktop", "" },			Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Desktop & Screen Saver" }, _return, endSequence{},		\
-		Event { "Dock", "" },				Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Dock" }, _return, endSequence{},		\
-		Event { "Mission Control", "" },	Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Mission Control" }, _return, endSequence{},		\
-		Event { "Security & Privacy", "" },	Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Security & Privacy" }, Wait { _SEARCH_WAIT_ }, _return, ResSubslate { resid_viewSecurity }, endSequence{},		\
-		Event { "Displays", "" },			Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Displays" }, _return, endSequence{},		\
-		Event { "Energy Saver", "" },		Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Energy Saver" }, _return, endSequence{},		\
-		Event { "Keyboard", "" },			Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Keyboard" }, _return, endSequence{},		\
-		Event { "Mouse Panel", "" },		Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Mouse" }, _return, endSequence{},		\
-		Event { "Printers & Scanners", "" }, Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Printers & Scanners" }, _return, endSequence{},		\
-		Event { "Sound", "" },				Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Sound" }, _return, endSequence{},			\
-		Event { "iCloud", "" },				Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "iCloud" }, _return, endSequence{},		\
-		Event { "Sharing", "" },			Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Sharing" }, _return, endSequence{},		\
-		Event { "Accounts", "" },			Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Users & Groups" }, _return, endSequence{},		\
-		Event { "Date & Time", "" },		Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Date & Time" }, _return, endSequence{},		\
-		Event { "Dectation & Speech", "" },	Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Dictation & Speech" }, Wait { _SEARCH_WAIT_ }, _return, ResSubslate { resid_viewSpeech }, endSequence{},		\
-		Event { "Startup Disk", "" },		Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Startup Disk" }, Wait { _SEARCH_WAIT_ }, _return, ResSubslate { resid_viewStartupDisk }, endSequence{},		\
-		Event { "Time Machine", "" },		Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Time Machine" }, _return, endSequence{},		\
-		Event { "Accessibility", "" },	Sequence{}, Keypress { kc_F, mf_command }, Wait { _SEARCH_WAIT_ }, TypeText { "Accessibility" }, endSequence{}
+		Event { "find", "" },				Keypress { kc_F, mf_command },		\
+		Event { "Desktop", "" },			Sequence{}, TypeText { "Desktop & Screen Saver" }, _return, endSequence{},		\
+		Event { "Dock", "" },				Sequence{}, TypeText { "Dock" }, _return, endSequence{},		\
+		Event { "Mission Control", "" },	Sequence{}, TypeText { "Mission Control" }, _return, endSequence{},		\
+		Event { "Security & Privacy", "" },	Sequence{}, TypeText { "Security & Privacy" }, Wait { _SEARCH_WAIT_ }, _return, ResSubslate { resid_viewSecurity }, endSequence{},		\
+		Event { "Displays", "" },			Sequence{}, TypeText { "Displays" }, _return, endSequence{},		\
+		Event { "Energy Saver", "" },		Sequence{}, TypeText { "Energy Saver" }, _return, endSequence{},		\
+		Event { "Keyboard", "" },			Sequence{}, TypeText { "Keyboard" }, _return, endSequence{},		\
+		Event { "Mouse Panel", "" },		Sequence{}, TypeText { "Mouse" }, _return, endSequence{},		\
+		Event { "Printers & Scanners", "" }, Sequence{}, TypeText { "Printers & Scanners" }, _return, endSequence{},		\
+		Event { "Sound", "" },				Sequence{}, TypeText { "Sound" }, _return, endSequence{},			\
+		Event { "iCloud", "" },				Sequence{}, TypeText { "iCloud" }, _return, endSequence{},		\
+		Event { "Sharing", "" },			Sequence{}, TypeText { "Sharing" }, _return, endSequence{},		\
+		Event { "Accounts", "" },			Sequence{}, TypeText { "Users & Groups" }, _return, endSequence{},		\
+		Event { "Date & Time", "" },		Sequence{}, TypeText { "Date & Time" }, _return, endSequence{},		\
+		Event { "Dectation & Speech", "" },	Sequence{}, TypeText { "Dictation & Speech" }, Wait { _SEARCH_WAIT_ }, _return, ResSubslate { resid_viewSpeech }, endSequence{},		\
+		Event { "Startup Disk", "" },		Sequence{}, TypeText { "Startup Disk" }, Wait { _SEARCH_WAIT_ }, _return, ResSubslate { resid_viewStartupDisk }, endSequence{},		\
+		Event { "Time Machine", "" },		Sequence{}, TypeText { "Time Machine" }, _return, endSequence{},		\
+		Event { "Accessibility", "" },		Sequence{}, TypeText { "Accessibility" }, _return, endSequence{}
 
 resource restype_Slate (resid_SystemPrefs, "SystemPrefs Slate") { {
 	Slate { "SystemPrefs",	{

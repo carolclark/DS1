@@ -375,7 +375,12 @@ function findSources {
 
 function removeFolder {
 	if [[ -n "${1}" ]] ; then
-		folder="${1}"
+		check="${1#${HOME}}"
+		if [[ "${1}" = "${check}" ]] ; then
+			errorMessage $RC_InvalidArgument "$0#$LINENO:" "removeFolder expects folder inside ${HOME}"
+		else
+			folder="${1}"
+		fi
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall folder"
 		return
@@ -385,50 +390,7 @@ function removeFolder {
 			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
 			return
 		fi
-		iofile="${CCDev}/tmp/found3"
-		origdir=$(pwd)
-		print "= ${folder}"
-		cd "${folder}"
-		st=${?}
-		if [[ ${st} > 0 ]] ; then
-			cd "${origdir}"
-			errorMessage ${st} "$0#$LINENO:" "error: could not set directory to ${folder} because it does not exist or is not a directory"
-			return
-		fi
-		find . -path -prune -or -type f | sed 's|\./||' > "${iofile}"
-		chmod a+r "${iofile}"
-
-		while read fl ; do
-			print -n "${fl}: "
-			rm "${fl}"
-			st=$?
-			if [[ ${st} > 0 ]] ; then
-				cd "${origdir}"
-				errorMessage ${st} "$0#$LINENO:" "error: could not remove"
-				return
-			fi
-			print "removed"
-		done < "${iofile}"
-
-		find . -path -prune -or -type d | sed 's|\./||' | tail -r > "${iofile}"
-		chmod a+r "${iofile}"
-
-		while read fl ; do
-			if [[ ${fl} = "." ]] ; then
-				fl="${folder}"
-			fi
-			print 	"(${fl}: "
-			rmdir "${fl}"
-			st=$?
-			if [[ ${st} > 0 ]] ; then
-				cd "${origdir}"
-				errorMessage ${st} "$0#$LINENO:" "error: could not remove"
-				return
-			fi
-			print "removed"
-		done < "${iofile}"
-
-		cd "${origdir}"
+		/usr/local/bin/python3 "${CCDev}/bin/python/util.py" "remove_folder" "${folder}"
 	fi
 	return 0
 }
