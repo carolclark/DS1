@@ -18,7 +18,7 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-def remove_folder_at_home_path(folder, parent=None, dry_run=None):
+def remove_folder_at_home_path(folder, parent=None, dry_run=False):
 	""" test: removes <folder> and its contents from inside directory ~/
 
 		if supplied, parent must begin with ~/; default: ~/Library
@@ -41,19 +41,21 @@ def path_to_remove(folder, parent=None):
 		raises SyntaxError if parent not in directory ~/, IOError if <folder> is not a directory
 	"""
 
+	if folder == None:
+		raise SyntaxError("subfolder not specified")
+
 	# calculate target path
 	#	verify: parent is in directory '~'; targetPath is not parent
 	home = os.path.expanduser("~")
 	if parent:
-		if parent.startswith('~/'):
-			parent = os.path.expanduser(parent)
+		tempParent = os.path.expanduser(parent)
+		if tempParent.startswith(home):
+			parent = tempParent
 		else:
 			raise SyntaxError("parent '{}' not a folder in home directory".format(parent))
 	else:
-		parent = home + '/Library'
-	targetPath = parent + '/' + folder
-	if targetPath == parent + '/':
-		raise SyntaxError("subfolder not specified")
+		parent = os.path.join(home, 'Library')
+	targetPath = os.path.join(parent, folder)
 
 	# return None if targetPath does not exist
 	# raise SyntaxError if targetPath exists but is not a directory
@@ -89,7 +91,7 @@ def scan_directories(path):
 	return itemlist.getvalue()
 
 
-def do_remove_folder_with_contents(targetPath, dry_run):
+def do_remove_folder_with_contents(targetPath, dry_run=False):
 	""" removes the specified folder and its contents
 
 	adjusts write permissions if necessary
@@ -127,7 +129,7 @@ def do_remove_folder_with_contents(targetPath, dry_run):
 	return (output, remove_count)
 
 
-def do_remove_fs_item(path, dry_run):
+def do_remove_fs_item(path, dry_run=False):
 	""" remove file or empty directory from file system
 
 		adjusts write permissions if necessary
@@ -151,7 +153,7 @@ def do_remove_fs_item(path, dry_run):
 	return(info.getvalue(), remove_count)
 
 
-def ensure_directory(path, dry_run):
+def ensure_directory(path, dry_run=False):
 	""" ensure directory at <path> exists
 
 		uses permissions rw all for any folders created

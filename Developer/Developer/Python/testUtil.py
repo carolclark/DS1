@@ -131,10 +131,10 @@ class TestRemoveFolder(unittest.TestCase):
 
 		# ensure test folder
 		localFolder = self.utilTestFolder + "/EnsureDirectory"
-		util.ensure_directory(localFolder, False)
+		util.ensure_directory(localFolder)
 
 		# ok if directory already present
-		util.ensure_directory(localFolder, False)
+		util.ensure_directory(localFolder)
 
 		# does nothing if regular file already present at path
 			# add a regular file inside test folder
@@ -142,12 +142,12 @@ class TestRemoveFolder(unittest.TestCase):
 		util.make_small_textfile(localFolder, 'textfile')
 		self.assertTrue(os.path.exists(textfile))
 			# attempt to overwrite regular file with directory
-		util.ensure_directory(textfile, False)
+		util.ensure_directory(textfile)
 		self.assertTrue(os.path.exists(textfile))
 		self.assertFalse(os.path.isdir(textfile))
 
 		# can add another folder inside
-		util.ensure_directory(localFolder + '/textfile2', False)
+		util.ensure_directory(localFolder + '/textfile2')
 		self.assertTrue(os.path.exists(localFolder + '/textfile2'))
 
 		# clean up
@@ -163,7 +163,7 @@ class TestRemoveFolder(unittest.TestCase):
 		# set up TestData folder
 		folder = self.utilTestFolder + "/RemoveItem"
 		self.assertEqual(folder, "/Users/carolclark/Library/CCDev/TestData/util_py/RemoveItem")
-		util.ensure_directory(folder, False)
+		util.ensure_directory(folder)
 
 		# dry-run remove top folder: check values returned, actual file status
 		self.assertTrue(os.path.isdir(folder))
@@ -173,7 +173,7 @@ class TestRemoveFolder(unittest.TestCase):
 		self.assertTrue(os.path.isdir(folder))
 
 		# remove top folder without dry-run: check values returned, actual file status
-		output, remove_count = util.do_remove_fs_item(folder, False)
+		output, remove_count = util.do_remove_fs_item(folder)
 		self.assertEqual(output, 'remove directory {}\n'.format(folder))
 		self.assertEqual(remove_count, 1)
 		self.assertFalse(os.path.isdir(folder))
@@ -202,19 +202,19 @@ class TestRemoveFolder(unittest.TestCase):
 
 		# set up TestData folder
 		localFolder = self.utilTestFolder + "/Remove Folder"
-		util.ensure_directory(localFolder, False)
+		util.ensure_directory(localFolder)
 		self.assertTrue(os.path.isdir(localFolder))
 
 		projc = localFolder + "/Proj C"
-		util.ensure_directory(projc, False)
+		util.ensure_directory(projc)
 		self.assertTrue(os.path.isdir(projc))
 
 		bryson = os.path.join(projc, 'Bryson')
-		util.ensure_directory (bryson, False)
+		util.ensure_directory (bryson)
 		emily = os.path.join(projc, 'Emily', 'Nine')
-		util.ensure_directory(emily, False)
+		util.ensure_directory(emily)
 		corlan = os.path.join(projc, 'Corlan', 'Three')
-		util.ensure_directory (corlan, False)
+		util.ensure_directory (corlan)
 
 		util.make_small_textfile (corlan, 'red')
 		util.make_small_textfile (corlan, 'green')
@@ -227,26 +227,26 @@ class TestRemoveFolder(unittest.TestCase):
 		self.assertTrue (os.path.exists(os.path.join (emily, 'blue')))
 
 		# attempt to remove folder does not remove regular file
-		util.do_remove_folder_with_contents (os.path.join (emily, 'blue'), False)
+		util.do_remove_folder_with_contents (os.path.join (emily, 'blue'))
 		self.assertTrue (os.path.exists(os.path.join (emily, 'blue')))
 
 		# removing interior folder removes that folder
-		util.do_remove_folder_with_contents (corlan, False)
+		util.do_remove_folder_with_contents (corlan)
 		self.assertFalse (os.path.exists(corlan))
 		self.assertTrue (os.path.exists(emily))
 
 		# top folder corlan should still be present; remove now
 		self.assertTrue (os.path.isdir(os.path.join (projc, 'Corlan')))
-		util.do_remove_folder_with_contents (os.path.join (projc, 'Corlan'), False)
+		util.do_remove_folder_with_contents (os.path.join (projc, 'Corlan'))
 		self.assertFalse (os.path.isdir(os.path.join (projc, 'Corlan')))
 
 		# full folder corlan should still be present; remove now
 		self.assertTrue (os.path.isdir(os.path.join (projc, 'Emily')))
-		util.do_remove_folder_with_contents (os.path.join (projc, 'Emily'), False)
+		util.do_remove_folder_with_contents (os.path.join (projc, 'Emily'))
 		self.assertFalse (os.path.isdir(os.path.join (projc, 'Emily')))
 
 		# remove this test's local folder
-		util.do_remove_folder_with_contents(localFolder, False)
+		util.do_remove_folder_with_contents(localFolder)
 		self.assertFalse(os.path.isdir(localFolder))
 
 
