@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: gen_test_results.sh 49 2011-05-26 18:22:21Z carolclark $
+# $Id: gen_test_results.sh 54 2008-10-21 23:29:23Z kate.ward@forestent.com $
 # vim:et:ft=sh:sts=2:sw=2
 #
 # Copyright 2008 Kate Ward. All Rights Reserved.
