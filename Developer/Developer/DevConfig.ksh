@@ -155,7 +155,11 @@ case "${USER}" in
 	"carolclark" )
 		fullname="Carol Clark"
 		email="carolclark@cox.net"
-		DEV=/Volumes/Mac/Users/carolclark/Dev
+        if [[ -e "${HOME}/Dev" ]] ; then
+            DEV="${HOME}/Dev"
+        else
+            DEV="/Volumes/Mac/Users/${username}/Dev"
+        fi
 		configureTerminal="yes"
 		;;
 	"lauramartinez" )
