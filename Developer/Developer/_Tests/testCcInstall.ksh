@@ -108,7 +108,13 @@ testSpecialPaths() {
 
 	DEV=$(ccInstall --DEV "carolclark")
 	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect DEV for carolclark: " "/Volumes/Mac/Users/carolclark/Dev" "${DEV}"
+    good=False
+    if [[ "${DEV}" = "/Users/carolclark/Dev" ]] ; then
+        good=True
+    elif [[ "${DEV}" = "/Volumes/Mac/Users/carolclark/Dev" ]] ; then
+        good=True
+    fi
+	assertTrue "$LINENO: incorrect DEV for carolclark: ${DEV}" $good
 
 	DEV=$(ccInstall --DEV "xxx")
 	assertEquals "$0#$LINENO:" 0 $?
