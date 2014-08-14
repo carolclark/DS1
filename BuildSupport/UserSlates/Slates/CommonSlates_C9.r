@@ -37,7 +37,7 @@ resource restype_Slate (resid_DefaultSlate, "Accessor Default Slate") { {
 			_SlateGlobals_,
 			_CloseSubslate_,
 			Event { "throw error",	"for testing" }, Command { cmd_ThrowError },
-			Event { "Nothing", "for testing" }, Launch { DevApps_"XCode.app", 1 },
+			Event { "Nothing", "for testing" }, Launch { DevApps_"Xcode.app", 1 },
 			Event { "Finder", "launch Finder" }, Launch { "Finder", resid_Finder },
 			Event { "Accessor", "launch Accessor" },
 				Launch { HomeApps_"Accessor.app", resid_DefaultSlate },
