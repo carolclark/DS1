@@ -602,7 +602,11 @@ function DEV {
 			DEV="/Users/${username}/Documents/Projects"
 			;;
 		"carolclark" )
-			DEV="/Volumes/Mac/Users/${username}/Dev"
+            if [[ -e "${HOME}/Dev" ]] ; then
+                DEV="${HOME}/Dev"
+            else
+                DEV="/Volumes/Mac/Users/${username}/Dev"
+            fi
 			;;
 		* )
 			DEV="/Users/${username}/Dev"
