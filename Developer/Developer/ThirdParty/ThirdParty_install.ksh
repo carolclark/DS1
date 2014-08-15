@@ -73,8 +73,8 @@ function shunitInstall {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${HOME}/Library/AppleScripts/ThirdParty" "${CCDev}/shunit"; do
-		msg=$(ccInstall --removeFolder "${folder}")
+	for folder in "${HOME}/Library/Script Libraries" "${CCDev}/shunit"; do		# says ~/Library/AppleScripts somewhere else
+		msg=$(--removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"

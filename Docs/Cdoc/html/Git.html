@@ -98,9 +98,7 @@
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Branch</h5><ul>
-			<li>checkout master; fetch updates<ul>
-				<li>also see <a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a> for more details</li>
-			</ul></li>
+			<li><a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a>: set $cb; checkout master; status; showCompare origin/master; fetch updates</li>
 			<li>checkout branch<ul>
 				<li>pre-existing branch<ul>
 					<li><span class='em'>Update Branch</span><ul>
@@ -121,15 +119,17 @@
 			</ul>
 			<h6>Commit</h6><ul>
 				<li>construct and save commit message; verify modifications (diff --cached)</li>
-				<li>[backup GitHub issues; add, OR if failure checkout original]</li>
 				<li>status: check branch; add / review files to be committed</li>
+				<li>[backup GitHub issues; add, OR if failure checkout original]</li>
 				<li>check for stray spaces (diff --cached --check)</li>
 				<li>review commit msgfile, and check for #issue; commit</li>
 				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
 				<li>check stash list</li>
 				<li>[Update Master from Remotes][Update Branch]</li>
 			</ul>
-			<h6>[Push]</h6>
+			<h6>[Push]</h6><ul>
+				<li>status; verify branch; push</li>
+			</ul>
 		<h5>[Merge]</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 			<li>checkout master; [push]; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>

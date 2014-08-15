@@ -118,6 +118,8 @@ def do_remove_folder_with_contents(targetPath, dry_run=False):
 				out, count = do_remove_fs_item(item, dry_run)
 				info.write(out)
 				remove_count += count
+		import time
+		time.sleep(.5)		# could attempt to remove directory come before deletions of files have been noticed?
 		if os.path.isdir(targetPath):
 			if not is_dry_run:
 				os.rmdir(targetPath)
