@@ -629,7 +629,7 @@ resource restype_Slate (resid_gitTag, "") { {
 resource restype_Slate (resid_gitMerge, "") { {
 	Slate { "Merge",	{
 		Event { "standard", "" },			TypeText { "--no-ff -m \"$mm\" " },
-		Event { "nerge master", "" },		TypeText { "--no-ff -m \"merge master\" master" },
+		Event { "merge master", "" },		TypeText { "--no-ff -m \"merge master\" master" },
 		Event { "no fast forward", "" },	TypeText { "--no-ff " },
 		Event { "no commit", "" },			TypeText { "--no-commit " },
 		Event { "abort", "" },				TypeText { "--abort " },
