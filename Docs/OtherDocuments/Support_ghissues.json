@@ -1,5 +1,46 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/42",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/42/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/42/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/42/events",
+    "html_url": "https://github.com/carolclark/Support/issues/42",
+    "id": 40291251,
+    "number": 42,
+    "title": "simplify ccInstall installation process",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=2",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-08-14T19:40:40Z",
+    "updated_at": "2014-08-15T18:53:58Z",
+    "closed_at": null,
+    "body": "ccInstall.ksh is it tool we rely on to install developer documentation and supporting scripts. It is more complicated than it needs to be, and the code is difficult to edit and upgrade.\r\n\r\n* A large ccInstall function 'processActions' controls most of the installation process, using two callbacks to obtain information about actions to be performed for each file. This would be better handled by having the <target>_install.ksh script call methods from ccInstall before and after where the callbacks are now. Then the action decisions can be incorporated into the _install script.\r\n\r\n    * Around the callbacks, there is code to avoid recalculating directory-based information for each file. This was probably a premature optimization intended for efficiency, and should be dropped.\r\n\r\n    * Action argument is complicated due to trying to handle multiple actions on a single call, which we do not now do. It should be replaced by an action keyword.\r\n\r\n* ccInstall requires each group of files being handled to reside in a separate subtarget target folder. This results in files being organized to suit the installation system. Many of these decisions could be handled by examining the file path, including extension.\r\n\r\n* As it stands now, a typical install script depends on: ccInstall, along with some other .ksh scripts on which it depends; and util.py for remove_folder support used by the clean action. shunit and the python scripts are simple installations that could be done, including the clean action, in a standalone .ksh script. This would remove cross-dependency problems that would otherwise interfere with the bootstrap process to install scripting support.\r\n\r\n* New project Developer has already become much too complex to be consistent with our policy of using simple projects that can be easily reconstructed if the project files are corrupted.. It should be use several subprojects.\r\n\r\n### Tasks\r\n\r\n- [ ] refactor ccInstall to have installation process managed by the calling <target>_install.ksh script\r\n    * *The main thing customized by each install script is determining, for each file, the source and destination files and the action to perform. This is currently handled by callbacks to the <target>_install.ksh script.*\r\n    * *We want to turn this around so that code before and after the callbacks can be called from <target>_install.ksh. Then the callbacks can be replaced by standard code in the script.*\r\n    * *Then there will be code to make decisions based on file path, including extension, that can be extracted from the install script.\r\n    - [ ] replace ccInstall argument actionFlags, function getActions with action keyword, and function getAction to provide for special installation actions, eg. translateCdoc\r\n    - [ ] \r\n"
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/41",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/41/labels{/name}",
     "comments_url": "https://api.github.com/repos/carolclark/Support/issues/41/comments",
@@ -31,6 +72,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -103,6 +145,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -143,6 +186,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -183,6 +227,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -223,6 +268,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -263,6 +309,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -303,6 +350,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -343,6 +391,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -419,6 +468,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -491,6 +541,7 @@
 
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -567,6 +618,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -643,6 +695,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -719,6 +772,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -795,6 +849,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
@@ -889,6 +944,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
@@ -983,6 +1039,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -1037,6 +1094,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": {
       "login": "carolclark",
       "id": 3742721,
@@ -1141,6 +1199,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1217,6 +1276,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -1266,6 +1326,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1342,6 +1403,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1423,6 +1485,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1499,6 +1562,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1575,6 +1639,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1651,6 +1716,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1732,6 +1798,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1808,6 +1875,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1889,6 +1957,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": {
       "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
@@ -1965,6 +2034,7 @@
       }
     ],
     "state": "open",
+    "locked": false,
     "assignee": null,
     "milestone": null,
     "comments": 0,
@@ -1972,86 +2042,5 @@
     "updated_at": "2014-01-03T21:10:40Z",
     "closed_at": null,
     "body": "see [Use Doxygen with GitHub]@(http://rickfoosusa.blogspot.com/2011/10/howto-use-doxygen-with-github.html)"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/4",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/4/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/4/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/4/events",
-    "html_url": "https://github.com/carolclark/Support/issues/4",
-    "id": 12465241,
-    "number": 4,
-    "title": "establish and implement full backup procedure",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=2",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/collaborate",
-        "name": "collaborate",
-        "color": "ffc9b4"
-      },
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
-        "name": "Shell",
-        "color": "bfdadc"
-      }
-    ],
-    "state": "open",
-    "assignee": null,
-    "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "next",
-      "description": "",
-      "creator": {
-        "login": "carolclark",
-        "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=2",
-        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-        "url": "https://api.github.com/users/carolclark",
-        "html_url": "https://github.com/carolclark",
-        "followers_url": "https://api.github.com/users/carolclark/followers",
-        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-        "organizations_url": "https://api.github.com/users/carolclark/orgs",
-        "repos_url": "https://api.github.com/users/carolclark/repos",
-        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "open_issues": 22,
-      "closed_issues": 1,
-      "state": "open",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-07-30T02:41:14Z",
-      "due_on": null
-    },
-    "comments": 0,
-    "created_at": "2013-03-26T18:58:37Z",
-    "updated_at": "2014-06-07T00:58:23Z",
-    "closed_at": null,
-    "body": "Update backup support procedures, including usage of our external volumes\r\n\r\n[2014 Mac Backup Software Comparisons and Reviews](http://mac-backup-software-review.toptenreviews.com) -- probably try ChronoSync\r\n\r\n- [ ] fix archive script - #41"
   }
 ]

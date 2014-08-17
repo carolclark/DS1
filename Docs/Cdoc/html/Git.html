@@ -98,56 +98,45 @@
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Branch</h5><ul>
-			<li>checkout master; fetch updates<ul>
-				<li>also see <a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a> for more details</li>
+			<li><a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a>: checkout master; status; <span class='em'>ShowCompare</span> origin..master; fetch updates<ul>
+				<li><span class='em'>ShowCompare:</span> <span class='mono'>show --name-only; diff --name-status &lt;between&gt;; lg &lt;between&gt;</span>	</li>
 			</ul></li>
 			<li>checkout branch<ul>
 				<li>pre-existing branch<ul>
-					<li><span class='em'>Update Branch</span><ul>
-						<li>checkout branch ($cb); <span class='em'>Merge</span> master; push; recover any stashes</li>
-					</ul></li>
+					<li>checkout branch ($cb)</li>
+					<li><span class='em'>Merge Master: </span>merge master <span class='mono'>(--no-ff -m "merge master")</span>; push; recover any stashes</li>
 				</ul></li>
-				<li>new branch<ul>
-					<li>checkout new branch; set current branch</li>
-					<li><span class='mono'>git push --set-upstream origin $cb</span></li>
+				<li>OR new branch<ul>
+					<li>checkout new branch; set $cb; <span class='mono'>git push --set-upstream origin $cb</span></li>
 				</ul></li>
 				<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
 			</ul></li>
 			<li>create new bot(s) '&lt;targetName&gt; &lt;branchName&gt;'</li>
 		</ul>
-		<h5>Repeat</h5>
-			<h6>Develop</h6><ul>
-				<li>repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</li>
-			</ul>
-			<h6>Commit</h6><ul>
+		<h5>Repeat</h5><div class='indent'>
+			<p><b>Develop:</b> repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</p>
+			<p><b>Commit</b></p><ul>
 				<li>construct and save commit message; verify modifications (diff --cached)</li>
-				<li>[backup GitHub issues; add, OR if failure checkout original]</li>
 				<li>status: check branch; add / review files to be committed</li>
-				<li>check for stray spaces (diff --cached --check)</li>
+				<li>[backup GitHub issues; add, OR if failure checkout original]</li>
+				<li>check for stray spaces (diff --cached --check); status</li>
 				<li>review commit msgfile, and check for #issue; commit</li>
-				<li>status; show --name-only; diff --name-status (compare); lg (compare); [amend (reset --soft lastCommit)]</li>
+				<li>status; <b>ShowCompare</b> master..$cb; [amend (reset --soft lastCommit)]	</li>
 				<li>check stash list</li>
-				<li>[Update Master from Remotes][Update Branch]</li>
+				<li>[[Update Master from Remotes]; Merge Master]</li>
 			</ul>
-			<h6>[Push]</h6>
+			<p><b>[Push]:</b> <span class='body'>status; verify branch; push</span></p>
+		</div>
 		<h5>[Merge]</h5><ul>
 			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-			<li>checkout master; [push]; check for unmerged branches; diff (--name-status) master..$cb; lg master..$cb</li>
-			<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span><ul>
-				<li>after --no-commit: commit, or patch (<span class='mono'>add --interactive</span>) to produce multiple commits</li>
-			</ul></li>
+			<li>checkout master; check for unmerged branches; <span class='em'>ShowCompare</span> master..$cb</li>
+			<li><span class='em'>Update</span> and <span class='em'>Merge Master</span>,</li>
+			<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
 			<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
 			<li>show --name-only; lg</li>
-			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;<ul>
-				<li>to review whether apparent unmerged branch is safe to delete (<span class='mono'>log 'unmerged branch'</span>)</li>
-			</ul></li>
-			<li>retest</li>
-			<li>diff --name-status origin/master..master; lg origin/master..master</li>
-			<li>[[<span class='em'>Push</span>];<ul>
-				<li>delete branch]<ul>
-					<li>check for stashes; delete branch; delete remote: <span class='mono'>push origin :&lt;branchName&gt;</span></li>
-				</ul></li>
-			</ul></li>
+			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;</li>
+			<li>[retest]; <span class='em'>ShowCompare</span> origin..master; push</li>
+			<li>[delete branch]: delete branch; delete remote: <span class='mono'>push origin :&lt;branchName&gt;</span></li>
 		</ul>
 		<h5>[Archive Repository]</h5>
 	</div>

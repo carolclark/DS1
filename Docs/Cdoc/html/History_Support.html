@@ -13,22 +13,23 @@
 <div class='navhead'><a name='Top'></a><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="History_Support.html#hmark_Current">Current</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
 <h1>Support History</h1>
 
-<!-- @topicList "Support HistoryX" "Contents" -->
+<!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 	<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
 		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
+		<!-- @topicItem "simplify ccInstall installation process" "#simplifyCcInstall" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
 		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
 		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
-		<!-- @topicGroup "" "10" -->
+		<!-- @topicGroup "" "11" -->
 		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
-	<!-- @topicGroup "" "12" -->
+	<!-- @topicGroup "" "13" -->
 	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "15" -->
+	<!-- @topicGroup "Topics" "16" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
@@ -57,6 +58,12 @@
 		* reenable tests
 </pre>
 
+<!-- @marker "refactor ccInstall" -->
+<h4 id='simplifyCcInstall'><a href="http://github.com/carolclark/Support/issues/42">(#42)</a>simplify ccInstall installation process</h4><pre>
+	* replace ccInstall function getActions, argument actionFlags with function getAction, action keyword
+		* function ccInstall.getAction
+</pre>
+
 <!-- @marker "AppleScript Testing" -->
 <h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/Support/issues/35">(#35)</a>AppleScript Testing</h4><pre>
 	* move ThirdParty folder (now contains shunit2) to ~/Dev, out of our version control
@@ -69,8 +76,8 @@
 		* update shunit2 to the latest version
 			* Apparently, we already had the latest version, v2.1.6. We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
 	* add third-party AppleScript testing script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
-		* fork <a href="https://github.com/lifepillar/ASUnit">ASUnit</a> into ThirdParty folder
-		* ThirdParty_install.ksh also installs ASUnit script
+		* clone <a href="https://github.com/lifepillar/ASUnit">ASUnit</a> into ThirdParty folder
+		* ThirdParty_install.ksh also installs ASUnit script and documentation
 	* new Compile AppleScripts target; depended on by target Developer
 	* Developer_install installs compiled AppleScripts
 	* Initial AppleScript Tests
