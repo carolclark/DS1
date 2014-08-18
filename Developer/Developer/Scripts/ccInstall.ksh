@@ -25,6 +25,9 @@ ccInstall commandFlag [argument(s)]
 #						copy source file to the specified destination
 #	--translateCdoc		sourceFile destinationPath
 #						translate Cdoc markers in source file and store result at the specified destination
+#	--getAction			sourceRoot targetFolder [actionString]
+#						actionString: from (clean, install, test)
+#						result: from (clean, install, test, doxygen)
 #	--getActions		resultObject sourceRoot targetFolder [actionString]
 #		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
 #			default: -i, or -c if "clean" passed
@@ -226,7 +229,31 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 ' <"$in" >"$out"
 }
 
-#^ 4 === getActions
+#^ 4 === getAction
+function getAction {			# sourceRoot targetFolder actionString
+	sourceRoot="${1}"
+	targetFolder="${2}"
+	if [[ ! -n "${sourceRoot}" ]] || [[ ! -n "${targetFolder}" ]]; then
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --getAction  sourceRoot targetFolder [action]"
+		return
+	fi
+	action="install"
+	if [[ -n ${3} ]] ; then
+		if [[ "${3}" = "install" ]] || [[ "${3}" = "clean" ]] || [[ "${3}" = "test" ]] ; then
+			action="${3}"
+		else
+			errorMessage $RC_InvalidInput "$0#$LINENO:" "invalid action string ${3}"
+			return
+		fi
+	fi
+	if [[ $action = "install" ]] ; then
+		if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
+			action="doxygen"
+		fi
+	fi
+	print "${action}"
+}
+
 function getActions {			# resultObject sourceRoot targetFolder actionString
 	typeset -n resultObj=$1
 	resultObj=(
@@ -627,6 +654,12 @@ function ccInstall {
 	fi
 
 	case "${1}" in
+		"--getAction" )
+			action=$(getAction "${2}" "${3}" "${4}")	# sourceRoot targetFolder [actionString]
+			es=$?
+			print "${action}"
+			return "${es}"
+			;;
 		"--getActions" )
 			getActions "${2}" "${3}" "${4}" "${5}"		# resultObject sourceRoot targetFolder [actionString]
 			return $?

@@ -37,7 +37,36 @@ testCciGeneral() {
 	assertNotNull "$LINENO: expected error message:" "${str}"
 }
 
-#^ --getActions
+#^	--getAction
+testCciGetAction() {
+	action=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}")
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --getAction result' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect default action string ${action}: " "install" "${action}"
+
+	str=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" abc)
+	st=$?
+	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
+	assertNotNull "$LINENO: expected error message" "${str}"
+
+	action=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" "clean")
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --getAction ... clean' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect action string: " "clean" "${action}"
+
+	action=$(ccInstall --getAction "${sourceRoot}" "Doxygen" "install")
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --getAction (doxygenPath) install' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect action string: " "doxygen" "${action}"
+
+
+	str=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" -xyz)
+	st=$?
+	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
+	assertNotNull "$LINENO: error message expected" "${str}"
+}
+
+#^ --getActions		(obsolete; being replaced by getAction)
 testCciGetActions() {
 	typeset str
 

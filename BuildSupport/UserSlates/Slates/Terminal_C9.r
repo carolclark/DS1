@@ -345,7 +345,7 @@ resource restype_Slate (resid_gitBranch, "") { {
 		Event { "verbose", "" },			TypeText { "--verbose " },
 		Event { "move", "" },				TypeText { "--move " },
 		Event { "rename", "" },				TypeText { "--move " },
-		Event { "delete remote", "" },		Sequence{}, TypeText { "git push origin :" }, endSequence{},
+		Event { "delete remote", "" },		Sequence{}, _cancel, TypeText { "git push origin :" }, endSequence{},
 		Event { "delete", "" },				TypeText { "--delete " },
 		Event { "master", "" },				TypeText { "master " },
 		Event { "menu", "" },				Sequence{}, TypeText { "| grep -n \"[a-z,A-Z]\" > $CCDev/tmp/gitbranches; cat $CCDev/tmp/gitbranches" }, _return, endSequence{},
