@@ -37,33 +37,33 @@ testCciGeneral() {
 	assertNotNull "$LINENO: expected error message:" "${str}"
 }
 
-#^ --getActions
-testCciGetActions() {
-	typeset str
-
-	ccInstall --getActions result "${sourceRoot}" "${targetFolder}"
+#^	--getAction
+testCciGetAction() {
+	action=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}")
 	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect default action string: " "i" "${result.actionString}"
+	assertEquals "$LINENO: 'ccInstall --getAction result' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect default action string ${action}: " "install" "${action}"
 
-	str=$(ccInstall --getActions result "${sourceRoot}" "${targetFolder}" abc)
+	str=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" abc)
 	st=$?
-	assertEquals "$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
+	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 	assertNotNull "$LINENO: expected error message" "${str}"
 
-	ccInstall --getActions result "${sourceRoot}" "${targetFolder}" -ciu
+	action=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" "clean")
 	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result ... -ciu' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect action string: " "ciu" "${result.actionString}"
-	assertEquals "$LINENO: expected doInstall=1: " 1 "${result.doInstall}"
-	assertEquals "$LINENO: expected doTest=0: " 0 "${result.doTest}"
+	assertEquals "$LINENO: 'ccInstall --getAction ... clean' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect action string: " "clean" "${action}"
 
-	str=$(ccInstall --getActions result "${sourceRoot}" "${targetFolder}" -xyz)
+	action=$(ccInstall --getAction "${sourceRoot}" "Doxygen" "install")
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --getAction (doxygenPath) install' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect action string: " "doxygen" "${action}"
+
+
+	str=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" -xyz)
 	st=$?
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 	assertNotNull "$LINENO: error message expected" "${str}"
-	errstr="--getActions xyz: 3 invalid action flags \[RC_InvalidInput:#67]"
-	assertNotEquals "$LINENO: incorrect error message" "${str%${errstr}}" "${str}"
 }
 
 #^ Paths

@@ -9,9 +9,9 @@
 
 NAME='ccInstall -- installation script and supporting functions'
 USAGE='
-ccInstall sourceRoot targetFolder [actionFlags]
+ccInstall sourceRoot targetFolder [action]
 #	build the specified project target
-#		actionFlags: [-[citud]+] - actions requested (clean, install, test, upload, doxygen); default: -i
+#		action: action requested (clean, install, test); default: install
 ccInstall commandFlag [argument(s)]
 #	--setPaths			set derived paths from arguments
 #	--get<Path>			sourceRoot targetFolder
@@ -25,6 +25,9 @@ ccInstall commandFlag [argument(s)]
 #						copy source file to the specified destination
 #	--translateCdoc		sourceFile destinationPath
 #						translate Cdoc markers in source file and store result at the specified destination
+#	--getAction			sourceRoot targetFolder [actionString]
+#						actionString: from (clean, install, test)
+#						result: from (clean, install, test, doxygen)
 #	--getActions		resultObject sourceRoot targetFolder [actionString]
 #		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
 #			default: -i, or -c if "clean" passed
@@ -36,8 +39,8 @@ ccInstall commandFlag [argument(s)]
 #	--removeFolder		removes contents and folder for the folder specified
 #	--runShunitTests	folder
 #						runs all shunit tests found in folder
-#	--processActions	callbackScript sourceRoot targetFolder actionFlags
-#	--ccInstall			sourceRoot targetFolder actionFlags
+#	--processAction	callbackScript sourceRoot targetFolder action
+#	--ccInstall			sourceRoot targetFolder action
 #						performs specified action on targetFolder
 #	--DEV				short user name (name of $HOME folder)
 #						return path containing development projects for this user
@@ -226,7 +229,31 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 ' <"$in" >"$out"
 }
 
-#^ 4 === getActions
+#^ 4 === getAction
+function getAction {			# sourceRoot targetFolder actionString
+	sourceRoot="${1}"
+	targetFolder="${2}"
+	if [[ ! -n "${sourceRoot}" ]] || [[ ! -n "${targetFolder}" ]]; then
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --getAction  sourceRoot targetFolder [action]"
+		return
+	fi
+	action="install"
+	if [[ -n ${3} ]] ; then
+		if [[ "${3}" = "install" ]] || [[ "${3}" = "clean" ]] || [[ "${3}" = "test" ]] ; then
+			action="${3}"
+		else
+			errorMessage $RC_InvalidInput "$0#$LINENO:" "invalid action string ${3}"
+			return
+		fi
+	fi
+	if [[ $action = "install" ]] ; then
+		if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
+			action="doxygen"
+		fi
+	fi
+	print "${action}"
+}
+
 function getActions {			# resultObject sourceRoot targetFolder actionString
 	typeset -n resultObj=$1
 	resultObj=(
@@ -395,35 +422,24 @@ function removeFolder {
 	return 0
 }
 
-#^ 7 === processActions
-function processActions {
+#^ 7 === processAction
+function processAction {
 	callbackScript=""
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
 		callbackScript="${1}"
 		sourceRoot="${2}"
 		targetFolder="${3}"
-		actionFlags="${4}"
+		actionIn="${4}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processActions callbackScript sourceRoot targetFolder [-actionFlags]"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processAction callbackScript sourceRoot targetFolder [action]"
 		return
 	fi
-	getActions actions "${sourceRoot}" "${targetFolder}" ${actionFlags}
-	st=$?
-	if [[ ${st} > 0 ]] ; then
-		errorMessage ${st} "$0#$LINENO:" "could not read action flags"
-		return
-	fi
-
-	st=$?
-	if [[ ${st} > 0 ]] ; then
-		errorMessage ${st} "$0#$LINENO:" "ccInstall ${callbackScript} ${sourceRoot} ${targetFolder} failed"
-		return
-	fi
+	action=$(getAction "${sourceRoot}" "${targetFolder}" ${actionIn})
 
 # clean
-	if [[ ${actions.doClean} > 0 ]] ; then
+	if [[ ${action} = "clean" ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}" "${action}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: ${callbackScript} --cleanTarget failed: ${msg}"
@@ -441,9 +457,9 @@ function processActions {
 	fi
 
 # doxygen
-	if [[ ${actions.doDoxygen} > 0 ]] ; then
+	if [[ ${action} = "doxygen" ]] ; then
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "Doxygen")
+		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "Doxygen")
 		installName="${outputDir##*/}"
 		print "== installing ${installName} documentation"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
@@ -491,7 +507,7 @@ function processActions {
 	fi
 
 # install
-	if [[ ${actions.doInstall} > 0 ]] ; then
+	if [[ ${action} = "install" ]] ; then
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
 		iofile=$(findSources "${sourceRoot}" "${targetFolder}")
 		typeset -i failcnt=0
@@ -500,7 +516,7 @@ function processActions {
 			sourceFolder="${fl%%/*}"
 			fpath="${fl#*/}"
 			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
-				msg=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}")
+				msg=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "${sourceFolder}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -518,7 +534,7 @@ function processActions {
 				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 			else
 				print -n "${fpath}: "
-				msg=$("${callbackScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}" "${fpath}" "${destination}")
+				msg=$("${callbackScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${action}" "${sourceFolder}" "${fpath}" "${destination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -627,6 +643,12 @@ function ccInstall {
 	fi
 
 	case "${1}" in
+		"--getAction" )
+			action=$(getAction "${2}" "${3}" "${4}")	# sourceRoot targetFolder [actionString]
+			es=$?
+			print "${action}"
+			return "${es}"
+			;;
 		"--getActions" )
 			getActions "${2}" "${3}" "${4}" "${5}"		# resultObject sourceRoot targetFolder [actionString]
 			return $?
@@ -702,7 +724,7 @@ function ccInstall {
 			return
 			;;
 		* )
-			msg=$(processActions "${1}" "${2}" "${3}" "${4}")	# callbackScript sourceRoot targetFolder actionString
+			msg=$(processAction "${1}" "${2}" "${3}" "${4}")	# callbackScript sourceRoot targetFolder action
 			es=$?
 			print "${msg}"
 			return "${es}"
