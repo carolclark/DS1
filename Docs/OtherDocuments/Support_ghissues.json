@@ -1,5 +1,46 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/43",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/43/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/43/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/43/events",
+    "html_url": "https://github.com/carolclark/Support/issues/43",
+    "id": 40441270,
+    "number": 43,
+    "title": "upgrade to Mavericks 10.9.4",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=2",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-08-17T19:28:12Z",
+    "updated_at": "2014-08-17T19:28:12Z",
+    "closed_at": null,
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/42",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/42/labels{/name}",
     "comments_url": "https://api.github.com/repos/carolclark/Support/issues/42/comments",
@@ -999,9 +1040,9 @@
     },
     "comments": 0,
     "created_at": "2013-05-25T19:49:55Z",
-    "updated_at": "2014-05-02T23:37:59Z",
+    "updated_at": "2014-08-18T20:04:00Z",
     "closed_at": null,
-    "body": "*Xcode project files are fragile and easily corrupted.  According to forum discussions, corrupted project files sometimes require rebuilding from scratch, and contain information that is not saved elsewhere.*\r\n*The problem is compounded by version control, since any change to the files or settings of a project causes the project to be changed, and therefore possibly subject to merge conflicts. This is of particular concern for Punkin, which has an Artist collaborator.*\r\n*We set the git attributes for project files to `merge=union`, which helps but does not solve the problem.*\r\n*In addition, the new Continuous Integration support expects targets to have their test targets attached, which is not always what we have done.*\r\n\r\n* set up to support cross-product references\r\n* switch to Base Internationalization\r\n\t* *for compatibility with new project template's file structure; new localization technique uses a different organization for nib files*\r\n* reorganize so:\r\n    * repositories contain multiple focused projects as indicated\r\n    * files are organized:\r\n        * within Projects, by target\r\n        * within Targets, with subfolders Classes/ (AppDelegate, Controllers, Models, Helpers, ...),  Resources/ (Nibs, Assets, DataModels, ...), Other Sources\r\n    * each main target has a corresponding test target\r\n         * also add targets AllTargets for now (until CI implemented)\r\n* minimize dependence on information stored in project files\r\n    * use configuration files to replace most build settings\r\n    * document each Repository's Projects, Targets and dependencies\r\n* use modules to replace pch files (ObjC only?) *What's New in Xcode 5 13#400@22:20*\r\n* have Accessor build use cross-product reference to handle the dependency on Support/UserSlates\r\n\r\n- [ ] carolclark/Punkin#7\r\n- [ ] carolclark/Accessor#10\r\n\r\nSee\r\n* [Code Organization in Xcode Projects (akosma)](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/)\r\n* [Merging Xcode project files](http://stackoverflow.com/questions/4022362/merging-xcode-project-files)\r\n* [Google example config files](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/XcodeConfig/)\r\n* [Easy, Modular: Static Libraries and Cross-Project References](http://www.clintharris.net/2009/iphone-app-shared-libraries/)\r\n* [Xcode 5 and iOS 7: Architecture and Valid architectures](http://stackoverflow.com/questions/18913906/xcode-5-and-ios-7-architecture-and-valid-architectures)\r\n"
+    "body": "*Xcode project files are fragile and easily corrupted.  According to forum discussions, corrupted project files sometimes require rebuilding from scratch, and contain information that is not saved elsewhere.*\r\n*The problem is compounded by version control, since any change to the files or settings of a project causes the project to be changed, and therefore possibly subject to merge conflicts. This is of particular concern for Punkin, which has an Artist collaborator.*\r\n*We set the git attributes for project files to `merge=union`, which helps but does not solve the problem.*\r\n*In addition, the new Continuous Integration support expects targets to have their test targets attached, which is not always what we have done.*\r\n\r\n* set up to support cross-product references\r\n* switch to Base Internationalization\r\n\t* *for compatibility with new project template's file structure; new localization technique uses a different organization for nib files*\r\n* reorganize so:\r\n    * repositories contain multiple focused projects as indicated\r\n    * files are organized:\r\n        * within Projects, by target\r\n        * within Targets, with subfolders Classes/ (AppDelegate, Controllers, Models, Helpers, ...),  Resources/ (Nibs, Assets, DataModels, ...), Other Sources\r\n    * each main target has a corresponding test target\r\n         * also add targets AllTargets for now (until CI implemented)\r\n* minimize dependence on information stored in project files\r\n    * use configuration files to replace most build settings\r\n    * document each Repository's Projects, Targets and dependencies\r\n* use modules to replace pch files (ObjC only?) *What's New in Xcode 5 13#400@22:20*\r\n* have Accessor build use cross-product reference to handle the dependency on Support/UserSlates\r\n\r\n- [ ] carolclark/Punkin#7\r\n- [ ] carolclark/Accessor#10\r\n- [ ] for non-Cocoa targets, consider using NSTask from Cocoa file to call the tests; see [Cocoa/ Objective-C Shell Command Line Execution](http://stackoverflow.com/questions/1475182/cocoa-objective-c-shell-command-line-execution)\r\n\r\nSee\r\n* [Code Organization in Xcode Projects (akosma)](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/)\r\n* [Merging Xcode project files](http://stackoverflow.com/questions/4022362/merging-xcode-project-files)\r\n* [Google example config files](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/XcodeConfig/)\r\n* [Easy, Modular: Static Libraries and Cross-Project References](http://www.clintharris.net/2009/iphone-app-shared-libraries/)\r\n* [Xcode 5 and iOS 7: Architecture and Valid architectures](http://stackoverflow.com/questions/18913906/xcode-5-and-ios-7-architecture-and-valid-architectures)\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/22",
@@ -1997,50 +2038,5 @@
     "updated_at": "2014-01-03T17:54:34Z",
     "closed_at": null,
     "body": "*We now have enough experience with Objective-C to have an idea which advice to take.*\n\n* Establish initial standards; [akosma](http://wiki.akosma.com/Objective-C_Code_Standards) is probably a good starting point.\n    * Use Category Private, in a separate header included in both implementation and unit test files, to support Unit Testing while keeping private information private. See [Unit testing of private methods in Xcode](http://stackoverflow.com/questions/1098550/unit-testing-of-private-methods-in-xcode)\n\n[O'Reilly Webcast: Developing Effective OCUnit and UI Automation Testing for iOS](http://m.youtube.com/watch?v=5SycebOn7iY&desktop_uri=%2Fwatch%3Fv%3D5SycebOn7iY) (Code coverage at 21:20)"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/6",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/6/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/6/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/6/events",
-    "html_url": "https://github.com/carolclark/Support/issues/6",
-    "id": 13086031,
-    "number": 6,
-    "title": "consider making Doxygen and Cdoc docs available from GitHub",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=2",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/docs",
-        "name": "docs",
-        "color": "fad8c7"
-      }
-    ],
-    "state": "open",
-    "locked": false,
-    "assignee": null,
-    "milestone": null,
-    "comments": 0,
-    "created_at": "2013-04-11T19:54:18Z",
-    "updated_at": "2014-01-03T21:10:40Z",
-    "closed_at": null,
-    "body": "see [Use Doxygen with GitHub]@(http://rickfoosusa.blogspot.com/2011/10/howto-use-doxygen-with-github.html)"
   }
 ]

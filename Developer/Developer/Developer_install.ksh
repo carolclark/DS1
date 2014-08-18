@@ -146,6 +146,9 @@ function cleanTarget {
 	if [[ ${buildIsClean} > 0 ]] ; then
 		return
 	fi
+	if [[ -e "${scriptsFolder}/bin/.kshrc" ]] ; then
+		rm "${scriptsFolder}/bin/.kshrc"
+	fi
 	for folder in "${servicesFolder}" "${applescriptsFolder}"  "${scriptsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
