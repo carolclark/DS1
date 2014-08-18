@@ -473,7 +473,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "Developer/Developer_install.ksh \"${SRCROOT}\" Developer -t";
+			shellScript = "Developer/Developer_install.ksh \"${SRCROOT}\" Developer test";
 			showEnvVarsInLog = 0;
 		};
 		67B35C3D19256B1300C0C9A7 /* Python Tests */ = {

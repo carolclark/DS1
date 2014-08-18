@@ -66,35 +66,6 @@ testCciGetAction() {
 	assertNotNull "$LINENO: error message expected" "${str}"
 }
 
-#^ --getActions		(obsolete; being replaced by getAction)
-testCciGetActions() {
-	typeset str
-
-	ccInstall --getActions result "${sourceRoot}" "${targetFolder}"
-	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect default action string: " "i" "${result.actionString}"
-
-	str=$(ccInstall --getActions result "${sourceRoot}" "${targetFolder}" abc)
-	st=$?
-	assertEquals "$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
-	assertNotNull "$LINENO: expected error message" "${str}"
-
-	ccInstall --getActions result "${sourceRoot}" "${targetFolder}" -ciu
-	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result ... -ciu' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect action string: " "ciu" "${result.actionString}"
-	assertEquals "$LINENO: expected doInstall=1: " 1 "${result.doInstall}"
-	assertEquals "$LINENO: expected doTest=0: " 0 "${result.doTest}"
-
-	str=$(ccInstall --getActions result "${sourceRoot}" "${targetFolder}" -xyz)
-	st=$?
-	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
-	assertNotNull "$LINENO: error message expected" "${str}"
-	errstr="--getActions xyz: 3 invalid action flags \[RC_InvalidInput:#67]"
-	assertNotEquals "$LINENO: incorrect error message" "${str%${errstr}}" "${str}"
-}
-
 #^ Paths
 testCciPaths() {
 	str=$(ccInstall --getSourceRoot)
