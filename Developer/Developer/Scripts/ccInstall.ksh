@@ -7,6 +7,15 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+#pragma mark === Markers ===
+# 1 Paths setPaths getPath
+# 3 actions updateLastBuilt clearLastBuilt copyfile translateCdoc unusedCdocTranslations
+# 4 getAction
+# 6 runShunitTests
+# 5 Find
+# 7 processAction
+# 8 ccInstall
+
 NAME='ccInstall -- installation script and supporting functions'
 USAGE='
 ccInstall sourceRoot targetFolder [action]
@@ -24,14 +33,10 @@ ccInstall commandFlag [argument(s)]
 #	--copyFile			sourceFile destinationPath
 #						copy source file to the specified destination
 #	--translateCdoc		sourceFile destinationPath
-#						translate Cdoc markers in source file and store result at the specified destination
+#						translate Cdoc markers in source file; store result at destination
 #	--getAction			sourceRoot targetFolder [actionString]
 #						actionString: from (clean, install, test)
 #						result: from (clean, install, test, doxygen)
-#	--getActions		resultObject sourceRoot targetFolder [actionString]
-#		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
-#			default: -i, or -c if "clean" passed
-#			resultObject: object to contain results
 #	--findTests 		testPath
 #		result: 		path to file containing list of shunit tests on <testPath>
 #	--findSources		sourceRoot targetFolder
@@ -54,15 +59,14 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 
-#^ 1 === top
+#pragma mark 1 === Paths
 
 sourceRoot=""			# path to folder containing project (Xcode's $SRCROOT)
 targetFolder=""			# path from sourceRoot to folder containing sources
 targetName=""			# name of Xcode target
 lastbuilt=""			# path to internal file that knows when a target was last built
 
-#^ 2 === Paths
-#^ setPaths
+#pragma mark setPaths
 function setPaths {
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -73,7 +77,7 @@ function setPaths {
 	lastbuilt="${CCDev}/build_output/${workspaceName}/${sourceRoot##*/}/${targetName}.lastbuilt"
 }
 
-#^ getPath
+#pragma mark getPath
 function getPath {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
 		command="${1}"
@@ -96,8 +100,8 @@ function getPath {
 	print "${path}"
 }
 
-#^ 3 === actions
-#^ updateLastbuilt
+#pragma mark 3 === actions
+#pragma mark updateLastbuilt
 function updateLastbuilt {
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -113,7 +117,7 @@ function updateLastbuilt {
 	return ${st}
 }
 
-#^ clearLastbuilt
+#pragma mark clearLastbuilt
 function clearLastbuilt {
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -134,7 +138,7 @@ function clearLastbuilt {
 	return ${st}
 }
 
-#^ copyFile
+#pragma mark copyFile
 function copyFile {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		sourceForCopy="${1}"
@@ -162,7 +166,7 @@ function copyFile {
 	return 0
 }
 
-#^ translateCdoc
+#pragma mark translateCdoc
 function translateCdoc {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		in="${1}"
@@ -209,7 +213,7 @@ function translateCdoc {
 	return 0
 }
 
-#^ unused Cdoc translations -- saved in case needed later
+#pragma mark unused Cdoc translations -- saved in case needed later
 function unused {
 sed '
 s|<!-- @doctype -->|<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">|
@@ -229,7 +233,7 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 ' <"$in" >"$out"
 }
 
-#^ 4 === getAction
+#pragma mark 4 === getAction
 function getAction {			# sourceRoot targetFolder actionString
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -252,60 +256,6 @@ function getAction {			# sourceRoot targetFolder actionString
 		fi
 	fi
 	print "${action}"
-}
-
-function getActions {			# resultObject sourceRoot targetFolder actionString
-	typeset -n resultObj=$1
-	resultObj=(
-		actionString=""
-		doClean=0
-		doInstall=0
-		doTest=0
-		doUpload=0
-		doDoxygen=0
-	)
-	sourceRoot="${2}"
-	targetFolder="${3}"
-	if [[ ! -n "${sourceRoot}" ]] || [[ ! -n "${targetFolder}" ]]; then
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --getActions resultObject sourceRoot targetFolder actionString"
-		return
-	fi
-	actionString="i"
-	if [[ -n ${4} ]] ; then
-		if [[ "${4}" = "clean" ]] ; then
-			actionString="c"
-		else
-			actionString="${4#-}"
-			if [[ ${actionString} = ${4} ]] ; then
-				errorMessage $RC_SyntaxError "$0#$LINENO:" "actionString $4: expected first character '-'"
-				return
-			fi
-		fi
-	fi
-	resultObj.actionString=${actionString}
-	typeset -i i=${#actionString}
-	typeset -i errorCount=0
-	while [[ $i > 0 ]] ; do
-		ch=$(print ${actionString} | cut -c ${i})
-		case "${ch}" in
-			"c" )	resultObj.doClean=1;;
-			"i" )
-				if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
-					resultObj.doDoxygen=1
-				else
-					resultObj.doInstall=1
-				fi
-				;;
-			"t" )	resultObj.doTest=1;;
-			"u" )	resultObj.doUpload=1;;
-			* )		errorCount+=1;;
-		esac
-		i=i-1
-	done
-	if [[ ${errorCount} > 0 ]] ; then
-		errorMessage $RC_InvalidInput "$0#$LINENO:" "--getActions ${actionString}: ${errorCount} invalid action flags"
-		return
-	fi
 }
 
 #pragma mark 6 === runShunitTests
@@ -352,7 +302,7 @@ function runShunitTests {
 
 }
 
-#^ 5 === Find ...
+#pragma mark 5 === Find ...
 function findTests {
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
@@ -422,7 +372,7 @@ function removeFolder {
 	return 0
 }
 
-#^ 7 === processAction
+#pragma mark 7 === processAction
 function processAction {
 	callbackScript=""
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
@@ -435,11 +385,16 @@ function processAction {
 		return
 	fi
 	action=$(getAction "${sourceRoot}" "${targetFolder}" ${actionIn})
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		errorMessage ${st} "$0#$LINENO:" "error: function getAction failed: ${action}"
+		return
+	fi
 
 # clean
 	if [[ ${action} = "clean" ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}" "${action}")
+		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: ${callbackScript} --cleanTarget failed: ${msg}"
@@ -635,7 +590,7 @@ function SHUnit {
 	print "${CCDev}/shunit/src/shunit2"
 }
 
-#^ 8 === ccInstall
+#pragma mark 8 === ccInstall
 function ccInstall {
 	if [[ $# = 0 ]] ; then
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "$0: missing commandFlag"
@@ -648,10 +603,6 @@ function ccInstall {
 			es=$?
 			print "${action}"
 			return "${es}"
-			;;
-		"--getActions" )
-			getActions "${2}" "${3}" "${4}" "${5}"		# resultObject sourceRoot targetFolder [actionString]
-			return $?
 			;;
 		"--get"* )
 			val=$(getPath "${1}" "${2}" "${3}")			# command sourceRoot targetFolder
