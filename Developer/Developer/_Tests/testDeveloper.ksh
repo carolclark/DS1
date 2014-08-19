@@ -20,7 +20,7 @@ testInstallation() {
 	#	if [[ ${USER} = carolclark ]] ; then
 	#		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
 	#	elif [[ ${USER} = lauramartinez ]] ; then
-	#		assertEquals "$LINENO"': incorrect $DEV' "{HOME}/Documents/Projects" ${dev}
+	#		assertEquals "$LINENO"': incorrect $DEV' "${HOME}/Documents/Projects" ${dev}
 	#	else
 	#		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
 	#	fi

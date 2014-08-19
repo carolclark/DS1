@@ -8,13 +8,14 @@
 #  Confidential and Proprietary.
 
 #pragma mark === Markers ===
-# 1 Paths setPaths getPath
-# 3 actions updateLastBuilt clearLastBuilt copyfile translateCdoc unusedCdocTranslations
-# 4 getAction
-# 6 runShunitTests
-# 5 Find
-# 7 processAction
-# 8 ccInstall
+# 1 setPaths getPath DEV SHUnit
+# 2 updateLastBuilt clearLastBuilt copyfile
+# 3 runShunitTests
+# 4 removeFolder
+# 5 translateCdoc unusedCdocTranslations
+# 6 (reserved - doxygen)
+# 8 getAction findTests findSources processAction
+# 9 ccInstall
 
 NAME='ccInstall -- installation script and supporting functions'
 USAGE='
@@ -100,7 +101,39 @@ function getPath {
 	print "${path}"
 }
 
-#pragma mark 3 === actions
+#pragma mark DEV
+function DEV {
+	if [[ -n "${1}" ]] ; then
+		username="${1}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --DEV user"
+		return
+	fi
+
+	case "${username}" in
+		"lauramartinez" )
+			DEV="/Users/${username}/Documents/Projects"
+			;;
+		"carolclark" )
+            if [[ -e "${HOME}/Dev" ]] ; then
+                DEV="${HOME}/Dev"
+            else
+                DEV="/Volumes/Mac/Users/${username}/Dev"
+            fi
+			;;
+		* )
+			DEV="/Users/${username}/Dev"
+			;;
+	esac
+	print "${DEV}"
+}
+
+#pragma mark SHUnit
+function SHUnit {
+	print "${CCDev}/shunit/src/shunit2"
+}
+
+#pragma mark 2 === Install
 #pragma mark updateLastbuilt
 function updateLastbuilt {
 	sourceRoot="${1}"
@@ -166,6 +199,75 @@ function copyFile {
 	return 0
 }
 
+#pragma mark 3 === runShunitTests
+function runShunitTests {
+	if [[ -n "${1}" ]] ; then
+		testPath="${1}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall runShunitTests testPath"
+		return
+	fi
+
+	errout="$CCDev/tmp/errout"
+	errinfo="$CCDev/tmp/errinfo"
+	errtmp="$CCDev/tmp/errtmp"
+	iofile=$(findTests "${testPath}")
+	typeset -i failcnt=0
+	typeset -i errcnt=0
+	echo "" > "$errinfo"
+
+	while read ln ; do
+		print "== ${testPath}/${ln}"
+		"${testPath}/${ln}" 2>"$errout"
+		st=$?
+		if [[ "${st}" > 0 ]] ; then
+			failcnt=$failcnt+1
+		fi
+		grep -v "EXPECTED ERROR" $errout > $errtmp
+		if [[ $(cat "$errtmp") != "" ]] ; then										# file is not empty
+			if [[ $(cat "$errtmp" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
+							# appears that long EXPECTED ERROR can output an extra CR into $errout
+				errcnt=$errcnt+1
+				cat $errtmp >> $errinfo
+			fi
+		fi
+	done < "${iofile}"
+	if [[ $failcnt > 0 ]] ; then
+		echo "FAILURES ($failcnt test files encountered failing tests)"
+	fi
+	if [[ $errcnt > 0 ]] ; then
+		echo "ERRORS ($errcnt test files encountered execution errors):"
+		cat "$errinfo"
+	fi
+	return $(($failcnt+$errcnt))
+
+}
+
+#pragma mark 4 === Clean
+#pragma mark removeFolder
+function removeFolder {
+	if [[ -n "${1}" ]] ; then
+		check="${1#${HOME}}"
+		if [[ "${1}" = "${check}" ]] ; then
+			errorMessage $RC_InvalidArgument "$0#$LINENO:" "removeFolder expects folder inside ${HOME}"
+		else
+			folder="${1}"
+		fi
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall folder"
+		return
+	fi
+	if [[ -e "${folder}" ]]; then			# folder exists
+		if ! [[ -d "${folder}" ]]; then
+			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
+			return
+		fi
+		/usr/local/bin/python3 "${CCDev}/bin/python/util.py" "remove_folder" "${folder}"
+	fi
+	return 0
+}
+
+#pragma mark 5 === Cdoc
 #pragma mark translateCdoc
 function translateCdoc {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
@@ -233,7 +335,8 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 ' <"$in" >"$out"
 }
 
-#pragma mark 4 === getAction
+#pragma mark 8 === process action
+#pragma mark getAction
 function getAction {			# sourceRoot targetFolder actionString
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -258,51 +361,7 @@ function getAction {			# sourceRoot targetFolder actionString
 	print "${action}"
 }
 
-#pragma mark 6 === runShunitTests
-function runShunitTests {
-	if [[ -n "${1}" ]] ; then
-		testPath="${1}"
-	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall runShunitTests testPath"
-		return
-	fi
-
-	errout="$CCDev/tmp/errout"
-	errinfo="$CCDev/tmp/errinfo"
-	errtmp="$CCDev/tmp/errtmp"
-	iofile=$(findTests "${testPath}")
-	typeset -i failcnt=0
-	typeset -i errcnt=0
-	echo "" > "$errinfo"
-
-	while read ln ; do
-		print "== ${testPath}/${ln}"
-		"${testPath}/${ln}" 2>"$errout"
-		st=$?
-		if [[ "${st}" > 0 ]] ; then
-			failcnt=$failcnt+1
-		fi
-		grep -v "EXPECTED ERROR" $errout > $errtmp
-		if [[ $(cat "$errtmp") != "" ]] ; then										# file is not empty
-			if [[ $(cat "$errtmp" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
-							# appears that long EXPECTED ERROR can output an extra CR into $errout
-				errcnt=$errcnt+1
-				cat $errtmp >> $errinfo
-			fi
-		fi
-	done < "${iofile}"
-	if [[ $failcnt > 0 ]] ; then
-		echo "FAILURES ($failcnt test files encountered failing tests)"
-	fi
-	if [[ $errcnt > 0 ]] ; then
-		echo "ERRORS ($errcnt test files encountered execution errors):"
-		cat "$errinfo"
-	fi
-	return $(($failcnt+$errcnt))
-
-}
-
-#pragma mark 5 === Find ...
+#pragma mark findTests
 function findTests {
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
@@ -321,6 +380,7 @@ function findTests {
 	print "${iofile}"
 }
 
+# pragma mark findSources
 function findSources {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		sourceRoot="${1}"
@@ -350,29 +410,7 @@ function findSources {
 	print "${iofile}"
 }
 
-function removeFolder {
-	if [[ -n "${1}" ]] ; then
-		check="${1#${HOME}}"
-		if [[ "${1}" = "${check}" ]] ; then
-			errorMessage $RC_InvalidArgument "$0#$LINENO:" "removeFolder expects folder inside ${HOME}"
-		else
-			folder="${1}"
-		fi
-	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall folder"
-		return
-	fi
-	if [[ -e "${folder}" ]]; then			# folder exists
-		if ! [[ -d "${folder}" ]]; then
-			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
-			return
-		fi
-		/usr/local/bin/python3 "${CCDev}/bin/python/util.py" "remove_folder" "${folder}"
-	fi
-	return 0
-}
-
-#pragma mark 7 === processAction
+#pragma mark processAction
 function processAction {
 	callbackScript=""
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
@@ -560,37 +598,7 @@ function processAction {
 	fi
 }
 
-function DEV {
-	if [[ -n "${1}" ]] ; then
-		username="${1}"
-	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --DEV user"
-		return
-	fi
-
-	case "${username}" in
-		"lauramartinez" )
-			DEV="/Users/${username}/Documents/Projects"
-			;;
-		"carolclark" )
-            if [[ -e "${HOME}/Dev" ]] ; then
-                DEV="${HOME}/Dev"
-            else
-                DEV="/Volumes/Mac/Users/${username}/Dev"
-            fi
-			;;
-		* )
-			DEV="/Users/${username}/Dev"
-			;;
-	esac
-	print "${DEV}"
-}
-
-function SHUnit {
-	print "${CCDev}/shunit/src/shunit2"
-}
-
-#pragma mark 8 === ccInstall
+#pragma mark 9 === ccInstall
 function ccInstall {
 	if [[ $# = 0 ]] ; then
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "$0: missing commandFlag"
