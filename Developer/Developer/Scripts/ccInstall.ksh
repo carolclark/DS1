@@ -14,7 +14,7 @@
 # 4 removeFolder
 # 5 translateCdoc unusedCdocTranslations
 # 6 (reserved - doxygen)
-# 8 getAction findTests findSources processAction
+# 8 getAction findTests findSources installOneFile processAction
 # 9 ccInstall
 
 NAME='ccInstall -- installation script and supporting functions'
@@ -41,11 +41,12 @@ ccInstall commandFlag [argument(s)]
 #	--findTests 		testPath
 #		result: 		path to file containing list of shunit tests on <testPath>
 #	--findSources		sourceRoot targetFolder
-#		result: 		path to file containing list of source files for <sourceRoot>/<targetFolder>
+#		result: 		path to file containing natural-order list of source files for <sourceRoot>/<targetFolder>
 #	--removeFolder		removes contents and folder for the folder specified
 #	--runShunitTests	folder
 #						runs all shunit tests found in folder
-#	--processAction	callbackScript sourceRoot targetFolder action
+#	--installOneFile	installAction (install | translateCdoc | ignore) source destination
+#	--processAction		callbackScript sourceRoot targetFolder action
 #	--ccInstall			sourceRoot targetFolder action
 #						performs specified action on targetFolder
 #	--DEV				short user name (name of $HOME folder)
@@ -341,8 +342,9 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 ' <"$in" >"$out"
 }
 
-#pragma mark 8 === process action
-#pragma mark getAction
+#pragma mark 8 === Action
+# inside: 1 getAction; 2 findTests; 3 findSources; 4 installOneFile; 5 processAction
+#pragma mark 1 --- getAction
 function getAction {			# sourceRoot targetFolder actionString
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -367,7 +369,7 @@ function getAction {			# sourceRoot targetFolder actionString
 	print "${action}"
 }
 
-#pragma mark findTests
+#pragma mark 2 --- findTests
 function findTests {
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
@@ -377,7 +379,7 @@ function findTests {
 	fi
 
 	origdir=$(pwd)
-	iofile="${CCDev}/tmp/found"
+	iofile=$(mktemp -t ccInstall_tests.$$)
 	cd "${testPath}"
 	find . -type f -and -name "test*.ksh"| sed 's|\./||' > "${iofile}"
 	chmod a+r "${iofile}"
@@ -386,7 +388,7 @@ function findTests {
 	print "${iofile}"
 }
 
-# pragma mark findSources
+# pragma mark 3 --- findSources
 function findSources {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		sourceRoot="${1}"
@@ -397,7 +399,7 @@ function findSources {
 	fi
 
 	origdir=$(pwd)
-	iofile="${CCDev}/tmp/sources"
+	iofile=$(mktemp -t ccInstall_sources.$$)
 	cd "${sourceRoot}/${targetFolder}"
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
@@ -499,15 +501,8 @@ function processAction {
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: ${callbackScript} --cleanTarget failed: ${msg}"
 			return
-		else
-			print ${msg}
 		fi
-		lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
-		st=$?
-		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-			return
-		fi
+		print ${msg}
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 	fi
 
@@ -564,7 +559,7 @@ function processAction {
 # install
 	if [[ ${action} = "install" ]] ; then
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
-		iofile=$(findSources "${sourceRoot}" "${targetFolder}")
+		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
 		typeset -i failcnt=0
 		prevFolder=""
 		while read fl ; do
