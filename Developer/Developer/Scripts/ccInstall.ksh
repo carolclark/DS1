@@ -201,6 +201,12 @@ function copyFile {
 
 #pragma mark 3 === runShunitTests
 function runShunitTests {
+#	When shunit tests encounter an error, output is sent to stdout and a nonzero exit status is returned.
+#	The tests themselves may also also throw errors. Messages for those cases should include the text "EXPECTED ERROR".
+#	Here:
+#		failcnt: number of test files that encounter failures, +1 if execution errors are encountered
+#		errout: file to collect stderr output
+#	returns nonzero exit status if test failures are encountered or messages not including "EXPECTED ERROR" are sent to stderr.
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
 	else
@@ -410,7 +416,63 @@ function findSources {
 	print "${iofile}"
 }
 
-#pragma mark processAction
+#pragma mark 4 --- installOneFile
+function installOneFile {
+	missingArgMessage="USAGE: ccInstall --installOneFile action source destination"
+	msg=""
+	if [[ -n "${1}" ]] ; then
+		action="${1}"
+		shift
+	else
+		msg=$(errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgMessage}")
+		return
+	fi
+	if ! [[ "${action}" = "ignore" ]] ; then
+		if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+			sourceForCopy="${1}"
+			destinationForCopy="${2}"
+		else
+			msg=$(errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgMessage}")
+			return
+		fi
+	fi
+
+#	action="${1}"
+#	sourceForCopy="${2}"
+#	destinationForCopy="${3}"
+
+	case "${action}" in
+		"ignore" )
+			msg="skipped"
+			;;
+		"copy" )
+			msg1=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
+			st=$?
+			if [[ ${st} > 0 ]] ; then
+				msg=$(errorMessage ${st} "$0#$LINENO:" "error copying ${sourceForCopy} to ${destinationForCopy}: ${msg1}")
+				return
+			fi
+			msg="succeeded"
+			;;
+		"translateCdoc" )
+			msg1=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
+			st=$?
+			if [[ ${st} > 0 ]] ; then
+				msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg1}")
+				return
+			fi
+			msg="succeeded"
+			;;
+		* )
+			msg=$(errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}")
+			return
+			;;
+	esac
+	print "${msg}"
+	return 0
+}
+
+#pragma mark 5 --- processAction
 function processAction {
 	callbackScript=""
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
@@ -542,34 +604,41 @@ function processAction {
 					sourceForCopy="${copyInfo[1]}"
 					destinationForCopy="${copyInfo[2]}"
 				fi
-				case "${action}" in
-					"ignore" )
-						print "skipped"
-						;;
-					"copy" )
-						msg=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
-						st=$?
-						if [[ ${st} > 0 ]] ; then
-							failcnt="${failcnt}"+1
-							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-						else
-							print "succeeded"
-						fi
-						;;
-					"translateCdoc" )
-						msg=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
-						st=$?
-						if [[ ${st} > 0 ]] ; then
-							failcnt="${failcnt}"+1
-							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-						else
-							print "succeeded"
-						fi
-						;;
-					* )
-						errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}"
-						;;
-				esac
+				msg=$(ccInstall --installOneFile "${action}" "${sourceForCopy}" "${destinationForCopy}")
+				st=$?
+				if [[ ${st} > 0 ]] ; then
+					failcnt="${failcnt}"+1
+					msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg}")
+				fi
+				print "${msg}"
+#				case "${action}" in
+#					"ignore" )
+#						print "skipped"
+#						;;
+#					"copy" )
+#						msg=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
+#						st=$?
+#						if [[ ${st} > 0 ]] ; then
+#							failcnt="${failcnt}"+1
+#							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+#						else
+#							print "succeeded"
+#						fi
+#						;;
+#					"translateCdoc" )
+#						msg=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
+#						st=$?
+#						if [[ ${st} > 0 ]] ; then
+#							failcnt="${failcnt}"+1
+#							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+#						else
+#							print "succeeded"
+#						fi
+#						;;
+#					* )
+#						errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}"
+#						;;
+#				esac
 			fi
 		done < "${iofile}"
 		if [[ ${failcnt} = 0 ]] ; then
@@ -586,14 +655,7 @@ function processAction {
 	fi
 
 # test
-#	When shunit tests encounter an error, output is sent to stdout and a nonzero exit status is returned.
-#	The tests themselves may also also throw errors. Messages for those cases should include the text "EXPECTED ERROR".
-#	Here:
-#		failcnt: number of test files that encounter failures, +1 if execution errors are encountered
-#		errout: file to collect stderr output
-#	returns nonzero exit status if test failures are encountered or messages not including "EXPECTED ERROR" are sent to stderr.
-
-	if [[ ${actions.doTest} > 0 ]] ; then
+	if [[ ${action} = "test" ]] ; then
 		runShunitTests "${sourceRoot}/${targetFolder}"
 	fi
 }
@@ -674,6 +736,12 @@ function ccInstall {
 			;;
 		"--SHUnit" )									# <no args>
 			msg=$(SHUnit)
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--installOneFile" )							# action source destination
+			msg=$(installOneFile "${2}" "${3}" "${4}")
 			es=$?
 			print "${msg}"
 			return "${es}"

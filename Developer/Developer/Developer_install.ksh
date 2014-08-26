@@ -146,8 +146,13 @@ function cleanTarget {
 	if [[ ${buildIsClean} > 0 ]] ; then
 		return
 	fi
-	if [[ -e "${scriptsFolder}/bin/.kshrc" ]] ; then
-		rm "${scriptsFolder}/bin/.kshrc"
+	if [[ -e "${scriptsFolder}/.kshrc" ]] ; then
+		msg=$(rm "${scriptsFolder}/.kshrc")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "failed to remove file ${scriptsFolder}/.kshrc: ${msg}"
+			return
+		fi
 	fi
 	for folder in "${servicesFolder}" "${applescriptsFolder}"  "${scriptsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")

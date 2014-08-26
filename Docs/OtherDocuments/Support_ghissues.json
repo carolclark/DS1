@@ -36,9 +36,9 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2014-08-17T19:28:12Z",
-    "updated_at": "2014-08-17T19:28:12Z",
+    "updated_at": "2014-08-25T20:21:49Z",
     "closed_at": null,
-    "body": ""
+    "body": "upgrade to Mavericks 10.9.4 with Xcode 6\r\n\r\n- [x] install Mavericks 10.9.4\r\n- [ ] install Xcode 6 Beta\r\n- [ ] set up continuous integration\r\n\r\nNotes:\r\nSHUnit, python testing: can we call the unix test script{s?) from the Cocoa test file? see [Terminal Command from Cocoa App](http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app), [Objective-C Shell Command Line Execution](http://stackoverflow.com/questions/1475182/cocoa-objective-c-shell-command-line-execution)"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/42",

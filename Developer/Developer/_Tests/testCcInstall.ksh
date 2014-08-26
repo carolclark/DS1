@@ -23,7 +23,64 @@ setUp() {
 	targetFolder=Tar1
 }
 
-#pragma mark 1 === testInstallInput
+#pragma mark 1 === testPaths
+testPaths() {
+	str=$(ccInstall --getSourceRoot)
+	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
+
+	str=$(ccInstall --getSourceRoot "${sourceRoot}" "${targetFolder}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect source root: " "${CCDev}/TestData/WorkspaceA/ProjA" "${str}"
+
+	str=$(ccInstall --getTargetFolder "${sourceRoot}" "${targetFolder}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect targetFolder: " "Tar1" "${str}"
+
+	str=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect target name: " "Tar1" "${str}"
+
+	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build_output/WorkspaceA/ProjA/Tar1.lastbuilt" "${lastbuilt}"
+
+	ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
+	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
+	ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
+	assertFalse "$LINENO: file ${lastbuilt} still present" "[ -e ${lastbuilt} ]"
+
+	rmdir "${CCDev}/build_output/WorkspaceA/ProjA"
+	rmdir "${CCDev}/build_output/WorkspaceA"
+
+	assertEquals "$0#$LINENO:" "${HOME}/Library/CCDev" "${CCDev}"
+
+	shunit=$(ccInstall --SHUnit)
+	assertEquals "$0#$LINENO:" "${CCDev}/shunit/src/shunit2" "${shunit}"
+	assertTrue "$0#$LINENO: no file exists at ${shunit}" "[ -e ${shunit} ]"
+
+	DEV=$(ccInstall --DEV)
+	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
+
+	DEV=$(ccInstall --DEV "lauramartinez")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect DEV for "lauramartinez" " "/Users/lauramartinez/Documents/Projects" "${DEV}"
+
+	DEV=$(ccInstall --DEV "carolclark")
+	assertEquals "$0#$LINENO:" 0 $?
+    good=False
+    if [[ "${DEV}" = "/Users/carolclark/Dev" ]] ; then
+        good=True
+    elif [[ "${DEV}" = "/Volumes/Mac/Users/carolclark/Dev" ]] ; then
+        good=True
+    fi
+	assertTrue "$LINENO: incorrect DEV for carolclark: ${DEV}" $good
+
+	DEV=$(ccInstall --DEV "xxx")
+	assertEquals "$0#$LINENO:" 0 $?
+	assertEquals "$LINENO: incorrect DEV for xxx: " "/Users/xxx/Dev" "${DEV}"
+}
+
+#pragma mark 2 === testInstallInput
 testInstallInput() {
 	typeset str
 
@@ -53,7 +110,7 @@ testInstallInput() {
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 }
 
-#pragma mark 2 === testGetAction
+#pragma mark 3 === testGetAction
 testGetAction() {
 	action=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}")
 	st=$?
@@ -80,66 +137,6 @@ testGetAction() {
 	st=$?
 	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 	assertNotNull "$LINENO: error message expected" "${str}"
-}
-
-#pragma mark 3 === testPaths
-testPaths() {
-	str=$(ccInstall --getSourceRoot)
-	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
-
-	str=$(ccInstall --getSourceRoot "${sourceRoot}" "${targetFolder}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect source root: " "${CCDev}/TestData/WorkspaceA/ProjA" "${str}"
-
-	str=$(ccInstall --getTargetFolder "${sourceRoot}" "${targetFolder}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect targetFolder: " "Tar1" "${str}"
-
-	str=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect target name: " "Tar1" "${str}"
-
-	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect lastbuilt: " "${CCDev}/build_output/WorkspaceA/ProjA/Tar1.lastbuilt" "${lastbuilt}"
-
-	ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
-	assertTrue "$LINENO: file ${lastbuilt} missing" "[ -e ${lastbuilt} ]"
-	ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
-	assertFalse "$LINENO: file ${lastbuilt} still present" "[ -e ${lastbuilt} ]"
-
-	rmdir "${CCDev}/build_output/WorkspaceA/ProjA"
-	rmdir "${CCDev}/build_output/WorkspaceA"
-}
-
-#pragma mark testSpecialPaths
-testSpecialPaths() {
-	assertEquals "$0#$LINENO:" "${HOME}/Library/CCDev" "${CCDev}"
-
-	DEV=$(ccInstall --DEV)
-	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
-
-	DEV=$(ccInstall --DEV "lauramartinez")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect DEV for "lauramartinez" " "/Users/lauramartinez/Documents/Projects" "${DEV}"
-
-	DEV=$(ccInstall --DEV "carolclark")
-	assertEquals "$0#$LINENO:" 0 $?
-    good=False
-    if [[ "${DEV}" = "/Users/carolclark/Dev" ]] ; then
-        good=True
-    elif [[ "${DEV}" = "/Volumes/Mac/Users/carolclark/Dev" ]] ; then
-        good=True
-    fi
-	assertTrue "$LINENO: incorrect DEV for carolclark: ${DEV}" $good
-
-	DEV=$(ccInstall --DEV "xxx")
-	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$LINENO: incorrect DEV for xxx: " "/Users/xxx/Dev" "${DEV}"
-
-	SHUnit=$(ccInstall --SHUnit)
-	assertEquals "$0#$LINENO:" "${CCDev}/shunit/src/shunit2" "${SHUnit}"
-	assertTrue "$0#$LINENO: no file exists at ${SHUnit}" "[ -e ${SHUnit} ]"
 }
 
 #pragma mark 8 === Conformance
