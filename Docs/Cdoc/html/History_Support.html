@@ -61,7 +61,14 @@
 <!-- @marker "simplify ccInstall" -->
 <h4 id='simplifyCcInstall'><a href="http://github.com/carolclark/Support/issues/42">(#42)</a>simplify ccInstall installation process</h4><pre>
 	* replace ccInstall function getActions, argument actionFlags with function getAction, action keyword
-		* function ccInstall.getAction
+	* findTests, findSources use random filenames; see <a href="http://content.hccfl.edu/pollock/ShScript/TempFile.htm">mktemp</a>
+	* install: move tracking of $prevFolder to findSources via output file
+	* simplify ccInstall.processAction
+		* install
+			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
+				* prints 'skipped', 'succeeded', or error message
+		* clean
+			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
 </pre>
 
 <!-- @marker "AppleScript Testing" -->
