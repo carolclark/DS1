@@ -46,7 +46,6 @@
 			* *We suspect that the problem is with the mechanism used to let the test override the normal source and destination for the archive. We should probably just pass more parameters.*
 		* revert archive.ksh to commit aa224e6 from May 15, 2013; disable tests
 			* *now the archive command is successful, but the tests are empty*
-		<span class='tlmark'>&lt;-- 06/04/2014</span>
 		* update with later changes from master branch
 			* *When testing was added, it interfered with normal operation. We need to update with most of the changes from the latest version, but without the changes made for testing support.*
 			* introduce variable ${archiveDestination}; update errorExit syntax; restore some error checking
@@ -54,6 +53,11 @@
 		* add command --revealLastArchive; call separately
 		* --folder also uses the current directory
 			* rename var $projectName to $folderName
+	* setup new hard drive space
+		* partition Seagate 5TB: Server(2), Archives(1), MacMirror(1), ChronoSync(1)
+		<span class='tlmark'>&lt;-- 06/09/2014</span>
+		* synchronize to MacMirror partition
+	* <a href="http://github.com/carolclark/Support/issues/41">(#41)</a> reenable archive.ksh tests
 		* add optional argument 'destination'
 		* reenable tests
 </pre>
@@ -67,6 +71,11 @@
 		* install
 			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
 				* prints 'skipped', 'succeeded', or error message
+		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+		* add subproject Python
+			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
+			* create as Cocoa subproject, since CI appears to depend on Cocoa project's team, certificate, and provisioning settings
+
 		* clean
 			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
 </pre>
@@ -77,13 +86,13 @@
 		* move ThirdParty installation from DevConfig.ksh to new target ThirdParty
 			* Developer does not currently need access to third-party assets until testing
 		* *At this point, we cannot test fully because the clean action is not working, probably because of a previously noticed problem with ccInstall:removeFolder*
-		<span class='tlmark'>&lt;-- 05/19/2014</span>
 		* <a href="#RemoveFolderWPython">Fix RemoveFolder with Python</a>
 		* ThirdParty clean does remove content
 		* update shunit2 to the latest version
 			* Apparently, we already had the latest version, v2.1.6. We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
 	* add third-party AppleScript testing script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
 		* clone <a href="https://github.com/lifepillar/ASUnit">ASUnit</a> into ThirdParty folder
+		<span class='tlmark'>&lt;-- 08/11/2014</span>
 		* ThirdParty_install.ksh also installs ASUnit script and documentation
 	* new Compile AppleScripts target; depended on by target Developer
 	* Developer_install installs compiled AppleScripts
@@ -116,7 +125,7 @@
 					* rename target and folder CCDev back to Developer, files CCDev_install.ksh to Developer_install.ksh, CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
 				* add target DeveloperTests
 					* ccInstall: by default, build only instead of build and test
-					* add target DeveloperTests; see <a href="XcodeDevelopment.html#AddCcInstallTarget">AddCcInstallTarget</a>
+					* add target DeveloperTests; see <a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>
 				* handle Python code and tests (from ccdevPy)
 					* add Python code and tests
 			<span class='tlmark'>&lt;-- 05/17/2014</span>
@@ -347,12 +356,10 @@
 		* util.path_to_remove
 		* util.remove_folder_at_home_path - add --dry-run
 		* output to string instead of to log
-		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 		* extract util.do_remove_folder_with_contents(path, --dry-run)
 			* extract util.do_remove_fs_item(path, dry_run)
 			* extract util.ensure_directory(path, dry_run)
 			* finish do_remove_folder_with_contents tests
-		* improve util.py dry_run syntax
 		* call util.do_remove_folder_with_contents from ccInstall.removeF1older
 </pre>
 <p><span class='tldate'>[08/10/2014]</span></p>

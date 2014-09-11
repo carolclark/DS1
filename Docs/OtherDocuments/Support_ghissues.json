@@ -1,5 +1,46 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/45",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/45/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/45/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/45/events",
+    "html_url": "https://github.com/carolclark/Support/issues/45",
+    "id": 41553256,
+    "number": 45,
+    "title": "Adopt Modern LLDB Debugging",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=2",
+      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2014-08-30T02:29:44Z",
+    "updated_at": "2014-08-30T02:35:36Z",
+    "closed_at": null,
+    "body": "- [ ] [upgrade LLDB debugging support w12](https://github.com/carolclark/Support/issues/20)"
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/44",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/44/labels{/name}",
     "comments_url": "https://api.github.com/repos/carolclark/Support/issues/44/comments",
@@ -48,7 +89,7 @@
     "html_url": "https://github.com/carolclark/Support/issues/43",
     "id": 40441270,
     "number": 43,
-    "title": "upgrade to Mavericks 10.9.4",
+    "title": "upgrade to Xcode 6",
     "user": {
       "login": "carolclark",
       "id": 3742721,
@@ -77,9 +118,9 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2014-08-17T19:28:12Z",
-    "updated_at": "2014-08-26T21:51:03Z",
+    "updated_at": "2014-09-01T17:48:11Z",
     "closed_at": null,
-    "body": "upgrade to Mavericks 10.9.4 with Xcode 6\r\n\r\n- [x] install Mavericks 10.9.4\r\n- [ ] install Xcode 6 Beta\r\n- [ ] set up continuous integration\r\n\r\nNotes:\r\nSHUnit, python testing: can we call the unix test script{s?) from the Cocoa test file? see [Terminal Command from Cocoa App](http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app), [Objective-C Shell Command Line Execution](http://stackoverflow.com/questions/1475182/cocoa-objective-c-shell-command-line-execution)"
+    "body": "upgrade to Mavericks 10.9.4 with Xcode 6\r\n\r\n- [x] install Mavericks 10.9.4\r\n- [x] install Xcode 6 Beta\r\n- [ ] upgrade for Xcode 6\r\n    - [x] Punkin: add Developer team, code sign identity; test; add a missing typecast to AlertPresenter.m\r\n- [ ] set up continuous integration\r\n\r\nNotes:\r\nSHUnit, python testing: can we call the unix test script{s?) from the Cocoa test file? see [Terminal Command from Cocoa App](http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app), [Objective-C Shell Command Line Execution](http://stackoverflow.com/questions/1475182/cocoa-objective-c-shell-command-line-execution)\r\nto install server: [How to Install and Start Using OS X Server](http://computers.tutsplus.com/tutorials/how-to-install-and-start-using-os-x-server--mac-48261)\r\nCI: [Xcode Continuous Integration Guide](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/000-About_Continuous_Integration/about_continuous_integration.html#//apple_ref/doc/uid/TP40013292-CH1-SW1)\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/42",
@@ -1115,8 +1156,8 @@
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
-        "name": "Shell",
+        "url": "https://api.github.com/repos/carolclark/Support/labels/shell",
+        "name": "shell",
         "color": "bfdadc"
       }
     ],
@@ -1170,8 +1211,8 @@
         "color": "ffc9b4"
       },
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
-        "name": "Shell",
+        "url": "https://api.github.com/repos/carolclark/Support/labels/shell",
+        "name": "shell",
         "color": "bfdadc"
       }
     ],
@@ -1275,8 +1316,8 @@
         "color": "006b75"
       },
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
-        "name": "Shell",
+        "url": "https://api.github.com/repos/carolclark/Support/labels/shell",
+        "name": "shell",
         "color": "bfdadc"
       }
     ],
@@ -1318,9 +1359,9 @@
     },
     "comments": 0,
     "created_at": "2013-05-14T16:56:54Z",
-    "updated_at": "2014-01-03T19:32:09Z",
+    "updated_at": "2014-08-30T02:30:46Z",
     "closed_at": null,
-    "body": "see Xcode 4.6 Release Notes, wwdc12#412 Debugging in Xcode. wwdc12#415 Debugging in LLDB"
+    "body": "see Xcode 4.6 Release Notes\r\nwwdc12#412 Debugging in Xcode\r\n* Creating Custom Summaries 82/102\r\n* XPC Services 95/102\r\n\r\nwwdc12#415 Debugging in LLDB\r\n* command line\r\n* aliasing 193/438\r\n    * regexp\r\n* user-defined commands (Python) 219/438\r\n* init files ~/.lldbinit 239/438"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/19",
@@ -1397,8 +1438,8 @@
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Shell",
-        "name": "Shell",
+        "url": "https://api.github.com/repos/carolclark/Support/labels/shell",
+        "name": "shell",
         "color": "bfdadc"
       },
       {
@@ -1920,82 +1961,5 @@
     "updated_at": "2014-02-24T18:13:19Z",
     "closed_at": null,
     "body": "see [Code Organization in Xcode Projects](http://akosma.com/2009/07/28/code-organization-in-xcode-projects/) (akosma), #10"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/8",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/8/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/8/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/8/events",
-    "html_url": "https://github.com/carolclark/Support/issues/8",
-    "id": 13086727,
-    "number": 8,
-    "title": "establish stronger compiler error recognition",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=2",
-      "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
-        "name": "clang",
-        "color": "006b75"
-      }
-    ],
-    "state": "open",
-    "locked": false,
-    "assignee": null,
-    "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
-      "id": 332757,
-      "number": 2,
-      "title": "next",
-      "description": "",
-      "creator": {
-        "login": "carolclark",
-        "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=2",
-        "gravatar_id": "7869b0fad4894ed309c118232a3152d4",
-        "url": "https://api.github.com/users/carolclark",
-        "html_url": "https://github.com/carolclark",
-        "followers_url": "https://api.github.com/users/carolclark/followers",
-        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-        "organizations_url": "https://api.github.com/users/carolclark/orgs",
-        "repos_url": "https://api.github.com/users/carolclark/repos",
-        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "open_issues": 22,
-      "closed_issues": 1,
-      "state": "closed",
-      "created_at": "2013-05-13T15:38:31Z",
-      "updated_at": "2014-08-27T17:45:40Z",
-      "due_on": null
-    },
-    "comments": 0,
-    "created_at": "2013-04-11T20:09:35Z",
-    "updated_at": "2014-01-03T17:54:34Z",
-    "closed_at": null,
-    "body": "enable recognition of most compiler errors; treat warnings as errors\r\nsee [Objective-C Compiler Warnings](http://akosma.com/2009/07/16/objective-c-compiler-warnings/), and [Confusing Objective-C Warnings and Errors](http://www.cocoawithlove.com/2009/04/8-confusing-objective-c-warnings-and.html) for additional advice"
   }
 ]

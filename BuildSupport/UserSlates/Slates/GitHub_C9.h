@@ -59,7 +59,7 @@ dashboard
 
 #pragma mark GitHub
 #define	_GitHubSlate_	\
-#define	gh_row1	675	\
+#define	gh_row1	625	\
 #define gh_rsp	31	\
 #define	gh_h	173	\
 resource restype_Slate (_GitHubID_, "") { {	\
