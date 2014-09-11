@@ -87,7 +87,7 @@ heading with name: Task Name; tsk_TaskName;5
 <!-- @marker "Docs" -->
 <h2 id='proj_Docs'>Docs</h2>
 <p class='ital'>Support documentation, including TechnicalDocs and Doxygen</p><div class='indent'>
-	<p><b>Project:</b> <a href="XcodeDevelopment.html#AddDocsProject">Docs Project</a></p>
+	<p><b>Project:</b> <a href="XcodeDevelopment.html#NewDocsProject">Docs Project</a></p>
 	<p>Each repository / workspace contains a similar Docs project. In addition to the targets listed below, folders for OtherDocuments and Images are provided.</p>
 	<p><b>Configuration:</b> </p>
 	<p><b>Integration:</b> BBEdit CheckHTML.applescript: modify to provide pass/fail result for CI</p>
@@ -95,7 +95,7 @@ heading with name: Task Name; tsk_TaskName;5
 		<h4>Cdoc</h4>
 		<p class='ital'>install technical documentation</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
-				<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a>: install technical documentation for repository projects</li>
+				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: install technical documentation for repository projects</li>
 				<li>installs technical documentation at ${HOME}/Library/CCDev/Sites/TechnicalDocs</li>
 			</ul>
 			<p><b>Tests:</b> </p>
@@ -106,7 +106,7 @@ heading with name: Task Name; tsk_TaskName;5
 		<h4>Doxygen</h4>
 		<p class='ital'>install Doxygen documentation</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
-				<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a>: compile and install Doxygen documentation for our C++ and Objective-C code</li>
+				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: compile and install Doxygen documentation for our C++ and Objective-C code</li>
 				<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/Doxygen (APIDocs?)</li>
 			</ul>
 			<p><b>Tests:</b> </p>
@@ -117,7 +117,7 @@ heading with name: Task Name; tsk_TaskName;5
 		<h4 class='nyi'>HeaderDoc</h4>
 		<p class='ital'>install HeaderDoc documentation</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
-				<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a>: compile and install HeaderDoc documentation for AppleScript code</li>
+				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: compile and install HeaderDoc documentation for AppleScript code</li>
 				<li>installs HeaderDoc documentation at ${HOME}/Library/CCDev/Sites/APIDocs?</li>
 			</ul>
 			<p><b>Tests:</b> </p>
@@ -153,14 +153,14 @@ heading with name: Task Name; tsk_TaskName;5
 		<h5>CCDev</h5>
 		<p class='ital'>Developer configuration, scripts and related items</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
-				<li><a href="XcodeDevelopment.html#AddCcInstallTarget">ccInstall</a> target; <span class='depr'>depends on target AppleScripts</span></li>
+				<li><a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>; <span class='depr'>depends on target AppleScripts</span></li>
 				<li>CCDevConfig.ksh<ul>
 					<li>Unix script that sets up our development environment. Script is run at the beginning of execution of CCDev_install.ksh, or can be run from Terminal.</li>
 					<li>CCDevConfig.ksh sets up basic environment including git support, installs additional environment files and starter scripts required for target CCDev to build</li>
 				</ul></li>
 			</ul>
 			<p><b>Tests:</b> </p><ul>
-				<li>CCDevTests: <a href="XcodeDevelopment.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
+				<li>CCDevTests: <a href="XcodeDevelopment.html#AddCocoaTestTarget">Add Cocoa Test Target</a><ul>
 					<li>runs: CCDev shunit tests from folder _Tests and PythonTests</li>
 					<li>Run Script build phases with ksh scripts:<ul>
 						<li>'shunit Tests': runs tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
@@ -174,7 +174,7 @@ heading with name: Task Name; tsk_TaskName;5
 		<h5>shunit</h5>
 		<p class='ital'>install shunit test framework for shell scripts</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
-				<li><a href="XcodeDevelopment.html#AddCcInstallTarget">ccInstall</a> target; must be 8installed before Developer tests can be run</li>
+				<li><a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>; must be installed before Developer tests can be run</li>
 			</ul>
 			<p><b>Tests:</b> required for target DeveloperTests to run</p>
 			<p><b>Configuration:</b> </p>
