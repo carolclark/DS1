@@ -17,18 +17,12 @@
 		6787407317C16A4F000190D4 /* Developer_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 6787407217C02602000190D4 /* Developer_C9.r */; };
 		67A8265C193A72E2004F1F56 /* CheckHTML.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67BB9CCD1933DC3300219B61 /* CheckHTML.applescript */; };
 		67DB22EB169CD82300A6E910 /* AccessLibTypes.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22CF169CD82300A6E910 /* AccessLibTypes.r */; };
-		67DB22EC169CD82300A6E910 /* ArbonnePrototype_c9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D0169CD82300A6E910 /* ArbonnePrototype_c9.r */; };
 		67DB22ED169CD82300A6E910 /* Automator_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D1169CD82300A6E910 /* Automator_C9.r */; };
-		67DB22EE169CD82300A6E910 /* Backup_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D2169CD82300A6E910 /* Backup_C9.r */; };
 		67DB22EF169CD82300A6E910 /* BBEdit_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D3169CD82300A6E910 /* BBEdit_C9.r */; };
 		67DB22F0169CD82300A6E910 /* Calendar_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D4169CD82300A6E910 /* Calendar_C9.r */; };
 		67DB22F1169CD82300A6E910 /* CommonSlates_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D6169CD82300A6E910 /* CommonSlates_C9.r */; };
 		67DB22F2169CD82300A6E910 /* Dash_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D7169CD82300A6E910 /* Dash_C9.r */; };
-		67DB22F3169CD82300A6E910 /* Dashcode_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D8169CD82300A6E910 /* Dashcode_C9.r */; };
-		67DB22F4169CD82300A6E910 /* Eclipse_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22D9169CD82300A6E910 /* Eclipse_C9.r */; };
-		67DB22F5169CD82300A6E910 /* FileMaker_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22DA169CD82300A6E910 /* FileMaker_C9.r */; };
 		67DB22F6169CD82300A6E910 /* Finder_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22DB169CD82300A6E910 /* Finder_C9.r */; };
-		67DB22F7169CD82300A6E910 /* Games_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22DC169CD82300A6E910 /* Games_C9.r */; };
 		67DB22F8169CD82300A6E910 /* InterfaceBuilder_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22DD169CD82300A6E910 /* InterfaceBuilder_C9.r */; };
 		67DB22F9169CD82300A6E910 /* Mail_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22DF169CD82300A6E910 /* Mail_C9.r */; };
 		67DB22FA169CD82300A6E910 /* Numbers_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22E0169CD82300A6E910 /* Numbers_C9.r */; };
@@ -40,7 +34,6 @@
 		67DB2300169CD82300A6E910 /* TextEdit_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22E6169CD82300A6E910 /* TextEdit_C9.r */; };
 		67DB2301169CD82300A6E910 /* Tunes_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22E7169CD82300A6E910 /* Tunes_C9.r */; };
 		67DB2302169CD82300A6E910 /* UIBrower_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22E8169CD82300A6E910 /* UIBrower_C9.r */; };
-		67DB2303169CD82300A6E910 /* UMLet_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22E9169CD82300A6E910 /* UMLet_C9.r */; };
 		67DB2304169CD82300A6E910 /* Xcode_C9.r in Rez */ = {isa = PBXBuildFile; fileRef = 67DB22EA169CD82300A6E910 /* Xcode_C9.r */; };
 		67DD773A16A4B48500BECCD5 /* frontWindow.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD76D016A4AF9300BECCD5 /* frontWindow.applescript */; };
 		67DD773B16A4B48500BECCD5 /* viewCdoc.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD76D116A4AF9300BECCD5 /* viewCdoc.applescript */; };
@@ -112,19 +105,13 @@
 		67DB22CC169CD82300A6E910 /* UserSlates-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UserSlates-Info.plist"; sourceTree = "<group>"; };
 		67DB22CE169CD82300A6E910 /* AccessLib_rsrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessLib_rsrc.h; sourceTree = "<group>"; };
 		67DB22CF169CD82300A6E910 /* AccessLibTypes.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = AccessLibTypes.r; sourceTree = "<group>"; };
-		67DB22D0169CD82300A6E910 /* ArbonnePrototype_c9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = ArbonnePrototype_c9.r; sourceTree = "<group>"; };
 		67DB22D1169CD82300A6E910 /* Automator_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Automator_C9.r; sourceTree = "<group>"; };
-		67DB22D2169CD82300A6E910 /* Backup_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Backup_C9.r; sourceTree = "<group>"; };
 		67DB22D3169CD82300A6E910 /* BBEdit_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = BBEdit_C9.r; sourceTree = "<group>"; };
 		67DB22D4169CD82300A6E910 /* Calendar_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Calendar_C9.r; sourceTree = "<group>"; };
 		67DB22D5169CD82300A6E910 /* CommonSlates_C9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSlates_C9.h; sourceTree = "<group>"; };
 		67DB22D6169CD82300A6E910 /* CommonSlates_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = CommonSlates_C9.r; sourceTree = "<group>"; };
 		67DB22D7169CD82300A6E910 /* Dash_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Dash_C9.r; sourceTree = "<group>"; };
-		67DB22D8169CD82300A6E910 /* Dashcode_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Dashcode_C9.r; sourceTree = "<group>"; };
-		67DB22D9169CD82300A6E910 /* Eclipse_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Eclipse_C9.r; sourceTree = "<group>"; };
-		67DB22DA169CD82300A6E910 /* FileMaker_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = FileMaker_C9.r; sourceTree = "<group>"; };
 		67DB22DB169CD82300A6E910 /* Finder_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Finder_C9.r; sourceTree = "<group>"; };
-		67DB22DC169CD82300A6E910 /* Games_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Games_C9.r; sourceTree = "<group>"; };
 		67DB22DD169CD82300A6E910 /* InterfaceBuilder_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = InterfaceBuilder_C9.r; sourceTree = "<group>"; };
 		67DB22DE169CD82300A6E910 /* Keyboard_AL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyboard_AL.h; sourceTree = "<group>"; };
 		67DB22DF169CD82300A6E910 /* Mail_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Mail_C9.r; sourceTree = "<group>"; };
@@ -137,7 +124,6 @@
 		67DB22E6169CD82300A6E910 /* TextEdit_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = TextEdit_C9.r; sourceTree = "<group>"; };
 		67DB22E7169CD82300A6E910 /* Tunes_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Tunes_C9.r; sourceTree = "<group>"; };
 		67DB22E8169CD82300A6E910 /* UIBrower_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = UIBrower_C9.r; sourceTree = "<group>"; };
-		67DB22E9169CD82300A6E910 /* UMLet_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = UMLet_C9.r; sourceTree = "<group>"; };
 		67DB22EA169CD82300A6E910 /* Xcode_C9.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = Xcode_C9.r; sourceTree = "<group>"; };
 		67DB232C169E0A2900A6E910 /* Snippet.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = Snippet.applescript; sourceTree = "<group>"; };
 		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
@@ -338,21 +324,15 @@
 				67DB22CE169CD82300A6E910 /* AccessLib_rsrc.h */,
 				67DB22CF169CD82300A6E910 /* AccessLibTypes.r */,
 				6720A6331889D64900C4ED0A /* AppCode_C9.r */,
-				67DB22D0169CD82300A6E910 /* ArbonnePrototype_c9.r */,
 				67DB22D1169CD82300A6E910 /* Automator_C9.r */,
-				67DB22D2169CD82300A6E910 /* Backup_C9.r */,
 				67DB22D3169CD82300A6E910 /* BBEdit_C9.r */,
 				67DB22D4169CD82300A6E910 /* Calendar_C9.r */,
 				67DB22D5169CD82300A6E910 /* CommonSlates_C9.h */,
 				67DB22D6169CD82300A6E910 /* CommonSlates_C9.r */,
 				67DB22D7169CD82300A6E910 /* Dash_C9.r */,
-				67DB22D8169CD82300A6E910 /* Dashcode_C9.r */,
 				6787406F17C02189000190D4 /* Developer_C9.h */,
 				6787407217C02602000190D4 /* Developer_C9.r */,
-				67DB22D9169CD82300A6E910 /* Eclipse_C9.r */,
-				67DB22DA169CD82300A6E910 /* FileMaker_C9.r */,
 				67DB22DB169CD82300A6E910 /* Finder_C9.r */,
-				67DB22DC169CD82300A6E910 /* Games_C9.r */,
 				676C9304179F326200876265 /* GitHub_C9.r */,
 				676C9306179F478A00876265 /* GitHub_C9.h */,
 				67DB22DD169CD82300A6E910 /* InterfaceBuilder_C9.r */,
@@ -369,7 +349,6 @@
 				67DB22E6169CD82300A6E910 /* TextEdit_C9.r */,
 				67DB22E7169CD82300A6E910 /* Tunes_C9.r */,
 				67DB22E8169CD82300A6E910 /* UIBrower_C9.r */,
-				67DB22E9169CD82300A6E910 /* UMLet_C9.r */,
 				67DB22EA169CD82300A6E910 /* Xcode_C9.r */,
 			);
 			path = Slates;
@@ -932,19 +911,13 @@
 			files = (
 				6787407317C16A4F000190D4 /* Developer_C9.r in Rez */,
 				67DB22EB169CD82300A6E910 /* AccessLibTypes.r in Rez */,
-				67DB22EC169CD82300A6E910 /* ArbonnePrototype_c9.r in Rez */,
 				67DB22ED169CD82300A6E910 /* Automator_C9.r in Rez */,
-				67DB22EE169CD82300A6E910 /* Backup_C9.r in Rez */,
 				67DB22EF169CD82300A6E910 /* BBEdit_C9.r in Rez */,
 				67DB22F0169CD82300A6E910 /* Calendar_C9.r in Rez */,
 				67DB22F1169CD82300A6E910 /* CommonSlates_C9.r in Rez */,
 				671EC78318F5C1A900E2DDEB /* Pages_C9.r in Rez */,
 				67DB22F2169CD82300A6E910 /* Dash_C9.r in Rez */,
-				67DB22F3169CD82300A6E910 /* Dashcode_C9.r in Rez */,
-				67DB22F4169CD82300A6E910 /* Eclipse_C9.r in Rez */,
-				67DB22F5169CD82300A6E910 /* FileMaker_C9.r in Rez */,
 				67DB22F6169CD82300A6E910 /* Finder_C9.r in Rez */,
-				67DB22F7169CD82300A6E910 /* Games_C9.r in Rez */,
 				67DB22F8169CD82300A6E910 /* InterfaceBuilder_C9.r in Rez */,
 				67DB22F9169CD82300A6E910 /* Mail_C9.r in Rez */,
 				67DB22FA169CD82300A6E910 /* Numbers_C9.r in Rez */,
@@ -957,7 +930,6 @@
 				67DB2301169CD82300A6E910 /* Tunes_C9.r in Rez */,
 				67DB2302169CD82300A6E910 /* UIBrower_C9.r in Rez */,
 				6720A6341889D64900C4ED0A /* AppCode_C9.r in Rez */,
-				67DB2303169CD82300A6E910 /* UMLet_C9.r in Rez */,
 				673F9BAA18DA517F00E06A16 /* Server_C9.r in Rez */,
 				67DB2304169CD82300A6E910 /* Xcode_C9.r in Rez */,
 				676C9305179F326200876265 /* GitHub_C9.r in Rez */,

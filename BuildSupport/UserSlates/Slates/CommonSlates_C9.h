@@ -79,42 +79,25 @@
 #define resid_Xcode						17000		// allocate 2000
 #define resid_InterfaceBuilder			19000
 #define resid_PackageMaker				20000
-#define resid_Eclipse					21000
-#define resid_BBEdit					22000
+#define resid_BBEdit					21000
 	#define resid_XCBBEdit			resid_BBEdit+1
-#define resid_FileMaker					23000
-#define resid_AppleWorks				24000
-#define resid_Backup					25000
-#define resid_Parallels					26000
-#define resid_UMLet						27000
-	#define resid_LaunchUMLet		resid_UMLet+1
-	#define resid_UMLetSubslate		resid_UMLet+2
-#define resid_Preview					28000
-#define resid_Terminal					29000
+#define resid_Preview					22000
+#define resid_Terminal					23000
 	#define resid_XCTerminal		resid_Terminal+1
-#define resid_UIBrowser					30000
-#define resid_Automator					31000
-#define resid_TextEdit					32000
-#define resid_ScriptEditor				33000
-#define resid_Dashcode					35000
-#define resid_Numbers					36000
-#define resid_Dash						37000
+#define resid_UIBrowser					24000
+#define resid_Automator					25000
+#define resid_TextEdit					26000
+#define resid_ScriptEditor				27000
+#define resid_Numbers					28000
+#define resid_Dash						29000
 	#define resid_XcodeDash			resid_Dash+1
-#define resid_GitHub					38000
-#define resid_Developer					39000
-#define resid_AppCode					40000
+#define resid_GitHub					30000
+#define resid_Developer					31000
+#define resid_AppCode					32000
 	#define resid_XCAppCode			resid_AppCode+1
-#define resid_Server					41000
-#define resid_Pages						42000
-#define resid_ArbProto					50000
+#define resid_Server					33000
+#define resid_Pages						34000
 
-#define	resid_LaunchGamesSlate			55000
-	#define resid_Solitaire		resid_LaunchGamesSlate + 100
-		#define resid_solSpider		resid_Solitaire + 1
-#define resid_Games						60000
-#define resid_FortyThieves				resid_Games
-
-#define _id_Safari_Bookmarks			resid_Safari+4
 
 #define	_systemScriptsMenu		Script { "tell application \"System Events\" to tell process \"SystemUIServer\" to click menu bar item 1 of menu bar 1", "" }
 
