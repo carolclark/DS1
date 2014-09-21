@@ -452,18 +452,18 @@ function installOneFile {
 			st=$?
 			if [[ ${st} > 0 ]] ; then
 				msg=$(errorMessage ${st} "$0#$LINENO:" "error copying ${sourceForCopy} to ${destinationForCopy}: ${msg1}")
-				return
+			else
+				msg="succeeded"
 			fi
-			msg="succeeded"
 			;;
 		"translateCdoc" )
 			msg1=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
 			st=$?
 			if [[ ${st} > 0 ]] ; then
 				msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg1}")
-				return
+			else
+				msg="succeeded"
 			fi
-			msg="succeeded"
 			;;
 		* )
 			msg=$(errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}")
