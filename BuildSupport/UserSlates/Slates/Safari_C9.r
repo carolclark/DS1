@@ -932,17 +932,17 @@ resource restype_Slate (resid_Chase, "Chase Slate") { {
 		ExitEvent { "ten", "" },		Sequence{},	_wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, _wDown, endSequence{},	\
 		endSubslate{}
 
-#define _pzlTop		-495
+#define _pzlTop		-390
 resource restype_Slate (resid_sudokuTimes, "") { {
 	Slate { "Times", {
 		ExitEvent { "exit", "" },		NilAction{},
 		Event { "main frame", "" },		Click { 1, 10, -40, _window, _bottomLeft },
-		Event { "undo", "" },			Click { 1, 455,	_pzlTop+189, _window, _bottomLeft },
-		Event { "pencil", "" },			Click { 1, 455,	_pzlTop+217, _window, _bottomLeft },
-		Event { "check", "" },			Click { 1, 455,	_pzlTop+229, _window, _bottomLeft },
-		Event { "notes", "" },			Click { 1, 455,	_pzlTop+294, _window, _bottomLeft },
-		Event { "clue", "" },			Click { 1, 455,	_pzlTop+316, _window, _bottomLeft },
-		Event { "puzzle", "" },			Click { 1, 200, _pzlTop+250, _window, _bottomLeft },
+		Event { "undo", "" },			Click { 1, -45,	_pzlTop+174, _window, _bottomCenter },
+		Event { "pencil", "" },			Click { 1, -45,	_pzlTop+202, _window, _bottomCenter },
+		Event { "check", "" },			Click { 1, -45,	_pzlTop+214, _window, _bottomCenter },
+		Event { "notes", "" },			Click { 1, -45,	_pzlTop+279, _window, _bottomCenter },
+		Event { "clue", "" },			Click { 1, -45,	_pzlTop+301, _window, _bottomCenter },
+		Event { "puzzle", "" },			Click { 1, -150, _pzlTop+240, _window, _bottomCenter },
 		Event { "position puzzle", "" },	Sequence{}, Click { 1, 400, 400, _window, _topLeft }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, KeyDelay { kc_down, 0, 20 }, endSequence{},
 		Event { "lock option",	"" },	Keypress { 0, mf_control + mf_toggle },
 		_JumpDelaySubslates_,

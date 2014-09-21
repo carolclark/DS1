@@ -1151,6 +1151,7 @@ resource restype_Slate (resid_Marker, "") { {
 		_SlateGlobals_,
 		_CloseSubslate_,
 		ExitEvent { "current", "" },	_findMarkerStart, TypeText { "id='hmark_Current'" }, _findMarkerEnd,
+		ExitEvent { "completed", "" },	_findMarkerStart, TypeText { "id='Completed'" }, _findMarkerEnd,
 		Event { "pragma", "" },			_findMarkerStart, Keypress { kc_3, mf_shift }, TypeText { "pragma mark" }, _findMarkerEnd,
 		Event { "resource", "" },		_findMarkerStart, TypeText { "resource" }, _findMarkerEnd,
 		Event { "top", "" },		_findMarkerStart, Keypress { kc_3, mf_shift }, TypeText { "pragma mark === Markers ===" }, _findMarkerEnd,
