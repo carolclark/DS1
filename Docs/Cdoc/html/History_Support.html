@@ -72,6 +72,7 @@
 			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
 				* prints 'skipped', 'succeeded', or error message
 		<span class='tlmark'>&lt;--09/21/32014</span>
+		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 		* add subproject Python
 			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
 			* create as Cocoa subproject, since CI appears to depend on Cocoa project's team, certificate, and provisioning settings
@@ -129,13 +130,12 @@
 				* handle Python code and tests (from ccdevPy)
 					* add Python code and tests
 		<span class='tlmark'>&lt;-- 05/17/2014</span>
-		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 		* move UserSlates to repository Accessor
 			* remove obsolete Slates
-			* copy folder UserSlates from Support/BuildSupport/UserSlates/Slates to Accessor/Accessor/Resources/UserSlates
-			* add UserSlates *.r files to target Accessor
-
-			* remove folder UserSlates from Support/BuildSupport
+			* copy folder UserSlates from Support/BuildSupport/UserSlates/Slates to Accessor/AccessorBuild/Resources/UserSlates
+			* Accessor: <a href="../Accessor/History_Accessor.html#SupportLaptop">Support Laptop</a>
+			* remove folder and target UserSlates from Support/BuildSupport
+		<span class='tlmark'>&lt;-- 09/22/2014</span>
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
 			* add AppleScript scripts
