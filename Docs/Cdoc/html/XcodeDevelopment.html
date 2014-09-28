@@ -190,7 +190,6 @@
 
 <!-- @marker "Add Cocoa Test Target" -->
 <h4 id='AddCocoaTestTarget'>Add Cocoa Test Target</h4><ul>
-	<li class='depr'>from iPhoneUnitsSample ReadMe: "Important: Application targets with unit tests cannot be built or run using the iPhone Simulator SDK; they can be built and run only using the iPhone Device SDK." The sample produces two copies of the app, one with Unit Tests and one without.</li>
 	<li>create or edit test target (&lt;TestTarget&gt;_[U|C|P]Tests) Target<ul>
 		<li>for existing target from Cocoa Application template: apply <a href="#RenameTarget">Rename Target</a></li>
 		<li>else: add a new target from Cocoa Unit Testing Bundle template</li>
@@ -205,20 +204,13 @@
 		<li>for pure Objective-C targets: Precompile Prefix Header: no; remove Precompiled Header path</li>
 		<li>for App Tests: set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
 	</ul></li>
-	<li>Replace or Edit Test Class<ul>
-		<li>App Tests<ul>
-			<li>new file &lt;ApplicationName&gt;_AppTests from template<ul>
-				<li>check against supplied file &lt;ApplicationName&gt;Tests, updating template if indicated</li>
-			</ul></li>
-			<li>remove files &lt;ApplicationName&gt;Tests</li>
-			<li>add test case testAppDelegate (testAppDelegate#)</li>
+	<li>Test Class<ul>
+		<li>rename supplied file &lt;TestTarget&gt;_[U|C|P]Tests</li>
+		<li>new file &lt;TestTarget&gt;_[U|C|P]Tests from template<ul>
+			<li>check against supplied file, updating template if indicated</li>
+			<li>leave in or add a dummy test, or, for CTests, add test case testAppDelegate (testAppDelegate#)</li>
 		</ul></li>
-		<li>Unit Tests<ul>
-			<li>edit &lt;Target&gt;Tests<ul>
-				<li>replace file header</li>
-				<li>use testNothing<span class='blurb'>Xcode may issue a warning if it doesn't find &lt;Target&gt;Tests with at least one test</span></li>
-			</ul></li>
-		</ul></li>
+		<li>delete supplied file</li>
 	</ul></li>
 	<li>Schemes<ul>
 		<li>mark scheme "shared"</li>
