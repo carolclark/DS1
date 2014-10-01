@@ -55,11 +55,20 @@ heading with name: Task Name; tsk_TaskName;5
 <!-- @marker "1 === Projects and Targets" -->
 <h1>Projects and Targets</h1>
 <!-- @topicList "Projects and Targets" "ProjectsAndTargets" -->
-	<!-- @topicItem "Docs" "#proj_Docs" "0" "Support documentation, including TechnicalDocs and Doxygen" -->
+	<!-- @topicItem "Docs" "#group_Docs" "0" "Support documentation, including TechnicalDocs and Doxygen" -->
+		<!-- @topicItem "Cdoc" "#target_Cdoc" "1" "technical documentation" -->
+		<!-- @topicItem "Doxygen" "#target_Doxygen" "1" "API documentation: C-based and Python languages" -->
+		<!-- @topicItem "HeaderDoc" "#target_HeaderDoc" "1" "API documentation: languages not supported by Doxygen" -->
+	<!-- @topicGroup "" "5" -->
 	<!-- @topicItem "Developer" "#proj_Developer" "0" "Developer configuration, scripts and related items" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "Applications" "4" -->
-	<!-- @topicItem "Xcode" "#proj_Xcode" "0" "" -->
+		<!-- @topicItem "Developer" "#target_Developer" "1" "" -->
+		<!-- @topicItem "Python" "#proj_Python" "1" "" -->
+		<!-- @topicItem "CCDev" "#target_CCDev" "1" "" -->
+		<!-- @topicItem "shunit" "#target_shunit" "1" "" -->
+		<!-- @topicItem "AppleScripts" "#target_AppleScripts" "1" "" -->
+	<!-- @topicGroup "" "12" -->
+	<!-- @topicItem "Applications" "#group_Applications" "0" "accessibility support for applications" -->
+		<!-- @topicItem "Xcode" "#proj_Xcode" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "BuildSupport" "#project_BuildSupport" "0" "" -->
 		<!-- @topicItem "Developer" "#target_Developer" "1" "" -->
@@ -79,20 +88,21 @@ heading with name: Task Name; tsk_TaskName;5
 <!-- @/topicList -->
 
 <h4>test</h4><div class='indent'>
+	<p>some text</p>
 	<h4>test2</h4><div class='indent'>
 		<p>some text</p>
 	</div>
 </div>
 
 <!-- @marker "Docs" -->
-<h2 id='proj_Docs'>Docs</h2>
+<h2 id='group_Docs'>Docs</h2>
 <p class='ital'>Support documentation, including TechnicalDocs and Doxygen</p><div class='indent'>
 	<p><b>Project:</b> <a href="XcodeDevelopment.html#NewDocsProject">Docs Project</a></p>
 	<p>Each repository / workspace contains a similar Docs project. In addition to the targets listed below, folders for OtherDocuments and Images are provided.</p>
 	<p><b>Configuration:</b> </p>
 	<p><b>Integration:</b> BBEdit CheckHTML.applescript: modify to provide pass/fail result for CI</p>
 	<h3>Docs Targets</h3><div class='indent'>
-		<h4>Cdoc</h4>
+		<h4 id='target_Cdoc'>Cdoc</h4>
 		<p class='ital'>install technical documentation</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
 				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: install technical documentation for repository projects</li>
@@ -103,22 +113,22 @@ heading with name: Task Name; tsk_TaskName;5
 			<p><b>Dependencies:</b> </p>
 		</div>
 
-		<h4>Doxygen</h4>
+		<h4 id='target_Doxygen'>Doxygen</h4>
 		<p class='ital'>install Doxygen documentation</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
 				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: compile and install Doxygen documentation for our C++ and Objective-C code</li>
-				<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/Doxygen (APIDocs?)</li>
+				<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/<span class='nyi'>APIDocs</span></li>
 			</ul>
 			<p><b>Tests:</b> </p>
 			<p><b>Configuration:</b> </p>
 			<p><b>Dependencies:</b> </p>
 		</div>
 
-		<h4 class='nyi'>HeaderDoc</h4>
+		<h4 id='target_HeaderDoc' class='nyi'>HeaderDoc</h4>
 		<p class='ital'>install HeaderDoc documentation</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
 				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: compile and install HeaderDoc documentation for AppleScript code</li>
-				<li>installs HeaderDoc documentation at ${HOME}/Library/CCDev/Sites/APIDocs?</li>
+				<li>installs HeaderDoc documentation at ${HOME}/Library/CCDev/Sites/APIDocs</li>
 			</ul>
 			<p><b>Tests:</b> </p>
 			<p><b>Configuration:</b> </p>
@@ -130,7 +140,7 @@ heading with name: Task Name; tsk_TaskName;5
 <!-- @marker "Developer" -->
 <h2 id="proj_Developer">Developer</h2>
 <p class='ital'>general C &amp; C Software developer and automation support</p><div class='indent'>
-	<p><b>Project:</b> <a class='glosslink' href="Glossary_Support.html#def_aggregateProject">aggregate project</a></p><ul>
+	<p><b>Folder:</b> collection of projects aggregated by project Developer</p><ul>
 		<li>SetupConfig</li>
 		<li>Python</li>
 		<li>shunit</li>
@@ -141,7 +151,7 @@ heading with name: Task Name; tsk_TaskName;5
 	<p><b>Configuration:</b> </p>
 	<p><b>Integration:</b> </p>
 	<h3>Subprojects</h3><div class='indent'>
-		<h5>Developer</h5>
+		<h5 id='target_Developer'>Developer</h5>
 		<p class='ital'>set up development environment</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
 				<li>Aggregate target</li>
@@ -150,7 +160,19 @@ heading with name: Task Name; tsk_TaskName;5
 			<p><b>Configuration:</b> </p>
 			<p><b>Dependencies:</b> </p>
 		</div>
-		<h5>CCDev</h5>
+
+		<!-- @marker "Python>" -->
+		<h5 id="proj_Python">Python</h5>
+		<p class='ital'>Python modules and scripts</p><div class='indent'>
+			<p><b>Project:</b> <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a></p>
+			<p><b>Target:</b> Python modules and scripts copied to ${CCDev}/bin</p>
+			<p><b>Tests:</b> Python_UTests; Python_CTests; Python_AllTests </p>
+			<p><b>Configuration:</b> </p>
+			<p><b>Integration:</b> Python_UTests run on build; Python_AllTests to aggregate, run daily</p>
+			<p><b>Dependencies:</b> </p>
+		</div>
+
+		<h5 id="target_CCDev">CCDev</h5>
 		<p class='ital'>Developer configuration, scripts and related items</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
 				<li><a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>; <span class='depr'>depends on target AppleScripts</span></li>
@@ -171,7 +193,8 @@ heading with name: Task Name; tsk_TaskName;5
 			<p><b>Configuration:</b> </p>
 			<p><b>Dependencies:</b> Developer; shunit</p>
 		</div>
-		<h5>shunit</h5>
+
+		<h5 id="target_shunit">shunit</h5>
 		<p class='ital'>install shunit test framework for shell scripts</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
 				<li><a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>; must be installed before Developer tests can be run</li>
@@ -181,7 +204,7 @@ heading with name: Task Name; tsk_TaskName;5
 			<p><b>Dependencies:</b> </p>
 		</div>
 
-		<h5>AppleScripts</h5>
+		<h5 id="target_AppleScripts">AppleScripts</h5>
 		<p class='ital'>compiles AppleScripts</p><div class='indent'>
 			<p><b>Target:</b></p><ul>
 				<li><a href="XcodeDevelopment.html#AddBuildScriptTarget">Build Script Target</a> precompiles scripts from Developer/AppleScripts into target's bundle</li>
@@ -194,15 +217,23 @@ heading with name: Task Name; tsk_TaskName;5
 	</div>
 </div>
 
-<h3 id="AppsFolder">&bull; Applications Folder</h3>
-
-<!-- @marker "Xcode>" -->
-<h3 id="proj_Xcode">Xcode</h3>
-<p class='ital'>Xcode developer and automation support</p>
-	<p><b>Configuration:</b> </p>
-	<p><b>Integration:</b> </p>
+<!-- @marker "Applications>" -->
+<h3 id="group_Applications">Applications</h3>
+<p class='ital'> collection of projects to provide accessibility support for applications</p>
+	<p><b>Folder:</b> application-specific projects</p>
+	<p><b>Integration:</b> individual projects are testable; test target TestApplicationSupport aggregates tests</p>
 	<div class='indent'>
-		<h4>Targets</h4>
+		<h4>Application Projects</h4><div class='indent'>
+
+			<!-- @marker "Xcode>" -->
+			<h4 id="proj_Xcode">Xcode</h4>
+			<p class='ital'>Xcode developer and automation support</p>
+				<p><b>Configuration:</b> </p>
+				<p><b>Integration:</b> </p>
+				<div class='indent'>
+					<h5>Targets</h5>
+				</div>
+		</div>
 	</div>
 
 <!-- @marker "= BuildSupport" -->
@@ -212,7 +243,7 @@ heading with name: Task Name; tsk_TaskName;5
 </pre>
 
 <!-- @marker "Developer" -->
-<h5 id='target_Developer'>target Developer</h5><pre>
+<h5>target Developer</h5><pre>
 	*set up development environment, including developer configuration and scripts*
 	* external target with script `Developer/Developer_install.ksh "${SRCROOT}" Developer $(ACTION)`
 	* dependency relationships: <a href="#target_DeveloperScripts">DeveloperScripts</a>
@@ -235,7 +266,7 @@ heading with name: Task Name; tsk_TaskName;5
 </pre>
 
 <!-- @marker "target_Cdoc" -->
-<h5 id='target_Cdoc'>target Cdoc</h5><pre>
+<h5>target Cdoc</h5><pre>
 	*technical documentation for this repository*
 	* external target with script `Cdoc/Cdoc_install.ksh "${SRCROOT}" Cdoc $(ACTION)`
 	* dependency relationships: &lt;none&gt;
@@ -292,7 +323,7 @@ heading with name: Task Name; tsk_TaskName;5
 </pre>
 
 <!-- @marker "target_Doxygen" -->
-<h5 id='target_Doxygen'>target Doxygen</h5><pre>
+<h5>target Doxygen</h5><pre>
 	*builds Doxygen documentation for sample project*
 	* external target with script `Doxygen/Doxygen_install.ksh "${SRCROOT}" Doxygen $(ACTION)`
 	* dependency relationships: &lt;none&gt;
