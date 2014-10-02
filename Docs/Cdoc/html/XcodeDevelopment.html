@@ -150,12 +150,13 @@
 	* *normally build with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
 	* *may use ccInstall, an in-house script for installing groups of files*
 		* *variants for Doxygen and Cdoc documentation are provided*
-	* <span class='em'>Target &lt;TargetName&gt;</span>
+	* <span class='em'>Project &lt;TargetName&gt;</span>
 		* add External Build System project &lt;TargetName&gt; with configuration:
 			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
 			* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
 			* directory: "None"
 			* Pass Build Settings in Environment: NO
+		* if indicated, move &lt;TargetName&gt;.xcodeproj from &lt;EnclosingFolder&gt;/&lt;TargetName&gt; to &lt;EnclosingFolder&gt;
 		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template
 			* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
 			* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)

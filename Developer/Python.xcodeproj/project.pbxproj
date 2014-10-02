@@ -6,20 +6,25 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		6758574019DDF912004C6AC7 /* Python_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Python_install.ksh; path = Python/Python_install.ksh; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
-		675856F619DC921A004C6AC7 = {
+		6758573519DDF368004C6AC7 = {
 			isa = PBXGroup;
 			children = (
+				6758574019DDF912004C6AC7 /* Python_install.ksh */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		675856FB19DC921A004C6AC7 /* Python */ = {
+		6758573A19DDF368004C6AC7 /* Python */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "\"${SRCROOT}\" ${TARGET_NAME} $(ACTION)";
-			buildConfigurationList = 675856FE19DC921A004C6AC7 /* Build configuration list for PBXLegacyTarget "Python" */;
+			buildConfigurationList = 6758573D19DDF368004C6AC7 /* Build configuration list for PBXLegacyTarget "Python" */;
 			buildPhases = (
 			);
 			buildToolPath = "${TARGET_NAME}/${TARGET_NAME}_install.ksh";
@@ -27,36 +32,36 @@
 			dependencies = (
 			);
 			name = Python;
-			passBuildSettingsInEnvironment = 0;
+			passBuildSettingsInEnvironment = 1;
 			productName = Python;
 		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXProject section */
-		675856F719DC921A004C6AC7 /* Project object */ = {
+		6758573619DDF368004C6AC7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "C & C Software, Inc.";
 			};
-			buildConfigurationList = 675856FA19DC921A004C6AC7 /* Build configuration list for PBXProject "Python" */;
+			buildConfigurationList = 6758573919DDF368004C6AC7 /* Build configuration list for PBXProject "Python" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 675856F619DC921A004C6AC7;
+			mainGroup = 6758573519DDF368004C6AC7;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				675856FB19DC921A004C6AC7 /* Python */,
+				6758573A19DDF368004C6AC7 /* Python */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
-		675856FC19DC921A004C6AC7 /* Debug */ = {
+		6758573B19DDF368004C6AC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -94,7 +99,7 @@
 			};
 			name = Debug;
 		};
-		675856FD19DC921A004C6AC7 /* Release */ = {
+		6758573C19DDF368004C6AC7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -126,7 +131,7 @@
 			};
 			name = Release;
 		};
-		675856FF19DC921A004C6AC7 /* Debug */ = {
+		6758573E19DDF368004C6AC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUGGING_SYMBOLS = YES;
@@ -138,7 +143,7 @@
 			};
 			name = Debug;
 		};
-		6758570019DC921A004C6AC7 /* Release */ = {
+		6758573F19DDF368004C6AC7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				OTHER_CFLAGS = "";
@@ -150,24 +155,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		675856FA19DC921A004C6AC7 /* Build configuration list for PBXProject "Python" */ = {
+		6758573919DDF368004C6AC7 /* Build configuration list for PBXProject "Python" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				675856FC19DC921A004C6AC7 /* Debug */,
-				675856FD19DC921A004C6AC7 /* Release */,
+				6758573B19DDF368004C6AC7 /* Debug */,
+				6758573C19DDF368004C6AC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		675856FE19DC921A004C6AC7 /* Build configuration list for PBXLegacyTarget "Python" */ = {
+		6758573D19DDF368004C6AC7 /* Build configuration list for PBXLegacyTarget "Python" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				675856FF19DC921A004C6AC7 /* Debug */,
-				6758570019DC921A004C6AC7 /* Release */,
+				6758573E19DDF368004C6AC7 /* Debug */,
+				6758573F19DDF368004C6AC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 675856F719DC921A004C6AC7 /* Project object */;
+	rootObject = 6758573619DDF368004C6AC7 /* Project object */;
 }
