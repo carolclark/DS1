@@ -75,6 +75,8 @@
 		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 		* add Developer project <a href="Support.html#proj_Python">Python</a>
 			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
+			* add <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Python
+			* add <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
 
 		* clean
 			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
@@ -122,7 +124,8 @@
 					* install and test CCDevConfig
 					* install &amp; test remaining shell scripts
 					* install Services, ThirdParty (shunit)
-					* rename target and folder CCDev back to Developer, files CCDev_install.ksh to Developer_install.ksh, CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
+					* rename target and folder CCDev back to Developer, files CCDev_install.ksh to Developer_install.ksh,<br />
+						CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
 				* add target DeveloperTests
 					* ccInstall: by default, build only instead of build and test
 					* add target DeveloperTests; see <a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>
@@ -218,11 +221,14 @@
 	* configuration
 		* add more colorization to Terminal
 			* *technique used to add color to terminal prompt also works to add color and special effects to UNIX output*
-			* *see <a href="http://antesarkkinen.com/blog/add-colors-to-os-x-terminal-including-ls-and-nano/">Add Colors To OSX Terminal</a>, <a href="http://linux-sxs.org/housekeeping/lscolors.html">COLORS-Lscolors</a>, <a href="http://softwaregravy.wordpress.com/2010/10/16/ls-colors-for-mac/">LS_COLORS for MAC OS X</a>*
+			* *see <a href="http://antesarkkinen.com/blog/add-colors-to-os-x-terminal-including-ls-and-nano/">Add Colors To OSX Terminal</a>,<br />
+				<a href="http://linux-sxs.org/housekeeping/lscolors.html">COLORS-Lscolors</a>, <a href="http://softwaregravy.wordpress.com/2010/10/16/ls-colors-for-mac/">LS_COLORS for MAC OS X</a>*
 			* print "\033[1;33mcarolclark !\033[0m \033[1;35m$\033[0m" for terminal prompt
 			* also add additional settings to colorize <span class='mono'>ls</span> and <span class='mono'>grep</span>
 	* add support for using <span class='mono'>git remote update</span> instead of <span class='mono'>git pull</span>
-		* *updates from all remotes; then supports merge process that preserves merge commits, and stops to allow re-base rather than continuing with a merge that is not fast-forward; see <a href="http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop">How to avoid these merge commits in the future</a>*
+		* *updates from all remotes; then supports merge process that preserves merge commits,<br />
+		and stops to allow re-base rather than continuing with a merge that is not fast-forward;<br />
+		see <a href="http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop">How to avoid these merge commits in the future</a>*
 	<span class='tlmark'>&lt;--</span>
 	* refactor: for all unix files, includes come before help info to keep file's help from being overwritten by that from includes
 	* handle items that now enter scripts via user slate
@@ -278,7 +284,10 @@
 			* always define variables so that functions can be called independently
 	* stop here with work on "<a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling"
 		* * We have already recognized a need to learn Python for customizing the Xcode debugger, and probably using the Python interpreter to generate user-customizable Slates for Accessor.*
-		* * Now, after spending an inordinate amount of time trying to make script `archive.ksh` more robust and testable, we are recognizing that this work may be contributing to significant fragility with Xcode and Terminal, with per-file syntax-coloring issues in Xcode, preferences being incorrect for no apparent reason, very frequent need to quit Xcode and delete its cache file, and quite a few required reboots (at least 5 today).*
+		* * Now, after spending an inordinate amount of time trying to make script `archive.ksh` more robust and testable,<br />
+			we are recognizing that this work may be contributing to significant fragility with Xcode and Terminal,<br />
+			with per-file syntax-coloring issues in Xcode, preferences being incorrect for no apparent reason, very frequent need to quit Xcode and delete its cache file,<br />
+			and quite a few required reboots (at least 5 today).*
 		* ccBackup is already scheduled for replacement. Add a new issue to convert scripts ccInstall and archive to Python.
 </pre>
 

@@ -42,6 +42,8 @@ function getSubtargetDestination {
 		"Scripts" )
 			destinationFolder="${pythonFolder}"
 			;;
+		"Python_UTests" )
+			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
 			return
@@ -81,16 +83,48 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for ext in "*.py" "*.pyc"; do
-		for fl in $(ls ${ext}); do
-			print $fl
+	if [[ -d "${pythonFolder}" ]] ; then
+		if [[ -d "${pythonFolder}/__pycache__" ]] ; then
+			if [[ $(ls -A ${pythonFolder}/__pycache__) ]] ; then
+				for fl in $(ls -a ${pythonFolder}/__pycache__); do
+					chmod a+w "${pythonFolder}/__pycache__/${fl}"
+					rm "${pythonFolder}/__pycache__/${fl}"
+					print "removed ${pythonFolder}/__pycache__/${fl}"
+					st=${?}
+					if [[ ${st} > 0 ]] ; then
+						errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+						return
+					fi
+				done
+			fi
+			chmod a+w "${pythonFolder}/__pycache__"
+			rmdir "${pythonFolder}/__pycache__"
+			print "removed directory ${pythonFolder}/__pycache__"
 			st=${?}
 			if [[ ${st} > 0 ]] ; then
 				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 				return
 			fi
-		done
-	done
+		fi
+		if [[ $(ls -A ${pythonFolder}) ]] ; then
+			for fl in $(ls -a "${pythonFolder}"); do
+				rm "${pythonFolder}/${fl}"
+				print "removed ${pythonFolder}/${fl}"
+				st=${?}
+				if [[ ${st} > 0 ]] ; then
+					errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+					return
+				fi
+			done
+		fi
+		rmdir "${pythonFolder}"
+		print "removed directory ${pythonFolder}"
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+			return
+		fi
+	fi
 	return 0
 }
 

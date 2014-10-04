@@ -6,16 +6,77 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		679120F519E0907F00B2AEDA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679120F419E0907F00B2AEDA /* XCTest.framework */; };
+		6791210C19E098A000B2AEDA /* Python_UTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6791210B19E098A000B2AEDA /* Python_UTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		679120FF19E0907F00B2AEDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6758573619DDF368004C6AC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6758573A19DDF368004C6AC7;
+			remoteInfo = Python;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		6758574019DDF912004C6AC7 /* Python_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Python_install.ksh; path = Python/Python_install.ksh; sourceTree = "<group>"; };
+		679120F119E0907F00B2AEDA /* Python_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Python_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		679120F419E0907F00B2AEDA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6791210519E0929800B2AEDA /* Python_UTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Python_UTests-Info.plist"; sourceTree = "<group>"; };
+		6791210B19E098A000B2AEDA /* Python_UTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Python_UTests.m; path = Python/Python_UTests/Python_UTests.m; sourceTree = "<group>"; };
+		6791210D19E0992500B2AEDA /* Python_UTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Python_UTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		679120EE19E0907F00B2AEDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				679120F519E0907F00B2AEDA /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		6758573519DDF368004C6AC7 = {
 			isa = PBXGroup;
 			children = (
+				6791210B19E098A000B2AEDA /* Python_UTests.m */,
+				6791210419E0929800B2AEDA /* Python_UTests */,
 				6758574019DDF912004C6AC7 /* Python_install.ksh */,
+				679120F319E0907F00B2AEDA /* Frameworks */,
+				679120F219E0907F00B2AEDA /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		679120F219E0907F00B2AEDA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				679120F119E0907F00B2AEDA /* Python_UTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		679120F319E0907F00B2AEDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				679120F419E0907F00B2AEDA /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6791210419E0929800B2AEDA /* Python_UTests */ = {
+			isa = PBXGroup;
+			children = (
+				6791210519E0929800B2AEDA /* Python_UTests-Info.plist */,
+				6791210D19E0992500B2AEDA /* Python_UTests.m */,
+			);
+			name = Python_UTests;
+			path = Python/Python_UTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -37,12 +98,39 @@
 		};
 /* End PBXLegacyTarget section */
 
+/* Begin PBXNativeTarget section */
+		679120F019E0907F00B2AEDA /* Python_UTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6791210319E0908000B2AEDA /* Build configuration list for PBXNativeTarget "Python_UTests" */;
+			buildPhases = (
+				679120ED19E0907F00B2AEDA /* Sources */,
+				679120EE19E0907F00B2AEDA /* Frameworks */,
+				679120EF19E0907F00B2AEDA /* Resources */,
+				6791210F19E09BBF00B2AEDA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6791210019E0907F00B2AEDA /* PBXTargetDependency */,
+			);
+			name = Python_UTests;
+			productName = Python_UTests;
+			productReference = 679120F119E0907F00B2AEDA /* Python_UTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
 /* Begin PBXProject section */
 		6758573619DDF368004C6AC7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "C & C Software, Inc.";
+				TargetAttributes = {
+					679120F019E0907F00B2AEDA = {
+						TestTargetID = 6758573A19DDF368004C6AC7;
+					};
+				};
 			};
 			buildConfigurationList = 6758573919DDF368004C6AC7 /* Build configuration list for PBXProject "Python" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -52,13 +140,61 @@
 				en,
 			);
 			mainGroup = 6758573519DDF368004C6AC7;
+			productRefGroup = 679120F219E0907F00B2AEDA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				6758573A19DDF368004C6AC7 /* Python */,
+				679120F019E0907F00B2AEDA /* Python_UTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		679120EF19E0907F00B2AEDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6791210F19E09BBF00B2AEDA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/ksh;
+			shellScript = "/usr/local/bin/python3 -m unittest discover --start-directory \"${HOME}/Library/CCDev/bin/python\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		679120ED19E0907F00B2AEDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6791210C19E098A000B2AEDA /* Python_UTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6791210019E0907F00B2AEDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6758573A19DDF368004C6AC7 /* Python */;
+			targetProxy = 679120FF19E0907F00B2AEDA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6758573B19DDF368004C6AC7 /* Debug */ = {
@@ -152,6 +288,40 @@
 			};
 			name = Release;
 		};
+		6791210119E0907F00B2AEDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Python/Python_UTests/Python_UTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		6791210219E0907F00B2AEDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Python/Python_UTests/Python_UTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -172,6 +342,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6791210319E0908000B2AEDA /* Build configuration list for PBXNativeTarget "Python_UTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6791210119E0907F00B2AEDA /* Debug */,
+				6791210219E0907F00B2AEDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

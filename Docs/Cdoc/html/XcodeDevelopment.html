@@ -224,23 +224,26 @@
 
 <!-- @marker "Add Scripted Build Test Target" -->
 <h4 id='AddScriptedBuildTestTarget'>Add Scripted Build Test Target</h4><pre>
-	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior, including Project &lt; Test menu item and Bots for continuous integration*
-	* *also: to improve feedback, consider <a href="http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942">http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942o</a> to run the tests from the Cocoa test class*
+	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior*
+		* *including Project &lt; Test menu item and Bots for continuous integration*
+	* *also: to improve feedback, consider running the tests from the Cocoa test class*
+		* *see <a href="http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942">execute-a-terminal-command-from-a-cocoa-app</a>*
 	* add Cocoa Unit Testing Bundle target &lt;TargetName&gt;_(U|C|P)Tests
 	* Reorganize Files
 		* remove pch file, en.lproj folder
 		* rename required Cocoa tests file if indicated
 		* rename folder &lt;TargetName&gt;Tests to &lt;TestTarget&gt;_(U/C/P)Tests; move to folder &lt;TargetName&gt;
 		* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+		* exclude &lt;TestTarget&gt;_(U/C/P)Tests from &lt;TestTarget&gt;_install.ksh build processing
 	* Build Settings
 		* Precompile Prefix Header: no; remove Precompiled Header path
-		* remove en.lproj folder from Copy Build Sources build phase
+		* remove Info.plist file from Copy Build Sources build phase
 		* update path to Info.plist file
-	* replace ?Tests.m with ?_(U|C|P)Tests.m from template
-		* (replace file header with snippet)
-		* (use @import for XCTest)
-		* edit test file to run the tests
-	* add Run Script build phase: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t
+		* replace &lt;Python&gt;_(U|C|P)Tests.m with new copy from template
+		* (later)edit test file to run the tests
+	* add Run Script build phase:
+		* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t
+		* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
 	* add test files in folder &lt;TargetName&gt;/_(U|C|P)Tests
 	* add &lt;TargetName&gt; as a dependency; add &lt;TargetName&gt;Tests as a test for scheme &lt;TargetName&gt;
 </pre>
@@ -250,14 +253,16 @@
 	<li><b>Core Data</b><ul>
 		<li>add Data Model file</li>
 		<li>create new &lt;Target&gt;AppDelegate from private template _ObjectiveC/CocoaClass/NSApplicationDelegate, with option Use Core Data; recover any preexisting code</li>
-		<li>for Core Data tests, use private template _ObjectiveC/CocoaTestClass/NSManagedObject; see <a href="http://stackoverflow.com/questions/1849802/how-to-unit-test-my-models-now-that-i-am-using-core-data">Testing Core Data discussion</a></li>
+		<li>for Core Data tests, use private template _ObjectiveC/CocoaTestClass/NSManagedObject;<br />
+			see <a href="http://stackoverflow.com/questions/1849802/how-to-unit-test-my-models-now-that-i-am-using-core-data">Testing Core Data discussion</a></li>
 	</ul></li>
 </ul>
 
 <!-- @marker "Add Build Script Target" -->
 <h4 id='AddBuildScriptTarget'>Add Build Script Target</h4><ul>
 	<li class='blurb'>Motivation: make compiled AppleScripts available for use:<ul>
-		<li>add a target &lt;Target&gt;Scripts to compile &lt;name&gt;.applescript files in folder AppleScripts into a bundle of .scpt files at ${CCDev}/build/&lt;Target&gt;/&lt;Target&gt;Scripts.bundle</li>
+		<li>add a target &lt;Target&gt;Scripts to compile *.applescript files in folder AppleScripts into a bundle of .scpt files<br />
+			at ${CCDev}/build/&lt;Target&gt;/&lt;Target&gt;Scripts.bundle</li>
 		<li>expand existing External target &lt;Target&gt; to copy the compiled scripts to the desired location</li>
 	</ul></li>
 	<li>target &lt;Target&gt;Scripts<ul>
@@ -372,7 +377,9 @@
 	<li>remove "Controller" from name of xib</li>
 	<li>in the deprecated window, uncheck Visible at Launch</li>
 	<li>in AppDelegate: display new window<ul>
-		<li>snippet windowControllerProperty#: add @property for the new WindowController; add -(IBAction)newDocument:(id)sender to create WindowController and open window</li>
+		<li>snippet windowControllerProperty#: add @property for the new WindowController<ul>
+			<li>add -(IBAction)newDocument:(id)sender to create WindowController and open window</li>
+		</ul></li>
 		<li>applicationDidFinishLaunching: <span class='mono'>[self newDocument:self];</span></li>
 		<li>confirm window is displayed; AppTest for delegate.winController, delegate.winController.window not nil</li>
 	</ul></li>
@@ -387,10 +394,14 @@
 <h4 id='AddSheet'>Add Sheet</h4><ul>
 	<li>add code (snippet <span class='mono'>sheet</span>; input is capitalized title):<ul>
 		<li>IBAction close&lt;Title&gt;Sheet -- <span class='mono'>[NSApp endSheet:self.fileImagesSheet];</span></li>
-		<li>add <span class='mono'>- (void)didEnd&lt;Title&gt;Sheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo</span> with code <span class='mono'>[sheet orderOut:self];</span></li>
-		<li>IBAction show&lt;Title&gt;Sheet:<span class='mono'>[NSApp beginSheet:self.fileImagesSheet modalForWindow:self.view.window modalDelegate:self didEndSelector:@selector(didEnd&lt;Title&gt;Sheet:returnCode:contextInfo:) contextInfo:nil];</span></li>
+		<li>add <span class='mono'>- (void)didEnd&lt;Title&gt;Sheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo</span><br />
+			with code <span class='mono'>[sheet orderOut:self];</span></li>
+		<li>IBAction show&lt;Title&gt;Sheet:<span class='mono'>[NSApp beginSheet:self.fileImagesSheet modalForWindow:self.view.window<br />
+			5modalDelegate:self didEndSelector:@selector(didEnd&lt;Title&gt;Sheet:returnCode:contextInfo:) contextInfo:nil];</span></li>
 	</ul></li>
-	<li>Sheet Nib: add a window of class NSPanel to nib; set Identity: Label to &lt;title&gt;Sheet; deselect Visible at Launch; add referencing outlet &lt;title&gt;Sheet of File's Owner</li>
+	<li>Sheet Nib: add a window of class NSPanel to nib; set Identity: Label to &lt;title&gt;Sheet;<ul>
+		<li>ObjC objects &lt;ClassCP&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
+	</ul>deselect Visible at Launch; add referencing outlet &lt;title&gt;Sheet of File's Owner</li>
 	<li>Close button: add a close button; connect action to close&lt;Title&gt;Sheet</li>
 	<li>to activate sheet, add user interface element with action connected to show&lt;Title&gt;Sheet</li>
 </ul>
@@ -431,9 +442,16 @@
 		<li>C++ code is incompatible with Objective-C Automatic Reference Counting.</li>
 	</ul></li>
 	<li>AccessorC9<ul>
-		<li>These techniques are intended for use in porting C++ code from AccessorC9 to its Cocoa version Accessor. We exploit some characteristics of AccessorC9 in this process.<ul>
-			<li>AccessorC9 code is contained in namespace AccessLib, alias <span class='mono'>al</span>. ObjC objects &lt;ClassCP&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
-			<li>AccessorC9 class al::Host was intended to support polymorphism for executable type and context. al::Host became bottleneck access point to the Application, Window, and SlateManager classes. We now exploit those aspects to provide an access to application-level Objective-C classes from C++ code.</li>
+		<li>These techniques are intended for use in porting C++ code from AccessorC9 to its Cocoa version Accessor.<ul>
+			<li>We exploit some characteristics of AccessorC9 in this process.</li>
+		</ul><ul>
+			<li>AccessorC9 code is contained in namespace AccessLib, alias <span class='mono'>al</span>.<ul>
+				<li>ObjC objects &lt;ClassCP&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
+			</ul></li>
+			<li>AccessorC9 class al::Host was intended to support polymorphism for executable type and context.<ul>
+				<li>al::Host became bottleneck access point to the Application, Window, and SlateManager classes.</li>
+				<li>We now exploit those aspects to provide an access to application-level Objective-C classes from C++ code.</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 	<li>As much as possible, we will wrap rather than change existing code until the initial import is complete.</li>
@@ -441,8 +459,12 @@
 
 <!-- @marker "Porting: Naming Conventions" -->
 <h5 id='PortingNamingConventions'>Porting: Naming Conventions</h5><ul>
-	<li>Original C++ files for class &lt;Class&gt; are named &lt;Class&gt;_AL.cp/h (or &lt;Class&gt;_C9.cp/h). These are initially imported as is. The implementation file may later be renamed to use extension .mm to enable use of Objective-C code.</li>
-	<li>Files for an Objective-C class that wraps the class in files &lt;Class&gt;_AL.cp/h are named &lt;Class&gt;.mm/h. The class itself is temporarily named &lt;Class&gt;CP, since otherwise the compiler could sometimes confuse &lt;Class&gt; with al::&lt;Class&gt;.</li>
+	<li>Original C++ files for class &lt;Class&gt; are named &lt;Class&gt;_AL.cp/h (or &lt;Class&gt;_C9.cp/h). These are initially imported as is.<ul>
+		<li>The implementation file may later be renamed to use extension .mm to enable use of Objective-C code.</li>
+	</ul></li>
+	<li>Files for an Objective-C class that wraps the class in files &lt;Class&gt;_AL.cp/h are named &lt;Class&gt;.mm/h.<ul>
+		<li>The class itself is temporarily named &lt;Class&gt;CP, since otherwise the compiler could sometimes confuse &lt;Class&gt; with al::&lt;Class&gt;.</li>
+	</ul></li>
 	<li>Pure Objective-C classes are in files named &lt;Class&gt;.m/h. Ultimately, pure Objective-C classes will replace all C++ and Objective-C++ classes.</li>
 </ul>
 
