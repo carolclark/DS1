@@ -137,4 +137,69 @@ function cleanTarget {
 }
 
 #^ 8 === main
-. "${CCDev}/bin/execInstallScript"
+missingArgumentMessage="USAGE: $0 [--commandFlag] sourceRoot targetFolder (-actionFlags | 'clean') [...]"
+
+if [[ $# > 0 ]] ; then
+	if [[ "${1}" = -* ]] ; then
+		command="${1}"
+		shift
+	fi
+else
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
+	return
+fi
+if [[ $# > 1 ]] ; then
+	sourceRoot="${1}"
+	shift
+	targetFolder="${1}"
+	shift
+	if [[ $# > 0 ]] ; then
+		actionFlags="${1}"
+		shift
+	fi
+else
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
+	return
+fi
+if [[ ${WRITE_INFO} = "yes" ]] ; then
+	print "sourceRoot: ${sourceRoot}"
+	print "targetFolder: ${targetFolder}"
+	print "actionFlags: ${actionFlags}"
+	print "$0#$LINENO: WRITE_INFO mode; exiting now"
+	exit 1
+fi
+if [[ -n "${command}" ]] ; then
+	case "${command}" in
+		"--getSubtargetDestination" )
+			msg=$(getSubtargetDestination "${1}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--prepareFileOperation" )
+			msg=$(prepareFileOperation "${1}" "${2}" "${3}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--cleanTarget" )
+			msg=$(cleanTarget)
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		* )
+			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid commandFlag ${command}"
+			exit $?
+			;;
+	esac
+fi
+if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
+	msg=$(ccInstall "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+	es=$?
+	print "${msg}"
+	return "${es}"
+else
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
+	return
+fi
