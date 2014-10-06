@@ -1,20 +1,20 @@
 // =================================================================================
-//  ___FILENAME___
+//  Python_UTests.m
 //
-//  Created by ___FULLUSERNAME___ on ___DATE___ for project ___PROJECTNAME___.
-//	Copyright (c) ___YEAR___ C & C Software, Inc. All rights reserved.
+//  Created by Carol Clark on 10/4/14 for project Python.
+//	Copyright (c) 2014 C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 
 @import XCTest;
 
-@interface ___FILEBASENAMEASIDENTIFIER___ : XCTestCase
+@interface Python_UTests : XCTestCase
 
 - (void)testExample;
 
 @end
 
-@implementation ___FILEBASENAMEASIDENTIFIER___
+@implementation Python_UTests
 
 - (void)setUp {
     [super setUp];
