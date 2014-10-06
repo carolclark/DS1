@@ -87,13 +87,17 @@ function cleanTarget {
 		if [[ -d "${pythonFolder}/__pycache__" ]] ; then
 			if [[ $(ls -A ${pythonFolder}/__pycache__) ]] ; then
 				for fl in $(ls -a ${pythonFolder}/__pycache__); do
-					chmod a+w "${pythonFolder}/__pycache__/${fl}"
-					rm "${pythonFolder}/__pycache__/${fl}"
-					print "removed ${pythonFolder}/__pycache__/${fl}"
-					st=${?}
-					if [[ ${st} > 0 ]] ; then
-						errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-						return
+					if [[ "${fl}" != '.' ]] ; then
+						if [[ "${fl}" != '..' ]] ; then
+							chmod a+w "${pythonFolder}/__pycache__/${fl}"
+							rm "${pythonFolder}/__pycache__/${fl}"
+							print "removed ${pythonFolder}/__pycache__/${fl}"
+							st=${?}
+							if [[ ${st} > 0 ]] ; then
+								errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+								return
+							fi
+						fi
 					fi
 				done
 			fi
@@ -108,12 +112,16 @@ function cleanTarget {
 		fi
 		if [[ $(ls -A ${pythonFolder}) ]] ; then
 			for fl in $(ls -a "${pythonFolder}"); do
-				rm "${pythonFolder}/${fl}"
-				print "removed ${pythonFolder}/${fl}"
-				st=${?}
-				if [[ ${st} > 0 ]] ; then
-					errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-					return
+				if [[ "${fl}" != '.' ]] ; then
+					if [[ "${fl}" != '..' ]] ; then
+						rm "${pythonFolder}/${fl}"
+						print "removed ${pythonFolder}/${fl}"
+						st=${?}
+						if [[ ${st} > 0 ]] ; then
+							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+							return
+						fi
+					fi
 				fi
 			done
 		fi

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6781060B19E3368E00C6B831 /* Python_UTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6791210D19E0992500B2AEDA /* Python_UTests.m */; };
 		679120F519E0907F00B2AEDA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679120F419E0907F00B2AEDA /* XCTest.framework */; };
-		6791210C19E098A000B2AEDA /* Python_UTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6791210B19E098A000B2AEDA /* Python_UTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,8 +26,11 @@
 		679120F119E0907F00B2AEDA /* Python_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Python_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		679120F419E0907F00B2AEDA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6791210519E0929800B2AEDA /* Python_UTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Python_UTests-Info.plist"; sourceTree = "<group>"; };
-		6791210B19E098A000B2AEDA /* Python_UTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Python_UTests.m; path = Python/Python_UTests/Python_UTests.m; sourceTree = "<group>"; };
 		6791210D19E0992500B2AEDA /* Python_UTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Python_UTests.m; sourceTree = "<group>"; };
+		6791211119E32B8600B2AEDA /* scm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = scm.py; sourceTree = "<group>"; };
+		6791211219E32B8600B2AEDA /* testScm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testScm.py; sourceTree = "<group>"; };
+		6791211319E32B8600B2AEDA /* testUtil.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testUtil.py; sourceTree = "<group>"; };
+		6791211419E32B8600B2AEDA /* util.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = util.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +48,7 @@
 		6758573519DDF368004C6AC7 = {
 			isa = PBXGroup;
 			children = (
-				6791210B19E098A000B2AEDA /* Python_UTests.m */,
+				6791211519E32B8A00B2AEDA /* Scripts */,
 				6791210419E0929800B2AEDA /* Python_UTests */,
 				6758574019DDF912004C6AC7 /* Python_install.ksh */,
 				679120F319E0907F00B2AEDA /* Frameworks */,
@@ -77,6 +80,18 @@
 			);
 			name = Python_UTests;
 			path = Python/Python_UTests;
+			sourceTree = "<group>";
+		};
+		6791211519E32B8A00B2AEDA /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				6791211119E32B8600B2AEDA /* scm.py */,
+				6791211219E32B8600B2AEDA /* testScm.py */,
+				6791211319E32B8600B2AEDA /* testUtil.py */,
+				6791211419E32B8600B2AEDA /* util.py */,
+			);
+			name = Scripts;
+			path = Python/Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,7 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6791210C19E098A000B2AEDA /* Python_UTests.m in Sources */,
+				6781060B19E3368E00C6B831 /* Python_UTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +365,7 @@
 				6791210219E0907F00B2AEDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
