@@ -136,6 +136,159 @@ function cleanTarget {
 	return 0
 }
 
+#pragma mark 5 --- processAction
+function processAction {
+	callbackScript=""
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
+		callbackScript="${1}"
+		sourceRoot="${2}"
+		targetFolder="${3}"
+		actionIn="${4}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processAction callbackScript sourceRoot targetFolder [action]"
+		return
+	fi
+	action=$(getAction "${sourceRoot}" "${targetFolder}" ${actionIn})
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		errorMessage ${st} "$0#$LINENO:" "error: function getAction failed: ${action}"
+		return
+	fi
+
+# clean
+	if [[ ${action} = "clean" ]] ; then
+		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
+		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}")
+		st=$?
+		if [[ ${st} > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "error: ${callbackScript} --cleanTarget failed: ${msg}"
+			return
+		fi
+		print ${msg}
+		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
+	fi
+
+# doxygen
+	if [[ ${action} = "doxygen" ]] ; then
+		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
+		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "Doxygen")
+		installName="${outputDir##*/}"
+		print "== installing ${installName} documentation"
+		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
+		mkdir -p "${outputDir}"
+		st=$?
+		if [[ $st > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "failed to create output directory $outputDir"
+			return
+		fi
+
+	#  Run doxygen on the config file (builds local site)
+		$doxygenPath "${sourceRoot}/${targetFolder}/${installName}_doxygen.txt"
+		st=$?
+		if [[ $st > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "error while generating Doxygen docs"
+			return
+		fi
+
+	# Make docset using the Makefile that just generated
+		print $outputDir/html
+		make -C $outputDir/html install
+		st=$?
+		if [[ $st > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "error while creating $workspaceName.docset"
+			return
+		fi
+
+	# Copy the docset to the location expected by Xcode
+		docsetPath="/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.candcsoft.${installName}.docset"
+		cp -r $outputDir/html/com.candcsoft.${installName}.docset $docsetPath
+		st=$?
+		if [[ $st > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "could not copy docset to $docsetPath"
+			return
+		fi
+
+	# Tell Xcode to load the docset
+		osascript -e "tell application \"Xcode\" to load documentation set with path \"$docsetPath\""
+		st=$?
+		if [[ $st > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "error loading $docsetPath into Xcode"
+			return
+		fi
+
+	fi
+
+# install
+	if [[ ${action} = "install" ]] ; then
+		print "== installing ${sourceRoot##*/}/${targetFolder}..."
+		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
+		typeset -i failcnt=0
+		prevFolder=""
+		while read fl ; do
+			sourceFolder="${fl%%/*}"
+			fpath="${fl#*/}"
+			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
+				msg=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "${sourceFolder}")
+				st=$?
+				if [[ ${st} > 0 ]] ; then
+					failcnt="${failcnt}"+1
+					errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+				else
+					destination="${msg}"
+					prevFolder="${sourceFolder}"
+				fi
+				if [[ -n "${destination}" ]] ; then
+					print "=${sourceRoot##*/}/${targetFolder}/${sourceFolder}:"
+				fi
+			fi
+			if [[ ${st} > 0 ]] ; then
+				failcnt="${failcnt}"+1
+				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+			else
+				print -n "${fpath}: "
+				msg=$("${callbackScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${action}" "${sourceFolder}" "${fpath}" "${destination}")
+				st=$?
+				if [[ ${st} > 0 ]] ; then
+					failcnt="${failcnt}"+1
+					errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+				else
+					hfile="${msg}"
+					set -A copyInfo
+					while read ln ; do
+						copyInfo+=("${ln}")
+					done < "${hfile}"
+					action="${copyInfo[0]}"
+					sourceForCopy="${copyInfo[1]}"
+					destinationForCopy="${copyInfo[2]}"
+				fi
+				msg=$(ccInstall --installOneFile "${action}" "${sourceForCopy}" "${destinationForCopy}")
+				st=$?
+				if [[ ${st} > 0 ]] ; then
+					failcnt="${failcnt}"+1
+					msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg}")
+				fi
+				print "${msg}"
+			fi
+		done < "${iofile}"
+		if [[ ${failcnt} = 0 ]] ; then
+			ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
+			print "build succeeded"
+		else
+			pl="s"
+			if [[ ${failcnt} = 1 ]] ; then
+				pl=""
+			fi
+			errorMessage 1 "$0#$LINENO:" "error: Build Failed: ${errcnt} error${pl} encountered; tests not run"
+			exit "${failcnt}"
+		fi
+	fi
+
+# test
+	if [[ ${action} = "test" ]] ; then
+		runShunitTests "${sourceRoot}/${targetFolder}"
+	fi
+}
+
 #^ 8 === main
 missingArgumentMessage="USAGE: $0 [--commandFlag] sourceRoot targetFolder (-actionFlags | 'clean') [...]"
 
@@ -195,7 +348,7 @@ if [[ -n "${command}" ]] ; then
 	esac
 fi
 if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
-	msg=$(ccInstall "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+	msg=$(processAction "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
 	es=$?
 	print "${msg}"
 	return "${es}"
