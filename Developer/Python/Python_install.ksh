@@ -8,12 +8,12 @@
 
 USAGE='
 Python_install.ksh -- provide functions for ccInstall to support CCDev installation
-#	--getSubtargetDestination subtarget
+#	getSubtargetDestination subtarget
 #		output destination location for files of subtarget
-#	--prepareFileOperation subtarget filepath destinationFolder
+#	prepareFileOperation subtarget filepath destinationFolder
 #		perform any preprocessing indicated for the specified file
 #		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
-#	--cleanTarget
+#	cleanTarget
 #		perform any cleanup indicated for files that this target installs
 #		return 0 to have caller continue by updating last built data
 '
@@ -34,7 +34,7 @@ function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
 		subtarget="${1}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh getSubtargetDestination subtarget"
 		return
 	fi
 	destinationFolder=""
@@ -60,7 +60,7 @@ function prepareFileOperation {
 		filepath="${2}"
 		destinationFolder="${3}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh prepareFileOperation subtarget filepath destinationFolder"
 		return
 	fi
 
@@ -138,14 +138,12 @@ function cleanTarget {
 
 #pragma mark 5 --- processAction
 function processAction {
-	callbackScript=""
-	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
-		callbackScript="${1}"
-		sourceRoot="${2}"
-		targetFolder="${3}"
-		actionIn="${4}"
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+		sourceRoot="${1}"
+		targetFolder="${2}"
+		actionIn="${3}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processAction callbackScript sourceRoot targetFolder [action]"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh sourceRoot targetFolder [action]"
 		return
 	fi
 	action=$(getAction "${sourceRoot}" "${targetFolder}" ${actionIn})
@@ -158,10 +156,10 @@ function processAction {
 # clean
 	if [[ ${action} = "clean" ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}")
+		msg=$(cleanTarget "${sourceRoot}" "${targetFolder}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "error: ${callbackScript} --cleanTarget failed: ${msg}"
+			errorMessage ${st} "$0#$LINENO:" "error: cleanTarget failed: ${msg}"
 			return
 		fi
 		print ${msg}
@@ -171,7 +169,7 @@ function processAction {
 # doxygen
 	if [[ ${action} = "doxygen" ]] ; then
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "Doxygen")
+		outputDir=$(getSubtargetDestination "Doxygen")
 		installName="${outputDir##*/}"
 		print "== installing ${installName} documentation"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
@@ -228,7 +226,7 @@ function processAction {
 			sourceFolder="${fl%%/*}"
 			fpath="${fl#*/}"
 			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
-				msg=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "${sourceFolder}")
+				msg=$(getSubtargetDestination "${sourceFolder}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -246,7 +244,7 @@ function processAction {
 				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 			else
 				print -n "${fpath}: "
-				msg=$("${callbackScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${action}" "${sourceFolder}" "${fpath}" "${destination}")
+				msg=$(prepareFileOperation "${sourceFolder}" "${fpath}" "${destination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -323,24 +321,6 @@ if [[ ${WRITE_INFO} = "yes" ]] ; then
 fi
 if [[ -n "${command}" ]] ; then
 	case "${command}" in
-		"--getSubtargetDestination" )
-			msg=$(getSubtargetDestination "${1}")
-			es=$?
-			print "${msg}"
-			return "${es}"
-			;;
-		"--prepareFileOperation" )
-			msg=$(prepareFileOperation "${1}" "${2}" "${3}")
-			es=$?
-			print "${msg}"
-			return "${es}"
-			;;
-		"--cleanTarget" )
-			msg=$(cleanTarget)
-			es=$?
-			print "${msg}"
-			return "${es}"
-			;;
 		* )
 			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid commandFlag ${command}"
 			exit $?
@@ -348,7 +328,7 @@ if [[ -n "${command}" ]] ; then
 	esac
 fi
 if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
-	msg=$(processAction "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+	msg=$(processAction "${sourceRoot}" "${targetFolder}" "${actionFlags}")
 	es=$?
 	print "${msg}"
 	return "${es}"
