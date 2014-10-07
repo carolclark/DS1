@@ -290,15 +290,6 @@ function processAction {
 #^ 8 === main
 missingArgumentMessage="USAGE: $0 [--commandFlag] sourceRoot targetFolder (-actionFlags | 'clean') [...]"
 
-if [[ $# > 0 ]] ; then
-	if [[ "${1}" = -* ]] ; then
-		command="${1}"
-		shift
-	fi
-else
-	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return
-fi
 if [[ $# > 1 ]] ; then
 	sourceRoot="${1}"
 	shift
@@ -311,13 +302,6 @@ if [[ $# > 1 ]] ; then
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
 	return
-fi
-if [[ ${WRITE_INFO} = "yes" ]] ; then
-	print "sourceRoot: ${sourceRoot}"
-	print "targetFolder: ${targetFolder}"
-	print "actionFlags: ${actionFlags}"
-	print "$0#$LINENO: WRITE_INFO mode; exiting now"
-	exit 1
 fi
 if [[ -n "${command}" ]] ; then
 	case "${command}" in
