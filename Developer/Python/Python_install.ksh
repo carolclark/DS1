@@ -12,7 +12,7 @@ Python_install.ksh -- provide functions for ccInstall to support CCDev installat
 #		output destination location for files of subtarget
 #	prepareFileOperation subtarget filepath subtargetDestination
 #		perform any preprocessing indicated for the specified file
-#		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
+#		output path to file containing: "copy"|"ignore" fullSourcePath fullDestinationPath
 #	cleanTarget
 #		perform any cleanup indicated for files that this target installs
 #		return 0 to have caller continue by updating last built data
@@ -67,15 +67,15 @@ function prepareFileOperation {
 		srcname="${filepath}"
 		destname="${srcname}"
 		fileAction="copy"
-		sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
-		destinationForCopy="${subtargetDestination}/${destname}"
+		fullSourcePath="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
+		fullDestinationPath="${subtargetDestination}/${destname}"
 	else
 		fileAction="ignore"
 	fi
 
 	fl="${CCDev}/tmp/copyInfo"
 	mkdir -p "${CCDev}/tmp"
-	print "${fileAction}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
+	print "${fileAction}\n${fullSourcePath}\n${fullDestinationPath}" > "${fl}"
 	print "${fl}"
 	return 0
 }
@@ -165,7 +165,7 @@ function cleanTarget {
 		previousSubtarget=""
 		while read fl ; do
 			subtarget="${fl%%/*}"
-			fpath="${fl#*/}"
+			filepath="${fl#*/}"
 			if [[ ! "${previousSubtarget}" = "${subtarget}" ]] ; then
 				msg=$(getSubtargetDestination "${subtarget}")
 				st=$?
@@ -184,8 +184,8 @@ function cleanTarget {
 				failcnt="${failcnt}"+1
 				errorMessage ${st} "$0#$LINENO:" "error while finding subtarget destination: ${msg}"
 			else
-				print -n "${fpath}: "
-				msg=$(prepareFileOperation "${subtarget}" "${fpath}" "${subtargetDestination}")
+				print -n "${filepath}: "
+				msg=$(prepareFileOperation "${subtarget}" "${filepath}" "${subtargetDestination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -197,10 +197,10 @@ function cleanTarget {
 						copyInfo+=("${ln}")
 					done < "${hfile}"
 					fileAction="${copyInfo[0]}"
-					sourceForCopy="${copyInfo[1]}"
-					destinationForCopy="${copyInfo[2]}"
+					fullSourcePath="${copyInfo[1]}"
+					fullDestinationPath="${copyInfo[2]}"
 				fi
-				msg=$(ccInstall --installOneFile "${fileAction}" "${sourceForCopy}" "${destinationForCopy}")
+				msg=$(ccInstall --installOneFile "${fileAction}" "${fullSourcePath}" "${fullDestinationPath}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
