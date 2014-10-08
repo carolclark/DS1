@@ -10,7 +10,7 @@ USAGE='
 Python_install.ksh -- provide functions for ccInstall to support CCDev installation
 #	getSubtargetDestination subtarget
 #		output destination location for files of subtarget
-#	prepareFileOperation subtarget filepath destinationFolder
+#	prepareFileOperation subtarget filepath subtargetDestination
 #		perform any preprocessing indicated for the specified file
 #		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
 #	cleanTarget
@@ -25,7 +25,6 @@ CCDev="${HOME}/Library/CCDev"
 command=""
 sourceRoot=""
 targetFolder=""
-actionFlags=""
 
 pythonFolder="${CCDev}/bin/python"
 
@@ -37,10 +36,10 @@ function getSubtargetDestination {
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh getSubtargetDestination subtarget"
 		return
 	fi
-	destinationFolder=""
+	subtargetDestination=""
 	case "${subtarget}" in
 		"Scripts" )
-			destinationFolder="${pythonFolder}"
+			subtargetDestination="${pythonFolder}"
 			;;
 		"Python_UTests" )
 			;;
@@ -49,7 +48,7 @@ function getSubtargetDestination {
 			return
 			;;
 	esac
-	print "${destinationFolder}"
+	print "${subtargetDestination}"
 	return 0
 }
 
@@ -58,25 +57,25 @@ function prepareFileOperation {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		subtarget="${1}"
 		filepath="${2}"
-		destinationFolder="${3}"
+		subtargetDestination="${3}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh prepareFileOperation subtarget filepath destinationFolder"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh prepareFileOperation subtarget filepath subtargetDestination"
 		return
 	fi
 
-	if [[ -n "${destinationFolder}" ]] ; then
+	if [[ -n "${subtargetDestination}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname}"
-		action="copy"
+		fileAction="copy"
 		sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
-		destinationForCopy="${destinationFolder}/${destname}"
+		destinationForCopy="${subtargetDestination}/${destname}"
 	else
-		action="ignore"
+		fileAction="ignore"
 	fi
 
 	fl="${CCDev}/tmp/copyInfo"
 	mkdir -p "${CCDev}/tmp"
-	print "${action}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
+	print "${fileAction}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
 	print "${fl}"
 	return 0
 }
@@ -140,7 +139,6 @@ function cleanTarget {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		sourceRoot="${1}"
 		targetFolder="${2}"
-		actionIn="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh sourceRoot targetFolder [action]"
 		return
@@ -164,30 +162,30 @@ function cleanTarget {
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
 		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
 		typeset -i failcnt=0
-		prevFolder=""
+		previousSubtarget=""
 		while read fl ; do
-			sourceFolder="${fl%%/*}"
+			subtarget="${fl%%/*}"
 			fpath="${fl#*/}"
-			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
-				msg=$(getSubtargetDestination "${sourceFolder}")
+			if [[ ! "${previousSubtarget}" = "${subtarget}" ]] ; then
+				msg=$(getSubtargetDestination "${subtarget}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
 					errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 				else
-					destination="${msg}"
-					prevFolder="${sourceFolder}"
+					subtargetDestination="${msg}"
+					previousSubtarget="${subtarget}"
 				fi
-				if [[ -n "${destination}" ]] ; then
-					print "=${sourceRoot##*/}/${targetFolder}/${sourceFolder}:"
+				if [[ -n "${subtargetDestination}" ]] ; then
+					print "=${sourceRoot##*/}/${targetFolder}/${subtarget}:"
 				fi
 			fi
 			if [[ ${st} > 0 ]] ; then
 				failcnt="${failcnt}"+1
-				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+				errorMessage ${st} "$0#$LINENO:" "error while finding subtarget destination: ${msg}"
 			else
 				print -n "${fpath}: "
-				msg=$(prepareFileOperation "${sourceFolder}" "${fpath}" "${destination}")
+				msg=$(prepareFileOperation "${subtarget}" "${fpath}" "${subtargetDestination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -198,11 +196,11 @@ function cleanTarget {
 					while read ln ; do
 						copyInfo+=("${ln}")
 					done < "${hfile}"
-					action="${copyInfo[0]}"
+					fileAction="${copyInfo[0]}"
 					sourceForCopy="${copyInfo[1]}"
 					destinationForCopy="${copyInfo[2]}"
 				fi
-				msg=$(ccInstall --installOneFile "${action}" "${sourceForCopy}" "${destinationForCopy}")
+				msg=$(ccInstall --installOneFile "${fileAction}" "${sourceForCopy}" "${destinationForCopy}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -222,6 +220,8 @@ function cleanTarget {
 			errorMessage 1 "$0#$LINENO:" "error: Build Failed: ${errcnt} error${pl} encountered"
 			exit "${failcnt}"
 		fi
+
+# invalid action
 	else
 		errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid action ${action}"
 	fi
