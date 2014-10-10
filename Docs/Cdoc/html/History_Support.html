@@ -79,13 +79,15 @@
 			* add <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
 			* move Python files, currently in project Developer, to project Python
 		* refactor ccInstall/Python_install.ksh
+			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
 			* copy in content of execInstallScript, ccInstall processAction; remove $callbackScript, --&lt;command&gt;
 			* use consistent variables throughout:
-			* $subtarget ($sourceFolder); $subtargetDestination ($destination, $destinationFolder); $previousSubtarget ($prevFolder); $fileAction ($action)
-			* $filePath ($fpath); $fullSourcePath ($sourceForCopy); $fullDestinationPath ($destinationForCopy)
-
-		* clean
-			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
+				* $subtarget ($sourceFolder); $subtargetDestination ($destination, $destinationFolder); $previousSubtarget ($prevFolder); $fileAction ($action)
+				* $filePath ($fpath); $fullSourcePath ($sourceForCopy); $fullDestinationPath ($destinationForCopy)
+		* remove Developer target Python
+		* refactor ccInstall/Python_install.ksh
+			* inline former callbacks getSubtargetDestination, prepareFileOperation
+			* clean uses ccInstall --removeFolder
 </pre>
 
 <!-- @marker "AppleScript Testing" -->
