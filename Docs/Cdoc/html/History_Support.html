@@ -67,7 +67,7 @@
 	* replace ccInstall function getActions, argument actionFlags with function getAction, action keyword
 	* findTests, findSources use random filenames; see <a href="http://content.hccfl.edu/pollock/ShScript/TempFile.htm">mktemp</a>
 	* install: move tracking of $prevFolder to findSources via output file
-	* simplify ccInstall.processAction
+	* simplify &lt;target&gt;_install process
 		* install
 			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
 				* prints 'skipped', 'succeeded', or error message
@@ -78,14 +78,17 @@
 			* add <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Python
 			* add <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
 			* move Python files, currently in project Developer, to project Python
-		* refactor ccInstall/Python_install.ksh
+		* refactor Python_install.ksh
+			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
 			* copy in content of execInstallScript, ccInstall processAction; remove $callbackScript, --&lt;command&gt;
 			* use consistent variables throughout:
-			* $subtarget ($sourceFolder); $subtargetDestination ($destination, $destinationFolder); $previousSubtarget ($prevFolder); $fileAction ($action)
-			* $filePath ($fpath); $fullSourcePath ($sourceForCopy); $fullDestinationPath ($destinationForCopy)
-
-		* clean
-			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
+				* $subtarget ($sourceFolder); $subtargetDestination ($destination, $destinationFolder); $previousSubtarget ($prevFolder); $fileAction ($action)
+				* $filePath ($fpath); $fullSourcePath ($sourceForCopy); $fullDestinationPath ($destinationForCopy)
+		* remove Developer target Python
+		* refactor Python_install.ksh
+			* inline former callbacks getSubtargetDestination, prepareFileOperation
+			* clean: inline; uses ccInstall --removeFolder
+		* replace Xcode FileTemplate installTarget.xctemplate
 </pre>
 
 <!-- @marker "AppleScript Testing" -->
