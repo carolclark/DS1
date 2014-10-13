@@ -11,71 +11,15 @@ Python_install.ksh -- install Python scripts
 #	Python_install		sourceRoot targetFolder action
 '
 
+#^ 1 === top
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
-#^ 1 === top
-sourceRoot=""
-targetFolder=""
-
 pythonFolder="${CCDev}/bin/python"
 
-#^ 7 === cleanTarget
-function cleanTarget {
-	if [[ -d "${pythonFolder}" ]] ; then
-		if [[ -d "${pythonFolder}/__pycache__" ]] ; then
-			if [[ $(ls -A ${pythonFolder}/__pycache__) ]] ; then
-				for fl in $(ls -a ${pythonFolder}/__pycache__); do
-					if [[ "${fl}" != '.' ]] ; then
-						if [[ "${fl}" != '..' ]] ; then
-							chmod a+w "${pythonFolder}/__pycache__/${fl}"
-							rm "${pythonFolder}/__pycache__/${fl}"
-							print "removed ${pythonFolder}/__pycache__/${fl}"
-							st=${?}
-							if [[ ${st} > 0 ]] ; then
-								errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-								return
-							fi
-						fi
-					fi
-				done
-			fi
-			chmod a+w "${pythonFolder}/__pycache__"
-			rmdir "${pythonFolder}/__pycache__"
-			print "removed directory ${pythonFolder}/__pycache__"
-			st=${?}
-			if [[ ${st} > 0 ]] ; then
-				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-				return
-			fi
-		fi
-		if [[ $(ls -A ${pythonFolder}) ]] ; then
-			for fl in $(ls -a "${pythonFolder}"); do
-				if [[ "${fl}" != '.' ]] ; then
-					if [[ "${fl}" != '..' ]] ; then
-						rm "${pythonFolder}/${fl}"
-						print "removed ${pythonFolder}/${fl}"
-						st=${?}
-						if [[ ${st} > 0 ]] ; then
-							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-							return
-						fi
-					fi
-				fi
-			done
-		fi
-		rmdir "${pythonFolder}"
-		print "removed directory ${pythonFolder}"
-		st=${?}
-		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-			return
-		fi
-	fi
-	return 0
-}
-
 #^ 8 === main
+	sourceRoot=""
+	targetFolder=""
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		sourceRoot="${1}"
 		targetFolder="${2}"
@@ -88,12 +32,14 @@ function cleanTarget {
 # clean
 	if [[ ${action} = "clean" ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		msg=$(cleanTarget "${sourceRoot}" "${targetFolder}")
-		st=$?
-		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "error: cleanTarget failed: ${msg}"
-			return
-		fi
+		for folder in "${pythonFolder}" ; do
+			msg=$(ccInstall --removeFolder "${folder}")
+			st=${?}
+			if [[ ${st} > 0 ]] ; then
+				errorMessage ${st} "$0#$LINENO:" "error: cleanTarget failed: ${msg}"
+				return
+			fi
+		done
 		print ${msg}
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 
