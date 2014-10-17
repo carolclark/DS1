@@ -16,20 +16,19 @@
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
-		<!-- @topicItem "simplify ccInstall installation process" "#simplifyCcInstall" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
 		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
 		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
-		<!-- @topicGroup "" "10" -->
+		<!-- @topicGroup "" "9" -->
 		<!-- @topicItem "Ongoig Automation" "#Automation" "1" "" -->
 		<!-- @topicItem "&lt;-- Current" "#hmark_Current" "0" "" -->
-	<!-- @topicGroup "" "13" -->
+	<!-- @topicGroup "" "12" -->
 	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "16" -->
+	<!-- @topicGroup "Topics" "15" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
@@ -62,54 +61,24 @@
 		* reenable tests
 </pre>
 
-<!-- @marker "simplify ccInstall" -->
-<h4 id='simplifyCcInstall'><a href="http://github.com/carolclark/Support/issues/42">(#42)</a>simplify ccInstall installation process</h4><pre>
-	* replace ccInstall function getActions, argument actionFlags with function getAction, action keyword
-	* findTests, findSources use random filenames; see <a href="http://content.hccfl.edu/pollock/ShScript/TempFile.htm">mktemp</a>
-	* install: move tracking of $prevFolder to findSources via output file
-	* simplify &lt;target&gt;_install process
-		* install
-			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
-				* prints 'skipped', 'succeeded', or error message
-		<span class='tlmark'>&lt;--09/21/32014</span>
-		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
-		* add Developer project <a href="Support.html#proj_Python">Python</a>
-			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
-			* add <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Python
-			* add <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
-			* move Python files, currently in project Developer, to project Python
-		* refactor Python_install.ksh
-			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
-			* copy in content of execInstallScript, ccInstall processAction; remove $callbackScript, --&lt;command&gt;
-			* use consistent variables throughout:
-				* $subtarget ($sourceFolder); $subtargetDestination ($destination, $destinationFolder); $previousSubtarget ($prevFolder); $fileAction ($action)
-				* $filePath ($fpath); $fullSourcePath ($sourceForCopy); $fullDestinationPath ($destinationForCopy)
-		* remove Developer target Python
-		* refactor Python_install.ksh
-			* inline former callbacks getSubtargetDestination, prepareFileOperation
-			* clean: inline; uses ccInstall --removeFolder
-		* replace Xcode FileTemplate installTarget.xctemplate
-</pre>
-
 <!-- @marker "AppleScript Testing" -->
 <h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/Support/issues/35">(#35)</a>AppleScript Testing</h4><pre>
-	* move ThirdParty folder (now contains shunit2) to ~/Dev, out of our version control
+	* target ThirdParty
 		* move ThirdParty installation from DevConfig.ksh to new target ThirdParty
 			* Developer does not currently need access to third-party assets until testing
 		* *At this point, we cannot test fully because the clean action is not working, probably because of a previously noticed problem with ccInstall:removeFolder*
 		* <a href="#RemoveFolderWPython">Fix RemoveFolder with Python</a>
 		* ThirdParty clean does remove content
 		* update shunit2 to the latest version
-			* Apparently, we already had the latest version, v2.1.6. We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
-	* add third-party AppleScript testing script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
-		* clone <a href="https://github.com/lifepillar/ASUnit">ASUnit</a> into ThirdParty folder
-		<span class='tlmark'>&lt;-- 08/11/2014</span>
-		* ThirdParty_install.ksh also installs ASUnit script and documentation
-	* new Compile AppleScripts target; depended on by target Developer
-	* Developer_install installs compiled AppleScripts
-	* Initial AppleScript Tests
-		* add TestLoader and TestVarTypes tests based on scripts from ASUnit examples
+			* Apparently, we already had the latest version, v2.1.6.
+			* We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
+	<span class='tlmark'>&lt;-- 10/13/2014</span>
+	* reorganize Developer folder; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
+	* new Developer target ASUnit installs ASUnit, runs supplied tests
+		* Initial AppleScript Tests: TestLoader and TestVarTypes test scripts from ASUnit examples
 			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
+	* new Developer target AppleScripts installs content from existing BuildSupport/Developer/AppleScripts
+		* tests may be just a custom script based on TestVarTypes
 </pre>
 
 <!-- @marker "restructure Xcode projects" -->
@@ -147,14 +116,40 @@
 			* Accessor: <a href="../Accessor/History_Accessor.html#SupportLaptop">Support Laptop</a>
 			* remove folder and target UserSlates from Support/BuildSupport
 		<span class='tlmark'>&lt;-- 09/22/2014</span>
+		* reorganize Developer folder [reorgDevFolder]
+			* *folder Developer to contain multiple simple projects, including target Developer to aggregate the rest*
+			* *for now, create these projects in their own workspaces inside Support/Developer
+			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+			* shunit2: new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a>
+				* move shunit2 target from project Developer target ThirdParty to project in ~/Dev/Support/Developer
+				* move third-party folder shunit2-2.1.6 from ~/Dev/Support/Developer/Developer/ThirdParty to ~/Dev/Support/Developer/shunit2
+				* move ThirdParty_install.ksh to new shunit2_install.ksh in new folder
+				* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+			* Python_install.ksh: does not require ccInstall to build; warns if cannot clean
+			* DevSetup
+				* new project DevSetup
+				* runs existing Developer_install (rename to DevSetup_install) and DevConfig scripts
+				* runs existing shunit2 tests
+			* existing Services
+				* move script from OpenAccessor workflow to BuildSupport/Developer/AppleScripts
+				* use TextEdit file to replace Stickies message editing file, workflow service GitSaveMessage
+			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
+			* verify no useful content remaining for old project Support/Developer/Developer; delete
+			* add folder Developer, projects Python, shunit2, DevSetup to existing workspace Support
+			* new project Support/Developer/Developer aggregates and tests rest of projects in folder Support/Developer
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
 			* add AppleScript scripts
-		* add ReadMe files to all repositories and new projects
-			* Developing projects, reorganizing sources: add ReadMe file in the same folder as the Xcode project
+		* refactor Punkin's Cdoc and Doxygen installation; add new script template
+		* for each repository and project:
+			* add ReadMe file
+				* in XcodeDevelopment: reorganizing sources: add ReadMe file in the same folder as the Xcode workspace or project
+			* use new *_install template for each scripted build
 		* Application Support
 			* Applications/BBEdit
 			* Applications/Xcode
+			* Applications/Finder
+			* folder Applications/Dash (stores snippets)
 	* Accessor: Accessor (from BuildAccessor: Accessor, AccessorApp/LogicTest, InHouse)
 	* Configuration files
 		* upgrade Accessor config files as much as works now
@@ -252,6 +247,35 @@
 
 <!-- @marker "Completed" -->
 <h2 id='Completed'>Completed</h2>
+
+<!-- @marker "simplify ccInstall" -->
+<h4 id='simplifyCcInstall'><a href="http://github.com/carolclark/Support/issues/42">(#42)</a>simplify ccInstall installation process</h4><pre>
+	* replace ccInstall function getActions, argument actionFlags with function getAction, action keyword
+	* findTests, findSources use random filenames; see <a href="http://content.hccfl.edu/pollock/ShScript/TempFile.htm">mktemp</a>
+	* install: move tracking of $prevFolder to findSources via output file
+	* simplify &lt;target&gt;_install process
+		* install
+			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
+				* prints 'skipped', 'succeeded', or error message
+		<span class='tlmark'>&lt;--09/21/32014</span>
+		* add Developer project <a href="Support.html#proj_Python">Python</a>
+			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
+			* add <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Python
+			* add <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
+			* move Python files, currently in project Developer, to project Python
+		* refactor Python_install.ksh
+			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
+			* copy in content of execInstallScript, ccInstall processAction; remove $callbackScript, --&lt;command&gt;
+			* use consistent variables throughout:
+				* $subtarget ($sourceFolder); $subtargetDestination ($destination, $destinationFolder); $previousSubtarget ($prevFolder); $fileAction ($action)
+				* $filePath ($fpath); $fullSourcePath ($sourceForCopy); $fullDestinationPath ($destinationForCopy)
+		* remove Developer target Python
+		* refactor Python_install.ksh
+			* inline former callbacks getSubtargetDestination, prepareFileOperation
+			* clean: inline; uses ccInstall --removeFolder
+		* replace Xcode FileTemplate installTarget.xctemplate
+		<span class='tldate'>[10/13/2014]</span>
+</pre>
 
 <h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>
 	* adapt History_Support.html to synchronize with GitHub issues

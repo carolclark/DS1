@@ -17,7 +17,7 @@
 	<!-- @topicGroup "Configuration" "4" -->
 		<!-- @topicItem "Xcode Project and Target Settings" "#pbxproj" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Refactorings and Tasks" "8" -->
+	<!-- @topicGroup "Refactorings and Tasks" "7" -->
 		<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
 		<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
 		<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
@@ -119,7 +119,7 @@
 			* MainMenu.xib
 				* update name and class of Application Delegate object
 				* set Application's delegate outlet to the renamed &lt;Target&gt;App
-	* apply <a href="#AddCocoaTestTarget">Add Cocoa Test Target</a> to edit App Test target
+	* apply <a href="#AddCocoaTestTarget">Add Cocoa Test Target</a> to edit Unit Test target
 	* apply <a href="#AddCocoaTestTarget">Add Cocoa Test Target</a> to add Unit Test target &lt;ApplicationName&gt;Tests
 	* apply <a href="#ReplaceDefaultWindow"> to Replace Default Window</a>
 </pre>
@@ -228,24 +228,24 @@
 		* *including Project &lt; Test menu item and Bots for continuous integration*
 	* *also: to improve feedback, consider running the tests from the Cocoa test class*
 		* *see <a href="http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942">execute-a-terminal-command-from-a-cocoa-app</a>*
-	* add Cocoa Unit Testing Bundle target &lt;TargetName&gt;_(U|C|P)Tests
+	* add Cocoa Unit Testing Bundle target &lt;TestTarget&gt;_(U|C|P)Tests
 	* Reorganize Files
 		* remove pch file, en.lproj folder
 		* rename required Cocoa tests file if indicated
-		* rename folder &lt;TargetName&gt;Tests to &lt;TestTarget&gt;_(U/C/P)Tests; move to folder &lt;TargetName&gt;
+		* move folder &lt;TestTarget&gt;_(U/C/P)Tests into folder &lt;TestTarget&gt;
 		* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
 		* exclude &lt;TestTarget&gt;_(U/C/P)Tests from &lt;TestTarget&gt;_install.ksh build processing
 	* Build Settings
 		* Precompile Prefix Header: no; remove Precompiled Header path
 		* remove Info.plist file from Copy Build Sources build phase
 		* update path to Info.plist file
-		* replace &lt;Python&gt;_(U|C|P)Tests.m with new copy from template
+		* replace &lt;TestTarget&gt;_(U|C|P)Tests.m with new copy from template
 		* (later)edit test file to run the tests
 	* add Run Script build phase:
 		* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t
 		* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
-	* add test files in folder &lt;TargetName&gt;/_(U|C|P)Tests
-	* add &lt;TargetName&gt; as a dependency; add &lt;TargetName&gt;Tests as a test for scheme &lt;TargetName&gt;
+	* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
+	* add &lt;TargetName&gt; as a dependency; add &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
 </pre>
 
 <!-- @marker "Add Target Feature" -->
