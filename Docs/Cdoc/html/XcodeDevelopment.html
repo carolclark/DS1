@@ -145,7 +145,7 @@
 	<li>mark all schemes shared</li>
 </ul>
 
-<!-- marker "New Scripted Build Project"	* application targets: add new file ReadMe.html -->
+<!-- marker "New Scripted Build Project" -->
 <h4 id='NewScriptedBuildProject'>New Scripted Build Project</h4><pre>
 	* *normally build with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
 	* *may use ccInstall, an in-house script for installing groups of files*
@@ -157,9 +157,11 @@
 			* directory: "None"
 			* Pass Build Settings in Environment: NO
 		* if indicated, move &lt;TargetName&gt;.xcodeproj from &lt;EnclosingFolder&gt;/&lt;TargetName&gt; to &lt;EnclosingFolder&gt;
+		* add new file ReadMe.html from template next to xcodeproj
 		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template
 			* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
 			* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
+		* remove all project-level Build Settings
 	* <span class='em'>Target &lt;TargetName&gt;Tests</span>
 		* <a href="#AddScriptedBuildTestTarget">Add Scripted Build Test Target</a>
 </pre>

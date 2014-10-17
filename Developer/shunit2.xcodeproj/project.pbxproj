@@ -45,12 +45,14 @@
 		673FC81719F1B7A90021003A /* shunit2_test_misc.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_misc.sh; sourceTree = "<group>"; };
 		673FC81819F1B7A90021003A /* shunit2_test_standalone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_standalone.sh; sourceTree = "<group>"; };
 		673FC81919F1B7A90021003A /* shunit2_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2_install.ksh; sourceTree = "<group>"; };
+		673FC81A19F1C0450021003A /* shunit2_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = shunit2_ReadMe.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		673FC78519EC7B3D0021003A = {
 			isa = PBXGroup;
 			children = (
+				673FC81A19F1C0450021003A /* shunit2_ReadMe.html */,
 				673FC7ED19F1B7A90021003A /* shunit2 */,
 			);
 			sourceTree = "<group>";
