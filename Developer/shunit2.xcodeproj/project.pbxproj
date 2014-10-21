@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		673FC82319F1C6320021003A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673FC82219F1C6320021003A /* XCTest.framework */; };
+		673FC83619F1C8A40021003A /* shunit2_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 673FC83519F1C8A40021003A /* shunit2_Tests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		673FC82D19F1C6320021003A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 673FC78619EC7B3D0021003A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 673FC78A19EC7B3D0021003A;
+			remoteInfo = shunit2;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		673FC7F019F1B7A90021003A /* gen_test_results.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gen_test_results.sh; sourceTree = "<group>"; };
 		673FC7F119F1B7A90021003A /* which */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = which; sourceTree = "<group>"; };
@@ -46,14 +61,32 @@
 		673FC81819F1B7A90021003A /* shunit2_test_standalone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_standalone.sh; sourceTree = "<group>"; };
 		673FC81919F1B7A90021003A /* shunit2_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2_install.ksh; sourceTree = "<group>"; };
 		673FC81A19F1C0450021003A /* shunit2_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = shunit2_ReadMe.html; sourceTree = "<group>"; };
+		673FC81F19F1C6320021003A /* shunit2_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shunit2_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		673FC82219F1C6320021003A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		673FC83319F1C7080021003A /* shunit2_Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "shunit2_Tests-Info.plist"; sourceTree = "<group>"; };
+		673FC83519F1C8A40021003A /* shunit2_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shunit2_Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		673FC81C19F1C6320021003A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				673FC82319F1C6320021003A /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		673FC78519EC7B3D0021003A = {
 			isa = PBXGroup;
 			children = (
 				673FC81A19F1C0450021003A /* shunit2_ReadMe.html */,
+				673FC83219F1C7080021003A /* shunit2_Tests */,
 				673FC7ED19F1B7A90021003A /* shunit2 */,
+				673FC82119F1C6320021003A /* Frameworks */,
+				673FC82019F1C6320021003A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +183,32 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		673FC82019F1C6320021003A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				673FC81F19F1C6320021003A /* shunit2_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		673FC82119F1C6320021003A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				673FC82219F1C6320021003A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		673FC83219F1C7080021003A /* shunit2_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				673FC83319F1C7080021003A /* shunit2_Tests-Info.plist */,
+				673FC83519F1C8A40021003A /* shunit2_Tests.m */,
+			);
+			name = shunit2_Tests;
+			path = shunit2/shunit2_Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -169,12 +228,39 @@
 		};
 /* End PBXLegacyTarget section */
 
+/* Begin PBXNativeTarget section */
+		673FC81E19F1C6320021003A /* shunit2_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 673FC82F19F1C6320021003A /* Build configuration list for PBXNativeTarget "shunit2_Tests" */;
+			buildPhases = (
+				673FC81B19F1C6320021003A /* Sources */,
+				673FC81C19F1C6320021003A /* Frameworks */,
+				673FC81D19F1C6320021003A /* Resources */,
+				673FC83719F1C94A0021003A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				673FC82E19F1C6320021003A /* PBXTargetDependency */,
+			);
+			name = shunit2_Tests;
+			productName = shunit2_Tests;
+			productReference = 673FC81F19F1C6320021003A /* shunit2_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
 /* Begin PBXProject section */
 		673FC78619EC7B3D0021003A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "C & C Software, Inc.";
+				TargetAttributes = {
+					673FC81E19F1C6320021003A = {
+						TestTargetID = 673FC78A19EC7B3D0021003A;
+					};
+				};
 			};
 			buildConfigurationList = 673FC78919EC7B3D0021003A /* Build configuration list for PBXProject "shunit2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -184,13 +270,61 @@
 				en,
 			);
 			mainGroup = 673FC78519EC7B3D0021003A;
+			productRefGroup = 673FC82019F1C6320021003A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				673FC78A19EC7B3D0021003A /* shunit2 */,
+				673FC81E19F1C6320021003A /* shunit2_Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		673FC81D19F1C6320021003A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		673FC83719F1C94A0021003A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/ksh;
+			shellScript = "\"${HOME}/Library/CCDev/shunit/src/shunit2_test.sh\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		673FC81B19F1C6320021003A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				673FC83619F1C8A40021003A /* shunit2_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		673FC82E19F1C6320021003A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 673FC78A19EC7B3D0021003A /* shunit2 */;
+			targetProxy = 673FC82D19F1C6320021003A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		673FC78B19EC7B3D0021003A /* Debug */ = {
@@ -219,6 +353,94 @@
 			};
 			name = Release;
 		};
+		673FC83019F1C6320021003A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "shunit2/shunit2_Tests/shunit2_Tests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		673FC83119F1C6320021003A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "shunit2/shunit2_Tests/shunit2_Tests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -239,6 +461,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		673FC82F19F1C6320021003A /* Build configuration list for PBXNativeTarget "shunit2_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				673FC83019F1C6320021003A /* Debug */,
+				673FC83119F1C6320021003A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

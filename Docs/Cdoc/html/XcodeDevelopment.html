@@ -239,7 +239,6 @@
 		* exclude &lt;TestTarget&gt;_(U/C/P)Tests from &lt;TestTarget&gt;_install.ksh build processing
 	* Build Settings
 		* Precompile Prefix Header: no; remove Precompiled Header path
-		* remove Info.plist file from Copy Build Sources build phase
 		* update path to Info.plist file
 		* replace &lt;TestTarget&gt;_(U|C|P)Tests.m with new copy from template
 		* (later)edit test file to run the tests
@@ -247,7 +246,7 @@
 		* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t
 		* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
 	* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
-	* add &lt;TargetName&gt; as a dependency; add &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
+	* verify &lt;TargetName&gt; as a dependency, &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
 </pre>
 
 <!-- @marker "Add Target Feature" -->
