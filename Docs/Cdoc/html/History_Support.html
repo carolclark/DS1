@@ -127,7 +127,8 @@
 				* add ReadMe; remove all project-level Build Settings
 				* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
 					* ccInstall: use stderr/stdout instead of EXPECTED_ERROR to handle expected errors
-			* Python_install.ksh: does not require ccInstall to build; warns if cannot clean
+			* Python: fix issue removing folders with invisible files
+				* util.scan_directories lists both visible and invisible files
 			* DevSetup
 				* new project DevSetup
 				* runs existing Developer_install (rename to DevSetup_install) and DevConfig scripts
