@@ -217,7 +217,6 @@ function runShunitTests {
 
 	errout="$CCDev/tmp/errout"
 	errinfo="$CCDev/tmp/errinfo"
-	errtmp="$CCDev/tmp/errtmp"
 	iofile=$(findTests "${testPath}")
 	typeset -i failcnt=0
 	typeset -i errcnt=0

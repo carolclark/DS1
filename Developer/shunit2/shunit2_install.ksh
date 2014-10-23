@@ -12,9 +12,6 @@ shunit2_install.ksh -- install ThirdParty shunit2 shell testing script
 '
 
 CCDev="${HOME}/Library/CCDev"
-if [[ -e "${CCDev}/bin/ccInstall" ]] ; then
-	. "${CCDev}/bin/ccInstall"
-fi
 
 #^ 1 === top
 missingArgumentMessage="USAGE: $0 pathToTargetFolder targetFolder ['clean']"
@@ -76,7 +73,8 @@ function shunitInstall {
 #^ 7 === cleanTarget
 function cleanTarget {
 	if [[ -e "${CCDev}/bin/ccInstall" ]] ; then
-		for folder in "${HOME}/Library/Script Libraries" "${CCDev}/shunit"; do
+		. "${CCDev}/bin/ccInstall"
+		for folder in "${CCDev}/shunit"; do
 			msg=$(ccInstall --removeFolder "${folder}")
 			st=${?}
 			if [[ ${st} > 0 ]] ; then

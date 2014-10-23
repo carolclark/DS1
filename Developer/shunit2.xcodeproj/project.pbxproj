@@ -302,7 +302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "\"${HOME}/Library/CCDev/shunit/src/shunit2_test.sh\"";
+			shellScript = "cd \"${HOME}/Library/CCDev/shunit/src\"\n\"${HOME}/Library/CCDev/shunit/src/shunit2_test.sh\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
