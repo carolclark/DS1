@@ -74,7 +74,7 @@
 			* We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
 	<span class='tlmark'>&lt;-- 10/13/2014</span>
 	* reorganize Developer folder; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
-	* new Developer target ASUnit installs ASUnit, runs supplied tests
+	* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit installs ASUnit, runs supplied tests
 		* Initial AppleScript Tests: TestLoader and TestVarTypes test scripts from ASUnit examples
 			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
 	* new Developer target AppleScripts installs content from existing BuildSupport/Developer/AppleScripts
@@ -119,7 +119,6 @@
 		* reorganize Developer folder [reorgDevFolder]
 			* *folder Developer to contain multiple simple projects, including target Developer to aggregate the rest*
 			* *for now, create these projects in their own workspaces inside Support/Developer
-			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 			* shunit2: new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a>
 				* move shunit2 target from project Developer target ThirdParty to project in ~/Dev/Support/Developer
 				* move third-party folder shunit2-2.1.6 from ~/Dev/Support/Developer/Developer/ThirdParty to ~/Dev/Support/Developer/shunit2
@@ -127,19 +126,27 @@
 				* add ReadMe; remove all project-level Build Settings
 				* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
 					* ccInstall: use stderr/stdout instead of EXPECTED_ERROR to handle expected errors
-			* Python_install.ksh: does not require ccInstall to build; warns if cannot clean
-			* DevSetup
-				* new project DevSetup
-				* runs existing Developer_install (rename to DevSetup_install) and DevConfig scripts
-			* existing Services
-				* move script from OpenAccessor workflow to BuildSupport/Developer/AppleScripts
-				* use TextEdit file to replace Stickies message editing file, workflow service GitSaveMessage
+			* Python: fix issue removing folders with invisible files
+				* util.scan_directories lists both visible and invisible files
+			* ASUnit folder
+				* create (only) <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
+					* *project to filled in later; see <a href="#AppleScriptTesting">AppleScript Testing</a>*
+				* move ASUnit content folder into new project folder
+			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+			* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Developer
+				* temporarily rename existing folder Developer; add new project; move content to new folder
+			* add project Developer, subprojects Developer, Python, shunit2, ASUnit to existing workspace Support
+			* new target Support/Developer/Developer aggregates rest of projects in folder Support/Developer
+			* CCDev
+				* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
+				* *install script based on Python_install.ksh*
+					* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
+					* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
 			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
-			* verify no useful content remaining for old project Support/Developer/Developer; delete
-			* add folder Developer, projects Python, shunit2, DevSetup to existing workspace Support
-			* new project Support/Developer/Developer aggregates and tests rest of projects in folder Support/Developer
+			* verify no useful content remaining for project Support/Developer/Developer; delete
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
+			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts
 			* add AppleScript scripts
 		* refactor Punkin's Cdoc and Doxygen installation; add new script template
 		* for each repository and project:
@@ -811,7 +818,7 @@
 		<li>Accessor (new): add copies of files AccessLib_rsrc.h, Keyboard_AL.h to UserSlates folder</li>
 		<li class='tlmark'>&lt;--</li>
 		<li>FixWindow.applescript: changes window position, and size if necessary, to avoid blocking Accessor window; stored at top level of Scripts folder, but code is per application<ul>
-			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="XcodeDevelopment.html#AddBuildScriptTarget">Add Build Script Target</a></li>
+			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="XcodeDevelopment.html#NewAppleScriptProject">New AppleScript Project</a></li>
 		</ul></li>
 	</ul>
 
