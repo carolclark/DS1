@@ -1,7 +1,7 @@
 #!/bin/ksh
 
-#  Python_install
-#  Support/Python
+#  Python_install.ksh
+#  Support/Developer/Python
 #
 #  Created by Carol Clark on 10/1/14.
 #  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
@@ -50,36 +50,37 @@ pythonFolder="${CCDev}/bin/python"
 		typeset -i failcnt=0
 		previous_source_folder=""
 		while read fl ; do
+			# set up to process file
 			source_folder="${fl%/*}"
 			file_name="${fl##*/}"
 			file_basename="${file_name%.*}"
 			file_extension="${file_name#*.}"
-			if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
-				destination_folder=""
-				case "${source_folder}" in
-					"Scripts" )
-						destination_folder="${pythonFolder}"
-						;;
-					"Python_UTests" )
-						;;
-					* )
-						failcnt="${failcnt}"+1
-						errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"
-						;;
-				esac
-				if [[ -n "${destination_folder}" ]] ; then
-					print "=${sourceRoot##*/}/${targetFolder}/${source_folder}:"
-					previous_source_folder="${source_folder}"
-				fi
-			fi
-			print -n "${file_name}: "
-			if [[ -n "${destination_folder}" ]] ; then
-				fileAction="copy"
+			destination_folder=""
+			fileAction=""
+			case "${source_folder}" in
+				"Scripts" )
+					fileAction="copy"
+					destination_folder="${pythonFolder}"
+					;;
+				"Python_UTests" )
+					fileAction="ignore"
+					;;
+				* )
+					failcnt="${failcnt}"+1
+					errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"
+					;;
+			esac
+			if [[ ! "${fileAction}" = "ignore" ]] ; then
 				fullSourcePath="${sourceRoot}/${targetFolder}/${source_folder}/${file_name}"
 				fullDestinationPath="${destination_folder}/${file_name}"
-			else
-				fileAction="ignore"
 			fi
+
+			# display and process
+			if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
+				print "=${sourceRoot##*/}/${targetFolder}/${source_folder}:"
+				previous_source_folder="${source_folder}"
+			fi
+			print -n "${file_name}: "
 			case "${fileAction}" in
 				"ignore" )
 					msg="skipped"
@@ -90,7 +91,7 @@ pythonFolder="${CCDev}/bin/python"
 					if [[ ${st} > 0 ]] ; then
 						failcnt="${failcnt}"+1
 					else
-						msg="succeeded"
+						msg="copied"
 					fi
 					;;
 				* )
