@@ -1,7 +1,7 @@
 #!/bin/ksh
 
-#  ___FILENAME___
-#  <#Repository#>/___PROJECTNAME___
+#  ___FILENAME___.ksh
+#  <#PathFromRepository#>/___PROJECTNAME___
 #
 #  Created by ___FULLUSERNAME___ on ___DATE___.
 #  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
@@ -15,7 +15,7 @@ USAGE='
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
-<#set variables for folder paths#>
+<#xxFolder#>="${CCDev}/<##>"
 
 #^ 8 === main
 	sourceRoot=""
@@ -48,44 +48,57 @@ CCDev="${HOME}/Library/CCDev"
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
 		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
 		typeset -i failcnt=0
-		previousSubtarget=""
+		previous_source_folder=""
 		while read fl ; do
-			subtarget="${fl%%/*}"
-			filepath="${fl#*/}"
-			if [[ ! "${previousSubtarget}" = "${subtarget}" ]] ; then
-				subtargetDestination=""
-				case "${subtarget}" in
-					"<#subtarget#>" )
-						subtargetDestination="${<#folder#>}"
-						;;
-					"<#...#>" )
-						;;
-					* )
+			# set up to process file
+			source_folder="${fl%/*}"
+			file_name="${fl##*/}"
+			file_basename="${file_name%.*}"
+			file_extension="${file_name#*.}"
+			destination_folder=""
+			fileAction=""
+			case "${source_folder}" in
+				"Scripts" )
+					fileAction="copy"
+					destination_folder="${<#folder#>}"
+					;;
+				"<#...#>" )
+					fileAction="ignore"
+					;;
+				* )
+					failcnt="${failcnt}"+1
+					errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"
+					;;
+			esac
+			if [[ ! "${fileAction}" = "ignore" ]] ; then
+				fullSourcePath="${sourceRoot}/${targetFolder}/${source_folder}/${file_name}"
+				fullDestinationPath="${destination_folder}/${file_name}"
+			fi
+
+			# display and process
+			if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
+				print "=${sourceRoot##*/}/${targetFolder}/${source_folder}:"
+				previous_source_folder="${source_folder}"
+			fi
+			print -n "${file_name}: "
+			case "${fileAction}" in
+				"ignore" )
+					msg="skipped"
+					;;
+				"copy" )
+					msg=$(ccInstall --copyFile "${fullSourcePath}" "${fullDestinationPath}")
+					st=$?
+					if [[ ${st} > 0 ]] ; then
 						failcnt="${failcnt}"+1
-						errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-						;;
-				esac
-				if [[ -n "${subtargetDestination}" ]] ; then
-					print "=${sourceRoot##*/}/${targetFolder}/${subtarget}:"
-					previousSubtarget="${subtarget}"
-				fi
-			fi
-			print -n "${filepath}: "
-			if [[ -n "${subtargetDestination}" ]] ; then
-				srcname="${filepath}"
-				destname="${srcname}"
-				fileAction="copy"
-				fullSourcePath="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
-				fullDestinationPath="${subtargetDestination}/${destname}"
-			else
-				fileAction="ignore"
-			fi
-			msg=$(ccInstall --installOneFile "${fileAction}" "${fullSourcePath}" "${fullDestinationPath}")
-			st=$?
-			if [[ ${st} > 0 ]] ; then
-				failcnt="${failcnt}"+1
-				msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg}")
-			fi
+					else
+						msg="copied"
+					fi
+					;;
+				* )
+					msg=$(errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}")
+					failcnt="${failcnt}"+1
+					;;
+			esac
 			print "${msg}"
 		done < "${iofile}"
 		if [[ ${failcnt} = 0 ]] ; then
