@@ -80,12 +80,24 @@ pythonFolder="${CCDev}/bin/python"
 			else
 				fileAction="ignore"
 			fi
-			msg=$(ccInstall --installOneFile "${fileAction}" "${fullSourcePath}" "${fullDestinationPath}")
-			st=$?
-			if [[ ${st} > 0 ]] ; then
-				failcnt="${failcnt}"+1
-				msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg}")
-			fi
+			case "${fileAction}" in
+				"ignore" )
+					msg="skipped"
+					;;
+				"copy" )
+					msg=$(ccInstall --copyFile "${fullSourcePath}" "${fullDestinationPath}")
+					st=$?
+					if [[ ${st} > 0 ]] ; then
+						failcnt="${failcnt}"+1
+					else
+						msg="succeeded"
+					fi
+					;;
+				* )
+					msg=$(errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}")
+					failcnt="${failcnt}"+1
+					;;
+			esac
 			print "${msg}"
 		done < "${iofile}"
 		if [[ ${failcnt} = 0 ]] ; then
