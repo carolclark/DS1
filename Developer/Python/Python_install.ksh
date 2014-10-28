@@ -48,35 +48,35 @@ pythonFolder="${CCDev}/bin/python"
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
 		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
 		typeset -i failcnt=0
-		previousSubtarget=""
+		previous_source_folder=""
 		while read fl ; do
-			subtarget="${fl%%/*}"
-			filepath="${fl#*/}"
-			if [[ ! "${previousSubtarget}" = "${subtarget}" ]] ; then
-				subtargetDestination=""
-				case "${subtarget}" in
+			source_folder="${fl%/*}"
+			file_name="${fl##*/}"
+			file_basename="${file_name%.*}"
+			file_extension="${file_name#*.}"
+			if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
+				destination_folder=""
+				case "${source_folder}" in
 					"Scripts" )
-						subtargetDestination="${pythonFolder}"
+						destination_folder="${pythonFolder}"
 						;;
 					"Python_UTests" )
 						;;
 					* )
 						failcnt="${failcnt}"+1
-						errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
+						errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"
 						;;
 				esac
-				if [[ -n "${subtargetDestination}" ]] ; then
-					print "=${sourceRoot##*/}/${targetFolder}/${subtarget}:"
-					previousSubtarget="${subtarget}"
+				if [[ -n "${destination_folder}" ]] ; then
+					print "=${sourceRoot##*/}/${targetFolder}/${source_folder}:"
+					previous_source_folder="${source_folder}"
 				fi
 			fi
-			print -n "${filepath}: "
-			if [[ -n "${subtargetDestination}" ]] ; then
-				srcname="${filepath}"
-				destname="${srcname}"
+			print -n "${file_name}: "
+			if [[ -n "${destination_folder}" ]] ; then
 				fileAction="copy"
-				fullSourcePath="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
-				fullDestinationPath="${subtargetDestination}/${destname}"
+				fullSourcePath="${sourceRoot}/${targetFolder}/${source_folder}/${file_name}"
+				fullDestinationPath="${destination_folder}/${file_name}"
 			else
 				fileAction="ignore"
 			fi
