@@ -1,7 +1,7 @@
 #!/bin/ksh
 
 #  ___FILENAME___.ksh
-#  <#PathFromRepository#>/___PROJECTNAME___
+#  <#PathFromDev#>/___PROJECTNAME___
 #
 #  Created by ___FULLUSERNAME___ on ___DATE___.
 #  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
@@ -62,7 +62,7 @@ CCDev="${HOME}/Library/CCDev"
 					fileAction="copy"
 					destination_folder="${<#folder#>}"
 					;;
-				"<#...#>" )
+				"<#Target#>_ReadMe.html" )
 					fileAction="ignore"
 					;;
 				* )
