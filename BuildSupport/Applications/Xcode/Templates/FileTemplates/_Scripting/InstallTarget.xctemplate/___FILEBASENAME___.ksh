@@ -18,68 +18,86 @@ CCDev="${HOME}/Library/CCDev"
 <#xxFolder#>="${CCDev}/<##>"
 
 #^ 8 === main
-	sourceRoot=""
-	targetFolder=""
-	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		sourceRoot="${1}"
-		targetFolder="${2}"
+	if [[ -n "${SRCROOT}" ]] ; then
+		sourceRoot="${SRCROOT}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh sourceRoot targetFolder [action]"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable SRCROOT required."
 		return
 	fi
-	action=${3:-"install"}
+	if [[ -n "${TARGET_NAME}" ]] ; then
+		targetFolder="${TARGET_NAME}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable TARGET_NAME required."
+		return
+	fi
+	action=${1:-"install"}
 
-# clean
 	if [[ ${action} = "clean" ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		for folder in "${<#folder ...#>}" ; do
-			msg=$(ccInstall --removeFolder "${folder}")
-			st=${?}
-			if [[ ${st} > 0 ]] ; then
-				errorMessage ${st} "$0#$LINENO:" "error: cleanTarget failed: ${msg}"
-				return
-			fi
-		done
-		print ${msg}
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
-
-# install
 	elif [[ ${action} = "install" ]] ; then
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
-		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
-		typeset -i failcnt=0
-		previous_source_folder=""
-		while read fl ; do
-			# set up to process file
-			source_folder="${fl%/*}"
-			file_name="${fl##*/}"
-			file_basename="${file_name%.*}"
-			file_extension="${file_name#*.}"
-			destination_folder=""
-			fileAction=""
-			case "${source_folder}" in
-				"Scripts" )
-					fileAction="copy"
-					destination_folder="${<#folder#>}"
-					;;
-				"<#Target#>_ReadMe.html" )
-					fileAction="ignore"
-					;;
-				* )
-					failcnt="${failcnt}"+1
-					errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"
-					;;
-			esac
-			if [[ ! "${fileAction}" = "ignore" ]] ; then
-				fullSourcePath="${sourceRoot}/${targetFolder}/${source_folder}/${file_name}"
-				fullDestinationPath="${destination_folder}/${file_name}"
-			fi
+	elif [[ ! ${action} = "clean" ]] && [[ ! ${action} = "install" ]] ; then
+		errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid action ${action}"
+		return
+	fi
 
-			# display and process
-			if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
-				print "=${sourceRoot##*/}/${targetFolder}/${source_folder}:"
-				previous_source_folder="${source_folder}"
+	iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
+	typeset -i failcnt=0
+	previous_source_folder=""
+	while read fl ; do
+		# establish installation parameters
+		source_folder="${fl%/*}"
+		file_name="${fl##*/}"
+		file_basename="${file_name%.*}"
+		file_extension="${file_name#*.}"
+		destination_folder=""
+		fileAction=""
+		case "${source_folder}" in
+			"Scripts" )
+				fileAction="copy"
+					destination_folder="${<#folder#>}"
+				;;
+			"<#Target#>_UTests" )
+				fileAction="ignore"
+				;;
+			* )
+				failcnt="${failcnt}"+1
+				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"
+				;;
+		esac
+		if [[ ! "${fileAction}" = "ignore" ]] ; then
+			fullSourcePath="${sourceRoot}/${targetFolder}/${source_folder}/${file_name}"
+			fullDestinationPath="${destination_folder}/${file_name}"
+		fi
+
+		# display and process
+		if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
+			print "=${sourceRoot##*/}/${targetFolder}/${source_folder}:"
+			previous_source_folder="${source_folder}"
+		fi
+
+		msg=""
+		if [[ "${action}" = "clean" ]] ; then
+			if [[ ! "${fileAction}" = "ignore" ]] ; then
+				if [[ -e "${fullDestinationPath}" ]] ; then
+					print -n "${file_name}: "
+					chmod a+w "${fullDestinationPath}"
+					st=$?
+					if [[ $st > 0 ]] ; then
+						errorMessage ${st} "$0#$LINENO:" "error: could not set permission for ${fullDestinationPath}"
+						return
+					fi
+					rm "${fullDestinationPath}"
+					st=$?
+					if [[ $st > 0 ]] ; then
+						errorMessage ${st} "$0#$LINENO:" "error: could not remove ${fullDestinationPath}"
+						return
+					fi
+					msg="${fullDestinationPath} removed"
+				fi
 			fi
+		else
 			print -n "${file_name}: "
 			case "${fileAction}" in
 				"ignore" )
@@ -99,8 +117,14 @@ CCDev="${HOME}/Library/CCDev"
 					failcnt="${failcnt}"+1
 					;;
 			esac
-			print "${msg}"
-		done < "${iofile}"
+		fi
+		print "${msg}"
+	done < "${iofile}"
+
+	# display result
+	if [[ "${action}" = "clean" ]] ; then
+		print "clean succeeded"
+	else
 		if [[ ${failcnt} = 0 ]] ; then
 			ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
 			print "build succeeded"
@@ -112,8 +136,4 @@ CCDev="${HOME}/Library/CCDev"
 			errorMessage 1 "$0#$LINENO:" "error: Build Failed: ${errcnt} error${pl} encountered"
 			exit "${failcnt}"
 		fi
-
-# invalid action
-	else
-		errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid action ${action}"
 	fi

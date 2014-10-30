@@ -153,9 +153,9 @@
 	* <span class='em'>Project &lt;TargetName&gt;</span>
 		* add External Build System project &lt;TargetName&gt; with configuration:
 			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
-			* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
+			* arguments: $(ACTION)
 			* directory: "None"
-			* Pass Build Settings in Environment: NO
+			* Pass Build Settings in Environment: YES
 		* if indicated, move &lt;TargetName&gt;.xcodeproj from &lt;EnclosingFolder&gt;/&lt;TargetName&gt; to &lt;EnclosingFolder&gt;
 		* add new file ReadMe.html from template next to xcodeproj
 		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template

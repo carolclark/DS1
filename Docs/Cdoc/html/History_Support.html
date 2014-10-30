@@ -132,22 +132,23 @@
 				* create (only) <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
 					* *project to filled in later; see <a href="#AppleScriptTesting">AppleScript Testing</a>*
 				* move ASUnit content folder into new project folder
+			* refactor Python_install.ksh
+				* *ccInstall process previously allowed only one level of folders inside a target folder
+				* *previous path parts were <span class='mono'>subtarget="${fl%%/*}"</span>, <span class='mono'>filepath="${fl#*/}"</span>
+					* *naming and calculation expect the top folder for <span class='mono'>subtarget</span>
+					* change names and calculation to expect (path from SRCROOT to file), filename
+					* add file_basename, file_extension
+				* inline ccInstall --installOneFile
+				* separate logic for file_action, (previous_source_folder==source_folder), (-n destination_folder)
+				* 'clean' removes files installed by 'build'
+					* combine 'install' and 'clean' blocks to reuse installation setup code
+				* take SRCROOT, TARGET_NAME from environment variables instead of passing arguments
+			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 			* CCDev
 				* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
-				* *install script from new template based on Python_install.ksh*
-					* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
-					* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
-				* refactor Python_install.ksh
-					* *ccInstall process previously allowed only one level of folders inside a target folder
-					* *previous path parts were <span class='mono'>subtarget="${fl%%/*}"</span>, <span class='mono'>filepath="${fl#*/}"</span>
-						* *naming and calculation expect the top folder for <span class='mono'>subtarget</span>
-						* change names and calculation to expect (path from SRCROOT to file), filename
-						* add file_basename, file_extension
-					* inline ccInstall --installOneFile
-					* separate logic for file_action, (previous_source_folder==source_folder), (-n destination_folder)
-					* 'clean' removes files installed by 'build'
-						* combine 'install' and 'clean' blocks to reuse installation setup code
-				<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+					* *install script from new template based on Python_install.ksh*
+						* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
+						* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
 			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
 			* verify no useful content remaining for project Support/Developer/Developer; delete
 			* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Developer
