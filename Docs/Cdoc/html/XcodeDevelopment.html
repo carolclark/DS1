@@ -243,10 +243,11 @@
 		* replace &lt;TestTarget&gt;_(U|C|P)Tests.m with new copy from template
 		* (later)edit test file to run the tests
 	* add Run Script build phase:
-		* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t
+		* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}"/&lt;TargetName&gt; test
 		* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
 	* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
-	* verify &lt;TargetName&gt; as a dependency, &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
+	* Schemes:Manage: add scheme &lt;TestTarget&gt;_(U|C|P)Tests; mark as shared; verify &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
+	* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;_(U|C|P)Tests
 </pre>
 
 <!-- @marker "Add Target Feature" -->
