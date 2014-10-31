@@ -99,7 +99,7 @@
 /* Begin PBXLegacyTarget section */
 		6758573A19DDF368004C6AC7 /* Python */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "\"${SRCROOT}\" ${TARGET_NAME} $(ACTION)";
+			buildArgumentsString = "$(ACTION)";
 			buildConfigurationList = 6758573D19DDF368004C6AC7 /* Build configuration list for PBXLegacyTarget "Python" */;
 			buildPhases = (
 			);

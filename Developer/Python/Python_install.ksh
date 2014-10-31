@@ -18,16 +18,19 @@ CCDev="${HOME}/Library/CCDev"
 pythonFolder="${CCDev}/bin/python"
 
 #^ 8 === main
-	sourceRoot=""
-	targetFolder=""
-	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		sourceRoot="${1}"
-		targetFolder="${2}"
+	if [[ -n "${SRCROOT}" ]] ; then
+		sourceRoot="${SRCROOT}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh sourceRoot targetFolder [action]"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable SRCROOT required."
 		return
 	fi
-	action=${3:-"install"}
+	if [[ -n "${TARGET_NAME}" ]] ; then
+		targetFolder="${TARGET_NAME}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable TARGET_NAME required."
+		return
+	fi
+	action=${1:-"install"}
 
 	if [[ ${action} = "clean" ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."

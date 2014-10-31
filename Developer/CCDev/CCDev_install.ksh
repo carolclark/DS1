@@ -1,21 +1,21 @@
 #!/bin/ksh
 
-#  ___FILENAME___.ksh
-#  <#PathFromDev#>/___PROJECTNAME___
+#  CCDev_install.ksh
+#  Support/Developer/CCDev
 #
-#  Created by ___FULLUSERNAME___ on ___DATE___.
-#  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+#  Created by Carol Clark on 10/29/14.
+#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
 
 USAGE='
-<#Target#>_install.ksh -- install <#Target#> scripts
-#	<#Target#>_install.ksh		sourceRoot targetFolder action
+CCDev_install.ksh -- install CCDev scripts
+#	CCDev_install.ksh		sourceRoot targetFolder action
 '
 
 #^ 1 === top
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
-<#xxFolder#>="${CCDev}/<##>"
+scriptsFolder="${CCDev}/bin"
 
 #^ 8 === main
 	if [[ -n "${SRCROOT}" ]] ; then
@@ -32,6 +32,22 @@ CCDev="${HOME}/Library/CCDev"
 	fi
 	action=${1:-"install"}
 
+# shunit tests
+	if [[ ${action} = "test" ]] ; then
+		testFolder="${sourceRoot}/${PROJECT_NAME}/_Tests"
+		if [[ -e "${testFolder}" ]] ; then
+			if [[ -d "${testFolder}" ]] ; then
+				msg=$(ccInstall --runShunitTests "${testFolder}")
+				es=$?
+				print "${msg}"
+				return "${es}"
+			fi
+		fi
+		print "*** no shunit tests found ***"
+		return 0
+	fi
+
+# clean / install
 	if [[ ${action} = "clean" ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
@@ -56,9 +72,9 @@ CCDev="${HOME}/Library/CCDev"
 		case "${source_folder}" in
 			"Scripts" )
 				fileAction="copy"
-					destination_folder="${<#folder#>}"
+					destination_folder="${scriptsFolder}"
 				;;
-			"<#Target#>_UTests" )
+			"CCDev_UTests" )
 				fileAction="ignore"
 				;;
 			* )
