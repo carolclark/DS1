@@ -149,12 +149,16 @@
 					* *install script from new template based on Python_install.ksh*
 						* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
 						* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
-			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
-			* verify no useful content remaining for project Support/Developer/Developer; delete
-			* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Developer
-				* temporarily rename existing folder Developer; add new project; move content to new folder
-			* add project Developer, subprojects Developer, Python, shunit2, ASUnit to existing workspace Support
-			* new target Support/Developer/Developer aggregates rest of projects in folder Support/Developer
+				* CCDev_UTests: move info.plist file into folder OtherSoures
+				* move in existing shunit tests and ksh scripts from target Developer
+				* CCDev_install: add and run DevConfig.ksh
+				* add Services
+			* Developer aggregate target
+				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
+				* verify no useful content remaining in project Developer; delete its existing targets
+				* add new aggregate target Developer with targets shunit, CCDev
+				* add folder Developer with projects Developer, Python, shunit, ASUnit to existing workspace Support
+				* incorporate Python scripts into CCDev
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
 			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts
