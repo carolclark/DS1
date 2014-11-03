@@ -18,17 +18,16 @@
 		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
-		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
 		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
-		<!-- @topicGroup "" "9" -->
+		<!-- @topicGroup "" "8" -->
 		<!-- @topicItem "Ongoig Automation" "#Automation" "1" "" -->
 		<!-- @topicItem "&lt;-- Current" "#hmark_Current" "0" "" -->
-	<!-- @topicGroup "" "12" -->
+	<!-- @topicGroup "" "11" -->
 	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "15" -->
+	<!-- @topicGroup "Topics" "14" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
@@ -149,12 +148,22 @@
 					* *install script from new template based on Python_install.ksh*
 						* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
 						* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
-			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
-			* verify no useful content remaining for project Support/Developer/Developer; delete
-			* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Developer
-				* temporarily rename existing folder Developer; add new project; move content to new folder
-			* add project Developer, subprojects Developer, Python, shunit2, ASUnit to existing workspace Support
-			* new target Support/Developer/Developer aggregates rest of projects in folder Support/Developer
+				* CCDev_UTests: move info.plist file into folder OtherSoures
+				* move in existing shunit tests and ksh scripts from target Developer
+				* add Developer_ReadMe
+				* move of CCDev tests and scripts back to Developer for now
+				* CCDev_install
+					* rename source_folder to source_path (file's container as path from source_root)
+					* add and run DevConfig.ksh
+				* add tests, scripts; get buid/test cycle working
+				* remove scripts,tests from Developer
+				* add Services
+			* Support_All aggregate target
+				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
+				* verify no useful content remaining in project Developer; delete
+				* add new project Support_All at root level of repository
+				* add aggregate target Support_All; for now, includes CCDev only, since CCDev already depends on shunit
+				* incorporate Python scripts into CCDev
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
 			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts
@@ -173,33 +182,6 @@
 	* Configuration files
 		* upgrade Accessor config files as much as works now
 		* use templates and/or SourceTree folder to make files sharable
-</pre>
-
-<!-- @marker "upgrade to Mavericks" -->
-<h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/Support/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
-	* Xcode 5
-		* install Xcode 5
-		* update all projects and targets for compatiblity with Xcode 5
-			* update project settings to recommended architecture (automatic update)
-		* add '*.xccheckout' to git excludes
-		* Slates
-			* Typing: support OS X dictation as well as Dragon
-			* Xcode: organize macros; add Test index; update search/find
-	* support Xcode 5
-		* improve/add branch model support, slates Source Control, Documentation, all Indexes
-	* Mavericks
-		* Slates: support Safari Bookmarks/Sidebar button, Finder tabs
-		* for all Repositories / all Targets: test and analyze; document full testing and analysis process
-	* Xcode 5.1
-		* view Cdoc: correct issue where calculated target file name is incorrect
-			* frontWindow.applescript: adjust for apparently changed Xcode workspace window title
-		* script selectFiles: correct issue where all trailing filenames are included in result
-			* Terminal Slate: make grep command more precise
-		* Xcode Slate: Product menu;  use  instead of popup for Target selection
-		* remove non-ascii characters (<a href="http://github.com/carolclark/Support/issues/36">Support#36</a>)
-		* clear new compiler warnings
-	<span class='tlmark'>&lt;--</span>
-	* <a href="#restructureXcodeProjects">restructure Xcode projects</a> (#23)
 </pre>
 
 <h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
@@ -294,6 +276,32 @@
 			* clean: inline; uses ccInstall --removeFolder
 		* replace Xcode FileTemplate installTarget.xctemplate
 		<span class='tldate'>[10/13/2014]</span>
+</pre>
+
+<!-- @marker "upgrade to Mavericks" -->
+<h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/Support/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
+	* Xcode 5
+		* install Xcode 5
+		* update all projects and targets for compatiblity with Xcode 5
+			* update project settings to recommended architecture (automatic update)
+		* add '*.xccheckout' to git excludes
+		* Slates
+			* Typing: support OS X dictation as well as Dragon
+			* Xcode: organize macros; add Test index; update search/find
+	* support Xcode 5
+		* improve/add branch model support, slates Source Control, Documentation, all Indexes
+	* Mavericks
+		* Slates: support Safari Bookmarks/Sidebar button, Finder tabs
+		* for all Repositories / all Targets: test and analyze; document full testing and analysis process
+	* Xcode 5.1
+		* view Cdoc: correct issue where calculated target file name is incorrect
+			* frontWindow.applescript: adjust for apparently changed Xcode workspace window title
+		* script selectFiles: correct issue where all trailing filenames are included in result
+			* Terminal Slate: make grep command more precise
+		* Xcode Slate: Product menu;  use  instead of popup for Target selection
+		* remove non-ascii characters (<a href="http://github.com/carolclark/Support/issues/36">Support#36</a>)
+		* clear new compiler warnings
+	<span class='tlmark'>&lt;--</span>
 </pre>
 
 <h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>

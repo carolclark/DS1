@@ -77,6 +77,9 @@ scriptsFolder="${CCDev}/bin"
 			"CCDev_UTests" )
 				fileAction="ignore"
 				;;
+			"CCDev_UTests/OtherSources" )
+				fileAction="ignore"
+				;;
 			* )
 				failcnt="${failcnt}"+1
 				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"

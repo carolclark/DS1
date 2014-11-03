@@ -22,14 +22,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		67ABE47D1A01AA9A00509B64 /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = CCDev_install.ksh; path = CCDev/CCDev_install.ksh; sourceTree = "<group>"; };
 		67B2A5BC19FC5AA100FE6A62 /* CCDev_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = CCDev_ReadMe.html; sourceTree = "<group>"; };
 		67D413421A0433C900A46095 /* CCDev_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCDev_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D413451A0433C900A46095 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		67D413561A04364000A46095 /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_install.ksh; sourceTree = "<group>"; };
-		67D413581A04364000A46095 /* CCDev_UTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev_UTests-Info.plist"; sourceTree = "<group>"; };
+		67D413581A04364000A46095 /* CCDev_UTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CCDev_UTests-Info.plist"; path = "OtherSources/CCDev_UTests-Info.plist"; sourceTree = "<group>"; };
 		67D4135C1A04399800A46095 /* CCDev_UTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDev_UTests.m; sourceTree = "<group>"; };
 		67D4135E1A04422700A46095 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		67D413A41A057B3700A46095 /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
+		67D413A51A057B3700A46095 /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
+		67D413A61A057B3700A46095 /* testDevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDevConfig.ksh; sourceTree = "<group>"; };
+		67D413A71A057B3700A46095 /* testDeveloper.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDeveloper.ksh; sourceTree = "<group>"; };
+		67D413A81A057B3700A46095 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
+		67D413A91A057B3700A46095 /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
+		67D413AB1A057B4100A46095 /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
+		67D413AC1A057B4100A46095 /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
+		67D413AD1A057B4100A46095 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
+		67D413AE1A057B4100A46095 /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
+		67D413AF1A057B4100A46095 /* execInstallScript.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = execInstallScript.ksh; sourceTree = "<group>"; };
+		67D413B01A057B4100A46095 /* ghubUtil.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
+		67D413B11A057B4100A46095 /* resultCodes.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = resultCodes.ksh; sourceTree = "<group>"; };
+		67D413B21A057B4100A46095 /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +62,6 @@
 			children = (
 				67B2A5BC19FC5AA100FE6A62 /* CCDev_ReadMe.html */,
 				67D413551A04364000A46095 /* CCDev */,
-				67ABE47D1A01AA9A00509B64 /* CCDev_install.ksh */,
 				67D413441A0433C900A46095 /* Frameworks */,
 				67D413431A0433C900A46095 /* Products */,
 			);
@@ -75,8 +87,10 @@
 		67D413551A04364000A46095 /* CCDev */ = {
 			isa = PBXGroup;
 			children = (
-				67D413561A04364000A46095 /* CCDev_install.ksh */,
+				67D413AA1A057B4100A46095 /* Scripts */,
+				67D413A31A057B3700A46095 /* _Tests */,
 				67D413571A04364000A46095 /* CCDev_UTests */,
+				67D413561A04364000A46095 /* CCDev_install.ksh */,
 			);
 			path = CCDev;
 			sourceTree = "<group>";
@@ -84,10 +98,46 @@
 		67D413571A04364000A46095 /* CCDev_UTests */ = {
 			isa = PBXGroup;
 			children = (
-				67D413581A04364000A46095 /* CCDev_UTests-Info.plist */,
 				67D4135C1A04399800A46095 /* CCDev_UTests.m */,
+				67D413A21A05769600A46095 /* OtherSources */,
 			);
 			path = CCDev_UTests;
+			sourceTree = "<group>";
+		};
+		67D413A21A05769600A46095 /* OtherSources */ = {
+			isa = PBXGroup;
+			children = (
+				67D413581A04364000A46095 /* CCDev_UTests-Info.plist */,
+			);
+			name = OtherSources;
+			sourceTree = "<group>";
+		};
+		67D413A31A057B3700A46095 /* _Tests */ = {
+			isa = PBXGroup;
+			children = (
+				67D413A41A057B3700A46095 /* testArchive.ksh */,
+				67D413A51A057B3700A46095 /* testCcInstall.ksh */,
+				67D413A61A057B3700A46095 /* testDevConfig.ksh */,
+				67D413A71A057B3700A46095 /* testDeveloper.ksh */,
+				67D413A81A057B3700A46095 /* testDoxygenInstall.ksh */,
+				67D413A91A057B3700A46095 /* testErrcc.ksh */,
+			);
+			path = _Tests;
+			sourceTree = "<group>";
+		};
+		67D413AA1A057B4100A46095 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				67D413AB1A057B4100A46095 /* archive.ksh */,
+				67D413AC1A057B4100A46095 /* ccBackup.ksh */,
+				67D413AD1A057B4100A46095 /* ccInstall.ksh */,
+				67D413AE1A057B4100A46095 /* errcc.ksh */,
+				67D413AF1A057B4100A46095 /* execInstallScript.ksh */,
+				67D413B01A057B4100A46095 /* ghubUtil.ksh */,
+				67D413B11A057B4100A46095 /* resultCodes.ksh */,
+				67D413B21A057B4100A46095 /* trapSigDemo.ksh */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "CCDev/CCDev_UTests/CCDev_UTests-Info.plist";
+				INFOPLIST_FILE = "CCDev/CCDev_UTests/OtherSources/CCDev_UTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -316,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "CCDev/CCDev_UTests/CCDev_UTests-Info.plist";
+				INFOPLIST_FILE = "CCDev/CCDev_UTests/OtherSources/CCDev_UTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -352,6 +402,7 @@
 				67D413541A0433C900A46095 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
