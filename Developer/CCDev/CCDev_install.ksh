@@ -8,7 +8,7 @@
 
 USAGE='
 CCDev_install.ksh -- install CCDev scripts
-#	CCDev_install.ksh		sourceRoot targetFolder action
+#	CCDev_install.ksh		action
 '
 
 #^ 1 === top
@@ -24,12 +24,7 @@ scriptsFolder="${CCDev}/bin"
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable SRCROOT required."
 		return
 	fi
-	if [[ -n "${TARGET_NAME}" ]] ; then
-		targetFolder="${TARGET_NAME}"
-	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable TARGET_NAME required."
-		return
-	fi
+	sourcePath=${0%/*}
 	action=${1:-"install"}
 
 # shunit tests
@@ -49,16 +44,16 @@ scriptsFolder="${CCDev}/bin"
 
 # clean / install
 	if [[ ${action} = "clean" ]] ; then
-		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
+		print "== cleaning ${sourceRoot##*/}/${sourcePath} output"
+		ccInstall --clearLastbuilt "${sourceRoot}" "${sourcePath}"
 	elif [[ ${action} = "install" ]] ; then
-		print "== installing ${sourceRoot##*/}/${targetFolder}..."
+		print "== installing ${sourceRoot##*/}/${sourcePath}..."
 	elif [[ ! ${action} = "clean" ]] && [[ ! ${action} = "install" ]] ; then
 		errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid action ${action}"
 		return
 	fi
 
-	iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
+	iofile=$(ccInstall --findSources "${sourceRoot}" "${sourcePath}")
 	typeset -i failcnt=0
 	previous_source_folder=""
 	while read fl ; do
@@ -82,17 +77,17 @@ scriptsFolder="${CCDev}/bin"
 				;;
 			* )
 				failcnt="${failcnt}"+1
-				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"
+				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${sourcePath}/${source_folder} not handled"
 				;;
 		esac
 		if [[ ! "${fileAction}" = "ignore" ]] ; then
-			fullSourcePath="${sourceRoot}/${targetFolder}/${source_folder}/${file_name}"
+			fullSourcePath="${sourceRoot}/${sourcePath}/${source_folder}/${file_name}"
 			fullDestinationPath="${destination_folder}/${file_name}"
 		fi
 
 		# display and process
 		if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
-			print "=${sourceRoot##*/}/${targetFolder}/${source_folder}:"
+			print "=${sourceRoot##*/}/${sourcePath}/${source_folder}:"
 			previous_source_folder="${source_folder}"
 		fi
 
@@ -145,7 +140,7 @@ scriptsFolder="${CCDev}/bin"
 		print "clean succeeded"
 	else
 		if [[ ${failcnt} = 0 ]] ; then
-			ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
+			ccInstall --updateLastbuilt "${sourceRoot}" "${sourcePath}"
 			print "build succeeded"
 		else
 			pl="s"
