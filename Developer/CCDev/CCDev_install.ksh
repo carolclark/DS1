@@ -12,6 +12,18 @@ CCDev_install.ksh -- install CCDev scripts
 '
 
 #^ 1 === top
+
+#^ == Setup and Configure
+print -n "== Setup and Configure: "
+. CCDev/DevConfig.ksh
+st=$?
+if [[ ${st} > 0 ]] ; then
+	print "Error#${st}@$0#$LINENO:Setup and Configuration failed"
+	return $st
+fi
+print "Setup and Configuration successful"
+
+#^ == Install
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
@@ -75,14 +87,27 @@ scriptsFolder="${CCDev}/bin"
 			"CCDev_UTests/OtherSources" )
 				fileAction="ignore"
 				;;
+			"DevConfig.ksh" )
+				fileAction="ignore"
+				;;
 			* )
 				failcnt="${failcnt}"+1
 				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${sourcePath}/${source_folder} not handled"
 				;;
 		esac
 		if [[ ! "${fileAction}" = "ignore" ]] ; then
-			fullSourcePath="${sourceRoot}/${sourcePath}/${source_folder}/${file_name}"
-			fullDestinationPath="${destination_folder}/${file_name}"
+			if [[ "${file_extension}" = "applescript" ]] ; then
+				fname="${file_basename}.scpt"
+				action="copy"
+				fullSourcePath="${CCDev}/build/Support/Developer/CCDev/AppleScripts.bundle/Contents/Resources/${fname}"
+				fullDestinationPath="${destination_folder}/${fname}"
+			elif [[ "${file_extension}" = "ksh" ]] ; then
+				fullSourcePath="${sourceRoot}/${sourcePath}/${source_folder}/${file_name}"
+				fullDestinationPath="${destination_folder}/${file_basename}"
+			else
+				fullSourcePath="${sourceRoot}/${sourcePath}/${source_folder}/${file_name}"
+				fullDestinationPath="${destination_folder}/${file_name}"
+			fi
 		fi
 
 		# display and process

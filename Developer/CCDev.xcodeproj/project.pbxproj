@@ -43,6 +43,7 @@
 		67D413B01A057B4100A46095 /* ghubUtil.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
 		67D413B11A057B4100A46095 /* resultCodes.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = resultCodes.ksh; sourceTree = "<group>"; };
 		67D413B21A057B4100A46095 /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
+		67D413B51A081BF200A46095 /* DevConfig.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DevConfig.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 				67D413A31A057B3700A46095 /* _Tests */,
 				67D413571A04364000A46095 /* CCDev_UTests */,
 				67B2A5BC19FC5AA100FE6A62 /* CCDev_ReadMe.html */,
+				67D413B51A081BF200A46095 /* DevConfig.ksh */,
 				67D413561A04364000A46095 /* CCDev_install.ksh */,
 			);
 			path = CCDev;

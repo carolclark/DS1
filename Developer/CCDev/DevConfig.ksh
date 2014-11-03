@@ -233,7 +233,7 @@ fi
 
 # set up to install $CCDev files
 print "creating CCDev (${CCDev}) subdirectories"
-srcdir="$(dirname $0)"; export srcdir
+srcdir="${0%/*}"; export srcdir
 mkdir -p $CCDev/bin
 mkdir -p $CCDev/tmp
 
@@ -245,12 +245,29 @@ install "${srcdir}/Scripts/ccInstall.ksh" "$CCDev/bin" "ccInstall"
 install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScript"
 
 # test
-print "== Developer/_Tests/testDevConfig.ksh"
-result=$(Developer/_Tests/testDevConfig.ksh)
-if [[ "${?}" > 0 ]] ; then
+print "== CCDev/_Tests/testDevConfig.ksh"
+errout="$CCDev/tmp/errout"
+errinfo="$CCDev/tmp/errinfo"
+typeset -i failcnt=0
+typeset -i errcnt=0
+echo "" > "$errinfo"
+
+(CCDev/_Tests/testDevConfig.ksh) 2>"${errout}"
+st=$?
+if [[ "${st}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi
-print "${result}"
-if [[ $failcnt > 0 ]] ; then
-	exit $failcnt
+if [[ $(cat "$errout") != "" ]] ; then										# errout file is not empty
+	if [[ $(cat "$errout" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
+		errcnt=$errcnt+1
+		cat $errout >> $errinfo
+	fi
 fi
+if [[ $failcnt > 0 ]] ; then
+	echo "FAILURES ($failcnt test files encountered failing tests)"
+fi
+if [[ $errcnt > 0 ]] ; then
+	echo "ERRORS ($errcnt test files encountered execution errors):"
+	cat "$errinfo"
+fi
+return $(($failcnt+$errcnt))
