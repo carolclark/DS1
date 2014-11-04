@@ -202,11 +202,8 @@ function copyFile {
 
 #pragma mark 3 === runShunitTests
 function runShunitTests {
-#	When shunit tests encounter an error, output is sent to stdout and a nonzero exit status is returned.
-#	The tests themselves may also also throw errors. Messages for those cases should include the text "EXPECTED ERROR".
-#	Here:
-#		failcnt: number of test files that encounter failures, +1 if execution errors are encountered
-#		errout: file to collect stderr output
+#	failcnt: number of test files that encounter failures, +1 if execution errors are encountered
+#	errout: file to collect stderr output
 #	returns nonzero exit status if test failures are encountered.
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"

@@ -11,20 +11,30 @@ CCDev_install.ksh -- install CCDev scripts
 #	CCDev_install.ksh		action
 '
 
+CCDev="${HOME}/Library/CCDev"
+
 #^ 1 === top
+action=${1:-"install"}
 
 #^ == Setup and Configure
-print -n "== Setup and Configure: "
-. CCDev/DevConfig.ksh
-st=$?
-if [[ ${st} > 0 ]] ; then
-	print "Error#${st}@$0#$LINENO:Setup and Configuration failed"
-	return $st
+if [[ "${action}" = "install" ]] ; then
+	print -n "== Setup and Configure: "
+	. CCDev/DevConfig.ksh
+	st=$?
+	if [[ ${st} > 0 ]] ; then
+		print "Error#${st}@$0#$LINENO:Setup and Configuration failed"
+		return $st
+	fi
+	print "Setup and Configuration successful"
 fi
-print "Setup and Configuration successful"
+if [[ "${action}" = "clean" ]] ; then
+	if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
+		print "== clean skipped: target CCDev is already clean"
+		return
+	fi
+fi
 
-#^ == Install
-CCDev="${HOME}/Library/CCDev"
+#^ == Process Action
 . "${CCDev}/bin/ccInstall"
 
 scriptsFolder="${CCDev}/bin"
@@ -42,6 +52,7 @@ scriptsFolder="${CCDev}/bin"
 # shunit tests
 	if [[ ${action} = "test" ]] ; then
 		testFolder="${sourceRoot}/${PROJECT_NAME}/_Tests"
+		print "== testing ${testFolder}"
 		if [[ -e "${testFolder}" ]] ; then
 			if [[ -d "${testFolder}" ]] ; then
 				msg=$(ccInstall --runShunitTests "${testFolder}")
@@ -60,7 +71,7 @@ scriptsFolder="${CCDev}/bin"
 		ccInstall --clearLastbuilt "${sourceRoot}" "${sourcePath}"
 	elif [[ ${action} = "install" ]] ; then
 		print "== installing ${sourceRoot##*/}/${sourcePath}..."
-	elif [[ ! ${action} = "clean" ]] && [[ ! ${action} = "install" ]] ; then
+	else
 		errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid action ${action}"
 		return
 	fi
