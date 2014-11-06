@@ -5,30 +5,30 @@
 //	Copyright (c) ___YEAR___ C & C Software, Inc. All rights reserved.
 // =================================================================================
 
-#import "PunkinTestCase.h"
-#import "___FILEBASENAMEASIDENTIFIER___<#remove preceding 'Test'#>.h"
 
+@import XCTest;
 
-@interface ___FILEBASENAMEASIDENTIFIER___ : PunkinTestCase
+@interface ___FILEBASENAMEASIDENTIFIER___ : XCTestCase
 
-- (void)testArithmetic;
+- (void)testExample;
 
 @end
 
 @implementation ___FILEBASENAMEASIDENTIFIER___
 
-
 - (void)setUp {
     [super setUp];
+	// setup code
 }
 
 - (void)tearDown {
+	// teardown code
     [super tearDown];
 }
 
-/*!	\test	arithmetic 	*/
-- (void)testArithmetic {
-	STAssertFalse(1 == 0, @"1 != 0");
+/*!	\test	example 	*/
+- (void)testExample {
+    XCTAssertTrue (1 == 1, @"%s: Oops! 1 is not 0.", __PRETTY_FUNCTION__);
 }
 
 @end

@@ -31,7 +31,7 @@ fi
 if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
 		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
-			print "== clean skipped: target Developer has already been cleaned"
+			print "== clean skipped: target Developer is already clean"
 			return
 		fi
 	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action
@@ -80,8 +80,7 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${applescriptsFolder}"
 			;;
-		"Python" )
-			destinationFolder="${scriptsFolder}/python"
+		"Python" )				# separate target
 			;;
 		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
 			;;
@@ -146,7 +145,15 @@ function cleanTarget {
 	if [[ ${buildIsClean} > 0 ]] ; then
 		return
 	fi
-	for folder in "${servicesFolder}" "${applescriptsFolder}"  "${scriptsFolder}"; do
+	if [[ -e "${scriptsFolder}/.kshrc" ]] ; then
+		msg=$(rm "${scriptsFolder}/.kshrc")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "failed to remove file ${scriptsFolder}/.kshrc: ${msg}"
+			return
+		fi
+	fi
+	for folder in "${applescriptsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then

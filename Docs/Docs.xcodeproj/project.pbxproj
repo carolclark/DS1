@@ -53,6 +53,7 @@
 		676695E5191AE03D005D3CED /* htaccess */ = {isa = PBXFileReference; lastKnownFileType = text; path = htaccess; sourceTree = "<group>"; };
 		676695E6191AE03D005D3CED /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		67B4601119199472007FB11A /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
+		67D413B41A07F0CE00A46095 /* Developer_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Developer_ReadMe.html; path = ../Developer_ReadMe.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -60,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				676695CE1919A759005D3CED /* History_Support.html */,
+				67D413B41A07F0CE00A46095 /* Developer_ReadMe.html */,
 				676695B51919A759005D3CED /* Cdoc */,
 				67B4601019199472007FB11A /* Doxygen */,
 				676695A619199997005D3CED /* DoxyDemo */,

@@ -13,6 +13,8 @@
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 . "${CCDev}/bin/ccInstall"
+testData="${CCDev}/TestData"
+
 
 #pragma mark 2 === test for text in message
 function assertTextInMessage {	# _where_ expectedText message
@@ -69,7 +71,7 @@ testErrorExit() {
 	# verify error message content
 	errmsg="This is an error."
 	msg=$(errorExit 132 "file#line:" "$errmsg" 2>&1)
-	assertNotEquals "$0#$LINENO: should show failure" 0 $?
+	assertNotEquals "$0#$LINENO: should show nonzero exit status" 0 $?
 	assertEquals "$0#$LINENO:" "file#line: $errmsg [UnknownErrorCode:#132]" "$msg"
 
 	errmsg="This is an error."
@@ -77,9 +79,23 @@ testErrorExit() {
 	assertEquals "$0#$LINENO:" 255 $?
 	assertEquals "$0#$LINENO:" "file#line: $errmsg [UnknownErrorCode:#255]" "$msg"
 
-	# verify error message sent to stderr
-	msg=$(errorExit "EXPECTED ERROR: $errmsg")
+	# set up temporary directory and files for output
+	local_testdir=$(mktemp -d "${local_testdir}/${testData}/testErrcc_ksh.$$$$")
+	outfile="${local_testdir}/outfile"
+	errfile="${local_testdir}/errfile"
+
+	print "" > ${outfile}
+	print "" > ${errfile}
+	# verify error message sent to errfile, outfile empty
+	msg=$(errorExit "EXPECTED ERROR: $errmsg" 1>${outfile} 2>${errfile})
+	assertEquals "$0#$LINENO:" "" "$(cat ${outfile})"
+	assertNotEquals "$0#$LINENO:" "" "$(cat ${errfile})"
 	assertEquals "$0#$LINENO:" "" "$msg"
+
+	# clean up
+	rm "${outfile}"
+	rm "${errfile}"
+	rmdir "${local_testdir}"
 }
 
 # run tests

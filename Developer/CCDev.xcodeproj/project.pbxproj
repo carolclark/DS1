@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67D4135D1A04399800A46095 /* CCDev_UTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D4135C1A04399800A46095 /* CCDev_UTests.m */; };
+		67D4135F1A04422700A46095 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D4135E1A04422700A46095 /* XCTest.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67D413501A0433C900A46095 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67B2A5B219FC59C500FE6A62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67B2A5B619FC59C500FE6A62;
+			remoteInfo = CCDev;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		67B2A5BC19FC5AA100FE6A62 /* CCDev_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = CCDev_ReadMe.html; sourceTree = "<group>"; };
+		67D413421A0433C900A46095 /* CCDev_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCDev_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67D413451A0433C900A46095 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		67D413561A04364000A46095 /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_install.ksh; sourceTree = "<group>"; };
+		67D413581A04364000A46095 /* CCDev_UTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CCDev_UTests-Info.plist"; path = "OtherSources/CCDev_UTests-Info.plist"; sourceTree = "<group>"; };
+		67D4135C1A04399800A46095 /* CCDev_UTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDev_UTests.m; sourceTree = "<group>"; };
+		67D4135E1A04422700A46095 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		67D413A41A057B3700A46095 /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
+		67D413A51A057B3700A46095 /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
+		67D413A61A057B3700A46095 /* testDevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDevConfig.ksh; sourceTree = "<group>"; };
+		67D413A71A057B3700A46095 /* testDeveloper.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDeveloper.ksh; sourceTree = "<group>"; };
+		67D413A81A057B3700A46095 /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
+		67D413A91A057B3700A46095 /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
+		67D413AB1A057B4100A46095 /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
+		67D413AC1A057B4100A46095 /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
+		67D413AD1A057B4100A46095 /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
+		67D413AE1A057B4100A46095 /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
+		67D413AF1A057B4100A46095 /* execInstallScript.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = execInstallScript.ksh; sourceTree = "<group>"; };
+		67D413B01A057B4100A46095 /* ghubUtil.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
+		67D413B11A057B4100A46095 /* resultCodes.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = resultCodes.ksh; sourceTree = "<group>"; };
+		67D413B21A057B4100A46095 /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67D4133F1A0433C900A46095 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67D4135F1A04422700A46095 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67B2A5B119FC59C500FE6A62 = {
+			isa = PBXGroup;
+			children = (
+				67B2A5BC19FC5AA100FE6A62 /* CCDev_ReadMe.html */,
+				67D413551A04364000A46095 /* CCDev */,
+				67D413441A0433C900A46095 /* Frameworks */,
+				67D413431A0433C900A46095 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67D413431A0433C900A46095 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67D413421A0433C900A46095 /* CCDev_UTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67D413441A0433C900A46095 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67D4135E1A04422700A46095 /* XCTest.framework */,
+				67D413451A0433C900A46095 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67D413551A04364000A46095 /* CCDev */ = {
+			isa = PBXGroup;
+			children = (
+				67D413AA1A057B4100A46095 /* Scripts */,
+				67D413A31A057B3700A46095 /* _Tests */,
+				67D413571A04364000A46095 /* CCDev_UTests */,
+				67D413561A04364000A46095 /* CCDev_install.ksh */,
+			);
+			path = CCDev;
+			sourceTree = "<group>";
+		};
+		67D413571A04364000A46095 /* CCDev_UTests */ = {
+			isa = PBXGroup;
+			children = (
+				67D4135C1A04399800A46095 /* CCDev_UTests.m */,
+				67D413A21A05769600A46095 /* OtherSources */,
+			);
+			path = CCDev_UTests;
+			sourceTree = "<group>";
+		};
+		67D413A21A05769600A46095 /* OtherSources */ = {
+			isa = PBXGroup;
+			children = (
+				67D413581A04364000A46095 /* CCDev_UTests-Info.plist */,
+			);
+			name = OtherSources;
+			sourceTree = "<group>";
+		};
+		67D413A31A057B3700A46095 /* _Tests */ = {
+			isa = PBXGroup;
+			children = (
+				67D413A41A057B3700A46095 /* testArchive.ksh */,
+				67D413A51A057B3700A46095 /* testCcInstall.ksh */,
+				67D413A61A057B3700A46095 /* testDevConfig.ksh */,
+				67D413A71A057B3700A46095 /* testDeveloper.ksh */,
+				67D413A81A057B3700A46095 /* testDoxygenInstall.ksh */,
+				67D413A91A057B3700A46095 /* testErrcc.ksh */,
+			);
+			path = _Tests;
+			sourceTree = "<group>";
+		};
+		67D413AA1A057B4100A46095 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				67D413AB1A057B4100A46095 /* archive.ksh */,
+				67D413AC1A057B4100A46095 /* ccBackup.ksh */,
+				67D413AD1A057B4100A46095 /* ccInstall.ksh */,
+				67D413AE1A057B4100A46095 /* errcc.ksh */,
+				67D413AF1A057B4100A46095 /* execInstallScript.ksh */,
+				67D413B01A057B4100A46095 /* ghubUtil.ksh */,
+				67D413B11A057B4100A46095 /* resultCodes.ksh */,
+				67D413B21A057B4100A46095 /* trapSigDemo.ksh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		67B2A5B619FC59C500FE6A62 /* CCDev */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 67B2A5B919FC59C500FE6A62 /* Build configuration list for PBXLegacyTarget "CCDev" */;
+			buildPhases = (
+			);
+			buildToolPath = "${TARGET_NAME}/${TARGET_NAME}_install.ksh";
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = CCDev;
+			passBuildSettingsInEnvironment = 1;
+			productName = CCDev;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		67D413411A0433C900A46095 /* CCDev_UTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67D413521A0433C900A46095 /* Build configuration list for PBXNativeTarget "CCDev_UTests" */;
+			buildPhases = (
+				67D4133E1A0433C900A46095 /* Sources */,
+				67D4133F1A0433C900A46095 /* Frameworks */,
+				67D413401A0433C900A46095 /* Resources */,
+				67D413601A04427700A46095 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67D413511A0433C900A46095 /* PBXTargetDependency */,
+			);
+			name = CCDev_UTests;
+			productName = CCDev_UTests;
+			productReference = 67D413421A0433C900A46095 /* CCDev_UTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67B2A5B219FC59C500FE6A62 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "C & C Software, Inc.";
+				TargetAttributes = {
+					67D413411A0433C900A46095 = {
+						TestTargetID = 67B2A5B619FC59C500FE6A62;
+					};
+				};
+			};
+			buildConfigurationList = 67B2A5B519FC59C500FE6A62 /* Build configuration list for PBXProject "CCDev" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 67B2A5B119FC59C500FE6A62;
+			productRefGroup = 67D413431A0433C900A46095 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67B2A5B619FC59C500FE6A62 /* CCDev */,
+				67D413411A0433C900A46095 /* CCDev_UTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67D413401A0433C900A46095 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		67D413601A04427700A46095 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/ksh;
+			shellScript = "CCDev/CCDev_install.ksh test";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67D4133E1A0433C900A46095 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67D4135D1A04399800A46095 /* CCDev_UTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67D413511A0433C900A46095 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67B2A5B619FC59C500FE6A62 /* CCDev */;
+			targetProxy = 67D413501A0433C900A46095 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		67B2A5B719FC59C500FE6A62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		67B2A5B819FC59C500FE6A62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		67B2A5BA19FC59C500FE6A62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = CCDCCDevv;
+			};
+			name = Debug;
+		};
+		67B2A5BB19FC59C500FE6A62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = CCDCCDevv;
+			};
+			name = Release;
+		};
+		67D413531A0433C900A46095 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "CCDev/CCDev_UTests/OtherSources/CCDev_UTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		67D413541A0433C900A46095 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "CCDev/CCDev_UTests/OtherSources/CCDev_UTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67B2A5B519FC59C500FE6A62 /* Build configuration list for PBXProject "CCDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67B2A5B719FC59C500FE6A62 /* Debug */,
+				67B2A5B819FC59C500FE6A62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67B2A5B919FC59C500FE6A62 /* Build configuration list for PBXLegacyTarget "CCDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67B2A5BA19FC59C500FE6A62 /* Debug */,
+				67B2A5BB19FC59C500FE6A62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67D413521A0433C900A46095 /* Build configuration list for PBXNativeTarget "CCDev_UTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67D413531A0433C900A46095 /* Debug */,
+				67D413541A0433C900A46095 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67B2A5B219FC59C500FE6A62 /* Project object */;
+}

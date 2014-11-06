@@ -53,13 +53,22 @@ heading with name: Task Name; tsk_TaskName;5
 <!-- @/topicList -->
 
 <!-- @marker "1 === Projects and Targets" -->
-<h2>Projects and Targets</h2>
+<h1>Projects and Targets</h1>
 <!-- @topicList "Projects and Targets" "ProjectsAndTargets" -->
-	<!-- @topicItem "Docs" "#proj_Docs" "0" "Support documentation, including TechnicalDocs and Doxygen" -->
+	<!-- @topicItem "Docs" "#group_Docs" "0" "Support documentation, including TechnicalDocs and Doxygen" -->
+		<!-- @topicItem "Cdoc" "#target_Cdoc" "1" "technical documentation" -->
+		<!-- @topicItem "Doxygen" "#target_Doxygen" "1" "API documentation: C-based and Python languages" -->
+		<!-- @topicItem "HeaderDoc" "#target_HeaderDoc" "1" "API documentation: languages not supported by Doxygen" -->
+	<!-- @topicGroup "" "5" -->
 	<!-- @topicItem "Developer" "#proj_Developer" "0" "Developer configuration, scripts and related items" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "Applications" "4" -->
-	<!-- @topicItem "Xcode" "#proj_Xcode" "0" "" -->
+		<!-- @topicItem "DevSetup" "#target_DevSetup" "1" "" -->
+		<!-- @topicItem "Python" "#proj_Python" "1" "" -->
+		<!-- @topicItem "CCDev" "#target_CCDev" "1" "" -->
+		<!-- @topicItem "shunit" "#target_shunit" "1" "" -->
+		<!-- @topicItem "AppleScripts" "#target_AppleScripts" "1" "" -->
+	<!-- @topicGroup "" "12" -->
+	<!-- @topicItem "Applications" "#group_Applications" "0" "accessibility support for applications" -->
+		<!-- @topicItem "Xcode" "#proj_Xcode" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "BuildSupport" "#project_BuildSupport" "0" "" -->
 		<!-- @topicItem "Developer" "#target_Developer" "1" "" -->
@@ -78,86 +87,153 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicItem "CCDevTests" "#target_ccdevTest" "1" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Docs" -->
-<h3 id='proj_Docs'>Docs</h3>
-<p class='ital'>Support documentation, including TechnicalDocs and Doxygen</p>
-<p>Each repository / workspace contains a similar Docs project. In addition to the targets listed below, folders for OtherDocuments and Images are provided.</p>
-<p><b>Configuration:</b> </p>
-<p><b>Integration:</b> </p>
-<div class='indent'>
-<h4>Targets</h4>
-	<h5>Cdoc</h5>
-	<p class='ital'>install technical documentation</p><div class='indent'>
-		<p><b>Target:</b></p><ul>
-			<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a> technical documentation for repository projects</li>
-			<li>installs technical documentation at ${HOME}/Library/CCDev/Sites/TechnicalDocs</li>
-		</ul>
-		<p><b>Tests:</b> </p>
-		<p><b>Configuration:</b> </p>
-		<p><b>Dependencies:</b> </p>
+<h4>test</h4><div class='indent'>
+	<p>some text</p>
+	<h4>test2</h4><div class='indent'>
+		<p>some text</p>
 	</div>
+</div>
 
-	<h5>Doxygen</h5>
-	<p class='ital'>install Doxygen 8documentation</p><div class='indent'>
-		<p><b>Target:</b></p><ul>
-			<li><a href="XcodeDevelopment.html#AddDocsProject">Docs Target</a> compile and install Doxygen documentation</li>
-			<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/Doxygen</li>
-		</ul>
-		<p><b>Tests:</b> </p>
-		<p><b>Configuration:</b> </p>
-		<p><b>Dependencies:</b> </p>
+<!-- @marker "Docs" -->
+<h2 id='group_Docs'>Docs</h2>
+<p class='ital'>Support documentation, including TechnicalDocs and Doxygen</p><div class='indent'>
+	<p><b>Project:</b> <a href="XcodeDevelopment.html#NewDocsProject">Docs Project</a></p>
+	<p>Each repository / workspace contains a similar Docs project. In addition to the targets listed below, folders for OtherDocuments and Images are provided.</p>
+	<p><b>Configuration:</b> </p>
+	<p><b>Integration:</b> BBEdit CheckHTML.applescript: modify to provide pass/fail result for CI</p>
+	<h3>Docs Targets</h3><div class='indent'>
+		<h4 id='target_Cdoc'>Cdoc</h4>
+		<p class='ital'>install technical documentation</p><div class='indent'>
+			<p><b>Target:</b></p><ul>
+				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: install technical documentation for repository projects</li>
+				<li>installs technical documentation at ${HOME}/Library/CCDev/Sites/TechnicalDocs</li>
+			</ul>
+			<p><b>Tests:</b> </p>
+			<p><b>Configuration:</b> </p>
+			<p><b>Dependencies:</b> </p>
+		</div>
+
+		<h4 id='target_Doxygen'>Doxygen</h4>
+		<p class='ital'>install Doxygen documentation</p><div class='indent'>
+			<p><b>Target:</b></p><ul>
+				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: compile and install Doxygen documentation for our C++ and Objective-C code</li>
+				<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/<span class='nyi'>APIDocs</span></li>
+			</ul>
+			<p><b>Tests:</b> </p>
+			<p><b>Configuration:</b> </p>
+			<p><b>Dependencies:</b> </p>
+		</div>
+
+		<h4 id='target_HeaderDoc' class='nyi'>HeaderDoc</h4>
+		<p class='ital'>install HeaderDoc documentation</p><div class='indent'>
+			<p><b>Target:</b></p><ul>
+				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: compile and install HeaderDoc documentation for AppleScript code</li>
+				<li>installs HeaderDoc documentation at ${HOME}/Library/CCDev/Sites/APIDocs</li>
+			</ul>
+			<p><b>Tests:</b> </p>
+			<p><b>Configuration:</b> </p>
+			<p><b>Dependencies:</b> </p>
+		</div>
 	</div>
 </div>
 
 <!-- @marker "Developer" -->
-<h3 id="proj_Developer">Developer <span class='todo'>(<a class='glosslink' href="Glossary_Support.html#def_aggregateGroup">aggregate group</a>)</span></h3>
-<p class='ital'>general C &amp; C Software developer and automation support</p>
-<p><b>Configuration:</b> </p>
-<p><b>Integration:</b> </p>
-<div class='indent'>
-<h4>Targets</h4>
-	<h5>Developer</h5>
-	<p class='ital'>Developer configuration, scripts and related items</p><div class='indent'>
-		<p><b>Target:</b></p><ul>
-			<li><a href="XcodeDevelopment.html#AddCcInstallTarget">ccInstall</a> target; <span class='depr'>depends on target AppleScripts</span></li>
-			<li>DevConfig.ksh<ul>
-				<li>Unix script that sets up our development environment. Script is run at the beginning of execution of Developer_install.ksh, or can be run from Terminal.</li>
-				<li>DevConfig.ksh sets up basic environment including git support, installs additional environment files, third-party tool shunit, and starter scripts required for targets to build and test</li>
-			</ul></li>
-		</ul>
-		<p><b>Tests:</b> </p><ul>
-			<li>DeveloperTests: <a href="XcodeDevelopment.html#AddCocoaTestBundleTarget">Cocoa Test Bundle</a> target<ul>
-				<li>runs: Developer shunit tests from folder _Tests; PythonTests; <span class='expand'>AppleScriptTests</span></li>
-				<li>Run Script build phases with ksh scripts:<ul>
-					<li>'shunit Tests': runs tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
-					<li>'Python Tests': tests installed python scripts: <span class='mono'>python -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"</span></li>
+<h2 id="proj_Developer">Developer</h2>
+<p class='ital'>general C &amp; C Software developer and automation support</p><div class='indent'>
+	<p><b>Folder:</b> collection of projects aggregated by project Developer</p><ul>
+		<li>SetupConfig</li>
+		<li>Python</li>
+		<li>shunit</li>
+		<li>CCDev</li>
+		<li>ASUnit</li>
+		<li>AppleScripts</li>
+	</ul>
+	<p><b>Configuration:</b> </p>
+	<p><b>Integration:</b> </p>
+	<h3>Subprojects</h3><div class='indent'>
+		<h5 id='target_DevSetup'>DevSetup</h5>
+		<p class='ital'>set up development environment</p><div class='indent'>
+			<p><b>Target:</b></p><ul>
+				<li>Aggregate target</li>
+			</ul>
+			<p><b>Tests:</b> </p>
+			<p><b>Configuration:</b> </p>
+			<p><b>Dependencies:</b> </p>
+		</div>
+
+		<!-- @marker "Python>" -->
+		<h5 id="proj_Python">Python</h5>
+		<p class='ital'>Python modules and scripts</p><div class='indent'>
+			<p><b>Project:</b> <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a></p>
+			<p><b>Target:</b> Python modules and scripts copied to ${CCDev}/bin</p>
+			<p><b>Tests:</b> Python_UTests; Python_CTests; Python_AllTests </p>
+			<p><b>Configuration:</b> </p>
+			<p><b>Integration:</b> Python_UTests run on build; Python_AllTests to aggregate, run daily</p>
+			<p><b>Dependencies:</b> </p>
+		</div>
+
+		<h5 id="target_CCDev">CCDev</h5>
+		<p class='ital'>Developer configuration, scripts and related items</p><div class='indent'>
+			<p><b>Target:</b></p><ul>
+				<li><a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>; <span class='depr'>depends on target AppleScripts</span></li>
+				<li>CCDevConfig.ksh<ul>
+					<li>Unix script that sets up our development environment. Script is run at the beginning of execution of CCDev_install.ksh, or can be run from Terminal.</li>
+					<li>CCDevConfig.ksh sets up basic environment including git support, installs additional environment files and starter scripts required for target CCDev to build</li>
 				</ul></li>
-			</ul></li>
-		</ul>
-		<p><b>Configuration:</b> </p>
-		<p><b>Dependencies:</b> </p>
-	</div>
-	<h5>AppleScripts</h5>
-	<p class='ital'>compiles AppleScripts</p><div class='indent'>
-		<p><b>Target:</b></p><ul>
-			<li><a href="XcodeDevelopment.html#AddBuildScriptTarget">Build Script Target</a> precompiles scripts from Developer/AppleScripts into target's bundle</li>
-			<li><span class='todo'>AppleScript_install.ksh</span> called from Run Script build phase to install them from that bundle</li>
-		</ul>
-		<p><b>Tests:</b> </p>
-		<p><b>Configuration:</b> </p>
-		<p><b>Dependencies:</b> </p>
+			</ul>
+			<p><b>Tests:</b> </p><ul>
+				<li>CCDevTests: <a href="XcodeDevelopment.html#AddCocoaTestTarget">Add Cocoa Test Target</a><ul>
+					<li>runs: CCDev shunit tests from folder _Tests and PythonTests</li>
+					<li>Run Script build phases with ksh scripts:<ul>
+						<li>'shunit Tests': runs tests from folder _Tests: <span class='mono'>&lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t</span></li>
+						<li>'Python Tests': tests installed python scripts: <span class='mono'>python -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"</span></li>
+					</ul></li>
+				</ul></li>
+			</ul>
+			<p><b>Configuration:</b> </p>
+			<p><b>Dependencies:</b> Developer; shunit</p>
+		</div>
+
+		<h5 id="target_shunit">shunit</h5>
+		<p class='ital'>install shunit test framework for shell scripts</p><div class='indent'>
+			<p><b>Target:</b></p><ul>
+				<li><a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>; must be installed before Developer tests can be run</li>
+			</ul>
+			<p><b>Tests:</b> required for target DeveloperTests to run</p>
+			<p><b>Configuration:</b> </p>
+			<p><b>Dependencies:</b> </p>
+		</div>
+
+		<h5 id="target_AppleScripts">AppleScripts</h5>
+		<p class='ital'>compiles AppleScripts</p><div class='indent'>
+			<p><b>Target:</b></p><ul>
+				<li><a href="XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> precompiles scripts from Developer/AppleScripts into target's bundle</li>
+				<li><span class='todo'>AppleScript_install.ksh</span> called from Run Script build phase to install them from that bundle</li>
+			</ul>
+			<p><b>Tests:</b> </p>
+			<p><b>Configuration:</b> </p>
+			<p><b>Dependencies:</b> </p>
+		</div>
 	</div>
 </div>
 
-<h3 id="AppsFolder">&bull; Applications Folder</h3>
-
-<!-- @marker "Xcode>" -->
-<h3 id="proj_Xcode">Xcode</h3>
-<p class='ital'>Xcode developer and automation support</p>
-	<p><b>Configuration:</b> </p>
-	<p><b>Integration:</b> </p>
+<!-- @marker "Applications>" -->
+<h3 id="group_Applications">Applications</h3>
+<p class='ital'> collection of projects to provide accessibility support for applications</p>
+	<p><b>Folder:</b> application-specific projects</p>
+	<p><b>Integration:</b> individual projects are testable; test target TestApplicationSupport aggregates tests</p>
 	<div class='indent'>
-		<h4>Targets</h4>
+		<h4>Application Projects</h4><div class='indent'>
+
+			<!-- @marker "Xcode>" -->
+			<h4 id="proj_Xcode">Xcode</h4>
+			<p class='ital'>Xcode developer and automation support</p>
+				<p><b>Configuration:</b> </p>
+				<p><b>Integration:</b> </p>
+				<div class='indent'>
+					<h5>Targets</h5>
+				</div>
+		</div>
 	</div>
 
 <!-- @marker "= BuildSupport" -->
@@ -190,7 +266,7 @@ heading with name: Task Name; tsk_TaskName;5
 </pre>
 
 <!-- @marker "target_Cdoc" -->
-<h5 id='target_Cdoc'>target Cdoc</h5><pre>
+<h5>target Cdoc</h5><pre>
 	*technical documentation for this repository*
 	* external target with script `Cdoc/Cdoc_install.ksh "${SRCROOT}" Cdoc $(ACTION)`
 	* dependency relationships: &lt;none&gt;
@@ -247,7 +323,7 @@ heading with name: Task Name; tsk_TaskName;5
 </pre>
 
 <!-- @marker "target_Doxygen" -->
-<h5 id='target_Doxygen'>target Doxygen</h5><pre>
+<h5>target Doxygen</h5><pre>
 	*builds Doxygen documentation for sample project*
 	* external target with script `Doxygen/Doxygen_install.ksh "${SRCROOT}" Doxygen $(ACTION)`
 	* dependency relationships: &lt;none&gt;
@@ -289,7 +365,7 @@ heading with name: Task Name; tsk_TaskName;5
 </div>
 
 <!-- @marker "2 === CCDev" -->
-<h2>CCDev</h2>
+<h1>CCDev</h1>
 <!-- @topicList "CCDev" "tp_CCDev" -->
 	<!-- @topicItem "Scripting" "#Scripting" "0" "" -->
 	<!-- @topicItem "ccInstall" "#ccInstall" "0" "" -->
@@ -381,7 +457,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 
 <!-- @marker "4 ===" -->
 <!-- @marker "Version Control" -->
-<h2>Version Control</h2>
+<h1>Version Control</h1>
 <!-- @topicList "Version Control" "tp_VersionControl" -->
 	<!-- @topicItem "Repository Backup" "#VCSPolicies_Backup" "0" "" -->
 	<!-- @topicItem "Version Control History" "#VersionControlHistory" "0" "" -->
@@ -423,7 +499,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 
 <!-- "5 ==="-->
 <!-- @marker "Backup" -->
-<h2>Backup</h2>
+<h1>Backup</h1>
 <!-- @topicList "Backup" "tp_Backup" -->
 	<!-- @topicItem "Volumes and Folders" "#VolumesAndFolders" "0" "" -->
 	<!-- @topicItem "Backup Tools" "#BackupTools" "0" "" -->
@@ -578,7 +654,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 </ul>
 
 <!-- @marker "New System Setup" -->
-<h2 id='tp_NewSystemSetup'>New System Setup</h2><ul>
+<h1 id='tp_NewSystemSetup'>New System Setup</h1><ul>
 	<li>Preparation: Accessor: have a copy, customized for external partition if applicable, available<ul>
 		<li>to customize for external partition; see CommonSlates_C9.h leading defines<ul>
 			<li class='blurb'>for external partition, runs Applications from the boot volume; uses folder Dev from main volume, CCDev from boot volume</li>
@@ -599,7 +675,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 </ul>
 
 <!-- @marker "System Installation" -->
-<h2 id="tp_SystemInstallation">System Installation</h2>
+<h1 id="tp_SystemInstallation">System Installation</h1>
 <p class='blurb'> When installing a new computer, we prefer to reinstall from scratch rather than attempting to restore the hard drive to its previous state. This helps us to keep track of what applications, tools, and other files are actually needed; helps to avoid fossils in the installation process; and eliminates the risk of problems from one Installation being replicated onto the next.</p><ul>
 	<li class='blurb'>items tagged with [icl] are likely to require updating once we fully understand the implications of iCloud on this process</li>
 	<li class='blurb'>add export/import Xcode's developer account information</li>
@@ -688,7 +764,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 
 <!-- @marker "6 ===" -->
 <!-- @marker "Web Sites" -->
-<h2>Web Sites</h2>
+<h1>Web Sites</h1>
 <!-- @topicList "Web Sites" "tp_WebSites" -->
 	<!-- @topicItem "WebSite Structures" "#WebSite_Structures" "0" "" -->
 		<!-- @topicItem "Conceptual" "#ws_Conceptual" "1" "" -->
@@ -871,7 +947,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 </ul>
 
 <!-- @marker "Unix" -->
-<h2>Unix</h2>
+<h1>Unix</h1>
 <!-- @topicList "Unix" "tp_Unix" -->
 	<!-- @topicItem "Permissions" "#Unix_Permissions" "0" "" -->
 <!-- @/topicList -->
@@ -929,7 +1005,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 
 <!-- @marker "7 ===" -->
 <!-- @marker "Tools for Compiled Code" -->
-<h2>Tools for Compiled Code</h2>
+<h1>Tools for Compiled Code</h1>
 <!-- @topicList "Tools for Compiled Code" "tp_CompileTools" -->
 	<!-- @topicItem "Xcode" "#Compile_Xcode" "0" "" -->
 	<!-- @topicItem "Doxygen" "#Compile_Doxygen" "0" "" -->

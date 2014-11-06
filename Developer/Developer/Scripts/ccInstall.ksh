@@ -7,11 +7,21 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+#pragma mark === Markers ===
+# 1 setPaths getPath DEV SHUnit
+# 2 updateLastBuilt clearLastBuilt copyfile
+# 3 runShunitTests
+# 4 removeFolder
+# 5 translateCdoc unusedCdocTranslations
+# 6 (reserved - doxygen)
+# 8 getAction findTests findSources installOneFile processAction
+# 9 ccInstall
+
 NAME='ccInstall -- installation script and supporting functions'
 USAGE='
-ccInstall sourceRoot targetFolder [actionFlags]
+ccInstall sourceRoot targetFolder [action]
 #	build the specified project target
-#		actionFlags: [-[citud]+] - actions requested (clean, install, test, upload, doxygen); default: -i
+#		action: action requested (clean, install, test); default: install
 ccInstall commandFlag [argument(s)]
 #	--setPaths			set derived paths from arguments
 #	--get<Path>			sourceRoot targetFolder
@@ -24,20 +34,20 @@ ccInstall commandFlag [argument(s)]
 #	--copyFile			sourceFile destinationPath
 #						copy source file to the specified destination
 #	--translateCdoc		sourceFile destinationPath
-#						translate Cdoc markers in source file and store result at the specified destination
-#	--getActions		resultObject sourceRoot targetFolder [actionString]
-#		actionString: [-[citud]+] - actions requested (clean, install, test, upload, doxygen)
-#			default: -i, or -c if "clean" passed
-#			resultObject: object to contain results
+#						translate Cdoc markers in source file; store result at destination
+#	--getAction			sourceRoot targetFolder [actionString]
+#						actionString: from (clean, install, test)
+#						result: from (clean, install, test, doxygen)
 #	--findTests 		testPath
 #		result: 		path to file containing list of shunit tests on <testPath>
 #	--findSources		sourceRoot targetFolder
-#		result: 		path to file containing list of source files for <sourceRoot>/<targetFolder>
+#		result: 		path to file containing natural-order list of source files for <sourceRoot>/<targetFolder>
 #	--removeFolder		removes contents and folder for the folder specified
 #	--runShunitTests	folder
 #						runs all shunit tests found in folder
-#	--processActions	callbackScript sourceRoot targetFolder actionFlags
-#	--ccInstall			sourceRoot targetFolder actionFlags
+#	--installOneFile	installAction (install | translateCdoc | ignore) source destination
+#	--processAction		callbackScript sourceRoot targetFolder action
+#	--ccInstall			sourceRoot targetFolder action
 #						performs specified action on targetFolder
 #	--DEV				short user name (name of $HOME folder)
 #						return path containing development projects for this user
@@ -51,15 +61,14 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 
-#^ 1 === top
+#pragma mark 1 === Paths
 
 sourceRoot=""			# path to folder containing project (Xcode's $SRCROOT)
 targetFolder=""			# path from sourceRoot to folder containing sources
 targetName=""			# name of Xcode target
 lastbuilt=""			# path to internal file that knows when a target was last built
 
-#^ 2 === Paths
-#^ setPaths
+#pragma mark setPaths
 function setPaths {
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -70,7 +79,7 @@ function setPaths {
 	lastbuilt="${CCDev}/build_output/${workspaceName}/${sourceRoot##*/}/${targetName}.lastbuilt"
 }
 
-#^ getPath
+#pragma mark getPath
 function getPath {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
 		command="${1}"
@@ -93,8 +102,40 @@ function getPath {
 	print "${path}"
 }
 
-#^ 3 === actions
-#^ updateLastbuilt
+#pragma mark DEV
+function DEV {
+	if [[ -n "${1}" ]] ; then
+		username="${1}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --DEV user"
+		return
+	fi
+
+	case "${username}" in
+		"lauramartinez" )
+			DEV="/Users/${username}/Documents/Projects"
+			;;
+		"carolclark" )
+            if [[ -e "${HOME}/Dev" ]] ; then
+                DEV="${HOME}/Dev"
+            else
+                DEV="/Volumes/Mac/Users/${username}/Dev"
+            fi
+			;;
+		* )
+			DEV="/Users/${username}/Dev"
+			;;
+	esac
+	print "${DEV}"
+}
+
+#pragma mark SHUnit
+function SHUnit {
+	print "${CCDev}/shunit/src/shunit2"
+}
+
+#pragma mark 2 === Install
+#pragma mark updateLastbuilt
 function updateLastbuilt {
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -110,7 +151,7 @@ function updateLastbuilt {
 	return ${st}
 }
 
-#^ clearLastbuilt
+#pragma mark clearLastbuilt
 function clearLastbuilt {
 	sourceRoot="${1}"
 	targetFolder="${2}"
@@ -131,7 +172,7 @@ function clearLastbuilt {
 	return ${st}
 }
 
-#^ copyFile
+#pragma mark copyFile
 function copyFile {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		sourceForCopy="${1}"
@@ -159,7 +200,79 @@ function copyFile {
 	return 0
 }
 
-#^ translateCdoc
+#pragma mark 3 === runShunitTests
+function runShunitTests {
+#	When shunit tests encounter an error, output is sent to stdout and a nonzero exit status is returned.
+#	The tests themselves may also also throw errors. Messages for those cases should include the text "EXPECTED ERROR".
+#	Here:
+#		failcnt: number of test files that encounter failures, +1 if execution errors are encountered
+#		errout: file to collect stderr output
+#	returns nonzero exit status if test failures are encountered.
+	if [[ -n "${1}" ]] ; then
+		testPath="${1}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall runShunitTests testPath"
+		return
+	fi
+
+	errout="$CCDev/tmp/errout"
+	errinfo="$CCDev/tmp/errinfo"
+	iofile=$(findTests "${testPath}")
+	typeset -i failcnt=0
+	typeset -i errcnt=0
+	echo "" > "$errinfo"
+
+	while read ln ; do
+		print "== ${testPath}/${ln}"
+		"${testPath}/${ln}" 2>"$errout"
+		st=$?
+		if [[ "${st}" > 0 ]] ; then
+			failcnt=$failcnt+1
+		fi
+		if [[ $(cat "$errout") != "" ]] ; then										# errout file is not empty
+			if [[ $(cat "$errout" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
+				errcnt=$errcnt+1
+				cat $errout >> $errinfo
+			fi
+		fi
+	done < "${iofile}"
+	if [[ $failcnt > 0 ]] ; then
+		echo "FAILURES ($failcnt test files encountered failing tests)"
+	fi
+	if [[ $errcnt > 0 ]] ; then
+		echo "ERRORS ($errcnt test files encountered execution errors):"
+		cat "$errinfo"
+	fi
+	return $(($failcnt+$errcnt))
+
+}
+
+#pragma mark 4 === Clean
+#pragma mark removeFolder
+function removeFolder {
+	if [[ -n "${1}" ]] ; then
+		check="${1#${HOME}}"
+		if [[ "${1}" = "${check}" ]] ; then
+			errorMessage $RC_InvalidArgument "$0#$LINENO:" "removeFolder expects folder inside ${HOME}"
+		else
+			folder="${1}"
+		fi
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall folder"
+		return
+	fi
+	if [[ -e "${folder}" ]]; then			# folder exists
+		if ! [[ -d "${folder}" ]]; then
+			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
+			return
+		fi
+		/usr/local/bin/python3 "${CCDev}/bin/python/util.py" "remove_folder" "${folder}"
+	fi
+	return 0
+}
+
+#pragma mark 5 === Cdoc
+#pragma mark translateCdoc
 function translateCdoc {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		in="${1}"
@@ -206,7 +319,7 @@ function translateCdoc {
 	return 0
 }
 
-#^ unused Cdoc translations -- saved in case needed later
+#pragma mark unused Cdoc translations -- saved in case needed later
 function unused {
 sed '
 s|<!-- @doctype -->|<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">|
@@ -226,106 +339,34 @@ s|<!-- @constant "\([^"][^"]*\)" "\([^"]*\)" "\([^"]*\)" -->|<tr><td class="cod"
 ' <"$in" >"$out"
 }
 
-#^ 4 === getActions
-function getActions {			# resultObject sourceRoot targetFolder actionString
-	typeset -n resultObj=$1
-	resultObj=(
-		actionString=""
-		doClean=0
-		doInstall=0
-		doTest=0
-		doUpload=0
-		doDoxygen=0
-	)
-	sourceRoot="${2}"
-	targetFolder="${3}"
+#pragma mark 8 === Action
+# inside: 1 getAction; 2 findTests; 3 findSources; 4 installOneFile; 5 processAction
+#pragma mark 1 --- getAction
+function getAction {			# sourceRoot targetFolder actionString
+	sourceRoot="${1}"
+	targetFolder="${2}"
 	if [[ ! -n "${sourceRoot}" ]] || [[ ! -n "${targetFolder}" ]]; then
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --getActions resultObject sourceRoot targetFolder actionString"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --getAction  sourceRoot targetFolder [action]"
 		return
 	fi
-	actionString="i"
-	if [[ -n ${4} ]] ; then
-		if [[ "${4}" = "clean" ]] ; then
-			actionString="c"
+	action="install"
+	if [[ -n ${3} ]] ; then
+		if [[ "${3}" = "install" ]] || [[ "${3}" = "clean" ]] || [[ "${3}" = "test" ]] ; then
+			action="${3}"
 		else
-			actionString="${4#-}"
-			if [[ ${actionString} = ${4} ]] ; then
-				errorMessage $RC_SyntaxError "$0#$LINENO:" "actionString $4: expected first character '-'"
-				return
-			fi
+			errorMessage $RC_InvalidInput "$0#$LINENO:" "invalid action string ${3}"
+			return
 		fi
 	fi
-	resultObj.actionString=${actionString}
-	typeset -i i=${#actionString}
-	typeset -i errorCount=0
-	while [[ $i > 0 ]] ; do
-		ch=$(print ${actionString} | cut -c ${i})
-		case "${ch}" in
-			"c" )	resultObj.doClean=1;;
-			"i" )
-				if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
-					resultObj.doDoxygen=1
-				else
-					resultObj.doInstall=1
-				fi
-				;;
-			"t" )	resultObj.doTest=1;;
-			"u" )	resultObj.doUpload=1;;
-			* )		errorCount+=1;;
-		esac
-		i=i-1
-	done
-	if [[ ${errorCount} > 0 ]] ; then
-		errorMessage $RC_InvalidInput "$0#$LINENO:" "--getActions ${actionString}: ${errorCount} invalid action flags"
-		return
+	if [[ $action = "install" ]] ; then
+		if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
+			action="doxygen"
+		fi
 	fi
+	print "${action}"
 }
 
-#pragma mark 6 === runShunitTests
-function runShunitTests {
-	if [[ -n "${1}" ]] ; then
-		testPath="${1}"
-	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall runShunitTests testPath"
-		return
-	fi
-
-	errout="$CCDev/tmp/errout"
-	errinfo="$CCDev/tmp/errinfo"
-	errtmp="$CCDev/tmp/errtmp"
-	iofile=$(findTests "${testPath}")
-	typeset -i failcnt=0
-	typeset -i errcnt=0
-	echo "" > "$errinfo"
-
-	while read ln ; do
-		print "== ${testPath}/${ln}"
-		"${testPath}/${ln}" 2>"$errout"
-		st=$?
-		if [[ "${st}" > 0 ]] ; then
-			failcnt=$failcnt+1
-		fi
-		grep -v "EXPECTED ERROR" $errout > $errtmp
-		if [[ $(cat "$errtmp") != "" ]] ; then										# file is not empty
-			if [[ $(cat "$errtmp" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
-							# appears that long EXPECTED ERROR can output an extra CR into $errout
-				errcnt=$errcnt+1
-				cat $errtmp >> $errinfo
-			fi
-		fi
-	done < "${iofile}"
-	if [[ $failcnt > 0 ]] ; then
-		echo "FAILURES ($failcnt test files encountered failing tests)"
-	fi
-	if [[ $errcnt > 0 ]] ; then
-		echo "ERRORS ($errcnt test files encountered execution errors):"
-		cat "$errinfo"
-	fi
-	return $(($failcnt+$errcnt))
-
-}
-
-#^ 5 === Find ...
+#pragma mark 2 --- findTests
 function findTests {
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
@@ -335,7 +376,7 @@ function findTests {
 	fi
 
 	origdir=$(pwd)
-	iofile="${CCDev}/tmp/found"
+	iofile=$(mktemp -t ccInstall_tests.$$)
 	cd "${testPath}"
 	find . -type f -and -name "test*.ksh"| sed 's|\./||' > "${iofile}"
 	chmod a+r "${iofile}"
@@ -344,6 +385,7 @@ function findTests {
 	print "${iofile}"
 }
 
+# pragma mark 3 --- findSources
 function findSources {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		sourceRoot="${1}"
@@ -354,7 +396,7 @@ function findSources {
 	fi
 
 	origdir=$(pwd)
-	iofile="${CCDev}/tmp/sources"
+	iofile=$(mktemp -t ccInstall_sources.$$)
 	cd "${sourceRoot}/${targetFolder}"
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
@@ -373,115 +415,98 @@ function findSources {
 	print "${iofile}"
 }
 
-function removeFolder {
+#pragma mark 4 --- installOneFile
+function installOneFile {
+	missingArgMessage="USAGE: ccInstall --installOneFile action source destination"
+	msg=""
 	if [[ -n "${1}" ]] ; then
-		folder="${1}"
+		action="${1}"
+		shift
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall folder"
+		msg=$(errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgMessage}")
 		return
 	fi
-	if [[ -e "${folder}" ]]; then			# folder exists
-		if ! [[ -d "${folder}" ]]; then
-			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
+	if ! [[ "${action}" = "ignore" ]] ; then
+		if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+			sourceForCopy="${1}"
+			destinationForCopy="${2}"
+		else
+			msg=$(errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgMessage}")
 			return
 		fi
-		iofile="${CCDev}/tmp/found3"
-		origdir=$(pwd)
-		print "= ${folder}"
-		cd "${folder}"
-		st=${?}
-		if [[ ${st} > 0 ]] ; then
-			cd "${origdir}"
-			errorMessage ${st} "$0#$LINENO:" "error: could not set directory to ${folder} because it does not exist or is not a directory"
-			return
-		fi
-		find . -path -prune -or -type f | sed 's|\./||' > "${iofile}"
-		chmod a+r "${iofile}"
-
-		while read fl ; do
-			print -n "${fl}: "
-			rm "${fl}"
-			st=$?
-			if [[ ${st} > 0 ]] ; then
-				cd "${origdir}"
-				errorMessage ${st} "$0#$LINENO:" "error: could not remove"
-				return
-			fi
-			print "removed"
-		done < "${iofile}"
-
-		find . -path -prune -or -type d | sed 's|\./||' | tail -r > "${iofile}"
-		chmod a+r "${iofile}"
-
-		while read fl ; do
-			if [[ ${fl} = "." ]] ; then
-				fl="${folder}"
-			fi
-			print 	"(${fl}: "
-			rmdir "${fl}"
-			st=$?
-			if [[ ${st} > 0 ]] ; then
-				cd "${origdir}"
-				errorMessage ${st} "$0#$LINENO:" "error: could not remove"
-				return
-			fi
-			print "removed"
-		done < "${iofile}"
-
-		cd "${origdir}"
 	fi
+
+#	action="${1}"
+#	sourceForCopy="${2}"
+#	destinationForCopy="${3}"
+
+	case "${action}" in
+		"ignore" )
+			msg="skipped"
+			;;
+		"copy" )
+			msg1=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
+			st=$?
+			if [[ ${st} > 0 ]] ; then
+				msg=$(errorMessage ${st} "$0#$LINENO:" "error copying ${sourceForCopy} to ${destinationForCopy}: ${msg1}")
+			else
+				msg="succeeded"
+			fi
+			;;
+		"translateCdoc" )
+			msg1=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
+			st=$?
+			if [[ ${st} > 0 ]] ; then
+				msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg1}")
+			else
+				msg="succeeded"
+			fi
+			;;
+		* )
+			msg=$(errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}")
+			return
+			;;
+	esac
+	print "${msg}"
 	return 0
 }
 
-#^ 7 === processActions
-function processActions {
+#pragma mark 5 --- processAction
+function processAction {
 	callbackScript=""
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] && [[ -n "${3}" ]] ; then
 		callbackScript="${1}"
 		sourceRoot="${2}"
 		targetFolder="${3}"
-		actionFlags="${4}"
+		actionIn="${4}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processActions callbackScript sourceRoot targetFolder [-actionFlags]"
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processAction callbackScript sourceRoot targetFolder [action]"
 		return
 	fi
-	getActions actions "${sourceRoot}" "${targetFolder}" ${actionFlags}
+	action=$(getAction "${sourceRoot}" "${targetFolder}" ${actionIn})
 	st=$?
 	if [[ ${st} > 0 ]] ; then
-		errorMessage ${st} "$0#$LINENO:" "could not read action flags"
-		return
-	fi
-
-	st=$?
-	if [[ ${st} > 0 ]] ; then
-		errorMessage ${st} "$0#$LINENO:" "ccInstall ${callbackScript} ${sourceRoot} ${targetFolder} failed"
+		errorMessage ${st} "$0#$LINENO:" "error: function getAction failed: ${action}"
 		return
 	fi
 
 # clean
-	if [[ ${actions.doClean} > 0 ]] ; then
+	if [[ ${action} = "clean" ]] ; then
 		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
-		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+		msg=$("${callbackScript}" --cleanTarget "${sourceRoot}" "${targetFolder}")
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: ${callbackScript} --cleanTarget failed: ${msg}"
 			return
-		else
-			print ${msg}
 		fi
-		lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
-		st=$?
-		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-			return
-		fi
+		print ${msg}
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 	fi
 
 # doxygen
-	if [[ ${actions.doDoxygen} > 0 ]] ; then
+	if [[ ${action} = "doxygen" ]] ; then
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "Doxygen")
+		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "Doxygen")
 		installName="${outputDir##*/}"
 		print "== installing ${installName} documentation"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
@@ -529,16 +554,16 @@ function processActions {
 	fi
 
 # install
-	if [[ ${actions.doInstall} > 0 ]] ; then
+	if [[ ${action} = "install" ]] ; then
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
-		iofile=$(findSources "${sourceRoot}" "${targetFolder}")
+		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
 		typeset -i failcnt=0
 		prevFolder=""
 		while read fl ; do
 			sourceFolder="${fl%%/*}"
 			fpath="${fl#*/}"
 			if [[ ! "${prevFolder}" = "${sourceFolder}" ]] ; then
-				msg=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}")
+				msg=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "${sourceFolder}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -556,7 +581,7 @@ function processActions {
 				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
 			else
 				print -n "${fpath}: "
-				msg=$("${callbackScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${actionFlags}" "${sourceFolder}" "${fpath}" "${destination}")
+				msg=$("${callbackScript}" --prepareFileOperation "${sourceRoot}" "${targetFolder}" "${action}" "${sourceFolder}" "${fpath}" "${destination}")
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
@@ -571,34 +596,41 @@ function processActions {
 					sourceForCopy="${copyInfo[1]}"
 					destinationForCopy="${copyInfo[2]}"
 				fi
-				case "${action}" in
-					"ignore" )
-						print "skipped"
-						;;
-					"copy" )
-						msg=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
-						st=$?
-						if [[ ${st} > 0 ]] ; then
-							failcnt="${failcnt}"+1
-							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-						else
-							print "succeeded"
-						fi
-						;;
-					"translateCdoc" )
-						msg=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
-						st=$?
-						if [[ ${st} > 0 ]] ; then
-							failcnt="${failcnt}"+1
-							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-						else
-							print "succeeded"
-						fi
-						;;
-					* )
-						errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}"
-						;;
-				esac
+				msg=$(ccInstall --installOneFile "${action}" "${sourceForCopy}" "${destinationForCopy}")
+				st=$?
+				if [[ ${st} > 0 ]] ; then
+					failcnt="${failcnt}"+1
+					msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg}")
+				fi
+				print "${msg}"
+#				case "${action}" in
+#					"ignore" )
+#						print "skipped"
+#						;;
+#					"copy" )
+#						msg=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
+#						st=$?
+#						if [[ ${st} > 0 ]] ; then
+#							failcnt="${failcnt}"+1
+#							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+#						else
+#							print "succeeded"
+#						fi
+#						;;
+#					"translateCdoc" )
+#						msg=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
+#						st=$?
+#						if [[ ${st} > 0 ]] ; then
+#							failcnt="${failcnt}"+1
+#							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+#						else
+#							print "succeeded"
+#						fi
+#						;;
+#					* )
+#						errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}"
+#						;;
+#				esac
 			fi
 		done < "${iofile}"
 		if [[ ${failcnt} = 0 ]] ; then
@@ -615,49 +647,12 @@ function processActions {
 	fi
 
 # test
-#	When shunit tests encounter an error, output is sent to stdout and a nonzero exit status is returned.
-#	The tests themselves may also also throw errors. Messages for those cases should include the text "EXPECTED ERROR".
-#	Here:
-#		failcnt: number of test files that encounter failures, +1 if execution errors are encountered
-#		errout: file to collect stderr output
-#	returns nonzero exit status if test failures are encountered or messages not including "EXPECTED ERROR" are sent to stderr.
-
-	if [[ ${actions.doTest} > 0 ]] ; then
+	if [[ ${action} = "test" ]] ; then
 		runShunitTests "${sourceRoot}/${targetFolder}"
 	fi
 }
 
-function DEV {
-	if [[ -n "${1}" ]] ; then
-		username="${1}"
-	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --DEV user"
-		return
-	fi
-
-	case "${username}" in
-		"lauramartinez" )
-			DEV="/Users/${username}/Documents/Projects"
-			;;
-		"carolclark" )
-            if [[ -e "${HOME}/Dev" ]] ; then
-                DEV="${HOME}/Dev"
-            else
-                DEV="/Volumes/Mac/Users/${username}/Dev"
-            fi
-			;;
-		* )
-			DEV="/Users/${username}/Dev"
-			;;
-	esac
-	print "${DEV}"
-}
-
-function SHUnit {
-	print "${CCDev}/shunit/src/shunit2"
-}
-
-#^ 8 === ccInstall
+#pragma mark 9 === ccInstall
 function ccInstall {
 	if [[ $# = 0 ]] ; then
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "$0: missing commandFlag"
@@ -665,9 +660,11 @@ function ccInstall {
 	fi
 
 	case "${1}" in
-		"--getActions" )
-			getActions "${2}" "${3}" "${4}" "${5}"		# resultObject sourceRoot targetFolder [actionString]
-			return $?
+		"--getAction" )
+			action=$(getAction "${2}" "${3}" "${4}")	# sourceRoot targetFolder [actionString]
+			es=$?
+			print "${action}"
+			return "${es}"
 			;;
 		"--get"* )
 			val=$(getPath "${1}" "${2}" "${3}")			# command sourceRoot targetFolder
@@ -735,12 +732,18 @@ function ccInstall {
 			print "${msg}"
 			return "${es}"
 			;;
+		"--installOneFile" )							# action source destination
+			msg=$(installOneFile "${2}" "${3}" "${4}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
 		"--"* )
 			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid subcommand $1"	# <invalid arg>
 			return
 			;;
 		* )
-			msg=$(processActions "${1}" "${2}" "${3}" "${4}")	# callbackScript sourceRoot targetFolder actionString
+			msg=$(processAction "${1}" "${2}" "${3}" "${4}")	# callbackScript sourceRoot targetFolder action
 			es=$?
 			print "${msg}"
 			return "${es}"

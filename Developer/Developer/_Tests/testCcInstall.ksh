@@ -10,64 +10,21 @@
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
+#pragma mark === Markers ===
+# 1 testGeneral
+# 2 testGetAction
+# 3 testPaths testSpecialPaths
+# --- Conformance (access disk)
+# 8 fileContainsLine
+# 9 testFind testRemoveFolder
+
 setUp() {
 	sourceRoot="${CCDev}/TestData/WorkspaceA/ProjA"
 	targetFolder=Tar1
 }
 
-#^	1 === General
-testCciGeneral() {
-	typeset str
-
-	ccInstall > /dev/null
-	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument $?
-
-	str=$(ccInstall --help result)
-	st=$?
-	assertEquals "$LINENO: 'ccInstall --help' failed with code $st" 0 $st
-	assertNotNull "$LINENO: empty help string: " "${str}"
-
-	str=$(ccInstall --xxx)
-	assertEquals "$LINENO: incorrect return code for action param '--xxx': " $RC_InvalidArgument $?
-	assertNotNull "$LINENO: empty error string: " "${str}"
-
-	str=$(ccInstall abc)
-	st=$?
-	assertEquals "$LINENO: expected result code RC_MissingArgument:" $RC_MissingArgument "${st}"
-	assertNotNull "$LINENO: expected error message:" "${str}"
-}
-
-#^ --getActions
-testCciGetActions() {
-	typeset str
-
-	ccInstall --getActions result "${sourceRoot}" "${targetFolder}"
-	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect default action string: " "i" "${result.actionString}"
-
-	str=$(ccInstall --getActions result "${sourceRoot}" "${targetFolder}" abc)
-	st=$?
-	assertEquals "$LINENO: expected result code RC_SyntaxError: " $RC_SyntaxError $st
-	assertNotNull "$LINENO: expected error message" "${str}"
-
-	ccInstall --getActions result "${sourceRoot}" "${targetFolder}" -ciu
-	st=$?
-	assertEquals "$LINENO: 'ccInstall --getActions result ... -ciu' failed with code $st" 0 $st
-	assertEquals "$LINENO: incorrect action string: " "ciu" "${result.actionString}"
-	assertEquals "$LINENO: expected doInstall=1: " 1 "${result.doInstall}"
-	assertEquals "$LINENO: expected doTest=0: " 0 "${result.doTest}"
-
-	str=$(ccInstall --getActions result "${sourceRoot}" "${targetFolder}" -xyz)
-	st=$?
-	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
-	assertNotNull "$LINENO: error message expected" "${str}"
-	errstr="--getActions xyz: 3 invalid action flags \[RC_InvalidInput:#67]"
-	assertNotEquals "$LINENO: incorrect error message" "${str%${errstr}}" "${str}"
-}
-
-#^ Paths
-testCciPaths() {
+#pragma mark 1 === testPaths
+testPaths() {
 	str=$(ccInstall --getSourceRoot)
 	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
 
@@ -94,10 +51,12 @@ testCciPaths() {
 
 	rmdir "${CCDev}/build_output/WorkspaceA/ProjA"
 	rmdir "${CCDev}/build_output/WorkspaceA"
-}
 
-testSpecialPaths() {
 	assertEquals "$0#$LINENO:" "${HOME}/Library/CCDev" "${CCDev}"
+
+	shunit=$(ccInstall --SHUnit)
+	assertEquals "$0#$LINENO:" "${CCDev}/shunit/src/shunit2" "${shunit}"
+	assertTrue "$0#$LINENO: no file exists at ${shunit}" "[ -e ${shunit} ]"
 
 	DEV=$(ccInstall --DEV)
 	assertEquals "$0#$LINENO:" $RC_MissingArgument $?
@@ -119,12 +78,69 @@ testSpecialPaths() {
 	DEV=$(ccInstall --DEV "xxx")
 	assertEquals "$0#$LINENO:" 0 $?
 	assertEquals "$LINENO: incorrect DEV for xxx: " "/Users/xxx/Dev" "${DEV}"
-
-	SHUnit=$(ccInstall --SHUnit)
-	assertEquals "$0#$LINENO:" "${CCDev}/shunit/src/shunit2" "${SHUnit}"
-	assertTrue "$0#$LINENO: no file exists at ${SHUnit}" "[ -e ${SHUnit} ]"
 }
 
+#pragma mark 2 === testInstallInput
+testInstallInput() {
+	typeset str
+
+	ccInstall > /dev/null
+	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument $?
+
+	str=$(ccInstall --help result)
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --help' failed with code $st" 0 $st
+	assertNotNull "$LINENO: empty help string: " "${str}"
+
+	str=$(ccInstall --xxx)
+	assertEquals "$LINENO: incorrect return code for action param '--xxx': " $RC_InvalidArgument $?
+	assertNotNull "$LINENO: empty error string: " "${str}"
+
+	str=$(ccInstall abc)
+	st=$?
+	assertEquals "$LINENO: expected result code RC_MissingArgument:" $RC_MissingArgument "${st}"
+	assertNotNull "$LINENO: expected error message:" "${str}"
+
+	str=$(ccInstall a)
+	st=$?
+	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument "${st}"
+
+	str=$(ccInstall cb a b -abc)
+	st=$?
+	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
+}
+
+#pragma mark 3 === testGetAction
+testGetAction() {
+	action=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}")
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --getAction result' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect default action string ${action}: " "install" "${action}"
+
+	str=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" abc)
+	st=$?
+	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
+	assertNotNull "$LINENO: expected error message" "${str}"
+
+	action=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" "clean")
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --getAction ... clean' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect action string: " "clean" "${action}"
+
+	action=$(ccInstall --getAction "${sourceRoot}" "Doxygen" "install")
+	st=$?
+	assertEquals "$LINENO: 'ccInstall --getAction (doxygenPath) install' failed with code $st" 0 $st
+	assertEquals "$LINENO: incorrect action string: " "doxygen" "${action}"
+
+
+	str=$(ccInstall --getAction "${sourceRoot}" "${targetFolder}" -xyz)
+	st=$?
+	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
+	assertNotNull "$LINENO: error message expected" "${str}"
+}
+
+#pragma mark 8 === Conformance
+#pragma mark fileContainsLine
 fileContainsLine() {		# returns 1 iff file "${1}" contains line "${2}"
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		file="${1}"
@@ -140,7 +156,7 @@ fileContainsLine() {		# returns 1 iff file "${1}" contains line "${2}"
 	return 0
 }
 
-#^ find
+#pragma mark 9 === testFind
 testFind() {
 	mkdir -p ${sourceRoot}/${targetFolder}/_Tests
 	print "Tom" > "${sourceRoot}/${targetFolder}/_Tests/testTom.ksh"
@@ -222,7 +238,7 @@ testFind() {
 	rmdir "${CCDev}/build_output/WorkspaceA"
 }
 
-#^ removeFolder
+#pragma mark testRemoveFolder
 testRemoveFolder() {
 	folder="${CCDev}/TestData/Proj B"
 	str=$(ccInstall --removeFolder)
@@ -282,21 +298,6 @@ testRemoveFolder() {
 	fi
 
 	rmdir "${folder}"
-}
-
-#^ 7 === testInstall
-testInstall() {
-	str=$(ccInstall a)
-	st=$?
-	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument "${st}"
-
-#	str=$(ccInstall cb a b abc)
-#	st=$?
-#	assertEquals "$LINENO: RC_SyntaxError expected" $RC_SyntaxError "${st}"
-
-	str=$(ccInstall cb a b -abc)
-	st=$?
-	assertEquals "$LINENO: RC_InvalidInput expected" $RC_InvalidInput "${st}"
 }
 
 # run tests

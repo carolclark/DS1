@@ -1,104 +1,139 @@
 #!/bin/ksh
 
-#  ___FILENAME___
-#  <#Repository#>/___PROJECTNAME___
+#  ___FILENAME___.ksh
+#  <#PathFromDev#>/___PROJECTNAME___
 #
 #  Created by ___FULLUSERNAME___ on ___DATE___.
 #  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 
 USAGE='
-<#Target#>_install.ksh -- provide functions for ccInstall to support CCDev installation
-#	--getSubtargetDestination subtarget
-#		output destination location for files of subtarget
-#	--prepareFileOperation subtarget filepath destinationFolder
-#		perform any preprocessing indicated for the specified file
-#		output path to file containing: "copy"|"ignore" sourceForCopy destinationForCopy
-#	--cleanTarget
-#		perform any cleanup indicated for files that this target installs
-#		return 0 to have caller continue by updating last built data
+<#Target#>_install.ksh -- install <#Target#> scripts
+#	<#Target#>_install.ksh		sourceRoot targetFolder action
 '
 
+#^ 1 === top
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
-#^ 1 === top
-command=""
-sourceRoot=""
-targetFolder=""
-actionFlags=""
-
-#^ 3 === getSubtargetDestination
-function getSubtargetDestination {
-	if [[ -n "${1}" ]] ; then
-		subtarget="${1}"
-	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
-		return
-	fi
-	destinationFolder=""
-	case "${subtarget}" in
-		"Scripts" )
-			destinationFolder="${CCDev}/bin"
-			;;
-		"AppleScripts" )
-			destinationFolder="${HOME}/Library/Scripts/<#Target#>"
-			;;
-		"_Tests" )
-			;;	#handled elsewhere
-		* )
-			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return
-			;;
-	esac
-	print "${destinationFolder}"
-	return 0
-}
-
-#^ 5 === prepareFileOperation
-function prepareFileOperation {
-	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
-		subtarget="${1}"
-		filepath="${2}"
-		destinationFolder="${3}"
-	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
-		return
-	fi
-
-	if [[ "${subtarget}" = "AppleScripts" ]] ; then
-		fname="${filepath%.applescript}.scpt"
-		action="copy"
-		sourceForCopy="${CCDev}/build/Support/BuildSupport/Applications/<#Target#>/<#Target#>Scripts.bundle/Contents/Resources/${fname}"
-		destinationForCopy="${destinationFolder}/${fname}"
-	elif [[ -n "${destinationFolder}" ]] ; then
-		srcname="${filepath}"
-		destname="${srcname%.ksh}"
-		action="copy"
-		sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
-		destinationForCopy="${destinationFolder}/${destname}"
-	else
-		action="ignore"
-	fi
-
-	fl="${CCDev}/tmp/copyInfo"
-	mkdir -p "${CCDev}/tmp"
-	print "${action}\n${sourceForCopy}\n${destinationForCopy}" > "${fl}"
-	print "${fl}"
-	return 0
-}
-
-#^ 7 === cleanTarget
-function cleanTarget {
-	for folder in "${HOME}/Library/Scripts/<#Target#>" ; do
-		msg=$(ccInstall --removeFolder "${folder}")
-		st=${?}
-		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-			return
-		fi
-	done
-	return 0
-}
+<#xxFolder#>="${CCDev}/<##>"
 
 #^ 8 === main
-. "${CCDev}/bin/execInstallScript"
+	if [[ -n "${SRCROOT}" ]] ; then
+		sourceRoot="${SRCROOT}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable SRCROOT required."
+		return
+	fi
+	if [[ -n "${TARGET_NAME}" ]] ; then
+		targetFolder="${TARGET_NAME}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable TARGET_NAME required."
+		return
+	fi
+	action=${1:-"install"}
+
+	if [[ ${action} = "clean" ]] ; then
+		print "== cleaning ${sourceRoot##*/}/${targetFolder}..."
+		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
+	elif [[ ${action} = "install" ]] ; then
+		print "== installing ${sourceRoot##*/}/${targetFolder}..."
+	elif [[ ! ${action} = "clean" ]] && [[ ! ${action} = "install" ]] ; then
+		errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid action ${action}"
+		return
+	fi
+
+	iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
+	typeset -i failcnt=0
+	previous_source_folder=""
+	while read fl ; do
+		# establish installation parameters
+		source_folder="${fl%/*}"
+		file_name="${fl##*/}"
+		file_basename="${file_name%.*}"
+		file_extension="${file_name#*.}"
+		destination_folder=""
+		fileAction=""
+		case "${source_folder}" in
+			"Scripts" )
+				fileAction="copy"
+					destination_folder="${<#folder#>}"
+				;;
+			"<#Target#>_UTests" )
+				fileAction="ignore"
+				;;
+			* )
+				failcnt="${failcnt}"+1
+				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${source_folder} not handled"
+				;;
+		esac
+		if [[ ! "${fileAction}" = "ignore" ]] ; then
+			fullSourcePath="${sourceRoot}/${targetFolder}/${source_folder}/${file_name}"
+			fullDestinationPath="${destination_folder}/${file_name}"
+		fi
+
+		# display and process
+		if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
+			print "=${sourceRoot##*/}/${targetFolder}/${source_folder}:"
+			previous_source_folder="${source_folder}"
+		fi
+
+		msg=""
+		if [[ "${action}" = "clean" ]] ; then
+			if [[ ! "${fileAction}" = "ignore" ]] ; then
+				if [[ -e "${fullDestinationPath}" ]] ; then
+					print -n "${file_name}: "
+					chmod a+w "${fullDestinationPath}"
+					st=$?
+					if [[ $st > 0 ]] ; then
+						errorMessage ${st} "$0#$LINENO:" "error: could not set permission for ${fullDestinationPath}"
+						return
+					fi
+					rm "${fullDestinationPath}"
+					st=$?
+					if [[ $st > 0 ]] ; then
+						errorMessage ${st} "$0#$LINENO:" "error: could not remove ${fullDestinationPath}"
+						return
+					fi
+					msg="${fullDestinationPath} removed"
+				fi
+			fi
+		else
+			print -n "${file_name}: "
+			case "${fileAction}" in
+				"ignore" )
+					msg="skipped"
+					;;
+				"copy" )
+					msg=$(ccInstall --copyFile "${fullSourcePath}" "${fullDestinationPath}")
+					st=$?
+					if [[ ${st} > 0 ]] ; then
+						failcnt="${failcnt}"+1
+					else
+						msg="copied"
+					fi
+					;;
+				* )
+					msg=$(errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}")
+					failcnt="${failcnt}"+1
+					;;
+			esac
+		fi
+		print "${msg}"
+	done < "${iofile}"
+
+	# display result
+	if [[ "${action}" = "clean" ]] ; then
+		print "clean succeeded"
+	else
+		if [[ ${failcnt} = 0 ]] ; then
+			ccInstall --updateLastbuilt "${sourceRoot}" "${targetFolder}"
+			print "build succeeded"
+		else
+			pl="s"
+			if [[ ${failcnt} = 1 ]] ; then
+				pl=""
+			fi
+			errorMessage 1 "$0#$LINENO:" "error: Build Failed: ${errcnt} error${pl} encountered"
+			exit "${failcnt}"
+		fi
+	fi

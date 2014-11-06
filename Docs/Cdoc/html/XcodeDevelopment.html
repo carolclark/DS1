@@ -17,7 +17,7 @@
 	<!-- @topicGroup "Configuration" "4" -->
 		<!-- @topicItem "Xcode Project and Target Settings" "#pbxproj" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Refactorings and Tasks" "8" -->
+	<!-- @topicGroup "Refactorings and Tasks" "7" -->
 		<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
 		<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
 		<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
@@ -84,41 +84,29 @@
 
 <!-- @topicList "Projects and Targets" "Target_" -->
 	<!-- @topicGroup "Projects" "1" -->
-		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
-		<!-- @topicItem "Reorganize Sources" "#ReorganizeSources" "0" "" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "Create Cocoa Targets" "5" -->
 		<!-- @topicItem "New Cocoa Project" "#NewCocoaProject" "0" "" -->
-		<!-- @topicItem "Add Cocoa Test Target" "#AddCocoaTestTarget" "0" "" -->
-		<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
+		<!-- @topicItem "New Docs Project" "#NewDocsProject" "0" "" -->
+		<!-- @topicItem "New Scripted Build Project" "#NewScriptedBuildProject" "0" "" -->
+		<!-- @topicItem "Reorganize Sources" "#ReorganizeSources" "0" "" -->
+		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Create Other Targets" "10" -->
-		<!-- @topicItem "Add Docs Project" "#AddDocsProject" "0" "" -->
-		<!-- @topicItem "Add ccInstall Target" "#AddCcInstallTarget" "0" "" -->
-		<!-- @topicItem "Add Cocoa Test Bundle Target" "#AddCocoaTestBundleTarget" "0" "for non-Cocoa targets" -->
-		<!-- @topicItem "Add Build Script Target" "#AddBuildScriptTarget" "0" "" -->
+	<!-- @topicGroup "Targets" "8" -->
+		<!-- @topicItem "Add Cocoa Test Target" "#AddCocoaTestTarget" "0" "" -->
+		<!-- @topicItem "Add Scripted Build Test Target" "#AddScriptedBuildTestTarget" "0" "for non-Cocoa targets" -->
+		<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
+		<!-- @topicItem "New AppleScript Project" "#NewAppleScriptProject" "0" "" -->
 		<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 		<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Target Tasks" "18" -->
+	<!-- @topicGroup "Target Tasks" "17" -->
 		<!-- @topicItem "Rename Target" "#RenameTarget" "0" "" -->
 <!-- @/topicList -->
-
-<!-- @marker "Xcode Project Mirrors Files" -->
-<h4 id='XcodeProjectMirrorsFiles'>Xcode Project Mirrors Files</h4><pre>
-	* *organize source files and resources in folders and mirror them in Xcode*
-		* *see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a>*
-	* in Finder: organize source files and resources in folders
-	* in Xcode Project
-		* remove existing groups, if any, removing references only
-		* add new folder(s) to Xcode project, recursively creating groups for every subfolder
-		* remove any added plists from their targets
-</pre>
 
 <!-- @marker "New Cocoa Project" -->
 <h4 id='NewCocoaProject'>New Cocoa Project</h4><pre>
 	* create Project from indicated template
 		* *do not add to Workspace file yet*
+		* checkin (tests currently fail due to unimplemented test)
 	* customize project structure
 		* reorganize Application Target folder &lt;ApplicationName&gt;
 			* apply <a href="#ReorganizeSources">Reorganize Sources</a>
@@ -131,27 +119,80 @@
 			* MainMenu.xib
 				* update name and class of Application Delegate object
 				* set Application's delegate outlet to the renamed &lt;Target&gt;App
-	* apply <a href="#AddCocoaTestTarget">Add Cocoa Test Target</a> to edit App Test target
+	* apply <a href="#AddCocoaTestTarget">Add Cocoa Test Target</a> to edit Unit Test target
 	* apply <a href="#AddCocoaTestTarget">Add Cocoa Test Target</a> to add Unit Test target &lt;ApplicationName&gt;Tests
 	* apply <a href="#ReplaceDefaultWindow"> to Replace Default Window</a>
+</pre>
+
+<!-- marker "New Docs Project" -->
+<h4 id='NewDocsProject'>New Docs Project</h4><ul>
+	<li class='blurb'>project to build technical and Doxygen targets and contain additional documents as needed</li>
+	<li>create new empty project Docs; leave in its own workspace for now</li>
+	<li>inside the Docs folder:<ul>
+		<li>add new file ReadMe.html</li>
+		<li>add empty folders OtherDocuments and Images</li>
+		<li>Doxygen<ul>
+			<li><a href="#NewScriptedBuildProject">New Scripted Build Project</a> Doxygen</li>
+			<li>add Doxygen configuration file &lt;WorkspaceName&gt;_doxygen.txt from template<ul>
+				<li>set parameters as indicated, using ~/Dev/Support/Docs/Doxygen/Default.doxygen as a reference</li>
+			</ul></li>
+		</ul></li>
+		<li>Cdoc<ul>
+			<li><a href="#NewScriptedBuildProject">New Scripted Build Project</a> Cdoc</li>
+			<li>add starter History file html/History_&lt;WorkspaceName&gt;.html from template</li>
+		</ul></li>
+	</ul></li>
+	<li>mark all schemes shared</li>
+</ul>
+
+<!-- marker "New Scripted Build Project" -->
+<h4 id='NewScriptedBuildProject'>New Scripted Build Project</h4><pre>
+	* *normally build with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
+	* *may use ccInstall, an in-house script for installing groups of files*
+		* *variants for Doxygen and Cdoc documentation are provided*
+	* <span class='em'>Project &lt;TargetName&gt;</span>
+		* add External Build System project &lt;TargetName&gt; with configuration:
+			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
+			* arguments: $(ACTION)
+			* directory: "None"
+			* Pass Build Settings in Environment: YES
+		* if indicated, move &lt;TargetName&gt;.xcodeproj from &lt;EnclosingFolder&gt;/&lt;TargetName&gt; to &lt;EnclosingFolder&gt;
+		* add new file ReadMe.html from template next to xcodeproj
+		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template
+			* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
+			* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
+		* remove all project-level Build Settings
+	* <span class='em'>Target &lt;TargetName&gt;Tests</span>
+		* <a href="#AddScriptedBuildTestTarget">Add Scripted Build Test Target</a>
 </pre>
 
 <!-- @marker "Reorganize Sources" -->
 <h4 id='ReorganizeSources'>Reorganize Sources</h4><pre>
 	* Reorganize files into folders:
-		* for C-based targets:
-			* folder Classes, Tests, or AppTests, as indicated: subfolders AppDelegate; Controllers; Models; Helpers
-			* OtherSources
-				* add new file ReadMe.html
-				* move in files *-main.m, *-Info.plist, and, for C++ only, *.pch
-			* Resources: DataModels; Images.xcassets (created by Xcode); Nibs
+		* Primary Sources:
+			* &lt;TargetName&gt;: Classes (with subfolders AppDelegate; [Controllers; Models; Helpers])
+			* &lt;TargetName&gt;Tests: &lt;TargetName&gt;_[AppTests|UnitTests|PerfTests]
+		* OtherSources
+			* move in files *-main.m, *-Info.plist, [*.pch]
+			* application targets: add new file ReadMe.html
+		* Resources: DataModels; Images.xcassets; Nibs
 			* Nibs/*.lproj folders also contain *-InfoPlist.strings and Credits.rtf
+</pre>
+
+<!-- @marker "Xcode Project Mirrors Files" -->
+<h4 id='XcodeProjectMirrorsFiles'>Xcode Project Mirrors Files</h4><pre>
+	* *organize source files and resources in folders and mirror them in Xcode*
+		* *see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a>*
+	* in Finder: organize source files and resources in folders
+	* in Xcode Project
+		* remove existing groups, if any, removing references only
+		* add new folder(s) to Xcode project, recursively creating groups for every subfolder
+		* remove any added plists from their targets
 </pre>
 
 <!-- @marker "Add Cocoa Test Target" -->
 <h4 id='AddCocoaTestTarget'>Add Cocoa Test Target</h4><ul>
-	<li class='depr'>from iPhoneUnitsSample ReadMe: "Important: Application targets with unit tests cannot be built or run using the iPhone Simulator SDK; they can be built and run only using the iPhone Device SDK." The sample produces two copies of the app, one with Unit Tests and one without.</li>
-	<li>create or edit Unit Test (&lt;TestTarget&gt;Tests) or App Test (&lt;TestTarget&gt;_AppTests) Target<ul>
+	<li>create or edit test target (&lt;TestTarget&gt;_[U|C|P]Tests) Target<ul>
 		<li>for existing target from Cocoa Application template: apply <a href="#RenameTarget">Rename Target</a></li>
 		<li>else: add a new target from Cocoa Unit Testing Bundle template</li>
 	</ul></li>
@@ -163,22 +204,15 @@
 	<li>Build Settings<ul>
 		<li>update path to Info.plist file</li>
 		<li>for pure Objective-C targets: Precompile Prefix Header: no; remove Precompiled Header path</li>
-		<li>for App Tests: 8set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
+		<li>for App Tests: set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
 	</ul></li>
-	<li>Replace or Edit Test Class<ul>
-		<li>App Tests<ul>
-			<li>new file &lt;ApplicationName&gt;_AppTests from template<ul>
-				<li>check against supplied file &lt;ApplicationName&gt;Tests, updating template if indicated</li>
-			</ul></li>
-			<li>remove files &lt;ApplicationName&gt;Tests</li>
-			<li>add test case testAppDelegate (testAppDelegate#)</li>
+	<li>Test Class<ul>
+		<li>rename supplied file &lt;TestTarget&gt;_[U|C|P]Tests</li>
+		<li>new file &lt;TestTarget&gt;_[U|C|P]Tests from template<ul>
+			<li>check against supplied file, updating template if indicated</li>
+			<li>leave in or add a dummy test, or, for CTests, add test case testAppDelegate (testAppDelegate#)</li>
 		</ul></li>
-		<li>Unit Tests<ul>
-			<li>edit &lt;Target&gt;Tests<ul>
-				<li>replace file header</li>
-				<li>use testNothing<span class='blurb'>Xcode may issue a warning if it doesn't find &lt;Target&gt;Tests with at least one test</span></li>
-			</ul></li>
-		</ul></li>
+		<li>delete supplied file</li>
 	</ul></li>
 	<li>Schemes<ul>
 		<li>mark scheme "shared"</li>
@@ -190,81 +224,48 @@
 	</ul></li>
 </ul>
 
+<!-- @marker "Add Scripted Build Test Target" -->
+<h4 id='AddScriptedBuildTestTarget'>Add Scripted Build Test Target</h4><pre>
+	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior*
+		* *including Project &lt; Test menu item and Bots for continuous integration*
+	* *also: to improve feedback, consider running the tests from the Cocoa test class*
+		* *see <a href="http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942">execute-a-terminal-command-from-a-cocoa-app</a>*
+	* add Cocoa Unit Testing Bundle target &lt;TestTarget&gt;_(U|C|P)Tests
+	* Reorganize Files
+		* remove pch file, en.lproj folder
+		* rename required Cocoa tests file if indicated
+		* move folder &lt;TestTarget&gt;_(U/C/P)Tests into folder &lt;TestTarget&gt;
+		* move &lt;TestTarget&gt;_(U/C/P)Tests file &lt;TestTarget&gt;_(U/C/P)Tests-info.plist into folder OtherSources
+		* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+		* exclude &lt;TestTarget&gt;_(U/C/P)Tests, &lt;TestTarget&gt;_(U/C/P)Tests/OtherSources from &lt;TestTarget&gt;_install.ksh build processing
+	* Build Settings
+		* Precompile Prefix Header: no; remove Precompiled Header path
+		* update path to Info.plist file
+		* replace &lt;TestTarget&gt;_(U|C|P)Tests.m with new copy from template
+		* (later)edit test file to run the tests
+	* add Run Script build phase:
+		* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}"/&lt;TargetName&gt; test
+		* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
+	* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
+	* Schemes:Manage: add scheme &lt;TestTarget&gt;_(U|C|P)Tests; mark as shared; verify &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
+	* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;_(U|C|P)Tests
+</pre>
+
 <!-- @marker "Add Target Feature" -->
 <h4 id='AddTargetFeature'>Add Target Feature</h4><ul>
 	<li><b>Core Data</b><ul>
 		<li>add Data Model file</li>
 		<li>create new &lt;Target&gt;AppDelegate from private template _ObjectiveC/CocoaClass/NSApplicationDelegate, with option Use Core Data; recover any preexisting code</li>
-		<li>for Core Data tests, use private template _ObjectiveC/CocoaTestClass/NSManagedObject; see <a href="http://stackoverflow.com/questions/1849802/how-to-unit-test-my-models-now-that-i-am-using-core-data">Testing Core Data discussion</a></li>
+		<li>for Core Data tests, use private template _ObjectiveC/CocoaTestClass/NSManagedObject;<br />
+			see <a href="http://stackoverflow.com/questions/1849802/how-to-unit-test-my-models-now-that-i-am-using-core-data">Testing Core Data discussion</a></li>
 	</ul></li>
 </ul>
-
-<!-- @marker "AddDocsProject" -->
-<h4 id='AddDocsProject'>Add Docs Project</h4><ul>
-	<li class='blurb'>project to build technical and Doxygen targets and contain additional documents as needed</li>
-	<li>create new empty project Docs; leave in its own workspace for now</li>
-	<li>inside the Docs folder:<ul>
-		<li>add empty folders OtherDocuments and Images</li>
-		<li>Doxygen<ul>
-			<li><a href="#AddCcInstallTarget">Add ccInstall Target</a> Doxygen</li>
-			<li>add Doxygen configuration file &lt;WorkspaceName&gt;_doxygen.txt from template<ul>
-				<li>set parameters as indicated, using ~/Dev/Support/Docs/Doxygen/Default.doxygen as a reference</li>
-			</ul></li>
-		</ul></li>
-		<li>Cdoc<ul>
-			<li><a href="#AddCcInstallTarget">Add ccInstall Target</a> Cdoc</li>
-			<li>add starter History file html/History_&lt;WorkspaceName&gt;.html from template</li>
-		</ul></li>
-	</ul></li>
-	<li>mark all schemes shared</li>
-</ul>
-
-<!-- @marker "Add ccInstall Target" -->
-<h4 id='AddCcInstallTarget'>Add ccInstall Target with Tests</h4><pre>
-	* *ccInstall is an in-house script for installing groups of files*
-	* *ccInstall is normally called by a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
-		* *variants for Doxygen and Cdoc documentation are provided*
-	* <span class='em'>Target &lt;TargetName&gt;</span>
-		* add External Build System target &lt;TargetName&gt; with configuration:
-			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
-			* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
-			* directory: "None"
-			* Pass Build Settings in Environment: NO
-		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template
-			* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
-			* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
-	* <span class='em'>Target &lt;TargetName&gt;Tests</span>
-		* <a href="#AddCocoaTestBundleTarget">Add Cocoa Test Bundle Target</a>
-</pre>
-
-<!-- @marker "Add Cocoa Test Bundle Target" -->
-<h4 id='AddCocoaTestBundleTarget'>Add Cocoa Test Bundle Target</h4><pre>
-	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior, including Project &lt; Test menu item and Bots for continuous integration*
-	* *also: to improve feedback, consider <a href="http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942">http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942o</a> to run the tests from the Cocoa file*
-	* add Cocoa Unit Testing Bundle target &lt;TargetName&gt;Tests
-	* reorganize files
-		* remove pch file, en.lproj folder
-		* rename required Cocoa tests file to RequiredCocoaTests.m
-		* rename folder &lt;TargetName&gt;Tests to CocoaTestBundle; move to folder &lt;TargetName&gt;
-		* Build Settings
-			* Precompile Prefix Header: no; remove Precompiled Header path
-			* remove en.lproj folder from Copy Build Sources build phase
-			* update path to Info.plist file
-		* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
-		* edit RequiredCocoaTests.m
-			* replace file header with snippet
-			* use @import for XCTest
-			* remove setUp and tearDown methods
-			* replace test with <span class='mono'>- (void)testRequiredEmpty { }</span>
-	* add Run Script build phase: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; -t
-	* add shunit test files in folder &lt;TargetName&gt;/_Tests
-	* add &lt;TargetName&gt; as a dependency; add &lt;TargetName&gt;Tests as a test for scheme &lt;TargetName&gt;
-</pre>
 
 <!-- @marker "Add Build Script Target" -->
-<h4 id='AddBuildScriptTarget'>Add Build Script Target</h4><ul>
+<h4 id='NewAppleScriptProject'>New AppleScript Project</h4><ul>
 	<li class='blurb'>Motivation: make compiled AppleScripts available for use:<ul>
-		<li>add a target &lt;Target&gt;Scripts to compile &lt;name&gt;.applescript files in folder AppleScripts into a bundle of .scpt files at ${CCDev}/build/&lt;Target&gt;/&lt;Target&gt;Scripts.bundle</li>
+		<li>add a target &lt;Target&gt;Scripts to compile *.applescript files in folder AppleScripts into a bundle of .scpt files<br />
+			at ${CCDev}/build/&lt;Target&gt;/&lt;Target&gt;Scripts.bundle</li>
 		<li>expand existing External target &lt;Target&gt; to copy the compiled scripts to the desired location</li>
 	</ul></li>
 	<li>target &lt;Target&gt;Scripts<ul>
@@ -379,7 +380,9 @@
 	<li>remove "Controller" from name of xib</li>
 	<li>in the deprecated window, uncheck Visible at Launch</li>
 	<li>in AppDelegate: display new window<ul>
-		<li>snippet windowControllerProperty#: add @property for the new WindowController; add -(IBAction)newDocument:(id)sender to create WindowController and open window</li>
+		<li>snippet windowControllerProperty#: add @property for the new WindowController<ul>
+			<li>add -(IBAction)newDocument:(id)sender to create WindowController and open window</li>
+		</ul></li>
 		<li>applicationDidFinishLaunching: <span class='mono'>[self newDocument:self];</span></li>
 		<li>confirm window is displayed; AppTest for delegate.winController, delegate.winController.window not nil</li>
 	</ul></li>
@@ -394,10 +397,14 @@
 <h4 id='AddSheet'>Add Sheet</h4><ul>
 	<li>add code (snippet <span class='mono'>sheet</span>; input is capitalized title):<ul>
 		<li>IBAction close&lt;Title&gt;Sheet -- <span class='mono'>[NSApp endSheet:self.fileImagesSheet];</span></li>
-		<li>add <span class='mono'>- (void)didEnd&lt;Title&gt;Sheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo</span> with code <span class='mono'>[sheet orderOut:self];</span></li>
-		<li>IBAction show&lt;Title&gt;Sheet:<span class='mono'>[NSApp beginSheet:self.fileImagesSheet modalForWindow:self.view.window modalDelegate:self didEndSelector:@selector(didEnd&lt;Title&gt;Sheet:returnCode:contextInfo:) contextInfo:nil];</span></li>
+		<li>add <span class='mono'>- (void)didEnd&lt;Title&gt;Sheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo</span><br />
+			with code <span class='mono'>[sheet orderOut:self];</span></li>
+		<li>IBAction show&lt;Title&gt;Sheet:<span class='mono'>[NSApp beginSheet:self.fileImagesSheet modalForWindow:self.view.window<br />
+			5modalDelegate:self didEndSelector:@selector(didEnd&lt;Title&gt;Sheet:returnCode:contextInfo:) contextInfo:nil];</span></li>
 	</ul></li>
-	<li>Sheet Nib: add a window of class NSPanel to nib; set Identity: Label to &lt;title&gt;Sheet; deselect Visible at Launch; add referencing outlet &lt;title&gt;Sheet of File's Owner</li>
+	<li>Sheet Nib: add a window of class NSPanel to nib; set Identity: Label to &lt;title&gt;Sheet;<ul>
+		<li>ObjC objects &lt;ClassCP&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
+	</ul>deselect Visible at Launch; add referencing outlet &lt;title&gt;Sheet of File's Owner</li>
 	<li>Close button: add a close button; connect action to close&lt;Title&gt;Sheet</li>
 	<li>to activate sheet, add user interface element with action connected to show&lt;Title&gt;Sheet</li>
 </ul>
@@ -438,9 +445,16 @@
 		<li>C++ code is incompatible with Objective-C Automatic Reference Counting.</li>
 	</ul></li>
 	<li>AccessorC9<ul>
-		<li>These techniques are intended for use in porting C++ code from AccessorC9 to its Cocoa version Accessor. We exploit some characteristics of AccessorC9 in this process.<ul>
-			<li>AccessorC9 code is contained in namespace AccessLib, alias <span class='mono'>al</span>. ObjC objects &lt;ClassCP&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
-			<li>AccessorC9 class al::Host was intended to support polymorphism for executable type and context. al::Host became bottleneck access point to the Application, Window, and SlateManager classes. We now exploit those aspects to provide an access to application-level Objective-C classes from C++ code.</li>
+		<li>These techniques are intended for use in porting C++ code from AccessorC9 to its Cocoa version Accessor.<ul>
+			<li>We exploit some characteristics of AccessorC9 in this process.</li>
+		</ul><ul>
+			<li>AccessorC9 code is contained in namespace AccessLib, alias <span class='mono'>al</span>.<ul>
+				<li>ObjC objects &lt;ClassCP&gt; are used to wrap C++ objects &lt;al::Class&gt;.</li>
+			</ul></li>
+			<li>AccessorC9 class al::Host was intended to support polymorphism for executable type and context.<ul>
+				<li>al::Host became bottleneck access point to the Application, Window, and SlateManager classes.</li>
+				<li>We now exploit those aspects to provide an access to application-level Objective-C classes from C++ code.</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 	<li>As much as possible, we will wrap rather than change existing code until the initial import is complete.</li>
@@ -448,8 +462,12 @@
 
 <!-- @marker "Porting: Naming Conventions" -->
 <h5 id='PortingNamingConventions'>Porting: Naming Conventions</h5><ul>
-	<li>Original C++ files for class &lt;Class&gt; are named &lt;Class&gt;_AL.cp/h (or &lt;Class&gt;_C9.cp/h). These are initially imported as is. The implementation file may later be renamed to use extension .mm to enable use of Objective-C code.</li>
-	<li>Files for an Objective-C class that wraps the class in files &lt;Class&gt;_AL.cp/h are named &lt;Class&gt;.mm/h. The class itself is temporarily named &lt;Class&gt;CP, since otherwise the compiler could sometimes confuse &lt;Class&gt; with al::&lt;Class&gt;.</li>
+	<li>Original C++ files for class &lt;Class&gt; are named &lt;Class&gt;_AL.cp/h (or &lt;Class&gt;_C9.cp/h). These are initially imported as is.<ul>
+		<li>The implementation file may later be renamed to use extension .mm to enable use of Objective-C code.</li>
+	</ul></li>
+	<li>Files for an Objective-C class that wraps the class in files &lt;Class&gt;_AL.cp/h are named &lt;Class&gt;.mm/h.<ul>
+		<li>The class itself is temporarily named &lt;Class&gt;CP, since otherwise the compiler could sometimes confuse &lt;Class&gt; with al::&lt;Class&gt;.</li>
+	</ul></li>
 	<li>Pure Objective-C classes are in files named &lt;Class&gt;.m/h. Ultimately, pure Objective-C classes will replace all C++ and Objective-C++ classes.</li>
 </ul>
 

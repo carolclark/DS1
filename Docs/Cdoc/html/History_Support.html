@@ -15,21 +15,19 @@
 
 <!-- @topicList "Support History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
-	<!-- @topicItem "&lt;-- Current" "#hmark_Current" "2" "" -->
 		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
-		<!-- @topicItem "Fix RemoveFolder with Python" "#RemoveFolderWPython" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
-		<!-- @topicItem "upgrade to Mavericks" "#upgradeToMavericks" "1" "" -->
 		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
-		<!-- @topicGroup "" "10" -->
-		<!-- @topicItem "Ongoing Automation" "#Automation" "1" "" -->
-	<!-- @topicGroup "" "12" -->
+		<!-- @topicGroup "" "8" -->
+		<!-- @topicItem "Ongoig Automation" "#Automation" "1" "" -->
+		<!-- @topicItem "&lt;-- Current" "#hmark_Current" "0" "" -->
+	<!-- @topicGroup "" "11" -->
 	<!-- @topicItem "Completed" "#Completed" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Topics" "15" -->
+	<!-- @topicGroup "Topics" "14" -->
 	<!-- @topicItem "Open Topics" "#OpenTopics" "0" "move to a version document when closed?" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Previous Content" "#PreviousContent" "0" "" -->
@@ -46,7 +44,6 @@
 			* *We suspect that the problem is with the mechanism used to let the test override the normal source and destination for the archive. We should probably just pass more parameters.*
 		* revert archive.ksh to commit aa224e6 from May 15, 2013; disable tests
 			* *now the archive command is successful, but the tests are empty*
-		<span class='tlmark'>&lt;-- 06/04/2014</span>
 		* update with later changes from master branch
 			* *When testing was added, it interfered with normal operation. We need to update with most of the changes from the latest version, but without the changes made for testing support.*
 			* introduce variable ${archiveDestination}; update errorExit syntax; restore some error checking
@@ -54,59 +51,33 @@
 		* add command --revealLastArchive; call separately
 		* --folder also uses the current directory
 			* rename var $projectName to $folderName
+	* setup new hard drive space
+		* partition Seagate 5TB: Server(2), Archives(1), MacMirror(1), ChronoSync(1)
+		<span class='tlmark'>&lt;-- 06/09/2014</span>
+		* synchronize to MacMirror partition
+	* <a href="http://github.com/carolclark/Support/issues/41">(#41)</a> reenable archive.ksh tests
 		* add optional argument 'destination'
 		* reenable tests
 </pre>
 
-<!-- @marker "Fix RemoveFolder with Python" -->
-<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
-	<span class='tlmark'>&lt;--</span>
-	* setup python logging, error handling and debugging
-		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
-		* new file Python.html to document
-		* upgrade to python3
-			* <span class='mono'>homebrew install python3</span>
-			* rename python to python2 so cmdline will not run it
-			* move $PYTHONPATH definition to ~/.profile; add same path to ${PATH}
-			* document installation
-		* set up logging format and add to existing files and Python templates
-		* add Slate items for logging and breakpoints
-	* handle long commands in Slates
-		* scm.getMergeMessage
-			* add test for scm.main (simulates Terminal scm.py) with no arguments
-				* improve 'main' calling syntax
-				* does not now use ArgumentParser - tests for incorrect arguments did not work because they checked for syntax and crashed the test instead of calling it
-			* handle subcommand parameters by command
-			* try ArgumentParser again - 'optional' arguments only expected with flags
-			* handle input if args not supplied
-				* add optional argument --repository
-				* main expects branchName on command line, prompts for and accepts user input for repoIssue
-				* ??? (do not yet see a way that is better than what we have) handle select/list branches/files
-	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
-	* extract module util.py with function parse_cmdlist(parser, cmdlist=None)
-	* filesys.remove_folder
-		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/2/library/os.path.html">os.path</a>; <a href="https://docs.python.org/2/library/os.path.html">shutil</a>.rmtree() with copytree example*
-</pre>
-
 <!-- @marker "AppleScript Testing" -->
 <h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/Support/issues/35">(#35)</a>AppleScript Testing</h4><pre>
-	* move ThirdParty folder (now contains shunit2) to ~/Dev, out of our version control
+	* target ThirdParty
 		* move ThirdParty installation from DevConfig.ksh to new target ThirdParty
 			* Developer does not currently need access to third-party assets until testing
 		* *At this point, we cannot test fully because the clean action is not working, probably because of a previously noticed problem with ccInstall:removeFolder*
-		<span class='tlmark'>&lt;-- 05/19/2014</span>
 		* <a href="#RemoveFolderWPython">Fix RemoveFolder with Python</a>
-		* move content of target ThirdParty to ~/Dev/ThirdParty
-		* add Run Script build phase to Developer to trigger ThirdParty update
-		* (commit)
+		* ThirdParty clean does remove content
 		* update shunit2 to the latest version
-	* add third-party AppleScript testing script <a href="https://github.com/lifepillar/ASUnit">ASUnit</a>
-		* fork <a href="https://github.com/lifepillar/ASUnit">ASUnit</a> into ThirdParty folder
-		* ThirdParty_install.ksh also installs ASUnit script
-	* new AppleScript target
-		* Initial Tests
-			* add TestLoader and TestVarTypes tests based on scripts from ASUnit examples
-				* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
+			* Apparently, we already had the latest version, v2.1.6.
+			* We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
+	<span class='tlmark'>&lt;-- 10/13/2014</span>
+	* reorganize Developer folder; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
+	* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit installs ASUnit, runs supplied tests
+		* Initial AppleScript Tests: TestLoader and TestVarTypes test scripts from ASUnit examples
+			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
+	* new Developer target AppleScripts installs content from existing BuildSupport/Developer/AppleScripts
+		* tests may be just a custom script based on TestVarTypes
 </pre>
 
 <!-- @marker "restructure Xcode projects" -->
@@ -130,56 +101,87 @@
 					* install and test CCDevConfig
 					* install &amp; test remaining shell scripts
 					* install Services, ThirdParty (shunit)
-					* rename target and folder CCDev back to Developer, files CCDev_install.ksh to Developer_install.ksh, CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
+					* rename target and folder CCDev back to Developer, files CCDev_install.ksh to Developer_install.ksh,<br />
+						CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
 				* add target DeveloperTests
 					* ccInstall: by default, build only instead of build and test
-					* add target DeveloperTests; see <a href="XcodeDevelopment.html#AddCcInstallTarget">AddCcInstallTarget</a>
+					* add target DeveloperTests; see <a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>
 				* handle Python code and tests (from ccdevPy)
 					* add Python code and tests
-			<span class='tlmark'>&lt;-- 05/17/2014</span>
-			* add ReadMe files to all repositories and new projects
-			* Split Developer
-				* * developer tests are too slow to have to run them to test Python*
-				* * simpler projects are probably better anyway*
-				* new project Python inside folder Developer
-				* new project CCDev inside folder Developer
-				* replace Developer with a new project aggregating Python and Dev
-			Developing projects, reorganizing sources: add ReadMe file in the same folder as the Xcode project
-				* AppleScript
-					* <a href="#AppleScriptTesting">AppleScript Testing</a>
-					* add AppleScript scripts
-			* Application Support
-				* Applications/BBEdit
-				* Applications/Xcode
-			* UserSlates
-	* Accessor: Accessor (from BuildAccessor Accessor, AccessorApp/LogicTest, InHouse)
-</pre>
-
-<!-- @marker "upgrade to Mavericks" -->
-<h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/Support/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
-	* Xcode 5
-		* install Xcode 5
-		* update all projects and targets for compatiblity with Xcode 5
-			* update project settings to recommended architecture (automatic update)
-		* add '*.xccheckout' to git excludes
-		* Slates
-			* Typing: support OS X dictation as well as Dragon
-			* Xcode: organize macros; add Test index; update search/find
-	* support Xcode 5
-		* improve/add branch model support, slates Source Control, Documentation, all Indexes
-	* Mavericks
-		* Slates: support Safari Bookmarks/Sidebar button, Finder tabs
-		* for all Repositories / all Targets: test and analyze; document full testing and analysis process
-	* Xcode 5.1
-		* view Cdoc: correct issue where calculated target file name is incorrect
-			* frontWindow.applescript: adjust for apparently changed Xcode workspace window title
-		* script selectFiles: correct issue where all trailing filenames are included in result
-			* Terminal Slate: make grep command more precise
-		* Xcode Slate: Product menu;  use  instead of popup for Target selection
-		* remove non-ascii characters (<a href="http://github.com/carolclark/Support/issues/36">Support#36</a>)
-		* clear new compiler warnings
-	<span class='tlmark'>&lt;--</span>
-	* <a href="#restructureXcodeProjects">restructure Xcode projects</a> (#23)
+		<span class='tlmark'>&lt;-- 05/17/2014</span>
+		* move UserSlates to repository Accessor
+			* remove obsolete Slates
+			* copy folder UserSlates from Support/BuildSupport/UserSlates/Slates to Accessor/AccessorBuild/Resources/UserSlates
+			* Accessor: <a href="../Accessor/History_Accessor.html#SupportLaptop">Support Laptop</a>
+			* remove folder and target UserSlates from Support/BuildSupport
+		<span class='tlmark'>&lt;-- 09/22/2014</span>
+		* reorganize Developer folder [reorgDevFolder]
+			* *folder Developer to contain multiple simple projects, including target Developer to aggregate the rest*
+			* *for now, create these projects in their own workspaces inside Support/Developer
+			* shunit2: new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a>
+				* move shunit2 target from project Developer target ThirdParty to project in ~/Dev/Support/Developer
+				* move third-party folder shunit2-2.1.6 from ~/Dev/Support/Developer/Developer/ThirdParty to ~/Dev/Support/Developer/shunit2
+				* move ThirdParty_install.ksh to new shunit2_install.ksh in new folder
+				* add ReadMe; remove all project-level Build Settings
+				* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+					* ccInstall: use stderr/stdout instead of EXPECTED_ERROR to handle expected errors
+			* Python: fix issue removing folders with invisible files
+				* util.scan_directories lists both visible and invisible files
+			* ASUnit folder
+				* create (only) <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
+					* *project to filled in later; see <a href="#AppleScriptTesting">AppleScript Testing</a>*
+				* move ASUnit content folder into new project folder
+			* refactor Python_install.ksh
+				* *ccInstall process previously allowed only one level of folders inside a target folder
+				* *previous path parts were <span class='mono'>subtarget="${fl%%/*}"</span>, <span class='mono'>filepath="${fl#*/}"</span>
+					* *naming and calculation expect the top folder for <span class='mono'>subtarget</span>
+					* change names and calculation to expect (path from SRCROOT to file), filename
+					* add file_basename, file_extension
+				* inline ccInstall --installOneFile
+				* separate logic for file_action, (previous_source_folder==source_folder), (-n destination_folder)
+				* 'clean' removes files installed by 'build'
+					* combine 'install' and 'clean' blocks to reuse installation setup code
+				* take SRCROOT, TARGET_NAME from environment variables instead of passing arguments
+			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+			* CCDev
+				* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
+					* *install script from new template based on Python_install.ksh*
+						* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
+						* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
+				* CCDev_UTests: move info.plist file into folder OtherSoures
+				* move in existing shunit tests and ksh scripts from target Developer
+				* add Developer_ReadMe
+				* move of CCDev tests and scripts back to Developer for now
+				* CCDev_install
+					* rename source_folder to source_path (file's container as path from source_root)
+					* add and run DevConfig.ksh
+				* add tests, scripts; get buid/test cycle working
+				* remove scripts,tests from Developer
+				* add Services
+			* Support_All aggregate target
+				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
+				* verify no useful content remaining in project Developer; delete
+				* add new project Support_All at root level of repository
+				* add aggregate target Support_All; for now, includes CCDev only, since CCDev already depends on shunit
+				* incorporate Python scripts into CCDev
+		* Developer:AppleScript
+			* <a href="#AppleScriptTesting">AppleScript Testing</a>
+			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts
+			* add AppleScript scripts
+		* refactor Punkin's Cdoc and Doxygen installation; add new script template
+		* for each repository and project:
+			* add ReadMe file
+				* in XcodeDevelopment: reorganizing sources: add ReadMe file in the same folder as the Xcode workspace or project
+			* use new *_install template for each scripted build
+		* Application Support
+			* Applications/BBEdit
+			* Applications/Xcode
+			* Applications/Finder
+			* folder Applications/Dash (stores snippets)
+	* Accessor: Accessor (from BuildAccessor: Accessor, AccessorApp/LogicTest, InHouse)
+	* Configuration files
+		* upgrade Accessor config files as much as works now
+		* use templates and/or SourceTree folder to make files sharable
 </pre>
 
 <h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
@@ -224,11 +226,14 @@
 	* configuration
 		* add more colorization to Terminal
 			* *technique used to add color to terminal prompt also works to add color and special effects to UNIX output*
-			* *see <a href="http://antesarkkinen.com/blog/add-colors-to-os-x-terminal-including-ls-and-nano/">Add Colors To OSX Terminal</a>, <a href="http://linux-sxs.org/housekeeping/lscolors.html">COLORS-Lscolors</a>, <a href="http://softwaregravy.wordpress.com/2010/10/16/ls-colors-for-mac/">LS_COLORS for MAC OS X</a>*
+			* *see <a href="http://antesarkkinen.com/blog/add-colors-to-os-x-terminal-including-ls-and-nano/">Add Colors To OSX Terminal</a>,<br />
+				<a href="http://linux-sxs.org/housekeeping/lscolors.html">COLORS-Lscolors</a>, <a href="http://softwaregravy.wordpress.com/2010/10/16/ls-colors-for-mac/">LS_COLORS for MAC OS X</a>*
 			* print "\033[1;33mcarolclark !\033[0m \033[1;35m$\033[0m" for terminal prompt
 			* also add additional settings to colorize <span class='mono'>ls</span> and <span class='mono'>grep</span>
 	* add support for using <span class='mono'>git remote update</span> instead of <span class='mono'>git pull</span>
-		* *updates from all remotes; then supports merge process that preserves merge commits, and stops to allow re-base rather than continuing with a merge that is not fast-forward; see <a href="http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop">How to avoid these merge commits in the future</a>*
+		* *updates from all remotes; then supports merge process that preserves merge commits,<br />
+		and stops to allow re-base rather than continuing with a merge that is not fast-forward;<br />
+		see <a href="http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop">How to avoid these merge commits in the future</a>*
 	<span class='tlmark'>&lt;--</span>
 	* refactor: for all unix files, includes come before help info to keep file's help from being overwritten by that from includes
 	* handle items that now enter scripts via user slate
@@ -243,6 +248,61 @@
 
 <!-- @marker "Completed" -->
 <h2 id='Completed'>Completed</h2>
+
+<!-- @marker "simplify ccInstall" -->
+<h4 id='simplifyCcInstall'><a href="http://github.com/carolclark/Support/issues/42">(#42)</a>simplify ccInstall installation process</h4><pre>
+	* replace ccInstall function getActions, argument actionFlags with function getAction, action keyword
+	* findTests, findSources use random filenames; see <a href="http://content.hccfl.edu/pollock/ShScript/TempFile.htm">mktemp</a>
+	* install: move tracking of $prevFolder to findSources via output file
+	* simplify &lt;target&gt;_install process
+		* install
+			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
+				* prints 'skipped', 'succeeded', or error message
+		<span class='tlmark'>&lt;--09/21/32014</span>
+		* add Developer project <a href="Support.html#proj_Python">Python</a>
+			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
+			* add <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Python
+			* add <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
+			* move Python files, currently in project Developer, to project Python
+		* refactor Python_install.ksh
+			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
+			* copy in content of execInstallScript, ccInstall processAction; remove $callbackScript, --&lt;command&gt;
+			* use consistent variables throughout:
+				* $subtarget ($sourceFolder); $subtargetDestination ($destination, $destinationFolder); $previousSubtarget ($prevFolder); $fileAction ($action)
+				* $filePath ($fpath); $fullSourcePath ($sourceForCopy); $fullDestinationPath ($destinationForCopy)
+		* remove Developer target Python
+		* refactor Python_install.ksh
+			* inline former callbacks getSubtargetDestination, prepareFileOperation
+			* clean: inline; uses ccInstall --removeFolder
+		* replace Xcode FileTemplate installTarget.xctemplate
+		<span class='tldate'>[10/13/2014]</span>
+</pre>
+
+<!-- @marker "upgrade to Mavericks" -->
+<h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/Support/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
+	* Xcode 5
+		* install Xcode 5
+		* update all projects and targets for compatiblity with Xcode 5
+			* update project settings to recommended architecture (automatic update)
+		* add '*.xccheckout' to git excludes
+		* Slates
+			* Typing: support OS X dictation as well as Dragon
+			* Xcode: organize macros; add Test index; update search/find
+	* support Xcode 5
+		* improve/add branch model support, slates Source Control, Documentation, all Indexes
+	* Mavericks
+		* Slates: support Safari Bookmarks/Sidebar button, Finder tabs
+		* for all Repositories / all Targets: test and analyze; document full testing and analysis process
+	* Xcode 5.1
+		* view Cdoc: correct issue where calculated target file name is incorrect
+			* frontWindow.applescript: adjust for apparently changed Xcode workspace window title
+		* script selectFiles: correct issue where all trailing filenames are included in result
+			* Terminal Slate: make grep command more precise
+		* Xcode Slate: Product menu;  use  instead of popup for Target selection
+		* remove non-ascii characters (<a href="http://github.com/carolclark/Support/issues/36">Support#36</a>)
+		* clear new compiler warnings
+	<span class='tlmark'>&lt;--</span>
+</pre>
 
 <h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>
 	* adapt History_Support.html to synchronize with GitHub issues
@@ -284,7 +344,10 @@
 			* always define variables so that functions can be called independently
 	* stop here with work on "<a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling"
 		* * We have already recognized a need to learn Python for customizing the Xcode debugger, and probably using the Python interpreter to generate user-customizable Slates for Accessor.*
-		* * Now, after spending an inordinate amount of time trying to make script `archive.ksh` more robust and testable, we are recognizing that this work may be contributing to significant fragility with Xcode and Terminal, with per-file syntax-coloring issues in Xcode, preferences being incorrect for no apparent reason, very frequent need to quit Xcode and delete its cache file, and quite a few required reboots (at least 5 today).*
+		* * Now, after spending an inordinate amount of time trying to make script `archive.ksh` more robust and testable,<br />
+			we are recognizing that this work may be contributing to significant fragility with Xcode and Terminal,<br />
+			with per-file syntax-coloring issues in Xcode, preferences being incorrect for no apparent reason, very frequent need to quit Xcode and delete its cache file,<br />
+			and quite a few required reboots (at least 5 today).*
 		* ccBackup is already scheduled for replacement. Add a new issue to convert scripts ccInstall and archive to Python.
 </pre>
 
@@ -339,6 +402,51 @@
 
 <h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
 </pre>
+
+<!-- @marker "Fix RemoveFolder with Python" -->
+<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
+	<span class='tlmark'>&lt;--</span>
+	* setup python logging, error handling and debugging
+		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
+		* new file Python.html to document
+		* upgrade to python3
+			* <span class='mono'>homebrew install python3</span>
+			* rename python to python2 so cmdline will not run it
+			* move $PYTHONPATH definition to ~/.profile; add same path to ${PATH}
+			* document installation
+		* set up logging format and add to existing files and Python templates
+		* add Slate items for logging and breakpoints
+	* handle long commands in Slates
+		* scm.getMergeMessage
+			* add test for scm.main (simulates Terminal scm.py) with no arguments
+				* improve 'main' calling syntax
+				* does not now use ArgumentParser - tests for incorrect arguments did not work because they checked for syntax and crashed the test instead of calling it
+			* handle subcommand parameters by command
+			* try ArgumentParser again - 'optional' arguments only expected with flags
+			* handle input if args not supplied
+				* add optional argument --repository
+				* main expects branchName on command line, prompts for and accepts user input for repoIssue
+				* ??? (do not yet see a way that is better than what we have) handle select/list branches/files
+	* extract module util.py with function parse_cmdlist(parser, cmdlist=None)
+	* util.remove_folder
+		* *replaces/usedBy ccInstall:removeFolder; see also python <a href="https://docs.python.org/3/library/os.path.html">os.path</a>; <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.rmtree() with copytree example*
+		* util.path_to_remove
+		* util.remove_folder_at_home_path - add --dry-run
+		* output to string instead of to log
+		* extract util.do_remove_folder_with_contents(path, --dry-run)
+			* extract util.do_remove_fs_item(path, dry_run)
+			* extract util.ensure_directory(path, dry_run)
+			* finish do_remove_folder_with_contents tests
+		* call util.do_remove_folder_with_contents from ccInstall.removeF1older
+</pre>
+<p><span class='tldate'>[08/10/2014]</span></p>
+
+<!-- @marker "upgrade to Mavericks 10.9.4" -->
+<h4 id='Mavericks_10_9_4'><a href="http://github.com/carolclark/Support/issues/43">(#43)</a>upgrade to Mavericks 10.9.4</h4><pre>
+	* delete obsolete target BuildSupport:Developer
+</pre>
+<p><span class='tldate'>[08/18/2014]</span></p>
+
 
 <!-- @marker "Open Topics" -->
 <h2 id='OpenTopics'>Open Topics</h2>
@@ -729,7 +837,7 @@
 		<li>Accessor (new): add copies of files AccessLib_rsrc.h, Keyboard_AL.h to UserSlates folder</li>
 		<li class='tlmark'>&lt;--</li>
 		<li>FixWindow.applescript: changes window position, and size if necessary, to avoid blocking Accessor window; stored at top level of Scripts folder, but code is per application<ul>
-			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="XcodeDevelopment.html#AddBuildScriptTarget">Add Build Script Target</a></li>
+			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="XcodeDevelopment.html#NewAppleScriptProject">New AppleScript Project</a></li>
 		</ul></li>
 	</ul>
 
