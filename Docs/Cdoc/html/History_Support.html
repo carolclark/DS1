@@ -158,14 +158,17 @@
 						* rename source_folder to source_path (file's container as path from source_root)
 					* add and run DevConfig.ksh
 				* add tests, scripts; get build/test cycle working
-				* remove scripts,tests from Developer
-				* add Services
-			* Support_All aggregate target
+				* remove scripts,tests now in CCDev from Developer
+				* add Services to CCDev
+			* Support
 				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
 				* verify no useful content remaining in project Developer; delete
+				* add folder Developer, included projects to workspace Support
+				* CCDev depends on shunit2
 				* add new project Support at root level of repository
 				* add aggregate target Support_All; for now, includes CCDev only, since CCDev already depends on shunit
-				* incorporate Python scripts into CCDev
+			* incorporate Python installation into CCDev
+			* update Scripting template InstallTarget
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
 			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts

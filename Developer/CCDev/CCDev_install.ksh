@@ -46,7 +46,16 @@ scriptsFolder="${CCDev}/bin"
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable SRCROOT required."
 		return
 	fi
-	sourcePath=${0%/*}
+	if [[ -n "${PROJECT_NAME}" ]] ; then
+		projectName="${PROJECT_NAME}"
+	else
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "Environment variable PROJECT_NAME required."
+		return
+	fi
+	if [[ "$projectName" != ${0%/*} ]] ; then			# result of this condition is undefined
+		errorMessage $RC_InvalidArgument "$0#$LINENO:" "Expected install script at ${sourceRoot}/${projectName}."
+		return
+	fi
 	action=${1:-"install"}
 
 # shunit tests
@@ -67,16 +76,16 @@ scriptsFolder="${CCDev}/bin"
 
 # clean / install
 	if [[ ${action} = "clean" ]] ; then
-		print "== cleaning ${sourceRoot##*/}/${sourcePath} output"
-		ccInstall --clearLastbuilt "${sourceRoot}" "${sourcePath}"
+		print "== cleaning ${sourceRoot##*/}/${projectName} output"
+		ccInstall --clearLastbuilt "${sourceRoot}" "${projectName}"
 	elif [[ ${action} = "install" ]] ; then
-		print "== installing ${sourceRoot##*/}/${sourcePath}..."
+		print "== installing ${sourceRoot##*/}/${projectName}..."
 	else
 		errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid action ${action}"
 		return
 	fi
 
-	iofile=$(ccInstall --findSources "${sourceRoot}" "${sourcePath}")
+	iofile=$(ccInstall --findSources "${sourceRoot}" "${projectName}")
 	typeset -i failcnt=0
 	previous_source_folder=""
 	while read fl ; do
@@ -90,7 +99,22 @@ scriptsFolder="${CCDev}/bin"
 		case "${source_folder}" in
 			"Scripts" )
 				fileAction="copy"
-					destination_folder="${scriptsFolder}"
+				destination_folder="${scriptsFolder}"
+				;;
+			"Services" )
+				fileAction="ignore"
+				;;
+			"Services/OpenAccessor.workflow/Contents" )
+				fileAction="ignore"
+				;;
+			"Services/GitSaveMessage.workflow/Contents" )
+				fileAction="ignore"
+				;;
+			"Services/OpenAccessor.workflow/Contents/QuickLook" )
+				fileAction="ignore"
+				;;
+			"Services/GitSaveMessage.workflow/Contents/QuickLook" )
+				fileAction="ignore"
 				;;
 			"CCDev_UTests" )
 				fileAction="ignore"
@@ -103,7 +127,7 @@ scriptsFolder="${CCDev}/bin"
 				;;
 			* )
 				failcnt="${failcnt}"+1
-				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${sourcePath}/${source_folder} not handled"
+				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${projectName}/${source_folder} not handled"
 				;;
 		esac
 		if [[ ! "${fileAction}" = "ignore" ]] ; then
@@ -113,17 +137,17 @@ scriptsFolder="${CCDev}/bin"
 				fullSourcePath="${CCDev}/build/Support/Developer/CCDev/AppleScripts.bundle/Contents/Resources/${fname}"
 				fullDestinationPath="${destination_folder}/${fname}"
 			elif [[ "${file_extension}" = "ksh" ]] ; then
-				fullSourcePath="${sourceRoot}/${sourcePath}/${source_folder}/${file_name}"
+				fullSourcePath="${sourceRoot}/${projectName}/${source_folder}/${file_name}"
 				fullDestinationPath="${destination_folder}/${file_basename}"
 			else
-				fullSourcePath="${sourceRoot}/${sourcePath}/${source_folder}/${file_name}"
+				fullSourcePath="${sourceRoot}/${projectName}/${source_folder}/${file_name}"
 				fullDestinationPath="${destination_folder}/${file_name}"
 			fi
 		fi
 
 		# display and process
 		if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
-			print "=${sourceRoot##*/}/${sourcePath}/${source_folder}:"
+			print "=${sourceRoot##*/}/${projectName}/${source_folder}:"
 			previous_source_folder="${source_folder}"
 		fi
 
@@ -148,18 +172,19 @@ scriptsFolder="${CCDev}/bin"
 				fi
 			fi
 		else
-			print -n "${file_name}: "
+			print -n "${file_name}"
 			case "${fileAction}" in
 				"ignore" )
 					msg="skipped"
 					;;
 				"copy" )
+					print -n " -> ${fullDestinationPath}"
 					msg=$(ccInstall --copyFile "${fullSourcePath}" "${fullDestinationPath}")
 					st=$?
 					if [[ ${st} > 0 ]] ; then
 						failcnt="${failcnt}"+1
 					else
-						msg="copied"
+						msg=": copied"
 					fi
 					;;
 				* )
@@ -176,7 +201,7 @@ scriptsFolder="${CCDev}/bin"
 		print "clean succeeded"
 	else
 		if [[ ${failcnt} = 0 ]] ; then
-			ccInstall --updateLastbuilt "${sourceRoot}" "${sourcePath}"
+			ccInstall --updateLastbuilt "${sourceRoot}" "${projectName}"
 			print "build succeeded"
 		else
 			pl="s"
