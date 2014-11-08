@@ -38,6 +38,7 @@ fi
 . "${CCDev}/bin/ccInstall"
 
 scriptsFolder="${CCDev}/bin"
+servicesFolder="${HOME}/Library/Services"
 
 #^ 8 === main
 	if [[ -n "${SRCROOT}" ]] ; then
@@ -96,32 +97,17 @@ scriptsFolder="${CCDev}/bin"
 		file_extension="${file_name#*.}"
 		destination_folder=""
 		fileAction=""
-		case "${source_folder}" in
+		case "${source_folder%%/*}" in
 			"Scripts" )
 				fileAction="copy"
 				destination_folder="${scriptsFolder}"
 				;;
 			"Services" )
-				fileAction="ignore"
-				;;
-			"Services/OpenAccessor.workflow/Contents" )
-				fileAction="ignore"
-				;;
-			"Services/GitSaveMessage.workflow/Contents" )
-				fileAction="ignore"
-				;;
-			"Services/OpenAccessor.workflow/Contents/QuickLook" )
-				fileAction="ignore"
-				;;
-			"Services/GitSaveMessage.workflow/Contents/QuickLook" )
-				fileAction="ignore"
+				fileAction="copy"
+				destination_folder="${servicesFolder}"
 				;;
 			"CCDev_UTests" )
-				fileAction="ignore"
-				;;
-			"CCDev_UTests/OtherSources" )
-				fileAction="ignore"
-				;;
+				;&
 			"DevConfig.ksh" )
 				fileAction="ignore"
 				;;
@@ -130,8 +116,14 @@ scriptsFolder="${CCDev}/bin"
 				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${projectName}/${source_folder} not handled"
 				;;
 		esac
+		service_name=""
 		if [[ ! "${fileAction}" = "ignore" ]] ; then
-			if [[ "${file_extension}" = "applescript" ]] ; then
+			if [[ "${source_folder%%/*}" = "Services" ]] ; then
+				pathFromServicesFolder="${fl#*/}"
+				service_name="${pathFromServicesFolder%%/*}"
+				fullSourcePath="${sourceRoot}/${projectName}/${source_folder}/${file_name}"
+				fullDestinationPath="${destination_folder}/${service_name}/Contents/${file_name}"
+			elif [[ "${file_extension}" = "applescript" ]] ; then
 				fname="${file_basename}.scpt"
 				action="copy"
 				fullSourcePath="${CCDev}/build/Support/Developer/CCDev/AppleScripts.bundle/Contents/Resources/${fname}"
@@ -146,16 +138,20 @@ scriptsFolder="${CCDev}/bin"
 		fi
 
 		# display and process
-		if [[ ! "${previous_source_folder}" = "${source_folder}" ]] ; then
-			print "=${sourceRoot##*/}/${projectName}/${source_folder}:"
-			previous_source_folder="${source_folder}"
+		if [[ ! "${previous_source_folder}" = "${source_folder%%/*}" ]] ; then
+			print "=${sourceRoot##*/}/${projectName}/${source_folder%%/*}:"
+			previous_source_folder="${source_folder%%/*}"
 		fi
 
 		msg=""
 		if [[ "${action}" = "clean" ]] ; then
 			if [[ ! "${fileAction}" = "ignore" ]] ; then
 				if [[ -e "${fullDestinationPath}" ]] ; then
-					print -n "${file_name}: "
+					if [[ "${source_folder%%/*}" = "Services" ]] ; then
+						print -n "${service_name}"
+					else
+						print -n "${file_name}"
+					fi
 					chmod a+w "${fullDestinationPath}"
 					st=$?
 					if [[ $st > 0 ]] ; then
@@ -168,17 +164,39 @@ scriptsFolder="${CCDev}/bin"
 						errorMessage ${st} "$0#$LINENO:" "error: could not remove ${fullDestinationPath}"
 						return
 					fi
-					msg="${fullDestinationPath} removed"
+					if [[ "${source_folder%%/*}" = "Services" ]] ; then
+						# for empty Contents folders in Services, delete workflow
+						find "${servicesFolder}" -name 'Contents' -type d -empty > "${CCDev}/tmp/workflows"
+						while read contents ; do
+							rmdir "${contents}"
+							rmdir "${contents%/*}"
+							print "${contents%/*}: removed"
+						done < "${CCDev}/tmp/workflows"
+					else
+						msg="${fullDestinationPath} removed"
+					fi
 				fi
 			fi
 		else
-			print -n "${file_name}"
+			if [[ "${source_folder%%/*}" = "Services" ]] ; then
+				if [[ "${file_name}" = "document.wflow" ]] ; then		# once per service
+					print -n "${service_name}"
+				fi
+			else
+				print -n "${file_name}"
+			fi
 			case "${fileAction}" in
 				"ignore" )
 					msg="skipped"
 					;;
 				"copy" )
-					print -n " -> ${fullDestinationPath}"
+					if [[ "${source_folder%%/*}" = "Services" ]] ; then
+						if [[ "${file_name}" = "document.wflow" ]] ; then		# once per service
+							print -n " -> ${fullDestinationPath}"
+						fi
+					else
+						print -n " -> ${fullDestinationPath}"
+					fi
 					msg=$(ccInstall --copyFile "${fullSourcePath}" "${fullDestinationPath}")
 					st=$?
 					if [[ ${st} > 0 ]] ; then
