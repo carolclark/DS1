@@ -9,6 +9,7 @@
 USAGE='
 CCDev_install.ksh -- install CCDev scripts
 #	CCDev_install.ksh		action
+	script to install files and/or packages
 '
 
 CCDev="${HOME}/Library/CCDev"
@@ -88,16 +89,25 @@ servicesFolder="${HOME}/Library/Services"
 
 	iofile=$(ccInstall --findSources "${sourceRoot}" "${projectName}")
 	typeset -i failcnt=0
-	previous_source_folder=""
+	previous_subtarget=""
 	while read fl ; do
 		# establish installation parameters
-		source_folder="${fl%/*}"
+		subtarget="${fl%%/*}"
 		file_name="${fl##*/}"
 		file_basename="${file_name%.*}"
 		file_extension="${file_name#*.}"
 		destination_folder=""
 		fileAction=""
-		case "${source_folder%%/*}" in
+
+		is_package="NO"
+		package_name=""
+		pathFromSubtarget="${fl#*/}"
+		if [[ "${pathFromSubtarget}" != "${file_name}" ]] ; then
+			is_package="YES"
+			package_name="${pathFromSubtarget%%/*}"
+		fi
+
+		case "${subtarget}" in
 			"Scripts" )
 				fileAction="copy"
 				destination_folder="${scriptsFolder}"
@@ -113,74 +123,69 @@ servicesFolder="${HOME}/Library/Services"
 				;;
 			* )
 				failcnt="${failcnt}"+1
-				errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${projectName}/${source_folder} not handled"
+				errorMessage $RC_InputNotHandled "$0#$LINENO:" "subtarget ${sourceRoot}/${projectName}/${subtarget} not handled"
 				;;
 		esac
-		service_name=""
+
 		if [[ ! "${fileAction}" = "ignore" ]] ; then
-			if [[ "${source_folder%%/*}" = "Services" ]] ; then
-				pathFromServicesFolder="${fl#*/}"
-				service_name="${pathFromServicesFolder%%/*}"
-				fullSourcePath="${sourceRoot}/${projectName}/${source_folder}/${file_name}"
-				fullDestinationPath="${destination_folder}/${service_name}/Contents/${file_name}"
-			elif [[ "${file_extension}" = "applescript" ]] ; then
-				fname="${file_basename}.scpt"
-				action="copy"
-				fullSourcePath="${CCDev}/build/Support/Developer/CCDev/AppleScripts.bundle/Contents/Resources/${fname}"
-				fullDestinationPath="${destination_folder}/${fname}"
-			elif [[ "${file_extension}" = "ksh" ]] ; then
-				fullSourcePath="${sourceRoot}/${projectName}/${source_folder}/${file_name}"
-				fullDestinationPath="${destination_folder}/${file_basename}"
+			fullSourcePath="${sourceRoot}/${projectName}/${fl}"
+			fullDestinationPath="${destination_folder}/${file_name}"
+			if [[ ${is_package} = "YES" ]] ; then
+				fullDestinationPath="${destination_folder}/${fl#*/}"
 			else
-				fullSourcePath="${sourceRoot}/${projectName}/${source_folder}/${file_name}"
-				fullDestinationPath="${destination_folder}/${file_name}"
+				if [[ "${file_extension}" = "applescript" ]] ; then
+					fname="${file_basename}.scpt"
+					action="copy"
+					fullSourcePath="${CCDev}/build/Support/Developer/CCDev/AppleScripts.bundle/Contents/Resources/${fname}"
+					fullDestinationPath="${destination_folder}/${fname}"
+				elif [[ "${file_extension}" = "ksh" ]] ; then
+					fullSourcePath="${sourceRoot}/${projectName}/${subtarget}/${file_name}"
+					fullDestinationPath="${destination_folder}/${file_basename}"
+				fi
 			fi
 		fi
 
 		# display and process
-		if [[ ! "${previous_source_folder}" = "${source_folder%%/*}" ]] ; then
-			print "=${sourceRoot##*/}/${projectName}/${source_folder%%/*}:"
-			previous_source_folder="${source_folder%%/*}"
+		if [[ "${previous_subtarget}" != "${subtarget}" ]] ; then
+			print "=${sourceRoot##*/}/${projectName}/${subtarget}:"
+			previous_subtarget="${subtarget}"
 		fi
 
 		msg=""
 		if [[ "${action}" = "clean" ]] ; then
 			if [[ ! "${fileAction}" = "ignore" ]] ; then
 				if [[ -e "${fullDestinationPath}" ]] ; then
-					if [[ "${source_folder%%/*}" = "Services" ]] ; then
-						print -n "${service_name}"
+					if [[ "${subtarget}" = "Services" ]] ; then
+						print -n "${package_name}"
+						msg=$(ccInstall --removeFolder "${destination_folder}/${package_name}")
+						st=$?
+						if [[ ${st} > 0 ]] ; then
+							failcnt="${failcnt}"+1
+						else
+							msg=": removed"
+						fi
 					else
 						print -n "${file_name}"
-					fi
-					chmod a+w "${fullDestinationPath}"
-					st=$?
-					if [[ $st > 0 ]] ; then
-						errorMessage ${st} "$0#$LINENO:" "error: could not set permission for ${fullDestinationPath}"
-						return
-					fi
-					rm "${fullDestinationPath}"
-					st=$?
-					if [[ $st > 0 ]] ; then
-						errorMessage ${st} "$0#$LINENO:" "error: could not remove ${fullDestinationPath}"
-						return
-					fi
-					if [[ "${source_folder%%/*}" = "Services" ]] ; then
-						# for empty Contents folders in Services, delete workflow
-						find "${servicesFolder}" -name 'Contents' -type d -empty > "${CCDev}/tmp/workflows"
-						while read contents ; do
-							rmdir "${contents}"
-							rmdir "${contents%/*}"
-							print "${contents%/*}: removed"
-						done < "${CCDev}/tmp/workflows"
-					else
-						msg="${fullDestinationPath} removed"
+						chmod a+w "${fullDestinationPath}"
+						st=$?
+						if [[ $st > 0 ]] ; then
+							errorMessage ${st} "$0#$LINENO:" "error: could not set permission for ${fullDestinationPath}"
+							return
+						fi
+						rm "${fullDestinationPath}"
+						st=$?
+						if [[ $st > 0 ]] ; then
+							errorMessage ${st} "$0#$LINENO:" "error: could not remove ${fullDestinationPath}"
+							return
+						fi
+						msg=": removed"
 					fi
 				fi
 			fi
 		else
-			if [[ "${source_folder%%/*}" = "Services" ]] ; then
+			if [[ "${subtarget}" = "Services" ]] ; then
 				if [[ "${file_name}" = "document.wflow" ]] ; then		# once per service
-					print -n "${service_name}"
+					print -n "${package_name}"
 				fi
 			else
 				print -n "${file_name}"
@@ -190,7 +195,7 @@ servicesFolder="${HOME}/Library/Services"
 					msg="skipped"
 					;;
 				"copy" )
-					if [[ "${source_folder%%/*}" = "Services" ]] ; then
+					if [[ "${subtarget}" = "Services" ]] ; then
 						if [[ "${file_name}" = "document.wflow" ]] ; then		# once per service
 							print -n " -> ${fullDestinationPath}"
 						fi

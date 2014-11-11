@@ -21,11 +21,11 @@ function install {
 	if [[ ! -n "${nm}" ]] ; then
 		nm="$(basename ${src})"
 	fi
-	print -n "${src}: "
+	print -n "${src}:"
 	mkdir -p "${dst}"
 	cp "${src}" "${dst}/${nm}"
 	if [[ "${?}" = "0" ]] ; then
-		print -n "=> ${dst}"
+		print -n " -> ${dst}"
 		if [[ "${nm}" = "" ]] ; then
 			print
 		else
