@@ -23,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		67B2A5BC19FC5AA100FE6A62 /* CCDev_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = CCDev_ReadMe.html; sourceTree = SOURCE_ROOT; };
+		67B77BD81A12C5DE00D88163 /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
+		67B77BD91A12C5DE00D88163 /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
 		67D413421A0433C900A46095 /* CCDev_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCDev_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D413451A0433C900A46095 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		67D413561A04364000A46095 /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDev_install.ksh; sourceTree = "<group>"; };
@@ -67,6 +69,15 @@
 			);
 			sourceTree = "<group>";
 		};
+		67B77BDA1A12C5EF00D88163 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				67B77BD81A12C5DE00D88163 /* GitSaveMessage.workflow */,
+				67B77BD91A12C5DE00D88163 /* OpenAccessor.workflow */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		67D413431A0433C900A46095 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +98,7 @@
 		67D413551A04364000A46095 /* CCDev */ = {
 			isa = PBXGroup;
 			children = (
+				67B77BDA1A12C5EF00D88163 /* Services */,
 				67D413AA1A057B4100A46095 /* Scripts */,
 				67D413A31A057B3700A46095 /* _Tests */,
 				67D413571A04364000A46095 /* CCDev_UTests */,

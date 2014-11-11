@@ -142,7 +142,6 @@
 				* 'clean' removes files installed by 'build'
 					* combine 'install' and 'clean' blocks to reuse installation setup code
 				* take SRCROOT, TARGET_NAME from environment variables instead of passing arguments
-			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 			* CCDev
 				* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
 					* *install script from new template based on Python_install.ksh*
@@ -160,7 +159,9 @@
 				* add tests, scripts; get build/test cycle working
 				* remove scripts,tests now in CCDev from Developer
 				* add Services to CCDev
-					* refactor CCDev_install package handling
+					* TODO: refactor CCDev_install after closing 'reorgDevFolder' and getting the file structure under control
+					* for now, there are display issues when handling packages
+			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 			* Support
 				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
 				* verify no useful content remaining in project Developer; delete
@@ -169,7 +170,11 @@
 				* add new project Support at root level of repository
 				* add aggregate target Support_All; for now, includes CCDev only, since CCDev already depends on shunit
 			* incorporate Python installation into CCDev
-			* update Scripting template InstallTarget
+		* refactor CCDev_install
+			* refactor for testability
+			* walk directories (mainly) instead of listing all files with 'find'
+			* handle packages instead of using special behavior for Services
+		* update Scripting template InstallTarget
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
 			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts
