@@ -115,6 +115,17 @@
 			* Accessor: <a href="../Accessor/History_Accessor.html#SupportLaptop">Support Laptop</a>
 			* remove folder and target UserSlates from Support/BuildSupport
 		<span class='tlmark'>&lt;-- 09/22/2014</span>
+		<div id='reorgDevFolder_Failed'><span class='blurb'>
+			* This was a failed attempt to do too much all at once, including:
+				* make smaller, simpler projects, as recommended to deal with project file fragility
+					* it is possible for a project file to be corrupted so as to reconstructing it
+				* refactor *_install script beyond what has already done in Python_install.ksh
+				* reorganize Developer folder
+			* problems:
+				* Xcode dependencies are now expressed on Products rather than on targets
+					* we did not know that and, with the structure we used, we could not properly set dependencies
+				* testing of refactored *_install has been inadequate, and at least test failure no longer works properly
+			</span>
 		* reorganize Developer folder [reorgDevFolder]
 			* *folder Developer to contain multiple simple projects, including target Developer to aggregate the rest*
 			* *for now, create these projects in their own workspaces inside Support/Developer
@@ -161,7 +172,11 @@
 				* add Services to CCDev
 					* TODO: refactor CCDev_install after closing 'reorgDevFolder' and getting the file structure under control
 					* for now, there are display issues when handling packages
-			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+			</div>
+		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+		* Reorganize Developer Folder
+			* save stash ReorgDevTry; revert --no-commit to 4e367f1
+			* ...
 			* Support
 				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
 				* verify no useful content remaining in project Developer; delete
