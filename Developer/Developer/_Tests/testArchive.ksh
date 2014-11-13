@@ -12,11 +12,6 @@
 CCDev="${HOME}/Library/CCDev"
 . ${CCDev}/bin/ccInstall
 
-if [[ ! -e "${CCDev}/bin/archive" ]] ; then
-	errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "File ${CCDev}/bin/archive not found"
-	return
-fi
-
 testData="${CCDev}/TestData/tarTest"
 archiveDestination="${CCDev}/TestData/tarArchives"
 . "${CCDev}/bin/archive"
