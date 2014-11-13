@@ -1,17 +1,18 @@
 #!/bin/ksh
 
-#  shunit2_install.ksh
-#  Support/Developer
+#  ThirdParty_install.ksh
+#  Developer
 #
 #  Created by Carol Clark on 5/18/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014 C & C Software, Inc8. All rights reserved.
 
 USAGE='
-shunit2_install.ksh -- install ThirdParty shunit2 shell testing script
-#	custom install script to install shunit2
+ThirdParty_install.ksh -- install ThirdParty software
+#	custom install script to install ThirdParty software
 '
 
 CCDev="${HOME}/Library/CCDev"
+. "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
 missingArgumentMessage="USAGE: $0 pathToTargetFolder targetFolder ['clean']"
@@ -72,19 +73,14 @@ function shunitInstall {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	if [[ -e "${CCDev}/bin/ccInstall" ]] ; then
-		. "${CCDev}/bin/ccInstall"
-		for folder in "${CCDev}/shunit"; do
-			msg=$(ccInstall --removeFolder "${folder}")
-			st=${?}
-			if [[ ${st} > 0 ]] ; then
-				errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-				return
-			fi
-		done
-	else
-		print "Warning: Cannot clean target shunit2 because required script ccInstall is not yet present."
-	fi
+	for folder in "${HOME}/Library/Script Libraries" "${CCDev}/shunit"; do		# says ~/Library/AppleScripts somewhere else
+		msg=$(--removeFolder "${folder}")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
+			return
+		fi
+	done
 	return 0
 }
 
