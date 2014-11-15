@@ -202,12 +202,9 @@ function copyFile {
 
 #pragma mark 3 === runShunitTests
 function runShunitTests {
-#	When shunit tests encounter an error, output is sent to stdout and a nonzero exit status is returned.
-#	The tests themselves may also also throw errors. Messages for those cases should include the text "EXPECTED ERROR".
-#	Here:
-#		failcnt: number of test files that encounter failures, +1 if execution errors are encountered
-#		errout: file to collect stderr output
-#	returns nonzero exit status if test failures are encountered or messages not including "EXPECTED ERROR" are sent to stderr.
+#	failcnt: number of test files that encounter failures, +1 if execution errors are encountered
+#	errout: file to collect stderr output
+#	returns nonzero exit status if test failures are encountered.
 	if [[ -n "${1}" ]] ; then
 		testPath="${1}"
 	else
@@ -217,7 +214,6 @@ function runShunitTests {
 
 	errout="$CCDev/tmp/errout"
 	errinfo="$CCDev/tmp/errinfo"
-	errtmp="$CCDev/tmp/errtmp"
 	iofile=$(findTests "${testPath}")
 	typeset -i failcnt=0
 	typeset -i errcnt=0
@@ -230,12 +226,10 @@ function runShunitTests {
 		if [[ "${st}" > 0 ]] ; then
 			failcnt=$failcnt+1
 		fi
-		grep -v "EXPECTED ERROR" $errout > $errtmp
-		if [[ $(cat "$errtmp") != "" ]] ; then										# file is not empty
-			if [[ $(cat "$errtmp" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
-							# appears that long EXPECTED ERROR can output an extra CR into $errout
+		if [[ $(cat "$errout") != "" ]] ; then										# errout file is not empty
+			if [[ $(cat "$errout" | sed 's|\n||g' | sed s'| ||g') != "" ]] ; then	# contains non-whitespace
 				errcnt=$errcnt+1
-				cat $errtmp >> $errinfo
+				cat $errout >> $errinfo
 			fi
 		fi
 	done < "${iofile}"
