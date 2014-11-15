@@ -84,7 +84,11 @@ def scan_directories(path):
 
 	import glob
 	itemlist = StringIO()
-	for currentItem in glob.glob( os.path.join(path, '*') ):
+	for currentItem in glob.glob( os.path.join(path, '*') ):	# visible files
+		if os.path.isdir(currentItem):
+			itemlist.write(scan_directories(currentItem))
+		itemlist.write(currentItem + ',')
+	for currentItem in glob.glob( os.path.join(path, '.*') ):	# invisible files
 		if os.path.isdir(currentItem):
 			itemlist.write(scan_directories(currentItem))
 		itemlist.write(currentItem + ',')
