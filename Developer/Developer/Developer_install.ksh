@@ -153,7 +153,7 @@ function cleanTarget {
 			return
 		fi
 	fi
-	for folder in "${applescriptsFolder}"  "${scriptsFolder}"; do
+	for folder in "${applescriptsFolder}"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then

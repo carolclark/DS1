@@ -1,7 +1,7 @@
 #!/bin/ksh
 
-#  ___FILENAME___
-#  <#Repository#>/___PROJECTNAME___
+#  ___FILENAME___.ksh
+#  <#PathFromDev#>/___PROJECTNAME___
 #
 #  Created by ___FULLUSERNAME___ on ___DATE___.
 #  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
@@ -15,7 +15,7 @@ USAGE='
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
-<#set variables for folder paths#>
+<#xxFolder#>="${CCDev}/<##>"
 
 #^ 8 === main
 	sourceRoot=""
