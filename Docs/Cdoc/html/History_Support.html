@@ -115,7 +115,8 @@
 			* Accessor: <a href="../Accessor/History_Accessor.html#SupportLaptop">Support Laptop</a>
 			* remove folder and target UserSlates from Support/BuildSupport
 		<span class='tlmark'>&lt;-- 09/22/2014</span>
-		<div id='reorgDevFolder_Failed'>
+		</pre>
+		<div id='reorgDevFolder_Failed' class='depr'><pre>
 			* *This was a failed attempt to do too much all at once, including:*
 				* *make smaller, simpler projects, as recommended to deal with project file fragility*
 					* *it is possible for a project file to be corrupted so as to reconstructing it*
@@ -171,11 +172,18 @@
 					* add Services to CCDev
 						* TODO: refactor CCDev_install after closing 'reorgDevFolder' and getting the file structure under control
 						* for now, there are display issues when handling packages
+			</pre>
 		</div>
+		<pre>
 		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 		* Reorganize Developer Folder
 			* save stash ReorgDevTry; revert --no-commit to 4e367f1
+			* save documentation and changes to be preserved from reorgDevFolder
+			* move all Support projects to Support workspace
 			* ...
+
+
+		* from before reorgDevTry
 			* Support
 				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
 				* verify no useful content remaining in project Developer; delete
