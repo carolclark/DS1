@@ -179,10 +179,18 @@
 		* Reorganize Developer Folder
 			* save stash ReorgDevTry; revert --no-commit to 4e367f1
 			* save documentation and changes to be preserved from reorgDevFolder
-			* move all Support projects to Support workspace
-			* ...
+			* add Support projects
+				* existing <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> projects
+					* based on External Build System projects
+					* problem because those projects do not produce a Product, but Products are needed to Establish dependencies
+					* will be replaced by project CCDev; cannot now be added as a dependency
+			* move projects projects Developer, Python to Support workspace
+			* shunit [projectShunit]
+				* new empty project Support/Developer/shunitd
+				* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/shunit
 
 
+		* ...
 		* from before reorgDevTry
 			* Support
 				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*

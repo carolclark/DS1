@@ -150,8 +150,13 @@
 	* *normally build with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
 	* *may use ccInstall, an in-house script for installing groups of files*
 		* *variants for Doxygen and Cdoc documentation are provided*
+	* Historical Note
+		* prior to 11/18/2014, these projects were based on External Build System targets
+		* however, those targets do not product products, which are necessary to establish dependencies
 	* <span class='em'>Project &lt;TargetName&gt;</span>
-		* add External Build System project &lt;TargetName&gt; with configuration:
+		* new empty project
+		* add Bundle target &lt;TargetName&gt;
+		* apply <a href="#ReorganizeSources">Reorganize Sources</a>
 			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
 			* arguments: $(ACTION)
 			* directory: "None"
@@ -174,9 +179,9 @@
 			* &lt;TargetName&gt;Tests: &lt;TargetName&gt;_[AppTests|UnitTests|PerfTests]
 		* OtherSources
 			* move in files *-main.m, *-Info.plist, [*.pch]
-			* application targets: add new file ReadMe.html
 		* Resources: DataModels; Images.xcassets; Nibs
 			* Nibs/*.lproj folders also contain *-InfoPlist.strings and Credits.rtf
+		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_ReadMe.html
 </pre>
 
 <!-- @marker "Xcode Project Mirrors Files" -->
