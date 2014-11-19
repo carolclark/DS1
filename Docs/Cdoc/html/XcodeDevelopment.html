@@ -105,7 +105,7 @@
 <!-- @marker "New Cocoa Project" -->
 <h4 id='NewCocoaProject'>New Cocoa Project</h4><pre>
 	* create Project from indicated template
-		* *do not add to Workspace file yet*
+		* Use Base Internationalization
 		* checkin (tests currently fail due to unimplemented test)
 	* customize project structure
 		* reorganize Application Target folder &lt;ApplicationName&gt;
@@ -153,8 +153,8 @@
 	* Historical Note
 		* prior to 11/18/2014, these projects were based on External Build System targets
 		* however, those targets do not product products, which are necessary to establish dependencies
+	* new empty project
 	* <span class='em'>Project &lt;TargetName&gt;</span>
-		* new empty project
 		* add Bundle target &lt;TargetName&gt;
 		* apply <a href="#ReorganizeSources">Reorganize Sources</a>
 			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
@@ -174,6 +174,7 @@
 <!-- @marker "Reorganize Sources" -->
 <h4 id='ReorganizeSources'>Reorganize Sources</h4><pre>
 	* Reorganize files into folders:
+		* move project next to its folder if indicated
 		* Primary Sources:
 			* &lt;TargetName&gt;: Classes (with subfolders AppDelegate; [Controllers; Models; Helpers])
 			* &lt;TargetName&gt;Tests: &lt;TargetName&gt;_[AppTests|UnitTests|PerfTests]
@@ -181,7 +182,7 @@
 			* move in files *-main.m, *-Info.plist, [*.pch]
 		* Resources: DataModels; Images.xcassets; Nibs
 			* Nibs/*.lproj folders also contain *-InfoPlist.strings and Credits.rtf
-		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_ReadMe.html
+		* add file &lt;TargetName&gt;/&lt;TargetName&gt;_ReadMe.html
 </pre>
 
 <!-- @marker "Xcode Project Mirrors Files" -->

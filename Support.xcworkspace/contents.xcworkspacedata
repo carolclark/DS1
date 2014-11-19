@@ -8,13 +8,13 @@
       location = "container:"
       name = "Developer">
       <FileRef
-         location = "group:Developer/shunit2.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:Developer/Developer.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:Developer/Python.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Developer/shunit2/shunit2.xcodeproj">
       </FileRef>
    </Group>
    <FileRef
