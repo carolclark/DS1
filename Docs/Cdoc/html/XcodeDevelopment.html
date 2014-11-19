@@ -156,7 +156,7 @@
 	* new empty project
 	* <span class='em'>Project &lt;TargetName&gt;</span>
 		* add Bundle target &lt;TargetName&gt;
-		* apply <a href="#ReorganizeSources">Reorganize Sources</a>
+		* apply <a href="#ReorganizeSources">Reorganize Sources</a>, <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
 			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
 			* arguments: $(ACTION)
 			* directory: "None"
@@ -174,7 +174,7 @@
 <!-- @marker "Reorganize Sources" -->
 <h4 id='ReorganizeSources'>Reorganize Sources</h4><pre>
 	* Reorganize files into folders:
-		* move project next to its folder if indicated
+		* move project next to its folder
 		* Primary Sources:
 			* &lt;TargetName&gt;: Classes (with subfolders AppDelegate; [Controllers; Models; Helpers])
 			* &lt;TargetName&gt;Tests: &lt;TargetName&gt;_[AppTests|UnitTests|PerfTests]
@@ -194,6 +194,7 @@
 		* remove existing groups, if any, removing references only
 		* add new folder(s) to Xcode project, recursively creating groups for every subfolder
 		* remove any added plists from their targets
+		* BuildSettings: upddate path to plist
 </pre>
 
 <!-- @marker "Add Cocoa Test Target" -->

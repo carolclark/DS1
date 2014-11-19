@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67CDC5AC1A1D2C9900C3BA9B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67CDC5AB1A1D2C9900C3BA9B /* CoreFoundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		67CDC5A81A1D2C9900C3BA9B /* shunit2.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shunit2.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		67CDC5AB1A1D2C9900C3BA9B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		67CDC5C91A1D336800C3BA9B /* shunit2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "shunit2-Info.plist"; sourceTree = "<group>"; };
+		67CDC5CD1A1D336800C3BA9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2_install.ksh; sourceTree = "<group>"; };
+		67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = shunit2_ReadMe.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67CDC5A51A1D2C9900C3BA9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67CDC5AC1A1D2C9900C3BA9B /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		673088CE1A1C089400127F1D = {
+			isa = PBXGroup;
+			children = (
+				67CDC5C61A1D336800C3BA9B /* shunit2 */,
+				67CDC5AA1A1D2C9900C3BA9B /* Frameworks */,
+				67CDC5A91A1D2C9900C3BA9B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67CDC5A91A1D2C9900C3BA9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67CDC5A81A1D2C9900C3BA9B /* shunit2.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67CDC5AA1A1D2C9900C3BA9B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67CDC5AB1A1D2C9900C3BA9B /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67CDC5C61A1D336800C3BA9B /* shunit2 */ = {
+			isa = PBXGroup;
+			children = (
+				67CDC5C71A1D336800C3BA9B /* shunit2 */,
+				67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */,
+				67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */,
+			);
+			path = shunit2;
+			sourceTree = "<group>";
+		};
+		67CDC5C71A1D336800C3BA9B /* shunit2 */ = {
+			isa = PBXGroup;
+			children = (
+				67CDC5C81A1D336800C3BA9B /* OtherSources */,
+				67CDC5CA1A1D336800C3BA9B /* Resources */,
+			);
+			path = shunit2;
+			sourceTree = "<group>";
+		};
+		67CDC5C81A1D336800C3BA9B /* OtherSources */ = {
+			isa = PBXGroup;
+			children = (
+				67CDC5C91A1D336800C3BA9B /* shunit2-Info.plist */,
+			);
+			path = OtherSources;
+			sourceTree = "<group>";
+		};
+		67CDC5CA1A1D336800C3BA9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				67CDC5CB1A1D336800C3BA9B /* Nibs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		67CDC5CB1A1D336800C3BA9B /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				67CDC5CC1A1D336800C3BA9B /* InfoPlist.strings */,
+			);
+			path = Nibs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67CDC5A71A1D2C9900C3BA9B /* shunit2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67CDC5B61A1D2C9900C3BA9B /* Build configuration list for PBXNativeTarget "shunit2" */;
+			buildPhases = (
+				67CDC5A41A1D2C9900C3BA9B /* Sources */,
+				67CDC5A51A1D2C9900C3BA9B /* Frameworks */,
+				67CDC5A61A1D2C9900C3BA9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = shunit2;
+			productName = shunit2;
+			productReference = 67CDC5A81A1D2C9900C3BA9B /* shunit2.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		673088CF1A1C089400127F1D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = 673088D21A1C089400127F1D /* Build configuration list for PBXProject "shunit2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 673088CE1A1C089400127F1D;
+			productRefGroup = 67CDC5A91A1D2C9900C3BA9B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67CDC5A71A1D2C9900C3BA9B /* shunit2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67CDC5A61A1D2C9900C3BA9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67CDC5A41A1D2C9900C3BA9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		67CDC5CC1A1D336800C3BA9B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67CDC5CD1A1D336800C3BA9B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		673088D31A1C089400127F1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		673088D41A1C089400127F1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		67CDC5B41A1D2C9900C3BA9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "shunit2/shunit2-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "shunit2/shunit2/OtherSources/shunit2-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		67CDC5B51A1D2C9900C3BA9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "shunit2/shunit2-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "shunit2/shunit2/OtherSources/shunit2-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		673088D21A1C089400127F1D /* Build configuration list for PBXProject "shunit2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				673088D31A1C089400127F1D /* Debug */,
+				673088D41A1C089400127F1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67CDC5B61A1D2C9900C3BA9B /* Build configuration list for PBXNativeTarget "shunit2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67CDC5B41A1D2C9900C3BA9B /* Debug */,
+				67CDC5B51A1D2C9900C3BA9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 673088CF1A1C089400127F1D /* Project object */;
+}

@@ -14,7 +14,7 @@
          location = "group:Developer/Python.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:Developer/shunit2/shunit2.xcodeproj">
+         location = "group:Developer/shunit2.xcodeproj">
       </FileRef>
    </Group>
    <FileRef
