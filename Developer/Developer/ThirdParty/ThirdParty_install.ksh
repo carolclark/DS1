@@ -19,7 +19,7 @@ missingArgumentMessage="USAGE: $0 pathToTargetFolder targetFolder ['clean']"
 
 #^ 2 ===  shunitInstall
 function shunitInstall {
-	src=${sourceRoot}/${targetFolder}/shunit2-2.1.6
+	src=${HOME}/Dev/Support/Developer/shunit2/shunit2-2.1.6
 	dst=${CCDev}/shunit
 
 	if [[ -e ${dst}/lib/versions ]] ; then
