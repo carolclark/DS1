@@ -40,7 +40,6 @@ pythonFolder="${CCDev}/bin/python"
 				return
 			fi
 		done
-		print ${msg}
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 
 # install
