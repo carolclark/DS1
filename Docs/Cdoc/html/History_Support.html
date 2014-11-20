@@ -186,13 +186,16 @@
 					* will be replaced by project CCDev; cannot now be added as a dependency
 			* move projects projects Developer, Python to Support workspace
 			* shunit [projectShunit]
-				* <a href="http://www.cocoabuilder.com/archive/xcode/309768-external-build-system-target-products.htmhl">External Build System Target and Products</a>
-				* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/shunit
-					* add shunit2 project, shunit2 bundle target
-					* move shunit2 sources from Developer/Developer/ThirdParty/shunit2-2.1.6 to Developer/shunit2/shunit2-2.1.6
+				* new empty project shunit2
+				* move shunit2 sources from Developer/Developer/ThirdParty/shunit2-2.1.6 to Developer/shunit2/shunit2-2.1.6
+				* finish <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/shunit
+					* add target shunit2, product shunit2.fauxprod
+					* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+						* cd "${HOME}/Library/CCDev/shunit/src"; "${HOME}/Library/CCDev/shunit/src/shunit2_test.sh"
 
-
+			* use .fauxprod file instead of .lastbuilt
 		* ...
+
 		* from before reorgDevTry
 			* Support
 				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*

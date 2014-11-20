@@ -7,28 +7,49 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2_install.ksh; sourceTree = "<group>"; };
-		67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = shunit2_ReadMe.html; sourceTree = "<group>"; };
+		67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = shunit2_install.ksh; path = shunit2/shunit2_install.ksh; sourceTree = "<group>"; };
+		67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = shunit2_ReadMe.html; path = shunit2/shunit2_ReadMe.html; sourceTree = "<group>"; };
+		67CDC5DD1A1E810700C3BA9B /* shunit2-2.1.6 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "shunit2-2.1.6"; path = "shunit2/shunit2-2.1.6"; sourceTree = "<group>"; };
+		67CDC5DF1A1E9ADA00C3BA9B /* shunit2.fauxprod */ = {isa = PBXFileReference; lastKnownFileType = text; name = shunit2.fauxprod; path = ../../../Library/CCDev/build_output/Support/Developer/shunit2.fauxprod; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		673088CE1A1C089400127F1D = {
 			isa = PBXGroup;
 			children = (
-				67CDC5C61A1D336800C3BA9B /* shunit2 */,
+				67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */,
+				67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */,
+				67CDC5DD1A1E810700C3BA9B /* shunit2-2.1.6 */,
+				67CDC5DE1A1E9A8800C3BA9B /* FauxProducts */,
 			);
 			sourceTree = "<group>";
 		};
-		67CDC5C61A1D336800C3BA9B /* shunit2 */ = {
+		67CDC5DE1A1E9A8800C3BA9B /* FauxProducts */ = {
 			isa = PBXGroup;
 			children = (
-				67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */,
-				67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */,
+				67CDC5DF1A1E9ADA00C3BA9B /* shunit2.fauxprod */,
 			);
-			path = shunit2;
+			name = FauxProducts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		67CDC5D91A1E7FF800C3BA9B /* shunit2 */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "\"${SRCROOT}\" ${TARGET_NAME} $(ACTION)";
+			buildConfigurationList = 67CDC5DA1A1E7FF800C3BA9B /* Build configuration list for PBXLegacyTarget "shunit2" */;
+			buildPhases = (
+			);
+			buildToolPath = "${TARGET_NAME}/${TARGET_NAME}_install.ksh";
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = shunit2;
+			passBuildSettingsInEnvironment = 0;
+			productName = shunit2;
+		};
+/* End PBXLegacyTarget section */
 
 /* Begin PBXProject section */
 		673088CF1A1C089400127F1D /* Project object */ = {
@@ -48,6 +69,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				67CDC5D91A1E7FF800C3BA9B /* shunit2 */,
 			);
 		};
 /* End PBXProject section */
@@ -56,12 +78,30 @@
 		673088D31A1C089400127F1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		673088D41A1C089400127F1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		67CDC5DB1A1E7FF800C3BA9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = .ccprod;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67CDC5DC1A1E7FF800C3BA9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = .ccprod;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -76,6 +116,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		67CDC5DA1A1E7FF800C3BA9B /* Build configuration list for PBXLegacyTarget "shunit2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67CDC5DB1A1E7FF800C3BA9B /* Debug */,
+				67CDC5DC1A1E7FF800C3BA9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

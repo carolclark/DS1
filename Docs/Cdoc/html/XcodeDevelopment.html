@@ -148,24 +148,24 @@
 <!-- marker "New Scripted Build Project" -->
 <h4 id='NewScriptedBuildProject'>New Scripted Build Project</h4><pre>
 	* *normally build with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
-	* *may use ccInstall, an in-house script for installing groups of files*
+	* *may use ccInstall, an in-house tool for installing groups of files*
 		* *variants for Doxygen and Cdoc documentation are provided*
-	* Historical Note
-		* prior to 11/18/2014, these projects were based on External Build System targets
-		* however, those targets do not product products, which are necessary to establish dependencies
 	* new empty project
 	* <span class='em'>Project &lt;TargetName&gt;</span>
-		* add Bundle target &lt;TargetName&gt;
-		* apply <a href="#ReorganizeSources">Reorganize Sources</a>, <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+		* add External Build System target &lt;TargetName&gt; with configuration:
 			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
-			* arguments: $(ACTION)
+			* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
 			* directory: "None"
-			* Pass Build Settings in Environment: YES
-		* if indicated, move &lt;TargetName&gt;.xcodeproj from &lt;EnclosingFolder&gt;/&lt;TargetName&gt; to &lt;EnclosingFolder&gt;
-		* add new file ReadMe.html from template next to xcodeproj
-		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template
-			* use template _Documentation/InstallCdoc, _Documentation/InstallDoxygen, or _Scripting/InstallTarget as indicated
+			* Pass Build Settings in Environment: NO
+		* Build Settings: EXECUTABLE_EXTENSION .fauxprod
+		* apply <a href="#ReorganizeSources">Reorganize Sources</a>, <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template _Scripting/InstallTarget
 			* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
+		* add product
+			* *see see <a href="http://www.cocoabuilder.com/archive/xcode/309768-external-build-system-target-products.html">External Build System Target and Products</a>*
+			* build target
+			* from Finder, add product $CCDev/build_output/&lt;Repository&gt;[/&lt;Folder&gt;]/&lt;TargetName&gt;.fauxprod to group FauxProducts
+				* *this item can now be used to set a dependency for another build using its Copy Build Resources build phase*
 	* <span class='em'>Target &lt;TargetName&gt;Tests</span>
 		* <a href="#AddScriptedBuildTestTarget">Add Scripted Build Test Target</a>
 </pre>
@@ -190,10 +190,10 @@
 		* *see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a>*
 	* in Finder: organize source files and resources in folders
 	* in Xcode Project
-		* remove existing groups, if any, removing references only
+		* remove existing groups and/or targets, if any, removing references only
 		* add new folder(s) to Xcode project, recursively creating groups for every subfolder
 		* remove any added plists from their targets
-		* BuildSettings: upddate path to plist
+		* BuildSettings: upddate path to plist if applicable
 </pre>
 
 <!-- @marker "Add Cocoa Test Target" -->
@@ -238,10 +238,12 @@
 		* *see <a href="http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942">execute-a-terminal-command-from-a-cocoa-app</a>*
 	* add Cocoa Unit Testing Bundle target &lt;TestTarget&gt;_(U|C|P)Tests
 	* Reorganize Files
+		* move project next to its folder
 		* remove pch file, en.lproj folder
 		* rename required Cocoa tests file if indicated
-		* move folder &lt;TestTarget&gt;_(U/C/P)Tests into folder &lt;TestTarget&gt;
+		* ?move folder &lt;TestTarget&gt;_(U/C/P)Tests into folder &lt;TestTarget&gt;
 		* move &lt;TestTarget&gt;_(U/C/P)Tests file &lt;TestTarget&gt;_(U/C/P)Tests-info.plist into folder OtherSources
+		* add file &lt;TargetName&gt;/&lt;TargetName&gt;_ReadMe.html
 		* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
 		* exclude &lt;TestTarget&gt;_(U/C/P)Tests, &lt;TestTarget&gt;_(U/C/P)Tests/OtherSources from &lt;TestTarget&gt;_install.ksh build processing
 	* Build Settings
