@@ -141,6 +141,13 @@ if [[ -n "${command}" ]] ; then
 			print "${msg}"
 			return "${es}"
 			;;
+		"test" )
+			cd "${HOME}/Library/CCDev/shunit/src"
+			msg=$("${HOME}/Library/CCDev/shunit/src/shunit2_test.sh")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
 		* )
 			es=66
 			print "$0#$LINENO: invalid subcommand ${1} (RC_InvalidArgument)"
