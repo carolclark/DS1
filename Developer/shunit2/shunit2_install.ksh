@@ -1,21 +1,21 @@
 #!/bin/ksh
 
-#  ThirdParty_install.ksh
-#  Developer
+#  shunit2_install.ksh
+#  Support/Developer
 #
 #  Created by Carol Clark on 5/18/14.
-#  Copyright (c) 2014 C & C Software, Inc8. All rights reserved.
+#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
 
 USAGE='
-ThirdParty_install.ksh -- install ThirdParty software
-#	custom install script to install ThirdParty software
+shunit2_install.ksh -- install ThirdParty shunit2 shell testing script
+#	custom install script to install shunit2
 '
 
 CCDev="${HOME}/Library/CCDev"
-. "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
 missingArgumentMessage="USAGE: $0 pathToTargetFolder targetFolder ['clean']"
+fauxproduct="${HOME}/Library/CCDev/build_output/Support/Developer/shunit2.fauxprod"
 
 #^ 2 ===  shunitInstall
 function shunitInstall {
@@ -23,8 +23,8 @@ function shunitInstall {
 	dst=${CCDev}/shunit
 
 	if [[ -e ${dst}/lib/versions ]] ; then
-		v_dst=$(${dst}/lib/versions | grep "bin/ksh")
-		v_src=$(${src}/lib/versions | grep "bin/ksh")
+		v_dst=$(cat ${dst}/lib/versions)
+		v_src=$(cat ${src}/lib/versions)
 		if [[ "${v_dst}" = "${v_src}" ]] ; then
 			print "shunit installation up-to-date - skipping"
 			return
@@ -69,18 +69,38 @@ function shunitInstall {
 			exit 1
 		fi
 	done
+	mkdir -p "$(dirname ${fauxproduct})"
+	st=$?
+	print $(basename ${fauxproduct}) $(date) > ${fauxproduct}
+	return ${st}
 }
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${HOME}/Library/Script Libraries" "${CCDev}/shunit"; do		# says ~/Library/AppleScripts somewhere else
-		msg=$(ccInstall --removeFolder "${folder}")
-		st=${?}
-		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-			return
+	if [[ -e "${CCDev}/bin/ccInstall" ]] ; then
+		. "${CCDev}/bin/ccInstall"
+		for folder in "${CCDev}/shunit"; do
+			print -n "folder ${folder}: "
+			msg=$(ccInstall --removeFolder "${folder}")
+			st=${?}
+			if [[ ${st} > 0 ]] ; then
+				print "$0#$LINENO: error #${st} while cleaning folder shunit: ${msg} "
+				return ${st}
+			else
+				print "removed"
+			fi
+		done
+		if [[ -e "${fauxproduct}" ]] ; then
+			rm "${fauxproduct}"
+			st="$?"
+			if [[ ${st} > 0 ]] ; then
+				print "$0#$LINENO: error #${st} while attempting to remove file ${fauxproduct}"
+				return ${st}
+			fi
 		fi
-	done
+	else
+		print "Warning: Cannot clean target shunit2 because required script ccInstall is not yet present."
+	fi
 	return 0
 }
 
@@ -89,20 +109,21 @@ function cleanTarget {
 
 sourceRoot=""
 targetFolder=""
-command=""
+command="install"
 
 if [[ $# > 1 ]] ; then
-	sourceRoot="${1}"
-	shift
-	targetFolder="${1}"
-	shift
-	if [[ $# > 0 ]] ; then
-		command="${1}"
-		shift
+	sourceRoot=""
+	targetFolder=""
+	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
+		sourceRoot="${1}"
+		targetFolder="${2}"
+	else
+		print "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh sourceRoot targetFolder [action] (RC_MissingArgument)"
+		return 65
 	fi
-else
-	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return
+	if [[ $# > 2 ]] ; then
+		command="${3}"
+	fi
 fi
 
 if [[ -n "${command}" ]] ; then
@@ -113,14 +134,24 @@ if [[ -n "${command}" ]] ; then
 			print "${msg}"
 			return "${es}"
 			;;
-		"*" )
+		"install" )
 			print "== installing third-party software ..."
 			msg=$(shunitInstall)
 			es=$?
 			print "${msg}"
 			return "${es}"
 			;;
+		"test" )
+			cd "${HOME}/Library/CCDev/shunit/src"
+			msg=$("${HOME}/Library/CCDev/shunit/src/shunit2_test.sh")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		* )
+			es=66
+			print "$0#$LINENO: invalid subcommand ${1} (RC_InvalidArgument)"
+			return "${es}"
+			;;
 	esac
 fi
-shunitInstall
-exit

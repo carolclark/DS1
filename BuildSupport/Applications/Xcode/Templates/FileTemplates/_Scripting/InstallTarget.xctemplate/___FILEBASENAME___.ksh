@@ -40,7 +40,6 @@ CCDev="${HOME}/Library/CCDev"
 				return
 			fi
 		done
-		print ${msg}
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
 
 # install

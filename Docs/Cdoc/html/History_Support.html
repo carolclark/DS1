@@ -179,9 +179,22 @@
 		* Reorganize Developer Folder
 			* save stash ReorgDevTry; revert --no-commit to 4e367f1
 			* save documentation and changes to be preserved from reorgDevFolder
-			* move all Support projects to Support workspace
-			* ...
+			* add Support projects
+				* existing <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> projects
+					* based on External Build System projects
+					* problem because those projects do not produce a Product, but Products are needed to Establish dependencies
+					* will be replaced by project CCDev; cannot now be added as a dependency
+			* move projects projects Developer, Python to Support workspace
+			* shunit [projectShunit]
+				* new empty project shunit2
+				* move shunit2 sources from Developer/Developer/ThirdParty/shunit2-2.1.6 to Developer/shunit2/shunit2-2.1.6
+				* finish <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/shunit
+					* add target shunit2, product shunit2.fauxprod
+					* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+						* cd "${HOME}/Library/CCDev/shunit/src"; "${HOME}/Library/CCDev/shunit/src/shunit2_test.sh"
 
+			* use .fauxprod file instead of .lastbuilt
+		* ...
 
 		* from before reorgDevTry
 			* Support

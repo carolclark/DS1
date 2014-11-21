@@ -21,6 +21,12 @@ This project:</p><ul>
 <p>Documentation and examples are also included with the source code, but are not installed.
 </p>
 
+<h4>NOTE: Testing</h4>
+<p>Test script 'shunit2/shunit2_install.ksh $DEV/Support/Developer shunit2 test' runs correctly from Terminal; some errors and missing shells are reported.</p>
+<p>However, the same script, when run from Xcode, frequently says the build was successful, but then issues a warning saying the tests did not complete.
+Running "${HOME}/Library/CCDev/shunit/src/shunit2_test.sh" directly has the same result.</p>
+<p>We do not need to run these tests often. They are not recommended for use with Continuous Integration at this time.</p>
+
 <h3>Credits</h3><ul>
 <h4>shunit2</h4>
 <p>The original author of shunit2 is Kate Ward. The following people have
