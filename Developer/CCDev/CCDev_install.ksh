@@ -82,6 +82,8 @@ function getSubtargetDestination {
 			;;
 		"CCDev_ReadMe.html" )
 			;&
+		"CCDev_UTests" )
+			;&
 		"Python" )				# separate target
 			;&
 		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
