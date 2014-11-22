@@ -26,6 +26,7 @@
 		6755BCE51922CC28005DC27D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6755BCF61922CDB6005DC27D /* DeveloperTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DeveloperTests-Info.plist"; sourceTree = "<group>"; };
 		6755BCF71922CDB6005DC27D /* RequiredCocoaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequiredCocoaTests.m; sourceTree = "<group>"; };
+		67A61AEF1A211CF2008648AE /* CCDev.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CCDev.xcodeproj; sourceTree = "<group>"; };
 		67C2EE16199D6583002E8C58 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		67C2EE17199D6583002E8C58 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		67C2EE18199D6583002E8C58 /* asmake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = asmake; sourceTree = "<group>"; };
@@ -100,6 +101,13 @@
 			path = CocoaTestBundle;
 			sourceTree = "<group>";
 		};
+		67A61AF01A211CF2008648AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		67C2EE15199D6583002E8C58 /* ASUnit */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +167,7 @@
 		67CBDB68191AF1F700B8164A = {
 			isa = PBXGroup;
 			children = (
+				67A61AEF1A211CF2008648AE /* CCDev.xcodeproj */,
 				67FDF6E9191D776C002560CF /* Developer */,
 				6755BCE41922CC28005DC27D /* Frameworks */,
 				6755BCE31922CC28005DC27D /* Products */,
@@ -300,6 +309,12 @@
 			mainGroup = 67CBDB68191AF1F700B8164A;
 			productRefGroup = 6755BCE31922CC28005DC27D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 67A61AF01A211CF2008648AE /* Products */;
+					ProjectRef = 67A61AEF1A211CF2008648AE /* CCDev.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				67CBDB6F191AF21900B8164A /* Developer */,
