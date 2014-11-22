@@ -80,10 +80,12 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${applescriptsFolder}"
 			;;
+		"CCDev_ReadMe.html" )
+			;&
 		"Python" )				# separate target
-			;;
+			;&
 		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
-			;;
+			;&
 		"Doxygen" )				# files for reference only
 			;&
 		"CocoaTestBundle" )		# used by Xcode build system for these tests

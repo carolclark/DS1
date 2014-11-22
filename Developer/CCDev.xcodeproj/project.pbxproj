@@ -10,15 +10,19 @@
 		67A61AF31A211D2A008648AE /* CCDev_ReadMe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = CCDev_ReadMe.html; path = CCDev/CCDev_ReadMe.html; sourceTree = "<group>"; };
 		67A61AF41A211DB9008648AE /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = CCDev_install.ksh; path = CCDev/CCDev_install.ksh; sourceTree = "<group>"; };
 		67A61AF51A211DB9008648AE /* DevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = DevConfig.ksh; path = CCDev/DevConfig.ksh; sourceTree = "<group>"; };
+		67A61AF71A21392E008648AE /* _Tests */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _Tests; path = CCDev/_Tests; sourceTree = "<group>"; };
+		67A61AF81A21392E008648AE /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Scripts; path = CCDev/Scripts; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		67A61AE31A2119D1008648AE = {
 			isa = PBXGroup;
 			children = (
+				67A61AF71A21392E008648AE /* _Tests */,
+				67A61AF81A21392E008648AE /* Scripts */,
 				67A61AF31A211D2A008648AE /* CCDev_ReadMe.html */,
-				67A61AF41A211DB9008648AE /* CCDev_install.ksh */,
 				67A61AF51A211DB9008648AE /* DevConfig.ksh */,
+				67A61AF41A211DB9008648AE /* CCDev_install.ksh */,
 			);
 			sourceTree = "<group>";
 		};
