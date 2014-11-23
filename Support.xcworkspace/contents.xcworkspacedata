@@ -8,6 +8,9 @@
       location = "container:"
       name = "Developer">
       <FileRef
+         location = "group:Developer/CCDev.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:Developer/Developer.xcodeproj">
       </FileRef>
       <FileRef

@@ -175,7 +175,6 @@
 			</pre>
 		</div>
 		<pre>
-		<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 		* Reorganize Developer Folder
 			* save stash ReorgDevTry; revert --no-commit to 4e367f1
 			* save documentation and changes to be preserved from reorgDevFolder
@@ -192,8 +191,18 @@
 					* add target shunit2, product shunit2.fauxprod
 					* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
 						* cd "${HOME}/Library/CCDev/shunit/src"; "${HOME}/Library/CCDev/shunit/src/shunit2_test.sh"
-
-			* use .fauxprod file instead of .lastbuilt
+			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+			* CCDev
+				* [projCCDev] new project Developer/CCDev based on existing Developer/Developer
+					* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/CCDev
+					* new target CCDev, without product for now
+					* duplicate folders Scripts, _Tests from Developer to CCDev
+					* add test target
+				* [refactorCCDevInstall] refactor CCDev_install
+					* CCDev.fauxprod: write in CCDev_install; add to group FauxProducts
+					* args: $(ACTION) only; get folder calculations from $0
+					* use .fauxprod file instead of .lastbuilt
+						* ccInstall: add duplicates of lastbuilt functions named fauxprod; lastbuilt functions call fauxprod
 		* ...
 
 		* from before reorgDevTry
