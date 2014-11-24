@@ -34,9 +34,9 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 			print "== clean skipped: target CCDev is already clean"
 			return
 		fi
-	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action
+	elif [[ $# > 2 ]] && [[ "${3}" = "test" ]] ; then	# test action
 		break
-	else												# not a clean action
+	else												# install action
 		# installing
 		print -n "== Setup and Configure: "
 		. CCDev/DevConfig.ksh

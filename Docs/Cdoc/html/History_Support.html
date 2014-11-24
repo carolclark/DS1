@@ -199,8 +199,11 @@
 					* duplicate folders Scripts, _Tests from Developer to CCDev
 					* add test target
 				* [refactorCCDevInstall] refactor CCDev_install
-					* CCDev.fauxprod: write in CCDev_install; add to group FauxProducts
+					* upgrade Testing
+						* new file testCCDev.ksh, copied from testDeveloper.ksh; edit to test CCDev
+						* test variables - source_root is never defined,
 					* args: $(ACTION) only; get folder calculations from $0
+					* CCDev.fauxprod: write in CCDev_install; add to group FauxProducts
 					* use .fauxprod file instead of .lastbuilt
 						* ccInstall: add duplicates of lastbuilt functions named fauxprod; lastbuilt functions call fauxprod
 		* ...

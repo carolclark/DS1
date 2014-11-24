@@ -392,6 +392,7 @@
 				67A61B111A213D1F008648AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
