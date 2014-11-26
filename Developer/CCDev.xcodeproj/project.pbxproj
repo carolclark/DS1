@@ -21,14 +21,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67652B361A23EB0E00ED252B /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
+		67652B371A23EB0E00ED252B /* testCCDevInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCCDevInstall.ksh; sourceTree = "<group>"; };
+		67652B381A23EB0E00ED252B /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
+		67652B391A23EB0E00ED252B /* testDevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDevConfig.ksh; sourceTree = "<group>"; };
+		67652B3A1A23EB0E00ED252B /* testDeveloper.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDeveloper.ksh; sourceTree = "<group>"; };
+		67652B3B1A23EB0E00ED252B /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
+		67652B3C1A23EB0E00ED252B /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
+		67652B3E1A23EB0E00ED252B /* CCDev_UTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCDev_UTests.m; sourceTree = "<group>"; };
+		67652B401A23EB0E00ED252B /* CCDev_UTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCDev_UTests-Info.plist"; sourceTree = "<group>"; };
+		67652B421A23EB0E00ED252B /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
+		67652B431A23EB0E00ED252B /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
+		67652B441A23EB0E00ED252B /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
+		67652B451A23EB0E00ED252B /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
+		67652B461A23EB0E00ED252B /* execInstallScript.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = execInstallScript.ksh; sourceTree = "<group>"; };
+		67652B471A23EB0E00ED252B /* ghubUtil.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
+		67652B481A23EB0E00ED252B /* resultCodes.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = resultCodes.ksh; sourceTree = "<group>"; };
+		67652B491A23EB0E00ED252B /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67A61AF31A211D2A008648AE /* CCDev_ReadMe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = CCDev_ReadMe.html; path = CCDev/CCDev_ReadMe.html; sourceTree = "<group>"; };
 		67A61AF41A211DB9008648AE /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = CCDev_install.ksh; path = CCDev/CCDev_install.ksh; sourceTree = "<group>"; };
 		67A61AF51A211DB9008648AE /* DevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = DevConfig.ksh; path = CCDev/DevConfig.ksh; sourceTree = "<group>"; };
-		67A61AF91A213CD8008648AE /* _Tests */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _Tests; path = CCDev/_Tests; sourceTree = "<group>"; };
-		67A61AFA1A213CD8008648AE /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Scripts; path = CCDev/Scripts; sourceTree = "<group>"; };
 		67A61AFF1A213D1F008648AE /* CCDev_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCDev_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A61B021A213D1F008648AE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		67A61B121A213E26008648AE /* CCDev_UTests */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CCDev_UTests; path = CCDev/CCDev_UTests; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,12 +57,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67652B351A23EB0E00ED252B /* _Tests */ = {
+			isa = PBXGroup;
+			children = (
+				67652B361A23EB0E00ED252B /* testArchive.ksh */,
+				67652B371A23EB0E00ED252B /* testCCDevInstall.ksh */,
+				67652B381A23EB0E00ED252B /* testCcInstall.ksh */,
+				67652B391A23EB0E00ED252B /* testDevConfig.ksh */,
+				67652B3A1A23EB0E00ED252B /* testDeveloper.ksh */,
+				67652B3B1A23EB0E00ED252B /* testDoxygenInstall.ksh */,
+				67652B3C1A23EB0E00ED252B /* testErrcc.ksh */,
+			);
+			name = _Tests;
+			path = CCDev/_Tests;
+			sourceTree = "<group>";
+		};
+		67652B3D1A23EB0E00ED252B /* CCDev_UTests */ = {
+			isa = PBXGroup;
+			children = (
+				67652B3E1A23EB0E00ED252B /* CCDev_UTests.m */,
+				67652B3F1A23EB0E00ED252B /* OtherSources */,
+			);
+			name = CCDev_UTests;
+			path = CCDev/CCDev_UTests;
+			sourceTree = "<group>";
+		};
+		67652B3F1A23EB0E00ED252B /* OtherSources */ = {
+			isa = PBXGroup;
+			children = (
+				67652B401A23EB0E00ED252B /* CCDev_UTests-Info.plist */,
+			);
+			path = OtherSources;
+			sourceTree = "<group>";
+		};
+		67652B411A23EB0E00ED252B /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				67652B421A23EB0E00ED252B /* archive.ksh */,
+				67652B431A23EB0E00ED252B /* ccBackup.ksh */,
+				67652B441A23EB0E00ED252B /* ccInstall.ksh */,
+				67652B451A23EB0E00ED252B /* errcc.ksh */,
+				67652B461A23EB0E00ED252B /* execInstallScript.ksh */,
+				67652B471A23EB0E00ED252B /* ghubUtil.ksh */,
+				67652B481A23EB0E00ED252B /* resultCodes.ksh */,
+				67652B491A23EB0E00ED252B /* trapSigDemo.ksh */,
+			);
+			name = Scripts;
+			path = CCDev/Scripts;
+			sourceTree = "<group>";
+		};
 		67A61AE31A2119D1008648AE = {
 			isa = PBXGroup;
 			children = (
-				67A61AF91A213CD8008648AE /* _Tests */,
-				67A61AFA1A213CD8008648AE /* Scripts */,
-				67A61B121A213E26008648AE /* CCDev_UTests */,
+				67652B351A23EB0E00ED252B /* _Tests */,
+				67652B3D1A23EB0E00ED252B /* CCDev_UTests */,
+				67652B411A23EB0E00ED252B /* Scripts */,
 				67A61AF31A211D2A008648AE /* CCDev_ReadMe.html */,
 				67A61AF51A211DB9008648AE /* DevConfig.ksh */,
 				67A61AF41A211DB9008648AE /* CCDev_install.ksh */,

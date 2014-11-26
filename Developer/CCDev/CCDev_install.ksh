@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
-#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-14 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
