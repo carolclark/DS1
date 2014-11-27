@@ -19,49 +19,12 @@ CCDev_install.ksh -- provide functions for ccInstall to support CCDev installati
 #		return 0 to have caller continue by updating last built data
 '
 
+#pragma mark === Markers ===
+# 1 getSubtargetDestination; 2 prepareFileOperation; 3 cleanTarget; 8 main
+
 CCDev="${HOME}/Library/CCDev"
 
-# setup and configure if necessary
-typeset -i buildIsClean					# > 0 if clean
-if [[ -e "${CCDev}/build_output/Support/Developer/CCDev.lastbuilt" ]] ; then
-	buildIsClean=0
-else
-	buildIsClean=1
-fi
-if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
-	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
-		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
-			print "== clean skipped: target CCDev is already clean"
-			return
-		fi
-	elif [[ $# > 2 ]] && [[ "${3}" = "test" ]] ; then	# test action
-		break
-	else												# install action
-		# installing
-		print -n "== Setup and Configure: "
-		. CCDev/DevConfig.ksh
-		st=$?
-		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
-			return
-		fi
-		print "Setup and Configuration successful"
-	fi
-fi
-
-. "${CCDev}/bin/ccInstall"
-
-#^ 1 === top
-command=""
-sourceRoot=""
-targetFolder=""
-actionFlags=""
-
-servicesFolder="${HOME}/Library/Services"
-scriptsFolder="${CCDev}/bin"
-applescriptsFolder="${HOME}/Library/Scripts/Developer"
-
-#^ 3 === getSubtargetDestination
+#pragma mark 1 === getSubtargetDestination
 function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
 		subtarget="${1}"
@@ -105,7 +68,7 @@ function getSubtargetDestination {
 	return 0
 }
 
-#^ 5 === prepareFileOperation
+#pragma mark 2 === prepareFileOperation
 function prepareFileOperation {
 	if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
 		subtarget="${1}"
@@ -144,7 +107,7 @@ function prepareFileOperation {
 	return 0
 }
 
-#^ 7 === cleanTarget
+#pragma mark 3 === cleanTarget
 function cleanTarget {
 	if [[ ${buildIsClean} > 0 ]] ; then
 		return
@@ -169,6 +132,103 @@ function cleanTarget {
 	return 0
 }
 
-#^ 8 === main
+#pragma mark 8 === main
 
-. "${CCDev}/bin/execInstallScript"
+# setup and configure if necessary
+typeset -i buildIsClean					# > 0 if clean
+if [[ -e "${CCDev}/build_output/Support/Developer/CCDev.lastbuilt" ]] ; then
+	buildIsClean=0
+else
+	buildIsClean=1
+fi
+if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
+	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
+		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
+			print "== clean skipped: target CCDev is already clean"
+			return
+		fi
+	elif [[ $# > 2 ]] && [[ "${3}" = "test" ]] ; then	# test action
+		break
+	else												# install action
+		# installing
+		print -n "== Setup and Configure: "
+		. CCDev/DevConfig.ksh
+		st=$?
+		if [[ ${st} > 0 ]] ; then
+			print "$0#$LINENO: Setup and Configuration failed (Error#${st})"
+			return ${st}
+		fi
+		print "Setup and Configuration successful"
+	fi
+fi
+
+. "${CCDev}/bin/ccInstall"
+
+servicesFolder="${HOME}/Library/Services"
+scriptsFolder="${CCDev}/bin"
+applescriptsFolder="${HOME}/Library/Scripts/Developer"
+
+missingArgumentMessage="USAGE: $0 [--commandFlag] sourceRoot targetFolder (-actionFlags | 'clean') [...]"
+
+command=""
+sourceRoot=""
+targetFolder=""
+actionFlags=""
+
+if [[ $# > 0 ]] ; then
+	if [[ "${1}" = -* ]] ; then
+		command="${1}"
+		shift
+	fi
+else
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
+	return
+fi
+if [[ $# > 1 ]] ; then
+	sourceRoot="${1}"
+	shift
+	targetFolder="${1}"
+	shift
+	if [[ $# > 0 ]] ; then
+		actionFlags="${1}"
+		shift
+	fi
+else
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
+	return
+fi
+if [[ -n "${command}" ]] ; then
+	case "${command}" in
+		"--getSubtargetDestination" )
+			msg=$(getSubtargetDestination "${1}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--prepareFileOperation" )
+			msg=$(prepareFileOperation "${1}" "${2}" "${3}")
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		"--cleanTarget" )
+			msg=$(cleanTarget)
+			es=$?
+			print "${msg}"
+			return "${es}"
+			;;
+		* )
+			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid commandFlag ${command}"
+			exit $?
+			;;
+	esac
+fi
+if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
+	msg=$(ccInstall "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+	es=$?
+	print "${msg}"
+	return "${es}"
+else
+	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
+	return
+fi
