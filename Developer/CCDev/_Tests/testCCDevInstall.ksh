@@ -10,7 +10,10 @@
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
-#^ Installation
+myDir="${0%/*}"
+theScript="${myDir%/*}/CCDev_install.ksh"
+
+#pragma mark 1 === test installation
 testInstallation() {
 	testData="${CCDev}/TestData"
 	assertEquals "$LINENO: incorrect "'$SHELL' /bin/ksh $(launchctl getenv SHELL)
@@ -28,7 +31,13 @@ testInstallation() {
 
 }
 
-#^ test --getSubtargetDestination and --prepareFileOperation results
+#pragma mark 2 === test variable values
+testTargetVars() {
+	assertEquals "$LINENO: script to be tested" "${HOME}/Dev/Support/Developer/CCDev/CCDev_install.ksh" "${theScript}"
+	assertTrue "$LINENO: script CCDev_install.ksh not found" "[ -e ${theScript} ]"
+}
+
+#pragma mark 3 === test --getSubtargetDestination and --prepareFileOperation results
 testFunctionResults() {
 	DEV=$(ccInstall --DEV ${USER})
 	installScript="${DEV}/Support/Developer/CCDev/CCDev_install.ksh"

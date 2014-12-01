@@ -198,31 +198,40 @@
 					* new target CCDev, without product for now
 					* duplicate folders Scripts, _Tests from Developer to CCDev
 					* add test target
-				* [refactorCCDevInstall] refactor CCDev_install
-					* upgrade Testing
 						* new file testCCDev.ksh, copied from testDeveloper.ksh; edit to test CCDev_install
 						* inline execInstallScript
-						* add function getValue called by —-get* (see ccInstall getPaths)
-					* args: $(ACTION) only; get folder calculations from $0
-					* CCDev.fauxprod: write in CCDev_install; add to group FauxProducts
-					* use .fauxprod file instead of .lastbuilt
-						* ccInstall: add duplicates of lastbuilt functions named fauxprod; lastbuilt functions call fauxprod
+					* upgrade Testing
+						* We attempted to improve testability of the install script in preparation for refactoring, but:
+							* Checking state is difficult, as information is no longer available on subsequent calls.
+							* Existing methods had gotten around this by writing results to disk, but that practice negatively affected the design.
+						* Also:
+							* this code is already too complex for what it does
+							* code is conceptually object oriented
+						* rewrite CCDev_install.ksh in python
+				* CCDev_build.py
+					* *replace CCDev_install.ksh with CCDev_build.py that is simpler and easier to test*
+
+					* planned steps retained for now:
+						* args: $(ACTION) only; get folder calculations from $0/sys.argv[0]
+						* CCDev.fauxprod: write in installer; add to group FauxProducts
+						* use .fauxprod file instead of .lastbuilt
+							* ccInstall: add duplicates of lastbuilt functions named fauxprod; lastbuilt functions call fauxprod
+						* separate targets for UnitTests and ConformanceTests
+						* ccInstall.runShunitTests takes optional parameter testType (-U|-C) used to filter on "test(U|C)_*" instead of test* if indicated
 		* ...
 
-		* from before reorgDevTry
-			* Support
-				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
-				* verify no useful content remaining in project Developer; delete
-				* add folder Developer, included projects to workspace Support
-				* CCDev depends on shunit2
-				* add new project Support at root level of repository
-				* add aggregate target Support_All; for now, includes CCDev only, since CCDev already depends on shunit
-			* incorporate Python installation into CCDev
+		* Support
+			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
+			* verify no useful content remaining in project Developer; delete
+			* CCDev depends on shunit2
+			* add new project Support/Support with aggregate target
+			* add aggregate target Support_All; for now, includes CCDev only, since CCDev already depends on shunit
+		* incorporate Python installation into CCDev
 		* refactor CCDev_install
 			* refactor for testability
 			* walk directories (mainly) instead of listing all files with 'find'
 			* handle packages instead of using special behavior for Services
-		* update Scripting template InstallTarget
+		* new Scripting template BuildTarget with python template
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
 			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts
