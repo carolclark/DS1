@@ -1,34 +1,34 @@
-// =================================================================================
-//  CCDev_UTests.m
 //
-//  Created by Carol Clark on 10/31/14 for project CCDev.
-//	Copyright (c) 2014 C & C Software, Inc. All rights reserved.
-// =================================================================================
+//  CCDev_UTests.m
+//  CCDev_UTests
+//
+//  Created by Carol Clark on 11/22/14.
+//
+//
 
-
-@import XCTest;
+#import <XCTest/XCTest.h>
 
 @interface CCDev_UTests : XCTestCase
-
-- (void)testExample;
 
 @end
 
 @implementation CCDev_UTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
-	// setup code
+    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
-- (void)tearDown {
-	// teardown code
+- (void)tearDown
+{
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-/*!	\test	example 	*/
-- (void)testExample {
-    XCTAssertTrue (1 == 1, @"%s: Oops! 1 is not 0.", __PRETTY_FUNCTION__);
+- (void)testExample
+{
+    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end

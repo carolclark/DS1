@@ -115,55 +115,110 @@
 			* Accessor: <a href="../Accessor/History_Accessor.html#SupportLaptop">Support Laptop</a>
 			* remove folder and target UserSlates from Support/BuildSupport
 		<span class='tlmark'>&lt;-- 09/22/2014</span>
-		* reorganize Developer folder [reorgDevFolder]
-			* *folder Developer to contain multiple simple projects, including target Developer to aggregate the rest*
-			* *for now, create these projects in their own workspaces inside Support/Developer
-			* shunit2: new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a>
-				* move shunit2 target from project Developer target ThirdParty to project in ~/Dev/Support/Developer
-				* move third-party folder shunit2-2.1.6 from ~/Dev/Support/Developer/Developer/ThirdParty to ~/Dev/Support/Developer/shunit2
-				* move ThirdParty_install.ksh to new shunit2_install.ksh in new folder
-				* add ReadMe; remove all project-level Build Settings
-				* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
-					* ccInstall: use stderr/stdout instead of EXPECTED_ERROR to handle expected errors
-			* Python: fix issue removing folders with invisible files
-				* util.scan_directories lists both visible and invisible files
-			* ASUnit folder
-				* create (only) <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
-					* *project to filled in later; see <a href="#AppleScriptTesting">AppleScript Testing</a>*
-				* move ASUnit content folder into new project folder
-			* refactor Python_install.ksh
-				* *ccInstall process previously allowed only one level of folders inside a target folder
-				* *previous path parts were <span class='mono'>subtarget="${fl%%/*}"</span>, <span class='mono'>filepath="${fl#*/}"</span>
-					* *naming and calculation expect the top folder for <span class='mono'>subtarget</span>
-					* change names and calculation to expect (path from SRCROOT to file), filename
-					* add file_basename, file_extension
-				* inline ccInstall --installOneFile
-				* separate logic for file_action, (previous_source_folder==source_folder), (-n destination_folder)
-				* 'clean' removes files installed by 'build'
-					* combine 'install' and 'clean' blocks to reuse installation setup code
-				* take SRCROOT, TARGET_NAME from environment variables instead of passing arguments
+		</pre>
+		<div id='reorgDevFolder_Failed' class='depr'><pre>
+			* *This was a failed attempt to do too much all at once, including:*
+				* *make smaller, simpler projects, as recommended to deal with project file fragility*
+					* *it is possible for a project file to be corrupted so as to reconstructing it*
+				* *refactor *_install script beyond what has already done in Python_install.ksh*
+				* *reorganize Developer folder*
+			* *problems:*
+				* *Xcode dependencies are now expressed on Products rather than on targets*
+					* *we did not know that and, with the structure we used, we could not properly set dependencies*
+				* *testing of refactored *_install has been inadequate, and at least test failure no longer works properly*
+			* reorganize Developer folder [reorgDevFolder]
+				* *folder Developer to contain multiple simple projects, including target Developer to aggregate the rest*
+				* *for now, create these projects in their own workspaces inside Support/Developer
+				* shunit2: new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a>
+					* move shunit2 target from project Developer target ThirdParty to project in ~/Dev/Support/Developer
+					* move third-party folder shunit2-2.1.6 from ~/Dev/Support/Developer/Developer/ThirdParty to ~/Dev/Support/Developer/shunit2
+					* move ThirdParty_install.ksh to new shunit2_install.ksh in new folder
+					* add ReadMe; remove all project-level Build Settings
+					* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+						* ccInstall: use stderr/stdout instead of EXPECTED_ERROR to handle expected errors
+				* Python: fix issue removing folders with invisible files
+					* util.scan_directories lists both visible and invisible files
+				* ASUnit folder
+					* create (only) <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
+						* *project to filled in later; see <a href="#AppleScriptTesting">AppleScript Testing</a>*
+					* move ASUnit content folder into new project folder
+				* refactor Python_install.ksh
+					* *ccInstall process previously allowed only one level of folders inside a target folder
+					* *previous path parts were <span class='mono'>subtarget="${fl%%/*}"</span>, <span class='mono'>filepath="${fl#*/}"</span>
+						* *naming and calculation expect the top folder for <span class='mono'>subtarget</span>
+						* change names and calculation to expect (path from SRCROOT to file), filename
+						* add file_basename, file_extension
+					* inline ccInstall --installOneFile
+					* separate logic for file_action, (previous_source_folder==source_folder), (-n destination_folder)
+					* 'clean' removes files installed by 'build'
+						* combine 'install' and 'clean' blocks to reuse installation setup code
+					* take SRCROOT, TARGET_NAME from environment variables instead of passing arguments
+				* CCDev
+					* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
+						* *install script from new template based on Python_install.ksh*
+							* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
+							* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
+					* CCDev_UTests: move info.plist file into folder OtherSoures
+					* move in existing shunit tests and ksh scripts from target Developer
+					* add Developer_ReadMe
+					* move of CCDev tests and scripts back to Developer for now
+					* CCDev_install
+						* refactor
+							* calculate $targetFolder based on path to $0
+							* rename source_folder to source_path (file's container as path from source_root)
+						* add and run DevConfig.ksh
+					* add tests, scripts; get build/test cycle working
+					* remove scripts,tests now in CCDev from Developer
+					* add Services to CCDev
+						* TODO: refactor CCDev_install after closing 'reorgDevFolder' and getting the file structure under control
+						* for now, there are display issues when handling packages
+			</pre>
+		</div>
+		<pre>
+		* Reorganize Developer Folder
+			* save stash ReorgDevTry; revert --no-commit to 4e367f1
+			* save documentation and changes to be preserved from reorgDevFolder
+			* add Support projects
+				* existing <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> projects
+					* based on External Build System projects
+					* problem because those projects do not produce a Product, but Products are needed to Establish dependencies
+					* will be replaced by project CCDev; cannot now be added as a dependency
+			* move projects projects Developer, Python to Support workspace
+			* shunit [projectShunit]
+				* new empty project shunit2
+				* move shunit2 sources from Developer/Developer/ThirdParty/shunit2-2.1.6 to Developer/shunit2/shunit2-2.1.6
+				* finish <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/shunit
+					* add target shunit2, product shunit2.fauxprod
+					* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+						* cd "${HOME}/Library/CCDev/shunit/src"; "${HOME}/Library/CCDev/shunit/src/shunit2_test.sh"
 			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 			* CCDev
-				* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
-					* *install script from new template based on Python_install.ksh*
-						* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
-						* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
-				* CCDev_UTests: move info.plist file into folder OtherSoures
-				* move in existing shunit tests and ksh scripts from target Developer
-				* add Developer_ReadMe
-				* move of CCDev tests and scripts back to Developer for now
-				* CCDev_install
-					* rename source_folder to source_path (file's container as path from source_root)
-					* add and run DevConfig.ksh
-				* add tests, scripts; get buid/test cycle working
-				* remove scripts,tests from Developer
-				* add Services
-			* Support_All aggregate target
+				* [projCCDev] new project Developer/CCDev based on existing Developer/Developer
+					* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/CCDev
+					* new target CCDev, without product for now
+					* duplicate folders Scripts, _Tests from Developer to CCDev
+					* add test target
+				* [refactorCCDevInstall] refactor CCDev_install
+					* CCDev.fauxprod: write in CCDev_install; add to group FauxProducts
+					* args: $(ACTION) only; get folder calculations from $0
+					* use .fauxprod file instead of .lastbuilt
+						* ccInstall: add duplicates of lastbuilt functions named fauxprod; lastbuilt functions call fauxprod
+		* ...
+
+		* from before reorgDevTry
+			* Support
 				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
 				* verify no useful content remaining in project Developer; delete
-				* add new project Support_All at root level of repository
+				* add folder Developer, included projects to workspace Support
+				* CCDev depends on shunit2
+				* add new project Support at root level of repository
 				* add aggregate target Support_All; for now, includes CCDev only, since CCDev already depends on shunit
-				* incorporate Python scripts into CCDev
+			* incorporate Python installation into CCDev
+		* refactor CCDev_install
+			* refactor for testability
+			* walk directories (mainly) instead of listing all files with 'find'
+			* handle packages instead of using special behavior for Services
+		* update Scripting template InstallTarget
 		* Developer:AppleScript
 			* <a href="#AppleScriptTesting">AppleScript Testing</a>
 			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts

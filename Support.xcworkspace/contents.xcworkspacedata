@@ -4,6 +4,22 @@
    <FileRef
       location = "group:Docs/Docs.xcodeproj">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "Developer">
+      <FileRef
+         location = "group:Developer/CCDev.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Developer/Developer.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Developer/Python.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Developer/shunit2.xcodeproj">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:BuildSupport/BuildSupport.xcodeproj">
    </FileRef>

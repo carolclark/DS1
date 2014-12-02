@@ -1,34 +1,34 @@
-// =================================================================================
-//  shunit2_Tests.m
 //
-//  Created by Carol Clark on 10/17/14 for project shunit2.
-//	Copyright (c) 2014 C & C Software, Inc. All rights reserved.
-// =================================================================================
+//  shunit2_Tests.m
+//  shunit2_Tests
+//
+//  Created by Carol Clark on 11/20/14.
+//
+//
 
-
-@import XCTest;
+#import <XCTest/XCTest.h>
 
 @interface shunit2_Tests : XCTestCase
-
-- (void)testExample;
 
 @end
 
 @implementation shunit2_Tests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
-	// setup code
+    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
-- (void)tearDown {
-	// teardown code
+- (void)tearDown
+{
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-/*!	\test	example 	*/
-- (void)testExample {
-    XCTAssertTrue (1 == 1, @"%s: Oops! 1 is not 0.", __PRETTY_FUNCTION__);
+- (void)testExample
+{
+    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end

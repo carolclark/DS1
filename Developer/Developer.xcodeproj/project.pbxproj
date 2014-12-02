@@ -26,8 +26,39 @@
 		6755BCE51922CC28005DC27D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6755BCF61922CDB6005DC27D /* DeveloperTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DeveloperTests-Info.plist"; sourceTree = "<group>"; };
 		6755BCF71922CDB6005DC27D /* RequiredCocoaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequiredCocoaTests.m; sourceTree = "<group>"; };
+		67C2EE16199D6583002E8C58 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		67C2EE17199D6583002E8C58 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		67C2EE18199D6583002E8C58 /* asmake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = asmake; sourceTree = "<group>"; };
+		67C2EE19199D6583002E8C58 /* ASUnit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ASUnit.applescript; sourceTree = "<group>"; };
+		67C2EE1A199D6584002E8C58 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		67C2EE1C199D6584002E8C58 /* HexString.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = HexString.applescript; sourceTree = "<group>"; };
+		67C2EE1D199D6584002E8C58 /* Test AppleScript Variable Types and You.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test AppleScript Variable Types and You.applescript"; sourceTree = "<group>"; };
+		67C2EE1E199D6584002E8C58 /* Test HexString.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test HexString.applescript"; sourceTree = "<group>"; };
+		67C2EE1F199D6584002E8C58 /* Test Loader.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test Loader.applescript"; sourceTree = "<group>"; };
+		67C2EE20199D6584002E8C58 /* makefile.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = makefile.applescript; sourceTree = "<group>"; };
+		67C2EE21199D6584002E8C58 /* OldManual.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldManual.md; sourceTree = "<group>"; };
+		67C2EE22199D6584002E8C58 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		67C2EE24199D6584002E8C58 /* MyScript.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = MyScript.applescript; sourceTree = "<group>"; };
+		67C2EE25199D6584002E8C58 /* Runtime Loader.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Runtime Loader.applescript"; sourceTree = "<group>"; };
+		67C2EE26199D6584002E8C58 /* Test Template.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test Template.applescript"; sourceTree = "<group>"; };
+		67C2EE27199D6584002E8C58 /* Test ASUnit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test ASUnit.applescript"; sourceTree = "<group>"; };
+		67C2EE28199D6584002E8C58 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		67FDF6EB191D776C002560CF /* testArchive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testArchive.ksh; sourceTree = "<group>"; };
+		67FDF6EC191D776C002560CF /* testCcInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testCcInstall.ksh; sourceTree = "<group>"; };
+		67FDF6ED191D776C002560CF /* testDevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDevConfig.ksh; sourceTree = "<group>"; };
+		67FDF6EE191D776C002560CF /* testDeveloper.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDeveloper.ksh; sourceTree = "<group>"; };
+		67FDF6EF191D776C002560CF /* testDoxygenInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testDoxygenInstall.ksh; sourceTree = "<group>"; };
+		67FDF6F0191D776C002560CF /* testErrcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = testErrcc.ksh; sourceTree = "<group>"; };
 		67FDF6F1191D776C002560CF /* DevConfig.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = DevConfig.ksh; sourceTree = "<group>"; };
 		67FDF6F2191D776C002560CF /* Developer_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Developer_install.ksh; sourceTree = "<group>"; };
+		67FDF6F4191D776C002560CF /* archive.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive.ksh; sourceTree = "<group>"; };
+		67FDF6F5191D776C002560CF /* ccBackup.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccBackup.ksh; sourceTree = "<group>"; };
+		67FDF6F6191D776C002560CF /* ccInstall.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ccInstall.ksh; sourceTree = "<group>"; };
+		67FDF6F7191D776C002560CF /* errcc.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = errcc.ksh; sourceTree = "<group>"; };
+		67FDF6F8191D776C002560CF /* execInstallScript.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = execInstallScript.ksh; sourceTree = "<group>"; };
+		67FDF6F9191D776C002560CF /* ghubUtil.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = ghubUtil.ksh; sourceTree = "<group>"; };
+		67FDF6FA191D776C002560CF /* resultCodes.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = resultCodes.ksh; sourceTree = "<group>"; };
+		67FDF6FB191D776C002560CF /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67FDF6FD191D776C002560CF /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67FDF6FE191D776C002560CF /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +100,62 @@
 			path = CocoaTestBundle;
 			sourceTree = "<group>";
 		};
+		67C2EE15199D6583002E8C58 /* ASUnit */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EE19199D6583002E8C58 /* ASUnit.applescript */,
+				67C2EE27199D6584002E8C58 /* Test ASUnit.applescript */,
+				67C2EE1B199D6584002E8C58 /* examples */,
+				67C2EE29199D6599002E8C58 /* documentation */,
+				67C2EE23199D6584002E8C58 /* templates */,
+				67C2EE2A199D65A2002E8C58 /* other files */,
+			);
+			path = ASUnit;
+			sourceTree = "<group>";
+		};
+		67C2EE1B199D6584002E8C58 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EE1C199D6584002E8C58 /* HexString.applescript */,
+				67C2EE1D199D6584002E8C58 /* Test AppleScript Variable Types and You.applescript */,
+				67C2EE1E199D6584002E8C58 /* Test HexString.applescript */,
+				67C2EE1F199D6584002E8C58 /* Test Loader.applescript */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		67C2EE23199D6584002E8C58 /* templates */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EE24199D6584002E8C58 /* MyScript.applescript */,
+				67C2EE25199D6584002E8C58 /* Runtime Loader.applescript */,
+				67C2EE26199D6584002E8C58 /* Test Template.applescript */,
+			);
+			path = templates;
+			sourceTree = "<group>";
+		};
+		67C2EE29199D6599002E8C58 /* documentation */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EE22199D6584002E8C58 /* README.md */,
+				67C2EE21199D6584002E8C58 /* OldManual.md */,
+				67C2EE1A199D6584002E8C58 /* COPYING */,
+			);
+			name = documentation;
+			sourceTree = "<group>";
+		};
+		67C2EE2A199D65A2002E8C58 /* other files */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EE16199D6583002E8C58 /* .gitattributes */,
+				67C2EE17199D6583002E8C58 /* .gitignore */,
+				67C2EE18199D6583002E8C58 /* asmake */,
+				67C2EE20199D6584002E8C58 /* makefile.applescript */,
+				67C2EE28199D6584002E8C58 /* TODO */,
+			);
+			name = "other files";
+			sourceTree = "<group>";
+		};
 		67CBDB68191AF1F700B8164A = {
 			isa = PBXGroup;
 			children = (
@@ -81,12 +168,43 @@
 		67FDF6E9191D776C002560CF /* Developer */ = {
 			isa = PBXGroup;
 			children = (
+				67FDF6EA191D776C002560CF /* _Tests */,
+				67FDF6F3191D776C002560CF /* Scripts */,
 				67FDF6FC191D776C002560CF /* Services */,
+				67FDF6FF191D776C002560CF /* ThirdParty */,
 				6755BCF51922CDB6005DC27D /* CocoaTestBundle */,
 				67FDF6F2191D776C002560CF /* Developer_install.ksh */,
 				67FDF6F1191D776C002560CF /* DevConfig.ksh */,
 			);
 			path = Developer;
+			sourceTree = "<group>";
+		};
+		67FDF6EA191D776C002560CF /* _Tests */ = {
+			isa = PBXGroup;
+			children = (
+				67FDF6EB191D776C002560CF /* testArchive.ksh */,
+				67FDF6EC191D776C002560CF /* testCcInstall.ksh */,
+				67FDF6ED191D776C002560CF /* testDevConfig.ksh */,
+				67FDF6EE191D776C002560CF /* testDeveloper.ksh */,
+				67FDF6EF191D776C002560CF /* testDoxygenInstall.ksh */,
+				67FDF6F0191D776C002560CF /* testErrcc.ksh */,
+			);
+			path = _Tests;
+			sourceTree = "<group>";
+		};
+		67FDF6F3191D776C002560CF /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				67FDF6F4191D776C002560CF /* archive.ksh */,
+				67FDF6F5191D776C002560CF /* ccBackup.ksh */,
+				67FDF6F6191D776C002560CF /* ccInstall.ksh */,
+				67FDF6F7191D776C002560CF /* errcc.ksh */,
+				67FDF6F8191D776C002560CF /* execInstallScript.ksh */,
+				67FDF6F9191D776C002560CF /* ghubUtil.ksh */,
+				67FDF6FA191D776C002560CF /* resultCodes.ksh */,
+				67FDF6FB191D776C002560CF /* trapSigDemo.ksh */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		67FDF6FC191D776C002560CF /* Services */ = {
@@ -96,6 +214,14 @@
 				67FDF6FE191D776C002560CF /* OpenAccessor.workflow */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		67FDF6FF191D776C002560CF /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				67C2EE15199D6583002E8C58 /* ASUnit */,
+			);
+			path = ThirdParty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

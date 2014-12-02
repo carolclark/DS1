@@ -7,215 +7,86 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		673FC82319F1C6320021003A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673FC82219F1C6320021003A /* XCTest.framework */; };
-		673FC83619F1C8A40021003A /* shunit2_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 673FC83519F1C8A40021003A /* shunit2_Tests.m */; };
+		67CDC5E71A1EA82800C3BA9B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67CDC5E61A1EA82800C3BA9B /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		673FC82D19F1C6320021003A /* PBXContainerItemProxy */ = {
+		67CDC5F11A1EA82800C3BA9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 673FC78619EC7B3D0021003A /* Project object */;
+			containerPortal = 673088CF1A1C089400127F1D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 673FC78A19EC7B3D0021003A;
+			remoteGlobalIDString = 67CDC5D91A1E7FF800C3BA9B;
 			remoteInfo = shunit2;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		673FC7F019F1B7A90021003A /* gen_test_results.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gen_test_results.sh; sourceTree = "<group>"; };
-		673FC7F119F1B7A90021003A /* which */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = which; sourceTree = "<group>"; };
-		673FC7F319F1B7A90021003A /* CHANGES-2.1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CHANGES-2.1.txt"; sourceTree = "<group>"; };
-		673FC7F419F1B7A90021003A /* coding_standards.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = coding_standards.txt; sourceTree = "<group>"; };
-		673FC7F519F1B7A90021003A /* contributors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = contributors.txt; sourceTree = "<group>"; };
-		673FC7F619F1B7A90021003A /* design_doc.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = design_doc.txt; sourceTree = "<group>"; };
-		673FC7F719F1B7A90021003A /* LGPL-2.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "LGPL-2.1"; sourceTree = "<group>"; };
-		673FC7F819F1B7A90021003A /* README.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = README.html; sourceTree = "<group>"; };
-		673FC7F919F1B7A90021003A /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		673FC7FA19F1B7A90021003A /* RELEASE_NOTES-2.1.0.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.0.txt"; sourceTree = "<group>"; };
-		673FC7FB19F1B7A90021003A /* RELEASE_NOTES-2.1.1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.1.txt"; sourceTree = "<group>"; };
-		673FC7FC19F1B7A90021003A /* RELEASE_NOTES-2.1.2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.2.txt"; sourceTree = "<group>"; };
-		673FC7FD19F1B7A90021003A /* RELEASE_NOTES-2.1.3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.3.txt"; sourceTree = "<group>"; };
-		673FC7FE19F1B7A90021003A /* RELEASE_NOTES-2.1.4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.4.txt"; sourceTree = "<group>"; };
-		673FC7FF19F1B7A90021003A /* RELEASE_NOTES-2.1.5.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.5.txt"; sourceTree = "<group>"; };
-		673FC80019F1B7A90021003A /* RELEASE_NOTES-2.1.6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE_NOTES-2.1.6.txt"; sourceTree = "<group>"; };
-		673FC80119F1B7A90021003A /* rst2html.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = rst2html.css; sourceTree = "<group>"; };
-		673FC80219F1B7A90021003A /* shunit2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = shunit2.html; sourceTree = "<group>"; };
-		673FC80319F1B7A90021003A /* shunit2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2.txt; sourceTree = "<group>"; };
-		673FC80419F1B7A90021003A /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
-		673FC80619F1B7A90021003A /* equality_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = equality_test.sh; sourceTree = "<group>"; };
-		673FC80719F1B7A90021003A /* lineno_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = lineno_test.sh; sourceTree = "<group>"; };
-		673FC80819F1B7A90021003A /* math.inc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.pascal; path = math.inc; sourceTree = "<group>"; };
-		673FC80919F1B7A90021003A /* math_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = math_test.sh; sourceTree = "<group>"; };
-		673FC80A19F1B7A90021003A /* mkdir_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = mkdir_test.sh; sourceTree = "<group>"; };
-		673FC80B19F1B7A90021003A /* party_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = party_test.sh; sourceTree = "<group>"; };
-		673FC80D19F1B7A90021003A /* shflags */ = {isa = PBXFileReference; lastKnownFileType = text; path = shflags; sourceTree = "<group>"; };
-		673FC80E19F1B7A90021003A /* shlib */ = {isa = PBXFileReference; lastKnownFileType = text; path = shlib; sourceTree = "<group>"; };
-		673FC80F19F1B7A90021003A /* versions */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = versions; sourceTree = "<group>"; };
-		673FC81119F1B7A90021003A /* shunit2 */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2; sourceTree = "<group>"; };
-		673FC81219F1B7A90021003A /* shunit2_test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test.sh; sourceTree = "<group>"; };
-		673FC81319F1B7A90021003A /* shunit2_test_asserts.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_asserts.sh; sourceTree = "<group>"; };
-		673FC81419F1B7A90021003A /* shunit2_test_failures.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_failures.sh; sourceTree = "<group>"; };
-		673FC81519F1B7A90021003A /* shunit2_test_helpers */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2_test_helpers; sourceTree = "<group>"; };
-		673FC81619F1B7A90021003A /* shunit2_test_macros.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_macros.sh; sourceTree = "<group>"; };
-		673FC81719F1B7A90021003A /* shunit2_test_misc.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_misc.sh; sourceTree = "<group>"; };
-		673FC81819F1B7A90021003A /* shunit2_test_standalone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shunit2_test_standalone.sh; sourceTree = "<group>"; };
-		673FC81919F1B7A90021003A /* shunit2_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = shunit2_install.ksh; sourceTree = "<group>"; };
-		673FC81A19F1C0450021003A /* shunit2_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = shunit2_ReadMe.html; sourceTree = "<group>"; };
-		673FC81F19F1C6320021003A /* shunit2_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shunit2_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		673FC82219F1C6320021003A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		673FC83319F1C7080021003A /* shunit2_Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "shunit2_Tests-Info.plist"; sourceTree = "<group>"; };
-		673FC83519F1C8A40021003A /* shunit2_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shunit2_Tests.m; sourceTree = "<group>"; };
+		67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = shunit2_install.ksh; path = shunit2/shunit2_install.ksh; sourceTree = "<group>"; };
+		67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = shunit2_ReadMe.html; path = shunit2/shunit2_ReadMe.html; sourceTree = "<group>"; };
+		67CDC5DD1A1E810700C3BA9B /* shunit2-2.1.6 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "shunit2-2.1.6"; path = "shunit2/shunit2-2.1.6"; sourceTree = "<group>"; };
+		67CDC5DF1A1E9ADA00C3BA9B /* shunit2.fauxprod */ = {isa = PBXFileReference; lastKnownFileType = text; name = shunit2.fauxprod; path = ../../../Library/CCDev/build_output/Support/Developer/shunit2.fauxprod; sourceTree = "<group>"; };
+		67CDC5E41A1EA82800C3BA9B /* shunit2_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shunit2_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67CDC5E61A1EA82800C3BA9B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		67CDC5F71A1EAA7B00C3BA9B /* shunit2_Tests */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shunit2_Tests; path = shunit2/shunit2_Tests; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		673FC81C19F1C6320021003A /* Frameworks */ = {
+		67CDC5E11A1EA82800C3BA9B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				673FC82319F1C6320021003A /* XCTest.framework in Frameworks */,
+				67CDC5E71A1EA82800C3BA9B /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		673FC78519EC7B3D0021003A = {
+		673088CE1A1C089400127F1D = {
 			isa = PBXGroup;
 			children = (
-				673FC81A19F1C0450021003A /* shunit2_ReadMe.html */,
-				673FC83219F1C7080021003A /* shunit2_Tests */,
-				673FC7ED19F1B7A90021003A /* shunit2 */,
-				673FC82119F1C6320021003A /* Frameworks */,
-				673FC82019F1C6320021003A /* Products */,
+				67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */,
+				67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */,
+				67CDC5DD1A1E810700C3BA9B /* shunit2-2.1.6 */,
+				67CDC5F71A1EAA7B00C3BA9B /* shunit2_Tests */,
+				67CDC5DE1A1E9A8800C3BA9B /* FauxProducts */,
+				67CDC5F61A1EAA1A00C3BA9B /* Products */,
+				67CDC5E51A1EA82800C3BA9B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		673FC7ED19F1B7A90021003A /* shunit2 */ = {
+		67CDC5DE1A1E9A8800C3BA9B /* FauxProducts */ = {
 			isa = PBXGroup;
 			children = (
-				673FC81919F1B7A90021003A /* shunit2_install.ksh */,
-				673FC7EE19F1B7A90021003A /* shunit2-2.1.6 */,
+				67CDC5DF1A1E9ADA00C3BA9B /* shunit2.fauxprod */,
 			);
-			path = shunit2;
+			name = FauxProducts;
 			sourceTree = "<group>";
 		};
-		673FC7EE19F1B7A90021003A /* shunit2-2.1.6 */ = {
+		67CDC5E51A1EA82800C3BA9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				673FC7EF19F1B7A90021003A /* bin */,
-				673FC7F219F1B7A90021003A /* doc */,
-				673FC80519F1B7A90021003A /* examples */,
-				673FC80C19F1B7A90021003A /* lib */,
-				673FC81019F1B7A90021003A /* src */,
-			);
-			path = "shunit2-2.1.6";
-			sourceTree = "<group>";
-		};
-		673FC7EF19F1B7A90021003A /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				673FC7F019F1B7A90021003A /* gen_test_results.sh */,
-				673FC7F119F1B7A90021003A /* which */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		673FC7F219F1B7A90021003A /* doc */ = {
-			isa = PBXGroup;
-			children = (
-				673FC7F319F1B7A90021003A /* CHANGES-2.1.txt */,
-				673FC7F419F1B7A90021003A /* coding_standards.txt */,
-				673FC7F519F1B7A90021003A /* contributors.txt */,
-				673FC7F619F1B7A90021003A /* design_doc.txt */,
-				673FC7F719F1B7A90021003A /* LGPL-2.1 */,
-				673FC7F819F1B7A90021003A /* README.html */,
-				673FC7F919F1B7A90021003A /* README.txt */,
-				673FC7FA19F1B7A90021003A /* RELEASE_NOTES-2.1.0.txt */,
-				673FC7FB19F1B7A90021003A /* RELEASE_NOTES-2.1.1.txt */,
-				673FC7FC19F1B7A90021003A /* RELEASE_NOTES-2.1.2.txt */,
-				673FC7FD19F1B7A90021003A /* RELEASE_NOTES-2.1.3.txt */,
-				673FC7FE19F1B7A90021003A /* RELEASE_NOTES-2.1.4.txt */,
-				673FC7FF19F1B7A90021003A /* RELEASE_NOTES-2.1.5.txt */,
-				673FC80019F1B7A90021003A /* RELEASE_NOTES-2.1.6.txt */,
-				673FC80119F1B7A90021003A /* rst2html.css */,
-				673FC80219F1B7A90021003A /* shunit2.html */,
-				673FC80319F1B7A90021003A /* shunit2.txt */,
-				673FC80419F1B7A90021003A /* TODO.txt */,
-			);
-			path = doc;
-			sourceTree = "<group>";
-		};
-		673FC80519F1B7A90021003A /* examples */ = {
-			isa = PBXGroup;
-			children = (
-				673FC80619F1B7A90021003A /* equality_test.sh */,
-				673FC80719F1B7A90021003A /* lineno_test.sh */,
-				673FC80819F1B7A90021003A /* math.inc */,
-				673FC80919F1B7A90021003A /* math_test.sh */,
-				673FC80A19F1B7A90021003A /* mkdir_test.sh */,
-				673FC80B19F1B7A90021003A /* party_test.sh */,
-			);
-			path = examples;
-			sourceTree = "<group>";
-		};
-		673FC80C19F1B7A90021003A /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				673FC80D19F1B7A90021003A /* shflags */,
-				673FC80E19F1B7A90021003A /* shlib */,
-				673FC80F19F1B7A90021003A /* versions */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		673FC81019F1B7A90021003A /* src */ = {
-			isa = PBXGroup;
-			children = (
-				673FC81119F1B7A90021003A /* shunit2 */,
-				673FC81219F1B7A90021003A /* shunit2_test.sh */,
-				673FC81319F1B7A90021003A /* shunit2_test_asserts.sh */,
-				673FC81419F1B7A90021003A /* shunit2_test_failures.sh */,
-				673FC81519F1B7A90021003A /* shunit2_test_helpers */,
-				673FC81619F1B7A90021003A /* shunit2_test_macros.sh */,
-				673FC81719F1B7A90021003A /* shunit2_test_misc.sh */,
-				673FC81819F1B7A90021003A /* shunit2_test_standalone.sh */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		673FC82019F1C6320021003A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				673FC81F19F1C6320021003A /* shunit2_Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		673FC82119F1C6320021003A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				673FC82219F1C6320021003A /* XCTest.framework */,
+				67CDC5E61A1EA82800C3BA9B /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		673FC83219F1C7080021003A /* shunit2_Tests */ = {
+		67CDC5F61A1EAA1A00C3BA9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				673FC83319F1C7080021003A /* shunit2_Tests-Info.plist */,
-				673FC83519F1C8A40021003A /* shunit2_Tests.m */,
+				67CDC5E41A1EA82800C3BA9B /* shunit2_Tests.xctest */,
 			);
-			name = shunit2_Tests;
-			path = shunit2/shunit2_Tests;
+			name = Products;
+			path = shunit2_Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		673FC78A19EC7B3D0021003A /* shunit2 */ = {
+		67CDC5D91A1E7FF800C3BA9B /* shunit2 */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "\"${SRCROOT}\" ${TARGET_NAME} $(ACTION)";
-			buildConfigurationList = 673FC78D19EC7B3D0021003A /* Build configuration list for PBXLegacyTarget "shunit2" */;
+			buildConfigurationList = 67CDC5DA1A1E7FF800C3BA9B /* Build configuration list for PBXLegacyTarget "shunit2" */;
 			buildPhases = (
 			);
 			buildToolPath = "${TARGET_NAME}/${TARGET_NAME}_install.ksh";
@@ -229,59 +100,58 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		673FC81E19F1C6320021003A /* shunit2_Tests */ = {
+		67CDC5E31A1EA82800C3BA9B /* shunit2_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 673FC82F19F1C6320021003A /* Build configuration list for PBXNativeTarget "shunit2_Tests" */;
+			buildConfigurationList = 67CDC5F31A1EA82800C3BA9B /* Build configuration list for PBXNativeTarget "shunit2_Tests" */;
 			buildPhases = (
-				673FC81B19F1C6320021003A /* Sources */,
-				673FC81C19F1C6320021003A /* Frameworks */,
-				673FC81D19F1C6320021003A /* Resources */,
-				673FC83719F1C94A0021003A /* ShellScript */,
+				67CDC5E01A1EA82800C3BA9B /* Sources */,
+				67CDC5E11A1EA82800C3BA9B /* Frameworks */,
+				67CDC5E21A1EA82800C3BA9B /* Resources */,
+				67CDC5F81A1EAB5100C3BA9B /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				673FC82E19F1C6320021003A /* PBXTargetDependency */,
+				67CDC5F21A1EA82800C3BA9B /* PBXTargetDependency */,
 			);
 			name = shunit2_Tests;
 			productName = shunit2_Tests;
-			productReference = 673FC81F19F1C6320021003A /* shunit2_Tests.xctest */;
+			productReference = 67CDC5E41A1EA82800C3BA9B /* shunit2_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		673FC78619EC7B3D0021003A /* Project object */ = {
+		673088CF1A1C089400127F1D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "C & C Software, Inc.";
 				TargetAttributes = {
-					673FC81E19F1C6320021003A = {
-						TestTargetID = 673FC78A19EC7B3D0021003A;
+					67CDC5E31A1EA82800C3BA9B = {
+						TestTargetID = 67CDC5D91A1E7FF800C3BA9B;
 					};
 				};
 			};
-			buildConfigurationList = 673FC78919EC7B3D0021003A /* Build configuration list for PBXProject "shunit2" */;
+			buildConfigurationList = 673088D21A1C089400127F1D /* Build configuration list for PBXProject "shunit2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 673FC78519EC7B3D0021003A;
-			productRefGroup = 673FC82019F1C6320021003A /* Products */;
+			mainGroup = 673088CE1A1C089400127F1D;
+			productRefGroup = 673088CE1A1C089400127F1D;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				673FC78A19EC7B3D0021003A /* shunit2 */,
-				673FC81E19F1C6320021003A /* shunit2_Tests */,
+				67CDC5D91A1E7FF800C3BA9B /* shunit2 */,
+				67CDC5E31A1EA82800C3BA9B /* shunit2_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		673FC81D19F1C6320021003A /* Resources */ = {
+		67CDC5E21A1EA82800C3BA9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -291,7 +161,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		673FC83719F1C94A0021003A /* ShellScript */ = {
+		67CDC5F81A1EAB5100C3BA9B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,58 +172,60 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
-			shellScript = "cd \"${HOME}/Library/CCDev/shunit/src\"\n\"${HOME}/Library/CCDev/shunit/src/shunit2_test.sh\"";
-			showEnvVarsInLog = 0;
+			shellScript = "#shunit2/shunit2_install.ksh \"${SRCROOT}\" shunit2 test\ncd \"${HOME}/Library/CCDev/shunit/src\"\n\"${HOME}/Library/CCDev/shunit/src/shunit2_test.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		673FC81B19F1C6320021003A /* Sources */ = {
+		67CDC5E01A1EA82800C3BA9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				673FC83619F1C8A40021003A /* shunit2_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		673FC82E19F1C6320021003A /* PBXTargetDependency */ = {
+		67CDC5F21A1EA82800C3BA9B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 673FC78A19EC7B3D0021003A /* shunit2 */;
-			targetProxy = 673FC82D19F1C6320021003A /* PBXContainerItemProxy */;
+			target = 67CDC5D91A1E7FF800C3BA9B /* shunit2 */;
+			targetProxy = 67CDC5F11A1EA82800C3BA9B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		673FC78B19EC7B3D0021003A /* Debug */ = {
+		673088D31A1C089400127F1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
-		673FC78C19EC7B3D0021003A /* Release */ = {
+		673088D41A1C089400127F1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		673FC78E19EC7B3D0021003A /* Debug */ = {
+		67CDC5DB1A1E7FF800C3BA9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = .ccprod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		673FC78F19EC7B3D0021003A /* Release */ = {
+		67CDC5DC1A1E7FF800C3BA9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = .ccprod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		673FC83019F1C6320021003A /* Debug */ = {
+		67CDC5F41A1EA82800C3BA9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -379,7 +251,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = "";
-				GCC_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "shunit2_Tests/shunit2_Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -391,16 +263,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "shunit2/shunit2_Tests/shunit2_Tests-Info.plist";
+				INFOPLIST_FILE = "shunit2/shunit2_Tests/OtherSources/shunit2_Tests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
-		673FC83119F1C6320021003A /* Release */ = {
+		67CDC5F51A1EA82800C3BA9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -426,17 +297,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = "";
-				GCC_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "shunit2_Tests/shunit2_Tests-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "shunit2/shunit2_Tests/shunit2_Tests-Info.plist";
+				INFOPLIST_FILE = "shunit2/shunit2_Tests/OtherSources/shunit2_Tests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -444,33 +314,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		673FC78919EC7B3D0021003A /* Build configuration list for PBXProject "shunit2" */ = {
+		673088D21A1C089400127F1D /* Build configuration list for PBXProject "shunit2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				673FC78B19EC7B3D0021003A /* Debug */,
-				673FC78C19EC7B3D0021003A /* Release */,
+				673088D31A1C089400127F1D /* Debug */,
+				673088D41A1C089400127F1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		673FC78D19EC7B3D0021003A /* Build configuration list for PBXLegacyTarget "shunit2" */ = {
+		67CDC5DA1A1E7FF800C3BA9B /* Build configuration list for PBXLegacyTarget "shunit2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				673FC78E19EC7B3D0021003A /* Debug */,
-				673FC78F19EC7B3D0021003A /* Release */,
+				67CDC5DB1A1E7FF800C3BA9B /* Debug */,
+				67CDC5DC1A1E7FF800C3BA9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		673FC82F19F1C6320021003A /* Build configuration list for PBXNativeTarget "shunit2_Tests" */ = {
+		67CDC5F31A1EA82800C3BA9B /* Build configuration list for PBXNativeTarget "shunit2_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				673FC83019F1C6320021003A /* Debug */,
-				673FC83119F1C6320021003A /* Release */,
+				67CDC5F41A1EA82800C3BA9B /* Debug */,
+				67CDC5F51A1EA82800C3BA9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 673FC78619EC7B3D0021003A /* Project object */;
+	rootObject = 673088CF1A1C089400127F1D /* Project object */;
 }

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67B2A5B619FC59C500FE6A62"
-               BuildableName = "CCDev"
-               BlueprintName = "CCDev"
-               ReferencedContainer = "container:CCDev.xcodeproj">
+               BlueprintIdentifier = "67CDC5D91A1E7FF800C3BA9B"
+               BuildableName = "shunit2"
+               BlueprintName = "shunit2"
+               ReferencedContainer = "container:shunit2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67D413411A0433C900A46095"
-               BuildableName = "CCDev_UTests.xctest"
-               BlueprintName = "CCDev_UTests"
-               ReferencedContainer = "container:CCDev.xcodeproj">
+               BlueprintIdentifier = "67CDC5E31A1EA82800C3BA9B"
+               BuildableName = "shunit2_Tests.xctest"
+               BlueprintName = "shunit2_Tests"
+               ReferencedContainer = "container:shunit2.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
