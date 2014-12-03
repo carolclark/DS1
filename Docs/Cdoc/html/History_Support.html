@@ -17,8 +17,8 @@
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
+		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "<a href='http://github.com/carolclark/Support/issues/31'>(#31)</a>" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
-		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
 		<!-- @topicGroup "" "8" -->
@@ -78,6 +78,42 @@
 			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
 	* new Developer target AppleScripts installs content from existing BuildSupport/Developer/AppleScripts
 		* tests may be just a custom script based on TestVarTypes
+</pre>
+
+<h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
+	* add python function mergeMessage(branchName="",issueNum=0)
+		* new project CCDev with initial passing Python test testScm.py
+			* move python scripts to folder ${CCDev}/bin/ccdev; use test suites and discovery
+	* add file templates for python scripts and test cases
+	* merge_message accepts command-line arguments
+		* rename mergeMessage to merge_message for style compatiblity
+		* add and test cmdline access to merge_message
+		* Slate command git:getMergeMessage
+	* refactor
+		* simplify &amp; refactor Developer build
+			* Developer build: Developer_Setup always runs
+	* scm.main handles multiple subcommands
+		* extract util.parse_cmdlist
+	* Slate: scm.changes: diff --name-status and lg for arg1..arg2 (eg. "changes master currentBranch")
+		* see <a href="http://github.com/carolclark/Support/issues/29">(#29)</a> git workflow support
+	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+	* Python Build Script
+		* *replace CCDev_install.ksh with CCDev_build.py that is simpler and easier to test*
+		* refactor existing python modules
+			* use Doxygen for documentation
+			* test command-line use with shunit
+			* Slates: Python subslate with def's for functions and tests; FileMerge handles non-ascii dialog
+		* CCDev_build.py
+
+			* planned differences in behavior from existing CCDev_install.ksh:
+				* args: $(ACTION) only; get folder calculations from $0/sys.argv[0]
+				* CCDev.fauxprod: write in installer; add to group FauxProducts
+				* use .fauxprod file instead of .lastbuilt
+					* ccInstall: add duplicates of lastbuilt functions named fauxprod; lastbuilt functions call fauxprod
+				* separate targets for UnitTests and ConformanceTests
+					* ccInstall.runShunitTests takes optional parameter testType (-U|-C) used to filter on "test(U|C)_*" instead of test* if indicated
+				* fix find 'git' issue in ccInstall findSources - use python function
+	* refactor ksh scripts: for files dotted in at the top, move help information to follow them so included help info does not replace file's info
 </pre>
 
 <!-- @marker "restructure Xcode projects" -->
@@ -191,7 +227,6 @@
 					* add target shunit2, product shunit2.fauxprod
 					* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
 						* cd "${HOME}/Library/CCDev/shunit/src"; "${HOME}/Library/CCDev/shunit/src/shunit2_test.sh"
-			<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 			* CCDev
 				* [projCCDev] new project Developer/CCDev based on existing Developer/Developer
 					* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/CCDev
@@ -207,19 +242,9 @@
 						* Also:
 							* this code is already too complex for what it does
 							* code is conceptually object oriented
-						* rewrite CCDev_install.ksh in python
-				* CCDev_build.py
-					* *replace CCDev_install.ksh with CCDev_build.py that is simpler and easier to test*
-
-					* planned steps retained for now:
-						* args: $(ACTION) only; get folder calculations from $0/sys.argv[0]
-						* CCDev.fauxprod: write in installer; add to group FauxProducts
-						* use .fauxprod file instead of .lastbuilt
-							* ccInstall: add duplicates of lastbuilt functions named fauxprod; lastbuilt functions call fauxprod
-						* separate targets for UnitTests and ConformanceTests
-						* ccInstall.runShunitTests takes optional parameter testType (-U|-C) used to filter on "test(U|C)_*" instead of test* if indicated
-		* ...
-
+					* switch to rewriting CCDev_install.ksh in python
+		<span class='tlmark'>&lt;-- 12/02/2004</span>
+		* Python Build Script: <a href="#PythonWorkflow">Python and Workflow Support</a>
 		* Support
 			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
 			* verify no useful content remaining in project Developer; delete
@@ -250,30 +275,6 @@
 	* Configuration files
 		* upgrade Accessor config files as much as works now
 		* use templates and/or SourceTree folder to make files sharable
-</pre>
-
-<h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
-	* add python function mergeMessage(branchName="",issueNum=0)
-		* new project CCDev with initial passing Python test testScm.py
-			* move python scripts to folder ${CCDev}/bin/ccdev; use test suites and discovery
-	* add file templates for python scripts and test cases
-	* merge_message accepts command-line arguments
-		* rename mergeMessage to merge_message for style compatiblity
-		* add and test cmdline access to merge_message
-		* Slate command git:getMergeMessage
-	* refactor
-		* simplify &amp; refactor Developer build
-			* Developer build: Developer_Setup always runs
-			<span class='tlmark'>&lt;--</span>
-			* refactor ksh scripts: for files dotted in at the top, move help information to follow them so included help info does not replace file's info
-	* Slates: Python subslate with def's for functions and tests
-	* scm.main handles multiple subcommands
-		* extract ccdev.parse_cmdline
-	* scm methods &lt;function&gt;_cmd handle parameter passing and result display for command-line use of &lt;function&gt;; consider testing with shunit
-	* scm.changes: diff --name-status and lg for arg1..arg2 (eg. "changes master currentBranch") (see <a href="http://github.com/carolclark/Support/issues/29">(#29)</a> git workflow support)
-	* fix find 'git' issue in ccInstall findS1ources
-		* function find_source_files (path)
-	* ?add ccdev.dir, ccdev.help - shell command-line versions of python dir, help
 </pre>
 
 <h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
