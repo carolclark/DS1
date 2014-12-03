@@ -52,7 +52,7 @@
 		676695E3191ACD05005D3CED /* htpasswd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htpasswd; sourceTree = "<group>"; };
 		676695E5191AE03D005D3CED /* htaccess */ = {isa = PBXFileReference; lastKnownFileType = text; path = htaccess; sourceTree = "<group>"; };
 		676695E6191AE03D005D3CED /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		67B4601119199472007FB11A /* Doxygen_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
+		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -206,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				676695B41919A748005D3CED /* Default.doxygen */,
-				67B4601119199472007FB11A /* Doxygen_install.ksh */,
+				67B4601119199472007FB11A /* DoxyDemo_install.ksh */,
 				676695A519199779005D3CED /* DoxyDemo_doxygen.txt */,
 			);
 			path = Doxygen;
@@ -229,17 +229,17 @@
 			passBuildSettingsInEnvironment = 0;
 			productName = Cdoc;
 		};
-		67B4600C1919939A007FB11A /* Doxygen */ = {
+		67B4600C1919939A007FB11A /* DoxyDemo */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "\"${SRCROOT}\" ${TARGET_NAME} $(ACTION)";
-			buildConfigurationList = 67B4600F1919939A007FB11A /* Build configuration list for PBXLegacyTarget "Doxygen" */;
+			buildArgumentsString = "\"${SRCROOT}\" Doxygen $(ACTION)";
+			buildConfigurationList = 67B4600F1919939A007FB11A /* Build configuration list for PBXLegacyTarget "DoxyDemo" */;
 			buildPhases = (
 			);
-			buildToolPath = "${TARGET_NAME}/${TARGET_NAME}_install.ksh";
+			buildToolPath = Doxygen/DoxyDemo_install.ksh;
 			buildWorkingDirectory = "";
 			dependencies = (
 			);
-			name = Doxygen;
+			name = DoxyDemo;
 			passBuildSettingsInEnvironment = 0;
 			productName = Doxygen;
 		};
@@ -262,7 +262,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				67B4600C1919939A007FB11A /* Doxygen */,
+				67B4600C1919939A007FB11A /* DoxyDemo */,
 				676695AA19199CC1005D3CED /* Cdoc */,
 			);
 		};
@@ -458,7 +458,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67B4600F1919939A007FB11A /* Build configuration list for PBXLegacyTarget "Doxygen" */ = {
+		67B4600F1919939A007FB11A /* Build configuration list for PBXLegacyTarget "DoxyDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67B4600D1919939A007FB11A /* Debug */,
