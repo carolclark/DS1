@@ -1,24 +1,23 @@
-# ___FILENAME___
-# Created by ___FULLUSERNAME___ on ___DATE___ for repository <#RepositoryName#>.
+# Support_doxygen.txt
+# Created by Carol Clark on 12/3/14 for repository Support.
 
 # This configuration file includes only the settings we wish to set or change.
 # For more information about these settings, or about the many additional settings available,
 #	see Support/BuildSupport/Doxygen/Default.doxygen or the Doxygen application.
 
-PROJECT_NAME			= <#RepositoryName#>
-OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/<#RepositoryName#>
-STRIP_FROM_PATH			= $(HOME)/Dev/<#RepositoryName#>
+PROJECT_NAME			= Support
+OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/Support
+STRIP_FROM_PATH			= $(HOME)/Dev/Support
 EXTRACT_ALL				= YES
-INPUT					= $(HOME)/Dev/<#RepositoryName#>/<#SourcePath#>
+INPUT					= $(HOME)/Dev/Support/Developer/Python/Scripts
 EXCLUDE_PATTERNS		= *.plist *.pch
 EXCLUDE					= en.lproj
 RECURSIVE				= YES
 EXAMPLE_PATTERNS		= *
 GENERATE_DOCSET			= YES
-DOCSET_FEEDNAME			= <#RepositoryName#>
-DOCSET_BUNDLE_ID		= com.candcsoft.<#RepositoryName#>
+DOCSET_FEEDNAME			= Support
+DOCSET_BUNDLE_ID		= com.candcsoft.Support
 DOCSET_PUBLISHER_ID		= com.candcsoft.Publisher
 GENERATE_LATEX			= NO
-IMAGE_PATH				= $(HOME)/Dev/<#RepositoryName#>/Docs/Images
-<#ifPython#>
+IMAGE_PATH				= $(HOME)/Dev/Support/Docs/Images
 OPTIMIZE_OUTPUT_JAVA	= YES

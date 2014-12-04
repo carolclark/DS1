@@ -53,6 +53,8 @@
 		676695E5191AE03D005D3CED /* htaccess */ = {isa = PBXFileReference; lastKnownFileType = text; path = htaccess; sourceTree = "<group>"; };
 		676695E6191AE03D005D3CED /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
+		67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
+		67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -208,6 +210,8 @@
 				676695B41919A748005D3CED /* Default.doxygen */,
 				67B4601119199472007FB11A /* DoxyDemo_install.ksh */,
 				676695A519199779005D3CED /* DoxyDemo_doxygen.txt */,
+				67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */,
+				67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */,
 			);
 			path = Doxygen;
 			sourceTree = "<group>";
@@ -243,6 +247,20 @@
 			passBuildSettingsInEnvironment = 0;
 			productName = Doxygen;
 		};
+		67D506DA1A2FC5A7000BF1CF /* Doxygen */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "\"${SRCROOT}\" ${TARGET_NAME} $(ACTION)";
+			buildConfigurationList = 67D506DD1A2FC5A7000BF1CF /* Build configuration list for PBXLegacyTarget "Doxygen" */;
+			buildPhases = (
+			);
+			buildToolPath = "${TARGET_NAME}/${TARGET_NAME}_install.ksh";
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Doxygen;
+			passBuildSettingsInEnvironment = 1;
+			productName = Doxygen;
+		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXProject section */
@@ -264,6 +282,7 @@
 			targets = (
 				67B4600C1919939A007FB11A /* DoxyDemo */,
 				676695AA19199CC1005D3CED /* Cdoc */,
+				67D506DA1A2FC5A7000BF1CF /* Doxygen */,
 			);
 		};
 /* End PBXProject section */
@@ -437,6 +456,20 @@
 			};
 			name = Release;
 		};
+		67D506DB1A2FC5A7000BF1CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67D506DC1A2FC5A7000BF1CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -463,6 +496,15 @@
 			buildConfigurations = (
 				67B4600D1919939A007FB11A /* Debug */,
 				67B4600E1919939A007FB11A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67D506DD1A2FC5A7000BF1CF /* Build configuration list for PBXLegacyTarget "Doxygen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67D506DB1A2FC5A7000BF1CF /* Debug */,
+				67D506DC1A2FC5A7000BF1CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
