@@ -3,7 +3,7 @@
 #  Doxygen_install.ksh
 #  Support
 #
-#  Created by Carol Clark on 12/3/14.
+#  Created by Carol Clark on 5/6/14.
 #  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
 
 USAGE='
@@ -38,7 +38,7 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"Doxygen" )
-			destinationFolder="${CCDev}/Sites/Doxygen/Support"
+			destinationFolder="${CCDev}/Sites/Doxygen/DoxyDemo"
 			;;
 		# Doxygen: local folders not processed
 		* )

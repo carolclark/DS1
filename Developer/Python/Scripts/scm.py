@@ -16,13 +16,17 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
+## @package scm
+#  methods to support Source Control
+
+##	construct scm merge message for the specified branch
+#
+#	@param	branchName	branch to be merged
+#	@param	repoIssue	GitHub issue number
+#	@param	repository	-r: repository containing repoIssue (optional)
+#
+#	@todo	add param -d to append details from content of $CCDev/tmp/gitmessage.txt
 def merge_message(branchName="", repoIssue="", repository=""):
-	""" construct scm merge message for the specified branch
-
-		includes branchName, and GitHub repoIssue if nonzero
-		if present, repository specifies repository for repoIssue
-	"""
-
 	msg = "Merge branch"
 	if (len(str(branchName))) > 0:
 		msg = msg + " '" + str(branchName) + "'"
@@ -35,11 +39,10 @@ def merge_message(branchName="", repoIssue="", repository=""):
 	return msg
 
 
+##	process argments for Source Control commands
+#
+#	function is separate to allow direct testing
 def parse_scm_args(cmdlist=None):
-	""" process argments for Source Control commands
-
-		function is separate in order to allow direct testing
-	"""
 
 	# create the top-level parser
 	parser = argparse.ArgumentParser(description="source control utility functions")
@@ -59,8 +62,8 @@ def parse_scm_args(cmdlist=None):
 	return args
 
 
+##	process command-line input and dispatch to selected function
 def main(cmdlist=None):
-	""" process command-line input and dispatch to selected function """
 
 	args = parse_scm_args(cmdlist)
 	if not args:		# help request

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67D506DA1A2FC5A7000BF1CF"
-               BuildableName = "Doxygen"
-               BlueprintName = "Doxygen"
+               BlueprintIdentifier = "67B4600C1919939A007FB11A"
+               BuildableName = "DoxyDemo"
+               BlueprintName = "DoxyDemo"
                ReferencedContainer = "container:Docs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
