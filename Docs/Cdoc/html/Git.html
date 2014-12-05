@@ -128,20 +128,22 @@
 				<li>check stash list</li>
 				<li>[[set $cb; <span class='em'>Update Master from Remotes</span>; checkout $cb]; <span class='em'>Merge Master</span> (or rebase?)]</li>
 			</ul>
-			<p><b>[Push]:</b> <span class='body'>status; verify branch; push</span></p>
+			<p><b>Publish</b> <span class='body'>[Push]: status; verify branch; push</span></p>
 		</div>
-		<h5>[Merge]</h5><ul>
-			<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-			<li>checkout master; check for unmerged branches; <span class='em'>ShowCompare</span> master..$cb</li>
-			<li><span class='em'>Update</span> and <span class='em'>Merge Master</span></li>
-			<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
-			<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
-			<li>show --name-only; lg</li>
-			<li>check for unmerged branches; verify no stashes on &lt;branch&gt;</li>
-			<li>[retest]; <span class='em'>ShowCompare</span> origin..master; push</li>
-			<li>[delete branch]: delete branch; delete remote: <span class='mono'>push origin :&lt;branchName&gt;</span></li>
-		</ul>
-		<h5>[Archive Repository]</h5>
+		<h5>Put Away Branch</h5><div class='indent'>
+			<p><b>Merge</b></p><ul>
+				<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
+				<li>checkout master; check for unmerged branches; <span class='em'>ShowCompare</span> master..$cb</li>
+				<li><span class='em'>Update</span> and <span class='em'>Merge Master</span></li>
+				<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
+				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
+				<li>show --name-only; lg</li>
+				<li>check for unmerged branches; verify no stashes on &lt;branch&gt;</li>
+				<li>[retest]; <span class='em'>ShowCompare</span> origin..master; push</li>
+				<li>[delete branch]: delete branch; delete remote: <span class='mono'>push origin :&lt;branchName&gt;</span></li>
+			</ul>
+			<p><b>[Archive Repository]</b></li>
+		</div>
 	</div>
 </div>
 
