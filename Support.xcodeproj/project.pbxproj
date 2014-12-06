@@ -1,0 +1,353 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		67AF8AE41A326D4000A88E8D /* Support_AllTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 67AF8AE51A326D4000A88E8D /* Build configuration list for PBXAggregateTarget "Support_AllTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				67AF8B281A33A0FC00A88E8D /* PBXTargetDependency */,
+				67AF8B221A33963D00A88E8D /* PBXTargetDependency */,
+				67AF8B241A33963D00A88E8D /* PBXTargetDependency */,
+			);
+			name = Support_AllTests;
+			productName = Support_AllTargets;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXContainerItemProxy section */
+		67AF8AC21A32671C00A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8AB61A32671B00A88E8D /* Developer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6755BCE21922CC28005DC27D;
+			remoteInfo = DeveloperTests;
+		};
+		67AF8AC61A32671C00A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8AB91A32671B00A88E8D /* Python.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 679120F119E0907F00B2AEDA;
+			remoteInfo = Python_UTests;
+		};
+		67AF8ACA1A32671C00A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8ABC1A32671B00A88E8D /* shunit2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 67CDC5E41A1EA82800C3BA9B;
+			remoteInfo = shunit2_Tests;
+		};
+		67AF8AD41A32676000A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8ACC1A32676000A88E8D /* BuildSupport.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 67692458141EB921005D3E68;
+			remoteInfo = XcodeScripts;
+		};
+		67AF8AD61A32676000A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8ACC1A32676000A88E8D /* BuildSupport.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 671C4824159CFF3800214A9E;
+			remoteInfo = BBEditScripts;
+		};
+		67AF8AD81A32676000A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8ACC1A32676000A88E8D /* BuildSupport.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 67364A7316C0362C00940D94;
+			remoteInfo = DeveloperScripts;
+		};
+		67AF8B211A33963D00A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8AB61A32671B00A88E8D /* Developer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6755BCE11922CC28005DC27D;
+			remoteInfo = DeveloperTests;
+		};
+		67AF8B231A33963D00A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8AB91A32671B00A88E8D /* Python.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 679120F019E0907F00B2AEDA;
+			remoteInfo = Python_UTests;
+		};
+		67AF8B271A33A0FC00A88E8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AF8ABC1A32671B00A88E8D /* shunit2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 67CDC5E31A1EA82800C3BA9B;
+			remoteInfo = shunit2_Tests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		67AF8AAC1A3266E200A88E8D /* Docs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Docs.xcodeproj; path = Docs/Docs.xcodeproj; sourceTree = "<group>"; };
+		67AF8AB31A32671B00A88E8D /* CCDev.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CCDev.xcodeproj; path = Developer/CCDev.xcodeproj; sourceTree = "<group>"; };
+		67AF8AB61A32671B00A88E8D /* Developer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Developer.xcodeproj; path = Developer/Developer.xcodeproj; sourceTree = "<group>"; };
+		67AF8AB91A32671B00A88E8D /* Python.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Python.xcodeproj; path = Developer/Python.xcodeproj; sourceTree = "<group>"; };
+		67AF8ABC1A32671B00A88E8D /* shunit2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = shunit2.xcodeproj; path = Developer/shunit2.xcodeproj; sourceTree = "<group>"; };
+		67AF8ACC1A32676000A88E8D /* BuildSupport.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BuildSupport.xcodeproj; path = BuildSupport/BuildSupport.xcodeproj; sourceTree = "<group>"; };
+		67AF8B011A326F4700A88E8D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		67AF8B111A3271CA00A88E8D /* Support_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Support_ReadMe.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		67AF890B1A32660C00A88E8D = {
+			isa = PBXGroup;
+			children = (
+				67AF8B111A3271CA00A88E8D /* Support_ReadMe.html */,
+				67AF8AAC1A3266E200A88E8D /* Docs.xcodeproj */,
+				67AF8AB21A3266FE00A88E8D /* Developer */,
+				67AF8ACC1A32676000A88E8D /* BuildSupport.xcodeproj */,
+				67AF8B001A326F4700A88E8D /* Frameworks */,
+				67AF8AFF1A326F4700A88E8D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67AF8AAD1A3266E200A88E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67AF8AB21A3266FE00A88E8D /* Developer */ = {
+			isa = PBXGroup;
+			children = (
+				67AF8AB31A32671B00A88E8D /* CCDev.xcodeproj */,
+				67AF8AB61A32671B00A88E8D /* Developer.xcodeproj */,
+				67AF8AB91A32671B00A88E8D /* Python.xcodeproj */,
+				67AF8ABC1A32671B00A88E8D /* shunit2.xcodeproj */,
+			);
+			name = Developer;
+			sourceTree = "<group>";
+		};
+		67AF8AB41A32671B00A88E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67AF8AB71A32671B00A88E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67AF8AC31A32671C00A88E8D /* DeveloperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67AF8ABA1A32671B00A88E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67AF8AC71A32671C00A88E8D /* Python_UTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67AF8ABD1A32671B00A88E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67AF8ACB1A32671C00A88E8D /* shunit2_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67AF8ACD1A32676000A88E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67AF8AD51A32676000A88E8D /* XcodeScripts.bundle */,
+				67AF8AD71A32676000A88E8D /* BBEditScripts.bundle */,
+				67AF8AD91A32676000A88E8D /* DeveloperScripts.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67AF8AFF1A326F4700A88E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67AF8B001A326F4700A88E8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67AF8B011A326F4700A88E8D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		67AF890C1A32660C00A88E8D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = 67AF890F1A32660C00A88E8D /* Build configuration list for PBXProject "Support" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 67AF890B1A32660C00A88E8D;
+			productRefGroup = 67AF8AFF1A326F4700A88E8D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 67AF8ACD1A32676000A88E8D /* Products */;
+					ProjectRef = 67AF8ACC1A32676000A88E8D /* BuildSupport.xcodeproj */;
+				},
+				{
+					ProductGroup = 67AF8AB41A32671B00A88E8D /* Products */;
+					ProjectRef = 67AF8AB31A32671B00A88E8D /* CCDev.xcodeproj */;
+				},
+				{
+					ProductGroup = 67AF8AB71A32671B00A88E8D /* Products */;
+					ProjectRef = 67AF8AB61A32671B00A88E8D /* Developer.xcodeproj */;
+				},
+				{
+					ProductGroup = 67AF8AAD1A3266E200A88E8D /* Products */;
+					ProjectRef = 67AF8AAC1A3266E200A88E8D /* Docs.xcodeproj */;
+				},
+				{
+					ProductGroup = 67AF8ABA1A32671B00A88E8D /* Products */;
+					ProjectRef = 67AF8AB91A32671B00A88E8D /* Python.xcodeproj */;
+				},
+				{
+					ProductGroup = 67AF8ABD1A32671B00A88E8D /* Products */;
+					ProjectRef = 67AF8ABC1A32671B00A88E8D /* shunit2.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				67AF8AE41A326D4000A88E8D /* Support_AllTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		67AF8AC31A32671C00A88E8D /* DeveloperTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DeveloperTests.xctest;
+			remoteRef = 67AF8AC21A32671C00A88E8D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67AF8AC71A32671C00A88E8D /* Python_UTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Python_UTests.xctest;
+			remoteRef = 67AF8AC61A32671C00A88E8D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67AF8ACB1A32671C00A88E8D /* shunit2_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = shunit2_Tests.xctest;
+			remoteRef = 67AF8ACA1A32671C00A88E8D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67AF8AD51A32676000A88E8D /* XcodeScripts.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = XcodeScripts.bundle;
+			remoteRef = 67AF8AD41A32676000A88E8D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67AF8AD71A32676000A88E8D /* BBEditScripts.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BBEditScripts.bundle;
+			remoteRef = 67AF8AD61A32676000A88E8D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67AF8AD91A32676000A88E8D /* DeveloperScripts.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DeveloperScripts.bundle;
+			remoteRef = 67AF8AD81A32676000A88E8D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXTargetDependency section */
+		67AF8B221A33963D00A88E8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DeveloperTests;
+			targetProxy = 67AF8B211A33963D00A88E8D /* PBXContainerItemProxy */;
+		};
+		67AF8B241A33963D00A88E8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Python_UTests;
+			targetProxy = 67AF8B231A33963D00A88E8D /* PBXContainerItemProxy */;
+		};
+		67AF8B281A33A0FC00A88E8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = shunit2_Tests;
+			targetProxy = 67AF8B271A33A0FC00A88E8D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		67AF89101A32660C00A88E8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		67AF89111A32660C00A88E8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		67AF8AE61A326D4000A88E8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67AF8AE71A326D4000A88E8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67AF890F1A32660C00A88E8D /* Build configuration list for PBXProject "Support" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AF89101A32660C00A88E8D /* Debug */,
+				67AF89111A32660C00A88E8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67AF8AE51A326D4000A88E8D /* Build configuration list for PBXAggregateTarget "Support_AllTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AF8AE61A326D4000A88E8D /* Debug */,
+				67AF8AE71A326D4000A88E8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67AF890C1A32660C00A88E8D /* Project object */;
+}

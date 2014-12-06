@@ -84,23 +84,42 @@
 
 <!-- @topicList "Projects and Targets" "Target_" -->
 	<!-- @topicGroup "Projects" "1" -->
+		<!-- @topicItem "New Repository Project" "#NewRepositoryProject" "0" "" -->
 		<!-- @topicItem "New Cocoa Project" "#NewCocoaProject" "0" "" -->
 		<!-- @topicItem "New Docs Project" "#NewDocsProject" "0" "" -->
 		<!-- @topicItem "New Scripted Build Project" "#NewScriptedBuildProject" "0" "" -->
 		<!-- @topicItem "Reorganize Sources" "#ReorganizeSources" "0" "" -->
 		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Targets" "8" -->
+	<!-- @topicGroup "Targets" "9" -->
 		<!-- @topicItem "Add Cocoa Test Target" "#AddCocoaTestTarget" "0" "" -->
 		<!-- @topicItem "Add Scripted Build Test Target" "#AddScriptedBuildTestTarget" "0" "for non-Cocoa targets" -->
+		<!-- @topicItem "Add Aggregate Test Target" "#AddAggregateTestTarget" "0" "" -->
 		<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
 		<!-- @topicItem "New AppleScript Project" "#NewAppleScriptProject" "0" "" -->
 		<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 		<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Target Tasks" "17" -->
+	<!-- @topicGroup "Target Tasks" "18" -->
 		<!-- @topicItem "Rename Target" "#RenameTarget" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "New Repository Project" -->
+<h4 id='NewRepositoryProject'>New Repository Project</h4><pre>
+	* *top-level repository project contains references to all other projects in repo*
+		* *allows references between targets in different repo projects, including aggregate targets*
+	* in Xcode, close any open windows that contain this repository's projects
+	* create new empty project &lt;RepositoryName&gt;/&lt;RepositoryName&gt;
+	* move project root level of repository; discard extra folder &lt;RepositoryName&gt;/&lt;RepositoryName&gt;
+	* <a href="#AddAggregateTestTarget">Add Aggregate Test Target</a> &lt;RepositoryName&gt;_AllTests
+</pre>
+
+<!-- @marker "Add Aggregate Test Target" -->
+<h4 id='AddAggregateTestTarget'>Add Aggregate Test Target</h4><pre>
+	* add Aggregate Target &lt;GroupName&gt;_AllTests
+	* in Build Phases &gt; Target Dependencies: add each test target
+	* edit scheme &lt;GroupName&gt;_AllTests: add each test target to Tests action; mark scheme as shared
+</pre>
 
 <!-- @marker "New Cocoa Project" -->
 <h4 id='NewCocoaProject'>New Cocoa Project</h4><pre>
@@ -215,6 +234,7 @@
 		<li>for pure Objective-C targets: Precompile Prefix Header: no; remove Precompiled Header path</li>
 		<li>for App Tests: set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
 	</ul></li>
+	<li>add to aggregate target All&lt;ProjectName&gt;Tests, and to All&lt;RepoName&gt;Tests if indicated</li>
 	<li>Test Class<ul>
 		<li>rename supplied file &lt;TestTarget&gt;_[U|C|P]Tests</li>
 		<li>new file &lt;TestTarget&gt;_[U|C|P]Tests from template<ul>
@@ -256,6 +276,7 @@
 		* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; test
 		* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
 	* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
+	* add to aggregate target All&lt;ProjectName&gt;Tests, and to All&lt;RepoName&gt;Tests if indicated
 	* Schemes:Manage: add scheme &lt;TestTarget&gt;_(U|C|P)Tests; mark as shared; verify &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
 	* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;_(U|C|P)Tests
 </pre>
