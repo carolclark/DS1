@@ -79,27 +79,27 @@ class TestRemoveFolder(unittest.TestCase):
 		self.assertEqual(args.parent, None)
 		self.assertEqual(args.dry_run, 'DRY_RUN')
 
-		args = util.parse_utility_args(['remove_folder', 'aPath'])
-		self.assertEqual(args.cmd, 'remove_folder')
+		args = util.parse_utility_args(['remove_my_folder', 'aPath'])
+		self.assertEqual(args.cmd, 'remove_my_folder')
 		args = util.parse_utility_args(['rf', 'somewhere'])
 		self.assertEqual(args.cmd, 'rf')
 		self.assertEqual(args.folder, 'somewhere')
 
-		args = util.parse_utility_args(['remove_folder', 'aPath', '--parent', 'parentArg'])
-		self.assertEqual(args.cmd, 'remove_folder')
+		args = util.parse_utility_args(['remove_my_folder', 'aPath', '--parent', 'parentArg'])
+		self.assertEqual(args.cmd, 'remove_my_folder')
 		self.assertEqual(args.parent, ['parentArg'])
 
-		args = util.parse_utility_args(['remove_folder', 'aPath', '--parent', 'parentArg', '--dry-run'])
+		args = util.parse_utility_args(['remove_my_folder', 'aPath', '--parent', 'parentArg', '--dry-run'])
 		self.assertTrue(args.dry_run)
-		args = util.parse_utility_args(['remove_folder', 'aPath', '--parent', 'parentArg'])
+		args = util.parse_utility_args(['remove_my_folder', 'aPath', '--parent', 'parentArg'])
 		self.assertFalse(args.dry_run)
 
 
-	def test_remove_folder_cmd(self):
-		""" test: scm.main(['remove_folder', 'folder'[, '--parent PARENT'], ['--dry-run]]) """
+	def test_remove_my_folder_cmd(self):
+		""" test: scm.main(['remove_my_folder', 'folder'[, '--parent PARENT'], ['--dry-run]]) """
 
 		# folder present; would have been removed
-		self.assertTrue(util.main(['remove_folder', 'CCDev/tmp', '--dry-run']).startswith('=== ' + self.home + '/Library/CCDev/tmp:'))
+		self.assertTrue(util.main(['remove_my_folder', 'CCDev/tmp', '--dry-run']).startswith('=== ' + self.home + '/Library/CCDev/tmp:'))
 
 		# syntax errors for invalid input
 		with self.assertRaises(SyntaxError):
@@ -179,17 +179,17 @@ class TestRemoveFolder(unittest.TestCase):
 		self.assertFalse(os.path.isdir(folder))
 
 
-	def test_remove_folder_at_home_path(self):
+	def test_remove_my_folder(self):
 		""" test: dry-runs; verify action that would have been taken """
 
 		# success - would remove folder
-		_, remove_count = util.remove_folder_at_home_path('CCDev/tmp', dry_run='DRY_RUN')
+		_, remove_count = util.remove_my_folder('CCDev/tmp', dry_run='DRY_RUN')
 		self.assertNotEqual(remove_count, 0)
 
 		# no action if specified folder not present; may already have been removed
-		_, remove_count = util.remove_folder_at_home_path("xxxxx", dry_run='DRY_RUN')
+		_, remove_count = util.remove_my_folder("xxxxx", dry_run='DRY_RUN')
 		self.assertEqual(remove_count, 0)
-		_, remove_count = util.remove_folder_at_home_path('aFolder', "~/parent", 'DRY_RUN')
+		_, remove_count = util.remove_my_folder ('aFolder', "~/parent", 'DRY_RUN')
 		self.assertEqual(remove_count, 0)
 
 

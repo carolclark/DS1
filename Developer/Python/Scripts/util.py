@@ -18,12 +18,13 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-def remove_folder_at_home_path(folder, parent=None, dry_run=False):
-	""" test: removes <folder> and its contents from inside directory ~/
-
-		if supplied, parent must begin with ~/; default: ~/Library
-			intended to protect against unintended deletion
-	"""
+##	removes <folder> and its contents from inside directory ~/
+#
+#	@param	folder	folder to be removed; must be in user's home folder
+#	@param	parent	immediate parent directory of &lt;folder&gt;;
+#					optional - default: ~/Library; if supplied, must begin with ~/
+#						intended to protect against unintended deletion
+def remove_my_folder(folder, parent=None, dry_run=False):
 
 	try:
 		targetPath = path_to_remove(folder, parent)
@@ -34,7 +35,7 @@ def remove_folder_at_home_path(folder, parent=None, dry_run=False):
 
 
 def path_to_remove(folder, parent=None):
-	""" constructs and verifies path to the folder to be removed by remove_folder_at_home_path
+	""" constructs and verifies path to the folder to be removed by remove_my_folder
 
 		returns path to folder to be removed
 		returns None if path does not exist (folder may already have been removed)
@@ -221,8 +222,8 @@ def parse_utility_args(cmdlist=None):
 	parser_ps = subparsers.add_parser('parse_cmdlist', aliases=['ps'], help="parses command list <cmdlist> with parser <parser>")
 	parser_ps.add_argument("parser", help="parser to use")
 
-	# create remove_folder parser
-	parser_rf = subparsers.add_parser('remove_folder', aliases=['rf'], help="removes a folder and its contents from inside ${HOME}/Library")
+	# create remove_my_folder parser
+	parser_rf = subparsers.add_parser('remove_my_folder', aliases=['rf'], help="removes a folder and its contents from inside ${HOME}/Library")
 	parser_rf.add_argument("folder", help="folder to remove")
 	parser_rf.add_argument("--parent", '-p', nargs=1, help="parent folder ~/<path>; default: ~/Library")
 	parser_rf.add_argument("--dry-run", '-d', action='store_const', const='DRY_RUN', help="take no action, but report what the command would do")
@@ -241,11 +242,11 @@ def main(cmdlist=None):
 
 	if args.cmd == 'parse_cmdlist' or args.cmd == 'ps':
 		raise SyntaxError("parse_cmdlist not supported from command line")
-	if args.cmd == 'remove_folder' or args.cmd == 'rf':
+	if args.cmd == 'remove_my_folder' or args.cmd == 'rf':
 		parent = None
 		if args.parent:
 			parent = args.parent[0]
-		output, remove_count = remove_folder_at_home_path(args.folder, parent, args.dry_run)
+		output, remove_count = remove_my_folder(args.folder, parent, args.dry_run)
 		return output + '\n(remove_count: ' + str(remove_count) + ')'
 
 

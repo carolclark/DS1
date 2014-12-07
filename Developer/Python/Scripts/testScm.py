@@ -18,8 +18,8 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 class TestMergeMessage(unittest.TestCase):
 
+	##	test: parse_scm_args(cmdlist=None) parses arguments as expected
 	def test_parse_command_list(self):
-		""" test: parse_scm_args(cmdlist=None) parses arguments as expected"""
 
 		args = scm.parse_scm_args(['sb'])
 		self.assertEqual(args.cmd, 'sb')
@@ -35,8 +35,8 @@ class TestMergeMessage(unittest.TestCase):
 		self.assertEqual(args.repository, ['Repo'])
 
 
+	##	test: merge_message(branchName="", repoIssue=0)
 	def test_merge_message(self):
-		""" test: merge_message(branchName="", repoIssue=0) """
 
 		self.assertEqual(scm.merge_message("abc", 55), "Merge branch 'abc' (#55)")
 		self.assertEqual(scm.merge_message("aBranch3", '76', 'Repo'), "Merge branch 'aBranch3' (Repo#76)")
@@ -49,12 +49,11 @@ class TestMergeMessage(unittest.TestCase):
 		self.assertEqual(scm.merge_message('aTask', '567', "Repo"), "Merge branch 'aTask' (Repo#567)")
 
 
+	##	test: scm.main(['merge_message', 'branchName', 'repoIssue'])
+	#
+	#	equivalent to command line:
+	#		scm.py merge_message <branchName> <repoIssue>
 	def test_merge_message_cmd(self):
-		""" test: scm.main(['merge_message', 'branchName', 'repoIssue'])
-
-			equivalent to command line:
-				scm.py merge_message <branchName> <repoIssue>
-		"""
 
 		self.assertEqual(scm.main(['merge_message', 'abc', '40']), "Merge branch 'abc' (#40)")
 		self.assertEqual(scm.main(['mm', 'xyz', '24']), "Merge branch 'xyz' (#24)")

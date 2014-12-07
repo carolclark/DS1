@@ -105,6 +105,11 @@
 				* new target Doxygen documents Python files
 		* new project Support; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
 		* refactor existing python modules [refactorPython2]
+			* util.py: rename function remove_folder_at_home_path, command remove_folder to remove_my_folder
+			* Python_CTests
+				* move slow tests from Python_UTests to Python_CTests
+					* all API documentation uses Python format
+				* add to target Support_AllTests
 			* test command-line use with shunit
 			* Slates: Python subslate with def's for functions and tests; FileMerge handles non-ascii dialog
 		* CCDev_build.py
@@ -253,6 +258,7 @@
 			* replace top-level repository &lt;RepoName&gt;.workspace with &lt;RepoName&gt;.xcodeproj
 				* * supports aggregating targets from among all targets of the Repository
 			* add tests Python_UTests, DeveloperTests
+		<span class='tldate'>[12/06/2014]</span>
 		* Support
 			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
 			* verify no useful content remaining in project Developer; delete
