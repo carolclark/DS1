@@ -52,7 +52,7 @@ class TestMergeMessage(unittest.TestCase):
 	##	test: scm.main(['merge_message', 'branchName', 'repoIssue'])
 	#
 	#	equivalent to command line:
-	#		scm.py merge_message <branchName> <repoIssue>
+	#		scm.py merge_message &lt;branchName&gt; &lt;repoIssue&gt;
 	def test_merge_message_cmd(self):
 
 		self.assertEqual(scm.main(['merge_message', 'abc', '40']), "Merge branch 'abc' (#40)")

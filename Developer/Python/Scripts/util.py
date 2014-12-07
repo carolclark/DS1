@@ -18,29 +18,36 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-##	removes <folder> and its contents from inside directory ~/
+##	removes &lt;folder&gt; and its contents from inside directory ~/
 #
 #	@param	folder	folder to be removed; must be in user's home folder
 #	@param	parent	immediate parent directory of &lt;folder&gt;;
 #					optional - default: ~/Library; if supplied, must begin with ~/
 #						intended to protect against unintended deletion
+#	@param	dry_run	take no action, but report what the command would do
+#	@return	tuple: command output; count of files removed
+#	@sa		uses path_to_my_folder()
 def remove_my_folder(folder, parent=None, dry_run=False):
 
 	try:
-		targetPath = path_to_remove(folder, parent)
+		targetPath = path_to_my_folder(folder, parent)
 	except:
 		raise
 
 	return do_remove_folder_with_contents(targetPath, dry_run)
 
 
-def path_to_remove(folder, parent=None):
-	""" constructs and verifies path to the folder to be removed by remove_my_folder
-
-		returns path to folder to be removed
-		returns None if path does not exist (folder may already have been removed)
-		raises SyntaxError if parent not in directory ~/, IOError if <folder> is not a directory
-	"""
+##	constructs and verifies path to a folder in User's home directory
+#
+#	@param	folder	folder in user's home folder
+#	@param	parent	immediate parent directory of &lt;folder&gt;;
+#					optional - default: ~/Library; if supplied, must begin with ~/
+#	@return			path to folder specified
+#					returns None if path does not exist
+#	@exception		SyntaxError if parent not in directory ~/
+#	@exception		IOError if &lt;folder&gt; is not a directory
+#	@sa				used by remove_my_folder()
+def path_to_my_folder(folder, parent=None):
 
 	if folder == None:
 		raise SyntaxError("subfolder not specified")
@@ -68,7 +75,7 @@ def path_to_remove(folder, parent=None):
 
 	# catch some disasters that should be impossible
 	if targetPath == parent + '/':
-		logging.error('no subfolder present in folder to remove: {}'.format(targetPath))
+		logging.error('no subfolder present for specified folder: {}'.format(targetPath))
 		raise SyntaxError("subfolder not specified")
 	if not targetPath.startswith(home):
 		logging.error("path '{}' not in home directory".format(targetPath))
@@ -161,10 +168,10 @@ def do_remove_fs_item(path, dry_run=False):
 
 
 def ensure_directory(path, dry_run=False):
-	""" ensure directory at <path> exists
+	""" ensure directory at &lt;path&gt; exists
 
 		uses permissions rw all for any folders created
-		no action if regular file is at <path>
+		no action if regular file is at &lt;path&gt;
 	"""
 
 	info = StringIO()

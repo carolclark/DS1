@@ -107,23 +107,23 @@ class TestRemoveFolder(unittest.TestCase):
 		with self.assertRaises(SyntaxError): util.main([])
 
 
-	def test_path_to_remove(self):
-		""" test: calculation and verification of path_to_remove """
+	def test_path_to_my_folder(self):
+		""" test: calculation and verification of path_to_my_folder """
 
 		# success
-		self.assertEqual(util.path_to_remove('CCDev/bin'), self.home + '/Library/CCDev/bin')
-		self.assertEqual(util.path_to_remove('bin', '~/Library/CCDev'), self.home + '/Library/CCDev/bin')
+		self.assertEqual(util.path_to_my_folder('CCDev/bin'), self.home + '/Library/CCDev/bin')
+		self.assertEqual(util.path_to_my_folder('bin', '~/Library/CCDev'), self.home + '/Library/CCDev/bin')
 
 		# returns None if path does not exist
-		self.assertEqual(util.path_to_remove('fake_name_xyz987'), None)
-		self.assertEqual(util.path_to_remove('abc'), None)
+		self.assertEqual(util.path_to_my_folder('fake_name_xyz987'), None)
+		self.assertEqual(util.path_to_my_folder('abc'), None)
 
 		# raise SyntaxError if composed path does not start with '~/'
-		with self.assertRaises(SyntaxError): util.path_to_remove('ab', '/c')
-		with self.assertRaises(SyntaxError): util.path_to_remove('', '/c')
+		with self.assertRaises(SyntaxError): util.path_to_my_folder('ab', '/c')
+		with self.assertRaises(SyntaxError): util.path_to_my_folder('', '/c')
 
 		# raise if path exists but is not a directory
-		with self.assertRaises(IOError): util.path_to_remove('CCDev/bin/errcc')
+		with self.assertRaises(IOError): util.path_to_my_folder('CCDev/bin/errcc')
 
 
 	def test_ensure_directory(self):
