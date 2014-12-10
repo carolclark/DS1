@@ -18,6 +18,13 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
+## @package util			utility functions
+#
+#	<b>Command-Line Interface:</b><ul>
+#		<li></li>
+#	</ul>
+
+
 ##	removes &lt;folder&gt; and its contents from inside directory ~/
 #
 #	@param	folder	folder to be removed; must be in user's home folder
@@ -25,9 +32,9 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #					optional - default: ~/Library; if supplied, must begin with ~/
 #						intended to protect against unintended deletion
 #	@param	dry_run	take no action, but report what the command would do
-#	@return	tuple: command output; count of files removed
+#	@return	( command output, count ) where count is count of files removed
 #	@sa		uses path_to_my_folder()
-def remove_my_folder(folder, parent=None, dry_run=False):
+def remove_my_folder (folder, parent=None, dry_run=False):
 
 	try:
 		targetPath = path_to_my_folder(folder, parent)
@@ -47,7 +54,7 @@ def remove_my_folder(folder, parent=None, dry_run=False):
 #	@exception		SyntaxError if parent not in directory ~/
 #	@exception		IOError if &lt;folder&gt; is not a directory
 #	@sa				used by remove_my_folder()
-def path_to_my_folder(folder, parent=None):
+def path_to_my_folder (folder, parent=None):
 
 	if folder == None:
 		raise SyntaxError("subfolder not specified")
@@ -84,31 +91,33 @@ def path_to_my_folder(folder, parent=None):
 	return targetPath
 
 
-def scan_directories(path):
-	""" recursively lists all directories and files inside <path>
-
-		list order is inside-out, as needed for removing files
-	"""
+##	recursively lists all directories and files inside &lt;path&gt;
+#
+#	@param		path to folder to be scanned
+#	@return		string containing list of directories and files
+#				list order is inside-out, as needed for removing files
+def scan_directories (path):
 
 	import glob
 	itemlist = StringIO()
 	for currentItem in glob.glob( os.path.join(path, '*') ):	# visible files
 		if os.path.isdir(currentItem):
-			itemlist.write(scan_directories(currentItem))
+			itemlist.write(scan_directories (currentItem))
 		itemlist.write(currentItem + ',')
 	for currentItem in glob.glob( os.path.join(path, '.*') ):	# invisible files
 		if os.path.isdir(currentItem):
-			itemlist.write(scan_directories(currentItem))
+			itemlist.write(scan_directories (currentItem))
 		itemlist.write(currentItem + ',')
 	return itemlist.getvalue()
 
 
-def do_remove_folder_with_contents(targetPath, dry_run=False):
-	""" removes the specified folder and its contents
-
-	adjusts write permissions if necessary
-	returns ( output, remove_count ), where remove_count is count of items removed
-	"""
+##	unconditionally removes the specified folder and its contents
+#
+#	adjusts write permissions if necessary
+#	@param		targetPath	path to folder to be removed
+#	@param		dry_run		take no action, but report what the command would do
+#	@return 	( output, remove_count ), where remove_count is count of items removed
+def do_remove_folder_with_contents (targetPath, dry_run=False):
 
 	is_dry_run = False
 	if dry_run and dry_run == 'DRY_RUN':
@@ -143,11 +152,12 @@ def do_remove_folder_with_contents(targetPath, dry_run=False):
 	return (output, remove_count)
 
 
-def do_remove_fs_item(path, dry_run=False):
-	""" remove file or empty directory from file system
-
-		adjusts write permissions if necessary
-	"""
+##	remove file or empty directory from file system
+#
+#	adjusts write permissions if necessary
+#	@param		path		path to file or empty folder to be removed
+#	@param		dry_run		take no action, but report what the command would do
+def do_remove_fs_item (path, dry_run=False):
 
 	remove_count = 0
 	info = StringIO()
@@ -167,12 +177,14 @@ def do_remove_fs_item(path, dry_run=False):
 	return(info.getvalue(), remove_count)
 
 
-def ensure_directory(path, dry_run=False):
-	""" ensure directory at &lt;path&gt; exists
-
-		uses permissions rw all for any folders created
-		no action if regular file is at &lt;path&gt;
-	"""
+##	ensure directory at &lt;path&gt; exists
+#
+#	uses permissions rw all for any folders created
+#	takes no action if regular file is at &lt;path&gt;
+#	@param		path		path to file or empty folder to be tested
+#	@param		dry_run		take no action, but report what the command would do
+#	@return		command output
+def ensure_directory (path, dry_run=False):
 
 	info = StringIO()
 	perform_action = not dry_run
@@ -183,8 +195,10 @@ def ensure_directory(path, dry_run=False):
 	return info.getvalue()
 
 
-def make_small_textfile(folder, filename):
-	""" make textfile containing its name; useful for testing """
+##	make textfile containing its name
+#
+#	useful for testing
+def make_small_textfile (folder, filename):
 
 	textfile = os.path.join(folder, filename)
 	f = open(textfile, 'w')
@@ -192,13 +206,14 @@ def make_small_textfile(folder, filename):
 	f.close()
 
 
-def parse_cmdlist(parser, cmdlist=None):
-	""" parse 'cmdlist' with 'parser', generating exception if unsuccessful
-
-		on help request: returns False; request already handled by parser
-		else on success: return successfully parsed args
-		on error: raise SyntaxError with appropriate message
-	"""
+##	wrapper for ArgumentParser that throws appropriate exception if unsuccessful
+#
+#	@param		parser		ArgumentParser for the command to be parsed
+#	@param		cmdlist		list of string argumants to parse
+#	@return		successfully parsed args, or False for help request already handled by parser
+#
+#	@exception	SyntaxError with appropriate message if parsing fails
+def parse_cmdlist (parser, cmdlist=None):
 
 	try:
 		if cmdlist:
@@ -215,11 +230,11 @@ def parse_cmdlist(parser, cmdlist=None):
 	return args
 
 
-def parse_utility_args(cmdlist=None):
-	""" process argments for util commands
-
-		function is separate in order to allow direct testing
-	"""
+##	process argments for util commands
+#
+#	function is separate in order to allow direct testing
+#	@param	cmdlist		command name followed by list of other arguments
+def parse_utility_args (cmdlist=None):
 
 	# create utility parser
 	parser = argparse.ArgumentParser(description="general utility functions")
@@ -240,8 +255,9 @@ def parse_utility_args(cmdlist=None):
 	return args
 
 
-def main(cmdlist=None):
-	""" process command-line input and dispatch to selected function """
+##	process command-line input and dispatch to selected function
+#
+def main (cmdlist=None):
 
 	args = parse_utility_args(cmdlist)
 	if not args:		# help request
@@ -257,5 +273,7 @@ def main(cmdlist=None):
 		return output + '\n(remove_count: ' + str(remove_count) + ')'
 
 
+##	entry point for command-line call
+#
 if __name__ == '__main__':
 	print (main(sys.argv[1:]))
