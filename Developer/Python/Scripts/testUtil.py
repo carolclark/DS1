@@ -20,7 +20,7 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ##	@class	TestEquality
 #
-##	a simple test class that can be used to verify the operation of the testing system
+#	a simple test class that can be used to verify the operation of the testing system
 class TestEquality (unittest.TestCase):
 
 	## test that can be easily modified to verify system behavior with a passing or a failing test
@@ -270,5 +270,4 @@ class TestRemoveFolder (unittest.TestCase):
 ##	entry point for command-line call
 #
 if __name__ == '__main__':
-	suite = unittest.TestLoader().loadTestsFromNames(["testUtil.TestEquality", "testUtil.TestParseCmdlist", "testUtil.TestRemoveFolder"])
-	unittest.TextTestRunner(verbosity=2).run(suite)
+	unittest.main (verbosity = 2)
