@@ -29,11 +29,11 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #
 #	@param		filepath		path to python test file to run
 def run_python_test_file (filepath):
-	result = None
+	result = 0
 	savedPath = os.getcwd()
 	os.chdir(os.path.dirname(filepath))
 	try:
-		subprocess.check_call (filepath)
+		subprocess.check_call (filepath)		# run the test file
 	except subprocess.CalledProcessError as e:
 		result = 1
 	os.chdir (savedPath)

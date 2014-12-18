@@ -30,22 +30,16 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 def buildTestFolder():
 	return os.path.expanduser("~") + "/Library/CCDev/TestData/build_py"
 
-
+#================================================================================
+#
+#									Test File Generation
+#
+#================================================================================
 ##	@class	TestEquality
+##	@class	GenerateTestFile
 #
-#	a simple test class that can be used to verify the operation of the testing system
-class TestEquality (unittest.TestCase):
-
-	## test that can be easily modified to verify system behavior with a passing or a failing test
-	def test_equality (self):
-
-		self.assertTrue (1 == 1)
-
-
-##	@class	TestFile
-#
-#	a python test file for SampleTests
-class TestFile:
+#	generates a python test file for SampleTests
+class GenerateTestFile:
 
 	def __init__ (self, class_name, file_basename, test_methods):
 		self._class_name = class_name
@@ -82,10 +76,10 @@ class TestFile:
 	_file = None
 
 
-##	@class	TestMethod
+##	@class	GenerateTestMethod
 #
-#	a test method for a python file in SampleTests
-class TestMethod:
+#	generates a test method for GenerateTestFile
+class GenerateTestMethod:
 
 	def __init__ (self, method_name, code_lines):
 		self._method_name = method_name
@@ -100,6 +94,21 @@ class TestMethod:
 
 	_method_name = "a_method_name"
 	_code_lines = []
+
+#================================================================================
+#
+#										The Tests
+#
+#================================================================================
+##	@class	TestEquality
+#
+#	a simple test class that can be used to verify the operation of the testing system
+class TestEquality (unittest.TestCase):
+
+	## test that can be easily modified to verify system behavior with a passing or a failing test
+	def test_equality (self):
+
+		self.assertTrue (1 == 1)
 
 
 ##	@class	TestTesting
@@ -116,11 +125,22 @@ class TestTesting (unittest.TestCase):
 		cls.sampleTestsFolder = buildTestFolder() + "/SampleTests"
 		util.ensure_directory (cls.sampleTestsFolder)
 
-		test_equality_pass = TestFile ("TestEquality_Pass", "test_equality_pass", [])
-
-		test_equality_pass_method = TestMethod ("test_equality_pass", [ "self.assertTrue (1 == 1)", "self.assertTrue (2 == 2)" ] )
-		test_equality_pass.add_test_method (test_equality_pass_method)
+		test_equality_pass = GenerateTestFile ("TestEquality_Pass", "test_equality_pass",
+									[ GenerateTestMethod ("test_equality_pass", [
+																	"self.assertTrue (1 == 1)",
+																	"self.assertTrue (2 == 2)" ] ) ])
 		test_equality_pass.write_test_file()
+
+		test_equality_fail = GenerateTestFile ("TestEquality_Fail", "test_equality_fail",
+									[ GenerateTestMethod ("test_equality_fail", [
+																	"self.assertTrue (1 == 1)",
+																	"self.assertTrue (2 == 1)" ] ) ])
+		test_equality_fail.write_test_file()
+		test_equality_error = GenerateTestFile ("TestEquality_Fail", "test_equality_error",
+									[ GenerateTestMethod ("test_equality_error", [
+																	"self.assertTrueX (1 == 1)",
+																	"self.assertTrue (2 == 1)" ] ) ])
+		test_equality_error.write_test_file()
 
 
 	##	parse_command_list(cmdlist=None) parses arguments as expected
@@ -129,16 +149,30 @@ class TestTesting (unittest.TestCase):
 		x=1
 
 
-	##	runs one test file and returns its output and status
+	##	@test	test running individual test file; verify output and status
 	#
-	#	@return		test output and status
 	def test_run_python_test_file (self):
 		errorsEncountered = 0
+
+		# temporary - for visual verification
+		build.run_python_test_file ("/Users/carolclark/Library/CCDev/bin/python/testScm.py")
+
+		# passing test passes
 		result = build.run_python_test_file ("/Users/carolclark/Library/CCDev/TestData/build_py/SampleTests/test_equality_pass.py")
-		if result != None:
-			errorsEncountered = 1
-		if errorsEncountered:
-			raise AssertionError("test errors and/or failures encountered")
+		self.assertTrue (result == 0)
+		errorsEncountered += result
+
+		# failing test fails
+		result = build.run_python_test_file ("/Users/carolclark/Library/CCDev/TestData/build_py/SampleTests/test_equality_fail.py")
+		self.assertFalse (result == 0)
+		errorsEncountered += result
+
+		# test with error fails
+		result = build.run_python_test_file ("/Users/carolclark/Library/CCDev/TestData/build_py/SampleTests/test_equality_error.py")
+		self.assertFalse (result == 0)
+		errorsEncountered += result
+
+		self.assertTrue (errorsEncountered == 2)
 
 
 if __name__ == '__main__':
