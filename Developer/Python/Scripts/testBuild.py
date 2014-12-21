@@ -32,7 +32,7 @@ def buildTestFolder():
 
 #================================================================================
 #
-#									Test File Generation
+#							Test File Generation
 #
 #================================================================================
 ##	@class	TestEquality
@@ -54,17 +54,16 @@ class GenerateTestFile:
 
 	def write_test_file (self):
 		file_path = self._sample_test_folder + "/" + self._file_basename + ".py"
-		self._file = open (file_path, 'w')
-		self._file.write ("#! /usr/local/bin/python3\n")
-		self._file.write ("import unittest\n")
-		self._file.write ("class {} (unittest.TestCase):\n".format (self._class_name))
+		with open (file_path, 'w', encoding='utf-8') as f:
+			f.write ("#! /usr/local/bin/python3\n")
+			f.write ("import unittest\n")
+			f.write ("class {} (unittest.TestCase):\n".format (self._class_name))
 
-		for method in self._test_methods:
-			method.write_test_method (self._file)
+			for method in self._test_methods:
+				method.write_test_method (f)
 
-		self._file.write ("if __name__ == '__main__':\n")
-		self._file.write ("\tunittest.main(verbosity=2)")
-		self._file.close()
+			f.write ("if __name__ == '__main__':\n")
+			f.write ("\tunittest.main(verbosity=2)")
 		st = os.stat(file_path)
 		os.chmod(file_path, st.st_mode | stat.S_IEXEC)
 
@@ -97,7 +96,7 @@ class GenerateTestMethod:
 
 #================================================================================
 #
-#										The Tests
+#							The Tests
 #
 #================================================================================
 ##	@class	TestEquality
