@@ -32,12 +32,14 @@ def run_python_test_file (filepath):
 	result = 0
 	savedPath = os.getcwd()
 	os.chdir(os.path.dirname(filepath))
-	try:
-		subprocess.check_call (filepath)		# run the test file
-	except subprocess.CalledProcessError as e:
-		result = 1
+
+	# run the test file
+	p = subprocess.Popen(filepath, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+	_, err = p.communicate()
+	print ('^^^{}^^^'.format(err))
+
 	os.chdir (savedPath)
-	return result
+	return err
 
 
 ##	process argments for build commands
