@@ -1,32 +1,32 @@
 #! /usr/local/bin/python3
 
-#  ___FILENAME___
-#  <#ProjectPathFromDev#>/___PROJECTNAME___
+#  testU_runtests.py
+#  support/Developer/Python
 #
-#  Created by ___FULLUSERNAME___ on ___DATE___.
-#  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+#  Created by Carol Clark on 12/23/14.
+#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
 
 
 import unittest
 import logging
 import os
 import util
-import <#module#>
+import runtests
 
 loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-## @package test<#Module#>			test methods for <#description#>
+## @package testRuntests			test functions for test runner
 #
 #	<b>Command-Line Interface:</b><ul>
-#		<li>test<#Module#>.py	run these tests</li>
+#		<li>testRuntests.py	run these tests</li>
 #	</ul>
 
-##	return path to folder for use by testU_<#Module#>
+##	return path to folder for use by testRuntests
 #
-def <#module#>TestFolder():
-	return os.path.expanduser ("~") + "/Library/CCDev/TestData/<#module#>_py"
+def runtestsTestFolder():
+	return os.path.expanduser ("~") + "/Library/CCDev/TestData/runtests_py"
 
 
 ##	@class	TestEquality
@@ -41,18 +41,19 @@ class TestEquality (unittest.TestCase):
 		self.assertTrue (1 == 1)
 
 
-class Test<#MethodToTest#> (unittest.TestCase):
+class TestDoTestfile (unittest.TestCase):
 
 	##	parse_command_list(cmdlist=None) parses arguments as expected
 	#
 	def test_parse_command_list (self):
-		args = util.parse_runtests_args (['<#abbrev#>', '<#args#>', '--<#flags#>'])
-		self.assertEqual (args.cmd, '<#abbrev#>')
+		args = runtests.passe_runtests_args (['fi', 'filepath'])
+		self.assertEqual (args.cmd, 'fi')
+		self.assertEqual (args.filepath, 'filepath')
 
 
-	## test <#method_name#>; verify result
-	def test_<#method_name#>(self):
-		x  = 1
+	## test: test_do_testfile; verify result
+	def test_do_testfile (self):
+		x = 1
 
 
 if __name__ == '__main__':

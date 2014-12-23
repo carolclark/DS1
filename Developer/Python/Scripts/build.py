@@ -25,10 +25,10 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #	</ul>
 
 
-##	run one Python test file
+##	run one test file
 #
-#	@param		filepath		path to python test file to run
-def run_python_test_file (filepath):
+#	@param		filepath		path to test file to run
+def run_one_test_file (filepath):
 	result = 0
 	savedPath = os.getcwd()
 	os.chdir(os.path.dirname(filepath))
