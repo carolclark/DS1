@@ -154,28 +154,23 @@ class TestTesting (unittest.TestCase):
 
 	##	@test	test running individual test file; verify output and status
 	#
-	def test_do_testfile (self):
+	#	@todo	implement error count
+	def test_run_one_test_file (self):
 		errorsEncountered = 0
 
 		# temporary - for visual verification
-		build.do_testfile ("/Users/carolclark/Library/CCDev/bin/python/testScm.py")
+		result = build.run_one_test_file ("/Users/carolclark/Library/CCDev/bin/python/testScm.py")
 
 		# passing test passes
-		result = build.do_testfile (sample_test_folder() + "/test_equality_pass.py")
-		#self.assertTrue (result == 0)
-		#errorsEncountered += result
+		result = build.run_one_test_file (sample_test_folder() + "/test_equality_pass.py")
 
 		# failing test fails
-		result = build.do_testfile (sample_test_folder() + "/test_equality_fail.py")
-		#self.assertFalse (result == 0)
-		#errorsEncountered += result
+		result = build.run_one_test_file (sample_test_folder() + "/test_equality_fail.py")
 
 		# test with error fails
-		result = build.do_testfile (sample_test_folder() + "/test_equality_error.py")
-		#self.assertFalse (result == 0)
-		#errorsEncountered += result
+		result = build.run_one_test_file (sample_test_folder() + "/test_equality_error.py")
 
-		#self.assertTrue (errorsEncountered == 2)
+		self.assertTrue (errorsEncountered == 0)
 
 
 if __name__ == '__main__':

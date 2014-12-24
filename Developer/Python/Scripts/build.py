@@ -29,17 +29,19 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #
 #	@param		filepath		path to test file to run
 def run_one_test_file (filepath):
-	result = 0
+	result = None
+	printResult = False
 	savedPath = os.getcwd()
 	os.chdir(os.path.dirname(filepath))
 
 	# run the test file
 	p = subprocess.Popen(filepath, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-	_, err = p.communicate()
-	print ('^^^{}^^^'.format(err))
+	_, result = p.communicate()
+	if printResult:
+		print ('^^^{}^^^'.format(result))
 
 	os.chdir (savedPath)
-	return err
+	return result
 
 
 ##	process argments for build commands

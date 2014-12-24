@@ -46,7 +46,7 @@ class TestDoTestfile (unittest.TestCase):
 	##	parse_command_list(cmdlist=None) parses arguments as expected
 	#
 	def test_parse_command_list (self):
-		args = runtests.passe_runtests_args (['fi', 'filepath'])
+		args = runtests.parse_runtests_args (['fi', 'filepath'])
 		self.assertEqual (args.cmd, 'fi')
 		self.assertEqual (args.filepath, 'filepath')
 
