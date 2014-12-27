@@ -73,7 +73,7 @@ class TestParseCmdlist (unittest.TestCase):
 
 ##	test functions associated with removing folders from file system
 #
-class TestRemoveFolder (unittest.TestCase):
+class TestRemoveMyFolder (unittest.TestCase):
 
 	def setUp (self):
 		self.home = os.path.expanduser("~")

@@ -9,6 +9,8 @@
 import sys
 import logging
 import argparse
+import os
+import subprocess
 import util
 
 loglevel=logging.WARNING
@@ -22,10 +24,20 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #	</ul>
 
 
-##	runs and reports results for one test file
+##	run one test file
 #
-def do_testfile (filepath):
-	x = 1
+#	@param		filepath		path to test file to run
+def do_test_file (filepath):
+	result = None
+	savedPath = os.getcwd()
+	os.chdir(os.path.dirname(filepath))
+
+	# run the test file
+	p = subprocess.Popen(filepath, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+	_, result = p.communicate()
+
+	os.chdir (savedPath)
+	return result
 
 
 ##	process argments for runtests commands
@@ -37,8 +49,8 @@ def parse_runtests_args (cmdlist=None):
 	parser = argparse.ArgumentParser(description="run tests")
 	subparsers = parser.add_subparsers(help="subcommand info - <subcommand> --help for details", dest='cmd')
 
-	# create do_testfile` parser
-	parser_fi = subparsers.add_parser('do_testfile', aliases=['fi'], help="run single test file")
+	# create `do_test_file` parser
+	parser_fi = subparsers.add_parser('do_test_file', aliases=['fi'], help="run single test file")
 	parser_fi.add_argument("filepath", help="name of test file to run")
 
 	args = util.parse_cmdlist(parser, cmdlist)
@@ -53,8 +65,8 @@ def main (cmdlist=None):
 	if not args:		# help request
 		return
 
-	if args.cmd == 'do_testfile' or args.cmd == 'fi':
-		return (do_testfile (filepath))
+	if args.cmd == 'do_test_file' or args.cmd == 'fi':
+		return (do_test_file (filepath))
 
 
 if __name__ == '__main__':
