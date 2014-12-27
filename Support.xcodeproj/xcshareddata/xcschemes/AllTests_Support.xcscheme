@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67AF8AE41A326D4000A88E8D"
-               BuildableName = "Support_AllTests"
-               BlueprintName = "Support_AllTests"
+               BuildableName = "AllTests_Support"
+               BlueprintName = "AllTests_Support"
                ReferencedContainer = "container:Support.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

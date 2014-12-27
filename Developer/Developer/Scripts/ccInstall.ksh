@@ -263,7 +263,7 @@ function removeFolder {
 			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
 			return
 		fi
-		/usr/local/bin/python3 "${CCDev}/bin/python/util.py" "remove_folder" "${folder}"
+		/usr/local/bin/python3 "${CCDev}/bin/python/util.py" "remove_my_folder" "${folder}"
 	fi
 	return 0
 }
