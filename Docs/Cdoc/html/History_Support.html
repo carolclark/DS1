@@ -111,9 +111,13 @@
 			* Slates: Python subslate with def's for functions and tests
 			* improve Python testing
 				* *improve output; prepare for separate handling of Unit and Conformance tests*
+					* runtests.py: run one test file
+						* run test files individually; optionally display output containing error and failure information
+						* separate test file testU_testrunner.py tests running of tests
+							* classes TestFile, TestMethod handle writing of test files for testU_testrunner.pytestU_testrunner.py9
+					* runtests.py: PythonResult parses output and gathers test result data
+					* runtests.py: run all Unit and/or Conformance tests from a folder
 				* build.py
-					* run test files individually; display errors and failures
-					* classes TestFile, TestMethod handle writing of test files for testBuild.py
 			* Python_CTests
 				* move slow tests from Python_UTests to Python_CTests
 					* all API documentation uses Python format

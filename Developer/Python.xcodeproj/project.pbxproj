@@ -35,6 +35,7 @@
 		6791211219E32B8600B2AEDA /* testScm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testScm.py; sourceTree = "<group>"; };
 		6791211319E32B8600B2AEDA /* testUtil.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testUtil.py; sourceTree = "<group>"; };
 		6791211419E32B8600B2AEDA /* util.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = util.py; sourceTree = "<group>"; };
+		67C463B51A4F3865002A410B /* testU_testrunner.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testU_testrunner.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +92,13 @@
 			children = (
 				6791211119E32B8600B2AEDA /* scm.py */,
 				6791211219E32B8600B2AEDA /* testScm.py */,
+				6791211419E32B8600B2AEDA /* util.py */,
 				6791211319E32B8600B2AEDA /* testUtil.py */,
 				679013F01A3909F700F18C7A /* build.py */,
-				6791211419E32B8600B2AEDA /* util.py */,
 				679013F31A390CB400F18C7A /* testBuild.py */,
 				674D243E1A48E02D00F8E082 /* runtests.py */,
 				674D243F1A49FE7200F8E082 /* testU_runtests.py */,
+				67C463B51A4F3865002A410B /* testU_testrunner.py */,
 			);
 			name = Scripts;
 			path = Python/Scripts;
