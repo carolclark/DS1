@@ -39,22 +39,51 @@ def generate_sample_tests():
 	# set up folder for sample test files
 	util.ensure_directory (sample_test_folder())
 
-	test_equality_pass = GenerateTestFile ("TestEquality_Pass", "test_equality_pass",
-								[ GenerateTestMethod ("test_equality_pass", [
+	test_equality_pass = GenerateTestFile ("TestEquality_Pass", "test_equality_pass", [
+								GenerateTestMethod ("test_equality_pass", [
 																"self.assertTrue (1 == 1)",
 																"self.assertTrue (2 == 2)" ] ) ])
 	test_equality_pass.write_test_file()
 
-	test_equality_fail = GenerateTestFile ("TestEquality_Fail", "test_equality_fail",
-								[ GenerateTestMethod ("test_equality_fail", [
+	test_equality_fail = GenerateTestFile ("TestEquality_Fail", "test_equality_fail", [
+								GenerateTestMethod ("test_equality_fail", [
 																"self.assertTrue (1 == 1)",
 																"self.assertTrue (2 == 1)" ] ) ])
 	test_equality_fail.write_test_file()
-	test_equality_error = GenerateTestFile ("TestEquality_Error", "test_equality_error",
-								[ GenerateTestMethod ("test_equality_error", [
+
+	test_equality_error = GenerateTestFile ("TestEquality_Error", "test_equality_error", [
+								GenerateTestMethod ("test_equality_error", [
 																"self.assertTrueX (1 == 1)",
 																"self.assertTrue (2 == 1)" ] ) ])
 	test_equality_error.write_test_file()
+
+	test_equality_PF = GenerateTestFile ("TestEquality_PF", "test_equality_PF", [
+								GenerateTestMethod ("test_equality_pass", [
+																"self.assertTrue (1 == 1)" ] ),
+								GenerateTestMethod ("test_equality_fail", [
+																"self.assertTrue (2 == 1)" ] ) ])
+	test_equality_PF.write_test_file()
+
+	test_equality_FP = GenerateTestFile ("TestEquality_FP", "test_equality_FP", [
+								GenerateTestMethod ("test_equality_fail", [
+																"self.assertTrue (2 == 1)" ] ),
+								GenerateTestMethod ("test_equality_pass", [
+																"self.assertTrue (1 == 1)" ] ) ])
+	test_equality_FP.write_test_file()
+
+	test_equality_FF = GenerateTestFile ("TestEquality_FF", "test_equality_FF", [
+								GenerateTestMethod ("test_equality_fail", [
+																"self.assertTrue (1 == 2)" ] ),
+								GenerateTestMethod ("test_equality_fail1", [
+																"self.assertTrue (2 == 1)" ] ) ])
+	test_equality_FF.write_test_file()
+
+	test_equality_PP = GenerateTestFile ("TestEquality_PP", "test_equality_PP", [
+								GenerateTestMethod ("test_equality_pass", [
+																"self.assertTrue (1 == 1)" ] ),
+								GenerateTestMethod ("test_equality_pass1", [
+																"self.assertTrue (1 == 1)" ] ) ])
+	test_equality_PP.write_test_file()
 
 
 #================================================================================
@@ -154,7 +183,7 @@ class TestTesting (unittest.TestCase):
 	#	@todo	implement error count
 	def test_do_test_file (self):
 		errorsEncountered = 0
-		printResult = False
+		printResult = True
 
 		# temporary - for visual verification
 		result = runtests.do_test_file ("/Users/carolclark/Library/CCDev/bin/python/testScm.py")
@@ -173,6 +202,26 @@ class TestTesting (unittest.TestCase):
 
 		# test with error fails
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_error.py")
+		if printResult:
+			print ('^^^{}^^^'.format(result))
+
+		# test with pass and fail
+		result = runtests.do_test_file (sample_test_folder() + "/test_equality_PF.py")
+		if printResult:
+			print ('^^^{}^^^'.format(result))
+
+		# test with fail and pass
+		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FP.py")
+		if printResult:
+			print ('^^^{}^^^'.format(result))
+
+		# test with fail and fail
+		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FF.py")
+		if printResult:
+			print ('^^^{}^^^'.format(result))
+
+		# test with pass and pass
+		result = runtests.do_test_file (sample_test_folder() + "/test_equality_PP.py")
 		if printResult:
 			print ('^^^{}^^^'.format(result))
 
