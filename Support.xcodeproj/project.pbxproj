@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		67AF8AE41A326D4000A88E8D /* Support_AllTests */ = {
+		67AF8AE41A326D4000A88E8D /* AllTests_Support */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 67AF8AE51A326D4000A88E8D /* Build configuration list for PBXAggregateTarget "Support_AllTests" */;
+			buildConfigurationList = 67AF8AE51A326D4000A88E8D /* Build configuration list for PBXAggregateTarget "AllTests_Support" */;
 			buildPhases = (
 			);
 			dependencies = (
-				67AF8B281A33A0FC00A88E8D /* PBXTargetDependency */,
 				67AF8B221A33963D00A88E8D /* PBXTargetDependency */,
 				67AF8B241A33963D00A88E8D /* PBXTargetDependency */,
 			);
-			name = Support_AllTests;
+			name = AllTests_Support;
 			productName = Support_AllTargets;
 		};
 /* End PBXAggregateTarget section */
@@ -78,13 +77,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 679120F019E0907F00B2AEDA;
 			remoteInfo = Python_UTests;
-		};
-		67AF8B271A33A0FC00A88E8D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 67AF8ABC1A32671B00A88E8D /* shunit2.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 67CDC5E31A1EA82800C3BA9B;
-			remoteInfo = shunit2_Tests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -232,7 +224,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				67AF8AE41A326D4000A88E8D /* Support_AllTests */,
+				67AF8AE41A326D4000A88E8D /* AllTests_Support */,
 			);
 		};
 /* End PBXProject section */
@@ -293,11 +285,6 @@
 			name = Python_UTests;
 			targetProxy = 67AF8B231A33963D00A88E8D /* PBXContainerItemProxy */;
 		};
-		67AF8B281A33A0FC00A88E8D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = shunit2_Tests;
-			targetProxy = 67AF8B271A33A0FC00A88E8D /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -339,7 +326,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67AF8AE51A326D4000A88E8D /* Build configuration list for PBXAggregateTarget "Support_AllTests" */ = {
+		67AF8AE51A326D4000A88E8D /* Build configuration list for PBXAggregateTarget "AllTests_Support" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67AF8AE61A326D4000A88E8D /* Debug */,
