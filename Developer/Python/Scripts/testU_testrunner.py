@@ -35,6 +35,11 @@ def sample_test_folder():
 	return testrunnerTestFolder() + "/SampleTests"
 
 
+#================================================================================
+#
+#							Test File Generation
+#
+#================================================================================
 def generate_sample_tests():
 	# set up folder for sample test files
 	util.ensure_directory (sample_test_folder())
@@ -86,11 +91,6 @@ def generate_sample_tests():
 	test_equality_PP.write_test_file()
 
 
-#================================================================================
-#
-#							Test File Generation
-#
-#================================================================================
 ##	@class	GenerateTestFile
 #
 #	generates a python test file for SampleTests
@@ -188,42 +188,42 @@ class TestTesting (unittest.TestCase):
 		# temporary - for visual verification
 		result = runtests.do_test_file ("/Users/carolclark/Library/CCDev/bin/python/testScm.py")
 		if printResult:
-			print ('^^^{}^^^'.format(result))
+			print ('^^^{}^^^'.format(result.output))
 
 		# passing test passes
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_pass.py")
 		if printResult:
-			print ('^^^{}^^^'.format(result))
+			print ('^^^{}^^^'.format(result.output))
 
 		# failing test fails
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_fail.py")
 		if printResult:
-			print ('^^^{}^^^'.format(result))
+			print ('^^^{}^^^'.format(result.output))
 
 		# test with error fails
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_error.py")
 		if printResult:
-			print ('^^^{}^^^'.format(result))
+			print ('^^^{}^^^'.format(result.output))
 
 		# test with pass and fail
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_PF.py")
 		if printResult:
-			print ('^^^{}^^^'.format(result))
+			print ('^^^{}^^^'.format(result.output))
 
 		# test with fail and pass
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FP.py")
 		if printResult:
-			print ('^^^{}^^^'.format(result))
+			print ('^^^{}^^^'.format(result.output))
 
 		# test with fail and fail
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FF.py")
 		if printResult:
-			print ('^^^{}^^^'.format(result))
+			print ('^^^{}^^^'.format(result.output))
 
 		# test with pass and pass
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_PP.py")
 		if printResult:
-			print ('^^^{}^^^'.format(result))
+			print ('^^^{}^^^'.format(result.output))
 
 		self.assertTrue (errorsEncountered == 0)
 

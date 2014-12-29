@@ -23,18 +23,30 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #		<li>runtests --run_testfile	filepath</li>
 #	</ul>
 
+##	@class		TestFileResult
+#
+#	result of running one test file
+class TestFileResult:
+
+	def __init__ (self, filepath, output):
+		self.filepath = filepath
+		self.output = output
+
 
 ##	run one test file
 #
 #	@param		filepath		path to test file to run
 def do_test_file (filepath):
-	result = None
+	output = None
 	savedPath = os.getcwd()
 	os.chdir(os.path.dirname(filepath))
 
 	# run the test file
 	p = subprocess.Popen(filepath, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-	_, result = p.communicate()
+	_, output = p.communicate()
+
+	result = TestFileResult (filepath, output)
+	#	print (result.filepath)
 
 	os.chdir (savedPath)
 	return result

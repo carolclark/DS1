@@ -96,7 +96,6 @@
 		* extract util.parse_cmdlist
 	* Slate: scm.changes: diff --name-status and lg for arg1..arg2 (eg. "changes master currentBranch")
 		* see <a href="http://github.com/carolclark/Support/issues/29">(#29)</a> git workflow support
-	<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 	* Python Build Script
 		* *replace CCDev_install.ksh with CCDev_build.py that is simpler and easier to test*
 		* refactor existing python modules [refactorPython]
@@ -115,7 +114,10 @@
 						* run test files individually; optionally display output containing error and failure information
 						* separate test file testU_testrunner.py tests running of tests
 							* classes TestFile, TestMethod handle writing of test files for testU_testrunner.pytest
+					<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 					* runtests.py: PythonResult parses output and gathers test result data
+						* test result is of type TestResult
+						* TestResult parses summary line
 					* runtests.py: run all Unit and/or Conformance tests from a folder
 				* build.py
 			* Python_CTests
