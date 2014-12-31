@@ -35,6 +35,8 @@
 		6791211219E32B8600B2AEDA /* testScm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testScm.py; sourceTree = "<group>"; };
 		6791211319E32B8600B2AEDA /* testUtil.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testUtil.py; sourceTree = "<group>"; };
 		6791211419E32B8600B2AEDA /* util.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = util.py; sourceTree = "<group>"; };
+		67C417611A53463300E80ABF /* testU_pythoncmds.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = testU_pythoncmds.ksh; path = Python/Cmdline_Tests/testU_pythoncmds.ksh; sourceTree = SOURCE_ROOT; };
+		67C417651A549BE600E80ABF /* pythoncmds.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = pythoncmds.py; sourceTree = "<group>"; };
 		67C463B51A4F3865002A410B /* testU_testrunner.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testU_testrunner.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				6791211519E32B8A00B2AEDA /* Scripts */,
+				67C417631A534BE700E80ABF /* Cmdline_Tests */,
 				6791210419E0929800B2AEDA /* Python_UTests */,
 				6758574019DDF912004C6AC7 /* Python_install.ksh */,
 				679120F319E0907F00B2AEDA /* Frameworks */,
@@ -99,8 +102,18 @@
 				674D243E1A48E02D00F8E082 /* runtests.py */,
 				674D243F1A49FE7200F8E082 /* testU_runtests.py */,
 				67C463B51A4F3865002A410B /* testU_testrunner.py */,
+				67C417651A549BE600E80ABF /* pythoncmds.py */,
 			);
 			name = Scripts;
+			path = Python/Scripts;
+			sourceTree = "<group>";
+		};
+		67C417631A534BE700E80ABF /* Cmdline_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				67C417611A53463300E80ABF /* testU_pythoncmds.ksh */,
+			);
+			name = Cmdline_Tests;
 			path = Python/Scripts;
 			sourceTree = "<group>";
 		};
@@ -131,7 +144,8 @@
 				679120ED19E0907F00B2AEDA /* Sources */,
 				679120EE19E0907F00B2AEDA /* Frameworks */,
 				679120EF19E0907F00B2AEDA /* Resources */,
-				6791210F19E09BBF00B2AEDA /* ShellScript */,
+				6791210F19E09BBF00B2AEDA /* Run Python Tests */,
+				67C417641A5353A200E80ABF /* Run Cmdline Tests */,
 			);
 			buildRules = (
 			);
@@ -186,18 +200,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6791210F19E09BBF00B2AEDA /* ShellScript */ = {
+		6791210F19E09BBF00B2AEDA /* Run Python Tests */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Python Tests";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
 			shellScript = "/usr/local/bin/python3 -m unittest discover --start-directory \"${HOME}/Library/CCDev/bin/python\"";
+			showEnvVarsInLog = 0;
+		};
+		67C417641A5353A200E80ABF /* Run Cmdline Tests */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Cmdline Tests";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/ksh;
+			shellScript = "${HOME}/Dev/Support/Developer/Python/Cmdline_Tests/testU_pythoncmds.ksh";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

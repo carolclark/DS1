@@ -40,15 +40,16 @@ class TestEquality (unittest.TestCase):
 
 		self.assertTrue (1 == 1)
 
+##	@class	TestParseCmdlist
+#
+class TestParseCmdlist (unittest.TestCase):
 
-class TestDoTestFile (unittest.TestCase):
-
-	##	parse_command_list(cmdlist=None) parses arguments as expected
+	##	@test	parse_runtests_args() parses arguments as expected
 	#
 	def test_parse_command_list (self):
-		args = runtests.parse_runtests_args (['fi', 'filepath'])
+		args = runtests.parse_runtests_args (['fi', 'a_filepath'])
 		self.assertEqual (args.cmd, 'fi')
-		self.assertEqual (args.filepath, 'filepath')
+		self.assertEqual (args.file, 'a_filepath')
 
 
 if __name__ == '__main__':

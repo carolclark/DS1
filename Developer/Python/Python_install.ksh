@@ -59,6 +59,8 @@ pythonFolder="${CCDev}/bin/python"
 						;;
 					"Python_UTests" )
 						;;
+					"cmdlineTests" )
+						;;
 					* )
 						failcnt="${failcnt}"+1
 						errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"

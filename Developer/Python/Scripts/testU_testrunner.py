@@ -183,7 +183,7 @@ class TestTesting (unittest.TestCase):
 	#	@todo	implement error count
 	def test_do_test_file (self):
 		errorsEncountered = 0
-		printResult = True
+		printResult = False
 
 		# temporary - for visual verification
 		result = runtests.do_test_file ("/Users/carolclark/Library/CCDev/bin/python/testScm.py")
