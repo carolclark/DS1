@@ -20,9 +20,6 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ## @package testRuntests			test functions for module runtests
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li>testRuntests.py	run these tests</li>
-#	</ul>
 
 ##	return path to folder for use by testRuntests
 #

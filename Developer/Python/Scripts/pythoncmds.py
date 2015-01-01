@@ -22,3 +22,17 @@
 #	@par run tests from a folder
 def runtests():
 	x = 1
+
+
+#	scm
+##	source control utilities and support
+#
+#	@par			generate merge message
+#	@code			merge_message.py branchName repoIssue [[ --repository | -r ] repository ]@endcode
+#	constructs and returns a git message appropriate for merging into master branch
+#	@n@b branchName	branch to be merged
+#	@n@b repoIssue	GitHub issue number
+#	@n@b repository	repository containing repoIssue (optional)
+
+def scm():
+	x = 1
