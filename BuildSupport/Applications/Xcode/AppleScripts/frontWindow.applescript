@@ -11,7 +11,7 @@ set documentPath to missing value
 tell application id "com.apple.dt.Xcode"
 	set windowName to name of window 1
 	set workspaceFilename to name of document of window 1
-	set len to ((length of workspaceFilename) - 12)
+	set len to ((length of workspaceFilename) - 30)
 	set workspaceName to (characters 1 thru len) of workspaceFilename as string
 	if ((length of windowName) > (len + 7)) then
 		set documentName to (characters (len + 4) thru (length of windowName)) of windowName as string
