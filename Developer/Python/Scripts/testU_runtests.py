@@ -20,9 +20,6 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ## @package testRuntests			test functions for module runtests
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li>testRuntests.py	run these tests</li>
-#	</ul>
 
 ##	return path to folder for use by testRuntests
 #
@@ -40,15 +37,16 @@ class TestEquality (unittest.TestCase):
 
 		self.assertTrue (1 == 1)
 
+##	@class	TestParseCmdlist
+#
+class TestParseCmdlist (unittest.TestCase):
 
-class TestDoTestFile (unittest.TestCase):
-
-	##	parse_command_list(cmdlist=None) parses arguments as expected
+	##	@test	parse_runtests_args() parses arguments as expected
 	#
 	def test_parse_command_list (self):
-		args = runtests.parse_runtests_args (['fi', 'filepath'])
+		args = runtests.parse_runtests_args (['fi', 'a_filepath'])
 		self.assertEqual (args.cmd, 'fi')
-		self.assertEqual (args.filepath, 'filepath')
+		self.assertEqual (args.file, 'a_filepath')
 
 
 if __name__ == '__main__':

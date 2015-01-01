@@ -18,9 +18,6 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ## @package scm			methods to support Source Control
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li>scm.py merge_message &lt;branchName&gt; &lt;repoIssue&gt;; see merge_message()</li>
-#	</ul>
 
 ##	construct scm merge message for the specified branch
 #

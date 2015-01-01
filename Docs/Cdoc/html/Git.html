@@ -98,14 +98,11 @@
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Branch</h5><ul>
-			<li><a href="#adminUpdateMaster"><span class='em'>Update Master from Remotes</span></a>: checkout master; status; <span class='em'>ShowCompare</span> origin..master; fetch updates<ul>
-				<li><span class='em'>ShowCompare:</span> <span class='mono'>show --name-only; diff --name-status &lt;between&gt;; lg &lt;between&gt;</span>	</li>
-			</ul></li>
+			<li><span class='em'>ShowCompare</span> origin..master; if indicated, <a href="#adminSyncMaster"><span class='em'>Sync Master with Remotes</span></a></li>
 			<li>checkout branch<ul>
 				<li>pre-existing branch<ul>
 					<li><span class='em'>Merge Master:</span><ul>
-						<li>checkout branch ($cb)</li>
-						<li>merge master <span class='mono'>(--no-ff -m "merge master")</span></li>
+						<li>checkout branch ($cb); merge master <span class='mono'>(--no-ff -m "merge master")</span></li>
 						<li>push; recover any stashes</li>
 						</ul></li>
 				</ul></li>
@@ -124,9 +121,10 @@
 				<li>[backup GitHub issues; add, OR if failure checkout original]</li>
 				<li>check for stray spaces (diff --cached --check)</li>
 				<li>status; commit msgfile</li>
-				<li>status; <b>ShowCompare</b> master..$cb; [amend (reset --soft lastCommit)]	</li>
+				<li>status; <b>ShowCompare</b> master..$cb; [to amend: reset --soft lastCommit]	</li>
 				<li>check stash list</li>
-				<li>[[set $cb; <span class='em'>Update Master from Remotes</span>; checkout $cb]; <span class='em'>Merge Master</span> (or rebase?)]</li>
+				<li><span class='em'>ShowCompare</span> origin..master; if indicated:
+					<a href="#adminSyncMaster"><span class='em'>Sync Master with Remotes</span></a>; <span class='em'>Merge Master</span></li>
 			</ul>
 			<p><b>Publish</b> <span class='body'>[Push]: status; verify branch; push</span></p>
 		</div>
@@ -140,7 +138,7 @@
 				<li>show --name-only; lg</li>
 				<li>check for unmerged branches; verify no stashes on &lt;branch&gt;</li>
 				<li>[retest]; <span class='em'>ShowCompare</span> origin..master; push</li>
-				<li>[delete branch]: delete branch; delete remote: <span class='mono'>push origin :&lt;branchName&gt;</span></li>
+				<li>delete local branch; (manage remote stale branches periodically from GitHub)</li>
 			</ul>
 			<p><b>[Archive Repository]</b></li>
 		</div>
@@ -167,13 +165,15 @@
 			<li>merge release branch into 'master'; push 'master'; delete release branch</li>
 		</ul>
 
-		<!-- @marker "adminUpdateMaster" -->
-		<h6 id='adminUpdateMaster'>Update Master from Remotes</h6><ul>
-			<li>set $cb; checkout master; status; diff --name-status master..origin/master; lg master..origin/master; [lg artist..lm/artist]</li>
-			<li>fetch updates (fetchup): <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
-				<li>if that merge fails, can: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+		<h6 id='adminSyncMaster'>Synchronize Master with Remotes</h6><ul>
+			<li><span class='em'>Show Compare </span>master..origin/master (<span class='mono'>diff --name-status; lg</span>)</li>
+			<li>if different:<ul>
+				<li>close repository in Xcode; set $cb; checkout master</li>
+				<li>fetch updates (fetchup): <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
+					<li>if that merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+				</ul></li>
+				<li>merge changes; test</li>
 			</ul></li>
-			<li>retest if changed</li>
 		</ul>
 
 		<!-- @marker "adminResolveConflicts" -->
