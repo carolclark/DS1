@@ -20,9 +20,6 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ## @package util			utility functions
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li></li>
-#	</ul>
 
 
 ##	removes &lt;folder&gt; and its contents from inside directory ~/

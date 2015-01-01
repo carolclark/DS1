@@ -18,7 +18,7 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 class TestMergeMessage(unittest.TestCase):
 
-	##	test: parse_scm_args(cmdlist=None) parses arguments as expected
+	##	@test		parse_scm_args(cmdlist=None) parses arguments as expected
 	def test_parse_command_list(self):
 
 		args = scm.parse_scm_args(['sb'])
@@ -35,7 +35,7 @@ class TestMergeMessage(unittest.TestCase):
 		self.assertEqual(args.repository, ['Repo'])
 
 
-	##	test: merge_message(branchName="", repoIssue=0)
+	##	@test		merge_message(branchName="", repoIssue=0)
 	def test_merge_message(self):
 
 		self.assertEqual(scm.merge_message("abc", 55), "Merge branch 'abc' (#55)")
