@@ -30,6 +30,7 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 class TestFileResult:
 
 	standardLine = "-" * 70
+	exceptionheader = "=" * 70
 
 	def __init__ (self, filepath, output):
 		self.filepath = filepath
