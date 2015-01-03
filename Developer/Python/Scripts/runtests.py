@@ -29,9 +29,12 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #	result of running one test file
 class TestFileResult:
 
+	standardLine = "-" * 70
+
 	def __init__ (self, filepath, output):
 		self.filepath = filepath
 		self.output = output
+		self.outputlines = output.splitlines()
 
 
 ##	run one test file
@@ -47,7 +50,6 @@ def do_test_file (filepath):
 	_, output = p.communicate()
 
 	result = TestFileResult (filepath, output)
-	#	print (result.filepath)
 
 	os.chdir (savedPath)
 	return result

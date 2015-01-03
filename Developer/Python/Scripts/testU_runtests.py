@@ -21,10 +21,22 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 ## @package testRuntests			test functions for module runtests
 #
 
+def filename_and_output_data():
+	filenames = dict()
+	outputs = dict()
+	filenames["p"] = "test_equality_pass.py",
+	outputs["p"] = """test_equality_pass (__main__.TestEquality_Pass) ... ok
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+OK
+"""
+	return filenames, outputs
+
 ##	return path to folder for use by testRuntests
 #
 def runtestsTestFolder():
 	return os.path.expanduser ("~") + "/Library/CCDev/TestData/runtests_py"
+
 
 ##	@class	TestEquality
 #
@@ -36,6 +48,30 @@ class TestEquality (unittest.TestCase):
 	def test_equality (self):
 
 		self.assertTrue (1 == 1)
+
+
+##	@class	TestTestFileResult
+#
+#	@desc	tests for class TestFileResult
+class TestTestFileResult (unittest.TestCase):
+
+
+	@classmethod
+	def setUpClass(cls):
+
+		cls.filenames, cls.outputs = filename_and_output_data()
+
+
+	##	@test	validate creation of TestFileResult
+	#
+	def test_creation (self):
+		testresult = runtests.TestFileResult (self.filenames["p"], self.outputs["p"])
+		self.assertEqual (testresult.filepath, self.filenames["p"])
+		self.assertEqual (testresult.outputlines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
+		self.assertEqual (testresult.outputlines[1], runtests.TestFileResult.standardLine)
+		self.assertEqual (testresult.outputlines[2], "Ran 1 test in 0.000s")
+		self.assertEqual (testresult.outputlines[3], "OK")
+
 
 ##	@class	TestParseCmdlist
 #
