@@ -27,16 +27,22 @@ def runtestsTestFolder():
 	return os.path.expanduser ("~") + "/Library/CCDev/TestData/runtests_py"
 
 
-##	@class	TestEquality
+##	@class	TestTestMethod
 #
-#	a simple test class that can be used to verify the operation of the testing system
-class TestEquality (unittest.TestCase):
+#	tests for class TestMethod
+class TestTestMethod (unittest.TestCase):
+	@classmethod
+	def setUpClass(cls):
+		cls.filenames, cls.outputs = filename_and_output_data()
 
-	## test that can be easily modified to verify system behavior with a passing or a failing test
+
+	##	@test	validate construction of TestMethod object
 	#
-	def test_equality (self):
-
-		self.assertTrue (1 == 1)
+	def test_TestMethod (self):
+		# test_equality_pass (__main__.TestEquality_Pass) ... ok
+		sumline = self.outputs["p"].splitlines()[0]
+		test = runtests.TestMethod (sumline)
+		self.assertEqual (test.summary, sumline)
 
 
 ##	@class	TestTestFileResult
@@ -47,13 +53,13 @@ class TestTestFileResult (unittest.TestCase):
 
 	@classmethod
 	def setUpClass(cls):
-
 		cls.filenames, cls.outputs = filename_and_output_data()
 
 
 	##	@test	validate creation of TestFileResult
 	#
 	def test_creation (self):
+		# test_equality_pass (__main__.TestEquality_Pass) ... ok
 		testresult = runtests.TestFileResult (self.filenames["p"], self.outputs["p"])
 		self.assertEqual (testresult.filepath, self.filenames["p"])
 		self.assertEqual (testresult.outputlines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
@@ -61,9 +67,20 @@ class TestTestFileResult (unittest.TestCase):
 		self.assertEqual (testresult.outputlines[2], "Ran 1 test in 0.000s")
 		self.assertEqual (testresult.outputlines[3], "OK")
 
+		# test_equality_fail (__main__.TestEquality_FF) ... FAIL
+		# test_equality_fail1 (__main__.TestEquality_FF) ... FAIL
 		testresult = runtests.TestFileResult (self.filenames["ff"], self.outputs["ff"])
-		self.assertEqual (testresult.outputlines[9], runtests.TestFileResult.exceptionheader)
+		self.assertEqual (testresult.outputlines[9], runtests.TestFileResult.exceptionHeader)
 		self.assertEqual (testresult.outputlines[10], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
+
+
+	##	@test	validate attributes obtained by parsing output
+	#
+	def test_parse_results (self):
+		# test_equality_pass (__main__.TestEquality_Pass) ... ok
+		testresult = runtests.TestFileResult (self.filenames["p"], self.outputs["p"])
+		testresult.parse_output()
+		self.assertEqual (len(testresult.tests), 1)
 
 
 ##	@class	TestParseCmdlist
@@ -103,7 +120,7 @@ AssertionError: False is not true
 Ran 1 test in 0.000s
 FAILED (failures=1)"""
 	filenames["e"] = "test_equality_error.py"
-	outputs ["e"] = """^^^test_equality_error (__main__.TestEquality_Error) ... ERROR
+	outputs["e"] = """test_equality_error (__main__.TestEquality_Error) ... ERROR
 ======================================================================
 ERROR: test_equality_error (__main__.TestEquality_Error)
 ----------------------------------------------------------------------
@@ -116,7 +133,7 @@ Ran 1 test in 0.001s
 FAILED (errors=1)
 """
 	filenames["pf"] = "test_equality_PF.py"
-	outputs ["pf"] = """^^^test_equality_fail (__main__.TestEquality_PF) ... FAIL
+	outputs["pf"] = """test_equality_fail (__main__.TestEquality_PF) ... FAIL
 test_equality_pass (__main__.TestEquality_PF) ... ok
 ======================================================================
 FAIL: test_equality_fail (__main__.TestEquality_PF)
@@ -130,7 +147,7 @@ Ran 2 tests in 0.001s
 FAILED (failures=1)
 """
 	filenames["fp"] = "test_equality_FP.py"
-	outputs ["fp"] = """^^^test_equality_fail (__main__.TestEquality_FP) ... FAIL
+	outputs["fp"] = """test_equality_fail (__main__.TestEquality_FP) ... FAIL
 test_equality_pass (__main__.TestEquality_FP) ... ok
 ======================================================================
 FAIL: test_equality_fail (__main__.TestEquality_FP)
@@ -144,7 +161,7 @@ Ran 2 tests in 0.001s
 FAILED (failures=1)
 """
 	filenames["ff"] = "test_equality_FF.py"
-	outputs ["ff"] = """^^^test_equality_fail (__main__.TestEquality_FF) ... FAIL
+	outputs["ff"] = """test_equality_fail (__main__.TestEquality_FF) ... FAIL
 test_equality_fail1 (__main__.TestEquality_FF) ... FAIL
 ======================================================================
 FAIL: test_equality_fail (__main__.TestEquality_FF)
@@ -165,7 +182,7 @@ Ran 2 tests in 0.001s
 FAILED (failures=2)
 """
 	filenames["pp"] = "test_equality_PP.py"
-	outputs ["PP"] = """^^^test_equality_pass (__main__.TestEquality_PP) ... ok
+	outputs["PP"] = """test_equality_pass (__main__.TestEquality_PP) ... ok
 test_equality_pass1 (__main__.TestEquality_PP) ... ok
 ----------------------------------------------------------------------
 Ran 2 tests in 0.001s

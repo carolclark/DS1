@@ -24,18 +24,40 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #	runs a single test file: prints output to stderr
 #	@result	(NYI)	return status code: 0 pass; 1 fail; 2 error
 
+##	@class		TestMethod
+#
+#	a test method of a TestFileResult
+class TestMethod:
+
+	def __init__ (self, summary):
+		self.summary = summary
+
+
+	def	parse_summary(self):
+		return True
+
+
 ##	@class		TestFileResult
 #
 #	result of running one test file
 class TestFileResult:
 
 	standardLine = "-" * 70
-	exceptionheader = "=" * 70
+	exceptionHeader = "=" * 70
 
 	def __init__ (self, filepath, output):
 		self.filepath = filepath
 		self.output = output
 		self.outputlines = output.splitlines()
+		self.tests = []
+
+
+	def parse_output (self):
+		test = TestMethod (self.outputlines[0])
+		if test.parse_summary():
+			self.tests.append (test)
+		else:
+			del test
 
 
 ##	run one test file
