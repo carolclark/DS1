@@ -4,7 +4,7 @@
 #  Support/Developer/Python
 #
 #  Created by Carol Clark on 12/23/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-15 C & C Software, Inc. All rights reserved.
 
 
 import unittest
@@ -18,8 +18,9 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-## @package testRuntests			test functions for module runtests
+##	@package testU_runtests			test methods for module runtests
 #
+#	@sa		filename_and_output_data()
 
 ##	return path to folder for use by testRuntests
 #
@@ -31,6 +32,9 @@ def runtestsTestFolder():
 #
 #	tests for class TestMethod
 class TestTestMethod (unittest.TestCase):
+
+	##	generate collection of simple test files with expected test output
+	#
 	@classmethod
 	def setUpClass(cls):
 		cls.filenames, cls.outputs = filename_and_output_data()
@@ -51,6 +55,8 @@ class TestTestMethod (unittest.TestCase):
 class TestTestFileResult (unittest.TestCase):
 
 
+	##	generate collection of simple test files with expected test output
+	#
 	@classmethod
 	def setUpClass(cls):
 		cls.filenames, cls.outputs = filename_and_output_data()
@@ -85,9 +91,10 @@ class TestTestFileResult (unittest.TestCase):
 
 ##	@class	TestParseCmdlist
 #
+#	verify that parser parses arguments as expected
 class TestParseCmdlist (unittest.TestCase):
 
-	##	@test	parse_runtests_args() parses arguments as expected
+	##	@test	parse_runtests_args()
 	#
 	def test_parse_command_list (self):
 		args = runtests.parse_runtests_args (['fi', 'a_filepath'])

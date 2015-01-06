@@ -4,7 +4,7 @@
 #  Support/Developer/Python
 #
 #  Created by Carol Clark on 12/22/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2015 C & C Software, Inc. All rights reserved.
 
 import sys
 import logging
@@ -19,20 +19,22 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ## @package runtests			runs tests; gathers and reports results
 #
-#	@par @b Command-Line @b Interface:
-#	@code		runtests.py [ --filepath | --fi ] <filepath>@endcode
-#	runs a single test file: prints output to stderr
-#	@result	(NYI)	return status code: 0 pass; 1 fail; 2 error
 
 ##	@class		TestMethod
 #
 #	a test method of a TestFileResult
 class TestMethod:
 
+	## construct from test's @link summary summary @endlink
 	def __init__ (self, summary):
+			##	summary line for this test method in unittest's verbose output
 		self.summary = summary
 
 
+	##	parse method's summary line
+	#
+	#	python output (verbose) for a test file begins with a summary line for each test method run
+	#	@n parse summary line to establish the test method's class, method name, and status
 	def	parse_summary(self):
 		return True
 
@@ -42,16 +44,25 @@ class TestMethod:
 #	result of running one test file
 class TestFileResult:
 
+		##	standard line used to separate sections in test output
 	standardLine = "-" * 70
+		##	line used to start an exception section
 	exceptionHeader = "=" * 70
 
+	## construct from @link filepath filepath @endlink and @link output output @endlink
+	#
 	def __init__ (self, filepath, output):
+			##	path of file that was tested
 		self.filepath = filepath
+			## expected test output, as a multi-line string
 		self.output = output
+			##	array of lines comprising output
 		self.outputlines = output.splitlines()
+			##	array of TestMethod objects parsed from the test's output
 		self.tests = []
 
-
+	##	parses output; generates top-level data and TestMethod objects
+	#
 	def parse_output (self):
 		test = TestMethod (self.outputlines[0])
 		if test.parse_summary():
@@ -60,9 +71,10 @@ class TestFileResult:
 			del test
 
 
-##	run one test file
+##	runs a single test file
 #
 #	@param		filepath		path to test file to run
+#	@return		TestFileResult object
 def do_test_file (filepath):
 	output = None
 	savedPath = os.getcwd()

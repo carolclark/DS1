@@ -63,6 +63,7 @@ def parse_scm_args (cmdlist=None):
 
 
 ##	process command-line input and dispatch to selected function
+#
 def main(cmdlist=None):
 
 	args = parse_scm_args (cmdlist)

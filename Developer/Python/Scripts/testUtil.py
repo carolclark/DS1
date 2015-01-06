@@ -4,7 +4,7 @@
 #  Support/Developer
 #
 #  Created by Carol Clark on 7/12/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-15 C & C Software, Inc. All rights reserved.
 
 
 import unittest
@@ -17,6 +17,9 @@ from io import StringIO
 loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
+
+##	@package testUtil			test methods for module util
+#
 
 ##	@class	TestEquality
 #
@@ -75,6 +78,7 @@ class TestParseCmdlist (unittest.TestCase):
 #
 class TestRemoveMyFolder (unittest.TestCase):
 
+	##	establist path to test data folder
 	def setUp (self):
 		self.home = os.path.expanduser("~")
 		self.utilTestFolder = self.home + "/Library/CCDev/TestData/util_py"	# used by conformance tests

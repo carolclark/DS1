@@ -4,7 +4,7 @@
 #  Support/Developer/Python
 #
 #  Created by Carol Clark on 12/23/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-15 C & C Software, Inc. All rights reserved.
 
 
 import unittest
@@ -18,11 +18,9 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-## @package testTestrunner			testing of test runner
+
+##	@package testU_testrunner			testing of test runner
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li>testTestrunner.py		run these tests</li>
-#	</ul>
 
 ##	return path to folder for use by testRuntests
 #
@@ -40,6 +38,8 @@ def sample_test_folder():
 #							Test File Generation
 #
 #================================================================================
+##	write simple tests for use by testing methods that validate testing
+#
 def generate_sample_tests():
 	# set up folder for sample test files
 	util.ensure_directory (sample_test_folder())
@@ -96,17 +96,26 @@ def generate_sample_tests():
 #	generates a python test file for SampleTests
 class GenerateTestFile:
 
+	##	create with @link class_name class_name @endlink, @link file_name file_name @endlink, @link test_methods list of test_methods @endlink
+	#
+	#	@todo		should provide for multiple test classes per file
 	def __init__ (self, class_name, file_basename, test_methods):
+			##	class name for collection of test methods
 		self._class_name = class_name
+			##	basename for file to be written
 		self._file_basename = file_basename
+			##	list of test methods for the specified class
 		self._test_methods = test_methods
+			##	file curreently open for writing5
 		self._file = None
 
 
-	def add_test_method (self, method):
-		self._test_methods.append (method)
+		def add_test_method (self, method):
+			self._test_methods.append (method)
 
 
+	##	write a python test file containing the methods in _test_methods
+	#
 	def write_test_file (self):
 		file_path = sample_test_folder() + "/" + self._file_basename + ".py"
 		with open (file_path, 'w', encoding='utf-8') as f:
@@ -123,30 +132,24 @@ class GenerateTestFile:
 		os.chmod(file_path, st.st_mode | stat.S_IEXEC)
 
 
-	_class_name = "ATestClass"
-	_file_basename = "a_test_class"
-	_test_methods = []
-	_file = None
-
-
 ##	@class	GenerateTestMethod
 #
 #	generates a test method for GenerateTestFile
 class GenerateTestMethod:
 
+	##	create with method_name and list of code_lines
 	def __init__ (self, method_name, code_lines):
 		self._method_name = method_name
 		self._code_lines = code_lines
 
 
+	## write the test method
+	#
+	#	@param	file	the open file to be written to
 	def write_test_method (self, file):
 		file.write ("\tdef {} (self):\n".format (self._method_name))
 		for ln in self._code_lines:
 			file.write ("\t\t{}\n".format(ln))
-
-
-	_method_name = "a_method_name"
-	_code_lines = []
 
 
 #================================================================================

@@ -14,14 +14,11 @@ import util
 import <#module#>
 
 loglevel=logging.WARNING
-logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
+logging.basicConfig(format='%(asctime)s %///(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
 ## @package test<#Module#>			test methods for <#description#>
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li>test<#Module#>.py	run these tests</li>
-#	</ul>
 
 ##	return path to folder for use by testU_<#Module#>
 #
@@ -41,18 +38,25 @@ class TestEquality (unittest.TestCase):
 		self.assertTrue (1 == 1)
 
 
+##	@class		tests for method <#MethodToTest#>
+#
 class Test<#MethodToTest#> (unittest.TestCase):
 
-	##	parse_command_list(cmdlist=None) parses arguments as expected
-	#
-	def test_parse_command_list (self):
-		args = util.parse_runtests_args (['<#abbrev#>', '<#args#>', '--<#flags#>'])
-		self.assertEqual (args.cmd, '<#abbrev#>')
-
-
-	## test <#method_name#>; verify result
+	##	@test	#<desc#>
 	def test_<#method_name#>(self):
 		x  = 1
+
+
+##	@class	TestParseCmdlist
+#
+#	verify that parser parses arguments as expected
+class TestParseCmdlist (unittest.TestCase):
+
+	##	@test	test parse_cmdlist()
+	#
+	def test_parse_command_list (self):
+		args = <#module#>.parse_<#module#>_args(['<#abbrev#>', '<#args#>'])
+		self.assertEqual(args.cmd, '<#abbrev#>')
 
 
 if __name__ == '__main__':
