@@ -14,7 +14,7 @@ import util
 import <#module#>
 
 loglevel=logging.WARNING
-logging.basicConfig(format='%(asctime)s %///(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
+logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
 ## @package test<#Module#>			test methods for <#description#>
@@ -44,7 +44,7 @@ class Test<#MethodToTest#> (unittest.TestCase):
 
 	##	@test	#<desc#>
 	def test_<#method_name#>(self):
-		x  = 1
+		x = 1
 
 
 ##	@class	TestParseCmdlist

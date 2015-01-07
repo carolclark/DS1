@@ -37,16 +37,16 @@ class TestTestMethod (unittest.TestCase):
 	#
 	@classmethod
 	def setUpClass(cls):
-		cls.filenames, cls.outputs = filename_and_output_data()
+		cls._filenames, cls._outputs = filename_and_output_data()
 
 
 	##	@test	validate construction of TestMethod object
 	#
 	def test_TestMethod (self):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
-		sumline = self.outputs["p"].splitlines()[0]
+		sumline = self._outputs["p"].splitlines()[0]
 		test = runtests.TestMethod (sumline)
-		self.assertEqual (test.summary, sumline)
+		self.assertEqual (test._summary, sumline)
 
 
 ##	@class	TestTestFileResult
@@ -59,34 +59,34 @@ class TestTestFileResult (unittest.TestCase):
 	#
 	@classmethod
 	def setUpClass(cls):
-		cls.filenames, cls.outputs = filename_and_output_data()
+		cls._filenames, cls._outputs = filename_and_output_data()
 
 
 	##	@test	validate creation of TestFileResult
 	#
 	def test_creation (self):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
-		testresult = runtests.TestFileResult (self.filenames["p"], self.outputs["p"])
-		self.assertEqual (testresult.filepath, self.filenames["p"])
-		self.assertEqual (testresult.outputlines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
-		self.assertEqual (testresult.outputlines[1], runtests.TestFileResult.standardLine)
-		self.assertEqual (testresult.outputlines[2], "Ran 1 test in 0.000s")
-		self.assertEqual (testresult.outputlines[3], "OK")
+		testresult = runtests.TestFileResult (self._filenames["p"], self._outputs["p"])
+		self.assertEqual (testresult._filepath, self._filenames["p"])
+		self.assertEqual (testresult._outputlines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
+		self.assertEqual (testresult._outputlines[1], runtests.TestFileResult.standardLine)
+		self.assertEqual (testresult._outputlines[2], "Ran 1 test in 0.000s")
+		self.assertEqual (testresult._outputlines[3], "OK")
 
 		# test_equality_fail (__main__.TestEquality_FF) ... FAIL
 		# test_equality_fail1 (__main__.TestEquality_FF) ... FAIL
-		testresult = runtests.TestFileResult (self.filenames["ff"], self.outputs["ff"])
-		self.assertEqual (testresult.outputlines[9], runtests.TestFileResult.exceptionHeader)
-		self.assertEqual (testresult.outputlines[10], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
+		testresult = runtests.TestFileResult (self._filenames["ff"], self._outputs["ff"])
+		self.assertEqual (testresult._outputlines[9], runtests.TestFileResult.exceptionHeader)
+		self.assertEqual (testresult._outputlines[10], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
 
 
 	##	@test	validate attributes obtained by parsing output
 	#
 	def test_parse_results (self):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
-		testresult = runtests.TestFileResult (self.filenames["p"], self.outputs["p"])
+		testresult = runtests.TestFileResult (self._filenames["p"], self._outputs["p"])
 		testresult.parse_output()
-		self.assertEqual (len(testresult.tests), 1)
+		self.assertEqual (len(testresult._tests), 1)
 
 
 ##	@class	TestParseCmdlist
@@ -94,7 +94,7 @@ class TestTestFileResult (unittest.TestCase):
 #	verify that parser parses arguments as expected
 class TestParseCmdlist (unittest.TestCase):
 
-	##	@test	parse_runtests_args()
+	##	@test	parse_runtests_args() parses arguments as expected
 	#
 	def test_parse_command_list (self):
 		args = runtests.parse_runtests_args (['fi', 'a_filepath'])

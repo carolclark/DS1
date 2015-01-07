@@ -28,7 +28,7 @@ class TestMethod:
 	## construct from test's @link summary summary @endlink
 	def __init__ (self, summary):
 			##	summary line for this test method in unittest's verbose output
-		self.summary = summary
+		self._summary = summary
 
 
 	##	parse method's summary line
@@ -53,20 +53,21 @@ class TestFileResult:
 	#
 	def __init__ (self, filepath, output):
 			##	path of file that was tested
-		self.filepath = filepath
+		self._filepath = filepath
 			## expected test output, as a multi-line string
-		self.output = output
+		self._output = output
 			##	array of lines comprising output
-		self.outputlines = output.splitlines()
+		self._outputlines = output.splitlines()
 			##	array of TestMethod objects parsed from the test's output
-		self.tests = []
+		self._tests = []
+
 
 	##	parses output; generates top-level data and TestMethod objects
 	#
 	def parse_output (self):
-		test = TestMethod (self.outputlines[0])
+		test = TestMethod (self._outputlines[0])
 		if test.parse_summary():
-			self.tests.append (test)
+			self._tests.append (test)
 		else:
 			del test
 
@@ -116,7 +117,7 @@ def main (cmdlist=None):
 		return
 
 	if args.cmd == 'do_test_file' or args.cmd == 'fi':
-		print (do_test_file (args.file).output)
+		print (do_test_file (args.file)._output)
 
 
 if __name__ == '__main__':
