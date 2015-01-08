@@ -188,50 +188,59 @@ class TestTesting (unittest.TestCase):
 	#
 	#	@todo	implement error count
 	def test_do_test_file (self):
-		errorsEncountered = 0
+		testsWithExceptions = 0
 		printResult = False
-
-		# temporary - for visual verification
-		result = runtests.do_test_file ("/Users/carolclark/Library/CCDev/bin/python/testScm.py")
-		if printResult:
-			print ('^^^{}^^^'.format(result._output))
 
 		# passing test passes
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_pass.py")
+		self.assertTrue (result._passed)
+		testsWithExceptions = testsWithExceptions + result._failcount + result._errorcount
 		if printResult:
 			print ('^^^{}^^^'.format(result._output))
 
 		# failing test fails
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_fail.py")
+		self.assertFalse (result._passed)
+		testsWithExceptions = testsWithExceptions + result._failcount + result._errorcount
 		if printResult:
 			print ('^^^{}^^^'.format(result._output))
 
 		# test with error fails
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_error.py")
+		self.assertFalse (result._passed)
+		testsWithExceptions = testsWithExceptions + result._failcount + result._errorcount
 		if printResult:
 			print ('^^^{}^^^'.format(result._output))
 
 		# test with pass and fail
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_PF.py")
+		self.assertFalse (result._passed)
+		testsWithExceptions = testsWithExceptions + result._failcount + result._errorcount
 		if printResult:
 			print ('^^^{}^^^'.format(result._output))
 
 		# test with fail and pass
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FP.py")
+		self.assertFalse (result._passed)
+		testsWithExceptions = testsWithExceptions + result._failcount + result._errorcount
 		if printResult:
 			print ('^^^{}^^^'.format(result._output))
 
 		# test with fail and fail
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FF.py")
+		self.assertFalse (result._passed)
+		testsWithExceptions = testsWithExceptions + result._failcount + result._errorcount
 		if printResult:
 			print ('^^^{}^^^'.format(result._output))
 
 		# test with pass and pass
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_PP.py")
+		self.assertTrue (result._passed)
+		testsWithExceptions = testsWithExceptions + result._failcount + result._errorcount
 		if printResult:
 			print ('^^^{}^^^'.format(result._output))
 
-		self.assertTrue (errorsEncountered == 0)
+		self.assertTrue (testsWithExceptions == 6)
 
 
 if __name__ == '__main__':

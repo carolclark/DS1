@@ -47,6 +47,27 @@ class TestTestMethod (unittest.TestCase):
 		sumline = self._outputs["p"].splitlines()[0]
 		test = runtests.TestMethod (sumline)
 		self.assertEqual (test._summary, sumline)
+		self.assertTrue (test.parse_summary())
+		self.assertTrue (test._name, "test_equality_pass")
+		self.assertTrue (test._signature, "__main__.TestEquality_Pass")
+		self.assertTrue (test._status, "ok")
+
+		# test_equality_fail (__main__.TestEquality_Fail) ... FAIL
+		sumline = self._outputs["f"].splitlines()[0]
+		test = runtests.TestMethod (sumline)
+		self.assertEqual (test._summary, sumline)
+		self.assertTrue (test.parse_summary())
+		self.assertTrue (test._name, "test_equality_fail")
+		self.assertTrue (test._signature, "__main__.TestEquality_Fail")
+		self.assertTrue (test._status, "FAIL")
+
+		# &ab
+		sumline = "&ab"
+		test = runtests.TestMethod (sumline)
+		self.assertEqual (test._summary, sumline)
+		m = test.parse_summary()
+		self.assertFalse (test.parse_summary())
+
 
 
 ##	@class	TestTestFileResult
@@ -87,7 +108,26 @@ class TestTestFileResult (unittest.TestCase):
 		testresult = runtests.TestFileResult (self._filenames["p"], self._outputs["p"])
 		testresult.parse_output()
 		self.assertEqual (len(testresult._tests), 1)
+		self.assertTrue (testresult._passed)
 
+		# test_equality_pass (__main__.TestEquality_PF) ... ok
+		# test_equality_fail (__main__.TestEquality_PF) ... FAIL
+		testresult = runtests.TestFileResult (self._filenames["pf"], self._outputs["pf"])
+		testresult.parse_output()
+		self.assertEqual (len(testresult._tests), 2)
+		self.assertEqual (testresult._testcount, 2)
+		self.assertEqual (testresult._failcount, 1)
+		self.assertEqual (testresult._errorcount, 0)
+		self.assertFalse (testresult._passed)
+
+		test = testresult._tests[0]
+		self.assertTrue (test._name, "test_equality_pass")
+		self.assertTrue (test._signature, "__main__.TestEquality_Pass")
+		self.assertTrue (test._status, "ok")
+		test = testresult._tests[1]
+		self.assertTrue (test._name, "test_equality_fail")
+		self.assertTrue (test._signature, "__main__.TestEquality_Fail")
+		self.assertTrue (test._status, "FAIL")
 
 ##	@class	TestParseCmdlist
 #

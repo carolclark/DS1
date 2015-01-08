@@ -11,6 +11,7 @@ import logging
 import argparse
 import os
 import subprocess
+import re
 import util
 
 loglevel=logging.WARNING
@@ -36,6 +37,12 @@ class TestMethod:
 	#	python output (verbose) for a test file begins with a summary line for each test method run
 	#	@n parse summary line to establish the test method's class, method name, and status
 	def	parse_summary(self):
+		m = re.match (r"([A-Z,a-z,0-9,_]*) \(([A-Z,a-z,0-9,_,\.]*)\) \.\.\. (ok|FAIL|ERROR)", self._summary)
+		if not m:
+			return False
+		self._name = m.group(1)
+		self._signature = m.group(2)
+		self._status = m.group(3)
 		return True
 
 
@@ -60,16 +67,36 @@ class TestFileResult:
 		self._outputlines = output.splitlines()
 			##	array of TestMethod objects parsed from the test's output
 		self._tests = []
+			## number of test methods run
+		self._testcount = 0
+			## number of test methods resulting in test failures
+		self._failcount = 0
+			## number of test methods resulting in errors
+		self._errorcount = 0
+			## whether all tests in file passed
+		self._passed = True
 
 
 	##	parses output; generates top-level data and TestMethod objects
 	#
 	def parse_output (self):
-		test = TestMethod (self._outputlines[0])
-		if test.parse_summary():
-			self._tests.append (test)
-		else:
-			del test
+		self._passed = True
+		i = 0				# index into self._ouptutlines
+		while True:			# parse summary lines
+			test = TestMethod (self._outputlines[i])
+			i = i + 1
+			if test.parse_summary():
+				self._tests.append (test)
+				self._testcount = self._testcount + 1
+				if test._status != "ok":
+					self._passed = False
+					if test._status == "ERROR":
+						self._errorcount = self._errorcount + 1
+					if test._status == "FAIL":
+						self._failcount = self._failcount + 1
+			else:
+				del test
+				break
 
 
 ##	runs a single test file
@@ -86,6 +113,7 @@ def do_test_file (filepath):
 	_, output = p.communicate()
 
 	result = TestFileResult (filepath, output)
+	result.parse_output()
 
 	os.chdir (savedPath)
 	return result
