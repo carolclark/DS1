@@ -29,7 +29,7 @@ class TestMethod:
 	## construct from test's @link summary summary @endlink
 	def __init__ (self, summary):
 			##	summary line for this test method in unittest's verbose output
-		self._summary = summary
+		self.summary = summary
 
 
 	##	parse method's summary line
@@ -37,12 +37,12 @@ class TestMethod:
 	#	python output (verbose) for a test file begins with a summary line for each test method run
 	#	@n parse summary line to establish the test method's class, method name, and status
 	def	parse_summary(self):
-		m = re.match (r"([A-Z,a-z,0-9,_]*) \(([A-Z,a-z,0-9,_,\.]*)\) \.\.\. (ok|FAIL|ERROR)", self._summary)
+		m = re.match (r"([A-Z,a-z,0-9,_]*) \(([A-Z,a-z,0-9,_,\.]*)\) \.\.\. (ok|FAIL|ERROR)", self.summary)
 		if not m:
 			return False
-		self._name = m.group(1)
-		self._signature = m.group(2)
-		self._status = m.group(3)
+		self.name = m.group(1)
+		self.signature = m.group(2)
+		self.status = m.group(3)
 		return True
 
 
@@ -60,40 +60,40 @@ class TestFileResult:
 	#
 	def __init__ (self, filepath, output):
 			##	path of file that was tested
-		self._filepath = filepath
+		self.filepath = filepath
 			## expected test output, as a multi-line string
-		self._output = output
+		self.output = output
 			##	array of lines comprising output
-		self._outputlines = output.splitlines()
+		self.outputlines = output.splitlines()
 			##	array of TestMethod objects parsed from the test's output
-		self._tests = []
+		self.tests = []
 			## number of test methods run
-		self._testcount = 0
+		self.testcount = 0
 			## number of test methods resulting in test failures
-		self._failcount = 0
+		self.failcount = 0
 			## number of test methods resulting in errors
-		self._errorcount = 0
+		self.errorcount = 0
 			## whether all tests in file passed
-		self._passed = True
+		self.passed = True
 
 
 	##	parses output; generates top-level data and TestMethod objects
 	#
 	def parse_output (self):
-		self._passed = True
+		self.passed = True
 		i = 0				# index into self._ouptutlines
 		while True:			# parse summary lines
-			test = TestMethod (self._outputlines[i])
+			test = TestMethod (self.outputlines[i])
 			i = i + 1
 			if test.parse_summary():
-				self._tests.append (test)
-				self._testcount = self._testcount + 1
-				if test._status != "ok":
-					self._passed = False
-					if test._status == "ERROR":
-						self._errorcount = self._errorcount + 1
-					if test._status == "FAIL":
-						self._failcount = self._failcount + 1
+				self.tests.append (test)
+				self.testcount = self.testcount + 1
+				if test.status != "ok":
+					self.passed = False
+					if test.status == "ERROR":
+						self.errorcount = self.errorcount + 1
+					if test.status == "FAIL":
+						self.failcount = self.failcount + 1
 			else:
 				del test
 				break
@@ -145,7 +145,7 @@ def main (cmdlist=None):
 		return
 
 	if args.cmd == 'do_test_file' or args.cmd == 'fi':
-		print (do_test_file (args.file)._output)
+		print (do_test_file (args.file).output)
 
 
 if __name__ == '__main__':

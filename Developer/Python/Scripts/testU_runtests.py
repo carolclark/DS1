@@ -46,25 +46,25 @@ class TestTestMethod (unittest.TestCase):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
 		sumline = self._outputs["p"].splitlines()[0]
 		test = runtests.TestMethod (sumline)
-		self.assertEqual (test._summary, sumline)
+		self.assertEqual (test.summary, sumline)
 		self.assertTrue (test.parse_summary())
-		self.assertTrue (test._name, "test_equality_pass")
-		self.assertTrue (test._signature, "__main__.TestEquality_Pass")
-		self.assertTrue (test._status, "ok")
+		self.assertTrue (test.name, "test_equality_pass")
+		self.assertTrue (test.signature, "__main__.TestEquality_Pass")
+		self.assertTrue (test.status, "ok")
 
 		# test_equality_fail (__main__.TestEquality_Fail) ... FAIL
 		sumline = self._outputs["f"].splitlines()[0]
 		test = runtests.TestMethod (sumline)
-		self.assertEqual (test._summary, sumline)
+		self.assertEqual (test.summary, sumline)
 		self.assertTrue (test.parse_summary())
-		self.assertTrue (test._name, "test_equality_fail")
-		self.assertTrue (test._signature, "__main__.TestEquality_Fail")
-		self.assertTrue (test._status, "FAIL")
+		self.assertTrue (test.name, "test_equality_fail")
+		self.assertTrue (test.signature, "__main__.TestEquality_Fail")
+		self.assertTrue (test.status, "FAIL")
 
 		# &ab
 		sumline = "&ab"
 		test = runtests.TestMethod (sumline)
-		self.assertEqual (test._summary, sumline)
+		self.assertEqual (test.summary, sumline)
 		m = test.parse_summary()
 		self.assertFalse (test.parse_summary())
 
@@ -88,17 +88,17 @@ class TestTestFileResult (unittest.TestCase):
 	def test_creation (self):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
 		testresult = runtests.TestFileResult (self._filenames["p"], self._outputs["p"])
-		self.assertEqual (testresult._filepath, self._filenames["p"])
-		self.assertEqual (testresult._outputlines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
-		self.assertEqual (testresult._outputlines[1], runtests.TestFileResult.standardLine)
-		self.assertEqual (testresult._outputlines[2], "Ran 1 test in 0.000s")
-		self.assertEqual (testresult._outputlines[3], "OK")
+		self.assertEqual (testresult.filepath, self._filenames["p"])
+		self.assertEqual (testresult.outputlines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
+		self.assertEqual (testresult.outputlines[1], runtests.TestFileResult.standardLine)
+		self.assertEqual (testresult.outputlines[2], "Ran 1 test in 0.000s")
+		self.assertEqual (testresult.outputlines[3], "OK")
 
 		# test_equality_fail (__main__.TestEquality_FF) ... FAIL
 		# test_equality_fail1 (__main__.TestEquality_FF) ... FAIL
 		testresult = runtests.TestFileResult (self._filenames["ff"], self._outputs["ff"])
-		self.assertEqual (testresult._outputlines[9], runtests.TestFileResult.exceptionHeader)
-		self.assertEqual (testresult._outputlines[10], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
+		self.assertEqual (testresult.outputlines[9], runtests.TestFileResult.exceptionHeader)
+		self.assertEqual (testresult.outputlines[10], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
 
 
 	##	@test	validate attributes obtained by parsing output
@@ -107,27 +107,27 @@ class TestTestFileResult (unittest.TestCase):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
 		testresult = runtests.TestFileResult (self._filenames["p"], self._outputs["p"])
 		testresult.parse_output()
-		self.assertEqual (len(testresult._tests), 1)
-		self.assertTrue (testresult._passed)
+		self.assertEqual (len(testresult.tests), 1)
+		self.assertTrue (testresult.passed)
 
 		# test_equality_pass (__main__.TestEquality_PF) ... ok
 		# test_equality_fail (__main__.TestEquality_PF) ... FAIL
 		testresult = runtests.TestFileResult (self._filenames["pf"], self._outputs["pf"])
 		testresult.parse_output()
-		self.assertEqual (len(testresult._tests), 2)
-		self.assertEqual (testresult._testcount, 2)
-		self.assertEqual (testresult._failcount, 1)
-		self.assertEqual (testresult._errorcount, 0)
-		self.assertFalse (testresult._passed)
+		self.assertEqual (len(testresult.tests), 2)
+		self.assertEqual (testresult.testcount, 2)
+		self.assertEqual (testresult.failcount, 1)
+		self.assertEqual (testresult.errorcount, 0)
+		self.assertFalse (testresult.passed)
 
-		test = testresult._tests[0]
-		self.assertTrue (test._name, "test_equality_pass")
-		self.assertTrue (test._signature, "__main__.TestEquality_Pass")
-		self.assertTrue (test._status, "ok")
-		test = testresult._tests[1]
-		self.assertTrue (test._name, "test_equality_fail")
-		self.assertTrue (test._signature, "__main__.TestEquality_Fail")
-		self.assertTrue (test._status, "FAIL")
+		test = testresult.tests[0]
+		self.assertTrue (test.name, "test_equality_pass")
+		self.assertTrue (test.signature, "__main__.TestEquality_Pass")
+		self.assertTrue (test.status, "ok")
+		test = testresult.tests[1]
+		self.assertTrue (test.name, "test_equality_fail")
+		self.assertTrue (test.signature, "__main__.TestEquality_Fail")
+		self.assertTrue (test.status, "FAIL")
 
 ##	@class	TestParseCmdlist
 #
