@@ -18,8 +18,15 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-## @package runtests			runs tests; gathers and reports results
+##	@package runtests			runs tests; gathers and reports results
 #
+
+##	@class		ParseError
+#
+#	custom exception class
+class ParseError (Exception):
+	pass
+
 
 ##	@class		TestMethod
 #
@@ -30,6 +37,12 @@ class TestMethod:
 	def __init__ (self, summary):
 			##	summary line for this test method in unittest's verbose output
 		self.summary = summary
+			## test method name
+		self.name = ""
+			## class signature
+		self.signature = ""
+			## status: ok | FAIL | ERROR"
+		self.status = ""
 
 
 	##	parse method's summary line
@@ -49,6 +62,12 @@ class TestMethod:
 ##	@class		TestFileResult
 #
 #	result of running one test file
+#	@n
+#	@n Python:
+#		- When run from cmdline, each Python test generates the output we need.
+#		- However, the test runner outputs only a series of '.EF' results plus failure/error information.
+#		- TestFileResult gathers text and statistics from the full output, and provides output that shows a summary line for each test method that was run.
+#
 class TestFileResult:
 
 		##	standard line used to separate sections in test output
@@ -84,7 +103,6 @@ class TestFileResult:
 		i = 0				# index into self._ouptutlines
 		while True:			# parse summary lines
 			test = TestMethod (self.outputlines[i])
-			i = i + 1
 			if test.parse_summary():
 				self.tests.append (test)
 				self.testcount = self.testcount + 1
@@ -94,9 +112,20 @@ class TestFileResult:
 						self.errorcount = self.errorcount + 1
 					if test.status == "FAIL":
 						self.failcount = self.failcount + 1
+				i = i + 1
 			else:
 				del test
 				break
+
+		if self.testcount == 0:
+			raise ParseError ("test file `{}`: no test results found".format(self.filepath))
+
+		if self.outputlines[i] != "":
+			raise ParseError ("test file {} input line #{}: expected {}; found {}; outputlines: {}".format(self.filepath, i, TestFileResult.exceptionHeader, self.outputlines[i], self.outputlines))
+		i = i + 1
+		if not self.passed:
+			if self.outputlines[i] != TestFileResult.exceptionHeader:
+				raise ParseError ("test file {} input line #{}: expected {}; found {}; outputlines: {}".format(self.filepath, i, TestFileResult.exceptionHeader, self.outputlines[i], self.outputlines))
 
 
 ##	runs a single test file
@@ -113,9 +142,13 @@ def do_test_file (filepath):
 	_, output = p.communicate()
 
 	result = TestFileResult (filepath, output)
-	result.parse_output()
+	try:
+		result.parse_output()
+	except ParseError as e:
+		raise e
+	finally:
+		os.chdir (savedPath)
 
-	os.chdir (savedPath)
 	return result
 
 
@@ -128,7 +161,7 @@ def parse_runtests_args (cmdlist=None):
 	parser = argparse.ArgumentParser(description="run tests")
 	subparsers = parser.add_subparsers(help="subcommand info - <subcommand> --help for details", dest='cmd')
 
-	# create `do_test_file` parser
+	# create `file` parser
 	parser_fi = subparsers.add_parser('file', aliases=['fi'], help="run single test file")
 	parser_fi.add_argument("file", help="name of test file to run")
 

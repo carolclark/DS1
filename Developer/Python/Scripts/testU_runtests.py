@@ -90,15 +90,17 @@ class TestTestFileResult (unittest.TestCase):
 		testresult = runtests.TestFileResult (self._filenames["p"], self._outputs["p"])
 		self.assertEqual (testresult.filepath, self._filenames["p"])
 		self.assertEqual (testresult.outputlines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
-		self.assertEqual (testresult.outputlines[1], runtests.TestFileResult.standardLine)
-		self.assertEqual (testresult.outputlines[2], "Ran 1 test in 0.000s")
-		self.assertEqual (testresult.outputlines[3], "OK")
+		self.assertEqual (testresult.outputlines[1], "")
+		self.assertEqual (testresult.outputlines[2], runtests.TestFileResult.standardLine)
+		self.assertEqual (testresult.outputlines[3], "Ran 1 test in 0.000s")
+		self.assertEqual (testresult.outputlines[4], "")
+		self.assertEqual (testresult.outputlines[5], "OK")
 
 		# test_equality_fail (__main__.TestEquality_FF) ... FAIL
 		# test_equality_fail1 (__main__.TestEquality_FF) ... FAIL
 		testresult = runtests.TestFileResult (self._filenames["ff"], self._outputs["ff"])
-		self.assertEqual (testresult.outputlines[9], runtests.TestFileResult.exceptionHeader)
-		self.assertEqual (testresult.outputlines[10], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
+		self.assertEqual (testresult.outputlines[11], runtests.TestFileResult.exceptionHeader)
+		self.assertEqual (testresult.outputlines[12], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
 
 
 	##	@test	validate attributes obtained by parsing output
@@ -129,6 +131,21 @@ class TestTestFileResult (unittest.TestCase):
 		self.assertTrue (test.signature, "__main__.TestEquality_Fail")
 		self.assertTrue (test.status, "FAIL")
 
+		# invalid summary line
+		sumline = "invalid summary line"
+		testresult = runtests.TestFileResult ("atest", sumline)
+		with self.assertRaises(runtests.ParseError):
+			testresult.parse_output()
+
+		# test_equality_fail (__main__.TestEquality_failAlt) ... FAIL
+		# 123
+		output = """test_equality_fail (__main__.TestEquality_fail) ... FAIL
+123"""
+		testresult = runtests.TestFileResult ("atest", output)
+		with self.assertRaises(runtests.ParseError):
+			testresult.parse_output()
+
+
 ##	@class	TestParseCmdlist
 #
 #	verify that parser parses arguments as expected
@@ -150,12 +167,15 @@ def filename_and_output_data():
 	outputs = dict()
 	filenames["p"] = "test_equality_pass.py"
 	outputs["p"] = """test_equality_pass (__main__.TestEquality_Pass) ... ok
+
 ----------------------------------------------------------------------
 Ran 1 test in 0.000s
+
 OK
 """
 	filenames["f"] = "test_equality_fail.py"
 	outputs["f"] = """test_equality_fail (__main__.TestEquality_Fail) ... FAIL
+
 ======================================================================
 FAIL: test_equality_fail (__main__.TestEquality_Fail)
 ----------------------------------------------------------------------
@@ -163,11 +183,14 @@ Traceback (most recent call last):
 File "/Users/carolclark/Library/CCDev/TestData/testrunner_py/SampleTests/test_equality_fail.py", line 6, in test_equality_fail
 self.assertTrue (2 == 1)
 AssertionError: False is not true
+
 ----------------------------------------------------------------------
 Ran 1 test in 0.000s
+
 FAILED (failures=1)"""
 	filenames["e"] = "test_equality_error.py"
 	outputs["e"] = """test_equality_error (__main__.TestEquality_Error) ... ERROR
+
 ======================================================================
 ERROR: test_equality_error (__main__.TestEquality_Error)
 ----------------------------------------------------------------------
@@ -175,13 +198,16 @@ Traceback (most recent call last):
   File "/Users/carolclark/Library/CCDev/TestData/testrunner_py/SampleTests/test_equality_error.py", line 5, in test_equality_error
     self.assertTrueX (1 == 1)
 AttributeError: 'TestEquality_Error' object has no attribute 'assertTrueX'
+
 ----------------------------------------------------------------------
 Ran 1 test in 0.001s
+
 FAILED (errors=1)
 """
 	filenames["pf"] = "test_equality_PF.py"
 	outputs["pf"] = """test_equality_fail (__main__.TestEquality_PF) ... FAIL
 test_equality_pass (__main__.TestEquality_PF) ... ok
+
 ======================================================================
 FAIL: test_equality_fail (__main__.TestEquality_PF)
 ----------------------------------------------------------------------
@@ -189,13 +215,16 @@ Traceback (most recent call last):
   File "/Users/carolclark/Library/CCDev/TestData/testrunner_py/SampleTests/test_equality_PF.py", line 7, in test_equality_fail
     self.assertTrue (2 == 1)
 AssertionError: False is not true
+
 ----------------------------------------------------------------------
 Ran 2 tests in 0.001s
+
 FAILED (failures=1)
 """
 	filenames["fp"] = "test_equality_FP.py"
 	outputs["fp"] = """test_equality_fail (__main__.TestEquality_FP) ... FAIL
 test_equality_pass (__main__.TestEquality_FP) ... ok
+
 ======================================================================
 FAIL: test_equality_fail (__main__.TestEquality_FP)
 ----------------------------------------------------------------------
@@ -203,13 +232,16 @@ Traceback (most recent call last):
   File "/Users/carolclark/Library/CCDev/TestData/testrunner_py/SampleTests/test_equality_FP.py", line 5, in test_equality_fail
     self.assertTrue (2 == 1)
 AssertionError: False is not true
+
 ----------------------------------------------------------------------
 Ran 2 tests in 0.001s
+
 FAILED (failures=1)
 """
 	filenames["ff"] = "test_equality_FF.py"
 	outputs["ff"] = """test_equality_fail (__main__.TestEquality_FF) ... FAIL
 test_equality_fail1 (__main__.TestEquality_FF) ... FAIL
+
 ======================================================================
 FAIL: test_equality_fail (__main__.TestEquality_FF)
 ----------------------------------------------------------------------
@@ -217,6 +249,7 @@ Traceback (most recent call last):
   File "/Users/carolclark/Library/CCDev/TestData/testrunner_py/SampleTests/test_equality_FF.py", line 5, in test_equality_fail
     self.assertTrue (1 == 2)
 AssertionError: False is not true
+
 ======================================================================
 FAIL: test_equality_fail1 (__main__.TestEquality_FF)
 ----------------------------------------------------------------------
@@ -224,8 +257,10 @@ Traceback (most recent call last):
   File "/Users/carolclark/Library/CCDev/TestData/testrunner_py/SampleTests/test_equality_FF.py", line 7, in test_equality_fail1
     self.assertTrue (2 == 1)
 AssertionError: False is not true
+
 ----------------------------------------------------------------------
 Ran 2 tests in 0.001s
+
 FAILED (failures=2)
 """
 	filenames["pp"] = "test_equality_PP.py"
