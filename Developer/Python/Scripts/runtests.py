@@ -28,6 +28,29 @@ class ParseError (Exception):
 	pass
 
 
+##	@class		ParseOutputError
+#
+#	custom exception class for errors encountered while parsing output of a script
+class ParseOutputError (Exception):
+
+	## construct from @link scriptname scriptname @endlink
+	def __init__ (self, scriptname, lineno, expected, found):
+			## filename of script whose output is being parsed
+		self.scriptname = scriptname
+			## number of line being parsed
+		self.lineno = lineno
+			## string expected
+		self.expected = expected
+			## string found
+		self.found = found
+
+
+	## generate string representation of ParseOutputError
+	def __str__ (self):
+		msg = "output line {}#{}: expected: {}; found: {}".format (self.scriptname, self.lineno, self.expected, self.found)
+		return msg
+
+
 ##	@class		TestMethod
 #
 #	a test method of a TestFileResult
@@ -118,14 +141,15 @@ class TestFileResult:
 				break
 
 		if self.testcount == 0:
-			raise ParseError ("test file `{}`: no test results found".format(self.filepath))
+			raise ParseError ("file `{}`: no test results found".format(self.filepath))
 
 		if self.outputlines[i] != "":
-			raise ParseError ("test file {} input line #{}: expected {}; found {}; outputlines: {}".format(self.filepath, i, TestFileResult.exceptionHeader, self.outputlines[i], self.outputlines))
+			raise ParseError ("file {} input line #{}: expected {}; found {}".format(self.filepath, i, TestFileResult.exceptionHeader, self.outputlines[i]))
+
 		i = i + 1
 		if not self.passed:
 			if self.outputlines[i] != TestFileResult.exceptionHeader:
-				raise ParseError ("test file {} input line #{}: expected {}; found {}; outputlines: {}".format(self.filepath, i, TestFileResult.exceptionHeader, self.outputlines[i], self.outputlines))
+				raise ParseOutputError (self.filepath, i, TestFileResult.exceptionHeader, self.outputlines[i])
 
 
 ##	runs a single test file

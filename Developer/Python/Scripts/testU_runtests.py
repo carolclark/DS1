@@ -28,6 +28,18 @@ def runtestsTestFolder():
 	return os.path.expanduser ("~") + "/Library/CCDev/TestData/runtests_py"
 
 
+##	@class	TestParseOutputError
+#
+#	tests for class ParseOutputError
+class TestParseOutputError (unittest.TestCase):
+
+	##	@test	test ParseOutputString
+	#
+	def test_ParseOutputString (self):
+		err = runtests.ParseOutputError ("aFile", 55, "abc", "XYZ")
+		self.assertEqual (str(err), "output line aFile#55: expected: abc; found: XYZ")
+
+
 ##	@class	TestTestMethod
 #
 #	tests for class TestMethod
