@@ -20,7 +20,7 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ##	@package testU_runtests			test methods for module runtests
 #
-#	@sa		filename_and_output_data()
+#	@sa		filename_and_expected_text_data()
 
 ##	return path to folder for use by testRuntests
 #
@@ -28,16 +28,16 @@ def runtestsTestFolder():
 	return os.path.expanduser ("~") + "/Library/CCDev/TestData/runtests_py"
 
 
-##	@class	TestParseOutputError
+##	@class	TestParseCapturedTextError
 #
-#	tests for class ParseOutputError
-class TestParseOutputError (unittest.TestCase):
+#	tests for class ParseCapturedTextError
+class TestParseCapturedTextError (unittest.TestCase):
 
-	##	@test	test ParseOutputString
+	##	@test	test ParseCapturedTextError string representation
 	#
-	def test_ParseOutputString (self):
-		err = runtests.ParseOutputError ("aFile", 55, "abc", "XYZ")
-		self.assertEqual (str(err), "output line aFile#55: expected: abc; found: XYZ")
+	def test_ParseCapturedTextError (self):
+		err = runtests.ParseCapturedTextError ("aFile", 55, "abc", "XYZ")
+		self.assertEqual (str(err), "captured line aFile#55: expected: abc; found: XYZ")
 
 
 ##	@class	TestTestMethod
@@ -49,14 +49,14 @@ class TestTestMethod (unittest.TestCase):
 	#
 	@classmethod
 	def setUpClass(cls):
-		cls._filenames, cls._outputs = filename_and_output_data()
+		cls.filenames, cls.expected_text = filename_and_expected_text_data()
 
 
 	##	@test	validate construction of TestMethod object
 	#
 	def test_TestMethod (self):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
-		sumline = self._outputs["p"].splitlines()[0]
+		sumline = self.expected_text["p"].splitlines()[0]
 		test = runtests.TestMethod (sumline)
 		self.assertEqual (test.summary, sumline)
 		self.assertTrue (test.parse_summary())
@@ -65,7 +65,7 @@ class TestTestMethod (unittest.TestCase):
 		self.assertTrue (test.status, "ok")
 
 		# test_equality_fail (__main__.TestEquality_Fail) ... FAIL
-		sumline = self._outputs["f"].splitlines()[0]
+		sumline = self.expected_text["f"].splitlines()[0]
 		test = runtests.TestMethod (sumline)
 		self.assertEqual (test.summary, sumline)
 		self.assertTrue (test.parse_summary())
@@ -92,42 +92,42 @@ class TestTestFileResult (unittest.TestCase):
 	#
 	@classmethod
 	def setUpClass(cls):
-		cls._filenames, cls._outputs = filename_and_output_data()
+		cls.filenames, cls.expected_text = filename_and_expected_text_data()
 
 
 	##	@test	validate creation of TestFileResult
 	#
 	def test_creation (self):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
-		testresult = runtests.TestFileResult (self._filenames["p"], self._outputs["p"])
-		self.assertEqual (testresult.filepath, self._filenames["p"])
-		self.assertEqual (testresult.outputlines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
-		self.assertEqual (testresult.outputlines[1], "")
-		self.assertEqual (testresult.outputlines[2], runtests.TestFileResult.standardLine)
-		self.assertEqual (testresult.outputlines[3], "Ran 1 test in 0.000s")
-		self.assertEqual (testresult.outputlines[4], "")
-		self.assertEqual (testresult.outputlines[5], "OK")
+		testresult = runtests.TestFileResult (self.filenames["p"], self.expected_text["p"])
+		self.assertEqual (testresult.filepath, self.filenames["p"])
+		self.assertEqual (testresult.captured_lines[0], "test_equality_pass (__main__.TestEquality_Pass) ... ok")
+		self.assertEqual (testresult.captured_lines[1], "")
+		self.assertEqual (testresult.captured_lines[2], runtests.TestFileResult.standardLine)
+		self.assertEqual (testresult.captured_lines[3], "Ran 1 test in 0.000s")
+		self.assertEqual (testresult.captured_lines[4], "")
+		self.assertEqual (testresult.captured_lines[5], "OK")
 
 		# test_equality_fail (__main__.TestEquality_FF) ... FAIL
 		# test_equality_fail1 (__main__.TestEquality_FF) ... FAIL
-		testresult = runtests.TestFileResult (self._filenames["ff"], self._outputs["ff"])
-		self.assertEqual (testresult.outputlines[11], runtests.TestFileResult.exceptionHeader)
-		self.assertEqual (testresult.outputlines[12], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
+		testresult = runtests.TestFileResult (self.filenames["ff"], self.expected_text["ff"])
+		self.assertEqual (testresult.captured_lines[11], runtests.TestFileResult.exceptionHeader)
+		self.assertEqual (testresult.captured_lines[12], "FAIL: test_equality_fail1 (__main__.TestEquality_FF)")
 
 
 	##	@test	validate attributes obtained by parsing output
 	#
 	def test_parse_results (self):
 		# test_equality_pass (__main__.TestEquality_Pass) ... ok
-		testresult = runtests.TestFileResult (self._filenames["p"], self._outputs["p"])
-		testresult.parse_output()
+		testresult = runtests.TestFileResult (self.filenames["p"], self.expected_text["p"])
+		testresult.parse_captured_text()
 		self.assertEqual (len(testresult.tests), 1)
 		self.assertTrue (testresult.passed)
 
 		# test_equality_pass (__main__.TestEquality_PF) ... ok
 		# test_equality_fail (__main__.TestEquality_PF) ... FAIL
-		testresult = runtests.TestFileResult (self._filenames["pf"], self._outputs["pf"])
-		testresult.parse_output()
+		testresult = runtests.TestFileResult (self.filenames["pf"], self.expected_text["pf"])
+		testresult.parse_captured_text()
 		self.assertEqual (len(testresult.tests), 2)
 		self.assertEqual (testresult.testcount, 2)
 		self.assertEqual (testresult.failcount, 1)
@@ -147,7 +147,7 @@ class TestTestFileResult (unittest.TestCase):
 		sumline = "invalid summary line"
 		testresult = runtests.TestFileResult ("atest", sumline)
 		with self.assertRaises(runtests.ParseError):
-			testresult.parse_output()
+			testresult.parse_captured_text()
 
 		# test_equality_fail (__main__.TestEquality_failAlt) ... FAIL
 		# 123
@@ -155,7 +155,7 @@ class TestTestFileResult (unittest.TestCase):
 123"""
 		testresult = runtests.TestFileResult ("atest", output)
 		with self.assertRaises(runtests.ParseError):
-			testresult.parse_output()
+			testresult.parse_captured_text()
 
 
 ##	@class	TestParseCmdlist
@@ -174,7 +174,7 @@ class TestParseCmdlist (unittest.TestCase):
 ##	set up arrays containing filenames and corresponding actual python output
 #
 #	output data obtained by setting printResult to True in testU_runtests.test_do_test_file
-def filename_and_output_data():
+def filename_and_expected_text_data():
 	filenames = dict()
 	outputs = dict()
 	filenames["p"] = "test_equality_pass.py"

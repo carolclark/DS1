@@ -28,14 +28,14 @@ class ParseError (Exception):
 	pass
 
 
-##	@class		ParseOutputError
+##	@class		ParseCapturedTextError
 #
-#	custom exception class for errors encountered while parsing output of a script
-class ParseOutputError (Exception):
+#	custom exception class for errors encountered while parsing text captured from a script
+class ParseCapturedTextError (Exception):
 
 	## construct from @link scriptname scriptname @endlink
 	def __init__ (self, scriptname, lineno, expected, found):
-			## filename of script whose output is being parsed
+			## filename of script whose captured text is being parsed
 		self.scriptname = scriptname
 			## number of line being parsed
 		self.lineno = lineno
@@ -45,9 +45,9 @@ class ParseOutputError (Exception):
 		self.found = found
 
 
-	## generate string representation of ParseOutputError
+	## generate string representation of ParseCapturedTextError
 	def __str__ (self):
-		msg = "output line {}#{}: expected: {}; found: {}".format (self.scriptname, self.lineno, self.expected, self.found)
+		msg = "captured line {}#{}: expected: {}; found: {}".format (self.scriptname, self.lineno, self.expected, self.found)
 		return msg
 
 
@@ -88,26 +88,26 @@ class TestMethod:
 #	@n
 #	@n Python:
 #		- When run from cmdline, each Python test generates the output we need.
-#		- However, the test runner outputs only a series of '.EF' results plus failure/error information.
-#		- TestFileResult gathers text and statistics from the full output, and provides output that shows a summary line for each test method that was run.
+#		- However, the test runner displays only a series of '.EF' results plus failure/error information.
+#		- TestFileResult gathers text and statistics from the full captured text, and provides a summary line for each test method that was run.
 #
 class TestFileResult:
 
-		##	standard line used to separate sections in test output
+		##	standard line used to separate sections in captured output
 	standardLine = "-" * 70
 		##	line used to start an exception section
 	exceptionHeader = "=" * 70
 
-	## construct from @link filepath filepath @endlink and @link output output @endlink
+	## construct from @link filepath filepath @endlink and @link captured_text captured_text @endlink
 	#
-	def __init__ (self, filepath, output):
+	def __init__ (self, filepath, captured_text):
 			##	path of file that was tested
 		self.filepath = filepath
-			## expected test output, as a multi-line string
-		self.output = output
-			##	array of lines comprising output
-		self.outputlines = output.splitlines()
-			##	array of TestMethod objects parsed from the test's output
+			## expected captured_text as a multi-line string
+		self.captured_text = captured_text
+			##	array of lines in captured text
+		self.captured_lines = captured_text.splitlines()
+			##	array of TestMethod objects parsed from the test's captured text
 		self.tests = []
 			## number of test methods run
 		self.testcount = 0
@@ -119,13 +119,13 @@ class TestFileResult:
 		self.passed = True
 
 
-	##	parses output; generates top-level data and TestMethod objects
+	##	parses captured text; generates top-level data and TestMethod objects
 	#
-	def parse_output (self):
+	def parse_captured_text (self):
 		self.passed = True
 		i = 0				# index into self._ouptutlines
 		while True:			# parse summary lines
-			test = TestMethod (self.outputlines[i])
+			test = TestMethod (self.captured_lines[i])
 			if test.parse_summary():
 				self.tests.append (test)
 				self.testcount = self.testcount + 1
@@ -143,13 +143,13 @@ class TestFileResult:
 		if self.testcount == 0:
 			raise ParseError ("file `{}`: no test results found".format(self.filepath))
 
-		if self.outputlines[i] != "":
-			raise ParseError ("file {} input line #{}: expected {}; found {}".format(self.filepath, i, TestFileResult.exceptionHeader, self.outputlines[i]))
+		if self.captured_lines[i] != "":
+			raise ParseError ("file {} input line #{}: expected {}; found {}".format(self.filepath, i, TestFileResult.exceptionHeader, self.captured_lines[i]))
 
 		i = i + 1
 		if not self.passed:
-			if self.outputlines[i] != TestFileResult.exceptionHeader:
-				raise ParseOutputError (self.filepath, i, TestFileResult.exceptionHeader, self.outputlines[i])
+			if self.captured_lines[i] != TestFileResult.exceptionHeader:
+				raise ParseCapturedTextError (self.filepath, i, TestFileResult.exceptionHeader, self.captured_lines[i])
 
 
 ##	runs a single test file
@@ -157,17 +157,17 @@ class TestFileResult:
 #	@param		filepath		path to test file to run
 #	@return		TestFileResult object
 def do_test_file (filepath):
-	output = None
+	captured_text = None
 	savedPath = os.getcwd()
 	os.chdir(os.path.dirname(filepath))
 
 	# run the test file
 	p = subprocess.Popen(filepath, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-	_, output = p.communicate()
+	_, captured_text = p.communicate()
 
-	result = TestFileResult (filepath, output)
+	result = TestFileResult (filepath, captured_text)
 	try:
-		result.parse_output()
+		result.parse_captured_text()
 	except ParseError as e:
 		raise e
 	finally:
@@ -202,7 +202,7 @@ def main (cmdlist=None):
 		return
 
 	if args.cmd == 'do_test_file' or args.cmd == 'fi':
-		print (do_test_file (args.file).output)
+		print (do_test_file (args.file).captured_text)
 
 
 if __name__ == '__main__':
