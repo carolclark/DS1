@@ -114,7 +114,6 @@
 						* run test files individually; optionally display output containing error and failure information
 						* separate test file testU_testrunner.py tests running of tests
 							* classes TestFile, TestMethod handle writing of test files for testU_testrunner.pytest
-					<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
 					* runtests.py: PythonResult parses output and gathers test result data
 						* test result is of type TestResult
 					* module pythoncmds
@@ -123,24 +122,29 @@
 					* TestResult / TestMethod: [testResult]
 						* TestResult parses summary line
 						* rename output/outputlines to captured_text/captured_lines
-						* TestResult parses rest of captured text
-					* SampleTest: class extracted from testRuntests and testU_testrunner
+					<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
+					* SampleTests: class extracted from testRuntests and testU_testrunner
 						* testRuntests generates its own sample tests
 							* extract SampleTests
 						* sample tests deleted on completion
-					* main() returns status [mainStatus]
-						* *see <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=4829">Python main() functions</a>*
-						* python_cmdline.py:: returns 0 1 2 as pass, fail, error
+					* improve unix interface
+						* util.call_command(),
+							* *see <a href="http://www.jperla.com/blog/post/a-clean-python-shell-script">A Clean Python Shell Script</a>
+							* use from testU_pythoncmds.py
+						* main() [pythonMain]
+							* *see <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=4829">Python main() functions</a>*
+							* Usage exception
+								* handle no args - print help?
+							* testing returns 0 1 2 as pass, fail, error
 					* Process Tests
-						* handle shunit tests [testShunit]
-						* runtests.py: process_tests (list) runs Unit and/or Conformance tests from folder [process_tests]
+						* TestResult parses rest of captured text
+						* runtests.py: process_tests (list) runs Unit and/or Conformance tests from list [process_tests]
 							* method summaries displayed as available; exceptions and group summary printed at end
-					* build.py
+							* find tests in folder
+					* also handle shunit tests [testShunit]
 			* Python_CTests
 				* move slow tests from Python_UTests to Python_CTests
-					* all API documentation uses Python format
 				* add to target Support_AllTests
-			* test command-line use with shunit
 		* CCDev_build.py
 
 			* planned differences in behavior from existing CCDev_install.ksh:

@@ -9,9 +9,8 @@
 
 import unittest
 import logging
-import os
-import stat
 import util
+import sampletests
 import runtests
 
 loglevel=logging.WARNING

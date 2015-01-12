@@ -128,6 +128,7 @@
 			<p><b>Publish</b> <span class='body'>[Push]: status; verify branch; push</span></p>
 		</div>
 		<h5>Put Away Branch</h5><div class='indent'>
+			<p>if branch is not complete, stash; else:</p>
 			<p><b>Merge</b></p><ul>
 				<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 				<li>checkout master; check for unmerged branches; <span class='em'>ShowCompare</span> master..$cb</li>
@@ -167,7 +168,7 @@
 		<h6 id='adminSyncMaster'>Synchronize Master with Remotes</h6><ul>
 			<li><span class='em'>Show Compare </span>master..origin/master (<span class='mono'>diff --name-status; lg</span>)</li>
 			<li>if different:<ul>
-				<li>close repository in Xcode; set $cb; checkout master</li>
+				<li>close repository in Xcode; set $cb; checkout master; verify status clean</li>
 				<li>fetch updates (fetchup): <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
 					<li>if that merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
 				</ul></li>
