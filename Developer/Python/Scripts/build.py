@@ -19,10 +19,6 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ## @package build			handle building, cleaning and testing of products
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li>(add command-line patterns here)</li>
-#	</ul>
-
 
 ##	process argments for build commands
 #

@@ -4,7 +4,7 @@
 #  Support/Developer
 #
 #  Created by Carol Clark on 7/12/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-15 C & C Software, Inc. All rights reserved.
 
 import sys
 import argparse

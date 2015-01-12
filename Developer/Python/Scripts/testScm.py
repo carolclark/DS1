@@ -16,6 +16,12 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
+## @package testScm			test functions supporting source control
+#
+
+##	@class	TestMergeMessage
+#
+#	tests for source control utility function merge_message
 class TestMergeMessage(unittest.TestCase):
 
 	##	@test		parse_scm_args(cmdlist=None) parses arguments as expected
@@ -49,10 +55,8 @@ class TestMergeMessage(unittest.TestCase):
 		self.assertEqual(scm.merge_message('aTask', '567', "Repo"), "Merge branch 'aTask' (Repo#567)")
 
 
-	##	test: scm.main(['merge_message', 'branchName', 'repoIssue'])
-	#
-	#	equivalent to command line:
-	#		scm.py merge_message &lt;branchName&gt; &lt;repoIssue&gt;
+	##	@test		test cmdline: scm.main(['merge_message', 'branchName', 'repoIssue'])
+	#				@n equivalent to command line: @c scm.py @c merge_message @c &lt;branchName&gt; @c &lt;repoIssue&gt;
 	def test_merge_message_cmd(self):
 
 		self.assertEqual(scm.main(['merge_message', 'abc', '40']), "Merge branch 'abc' (#40)")

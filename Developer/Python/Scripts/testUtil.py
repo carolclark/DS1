@@ -4,7 +4,7 @@
 #  Support/Developer
 #
 #  Created by Carol Clark on 7/12/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-15 C & C Software, Inc. All rights reserved.
 
 
 import unittest
@@ -17,6 +17,9 @@ from io import StringIO
 loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
+
+##	@package testUtil			test methods for module util
+#
 
 ##	@class	TestEquality
 #
@@ -75,9 +78,11 @@ class TestParseCmdlist (unittest.TestCase):
 #
 class TestRemoveMyFolder (unittest.TestCase):
 
+	##	establist path to test data folder
+	#
 	def setUp (self):
-		self.home = os.path.expanduser("~")
-		self.utilTestFolder = self.home + "/Library/CCDev/TestData/util_py"	# used by conformance tests
+		self._home = os.path.expanduser("~")
+		self._utilTestFolder = self._home + "/Library/CCDev/TestData/util_py"	# used by conformance tests
 
 
 	##	parse_utility_args(cmdlist=None) parses arguments as expected
@@ -111,7 +116,7 @@ class TestRemoveMyFolder (unittest.TestCase):
 	def test_remove_my_folder_cmd (self):
 
 		# folder present; would have been removed
-		self.assertTrue(util.main(['remove_my_folder', 'CCDev/tmp', '--dry-run']).startswith('=== ' + self.home + '/Library/CCDev/tmp:'))
+		self.assertTrue(util.main(['remove_my_folder', 'CCDev/tmp', '--dry-run']).startswith('=== ' + self._home + '/Library/CCDev/tmp:'))
 
 		# syntax errors for invalid input
 		with self.assertRaises(SyntaxError):
@@ -124,8 +129,8 @@ class TestRemoveMyFolder (unittest.TestCase):
 	def test_path_to_my_folder (self):
 
 		# success
-		self.assertEqual(util.path_to_my_folder('CCDev/bin'), self.home + '/Library/CCDev/bin')
-		self.assertEqual(util.path_to_my_folder('bin', '~/Library/CCDev'), self.home + '/Library/CCDev/bin')
+		self.assertEqual(util.path_to_my_folder('CCDev/bin'), self._home + '/Library/CCDev/bin')
+		self.assertEqual(util.path_to_my_folder('bin', '~/Library/CCDev'), self._home + '/Library/CCDev/bin')
 
 		# returns None if path does not exist
 		self.assertEqual(util.path_to_my_folder('fake_name_xyz987'), None)
@@ -144,7 +149,7 @@ class TestRemoveMyFolder (unittest.TestCase):
 	def test_ensure_directory (self):
 
 		# ensure test folder
-		localFolder = self.utilTestFolder + "/EnsureDirectory"
+		localFolder = self._utilTestFolder + "/EnsureDirectory"
 		util.ensure_directory(localFolder)
 
 		# ok if directory already present
@@ -176,7 +181,7 @@ class TestRemoveMyFolder (unittest.TestCase):
 	def test_do_remove_fs_item (self):
 
 		# set up TestData folder
-		folder = self.utilTestFolder + "/RemoveItem"
+		folder = self._utilTestFolder + "/RemoveItem"
 		self.assertEqual(folder, "/Users/carolclark/Library/CCDev/TestData/util_py/RemoveItem")
 		util.ensure_directory(folder)
 
@@ -214,11 +219,11 @@ class TestRemoveMyFolder (unittest.TestCase):
 	def test_do_remove_folder_with_contents (self):
 
 		# does nothing if folder does not exist
-		_, remove_count = util.do_remove_folder_with_contents(self.utilTestFolder + '/xxxxx', dry_run='DRY_RUN')
+		_, remove_count = util.do_remove_folder_with_contents(self._utilTestFolder + '/xxxxx', dry_run='DRY_RUN')
 		self.assertEqual (remove_count, 0)
 
 		# set up TestData folder
-		localFolder = self.utilTestFolder + "/Remove Folder"
+		localFolder = self._utilTestFolder + "/Remove Folder"
 		util.ensure_directory (localFolder)
 		self.assertTrue(os.path.isdir (localFolder))
 

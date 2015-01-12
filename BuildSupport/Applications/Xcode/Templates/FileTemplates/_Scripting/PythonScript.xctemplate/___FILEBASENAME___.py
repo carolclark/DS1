@@ -17,10 +17,6 @@ logging.basicConfig (format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - 
 
 ## @package <#module#>			<#description#>
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li>(add command-line patterns here)</li>
-#	</ul>
-
 
 ##	process argments for <#module#> commands
 #

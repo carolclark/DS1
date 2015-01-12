@@ -4,7 +4,7 @@
 #  Support/Developer/Python
 #
 #  Created by Carol Clark on 12/23/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-15 C & C Software, Inc. All rights reserved.
 
 
 import unittest
@@ -18,11 +18,9 @@ loglevel=logging.WARNING
 logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
 
 
-## @package testTestrunner			testing of test runner
+
+##	@package testU_testrunner			testing of test runner
 #
-#	<b>Command-Line Interface:</b><ul>
-#		<li>testTestrunner.py		run these tests</li>
-#	</ul>
 
 ##	return path to folder for use by testRuntests
 #
@@ -40,6 +38,8 @@ def sample_test_folder():
 #							Test File Generation
 #
 #================================================================================
+##	write simple tests for use by testing methods that validate testing
+#
 def generate_sample_tests():
 	# set up folder for sample test files
 	util.ensure_directory (sample_test_folder())
@@ -96,25 +96,36 @@ def generate_sample_tests():
 #	generates a python test file for SampleTests
 class GenerateTestFile:
 
+	##	create with @link class_name class_name @endlink, @link file_basename file_basename @endlink, @link test_methods list of test_methods @endlink
+	#
+	#	@todo		should provide for multiple test classes per file
 	def __init__ (self, class_name, file_basename, test_methods):
-		self._class_name = class_name
-		self._file_basename = file_basename
-		self._test_methods = test_methods
-		self._file = None
+			##	class name for collection of test methods
+		self.class_name = class_name
+			##	basename for file to be written
+		self.file_basename = file_basename
+			##	list of test methods for the specified class
+		self.test_methods = test_methods
+			##	file currently open for writing
+		self.file = None
 
 
-	def add_test_method (self, method):
-		self._test_methods.append (method)
+		##	adds the test method to list of testing_methods
+		#
+		def add_test_method (self, method):
+			self.test_methods.append (method)
 
 
+	##	write a python test file containing the methods in test_methods
+	#
 	def write_test_file (self):
-		file_path = sample_test_folder() + "/" + self._file_basename + ".py"
+		file_path = sample_test_folder() + "/" + self.file_basename + ".py"
 		with open (file_path, 'w', encoding='utf-8') as f:
 			f.write ("#! /usr/local/bin/python3\n")
 			f.write ("import unittest\n")
-			f.write ("class {} (unittest.TestCase):\n".format (self._class_name))
+			f.write ("class {} (unittest.TestCase):\n".format (self.class_name))
 
-			for method in self._test_methods:
+			for method in self.test_methods:
 				method.write_test_method (f)
 
 			f.write ("if __name__ == '__main__':\n")
@@ -123,30 +134,25 @@ class GenerateTestFile:
 		os.chmod(file_path, st.st_mode | stat.S_IEXEC)
 
 
-	_class_name = "ATestClass"
-	_file_basename = "a_test_class"
-	_test_methods = []
-	_file = None
-
-
 ##	@class	GenerateTestMethod
 #
 #	generates a test method for GenerateTestFile
 class GenerateTestMethod:
 
+	##	create with method_name and list of code_lines
+	#
 	def __init__ (self, method_name, code_lines):
-		self._method_name = method_name
-		self._code_lines = code_lines
+		self.method_name = method_name
+		self.code_lines = code_lines
 
 
+	## write the test method
+	#
+	#	@param	file	the open file to be written to
 	def write_test_method (self, file):
-		file.write ("\tdef {} (self):\n".format (self._method_name))
-		for ln in self._code_lines:
+		file.write ("\tdef {} (self):\n".format (self.method_name))
+		for ln in self.code_lines:
 			file.write ("\t\t{}\n".format(ln))
-
-
-	_method_name = "a_method_name"
-	_code_lines = []
 
 
 #================================================================================
@@ -178,54 +184,63 @@ class TestTesting (unittest.TestCase):
 		generate_sample_tests()
 
 
-	##	@test	test running individual test file; verify output and status
+	##	@test	test running individual test file; verify captured text and status
 	#
 	#	@todo	implement error count
 	def test_do_test_file (self):
-		errorsEncountered = 0
+		testsWithExceptions = 0
 		printResult = False
-
-		# temporary - for visual verification
-		result = runtests.do_test_file ("/Users/carolclark/Library/CCDev/bin/python/testScm.py")
-		if printResult:
-			print ('^^^{}^^^'.format(result.output))
 
 		# passing test passes
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_pass.py")
+		self.assertTrue (result.passed)
+		testsWithExceptions = testsWithExceptions + result.failcount + result.errorcount
 		if printResult:
-			print ('^^^{}^^^'.format(result.output))
+			print ('^^^{}^^^'.format(result.captured_text))
 
 		# failing test fails
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_fail.py")
+		self.assertFalse (result.passed)
+		testsWithExceptions = testsWithExceptions + result.failcount + result.errorcount
 		if printResult:
-			print ('^^^{}^^^'.format(result.output))
+			print ('^^^{}^^^'.format(result.captured_text))
 
 		# test with error fails
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_error.py")
+		self.assertFalse (result.passed)
+		testsWithExceptions = testsWithExceptions + result.failcount + result.errorcount
 		if printResult:
-			print ('^^^{}^^^'.format(result.output))
+			print ('^^^{}^^^'.format(result.captured_text))
 
 		# test with pass and fail
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_PF.py")
+		self.assertFalse (result.passed)
+		testsWithExceptions = testsWithExceptions + result.failcount + result.errorcount
 		if printResult:
-			print ('^^^{}^^^'.format(result.output))
+			print ('^^^{}^^^'.format(result.captured_text))
 
 		# test with fail and pass
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FP.py")
+		self.assertFalse (result.passed)
+		testsWithExceptions = testsWithExceptions + result.failcount + result.errorcount
 		if printResult:
-			print ('^^^{}^^^'.format(result.output))
+			print ('^^^{}^^^'.format(result.captured_text))
 
 		# test with fail and fail
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FF.py")
+		self.assertFalse (result.passed)
+		testsWithExceptions = testsWithExceptions + result.failcount + result.errorcount
 		if printResult:
-			print ('^^^{}^^^'.format(result.output))
+			print ('^^^{}^^^'.format(result.captured_text))
 
 		# test with pass and pass
 		result = runtests.do_test_file (sample_test_folder() + "/test_equality_PP.py")
+		self.assertTrue (result.passed)
+		testsWithExceptions = testsWithExceptions + result.failcount + result.errorcount
 		if printResult:
-			print ('^^^{}^^^'.format(result.output))
+			print ('^^^{}^^^'.format(result.captured_text))
 
-		self.assertTrue (errorsEncountered == 0)
+		self.assertTrue (testsWithExceptions == 6)
 
 
 if __name__ == '__main__':

@@ -98,13 +98,13 @@
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Branch</h5><ul>
-			<li><span class='em'>ShowCompare</span> origin..master; if indicated, <a href="#adminSyncMaster"><span class='em'>Sync Master with Remotes</span></a></li>
+			<li><span class='em'>Update Master: </span><span class='em'>ShowCompare</span> origin..master; if indicated, <a href="#adminSyncMaster"><span class='em'>Sync Master with Remotes</span></a></li>
 			<li>checkout branch<ul>
 				<li>pre-existing branch<ul>
 					<li><span class='em'>Merge Master:</span><ul>
 						<li>checkout branch ($cb); merge master <span class='mono'>(--no-ff -m "merge master")</span></li>
-						<li>push; recover any stashes</li>
-						</ul></li>
+						<li><span class='em'>ShowCompare</span> master..$cb; push; recover any stashes</li>
+					</ul></li>
 				</ul></li>
 				<li>OR new branch<ul>
 					<li>checkout new branch; set $cb; <span class='mono'>git push --set-upstream origin $cb</span></li>
@@ -123,8 +123,7 @@
 				<li>status; commit msgfile</li>
 				<li>status; <b>ShowCompare</b> master..$cb; [to amend: reset --soft lastCommit]	</li>
 				<li>check stash list</li>
-				<li><span class='em'>ShowCompare</span> origin..master; if indicated:
-					<a href="#adminSyncMaster"><span class='em'>Sync Master with Remotes</span></a>; <span class='em'>Merge Master</span></li>
+				<li><span class='em'>Update Master</span>; if changed, test and <span class='em'>Merge Master</span></li>
 			</ul>
 			<p><b>Publish</b> <span class='body'>[Push]: status; verify branch; push</span></p>
 		</div>
@@ -132,7 +131,7 @@
 			<p><b>Merge</b></p><ul>
 				<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 				<li>checkout master; check for unmerged branches; <span class='em'>ShowCompare</span> master..$cb</li>
-				<li><span class='em'>Update</span> and <span class='em'>Merge Master</span></li>
+				<li><span class='em'>Update Master</span>; if changed, test and <span class='em'>Merge Master</span></li>
 				<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
 				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
 				<li>show --name-only; lg</li>
@@ -140,7 +139,7 @@
 				<li>[retest]; <span class='em'>ShowCompare</span> origin..master; push</li>
 				<li>delete local branch; (manage remote stale branches periodically from GitHub)</li>
 			</ul>
-			<p><b>[Archive Repository]</b></li>
+			<p><b>[Archive Repository]</b></p>
 		</div>
 	</div>
 </div>
@@ -173,6 +172,7 @@
 					<li>if that merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
 				</ul></li>
 				<li>merge changes; test</li>
+				<li>push</li>
 			</ul></li>
 		</ul>
 
@@ -434,7 +434,7 @@ see <a href="http://grit.rubyforge.org/">grit</a> for ruby scripting<br />
 </p>
 
 <hr class='footer' />
-<p class='footer'>Copyright 2011-12 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-15 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>
