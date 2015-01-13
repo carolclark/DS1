@@ -42,7 +42,7 @@ class TestEquality (unittest.TestCase):
 #
 class Test<#MethodToTest#> (unittest.TestCase):
 
-	##	@test	#<desc#>
+	##	@test	<#desc#>
 	def test_<#method_name#>(self):
 		x = 1
 
