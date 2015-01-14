@@ -24,31 +24,30 @@ logging.basicConfig (format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - 
 #
 #	@param		destination		folder where tests are written
 def generate_sample_tests (destination):
-	target_folder = destination + "2"
 
 	# set up folder for sample test files
-	util.ensure_directory (target_folder)
+	util.ensure_directory (destination)
 
 	test_equality_pass = SampleTestFile ("test_equality_pass", [
 							SampleTestClass ("TestEquality_Pass", [
 								SampleTestMethod ("test_equality_pass", [
 																"self.assertTrue (1 == 1)",
 																"self.assertTrue (2 == 2)" ] ) ] ) ] )
-	test_equality_pass.write_test_file (target_folder)
+	test_equality_pass.write_test_file (destination)
 
 	test_equality_fail = SampleTestFile ("test_equality_fail", [
 							SampleTestClass ("TestEquality_Fail", [
 								SampleTestMethod ("test_equality_fail", [
 																"self.assertTrue (1 == 1)",
 																"self.assertTrue (2 == 1)" ] ) ] ) ] )
-	test_equality_fail.write_test_file (target_folder)
+	test_equality_fail.write_test_file (destination)
 
 	test_equality_error = SampleTestFile ("test_equality_error", [
 							SampleTestClass ("TestEquality_Error", [
 								SampleTestMethod ("test_equality_error", [
 																"self.assertTrueX (1 == 1)",
 																"self.assertTrue (2 == 1)" ] ) ] ) ] )
-	test_equality_error.write_test_file (target_folder)
+	test_equality_error.write_test_file (destination)
 
 	test_equality_PF = SampleTestFile ("test_equality_PF", [
 							SampleTestClass ("TestEquality_PF", [
@@ -56,7 +55,7 @@ def generate_sample_tests (destination):
 																"self.assertTrue (1 == 1)" ] ),
 								SampleTestMethod ("test_equality_fail", [
 																"self.assertTrue (2 == 1)" ] ) ] ) ] )
-	test_equality_PF.write_test_file (target_folder)
+	test_equality_PF.write_test_file (destination)
 
 	test_equality_FP = SampleTestFile ("test_equality_FP", [
 							SampleTestClass ("TestEquality_FP", [
@@ -64,7 +63,7 @@ def generate_sample_tests (destination):
 																"self.assertTrue (2 == 1)" ] ),
 								SampleTestMethod ("test_equality_pass", [
 																"self.assertTrue (1 == 1)" ] ) ] ) ] )
-	test_equality_FP.write_test_file (target_folder)
+	test_equality_FP.write_test_file (destination)
 
 	test_equality_FF = SampleTestFile ("test_equality_FF", [
 							SampleTestClass ("TestEquality_FF", [
@@ -72,7 +71,7 @@ def generate_sample_tests (destination):
 																"self.assertTrue (1 == 2)" ] ),
 								SampleTestMethod ("test_equality_fail1", [
 																"self.assertTrue (2 == 1)" ] ) ] ) ] )
-	test_equality_FF.write_test_file (target_folder)
+	test_equality_FF.write_test_file (destination)
 
 	test_equality_PP = SampleTestFile ("test_equality_PP", [
 							SampleTestClass ("TestEquality_PP", [
@@ -80,17 +79,16 @@ def generate_sample_tests (destination):
 																"self.assertTrue (1 == 1)" ] ),
 								SampleTestMethod ("test_equality_pass1", [
 																"self.assertTrue (1 == 1)" ] ) ] ) ] )
-	test_equality_PP.write_test_file (target_folder)
+	test_equality_PP.write_test_file (destination)
 
 
 ##	@class	SampleTestFile
 #
-#	generates a python test file for SampleTests
+#	data for a python test file for SampleTests
 class SampleTestFile:
 
-	##	create with @link class_name class_name @endlink, @link file_basename file_basename @endlink, @link test_methods list of test_methods @endlink
+	##	create with @link file_basename file_basename @endlink, @link test_classes list of test_classes @endlink
 	#
-	#	@todo		should provide for multiple test classes per file
 	def __init__ (self, file_basename, test_classes):
 			##	basename for file to be written
 		self.file_basename = file_basename
@@ -100,13 +98,13 @@ class SampleTestFile:
 		self.file = None
 
 
-	##	adds the test method to list of testing_methods
+	##	adds the test class to list of test_classes
 	#
-	def add_test_method (self, method):
-		self.test_methods.append (method)
+	def add_test_class (self, cls):
+		self.test_class.append (cls)
 
 
-	##	write a python test file containing the methods in test_methods
+	##	write a python test file containing the classes in test_classes
 	#
 	def write_test_file (self, target_folder):
 		file_path = target_folder + "/" + self.file_basename + ".py"
@@ -153,7 +151,7 @@ class SampleTestClass:
 
 ##	@class	SampleTestMethod
 #
-#	generates a test method for SampleTestFile
+#	a test method of class SampleTestClass
 class SampleTestMethod:
 
 	##	create with method_name and list of code_lines
