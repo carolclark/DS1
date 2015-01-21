@@ -25,13 +25,14 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ##	return path to folder for use by testRuntests
 #
-def testrunnerTestFolder():
-	return os.path.expanduser ("~") + "/Library/CCDev/TestData/testrunner_py"
+def testrunnerTestData():
+	return os.path.join (sampletests.ccdevTestDataFolder(), "testrunner_py")
+
 
 ##	return path to folder containing test files for use by these tests
 #
 def sample_test_folder():
-	return testrunnerTestFolder() + "/SampleTests"
+	return (os.path.join (testrunnerTestData(), "SampleTests"))
 
 
 ##	@class	TestEquality
@@ -56,6 +57,15 @@ class TestTesting (unittest.TestCase):
 	@classmethod
 	def setUpClass(cls):
 		sampletests.generate_sample_tests (sample_test_folder())
+
+
+	##	remove our test folders
+	#
+	@classmethod
+	def tearDownClass(cls):
+		if not sampletests.suppressTearDown():
+			util.remove_my_folder (testrunnerTestData())
+			util.remove_my_folder (sample_test_folder())
 
 
 	##	@test	test running individual test file; verify captured text and status
@@ -114,7 +124,14 @@ class TestTesting (unittest.TestCase):
 		if printResult:
 			print ('^^^{}^^^'.format(result.captured_text))
 
-		self.assertTrue (testsWithExceptions == 6)
+		# test with fail, pass, error
+		result = runtests.do_test_file (sample_test_folder() + "/test_equality_FPE.py")
+		self.assertFalse (result.passed)
+		testsWithExceptions = testsWithExceptions + result.failcount + result.errorcount
+		if printResult:
+			print ('^^^{}^^^'.format(result.captured_text))
+
+		self.assertTrue (testsWithExceptions == 8)
 
 
 if __name__ == '__main__':

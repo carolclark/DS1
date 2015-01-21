@@ -20,6 +20,19 @@ logging.basicConfig (format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - 
 ## @package sampletests			testing support including sample tests
 #
 
+##	return shared ccdev folder for test data
+def ccdevTestDataFolder():
+	home = os.path.expanduser("~")
+	return os.path.join (home, "Library", "CCDev", "TestData")
+
+
+##	return whether deletion of test data should be suppressed
+#
+#	if True, files in $CCDev/TestData are left in place for examination
+def suppressTearDown():
+	return False
+
+
 ##	write simple tests for use by test cases that validate testing
 #
 #	@param		destination		folder where tests are written
@@ -80,6 +93,17 @@ def generate_sample_tests (destination):
 								SampleTestMethod ("test_equality_pass1", [
 																"self.assertTrue (1 == 1)" ] ) ] ) ] )
 	test_equality_PP.write_test_file (destination)
+	test_equality_FPE = SampleTestFile ("test_equality_FPE", [
+							SampleTestClass ("TestEquality_FP", [
+								SampleTestMethod ("test_equality_fail", [
+																"self.assertTrue (2 == 1)" ] ),
+								SampleTestMethod ("test_equality_pass", [
+																"self.assertTrue (1 == 1)" ] ) ] ),
+							SampleTestClass ("TestEquality_Error", [
+								SampleTestMethod ("test_equality_error", [
+																"self.assertTrueX (1 == 1)",
+																"self.assertTrue (2 == 1)" ] ) ] ) ] )
+	test_equality_FPE.write_test_file (destination)
 
 
 ##	@class	SampleTestFile

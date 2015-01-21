@@ -23,7 +23,22 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 ##	return path to folder for use by testU_<#Module#>
 #
 def <#module#>TestFolder():
-	return os.path.expanduser ("~") + "/Library/CCDev/TestData/<#module#>_py"
+	return os.path.join (sampletests.ccdevTestDataFolder(), "<#module#>_py")
+
+
+##	create folder for use by these tests
+#
+def setUpModule():
+
+	# set up folder for testSampletest files
+	util.ensure_directory (<#module#>TestFolder())
+
+
+##	remove our test folder
+#
+def tearDownModule():
+	if not sampletests.suppressTearDown():
+		util.remove_my_folder (<#module#>TestFolder())
 
 
 ##	@class	TestEquality
@@ -44,7 +59,7 @@ class Test<#MethodToTest#> (unittest.TestCase):
 
 	##	@test	<#desc#>
 	def test_<#method_name#>(self):
-		x = 1
+		pass
 
 
 ##	@class	TestParseCmdlist

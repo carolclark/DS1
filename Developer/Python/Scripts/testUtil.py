@@ -10,6 +10,7 @@
 import unittest
 import argparse
 import logging
+import sampletests
 import util
 import os
 from io import StringIO
@@ -20,6 +21,27 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 
 ##	@package testUtil			test methods for module util
 #
+
+##	return path to folder for use by testUtil
+#
+def utilTestFolder():
+	return os.path.join (sampletests.ccdevTestDataFolder(), "util_py")
+
+
+##	create the test data folder
+#
+def setUpModule():
+
+	# set up folder for testUtil files
+	util.ensure_directory (utilTestFolder())
+
+
+##	remove our test folder
+#
+def tearDownModule():
+	if not sampletests.suppressTearDown():
+		util.remove_my_folder (utilTestFolder())
+
 
 ##	@class	TestEquality
 #

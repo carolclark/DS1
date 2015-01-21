@@ -126,11 +126,14 @@
 					* SampleTests: class extracted from testRuntests and testU_testrunner
 						* testRuntests generates its own sample tests
 							* extract SampleTests
+								* sample tests deleted on completion
+								* standardize use of TestData folder for python testing
 							* add SampleTestClass; move SampleTestMethods into SampleTestClass
-						* runtests: check for duplicate classes and methods
-						* sample tests deleted on completion
+						<span class='tlmark'>&lt;-- 01/25/2015</span>
+						* rename module sampletests to fortesting
+						* move in expected output data from testU_testsrunner
 					* improve unix interface
-						* util.call_command(),
+						* util.call_command()
 							* *see "subprocess_popen error.rtf", <a href="http://www.jperla.com/blog/post/a-clean-python-shell-script">A Clean Python Shell Script</a>
 							* use from testU_pythoncmds.py
 						* main() [pythonMain]
@@ -141,6 +144,7 @@
 					* Process Tests
 						* TestResult parses rest of captured text
 						* runtests.py: process_tests (list) runs Unit and/or Conformance tests from list [process_tests]
+							* check for duplicate classes and methods
 							* method summaries displayed as available; exceptions and group summary printed at end
 							* find tests in folder
 					* also handle shunit tests [testShunit]
@@ -1423,7 +1427,7 @@
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-14 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-15 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>
