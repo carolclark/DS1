@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		670280041A76F6E1004AEA12 /* Partitions.numbers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Partitions.numbers; sourceTree = "<group>"; };
 		6729FAA81957746200612D1A /* Tools_Inactive.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Tools_Inactive.html; sourceTree = "<group>"; };
 		6739B60E192EB33E00D659B6 /* Python.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Python.html; sourceTree = "<group>"; };
 		676695A41919973E005D3CED /* Support_ghissues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Support_ghissues.json; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		676695E3191ACD05005D3CED /* htpasswd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htpasswd; sourceTree = "<group>"; };
 		676695E5191AE03D005D3CED /* htaccess */ = {isa = PBXFileReference; lastKnownFileType = text; path = htaccess; sourceTree = "<group>"; };
 		676695E6191AE03D005D3CED /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		67A657041A797B90002B3CBB /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Partitions.png; path = OtherDocuments/Partitions.png; sourceTree = SOURCE_ROOT; };
 		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
 		67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 		676695A31919973E005D3CED /* OtherDocuments */ = {
 			isa = PBXGroup;
 			children = (
+				670280041A76F6E1004AEA12 /* Partitions.numbers */,
 				676695D4191ACD05005D3CED /* WebsiteStructure */,
 				676695D21919AA3B005D3CED /* ArbonneStruct.numbers */,
 				676695D31919AA3B005D3CED /* UseCaseImages.pages */,
@@ -122,6 +125,7 @@
 		676695BB1919A759005D3CED /* img */ = {
 			isa = PBXGroup;
 			children = (
+				67A657041A797B90002B3CBB /* Partitions.png */,
 				676695BC1919A759005D3CED /* space.tiff */,
 				676695BD1919A759005D3CED /* ucds_1.tiff */,
 				676695BE1919A759005D3CED /* ucds_2.tiff */,

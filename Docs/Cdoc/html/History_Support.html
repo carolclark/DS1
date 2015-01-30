@@ -51,33 +51,12 @@
 		* add command --revealLastArchive; call separately
 		* --folder also uses the current directory
 			* rename var $projectName to $folderName
-	* setup new hard drive space
-		* partition Seagate 5TB: Server(2), Archives(1), MacMirror(1), ChronoSync(1)
-		<span class='tlmark'>&lt;-- 06/09/2014</span>
-		* synchronize to MacMirror partition
+	<span class='tlmark'>&lt;-- 06/09/2014</span>
+	* ChronoSync: synchronize primary drive to MacMirror partition
+	* ChronoSync: implement remaining backup plan per <a href="Support.html#tp_Backup">Support: Backup</a>
 	* <a href="http://github.com/carolclark/Support/issues/41">(#41)</a> reenable archive.ksh tests
 		* add optional argument 'destination'
 		* reenable tests
-</pre>
-
-<!-- @marker "AppleScript Testing" -->
-<h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/Support/issues/35">(#35)</a>AppleScript Testing</h4><pre>
-	* target ThirdParty
-		* move ThirdParty installation from DevConfig.ksh to new target ThirdParty
-			* Developer does not currently need access to third-party assets until testing
-		* *At this point, we cannot test fully because the clean action is not working, probably because of a previously noticed problem with ccInstall:removeFolder*
-		* <a href="#RemoveFolderWPython">Fix RemoveFolder with Python</a>
-		* ThirdParty clean does remove content
-		* update shunit2 to the latest version
-			* Apparently, we already had the latest version, v2.1.6.
-			* We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
-	<span class='tlmark'>&lt;-- 10/13/2014</span>
-	* reorganize Developer folder; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
-	* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit installs ASUnit, runs supplied tests
-		* Initial AppleScript Tests: TestLoader and TestVarTypes test scripts from ASUnit examples
-			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
-	* new Developer target AppleScripts installs content from existing BuildSupport/Developer/AppleScripts
-		* tests may be just a custom script based on TestVarTypes
 </pre>
 
 <h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
@@ -108,49 +87,52 @@
 				* rename function remove_folder_at_home_path, command remove_folder to remove_my_folder
 				* rename function path_to_remove to path_to_my_folder
 			* Slates: Python subslate with def's for functions and tests
-			* improve Python testing
-				* *improve output; prepare for separate handling of Unit and Conformance tests*
-					* runtests.py: run one test file
-						* run test files individually; optionally display output containing error and failure information
-						* separate test file testU_testrunner.py tests running of tests
-							* classes TestFile, TestMethod handle writing of test files for testU_testrunner.pytest
-					* runtests.py: PythonResult parses output and gathers test result data
-						* test result is of type TestResult
-					* module pythoncmds
-						* pythoncmds.py documents command-line interface to our python code
-						* testU_pythoncmds.ksh tests that interface using shunit2
-					* TestResult / TestMethod: [testResult]
-						* TestResult parses summary line
-						* rename output/outputlines to captured_text/captured_lines
+		* improve Python testing
+			* *improve output; prepare for separate handling of Unit and Conformance tests*
+				* runtests.py: run one test file
+					* run test files individually; optionally display output containing error and failure information
+					* separate test file testU_testrunner.py tests running of tests
+						* classes TestFile, TestMethod handle writing of test files for testU_testrunner.pytest
+				* runtests.py: PythonResult parses output and gathers test result data
+					* test result is of type TestResult
+				* module pythoncmds
+					* pythoncmds.py documents command-line interface to our python code
+					* testU_pythoncmds.ksh tests that interface using shunit2
+				* TestResult / TestMethod: [testResult]
+					* TestResult parses summary line
+					* rename output/outputlines to captured_text/captured_lines
+				* SampleTests: class extracted from testRuntests and testU_testrunner
+					* testRuntests generates its own sample tests
+						* extract SampleTests
+							* sample tests deleted on completion
+							* standardize use of TestData folder for python testing
+						* add SampleTestClass; move SampleTestMethods into SampleTestClass
+					<span class='tlmark'>&lt;-- 01/25/2015</span>
 					<!-- @marker "3 === Current" --><span class='tlhead' id='hmark_Current'>&lt;-- Current</span>
-					* SampleTests: class extracted from testRuntests and testU_testrunner
-						* testRuntests generates its own sample tests
-							* extract SampleTests
-								* sample tests deleted on completion
-								* standardize use of TestData folder for python testing
-							* add SampleTestClass; move SampleTestMethods into SampleTestClass
-						<span class='tlmark'>&lt;-- 01/25/2015</span>
-						* rename module sampletests to fortesting
-						* move in expected output data from testU_testsrunner
-					* improve unix interface
-						* util.call_command()
-							* *see "subprocess_popen error.rtf", <a href="http://www.jperla.com/blog/post/a-clean-python-shell-script">A Clean Python Shell Script</a>
-							* use from testU_pythoncmds.py
-						* main() [pythonMain]
-							* *see <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=4829">Python main() functions</a>*
-							* Usage exception
-								* handle no args - print help?
-							* testing returns 0 1 2 as pass, fail, error
-					* Process Tests
-						* TestResult parses rest of captured text
-						* runtests.py: process_tests (list) runs Unit and/or Conformance tests from list [process_tests]
-							* check for duplicate classes and methods
-							* method summaries displayed as available; exceptions and group summary printed at end
-							* find tests in folder
-					* also handle shunit tests [testShunit]
+					* rename module sampletests to fortesting
+					* function fortesting.testFolderName(module) [[returns name of a folder at $CCDev/TestData for use by module]]
+						* use in &lt;module&gt;TestFolder methods
+					* move in expected output data from testU_testsrunner
+				* improve unix interface
+					* util.call_command()
+						* *see "subprocess_popen error.rtf", <a href="http://www.jperla.com/blog/post/a-clean-python-shell-script">A Clean Python Shell Script</a>
+						* use from testU_pythoncmds.py
+					* main() [pythonMain]
+						* *see <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=4829">Python main() functions</a>*
+						* Usage exception
+							* handle no args - print help?
+						* testing returns 0 1 2 as pass, fail, error
+				* Process Tests
+					* TestResult parses rest of captured text
+					* runtests.py: process_tests (list) runs Unit and/or Conformance tests from list [process_tests]
+						* check for duplicate classes and methods
+						* method summaries displayed as available; exceptions and group summary printed at end
+						* find tests in folder
+				* use runtests.py to run python tests
 			* Python_CTests
 				* move slow tests from Python_UTests to Python_CTests
 				* add to target Support_AllTests
+		* runtests.py also handle shunit tests [testShunit]
 		* CCDev_build.py
 
 			* planned differences in behavior from existing CCDev_install.ksh:
@@ -161,7 +143,6 @@
 				* separate targets for UnitTests and ConformanceTests
 					* ccInstall.runShunitTests takes optional parameter testType (-U|-C) used to filter on "test(U|C)_*" instead of test* if indicated
 				* fix find 'git' issue in ccInstall findSources - use python function
-	* refactor ksh scripts: for files dotted in at the top, move help information to follow them so included help info does not replace file's info
 </pre>
 
 <!-- @marker "restructure Xcode projects" -->
@@ -291,33 +272,26 @@
 							* this code is already too complex for what it does
 							* code is conceptually object oriented
 					* switch to rewriting CCDev_install.ksh in python
-		<span class='tlmark'>&lt;-- 12/02/2004</span>
-		* Python Build Script: <a href="#PythonWorkflow">Python and Workflow Support</a>
-		* <a href="../Support/XcodeDevelopment.html#NewRepositoryProject">New Repository Project</a> Support
-			* replace top-level repository &lt;RepoName&gt;.workspace with &lt;RepoName&gt;.xcodeproj
-				* * supports aggregating targets from among all targets of the Repository
-			* add tests Python_UTests, DeveloperTests
-		<span class='tldate'>[12/06/2014]</span>
-		* Support
-			* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
-			* verify no useful content remaining in project Developer; delete
-			* CCDev depends on shunit2
-			* add new project Support/Support with aggregate target
-			* add aggregate target Support_All; for now, includes CCDev only, since CCDev already depends on shunit
-		* incorporate Python installation into CCDev
-		* refactor CCDev_install
-			* refactor for testability
-			* walk directories (mainly) instead of listing all files with 'find'
-			* handle packages instead of using special behavior for Services
-		* new Scripting template BuildTarget with python template
-		* Developer:AppleScript
-			* <a href="#AppleScriptTesting">AppleScript Testing</a>
-			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScripts
+			* new CCDev test and build scripts
+				<span class='tldate'>[12/02/2014]</span>
+				* <a href="../Support/XcodeDevelopment.html#NewRepositoryProject">New Repository Project</a> Support
+					* replace top-level repository &lt;RepoName&gt;.workspace with &lt;RepoName&gt;.xcodeproj
+						* * supports aggregating targets from among all targets of the Repository
+					* add tests Python_UTests, DeveloperTests
+				<span class='tldate'>[12/06/2014]</span>
+				<span class='tlmark'>&lt;--12/08/2014</span>
+				* Python Build Scripts: <a href="#PythonWorkflow">Python and Workflow Support</a>
+			* move CCDev scripts into new target CCDev or project Developer/CCDev
+				* runtests.py for testing
+				* install script CCDev_build.py
+			* Support
+				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
+				* verify no useful content remaining in project `Developer/Developer; delete
+				* CCDev depends on shunit2
+			* new project Developer/AppleScript
+			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScript
 			* add AppleScript scripts
-		* refactor Punkin's Cdoc and Doxygen installation; add new script template
 		* for each repository and project:
-			* add ReadMe file
-				* in XcodeDevelopment: reorganizing sources: add ReadMe file in the same folder as the Xcode workspace or project
 			* use new *_install template for each scripted build
 		* Application Support
 			* Applications/BBEdit
@@ -325,9 +299,26 @@
 			* Applications/Finder
 			* folder Applications/Dash (stores snippets)
 	* Accessor: Accessor (from BuildAccessor: Accessor, AccessorApp/LogicTest, InHouse)
-	* Configuration files
-		* upgrade Accessor config files as much as works now
-		* use templates and/or SourceTree folder to make files sharable
+</pre>
+
+<!-- @marker "AppleScript Testing" -->
+<h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/Support/issues/35">(#35)</a>AppleScript Testing</h4><pre>
+	* target ThirdParty
+		* move ThirdParty installation from DevConfig.ksh to new target ThirdParty
+			* Developer does not currently need access to third-party assets until testing
+		* *At this point, we cannot test fully because the clean action is not working, probably because of a previously noticed problem with ccInstall:removeFolder*
+		* <a href="#RemoveFolderWPython">Fix RemoveFolder with Python</a>
+		* ThirdParty clean does remove content
+		* update shunit2 to the latest version
+			* Apparently, we already had the latest version, v2.1.6.
+			* We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
+	<span class='tlmark'>&lt;-- 10/13/2014</span>
+	* reorganize Developer folder; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
+	* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit installs ASUnit, runs supplied tests
+		* Initial AppleScript Tests: TestLoader and TestVarTypes test scripts from ASUnit examples
+			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
+	* new Developer target AppleScripts installs content from existing BuildSupport/Developer/AppleScripts
+		* tests may be just a custom script based on TestVarTypes
 </pre>
 
 <h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
@@ -1257,7 +1248,7 @@
 		<li class='blurb'>set up extra partition Lion for testing</li>
 		<li>Accessor <a href="../Accessor/History_Accessor.html#estWorkflow">Establish Workflow</a>: finalize Lion-compatible version of Accessor; make it compatible with booting from either primary volume Mac ora test volume Lion</li>
 		<li>upgrade CCDev installation and environment variables to support Dev folder not on boot volume</li>
-		<li>set up Lion partition for testing: <a href="Support.html#tp_NewSystemSetup">New System Setup</a></li>
+		<li>set up Lion partition for testing: New System Setup</li>
 		<li>all targets: switch to LLDB debugger to avoid build system warning</li>
 		<li>unlink documentation for Legacy projects from active documentation<ul>
 			<li>move documentation for inactive projects to Legacy folder; edit active Cdoc to remove references to those projects</li>

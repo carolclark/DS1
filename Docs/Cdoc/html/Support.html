@@ -30,16 +30,15 @@ heading with name: Task Name; tsk_TaskName;5
 	<!-- @topicGroup "Policies and Techniques" "3" -->
 		<!-- @topicItem "CCDev" "#tp_CCDev" "0" "" -->
 		<!-- @topicItem "Version Control" "#tp_VersionControl" "0" "" -->
-		<!-- @topicItem "Backup" "#tp_Backup" "0" "" -->
+		<!-- @topicItem "Volumes and Backup" "#tp_Backup" "0" "" -->
 		<!-- @topicGroup "" "7" -->
-		<!-- @topicItem "New System Setup" "#tp_NewSystemSetup" "0" "" -->
 		<!-- @topicItem "System Installation" "#tp_SystemInstallation" "0" "" -->
 		<!-- @topicItem "Web Sites" "#tp_WebSites" "0" "" -->
-		<!-- @topicGroup "" "11" -->
+		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Unix" "#tp_Unix" "0" "" -->
 		<!-- @topicItem "Tools for Compiled Code" "#tp_CompileTools" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Related Project Files" "15" -->
+	<!-- @topicGroup "Related Project Files" "14" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
 		<!-- @topicItem "Developing Projects" "XcodeDevelopment.html#Contents" "0" "tasks and refactorings" -->
 		<!-- @topicItem "Git" "Git.html#Contents" "0" "adopted source control system" -->
@@ -48,7 +47,7 @@ heading with name: Task Name; tsk_TaskName;5
 			<!-- @topicItem "Inactive Tools" "Tools_Inactive.html#Contents" "1" "inactive applications, tools, and libraries" -->
 		<!-- @topicItem "Support Glossary" "Glossary_Support.html#Contents" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Personal" "26" -->
+	<!-- @topicGroup "Personal" "23" -->
 		<!-- @topicItem "Personal" "Personal.html#Contents" "0" "Arbonne, ..." -->
 <!-- @/topicList -->
 
@@ -498,267 +497,184 @@ This decision was made on the advice of Scott Clark, and has been working very w
 </ul>
 
 <!-- "5 ==="-->
-<!-- @marker "Backup" -->
-<h1>Backup</h1>
-<!-- @topicList "Backup" "tp_Backup" -->
-	<!-- @topicItem "Volumes and Folders" "#VolumesAndFolders" "0" "" -->
-	<!-- @topicItem "Backup Tools" "#BackupTools" "0" "" -->
-	<!-- @topicItem "Backup Schedules" "#BackupSchedules" "0" "" -->
+<!-- @marker "Volumes and Backup" -->
+<h1>Volumes and Backup</h1>
+<!-- @topicList "Volumes and Backup" "tp_Backup" -->
+	<!-- @topicItem "Active Volumes" "#_ActiveVolumes" "0" "" -->
+	<!-- @topicItem "Plans by Tool" "#_PlansByTool" "0" "" -->
 	<!-- @topicItem "Cleanup and Maintenance" "#Maintenance" "0" "" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "Previous Organization" "6" -->
-	<!-- @topicItem "Backup Schedules by Tool" "#oldBackupTools" "0" "" -->
-		<!-- @topicItem "Time Machine" "#BackupTimeMachine" "1" "" -->
-		<!-- @topicItem "MobileMe Backup" "#BackupMobileMeBackup" "1" "" -->
-		<!-- @topicItem "Tar" "#BackupTar" "1" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Volumes and Folders" -->
-<h3 id='VolumesAndFolders'>Volumes and Folders</h3><ul>
-	<li>Mac (primary drive)<ul>
-		<li>Full Volume: Backed up by Time Machine; bootable mirror maintained by ChronoSync</li>
-		<li>Home Folder<ul>
+<!-- @marker "Active Volumes" -->
+<h3 id='_ActiveVolumes'>Active Volumes</h3><pre>
+	* Seagate 5
+		* MacMirror
+		* Media
+		* Archives
+		* forTimeMachine
+		* ChronoSync
+		* MacMavericks
+	* Seagate 2
+		* TimeMachine
+		* Aux (deprecated)
+		* Mavericks1
+		* Yosemite
+	* LaCie .250
+		* Ext (deprecated)
+		* Mountain (deprecated)
+		* Tiger (deprecated)
+		* Snow (deprecated)
+	* Maxtor .320
+		*Backup (deprecated)
+</pre>
+
+<!-- @marker "Plans by Tool" -->
+<h3 id='_PlansByTool'>Plans by Tool</h3><ul>
+	<li>TimeMachine: backup Mac (primary) volume, /Media</li>
+	<li>ChronoSync<ul>
+		<li class='blurb'>see <a href="Tools.html#_ChronoSync">ChronoSync</a> config for Synchronization configurations</li>
+		<li class='blurb'>ChronoSync backups run once weekly, each during a different night</li>
+		<li>MacMirror: bootable mirror of boot drive</li>
+		<li>Personal Data and Settings<ul>
+			<li>Safari: ~/Library/Safari/Bookmarks.plist</li>
+			<li>Address Book: ~/Library/Application Support/Address Book</li>
+			<li>iCal: ~/Library/Calendars</li>
+			<li>Keychains: ~/Library/Keychains</li>
+			<li>Stickies: ~/Library/StickiesDatabase</li>
 			<li>Application Preferences: ~/Library/Preferences</li>
-			<li>Application Data to backup:<ul>
-				<li>Safari: ~/Library/Safari/Bookmarks.plist</li>
-				<li>Address Book: ~/Library/Application Support/Address Book</li>
-				<li>iCal: ~/Library/Calendars</li>
-				<li>Keychains: ~/Library/Keychains</li>
-				<li>Stickies: ~/Library/StickiesDatabase</li>
+			<li>BBEdit: ~/Library/Application Support/BBEdit</li>
+			<li>Mail: ~/Library/Mail</li>
+			<li>~/Application Support<ul>
+				<li>Apple (airport data)</li>
+				<li>Automator</li>
+				<li>BBEdit</li>
+				<li>ChronoSync</li>
+				<li>Dash</li>
+				<li>iCloud</li>
+				<li>iWork</li>
+				<li>Transmit</li>
 			</ul></li>
-			<li>Archives</li>
-			<li>Dev</li>
-			<li>Documents</li>
-			<li>Downloads</li>
-			<li>Movies (contains videos from iPhone and iPad)</li>
-			<li>Music (contains iTunes library, Amazon purchases)</li>
-			<li>Pictures (contains iPhoto library)</li>
-			<li>...</li>
+		</ul></li>
+		<li>~/Dev: development work; primary content also stored at GitHub2</li>
+		<li>Documents: ~/Documents</li>
+		<li>Archives: /Archives</li>
+		<li>Media<ul>
+			<li>/Media/Music (contains iTunes library, Amazon purchases)</li>
+			<li>/Media/Pictures (contains iPhoto library)</li>
+		</ul></li>
+	</ul></li>
+	<li>Tar<ul>
+		<li class='blurb'>unix tool scripted to produce archives of development projects </li>
+		<li class='blurb'>scripts produce tarballs at ~,/Archives, which are then backed up by Time Machine and Backup</li>
+		<li>Xcode Menu Scripts <ul>
+			<li>Archive Project <ul>
+				<li>archives project files, not including Subversion files or derivative files</li>
+				<li>script produces tarballs with names including a timestamp, which should be edited to a version or revision tag</li>
+			</ul></li>
+			<li>Archive Repository <ul>
+				<li>produces timestamped archive of the current Subversion repository</li>
+			</ul></li>
+			<li>Archive to Retire <ul>
+				<li>produces timestamped archive with name including "git"</li>
+				<li>contains same data as that produced by Archive Project, plus the git repository folder by the same name
+					and the corresponding technical documentation folder</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
-
-<!-- @marker "Backup Tools" -->
-<h3 id='BackupTools'>Backup Tools</h3>
-
-<!-- @marker "Backup Schedules" -->
-<h3 id='BackupSchedules'>Backup Schedules</h3>
 
 <!-- @marker "Maintenance" -->
 <h3 id='Maintenance'>Cleanup and Maintenance</h3><pre>
 	Mail: delete or archive old data
-	iCal: delete old data
-	Xcode organizer: delete old data
+	Calendar (iCal): archive to ~/Archives/Calendar
+	Contacts (Address Book): archive to ~/Archives/Contacts
 	iTunes: content no longer needed may have to be deleted from ~/Music
-	Archives: make folders by date; burn to disk
 </pre>
-
-<h3><a name="oldBackupTools">Backup Schedules by Tool</a></h3>
-<!-- @marker "Time Machine" -->
-<h4><a name="BackupTimeMachine">Time Machine</a></h4><ul>
-	<li class='blurb'>Maintains current and previous hard drive images on a separate drive.</li>
-	<li>Exclusion Notes<ul>
-		<li>Files are included unless specifically marked for exclusion, either via the <a href="file:///System/Library/CoreServices/backupd.bundle/Contents/Resources/StdExclusions.plist">standard exclusions list</a> or by adding them as exclusions from Time Machine preferences.</li>
-		<li>When we used Parallels, it was essential to exclude the Parallels Virtual Machine. If we need Windows emulation again, we may switch to VMware instead of Parallels. In either case, the Virtual machine file must be excluded because it is a single very large file that changes every time it is opened.</li>
-		<li>11/2010 previous attempt to exclude ~/Dev/_discard resulted in
-			excluding all of ~/Dev, which required starting a new Time Machine volume to
-			correct (per Haddock Computer)</li>
-		<li>see also <a href="http://ryanblock.com/2008/05/good-folders-to-exclude-from-time-machine-backups/">Good folders to exclude from Time Machine backups</a></li>
-	</ul></li>
-</ul>
-
-<!-- @marker "MobileMe Backup" -->
-<h4><a name="BackupMobileMeBackup">MobileMe Backup</a></h4><ul>
-	<li class='blurb'> backup utility Backup provided by Apple with MobileMe account</li>
-	<li class='blurb'> Selecting Items to be Backed Up <ul>
-		<li>Quick Picks: predefined selections, such as Safari Settings<ul>
-			<li>except for Quick Picks that backup particular file types from the home folder, all available Quick Picks are included in a backup plan</li>
-			<li>in the list below, Quick Picks marked with '*' are suspected to be obsolete; we have not found corresponding folders, and in our backups no files appear</li>
-		</ul></li>
-		<li>by folder, with exclusions supported</li>
-	</ul></li>
-	<li class='blurb'>Scheduling and Incremental Backups <ul>
-		<li>Only incremental backups can be scheduled. Full backups must be run manually often enough to control space required by incremental backups. For many items, including many of the Quick Picks, incremental backups are not much smaller than the full backups on which they depend; however, all incremental backups since the last full backup must be saved.</li>
-	</ul></li>
-	<li><a name='BackupPlans'>Backup Plans</a> <ul>
-		<li>Personal Data &amp; Settings <ul>
-			<li>scheduled daily to iDisk</li>
-			<li>contents: <ul>
-				<li>svnrep</li>
-				<li>Quick Picks: Address Book, Application preferences, iCal, Keychain, *Safari settings, *Stickies</li>
-			</ul></li>
-		</ul></li>
-		<li>Daily <ul>
-			<li>scheduled daily to /Aux/Backups; once a month, run full backup &amp; delete old incrementals</li>
-			<li>contents <ul>
-				<li><b>Quick Picks</b> Address Book, Application preferences, iCal, Keychain, *Safari settings, *Stickies</li>
-				<li><b>~/Archives</b></li>
-				<li class='depr'><b>~/Databases</b> contains our current Arbonne database</li>
-				<li><b>~/Documents</b></li>
-				<li><b>~/Dev/svnrep</b> Subversion repository</li>
-				<li><b>~/Dev/Documents</b> unversioned development documents</li>
-			</ul></li>
-		</ul></li>
-		<li>Weekly <ul>
-			<li>scheduled weekly to /Aux/Backups; once every 3 to 6 months, run full backup &amp; delete old incrementals</li>
-			<li>also delete ~/Library/Application Support/Developer/Shared/SnapshotRepository.sparseimage regularly
-				at times indicated by development needs</li>
-			<li>contents <ul>
-				<li><b>Quick Picks</b> Mail messages and settings</li>
-				<li><b>~/Downloads/Installed</b></li>
-				<li><b>~/Library/Application Support/Dragon</b></li>
-				<li><b>~/Library/Application Support/Xcode</b></li>
-				<li><b>~/Library/Application Support/BBEdit</b></li>
-				<li><b>~/Library/Developer/Xcode/Snapshots</b></li>
-				<li><b>~/Library/Developer/Xcode/UserData</b></li>
-				<li><b>~/Reference</b></li>
-			</ul></li>
-		</ul></li>
-		<li>Standard DVD <ul>
-			<li>run full backup manually every month or so to DVD; normally stored off-site</li>
-			<li>contents <ul>
-				<li>~/Dev: all, instead of just svnrep and Documents</li>
-				<li>otherwise, all items from Daily and Weekly plans</li>
-			</ul></li>
-		</ul></li>
-		<li>iTunes <ul>
-			<li>run as indicated</li>
-			<li><b>Quick Picks</b> iTunes Library, iTunes Playlists, iTunes Purchases</li>
-		</ul></li>
-		<li>Media <ul>
-			<li>run as indicated</li>
-			<li><b>Quick Picks</b> iMovie projects, iPhoto library, iWeb sites</li>
-		</ul></li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Tar" -->
-<h4><a name="BackupTar">Tar</a></h4><ul>
-	<li class='blurb'>unix tool scripted to produce archives of development projects </li>
-	<li class='blurb'>scripts produce tarballs at ~/Archives, which are then backed up by Time Machine and Backup</li>
-	<li class='nyi'> currently (March 22, 2011), these scripts, which had been run from Xcode but are no longer available there and have not yet been moved, are unavailable </li>
-	<li>Xcode Menu Scripts <ul>
-		<li>Archive Project <ul>
-			<li>archives project files, not including Subversion files or derivative files</li>
-			<li>script produces tarballs with names including a timestamp, which should be edited to a version or revision tag</li>
-		</ul></li>
-		<li>Archive Repository <ul>
-			<li>produces timestamped archive of the current Subversion repository</li>
-		</ul></li>
-		<li>Archive to Retire <ul>
-			<li>produces timestamped archive with name including "svn"</li>
-			<li>contains same data as that produced by Archive Project, plus the Subversion repository folder by the same name
-				and the corresponding technical documentation folder</li>
-		</ul></li>
-	</ul></li>
-</ul>
-
-<!-- @marker "New System Setup" -->
-<h1 id='tp_NewSystemSetup'>New System Setup</h1><ul>
-	<li>Preparation: Accessor: have a copy, customized for external partition if applicable, available<ul>
-		<li>to customize for external partition; see CommonSlates_C9.h leading defines<ul>
-			<li class='blurb'>for external partition, runs Applications from the boot volume; uses folder Dev from main volume, CCDev from boot volume</li>
-		</ul></li>
-	</ul></li>
-	<li>Setup<ul>
-		<li>copy the customized Accessor to ~/Applications; run</li>
-			<li><a href="Tools.html#SystemPreferences">configure</a> System Preferences</li>
-		<li>make ~/Library visible: <span class='mono'>cd ~; chflags nohidden Library</span></li>
-		<li>Xcode<ul>
-			<li>enable Command Line Tools including git: Xcode preferences &gt; Downloads &gt; Components: install Command Line Tools</li>
-            <li>for external partition: Support: build CCDev_Setup; login again; build targets CCDev, Xcode, BBEdit</li>
-		</ul></li>
-		<li>Stickies: <a href="Tools.html#Stickies">configure</a></li>
-		<li>AppleScript: <a href="Tools.html#_AppleScript">configure</a></li>
-        <li>for external partition: BBEdit: <a href="Tools.html#BBEdit">configure</a></li>
-	</ul></li>
-</ul>
 
 <!-- @marker "System Installation" -->
 <h1 id="tp_SystemInstallation">System Installation</h1>
 <p class='blurb'> When installing a new computer, we prefer to reinstall from scratch rather than attempting to restore the hard drive to its previous state. This helps us to keep track of what applications, tools, and other files are actually needed; helps to avoid fossils in the installation process; and eliminates the risk of problems from one Installation being replicated onto the next.</p><ul>
-	<li class='blurb'>items tagged with [icl] are likely to require updating once we fully understand the implications of iCloud on this process</li>
-	<li class='blurb'>add export/import Xcode's developer account information</li>
 
 	<li>Preparation <ul>
-		<li>Xcode: check in all projects; archive all active repositories</li>
-		<li>update Archives on external drive</li>
-		<li>[icl]Mail: turn off automatic check for new mail</li>
+		<li>Accessor: if indicated: customize for external partition<ul>
+			<li>to customize for external partition; see CommonSlates_C9.h leading defines<ul>
+				<li class='blurb'>for external partition, runs Applications from the boot volume; uses folder Dev from main volume, CCDev from boot volume</li>
+			</ul></li>
+		</ul></li>
+		<li>archive Contacts to /Archives/Contacts</li>
+		<li>archive Calendars to /Archives/Calendars</li>
+		<li>copy/export to external location /Archives/for&lt;SystemName&gt;_&lt;date&gt;<ul>
+			<li>Accessor application, customized if indicated</li>
+			<li>Xcode Developer Accounts: Preferences:Accounts:ActionMenu; process requires encryption key</li>
+			<li>visible copy of ~/.ssh</li>
+			<li>~/Library/Mail/V2/MailData: Accounts.plist, MessageRules.plist, Signatures/AllSignatures.plist</li>
+			<li>~/Library/Safari/Bookmarks.plist</li>
+			<li>~/Library/Keychains/login.keychain (to use, Add Keychain from Keychain Access menu)</li>
+			<li>Terminal settings, Contacts, Calendars</li>
+		</ul></li>
+		<li>print copy of login information</li>
+		<li>git repositories<ul>
+			<li>test all targets</li>
+			<li>check in, push, archive all active repositories</li>
+			<li>upload TechnicalDocs to candcsoft.com</li>
+		</ul></li>
 		<li>run all backups</li>
-		<li>copy to externally accessible location: compiled version of this document; Accessor application</li>
-		<li>locate/copy any games to be installed</li>
-		<li>locate install DVDs <ul>
-			<li>computer's installation disks, at least for bundled applications</li>
-			<li>Mac OS X disk, if different</li>
-			<li>[speechRec]DragonDictate: original data disk; DVD with app from download, license key file</li>
-			<li>iWork</li>
+		<li>Mail: turn off automatic check for new mail</li>
+	</ul></li>
+	<li>Install System<ul>
+		<li>download OS X (for previous Systems, see AppStore &gt; Purchases); install</li>
+		<li>copy the customized Accessor to ~/Applications; run</li>
+		<li>run Software Update until it finds nothing more to update</li>
+		<li>make ~/Library visible: in a Finder window, select home folder; show view options; select Show Library Folder</li>
+		<li>copy ssh data to ~/.ssh</li>
+		<li>System Preferences: <a href="Tools.html#SystemPreferences">configure</a>, except TimeMachine</li>
+	</ul></li>
+	<li>Install Xcode for editing these documents<ul>
+		<li>download and install </li>
+		<li>create folder ~/Dev</li>
+		<li>for repositories Support, Accessor, Punkin:<ul>
+			<li>git clone https://github.com/carolclark/&lt;Repository&gt;.git ~/Dev/&lt;Repository&gt;<ul>
+				<li class='blurb'>can copy repo name from github site</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
-	<li>Installation <ul>
-		<li>install System from computer's installation disks</li>
-		<li>if Mac OS X disk is for a later OS version, update OS from that disk</li>
-		<li><a href="Support.html#tp_NewSystemSetup">configure</a> new system except Time Machine</li>
-		<li>run Software Update until it finds nothing more to update</li>
-		<li>[icl]Backup: download from Software folder at <a href="http://www.me.com/idisk/">MobileMe:</a>iDisk/Home/Software/Backup; install</li>
-		<li>Restore from Backup <ul>
-			<li>[icl]Quick Picks: Address Book, iCal, Keychain, Safari settings; Mail messages and settings</li>
+	<li>Connect to personal data<ul>
+		<li>iTunes: <a href="Tools.html#_iTunes">configure</a></li>
+		<li>iPhoto: <a href="Tools.html#_iPhoto">configure</a></li>
+		<li>Mail: <a href="Tools.html#_Mail">configure</a></li>
+		<li>Safari: <a href="Tools.html#_Safari">configure</a></li>
+		<li>copy in ~/Documents from Backup</li>
+	</ul></li>
+	<li>Support full Development functionality<ul>
+		<li>TextEdit: create ~/Library/CCDev/tmp/gitmessage.txt - Menlo regular 11; exactly 50 chars wide</li>
+		<li>Terminal:<ul>
+			<li><a href="Tools.html#_Terminal">configure</a></li>
+			<li>create branches as indicated for edited documents</li>
 		</ul></li>
+		<li>Xcode: <a href="Tools.html#_Xcode">config</a>; build and test all targets</li>
 		<li>BBEdit: <a href="http://www.barebones.com/support/bbedit/updates.html">download</a>;
 			install; <a href="Tools.html#BBEdit">configure</a></li>
-		<li class='depr'>Subversion: <ul>
-			<li>Terminal: copy file _subversion_config to ~/.subversion/config</li>
-			<li>Documentation: search at <a href="http://subversion.apache.org/packages.html#osx">openCollabNet</a>
-				for Subversion documentation; save PDF at ~/Reference</li>
-		</ul></li>
-		<li>~/Dev/Support<ul>
-			<li>create folder ~/Dev; copy in or clone workspaces for current repositories</li>
-			<li>Support: build CCDev_Setup; CCDev; Cdoc; additional support targets (eg. Xcode)</li>
-			<li class='depr'>BBEdit: quit &amp; rerun BBEdit to run its startup script</li>
-			<li class='depr'>DevSupport<ul>
-				<li>DevSupport <ul>
-					<li>checkout <ul>
-						<li>cd ~/Dev</li>
-						<li>n=DevSupport</li>
-						<li>svn checkout file:///Users/carolclark/Dev/svnrep/"$n"/trunk/ $n</li>
-					</ul></li>
-					<li>build targets Documentation, BBEdit, Finder, Safari</li>
-				</ul></li>
-				<li>Terminal: build.uia to build Cdoc</li>
-			</ul></li>
-			<li class='depr'>Punkin <ul>
-				<li>Xcode: clone ~/Dev/gitrep/PunkinMain to ~/Dev/Punkin; from ~/Dev/Punkin, create remote branch at &lt;iDisk&gt;/gitrep/PunkinRemote</li>
-				<li>BBEdit: open file Collaborator/Collaborator.build; run from shebang menu</li>
-				<li>Terminal: build.uia to build Cdoc</li>
-			</ul></li>
-		</ul></li>
-		<li class='depr'><a href="Tools.html#DragonDictate">DragonDictate</a></li>
-		<li><a href="Tools.html#Doxygen_">Doxygen</a></li>
-		<li>Dev Projects: checkout and build remaining current projects</li>
-		<li class='depr'>BBEdit: <a href="Tools.html#BBEdit">configure</a> Subversion projects</li>
-		<li>Restore from Backup <ul>
-			<li class='depr'>/Applications/Arbonne Assistant</li>
-			<li>~/Archives</li>
-			<li>~/Documents</li>
-			<li class='depr'>~/Databases</li>
-			<li class='depr'>~/Library/Application Support/Dragon</li>
-			<li>~/Reference</li>
-			<li>Quick Picks: iTunes</li>
-		</ul></li>
-		<li><a href="Support.html#tp_Backup">set up</a> Backup for new installation</li>
 		<li>AppleScript: <a href="Tools.html#_AppleScript">configure</a></li>
-		<li class='depr'>FileMaker 9: from CDs: install Pro v8.5; upgrade to Pro v9; run updater for 9.0v3</li>
-		<li>iWork: from CD: install</li>
-		<li>Games: install as indicated</li>
-		<li>Additional Tools &amp; Applications <ul>
-			<li><a href="Tools.html#UIBrowser">UI Browser</a></li>
-			<li><a href="Tools.html#StuffItExpander_">?StuffIt Expander</a></li>
-			<li><a href="Tools.html#FullKeyCodes_">Full Key Codes</a></li>
-			<li><a href="Tools.html#DiskInventoryX_">Disk Inventory X</a></li>
-			<li><a href="Tools.html#CrashReporterPrefs_">CrashReporterPrefs</a></li>
-			<li><a href="Tools.html#_Homebrew">Homebrew</a></li>
-			<li><a href="Tools.html#_MacPorts">MacPorts</a></li>
-		</ul></li>
+		<li>Doxygen: <a href="Tools.html#Doxygen_">configure</a></li>
+		<li>Transmit: <a href="Tools.html#_Transmit">configure</a></li>
+	</ul></li>
+	<li>implement Backup<ul>
 		<li>System Preferences: Time Machine: turn on</li>
+		<li><a href="Tools.html#_ChronoSync">ChronoSync</a>: configure</li>
+	</ul></li>
+	<li>Additional Tools &amp; Applications <ul>
+		<li><a href="Tools.html#_iWork">iWork</a></li>
+		<li><a href="Tools.html#UIBrowser">UI Browser</a></li>
+		<li><a href="Tools.html#Stickies">Stickies</a></li>
+		<li><a href="Tools.html#FullKeyCodes_">Full Key Codes</a></li>
+		<li><a href="Tools.html#DiskInventoryX_">Disk Inventory X</a></li>
+		<li><a href="Tools.html#CrashReporterPrefs_">CrashReporterPrefs</a></li>
+		<li><a href="Tools.html#_Homebrew">Homebrew</a></li>
+		<li><a href="Tools.html#_MacPorts">MacPorts</a></li>
+	</ul></li>
+	<li>Cleanup<ul>
+		<li>delete visible copy of ~/.ssh</li>
+		<li>destroy copy of login information</li>
 	</ul></li>
 </ul>
 
@@ -1033,8 +949,6 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	</ul></li>
 </ul>
 
-
-
 <!-- @marker "Doxygen" -->
 <h3>Doxygen</h3>
 <!-- @topicList "Doxygen" "Compile_Doxygen" -->
@@ -1054,7 +968,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright 2011-14 by C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright 2011-15 by C &amp; C Software, Inc. All rights reserved.</p>
 <p class='footer'>Confidential and Proprietary.</p>
 </body>
 </html>
