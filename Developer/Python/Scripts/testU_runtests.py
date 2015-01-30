@@ -10,8 +10,8 @@
 import unittest
 import logging
 import os
-import stat
 import util
+import sampletests
 import runtests
 
 loglevel=logging.WARNING
@@ -22,10 +22,25 @@ logging.basicConfig(format='%(asctime)s %(filename)s:%(funcName)s#%(lineno)d - %
 #
 #	@sa		filename_and_expected_text_data()
 
-##	return path to folder for use by testRuntests
+##	return path to folder for use by testUtil
 #
 def runtestsTestFolder():
-	return os.path.expanduser ("~") + "/Library/CCDev/TestData/runtests_py"
+	return os.path.join (sampletests.ccdevTestDataFolder(), "runtests_py")
+
+
+##	create the test data folder
+#
+def setUpModule():
+
+	# set up folder for testUtil files
+	util.ensure_directory (runtestsTestFolder())
+
+
+##	remove our test folder
+#
+def tearDownModule():
+	if not sampletests.suppressTearDown():
+		util.remove_my_folder (runtestsTestFolder())
 
 
 ##	@class	TestParseCapturedTextError

@@ -25,6 +25,8 @@
 		674D243E1A48E02D00F8E082 /* runtests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = runtests.py; sourceTree = "<group>"; };
 		674D243F1A49FE7200F8E082 /* testU_runtests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testU_runtests.py; sourceTree = "<group>"; };
 		6758574019DDF912004C6AC7 /* Python_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Python_install.ksh; path = Python/Python_install.ksh; sourceTree = "<group>"; };
+		6763D7F81A64555F00EC24A9 /* sampletests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = sampletests.py; sourceTree = "<group>"; };
+		6763D7F91A64568A00EC24A9 /* testU_sampletests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testU_sampletests.py; sourceTree = "<group>"; };
 		679013F01A3909F700F18C7A /* build.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = build.py; sourceTree = "<group>"; };
 		679013F31A390CB400F18C7A /* testBuild.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testBuild.py; sourceTree = "<group>"; };
 		679120F119E0907F00B2AEDA /* Python_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Python_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,8 @@
 				674D243E1A48E02D00F8E082 /* runtests.py */,
 				674D243F1A49FE7200F8E082 /* testU_runtests.py */,
 				67C463B51A4F3865002A410B /* testU_testrunner.py */,
+				6763D7F81A64555F00EC24A9 /* sampletests.py */,
+				6763D7F91A64568A00EC24A9 /* testU_sampletests.py */,
 				67C417651A549BE600E80ABF /* pythoncmds.py */,
 			);
 			name = Scripts;

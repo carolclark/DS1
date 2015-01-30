@@ -162,7 +162,7 @@ def do_test_file (filepath):
 	os.chdir(os.path.dirname(filepath))
 
 	# run the test file
-	p = subprocess.Popen(filepath, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+	p = subprocess.Popen (filepath, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
 	_, captured_text = p.communicate()
 
 	result = TestFileResult (filepath, captured_text)
