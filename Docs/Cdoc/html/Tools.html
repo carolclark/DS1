@@ -20,27 +20,27 @@
 	<!-- @topicItem "BBEdit" "#BBEdit" "0" "" -->
 	<!-- @topicItem "Calendar" "#Calendar" "0" "" -->
 	<!-- @topicItem "ChronoSync" "#_ChronoSync" "0" "" -->
-	<!-- @topicItem "CrashReporterPrefs" "#CrashReporterPrefs_" "0" "" -->
-	<!-- @topicItem "Dash" "#Dash" "0" "" -->
-<!-- @topicGroup "" "10" -->
+	<!-- @topicItem "Dash" "#_Dash" "0" "" -->
 	<!-- @topicItem "Disk Inventory X" "#DiskInventoryX_" "0" "" -->
+<!-- @topicGroup "" "10" -->
 	<!-- @topicItem "Doxygen" "#Doxygen_" "0" "" -->
-	<!-- @topicItem "DragonDictate" "#DragonDictate" "0" "" -->
+	<!-- @topicItem "FileMerge" "#_FileMerge" "0" "" -->
 	<!-- @topicItem "Finder" "#Finder" "0" "" -->
-	<!-- @topicItem "Full Key Codes" "#FullKeyCodes_" "0" "" -->
 	<!-- @topicItem "Homebrew" "#_Homebrew" "0" "" -->
 	<!-- @topicItem "iPhoto" "#_iPhoto" "0" "" -->
 	<!-- @topicItem "iTunes" "#_iTunes" "0" "" -->
 	<!-- @topicItem "iWork" "#_iWork" "0" "" -->
-<!-- @topicGroup "" "20" -->
 	<!-- @topicItem "Mail" "#_Mail" "0" "" -->
 	<!-- @topicItem "MacPorts" "#_MacPorts" "0" "" -->
+<!-- @topicGroup "" "20" -->
 	<!-- @topicItem "Markdown" "#Markdown" "0" "" -->
+	<!-- @topicItem "Marked" "#_Marked" "0" "" -->
+	<!-- @topicItem "PaintCode" "#_PaintCode" "0" "" -->
 	<!-- @topicItem "Python" "#_Python" "0" "" -->
 	<!-- @topicItem "Safari" "#_Safari" "0" "" -->
 	<!-- @topicItem "Server" "#_Server" "0" "" -->
 	<!-- @topicItem "Stickies" "#Stickies" "0" "" -->
-	<!-- @topicItem "StuffIt Expander" "#StuffItExpander_" "0" "" -->
+	<!-- @topicItem "StuffIt Expander" "#_StuffItExpander" "0" "" -->
 	<!-- @topicItem "System Preferences" "#SystemPreferences" "0" "" -->
 <!-- @topicGroup "" "30" -->
 	<!-- @topicItem "Tar" "#Tar_" "0" "" -->
@@ -71,7 +71,6 @@
 			<li>General: Show script menu in menu bar: on; application scripts at top</li>
 			<li>Editing: Use Script Assistant</li>
 		</ul></li>
-		<li><b>/Library/Scripts</b> move scripts into new folder Supplied; make sure GUI Scripting is enabled</li>
 	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
 </div>
@@ -184,31 +183,25 @@
 				<li>if errors: Send email containing errors &amp; summary to me</li>
 			</ul></li>
 		</ul></li>
+		<li>Synchronizations: see <a href="Support.html#_PlansByTool">Backup Plans by Tool</a></li>
 	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
 
-<!-- @marker "CrashReporterPrefs" -->
-<h4><a name="CrashReporterPrefs_">CrashReporterPrefs</a></h4><div class='indent'>
-	<p class='blurb'>used to set preferences regarding frequency of Crash Reporter windows being opened</p>
-	<p><b>Application</b> /Developer/Applications/Utilities/CrashReporterPrefs; 10.5.0</p>
-	<p><b>Source</b> system tool</p>
-	<p><b>Installation and Configuration</b> set mode of operation to Developer</p>
-</div>
-
 <!-- @marker "Dash" -->
-<h4><a name="Dash">Dash</a></h4><div class='indent'>
+<h4><a name="_Dash">Dash</a></h4><div class='indent'>
 	<p><b>Application</b> AppStore app at /Applications</p>
 	<p><b>Critical Data</b> active snippets library inside ${DEV}/Support; supplied snippet examples at ~/Library/Application Support/Dash </p>
 	<p><b>Configuration</b> </p>
 	<p><b>Customization &amp; Automation</b> </p><ul>
 		<li>Dash Preferences<ul>
-			<li>General: Open Main Window: crs`</li>
 			<li>Downloads: download docsets as indicated</li>
-			<li>Docsets: set abbreviations osx:, ios:, dev:, pun:, acc: for primary docsets</li>
-			<li>Snippets: enable snippet detection; open library ${DEV}/Support/Dash/snippets.dash</li>
-			<li>Advanced: normally use Window style HUD</li>
+			<li>Docsets: set abbreviations dev:, pun:, acc: for ~/Dev docsets</li>
+			<li>Snippets: open library at ${DEV}/Support/BuildSupport/Dash/snippets.dash</li>
 		</ul></li>
-		<li>System Preferences: Keyboard: Services: Look up in Dash: cr`</li>
+		<li>System Preferences<ul>
+			<li>Keyboard: Services: Look up in Dash: cr`</li>
+			<li>Accounts : Login Items: add Dash; hide</li>
+	</ul></li>
 	</ul>
 </div>
 
@@ -223,70 +216,18 @@
 <!-- @marker "Doxygen" -->
 <h4><a name="Doxygen_">Doxygen</a></h4><div class='indent'>
 	<p class='blurb'>Documentation generator for source files including Objective-C</p>
-	<p><b>tool</b> /Applications/doxygen/Doxygen</p>
+	<p><b>tool</b> /Applications/Doxygen</p>
 	<p><b>Source</b> binary and pdf documentation downloaded from <a href="http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc">Doxygen Download Page</a></p>
 	<p><b>License</b> GPL</p>
 </div>
 
-<!-- @marker "DragonDictate" -->
-<h4><a name="DragonDictate">DragonDictate</a></h4><div class='indent'>
-	<p><b>Application</b> /Applications/DragonDictate</p>
-	<p><b>Installation</b></p><ul>
-		<li>install from DVD</li>
-		<li>copy "Carol Clark.dictateprofile", "Carol Clark.dictatelicense" to ~/Documents</li>
-		<li>run application; select license and provide Data Disk as requested</li>
-	</ul>
+<!-- @marker "FileMerge" -->
+<h4 id='_FileMerge'>FileMerge</h4><div class='indent'>
+	<p class='blurb'>file comparison tool used by git diff</p>
+	<p><b>Application</b> inside Xcode application package; v2.8</p>
 	<p><b>Critical Data</b> </p>
-	<ul>
-		<li>~/Library/Application Support/Dragon</li>
-		<li>profile is in ~/Documents</li>
-	</ul>
-	<p><b>Configuration</b></p><ul>
-		<li>General <ul>
-			<li>On Startup: Show Profiles Window: off</li>
-			<li>When Activating a profile:Open a new Notepad window: off</li>
-		</ul></li>
-		<li>Recognition <ul>
-			<li>Always Show Recognition Window When Dictating: On</li>
-			<li>Close Recognition Window After Each Choice: Off</li>
-		</ul></li>
-		<li>Command <ul>
-			<li>Command Generation: Generate Application Launch Commands: Off</li>
-		</ul></li>
-	</ul>
-	<p><b>Custom Commands</b></p><ul>
-		<li>BBEdit <ul>
-			<li>history suffix: _hist</li>
-			<li>jump line end: cRight</li>
-			<li>list item: &lt;li&gt;&lt;##&gt;&lt;/li&gt;</li>
-			<li>next field: rAccent</li>
-			<li>previous field: srAccent</li>
-			<li>plain list: "&lt;ul&gt;&lt;##&gt;$lt;/ul&gt;"</li>
-			<li>spot marker: &lt;##&gt;</li>
-		</ul></li>
-	</ul>
-	<p><b>Custom Vocabulary</b></p><ul>
-		<li>/ (slash)</li>
-		<li>.hist (tag history)</li>
-		<li>Arbonne</li>
-		<li>BBEdit</li>
-		<li>candcsoft (CNC soft; Lower case in titles)</li>
-		<li>carollclark (Carol L Clark; Lower case in titles)</li>
-		<li>CCDev (see-see-dev)</li>
-		<li>Cdoc (see-doc)</li>
-		<li>Corlan</li>
-		<li>git</li>
-		<li>iDisk (Lower case in titles)</li>
-		<li>iOS (Lower case in titles)</li>
-		<li>Koala</li>
-		<li>Punkin</li>
-		<li>refactor</li>
-		<li>refactoring</li>
-		<li>subslates</li>
-		<li>subtarget</li>
-		<li>Unix</li>
-		<li>unversioned</li>
-	</ul>
+	<p><b>Installation and Configuration</b> pull up splitter to reveal third panel</p>
+	<p><b>Customization &amp; Automation</b> </p>
 </div>
 
 <!-- @marker "Finder" -->
@@ -299,14 +240,6 @@
 	</ul>
 	<p><b>Customization &amp; Automation</b> <br />
 	script applications to operate on dropped files:</p>
-</div>
-
-<!-- @marker "Full Key Codes" -->
-<h4><a name="FullKeyCodes_">Full Key Codes</a></h4><div class='indent'>
-	<p class='blurb'>utility to display code information about each key of the keyboard</p>
-	<p><b>Application</b> /Applications/Utilities/Full Key Codes 1.1/Full Key Codes; v1.1</p>
-	<p><b>Source</b> <a href="http://softwares.bajram.com/utilities/#Full_Key_Codes">Bajram Utilities</a></p>
-	<p><b>License</b> free</p>
 </div>
 
 <!-- @marker "Homebrew" -->
@@ -341,6 +274,7 @@
 			<li>Change iTunes Media folder location: select folder on /Media<ul>
 				<li>see <a href="http://support.apple.com/en-us/HT201562">iTunes for Mac: Moving your iTunes Media folder</a></li>
 			</ul></li>
+            <li>Open iTunes Media folder to import its content</li>
 		</ul></li>
 	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
@@ -371,25 +305,19 @@
 	<p><b>Critical Data</b> ~/Library/Mail/V2/MailData; esp files Accounts.plist, AllSignatures.plist, MessageRules.plist</p>
 	<p><b>Configuration</b></p>
 	<ul>
+		<li><b>Cox</b>: make sure Cox spam is set to leave 'spam' in inbox; see 'Manage Spam' on website</li>
 		<li><b>Accounts</b><ul>
 			<li>Account Information<ul>
 				<li>iCloud: carolclarkcc@me.com; in: (disabled)p03-imap.mail.me.com; out: iCloud (only)</li>
-				<li>Gmail: caroljimclark@gmail.com; in: imap.gmail.com; out: smtp.gmail.com:caroljimclark@gmail.com; cc3x</li>
+				<li>Gmail: caroljimclark@gmail.com; in: imap.gmail.com; out: Gmail; cc3x</li>
 				<li>Yahoo: carolclark_ict@yahoo.com; in: imap.mail.yahoo.com; out: Yahoo!</li>
-				<li>POP account: my email; in: pop.central.cox.net; out: smtp.central.cox.net; cc3x</li>
+				<li>Cox account: my email; in: imap.cox.net; out: cox.net; cc3x</li>
 			</ul></li>
 			<li>Behaviors<ul>
-				<li>IMAP<ul>
-					<li>draft messages: store on server: On</li>
-					<li>sent messages: store on server: On; delete Never</li>
-					<li>junk: store on server: Off; delete one month old</li>
-					<li>trash: move to Trash: On; Store deleted messages on server: Off; erase one month old</li>
-				</ul></li>
-				<li>POP<ul>
-					<li>Delete sent: Never</li>
-					<li>Delete junk: One month old</li>
-					<li>Delete trash: One month old; move deleted messages to Trash</li>
-				</ul></li>
+                <li>draft messages: store on server: On</li>
+                <li>sent messages: store on server: On; delete Never</li>
+                <li>junk: store on server: On; delete one month old</li>
+                <li>trash: move to Trash: On; Store deleted messages on server: Off; erase one month old</li>
 			</ul></li>
 		</ul></li>
 		<li><b>Junk Mail</b> Move to Junk Mailbox</li>
@@ -447,18 +375,36 @@
 	<p><b>License</b> free for use; basic restrictions on distribution</p>
 </div>
 
+<!-- @marker "Marked" -->
+<h4 id='_Marked'>Marked</h4><div class='indent'>
+	<p class='blurb'>previewer for Markup documents</p>
+	<p><b>Applications</b> at /Applications; 1.4.3; from AppStore</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Installation and Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+</div>
+
+<!-- @marker "PaintCode" -->
+<h4 id='_PaintCode'>PaintCode</h4><div class='indent'>
+	<p class='blurb'>vector drawing app; generates Objective-C or Swift code from drawings</p>
+	<p><b>Application</b> at /Applications; 1.3.3; from AppStore</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Installation and Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+</div>
+
 <!-- @marker "Python" -->
 <h2 id='_Python'>Python</h2>
 	<p class='blurb'>Python language support</p>
 	<p class='blurb'>on our System (Mavericks, Xcode 5), Python been installed, but that was Python version 2.7</p>
-	<p><b>Executable</b> python3 at /usr/local/bin; version 3.3.3</p>
+	<p><b>Executable</b> python3 at /usr/local/bin; version 3.4.2</p>
 	<p><b>Critical Data</b> local scripts at ${CCDev}/bin/python3</p>
 	<p><b>Installation and Configuration</b> </p><ul>
-		<li>install with Homebrew</li>
-		<li>~/.profile: set $PYTHONPATH to ${CCDev}/bin/python; add ${CCDev}/bin/python to $PATH</li>
+		<li><a href="https://www.python.org/downloads/release/python-342/">Python.org</a></li>
 		<li>rename /usr/bin/python to python2 so we know cmdline does not run it</li>
 	</ul>
-	<p><b>Customization &amp; Automation</b> </p>
+	<p><b>Customization &amp; Automation</b><br />
+		in target Support/Developer: ~/.profile: set $PYTHONPATH to ${CCDev}/bin/python; add ${CCDev}/bin/python to $PATH</p>
 
 <!-- @marker "Safari" -->
 <h4><a name="_Safari">Safari</a></h4><div class='indent'>
@@ -494,9 +440,9 @@
 </div>
 
 <!-- @marker "StuffIt Expander" -->
-<h4><a name="StuffItExpander_">StuffIt Expander</a></h4><div class='indent'>
+<h4><a name="_StuffItExpander">StuffIt Expander</a></h4><div class='indent'>
 	<p class='blurb'>free utility to decompress StuffIt archives</p>
-	<p><b>Application</b> /Applications/StuffIt/StuffIt Expander; v13.0.3</p>
+	<p><b>Application</b> /Applications/StuffIt/StuffIt Expander; v16.0.0</p>
 	<p><b>Source</b> <a href="http://my.smithmicro.com/downloads/trials/expander_mac.html">Smith Micro</a></p>
 	<p><b>License</b> free</p>
 	<p><b>Installation and Configuration</b> keep in Dock for drop access</p>
@@ -511,13 +457,7 @@
 		<li><b>Dock</b>: fairly small (about 10%); on right</li>
 		<li><b>Mission Control</b>: Hot Corners: bottomLeft: Put Display to Sleep; bottomRight: Start Screen Saver</li>
 		<li><b>Security &amp; Privacy</b><ul>
-			<li>Fireewall: On</li>
-			<li>Privacy: allow access for:<ul>
-				<li>Location Services: On</li>
-				<li>Contacts: Xcode</li>
-				<li>Accessibility: Accessor, Dash</li>
-				<li>Diagnostic: Send Data: On</li>
-			</ul></li>
+			<li>Firewall: On</li>
 		</ul></li>
 		<li><b>Displays</b>: minimum brightness</li>
 		<li><b>Keyboard</b>: Keyboard Shortcuts<ul>
@@ -532,6 +472,7 @@
 					<li>Use smart quotes and dashes: Off</li>
 				</ul></li>
 				<li>Shortcuts<ul>
+					<li>Launchpad: csL</li>
 					<li>Services: Accessor: r`</li>
 					<li>Accessibility: all Off</li>
 				</ul></li>
@@ -540,17 +481,16 @@
 				</ul></li>
 			</ul></li>
 		</ul></li>
+		<li><b>Bluetooth</b>: connect microphone (turn on mic to trigger); Show Bluetooth in menu bar: On</li>
 		<li><b>Mouse</b> Tracking: 40%</li>
 		<li><b>Sound</b> <ul>
 			<li>Output: volume ~5%</li>
 			<li>Input: external microphone; input volume 100%</li>
 		</ul></li>
 		<li><b>Network</b>: Show Wi-Fi Status in munu bar: On</li>
-		<li><b>Bluetooth</b>: connect Mouse, Keyboard, microphone; Show Bluetooth in menu bar: On</li>
 		<li><b>Sharing</b>: File Sharing, Printer Sharing: On</li>
 		<li><b>Users &amp; Groups</b> Login Items: Mail, Calendar, ChronoSync Backgrounder, Activity Monitor (Hide); in Account Context Menu: set system shell to /bin/ksh</li>
-		<li><b>App Store</b>: ??Download Updates Automatically: off</li>
-		<li><b>Dictation &amp; Speech</b>: Dictation: On; select external microphone; dictation key cosr6</li>
+		<li><b>Dictation &amp; Speech</b>: Dictation: On; select external microphone; <span class='depr'>dictation key cosr6</span></li>
 		<li><b>Date &amp; Time</b><ul>
 			<li>Time Zone: select</li>
 			<li>Clock: Show date and time in menu bar</li>
@@ -571,16 +511,16 @@
 <!-- @marker "Terminal" -->
 <h4><a name="_Terminal">Terminal</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications/Utilities</p>
-	<p><b>Critical Data</b> settings can be exported</p>
+	<p><b>Critical Data</b> settings for tabs can be exported</p>
 	<p><b>Configuration</b></p><ul>
 		<li class='blurb'>for installation, import settings if available</li>
 		<li>Custom Tabs<ul>
 			<li><b>Support:</b> Font Courier 12; text {59; 35; 34}; background {243; 237; 219}; command <span class='mono'>cd ${DEV}/Support</span></li>
-			<li><b>Accessor:</b> Font Andale Mono 11; text {0; 0; 255}; background {174; 206; 255}; command <span class='mono'>cd ${DEV}/Accessor</span></li>
+			<li><b>Accessor:</b> Font Andale Mono 11; text {0; 0; 255}; selection {106, 151, 255}; background {174; 206; 255}; command <span class='mono'>cd ${DEV}/Accessor</span></li>
 			<li><b>Punkin:</b> Font Menlo Regular 11; text {85; 48; 0}; background {255; 201; 180}; command <span class='mono'>cd ${DEV}/Punkin</span></li>
 		</ul></li>
-		<li>Window Group: Workspaces, containing custom tabs</li>
-		<li>Startup: open window group Workspaces</li>
+		<li>Window Group: generate with tabs using Shell &gt; New Tab; size 120x28; Window &gt; save as group Repositories, setting to use when Terminal starts</li>
+		<li>Startup: open window group Repositories</li>
 	</ul>
 	<p><b>Customization &amp; Automation</b>: set shell ksh (<span class='mono'>chsh -s /bin/ksh</span>) </p>
 </div>
@@ -588,9 +528,20 @@
 <!-- @marker "Transmit" -->
 <h2 id='_Transmit'>Transmit</h2>
 	<p class='blurb'>downloads and manages web content</p>
-	<p><b>Application</b> at Applications/; v4.4.6</p>
+	<p><b>Application</b> at Applications/; v4.4.6; from AppStore</p>
 	<p><b>Critical Data</b> </p>
-	<p><b>Installation and Configuration</b> Favorites: candcsoft @ candcsoft.com</p>
+	<p><b>Installation and Configuration</b></p><ul>
+		<li>Favorites<ul>
+			<li>remote: candcsoft<ul>
+				<li>name: candcsoft</li>
+				<li>server: ftp.candcsoft.com</li>
+				<li>username: cand2524</li>
+				<li>clc gk2</li>
+			</ul></li>
+			<li>remote: candcsoft/TechicalDocs</li>
+			<li>local: $CCDev/TechicalDocs</li>
+		</ul></li>
+	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
 
 <!-- @marker "UIBrowser" -->
@@ -619,16 +570,18 @@
 		<li><b>Key Bindings</b> duplicate default to Carol<br />
 		<ul>
 			<li><b>Xcode</b> Hide Xcode [none]; Hide Others [none]</li>
-			<li><b>Window</b> Minimize [none]</li>
-			<li><b>Edit &gt; Structure</b> Balance Delimiter [cM]</li>
+			<li><b>Edit &gt; Structure</b> Balance Delimiter [coB]</li>
 			<li><b>Find:</b> Replace coG; Replace and Find Next cosG; Hide Find Bar crsG</li>
 			<li><b>Version Editor Views:</b> &gt; Conparison osC; &gt; Blame osB; Log osL</li>
 			<li><b>Text</b> Select Line [rosW], Select Word [roW]; Capitalize Word [srUp]; Lowercase Word [srDown]</li>
 		</ul></li>
 		<li>Behaviors<ul>
-			<li>Build Fails: show bezel alert; show tab Build; show Log Navigator; navigate to first current log</li>
-			<li>Build Generates New Issues: show tab Build; show Issue Navigator; navigate to first new issue</li>
-			<li>Run Pauses: show tab Debug; show Debug Navigator; show debugger with Variables &amp; Console</li>
+			<li>Build generates new issues: play sound sosumi; show bezel alert; show tab Build; show Issue Navigator; navigate to first new issue</li>
+			<li>Build Fails: play sound susumi; show bezel alert; show tab Build; show Log Navigator; navigate to current log</li>
+			<li>Testing Pauses: play sound sosumi; show bezel alert; show tab Debug; show Debug Navigator; show debugger with Variables &amp; Console</li>
+			<li>Testing generates new issues: play sound sosumi; show bezel alert; show tab Debug; show Test Navigator; show debugger with Variables &amp; Console</li>
+			<li>Testing Fails: play sound sosumi; show bezel alert; show tab Build; show Issue Navigator; navigate to first new issue</li>
+			<li>Run Pauses: play sound sosumi; show bezel alert; show tab Debug; show Debug Navigator; show debugger with Current Views</li>
 		</ul></li>
 		<li>Source Control: local revision on: right</li>
 		<li>Locations<ul>

@@ -64,7 +64,7 @@ testArchiveFolder() {
 
 	msg=$(archive --getArchiveDestination)
 	assertEquals "$0#$LINENO:" 0 $?
-	assertEquals "$0#$LINENO:" "${HOME}/Archives" "$msg"
+	assertEquals "$0#$LINENO:" "/Volumes/Archives/In" "$msg"
 
 return 0
 

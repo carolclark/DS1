@@ -19,5 +19,5 @@ DOCSET_FEEDNAME			= Support
 DOCSET_BUNDLE_ID		= com.candcsoft.Support
 DOCSET_PUBLISHER_ID		= com.candcsoft.Publisher
 GENERATE_LATEX			= NO
-IMAGE_PATH				= $(HOME)/Dev/Support/Docs/Images
+#IMAGE_PATH				= $(HOME)/Dev/Support/Docs/Images
 OPTIMIZE_OUTPUT_JAVA	= YES

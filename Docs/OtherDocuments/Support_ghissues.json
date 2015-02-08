@@ -172,9 +172,9 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2015-01-22T20:36:05Z",
-    "updated_at": "2015-01-22T23:30:12Z",
+    "updated_at": "2015-02-05T21:59:38Z",
     "closed_at": null,
-    "body": "### Continuous Integration\r\n\r\n*implement continuous integration for all Repositories and Targets*\r\n    * *requires restructuring Xcode projects per #23*\r\n*see \"What's New in Xcode\" 13#400@44:30*\r\n\r\n- [ ] set up Xcode Server to handle continuous integration\r\n\r\n- [ ] AppleScript Testing #35\r\n\r\n- [ ] validate HTML for documentation targets; see  #51\r\n\r\n###### for all Repositories / all Targets\r\n- [ ] if applicable, new target installer script &lt;TargetName&gt;_build.py\r\n- [ ] document each step in testing and analysis process\r\n- [ ] add bots for each step in testing and analysis process"
+    "body": "### Continuous Integration\r\n\r\n*implement continuous integration for all Repositories and Targets*\r\n    * *requires restructuring Xcode projects per #23*\r\n*see \"What's New in Xcode\" 13#400@44:30*\r\n- [ ] add repositories to Xcode Accounts\r\n\r\n*When we try to add a local repository, Xcode does not complain but does not add the repo. When we try to add a github repository, Xcode asks for username and password, then removes the name from the field and then says that \"Authentication failed because the name or password was incorrect.\" new Mavericks volume; 02/05/14*\r\n\r\n- [ ] set up Xcode Server to handle continuous integration\r\n\r\n- [ ] AppleScript Testing #35\r\n\r\n- [ ] validate HTML for documentation targets; see  #51\r\n\r\n###### for all Repositories / all Targets\r\n- [ ] if applicable, new target installer script &lt;TargetName&gt;_build.py\r\n- [ ] document each step in testing and analysis process\r\n- [ ] add bots for each step in testing and analysis process"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/48",
@@ -272,9 +272,9 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2014-09-23T16:23:19Z",
-    "updated_at": "2015-01-30T20:08:59Z",
+    "updated_at": "2015-02-08T17:56:19Z",
     "closed_at": null,
-    "body": "Switching to Yosemite has constraints, including issues, especially with Mail, with current boot volume (Mavericks on computer 5+ years old) and fact that Accessor does not yet run under Yosemite.\r\n\r\n### Stages and Partitions\r\n[external partitions and stages](https://cloud.githubusercontent.com/assets/3742721/5927624/702abe18-a639-11e4-84eb-963bc769b1d4.png)\r\n\r\n## move boot volume to external Mavericks partition\r\n#### Preparation\r\n- [x] update [SystemInstallatiton](http://candcsoft.com/TechnicalDocs/Support/Support.html#tp_SystemInstallation), [Tools](http://candcsoft.com/TechnicalDocs/Support/Tools.html)\r\n- [x] Mail: archive most of existing content\r\n- [x] iTunes: Preferences &gt; Advanced: Keep iTunes Media folder organized: On\r\n* *see [iTunes for Mac: Moving your iTunes Media folder](http://support.apple.com/en-us/HT201562)*\r\n- [x] Media: copy iTunes library, Pictures to external partition Media\r\n* *see [iTunes for Mac: Moving your iTunes Media folder](http://support.apple.com/en-us/HT201562),[iPhoto: How to move the Library folder to a new location (archived)](http://support.apple.com/en-us/HT1229), [Move Your iPhoto Library](http://www.cultofmac.com/172491/move-your-iphoto-library-to-an-external-drive-to-save-space-os-x-tips/)*\r\n- [x] copy Archives from ~/Archives, Aux, Ext, Backup to /Archives\r\n\r\n#### move to new partition\r\n- [ ] [prepare, install and configure new system](http://candcsoft.com/TechnicalDocs/Support/Support.html#tp_SystemInstallation)\r\n- [ ] update archive and backupIssues scripts: move target from ~/Archives to /Archives/In\r\n\r\n## Upgrade Accessor\r\n*When we try to open Accessor under Yosemite, system says it needs a download for it to run. After the download, Accessor opens its window but does not start listening.*\r\n*See carolclark/Accessor#16 [upgrade for Yosemite].*\r\n\r\n- [ ] Enable and clear warnings as needed to run under Xcode 6. See #15 [clear deprecations]\r\n- [ ] Enable and clear warnings as needed to run under Yosemite. See #15 [clear deprecations]\r\n\r\n## move to Yosemite"
+    "body": "Switching to Yosemite has constraints, including issues, especially with Mail, with current boot volume (Mavericks on computer 5+ years old) and fact that Accessor does not yet run under Yosemite.\r\n\r\n### Stages and Partitions\r\n[external partitions and stages](https://cloud.githubusercontent.com/assets/3742721/5927624/702abe18-a639-11e4-84eb-963bc769b1d4.png)\r\n\r\n## move boot volume to external Mavericks partition\r\n#### Preparation\r\n- [x] update [SystemInstallatiton](http://candcsoft.com/TechnicalDocs/Support/Support.html#tp_SystemInstallation), [Tools](http://candcsoft.com/TechnicalDocs/Support/Tools.html)\r\n- [x] Mail: archive most of existing content\r\n- [x] iTunes: Preferences &gt; Advanced: Keep iTunes Media folder organized: On\r\n* *see [iTunes for Mac: Moving your iTunes Media folder](http://support.apple.com/en-us/HT201562)*\r\n- [x] Media: copy iTunes library, Pictures to external partition Media\r\n* *see [iTunes for Mac: Moving your iTunes Media folder](http://support.apple.com/en-us/HT201562),[iPhoto: How to move the Library folder to a new location (archived)](http://support.apple.com/en-us/HT1229), [Move Your iPhoto Library](http://www.cultofmac.com/172491/move-your-iphoto-library-to-an-external-drive-to-save-space-os-x-tips/)*\r\n- [x] copy Archives from ~/Archives, Aux, Ext, Backup to /Archives\r\n\r\n#### move to new partition\r\n- [x] fix mail issue: forward gmail to cox instead of vice-versa (cox now has IMAP, gmail has an extra all mail box); recover mail to new Cox mailboxed\r\n- [x] [prepare, install and configure new system](http://candcsoft.com/TechnicalDocs/Support/Support.html#tp_SystemInstallation)\r\n- [x] update archive and backupIssues scripts: move target from ~/Archives to /Archives/In or /Archives respectively\r\n\r\n#### loose ends\r\n- [x] Xcode Balance Delimiters: coB; Window minimize remains cM\r\n- [x] gitmessage.txt issue: TextEdit window apparently can no longer be saved in a fixed position; Stickies window cannot be associated with a file on disk\r\n- [x] Mail: new mail comes to Cox Inbox; gmail account disabled\r\n- [x] Xcode: adding repositories problem; moved to #49 [Continuous Integration]\r\n- [ ] ChronoSync: run and schedule all backups\r\n    - [ ] Personal Data and Settings: trying to use a folder of aliases as described at [How to Backup Multiple Folders](http://www.econtechnologies.com/chronosync/guide-backup-multiple-folders.html) Option 6. Chronosync just copied the aliases. Follow up (Ticket#2015020710000106); backup Personal Data and Settings\r\n    - [x] run Archives and MacMirror synchronizations\r\n    - [ ] schedule all backups\r\n\r\n## Accessor issue\r\n- [ ] fix Accessor testing\r\n\r\n*Accessor testing is not currently working, although InHouse app appears ok for now.*\r\n*Problem appeared on previous drive, just before switch.*\r\n*Current project is BuildAccessor is ancient. Could try new project Accessor.*\r\n\r\n## switch to Xcode 6\r\n- [ ] Accessor: Enable and clear warnings as needed to run under Xcode 6. See #15 [clear deprecations]\r\n\r\n## move to Yosemite\r\n*When we try to open Accessor under Yosemite, system says it needs a download for it to run. After the download, Accessor opens its window but does not start listening.*\r\n*See carolclark/Accessor#16 [upgrade for Yosemite].*\r\n- [ ] Accessor: Enable and clear warnings as needed to run under Yosemite. See #15 [clear deprecations]"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/46",
@@ -513,11 +513,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 7,
-      "closed_issues": 4,
+      "open_issues": 6,
+      "closed_issues": 5,
       "state": "open",
       "created_at": "2014-11-06T17:17:47Z",
-      "updated_at": "2015-01-22T23:30:49Z",
+      "updated_at": "2015-02-05T17:56:50Z",
       "due_on": null,
       "closed_at": null
     },
@@ -764,11 +764,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 7,
-      "closed_issues": 4,
+      "open_issues": 6,
+      "closed_issues": 5,
       "state": "open",
       "created_at": "2014-11-06T17:17:47Z",
-      "updated_at": "2015-01-22T23:30:49Z",
+      "updated_at": "2015-02-05T17:56:50Z",
       "due_on": null,
       "closed_at": null
     },
@@ -894,84 +894,6 @@
     "body": "### Status 12/31/2014\r\n* OS X 10.9 Mavericks is current as of WWDC13\r\n* Xcode 5 his been adopted; Mavericks to be installed soon\r\n* some recommended tasks from previous OS X versions were not completed\r\n* we have also learned a lot in some areas, especially testing, that we need to implement\r\n\r\nThis issue collects multiple github issues relating to these items for planning, organizing and tracking.\r\n\r\n\r\n\r\n##### Rebuild Projects\r\n- [ ] #23 rebuild simpler Xcode projects\r\n\r\n##### Upgrade History Files\r\n- [ ] #3 adopt GitHub Issues and Markdown\r\n\r\n##### Backup and Maintenance\r\n- [ ] #4 establish and implement full backup procedure\r\n\r\n##### By Project\r\n- [ ] #11 testing: code coverage tool(s)\r\n\r\n##### C-based languages\r\n- [ ] #12 modernize Objective-C\r\n- [ ] #8 establish stronger compiler error recognition\r\n- [ ] #7 establish Objective-C coding standards\r\n- [ ] #9 organize Objective-C code consistently\r\n- [ ] #10 implement Private Categories\r\n\r\n##### iOS; Interface Builder\r\n\r\n##### Unclassified\r\n\r\n- [ ] #13 profile with Instruments\r\n- [ ] #16 distribution and entitlements\r\n- [ ] #17 implement scheduled maintenance\r\n- [ ] #20 upgrade LLDB debugging support\r\n- [ ] #21 git workflow support\r\n- [ ] #22 convert scripts ccInstall and archive to Python\r\n- [ ] #24 improve TechnicalDocs upload\r\n- [ ] #25 add Finder target\r\n- [ ] #29 Mavericks\r\n- [ ] #30 Convert to ARC\r\n- [ ] #31 Python and Workflow support\r\n- [ ] #32 Doxygen: build for supported collaborator environments\r\n- [ ] #35 AppleScript testing\r\n- [x] #36 remove non-ascii characters\r\n- [ ] carolclark/Punkin#2 configure for AppStore\r\n- [ ] carolclark/Punkin#5 refactor for testability\r\n- [ ] carolclark/Punkin#6 handle PaintCode files\r\n- [ ] carolclark/Accessor#5 adopt a C++ unit testing tool\r\n- [ ] carolclark/Accessor#6 secure automation\r\n- [ ] carolclark/Accessor#7 upgrade C++ wrapper classes to use ivars\r\n- [ ] carolclark/Accessor#8 migrate to ARC\r\n\r\n"
   },
   {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/32",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/32/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/32/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/32/events",
-    "html_url": "https://github.com/carolclark/Support/issues/32",
-    "id": 23525246,
-    "number": 32,
-    "title": "Doxygen: build for supported collaborator environments",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/collaborate",
-        "name": "collaborate",
-        "color": "ffc9b4"
-      }
-    ],
-    "state": "open",
-    "locked": false,
-    "assignee": null,
-    "milestone": {
-      "url": "https://api.github.com/repos/carolclark/Support/milestones/3",
-      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/3/labels",
-      "id": 856249,
-      "number": 3,
-      "title": "Support_next",
-      "description": "support and implement new CCDev scripts, project style\r\n",
-      "creator": {
-        "login": "carolclark",
-        "id": 3742721,
-        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/carolclark",
-        "html_url": "https://github.com/carolclark",
-        "followers_url": "https://api.github.com/users/carolclark/followers",
-        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-        "organizations_url": "https://api.github.com/users/carolclark/orgs",
-        "repos_url": "https://api.github.com/users/carolclark/repos",
-        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/carolclark/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      "open_issues": 7,
-      "closed_issues": 4,
-      "state": "open",
-      "created_at": "2014-11-06T17:17:47Z",
-      "updated_at": "2015-01-22T23:30:49Z",
-      "due_on": null,
-      "closed_at": null
-    },
-    "comments": 0,
-    "created_at": "2013-11-30T19:28:06Z",
-    "updated_at": "2015-01-22T23:25:41Z",
-    "closed_at": null,
-    "body": "Doxygen config files currently rely on Developer directory at ${HOME}/Dev\r\n\r\nEither:\r\n* Doxygen install script generates config file, or\r\n* require Developer directory at ${HOME}/Dev"
-  },
-  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/31",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/31/labels{/name}",
     "comments_url": "https://api.github.com/repos/carolclark/Support/issues/31/comments",
@@ -1049,11 +971,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 7,
-      "closed_issues": 4,
+      "open_issues": 6,
+      "closed_issues": 5,
       "state": "open",
       "created_at": "2014-11-06T17:17:47Z",
-      "updated_at": "2015-01-22T23:30:49Z",
+      "updated_at": "2015-02-05T17:56:50Z",
       "due_on": null,
       "closed_at": null
     },
@@ -1223,11 +1145,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 7,
-      "closed_issues": 4,
+      "open_issues": 6,
+      "closed_issues": 5,
       "state": "open",
       "created_at": "2014-11-06T17:17:47Z",
-      "updated_at": "2015-01-22T23:30:49Z",
+      "updated_at": "2015-02-05T17:56:50Z",
       "due_on": null,
       "closed_at": null
     },
@@ -1311,9 +1233,9 @@
     },
     "comments": 0,
     "created_at": "2013-06-05T14:28:35Z",
-    "updated_at": "2015-01-22T23:27:06Z",
+    "updated_at": "2015-02-07T22:08:01Z",
     "closed_at": null,
-    "body": "* upload TechnicalDocs website\n    * switch from Cyberduck (not scriptable; in Java; quirky and/or buggy) to Transmit ($34 app; solid; good support; routinely enhanced/improved)\n    * add Upload (activates/uses Transmit) to workflow at Xcode's ValidateHTML slate\n\n    * *see also unix scp command*"
+    "body": "* upload TechnicalDocs website\r\n    * switch from Cyberduck (not scriptable; in Java; quirky and/or buggy) to Transmit ($34 app; solid; good support; routinely enhanced/improved)\r\n\r\n    * see [An Introduction to Scripting Transmit](http://www.mactech.com/articles/mactech/Vol.22/22.06/ScriptingTransmit/index.html) (MacTech), [Transmit FAQ](http://panic.com/transmit/support.html) \"How do I AppleScript Transmit 4?\"\r\n    * add Upload (activates/uses Transmit) to workflow at Xcode's ValidateHTML slate\r\n\r\n    * *see also unix scp command*"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/23",
@@ -1397,11 +1319,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 7,
-      "closed_issues": 4,
+      "open_issues": 6,
+      "closed_issues": 5,
       "state": "open",
       "created_at": "2014-11-06T17:17:47Z",
-      "updated_at": "2015-01-22T23:30:49Z",
+      "updated_at": "2015-02-05T17:56:50Z",
       "due_on": null,
       "closed_at": null
     },
@@ -1731,11 +1653,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 7,
-      "closed_issues": 4,
+      "open_issues": 6,
+      "closed_issues": 5,
       "state": "open",
       "created_at": "2014-11-06T17:17:47Z",
-      "updated_at": "2015-01-22T23:30:49Z",
+      "updated_at": "2015-02-05T17:56:50Z",
       "due_on": null,
       "closed_at": null
     },
@@ -2061,5 +1983,83 @@
     "updated_at": "2014-03-27T21:25:09Z",
     "closed_at": null,
     "body": "Consider adoption\r\n\r\nat least as of Xcode 5, gcov is included; use xcrun to invoke\r\n\r\nSee [How to Measure Code Coverage in Xcode](http://qualitycoding.org/xcode-code-coverage/)\r\n[Code coverage for Python](https://pypi.python.org/pypi/coverage)\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/10",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/10/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/10/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/10/events",
+    "html_url": "https://github.com/carolclark/Support/issues/10",
+    "id": 13136590,
+    "number": 10,
+    "title": "implement Private Categories",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/clang",
+        "name": "clang",
+        "color": "006b75"
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "milestone": {
+      "url": "https://api.github.com/repos/carolclark/Support/milestones/2",
+      "labels_url": "https://api.github.com/repos/carolclark/Support/milestones/2/labels",
+      "id": 332757,
+      "number": 2,
+      "title": "next",
+      "description": "",
+      "creator": {
+        "login": "carolclark",
+        "id": 3742721,
+        "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/carolclark",
+        "html_url": "https://github.com/carolclark",
+        "followers_url": "https://api.github.com/users/carolclark/followers",
+        "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+        "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+        "organizations_url": "https://api.github.com/users/carolclark/orgs",
+        "repos_url": "https://api.github.com/users/carolclark/repos",
+        "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/carolclark/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "open_issues": 14,
+      "closed_issues": 2,
+      "state": "closed",
+      "created_at": "2013-05-13T15:38:31Z",
+      "updated_at": "2014-11-06T17:48:51Z",
+      "due_on": null,
+      "closed_at": "2014-08-27T17:45:40Z"
+    },
+    "comments": 0,
+    "created_at": "2013-04-12T19:53:16Z",
+    "updated_at": "2014-01-12T22:33:16Z",
+    "closed_at": null,
+    "body": "Use Category Private, in a separate header included in both implementation and unit test files, to support Unit Testing while keeping private information private.\r\n\r\nNote:compiler will find private methods defined in the implementation file when compiling that file; not necessary to declare all private methods in Category Private (per Modern Objective-C 12#405)\r\nSee [Unit testing of private methods in Xcode](http://stackoverflow.com/questions/1098550/unit-testing-of-private-methods-in-xcode)\r\nSee also #9"
   }
 ]

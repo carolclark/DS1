@@ -117,7 +117,7 @@ function archive {
 
 	baseDir="$(pwd)"
 	folderName="${baseDir##/*/}"
-	archiveDestination="${HOME}/Archives"
+	archiveDestination="/Volumes/Archives/In"
 	lastArchivePath="${CCDev}/tmp/lastArchivePath"
 
 	archivePath=""		# path from ${archiveDestination}
