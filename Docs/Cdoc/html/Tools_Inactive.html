@@ -18,36 +18,40 @@
 	<!-- @topicItem "AppleWorks" "#AppleWorks" "0" "" -->
 	<!-- @topicItem "Backup" "#Backup_" "0" "" -->
 	<!-- @topicItem "CodeWarrior" "#CodeWarrior" "0" "" -->
+	<!-- @topicItem "CrashReporterPrefs" "#CrashReporterPrefs_" "0" "" -->
 	<!-- @topicItem "Cyberduck" "#Cyberduck" "0" "" -->
+	<!-- @topicItem "DragonDictate" "#DragonDictate" "0" "" -->
+<!-- @topicGroup "" "10" -->
 	<!-- @topicItem "Dreamweaver" "#Dreamweaver" "0" "" -->
 	<!-- @topicItem "Eclipse" "#_Eclipse" "0" "" -->
-<!-- @topicGroup "" "10" -->
 	<!-- @topicItem "ffcall" "#_ffcall" "0" "" -->
 	<!-- @topicItem "FileMaker" "#FileMaker" "0" "" -->
 	<!-- @topicItem "Flip4Mac" "#_Flip4Mac" "0" "" -->
+	<!-- @topicItem "Full Key Codes" "#FullKeyCodes_" "0" "" -->
 	<!-- @topicItem "GHUnit" "#GHUnit_" "0" "" -->
 	<!-- @topicItem "GNUStep" "#_GNUStep" "0" "" -->
 	<!-- @topicItem "gnustep-make-cocoa" "#_gnustepMakeCocoa" "0" "" -->
+<!-- @topicGroup "" "20" -->
 	<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
 	<!-- @topicItem "JUnit" "#_JUnit" "0" "" -->
 	<!-- @topicItem "libffi" "#_libffi" "0" "" -->
-<!-- @topicGroup "" "20" -->
 	<!-- @topicItem "libtiff" "#_libtiff" "0" "" -->
 	<!-- @topicItem "Lingon" "#Lingon_" "0" "" -->
 	<!-- @topicItem "MaskRAid" "#_MaskRAid" "0" "" -->
 	<!-- @topicItem "OCUnit" "#OCUnit_" "0" "" -->
 	<!-- @topicItem "Parallels" "#_Parallels" "0" "" -->
 	<!-- @topicItem "PHP" "#PHP_" "0" "" -->
+<!-- @topicGroup "" "30" -->
 	<!-- @topicItem "plutil" "#plutil_" "0" "" -->
 	<!-- @topicItem "QuicKeys" "#QuicKeys" "0" "" -->
 	<!-- @topicItem "Renaissance" "#_Renaissance" "0" "" -->
-<!-- @topicGroup "" "30" -->
 	<!-- @topicItem "Retrospect" "#Retrospect" "0" "" -->
 	<!-- @topicItem "Ruby Gems" "#RubyGems_" "0" "" -->
 	<!-- @topicItem "RubyOSA" "#RubyOSA_" "0" "" -->
 	<!-- @topicItem "SQLite" "#_SQLite" "0" "" -->
 	<!-- @topicItem "StuffIt" "#StuffIt" "0" "" -->
 	<!-- @topicItem "Subversion" "#_Subversion" "0" "" -->
+<!-- @topicGroup "" "40" -->
 	<!-- @topicItem "UISpec4j" "#_UISpec4j" "0" "" -->
 	<!-- @topicItem "UMLet" "#_UMLet" "0" "" -->
 <!-- @/topicList -->
@@ -199,12 +203,83 @@
 	<p><b>Application</b> /Applications/Metrowerks CodeWarrior 9.0</p>
 </div>
 
+<!-- @marker "CrashReporterPrefs" -->
+<h4><a name="CrashReporterPrefs_">CrashReporterPrefs</a></h4><div class='indent'>
+	<p class='blurb'>used to set preferences regarding frequency of Crash Reporter windows being opened</p>
+	<p class='depr'>apparently no longer exists 02/06/2015</p>
+	<p><b>Application</b> /Developer/Applications/Utilities/CrashReporterPrefs; 10.5.0</p>
+	<p><b>Source</b> system tool</p>
+	<p><b>Installation and Configuration</b> set mode of operation to Developer</p>
+</div>
+
 <!-- @marker "Cyberduck" -->
 <h4><a name="Cyberduck">Cyberduck</a></h4><div class='indent'>
 	<p><b>Inactive</b> replaced by Transmit spring 2014</p>
 	<p><b>Application</b>v4.2.1 downloaded from <a href="http://cyberduck.ch/">Cyberduck</a></p>
 	<p><b>Configuration</b> </p>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
+
+<!-- @marker "DragonDictate" -->
+<h4><a name="DragonDictate">DragonDictate</a></h4><div class='indent'>
+	<p><b>Application</b> /Applications/DragonDictate</p>
+	<p class='depr'>was a problem to install and maintain; now using Mac's buildin dictation</p>
+	<p><b>Installation</b></p><ul>
+		<li>install from DVD</li>
+		<li>copy "Carol Clark.dictateprofile", "Carol Clark.dictatelicense" to ~/Documents</li>
+		<li>run application; select license and provide Data Disk as requested</li>
+	</ul>
+	<p><b>Critical Data</b> </p>
+	<ul>
+		<li>~/Library/Application Support/Dragon</li>
+		<li>profile is in ~/Documents</li>
+	</ul>
+	<p><b>Configuration</b></p><ul>
+		<li>General <ul>
+			<li>On Startup: Show Profiles Window: off</li>
+			<li>When Activating a profile:Open a new Notepad window: off</li>
+		</ul></li>
+		<li>Recognition <ul>
+			<li>Always Show Recognition Window When Dictating: On</li>
+			<li>Close Recognition Window After Each Choice: Off</li>
+		</ul></li>
+		<li>Command <ul>
+			<li>Command Generation: Generate Application Launch Commands: Off</li>
+		</ul></li>
+	</ul>
+	<p><b>Custom Commands</b></p><ul>
+		<li>BBEdit <ul>
+			<li>history suffix: _hist</li>
+			<li>jump line end: cRight</li>
+			<li>list item: &lt;li&gt;&lt;##&gt;&lt;/li&gt;</li>
+			<li>next field: rAccent</li>
+			<li>previous field: srAccent</li>
+			<li>plain list: "&lt;ul&gt;&lt;##&gt;$lt;/ul&gt;"</li>
+			<li>spot marker: &lt;##&gt;</li>
+		</ul></li>
+	</ul>
+	<p><b>Custom Vocabulary</b></p><ul>
+		<li>/ (slash)</li>
+		<li>.hist (tag history)</li>
+		<li>Arbonne</li>
+		<li>BBEdit</li>
+		<li>candcsoft (CNC soft; Lower case in titles)</li>
+		<li>carollclark (Carol L Clark; Lower case in titles)</li>
+		<li>CCDev (see-see-dev)</li>
+		<li>Cdoc (see-doc)</li>
+		<li>Corlan</li>
+		<li>git</li>
+		<li>iDisk (Lower case in titles)</li>
+		<li>iOS (Lower case in titles)</li>
+		<li>Koala</li>
+		<li>Punkin</li>
+		<li>refactor</li>
+		<li>refactoring</li>
+		<li>subslates</li>
+		<li>subtarget</li>
+		<li>Unix</li>
+		<li>unversioned</li>
+	</ul>
 </div>
 
 <h4><a name="Dreamweaver">Dreamweaver</a></h4><div class='indent'>
@@ -294,6 +369,15 @@
 	<p><b>Configuration</b></p>
 	<p><b>Layouts</b> Add New Fields - no; Save Changes Automatically - yes</p>
 	<p><b>Customization &amp; Automation</b> </p>
+</div>
+
+<!-- @marker "Full Key Codes" -->
+<h4><a name="FullKeyCodes_">Full Key Codes</a></h4><div class='indent'>
+	<p class='blurb'>utility to display code information about each key of the keyboard</p>
+	<p class='depr'>apparently no longer runs on Mac 02/06/2015; Dash now has this info on a cheat sheet</p>
+	<p><b>Application</b> /Applications/Utilities/Full Key Codes 1.1/Full Key Codes; v1.1</p>
+	<p><b>Source</b> <a href="http://softwares.bajram.com/utilities/#Full_Key_Codes">Bajram Utilities</a></p>
+	<p><b>License</b> free</p>
 </div>
 
 <!-- @marker "GHUnit" -->

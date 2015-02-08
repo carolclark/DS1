@@ -432,14 +432,14 @@ This decision was made on the advice of Scott Clark, and has been working very w
 
 <!-- @marker "Snippets" -->
 <h4><a name="ScriptingSnippets">Snippets</a></h4>
-<p> A library of snippets for various languages is maintained in external application <a href="Tools.html#Dash">Dash</a>.</p>
+<p> A library of snippets for various languages is maintained in external application <a href="Tools.html#_Dash">Dash</a>.</p>
 
 <!-- @marker "3 ===" -->
 <!-- @marker "ccInstall" -->
 <h3><a name="ccInstall">ccInstall</a></h3>
 <p>CCDev supports an installation system used to process script-based targets. It is used primarily to install technical documentation, application configuration automation support, and general developer scripting support.</p>
 
-<!-- @marker "  Install Scripts" -->
+<!-- @marker "Install Scripts" -->
 <h4><a name="InstallScripts">Install Scripts</a></h4>
 <p>Install scripts are files named <em>&lt;Name&gt;_install.ksh</em>, and are normally stored at the root level of their parent folder. Each script processes the files in its folder.</p>
 <p>Install scripts are run in place, with the current directory set to their immediate parent folder. Any scripts or functions called should be invoked from their installed locations.</p>
@@ -536,31 +536,32 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li class='blurb'>ChronoSync backups run once weekly, each during a different night</li>
 		<li>MacMirror: bootable mirror of boot drive</li>
 		<li>Personal Data and Settings<ul>
-			<li>Safari: ~/Library/Safari/Bookmarks.plist</li>
-			<li>Address Book: ~/Library/Application Support/Address Book</li>
-			<li>iCal: ~/Library/Calendars</li>
-			<li>Keychains: ~/Library/Keychains</li>
-			<li>Stickies: ~/Library/StickiesDatabase</li>
-			<li>Application Preferences: ~/Library/Preferences</li>
-			<li>BBEdit: ~/Library/Application Support/BBEdit</li>
-			<li>Mail: ~/Library/Mail</li>
-			<li>~/Application Support<ul>
-				<li>Apple (airport data)</li>
-				<li>Automator</li>
-				<li>BBEdit</li>
-				<li>ChronoSync</li>
-				<li>Dash</li>
-				<li>iCloud</li>
-				<li>iWork</li>
-				<li>Transmit</li>
+			<li>Library<ul>
+				<li>Application Preferences: Preferences</li>
+				<li>Calendars: Calendars</li>
+				<li>Keychains: Keychains</li>
+				<li>Mail: Mail</li>
+				<li>Safari: Safari/Bookmarks.plist</li>
+				<li>Stickies: StickiesDatabase</li>
+				<li>~/Application Support<ul>
+					<li>Address Book: Address Book</li>
+					<li>Apple (airport data)</li>
+					<li>Automator</li>
+					<li>BBEdit</li>
+					<li>ChronoSync</li>
+					<li>Dash</li>
+					<li>iCloud</li>
+					<li>iWork</li>
+					<li>Transmit</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li>~/Dev: development work; primary content also stored at GitHub2</li>
+		<li>~/Dev: development work; primary content also stored at GitHub</li>
 		<li>Documents: ~/Documents</li>
 		<li>Archives: /Archives</li>
-		<li>Media<ul>
-			<li>/Media/Music (contains iTunes library, Amazon purchases)</li>
-			<li>/Media/Pictures (contains iPhoto library)</li>
+		<li>Media: /Media<ul>
+			<li class='blurb'>Music contains iTunes library, Amazon purchases</li>
+			<li class='blurb'>Pictures contains iPhoto library</li>
 		</ul></li>
 	</ul></li>
 	<li>Tar<ul>
@@ -615,7 +616,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li>print copy of login information</li>
 		<li>git repositories<ul>
 			<li>test all targets</li>
-			<li>check in, push, archive all active repositories</li>
+			<li>check in, push, archive, tag all active repositories</li>
 			<li>upload TechnicalDocs to candcsoft.com</li>
 		</ul></li>
 		<li>run all backups</li>
@@ -627,7 +628,6 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li>run Software Update until it finds nothing more to update</li>
 		<li>make ~/Library visible: in a Finder window, select home folder; show view options; select Show Library Folder</li>
 		<li>copy ssh data to ~/.ssh</li>
-		<li>System Preferences: <a href="Tools.html#SystemPreferences">configure</a>, except TimeMachine</li>
 	</ul></li>
 	<li>Install Xcode for editing these documents<ul>
 		<li>download and install </li>
@@ -637,25 +637,32 @@ This decision was made on the advice of Scott Clark, and has been working very w
 				<li class='blurb'>can copy repo name from github site</li>
 			</ul></li>
 		</ul></li>
+		<li>build Cdoc targets</li>
 	</ul></li>
+    <li>System Preferences: <a href="Tools.html#SystemPreferences">configure</a>, except TimeMachine</li>
 	<li>Connect to personal data<ul>
+		<li>copy in ~/Documents from Backup</li>
 		<li>iTunes: <a href="Tools.html#_iTunes">configure</a></li>
 		<li>iPhoto: <a href="Tools.html#_iPhoto">configure</a></li>
 		<li>Mail: <a href="Tools.html#_Mail">configure</a></li>
 		<li>Safari: <a href="Tools.html#_Safari">configure</a></li>
-		<li>copy in ~/Documents from Backup</li>
 	</ul></li>
 	<li>Support full Development functionality<ul>
-		<li>TextEdit: create ~/Library/CCDev/tmp/gitmessage.txt - Menlo regular 11; exactly 50 chars wide</li>
+		<li>AppleScript: <a href="Tools.html#_AppleScript">configure</a></li>
+		<li>python3: <a href="Tools.html#_Python">install</a></li>
+		<li>Xcode: <a href="Tools.html#_Xcode">config</a>; build targets Support/Developer, Support/Cdoc</li>
+		<li>Doxygen: <a href="Tools.html#Doxygen_">configure</a></li>
 		<li>Terminal:<ul>
 			<li><a href="Tools.html#_Terminal">configure</a></li>
 			<li>create branches as indicated for edited documents</li>
 		</ul></li>
-		<li>Xcode: <a href="Tools.html#_Xcode">config</a>; build and test all targets</li>
-		<li>BBEdit: <a href="http://www.barebones.com/support/bbedit/updates.html">download</a>;
-			install; <a href="Tools.html#BBEdit">configure</a></li>
-		<li>AppleScript: <a href="Tools.html#_AppleScript">configure</a></li>
-		<li>Doxygen: <a href="Tools.html#Doxygen_">configure</a></li>
+		<li><a href="Tools.html#_FileMerge">FileMerge</a></li>
+		<li><a href="Tools.html#_Dash">Dash</a></li>
+		<li>TextEdit: create plain text document ~/Library/CCDev/tmp/gitmessage.txt - Menlo regular 11; exactly 50 chars wide</li>
+		<li>BBEdit: <a href="http://www.barebones.com/support/bbedit/updates.html">download</a>; install; <a href="Tools.html#BBEdit">configure</a></li>
+		<li>Xcode: build and test all targets</li>
+		<li><a href="Tools.html#_PaintCode">PaintCode</a></li>
+		<li>alias to ~/Library/CCDev/Sites/TechnicalDocs/Support/Development.html to ~ and ~/Documents</li>
 		<li>Transmit: <a href="Tools.html#_Transmit">configure</a></li>
 	</ul></li>
 	<li>implement Backup<ul>
@@ -663,18 +670,17 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li><a href="Tools.html#_ChronoSync">ChronoSync</a>: configure</li>
 	</ul></li>
 	<li>Additional Tools &amp; Applications <ul>
+		<li><a href="Tools.html#_Marked">Marked</a></li>
 		<li><a href="Tools.html#_iWork">iWork</a></li>
 		<li><a href="Tools.html#UIBrowser">UI Browser</a></li>
 		<li><a href="Tools.html#Stickies">Stickies</a></li>
-		<li><a href="Tools.html#FullKeyCodes_">Full Key Codes</a></li>
+		<li><a href="Tools.html#_StuffItExpander">StuffIt Expander</a></li>
 		<li><a href="Tools.html#DiskInventoryX_">Disk Inventory X</a></li>
-		<li><a href="Tools.html#CrashReporterPrefs_">CrashReporterPrefs</a></li>
-		<li><a href="Tools.html#_Homebrew">Homebrew</a></li>
 		<li><a href="Tools.html#_MacPorts">MacPorts</a></li>
+		<li><a href="Tools.html#_Homebrew">Homebrew</a></li>
 	</ul></li>
 	<li>Cleanup<ul>
-		<li>delete visible copy of ~/.ssh</li>
-		<li>destroy copy of login information</li>
+		<li>delete visible copy of ~/.ssh, copy of login information</li>
 	</ul></li>
 </ul>
 

@@ -26,12 +26,12 @@ HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 function backupIssues {
 	generateCombinedFile=0		# whether to generate file including all repos in addition to repo-specific files
-	combinedFile="/Volumes/Aux/GitHubIssues.json"
-	if [[ -d "/Volumes/Aux" ]] ; then
+	combinedFile="/Volumes/Archives/GitHubIssues.json"
+	if [[ -d "/Volumes/Archives" ]] ; then
 		generateCombinedFile=1
 		echo "" > "${combinedFile}"
 	else
-		echo "skipping creation of combined file because /Volumes/Aux does not exist or is not a directory"
+		echo "skipping creation of combined file because /Volumes/Archives does not exist or is not a directory"
 	fi
 
 	for repo in Support Accessor Punkin ; do
