@@ -111,14 +111,14 @@
 	* in Xcode, close any open windows that contain this repository's projects
 	* create new empty project &lt;RepositoryName&gt;/&lt;RepositoryName&gt;
 	* move project root level of repository; discard extra folder &lt;RepositoryName&gt;/&lt;RepositoryName&gt;
-	* <a href="#AddAggregateTestTarget">Add Aggregate Test Target</a> &lt;RepositoryName&gt;_AllTests
+	* <a href="#AddAggregateTestTarget">Add Aggregate Test Target</a> AllTests_&lt;RepositoryName&gt;
 </pre>
 
 <!-- @marker "Add Aggregate Test Target" -->
 <h4 id='AddAggregateTestTarget'>Add Aggregate Test Target</h4><pre>
-	* add Aggregate Target &lt;GroupName&gt;_AllTests
+	* add Aggregate Target AllTests_&lt;GroupName&gt;
 	* in Build Phases &gt; Target Dependencies: add each test target
-	* edit scheme &lt;GroupName&gt;_AllTests: add each test target to Tests action; mark scheme as shared
+	* edit scheme AllTests_&lt;GroupName&gt;: add each test target to Tests action; mark scheme as shared
 </pre>
 
 <!-- @marker "New Cocoa Project" -->
