@@ -19,6 +19,9 @@ al::___FILEBASENAME___ ___FILEBASENAMEASIDENTIFIER___;
 	self = [super init];
 	if (self != nil) {
 		self.cpp = new ___FILEBASENAME___Opaque;
+		if (! self.cpp) {
+			self = nil;
+		}
 	}
 	return self;
 }
@@ -27,7 +30,7 @@ al::___FILEBASENAME___ ___FILEBASENAMEASIDENTIFIER___;
 	delete _cpp;
 	_cpp = NULL;
 	
-	[super dealloc];
+	[super dealloc];		// omit if using ARC
 }
 
 #pragma mark	Interface for Testing
