@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 11/7/13.
-#  Copyright 2013 C & C Software, Inc. All rights reserved.
+#  Copyright 2013-15 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 #pragma mark 0 === Top
@@ -49,7 +49,7 @@ function backupIssues {
 		fi
 		if [[ generateCombinedFile -ne 0 ]] ; then
 			echo "$ -adding issues to combined file"
-			curl --user "carolclark:gh6868cc" "https://api.github.com/repos/carolclark/${repo}/issues" >> "${combinedFile}"
+			curl --user "carolclark:cc6868gh" "https://api.github.com/repos/carolclark/${repo}/issues" >> "${combinedFile}"
 			st=$?
 			if [[ ${st} > 0 ]] ; then
 				errorMessage $RC_CURLError "$0#$LINENO:" "curl error: ${repo} -> ${combinedFile}"
