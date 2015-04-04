@@ -101,17 +101,17 @@
 			<li>if current branch is uncommitted, commit or stash</li>
 			<li><span class='em'>Update Master:</span>	<ul>
 				<li>checkout master; verify status clean</li>
-				<li>fetch updates (<span class='mono'>git remote update --prune</span>); status; <span class='em'>Compare</span> working copy</li>
+				<li>fetch updates (<span class='mono'>git remote update --prune</span>); status</li>
 				<li>if changed: merge updateMaster (<span class='mono'>git merge --ff-only @{u}</span>); <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; test; push</li>
 			</ul></li>
 			<li>checkout branch<ul>
 				<li>pre-existing branch<ul>
 					<li><span class='em'>Merge Master:</span><ul>
-						<li>checkout branch; set $cb; <span class='mono'>lg $cb..master</span>)</li>
-						<li>if changed: merge mergeMaster <span class='mono'>(--no-ff -m "merge master")</span>; status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
-						<li>show; <span class='em'>Compare</span> origin/$cb..$cb; push<ul>
-							<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
-						</ul></li>
+						<li>checkout branch; set $cb; <a href="#adminCompareAncestry"><span class='em'>Ancestry</span></a> $cb.master</li>
+						<li>if changed:<ul>
+							<li>merge mergeMaster <span class='mono'>(--no-ff -m "merge master")</span>; status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
+							<li>test; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
+						 </ul></li>
 					</ul></li>
 					<li>recover any stashes</li>
 				</ul></li>
@@ -129,23 +129,21 @@
 				<li>status: check branch; add / review files to be committed; review commit msgfile and #issue</li>
 				<li>check for stray spaces (diff --cached --check); [backup GitHub issues; add, OR if failure checkout original]</li>
 				<li>status; commit msgfile</li>
-				<li>status; show; <b>Compare</b> master..$cb; [to amend: reset --soft lastCommit]</li>
+				<li>status; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb; [to amend: reset --soft lastCommit]</li>
 				<li>check stash list</li>
-				<li><span class='em'>Update Master</span>; <span class='em'>Merge Master</span></li>
+				<li><span class='em'>Update Master</span>; <span class='em'>Merge Master</span>; checkout $cb</li>
 			</ul>
 			<p><b>Publish</b></p><ul>
-				<li>status; verify branch; show --name-only; <span class='em'>Compare</span> origin/$cb..$cb; push</li>
+				<li>status; verify branch; show --name-only; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
 			</ul>
 		</div>
 		<h5>Put Away Branch</h5><div class='indent'>
 			<p><b>Merge to Master</b></p><ul>
 				<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-				<li>checkout master; check for unmerged branches; show; <span class='em'>Compare</span> master..$cb</li>
-				<li><span class='em'>Update Master</span>; if changed, test and <span class='em'>Merge Master</span></li>
+				<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
 				<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
 				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
-				<li>show --name-only; lg</li>
-				<li>show; <span class='em'>Compare</span> origin..master; push</li>
+				<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
 				<li>check for unmerged branches; if found, <span class='em'>Merge Master</span> for each</li>
 				<li>[delete local branch]; (manage remote stale branches periodically from GitHub)</li>
 			</ul>
@@ -159,8 +157,17 @@
 		<!-- @marker "adminReleaseBranch" -->
 		<h6>Morning/Working Report</h6><ul>
 			<li>branch list; status; set $cb to current branch; show --name-only</li>
-			<li>for master..$cb, origin/master..master, master..origin/master: lg; diff --name-status</li>
+			<li>for master.$cb, origin/master.master, master.origin/master: lg; diff --name-status</li>
 			<li>branch unmerged master; stash list</li>
+		</ul>
+
+		<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
+			<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
+		</ul>
+
+		<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
+			<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
+			<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
 		</ul>
 
 		<h6 id='adminReleaseBranch'>Release Branch</h6>
