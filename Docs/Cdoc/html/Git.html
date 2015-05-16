@@ -98,13 +98,22 @@
 <div style="page-break-before: always">
 	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
 		<h5>Branch</h5><ul>
-			<li><span class='em'>Update Master: </span><span class='em'>Compare</span> master..origin/master; if indicated, <a href="#adminSyncMaster"><span class='em'>Sync Master with Remotes</span></a></li>
+			<li>if current branch is uncommitted, commit or stash</li>
+			<li><span class='em'>Update Master:</span>	<ul>
+				<li>checkout master; verify status clean</li>
+				<li>fetch updates (<span class='mono'>git remote update --prune</span>); status</li>
+				<li>if changed: merge updateMaster (<span class='mono'>git merge --ff-only @{u}</span>); <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; test; push</li>
+			</ul></li>
 			<li>checkout branch<ul>
 				<li>pre-existing branch<ul>
 					<li><span class='em'>Merge Master:</span><ul>
-						<li>checkout branch ($cb); merge master <span class='mono'>(--no-ff -m "merge master")</span></li>
-						<li><span class='em'>ShowCompare</span> master..$cb; push; recover any stashes</li>
+						<li>checkout branch; set $cb; <a href="#adminCompareAncestry"><span class='em'>Ancestry</span></a> $cb.master</li>
+						<li>if changed:<ul>
+							<li>merge mergeMaster <span class='mono'>(--no-ff -m "merge master")</span>; status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
+							<li>test; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
+						 </ul></li>
 					</ul></li>
+					<li>recover any stashes</li>
 				</ul></li>
 				<li>OR new branch<ul>
 					<li>checkout new branch; set $cb; <span class='mono'>git push --set-upstream origin $cb</span></li>
@@ -118,27 +127,25 @@
 			<p><b>Commit</b></p><ul>
 				<li>construct and save commit message; verify modifications (diff --cached)</li>
 				<li>status: check branch; add / review files to be committed; review commit msgfile and #issue</li>
-				<li>[backup GitHub issues; add, OR if failure checkout original]</li>
-				<li>check for stray spaces (diff --cached --check)</li>
+				<li>check for stray spaces (diff --cached --check); [backup GitHub issues; add, OR if failure checkout original]</li>
 				<li>status; commit msgfile</li>
-				<li>status; <b>ShowCompare</b> master..$cb; [to amend: reset --soft lastCommit]	</li>
+				<li>status; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb; [to amend: reset --soft lastCommit]</li>
 				<li>check stash list</li>
-				<li><span class='em'>Update Master</span>; if changed, test and <span class='em'>Merge Master</span></li>
+				<li><span class='em'>Update Master</span>; <span class='em'>Merge Master</span>; checkout $cb</li>
 			</ul>
-			<p><b>Publish</b> <span class='body'>[Push]: status; verify branch; push</span></p>
+			<p><b>Publish</b></p><ul>
+				<li>status; verify branch; show --name-only; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
+			</ul>
 		</div>
 		<h5>Put Away Branch</h5><div class='indent'>
-			<p>if branch is not complete, stash; else:</p>
-			<p><b>Merge</b></p><ul>
+			<p><b>Merge to Master</b></p><ul>
 				<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-				<li>checkout master; check for unmerged branches; <span class='em'>ShowCompare</span> master..$cb</li>
-				<li><span class='em'>Update Master</span>; if changed, test and <span class='em'>Merge Master</span></li>
+				<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
 				<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
-				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
-				<li>show --name-only; lg</li>
-				<li>[retest]; <span class='em'>ShowCompare</span> origin..master; push</li>
+				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
+				<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
 				<li>check for unmerged branches; if found, <span class='em'>Merge Master</span> for each</li>
-				<li>delete local branch; (manage remote stale branches periodically from GitHub)</li>
+				<li>[delete local branch]; (manage remote stale branches periodically from GitHub)</li>
 			</ul>
 			<p><b>[Archive Repository]</b></p>
 		</div>
@@ -150,8 +157,17 @@
 		<!-- @marker "adminReleaseBranch" -->
 		<h6>Morning/Working Report</h6><ul>
 			<li>branch list; status; set $cb to current branch; show --name-only</li>
-			<li>for master..$cb, origin/master..master, master..origin/master: lg; diff --name-status</li>
+			<li>for master.$cb, origin/master.master, master.origin/master: lg; diff --name-status</li>
 			<li>branch unmerged master; stash list</li>
+		</ul>
+
+		<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
+			<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
+		</ul>
+
+		<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
+			<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
+			<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
 		</ul>
 
 		<h6 id='adminReleaseBranch'>Release Branch</h6>
@@ -165,21 +181,13 @@
 			<li>merge release branch into 'master'; push 'master'; delete release branch</li>
 		</ul>
 
-		<h6 id='adminSyncMaster'>Synchronize Master with Remotes</h6><ul>
-			<li><span class='em'>Show Compare </span>master..origin/master (<span class='mono'>diff --name-status; lg</span>)</li>
-			<li>if different:<ul>
-				<li>close repository in Xcode; set $cb; checkout master; verify status clean</li>
-				<li>fetch updates (fetchup): <span class='mono'> git remote update --prune; git merge --ff-only @{u}</span><ul>
-					<li>if that merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
-				</ul></li>
-				<li>merge changes; test</li>
-				<li>push</li>
-			</ul></li>
-		</ul>
-
 		<!-- @marker "adminResolveConflicts" -->
 		<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
-			<li>status; if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files</li>
+			<li>status</li>
+			<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
+				<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
+			</ul></li>
+			<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
 			<li><span class='mono'>commit / resolve merge</span></li>
 			<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
 			<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>

@@ -6,11 +6,9 @@
 // =================================================================================
 
 
-@import XCTest;
+#import <XCTest/XCTest.h>
 
 @interface ___FILEBASENAMEASIDENTIFIER___ : XCTestCase
-
-- (void)testExample;
 
 @end
 
@@ -28,7 +26,14 @@
 
 /*!	\test	example 	*/
 - (void)testExample {
-    XCTAssertTrue (1 == 1, @"%s: Oops! 1 is not 0.", __PRETTY_FUNCTION__);
+    XCTAssertTrue (1 == 0, @"%s: Oops! 1 is not 0.", __PRETTY_FUNCTION__);
+}
+
+/*!	\test	example performance test	*/
+- (void)testPerformanceExample {
+	[self measureBlock:^{
+		// code to measure
+	}];
 }
 
 @end
