@@ -958,9 +958,9 @@
     },
     "comments": 0,
     "created_at": "2014-05-31T20:44:08Z",
-    "updated_at": "2015-01-24T23:12:50Z",
+    "updated_at": "2015-04-11T22:16:40Z",
     "closed_at": null,
-    "body": "- [x] get archive script working\r\n- [ ] reenable tests"
+    "body": "- [x] get archive script working\r\n- 14/11/2015 again (still?) not working (expected data, especially .git, not present in archive8\r\n- X reenable tests; fix\r\n- [ ] fix, confirming at least existing tests"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/40",
@@ -1473,9 +1473,9 @@
     },
     "comments": 0,
     "created_at": "2013-10-20T19:49:44Z",
-    "updated_at": "2014-01-03T19:33:20Z",
+    "updated_at": "2015-04-30T19:18:44Z",
     "closed_at": null,
-    "body": "* *garbage collection now deprecated - *What's New in Xcode 13#400@29:00*\r\n* see also Modern Objective-C 12#405, Adopting Automatic Reference Counting 12#406*\r\n* see also carolclark/Accessor#8 :migrate to ARC"
+    "body": "* *garbage collection now deprecated - *What's New in Xcode 13#400@29:00*\r\n* see also [Adopting Modern Objective-C](https://developer.apple.com/library/ios/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html), Modern Objective-C 12#405, Adopting Automatic Reference Counting 12#406*\r\n* see also carolclark/Accessor#8 :migrate to ARC"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/25",
@@ -1864,9 +1864,9 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2013-05-17T15:33:41Z",
-    "updated_at": "2014-11-06T18:04:48Z",
+    "updated_at": "2015-04-06T17:32:27Z",
     "closed_at": null,
-    "body": "see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop), [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/), [github/hub](https://github.com/github/hub)\r\n\r\n*11/02/2013 github/hub not used for now; what we know well enough to abbreviate, we already automate; Tips has some additional ideas that might be useful later*\r\n\r\n#### Add to Accessor Slates\r\n*From [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/)*\r\n- [ ] add --decorate to lg alias to included tags, and possibly additional branch information\r\n- [ ] add --word-diff option to diff; document\r\n- X (Made unnecessary by git version 1.8.3.4, installed with Xcode 5) pushing branches with tracking\r\n    * add --set-upstream (establish tracking) to push options \r\n    * git config --global push.default tracking - to push only the current branch\r\n    * document\r\n- [ ] add --track to checkout options; document\r\n- [ ] add name-rev to show where among tags a specific commit was made; document\r\n\r\n#### Additional Scripting and Alias support\r\n- [ ] refactor: for all unix files, includes come before help info to keep file's help from being overwritten by that from includes\r\n- [ ] handle items for which Slates now enter scripts (eg. diff/list)\r\n    * branch / getCurrent\r\n    * tag / annotate\r\n    * difference / (specs) / listFiles; selectFile\r\n- [ ] customize terminal prompt with git branch\r\n    * see [Put Your Git Branch in Your Bash Prompt](http://code-worrier.com/blog/git-branch-in-bash-prompt/)\r\n\r\n"
+    "body": "see [How to avoid these merge commits in the future](http://stackoverflow.com/questions/6406762/why-am-i-merging-remote-tracking-branch-origin-develop-into-develop), [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/), [github/hub](https://github.com/github/hub)\r\n\r\n*11/02/2013 github/hub not used for now; what we know well enough to abbreviate, we already automate; Tips has some additional ideas that might be useful later*\r\n\r\n#### Add to Accessor Slates\r\n*From [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/)*\r\n- [ ] add --decorate to lg alias to included tags, and possibly additional branch\r\n- [ ] 'diff command' uses diff instead of diff tool; add --word-diff option\r\n- X (Made unnecessary by git version 1.8.3.4, installed with Xcode 5) pushing branches with tracking\r\n    * add --set-upstream (establish tracking) to push options \r\n    * git config --global push.default tracking - to push only the current branch\r\n    * document\r\n- X (No. We use explicit --set-upstream instead.) Add --track to checkout options; document\r\n- X (We would just use GitHub for this.) add name-rev to show where among tags a specific commit was made; document\r\n\r\n#### Additional Scripting and Alias support\r\n- [ ] refactor: for all unix files, includes come before help info to keep file's help from being overwritten by that from includes\r\n- [ ] handle items for which Slates now enter scripts (eg. diff/list)\r\n    * branch / getCurrent\r\n    * tag / annotate\r\n    * difference / (specs) / listFiles; selectFile\r\n- [ ] customize terminal prompt with git branch\r\n    * see [Put Your Git Branch in Your Bash Prompt](http://code-worrier.com/blog/git-branch-in-bash-prompt/)\r\n    - It appears that this would require changing Terminal's default shell back to bash. It seems as if this would work fine; it's important to use ksh for scripting, but that does not require ksh as the default Terminal shell.\r\n\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/20",
@@ -1953,9 +1953,9 @@
     },
     "comments": 0,
     "created_at": "2013-05-14T16:56:54Z",
-    "updated_at": "2014-08-30T02:30:46Z",
+    "updated_at": "2015-05-16T20:36:36Z",
     "closed_at": null,
-    "body": "see Xcode 4.6 Release Notes\r\nwwdc12#412 Debugging in Xcode\r\n* Creating Custom Summaries 82/102\r\n* XPC Services 95/102\r\n\r\nwwdc12#415 Debugging in LLDB\r\n* command line\r\n* aliasing 193/438\r\n    * regexp\r\n* user-defined commands (Python) 219/438\r\n* init files ~/.lldbinit 239/438"
+    "body": "see Xcode 4.6 Release Notes\r\nwwdc12#412 Debugging in Xcode\r\n* Creating Custom Summaries 82/102\r\n* XPC Services 95/102\r\n\r\nwwdc12#415 Debugging in LLDB\r\n* command line\r\n* aliasing 193/438\r\n    * regexp\r\n* user-defined commands (Python) 219/438\r\n* init files ~/.lldbinit 239/438\r\n\r\n- [ ] implement custom QuickLook data; see:\r\n    -  [Quick Look for Custom Types in the Xcode Debugger](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/CustomClassDisplay_in_QuickLook/CH01-quick_look_for_custom_objects/CH01-quick_look_for_custom_objects.html), \r\n    - snippets from WWWDC2014:Debugging in Xcode 6:\r\n[debugquicklookobject_sketch](https://cloud.githubusercontent.com/assets/3742721/7620806/e9ac5f20-f987-11e4-9ea1-986900d98cb8.png); \r\n[debugquicklookobject_implementation](https://cloud.githubusercontent.com/assets/3742721/7620940/8ea04f1e-f988-11e4-8522-424ea7f48de2.png)\r\n"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/19",
