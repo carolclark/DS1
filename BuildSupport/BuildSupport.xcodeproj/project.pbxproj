@@ -139,11 +139,6 @@
 		67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckSyntax.applescript; sourceTree = "<group>"; };
 		67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBEdit_install.ksh; sourceTree = "<group>"; };
 		67DD777716A4D6A700BECCD5 /* snippets.dash */ = {isa = PBXFileReference; lastKnownFileType = file; path = snippets.dash; sourceTree = "<group>"; };
-		67DDABE81B07F83D00C92E25 /* ___FILEBASENAME___.cp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "___FILEBASENAME___.cp"; sourceTree = "<group>"; };
-		67DDABE91B07F83D00C92E25 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
-		67DDABEA1B07F83D00C92E25 /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
-		67DDABEB1B07F83D00C92E25 /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
-		67DDABEC1B07F83D00C92E25 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -334,7 +329,6 @@
 		67DD76D816A4AF9300BECCD5 /* FileTemplates */ = {
 			isa = PBXGroup;
 			children = (
-				67EEAAA01AF8205400C204B3 /* _CPlusPlus */,
 				67DD76D916A4AF9300BECCD5 /* _Documentation */,
 				67DD76F016A4AF9300BECCD5 /* _ObjectiveC */,
 				672D94301A9BDE3D008FBD82 /* _Resources */,
@@ -665,26 +659,6 @@
 				67DD777716A4D6A700BECCD5 /* snippets.dash */,
 			);
 			path = Dash;
-			sourceTree = "<group>";
-		};
-		67DDABE71B07F83D00C92E25 /* C++ Class.xctemplate */ = {
-			isa = PBXGroup;
-			children = (
-				67DDABE81B07F83D00C92E25 /* ___FILEBASENAME___.cp */,
-				67DDABE91B07F83D00C92E25 /* ___FILEBASENAME___.h */,
-				67DDABEA1B07F83D00C92E25 /* TemplateIcon.png */,
-				67DDABEB1B07F83D00C92E25 /* TemplateIcon@2x.png */,
-				67DDABEC1B07F83D00C92E25 /* TemplateInfo.plist */,
-			);
-			path = "C++ Class.xctemplate";
-			sourceTree = "<group>";
-		};
-		67EEAAA01AF8205400C204B3 /* _CPlusPlus */ = {
-			isa = PBXGroup;
-			children = (
-				67DDABE71B07F83D00C92E25 /* C++ Class.xctemplate */,
-			);
-			path = _CPlusPlus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
