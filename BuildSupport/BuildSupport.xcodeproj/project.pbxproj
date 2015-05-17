@@ -95,7 +95,7 @@
 		67DD76F916A4AF9300BECCD5 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
 		67DD76FA16A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
 		67DD76FB16A4AF9300BECCD5 /* ___FILEBASENAME___.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "___FILEBASENAME___.xib"; sourceTree = "<group>"; };
-		67DD76FD16A4AF9300BECCD5 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
+		67DD76FD16A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
 		67DD76FE16A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
 		67DD770016A4AF9300BECCD5 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
 		67DD770116A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
@@ -477,7 +477,7 @@
 		67DD76FC16A4AF9300BECCD5 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
-				67DD76FD16A4AF9300BECCD5 /* ___FILEBASENAME___.h */,
+				67DD76FD16A4AF9300BECCD5 /* ___FILEBASENAME___.m */,
 				67DD76FE16A4AF9300BECCD5 /* ___FILEBASENAME___.m */,
 			);
 			path = NSObject;

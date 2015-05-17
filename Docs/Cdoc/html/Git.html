@@ -141,10 +141,12 @@
 			<p><b>Merge to Master</b></p><ul>
 				<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
 				<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
-				<li><span class='mono'>getMergeMessage; merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
+				<li><span class='mono'>getMergeMessage</span>; edit $mm; <span class='mono'>merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
 				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
 				<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
-				<li>check for unmerged branches; if found, <span class='em'>Merge Master</span> for each</li>
+				<li>check for unmerged branches; for each unmerged branch found:<ul>
+					<li>make branch current; Ancestry $cb.master; if indicated: <span class='em'>Merge Master</span>; push</li>
+				</ul></li>
 				<li>[delete local branch]; (manage remote stale branches periodically from GitHub)</li>
 			</ul>
 			<p><b>[Archive Repository]</b></p>
