@@ -138,14 +138,14 @@
 			</ul>
 		</div>
 		<h5>Put Away Branch</h5><div class='indent'>
-			<p><b>Merge to Master</b></p><ul>
+			<p><b>Merge to Parent (often Master)</b></p><ul>
 				<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-				<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
-				<li><span class='mono'>getMergeMessage</span>; edit $mm; <span class='mono'>merge --no-ff -m "$mm" &lt;branch[$cb]&gt;</span></li>
+				<li>set $tb to parent branch; checkout $tb; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> $tb.$cb</li>
+				<li><span class='mono'>getMergeMessage</span>; edit $mm; <span class='mono'>merge 'from branch' (--no-ff -m "$mm" &lt;branch[$cb]&gt;</span>)</li>
 				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
-				<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
-				<li>check for unmerged branches; for each unmerged branch found:<ul>
-					<li>make branch current; Ancestry $cb.master; if indicated: <span class='em'>Merge Master</span>; push</li>
+				<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.$tb; push; status</li>
+				<li>get $cb; check for unmerged branches; for each unmerged branch found:<ul>
+					<li>select $tb; checkout $tb; Ancestry $tb.$cb; if indicated: status; merge $cb; status; push</li>
 				</ul></li>
 				<li>[delete local branch]; (manage remote stale branches periodically from GitHub)</li>
 			</ul>
@@ -193,6 +193,11 @@
 			<li><span class='mono'>commit / resolve merge</span></li>
 			<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
 			<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
+		</ul>
+
+		<!-- @marker "adminFixDivergentBranches" -->
+		<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
+			<li>use 'git rebase'</li>
 		</ul>
 	</div>
 </div>
