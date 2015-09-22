@@ -1,91 +1,34 @@
 // =================================================================================
 //  ___FILEBASENAME___.mm
 //
+//  Created by ___FULLUSERNAME___ on ___DATE___ for project ___PROJECTNAME___.
 //	Copyright (c) ___YEAR___ C & C Software, Inc. All rights reserved.
 // =================================================================================
 
 #import "___FILEBASENAME___.h"
 #import "___FILEBASENAME____AL.h"
 
-@implementation ___FILEBASENAME___CP
-@synthesize cpp = _cpp;
+@interface ___FILEBASENAMEASIDENTIFIER___ () {
+	___FILEBASENAMEASIDENTIFIER___AL *	_wrapped;
+}
+@end
 
-struct ___FILEBASENAME___Opaque {
-___FILEBASENAME___Opaque() {};
-al::___FILEBASENAME___ ___FILEBASENAMEASIDENTIFIER___;
-};
+@implementation ___FILEBASENAME___
 
 - (id)init {
 	self = [super init];
-	if (self != nil) {
-		self.cpp = new ___FILEBASENAME___Opaque;
-		if (! self.cpp) {
-			self = nil;
-		}
+	if (self) {
+		_wrapped = new ___FILEBASENAMEASIDENTIFIER___AL;
+		if (!_wrapped) self = nil;
 	}
 	return self;
 }
 
 - (void)dealloc {
-	delete _cpp;
-	_cpp = NULL;
+	delete _wrapped;
+	_wrapped = NULL;
 	
 	[super dealloc];		// omit if using ARC
 }
 
-#pragma mark	Interface for Testing
-/*! \name		InterfaceForTesting */
-//@{
-//@}
-
 @end
-
-<#Interface File#>
-// =================================================================================
-//  ___FILEBASENAME___.h
-//
-//	Copyright (c) ___YEAR___ C & C Software, Inc. All rights reserved.
-// =================================================================================
-
-struct ___FILEBASENAME___Opaque;
-
-@interface ___FILEBASENAME___CP : NSObject {
-struct ___FILEBASENAME___Opaque *_cpp;
-}
-
-@property (nonatomic, readwrite, assign) ___FILEBASENAME___Opaque *cpp;
-
-#pragma mark Interface for Testing
-
-@end
-<#Test Implementation#>
-// =================================================================================
-//  ___FILEBASENAME___Test.mm					(c)___YEAR___ C & C Software, Inc. All rights reserved.
-//  							Confidential and Proprietary.
-// =================================================================================
-
-#import "___FILEBASENAME___Test.h"
-#import "___FILEBASENAME___.h"
-
-@implementation ___FILEBASENAME___Test
-
-/*! \test	wrapper construction */
-- (void)test___FILEBASENAME___ {
-	___FILEBASENAME___CP *a___FILEBASENAME___ = [[[___FILEBASENAME___CP alloc] init] autorelease];
-	STAssertNotNil (a___FILEBASENAME___, nil);
-	STAssertNotNil ((id)[a___FILEBASENAME___ cpp], nil);
-}
-<#Test Interface#>
-// =================================================================================
-//  ___FILEBASENAME___Test.h					(c)___YEAR___ C & C Software, Inc. All rights reserved.
-//  							Confidential and Proprietary.
-// =================================================================================
-
-#import <SenTestingKit/SenTestingKit.h>
-
-@interface ___FILEBASENAME___Test : SenTestCase
-
-- (void)test___FILEBASENAME___;
-
-@end
-

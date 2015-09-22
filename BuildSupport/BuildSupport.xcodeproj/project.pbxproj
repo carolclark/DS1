@@ -49,6 +49,9 @@
 		672D94321A9BDE3D008FBD82 /* ___FILEBASENAME___.r */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; path = "___FILEBASENAME___.r"; sourceTree = "<group>"; };
 		672D94331A9BDE3D008FBD82 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		672D94341A9BDE3D008FBD82 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
+		673639D71BB1BCB7009B3D3E /* ___FILEBASENAME___.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "___FILEBASENAME___.mm"; sourceTree = "<group>"; };
+		673639D81BB1BD1F009B3D3E /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
+		673639D91BB1BD70009B3D3E /* ___FILEBASENAME___Test.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "___FILEBASENAME___Test.mm"; sourceTree = "<group>"; };
 		67364A6D16C0345900940D94 /* FixWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = FixWindow.applescript; sourceTree = "<group>"; };
 		67364A7316C0362C00940D94 /* DeveloperScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeveloperScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		674791F318567B7500452FA5 /* ___FILEBASENAME___.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = "___FILEBASENAME___.py"; path = "PythonScript.xctemplate/___FILEBASENAME___.py"; sourceTree = "<group>"; };
@@ -64,6 +67,8 @@
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
 		67BB9CCD1933DC3300219B61 /* CheckHTML.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckHTML.applescript; sourceTree = "<group>"; };
+		67BBC6D21BB1C807004D08A0 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
+		67BBC7021BB1CB60004D08A0 /* ___FILEBASENAME___Start.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "___FILEBASENAME___Start.mm"; path = "../../../../../../../../../.Trash/___FILEBASENAME___Start.mm"; sourceTree = "<group>"; };
 		67BE04C416B095780065BFDE /* XcodeScripts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XcodeScripts-Info.plist"; sourceTree = "<group>"; };
 		67DB232C169E0A2900A6E910 /* Snippet.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = Snippet.applescript; sourceTree = "<group>"; };
 		67DB232D169E0A2900A6E910 /* Snippets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snippets.txt; sourceTree = "<group>"; };
@@ -96,7 +101,6 @@
 		67DD76FA16A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
 		67DD76FB16A4AF9300BECCD5 /* ___FILEBASENAME___.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "___FILEBASENAME___.xib"; sourceTree = "<group>"; };
 		67DD76FD16A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
-		67DD76FE16A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
 		67DD770016A4AF9300BECCD5 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
 		67DD770116A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
 		67DD770316A4AF9300BECCD5 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
@@ -116,7 +120,6 @@
 		67DD771716A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
 		67DD771816A4AF9300BECCD5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		67DD771916A4AF9300BECCD5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
-		67DD771B16A4AF9300BECCD5 /* ___FILEBASENAME___.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "___FILEBASENAME___.mm"; sourceTree = "<group>"; };
 		67DD771C16A4AF9300BECCD5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		67DD771D16A4AF9300BECCD5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		67DD771F16A4AF9300BECCD5 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
@@ -477,8 +480,8 @@
 		67DD76FC16A4AF9300BECCD5 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				67BBC6D21BB1C807004D08A0 /* ___FILEBASENAME___.h */,
 				67DD76FD16A4AF9300BECCD5 /* ___FILEBASENAME___.m */,
-				67DD76FE16A4AF9300BECCD5 /* ___FILEBASENAME___.m */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -561,7 +564,9 @@
 		67DD771A16A4AF9300BECCD5 /* CPPWrapper.xctemplate */ = {
 			isa = PBXGroup;
 			children = (
-				67DD771B16A4AF9300BECCD5 /* ___FILEBASENAME___.mm */,
+				673639D71BB1BCB7009B3D3E /* ___FILEBASENAME___.mm */,
+				673639D81BB1BD1F009B3D3E /* ___FILEBASENAME___.h */,
+				673639D91BB1BD70009B3D3E /* ___FILEBASENAME___Test.mm */,
 				67DD771C16A4AF9300BECCD5 /* TemplateIcon.icns */,
 				67DD771D16A4AF9300BECCD5 /* TemplateInfo.plist */,
 			);

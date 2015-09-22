@@ -107,7 +107,7 @@
 			<li>checkout branch<ul>
 				<li>pre-existing branch<ul>
 					<li><span class='em'>Merge Master:</span><ul>
-						<li>checkout branch; set $cb; <a href="#adminCompareAncestry"><span class='em'>Ancestry</span></a> $cb.master</li>
+						<li>checkout branch; set $cb; show this; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> $cb.master; <a href="#adminCompareAncestry"><span class='em'>Ancestry</span></a> $cb.master</li>
 						<li>if changed:<ul>
 							<li>merge mergeMaster <span class='mono'>(--no-ff -m "merge master")</span>; status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
 							<li>test; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
@@ -125,11 +125,11 @@
 		<h5>Repeat</h5><div class='indent'>
 			<p><b>Develop:</b> repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</p>
 			<p><b>Commit</b></p><ul>
-				<li>construct and save commit message; verify modifications (diff --cached)</li>
-				<li>status: check branch; add / review files to be committed; review commit msgfile and #issue</li>
+				<li>construct and save commit message; verify modifications (diff --cached); run all tests</li>
+				<li>status: check branch; get $cb; add / review files to be committed; review commit msgfile and #issue</li>
 				<li>check for stray spaces (diff --cached --check); [backup GitHub issues; add, OR if failure checkout original]</li>
-				<li>status; commit msgfile</li>
-				<li>status; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb; [to amend: reset --soft lastCommit]</li>
+				<li>status; update and repeat if indicated; commit msgfile</li>
+				<li>status; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.$cb; [to amend: reset --soft lastCommit]</li>
 				<li>check stash list</li>
 				<li><span class='em'>Update Master</span>; <span class='em'>Merge Master</span>; checkout $cb</li>
 			</ul>
@@ -138,16 +138,14 @@
 			</ul>
 		</div>
 		<h5>Put Away Branch</h5><div class='indent'>
-			<p><b>Merge to Parent (often Master)</b></p><ul>
+			<p><b>Merge to (Master)</b> (or another parent branch)</p><ul>
 				<li>from branch to be merged: check for status clear; set 'current branch' variable </li>
-				<li>set $tb to parent branch; checkout $tb; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> $tb.$cb</li>
-				<li><span class='mono'>getMergeMessage</span>; edit $mm; <span class='mono'>merge 'from branch' (--no-ff -m "$mm" &lt;branch[$cb]&gt;</span>)</li>
+				<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
+				<li><span class='mono'>getMergeMessage</span>; <span class='mono'>merge 'from branch' (--no-ff -m "$mm" &lt;branch[$cb]&gt;</span>)</li>
 				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
-				<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.$tb; push; status</li>
-				<li>get $cb; check for unmerged branches; for each unmerged branch found:<ul>
-					<li>select $tb; checkout $tb; Ancestry $tb.$cb; if indicated: status; merge $cb; status; push</li>
-				</ul></li>
-				<li>[delete local branch]; (manage remote stale branches periodically from GitHub)</li>
+				<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
+				<li>for each local branch other than master and $cb: <span class='em'>Merge Master</span></li>
+				<li>checkout $cb; push; [checkout master; delete local branch]; (manage remote stale branches periodically from GitHub)</li>
 			</ul>
 			<p><b>[Archive Repository]</b></p>
 		</div>
