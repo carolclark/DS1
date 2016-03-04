@@ -13,9 +13,9 @@
 
 <!-- @topicList "Git" "Contents" -->
 	<!-- @topicGroup "Workflows" "1" -->
-	<!-- @topicItem "Collaborator" "#WorkflowCollab" "0" "" -->
-	<!-- @topicItem "Administrator" "#WorkflowAdmin" "0" "" -->
-		<!-- @topicItem "Admin Subtasks" "#adminSubtasks" "1" "" -->
+	<!-- @topicItem "AppCode with Waffle" "#WorkflowAppCode" "0" "current workflow" -->
+		<!-- @topicItem "Workflow Subtasks" "#workflowSubtasks" "1" "common subtasks" -->
+	<!-- @topicItem "Xcode with Git" "#WorkflowXcode" "0" "previous workflow" -->
 	<!-- @topicGroup "" "5" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
@@ -23,182 +23,155 @@
 <!-- @/topicList -->
 
 <!-- @marker "Workflows" -->
-<h2>Workflows</h2><ul>
-	<li>Workflows: Technical Notes<ul>
-		<li>The workflows described below assume that Collaborator works with a private fork of a shared repository managed by Administrator. Collaborator pushes to their private repository, and fetches <span class='mono'>master</span>from the shared repository. Administrator pushes to the shared repository, and has Collaborator's repository included in their update list.</li>
-		<li>With these workflows, Collaborator pushes their private branch <span class='ital'>before</span> it has had changes from <span class='mono'>master</span> merged in. The intent is to make it easier for Administrator to help with merge conflicts. If it turns out to cause more trouble than it saves, we should have Collaborator push <span class='ital'>after</span> their private branch is updated from <span class='mono'>master</span>.</li>
-	</ul></li>
+<h2>Workflows</h2>
+
+<div style="page-break-before: always">
+	<h3 id="WorkflowAppCode">Workflow: AppCode with Waffle</h3><div style="background-color: #d8e8ff">
+		<h4>While Issue Not Complete</h4>
+			<h5>Open Task</h5><ul>
+				<li class="blurb">for release branch, see <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a></li>
+				<li>update project</li>
+				<li>if task does not yet exist:<ul>
+					<li>note issue information for appropriate GitHub issue</li>
+					<li>create new task with #&lt;issueID&gt; at end of name<ul>
+						<li>in dialog: check base branch; add issue number to end of branch name</li>
+					</ul></li>
+				</ul></li>
+				<li>if task already exists:<ul>
+					<li>switch to task; Merge in master branch; commit</li>
+				</ul></li>
+				<li>check for applicable branches; apply as indicated</li>
+				<li>push to remote tracking branch</li></ul>
+			<h5>While Task Not Complete</h5><div class='indent'>
+				<p><b>Develop:</b> repeat until ready to commit: edit/test; status; diff modifications; [add/stage]</p>
+				<p><b>Commit</b></p><ul>
+					<li>diff files in changelist</li>
+					<li>update message; commit</li>
+					<li>check for stashes</li>
+				</ul>
+				<p><b>Publish</b></p><ul>
+					<li>backup GitHub content, OR if failure checkout original</li>
+					<li>push to remote tracking branch</li>
+					<li>Merge to Local Master<ul>
+						<li>switch to Default task (master branch); merge branch</li>
+						<li>diff changed files as needed to resolve merge issues</li>
+					</ul></li>
+					<li>on local master branch, run all tests</li>
+				</ul></div>
+		<h4>Review Issue</h4><ul>
+			<li>issue GitHub pull request against master<ul>
+				<li>for pull request title:<ul>
+					<li>if closing issue: (close | fix | resolve) #&lt;IssueNumber&gt;</li>
+					<li>if connecting: add connect #&lt;IssueNumber&gt;</li>
+					<li>if neither: accept default offered</li>
+				</ul></li>
+			</ul></li>
+		</ul>
+		<h4>Close Issue</h4><ul>
+			<li>close associated pull request; merge to master</li>
+			<li>if merge conflicts: use changelist to resolve; retest</li>
+			<li>merge master into existing open branches</li>
+		</ul>
+
+		<h5>[Archive Repository]</h5>
+	</div>
+</div>
+
+<div style="page-break-before: always">
+	<h5 id="workflowSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
+	<!-- @marker "adminReleaseBranch" -->
+	<h6>Morning/Working Report</h6><ul>
+	<li>branch list; status; set $cb to current branch; show --name-only</li>
+	<li>for master.$cb, origin/master.master, master.origin/master: lg; diff --name-status</li>
+	<li>branch unmerged master; stash list</li>
 </ul>
 
+	<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
+	<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
+</ul>
+
+	<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
+	<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
+	<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
+</ul>
+
+	<h6 id='adminReleaseBranch'>Release Branch</h6>
+	<p class='blurb'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p><ul>
+	<li>select version number (eg. "1.0"); set $vn; create branch release-$vn</li>
+	<li>bump version: make changes to code and resources to match new version number</li>
+	<li>commit ("bump version to $vn")</li>
+	<li>bug fixes as indicated</li>
+	<li>update history files, issue milestones</li>
+	<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
+	<li>merge release branch into 'master'; push 'master'; delete release branch</li>
+</ul>
+
+	<!-- @marker "adminResolveConflicts" -->
+	<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
+	<li>status</li>
+	<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
+		<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
+	</ul></li>
+	<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+	<li><span class='mono'>commit / resolve merge</span></li>
+	<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
+	<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
+</ul>
+
+	<!-- @marker "adminFixDivergentBranches" -->
+	<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
+	<li>use 'git rebase'</li>
+</ul>
+</div></div>
+
 <div style="page-break-before: always">
-	<h4 id="WorkflowCollab">Workflow: Collaborator</h4><ul style="background-color: #d8ffe8">
-		<li class='blurb'>Xcode Tasks:<ul>
-			<li>To view your Repository<ul>
-				<li>Choose File &gt; Source Control &gt; Repositories OR choose Window &gt; Organizer &gt; Repositories.</li>
-				<li>From the left panel of that window, choose the blue folder associated with your project.</li>
-				<li>The current branch is now displayed at the upper right of the window. If that is not the branch you want, see "To select a branch" below.</li>
-			</ul></li>
-			<li>To see which files have been changed since they were last committed:<ul>
-				<li>In your project's main window, there is a row of small icons near the bottom left. The third icon, which looks like a folder with the square on it, turns on or off a state that shows only modified files. Click that icon to show only modified files; click again to return to showing all files.<ul>
-					<li>Modified files are also marked with a badge to the right (usually the letter 'M' for modified)'</li>
-				</ul></li>
-			</ul></li>
-			<li>To see which branch you are on:<ul>
-				<li>View your Repository.</li>
-				<li>The current branch is displayed at the upper right corner of the window.</li>
-			</ul></li>
-			<li>To select a branch<ul>
-				<li>Make sure that you do not currently have any modified files.</li>
-				<li>View your Repository.</li>
-				<li>Click "Switch Branch" near the bottom right of the Repository window; make sure that the window that comes up does not have a warning about changed files</li>
-				<li>Choose the branch to switch to.</li>
-			</ul></li>
+	<h4 id="WorkflowXcode">Workflow: Xcode with Git</h4><div style="background-color: #ffebcd">
+	<h5>Branch</h5><ul>
+		<li>if current branch is uncommitted, commit or stash</li>
+		<li><span class='em'>Update Master:</span>	<ul>
+			<li>checkout master; verify status clean</li>
+			<li>fetch updates (<span class='mono'>git remote update --prune</span>); status</li>
+			<li>if changed: merge updateMaster (<span class='mono'>git merge --ff-only @{u}</span>); <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; test; push</li>
 		</ul></li>
-		<li>Develop <span class='blurb'>do some work</span><ul>
-			<li>select branch 'artist'</li>
-			<li>Make a group of changes to some files. (This may include adding new files and deleting old ones.)</li>
-			<li>Commit: <span class='blurb'>makes a record of these changes in the git repository on your computer</span><ul>
-				<li>View your Repository.</li>
-				<li>Click Commit from the bottom left of the Organizer &gt; Repositories window.</li>
-				<li>It will ask for a message describing what you did. First line should be fairly short (no more that 50 characters). If there's more to say, add a blank line and then just keep going.</li>
+		<li>checkout branch<ul>
+			<li>pre-existing branch<ul>
+				<li><a href="#tsk_MergeMaster">Merge Master</a></li>
+				<li>recover any stashes</li>
 			</ul></li>
-		</ul></li>
-		<li>Update your Master branch <span class='blurb'>get any changes that have been made to Administrator's repository on GitHub, so you have an up-to-date copy</span><ul>
-			<li>select branch 'master'</li>
-			<li>Pull<ul>
-				<li>View your Repository; click Pull from the bottom left of the Organizer &gt; Repositories window.</li>
-				<li>OR (preferred ***): use <span class='mono'>git fetchup</span> from Terminal</li>
+			<li>OR new branch<ul>
+				<li>checkout new branch; set $cb; <span class='mono'>git push --set-upstream origin $cb</span></li>
 			</ul></li>
-			<li>Merge: <span class='blurb'>combine the changes from your 'artist' branch with the updated 'master' branch</span><ul>
-				<li>Choose menu item File &gt; Source Control &gt; Merge; choose your 'artist' branch</li>
-				<li>Xcode will show you what changes will be made, and tell you if there are conflicts.<ul>
-					<li>If there are no conflicts, click 'Merge' to accept the changes.</li>
-					<li>If Xcode says that there are conflicts or that the Merge did not succeed, contact Administrator.</li>
-				</ul></li>
-			</ul></li>
+			<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
 		</ul></li>
-		<li>Push: <span class='blurb'>publish your work up to your repository on GitHub</span><ul>
-			<li>Choose menu item File &gt; Source Control &gt; Push</li>
-			<li>select branch 'master'</li>
-		</ul></li>
-		<li>Update your Artist branch <span class='blurb'>update your working branch with any changes from the updated master branch</span><ul>
-			<li>select branch 'artist'</li>
-			<li>Merge: <span class='blurb'>combine the changes from the updated 'master' branch with your 'artist' branch</span><ul>
-				<li>Choose menu item File &gt; Source Control &gt; Merge; choose your 'master' branch</li>
-				<li>Xcode will show you what changes will be made, and tell you if there are conflicts.<ul>
-					<li>If there are no conflicts, click 'Merge' to accept the changes.</li>
-					<li>If Xcode says that there are conflicts or that the Merge did not succeed, contact Administrator.</li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-		<li>repeat from Develop above</li>
+		<li>create new bot(s) '&lt;targetName&gt; &lt;branchName&gt;'</li>
 	</ul>
-</div>
-
-<div style="page-break-before: always">
-	<h4 id="WorkflowAdmin">Workflow: Administrator</h4><div style="background-color: #d8e8ff">
-		<h5>Branch</h5><ul>
-			<li>if current branch is uncommitted, commit or stash</li>
-			<li><span class='em'>Update Master:</span>	<ul>
-				<li>checkout master; verify status clean</li>
-				<li>fetch updates (<span class='mono'>git remote update --prune</span>); status</li>
-				<li>if changed: merge updateMaster (<span class='mono'>git merge --ff-only @{u}</span>); <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; test; push</li>
-			</ul></li>
-			<li>checkout branch<ul>
-				<li>pre-existing branch<ul>
-					<li><span class='em'>Merge Master:</span><ul>
-						<li>checkout branch; set $cb; show this; <a href="#adminCompareAncestry"><span class='em'>Ancestry</span></a> $cb.master</li>
-						<li>if changed:<ul>
-							<li>merge mergeMaster <span class='mono'>(--no-ff -m "merge master")</span>; status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
-							<li>test; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
-						 </ul></li>
-					</ul></li>
-					<li>recover any stashes</li>
-				</ul></li>
-				<li>OR new branch<ul>
-					<li>checkout new branch; set $cb; <span class='mono'>git push --set-upstream origin $cb</span></li>
-				</ul></li>
-				<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
-			</ul></li>
-			<li>create new bot(s) '&lt;targetName&gt; &lt;branchName&gt;'</li>
-		</ul>
 		<h5>Repeat</h5><div class='indent'>
-			<p><b>Develop:</b> repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</p>
-			<p><b>Commit</b></p><ul>
-				<li>construct and save commit message; verify modifications (diff --cached); test</li>
-				<li>status: check branch; get $cb; add / review files to be committed; review commit msgfile and #issue</li>
-				<li>check for stray spaces (diff --cached --check); [backup GitHub issues; add, OR if failure checkout original]</li>
-				<li>status; update and repeat if indicated; commit msgfile</li>
-				<li>status; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.$cb; [to amend: reset --soft lastCommit]</li>
-				<li>check stash list</li>
-				<li><span class='em'>Update Master</span>; <span class='em'>Merge Master</span>; checkout $cb</li>
-			</ul>
-			<p><b>Publish</b></p><ul>
-				<li>status; verify branch; show --name-only; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
-			</ul>
-		</div>
+		<p><b>Develop:</b> repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</p>
+		<p><b>Commit</b></p><ul>
+		<li>construct and save commit message; verify modifications (diff --cached); test</li>
+		<li>status: check branch; get $cb; add / review files to be committed; review commit msgfile and #issue</li>
+		<li>check for stray spaces (diff --cached --check); [backup GitHub issues; add, OR if failure checkout original]</li>
+		<li>status; update and repeat if indicated; commit msgfile</li>
+		<li>status; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.$cb; [to amend: reset --soft lastCommit]</li>
+		<li>check stash list</li>
+		<li><span class='em'>Update Master</span>; <span class='em'>Merge Master</span>; checkout $cb</li>
+	</ul>
+		<p><b>Publish</b></p><ul>
+		<li>status; verify branch; show --name-only; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
+	</ul>
+	</div>
 		<h5>Put Away Branch</h5><div class='indent'>
-			<p><b>Merge to (Master)</b> (or another parent branch)</p><ul>
-				<li>run all tests; from branch to be merged: check for status clear; set 'current branch' variable </li>
-				<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
-				<li><span class='mono'>getMergeMessage</span>; <span class='mono'>merge 'from branch' (--no-ff -m "$mm" &lt;branch[$cb]&gt;</span>)</li>
-				<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
-				<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
-				<li>for each local branch other than master and $cb: <span class='em'>Merge Master</span></li>
-				<li>checkout $cb; push; [checkout master; delete local branch]; (manage remote stale branches periodically from GitHub)</li>
-			</ul>
-			<p><b>[Archive Repository]</b></p>
-		</div>
-	</div>
-</div>
-
-<div style="page-break-before: always">
-<h5 id="adminSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
-		<!-- @marker "adminReleaseBranch" -->
-		<h6>Morning/Working Report</h6><ul>
-			<li>branch list; status; set $cb to current branch; show --name-only</li>
-			<li>for master.$cb, origin/master.master, master.origin/master: lg; diff --name-status</li>
-			<li>branch unmerged master; stash list</li>
-		</ul>
-
-		<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
-			<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
-		</ul>
-
-		<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
-			<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
-			<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
-		</ul>
-
-		<h6 id='adminReleaseBranch'>Release Branch</h6>
-		<p class='blurb'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p><ul>
-			<li>select version number (eg. "1.0"); set $vn; create branch release-$vn</li>
-			<li>bump version: make changes to code and resources to match new version number</li>
-			<li>commit ("bump version to $vn")</li>
-			<li>bug fixes as indicated</li>
-			<li>update history files, issue milestones</li>
-			<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
-			<li>merge release branch into 'master'; push 'master'; delete release branch</li>
-		</ul>
-
-		<!-- @marker "adminResolveConflicts" -->
-		<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
-			<li>status</li>
-			<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
-				<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
-			</ul></li>
-			<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
-			<li><span class='mono'>commit / resolve merge</span></li>
-			<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
-			<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
-		</ul>
-
-		<!-- @marker "adminFixDivergentBranches" -->
-		<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
-			<li>use 'git rebase'</li>
-		</ul>
-	</div>
-</div>
+		<p><b>Merge to (Master)</b> (or another parent branch)</p><ul>
+		<li>run all tests; from branch to be merged: check for status clear; set 'current branch' variable </li>
+		<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
+		<li><span class='mono'>getMergeMessage</span>; <span class='mono'>merge 'from branch' (--no-ff -m "$mm" &lt;branch[$cb]&gt;</span>)</li>
+		<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
+		<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
+		<li>for each local branch other than master and $cb: <span class='em'>Merge Master</span></li>
+		<li>checkout $cb; push; [checkout master; delete local branch]; (manage remote stale branches periodically from GitHub)</li>
+	</ul>
+	<p><b>[Archive Repository]</b></p>
+</div></div></div>
 
 <!-- @marker "Git Tasks" -->
 <div style="page-break-before: always">
@@ -206,6 +179,7 @@
 </div>
 <!-- @topicList "Git Tasks" "GitTasks_" -->
 	<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
+	<!-- @topicItem "Master Branch" "#tsk_MasterBranch" "1" "" -->
 	<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
 	<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
 	<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
@@ -235,6 +209,25 @@
 	</ul></li>
 	<li><span class='mono'>git checkout -b &lt;new-branch&gt; [&lt;start_point&gt;]</span>&nbsp;&nbsp;# move existing work to a new branch, rooted at commit &lt;start_point&gt; if specified</li>
 </ul>
+
+<!-- @marker "Master Branch" -->
+<h4 id="tsk_MasterBranch">Master Branch</h4>
+	<h5><a id="tsk_MergeMaster">Merge Master</a></h5><ul>
+		<li class="blurb">used with Xcode; otherwise, AppCode's own merge is used</li>
+		<li>checkout branch; set $cb; show --name-status; <a href="#adminCompareAncestry"><span class='em'>Ancestry</span></a> $cb.master</li>
+		<li>if changed:<ul>
+			<li>merge mergeMaster <span class='mono'>(--no-ff -m "merge master")</span>; status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a></li>
+			<li>test; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
+		</ul></li>
+	</ul>
+
+	<h5><a id="tsk_UpdateMaster">Update Master</a></h5><ul>
+		<li class="blurb">not needed for now; purpose is to update our code with work from others</li>
+		<li>checkout master; verify status clean</li>
+		<li>fetch updates (<span class='mono'>git remote update --prune</span>); status</li>
+		<li>if changed: merge updateMaster (<span class='mono'>git merge --ff-only @{u}</span>)</li>
+		<li><a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; test; push</li>
+	</ul>
 
 <!-- @marker "Stash" -->
 <h4 id="tsk_Stash">Stash</h4><ul>
