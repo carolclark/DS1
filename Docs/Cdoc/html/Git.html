@@ -40,25 +40,25 @@
 				<li>if task already exists:<ul>
 					<li>switch to task; Merge in master branch; commit</li>
 				</ul></li>
-				<li>check for applicable branches; apply as indicated</li>
+			<li>check for applicable stashes; apply as indicated</li>
 				<li>push to remote tracking branch</li></ul>
 			<h5>While Task Not Complete</h5><div class='indent'>
 				<p><b>Develop:</b> repeat until ready to commit: edit/test; status; diff modifications; [add/stage]</p>
 				<p><b>Commit</b></p><ul>
-					<li>diff files in changelist</li>
+					<li>add unversioned files as indicated; diff files in changelist</li>
+					<li>backup GitHub, AppCode content; check for stray spaces (`difftool --cached --check`)</li>
 					<li>update message; commit</li>
 					<li>check for stashes</li>
 				</ul>
 				<p><b>Publish</b></p><ul>
-					<li>backup GitHub content, OR if failure checkout original</li>
 					<li>push to remote tracking branch</li>
 					<li>Merge to Local Master<ul>
 						<li>switch to Default task (master branch); merge branch</li>
 						<li>diff changed files as needed to resolve merge issues</li>
 					</ul></li>
-					<li>on local master branch, run all tests</li>
 				</ul></div>
-		<h4>Review Issue</h4><ul>
+		<h4>Issue Tasks Complete: Review Issue</h4><ul>
+			<li>on local master branch, run all tests</li>
 			<li>issue GitHub pull request against master<ul>
 				<li>for pull request title:<ul>
 					<li>if closing issue: (close | fix | resolve) #&lt;IssueNumber&gt;</li>
@@ -67,7 +67,7 @@
 				</ul></li>
 			</ul></li>
 		</ul>
-		<h4>Close Issue</h4><ul>
+		<h4>Issue Review Complete: Close Issue</h4><ul>
 			<li>close associated pull request; merge to master</li>
 			<li>if merge conflicts: use changelist to resolve; retest</li>
 			<li>merge master into existing open branches</li>
