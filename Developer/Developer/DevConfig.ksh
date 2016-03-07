@@ -13,6 +13,7 @@ USAGE='
 
 HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
+DEV="$HOME/Dev"
 
 #^	install
 function install {
@@ -148,6 +149,7 @@ function removeFileIfPresent {
 #^	main
 
 # identify and set variables for current user
+HOME="/Users/carolclark"
 DEV=${HOME}/Dev
 CCDev=${HOME}/Library/CCDev
 configureTerminal="no"
@@ -247,7 +249,7 @@ install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScrip
 
 # test
 print "== Developer/_Tests/testDevConfig.ksh"
-result=$(Developer/_Tests/testDevConfig.ksh)
+result=$(${DEV}/Support/Developer/_Tests/testDevConfig.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi
