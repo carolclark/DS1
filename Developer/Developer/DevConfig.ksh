@@ -116,7 +116,7 @@ function gitPrintConfig {
 
 	git config --global merge.tool opendiff
 
-	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative"
+	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=short"
 	git config --global alias.fetchup '!git remote update -p; git merge --ff-only @{u}'
 }
 
@@ -127,7 +127,9 @@ function gitPrintExclude {
 	print '*.xccheckout'
 	print '*.pyc'
 	print 'xcuserdata/'
-	print '.idea/'
+	print '**/.idea/workspace.xml'
+	print '**/.idea/tasks.xml'
+	print '**/.idea/*.iws'
 	print '_patches'
 }
 

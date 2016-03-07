@@ -9,6 +9,7 @@
 
 HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
+DEV="${HOME}/Dev"
 . ${CCDev}/bin/ccInstall
 
 testEnvironment() {
