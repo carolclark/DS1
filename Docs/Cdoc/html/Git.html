@@ -28,49 +28,43 @@
 <div style="page-break-before: always">
 	<h3 id="WorkflowAppCode">Workflow: AppCode with Waffle</h3><div style="background-color: #d8e8ff">
 		<h4>While Issue Not Complete</h4>
-			<h5>Open Task</h5><ul>
+			<h5>Create Task</h5><ul>
 				<li class="blurb">for release branch, see <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a></li>
-				<li>update project</li>
-				<li>if task does not yet exist:<ul>
-					<li>note issue information for appropriate GitHub issue</li>
-					<li>create new task with #&lt;issueID&gt; at end of name<ul>
-						<li>in dialog: check base branch; add issue number to end of branch name</li>
-					</ul></li>
+				<li>master branch; update project; commit</li>
+				<li>create new task with #&lt;issueID&gt; at end of name<ul>
+					<li>in dialog: check base branch; add issue number to end of branch name</li>
 				</ul></li>
-				<li>if task already exists:<ul>
-					<li>switch to task; Merge in master branch; commit</li>
-				</ul></li>
-			<li>check for applicable stashes; apply as indicated</li>
-				<li>push to remote tracking branch</li></ul>
-			<h5>While Task Not Complete</h5><div class='indent'>
+				<li>push branch</li>
+			</ul>
+			<h5>While Task(s) Not Complete</h5><div class='indent'>
+				<p><b>Select Task</b></p><ul>
+					<li>switch to task; merge in master branch; commit</li>
+					<li>check for applicable stashes; apply as indicated; commit</li>
+				</ul>
 				<p><b>Develop:</b> repeat until ready to commit: edit/test; status; diff modifications; [add/stage]</p>
 				<p><b>Commit</b></p><ul>
 					<li>add unversioned files as indicated; diff files in changelist</li>
 					<li>backup GitHub, AppCode content; check for stray spaces (`difftool --cached --check`)</li>
 					<li>update message; commit</li>
-					<li>check for stashes</li>
 				</ul>
 				<p><b>Publish</b></p><ul>
 					<li>push to remote tracking branch</li>
 					<li>Merge to Local Master<ul>
 						<li>switch to Default task (master branch); merge branch</li>
-						<li>diff changed files as needed to resolve merge issues</li>
+						<li>resolve merge issues</li>
 					</ul></li>
 				</ul></div>
-		<h4>Issue Tasks Complete: Review Issue</h4><ul>
+		<h4>Issue Tasks Complete: To Review</h4><ul>
+			<li>update project; [merge their master into ours; commit]</li>
 			<li>on local master branch, run all tests</li>
 			<li>issue GitHub pull request against master<ul>
-				<li>for pull request title:<ul>
-					<li>if closing issue: (close | fix | resolve) #&lt;IssueNumber&gt;</li>
-					<li>if connecting: add connect #&lt;IssueNumber&gt;</li>
-					<li>if neither: accept default offered</li>
-				</ul></li>
+				<li>title: may add <span class="mono">(close | fix | resolve) #&lt;ID&gt;</span> and/or <span class="mono">connect #&lt;ID&gt;</span></li>
 			</ul></li>
 		</ul>
 		<h4>Issue Review Complete: Close Issue</h4><ul>
 			<li>close associated pull request</li>
 			<li>if merge conflicts: use changelist to resolve; retest</li>
-			<li>push master; merge local master into existing open branches</li>
+			<li>push master (Does this move waffle issue to done and activate connection?)</li>
 		</ul>
 
 		<h5>[Archive Repository]</h5>
