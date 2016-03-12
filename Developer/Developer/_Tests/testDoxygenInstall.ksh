@@ -7,7 +7,6 @@
 #  Copyright 2013 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 

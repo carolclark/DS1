@@ -22,7 +22,6 @@ CCDev_install.ksh -- provide functions for ccInstall to support CCDev installati
 #pragma mark === Markers ===
 # 1 getSubtargetDestination; 2 prepareFileOperation; 3 cleanTarget; 8 main
 
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 
 #pragma mark 1 === getSubtargetDestination

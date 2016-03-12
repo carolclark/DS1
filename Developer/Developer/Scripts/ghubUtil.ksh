@@ -10,7 +10,6 @@
 #pragma mark 0 === Top
 #pragma mark === Markers ===
 
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 

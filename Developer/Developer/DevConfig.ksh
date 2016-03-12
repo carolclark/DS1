@@ -11,7 +11,6 @@ USAGE='
 # DevConfig.ksh -- set up and configure C & C Software development environment
 '
 
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 
 #^	install
