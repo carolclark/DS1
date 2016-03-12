@@ -19,7 +19,9 @@ Developer_install.ksh -- provide functions for ccInstall to support Developer in
 #		return 0 to have caller continue by updating last built data
 '
 
+HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
+DEV="${HOME}/Dev"
 
 # setup and configure if necessary
 typeset -i buildIsClean					# > 0 if clean
@@ -28,6 +30,7 @@ if [[ -e "${CCDev}/build_output/Support/Developer/Developer.lastbuilt" ]] ; then
 else
 	buildIsClean=1
 fi
+
 if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
 		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
@@ -39,7 +42,7 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	else												# not a clean action
 		# installing
 		print -n "== Setup and Configure: "
-		. Developer/DevConfig.ksh
+		. ${DEV}/Support/Developer/Developer/DevConfig.ksh
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"

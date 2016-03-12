@@ -31,6 +31,7 @@ USAGE='
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
+HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 

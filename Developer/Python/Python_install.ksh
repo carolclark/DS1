@@ -12,6 +12,7 @@ Python_install.ksh -- install Python scripts
 '
 
 #^ 1 === top
+HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
@@ -56,6 +57,8 @@ pythonFolder="${CCDev}/bin/python"
 				case "${subtarget}" in
 					"Scripts" )
 						subtargetDestination="${pythonFolder}"
+						;;
+					"pyparsing" )
 						;;
 					"Python_UTests" )
 						;;

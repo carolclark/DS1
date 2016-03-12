@@ -7,7 +7,9 @@
 #  Copyright 2011-13 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
+HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
+DEV="${HOME}/Dev"
 . ${CCDev}/bin/ccInstall
 
 testEnvironment() {

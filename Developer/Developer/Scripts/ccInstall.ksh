@@ -58,6 +58,8 @@ ccInstall commandFlag [argument(s)]
 '
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
+HOME="/Users/carolclark"
+DEV="${HOME}/Dev"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/errcc"
 
@@ -212,8 +214,8 @@ function runShunitTests {
 		return
 	fi
 
-	errout="$CCDev/tmp/errout"
-	errinfo="$CCDev/tmp/errinfo"
+	errout="${CCDev}/tmp/errout"
+	errinfo="${CCDev}/tmp/errinfo"
 	iofile=$(findTests "${testPath}")
 	typeset -i failcnt=0
 	typeset -i errcnt=0
