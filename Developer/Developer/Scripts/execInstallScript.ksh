@@ -33,7 +33,7 @@ if [[ $# > 0 ]] ; then
 	fi
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return $$RC_MissingArgument
+	return
 fi
 if [[ $# > 1 ]] ; then
 	sourceRoot="${1}"
@@ -46,7 +46,7 @@ if [[ $# > 1 ]] ; then
 	fi
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return $RC_MissingArgument
+	return
 fi
 if [[ ${WRITE_INFO} = "yes" ]] ; then
 	print "sourceRoot: ${sourceRoot}"
@@ -88,5 +88,5 @@ if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
 	return "${es}"
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return $RC_MissingArgument
+	return
 fi

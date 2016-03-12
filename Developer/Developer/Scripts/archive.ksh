@@ -45,7 +45,7 @@ function archiveCode {	# archivePath folderName
 	cd ..
 	if [[ ! -d "${folderName}" ]] ; then
 		echo $(errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "folder '$folderName' does not exist in directory $pwd")
-		return $RC_NoSuchFileOrDirectory
+		return
 	fi
 	tar --file="${archiveDestination}/${archivePath}" --create --exclude ".git" "${folderName}"/*
 	st=$?

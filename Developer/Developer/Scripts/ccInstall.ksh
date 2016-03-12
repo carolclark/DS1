@@ -89,7 +89,7 @@ function getPath {
 		targetFolder="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --get<Path> SRCROOT targetFolder"
-		return $RC_MissingArgument
+		return
 	fi
 
 	setPaths "${sourceRoot}" "${targetFolder}"
@@ -99,7 +99,7 @@ function getPath {
 		"--getSourceRoot" )		path="${sourceRoot}";;
 		"--getTargetName" )		path="${targetName}";;
 		"--getLastbuilt" )		path="${lastbuilt}";;
-		* ) 					errorMessage $RC_InvalidParameter "$0#$LINENO:"; return $RC_InvalidParameter;;
+		* ) 					errorMessage $RC_InvalidParameter "$0#$LINENO:"; return;;
 	esac
 	print "${path}"
 }
@@ -110,7 +110,7 @@ function DEV {
 		username="${1}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --DEV user"
-		return $RC_MissingArgument
+		return
 	fi
 
 	case "${username}" in
@@ -145,7 +145,7 @@ function updateLastbuilt {
 	st=$?
 	if [[ ${st} > 0 ]] ; then
 		errorMessage ${st} "$0#$LINENO:" "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-		return ${st}
+		return
 	fi
 	mkdir -p "$(dirname ${lastbuilt})"
 	st=$?
@@ -161,14 +161,14 @@ function clearLastbuilt {
 	st=$?
 	if [[ ${st} > 0 ]] ; then
 		errorMessage ${st} "$0#$LINENO:" "$LINENO: ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-		return ${st}
+		return
 	fi
 	if [[ -e "${lastbuilt}" ]] ; then
 		rm "${lastbuilt}"
 		st="$?"
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: error ${st} attempting to remove file ${lastbuilt}"
-			return ${st}
+			return
 		fi
 	fi
 	return ${st}
@@ -181,7 +181,7 @@ function copyFile {
 		destinationForCopy="${2}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --copyFile sourceForCopy destinationForCopy"
-		return $RC_MissingArgument
+		return
 	fi
 
 	dir="${destinationForCopy%/*}"
@@ -190,13 +190,13 @@ function copyFile {
 	st=$?
 	if [[ $st > 0 ]] ; then
 		errorMessage ${st} "$0#$LINENO:" "error #{st}: could not create directory ${dir}"
-		return ${st}
+		return
 	fi
 	cp "${sourceForCopy}" "${destinationForCopy}"
 	st=$?
 	if [[ $st > 0 ]] ; then
 		errorMessage ${st} "$0#$LINENO:" "error: could not copy to ${destinationForCopy}"
-		return ${st}
+		return
 	fi
 	print "copied to ${destinationForCopy}"
 	return 0
@@ -211,7 +211,7 @@ function runShunitTests {
 		testPath="${1}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall runShunitTests testPath"
-		return $RC_MissingArgument
+		return
 	fi
 
 	errout="${CCDev}/tmp/errout"
@@ -258,12 +258,12 @@ function removeFolder {
 		fi
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall folder"
-		return $RC_MissingArgument
+		return
 	fi
 	if [[ -e "${folder}" ]]; then			# folder exists
 		if ! [[ -d "${folder}" ]]; then
 			errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "error: ${folder} is not a directory"
-			return $RC_NoSuchFileOrDirectory
+			return
 		fi
 		/usr/local/bin/python3 "${CCDev}/bin/python/util.py" "remove_my_folder" "${folder}"
 	fi
@@ -278,13 +278,13 @@ function translateCdoc {
 		out="${2}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --translateCdoc in out"
-		return $RC_MissingArgument
+		return
 	fi
 	mkdir -p $(dirname "${out}")
 	st=$?
 	if [[ $st > 0 ]] ; then
 		errorMessage ${st} "$0#$LINENO:" "error: could not create directory $(dirname ${destinationForCopy})"
-		return ${st}
+		return
 	fi
 	sed '
 		s|<!-- @navhead "\([^"][^"]*\)" "\([^"][^"]*\)" "\([^"][^"]*\)" -->|<div class="navhead"><a name="Top"></a><table class="navhead"><col class="navhead_c1" /><tr> <td>[<a href="\1">\2</a>]</td> <td >[<a href="\3#Contents">History</a>]</td><td class="right">[<a href="#Contents">Contents</a>]</td></tr></table></div>|
@@ -307,13 +307,13 @@ function translateCdoc {
 	st=$?
 	if [[ ${st} > 0 ]] ; then
 		errorMessage ${st} "$0#$LINENO:" "error: attempt to generate output file ${out} failed"
-		return ${st}
+		return
 	fi
 	# check for untranslated tokens
 	x=$(sed -n 's|<!-- @|&|p' <"$out")
 	if [[ -n "${x}" ]] ; then
 		errorMessage $RC_SyntaxError "$0#$LINENO:" "error: unrecognized translator token(s): ${x}"
-		return $RC_SyntaxError
+		return
 	fi
 	return 0
 }
@@ -346,7 +346,7 @@ function getAction {			# sourceRoot targetFolder actionString
 	targetFolder="${2}"
 	if [[ ! -n "${sourceRoot}" ]] || [[ ! -n "${targetFolder}" ]]; then
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall --getAction  sourceRoot targetFolder [action]"
-		return $RC_MissingArgument
+		return
 	fi
 	action="install"
 	if [[ -n ${3} ]] ; then
@@ -354,7 +354,7 @@ function getAction {			# sourceRoot targetFolder actionString
 			action="${3}"
 		else
 			errorMessage $RC_InvalidInput "$0#$LINENO:" "invalid action string ${3}"
-			return $RC_InvalidInput
+			return
 		fi
 	fi
 	if [[ $action = "install" ]] ; then
@@ -371,7 +371,7 @@ function findTests {
 		testPath="${1}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall findTests testPath"
-		return $RC_MissingArgument
+		return
 	fi
 
 	origdir=$(pwd)
@@ -391,7 +391,7 @@ function findSources {
 		targetFolder="${2}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall findSources sourceRoot targetFolder"
-		return $RC_MissingArgument
+		return
 	fi
 
 	origdir=$(pwd)
@@ -401,7 +401,7 @@ function findSources {
 	st=$?
 	if [[ ${st} > 0 ]] ; then
 		errorMessage ${st} "$0#$LINENO:" "ccInstall --getLastbuilt ${sourceRoot} ${targetFolder} failed"
-		return ${st}
+		return
 	fi
 	if [[ -e "${lastbuilt}" ]] ; then
 		find . -type f -newer ${lastbuilt} | grep -v '\.git' | grep -v .DS_Store | grep -v _install.ksh | grep -v '.pyc' | grep -v '_Tests/*' | sed 's|\./||' > "${iofile}"
@@ -423,7 +423,7 @@ function installOneFile {
 		shift
 	else
 		msg=$(errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgMessage}")
-		return $RC_MissingArgument
+		return
 	fi
 	if ! [[ "${action}" = "ignore" ]] ; then
 		if [[ -n "${1}" ]] && [[ -n "${2}" ]] ; then
@@ -431,7 +431,7 @@ function installOneFile {
 			destinationForCopy="${2}"
 		else
 			msg=$(errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgMessage}")
-			return $RC_MissingArgument
+			return
 		fi
 	fi
 
@@ -463,7 +463,7 @@ function installOneFile {
 			;;
 		* )
 			msg=$(errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}")
-			return $RC_InputNotHandled
+			return
 			;;
 	esac
 	print "${msg}"
@@ -480,13 +480,13 @@ function processAction {
 		actionIn="${4}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ccInstall processAction callbackScript sourceRoot targetFolder [action]"
-		return $RC_MissingArgument
+		return
 	fi
 	action=$(getAction "${sourceRoot}" "${targetFolder}" ${actionIn})
 	st=$?
 	if [[ ${st} > 0 ]] ; then
 		errorMessage ${st} "$0#$LINENO:" "error: function getAction failed: ${action}"
-		return ${st}
+		return
 	fi
 
 # clean
@@ -496,7 +496,7 @@ function processAction {
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: ${callbackScript} --cleanTarget failed: ${msg}"
-			return ${st}
+			return
 		fi
 		print ${msg}
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"
@@ -513,7 +513,7 @@ function processAction {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "failed to create output directory $outputDir"
-			return ${st}
+			return
 		fi
 
 	#  Run doxygen on the config file (builds local site)
@@ -521,7 +521,7 @@ function processAction {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error while generating Doxygen docs"
-			return ${st}
+			return
 		fi
 
 	# Make docset using the Makefile that just generated
@@ -530,7 +530,7 @@ function processAction {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error while creating $workspaceName.docset"
-			return ${st}
+			return
 		fi
 
 	# Copy the docset to the location expected by Xcode
@@ -539,7 +539,7 @@ function processAction {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "could not copy docset to $docsetPath"
-			return ${st}
+			return
 		fi
 
 	# Tell Xcode to load the docset
@@ -547,7 +547,7 @@ function processAction {
 		st=$?
 		if [[ $st > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error loading $docsetPath into Xcode"
-			return ${st}
+			return
 		fi
 
 	fi
@@ -555,7 +555,7 @@ function processAction {
 # install
 	if [[ ${action} = "install" ]] ; then
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
-		iofile=$(ccInstall --findSources "/Users/carolclark/${sourceRoot}" "${targetFolder}")
+		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
 		typeset -i failcnt=0
 		prevFolder=""
 		while read fl ; do
@@ -655,7 +655,7 @@ function processAction {
 function ccInstall {
 	if [[ $# = 0 ]] ; then
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "$0: missing commandFlag"
-		return $RC_MissingArgument
+		return
 	fi
 
 	case "${1}" in
@@ -739,7 +739,7 @@ function ccInstall {
 			;;
 		"--"* )
 			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid subcommand $1"	# <invalid arg>
-			return $RC_InvalidArgument
+			return
 			;;
 		* )
 			msg=$(processAction "${1}" "${2}" "${3}" "${4}")	# callbackScript sourceRoot targetFolder action
