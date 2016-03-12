@@ -12,7 +12,6 @@
 
 HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
-DEV="${HOME}/Dev"
 . "${CCDev}/bin/errcc"
 
 NAME='
@@ -27,7 +26,6 @@ ghubUtil --
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 function backupIssues {
-	DEV="/Users/carolclark/Dev"
 	generateCombinedFile=0		# whether to generate file including all repos in addition to repo-specific files
 	combinedFile="/Volumes/Archives/GitHubIssues.json"
 	if [[ -d "/Volumes/Archives" ]] ; then
