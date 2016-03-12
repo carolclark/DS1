@@ -39,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67147FBE191449C400B85587 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; lastKnownFileType = file; name = "___FILEBASENAME___.ksh"; path = "Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
+		67147FBF191449C400B85587 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
+		67147FC0191449C400B85587 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = TemplateInfo.plist; path = Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
 		671C4824159CFF3800214A9E /* BBEditScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEditScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "___FILEBASENAME___.ksh"; path = "../../_Documentation/InstallCdoc.xctemplate/___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
 		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = ../../_Documentation/InstallCdoc.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
@@ -143,12 +146,20 @@
 		67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckSyntax.applescript; sourceTree = "<group>"; };
 		67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBEdit_install.ksh; sourceTree = "<group>"; };
 		67DD777716A4D6A700BECCD5 /* snippets.dash */ = {isa = PBXFileReference; lastKnownFileType = file; path = snippets.dash; sourceTree = "<group>"; };
-		965F8038C4516B75C3B0F3C6 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; lastKnownFileType = file.ksh; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
-		965F88DECE00CD563A0F4AB5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = TemplateInfo.plist; sourceTree = "<group>"; };
-		965F893CA2F92A0962F5B03C /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		67147FBD191449C400B85587 /* InstallDoxygen.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				67147FBE191449C400B85587 /* ___FILEBASENAME___.ksh */,
+				67147FBF191449C400B85587 /* TemplateIcon.icns */,
+				67147FC0191449C400B85587 /* TemplateInfo.plist */,
+			);
+			name = InstallDoxygen.xctemplate;
+			path = ../_Scripting/InstallDoxygen.xctemplate;
+			sourceTree = "<group>";
+		};
 		67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +364,7 @@
 				67DD76E016A4AF9300BECCD5 /* DoxygenConfig.xctemplate */,
 				67DD76E416A4AF9300BECCD5 /* HistoryFile.xctemplate */,
 				67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */,
+				67147FBD191449C400B85587 /* InstallDoxygen.xctemplate */,
 				67DD76E716A4AF9300BECCD5 /* ReadMe.xctemplate */,
 				67DD76EA16A4AF9300BECCD5 /* RequirementsDoc.xctemplate */,
 				67DD76ED16A4AF9300BECCD5 /* UseCasesDoc.xctemplate */,
@@ -597,7 +609,6 @@
 				67DD772416A4AF9300BECCD5 /* InstallTarget.xctemplate */,
 				67DD772816A4AF9300BECCD5 /* ShellScript.xctemplate */,
 				67DD772C16A4AF9300BECCD5 /* shunitTest.xctemplate */,
-				965F837A481C237EB31D8AED /* InstallDoxygen.xctemplate */,
 			);
 			path = _Scripting;
 			sourceTree = "<group>";
@@ -671,17 +682,6 @@
 			);
 			path = Dash;
 			sourceTree = "<group>";
-		};
-		965F837A481C237EB31D8AED /* InstallDoxygen.xctemplate */ = {
-			isa = PBXGroup;
-			children = (
-				965F893CA2F92A0962F5B03C /* TemplateIcon.icns */,
-				965F88DECE00CD563A0F4AB5 /* TemplateInfo.plist */,
-				965F8038C4516B75C3B0F3C6 /* ___FILEBASENAME___.ksh */,
-			);
-			name = InstallDoxygen.xctemplate;
-			path = Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
