@@ -11,7 +11,6 @@ shunit2_install.ksh -- install ThirdParty shunit2 shell testing script
 #	custom install script to install shunit2
 '
 
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 
 #^ 1 === top

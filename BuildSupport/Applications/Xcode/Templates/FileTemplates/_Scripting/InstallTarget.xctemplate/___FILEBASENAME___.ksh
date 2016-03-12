@@ -12,7 +12,6 @@ USAGE='
 '
 
 #^ 1 === top
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 

@@ -1,0 +1,6 @@
+AuthUserFile /home/content/93/8850593/html/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Punkin"
+AuthType Basic
+
+require valid-user

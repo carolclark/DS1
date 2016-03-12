@@ -16,7 +16,6 @@ include at end of <Target>_install scripts
 HELP="NAME: ${NAME}\nUSAGE: ${USAGE}"
 
 #pragma mark 0 === Top
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 . ${CCDev}/bin/resultCodes
 

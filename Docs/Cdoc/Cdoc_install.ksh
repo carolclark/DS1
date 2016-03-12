@@ -18,7 +18,6 @@ Cdoc_install.ksh -- provide functions for ccInstall to support CCDev installatio
 #		return 0 to have caller continue by updating last built data
 '
 
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 

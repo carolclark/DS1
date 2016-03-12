@@ -11,9 +11,7 @@ USAGE='
 # DevConfig.ksh -- set up and configure C & C Software development environment
 '
 
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
-DEV="$HOME/Dev"
 
 #^	install
 function install {
@@ -116,7 +114,7 @@ function gitPrintConfig {
 
 	git config --global merge.tool opendiff
 
-	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=short"
+	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative"
 	git config --global alias.fetchup '!git remote update -p; git merge --ff-only @{u}'
 }
 
@@ -127,9 +125,7 @@ function gitPrintExclude {
 	print '*.xccheckout'
 	print '*.pyc'
 	print 'xcuserdata/'
-	print '**/.idea/workspace.xml'
-	print '**/.idea/tasks.xml'
-	print '**/.idea/*.iws'
+	print '.idea/'
 	print '_patches'
 }
 
@@ -151,7 +147,6 @@ function removeFileIfPresent {
 #^	main
 
 # identify and set variables for current user
-HOME="/Users/carolclark"
 DEV=${HOME}/Dev
 CCDev=${HOME}/Library/CCDev
 configureTerminal="no"
@@ -251,7 +246,7 @@ install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScrip
 
 # test
 print "== Developer/_Tests/testDevConfig.ksh"
-result=$(${DEV}/Support/Developer/_Tests/testDevConfig.ksh)
+result=$(Developer/_Tests/testDevConfig.ksh)
 if [[ "${?}" > 0 ]] ; then
 	failcnt="${failcnt}"+1
 fi
