@@ -20,21 +20,19 @@
 	<!-- @topicItem "BBEdit" "#BBEdit" "0" "" -->
 	<!-- @topicItem "Calendar" "#Calendar" "0" "" -->
 	<!-- @topicItem "ChronoSync" "#_ChronoSync" "0" "" -->
-	<!-- @topicItem "CocoaPods" "#_CocoaPods" "0" "" -->
 	<!-- @topicItem "Dash" "#_Dash" "0" "" -->
-<!-- @topicGroup "" "10" -->
 	<!-- @topicItem "Disk Inventory X" "#DiskInventoryX_" "0" "" -->
+<!-- @topicGroup "" "10" -->
 	<!-- @topicItem "Doxygen" "#Doxygen_" "0" "" -->
 	<!-- @topicItem "FileMerge" "#_FileMerge" "0" "" -->
 	<!-- @topicItem "Finder" "#Finder" "0" "" -->
-	<!-- @topicItem "GraphViz" "#_GraphViz" "0" "" -->
 	<!-- @topicItem "Homebrew" "#_Homebrew" "0" "" -->
 	<!-- @topicItem "iPhoto" "#_iPhoto" "0" "" -->
 	<!-- @topicItem "iTunes" "#_iTunes" "0" "" -->
 	<!-- @topicItem "iWork" "#_iWork" "0" "" -->
-<!-- @topicGroup "" "20" -->
 	<!-- @topicItem "Mail" "#_Mail" "0" "" -->
 	<!-- @topicItem "MacPorts" "#_MacPorts" "0" "" -->
+<!-- @topicGroup "" "20" -->
 	<!-- @topicItem "Markdown" "#Markdown" "0" "" -->
 	<!-- @topicItem "Marked" "#_Marked" "0" "" -->
 	<!-- @topicItem "PaintCode" "#_PaintCode" "0" "" -->
@@ -42,9 +40,9 @@
 	<!-- @topicItem "Reminders" "#_Reminders" "0" "" -->
 	<!-- @topicItem "Safari" "#_Safari" "0" "" -->
 	<!-- @topicItem "Server" "#_Server" "0" "" -->
-<!-- @topicGroup "" "30" -->
 	<!-- @topicItem "Stickies" "#Stickies" "0" "" -->
 	<!-- @topicItem "StuffIt Expander" "#_StuffItExpander" "0" "" -->
+<!-- @topicGroup "" "30" -->
 	<!-- @topicItem "System Preferences" "#SystemPreferences" "0" "" -->
 	<!-- @topicItem "System Preferences" "#SystemPreferences" "0" "" -->
 	<!-- @topicItem "Tar" "#Tar_" "0" "" -->
@@ -53,7 +51,7 @@
 	<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
 	<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
 <!-- @topicSep -->
-	<!-- @topicGroup "Inactive" "41" -->
+	<!-- @topicGroup "Inactive" "34" -->
 	<!-- @topicItem "Inactive Tools" "Tools_Inactive.html#Contents" "0" "inactive applications, tools, and libraries" -->
 <!-- @/topicList -->
 
@@ -191,16 +189,6 @@
 	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
 
-<!-- @marker "CocoaPods" -->
-<h4 id='_CocoaPods'>CocoaPods</h4><div class='indent'>
-	<p class='blurb'>dependency manager for Cocoa projects</p>
-	<p><b>Ruby script</b> at /Library/Ruby/Gems/2.0.0/gems/cocoapods-0.39.0/lib/cocoapods.rb; installed via RubyGems</p>
-	<p><b>Installation and Configuration</b> <span class='mono'>sudo gem install cocoapods; pod setup</span></p>
-	<p class='blurb'>not installed via gemfile because: projects do not use it directly; using gemfile would require adding 'bundle exec' before each pod command in Terminal</p>
-	<p>To set up podfile, see <a href="https://guides.cocoapods.org/using/the-podfile.html">The Podfile</a>\n
-	To search for pods, see <a href="https://cocoapods.org">CocoaPods.org</a></p>
-</div>
-
 <!-- @marker "Dash" -->
 <h4><a name="_Dash">Dash</a></h4><div class='indent'>
 	<p><b>Application</b> AppStore app at /Applications</p>
@@ -256,21 +244,12 @@
 	script applications to operate on dropped files:</p>
 </div>
 
-<!-- @marker "GraphViz" -->
-<h4 id='_GraphViz'>GraphViz</h4><div class='indent'>
-<p class='blurb'>supports diagram generation in Doxygen</p>
-<p><b>tool</b> at /usr/local/Cellar; 2.38.0 </p>
-<p><b>Critical Data</b> /usr/local/Cellar</p>
-<p><b>Installation and Configuration</b> brew install graphviz</p>
-<p><b>Customization &amp; Automation</b> </p>
-</div>
-
 <!-- @marker "Homebrew" -->
 <h4 id='_Homebrew'>Homebrew</h4><div class='indent'>
 	<p class='blurb'>OS X package manager</p>
-	<p><b>Executable</b> at /usr/local/bin/brew; 0.9.5</p>
+	<p><b>Executable</b> at /usr/local/bin; 0.9.5</p>
 	<p><b>Critical Data</b> </p>
-	<p><b>Installation and Configuration</b> <span class='mono'>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></p>
+	<p><b>Installation and Configuration</b> <span class='mono'>ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</span></p>
 	<p><b>Customization &amp; Automation</b> </p>
 	<p><b>Usage</b> <span class='mono'>brew install &lt;packageName&gt;</span></p>
 	<p><b>Documentation</b> <a href="http://brew.sh">Homebrew</a></p>
