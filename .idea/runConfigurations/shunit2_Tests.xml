@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="shunit2_Tests" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="shunit2" TARGET_NAME="shunit2_Tests" CONFIG_NAME="Debug" SCHEME_NAME="shunit2_Tests" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="0">
+    <envs />
+    <method />
+  </configuration>
+</component>
