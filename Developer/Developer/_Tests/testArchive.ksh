@@ -14,7 +14,7 @@ CCDev="${HOME}/Library/CCDev"
 
 if [[ ! -e "${CCDev}/bin/archive" ]] ; then
 	errorMessage $RC_NoSuchFileOrDirectory "$0#$LINENO:" "File ${CCDev}/bin/archive not found"
-	return
+	return $RC_NoSuchFileOrDirectory
 fi
 
 testData="${CCDev}/TestData/tarTest"

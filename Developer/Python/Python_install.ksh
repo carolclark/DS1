@@ -25,7 +25,7 @@ pythonFolder="${CCDev}/bin/python"
 		targetFolder="${2}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh sourceRoot targetFolder [action]"
-		return
+		return $RC_MissingArgument
 	fi
 	action=${3:-"install"}
 
@@ -37,7 +37,7 @@ pythonFolder="${CCDev}/bin/python"
 			st=${?}
 			if [[ ${st} > 0 ]] ; then
 				errorMessage ${st} "$0#$LINENO:" "error: cleanTarget failed: ${msg}"
-				return
+				return ${st}
 			fi
 		done
 		ccInstall --clearLastbuilt "${sourceRoot}" "${targetFolder}"

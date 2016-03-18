@@ -29,7 +29,7 @@ CCDev="${HOME}/Library/CCDev"
 function ___FILEBASENAME___ {
 	if [[ $# = 0 ]] ; then
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "$0: missing commandFlag"
-		return
+		return $RC_MissingArgument
 	fi
 	case "${1}" in
 		"--help" )
@@ -37,7 +37,7 @@ function ___FILEBASENAME___ {
 			;;
 		"--"* )
 			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid subcommand $1"	# <invalid arg>
-			return
+			return $RC_InvalidArgument
 			;;
 		* )
 			;;

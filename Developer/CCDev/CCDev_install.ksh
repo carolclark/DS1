@@ -30,7 +30,7 @@ function getSubtargetDestination {
 		subtarget="${1}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
-		return
+		return $RC_MissingArgument
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
@@ -61,7 +61,7 @@ function getSubtargetDestination {
 			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return
+			return $RC_InputNotHandled
 			;;
 	esac
 	print "${destinationFolder}"
@@ -76,7 +76,7 @@ function prepareFileOperation {
 		destinationFolder="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
-		return
+		return $RC_MissingArgument
 	fi
 
 	if [[ -n "${destinationFolder}" ]] ; then
@@ -182,7 +182,7 @@ if [[ $# > 0 ]] ; then
 	fi
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return
+	return $RC_MissingArgument
 fi
 if [[ $# > 1 ]] ; then
 	sourceRoot="${1}"
@@ -195,7 +195,7 @@ if [[ $# > 1 ]] ; then
 	fi
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return
+	return $RC_MissingArgument
 fi
 if [[ -n "${command}" ]] ; then
 	case "${command}" in
@@ -230,5 +230,5 @@ if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
 	return "${es}"
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return
+	return $RC_MissingArgument
 fi
