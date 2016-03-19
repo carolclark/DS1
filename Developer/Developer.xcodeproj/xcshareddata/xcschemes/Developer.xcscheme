@@ -18,5 +18,34 @@
    <LaunchAction
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
+      <PathRunnable
+         FilePath = "/Users/carolclark/Dev/Support/Developer/Developer/Developer_install.ksh">
+      </PathRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "${DEV}/Support/Developer/Developer"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "Developer_install.ksh"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "install"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DEV"
+            value = "${HOME}/Support"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "CCDev"
+            value = "${HOME}/Library/CCDev"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
 </Scheme>

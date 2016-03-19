@@ -18,5 +18,26 @@
    <LaunchAction
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
+      <PathRunnable
+         FilePath = "/Users/carolclark/Dev/Support/BuildSupport/Applications/BBEdit/BBEdit_install.ksh">
+      </PathRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "${DEV}/Support/BuildSupport"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DEV"
+            value = "${HOME}/Support"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "CCDev"
+            value = "${HOME}/Library/CCDev"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
 </Scheme>

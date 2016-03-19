@@ -18,5 +18,34 @@
    <LaunchAction
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
+      <PathRunnable
+         FilePath = "/Users/carolclark/Dev/Support/Docs/Cdoc/Cdoc_install.ksh">
+      </PathRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "${DEV}/Support/Docs"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "Cdoc_install.ksh"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "install"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DEV"
+            value = "${HOME}/Support"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "CCDev"
+            value = "${HOME}/Library/CCDev"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
 </Scheme>
