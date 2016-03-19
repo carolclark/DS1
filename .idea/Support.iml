@@ -64,7 +64,7 @@
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_ObjectiveC/CocoaClass.xctemplate/TemplateInfo.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_ObjectiveC/CocoaTestClass.xctemplate/NSManagedObject/___FILEBASENAME___.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_ObjectiveC/CocoaTestClass.xctemplate/NSManagedObject/___FILEBASENAME___.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_ObjectiveC/CocoaTestClass.xctemplate/NSObject/___FILEBASENAME___.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_ObjectiveC/CocoaTestClass.xctemplate/NSObject/___FILEBASENAME___.mm" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_ObjectiveC/CocoaTestClass.xctemplate/TemplateIcon.icns" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_ObjectiveC/CocoaTestClass.xctemplate/TemplateInfo.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_ObjectiveC/CPPWrapper.xctemplate/___FILEBASENAME___.h" isTestSource="false" />
