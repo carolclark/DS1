@@ -96,42 +96,42 @@ heading with name: Task Name; tsk_TaskName;5
 <!-- @marker "Docs" -->
 <h2 id='group_Docs'>Docs</h2>
 <p class='ital'>Support documentation, including TechnicalDocs and Doxygen</p><div class='indent'>
-	<p><b>Project:</b> <a href="XcodeDevelopment.html#NewDocsProject">Docs Project</a></p>
+	<p><strong>Project:</strong> <a href="XcodeDevelopment.html#NewDocsProject">Docs Project</a></p>
 	<p>Each repository / workspace contains a similar Docs project. In addition to the targets listed below, folders for OtherDocuments and Images are provided.</p>
-	<p><b>Configuration:</b> </p>
-	<p><b>Integration:</b> BBEdit CheckHTML.applescript: modify to provide pass/fail result for CI</p>
+	<p><strong>Configuration:</strong> </p>
+	<p><strong>Integration:</strong> BBEdit CheckHTML.applescript: modify to provide pass/fail result for CI</p>
 	<h3>Docs Targets</h3><div class='indent'>
 		<h4 id='target_Cdoc'>Cdoc</h4>
 		<p class='ital'>install technical documentation</p><div class='indent'>
-			<p><b>Target:</b></p><ul>
+			<p><strong>Target:</strong></p><ul>
 				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: install technical documentation for repository projects</li>
 				<li>installs technical documentation at ${HOME}/Library/CCDev/Sites/TechnicalDocs</li>
 			</ul>
-			<p><b>Tests:</b> </p>
-			<p><b>Configuration:</b> </p>
-			<p><b>Dependencies:</b> </p>
+			<p><strong>Tests:</strong> </p>
+			<p><strong>Configuration:</strong> </p>
+			<p><strong>Dependencies:</strong> </p>
 		</div>
 
 		<h4 id='target_Doxygen'>Doxygen</h4>
 		<p class='ital'>install Doxygen documentation</p><div class='indent'>
-			<p><b>Target:</b></p><ul>
+			<p><strong>Target:</strong></p><ul>
 				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: compile and install Doxygen documentation for our C++ and Objective-C code</li>
 				<li>installs doxygen documentation at ${HOME}/Library/CCDev/Sites/<span class='nyi'>APIDocs</span></li>
 			</ul>
-			<p><b>Tests:</b> </p>
-			<p><b>Configuration:</b> </p>
-			<p><b>Dependencies:</b> </p>
+			<p><strong>/1</strong> </p>
+			<p><strong>Configuration:</strong> </p>
+			<p><strong>Dependencies:</strong> </p>
 		</div>
 
 		<h4 id='target_HeaderDoc' class='nyi'>HeaderDoc</h4>
 		<p class='ital'>install HeaderDoc documentation</p><div class='indent'>
-			<p><b>Target:</b></p><ul>
+			<p><strong>Target:</strong></p><ul>
 				<li><a href="XcodeDevelopment.html#NewDocsProject">Docs Target</a>: compile and install HeaderDoc documentation for AppleScript code</li>
 				<li>installs HeaderDoc documentation at ${HOME}/Library/CCDev/Sites/APIDocs</li>
 			</ul>
-			<p><b>Tests:</b> </p>
-			<p><b>Configuration:</b> </p>
-			<p><b>Dependencies:</b> </p>
+			<p><strong>/1</strong> </p>
+			<p><strong>Configuration:</strong> </p>
+			<p><strong>Dependencies:</strong> </p>
 		</div>
 	</div>
 </div>
@@ -139,7 +139,7 @@ heading with name: Task Name; tsk_TaskName;5
 <!-- @marker "Developer" -->
 <h2 id="proj_Developer">Developer</h2>
 <p class='ital'>general C &amp; C Software developer and automation support</p><div class='indent'>
-	<p><b>Folder:</b> collection of projects aggregated by project Developer</p><ul>
+	<p><strong>Folder:</strong> collection of projects aggregated by project Developer</p><ul>
 		<li>SetupConfig</li>
 		<li>Python</li>
 		<li>shunit</li>
@@ -147,40 +147,40 @@ heading with name: Task Name; tsk_TaskName;5
 		<li>ASUnit</li>
 		<li>AppleScripts</li>
 	</ul>
-	<p><b>Configuration:</b> </p>
-	<p><b>Integration:</b> </p>
+	<p><strong>Configuration:</strong> </p>
+	<p><strong>Integration:</strong> </p>
 	<h3>Subprojects</h3><div class='indent'>
 		<h5 id='target_DevSetup'>DevSetup</h5>
 		<p class='ital'>set up development environment</p><div class='indent'>
-			<p><b>Target:</b></p><ul>
+			<p><strong>Target:</strong></p><ul>
 				<li>Aggregate target</li>
 			</ul>
-			<p><b>Tests:</b> </p>
-			<p><b>Configuration:</b> </p>
-			<p><b>Dependencies:</b> </p>
+			<p><strong>Tests:</strong> </p>
+			<p><strong>Configuration:</strong> </p>
+			<p><strong>Dependencies:</strong> </p>
 		</div>
 
 		<!-- @marker "Python>" -->
 		<h5 id="proj_Python">Python</h5>
 		<p class='ital'>Python modules and scripts</p><div class='indent'>
-			<p><b>Project:</b> <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a></p>
-			<p><b>Target:</b> Python modules and scripts copied to ${CCDev}/bin</p>
-			<p><b>Tests:</b> Python_UTests; Python_CTests; Python_AllTests </p>
-			<p><b>Configuration:</b> </p>
-			<p><b>Integration:</b> Python_UTests run on build; Python_AllTests to aggregate, run daily</p>
-			<p><b>Dependencies:</b> </p>
+			<p><strong>Project:</strong> <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a></p>
+			<p><strong>Target:</strong> Python modules and scripts copied to ${CCDev}/bin</p>
+			<p><strong>Tests:</strong> Python_UTests; Python_CTests; Python_AllTests </p>
+			<p><strong>Configuration:</strong> </p>
+			<p><strong>Integration:</strong> Python_UTests run on build; Python_AllTests to aggregate, run daily</p>
+			<p><strong>Dependencies:</strong> </p>
 		</div>
 
 		<h5 id="target_CCDev">CCDev</h5>
 		<p class='ital'>Developer configuration, scripts and related items</p><div class='indent'>
-			<p><b>Target:</b></p><ul>
+			<p><strong>Target:</strong></p><ul>
 				<li><a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>; <span class='depr'>depends on target AppleScripts</span></li>
 				<li>CCDevConfig.ksh<ul>
 					<li>Unix script that sets up our development environment. Script is run at the beginning of execution of CCDev_install.ksh, or can be run from Terminal.</li>
 					<li>CCDevConfig.ksh sets up basic environment including git support, installs additional environment files and starter scripts required for target CCDev to build</li>
 				</ul></li>
 			</ul>
-			<p><b>Tests:</b> </p><ul>
+			<p><strong>Tests:</strong> </p><ul>
 				<li>CCDevTests: <a href="XcodeDevelopment.html#AddCocoaTestTarget">Add Cocoa Test Target</a><ul>
 					<li>runs: CCDev shunit tests from folder _Tests and PythonTests</li>
 					<li>Run Script build phases with ksh scripts:<ul>
@@ -189,29 +189,29 @@ heading with name: Task Name; tsk_TaskName;5
 					</ul></li>
 				</ul></li>
 			</ul>
-			<p><b>Configuration:</b> </p>
-			<p><b>Dependencies:</b> Developer; shunit</p>
+			<p><strong>Configuration:</strong> </p>
+			<p><strong>Dependencies:</strong> Developer; shunit</p>
 		</div>
 
 		<h5 id="target_shunit">shunit</h5>
 		<p class='ital'>install shunit test framework for shell scripts</p><div class='indent'>
-			<p><b>Target:</b></p><ul>
+			<p><strong>Target:</strong></p><ul>
 				<li><a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>; must be installed before Developer tests can be run</li>
 			</ul>
-			<p><b>Tests:</b> required for target DeveloperTests to run</p>
-			<p><b>Configuration:</b> </p>
-			<p><b>Dependencies:</b> </p>
+			<p><strong>Tests:</strong> required for target DeveloperTests to run</p>
+			<p><strong>Configuration:</strong> </p>
+			<p><strong>Dependencies:</strong> </p>
 		</div>
 
 		<h5 id="target_AppleScripts">AppleScripts</h5>
 		<p class='ital'>compiles AppleScripts</p><div class='indent'>
-			<p><b>Target:</b></p><ul>
+			<p><strong>Target:</strong></p><ul>
 				<li><a href="XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> precompiles scripts from Developer/AppleScripts into target's bundle</li>
 				<li><span class='todo'>AppleScript_install.ksh</span> called from Run Script build phase to install them from that bundle</li>
 			</ul>
-			<p><b>Tests:</b> </p>
-			<p><b>Configuration:</b> </p>
-			<p><b>Dependencies:</b> </p>
+			<p><strong>Tests:</strong> </p>
+			<p><strong>Configuration:</strong> </p>
+			<p><strong>Dependencies:</strong> </p>
 		</div>
 	</div>
 </div>
@@ -219,16 +219,16 @@ heading with name: Task Name; tsk_TaskName;5
 <!-- @marker "Applications>" -->
 <h3 id="group_Applications">Applications</h3>
 <p class='ital'> collection of projects to provide accessibility support for applications</p>
-	<p><b>Folder:</b> application-specific projects</p>
-	<p><b>Integration:</b> individual projects are testable; test target TestApplicationSupport aggregates tests</p>
+	<p><strong>Folder:</strong> application-specific projects</p>
+	<p><strong>Integration:</strong> individual projects are testable; test target TestApplicationSupport aggregates tests</p>
 	<div class='indent'>
 		<h4>Application Projects</h4><div class='indent'>
 
 			<!-- @marker "Xcode>" -->
 			<h4 id="proj_Xcode">Xcode</h4>
 			<p class='ital'>Xcode developer and automation support</p>
-				<p><b>Configuration:</b> </p>
-				<p><b>Integration:</b> </p>
+				<p><strong>Configuration:</strong> </p>
+				<p><strong>Integration:</strong> </p>
 				<div class='indent'>
 					<h5>Targets</h5>
 				</div>
@@ -816,10 +816,9 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		</ul></li>
 		<li>LaurasCelloStudio.com</li>
 	</ul></li>
+	</ul>
 
-</ul>
 <ul class='depr'>
-	<ul>
 		<li>website candcsoft.com currently hosted by GoDaddy; absolute hosting path /home/content/93/8850593/html<ul>
 			<li>encrypted Punkin passwords: carolclark:sNdw6YfVKsBhQ; lauramartinez:XfhfvKRc7AdfA; scottclark:hpqwU9HjAtzVw; ginaclark:mHA6/NOjriqmQ</li>
 		</ul></li>
@@ -830,6 +829,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		</ul></li>
 	</ul>
 	<hr />
+	<ul>
 	<li>Current WebHost Addresses (MobileMe host and iDisk)<ul>
 		<li>Personal Site (WebHost_Personal): <a href="http://web.me.com/carollclark">http://web.me.com/carollclark</a></li>
 		<li>C &amp; C Software Site (WebHost_CandC): <a href="http://www.candcsoft.com">http://www.candcsoft.com</a>, by forward from GoDaddy</li>
