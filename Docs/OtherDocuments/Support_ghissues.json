@@ -1,5 +1,57 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/83",
+    "repository_url": "https://api.github.com/repos/carolclark/Support",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/83/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/83/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/83/events",
+    "html_url": "https://github.com/carolclark/Support/pull/83",
+    "id": 142103566,
+    "number": 83,
+    "title": "AppCode targets #71",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:needs%20review",
+        "name": "Waffle:needs review",
+        "color": "ededed"
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2016-03-19T21:49:27Z",
+    "updated_at": "2016-03-19T21:53:59Z",
+    "closed_at": null,
+    "pull_request": {
+      "url": "https://api.github.com/repos/carolclark/Support/pulls/83",
+      "html_url": "https://github.com/carolclark/Support/pull/83",
+      "diff_url": "https://github.com/carolclark/Support/pull/83.diff",
+      "patch_url": "https://github.com/carolclark/Support/pull/83.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/82",
     "repository_url": "https://api.github.com/repos/carolclark/Support",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/82/labels{/name}",
@@ -71,7 +123,11 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:ready",
+        "name": "Waffle:ready",
+        "color": "22c6fb"
+      }
     ],
     "state": "open",
     "locked": false,
@@ -79,7 +135,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2016-03-07T00:01:17Z",
-    "updated_at": "2016-03-09T17:23:40Z",
+    "updated_at": "2016-03-21T17:36:15Z",
     "closed_at": null,
     "body": "Restructure Sites folder to synchronize with current websites, including LaurasCelloStudio.com \n\n- [ ] update Home.index\n- [ ] update LaurasCelloStudio.com\n- [ ] change targets/scripts to store files at the new locations\n    - [ ] Doxygen\n    - [ ] Cdoc targets \n- Requires #75"
   },
@@ -113,7 +169,16 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/quick%20wins",
+        "name": "quick wins",
+        "color": "c0e4c0"
+      },
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:ready",
+        "name": "Waffle:ready",
+        "color": "22c6fb"
+      }
     ],
     "state": "open",
     "locked": false,
@@ -121,7 +186,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2016-03-04T18:50:35Z",
-    "updated_at": "2016-03-04T18:52:46Z",
+’    "updated_at": "2016-03-21T17:36:49Z",
     "closed_at": null,
     "body": "```\n#!/bin/ksh\nexport PS4='$0 $LINENO >>'\nset -x\n```\nsee [current line number in shell script](http://www.unix.com/shell-programming-and-scripting/131065-current-line-number-shell-script.html)"
   },
@@ -155,7 +220,11 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:ready",
+        "name": "Waffle:ready",
+        "color": "22c6fb"
+      }
     ],
     "state": "open",
     "locked": false,
@@ -163,7 +232,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2016-03-03T20:28:10Z",
-    "updated_at": "2016-03-03T20:28:10Z",
+    "updated_at": "2016-03-21T17:36:54Z",
     "closed_at": null,
     "body": ""
   },
@@ -197,11 +266,6 @@
       "site_admin": false
     },
     "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/block",
-        "name": "block",
-        "color": "de212a"
-      },
       {
         "url": "https://api.github.com/repos/carolclark/Support/labels/expedite",
         "name": "expedite",
@@ -237,7 +301,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2016-02-20T22:47:11Z",
-    "updated_at": "2016-03-10T20:51:02Z",
+    "updated_at": "2016-03-21T20:52:35Z",
     "closed_at": null,
     "body": "GoDaddy has just implemented a new hosting system that will eventually replace the existing host. We need to get our website transferred so the old website can be released by March 17.\n\nIn connection with this change, we are now hosting LaurasCelloStudio.com.\n\n- [x] upgrade Transmit\n- [x] temporarily post our current site on Laura's site\n- [x] then post site at our same address, but on the new host\n- [x] cancel our subscription to the original site\n- --- *March 17* ---\n- continue #81"
   },
@@ -360,9 +424,9 @@
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:in%20progress",
-        "name": "Waffle:in progress",
-        "color": "e9bf55"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:needs%20review",
+        "name": "Waffle:needs review",
+        "color": "ededed"
       }
     ],
     "state": "open",
@@ -423,9 +487,9 @@
     },
     "comments": 0,
     "created_at": "2016-02-14T17:49:47Z",
-    "updated_at": "2016-03-19T16:50:24Z",
+    "updated_at": "2016-03-19T21:55:07Z",
     "closed_at": null,
-    "body": "Slates, Workflow documentation need continuing development as we go forward.\n\n- [x] Support: remove project Support. Its purpose was to create target all tests, but that did not work. Now, AppCode wants to open the project instead of the workspace.\n- [x] update Workflow\n\n---\n##### **02/27/26**\n- *We are happy with the product combination and its workflow.\nHowever, we had some major issues as we set it up.\nThese are probably due to having it take a while to figure out how the new development workflow needed to fit with git.*\n    - *Our local git repository was corrupted and needed to be replaced.*\n    - *Our workspace, involving at least one project inside it, consistently crashed Xcode and needed to be rebuilt.*\n    - *We misunderstood what AppCode was doing with checkout stashes that it made, resulting in a stash that was so old and large that we lacked confidence that we could correctly resolve the stash.*\n\n*We plan to:*\n- *save/build the files that we intend to be active following this fix*\n- *use `reset --hard HEAD` to return to commit 15901c7*\n- *use the saved files to reconstruct the work  from there*\n- *see also [Updated Git but still showing old version](http://stackoverflow.com/questions/20508136/updated-git-but-still-showing-old-version)*\n\n##### **make folder containing the desired state**\n- [x] git rev-list to get list of commits since 15901c7; print with logs\n    - `git rev-list --all --since '2015-11-11' | xargs git show --name-only >> $out`\n- [x] save copy of Support, which is the starting point for constructing the target state, to SupportRewindStart\n    - *also periodically save additional SupportRewindN files as work proceeds*\n- [x] Existing Stashes: apply any changes we want to keep\n- [x] Starting with the most recent, diff back chronologically through recent commits since 15901c7, saving in any changes from previous versions that we want to keep. Continue until no changes for awhile.\n    - *Ignore Xcode scheme and AppCode configuration files. These should be rebuilt manually.*\n- [x] ***SAVE*** copy of final Support directory as SupportTarget\n\n##### **go back to commit 15901c7**\n- [x] `reset --hard ` to commit 15901c7\n- [x] synchronize with remote tracking branch and local master\n\n##### **restore changes**\n- [x] copy the files we kept/changed (visible files only) from SupportTarget to Support_Changed&New\n- [x] test all targets in Xcode\n- [ ] rebuild using Support_Changed&New\n    - Cdoc; scripts; targets; file templates; pyparsing; finish up (misc adds, deletes)\n\n##### **revert**\n*It is now obvious that the `reset` above was wrong because commits had been published to the repository on GitHub.*\n- [x] revert from where we are now back to 15901c7\n- [x] get all targets working in Xcode\n    - *at least at this point, it was an Xcode issue causing them to fail*\n- [x] apply previously-saved stashes to collect-all-changes-#71\n- [x] shell scripts have explicit return values\n    - In Xcode, any active error is automatically returned. Apparently, AppCode differs in this regard, resulting in situations where the Run panel correctly shows an error, but the event log shows a successful build.\n- [x] ensure stashes do not contain code we need\n- [x] remove obsolete files (pyparsing; Support.bbprojectd; Support.xcodeproj; Developer/CCDevTry1)\n \n##### **continuing**\n*Hopefully, we can continue successfully from here. We do expect a discontinuity in the history at15901c7*"
+    "body": "Slates, Workflow documentation need continuing development as we go forward.\n\n- [x] Support: remove project Support. Its purpose was to create target all tests, but that did not work. Now, AppCode wants to open the project instead of the workspace.\n- [x] update Workflow\n\n---\n##### **02/27/26**\n- *We are happy with the product combination and its workflow.\nHowever, we had some major issues as we set it up.\nThese are probably due to having it take a while to figure out how the new development workflow needed to fit with git.*\n    - *Our local git repository was corrupted and needed to be replaced.*\n    - *Our workspace, involving at least one project inside it, consistently crashed Xcode and needed to be rebuilt.*\n    - *We misunderstood what AppCode was doing with checkout stashes that it made, resulting in a stash that was so old and large that we lacked confidence that we could correctly resolve the stash.*\n\n*We plan to:*\n- *save/build the files that we intend to be active following this fix*\n- *use `reset --hard HEAD` to return to commit 15901c7*\n- *use the saved files to reconstruct the work  from there*\n- *see also [Updated Git but still showing old version](http://stackoverflow.com/questions/20508136/updated-git-but-still-showing-old-version)*\n\n##### **make folder containing the desired state**\n- [x] git rev-list to get list of commits since 15901c7; print with logs\n    - `git rev-list --all --since '2015-11-11' | xargs git show --name-only >> $out`\n- [x] save copy of Support, which is the starting point for constructing the target state, to SupportRewindStart\n    - *also periodically save additional SupportRewindN files as work proceeds*\n- [x] Existing Stashes: apply any changes we want to keep\n- [x] Starting with the most recent, diff back chronologically through recent commits since 15901c7, saving in any changes from previous versions that we want to keep. Continue until no changes for awhile.\n    - *Ignore Xcode scheme and AppCode configuration files. These should be rebuilt manually.*\n- [x] ***SAVE*** copy of final Support directory as SupportTarget\n\n##### **go back to commit 15901c7**\n- [x] `reset --hard ` to commit 15901c7\n- [x] synchronize with remote tracking branch and local master\n\n##### **restore changes**\n- [x] copy the files we kept/changed (visible files only) from SupportTarget to Support_Changed&New\n- [x] test all targets in Xcode\n- [ ] rebuild using Support_Changed&New\n    - Cdoc; scripts; targets; file templates; pyparsing; finish up (misc adds, deletes)\n\n##### **revert**\n*It is now obvious that the `reset` above was wrong because commits had been published to the repository on GitHub.*\n- [x] revert from where we are now back to 15901c7\n- [x] get all targets working in Xcode\n    - *at least at this point, it was an Xcode issue causing them to fail*\n- [x] apply previously-saved stashes to collect-all-changes-#71\n- [x] shell scripts have explicit return values\n    - In Xcode, any active error is automatically returned. Apparently, AppCode differs in this regard, resulting in situations where the Run panel correctly shows an error, but the event log shows a successful build.\n- [x] ensure stashes do not contain code we need\n- [x] remove obsolete files (pyparsing; Support.bbprojectd; Support.xcodeproj; Developer/CCDevTry1)\n- [x] recover Xcode Unit Testing Templates\n- [x] set up AppCode targets\n \n##### **continuing**\n*Hopefully, we can continue successfully from here. We do expect a discontinuity in the history at15901c7*"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/69",
@@ -503,9 +567,9 @@
     },
     "comments": 0,
     "created_at": "2016-02-13T18:39:55Z",
-    "updated_at": "2016-02-28T20:10:41Z",
+    "updated_at": "2016-03-21T20:03:43Z",
     "closed_at": null,
-    "body": "- script (UNIX?) with alias(?) to configure embedded terminal\n- turns panel background lt green\n- see [Working with Embedded Local Terminal](https://www.jetbrains.com/idea/help/working-with-embedded-local-terminal.html#d798539e35)\n\nLooks like this may need Terminal configuration to be a callable script separate from DevConfig."
+    "body": "- script (UNIX?) with alias(?) to configure embedded terminal\n- colors panel background\n- see [Working with Embedded Local Terminal](https://www.jetbrains.com/idea/help/working-with-embedded-local-terminal.html#d798539e35)\n\nLooks like this may need Terminal configuration to be a callable script separate from DevConfig."
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/68",
@@ -548,48 +612,6 @@
     "updated_at": "2016-02-23T02:31:01Z",
     "closed_at": null,
     "body": "We will probably use IntelliJ plug-in Markdown.\n\n- [x] install AppCode Markdown plugin\n- [x] install pandoc for translation from markdown to html\n    - `pandoc -f markdown -t html Support/Docs/Markdown/filename.md > $CCDev/Sites/TechnicalDocs/Support/filename.html` \n- [ ] target Cdoc: process *.md separately from *.html(Cdoc)\n- [ ] use same style as regular Cdoc"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/67",
-    "repository_url": "https://api.github.com/repos/carolclark/Support",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/67/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/67/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/67/events",
-    "html_url": "https://github.com/carolclark/Support/issues/67",
-    "id": 131896369,
-    "number": 67,
-    "title": "Transmit Login Issue",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-
-    ],
-    "state": "open",
-    "locked": false,
-    "assignee": null,
-    "milestone": null,
-    "comments": 0,
-    "created_at": "2016-02-06T20:27:26Z",
-    "updated_at": "2016-02-18T19:42:34Z",
-    "closed_at": null,
-    "body": "We cannot currently run Transmit. There's some confusion between the app store password and the 2FA Code it's sending out.\n\n02/15/2016\nTried again. 2FA worked fine this time."
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/66",
@@ -1027,9 +1049,9 @@
     },
     "comments": 0,
     "created_at": "2015-02-15T21:03:47Z",
-    "updated_at": "2015-02-16T19:04:29Z",
+    "updated_at": "2016-03-21T19:59:57Z",
     "closed_at": null,
-    "body": "http://code-worrier.com/blog/git-branch-in-bash-prompt/"
+    "body": "[Add Branch to Terminal Prompt](http://code-worrier.com/blog/git-branch-in-bash-prompt/)\n[Prompt Customization](https://wiki.archlinux.org/index.php/Bash/Prompt_customization) *includes colors*"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/55",
