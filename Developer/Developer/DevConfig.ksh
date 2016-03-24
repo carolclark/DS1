@@ -4,14 +4,15 @@
 #  Support
 #
 #  Created by Carol Clark on 10/18/11.
-#  Copyright 2011-14 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-16 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
 # DevConfig.ksh -- set up and configure C & C Software development environment
 '
 
-CCDev="${HOME}/Library/CCDev"
+CCDev="/Users/carolclark/Library/CCDev"
+DEV="/Users/carolclark/Dev"
 
 #^	install
 function install {
@@ -114,7 +115,7 @@ function gitPrintConfig {
 
 	git config --global merge.tool opendiff
 
-	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative"
+	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=short"
 	git config --global alias.fetchup '!git remote update -p; git merge --ff-only @{u}'
 }
 
@@ -125,7 +126,9 @@ function gitPrintExclude {
 	print '*.xccheckout'
 	print '*.pyc'
 	print 'xcuserdata/'
-	print '.idea/'
+	print '**/.idea/workspace.xml'
+	print '**/.idea/tasks.xml'
+	print '**/.idea/*.iws'
 	print '_patches'
 }
 
