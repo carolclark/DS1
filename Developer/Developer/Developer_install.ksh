@@ -35,7 +35,7 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 			return
 		fi
 	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action
-		print "-t: tests have a separate target testDeveloper.ksh"
+		errorMessage $RC_InvalidArgument "$0#$LINENO:" "Testing supported by target DeveloperTests."
 		return $RC_InvalidArgument
 	else												# not clean or test
 		# installing

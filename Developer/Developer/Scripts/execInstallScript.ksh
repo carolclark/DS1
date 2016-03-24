@@ -32,7 +32,7 @@ if [[ $# > 0 ]] ; then
 	fi
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return $$RC_MissingArgument
+	return $RC_MissingArgument
 fi
 if [[ $# > 1 ]] ; then
 	sourceRoot="${1}"
