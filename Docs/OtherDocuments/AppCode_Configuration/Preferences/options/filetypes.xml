@@ -1,0 +1,10 @@
+<application>
+  <component name="FileTypeManager" version="16">
+    <ignoreFiles list="*.hprof;*.pyc;*.pyo;*.rbc;*~;.DS_Store;.git;.hg;.svn;CVS;RCS;SCCS;__pycache__;_svn;rcs;" />
+    <extensionMap>
+      <mapping pattern="snippets.dash" type="PLAIN_TEXT" />
+      <mapping ext="worksheet" type="PLAIN_TEXT" />
+      <mapping pattern="liveTemplates" type="XML" />
+    </extensionMap>
+  </component>
+</application>

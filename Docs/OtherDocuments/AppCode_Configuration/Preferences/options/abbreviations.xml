@@ -1,0 +1,9 @@
+<application>
+  <component name="AbbreviationManager">
+    <abbreviations>
+      <action id="TypeHierarchy.Class">
+        <abbreviation name="hier" />
+      </action>
+    </abbreviations>
+  </component>
+</application>

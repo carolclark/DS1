@@ -1,0 +1,160 @@
+<application>
+  <component name="StatisticsApplicationUsages">
+    <group name="run-configuration-type-temp">
+      <project id="Experimental" values="AppleRunConfiguration" collectionTime="1452025232231" />
+    </group>
+    <group name="Git">
+      <project id="AccessorBuild" values="config.warn.about.crlf.enabled,data.local.branches.count.2+,config.ssh.enabled,data.remotes.in.project.1,config.warn.about.detached.enabled,config.repo.sync.NOT_DECIDED,config.cherry-pick.autocommit.disabled,config.save.policy.STASH,config.update.type.BRANCH_DEFAULT,data.remote.branches.count.30+,config.force.push.enabled,config.push.autoupdate.disabled,config.push.update.all.roots.enabled" collectionTime="1450133636613" />
+    </group>
+    <group name="JavaScript versions">
+      <project id="CCDev" values="ECMAScript 5.1" collectionTime="1456937024304" />
+      <project id="Accessor" values="ECMAScript 5.1" collectionTime="1457543008184" />
+      <project id="DetermineNSAlertBehavior" values="ECMAScript 5.1" collectionTime="1452025649271" />
+      <project id="Experimental" values="ECMAScript 5.1" collectionTime="1452025232475" />
+      <project id="Punkin" values="ECMAScript 5.1" collectionTime="1454799904104" />
+      <project id="AccessorBuild" values="ECMAScript 5.1" collectionTime="1450637834691" />
+      <project id="Support" values="ECMAScript 5.1" collectionTime="1458766281549" />
+      <project id="Accessor.app" values="ECMAScript 5.1" collectionTime="1453824916675" />
+      <project id="Determine NSAlertBehavior" values="ECMAScript 5.1" collectionTime="1451515579649" />
+    </group>
+    <group name="vcs">
+      <project id="Accessor" values="Git" collectionTime="1457543007978" />
+      <project id="Support" values="Git" collectionTime="1458766281122" />
+      <project id="Punkin" values="Git" collectionTime="1454799903806" />
+      <project id="AccessorBuild" values="Git" collectionTime="1450637834639" />
+      <project id="CCDev" values="Git" collectionTime="1456937024251" />
+    </group>
+    <group name="Build Settings">
+      <project id="Accessor" values="CLANG_CXX_LIBRARY libc++,GCC_VERSION ,CLANG_CXX_LANGUAGE_STANDARD gnu++0x,GCC_C_LANGUAGE_STANDARD gnu99,CLANG_ENABLE_OBJC_ARC YES" collectionTime="1457543008183" />
+      <project id="DetermineNSAlertBehavior" values="CLANG_ENABLE_OBJC_ARC YES,GCC_VERSION ,CLANG_CXX_LANGUAGE_STANDARD gnu++0x,GCC_C_LANGUAGE_STANDARD gnu99,CLANG_CXX_LIBRARY libc++" collectionTime="1452025649269" />
+      <project id="Experimental" values="CLANG_ENABLE_OBJC_ARC YES,GCC_VERSION ,GCC_C_LANGUAGE_STANDARD gnu99,CLANG_CXX_LIBRARY libc++,CLANG_CXX_LANGUAGE_STANDARD gnu++0x" collectionTime="1452025232474" />
+      <project id="Punkin" values="GCC_VERSION ,CLANG_ENABLE_OBJC_ARC YES,GCC_C_LANGUAGE_STANDARD gnu99,CLANG_CXX_LIBRARY libc++,CLANG_CXX_LANGUAGE_STANDARD gnu++0x" collectionTime="1454799904084" />
+      <project id="AccessorBuild" values="GCC_VERSION " collectionTime="1450637834647" />
+      <project id="Support" values="GCC_VERSION com.apple.compilers.llvm.clang.1_0,CLANG_CXX_LIBRARY libc++,CLANG_CXX_LANGUAGE_STANDARD gnu++0x,CLANG_ENABLE_OBJC_ARC YES,GCC_VERSION ,GCC_C_LANGUAGE_STANDARD gnu99" collectionTime="1458766281378" />
+    </group>
+    <group name="run-configuration-type">
+      <project id="Accessor" values="AppleRunConfiguration,OCUnitRunConfiguration" collectionTime="1457543007978" />
+      <project id="DetermineNSAlertBehavior" values="AppleRunConfiguration" collectionTime="1452025649245" />
+      <project id="Experimental" values="OCUnitRunConfiguration,AppleRunConfiguration" collectionTime="1452025232231" />
+      <project id="Punkin" values="AppleRunConfiguration,OCUnitRunConfiguration" collectionTime="1454799903806" />
+      <project id="AccessorBuild" values="OCUnitRunConfiguration,AppleRunConfiguration" collectionTime="1450637834640" />
+      <project id="Support" values="AppleRunConfiguration,OCUnitRunConfiguration" collectionTime="1458766281123" />
+      <project id="Determine NSAlertBehavior" values="OCUnitRunConfiguration,AppleRunConfiguration" collectionTime="1451515579477" />
+    </group>
+    <group name="UI File Format">
+      <project id="Accessor" values="Modern Xib OS X (3.0)" collectionTime="0" />
+      <project id="AccessorBuild" values="Modern Xib OS X (3.0)" collectionTime="0" />
+    </group>
+    <group name="SDK">
+      <project id="Accessor" values="OS X 10.10" collectionTime="1457543008182" />
+      <project id="DetermineNSAlertBehavior" values="OS X 10.10" collectionTime="1452025649269" />
+      <project id="Experimental" values="OS X 10.10" collectionTime="1452025232473" />
+      <project id="Punkin" values="OS X 10.10" collectionTime="1454799904084" />
+      <project id="AccessorBuild" values="OS X 10.10" collectionTime="1450637834647" />
+      <project id="Support" values="OS X 10.10" collectionTime="1458766281373" />
+    </group>
+    <group name="file-type">
+      <project id="CCDev" values="ObjectiveC,XML,plist,HTML,Native,PLAIN_TEXT,UNKNOWN,Markdown,ARCHIVE,Images,JavaScript,CSS,IDEA_MODULE,XCodeProjectFiles" collectionTime="1456937024265" />
+      <project id="Accessor" values="XIB,plist,XML,HTML,Asset Catalog Contents,XCodeProjectFiles,Strings,Podfile,xconfig,IDEA_MODULE,ARCHIVE,JSON,.r,ObjectiveC,UNKNOWN,PLAIN_TEXT,Markdown" collectionTime="1457543007980" />
+      <project id="DetermineNSAlertBehavior" values="XIB,ObjectiveC,Asset Catalog Contents,PLAIN_TEXT,IDEA_MODULE,XCodeProjectFiles,plist,XML,UNKNOWN" collectionTime="1452025649269" />
+      <project id="Experimental" values="IDEA_MODULE,Podfile,UNKNOWN,PLAIN_TEXT,XML,Asset Catalog Contents,plist,XIB,XCodeProjectFiles,ObjectiveC,xconfig" collectionTime="1452025232256" />
+      <project id="Punkin" values="Images,Podfile,xconfig,UNKNOWN,ObjectiveC,XCodeProjectFiles,Asset Catalog Contents,PLAIN_TEXT,Core Data model,Native,IDEA_MODULE,HTML,XML,Strings,plist,XIB,JSON" collectionTime="1454799903824" />
+      <project id="AccessorBuild" values="XIB,UNKNOWN,ObjectiveC,IDEA_MODULE,xconfig,plist,XML,Podfile,Asset Catalog Contents,XCodeProjectFiles,PLAIN_TEXT,Strings" collectionTime="1450637834643" />
+      <project id="Support" values="Native,HTML,XML,ARCHIVE,CSS,IDEA_MODULE,Images,JavaScript,Markdown,UNKNOWN,ObjectiveC,XCodeProjectFiles,plist,.r,PLAIN_TEXT,JSON,XIB" collectionTime="1458766281154" />
+      <project id="Accessor.app" values="PLAIN_TEXT,IDEA_MODULE,XML,UNKNOWN" collectionTime="1453824916658" />
+      <project id="Determine NSAlertBehavior" values="UNKNOWN" collectionTime="1451515579645" />
+    </group>
+    <group name="module type">
+      <project id="CCDev" values="CIDR_MODULE" collectionTime="1456937024251" />
+      <project id="Accessor" values="CIDR_MODULE" collectionTime="1457543007978" />
+      <project id="DetermineNSAlertBehavior" values="CIDR_MODULE" collectionTime="1452025649245" />
+      <project id="Experimental" values="CIDR_MODULE" collectionTime="1452025232231" />
+      <project id="Punkin" values="CIDR_MODULE" collectionTime="1454799903806" />
+      <project id="AccessorBuild" values="CIDR_MODULE" collectionTime="1450637834639" />
+      <project id="Support" values="CIDR_MODULE" collectionTime="1458766281122" />
+      <project id="Accessor.app" values="CIDR_MODULE" collectionTime="1453824916648" />
+      <project id="Determine NSAlertBehavior" values="CIDR_MODULE" collectionTime="1451515579477" />
+    </group>
+    <group name="Testing Frameworks">
+      <project id="Accessor" values="XCTest=2" collectionTime="1457543008182" />
+      <project id="Support" values="XCTest=2" collectionTime="1458766281372" />
+      <project id="Punkin" values="XCTest" collectionTime="1454799904084" />
+      <project id="AccessorBuild" values="XCTest=4" collectionTime="1450637834646" />
+      <project id="Experimental" values="XCTest" collectionTime="1452025232473" />
+    </group>
+    <group name="javaScript Scope Usages">
+      <project id="CCDev" values="Project,Project" collectionTime="1456937024304" />
+      <project id="Accessor" values="Project,Project" collectionTime="1457543008184" />
+      <project id="DetermineNSAlertBehavior" values="Project,Project" collectionTime="1452025649271" />
+      <project id="Experimental" values="Project,Project" collectionTime="1452025232475" />
+      <project id="Punkin" values="Project,Project" collectionTime="1454799904104" />
+      <project id="AccessorBuild" values="Project,Project" collectionTime="1450637834691" />
+      <project id="Support" values="Project,Project" collectionTime="1458766281549" />
+      <project id="Accessor.app" values="Project,Project" collectionTime="1453824916675" />
+      <project id="Determine NSAlertBehavior" values="Project,Project" collectionTime="1451515579649" />
+    </group>
+  </component>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="OpenInBrowser.Safari" count="11" />
+      <entry feature="OpenInBrowser.default" count="1" />
+      <entry feature="StripeButton[Documentation].hidden" count="1" />
+      <entry feature="StripeButton[Structure].hidden" count="1" />
+      <entry feature="appcode.cocoapods.createPodfile" count="3" />
+      <entry feature="appcode.cocoapods.install" count="8" />
+      <entry feature="designer.ui-file-format.timeout" count="1" />
+      <entry feature="execute.AppleRunConfiguration.Debug" count="33" />
+      <entry feature="execute.AppleRunConfiguration.Instruments" count="4" />
+      <entry feature="execute.AppleRunConfiguration.Run" count="423" />
+      <entry feature="execute.OCUnitRunConfiguration.Debug" count="441" />
+      <entry feature="execute.OCUnitRunConfiguration.Run" count="504" />
+      <entry feature="execute.testingFramework.XCTest" count="664" />
+      <entry feature="ide.help.Colorblind_Settings" count="1" />
+      <entry feature="ide.help.Non-Project_Files_Access_Dialog" count="1" />
+      <entry feature="ide.help.editing.templates" count="1" />
+      <entry feature="ide.help.ideaInterface.changes" count="1" />
+      <entry feature="ide.help.project.propVCSSupport.Issue.Navigation" count="1" />
+      <entry feature="ide.help.reference.VersionControl.Git.MergeBranches" count="2" />
+      <entry feature="ide.help.reference.dialogs.diff.file" count="4" />
+      <entry feature="ide.help.reference.dialogs.findinpath" count="2" />
+      <entry feature="ide.help.reference.dialogs.localHistory.show.folder" count="2" />
+      <entry feature="ide.help.reference.dialogs.rundebug.AppleRunConfiguration" count="1" />
+      <entry feature="ide.help.reference.idesettings.emmet" count="1" />
+      <entry feature="ide.help.reference.idesettings.quicklists" count="1" />
+      <entry feature="ide.help.reference.settings.ide.settings.file-colors" count="1" />
+      <entry feature="ide.help.reference.toolwindows.event.log" count="1" />
+      <entry feature="ide.help.top" count="2" />
+      <entry feature="ide.settings.Appearance" count="9" />
+      <entry feature="ide.settings.C/C++/Objective-C" count="3" />
+      <entry feature="ide.settings.CocoaPods" count="1" />
+      <entry feature="ide.settings.Code_Style" count="2" />
+      <entry feature="ide.settings.Confirmation" count="2" />
+      <entry feature="ide.settings.External_Diff_Tools" count="10" />
+      <entry feature="ide.settings.External_Documentation" count="1" />
+      <entry feature="ide.settings.File_Colors" count="5" />
+      <entry feature="ide.settings.File_Types" count="2" />
+      <entry feature="ide.settings.File_and_Code_Templates" count="19" />
+      <entry feature="ide.settings.General" count="2" />
+      <entry feature="ide.settings.Git" count="1" />
+      <entry feature="ide.settings.GitHub" count="4" />
+      <entry feature="ide.settings.Inspections" count="1" />
+      <entry feature="ide.settings.Issue_Navigation" count="13" />
+      <entry feature="ide.settings.Keymap" count="17" />
+      <entry feature="ide.settings.Live_Templates" count="145" />
+      <entry feature="ide.settings.Markdown" count="1" />
+      <entry feature="ide.settings.Quick_Lists" count="10" />
+      <entry feature="ide.settings.Servers" count="3" />
+      <entry feature="ide.settings.TODO" count="2" />
+      <entry feature="ide.settings.Tasks" count="1" />
+      <entry feature="ide.settings.Terminal" count="2" />
+      <entry feature="ide.settings.Version_Control" count="2" />
+      <entry feature="ideaapp.started" count="208" />
+      <entry feature="tips.of.the.day.next" count="3" />
+      <entry feature="welcome.screen.CreateXcodeProject" count="2" />
+      <entry feature="welcome.screen.OpenXcodeProject" count="14" />
+      <entry feature="welcome.screen.WelcomeScreen.Configure" count="3" />
+      <entry feature="welcome.screen.WelcomeScreen.Documentation" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.Settings" count="1" />
+    </counts>
+  </component>
+</application>

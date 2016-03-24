@@ -1,5 +1,57 @@
 [
   {
+    "url": "https://api.github.com/repos/carolclark/Support/issues/84",
+    "repository_url": "https://api.github.com/repos/carolclark/Support",
+    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/84/labels{/name}",
+    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/84/comments",
+    "events_url": "https://api.github.com/repos/carolclark/Support/issues/84/events",
+    "html_url": "https://github.com/carolclark/Support/pull/84",
+    "id": 142481036,
+    "number": 84,
+    "title": "move website; close #75, connect #81",
+    "user": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:needs%20review",
+        "name": "Waffle:needs review",
+        "color": "ededed"
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2016-03-21T21:47:43Z",
+    "updated_at": "2016-03-21T21:47:47Z",
+    "closed_at": null,
+    "pull_request": {
+      "url": "https://api.github.com/repos/carolclark/Support/pulls/84",
+      "html_url": "https://github.com/carolclark/Support/pull/84",
+      "diff_url": "https://github.com/carolclark/Support/pull/84.diff",
+      "patch_url": "https://github.com/carolclark/Support/pull/84.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/carolclark/Support/issues/83",
     "repository_url": "https://api.github.com/repos/carolclark/Support",
     "labels_url": "https://api.github.com/repos/carolclark/Support/issues/83/labels{/name}",
@@ -124,20 +176,38 @@
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:ready",
-        "name": "Waffle:ready",
-        "color": "22c6fb"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:in%20progress",
+        "name": "Waffle:in progress",
+        "color": "e9bf55"
       }
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "milestone": null,
     "comments": 0,
     "created_at": "2016-03-07T00:01:17Z",
-    "updated_at": "2016-03-21T17:36:15Z",
+    "updated_at": "2016-03-23T17:14:35Z",
     "closed_at": null,
-    "body": "Restructure Sites folder to synchronize with current websites, including LaurasCelloStudio.com \n\n- [ ] update Home.index\n- [ ] update LaurasCelloStudio.com\n- [ ] change targets/scripts to store files at the new locations\n    - [ ] Doxygen\n    - [ ] Cdoc targets \n- Requires #75"
+    "body": "Restructure Sites folder to synchronize with current websites, including LaurasCelloStudio.com \n\n- [x] update Home.index\n- [x] update LaurasCelloStudio.com\n- [ ] change targets/scripts to store files at the new locations\n    - [ ] Doxygen\n    - [ ] Cdoc targets \n- Requires #75"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/80",
@@ -175,9 +245,9 @@
         "color": "c0e4c0"
       },
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:ready",
-        "name": "Waffle:ready",
-        "color": "22c6fb"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:in%20progress",
+        "name": "Waffle:in progress",
+        "color": "e9bf55"
       }
     ],
     "state": "open",
@@ -186,9 +256,9 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2016-03-04T18:50:35Z",
-’    "updated_at": "2016-03-21T17:36:49Z",
+    "updated_at": "2016-03-21T22:00:54Z",
     "closed_at": null,
-    "body": "```\n#!/bin/ksh\nexport PS4='$0 $LINENO >>'\nset -x\n```\nsee [current line number in shell script](http://www.unix.com/shell-programming-and-scripting/131065-current-line-number-shell-script.html)"
+    "body": "live templates to handle ksh trace\nsee [current line number in shell script](http://www.unix.com/shell-programming-and-scripting/131065-current-line-number-shell-script.html)\n\n- [ ] replbold: `<b>([^<]*)</b>`\n- [ ] withstring: `<strong>$1</strong>`\nalso:\n- [ ] settrace: `export PS4='$0 $LINENO >>'; set -x`\n- [ ] unsettrace: `set +x`"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/79",
@@ -220,11 +290,7 @@
       "site_admin": false
     },
     "labels": [
-      {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:ready",
-        "name": "Waffle:ready",
-        "color": "22c6fb"
-      }
+
     ],
     "state": "open",
     "locked": false,
@@ -232,7 +298,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2016-03-03T20:28:10Z",
-    "updated_at": "2016-03-21T17:36:54Z",
+    "updated_at": "2016-03-21T22:02:54Z",
     "closed_at": null,
     "body": ""
   },
@@ -272,9 +338,9 @@
         "color": "de212a"
       },
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:in%20progress",
-        "name": "Waffle:in progress",
-        "color": "e9bf55"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:needs%20review",
+        "name": "Waffle:needs review",
+        "color": "ededed"
       }
     ],
     "state": "open",
@@ -301,7 +367,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2016-02-20T22:47:11Z",
-    "updated_at": "2016-03-21T20:52:35Z",
+    "updated_at": "2016-03-21T21:47:47Z",
     "closed_at": null,
     "body": "GoDaddy has just implemented a new hosting system that will eventually replace the existing host. We need to get our website transferred so the old website can be released by March 17.\n\nIn connection with this change, we are now hosting LaurasCelloStudio.com.\n\n- [x] upgrade Transmit\n- [x] temporarily post our current site on Laura's site\n- [x] then post site at our same address, but on the new host\n- [x] cancel our subscription to the original site\n- --- *March 17* ---\n- continue #81"
   },
@@ -378,20 +444,38 @@
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:ready",
-        "name": "Waffle:ready",
-        "color": "22c6fb"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:in%20progress",
+        "name": "Waffle:in progress",
+        "color": "e9bf55"
       }
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "carolclark",
+      "id": 3742721,
+      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/carolclark",
+      "html_url": "https://github.com/carolclark",
+      "followers_url": "https://api.github.com/users/carolclark/followers",
+      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
+      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
+      "organizations_url": "https://api.github.com/users/carolclark/orgs",
+      "repos_url": "https://api.github.com/users/carolclark/repos",
+      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/carolclark/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "milestone": null,
     "comments": 0,
     "created_at": "2016-02-16T02:40:37Z",
-    "updated_at": "2016-03-12T19:11:51Z",
+    "updated_at": "2016-03-23T22:14:39Z",
     "closed_at": null,
-    "body": "Continuous integration is available both through Xcode and through IntelliJ TeamCity. We have tried Xcode's, and were not impressed. The reviews we found all emphatically suggest that TeamCity is much better.\n\n It appears that TeamCity can be set up in a reasonable amount of time on an external hard drive connected to the development computer.\n\nSee [TeamCity Documentation] (https://confluence.jetbrains.com/display/TCD9/TeamCity+Documentation)\n\n##### **Java**\n- [x] update to java 8\n- [ ] edit .profile to set it back to 1.8  in case Apple has changed it; see [How to switch JDK version on Mac OS X](http://www.jayway.com/2014/01/15/how-to-switch-jdk-version-on-mac-os-x-maverick/)\n\n##### **TeamCity initial installation**\n- see [Installing and Configuring the TeamCity Server](https://confluence.jetbrains.com/display/TCD9/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-InstallingTeamCitybundledwithTomcatservletcontainer(Linux,MacOSX,Windows))\n- see also blog post [How to Install Team City](http://www.gep13.co.uk/blog/how-to-install-teamcity/), with links to MySQL installation\n- [ ] get rough estimate of storage allocation\n- [ ] remove previous tries\n- [ ] get gnu tar\n\n...\n- [ ] test TeamCity installation\n- [ ] install auto-start script\n- [ ] final decision on storage allocation\n\n##### **Upgrade to External Database**"
+    "body": "Continuous integration is available both through Xcode and through IntelliJ TeamCity. We have tried Xcode's, and were not impressed. The reviews we found all emphatically suggest that TeamCity is much better.\n\n It appears that TeamCity can be set up in a reasonable amount of time on an external hard drive connected to the development computer.\n\nSee [TeamCity Documentation] (https://confluence.jetbrains.com/display/TCD9/TeamCity+Documentation)\n\n##### **document tools and installation (Tools.html) throughout**\n- [ ] add LiveTemplate  toolsItem\n\n##### **Java**\n- [x] update to java 8; see [Tools: Java](http://candcsoft.com/TechnicalDocs/Support/Tools.html#_Java)\n- *There is information available to fix problems caused by Xcode setting itself to the front of `$PATH`, forcing use of Xcode/bsd tools; see [How to switch JDK version on Mac OS X](http://www.jayway.com/2014/01/15/how-to-switch-jdk-version-on-mac-os-x-maverick/). For now, we use standalone Terminal with Xcode, and embedded Terminal with AppCode, so we expect that this will not be needed and would rather not risk tripping up Xcode.*\n\n##### **gnu tar**\n*specified by TeamCity installation due to problems with BSD (Xcode's) tar*\n- [ ] switch to from bsdtar to gnu-tar; see [Tools: tar](http://candcsoft.com/TechnicalDocs/Support/Tools.html#_Tar)\n\n##### **TeamCity initial installation**\n- see [Installing and Configuring the TeamCity Server](https://confluence.jetbrains.com/display/TCD9/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-InstallingTeamCitybundledwithTomcatservletcontainer(Linux,MacOSX,Windows))\n- see also blog post [How to Install Team City](http://www.gep13.co.uk/blog/how-to-install-teamcity/), with links to MySQL installation\n- [ ] get rough estimate of storage allocation\n    - volume previously named 'vacant' @ 637GB; renamed to 'TeamCity'\n- [ ] remove previous tries\n- [ ] get gnu tar\n\n...\n- [ ] test TeamCity installation\n- [ ] install auto-start script\n- [ ] tentative  decision on storage allocation\n\n##### **Upgrade to External Database**"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/71",
@@ -522,9 +606,9 @@
     },
     "labels": [
       {
-        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:ready",
-        "name": "Waffle:ready",
-        "color": "22c6fb"
+        "url": "https://api.github.com/repos/carolclark/Support/labels/Waffle:in%20progress",
+        "name": "Waffle:in progress",
+        "color": "e9bf55"
       }
     ],
     "state": "open",
@@ -567,7 +651,7 @@
     },
     "comments": 0,
     "created_at": "2016-02-13T18:39:55Z",
-    "updated_at": "2016-03-21T20:03:43Z",
+    "updated_at": "2016-03-21T22:02:25Z",
     "closed_at": null,
     "body": "- script (UNIX?) with alias(?) to configure embedded terminal\n- colors panel background\n- see [Working with Embedded Local Terminal](https://www.jetbrains.com/idea/help/working-with-embedded-local-terminal.html#d798539e35)\n\nLooks like this may need Terminal configuration to be a callable script separate from DevConfig."
   },
@@ -813,9 +897,9 @@
     },
     "comments": 1,
     "created_at": "2016-01-19T21:04:37Z",
-    "updated_at": "2016-02-25T23:11:13Z",
+    "updated_at": "2016-03-24T17:10:39Z",
     "closed_at": null,
-    "body": "- [ ] improve github backup\n    - [x] ghubUtil: make output headings appear more clearly\n    - see [Linux echo colors](http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)\n   - [ ] TDD devBackup.py to replace functionality of ghubUtil.ksh\n    - [ ] add folder GitHub inside Other Documents; move backup data there\n    - [ ] add each repo's wiki for backup next to issues\n        - see [github-backup gist](https://gist.github.com/rodw/3073987)\n    - [ ] back up and tar each repository to /Archives\n- [ ] Support target AppCode\n    - [ ] add AppCode target AppCode to contain settings\n    - [ ] add AppCode files from ~/Library/Preferences and ~/Library/Application Support to target Support/AppCode\n        - `ls -(t?)d ~/Library/Preferences/AppCode* | head -n 1` with `for f in $(ls -d AppCode*); do; echo $f; done`\n        - see [How to copy a directory or folder](http://www.computerhope.com/issues/ch000838.htm)\n    - [ ] backup ~/Library/Application Support/AppCodeVV/ (one folder per v.v version)\n        - see UNIX sort, [ how to get the first word of the string ](http://unix.stackexchange.com/questions/65932/how-to-get-the-first-word-of-a-string)\n    - [ ] backup ~/Library/Preferences/AppCodeVV/ (one folder per v.v version)\n- [ ] verify entire ~/Library/Preferences already on Crono-Sync backup list; make sure scheduled backups are running"
+    "body": "- [ ] improve github backup\n    - [x] ghubUtil: make output headings appear more clearly\n    - see [Linux echo colors](http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)\n   - [ ] TDD devBackup.py to replace functionality of ghubUtil.ksh\n    - [ ] add folder GitHub inside Other Documents; move backup data there\n    - [ ] add each repo's wiki for backup next to issues\n        - see [github-backup gist](https://gist.github.com/rodw/3073987)\n    - [ ] back up and tar each repository to /Archives\n- [ ] Support target AppCode\n    - [ ] add AppCode target AppCode to contain settings\n    - [ ] add AppCode files from ~/Library/Preferences and ~/Library/Application Support to target Support/AppCode\n        - *store Tasks  with their project*\n        - `ls -(t?)d ~/Library/Preferences/AppCode* | head -n 1` with `for f in $(ls -d AppCode*); do; echo $f; done`\n        - see [How to copy a directory or folder](http://www.computerhope.com/issues/ch000838.htm)\n    - [ ] backup ~/Library/Application Support/AppCodeVV/ (one folder per v.v version)\n        - see UNIX sort, [ how to get the first word of the string ](http://unix.stackexchange.com/questions/65932/how-to-get-the-first-word-of-a-string)\n    - [ ] backup ~/Library/Preferences/AppCodeVV/ (one folder per v.v version)\n- [ ] verify entire ~/Library/Preferences already on Crono-Sync backup list; make sure scheduled backups are running"
   },
   {
     "url": "https://api.github.com/repos/carolclark/Support/issues/59",
@@ -1936,65 +2020,5 @@
     "updated_at": "2015-03-05T18:49:07Z",
     "closed_at": null,
     "body": "use modules to replace/augment pch files in ObjC projects (What's New in Xcode 5 13#400@22:20)\r\nsee [Introduction to Objective-C Modules](https://stoneofarc.wordpress.com/2013/06/25/introduction-to-objective-c-modules/)\r\n* Motivation\r\n    * modules are more advanced technology available for use in Objective-C code\r\n    * due to reliance on prefix files, files do not #include or #import the headers as they should\r\n    * in Accessor, the prefix file is apparently interfering with creation of pure Objective-C and files because the automatically-included code is not valid Objective-C code\r\n\r\n- [ ] add the appropriate include/import statements to existing classes to explicitly include the files from the prefix header\r\n- [ ] use modules instead of the prefix header for Objective-C code (set Enable Modules)\r\n\r\n* *see also carolclark/Accessor#12*"
-  },
-  {
-    "url": "https://api.github.com/repos/carolclark/Support/issues/38",
-    "repository_url": "https://api.github.com/repos/carolclark/Support",
-    "labels_url": "https://api.github.com/repos/carolclark/Support/issues/38/labels{/name}",
-    "comments_url": "https://api.github.com/repos/carolclark/Support/issues/38/comments",
-    "events_url": "https://api.github.com/repos/carolclark/Support/issues/38/events",
-    "html_url": "https://github.com/carolclark/Support/issues/38",
-    "id": 29776724,
-    "number": 38,
-    "title": "Ongoing Development and Accessibility Support",
-    "user": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-
-    ],
-    "state": "open",
-    "locked": false,
-    "assignee": {
-      "login": "carolclark",
-      "id": 3742721,
-      "avatar_url": "https://avatars.githubusercontent.com/u/3742721?v=3",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/carolclark",
-      "html_url": "https://github.com/carolclark",
-      "followers_url": "https://api.github.com/users/carolclark/followers",
-      "following_url": "https://api.github.com/users/carolclark/following{/other_user}",
-      "gists_url": "https://api.github.com/users/carolclark/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/carolclark/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/carolclark/subscriptions",
-      "organizations_url": "https://api.github.com/users/carolclark/orgs",
-      "repos_url": "https://api.github.com/users/carolclark/repos",
-      "events_url": "https://api.github.com/users/carolclark/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/carolclark/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "milestone": null,
-    "comments": 0,
-    "created_at": "2014-03-19T22:00:39Z",
-    "updated_at": "2015-10-14T19:43:29Z",
-    "closed_at": null,
-    "body": "[Creating an alias with the Korn shell](http://theory.uwinnipeg.ca/UNIXhelp/shell/alias_ksh.html)"
   }
 ]
