@@ -522,6 +522,7 @@ function processAction {
 			return ${st}
 		fi
 
+return 0
 	# Make docset using the Makefile that just generated
 		print $outputDir/html
 		make -C $outputDir/html install
@@ -532,8 +533,8 @@ function processAction {
 		fi
 
 	# Copy the docset to the location expected by Xcode
-		docsetPath="/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.candcsoft.${installName}.docset"
-		cp -r $outputDir/html/com.candcsoft.${installName}.docset $docsetPath
+		docsetPath="${HOME}/Library/Developer/Shared/Documentation/DocSets/com.candcsoft.${installName}.docset"
+		cp -R $outputDir/html/com.candcsoft.${installName}.docset $docsetPath
 		st=$?
 		if [[ $st > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "could not copy docset to $docsetPath"
