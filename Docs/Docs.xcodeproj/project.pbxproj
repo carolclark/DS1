@@ -41,21 +41,11 @@
 		676695D11919A759005D3CED /* Tools.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
 		676695D21919AA3B005D3CED /* ArbonneStruct.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArbonneStruct.numbers; sourceTree = "<group>"; };
 		676695D31919AA3B005D3CED /* UseCaseImages.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = UseCaseImages.pages; sourceTree = "<group>"; };
-		676695D7191ACD05005D3CED /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		676695D8191ACD05005D3CED /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = favicon.ico; sourceTree = "<group>"; };
-		676695D9191ACD05005D3CED /* gdform.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = gdform.php; sourceTree = "<group>"; };
-		676695DA191ACD05005D3CED /* missing.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = missing.html; sourceTree = "<group>"; };
-		676695DB191ACD05005D3CED /* php.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = php.ini; sourceTree = "<group>"; };
-		676695DD191ACD05005D3CED /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		676695E1191ACD05005D3CED /* webformmailer.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = webformmailer.php; sourceTree = "<group>"; };
-		676695E2191ACD05005D3CED /* welcome.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = welcome.html; sourceTree = "<group>"; };
-		676695E3191ACD05005D3CED /* htpasswd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htpasswd; sourceTree = "<group>"; };
-		676695E5191AE03D005D3CED /* htaccess */ = {isa = PBXFileReference; lastKnownFileType = text; path = htaccess; sourceTree = "<group>"; };
-		676695E6191AE03D005D3CED /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		67A657041A797B90002B3CBB /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Partitions.png; path = OtherDocuments/Partitions.png; sourceTree = SOURCE_ROOT; };
 		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
 		67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
+		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +58,7 @@
 				67B4601019199472007FB11A /* Doxygen */,
 				676695A619199997005D3CED /* DoxyDemo */,
 				676695A31919973E005D3CED /* OtherDocuments */,
+				965F810DE608D57DDDD66A42 /* WebsiteStructure */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				670280041A76F6E1004AEA12 /* Partitions.numbers */,
-				676695D4191ACD05005D3CED /* WebsiteStructure */,
 				676695D21919AA3B005D3CED /* ArbonneStruct.numbers */,
 				676695D31919AA3B005D3CED /* UseCaseImages.pages */,
 				676695A41919973E005D3CED /* Support_ghissues.json */,
@@ -158,56 +148,6 @@
 			path = html;
 			sourceTree = "<group>";
 		};
-		676695D4191ACD05005D3CED /* WebsiteStructure */ = {
-			isa = PBXGroup;
-			children = (
-				676695D5191ACD05005D3CED /* candcsoft */,
-				676695E3191ACD05005D3CED /* htpasswd */,
-			);
-			path = WebsiteStructure;
-			sourceTree = "<group>";
-		};
-		676695D5191ACD05005D3CED /* candcsoft */ = {
-			isa = PBXGroup;
-			children = (
-				676695D6191ACD05005D3CED /* Family */,
-				676695D8191ACD05005D3CED /* favicon.ico */,
-				676695D9191ACD05005D3CED /* gdform.php */,
-				676695DA191ACD05005D3CED /* missing.html */,
-				676695DB191ACD05005D3CED /* php.ini */,
-				676695DC191ACD05005D3CED /* stats */,
-				676695E4191AE03D005D3CED /* TechnicalDocs */,
-				676695E1191ACD05005D3CED /* webformmailer.php */,
-				676695E2191ACD05005D3CED /* welcome.html */,
-			);
-			path = candcsoft;
-			sourceTree = "<group>";
-		};
-		676695D6191ACD05005D3CED /* Family */ = {
-			isa = PBXGroup;
-			children = (
-				676695D7191ACD05005D3CED /* index.html */,
-			);
-			path = Family;
-			sourceTree = "<group>";
-		};
-		676695DC191ACD05005D3CED /* stats */ = {
-			isa = PBXGroup;
-			children = (
-				676695DD191ACD05005D3CED /* index.html */,
-			);
-			path = stats;
-			sourceTree = "<group>";
-		};
-		676695E4191AE03D005D3CED /* TechnicalDocs */ = {
-			isa = PBXGroup;
-			children = (
-				676695E5191AE03D005D3CED /* htaccess */,
-				676695E6191AE03D005D3CED /* index.html */,
-			);
-			path = TechnicalDocs;
-			sourceTree = "<group>";
-		};
 		67B4601019199472007FB11A /* Doxygen */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +158,22 @@
 				67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */,
 			);
 			path = Doxygen;
+			sourceTree = "<group>";
+		};
+		965F810DE608D57DDDD66A42 /* WebsiteStructure */ = {
+			isa = PBXGroup;
+			children = (
+				965F8BB614D97D7BD74165B1 /* TechnicalDocs */,
+			);
+			path = WebsiteStructure;
+			sourceTree = "<group>";
+		};
+		965F8BB614D97D7BD74165B1 /* TechnicalDocs */ = {
+			isa = PBXGroup;
+			children = (
+				965F85D7BC609E4499DD528D /* index.html */,
+			);
+			path = TechnicalDocs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
