@@ -12,6 +12,8 @@ Python_install.ksh -- install Python scripts
 '
 
 #^ 1 === top
+HOME="/Users/carolclark"
+DEV="${HOME}/Dev"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
