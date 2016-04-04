@@ -29,10 +29,11 @@
 	<!-- @topicItem "Doxygen" "#Doxygen_" "0" "" -->
 	<!-- @topicItem "FileMerge" "#_FileMerge" "0" "" -->
 	<!-- @topicItem "Finder" "#Finder" "0" "" -->
+	<!-- @topicItem "gnu-tar" "#_gnutar" "0" "" -->
 	<!-- @topicItem "GraphViz" "#_GraphViz" "0" "" -->
 	<!-- @topicItem "Homebrew" "#_Homebrew" "0" "" -->
-	<!-- @topicItem "iPhoto" "#_iPhoto" "0" "" -->
 <!-- @topicGroup "" "20" -->
+	<!-- @topicItem "iPhoto" "#_iPhoto" "0" "" -->
 	<!-- @topicItem "iTunes" "#_iTunes" "0" "" -->
 	<!-- @topicItem "iWork" "#_iWork" "0" "" -->
 	<!-- @topicItem "Mail" "#_Mail" "0" "" -->
@@ -41,18 +42,18 @@
 	<!-- @topicItem "Marked" "#_Marked" "0" "" -->
 	<!-- @topicItem "PaintCode" "#_PaintCode" "0" "" -->
 	<!-- @topicItem "Pandoc" "#_Pandoc" "0" "" -->
-	<!-- @topicItem "Python" "#_Python" "0" "" -->
 <!-- @topicGroup "" "30" -->
+	<!-- @topicItem "Python" "#_Python" "0" "" -->
 	<!-- @topicItem "Reminders" "#_Reminders" "0" "" -->
 	<!-- @topicItem "Safari" "#_Safari" "0" "" -->
 	<!-- @topicItem "Server" "#_Server" "0" "" -->
 	<!-- @topicItem "Stickies" "#Stickies" "0" "" -->
 	<!-- @topicItem "StuffIt Expander" "#_StuffItExpander" "0" "" -->
 	<!-- @topicItem "System Preferences" "#SystemPreferences" "0" "" -->
-	<!-- @topicItem "Tar" "#Tar_" "0" "" -->
+	<!-- @topicItem "TeamCity" "#_TeamCity" "0" "" -->
 	<!-- @topicItem "Terminal" "#_Terminal" "0" "" -->
-	<!-- @topicItem "Transmit" "#_Transmit" "0" "" -->
 <!-- @topicGroup "" "40" -->
+	<!-- @topicItem "Transmit" "#_Transmit" "0" "" -->
 	<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
 	<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
 <!-- @topicSep -->
@@ -275,6 +276,13 @@
 	</ul>
 	<p><b>Customization &amp; Automation</b> <br />
 		script applications to operate on dropped files:</p>
+</div>
+
+<!-- @marker "gnu-tar" -->
+<h4><a name="_gnutar">gnu-tar</a></h4><div class='indent'>
+	<p class='blurb'>archiving utility; apparently better that bsdtar, which is still run by <span class="mono">tar</span></p>
+	<p><b>Tool</b> v1.14; run with <span class="mono">gtar</span> </p>
+	<p><b>Reference</b> <a href="http://developer.apple.com/documentation/Darwin/Reference/ManPages/man1/tar.1.html">tar man page</a></p>
 </div>
 
 <!-- @marker "GraphViz" -->
@@ -561,13 +569,39 @@
 	</ul>
 </div>
 
-<!-- @marker "Tar" -->
-<h4><a name="Tar_">Tar</a></h4><div class='indent'>
-	<p class='blurb'>archiving utility</p>
-	<p><b>Tool</b> v1.14</p>
-	<p><b>Source</b> system tool</p>
-	<p><b>Reference</b> <a href="http://developer.apple.com/documentation/Darwin/Reference/ManPages/man1/tar.1.html">tar man page</a></p>
-</div>
+<!-- @marker "TeamCity" -->
+<h4 id='_TeamCity'>TeamCity</h4><div class='indent'>
+	<p class='blurb'>Continuous Integration system</p>
+	<p><b>Server and Web Application</b> at /Applications/TeamCity (use /Library/TeamCity next time);<br >
+		Professional Version v9.1.6; *.tar.gz archive downloaded from <a href="https://www.jetbrains.com/teamcity/download/">JetBrains TeamCity Download</a> </p>
+	<p><b>Critical Data</b> configurable \todo</p>
+	<p><b>Installation and Configuration</b> </p><ul>
+		<li><strong>Requires:</strong> <a href="_Java">Java</a>, <a href="_gnuzip">gnu-zip</a> </li>
+		<li>cd to directory containing TeamCity archive</li>
+		<li>unzip using gnu-tar downloaded file <span class="mono">gtar xf &lt;archive&gt;</span></li>
+		<li>move unzipped file to destination (/Applications or /Libraries)</li>
+		<li>Start TeamCity<ul>
+			<li>open web page localhost:8111 (nothing there yet for new installation)</li>
+			<li>from TeamCity directory: <span class="mono">bin/runAll.sh start</span><ul>
+				<li class="blurb">should show short log in Terminal, maybe beginning of TeamCity window at localhost:8111</li>
+			</ul></li>
+		</ul></li>
+		<li>Autostart TeamCity<ul>
+			<li>copy jetbrains.teamcity.server.plist to /Library/LaunchDaemons<ul>
+				<li>see <a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
+				<li>restart computer</li>
+				<li class="blurb">localhost:8111 should show TeamCity window</li>
+			</ul></li>
+		</ul></li>
+		<li class="blurb">may take awhile for all the pieces to come together at this point;<br \>
+			first time, no build agents appeared in evening, but were available next morning</li>
+	</ul>
+	<p><strong>Moving Projects to Another Server</strong></p><ul>
+		<li>make standard TeamCity backups of existing projects</li>
+		<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
+	</ul>
+	<p><b>Customization &amp; Automation</b> </p>
+	</div>
 
 <!-- @marker "Terminal" -->
 <h4><a name="_Terminal">Terminal</a></h4><div class='indent'>
