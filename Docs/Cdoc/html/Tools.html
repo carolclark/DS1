@@ -36,13 +36,14 @@
 	<!-- @topicItem "iPhoto" "#_iPhoto" "0" "" -->
 	<!-- @topicItem "iTunes" "#_iTunes" "0" "" -->
 	<!-- @topicItem "iWork" "#_iWork" "0" "" -->
+	<!-- @topicItem "Java" "#_Java" "0" "" -->
 	<!-- @topicItem "Mail" "#_Mail" "0" "" -->
 	<!-- @topicItem "MacPorts" "#_MacPorts" "0" "" -->
 	<!-- @topicItem "Markdown" "#Markdown" "0" "" -->
 	<!-- @topicItem "Marked" "#_Marked" "0" "" -->
 	<!-- @topicItem "PaintCode" "#_PaintCode" "0" "" -->
-	<!-- @topicItem "Pandoc" "#_Pandoc" "0" "" -->
 <!-- @topicGroup "" "30" -->
+	<!-- @topicItem "Pandoc" "#_Pandoc" "0" "" -->
 	<!-- @topicItem "Python" "#_Python" "0" "" -->
 	<!-- @topicItem "Reminders" "#_Reminders" "0" "" -->
 	<!-- @topicItem "Safari" "#_Safari" "0" "" -->
@@ -51,8 +52,8 @@
 	<!-- @topicItem "StuffIt Expander" "#_StuffItExpander" "0" "" -->
 	<!-- @topicItem "System Preferences" "#SystemPreferences" "0" "" -->
 	<!-- @topicItem "TeamCity" "#_TeamCity" "0" "" -->
-	<!-- @topicItem "Terminal" "#_Terminal" "0" "" -->
 <!-- @topicGroup "" "40" -->
+	<!-- @topicItem "Terminal" "#_Terminal" "0" "" -->
 	<!-- @topicItem "Transmit" "#_Transmit" "0" "" -->
 	<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
 	<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
@@ -351,6 +352,15 @@
 	<p><b>Customization &amp; Automation</b> </p>
 </div>
 
+<!-- @marker "Java" -->
+<h4 id='_Java'>Java</h4><div class='indent'>
+	<p class='blurb'>Java JDK</p>
+	<p><b>Java Virtual Machine</b> at /usr/bin/java; v. 1.8.0_74</p>
+	<p><b>Critical Data</b> </p>
+	<p><b>Installation and Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+</div>
+
 <!-- marker "Mail" -->
 <h4><a name="_Mail">Mail</a></h4><div class='indent'>
 	<p><b>Application</b> Apple app at /Applications</p>
@@ -572,11 +582,11 @@
 <!-- @marker "TeamCity" -->
 <h4 id='_TeamCity'>TeamCity</h4><div class='indent'>
 	<p class='blurb'>Continuous Integration system</p>
-	<p><b>Server and Web Application</b> at /Applications/TeamCity (use /Library/TeamCity next time);<br >
+	<p><b>Server and Web Application</b> at /Applications/TeamCity (use /Library/TeamCity next time);<br />
 		Professional Version v9.1.6; *.tar.gz archive downloaded from <a href="https://www.jetbrains.com/teamcity/download/">JetBrains TeamCity Download</a> </p>
 	<p><b>Critical Data</b> configurable \todo</p>
 	<p><b>Installation and Configuration</b> </p><ul>
-		<li><strong>Requires:</strong> <a href="_Java">Java</a>, <a href="_gnuzip">gnu-zip</a> </li>
+		<li><strong>Requires:</strong> <a href="#_Java">Java</a>, <a href="#_gnutar">gnu-tar</a> </li>
 		<li>cd to directory containing TeamCity archive</li>
 		<li>unzip using gnu-tar downloaded file <span class="mono">gtar xf &lt;archive&gt;</span></li>
 		<li>move unzipped file to destination (/Applications or /Libraries)</li>
@@ -593,7 +603,7 @@
 				<li class="blurb">localhost:8111 should show TeamCity window</li>
 			</ul></li>
 		</ul></li>
-		<li class="blurb">may take awhile for all the pieces to come together at this point;<br \>
+		<li class="blurb">may take awhile for all the pieces to come together at this point;<br />
 			first time, no build agents appeared in evening, but were available next morning</li>
 	</ul>
 	<p><strong>Moving Projects to Another Server</strong></p><ul>
