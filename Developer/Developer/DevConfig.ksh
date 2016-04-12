@@ -115,7 +115,7 @@ function gitPrintConfig {
 
 	git config --global merge.tool opendiff
 
-	git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=short"
+	git config --global alias.lg "log --graph --pretty=format:'%C(red)%h%Creset %C(green)%cd%Creset %s %C(blue)%d%Creset %C(yellow)<%an>%Creset' --abbrev-commit --date=short"
 	git config --global alias.fetchup '!git remote update -p; git merge --ff-only @{u}'
 }
 
