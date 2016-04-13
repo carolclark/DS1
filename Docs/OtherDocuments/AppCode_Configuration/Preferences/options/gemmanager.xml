@@ -34,6 +34,24 @@
           <additional_info authors="Eloy Duran, Fabio Pelosin, Kyle Fuller, Samuel Giddins" email="eloy.de.enige@gmail.com, fabiopelosin@gmail.com, kyle@fuller.li, segiddins@segiddins.me" homepage="https://github.com/CocoaPods/CocoaPods">
             <summary>The Cocoa library package manager.</summary>
           </additional_info>
+          <dependency name="cocoapods-core" git="false" path="false" doRequire="true">
+            <bound version="0.39.0" bound="EQUAL" />
+          </dependency>
+          <dependency name="colored" git="false" path="false" doRequire="true">
+            <bound version="1.2" bound="LATEST_IN_BRANCH" />
+          </dependency>
+          <dependency name="cocoapods-downloader" git="false" path="false" doRequire="true">
+            <bound version="0.9.3" bound="LATEST_IN_BRANCH" />
+          </dependency>
+          <dependency name="cocoapods-search" git="false" path="false" doRequire="true">
+            <bound version="0.1.0" bound="LATEST_IN_BRANCH" />
+          </dependency>
+          <dependency name="xcodeproj" git="false" path="false" doRequire="true">
+            <bound version="0.28.2" bound="LATEST_IN_BRANCH" />
+          </dependency>
+          <dependency name="claide" git="false" path="false" doRequire="true">
+            <bound version="0.9.1" bound="LATEST_IN_BRANCH" />
+          </dependency>
           <dependency name="cocoapods-stats" git="false" path="false" doRequire="true">
             <bound version="0.6.2" bound="LATEST_IN_BRANCH" />
           </dependency>
@@ -43,38 +61,20 @@
           <dependency name="cocoapods-trunk" git="false" path="false" doRequire="true">
             <bound version="0.6.4" bound="LATEST_IN_BRANCH" />
           </dependency>
-          <dependency name="claide" git="false" path="false" doRequire="true">
-            <bound version="0.9.1" bound="LATEST_IN_BRANCH" />
-          </dependency>
-          <dependency name="escape" git="false" path="false" doRequire="true">
-            <bound version="0.0.4" bound="LATEST_IN_BRANCH" />
-          </dependency>
-          <dependency name="xcodeproj" git="false" path="false" doRequire="true">
-            <bound version="0.28.2" bound="LATEST_IN_BRANCH" />
-          </dependency>
-          <dependency name="cocoapods-downloader" git="false" path="false" doRequire="true">
-            <bound version="0.9.3" bound="LATEST_IN_BRANCH" />
-          </dependency>
-          <dependency name="cocoapods-core" git="false" path="false" doRequire="true">
-            <bound version="0.39.0" bound="EQUAL" />
-          </dependency>
-          <dependency name="colored" git="false" path="false" doRequire="true">
-            <bound version="1.2" bound="LATEST_IN_BRANCH" />
+          <dependency name="nap" git="false" path="false" doRequire="true">
+            <bound version="1.0" bound="LATEST_IN_BRANCH" />
           </dependency>
           <dependency name="molinillo" git="false" path="false" doRequire="true">
             <bound version="0.4.0" bound="LATEST_IN_BRANCH" />
           </dependency>
-          <dependency name="cocoapods-search" git="false" path="false" doRequire="true">
-            <bound version="0.1.0" bound="LATEST_IN_BRANCH" />
+          <dependency name="cocoapods-try" git="false" path="false" doRequire="true">
+            <bound version="0.5.1" bound="LATEST_IN_BRANCH" />
+          </dependency>
+          <dependency name="escape" git="false" path="false" doRequire="true">
+            <bound version="0.0.4" bound="LATEST_IN_BRANCH" />
           </dependency>
           <dependency name="activesupport" git="false" path="false" doRequire="true">
             <bound version="4.0.2" bound="GREATER_OR_EQUAL" />
-          </dependency>
-          <dependency name="nap" git="false" path="false" doRequire="true">
-            <bound version="1.0" bound="LATEST_IN_BRANCH" />
-          </dependency>
-          <dependency name="cocoapods-try" git="false" path="false" doRequire="true">
-            <bound version="0.5.1" bound="LATEST_IN_BRANCH" />
           </dependency>
         </gem>
         <gem url="file:///Library/Ruby/Gems/2.0.0/gems/nap-1.0.0" name="nap" version="1.0.0" timestamp="1448400054000" parser_version="15" git="false">
@@ -104,11 +104,11 @@
           <dependency name="fuzzy_match" git="false" path="false" doRequire="true">
             <bound version="2.0.4" bound="LATEST_IN_BRANCH" />
           </dependency>
-          <dependency name="activesupport" git="false" path="false" doRequire="true">
-            <bound version="4.0.2" bound="GREATER_OR_EQUAL" />
-          </dependency>
           <dependency name="nap" git="false" path="false" doRequire="true">
             <bound version="1.0" bound="LATEST_IN_BRANCH" />
+          </dependency>
+          <dependency name="activesupport" git="false" path="false" doRequire="true">
+            <bound version="4.0.2" bound="GREATER_OR_EQUAL" />
           </dependency>
         </gem>
         <gem url="file:///Library/Ruby/Gems/2.0.0/gems/minitest-5.8.3" name="minitest" version="5.8.3" timestamp="1448400053000" parser_version="15" git="false">
@@ -138,22 +138,22 @@
           <additional_info authors="David Heinemeier Hansson" email="david@loudthinking.com" homepage="http://www.rubyonrails.org">
             <summary>A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.</summary>
           </additional_info>
-          <dependency name="json" git="false" path="false" doRequire="true">
-            <bound version="1.7" bound="LATEST_IN_BRANCH" />
-            <bound version="1.7.7" bound="GREATER_OR_EQUAL" />
-          </dependency>
-          <dependency name="i18n" git="false" path="false" doRequire="true">
-            <bound version="0.7" bound="LATEST_IN_BRANCH" />
-          </dependency>
           <dependency name="thread_safe" git="false" path="false" doRequire="true">
             <bound version="0.3" bound="LATEST_IN_BRANCH" />
             <bound version="0.3.4" bound="GREATER_OR_EQUAL" />
           </dependency>
-          <dependency name="tzinfo" git="false" path="false" doRequire="true">
-            <bound version="1.1" bound="LATEST_IN_BRANCH" />
+          <dependency name="i18n" git="false" path="false" doRequire="true">
+            <bound version="0.7" bound="LATEST_IN_BRANCH" />
           </dependency>
           <dependency name="minitest" git="false" path="false" doRequire="true">
             <bound version="5.1" bound="LATEST_IN_BRANCH" />
+          </dependency>
+          <dependency name="json" git="false" path="false" doRequire="true">
+            <bound version="1.7" bound="LATEST_IN_BRANCH" />
+            <bound version="1.7.7" bound="GREATER_OR_EQUAL" />
+          </dependency>
+          <dependency name="tzinfo" git="false" path="false" doRequire="true">
+            <bound version="1.1" bound="LATEST_IN_BRANCH" />
           </dependency>
         </gem>
         <gem url="file:///usr/lib/ruby/2.0.0" name="psych" version="2.0.0" timestamp="0" parser_version="15" git="false">
@@ -210,14 +210,14 @@
           <additional_info authors="Eloy Duran" email="eloy.de.enige@gmail.com" homepage="https://github.com/cocoapods/xcodeproj">
             <summary>Create and modify Xcode projects from Ruby.</summary>
           </additional_info>
+          <dependency name="activesupport" git="false" path="false" doRequire="true">
+            <bound version="3" bound="GREATER_OR_EQUAL" />
+          </dependency>
           <dependency name="colored" git="false" path="false" doRequire="true">
             <bound version="1.2" bound="LATEST_IN_BRANCH" />
           </dependency>
           <dependency name="claide" git="false" path="false" doRequire="true">
             <bound version="0.9.1" bound="LATEST_IN_BRANCH" />
-          </dependency>
-          <dependency name="activesupport" git="false" path="false" doRequire="true">
-            <bound version="3" bound="GREATER_OR_EQUAL" />
           </dependency>
         </gem>
         <gem url="file:///Library/Ruby/Gems/2.0.0/gems/tzinfo-1.2.2" name="tzinfo" version="1.2.2" timestamp="1448400053000" parser_version="15" git="false">

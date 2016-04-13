@@ -1,5 +1,5 @@
 <application>
-  <component name="UsagesStatistic" time="1458421024857" allowed="true" show-notification="false" period="weekly">
+  <component name="UsagesStatistic" time="1460496217438" allowed="true" show-notification="false" period="weekly">
     <group id="Build Settings" priority="0.0" data="CLANG_CXX_LANGUAGE_STANDARD gnu++0x=1,GCC_VERSION=2,CLANG_ENABLE_OBJC_ARC YES=1,GCC_C_LANGUAGE_STANDARD gnu99=1,CLANG_CXX_LIBRARY libc++=1" />
     <group id="Debugger" priority="0.0" data="LLDB=1" />
     <group id="JavaScript versions" priority="0.0" data="DEFAULT=2" />

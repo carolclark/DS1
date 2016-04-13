@@ -1,36 +1,36 @@
 <application>
   <component name="FindRecents">
     <findStrings>
-      <find>runShunitTests</find>
-      <find>DEV</find>
-      <find>callbackScript</find>
-      <find>indent</find>
-      <find>pando</find>
-      <find>pandoc</find>
-      <find>envProfile</find>
-      <find>envKsh</find>
-      <find>Go</find>
-      <find>Daddy</find>
-      <find>Website</find>
-      <find>&lt;b&gt;[.]*</find>
-      <find>&lt;b&gt;([^&lt;]*)&lt;/b</find>
-      <find>&lt;b&gt;Tests:&lt;/b&gt;</find>
-      <find>&lt;b&gt;[^&lt;]*&lt;/b&gt;</find>
-      <find>&lt;b&gt;([^&lt;]*)&lt;/b&gt;</find>
-      <find>candcsoft</find>
-      <find>&lt;b&gt;</find>
-      <find>&lt;b&gt;([^&lt;]+)&lt;/b&gt;</find>
-      <find>_Mail</find>
-      <find>_MacPorts</find>
-      <find>&lt;#[^#]*#&gt;</find>
-      <find>Tar_</find>
-      <find>_UISpec4j</find>
-      <find>_Terminal</find>
       <find>_Tar</find>
       <find>findplace</find>
       <find>findplace</find>
       <find>find</find>
       <find>LF</find>
+      <find>artzor</find>
+      <find>_ASUnit</find>
+      <find>_Archive</find>
+      <find>tar</find>
+      <find>tar_</find>
+      <find>Tar_</find>
+      <find>_Terminal</find>
+      <find>&lt;#([^#]*)#&gt;</find>
+      <find>_TeamCity</find>
+      <find>compare</find>
+      <find>gnuz</find>
+      <find>_Mail</find>
+      <find>mail</find>
+      <find>_Java</find>
+      <find>git</find>
+      <find>_gnutar</find>
+      <find>_Git</find>
+      <find>G</find>
+      <find>&lt;#[^#]*#&gt;</find>
+      <find>finder</find>
+      <find>configureTerminal</find>
+      <find>envKsh</find>
+      <find>green</find>
+      <find>alias</find>
+      <find>update</find>
     </findStrings>
     <replaceStrings>
       <replace>combinedIssuesFile</replace>
@@ -55,6 +55,7 @@
       <replace>&lt;strong&gt;/1&lt;/strong&gt;</replace>
       <replace>&lt;strong&gt;$1&lt;strong&gt;</replace>
       <replace>&lt;strong&gt;$1&lt;/strong&gt;</replace>
+      <replace>_gnutar</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$USER_HOME$/Dev/Support/Docs</dir>

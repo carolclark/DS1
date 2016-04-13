@@ -90,6 +90,9 @@
       <username />
     </GitHub>
   </component>
+  <component name="TeamCityHistory">
+    <option name="HISTORY" value="http://localhost:8111&amp;^%$#@carolclark@#$%^&amp;http://localhost:8111/.BuildServer&amp;^%$#@carolclark@#$%^&amp;http:///Users/carolclark/.buildserver&amp;^%$#@carolclark@#$%^&amp;http://localhost:8111/buildserver&amp;^%$#@carolclark@#$%^&amp;http://buildserver&amp;^%$#@carolclark@#$%^&amp;http:///Users/carolclark/.BuildServer&amp;^%$#@carolclark@#$%^&amp;http://localhost.8111/.BuildServer&amp;^%$#@carolclark@#$%^&amp;http:///Applications/TeamCity/buildserver&amp;^%$#@carolclark@#$%^&amp;http:///users/carolclark/.buildserver&amp;^%$#@carolclark@#$%^&amp;http://localhost:8111//buildserver&amp;^%$#@carolclark" />
+  </component>
   <component name="XcodeSettings">
     <option name="selectedXcode" value="/Applications/Xcode.app/Contents/Developer" />
     <option name="detectedXcodes">

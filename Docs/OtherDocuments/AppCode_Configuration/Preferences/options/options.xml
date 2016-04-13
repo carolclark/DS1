@@ -27,15 +27,15 @@
     <property name="OCUnitSupport.sortTestsByDuration" value="false" />
     <property name="OCUnitSupport.hideIgnoredTests" value="false" />
     <property name="FileTemplates.SelectedTemplate" value="Swift Overridden Subscript Body" />
-    <property name="file.chooser.recent.files" value="$USER_HOME$/Dev/Support/Developer/shunit2/shunit2_install.ksh&#10;/Users/carolclark/Dev/Support/Developer/Python/Python_install.ksh&#10;/Users/carolclark/Dev/Support/Docs/Doxygen/Doxygen_install.ksh&#10;/Users/carolclark/Dev/Support/Docs/Doxygen/DoxyDemo_install.ksh&#10;/Users/carolclark/Dev/Support/Developer/Developer/Developer_install.ksh&#10;/Users/carolclark/Dev/Support/BuildSupport/Applications/Xcode/Xcode_install.ksh&#10;/Users/carolclark/Dev/Support/BuildSupport/Applications/BBEdit/BBEdit_install.ksh&#10;/Users/carolclark/Dev/Support/Docs/Cdoc/Cdoc_install.ksh&#10;/Applications/Xcode.app/Contents/Applications/FileMerge.app/Contents/MacOS/FileMerge&#10;/Users/carolclark/Dev/Support/Docs/Cdoc&#10;/Users/carolclark/Dev/Support/Developer/Python/Scripts&#10;/Users/carolclark/Dev/Support/Developer/Python/Python_UTests&#10;/Users/carolclark/Dev/Support/Developer/Python/Cmdline_Tests&#10;/Users/carolclark/Dev/Support/Developer/Developer&#10;/Users/carolclark/Dev/Support/Developer/CCDev&#10;/Users/carolclark/Dev/Support/Developer&#10;/Users/carolclark/Dev/Support/BuildSupport&#10;/Users/carolclark/Dev/Support/Docs/GoDaddyStarterFiles/layout-styles.css&#10;/Users/carolclark/Dev/Support&#10;/Users/carolclark/Dev/Support/Docs/Cdoc/html/Git.html&#10;/Users/carolclark/Dev/Support/Developer/Developer/AppCode/liveTemplates&#10;/Users/carolclark/Dev&#10;/usr/bin/xcodebuild&#10;/Users/carolclark/Dev/Support/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate&#10;/Users/carolclark/Dev/Support/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/DoxygenConfig.xctemplate/___FILEBASENAME___.txt&#10;/usr/local/bin/python3.4&#10;/Users/carolclark/Dev/Support_good&#10;/Users/carolclark/Dev/Support/Docs/OtherDocuments/avatar.png&#10;/Users/carolclark/Dev/Accessor&#10;/Users/carolclark/Dev/Support/Support.xcworkspace" />
-    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.6905041" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/Dev/Support&#10;/Users/carolclark/Dev/Support/Developer/shunit2/shunit2_install.ksh&#10;/Users/carolclark/Dev/Support/Developer/Python/Python_install.ksh&#10;/Users/carolclark/Dev/Support/Docs/Doxygen/Doxygen_install.ksh&#10;/Users/carolclark/Dev/Support/Docs/Doxygen/DoxyDemo_install.ksh&#10;/Users/carolclark/Dev/Support/Developer/Developer/Developer_install.ksh&#10;/Users/carolclark/Dev/Support/BuildSupport/Applications/Xcode/Xcode_install.ksh&#10;/Users/carolclark/Dev/Support/BuildSupport/Applications/BBEdit/BBEdit_install.ksh&#10;/Users/carolclark/Dev/Support/Docs/Cdoc/Cdoc_install.ksh&#10;/Applications/Xcode.app/Contents/Applications/FileMerge.app/Contents/MacOS/FileMerge&#10;/Users/carolclark/Dev/Support/Docs/Cdoc&#10;/Users/carolclark/Dev/Support/Developer/Python/Scripts&#10;/Users/carolclark/Dev/Support/Developer/Python/Python_UTests&#10;/Users/carolclark/Dev/Support/Developer/Python/Cmdline_Tests&#10;/Users/carolclark/Dev/Support/Developer/Developer&#10;/Users/carolclark/Dev/Support/Developer/CCDev&#10;/Users/carolclark/Dev/Support/Developer&#10;/Users/carolclark/Dev/Support/BuildSupport&#10;/Users/carolclark/Dev/Support/Docs/GoDaddyStarterFiles/layout-styles.css&#10;/Users/carolclark/Dev/Support/Docs/Cdoc/html/Git.html&#10;/Users/carolclark/Dev/Support/Developer/Developer/AppCode/liveTemplates&#10;/Users/carolclark/Dev&#10;/usr/bin/xcodebuild&#10;/Users/carolclark/Dev/Support/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate&#10;/Users/carolclark/Dev/Support/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/DoxygenConfig.xctemplate/___FILEBASENAME___.txt&#10;/usr/local/bin/python3.4&#10;/Users/carolclark/Dev/Support_good&#10;/Users/carolclark/Dev/Support/Docs/OtherDocuments/avatar.png&#10;/Users/carolclark/Dev/Accessor&#10;/Users/carolclark/Dev/Support/Support.xcworkspace" />
+    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.62837046" />
     <property name="CommitChangeListDialog.DETAILS_SHOW_OPTION_" value="true" />
     <property name="NewXcodeProject.Left" value="OS X.Other" />
     <property name="NewXcodeProject.Right" value="Empty" />
     <property name="NewXcodeFile.Left" value="OS X._ObjectiveC" />
     <property name="NewXcodeFile.Right" value="UnitTest" />
     <property name="FileChooser.ShowPath" value="true" />
-    <property name="KEYMAP" value="switch&#10;push&#10;clean&#10;Event&#10;apply" />
+    <property name="KEYMAP" value="apply&#10;page&#10;up&#10;switch&#10;push" />
     <property name="com.intellij.history.integration.ui.views.FileHistoryDialog.0" value="300" />
     <property name="Vcs.Log.Text.Filter.History" value="revert" />
     <property name="MemberChooser.showClasses" value="true" />
@@ -47,7 +47,7 @@
     <property name="file.colors.enable.non.project" value="" />
     <property name="html5.sections.node.provider.file.structure.state" value="true" />
     <property name="nodejs_interpreter_path" value="" />
-    <property name="PLUGIN_FILTER" value="AppleScript&#10;terminal&#10;copy&#10;2" />
+    <property name="PLUGIN_FILTER" value="team&#10;teamcity&#10;tea&#10;AppleScript&#10;terminal" />
     <property name="CommittedChanges.SplitterProportions.0" value="700" />
     <property name="CommittedChanges.SplitterProportions.1" value="500" />
     <property name="KEYMAP_IN_QUICK_LISTS" value="" />
@@ -79,5 +79,10 @@
     <property name="AFTER.DISTRACTION.MODE.EDITOR_TAB_PLACEMENT" value="0" />
     <property name="settings.code.style.selected.tab.HTML" value="Other" />
     <property name="FileTemplates.CurrentTab" value="Code" />
+    <property name="dir.diff.space.button.info" value="1" />
+    <property name="dir.diff.editor.options.ImageEditor.gridVisible" value="false" />
+    <property name="dir.diff.editor.options.ImageEditor.backgroundVisible" value="true" />
+    <property name="dir.diff.editor.options.ImageEditor.zoomFactor" value="0.0" />
+    <property name="INTENTION_FILTER_HISTORY" value="nam" />
   </component>
 </application>

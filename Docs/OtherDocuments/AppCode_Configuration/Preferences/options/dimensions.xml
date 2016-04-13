@@ -13,7 +13,7 @@
     <location key="refactoring.ChangeSignatureDialog.0.0.1920.1080" x="699" y="163" />
     <location key="#com.intellij.ide.util.TreeClassChooserDialog.0.0.1920.1080" x="675" y="319" />
     <location key="#Inspections.0.0.1920.1080" x="550" y="209" />
-    <location key="SettingsEditor.0.0.1920.1080" x="286" y="153" />
+    <location key="SettingsEditor.0.0.1920.1080" x="249" y="241" />
     <location key="vcs.readOnlyHandler.ReadOnlyStatusDialog.0.0.1920.1080" x="458" y="378" />
     <location key="#xdebugger.XInspectDialog.0.0.1920.1080" x="851" y="298" />
     <location key="git4idea.ui.branch.GitCompareBranchesDialog.0.0.1920.1080" x="337" y="151" />
@@ -69,10 +69,11 @@
     <location key="#Browse_JetBrains_Plugins_.0.0.1920.1080" x="491" y="151" />
     <location key="IgnoredSettingsDialog.0.0.1920.1080" x="713" y="336" />
     <location key="#DeveloperTests.0.0.1920.1080" x="554" y="167" />
-    <size key="GridCell.Tab.0.left.0.0.1920.1080" width="643" height="233" />
-    <size key="GridCell.Tab.0.center.0.0.1920.1080" width="643" height="233" />
-    <size key="GridCell.Tab.0.right.0.0.1920.1080" width="643" height="233" />
-    <size key="GridCell.Tab.0.bottom.0.0.1920.1080" width="643" height="233" />
+    <location key="Github.CreatePullRequestDialog.0.0.1920.1080" x="605" y="393" />
+    <size key="GridCell.Tab.0.left.0.0.1920.1080" width="595" height="245" />
+    <size key="GridCell.Tab.0.center.0.0.1920.1080" width="595" height="245" />
+    <size key="GridCell.Tab.0.right.0.0.1920.1080" width="595" height="245" />
+    <size key="GridCell.Tab.0.bottom.0.0.1920.1080" width="595" height="245" />
     <size key="GridCell.Tab.1.left.0.0.1920.1080" width="1417" height="308" />
     <size key="GridCell.Tab.1.center.0.0.1920.1080" width="1417" height="308" />
     <size key="GridCell.Tab.1.right.0.0.1920.1080" width="1417" height="308" />
@@ -93,7 +94,7 @@
     <size key="bookmarks.0.0.1920.1080" width="730" height="350" />
     <size key="CommitChangelistDialog2.0.0.1920.1080" width="1406" height="958" />
     <size key="NewXcodeProjectWizard.0.0.1920.1080" width="607" height="400" />
-    <size key="SettingsEditor.0.0.1920.1080" width="1236" height="673" />
+    <size key="SettingsEditor.0.0.1920.1080" width="1250" height="673" />
     <size key="DiffContextDialog.0.0.1920.1080" width="1663" height="864" />
     <size key="VCS.EditChangelistDialog.0.0.1920.1080" width="395" height="249" />
     <size key="Vcs.Log.Branch.Panel.RefGroup.Popup.0.0.1920.1080" width="235" height="186" />

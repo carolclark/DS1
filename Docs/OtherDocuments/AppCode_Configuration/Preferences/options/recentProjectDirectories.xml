@@ -2,13 +2,18 @@
   <component name="RecentDirectoryProjectsManager">
     <option name="recentPaths">
       <list>
-        <option value="$USER_HOME$/Dev/Accessor" />
         <option value="$USER_HOME$/Dev/Support" />
+        <option value="$USER_HOME$/Dev/Accessor" />
         <option value="$USER_HOME$/Dev/Support/Support" />
         <option value="$USER_HOME$/Dev/Support_good" />
       </list>
     </option>
-    <option name="lastPath" value="$USER_HOME$/Dev/Accessor" />
+    <option name="openPaths">
+      <list>
+        <option value="$USER_HOME$/Dev/Support" />
+      </list>
+    </option>
+    <option name="lastPath" value="$USER_HOME$/Dev/Support" />
     <option name="additionalInfo">
       <map>
         <entry key="$USER_HOME$/Applications/Accessor.app">
@@ -50,7 +55,7 @@
               <option name="build" value="OC-143.382" />
               <option name="productionCode" value="OC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1458841792951" />
+              <option name="projectOpenTimestamp" value="1460065732921" />
               <option name="buildTimestamp" value="1447135200000" />
             </RecentProjectMetaInfo>
           </value>
@@ -94,7 +99,7 @@
               <option name="build" value="OC-143.382" />
               <option name="productionCode" value="OC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1458767093951" />
+              <option name="projectOpenTimestamp" value="1460495619432" />
               <option name="buildTimestamp" value="1447135200000" />
             </RecentProjectMetaInfo>
           </value>
