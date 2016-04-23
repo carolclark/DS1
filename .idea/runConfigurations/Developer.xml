@@ -7,9 +7,6 @@
     <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
       <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
     </EXTENSION>
-    <method>
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="DeveloperScripts" run_configuration_type="AppleRunConfiguration" />
-      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-    </method>
+    <method />
   </configuration>
 </component>

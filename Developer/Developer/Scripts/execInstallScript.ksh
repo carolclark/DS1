@@ -82,10 +82,14 @@ if [[ -n "${command}" ]] ; then
 fi
 if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
 	msg=$(ccInstall "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
-	es=$?
+	st=$?
+	if [[ "${st}" != 0 ]] ; then
+		errorMessage "${st}" "$0#$LINENO:" "ccInstall ${0} ${sourceRoot} ${targetFolder}"
+		exit ${st}
+	fi
 	print "${msg}"
 	return "${es}"
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return $RC_MissingArgument
+	exit $RC_MissingArgument
 fi

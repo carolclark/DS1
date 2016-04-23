@@ -395,6 +395,11 @@ function findSources {
 	origdir=$(pwd)
 	iofile=$(mktemp -t ccInstall_sources.$$)
 	cd "${sourceRoot}/${targetFolder}"
+	st=$?
+	if [[ ${st} != 0 ]] ; then
+		errorMessage ${st} "$0#$LINENO:" "ccInstall --findSources could not set directory to ${sourceRoot}/${targetFolder}"
+		return ${st}
+	fi
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
 	st=$?
 	if [[ ${st} > 0 ]] ; then
@@ -598,7 +603,7 @@ return 0
 				st=$?
 				if [[ ${st} > 0 ]] ; then
 					failcnt="${failcnt}"+1
-					msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${msg}")
+					msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${action} ${sourceForCopy} : ${msg}")
 				fi
 				print "${msg}"
 #				case "${action}" in
