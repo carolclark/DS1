@@ -33,7 +33,7 @@ technicalDocs="${CCDev}/Sites/TechnicalDocs"
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
-		subtarget="${1}"
+		subtarget="${1}X"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
 		return $RC_MissingArgument
