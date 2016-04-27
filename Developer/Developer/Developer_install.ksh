@@ -35,16 +35,21 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 			return
 		fi
 	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action
-		errorMessage $RC_InvalidArgument "$0#$LINENO:" "Testing supported by target DeveloperTests."
-		return $RC_InvalidArgument
+		st=$?
+		if [[ $st == $RC_InvalidArgument ]] ; then
+			print  "$0#$LINENO: Testing supported by target DeveloperTests. RC_InvalidArgument"
+		else
+			print "$0#$LINENO:" "Setup and Configuration failed: error code #${st}"
+		fi
+		exit ${st}
 	else												# not clean or test
 		# installing
 		print -n "== Setup and Configure: "
 		. Developer/DevConfig.ksh
 		st=$?
 		if [[ ${st} > 0 ]] ; then
-			errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
-			return ${st}
+			print "$0#$LINENO:" "Setup and Configuration failed: error code #${st}"
+			exit ${st}
 		fi
 		print "Setup and Configuration successful"
 	fi
