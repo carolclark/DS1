@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
-#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2011-16 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 #pragma mark === Markers ===
@@ -215,6 +215,7 @@ function runShunitTests {
 	errout="${CCDev}/tmp/errout"
 	errinfo="${CCDev}/tmp/errinfo"
 	iofile=$(findTests "${testPath}")
+	typeset -i testfiles=0
 	typeset -i failcnt=0
 	typeset -i errcnt=0
 	echo "" > "$errinfo"
@@ -232,7 +233,9 @@ function runShunitTests {
 				cat $errout >> $errinfo
 			fi
 		fi
+		testfiles=$testfiles+1
 	done < "${iofile}"
+	echo "$testPath: $testfiles test files run"
 	if [[ $failcnt > 0 ]] ; then
 		echo "FAILURES ($failcnt test files encountered failing tests)"
 	fi
