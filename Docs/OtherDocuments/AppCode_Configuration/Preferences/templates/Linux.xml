@@ -1,0 +1,12 @@
+<templateSet group="Linux">
+  <template name="trace" value="export PS4='$0.$LINENO+ '; set -x" description="set trace" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="untrace" value="set +x" description="unset trace" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+</templateSet>

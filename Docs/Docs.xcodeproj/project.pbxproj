@@ -16,7 +16,6 @@
 		676695A819199997005D3CED /* AlertPresenterDD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertPresenterDD.m; sourceTree = "<group>"; };
 		676695A919199997005D3CED /* mainpage.dox */ = {isa = PBXFileReference; lastKnownFileType = text; path = mainpage.dox; sourceTree = "<group>"; };
 		676695B41919A748005D3CED /* Default.doxygen */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Default.doxygen; sourceTree = "<group>"; };
-		676695B81919A759005D3CED /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		676695B91919A759005D3CED /* history.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = history.css; sourceTree = "<group>"; };
 		676695BA1919A759005D3CED /* technical.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = technical.css; sourceTree = "<group>"; };
 		676695BC1919A759005D3CED /* space.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = space.tiff; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
 		67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
+		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -115,9 +115,9 @@
 		676695B71919A759005D3CED /* css */ = {
 			isa = PBXGroup;
 			children = (
-				676695B81919A759005D3CED /* default.css */,
 				676695B91919A759005D3CED /* history.css */,
 				676695BA1919A759005D3CED /* technical.css */,
+				965F87B6C9FF2B7D264C48A9 /* default.css */,
 			);
 			path = css;
 			sourceTree = "<group>";

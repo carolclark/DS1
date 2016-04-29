@@ -35,7 +35,7 @@ function getSubtargetDestination {
 		subtarget="${1}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
-		return
+		return $RC_MissingArgument
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
@@ -51,7 +51,7 @@ function getSubtargetDestination {
 			;;	# used by Xcode build system
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return
+			return $RC_InputNotHandled
 			;;
 	esac
 	print "${destinationFolder}"
@@ -66,7 +66,7 @@ function prepareFileOperation {
 		destinationFolder="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
-		return
+		return $RC_MissingArgument
 	fi
 
 	if [[ -n "${destinationFolder}" ]] ; then
@@ -97,7 +97,7 @@ function cleanTarget {
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-			return
+			return ${st}
 		fi
 	done
 	return 0

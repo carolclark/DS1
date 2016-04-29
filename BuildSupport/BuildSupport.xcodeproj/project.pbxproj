@@ -121,7 +121,7 @@
 		67DD771116A4AF9300BECCD5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		67DD771416A4AF9300BECCD5 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
 		67DD771516A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
-		67DD771716A4AF9300BECCD5 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
+		67DD771716A4AF9300BECCD5 /* ___FILEBASENAME___.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "___FILEBASENAME___.mm"; sourceTree = "<group>"; };
 		67DD771816A4AF9300BECCD5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		67DD771916A4AF9300BECCD5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		67DD771C16A4AF9300BECCD5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
@@ -573,7 +573,7 @@
 		67DD771616A4AF9300BECCD5 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
-				67DD771716A4AF9300BECCD5 /* ___FILEBASENAME___.m */,
+				67DD771716A4AF9300BECCD5 /* ___FILEBASENAME___.mm */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";

@@ -39,9 +39,10 @@ function shunitInstall {
 		exit 1
 	fi
 	mkdir -p ${dst}/bin
-	if [[ "${?}" != "0" ]] ; then
-		print "failure while installing shunit"
-		exit 1
+	st="${?}"
+	if [[ "$st" != "0" ]] ; then
+		print "failure while making CCev directory shunit"
+		exit $st
 	fi
 	for fl in $(ls "${src}/bin") ; do
 		print "${src}/bin/${fl} => ${dst}/bin"

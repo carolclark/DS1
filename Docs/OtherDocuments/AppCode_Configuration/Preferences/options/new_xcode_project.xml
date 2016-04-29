@@ -1,0 +1,10 @@
+<application>
+  <component name="XcodeNewProjectMetadata">
+    <lastUsedFolder path="$USER_HOME$/Dev/Support" />
+    <boolean key="storyboardBased" value="false" />
+    <string key="documentExtension" value="mydoc" />
+    <string key="bundleIdentifierPrefix" value="com.candcsoft" />
+    <string key="organizationName" value="C &amp; C Software, Inc." />
+    <string key="languageChoice" value="Objective-C" />
+  </component>
+</application>

@@ -35,15 +35,16 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 			return
 		fi
 	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action
-		break
-	else												# not a clean action
+		print "-t: tests have a separate target testDeveloper.ksh"
+		return $RC_InvalidArgument
+	else												# not clean or test
 		# installing
 		print -n "== Setup and Configure: "
 		. Developer/DevConfig.ksh
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "Setup and Configuration failed"
-			return
+			return ${st}
 		fi
 		print "Setup and Configuration successful"
 	fi
@@ -67,7 +68,7 @@ function getSubtargetDestination {
 		subtarget="${1}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
-		return
+		return $RC_MissingArgument
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
@@ -94,7 +95,7 @@ function getSubtargetDestination {
 			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return
+			return $RC_InputNotHandled
 			;;
 	esac
 	print "${destinationFolder}"
@@ -109,7 +110,7 @@ function prepareFileOperation {
 		destinationFolder="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
-		return
+		return $RC_MissingArgument
 	fi
 
 	if [[ -n "${destinationFolder}" ]] ; then
@@ -150,7 +151,7 @@ function cleanTarget {
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "failed to remove file ${scriptsFolder}/.kshrc: ${msg}"
-			return
+			return ${st}
 		fi
 	fi
 	for folder in "${applescriptsFolder}"; do
@@ -158,7 +159,7 @@ function cleanTarget {
 		st=${?}
 		if [[ ${st} > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-			return
+			return ${st}
 		fi
 	done
 
