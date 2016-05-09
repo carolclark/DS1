@@ -154,6 +154,7 @@ DEV=${HOME}/Dev
 CCDev=${HOME}/Library/CCDev
 configureTerminal="no"
 
+logger "$0#$LINENO: USER=${USER} #USER"
 case "${USER}" in
 	"carolclark" )
 		fullname="Carol Clark"
