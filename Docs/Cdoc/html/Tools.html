@@ -58,6 +58,7 @@
 	<!-- @topicItem "Terminal" "#_Terminal" "0" "" -->
 	<!-- @topicItem "Transmit" "#_Transmit" "0" "" -->
 	<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
+	<!-- @topicItem "Waffle" "#_Waffle" "0" "" -->
 	<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
 <!-- @topicSep -->
 <!-- @topicGroup "Inactive" "41" -->
@@ -676,6 +677,25 @@
 	<p><b>Installation</b> UI Browser at Applications; UI Element Scripts (PreFab) at /Library/Scripts</p>
 	<p><b>Critical Data</b> </p>
 	<p><b>Configuration</b> </p>
+	<p><b>Customization &amp; Automation</b> </p>
+</div>
+
+<!-- @marker "Waffle" -->
+<h4 id='_Waffle'>Waffle</h4><div class='indent'>
+	<p class='blurb'>Kanban-style board for GitHub issues</p>
+	<p><b>Web Application</b> at https://waffle.io</p>
+	<p><b>Critical Data</b> only board configuration belongs to waffle; uses GitHub issues</p>
+	<p><b>Installation and Configuration</b> </p><ul>
+		<li>Configure Waffle Columns: (text used as column description)<ul>
+			<li>Inbox: Any open issues automatically show up in this column.; Task: New Contributor PRs</li>
+			<li>Progress<ul>
+				<li>Pending: Prioritized list of items to work on next; Label: Waffle:ready</li>
+				<li>In Progress: Current work with active tracked branches; Label Waffle:in progress; Task: Work Started</li>
+				<li>Review: Review prior to merging to remote master; Label Waffle:needs review; Task: New Collaborator PRs</li>
+			</ul></li>
+			<li>Done: Issues closed in the last week are shown in this column.</li>
+		</ul></li>
+	</ul>
 	<p><b>Customization &amp; Automation</b> </p>
 </div>
 
