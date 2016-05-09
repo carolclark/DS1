@@ -32,7 +32,7 @@ if [[ $# > 0 ]] ; then
 	fi
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return $RC_MissingArgument
+	exit $RC_MissingArgument
 fi
 if [[ $# > 1 ]] ; then
 	sourceRoot="${1}"
@@ -45,7 +45,7 @@ if [[ $# > 1 ]] ; then
 	fi
 else
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
-	return $RC_MissingArgument
+	exit $RC_MissingArgument
 fi
 if [[ ${WRITE_INFO} = "yes" ]] ; then
 	print "sourceRoot: ${sourceRoot}"
@@ -60,36 +60,36 @@ if [[ -n "${command}" ]] ; then
 			msg=$(getSubtargetDestination "${1}")
 			es=$?
 			print "${msg}"
-			return "${es}"
+			exit "${es}"
 			;;
 		"--prepareFileOperation" )
 			msg=$(prepareFileOperation "${1}" "${2}" "${3}")
 			es=$?
 			print "${msg}"
-			return "${es}"
+			exit "${es}"
 			;;
 		"--cleanTarget" )
 			msg=$(cleanTarget)
 			es=$?
 			print "${msg}"
-			return "${es}"
+			exit "${es}"
 			;;
 		* )
+			st=$?
 			errorMessage $RC_InvalidArgument "$0#$LINENO:" "invalid commandFlag ${command}"
-			exit $?
+			exit ${st}
 			;;
 	esac
 fi
-if [[ -n "${sourceRoot}" ]] && [[ -n "${targetFolder}" ]] ; then
-	msg=$(ccInstall "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
-	st=$?
-	if [[ "${st}" != 0 ]] ; then
-		errorMessage "${st}" "$0#$LINENO:" "ccInstall ${0} ${sourceRoot} ${targetFolder}"
-		exit ${st}
-	fi
-	print "${msg}"
-	return "${es}"
-else
+if [[ -z "${sourceRoot}" ]] || [[ -z "${targetFolder}" ]] ; then	# if either parameter is null
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
 	exit $RC_MissingArgument
 fi
+msg=$(ccInstall "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+es=$?
+if [[ ${es} -ne 0 ]] ; then
+	print "FAILED: $msg"
+	exit "${es}"
+fi
+print "Success"
+print "${msg}"
