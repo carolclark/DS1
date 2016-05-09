@@ -22,12 +22,6 @@ Developer_install.ksh -- provide functions for ccInstall to support Developer in
 CCDev="${HOME}/Library/CCDev"
 
 # setup and configure if necessary
-typeset -i buildIsClean					# > 0 if clean
-if [[ -e "${CCDev}/build_output/Support/Developer/Developer.lastbuilt" ]] ; then
-	buildIsClean=0
-else
-	buildIsClean=1
-fi
 if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 	if [[ $# > 2 ]] && [[ "${3}" = "clean" ]] ; then	# clean action
 		if [[ ! -e "${CCDev}/bin/ccInstall" ]] ; then
@@ -149,9 +143,6 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	if [[ ${buildIsClean} > 0 ]] ; then
-		return
-	fi
 	if [[ -e "${scriptsFolder}/.kshrc" ]] ; then
 		msg=$(rm "${scriptsFolder}/.kshrc")
 		st=${?}
