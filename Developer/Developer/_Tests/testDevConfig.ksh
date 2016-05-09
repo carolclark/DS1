@@ -4,11 +4,14 @@
 #  Support
 #
 #  Created by Carol Clark on 10/19/11.
-#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2011-16 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 CCDev="${HOME}/Library/CCDev"
 . ${CCDev}/bin/ccInstall
+if [[ $(print ":$PATH:" | grep ":/usr/local/bin:") = "" ]] ; then
+	PATH="$PATH:/usr/local/bin:$CCDev/bin:$CCDev/bin/python:"
+fi
 
 testEnvironment() {
 	assertEquals "$LINENO: incorrect '${CCDev}'" "${CCDev}" "${HOME}/Library/CCDev"
