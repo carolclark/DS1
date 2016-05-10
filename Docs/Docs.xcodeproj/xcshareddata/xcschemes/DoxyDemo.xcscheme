@@ -38,7 +38,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "DEV"
-            value = "${HOME}/Support"
+            value = "${HOME}/Dev"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
