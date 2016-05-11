@@ -14,31 +14,6 @@ USAGE='
 CCDev="/Users/carolclark/Library/CCDev"
 DEV="/Users/carolclark/Dev"
 
-#^	install
-function install {
-	src="${1}"
-	dst="${2}"
-	nm="${3:-}"
-	if [[ ! -n "${nm}" ]] ; then
-		nm="$(basename ${src})"
-	fi
-	print -n "${src}: "
-	mkdir -p "${dst}"
-	cp "${src}" "${dst}/${nm}"
-	if [[ "${?}" = "0" ]] ; then
-		print -n "=> ${dst}"
-		if [[ "${nm}" = "" ]] ; then
-			print
-		else
-			print "/${nm}"
-		fi
-		return 0
-	else
-		print "could not copy to ${dst}"
-		exit 1
-	fi
-}
-
 #^	envProfile
 function envProfile {
 	print "SHELL=/bin/ksh"
@@ -199,7 +174,7 @@ fi
 
 print
 # configure environment
-print "configuring environment"
+print "configuring environment; "
 envProfile > "${HOME}/.profile"
 chmod a+x "${HOME}/.profile"
 mkdir -p "${CCDev}/bin"
@@ -209,7 +184,7 @@ envLaunchctl > "${HOME}/.launchd.conf"
 chmod a+x "${HOME}/.launchd.conf"
 
 # configure git
-print "configuring git"
+print "configuring git; "
 config="/Users/${USER}/.gitconfig"
 exclude="${CCDev}/Git/exclude"
 attributes="${CCDev}/Git/attributes"
@@ -219,7 +194,7 @@ gitPrintExclude > "${exclude}"				# specify files for git to ignore
 gitPrintAttributes > "${attributes}"		# specify file attributes
 
 # configure Xcode
-print "writing Xcode defaults"
+print "writing Xcode defaults; "
 defaults write com.apple.Xcode PBXCustomTemplateMacroDefinitions '{ "ORGANIZATIONNAME" = "C & C Software, Inc.";}'
 if [[ "${?}" != "0" ]] ; then
 	print "failed to write Xcode ORGANIZATIONNAME"
@@ -233,28 +208,4 @@ if [[ "${USER}" = "carolclark" ]] ; then
 		print "failed to write XCCodeSenseAllowAutoCompletionInPlainFiles"
 		exit 1
 	fi
-fi
-
-# set up to install $CCDev files
-print "creating CCDev (${CCDev}) subdirectories"
-srcdir="$(dirname $0)"; export srcdir
-mkdir -p $CCDev/bin
-mkdir -p $CCDev/tmp
-
-print "installing files ..."
-# install bootstrap scripts
-install "${srcdir}/Scripts/resultCodes.ksh" "$CCDev/bin" "resultCodes"
-install "${srcdir}/Scripts/errcc.ksh" "$CCDev/bin" "errcc"
-install "${srcdir}/Scripts/ccInstall.ksh" "$CCDev/bin" "ccInstall"
-install "${srcdir}/Scripts/execInstallScript.ksh" "$CCDev/bin" "execInstallScript"
-
-# test
-print "== Developer/_Tests/testDevConfig.ksh"
-result=$(Developer/_Tests/testDevConfig.ksh)
-if [[ "${?}" > 0 ]] ; then
-	failcnt="${failcnt}"+1
-fi
-print "${result}"
-if [[ $failcnt > 0 ]] ; then
-	exit $failcnt
 fi
