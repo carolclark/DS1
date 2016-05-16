@@ -43,10 +43,14 @@ testInstallation() {
 #^ Developer_install.ksh
 testDeveloperInstall() {
 	DEV=$(ccInstall --DEV ${USER})
+	logger "$0#$LINENO: DEV=$DEV #forexit"
 	callbackScript="${DEV}/Support/Developer/Developer/Developer_install.ksh"
 	str=$(${callbackScript})
 	st=$?
-	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
+	logger "$0#$LINENO: results: ${str}; $st #forexit"
+	assertEquals "err" 65 ${st}
+	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument "${st}"
+	logger "$0#$LINENO: results: ${str}; $st #forexit"
 
 	str=$(${callbackScript} --getSubtargetDestination)
 	st=$?
