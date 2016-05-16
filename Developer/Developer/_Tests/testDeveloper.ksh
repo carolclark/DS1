@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/21/11.
-#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2011-16 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 CCDev="${HOME}/Library/CCDev"
@@ -43,10 +43,11 @@ testInstallation() {
 #^ Developer_install.ksh
 testDeveloperInstall() {
 	DEV=$(ccInstall --DEV ${USER})
+	logger "$0#$LINENO: DEV=$DEV #forexit"
 	callbackScript="${DEV}/Support/Developer/Developer/Developer_install.ksh"
 	str=$(${callbackScript})
 	st=$?
-	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
+	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument "${st}"
 
 	str=$(${callbackScript} --getSubtargetDestination)
 	st=$?

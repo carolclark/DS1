@@ -1,6 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="DeveloperScripts" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="BuildSupport" TARGET_NAME="DeveloperScripts" CONFIG_NAME="Debug" SCHEME_NAME="DeveloperScripts" MAKE_ACTIVE="FALSE" WAIT_FOR="FALSE">
-    <envs />
+    <envs>
+      <env name="DEV" value="${HOME}/Dev" />
+      <env name="CCDev" value="${HOME}/Library/CCDev" />
+    </envs>
     <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
       <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
     </EXTENSION>

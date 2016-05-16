@@ -18,5 +18,17 @@
    <LaunchAction
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DEV"
+            value = "${HOME}/Dev"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "CCDev"
+            value = "${HOME}/Library/CCDev"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
 </Scheme>
