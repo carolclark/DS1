@@ -47,7 +47,7 @@ testDeveloperInstall() {
 	callbackScript="${DEV}/Support/Developer/Developer/Developer_install.ksh"
 	str=$(${callbackScript})
 	st=$?
-	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument "${st}"
+	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
 
 	str=$(${callbackScript} --getSubtargetDestination)
 	st=$?
