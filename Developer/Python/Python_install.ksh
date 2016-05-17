@@ -48,6 +48,11 @@ pythonFolder="${CCDev}/bin/python"
 	elif [[ ${action} = "install" ]] ; then
 		print "== installing ${sourceRoot##*/}/${targetFolder}..."
 		iofile=$(ccInstall --findSources "${sourceRoot}" "${targetFolder}")
+		st=${?}
+		if [[ ${st} > 0 ]] ; then
+			errorMessage ${st} "$0#$LINENO:" "ccInstall findSources: ${msg}"
+			return ${st}
+		fi
 		typeset -i failcnt=0
 		previousSubtarget=""
 		while read fl ; do

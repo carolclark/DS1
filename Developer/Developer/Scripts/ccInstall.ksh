@@ -233,6 +233,9 @@ function runShunitTests {
 				cat $errout >> $errinfo
 			fi
 		fi
+		if [[ "${st}" > 0 ]] ; then
+			exit "${st}"
+		fi
 		testfiles=$testfiles+1
 	done < "${iofile}"
 	echo "$testPath: $testfiles test files run"
@@ -398,9 +401,10 @@ function findSources {
 	origdir=$(pwd)
 	iofile=$(mktemp -t ccInstall_sources.$$)
 	cd "${sourceRoot}/${targetFolder}"
-	st=$?
-	if [[ ${st} != 0 ]] ; then
-		errorMessage ${st} "$0#$LINENO:" "ccInstall --findSources could not set directory to ${sourceRoot}/${targetFolder}"
+	st=${?}
+	if [[ ${st} > 0 ]] ; then
+		cd "${origdir}"
+		errorMessage ${st} "$0#$LINENO:" "ccInstall --findSources: could not set directory to ${sourceRoot}/${targetFolder}; ${msg}"
 		return ${st}
 	fi
 	lastbuilt=$(ccInstall --getLastbuilt "${sourceRoot}" "${targetFolder}")
@@ -655,6 +659,10 @@ return 0
 # test
 	if [[ ${action} = "test" ]] ; then
 		runShunitTests "${sourceRoot}/${targetFolder}"
+		st=$?
+		if [[ ${st} > 0 ]] ; then
+			exit ${st}
+		fi
 	fi
 }
 
