@@ -43,7 +43,6 @@ testInstallation() {
 #^ Developer_install.ksh
 testDeveloperInstall() {
 	DEV=$(ccInstall --DEV ${USER})
-	logger "$0#$LINENO: DEV=$DEV #forexit"
 	callbackScript="${DEV}/Support/Developer/Developer/Developer_install.ksh"
 	str=$(${callbackScript})
 	st=$?
