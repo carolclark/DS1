@@ -233,9 +233,6 @@ function runShunitTests {
 				cat $errout >> $errinfo
 			fi
 		fi
-		if [[ "${st}" > 0 ]] ; then
-			exit "${st}"
-		fi
 		testfiles=$testfiles+1
 	done < "${iofile}"
 	echo "$testPath: $testfiles test files run"
@@ -361,8 +358,9 @@ function getAction {			# sourceRoot targetFolder actionString
 			return $RC_InvalidInput
 		fi
 	fi
+	installName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
 	if [[ $action = "install" ]] ; then
-		if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
+		if [[ "${installName}" = "Doxygen" ]] || [[ "${installName}" = "DoxyDemo" ]] ; then
 			action="doxygen"
 		fi
 	fi

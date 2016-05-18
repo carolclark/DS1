@@ -42,8 +42,9 @@ testInstallation() {
 
 #^ Developer_install.ksh
 testDeveloperInstall() {
+	logger "$0#$LINENO: directory: $(pwd) #pwd"
 	DEV=$(ccInstall --DEV ${USER})
-	callbackScript="${DEV}/Support/Developer/Developer/Developer_install.ksh"
+	callbackScript="Developer/Developer_install.ksh"
 	str=$(${callbackScript})
 	st=$?
 	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}

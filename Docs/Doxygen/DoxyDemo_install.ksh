@@ -1,6 +1,6 @@
 #!/bin/ksh
 
-#  Doxygen_install.ksh
+#  DoxyDemo_install.ksh
 #  Support
 #
 #  Created by Carol Clark on 5/6/14.
@@ -35,6 +35,7 @@ function getSubtargetDestination {
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination ${subtarget}"
 		return $RC_MissingArgument
 	fi
+	print "subtarget: ${1}"
 	destinationFolder=""
 	case "${subtarget}" in
 		"Doxygen" )
@@ -58,7 +59,7 @@ function prepareFileOperation {
 		destinationFolder="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
-		return
+		return $RC_MissingArgument
 	fi
 
 	if [[ -n "${destinationFolder}" ]] ; then
@@ -80,7 +81,7 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	print "no clean action for Doxygen target"
+	print "no CCDev clean action for Doxygen target"
 	return 0
 }
 
