@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="DoxyDemo" type="AppleRunConfiguration" factoryName="Application" PROGRAM_PARAMS="${DEV}/Support/Docs DoxyDemo install" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Docs" TARGET_NAME="DoxyDemo" CONFIG_NAME="Debug" SCHEME_NAME="DoxyDemo" RUN_PATH="$PROJECT_DIR$/Docs/Doxygen/DoxyDemo_install.ksh" MAKE_ACTIVE="FALSE" WAIT_FOR="FALSE">
+  <configuration default="false" name="DoxyDemo" type="AppleRunConfiguration" factoryName="Application" PROGRAM_PARAMS="${DEV}/Support/Docs DoxyDemo_install.ksh install" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Docs" TARGET_NAME="DoxyDemo" CONFIG_NAME="Debug" SCHEME_NAME="DoxyDemo" RUN_PATH="$PROJECT_DIR$/Docs/Doxygen/DoxyDemo_install.ksh" MAKE_ACTIVE="FALSE" WAIT_FOR="FALSE">
     <envs>
       <env name="DEV" value="${HOME}/Dev" />
       <env name="CCDev" value="${HOME}/Library/CCDev" />

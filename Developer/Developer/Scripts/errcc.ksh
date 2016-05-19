@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 5/10/13.
-#  Copyright 2013 C & C Software, Inc. All rights reserved.
+#  Copyright 2013-16 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 #pragma mark === Markers ===

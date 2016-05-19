@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
-#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-16 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -19,7 +19,7 @@ Developer_install.ksh -- provide functions for ccInstall to support Developer in
 #		return 0 to have caller continue by updating last built data
 '
 
-CCDev="${HOME}/Library/CCDev"
+CCDev="/Users/carolclark/Library/CCDev"
 
 #^ === install
 function install {

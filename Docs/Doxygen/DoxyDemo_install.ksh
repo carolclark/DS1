@@ -7,7 +7,7 @@
 #  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
 
 USAGE='
-Doxygen_install.ksh -- provide functions for ccInstall to support building Doxygen documentation
+DoxyDemo_install.ksh -- demonstration Doxygen project
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--prepareFileOperation subtarget filepath destinationFolder
@@ -19,12 +19,12 @@ Doxygen_install.ksh -- provide functions for ccInstall to support building Doxyg
 '
 
 CCDev="${HOME}/Library/CCDev"
-. "${CCDev}/bin/ccInstall"
+. "/Users/carolclark/Library/CCDev/bin/ccInstall"
 
 #^ 1 === top
 command=""
 sourceRoot=""
-targetFolder=""
+targetFolder="DoxyDemo"
 actionFlags=""
 
 #^ 3 === getSubtargetDestination
@@ -35,16 +35,14 @@ function getSubtargetDestination {
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination ${subtarget}"
 		return $RC_MissingArgument
 	fi
+#	print "subtarget: ${1}"
 	destinationFolder=""
 	case "${subtarget}" in
-		"Doxygen" )
+		"DoxyDemo" )
 			destinationFolder="${CCDev}/Sites/Doxygen/DoxyDemo"
 			;;
-		# Doxygen: local folders not processed
 		* )
-			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return
-			;;
+			;;		# all other files skipped now; processed later by Doxygen
 	esac
 	print "${destinationFolder}"
 	return 0
@@ -58,7 +56,7 @@ function prepareFileOperation {
 		destinationFolder="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
-		return
+		return $RC_MissingArgument
 	fi
 
 	if [[ -n "${destinationFolder}" ]] ; then
@@ -80,7 +78,7 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	print "no clean action for Doxygen target"
+	print "no CCDev clean action for Doxygen target"
 	return 0
 }
 

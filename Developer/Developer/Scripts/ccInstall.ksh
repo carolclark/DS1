@@ -233,9 +233,6 @@ function runShunitTests {
 				cat $errout >> $errinfo
 			fi
 		fi
-		if [[ "${st}" > 0 ]] ; then
-			exit "${st}"
-		fi
 		testfiles=$testfiles+1
 	done < "${iofile}"
 	echo "$testPath: $testfiles test files run"
@@ -361,8 +358,9 @@ function getAction {			# sourceRoot targetFolder actionString
 			return $RC_InvalidInput
 		fi
 	fi
+	installName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
 	if [[ $action = "install" ]] ; then
-		if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
+		if [[ "${installName}" = "Doxygen" ]] || [[ "${installName}" = "DoxyDemo" ]] ; then
 			action="doxygen"
 		fi
 	fi
@@ -514,10 +512,12 @@ function processAction {
 
 # doxygen
 	if [[ ${action} = "doxygen" ]] ; then
+		logger "$0#$LINENO: args: ${sourceRoot} ${targetFolder}" #doxygen"
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "Doxygen")
+		logger "$0#$LINENO: outputDir: $outputDir #doxygen"
+		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "$(ccInstall --getTargetName ${sourceRoot} ${targetFolder})")
 		installName="${outputDir##*/}"
-		print "== installing ${installName} documentation"
+		print "== installing ${installName} documentation [$sourceRoot $targetFolder]"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
 		mkdir -p "${outputDir}"
 		st=$?
@@ -527,7 +527,7 @@ function processAction {
 		fi
 
 	#  Run doxygen on the config file (builds local site)
-		$doxygenPath "${sourceRoot}/${targetFolder}/${installName}_doxygen.txt"
+		$doxygenPath "${sourceRoot}/Doxygen/${installName}_doxygen.txt"
 		st=$?
 		if [[ $st > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error while generating Doxygen docs"
@@ -681,6 +681,7 @@ function ccInstall {
 			return "${es}"
 			;;
 		"--get"* )
+			logger "$0#$LINENO: command:$1 sourceRoot:$2 targetFolder:$3 #doxygen"
 			val=$(getPath "${1}" "${2}" "${3}")			# command sourceRoot targetFolder
 			es=$?
 			print "${val}"

@@ -86,7 +86,7 @@ if [[ -z "${sourceRoot}" ]] || [[ -z "${targetFolder}" ]] ; then	# if either par
 	exit $RC_MissingArgument
 fi
 logger "$0#$LINENO: args: $* #callargs"
-msg=$(ccInstall "${0}" "${sourceRoot}" "${targetFolder}" "${actionFlags}")
+msg=$(ccInstall "${0}" "$(pwd)" "${targetFolder}" "${actionFlags}")
 es=$?
 if [[ ${es} -ne 0 ]] ; then
 	print "FAILED: $msg"

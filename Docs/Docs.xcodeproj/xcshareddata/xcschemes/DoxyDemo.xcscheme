@@ -27,7 +27,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "DoxyDemo"
+            argument = "DoxyDemo_install.ksh"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
