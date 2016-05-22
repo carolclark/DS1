@@ -85,7 +85,7 @@ if [[ -z "${sourceRoot}" ]] || [[ -z "${targetFolder}" ]] ; then	# if either par
 	errorMessage $RC_MissingArgument "$0#$LINENO:" "${missingArgumentMessage}"
 	exit $RC_MissingArgument
 fi
-logger "$0#$LINENO: args: $* #callargs"
+logger "$0#$LINENO: args: $@ #callargs"
 msg=$(ccInstall "${0}" "$(pwd)" "${targetFolder}" "${actionFlags}")
 es=$?
 if [[ ${es} -ne 0 ]] ; then

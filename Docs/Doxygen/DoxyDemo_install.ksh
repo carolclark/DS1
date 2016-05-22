@@ -19,11 +19,11 @@ DoxyDemo_install.ksh -- demonstration Doxygen project
 '
 
 CCDev="${HOME}/Library/CCDev"
-. "/Users/carolclark/Library/CCDev/bin/ccInstall"
+. "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
 command=""
-sourceRoot=""
+sourceRoot="$(pwd)"
 targetFolder="DoxyDemo"
 actionFlags=""
 
