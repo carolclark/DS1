@@ -23,8 +23,8 @@ CCDev="${HOME}/Library/CCDev"
 
 #^ 1 === top
 command=""
-sourceRoot=""
-targetFolder=""
+sourceRoot="$(pwd)"
+targetFolder="Doxygen"
 actionFlags=""
 
 #^ 3 === getSubtargetDestination
