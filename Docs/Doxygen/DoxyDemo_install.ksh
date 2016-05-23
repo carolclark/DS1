@@ -39,7 +39,7 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"DoxyDemo" )
-			destinationFolder="${CCDev}/Sites/Doxygen/DoxyDemo"
+			destinationFolder="${CCDev}/Sites/candcsoft_host/public_html/Doxygen/DoxyDemo"
 			;;
 		* )
 			;;		# all other files skipped now; processed later by Doxygen

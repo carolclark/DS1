@@ -25,6 +25,7 @@ CCDev="${HOME}/Library/CCDev"
 
 missingArgumentMessage="USAGE: $0 [--commandFlag] sourceRoot targetFolder (-actionFlags | 'clean') [...]"
 
+logger "$0#$LINENO: args: $@ #callargs"
 if [[ $# > 0 ]] ; then
 	if [[ "${1}" = -* ]] ; then
 		command="${1}"
