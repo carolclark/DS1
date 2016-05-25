@@ -512,13 +512,10 @@ function processAction {
 
 # doxygen
 	if [[ ${action} = "doxygen" ]] ; then
-		logger "$0#$LINENO: args: ${sourceRoot} ${targetFolder}" #doxygen"
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-		logger "$0#$LINENO: outputDir: $outputDir #doxygen"
-		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "$(ccInstall --getTargetName ${sourceRoot} ${targetFolder})")
+		outputDir="${CCDev}/Sites/candcsoft_host/public_html/Doxygen/${targetName}"
 		installName="${outputDir##*/}"
-		print "== installing ${installName} documentation [$sourceRoot $targetFolder]"
-		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
+		echo "== installing ${installName} documentation [$sourceRoot $targetFolder]"
 		mkdir -p "${outputDir}"
 		st=$?
 		if [[ $st > 0 ]] ; then
@@ -527,6 +524,7 @@ function processAction {
 		fi
 
 	#  Run doxygen on the config file (builds local site)
+		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
 		$doxygenPath "${sourceRoot}/Doxygen/${installName}_doxygen.txt"
 		st=$?
 		if [[ $st > 0 ]] ; then
