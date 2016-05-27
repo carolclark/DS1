@@ -532,7 +532,7 @@ function processAction {
 			return ${st}
 		fi
 
-return 0
+	if [[ 1 = 0 ]]; then
 	# Make docset using the Makefile that just generated
 		print $outputDir/html
 		make -C $outputDir/html install
