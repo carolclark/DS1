@@ -27,7 +27,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "Doxygen_install.ksh"
+            argument = "Doxygen"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

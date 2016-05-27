@@ -19,7 +19,7 @@ Developer_install.ksh -- provide functions for ccInstall to support Developer in
 #		return 0 to have caller continue by updating last built data
 '
 
-CCDev="/Users/carolclark/Library/CCDev"
+CCDev="${HOME}/Library/CCDev"
 
 #^ === install
 function install {
