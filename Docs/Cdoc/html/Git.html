@@ -50,20 +50,18 @@
 				</ul>
 				<p><b>Publish</b></p><ul>
 					<li>push to remote tracking branch</li>
-					<li>switch to local master; merge branch; test</li>
+					<li>switch to local master; update; test if changed; merge branch; test</li>
 				</ul></div>
-				<p class="indent"><b>If Task Complete:</b> delete Task and local branch</p>
 		<h4>Task Complete: To Review</h4><ul>
-			<li><strong>Update Branch from Master</strong></li>
-			<li>on local master branch, run all tests</li>
 			<li>issue GitHub pull request against master<ul>
-				<li><strong>If Closing Issue</strong>: add (close | fix | resolve)#&lt;ID&gt;</li>
+				<li><strong>If Closing Issue</strong>: add (close | fix | resolve)#&lt;ID&gt; to name</li>
 				<li>to connect: #&lt;ID&gt;</li>
 			</ul></li>
 		</ul>
 		<h4>Task Review Complete: Close Task</h4><ul>
 			<li>associated pull request: verify automatic merge available; merge; [resolve merge conflicts, if any; retest]</li>
 			<li>pull master</li>
+			<li>delete Task and local branch</li>
 		</ul>
 
 		<h5>[Archive Repository]</h5>
