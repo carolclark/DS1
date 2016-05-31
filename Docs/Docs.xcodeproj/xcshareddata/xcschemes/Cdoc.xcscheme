@@ -23,11 +23,11 @@
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/carolclark/Support/Docs"
+            argument = "${DEV}/Support/Docs"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "Cdoc_install.ksh"
+            argument = "Cdoc"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
