@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 5/6/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-16 C & C Software, Inc. All rights reserved.
 
 USAGE='
 Doxygen_install.ksh -- provide functions for ccInstall to support building Doxygen documentation
@@ -32,8 +32,8 @@ function getSubtargetDestination {
 	if [[ -n "${1}" ]] ; then
 		subtarget="${1}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
-		return
+		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination ${subtarget}"
+		return $RC_MissingArgument
 	fi
 	destinationFolder=""
 	case "${subtarget}" in

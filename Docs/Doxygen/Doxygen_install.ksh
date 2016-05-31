@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 12/3/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-16 C & C Software, Inc. All rights reserved.
 
 USAGE='
 Doxygen_install.ksh -- provide functions for ccInstall to support building Doxygen documentation
@@ -33,7 +33,7 @@ function getSubtargetDestination {
 		subtarget="${1}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --getSubtargetDestination subtarget"
-		return
+		return $RC_MissingArgument
 	fi
 	destinationFolder=""
 	case "${subtarget}" in
@@ -43,7 +43,7 @@ function getSubtargetDestination {
 		# Doxygen: local folders not processed
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return
+			return $RC_InputNotHandled
 			;;
 	esac
 	print "${destinationFolder}"
@@ -58,7 +58,7 @@ function prepareFileOperation {
 		destinationFolder="${3}"
 	else
 		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
-		return
+		return $RC_MissingArgument
 	fi
 
 	if [[ -n "${destinationFolder}" ]] ; then
@@ -80,7 +80,7 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	print "no clean action for Doxygen target"
+	print "no CCDev clean action for Doxygen target"
 	return 0
 }
 
