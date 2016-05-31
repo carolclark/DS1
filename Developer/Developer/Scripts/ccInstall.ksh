@@ -517,7 +517,7 @@ function processAction {
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
 		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "Doxygen")
 		installName="${outputDir##*/}"
-		print "== installing ${installName} documentation"
+		print "== installing ${installName} API documentation [$sourceRoot $targetFolder]"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
 		mkdir -p "${outputDir}"
 		st=$?
