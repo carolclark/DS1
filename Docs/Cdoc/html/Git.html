@@ -26,18 +26,20 @@
 <h2>Workflows</h2>
 
 <div style="page-break-before: always">
-	<h3 id="WorkflowAppCode">Workflow: AppCode with Waffle and TeamCity</h3><div style="background-color: #d8e8ff">
+	<h3 id="WorkflowAppCode">Workflow: AppCode with Waffle</h3><div style="background-color: #d8e8ff">
 		<h4>While Issue Not Complete</h4>
 			<h5>Create Task</h5><ul>
 				<li class="blurb">for release branch, see <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a></li>
-				<li><strong>Update Master Branch</strong>: switch to local master; update project (pull) or fetchup and merge; if changed: test, commit</li>
-				<li>create new task and branch with #&lt;issueID&gt; at end of name<ul>
+				<li><strong>Update Branch from Master</strong><ul>
+					<li>master branch; update project; if changed, [test master, merge to branch, test branch], commit</li>
+				</ul></li>
+				<li>create new task with #&lt;issueID&gt; at end of name<ul>
 					<li>in dialog: check base branch; add issue number to end of branch name</li>
 				</ul></li>
 				<li>push branch</li></ul>
 			<h5>While Task(s) Not Complete</h5><div class='indent'>
 				<p><b>Select Task</b></p><ul>
-					<li>switch to task; <strong>Merge in Master Branch</strong>: <em>Update Master</em> ; from branch: merge in master; if changed: test, commit</li>
+					<li>switch to task; merge in master branch</li>
 					<li>check for applicable stashes; apply as indicated</li>
 					<li>commit</li></ul>
 				<p><b>Develop:</b> repeat to commit: edit/test; refresh; status; diff modifications; add/stage</p>
@@ -46,26 +48,24 @@
 					<li>backup GitHub, AppCode data</li>
 					<li>diff all files in changelist; update message; commit</li>
 				</ul>
- 				<p><strong>Publish and Trigger CI</strong></p><ul>
+				<p><b>Publish</b></p><ul>
 					<li>push to remote tracking branch</li>
-				</ul>
-				<p><strong>Synchronize</strong></p><ul>
-					<li>if issue complete or synchronizing with master:<ul>
-						<li>issue GitHub pull request against master, with appropriate naming (see below):<ul>
-							<li><strong><em>If Issue Complete</em></strong>: add (close | fix | resolve)#&lt;ID&gt; to name; to connect: connect#&lt;ID&gt;</li>
-							<li><strong><em>Else</em></strong>, to synchronize with master:<ul>
-								<li><strong>Merge and Close Pull Request</strong>: verify automatic merge available; merge; if merge conflicts: [resolve; retest]</li>									</li>
-								<li><strong>Update Master Branch</strong>; <strong>Merge in Master Branch</strong></li>
-							</ul></li>
-						</ul>
-					</ul></li>
-				</ul>
-			</ul></div>
-			<h5>Issue Review Complete: Close Task</h5><ul>
-				<li><strong>Merge and Close Pull Request</strong></li>
-				<li>update project; delete Task and local branch; check unmerged branches</li>
-			</ul>
-			<h5>[Archive Repository]</h5>
+					<li>if Task not complete: issue GitHub pull request against master; merge pull request;<br />
+						pull master; update project; <strong>Update Branch from Master</strong></li>
+				</ul></div>
+		<h4>Task Complete: To Review</h4><ul>
+			<li>issue GitHub pull request against master<ul>
+				<li><strong>If Closing Issue</strong>: add (close | fix | resolve)#&lt;ID&gt; to name</li>
+				<li>to connect: connect#&lt;ID&gt;</li>
+			</ul></li>
+		</ul>
+		<h4>Task Review Complete: Close Task</h4><ul>
+			<li>associated pull request: verify automatic merge available; merge; [resolve merge conflicts, if any; retest]</li>
+			<li>pull master</li>
+			<li>delete Task and local branch</li>
+		</ul>
+
+		<h5>[Archive Repository]</h5>
 	</div>
 </div>
 
