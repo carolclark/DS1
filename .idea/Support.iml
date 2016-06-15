@@ -221,6 +221,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/_tech/img/ucgl_u.tiff" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/_tech/img/ucgl_x.tiff" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/Cdoc_install.ksh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/_img/GitBranchingModelImage.001.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/_img/Partitions.png" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Cdoc.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Development.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Git.html" isTestSource="false" />
@@ -262,7 +264,6 @@
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/preview.jpg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModelImages/GitBranchingModelImage.001.png" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/orig-gitflow-model.src.key" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/Partitions.png" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/Support_ghissues.json" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/UseCaseImages.pages" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/WebsiteStructure/TechnicalDocs/index.html" isTestSource="false" />

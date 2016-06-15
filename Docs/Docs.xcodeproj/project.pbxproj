@@ -40,10 +40,11 @@
 		676695D11919A759005D3CED /* Tools.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
 		676695D21919AA3B005D3CED /* ArbonneStruct.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArbonneStruct.numbers; sourceTree = "<group>"; };
 		676695D31919AA3B005D3CED /* UseCaseImages.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = UseCaseImages.pages; sourceTree = "<group>"; };
-		67A657041A797B90002B3CBB /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Partitions.png; path = OtherDocuments/Partitions.png; sourceTree = SOURCE_ROOT; };
 		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
 		67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
+		67F24D741D11F30300CF9862 /* GitBranchingModelImage.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModelImage.001.png; sourceTree = "<group>"; };
+		67F24D751D11F30300CF9862 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
 		965F803622D42B6140D05477 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
 		965F803A85A3E5C8A15433C2 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
 		965F825D415F1A10047A3BAC /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
@@ -136,7 +137,6 @@
 		676695BB1919A759005D3CED /* img */ = {
 			isa = PBXGroup;
 			children = (
-				67A657041A797B90002B3CBB /* Partitions.png */,
 				676695BC1919A759005D3CED /* space.tiff */,
 				676695BD1919A759005D3CED /* ucds_1.tiff */,
 				676695BE1919A759005D3CED /* ucds_2.tiff */,
@@ -155,6 +155,7 @@
 		676695C81919A759005D3CED /* html */ = {
 			isa = PBXGroup;
 			children = (
+				67F24D731D11F30300CF9862 /* _img */,
 				676695C91919A759005D3CED /* Cdoc.html */,
 				676695CA1919A759005D3CED /* XcodeDevelopment.html */,
 				676695CB1919A759005D3CED /* Development.html */,
@@ -179,6 +180,15 @@
 				67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */,
 			);
 			path = Doxygen;
+			sourceTree = "<group>";
+		};
+		67F24D731D11F30300CF9862 /* _img */ = {
+			isa = PBXGroup;
+			children = (
+				67F24D741D11F30300CF9862 /* GitBranchingModelImage.001.png */,
+				67F24D751D11F30300CF9862 /* Partitions.png */,
+			);
+			path = _img;
 			sourceTree = "<group>";
 		};
 		965F810DE608D57DDDD66A42 /* WebsiteStructure */ = {
