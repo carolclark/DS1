@@ -39,9 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		67147FBE191449C400B85587 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; lastKnownFileType = file; name = "___FILEBASENAME___.ksh"; path = "Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
-		67147FBF191449C400B85587 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
-		67147FC0191449C400B85587 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = TemplateInfo.plist; path = Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
 		671C4824159CFF3800214A9E /* BBEditScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEditScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "___FILEBASENAME___.ksh"; path = "../../_Documentation/InstallCdoc.xctemplate/___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
 		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = ../../_Documentation/InstallCdoc.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
@@ -140,26 +137,18 @@
 		67DD772E16A4AF9300BECCD5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		67DD772F16A4AF9300BECCD5 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		67DD773716A4AF9300BECCD5 /* Xcode_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Xcode_install.ksh; sourceTree = "<group>"; };
-		67DD774116A4C2BA00BECCD5 /* BBEdit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BBEdit-Info.plist"; sourceTree = "<group>"; };
 		67DD774316A4C2BA00BECCD5 /* BBEditUtil.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = BBEditUtil.applescript; sourceTree = "<group>"; };
 		67DD774416A4C2BA00BECCD5 /* CheckLinks.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckLinks.applescript; sourceTree = "<group>"; };
 		67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = CheckSyntax.applescript; sourceTree = "<group>"; };
 		67DD774616A4C2BA00BECCD5 /* BBEdit_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBEdit_install.ksh; sourceTree = "<group>"; };
 		67DD777716A4D6A700BECCD5 /* snippets.dash */ = {isa = PBXFileReference; lastKnownFileType = file; path = snippets.dash; sourceTree = "<group>"; };
+		67F24D761D11F79200CF9862 /* BBEditScripts-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BBEditScripts-Info.plist"; sourceTree = "<group>"; };
+		965F827A4BFCDD34F30A6876 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = TemplateInfo.plist; sourceTree = "<group>"; };
+		965F82CFEF8FC13C2120EF81 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
+		965F83F15B1CB4B762692D6D /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; lastKnownFileType = file.ksh; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		67147FBD191449C400B85587 /* InstallDoxygen.xctemplate */ = {
-			isa = PBXGroup;
-			children = (
-				67147FBE191449C400B85587 /* ___FILEBASENAME___.ksh */,
-				67147FBF191449C400B85587 /* TemplateIcon.icns */,
-				67147FC0191449C400B85587 /* TemplateInfo.plist */,
-			);
-			name = InstallDoxygen.xctemplate;
-			path = ../_Scripting/InstallDoxygen.xctemplate;
-			sourceTree = "<group>";
-		};
 		67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,10 +353,10 @@
 				67DD76E016A4AF9300BECCD5 /* DoxygenConfig.xctemplate */,
 				67DD76E416A4AF9300BECCD5 /* HistoryFile.xctemplate */,
 				67200D9C16A9C7D500EA5974 /* InstallCdoc.xctemplate */,
-				67147FBD191449C400B85587 /* InstallDoxygen.xctemplate */,
 				67DD76E716A4AF9300BECCD5 /* ReadMe.xctemplate */,
 				67DD76EA16A4AF9300BECCD5 /* RequirementsDoc.xctemplate */,
 				67DD76ED16A4AF9300BECCD5 /* UseCasesDoc.xctemplate */,
+				965F8D9EEB97FF3E5797D02C /* InstallDoxygen.xctemplate */,
 			);
 			path = _Documentation;
 			sourceTree = "<group>";
@@ -658,7 +647,7 @@
 		67DD774016A4C2BA00BECCD5 /* _plist */ = {
 			isa = PBXGroup;
 			children = (
-				67DD774116A4C2BA00BECCD5 /* BBEdit-Info.plist */,
+				67F24D761D11F79200CF9862 /* BBEditScripts-Info.plist */,
 			);
 			path = _plist;
 			sourceTree = "<group>";
@@ -681,6 +670,16 @@
 				67DD777716A4D6A700BECCD5 /* snippets.dash */,
 			);
 			path = Dash;
+			sourceTree = "<group>";
+		};
+		965F8D9EEB97FF3E5797D02C /* InstallDoxygen.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				965F82CFEF8FC13C2120EF81 /* TemplateIcon.icns */,
+				965F827A4BFCDD34F30A6876 /* TemplateInfo.plist */,
+				965F83F15B1CB4B762692D6D /* ___FILEBASENAME___.ksh */,
+			);
+			path = InstallDoxygen.xctemplate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

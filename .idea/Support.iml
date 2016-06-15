@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/.idea" />
     <content url="file://$MODULE_DIR$/BuildSupport">
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/_plist/BBEdit-Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/_plist/BBEditScripts-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/_Tests/testBBEdit.ksh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/AppleScripts/BBEditUtil.applescript" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/AppleScripts/CheckHTML.applescript" isTestSource="false" />
@@ -33,6 +33,9 @@
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallCdoc.xctemplate/___FILEBASENAME___.ksh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallCdoc.xctemplate/TemplateIcon.icns" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallCdoc.xctemplate/TemplateInfo.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/___FILEBASENAME___.ksh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateIcon.icns" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateInfo.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/ReadMe.xctemplate/___FILEBASENAME___.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/ReadMe.xctemplate/TemplateInfo.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/RequirementsDoc.xctemplate/___FILEBASENAME___.html" isTestSource="false" />
@@ -84,9 +87,6 @@
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Resources/UserSlate.xctemplate/___FILEBASENAME___.r" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Resources/UserSlate.xctemplate/TemplateIcon.icns" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Resources/UserSlate.xctemplate/TemplateInfo.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallDoxygen.xctemplate/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/___FILEBASENAME___.ksh" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallDoxygen.xctemplate/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateIcon.icns" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallDoxygen.xctemplate/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateInfo.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallTarget.xctemplate/___FILEBASENAME___.ksh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallTarget.xctemplate/TemplateIcon.icns" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallTarget.xctemplate/TemplateInfo.plist" isTestSource="false" />
