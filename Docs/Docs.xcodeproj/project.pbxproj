@@ -43,8 +43,8 @@
 		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
 		67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
-		67F24D741D11F30300CF9862 /* GitBranchingModelImage.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModelImage.001.png; sourceTree = "<group>"; };
 		67F24D751D11F30300CF9862 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
+		67F24D771D13264900CF9862 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
 		965F803622D42B6140D05477 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
 		965F803A85A3E5C8A15433C2 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
 		965F825D415F1A10047A3BAC /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		67F24D731D11F30300CF9862 /* _img */ = {
 			isa = PBXGroup;
 			children = (
-				67F24D741D11F30300CF9862 /* GitBranchingModelImage.001.png */,
+				67F24D771D13264900CF9862 /* GitBranchingModel.001.png */,
 				67F24D751D11F30300CF9862 /* Partitions.png */,
 			);
 			path = _img;
