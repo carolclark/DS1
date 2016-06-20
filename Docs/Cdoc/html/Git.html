@@ -13,8 +13,10 @@
 
 <!-- @topicList "Git" "Contents" -->
 	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
-	<!-- @topicItem "Managing Issues and Branches" "#Issues_Branches_" "0" "" -->
-	<!-- @topicItem "Daily Workflow: AppCode with Waffle" "#WorkflowAppCode" "0" "current workflow" -->
+	<!-- @topicItem "Branches and Releases" "#Branches_Releases_" "0" "" -->
+	<!-- @topicItem "Daily Workflows: AppCode with Waffle" "#WorkflowAppCode" "0" "current workflow" -->
+		<!-- @topicItem "Feature Branches" "#Feature_Branches_" "1" "" -->
+		<!-- @topicItem "Release and Hotfix Branches" "#Release_Hotfix_Branches_" "1" "" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
@@ -95,103 +97,124 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Managing Issues and Branches" -->
-<h2>Managing Issues and Branches</h2>
-<!-- @topicList "Managing Issues and Branches" "Issues_Branches_" -->
+<!-- @marker "Branches and Releases" -->
+<h2>Branches and Releases</h2>
+<!-- @topicList "Branches and Releases" "Branches_Releases_" -->
+	<!-- @topicItem "Feature Branches" "#FeatureBranches_" "0" "" -->
+	<!-- @topicItem "Release Branches" "#ReleaseBranches_" "0" "" -->
+	<!-- @topicItem "Hotfix Branches" "#Hotfix_Branches_" "0" "" -->
 <!-- @/topicList -->
 
+<div> class="paragraphs">
+	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues. GitHub "milestones" group issues into larger goals.
+	<p>AppCode, our primary IDE, supports Tasks, each associated with an issue and a branch.
+	Tasks are a fundamental element in our workflow.
+	We do frequent integrations, and we often use multiple Tasks per branch.</p>
+	<p>AppCode projects are dependent on Xcode projects, so projects, expecially in Objective-C/C++, are first created in Xcode.</p>
+	<p>Kanban boards, one for each active repository and hosted at <a href="https://github.com/waffleio/waffle.io/wiki">waffle.io</a>,
+		help us to organize our work on issues, including display of GitHub labels and milestones.</p>
+</div>
+
+<!-- @marker "Feature Branches" -->
+<h4 id='FeatureBranches_'>Feature Branches</h4>
+<p><strong>Naming Convention</strong>: &lt;task&gt;-#&lt;issueNum&gt;</p>
+
+<div class="paragraphs">
+	<p>Feature branches are used to develop features for a future release.
+		A feature branch is created from master, and merged back, if successful, to master.</p>
+	<p>In addition to standard feature branches, we also have some branches identified as "ongoing".
+		Currently, there is such a branch for documentation in each repository, and an Accessor branch for Slate editing.</p>
+</div>
+<div class="paragraphs"> <p><a href="#WorkflowAppCode">Workflow: AppCode with Waffle</a> describes our prodecures for handling of feature branches.</p>
+</div>
+
+<p>Feature, release, and hotfix branches are all represented in this diagram:</p>
+<img src="_img/GitBranchingModel.001.png" style="width:600px;height:800px;">
+
+<!-- @marker "Release Branches" -->
+<h4 id='ReleaseBranches_'>Release Branches</h4>
+<p><strong>Naming Convention</strong>: release-&lt;versionNum&gt;</p>
+	<div class="paragraphs">
+		<p class="blurb">Historical Note: Until 6/16/16, we did not have a procedure for handling versioned releases,
+			although both Accessor and Support were assigned version 0.1 in a previous attempt.
+			Version 0.2 is the first version in this series for each currently active project.</p>
+	</div>
+
+	<div class="paragraphs">
+		<p>When master is ready for a release, we assign a version number and create a release branch with name 'release-&lt;versionNum&gt;'.
+			The separate release branch supports version updating and minor bug fixes on the release branch,
+			while allowing work to proceed on master and feature branches.</p>
+		<p>As soon as the branch has been created, we update ("bump") the version number. Bug-fix commits may also be added.</p>
+		<p>Work from the release branch is merged into master when the release branch is tagged and closed.
+			Bug fixes may be incorporated sooner as indicated.</p>
+	</div>
+
+	<div class="paragraphs">
+		<p>Release branches are intended to isolate their work from the rest of the project workflow.
+		There are no updates or merges with other repository branches.</p>
+	</div>
+
+<!-- @marker "Hotfix Branches" -->
+<h4 id='Hotfix_Branches_'>Hotfix Branches</h4>
+<p><strong>Naming Convention</strong>: hotfix-&lt;versionNum&gt;</p>
+	<div class="paragraphs">
+		<p>Hotfix branches are created to fix bugs in released software that must be fixed before the next Release branch.
+			They are checked out from the release tag for the release to be fixed
+			(<span class="mono">git checkout tags/&lt;latestVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></p>
+	</div>
+	<h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
 <div style="page-break-before: always">
-	<h2 id="WorkflowAppCode">Daily Workflow: AppCode with Waffle and TeamCity</h2><div style="background-color: #d8e8ff">
+	<!-- @marker "Feature Branches" -->
+	<div style="background-color: #d8e8ff">
+	<h3 id='Feature_Branches_'>Feature Branches</h3>
 		<h4>While Issue Not Complete</h4>
 			<h5>Create Task</h5><ul>
 				<li class="blurb">for release branch, see <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a></li>
-				<li><strong>Update Master Branch</strong>: switch to local master; update project (pull) or fetchup and merge; if changed: test, commit</li>
+				<li><strong>Update Master</strong>: switch to local master; update project (cT); if changed: test, branch and fix any issues, commit</li>
 				<li>create new task and branch with #&lt;issueID&gt; at end of name<ul>
-					<li>in dialog: check base branch; add issue number to end of branch name</li>
+					<li>in dialog: branch from master; add issue number to end of branch name</li>
 				</ul></li>
 				<li>push branch</li></ul>
 			<h5>While Task(s) Not Complete</h5><div class='indent'>
 				<p><b>Select Task</b></p><ul>
-					<li>switch to task; <strong>Merge in Master Branch</strong>: <em>Update Master</em> ; from branch: merge in master; if changed: test, commit</li>
+					<li>switch to task; <strong>Update Branch</strong>: <strong><em>Update Master</em></strong>; switch to branch; merge in master<ul>
+						<li>if changed: test, branch and fix any issues, commit</li>
+					</ul></li>
 					<li>check for applicable stashes; apply as indicated</li>
 					<li>commit</li></ul>
-				<p><b>Develop:</b> repeat to commit: edit/test; refresh; status; diff modifications; add/stage</p>
+				<p><b>Develop:</b> repeat to commit:</p><ul>
+					<li>edit/test; refresh; diff modifications; [status; add/stage; check for stray spaces (`gdcc`)]</li>
+				</ul>
 				<p><b>Commit</b></p><ul>
-					<li>refresh; add unversioned and/or other files as indicated; check for stray spaces (`gdcc`)</li>
+					<li>refresh; add files if indicated; diff modifications; status; add/stage; check for stray spaces (`gdcc`)</li>
 					<li>backup GitHub, AppCode data</li>
 					<li>diff all files in changelist; update message; commit</li>
 				</ul>
- 				<p><strong>Publish and Trigger CI</strong></p><ul>
-					<li>push to remote tracking branch</li>
-				</ul>
-				<p><strong>Synchronize</strong></p><ul>
-					<li>if issue complete or synchronizing with master:<ul>
-						<li>issue GitHub pull request against master, with appropriate naming (see below):<ul>
-							<li><strong><em>If Issue Complete</em></strong>: add (close | fix | resolve)#&lt;ID&gt; to name; to connect: connect#&lt;ID&gt;</li>
-							<li><strong><em>Else</em></strong>, to synchronize with master:<ul>
-								<li><strong>Merge and Close Pull Request</strong>: verify automatic merge available; merge; if merge conflicts: [resolve; retest]</li>									</li>
-								<li><strong>Update Master Branch</strong>; <strong>Merge in Master Branch</strong></li>
-							</ul></li>
-						</ul>
+				<p><strong>Publish</strong></p><ul>
+					<li><strong><em>Update Branch</em></strong>; push to remote tracking branch</li>
+					<li>if synchronization with local master is needed: switch to master; merge in branch</li>
+				</ul></div>
+			<h5>Issue Tasks Complete</h5><div class='indent'>
+				<p><strong>Issue Pull Request</strong></p><ul>
+					<li>issue GitHub pull request against master<ul>
+						<li>add (close | fix | resolve)#&lt;ID&gt; to name; to connect: connect#&lt;ID&gt;</li>
 					</ul></li>
 				</ul>
-			</ul></div>
-			<h5>Issue Review Complete: Close Task</h5><ul>
-				<li><strong>Merge and Close Pull Request</strong></li>
-				<li>update project; delete Task and local branch; check unmerged branches</li>
-			</ul>
+				<p><strong>Code Review</strong></p><ul>
+					<li>add tests, refactor, or correct if indicated</li>
+				</ul>
+				<p><strong>Issue Review Complete: Close Issue</strong></p><ul>
+					<li>for Pull Request: verify automatic merge available; merge; if merge conflicts: [resolve; retest]</li>
+					<li>update project; delete Task and local branch; check unmerged branches</li>
+				</ul>
+	</div>
 			<h5>[Archive Repository]</h5>
-	</div>
-</div>
+	</div></div>
+		<div style="page-break-before: always">
+			<!-- @marker "Release and Hotfix Branches" -->
+			<h3 id='Release_Hotfix_Branches_'>Release and Hotfix Branches</h3>
 
-<div style="page-break-before: always">
-	<h4 id="WorkflowXcode">Workflow: Xcode with Git</h4><div style="background-color: #ffebcd">
-	<h5>Branch</h5><ul>
-		<li>if current branch is uncommitted, commit or stash</li>
-		<li><span class='em'>Update Master:</span>	<ul>
-			<li>checkout master; verify status clean</li>
-			<li>fetch updates (<span class='mono'>git remote update --prune</span>); status</li>
-			<li>if changed: merge updateMaster (<span class='mono'>git merge --ff-only @{u}</span>); <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; test; push</li>
-		</ul></li>
-		<li>checkout branch<ul>
-			<li>pre-existing branch<ul>
-				<li><a href="#tsk_MergeMaster">Merge Master</a></li>
-				<li>recover any stashes</li>
-			</ul></li>
-			<li>OR new branch<ul>
-				<li>checkout new branch; set $cb; <span class='mono'>git push --set-upstream origin $cb</span></li>
-			</ul></li>
-			<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
-		</ul></li>
-		<li>create new bot(s) '&lt;targetName&gt; &lt;branchName&gt;'</li>
-	</ul>
-		<h5>Repeat</h5><div class='indent'>
-		<p><b>Develop:</b> repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</p>
-		<p><b>Commit</b></p><ul>
-		<li>construct and save commit message; verify modifications (diff --cached); test</li>
-		<li>status: check branch; get $cb; add / review files to be committed; review commit msgfile and #issue</li>
-		<li>check for stray spaces (diff --cached --check); [backup GitHub issues; add, OR if failure checkout original]</li>
-		<li>status; update and repeat if indicated; commit msgfile</li>
-		<li>status; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.$cb; [to amend: reset --soft lastCommit]</li>
-		<li>check stash list</li>
-		<li><span class='em'>Update Master</span>; <span class='em'>Merge Master</span>; checkout $cb</li>
-	</ul>
-		<p><b>Publish</b></p><ul>
-		<li>status; verify branch; show --name-only; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
-	</ul>
-	</div>
-		<h5>Put Away Branch</h5><div class='indent'>
-		<p><b>Merge to (Master)</b> (or another parent branch)</p><ul>
-		<li>run all tests; from branch to be merged: check for status clear; set 'current branch' variable </li>
-		<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
-		<li><span class='mono'>getMergeMessage</span>; <span class='mono'>merge 'from branch' (--no-ff -m "$mm" &lt;branch[$cb]&gt;</span>)</li>
-		<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
-		<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
-		<li>for each local branch other than master and $cb: <span class='em'>Merge Master</span></li>
-		<li>checkout $cb; push; [checkout master; delete local branch]; (manage remote stale branches periodically from GitHub)</li>
-	</ul>
-	<p><b>[Archive Repository]</b></p>
-</div></div></div>
+		</div>
 
 <!-- @marker "Git Tasks" -->
 <div style="page-break-before: always">
