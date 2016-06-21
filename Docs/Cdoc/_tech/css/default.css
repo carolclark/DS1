@@ -307,10 +307,10 @@
 	}
 
 									/* indents to show topic structure */
-	td.i0 { text-indent:0 }
-	td.i1 { text-indent:12 }
-	td.i2 { text-indent:24 }
-	td.i3 { text-indent:36 }
+	td.i0 { padding-left:0px }
+	td.i1 { padding-left:12px }
+	td.i2 { padding-left:24px }
+	td.i3 { padding-left:36px }
 
 /* reference lists */
 	.reference {
