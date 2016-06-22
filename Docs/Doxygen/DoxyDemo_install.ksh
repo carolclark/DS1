@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 5/6/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-16 C & C Software, Inc. All rights reserved.
 
 USAGE='
 Doxygen_install.ksh -- provide functions for ccInstall to support building Doxygen documentation

@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 1/15/13.
-#  Copyright (c) 2013 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2013-16 C & C Software, Inc. All rights reserved.
 
 USAGE='
 Cdoc_install.ksh -- provide functions for ccInstall to support CCDev installation
@@ -18,17 +18,16 @@ Cdoc_install.ksh -- provide functions for ccInstall to support CCDev installatio
 #		return 0 to have caller continue by updating last built data
 '
 
-HOME="/Users/carolclark"
 CCDev="${HOME}/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
 #^ 1 === top
 command=""
-sourceRoot=""
-targetFolder=""
+sourceRoot="$(pwd)"
+targetFolder="Cdoc"
 actionFlags=""
 
-technicalDocs="${CCDev}/Sites/TechnicalDocs"
+technicalDocs="${CCDev}/Sites/candcsoft_host/public_html/TechnicalDocs"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
