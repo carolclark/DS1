@@ -189,10 +189,12 @@
 					<li>refresh; add files if indicated; diff modifications; status; add/stage; check for stray spaces (`gdcc`)</li>
 					<li>backup GitHub, AppCode data</li>
 					<li>diff all files in changelist; update message; commit</li>
+					<li>build; check Code Analysis issues; fix if indicated</li>
 				</ul>
 				<p><strong>Publish</strong></p><ul>
 					<li><strong><em>Update Branch</em></strong>; push to remote tracking branch</li>
 					<li>if synchronization with local master is needed: switch to master; merge in branch</li>
+					<li>[update notes in milestone nextVersion]</li>
 				</ul></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<p><strong>Issue Pull Request</strong></p><ul>
@@ -207,14 +209,51 @@
 					<li>for Pull Request: verify automatic merge available; merge; if merge conflicts: [resolve; retest]</li>
 					<li>update project; delete Task and local branch; check unmerged branches</li>
 				</ul>
-	</div>
+			</div>
 			<h5>[Archive Repository]</h5>
-	</div></div>
+		</div></div>
+
 		<div style="page-break-before: always">
 			<!-- @marker "Release and Hotfix Branches" -->
+			<div style="background-color: #e2faff">
 			<h3 id='Release_Hotfix_Branches_'>Release and Hotfix Branches</h3>
-
-		</div>
+				<p><em>WARNING: Normal workflow branches are updated frequently to and from master.
+					Updating is avoided in this workflow to prevent pollution of the release branch.</em></p>
+			<h5>Create Release or Hotfix Branch</h5><ul>
+				<li><strong><em>[Update Master]</em></strong> unless contraindicated for this version</li>
+				<li>create release description from existing content of milestone nextVersion,
+					along with result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
+				<li>select version number</li>
+				<li>GitHub: create and save draft of revision #&lt;versionName&gt;, eg. v1.0.1</li>
+				<li>create (or has that been done?) and push branch</li>
+				<li>bump version: change all version numbers that appear in product<ul>
+					<li>for now, that is the version numbers in most project files</li>
+				</ul></li>
+				<li>commit ("bump version to &lt;versionName&gt;"); push</li>
+			</ul>
+			<h5>While Needed Fixes are Identified</h5><ul>
+				<li>switch to Release/Hotfix task</li>
+				<li>edit/test; refresh; diff modifications</li>
+				<li>status; add/stage; check for stray spaces (`gdcc`)</li>
+				<li>diff all files in changelist; update message; commit; push</li>
+			</ul>
+			<h5>Issue Tasks Complete</h5><div class='indent'>
+				<p><strong>Issue Pull Request</strong></p><ul>
+					<li>issue GitHub pull request against master<ul>
+						<li>add close #&lt;ID&gt; &lt;versionName&gt; to name; to connect: connect#&lt;ID&gt;</li>
+					</ul></li>
+				</ul>
+				<p><strong>Code Review</strong></p><ul>
+					<li>add tests, refactor, or correct if indicated; DO NOT UPDATE</li>
+				</ul>
+				<p><strong>Revision Review Complete</strong></p><ul>
+					<li>GitHub: from draft of Release: add product if indicated; publish</li>
+					<li>(expect: branch closed and tagged)</li>
+					<li>master branch: merge in release</li>
+				</ul>
+			</div>
+			<h5>Archive Repository</h5>
+			</div></div>
 
 <!-- @marker "Git Tasks" -->
 <div style="page-break-before: always">
