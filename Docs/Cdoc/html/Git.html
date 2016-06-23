@@ -12,158 +12,248 @@
 <h1>Git</h1>
 
 <!-- @topicList "Git" "Contents" -->
-	<!-- @topicGroup "Workflows" "1" -->
-	<!-- @topicItem "AppCode with Waffle" "#WorkflowAppCode" "0" "current workflow" -->
-		<!-- @topicItem "Workflow Subtasks" "#workflowSubtasks" "1" "common subtasks" -->
-	<!-- @topicItem "Xcode with Git" "#WorkflowXcode" "0" "previous workflow" -->
-	<!-- @topicGroup "" "5" -->
-	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
+	<!-- @topicItem "Branches and Releases" "#Branches_Releases_" "0" "" -->
+	<!-- @topicItem "Daily Workflows: AppCode with Waffle" "#WorkflowAppCode" "0" "current workflow" -->
+		<!-- @topicItem "Feature Branches" "#Feature_Branches_" "1" "" -->
+		<!-- @topicItem "Release and Hotfix Branches" "#Release_Hotfix_Branches_" "1" "" -->
+	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Workflows" -->
-<h2>Workflows</h2>
+<!-- @marker "Managing Repositories" -->
+<h2>Managing Repositories</h2>
+<!-- @topicList "Managing Repositories" "ManagingRepositories" -->
+<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "1" "" -->
+<!-- @topicItem "Fetch Working Copy of Repository" "#FetchWorkingCopy" "1" "" -->
+<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
+<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
+<!-- @topicItem "Set Up User SSH" "#setupSSH" "1" "" -->
+<!-- @topicItem "Add User to ProjectLocker Account" "#AddPLUser" "1" "" -->
+<!-- @topicGroup "" "7" -->
+<!-- @/topicList -->
 
+<!-- @marker "Create Bare Repository" -->
+<h4 id='tsk_CreateBareRepository'>Create Bare Repository</h4><ul>
+	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/gitrep/&lt;ProjectName&gt;; https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;Remote)</li>
+	<li class='mono'>mkdir -p ${path}; cd ${path}</li>
+	<li class='mono'>git init --bare</li>
+</ul>
+
+<!-- @marker "Fetch Working Copy of Repository" -->
+<h4 id='FetchWorkingCopy'>Fetch Working Copy of Repository</h4><ul>
+	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
+		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
+		<li><b>name:</b> &lt;ProjectName&gt;</li>
+		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Create New Repository" -->
+<h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
+	<li>create an empty local or ProjectLocker repository<ul>
+		<li>local: <a href="#tsk_CreateBareRepository">Create Bare Repository</a> at ~/Dev/gitrep/&lt;ProjectName&gt;</li>
+		<li>ProjectLocker: add project to ProjectLocker account</li>
+	</ul></li>
+	<li>Xcode: <a href="#FetchWorkingCopy">Fetch Working Copy of Repository</a></li>
+	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
+	<li>add new or existing content<ul>
+		<li>in working copy, either add existing files or create new ones (eg. Xcode workspace and initial history file Cdoc/History_&lt;ProjectName&gt;.html)</li>
+		<li>Terminal: <span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add <span class='depr'>--all</span> --interactive</span></li>
+		<li>Xcode: commit; push</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add Remote Repository" -->
+<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul class='depr'>
+	<li class='blurb'>Add Remote Repository from existing working copy ~/Dev/&lt;ProjectName&gt;</li>
+	<li>add repository to ProjectLocker account</li>
+	<li>push working copy's master branch to remote/master (create)</li>
+</ul>
+<ul>
+	<li>remote addresses: https://carolclark@github.com/carolclark/Punkin.git; https://github.com/lauracello/Punkin</li>
+</ul>
+
+<!-- @marker "Set Up User SSH" -->
+<h4 id='setupSSH'>Set Up User SSH</h4><ul>
+	<li>on User's computer, login to user account</li>
+	<li>Terminal:<ul>
+		<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
+		<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add User to ProjectLocker Account" -->
+<h4 id='AddPLUser'>Add User to ProjectLocker Account</h4><ul>
+	<li>ProjectLocker admin: add user to account (List Account Users)</li>
+	<li>User<ul>
+		<li><a href="#setupSSH">User: Set Up User SSH</a></li>
+		<li>copy the contents (without the carriage return at the end) of the file ${HOME}/.ssh/authorized_keys to the clipboard</li>
+		<li>login to <a href="https://portal.projectlocker.com/">ProjectLocker</a> with your username and our password</li>
+		<li>select Manage Public Keys; click Edit next to the account with your name</li>
+		<li>paste the contents of the clipboard into the large field labeled Key</li>
+		<li>At the end of the new key field is some text starting with &lt;username&gt;@. Copy from username to the end of the field into the User Name field.</li>
+		<li>click Save Public Key</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Branches and Releases" -->
+<h2>Branches and Releases</h2>
+<!-- @topicList "Branches and Releases" "Branches_Releases_" -->
+	<!-- @topicItem "Feature Branches" "#FeatureBranches_" "0" "" -->
+	<!-- @topicItem "Release Branches" "#ReleaseBranches_" "0" "" -->
+	<!-- @topicItem "Hotfix Branches" "#Hotfix_Branches_" "0" "" -->
+<!-- @/topicList -->
+
+<div> class="paragraphs">
+	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues. GitHub "milestones" group issues into larger goals.
+	<p>AppCode, our primary IDE, supports Tasks, each associated with an issue and a branch.
+	Tasks are a fundamental element in our workflow.
+	We do frequent integrations, and we often use multiple Tasks per branch.</p>
+	<p>AppCode projects are dependent on Xcode projects, so projects, expecially in Objective-C/C++, are first created in Xcode.</p>
+	<p>Kanban boards, one for each active repository and hosted at <a href="https://github.com/waffleio/waffle.io/wiki">waffle.io</a>,
+		help us to organize our work on issues, including display of GitHub labels and milestones.</p>
+</div>
+
+<!-- @marker "Feature Branches" -->
+<h4 id='FeatureBranches_'>Feature Branches</h4>
+<p><strong>Naming Convention</strong>: &lt;task&gt;-#&lt;issueNum&gt;</p>
+
+<div class="paragraphs">
+	<p>Feature branches are used to develop features for a future release.
+		A feature branch is created from master, and merged back, if successful, to master.</p>
+	<p>In addition to standard feature branches, we also have some branches identified as "ongoing".
+		Currently, there is such a branch for documentation in each repository, and an Accessor branch for Slate editing.</p>
+</div>
+<div class="paragraphs"> <p><a href="#WorkflowAppCode">Workflow: AppCode with Waffle</a> describes our prodecures for handling of feature branches.</p>
+</div>
+
+<p>Feature, release, and hotfix branches are all represented in this diagram:</p>
+<img src="_img/GitBranchingModel.001.png" style="width:600px;height:800px;">
+
+<!-- @marker "Release Branches" -->
+<h4 id='ReleaseBranches_'>Release Branches</h4>
+<p><strong>Naming Convention</strong>: release-&lt;versionNum&gt;</p>
+	<div class="paragraphs">
+		<p class="blurb">Historical Note: Until 6/16/16, we did not have a procedure for handling versioned releases,
+			although both Accessor and Support were assigned version 0.1 in a previous attempt.
+			Version 0.2 is the first version in this series for each currently active project.</p>
+	</div>
+
+	<div class="paragraphs">
+		<p>When master is ready for a release, we assign a version number and create a release branch with name 'release-&lt;versionNum&gt;'.
+			The separate release branch supports version updating and minor bug fixes on the release branch,
+			while allowing work to proceed on master and feature branches.</p>
+		<p>As soon as the branch has been created, we update ("bump") the version number. Bug-fix commits may also be added.</p>
+		<p>Work from the release branch is merged into master when the release branch is tagged and closed.
+			Bug fixes may be incorporated sooner as indicated.</p>
+	</div>
+
+	<div class="paragraphs">
+		<p>Release branches are intended to isolate their work from the rest of the project workflow.
+		There are no updates or merges with other repository branches.</p>
+	</div>
+
+<!-- @marker "Hotfix Branches" -->
+<h4 id='Hotfix_Branches_'>Hotfix Branches</h4>
+<p><strong>Naming Convention</strong>: hotfix-&lt;versionNum&gt;</p>
+	<div class="paragraphs">
+		<p>Hotfix branches are created to fix bugs in released software that must be fixed before the next Release branch.
+			They are checked out from the release tag for the release to be fixed
+			(<span class="mono">git checkout tags/&lt;latestVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></p>
+	</div>
+	<h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
 <div style="page-break-before: always">
-	<h3 id="WorkflowAppCode">Workflow: AppCode with Waffle</h3><div style="background-color: #d8e8ff">
+	<!-- @marker "Feature Branches" -->
+	<div style="background-color: #d8e8ff">
+	<h3 id='Feature_Branches_'>Feature Branches</h3>
 		<h4>While Issue Not Complete</h4>
 			<h5>Create Task</h5><ul>
 				<li class="blurb">for release branch, see <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a></li>
-				<li><strong>Update Branch from Master</strong><ul>
-					<li>master branch; update project; if changed, [test master, merge to branch, test branch], commit</li>
-				</ul></li>
-				<li>create new task with #&lt;issueID&gt; at end of name<ul>
-					<li>in dialog: check base branch; add issue number to end of branch name</li>
+				<li><strong>Update Master</strong>: switch to local master; update project (cT); if changed: test, branch and fix any issues, commit</li>
+				<li>create new task and branch with #&lt;issueID&gt; at end of name<ul>
+					<li>in dialog: branch from master; add issue number to end of branch name</li>
 				</ul></li>
 				<li>push branch</li></ul>
 			<h5>While Task(s) Not Complete</h5><div class='indent'>
 				<p><b>Select Task</b></p><ul>
-					<li>switch to task; merge in master branch</li>
+					<li>switch to task; <strong>Update Branch</strong>: <strong><em>Update Master</em></strong>; switch to branch; merge in master<ul>
+						<li>if changed: test, branch and fix any issues, commit</li>
+					</ul></li>
 					<li>check for applicable stashes; apply as indicated</li>
 					<li>commit</li></ul>
-				<p><b>Develop:</b> repeat to commit: edit/test; refresh; status; diff modifications; add/stage</p>
+				<p><b>Develop:</b> repeat to commit:</p><ul>
+					<li>edit/test; refresh; diff modifications; [status; add/stage; check for stray spaces (`gdcc`)]</li>
+				</ul>
 				<p><b>Commit</b></p><ul>
-					<li>refresh; add unversioned and/or other files as indicated; check for stray spaces (`gdcc`)</li>
+					<li>refresh; add files if indicated; diff modifications; status; add/stage; check for stray spaces (`gdcc`)</li>
 					<li>backup GitHub, AppCode data</li>
 					<li>diff all files in changelist; update message; commit</li>
+					<li>build; check Code Analysis issues; fix if indicated</li>
 				</ul>
-				<p><b>Publish</b></p><ul>
-					<li>push to remote tracking branch</li>
-					<li>if Task not complete: issue GitHub pull request against master; merge pull request;<br />
-						pull master; update project; <strong>Update Branch from Master</strong></li>
+				<p><strong>Publish</strong></p><ul>
+					<li><strong><em>Update Branch</em></strong>; push to remote tracking branch</li>
+					<li>if synchronization with local master is needed: switch to master; merge in branch</li>
+					<li>[update notes in milestone nextVersion]</li>
 				</ul></div>
-		<h4>Task Complete: To Review</h4><ul>
-			<li>issue GitHub pull request against master<ul>
-				<li><strong>If Closing Issue</strong>: add (close | fix | resolve)#&lt;ID&gt; to name</li>
-				<li>to connect: connect#&lt;ID&gt;</li>
-			</ul></li>
-		</ul>
-		<h4>Task Review Complete: Close Task</h4><ul>
-			<li>associated pull request: verify automatic merge available; merge; [resolve merge conflicts, if any; retest]</li>
-			<li>pull master</li>
-			<li>delete Task and local branch</li>
-		</ul>
+			<h5>Issue Tasks Complete</h5><div class='indent'>
+				<p><strong>Issue Pull Request</strong></p><ul>
+					<li>issue GitHub pull request against master<ul>
+						<li>add (close | fix | resolve)#&lt;ID&gt; to name; to connect: connect#&lt;ID&gt;</li>
+					</ul></li>
+				</ul>
+				<p><strong>Code Review</strong></p><ul>
+					<li>add tests, refactor, or correct if indicated</li>
+				</ul>
+				<p><strong>Issue Review Complete: Close Issue</strong></p><ul>
+					<li>for Pull Request: verify automatic merge available; merge; if merge conflicts: [resolve; retest]</li>
+					<li>update project; delete Task and local branch; check unmerged branches</li>
+				</ul>
+			</div>
+			<h5>[Archive Repository]</h5>
+		</div></div>
 
-		<h5>[Archive Repository]</h5>
-	</div>
-</div>
-
-<div style="page-break-before: always">
-	<h5 id="workflowSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
-	<!-- @marker "adminReleaseBranch" -->
-	<h6>Morning/Working Report</h6><ul>
-	<li>branch list; status; set $cb to current branch; show --name-only</li>
-	<li>for master.$cb, origin/master.master, master.origin/master: lg; diff --name-status</li>
-	<li>branch unmerged master; stash list</li>
-</ul>
-
-	<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
-	<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
-</ul>
-
-	<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
-	<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
-	<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
-</ul>
-
-	<h6 id='adminReleaseBranch'>Release Branch</h6>
-	<p class='blurb'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p><ul>
-	<li>select version number (eg. "1.0"); set $vn; create branch release-$vn</li>
-	<li>bump version: make changes to code and resources to match new version number</li>
-	<li>commit ("bump version to $vn")</li>
-	<li>bug fixes as indicated</li>
-	<li>update history files, issue milestones</li>
-	<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
-	<li>merge release branch into 'master'; push 'master'; delete release branch</li>
-</ul>
-
-	<!-- @marker "adminResolveConflicts" -->
-	<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
-	<li>status</li>
-	<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
-		<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
-	</ul></li>
-	<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
-	<li><span class='mono'>commit / resolve merge</span></li>
-	<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
-	<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
-</ul>
-
-	<!-- @marker "adminFixDivergentBranches" -->
-	<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
-	<li>use 'git rebase'</li>
-</ul>
-</div></div>
-
-<div style="page-break-before: always">
-	<h4 id="WorkflowXcode">Workflow: Xcode with Git</h4><div style="background-color: #ffebcd">
-	<h5>Branch</h5><ul>
-		<li>if current branch is uncommitted, commit or stash</li>
-		<li><span class='em'>Update Master:</span>	<ul>
-			<li>checkout master; verify status clean</li>
-			<li>fetch updates (<span class='mono'>git remote update --prune</span>); status</li>
-			<li>if changed: merge updateMaster (<span class='mono'>git merge --ff-only @{u}</span>); <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; test; push</li>
-		</ul></li>
-		<li>checkout branch<ul>
-			<li>pre-existing branch<ul>
-				<li><a href="#tsk_MergeMaster">Merge Master</a></li>
-				<li>recover any stashes</li>
-			</ul></li>
-			<li>OR new branch<ul>
-				<li>checkout new branch; set $cb; <span class='mono'>git push --set-upstream origin $cb</span></li>
-			</ul></li>
-			<li>OR create <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a> as indicated</li>
-		</ul></li>
-		<li>create new bot(s) '&lt;targetName&gt; &lt;branchName&gt;'</li>
-	</ul>
-		<h5>Repeat</h5><div class='indent'>
-		<p><b>Develop:</b> repeat until ready to commit: edit/test; status; verify modifications (diff); [add/stage]</p>
-		<p><b>Commit</b></p><ul>
-		<li>construct and save commit message; verify modifications (diff --cached); test</li>
-		<li>status: check branch; get $cb; add / review files to be committed; review commit msgfile and #issue</li>
-		<li>check for stray spaces (diff --cached --check); [backup GitHub issues; add, OR if failure checkout original]</li>
-		<li>status; update and repeat if indicated; commit msgfile</li>
-		<li>status; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.$cb; [to amend: reset --soft lastCommit]</li>
-		<li>check stash list</li>
-		<li><span class='em'>Update Master</span>; <span class='em'>Merge Master</span>; checkout $cb</li>
-	</ul>
-		<p><b>Publish</b></p><ul>
-		<li>status; verify branch; show --name-only; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin/$cb.$cb; push</li>
-	</ul>
-	</div>
-		<h5>Put Away Branch</h5><div class='indent'>
-		<p><b>Merge to (Master)</b> (or another parent branch)</p><ul>
-		<li>run all tests; from branch to be merged: check for status clear; set 'current branch' variable </li>
-		<li>checkout master; check for unmerged branches; show; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> master.$cb</li>
-		<li><span class='mono'>getMergeMessage</span>; <span class='mono'>merge 'from branch' (--no-ff -m "$mm" &lt;branch[$cb]&gt;</span>)</li>
-		<li>status; <a href="#adminResolveConflicts"><span class='em'>Resolve Conflicts</span></a>; [retest]</li>
-		<li>show; lg; <a href="#adminCompareRevisions"><span class='em'>Compare</span></a> origin.master; push; status</li>
-		<li>for each local branch other than master and $cb: <span class='em'>Merge Master</span></li>
-		<li>checkout $cb; push; [checkout master; delete local branch]; (manage remote stale branches periodically from GitHub)</li>
-	</ul>
-	<p><b>[Archive Repository]</b></p>
-</div></div></div>
+		<div style="page-break-before: always">
+			<!-- @marker "Release and Hotfix Branches" -->
+			<div style="background-color: #e2faff">
+			<h3 id='Release_Hotfix_Branches_'>Release and Hotfix Branches</h3>
+				<p><em>WARNING: Normal workflow branches are updated frequently to and from master.
+					Updating is avoided in this workflow to prevent pollution of the release branch.</em></p>
+			<h5>Create Release or Hotfix Branch</h5><ul>
+				<li><strong><em>[Update Master]</em></strong> unless contraindicated for this version</li>
+				<li>create release description from existing content of milestone nextVersion,
+					along with result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
+				<li>select version number</li>
+				<li>GitHub: create and save draft of revision #&lt;versionName&gt;, eg. v1.0.1</li>
+				<li>create (or has that been done?) and push branch</li>
+				<li>bump version: change all version numbers that appear in product<ul>
+					<li>for now, that is the version numbers in most project files</li>
+				</ul></li>
+				<li>commit ("bump version to &lt;versionName&gt;"); push</li>
+			</ul>
+			<h5>While Needed Fixes are Identified</h5><ul>
+				<li>switch to Release/Hotfix task</li>
+				<li>edit/test; refresh; diff modifications</li>
+				<li>status; add/stage; check for stray spaces (`gdcc`)</li>
+				<li>diff all files in changelist; update message; commit; push</li>
+			</ul>
+			<h5>Issue Tasks Complete</h5><div class='indent'>
+				<p><strong>Issue Pull Request</strong></p><ul>
+					<li>issue GitHub pull request against master<ul>
+						<li>add close #&lt;ID&gt; &lt;versionName&gt; to name; to connect: connect#&lt;ID&gt;</li>
+					</ul></li>
+				</ul>
+				<p><strong>Code Review</strong></p><ul>
+					<li>add tests, refactor, or correct if indicated; DO NOT UPDATE</li>
+				</ul>
+				<p><strong>Revision Review Complete</strong></p><ul>
+					<li>GitHub: from draft of Release: add product if indicated; publish</li>
+					<li>(expect: branch closed and tagged)</li>
+					<li>master branch: merge in release</li>
+				</ul>
+			</div>
+			<h5>Archive Repository</h5>
+			</div></div>
 
 <!-- @marker "Git Tasks" -->
 <div style="page-break-before: always">
@@ -352,81 +442,52 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Managing Repositories" -->
-<h2>Managing Repositories</h2>
-<!-- @topicList "Managing Repositories" "ManagingRepositories" -->
-	<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "1" "" -->
-	<!-- @topicItem "Fetch Working Copy of Repository" "#FetchWorkingCopy" "1" "" -->
-	<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
-	<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
-	<!-- @topicItem "Set Up User SSH" "#setupSSH" "1" "" -->
-	<!-- @topicItem "Add User to ProjectLocker Account" "#AddPLUser" "1" "" -->
-	<!-- @topicGroup "" "7" -->
-<!-- @/topicList -->
-
-<!-- @marker "Create Bare Repository" -->
-<h4 id='tsk_CreateBareRepository'>Create Bare Repository</h4><ul>
-	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/gitrep/&lt;ProjectName&gt;; https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;Remote)</li>
-	<li class='mono'>mkdir -p ${path}; cd ${path}</li>
-	<li class='mono'>git init --bare</li>
+<div style="page-break-before: always">
+	<h5 id="workflowSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
+	<!-- @marker "adminReleaseBranch" -->
+	<h6>Morning/Working Report</h6><ul>
+	<li>branch list; status; set $cb to current branch; show --name-only</li>
+	<li>for master.$cb, origin/master.master, master.origin/master: lg; diff --name-status</li>
+	<li>branch unmerged master; stash list</li>
 </ul>
 
-<!-- @marker "Fetch Working Copy of Repository" -->
-<h4 id='FetchWorkingCopy'>Fetch Working Copy of Repository</h4><ul>
-	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
-		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
-		<li><b>name:</b> &lt;ProjectName&gt;</li>
-		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
+	<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
+	<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
+</ul>
+
+	<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
+	<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
+	<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
+</ul>
+
+	<h6 id='adminReleaseBranch'>Release Branch</h6>
+	<p class='blurb'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p><ul>
+	<li>select version number (eg. "1.0"); set $vn; create branch release-$vn</li>
+	<li>bump version: make changes to code and resources to match new version number</li>
+	<li>commit ("bump version to $vn")</li>
+	<li>bug fixes as indicated</li>
+	<li>update history files, issue milestones</li>
+	<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
+	<li>merge release branch into 'master'; push 'master'; delete release branch</li>
+</ul>
+
+	<!-- @marker "adminResolveConflicts" -->
+	<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
+	<li>status</li>
+	<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
+		<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
 	</ul></li>
+	<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+	<li><span class='mono'>commit / resolve merge</span></li>
+	<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
+	<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
 </ul>
 
-<!-- @marker "Create New Repository" -->
-<h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
-	<li>create an empty local or ProjectLocker repository<ul>
-		<li>local: <a href="#tsk_CreateBareRepository">Create Bare Repository</a> at ~/Dev/gitrep/&lt;ProjectName&gt;</li>
-		<li>ProjectLocker: add project to ProjectLocker account</li>
-	</ul></li>
-	<li>Xcode: <a href="#FetchWorkingCopy">Fetch Working Copy of Repository</a></li>
-	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
-	<li>add new or existing content<ul>
-		<li>in working copy, either add existing files or create new ones (eg. Xcode workspace and initial history file Cdoc/History_&lt;ProjectName&gt;.html)</li>
-		<li>Terminal: <span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add <span class='depr'>--all</span> --interactive</span></li>
-		<li>Xcode: commit; push</li>
-	</ul></li>
+	<!-- @marker "adminFixDivergentBranches" -->
+	<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
+	<li>use 'git rebase'</li>
 </ul>
-
-<!-- @marker "Add Remote Repository" -->
-<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul class='depr'>
-	<li class='blurb'>Add Remote Repository from existing working copy ~/Dev/&lt;ProjectName&gt;</li>
-	<li>add repository to ProjectLocker account</li>
-	<li>push working copy's master branch to remote/master (create)</li>
-</ul>
-<ul>
-	<li>remote addresses: https://carolclark@github.com/carolclark/Punkin.git; https://github.com/lauracello/Punkin</li>
-</ul>
-
-<!-- @marker "Set Up User SSH" -->
-<h4 id='setupSSH'>Set Up User SSH</h4><ul>
-	<li>on User's computer, login to user account</li>
-	<li>Terminal:<ul>
-		<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
-		<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Add User to ProjectLocker Account" -->
-<h4 id='AddPLUser'>Add User to ProjectLocker Account</h4><ul>
-	<li>ProjectLocker admin: add user to account (List Account Users)</li>
-	<li>User<ul>
-		<li><a href="#setupSSH">User: Set Up User SSH</a></li>
-		<li>copy the contents (without the carriage return at the end) of the file ${HOME}/.ssh/authorized_keys to the clipboard</li>
-		<li>login to <a href="https://portal.projectlocker.com/">ProjectLocker</a> with your username and our password</li>
-		<li>select Manage Public Keys; click Edit next to the account with your name</li>
-		<li>paste the contents of the clipboard into the large field labeled Key</li>
-		<li>At the end of the new key field is some text starting with &lt;username&gt;@. Copy from username to the end of the field into the User Name field.</li>
-		<li>click Save Public Key</li>
-	</ul></li>
-</ul>
+</div></div>
 
 <!-- @marker "Policies and Notes" -->
 <h2>Policies and Notes</h2>

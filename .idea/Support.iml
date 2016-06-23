@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/.idea" />
     <content url="file://$MODULE_DIR$/BuildSupport">
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/_plist/BBEdit-Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/_plist/BBEditScripts-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/_Tests/testBBEdit.ksh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/AppleScripts/BBEditUtil.applescript" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/BBEdit/AppleScripts/CheckHTML.applescript" isTestSource="false" />
@@ -33,6 +33,9 @@
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallCdoc.xctemplate/___FILEBASENAME___.ksh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallCdoc.xctemplate/TemplateIcon.icns" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallCdoc.xctemplate/TemplateInfo.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/___FILEBASENAME___.ksh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateIcon.icns" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateInfo.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/ReadMe.xctemplate/___FILEBASENAME___.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/ReadMe.xctemplate/TemplateInfo.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Documentation/RequirementsDoc.xctemplate/___FILEBASENAME___.html" isTestSource="false" />
@@ -84,9 +87,6 @@
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Resources/UserSlate.xctemplate/___FILEBASENAME___.r" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Resources/UserSlate.xctemplate/TemplateIcon.icns" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Resources/UserSlate.xctemplate/TemplateInfo.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallDoxygen.xctemplate/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/___FILEBASENAME___.ksh" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallDoxygen.xctemplate/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateIcon.icns" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallDoxygen.xctemplate/Applications/Xcode/Templates/FileTemplates/_Documentation/InstallDoxygen.xctemplate/TemplateInfo.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallTarget.xctemplate/___FILEBASENAME___.ksh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallTarget.xctemplate/TemplateIcon.icns" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BuildSupport/Applications/Xcode/Templates/FileTemplates/_Scripting/InstallTarget.xctemplate/TemplateInfo.plist" isTestSource="false" />
@@ -221,6 +221,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/_tech/img/ucgl_u.tiff" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/_tech/img/ucgl_x.tiff" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/Cdoc_install.ksh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/_img/GitBranchingModel.001.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/_img/Partitions.png" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Cdoc.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Development.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Git.html" isTestSource="false" />
@@ -241,8 +243,27 @@
       <sourceFolder url="file://$MODULE_DIR$/Docs/Doxygen/Doxygen_install.ksh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Doxygen/Support_doxygen.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/ArbonneStruct.numbers" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/Partitions.numbers" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/Partitions.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.numbers/Index.zip" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.numbers/Metadata/BuildVersionHistory.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.numbers/Metadata/DocumentIdentifier" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.numbers/Metadata/Properties.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.numbers/preview-micro.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.numbers/preview-web.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.numbers/preview.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.pdf" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Data/mt0@2x-251.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Data/st2-1148.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Data/st2-650.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Index.zip" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Metadata/BuildVersionHistory.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Metadata/DocumentIdentifier" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Metadata/Properties.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/preview-micro.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/preview-web.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/preview.jpg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModelImages/GitBranchingModelImage.001.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/orig-gitflow-model.src.key" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/Support_ghissues.json" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/UseCaseImages.pages" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/WebsiteStructure/TechnicalDocs/index.html" isTestSource="false" />

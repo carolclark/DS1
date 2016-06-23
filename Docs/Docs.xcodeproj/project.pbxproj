@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		670280041A76F6E1004AEA12 /* Partitions.numbers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Partitions.numbers; sourceTree = "<group>"; };
 		6729FAA81957746200612D1A /* Tools_Inactive.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Tools_Inactive.html; sourceTree = "<group>"; };
 		6739B60E192EB33E00D659B6 /* Python.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Python.html; sourceTree = "<group>"; };
 		676695A41919973E005D3CED /* Support_ghissues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Support_ghissues.json; sourceTree = "<group>"; };
@@ -41,12 +40,34 @@
 		676695D11919A759005D3CED /* Tools.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
 		676695D21919AA3B005D3CED /* ArbonneStruct.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArbonneStruct.numbers; sourceTree = "<group>"; };
 		676695D31919AA3B005D3CED /* UseCaseImages.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = UseCaseImages.pages; sourceTree = "<group>"; };
-		67A657041A797B90002B3CBB /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Partitions.png; path = OtherDocuments/Partitions.png; sourceTree = SOURCE_ROOT; };
 		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
 		67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
+		67F24D751D11F30300CF9862 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
+		67F24D771D13264900CF9862 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
+		965F803622D42B6140D05477 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
+		965F803A85A3E5C8A15433C2 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
+		965F825D415F1A10047A3BAC /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
+		965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt0@2x-251.jpg"; sourceTree = "<group>"; };
+		965F8385E73A2C182714A950 /* st2-650.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-650.jpg"; sourceTree = "<group>"; };
+		965F83CC93258AC741E2647F /* Partitions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Partitions.pdf; sourceTree = "<group>"; };
+		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
+		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		965F8793DFC358BE4D872124 /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
+		965F87D13524A7E376D0EDDC /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
+		965F88B4D7E2CB1D87FEBF50 /* GitBranchingModelImage.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModelImage.001.png; sourceTree = "<group>"; };
+		965F894C9EADADC2C73F8A5A /* orig-gitflow-model.src.key */ = {isa = PBXFileReference; lastKnownFileType = file.key; path = "orig-gitflow-model.src.key"; sourceTree = "<group>"; };
+		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
+		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
+		965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-1148.jpg"; sourceTree = "<group>"; };
+		965F8C9798E940E064E8D4AE /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
+		965F8D110C54EC79190CB9B0 /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
+		965F8D1ED5AE55EB946B750A /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
+		965F8D7BDE8CEB6EAE8D4D46 /* Index.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Index.zip; sourceTree = "<group>"; };
+		965F8F36D473172852C9A19B /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
+		965F8FB531FD58E27E38D62C /* Index.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Index.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -65,10 +86,11 @@
 		676695A31919973E005D3CED /* OtherDocuments */ = {
 			isa = PBXGroup;
 			children = (
-				670280041A76F6E1004AEA12 /* Partitions.numbers */,
 				676695D21919AA3B005D3CED /* ArbonneStruct.numbers */,
 				676695D31919AA3B005D3CED /* UseCaseImages.pages */,
 				676695A41919973E005D3CED /* Support_ghissues.json */,
+				965F8DE26B1292AAB0D3346A /* DrivePartitions */,
+				965F816F72396FF388545791 /* GitBranchingModel */,
 			);
 			path = OtherDocuments;
 			sourceTree = "<group>";
@@ -115,7 +137,6 @@
 		676695BB1919A759005D3CED /* img */ = {
 			isa = PBXGroup;
 			children = (
-				67A657041A797B90002B3CBB /* Partitions.png */,
 				676695BC1919A759005D3CED /* space.tiff */,
 				676695BD1919A759005D3CED /* ucds_1.tiff */,
 				676695BE1919A759005D3CED /* ucds_2.tiff */,
@@ -134,6 +155,7 @@
 		676695C81919A759005D3CED /* html */ = {
 			isa = PBXGroup;
 			children = (
+				67F24D731D11F30300CF9862 /* _img */,
 				676695C91919A759005D3CED /* Cdoc.html */,
 				676695CA1919A759005D3CED /* XcodeDevelopment.html */,
 				676695CB1919A759005D3CED /* Development.html */,
@@ -160,6 +182,15 @@
 			path = Doxygen;
 			sourceTree = "<group>";
 		};
+		67F24D731D11F30300CF9862 /* _img */ = {
+			isa = PBXGroup;
+			children = (
+				67F24D771D13264900CF9862 /* GitBranchingModel.001.png */,
+				67F24D751D11F30300CF9862 /* Partitions.png */,
+			);
+			path = _img;
+			sourceTree = "<group>";
+		};
 		965F810DE608D57DDDD66A42 /* WebsiteStructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,12 +199,95 @@
 			path = WebsiteStructure;
 			sourceTree = "<group>";
 		};
+		965F816F72396FF388545791 /* GitBranchingModel */ = {
+			isa = PBXGroup;
+			children = (
+				965F8331CE98CCBEC543DF86 /* GitBranchingModel.key */,
+				965F89565A695D5DC277C674 /* GitBranchingModelImages */,
+				965F894C9EADADC2C73F8A5A /* orig-gitflow-model.src.key */,
+			);
+			path = GitBranchingModel;
+			sourceTree = "<group>";
+		};
+		965F8331CE98CCBEC543DF86 /* GitBranchingModel.key */ = {
+			isa = PBXGroup;
+			children = (
+				965F8BB2B8EBB03FD9E60779 /* Data */,
+				965F8BFABA7A24C8610C6D8B /* Metadata */,
+				965F8FB531FD58E27E38D62C /* Index.zip */,
+				965F8D110C54EC79190CB9B0 /* preview.jpg */,
+				965F84A908CB1A213B4C6105 /* preview-web.jpg */,
+				965F8D1ED5AE55EB946B750A /* preview-micro.jpg */,
+			);
+			path = GitBranchingModel.key;
+			sourceTree = "<group>";
+		};
+		965F844BB5F075AB31086240 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				965F803A85A3E5C8A15433C2 /* Properties.plist */,
+				965F853900CA7836B32E11C2 /* DocumentIdentifier */,
+				965F8793DFC358BE4D872124 /* BuildVersionHistory.plist */,
+			);
+			path = Metadata;
+			sourceTree = "<group>";
+		};
+		965F89565A695D5DC277C674 /* GitBranchingModelImages */ = {
+			isa = PBXGroup;
+			children = (
+				965F88B4D7E2CB1D87FEBF50 /* GitBranchingModelImage.001.png */,
+			);
+			path = GitBranchingModelImages;
+			sourceTree = "<group>";
+		};
+		965F8BB2B8EBB03FD9E60779 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				965F8385E73A2C182714A950 /* st2-650.jpg */,
+				965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */,
+				965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		965F8BB614D97D7BD74165B1 /* TechnicalDocs */ = {
 			isa = PBXGroup;
 			children = (
 				965F85D7BC609E4499DD528D /* index.html */,
 			);
 			path = TechnicalDocs;
+			sourceTree = "<group>";
+		};
+		965F8BFABA7A24C8610C6D8B /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				965F8C9798E940E064E8D4AE /* Properties.plist */,
+				965F87D13524A7E376D0EDDC /* DocumentIdentifier */,
+				965F8F36D473172852C9A19B /* BuildVersionHistory.plist */,
+			);
+			path = Metadata;
+			sourceTree = "<group>";
+		};
+		965F8DE26B1292AAB0D3346A /* DrivePartitions */ = {
+			isa = PBXGroup;
+			children = (
+				965F83CC93258AC741E2647F /* Partitions.pdf */,
+				965F803622D42B6140D05477 /* Partitions.png */,
+				965F8EC0E97FB998DB989C1E /* Partitions.numbers */,
+			);
+			path = DrivePartitions;
+			sourceTree = "<group>";
+		};
+		965F8EC0E97FB998DB989C1E /* Partitions.numbers */ = {
+			isa = PBXGroup;
+			children = (
+				965F844BB5F075AB31086240 /* Metadata */,
+				965F8D7BDE8CEB6EAE8D4D46 /* Index.zip */,
+				965F825D415F1A10047A3BAC /* preview.jpg */,
+				965F89BCBB76CCA217C61F09 /* preview-web.jpg */,
+				965F8983AA820AB4453CE3A1 /* preview-micro.jpg */,
+			);
+			path = Partitions.numbers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
