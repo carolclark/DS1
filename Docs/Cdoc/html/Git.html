@@ -43,9 +43,9 @@
 <!-- @marker "Fetch Working Copy of Repository" -->
 <h4 id='FetchWorkingCopy'>Fetch Working Copy of Repository</h4><ul>
 	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
-		<li><b>source repository:</b>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
-		<li><b>name:</b> &lt;ProjectName&gt;</li>
-		<li><b>save at:</b> ~/Dev/&lt;ProjectName&gt;</li>
+		<li><strong>source repository:</strong>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
+		<li><strong>name:</strong> &lt;ProjectName&gt;</li>
+		<li><strong>save at:</strong> ~/Dev/&lt;ProjectName&gt;</li>
 	</ul></li>
 </ul>
 
@@ -169,32 +169,30 @@
 	<h3 id='Feature_Branches_'>Feature Branches</h3>
 		<h4>While Issue Not Complete</h4>
 			<h5>Create Task</h5><ul>
-				<li class="blurb">for release branch, see <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a></li>
 				<li><strong>Update Master</strong>: switch to local master; update project (cT); if changed: test, branch and fix any issues, commit</li>
 				<li>create new task and branch with #&lt;issueID&gt; at end of name<ul>
 					<li>in dialog: branch from master; add issue number to end of branch name</li>
 				</ul></li>
 				<li>push branch</li></ul>
 			<h5>While Task(s) Not Complete</h5><div class='indent'>
-				<p><b>Select Task</b></p><ul>
+				<p><strong>Select Task</strong></p><ul>
 					<li>switch to task; <strong>Update Branch</strong>: <strong><em>Update Master</em></strong>; switch to branch; merge in master<ul>
 						<li>if changed: test, branch and fix any issues, commit</li>
 					</ul></li>
 					<li>check for applicable stashes; apply as indicated</li>
 					<li>commit</li></ul>
-				<p><b>Develop:</b> repeat to commit:</p><ul>
-					<li>edit/test; refresh; diff modifications; [status; add/stage; check for stray spaces (`gdcc`)]</li>
+				<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
+					<li>edit/test; refresh; diff modifications</li>
+					<li>Terminal: status; add/stage; check for stray spaces (`gdcc`)</li>
 				</ul>
-				<p><b>Commit</b></p><ul>
-					<li>refresh; add files if indicated; diff modifications; status; add/stage; check for stray spaces (`gdcc`)</li>
+				<p><strong>Commit</strong></p><ul>
 					<li>backup GitHub, AppCode data</li>
-					<li>diff all files in changelist; update message; commit</li>
-					<li>build; check Code Analysis issues; fix if indicated</li>
+					<li>to Commit: diff all files in changelist; update message; commit</li>
+					<li>check Code Analysis messages; use additional commits (!right branch??)to fix as indicated *(goto <a href="#wf_Develop">Develop)*</a></li>
 				</ul>
 				<p><strong>Publish</strong></p><ul>
 					<li><strong><em>Update Branch</em></strong>; push to remote tracking branch</li>
-					<li>if synchronization with local master is needed: switch to master; merge in branch</li>
-					<li>[update notes in milestone nextVersion]</li>
+					<li>[GitHub: update notes in <span class="mono">milestone nextVersion</span>]</li>
 				</ul></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<p><strong>Issue Pull Request</strong></p><ul>
@@ -231,7 +229,7 @@
 				</ul></li>
 				<li>commit ("bump version to &lt;versionName&gt;"); push</li>
 			</ul>
-			<h5>While Needed Fixes are Identified</h5><ul>
+			<h5>While Needed Fix(es) are Present</h5><ul>
 				<li>switch to Release/Hotfix task</li>
 				<li>edit/test; refresh; diff modifications</li>
 				<li>status; add/stage; check for stray spaces (`gdcc`)</li>
@@ -375,7 +373,7 @@
 <!-- @marker "Bisect" -->
 <h4 id='tsk_Bisect'>Bisect</h4><ul>
 	<li><span class='mono'>git checkout -b &lt;newbranch&gt;</span>&nbsp;&nbsp;# checkout a new branch<ul>
-		<li><b>Detached Head</b><ul>
+		<li><strong>Detached Head</strong><ul>
 			<li>If accidentally done from the master branch, a detached head is possible. Correct by checking the work out into  new branch, which restores master to its previous state.</li>
 		</ul></li>
 	</ul></li>
