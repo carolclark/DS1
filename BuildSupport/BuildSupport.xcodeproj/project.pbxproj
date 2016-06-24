@@ -1087,6 +1087,7 @@
 		67692452141EB818005D3E68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = v0.1;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -1094,6 +1095,7 @@
 		67692453141EB818005D3E68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = v0.1;
 			};
 			name = Release;
 		};
