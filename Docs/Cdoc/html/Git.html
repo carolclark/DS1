@@ -176,23 +176,25 @@
 				<li>push branch</li></ul>
 			<h5>While Task(s) Not Complete</h5><div class='indent'>
 				<p><strong>Select Task</strong></p><ul>
-					<li>switch to task; <strong>Update Branch</strong>: <strong><em>Update Master</em></strong>; switch to branch; merge in master<ul>
-						<li>if changed: test, branch and fix any issues, commit</li>
+					<li>switch to task; update task branch:<ul>
+						<li><strong>Update Branch</strong>: <strong><em>Update Master</em></strong>; switch to branch; if master changed:<ul>
+							<li>merge in master, test, branch and fix any issues, commit</li>
+						</ul></li>
 					</ul></li>
 					<li>check for applicable stashes; apply as indicated</li>
 					<li>commit</li></ul>
 				<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
-					<li>edit/test; refresh; diff modifications</li>
+					<li>edit/test; refresh; [diff modifications]</li>
 					<li>Terminal: status; add/stage; check for stray spaces (`gdcc`)</li>
 				</ul>
 				<p><strong>Commit</strong></p><ul>
 					<li>backup GitHub, AppCode data</li>
 					<li>to Commit: diff all files in changelist; update message; commit</li>
-					<li>check Code Analysis messages; use additional commits (!right branch??)to fix as indicated *(goto <a href="#wf_Develop">Develop)*</a></li>
+					<li>inspect code; use additional commits to fix as indicated <em>(<a href="#wf_Develop">Develop</a></em>)</li>
 				</ul>
 				<p><strong>Publish</strong></p><ul>
 					<li><strong><em>Update Branch</em></strong>; push to remote tracking branch</li>
-					<li>[GitHub: update notes in <span class="mono">milestone nextVersion</span>]</li>
+					<li>[GitHub: update notes in <em>milestone nextVersion</em>]</li>
 				</ul></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<p><strong>Issue Pull Request</strong></p><ul>
@@ -229,7 +231,7 @@
 				</ul></li>
 				<li>commit ("bump version to &lt;versionName&gt;"); push</li>
 			</ul>
-			<h5>While Needed Fix(es) are Present</h5><ul>
+			<h5>While Needed Fix(es) are Identified</h5><ul>
 				<li>switch to Release/Hotfix task</li>
 				<li>edit/test; refresh; diff modifications</li>
 				<li>status; add/stage; check for stray spaces (`gdcc`)</li>
@@ -442,13 +444,6 @@
 
 <div style="page-break-before: always">
 	<h5 id="workflowSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
-	<!-- @marker "adminReleaseBranch" -->
-	<h6>Morning/Working Report</h6><ul>
-	<li>branch list; status; set $cb to current branch; show --name-only</li>
-	<li>for master.$cb, origin/master.master, master.origin/master: lg; diff --name-status</li>
-	<li>branch unmerged master; stash list</li>
-</ul>
-
 	<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
 	<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
 </ul>
@@ -458,18 +453,13 @@
 	<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
 </ul>
 
-	<h6 id='adminReleaseBranch'>Release Branch</h6>
-	<p class='blurb'>for branching strategy, see <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p><ul>
-	<li>select version number (eg. "1.0"); set $vn; create branch release-$vn</li>
-	<li>bump version: make changes to code and resources to match new version number</li>
-	<li>commit ("bump version to $vn")</li>
-	<li>bug fixes as indicated</li>
-	<li>update history files, issue milestones</li>
-	<li>merge release branch into 'production'; tag "revision-$vn"; push to 'production'; push tags</li>
-	<li>merge release branch into 'master'; push 'master'; delete release branch</li>
+	<h6 id="adminDebugLogging">Bash Debug Logging</h6><ul>
+		<li>add logger Live Template to code: `logger "$0#$LINENO: | #"`</li>
+		<li>enter information to be logged at cursor, &lt;logtag&gt; content after '#'</li>
+		<li>run code to make entries in syslog</li>
+		<li>Terminal: <span class="mono">syslog | grep "#&lt;logtag&gt;"</span> to display tagged information</li>
 </ul>
 
-	<!-- @marker "adminResolveConflicts" -->
 	<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
 	<li>status</li>
 	<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
