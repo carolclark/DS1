@@ -49,7 +49,6 @@
 		965F803A85A3E5C8A15433C2 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
 		965F825D415F1A10047A3BAC /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
 		965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt0@2x-251.jpg"; sourceTree = "<group>"; };
-		965F8385E73A2C182714A950 /* st2-650.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-650.jpg"; sourceTree = "<group>"; };
 		965F83CC93258AC741E2647F /* Partitions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Partitions.pdf; sourceTree = "<group>"; };
 		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
@@ -68,6 +67,7 @@
 		965F8D7BDE8CEB6EAE8D4D46 /* Index.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Index.zip; sourceTree = "<group>"; };
 		965F8F36D473172852C9A19B /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
 		965F8FB531FD58E27E38D62C /* Index.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Index.zip; sourceTree = "<group>"; };
+		965F8FC0BCA088C8B8485AB3 /* Git_381b70c.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Git_381b70c.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -166,6 +166,7 @@
 				676695D11919A759005D3CED /* Tools.html */,
 				6729FAA81957746200612D1A /* Tools_Inactive.html */,
 				6739B60E192EB33E00D659B6 /* Python.html */,
+				965F8FC0BCA088C8B8485AB3 /* Git_381b70c.html */,
 			);
 			path = html;
 			sourceTree = "<group>";
@@ -243,7 +244,6 @@
 		965F8BB2B8EBB03FD9E60779 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				965F8385E73A2C182714A950 /* st2-650.jpg */,
 				965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */,
 				965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */,
 			);

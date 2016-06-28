@@ -226,6 +226,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Cdoc.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Development.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Git.html" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Git_381b70c.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Glossary_Support.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/History_Support.html" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/Cdoc/html/Personal.html" isTestSource="false" />
@@ -254,7 +255,6 @@
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/DrivePartitions/Partitions.png" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Data/mt0@2x-251.jpg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Data/st2-1148.jpg" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Data/st2-650.jpg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Index.zip" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Metadata/BuildVersionHistory.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Docs/OtherDocuments/GitBranchingModel/GitBranchingModel.key/Metadata/DocumentIdentifier" isTestSource="false" />

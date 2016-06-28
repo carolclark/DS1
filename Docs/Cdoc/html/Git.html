@@ -17,6 +17,7 @@
 	<!-- @topicItem "Daily Workflows: AppCode with Waffle" "#WorkflowAppCode" "0" "current workflow" -->
 		<!-- @topicItem "Feature Branches" "#Feature_Branches_" "1" "" -->
 		<!-- @topicItem "Release and Hotfix Branches" "#Release_Hotfix_Branches_" "1" "" -->
+		<!-- @topicItem "Workflow Subtasks" "#workflowSubtasks" "1" "" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
 <!-- @/topicList -->
@@ -183,17 +184,20 @@
 					</ul></li>
 					<li>check for applicable stashes; apply as indicated</li>
 					<li>commit</li></ul>
-				<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
-					<li>edit/test; refresh; [diff modifications]</li>
-					<li>Terminal: status; add/stage; check for stray spaces (`gdcc`)</li>
-				</ul>
-				<p><strong>Commit</strong></p><ul>
-					<li>backup GitHub, AppCode data</li>
-					<li>to Commit: diff all files in changelist; update message; commit</li>
-					<li>inspect code; use additional commits to fix as indicated <em>(<a href="#wf_Develop">Develop</a></em>)</li>
-				</ul>
+					<div class="indent2">
+					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
+						<li>edit/test; refresh; [diff modifications]</li>
+						<li>Terminal: status; add/stage; check for stray spaces (`gdcc`)</li>
+					</ul>
+					<p><strong>Commit</strong></p><ul>
+						<li>backup GitHub, AppCode data</li>
+						<li>to Commit: diff all files in changelist; update message; note inspection status; commit</li>
+						<li>in indicated: inspect code; add additional commits to fix as indicated <em>(<a href="#wf_Develop">Develop</a></em>)</li>
+					</ul>
+					</div>
 				<p><strong>Publish</strong></p><ul>
-					<li><strong><em>Update Branch</em></strong>; push to remote tracking branch</li>
+					<li>squash commits if indicated</li>
+					<li><strong><em>Update Branch</em></strong>; test if changed; push to remote tracking branch</li>
 					<li>[GitHub: update notes in <em>milestone nextVersion</em>]</li>
 				</ul></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
@@ -254,6 +258,43 @@
 			</div>
 			<h5>Archive Repository</h5>
 			</div></div>
+
+<div style="page-break-before: always">
+	<!-- @marker "Workflow Subtasks" -->
+	<div style="background-color: #ecf4ff">
+	<h3 id="workflowSubtasks">Workflow Subtasks</h3>
+	<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
+	<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
+</ul>
+
+	<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
+	<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
+	<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
+</ul>
+
+	<h6 id="adminDebugLogging">Bash Debug Logging</h6><ul>
+	<li>add logger Live Template to code: `logger "$0#$LINENO: | #"`</li>
+	<li>enter information to be logged at cursor, &lt;logtag&gt; content after '#'</li>
+	<li>run code to make entries in syslog</li>
+	<li>Terminal: <span class="mono">syslog | grep "#&lt;logtag&gt;"</span> to display tagged information</li>
+</ul>
+
+	<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
+	<li>status</li>
+	<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
+		<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
+	</ul></li>
+	<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+	<li><span class='mono'>commit / resolve merge</span></li>
+	<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
+	<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
+</ul>
+
+	<!-- @marker "adminFixDivergentBranches" -->
+	<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
+	<li>use 'git rebase'</li>
+</ul>
+</div></div>
 
 <!-- @marker "Git Tasks" -->
 <div style="page-break-before: always">
@@ -441,41 +482,6 @@
 		<li><span class='mono'>git commit -m "normalize line endings"</span></li>
 	</ul></li>
 </ul>
-
-<div style="page-break-before: always">
-	<h5 id="workflowSubtasks">Workflow: Administrator Subtasks</h5><div style="background-color: #ecf4ff">
-	<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
-	<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
-</ul>
-
-	<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
-	<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
-	<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
-</ul>
-
-	<h6 id="adminDebugLogging">Bash Debug Logging</h6><ul>
-		<li>add logger Live Template to code: `logger "$0#$LINENO: | #"`</li>
-		<li>enter information to be logged at cursor, &lt;logtag&gt; content after '#'</li>
-		<li>run code to make entries in syslog</li>
-		<li>Terminal: <span class="mono">syslog | grep "#&lt;logtag&gt;"</span> to display tagged information</li>
-</ul>
-
-	<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
-	<li>status</li>
-	<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
-		<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
-	</ul></li>
-	<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
-	<li><span class='mono'>commit / resolve merge</span></li>
-	<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
-	<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
-</ul>
-
-	<!-- @marker "adminFixDivergentBranches" -->
-	<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
-	<li>use 'git rebase'</li>
-</ul>
-</div></div>
 
 <!-- @marker "Policies and Notes" -->
 <h2>Policies and Notes</h2>
