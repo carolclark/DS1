@@ -19,7 +19,8 @@
 		<!-- @topicItem "Release and Hotfix Branches" "#Release_Hotfix_Branches_" "1" "" -->
 		<!-- @topicItem "Workflow Subtasks" "#workflowSubtasks" "1" "" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
-	<!-- @topicItem "Policies and Notes" "#GitPolicies_" "0" "" -->
+	<!-- @topicItem "References" "#_References" "0" "" -->
+	<!-- @topicItem "Notes" "#GitNotes_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Managing Repositories" -->
@@ -106,8 +107,8 @@
 	<!-- @topicItem "Hotfix Branches" "#Hotfix_Branches_" "0" "" -->
 <!-- @/topicList -->
 
-<div> class="paragraphs">
-	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues. GitHub "milestones" group issues into larger goals.
+<div class="paragraphs">
+	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues. GitHub "milestones" group issues into larger goals.</p>
 	<p>AppCode, our primary IDE, supports Tasks, each associated with an issue and a branch.
 	Tasks are a fundamental element in our workflow.
 	We do frequent integrations, and we often use multiple Tasks per branch.</p>
@@ -130,11 +131,11 @@
 </div>
 
 <p>Feature, release, and hotfix branches are all represented in this diagram:</p>
-<img src="_img/GitBranchingModel.001.png" style="width:600px;height:800px;">
+<div><img src="_img/GitBranchingModel.001.png" alt="Git Branching Model" style="width:600px;height:800px;" /></div>
 
 <!-- @marker "Release Branches" -->
 <h4 id='ReleaseBranches_'>Release Branches</h4>
-<p><strong>Naming Convention</strong>: release-&lt;versionNum&gt;</p>
+<p><strong>Naming Convention</strong>: release-v&lt;versionNum&gt;</p>
 	<div class="paragraphs">
 		<p class="blurb">Historical Note: Until 6/16/16, we did not have a procedure for handling versioned releases,
 			although both Accessor and Support were assigned version 0.1 in a previous attempt.
@@ -157,7 +158,7 @@
 
 <!-- @marker "Hotfix Branches" -->
 <h4 id='Hotfix_Branches_'>Hotfix Branches</h4>
-<p><strong>Naming Convention</strong>: hotfix-&lt;versionNum&gt;</p>
+<p><strong>Naming Convention</strong>: hotfix-v&lt;versionNum&gt;</p>
 	<div class="paragraphs">
 		<p>Hotfix branches are created to fix bugs in released software that must be fixed before the next Release branch.
 			They are checked out from the release tag for the release to be fixed
@@ -187,31 +188,34 @@
 					<div class="indent2">
 					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
 						<li>edit/test; refresh; [diff modifications]</li>
-						<li>Terminal: status; add/stage; check for stray spaces (`gdcc`)</li>
+						<li>Terminal: status; add/stage</li>
 					</ul>
 					<p><strong>Commit</strong></p><ul>
+						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
 						<li>backup GitHub, AppCode data</li>
 						<li>to Commit: diff all files in changelist; update message; note inspection status; commit</li>
-						<li>in indicated: inspect code; add additional commits to fix as indicated <em>(<a href="#wf_Develop">Develop</a></em>)</li>
+						<li>as indicated: inspect code; add additional commits to fix as indicated <em>(<a href="#wf_Develop">Develop</a></em>)</li>
 					</ul>
 					</div>
 				<p><strong>Publish</strong></p><ul>
+					<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
 					<li>squash commits if indicated</li>
 					<li><strong><em>Update Branch</em></strong>; test if changed; push to remote tracking branch</li>
 					<li>[GitHub: update notes in <em>milestone nextVersion</em>]</li>
 				</ul></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
-				<p><strong>Issue Pull Request</strong></p><ul>
-					<li>issue GitHub pull request against master<ul>
-						<li>add (close | fix | resolve)#&lt;ID&gt; to name; to connect: connect#&lt;ID&gt;</li>
+				<p><strong>Trigger Code Review</strong></p><ul>
+					<li><strong><em>StatusReport.sh</em></strong>; note especially status clear</li>
+					<li>change issue's Waffle label from 'Waffle:in progress' to 'Waffle:needs review'<ul>
+						<li><em>Waffle should move issue to 'Needs Review' column</em></li>
 					</ul></li>
-				</ul>
-				<p><strong>Code Review</strong></p><ul>
 					<li>add tests, refactor, or correct if indicated</li>
 				</ul>
 				<p><strong>Issue Review Complete: Close Issue</strong></p><ul>
-					<li>for Pull Request: verify automatic merge available; merge; if merge conflicts: [resolve; retest]</li>
-					<li>update project; delete Task and local branch; check unmerged branches</li>
+					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches</li>
+					<li>merge branch into local master; push master</li>
+					<li>remove issue's Waffle label 'Waffle:needs review'; close issue</li>
+					<li>update project; delete Task and local branch; address any unmerged branches</li>
 				</ul>
 			</div>
 			<h5>[Archive Repository]</h5>
@@ -242,15 +246,11 @@
 				<li>diff all files in changelist; update message; commit; push</li>
 			</ul>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
-				<p><strong>Issue Pull Request</strong></p><ul>
-					<li>issue GitHub pull request against master<ul>
-						<li>add close #&lt;ID&gt; &lt;versionName&gt; to name; to connect: connect#&lt;ID&gt;</li>
-					</ul></li>
-				</ul>
-				<p><strong>Code Review</strong></p><ul>
+				<p><strong>Trigger Code Review</strong></p><ul>
+				    <li>change Waffle label from Waffle:in progress to Waffle:needs review</li>
 					<li>add tests, refactor, or correct if indicated; DO NOT UPDATE</li>
 				</ul>
-				<p><strong>Revision Review Complete</strong></p><ul>
+				<p><strong>Code Review Complete</strong></p><ul>
 					<li>GitHub: from draft of Release: add product if indicated; publish</li>
 					<li>(expect: branch closed and tagged)</li>
 					<li>master branch: merge in release</li>
@@ -261,9 +261,29 @@
 
 <div style="page-break-before: always">
 	<!-- @marker "Workflow Subtasks" -->
-	<div style="background-color: #ecf4ff">
-	<h3 id="workflowSubtasks">Workflow Subtasks</h3>
-	<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
+	<h3>Workflow Subtasks</h3>
+	<!-- @topicList "Workflow Subtasks" "workflowSubtasks" -->
+		<!-- @topicItem "Naming Conventions" "#namingConventions" "0" "" -->
+		<!-- @topicItem "Commit Message Conventions" "#commitMessageConventions" "0" "" -->
+	<!-- @/topicList -->
+
+	<div style="background-color: #deedf8">
+		<!-- @marker "Naming Conventions" -->
+		<h6 id='namingConventions'>Naming Conventions</h6><ul>
+			<li>feature branches and associated tasks: &lt;task-desc&gt;-#&lt;issueNum&gt;</li>
+			<li>release branches and associated tasks: <span class="mono">release-v&lt;versionNum&gt;</span></li>
+			<li>hotfix branches and associated tasks: <span class="mono">hotfix-v&lt;versionNum&gt;</span></li>
+		</ul>
+
+		<!-- @marker "Commit Message Conventions" -->
+		<h6 id='commitMessageConventions'>Commit Message Conventions</h6><ul>
+			<li><em>GitHub and Waffle take actions based on some appearances of issueIDs in commit messages</em></li>
+			<li>to close associated issue: add (close | fix | resolve)#&lt;issueID&gt; to commit message</li>
+			<li>to connect to another issue: connect#&lt;ID&gt;</li>
+		</ul>
+
+
+		<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
 	<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
 </ul>
 
@@ -483,9 +503,19 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Policies and Notes" -->
-<h2>Policies and Notes</h2>
-<!-- @topicList "Policies and Notes" "GitPolicies_" -->
+<!-- @marker "References" -->
+<h2 id='_References'>References</h2><ul>
+	<li><a href="https://git-scm.com/docs/">Pro-Git</a></li>
+	<li><a href="http://paul.stadig.name/2010/12/thou-shalt-not-lie-git-rebase-ammend.html">Paul Stadig: Thou Shalt Not Lie</a></li>
+	<li><a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model <span><em>gitflow</em></span></a></li>
+	<li><a href="https://www.viget.com/articles/successful-release-management-and-how-to-communicate-about-it">Managing a Successful Release Process</a></li>
+	<li><a href="https://help.github.com/articles/creating-releases/">GitHub: Creating Release</a></li>
+	<li><a href="https://help.github.com/articles/linking-to-releases/">GitHub: Linking to releases</a> </li>
+</ul>
+
+<!-- @marker "Notes" -->
+<h2>Notes</h2>
+<!-- @topicList "Notes" "GitNotes_" -->
 <!-- @/topicList -->
 
 <ul>

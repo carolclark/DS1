@@ -67,7 +67,6 @@
 		965F8D7BDE8CEB6EAE8D4D46 /* Index.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Index.zip; sourceTree = "<group>"; };
 		965F8F36D473172852C9A19B /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
 		965F8FB531FD58E27E38D62C /* Index.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Index.zip; sourceTree = "<group>"; };
-		965F8FC0BCA088C8B8485AB3 /* Git_381b70c.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Git_381b70c.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -166,7 +165,6 @@
 				676695D11919A759005D3CED /* Tools.html */,
 				6729FAA81957746200612D1A /* Tools_Inactive.html */,
 				6739B60E192EB33E00D659B6 /* Python.html */,
-				965F8FC0BCA088C8B8485AB3 /* Git_381b70c.html */,
 			);
 			path = html;
 			sourceTree = "<group>";
