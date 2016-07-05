@@ -189,7 +189,7 @@
 		}
 	.tabl td {
 		padding: 4px;
-		vertical-align: central;
+		vertical-align: center;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
@@ -223,7 +223,7 @@
 	td.tm1 {
 		padding: 4px;
 		text-align: center;
-		vertical-align: central;
+		vertical-align: center;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
@@ -240,7 +240,7 @@
 	td.tm2 {
 		padding: 4px;
 		text-align: center;
-		vertical-align: central;
+		vertical-align: center;
 		background-color: #ececec;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
@@ -261,7 +261,7 @@
 		}
 	.goaltabl td {
 		padding: 4px;
-		vertical-align: central;
+		vertical-align: center;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
@@ -289,7 +289,7 @@
 	caption.topics {
 		font-size: 18px;
 		font-weight: bold;
-		margin-left: 0;
+		margin-left: 0px;
 		text-align: center;
 		border-bottom: 1px solid #9999ff;
 		padding: 12px;
@@ -306,11 +306,15 @@
 		color: #777799;
 	}
 
+	.tick {							/* tick mark for every fifth row */
+		background-color: #ddddff;
+		rules: bottom;
+	}
 									/* indents to show topic structure */
-	td.i0 { padding-left:0px }
-	td.i1 { padding-left:12px }
-	td.i2 { padding-left:24px }
-	td.i3 { padding-left:36px }
+	td.i0 { text-indent:0px }
+	td.i1 { text-indent:12px }
+	td.i2 { text-indent:24px }
+	td.i3 { text-indent:36px }
 
 /* reference lists */
 	.reference {
@@ -443,14 +447,14 @@
 	.blocklayout td {
 		padding: 4px;
 		text-align: center;
-		vertical-align: central;
+		vertical-align: center;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
 		}
 	.blocklayout td.bisque {
 		padding: 4px;
 		text-align: center;
-		vertical-align: central;
+		vertical-align: center;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
 		background-color: #FFE4C4;
@@ -556,7 +560,4 @@
 	}
 	.indent {
 		padding-left: 2em;
-	}
-	.indent2 {
-		padding-left: 4em;
 	}

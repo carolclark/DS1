@@ -30,9 +30,7 @@
 		<h4>While Issue Not Complete</h4>
 			<h5>Create Task</h5><ul>
 				<li class="blurb">for release branch, see <a href="#adminReleaseBranch"><span class='em'>Release Branch</span></a></li>
-				<li><strong>Update Branch from Master</strong><ul>
-					<li>master branch; update project; if changed, [test master, merge to branch, test branch], commit</li>
-				</ul></li>
+				<li>master branch; update project; commit </li>
 				<li>create new task with #&lt;issueID&gt; at end of name<ul>
 					<li>in dialog: check base branch; add issue number to end of branch name</li>
 				</ul></li>
@@ -44,25 +42,25 @@
 					<li>commit</li></ul>
 				<p><b>Develop:</b> repeat to commit: edit/test; refresh; status; diff modifications; add/stage</p>
 				<p><b>Commit</b></p><ul>
-					<li>refresh; add unversioned and/or other files as indicated; check for stray spaces (`gdcc`)</li>
-					<li>backup GitHub, AppCode data</li>
+					<li>refresh; add unversioned and/or other files as indicated; check for stray spaces (`difftool --cached --check`)</li>
+					<li>backup GitHub, AppCode content</li>
 					<li>diff all files in changelist; update message; commit</li>
 				</ul>
 				<p><b>Publish</b></p><ul>
 					<li>push to remote tracking branch</li>
-					<li>if Task not complete: issue GitHub pull request against master; merge pull request;<br />
-						pull master; update project; <strong>Update Branch from Master</strong></li>
+					<li>switch to local master; merge branch; test</li>
 				</ul></div>
-		<h4>Task Complete: To Review</h4><ul>
+				<p class="indent"><b>If Task Complete:</b> delete Task and local branch</p>
+		<h4>Issue Tasks Complete: To Review</h4><ul>
+			<li>update master; if changed, merge into branch</li>
+			<li>on local master branch, run all tests</li>
 			<li>issue GitHub pull request against master<ul>
-				<li><strong>If Closing Issue</strong>: add (close | fix | resolve)#&lt;ID&gt; to name</li>
-				<li>to connect: connect#&lt;ID&gt;</li>
+				<li>title: may add (close | fix | resolve) #&lt;ID&gt; and/or connect #&lt;ID&gt;</li>
 			</ul></li>
 		</ul>
-		<h4>Task Review Complete: Close Task</h4><ul>
+		<h4>Issue Review Complete: Close Issue</h4><ul>
 			<li>associated pull request: verify automatic merge available; merge; [resolve merge conflicts, if any; retest]</li>
 			<li>pull master</li>
-			<li>delete Task and local branch</li>
 		</ul>
 
 		<h5>[Archive Repository]</h5>
