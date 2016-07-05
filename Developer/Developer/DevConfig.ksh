@@ -11,8 +11,8 @@ USAGE='
 # DevConfig.ksh -- set up and configure C & C Software development environment
 '
 
-CCDev="/Users/carolclark/Library/CCDev"
-DEV="/Users/carolclark/Dev"
+CCDev="${HOME}/Library/CCDev"
+DEV="${HOME}/Dev"
 
 #^	envProfile
 function envProfile {
