@@ -4,9 +4,18 @@
     <option name="links">
       <list>
         <IssueNavigationLink>
-          <option name="issueRegexp" value="#([0-9]*)" />
-          <option name="linkRegexp" value="github.com/carolclark/Support/issues/$1" />
+          <option name="issueRegexp" value="#[0-9]+" />
+          <option name="linkRegexp" value="https://github.com/carolclark/Accessor/issue/$0" />
         </IssueNavigationLink>
+      </list>
+    </option>
+  </component>
+  <component name="GitSharedSettings">
+    <option name="FORCE_PUSH_PROHIBITED_PATTERNS">
+      <list>
+        <option value="master" />
+        <option value="release-*" />
+        <option value="hotfix-*" />
       </list>
     </option>
   </component>
