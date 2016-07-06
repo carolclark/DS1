@@ -1,5 +1,5 @@
 -- activate application "BBEdit"
-validateHTML("~/Library/CCDev/Sites/TechnicalDocs", "Accessor", "Syntax")
+validateHTML("~/Library/CCDev/Sites/TechnicalDocs/candcsoft_host/public_html", "Support", "Syntax")
 on splitName(nm)
 	set len to length of nm
 	set o to offset of "." in nm
@@ -18,7 +18,7 @@ on splitName(nm)
 end splitName
 
 on validateHTML(parent, fldr, checking)
-	set itemName to "Folder " & checking & "É"
+	set itemName to "Folder " & checking & "â€¦"
 	set pth to parent
 	if (fldr is not "") then set pth to pth & "/" & fldr
 	tell application "System Events"

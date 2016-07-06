@@ -6,7 +6,7 @@
 #	see Support/BuildSupport/Doxygen/Default.doxygen or the Doxygen application.
 
 PROJECT_NAME			= Support
-OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/candcsoft_host/public_html/Doxygen/Support
+OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/Support
 STRIP_FROM_PATH			= $(HOME)/Dev/Support
 EXTRACT_ALL				= YES
 INPUT					= $(HOME)/Dev/Support/Developer/Python/Scripts
