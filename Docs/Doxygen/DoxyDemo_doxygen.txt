@@ -6,7 +6,7 @@
 #	see Support/BuildSupport/Doxygen/Default.doxygen or the Doxygen application.
 
 PROJECT_NAME			= DoxyDemo
-OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/candcsoft_host/public_html/Doxygen/DoxyDemo
+OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/DoxyDemo
 STRIP_FROM_PATH			= $(HOME)/Dev/Support/Docs
 EXTRACT_ALL				= YES
 INPUT					= $(HOME)/Dev/Support/Docs/DoxyDemo

@@ -233,9 +233,6 @@ function runShunitTests {
 				cat $errout >> $errinfo
 			fi
 		fi
-		if [[ "${st}" > 0 ]] ; then
-			exit "${st}"
-		fi
 		testfiles=$testfiles+1
 	done < "${iofile}"
 	echo "$testPath: $testfiles test files run"
@@ -361,8 +358,9 @@ function getAction {			# sourceRoot targetFolder actionString
 			return $RC_InvalidInput
 		fi
 	fi
+	installName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
 	if [[ $action = "install" ]] ; then
-		if [[ $(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}") = "Doxygen" ]] ; then
+		if [[ "${installName}" = "Doxygen" ]] || [[ "${installName}" = "DoxyDemo" ]] ; then
 			action="doxygen"
 		fi
 	fi
@@ -517,7 +515,7 @@ function processAction {
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
 		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "Doxygen")
 		installName="${outputDir##*/}"
-		print "== installing ${installName} API documentation [$sourceRoot $targetFolder]"
+		print "== installing ${installName} documentation"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
 		mkdir -p "${outputDir}"
 		st=$?
