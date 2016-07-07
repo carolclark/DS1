@@ -15,8 +15,8 @@
 	<!-- @topicItem "Managing Repositories" "#ManagingRepositories" "0" "" -->
 	<!-- @topicItem "Branches and Releases" "#Branches_Releases_" "0" "" -->
 	<!-- @topicItem "Daily Workflows: AppCode with Waffle" "#WorkflowAppCode" "0" "current workflow" -->
-		<!-- @topicItem "Feature Branches" "#Feature_Branches_" "1" "" -->
-		<!-- @topicItem "Release and Hotfix Branches" "#Release_Hotfix_Branches_" "1" "" -->
+		<!-- @topicItem "Feature Branches" "#Feature_Branch_Workflow_" "1" "" -->
+		<!-- @topicItem "Release and Hotfix Branches" "#Release_Hotfix_Workflow_" "1" "" -->
 		<!-- @topicItem "Workflow Subtasks" "#workflowSubtasks" "1" "" -->
 	<!-- @topicItem "Git Tasks" "#GitTasks_" "0" "" -->
 	<!-- @topicItem "References" "#_References" "0" "" -->
@@ -166,43 +166,38 @@
 	</div>
 	<h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
 <div style="page-break-before: always">
-	<!-- @marker "Feature Branches" -->
+	<!-- @marker "Feature Branch Workflow" -->
 	<div style="background-color: #d8e8ff">
-	<h3 id='Feature_Branches_'>Feature Branches</h3>
-		<h4>While Issue Not Complete</h4>
-			<h5>Create Task</h5><ul>
-				<li><strong>Update Master</strong>: switch to local master; update project (cT); if changed: test, branch and fix any issues, commit</li>
-				<li>create new task and branch with #&lt;issueID&gt; at end of name<ul>
-					<li>in dialog: branch from master; add issue number to end of branch name</li>
-				</ul></li>
-				<li>push branch</li></ul>
-			<h5>While Task(s) Not Complete</h5><div class='indent'>
-				<p><strong>Select Task</strong></p><ul>
-					<li>switch to task; update task branch:<ul>
-						<li><strong>Update Branch</strong>: <strong><em>Update Master</em></strong>; switch to branch; if master changed:<ul>
-							<li>merge in master, test, branch and fix any issues, commit</li>
-						</ul></li>
-					</ul></li>
-					<li>check for applicable stashes; apply as indicated</li>
-					<li>commit</li></ul>
-					<div class="indent2">
+	<h3 id='Feature_Branch_Workflow_'>Feature Branch Workflow</h3>
+		<h4>While Issue Not Complete</h4><div class="indent">
+			<h5>While Task(s) Not Complete</h5>
+				<p><strong>Open Task</strong></p><ul>
+					<li>on master; update project (cT); commit</li>
+					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master</li>
+					<li>or <strong>Existing Task</strong>: switch to task; merge in master; commit</li>
+					<li>push branch</li></ul>
+				</div>
+				<div class="indent2">
 					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
 						<li>edit/test; refresh; [diff modifications]</li>
-						<li>Terminal: status; add/stage</li>
+						<li>[Terminal: status; add/stage]</li>
 					</ul>
 					<p><strong>Commit</strong></p><ul>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
 						<li>backup GitHub, AppCode data</li>
-						<li>to Commit: diff all files in changelist; update message; note inspection status; commit</li>
+						<li>to Commit: diff all files in changelist; update message; commit, noting inspection status</li>
 						<li>as indicated: inspect code; add additional commits to fix as indicated <em>(<a href="#wf_Develop">Develop</a></em>)</li>
 					</ul>
-					</div>
+				</div>
+			<div class='indent'>
 				<p><strong>Publish</strong></p><ul>
-					<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
-					<li>squash commits if indicated</li>
-					<li><strong><em>Update Branch</em></strong>; test if changed; push to remote tracking branch</li>
-					<li>[GitHub: update notes in <em>milestone nextVersion</em>]</li>
-				</ul></div>
+				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
+				<li>switch to master; update project (cT); commit</li>
+				<li>switch to branch; merge in master; if changed, test; commit</li>
+				<li>push to remote tracking branch or squash commits to remote as indicated</li>
+				<li>switch to master; merge in branch; push master</li>
+				<li>[GitHub: update notes in <em>milestone nextVersion</em>]</li>
+			</ul></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<p><strong>Trigger Code Review</strong></p><ul>
 					<li><strong><em>StatusReport.sh</em></strong>; note especially status clear</li>
@@ -224,7 +219,7 @@
 		<div style="page-break-before: always">
 			<!-- @marker "Release and Hotfix Branches" -->
 			<div style="background-color: #e2faff">
-			<h3 id='Release_Hotfix_Branches_'>Release and Hotfix Branches</h3>
+			<h3 id='Release_Hotfix_Workflow_'>Release and Hotfix Workflow</h3>
 				<p><em>WARNING: Normal workflow branches are updated frequently to and from master.
 					Updating is avoided in this workflow to prevent pollution of the release branch.</em></p>
 			<h5>Create Release or Hotfix Branch</h5><ul>
