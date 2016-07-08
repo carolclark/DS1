@@ -69,10 +69,9 @@
 		text-align: left;
 		width: 100%;
 		padding: 0;
-		border-spacing: 0px;
+		border-spacing: 0;
 		border-collapse: separate;
 		border: 0;
-		padding-top: 0;
 		font-size: 11px;
 	}
 	col.navhead_c1 {
@@ -81,8 +80,6 @@
 	.navline {						/* nav line within content */
 		text-align: left;
 		width: 100%;
-		cellpadding: 0;
-		cellspacing: 0;
 		border: 0;
 		padding-top: 0;
 		font-size: 11px;
@@ -158,8 +155,8 @@
 	}
 /* value lists */
 	.valuelist {
-		margin-top: 0px;
-		margin-bottom: 0px;
+		margin-top: 0;
+		margin-bottom: 0;
 		margin-left: 5px;
 		}
 	col.vt {
@@ -193,7 +190,7 @@
 		}
 	.tabl td {
 		padding: 4px;
-		vertical-align: center;
+		vertical-align: central;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
@@ -227,7 +224,7 @@
 	td.tm1 {
 		padding: 4px;
 		text-align: center;
-		vertical-align: center;
+		vertical-align: central;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
@@ -244,7 +241,7 @@
 	td.tm2 {
 		padding: 4px;
 		text-align: center;
-		vertical-align: center;
+		vertical-align: central;
 		background-color: #ececec;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
@@ -265,7 +262,7 @@
 		}
 	.goaltabl td {
 		padding: 4px;
-		vertical-align: center;
+		vertical-align: central;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
@@ -293,7 +290,7 @@
 	caption.topics {
 		font-size: 18px;
 		font-weight: bold;
-		margin-left: 0px;
+		margin-left: 0;
 		text-align: center;
 		border-bottom: 1px solid #9999ff;
 		padding: 12px;
@@ -310,12 +307,8 @@
 		color: #777799;
 	}
 
-	.tick {							/* tick mark for every fifth row */
-		background-color: #ddddff;
-		rules: bottom;
-	}
 									/* indents to show topic structure */
-	td.i0 { text-indent:0px }
+	td.i0 { text-indent:0 }
 	td.i1 { text-indent:12px }
 	td.i2 { text-indent:24px }
 	td.i3 { text-indent:36px }
@@ -337,7 +330,7 @@
 	caption.reference {
 		font-size: 18px;
 		font-weight: bold;
-		margin-left: 0px;
+		margin-left: 0;
 		text-align: center;
 		border-bottom: 1px solid #999999;
 		padding: 12px;
@@ -363,7 +356,7 @@
 
 	.uc td {
 		padding: 4px;
-		vertical-align: center;
+		vertical-align: central;
 		background-color: #f8f8f8;
 		}
 
@@ -385,14 +378,14 @@
 	.uc ul {
 		list-style-type:square;
 		padding-left: 22px;
-		margin-top: 0px;
-		margin-bottom: 0px;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 
 	.uc ol {
 		padding-left: 22px;
-		margin-top: 0px;
-		margin-bottom: 0px;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 
 /* crc */
@@ -451,14 +444,14 @@
 	.blocklayout td {
 		padding: 4px;
 		text-align: center;
-		vertical-align: center;
+		vertical-align: central;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
 		}
 	.blocklayout td.bisque {
 		padding: 4px;
 		text-align: center;
-		vertical-align: center;
+		vertical-align: central;
 		border-bottom: 1px solid #919699;
 		border-right: 1px solid #919699;
 		background-color: #FFE4C4;
@@ -564,4 +557,7 @@
 	}
 	.indent {
 		padding-left: 2em;
+	}
+	.indent2 {
+		padding-left: 4em;
 	}

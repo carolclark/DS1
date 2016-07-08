@@ -180,7 +180,7 @@
 				<div class="indent2">
 					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
 						<li>edit/test; refresh; [diff modifications]</li>
-						<li>[Terminal: status; add/stage]</li>
+						<li>Terminal: status; add/stage</li>
 					</ul>
 					<p><strong>Commit</strong></p><ul>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
@@ -192,11 +192,12 @@
 			<div class='indent'>
 				<p><strong>Publish</strong></p><ul>
 				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
+				<li>[squash commits]; push $cb to remote tracking branch</li>
 				<li>switch to master; update project (cT); commit</li>
-				<li>switch to branch; merge in master; if changed, test; commit</li>
-				<li>push to remote tracking branch or squash commits to remote as indicated</li>
-				<li>switch to master; merge in branch; push master</li>
-				<li>[GitHub: update notes in <em>milestone nextVersion</em>]</li>
+				<li>switch to branch $cb; if master has changed (is available for merge?):<ul>
+					<li>merge master into $cb; if changed, test and commit</li></ul>
+				<li>switch to master; merge in branch $cb; test; push master</li>
+				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
 			</ul></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<p><strong>Trigger Code Review</strong></p><ul>
