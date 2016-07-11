@@ -32,7 +32,11 @@ function shunitInstall {
 	fi
 
 	print "= installing shunit"
-	chmod a+x ${src}/src/shunit2		# make sure shunit app is executable
+	chmod a+x ${src}/src/shunit2			# make sure shunit app is executable
+	if [[ "${?}" != "0" ]] ; then
+		print "failure while applying chmod to shunit2"
+		exit 1
+	fi
 	mkdir -p ${dst}
 	if [[ "${?}" != "0" ]] ; then
 		print "failure while installing shunit"
