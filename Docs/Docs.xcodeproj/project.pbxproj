@@ -54,6 +54,7 @@
 		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		965F861F9B9E5BF7869244A1 /* Support_ReadMe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Support_ReadMe.html; sourceTree = "<group>"; };
 		965F8793DFC358BE4D872124 /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		965F87D13524A7E376D0EDDC /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 				676695A619199997005D3CED /* DoxyDemo */,
 				676695A31919973E005D3CED /* OtherDocuments */,
 				965F810DE608D57DDDD66A42 /* WebsiteStructure */,
+				965F861F9B9E5BF7869244A1 /* Support_ReadMe.html */,
 			);
 			sourceTree = "<group>";
 		};
