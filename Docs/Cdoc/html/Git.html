@@ -179,8 +179,7 @@
 				</div>
 				<div class="indent2">
 					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
-						<li>edit/test; refresh; [diff modifications]</li>
-						<li>Terminal: status; add/stage</li>
+						<li>edit/test; if continuing: [diff modifications]; [Terminal: status; add/stage]</li>
 					</ul>
 					<p><strong>Commit</strong></p><ul>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
@@ -193,9 +192,11 @@
 				<p><strong>Publish</strong></p><ul>
 				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
 				<li>[squash commits]; push $cb to remote tracking branch</li>
-				<li>switch to master; update project (cT); commit</li>
-				<li>switch to branch $cb; if master has changed (is available for merge?):<ul>
-					<li>merge master into $cb; if changed, test and commit</li></ul>
+				<li>switch to master; update project (cT); commit; if changed, test<ul>
+					<li>if master had changed (had something to commit): switch to branch $cb; merge master into $cb<ul>
+						<li>if $cb changed, test and commit</li>
+					</ul></li>
+				</ul></li>
 				<li>switch to master; merge in branch $cb; test; push master</li>
 				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
 			</ul></div>
@@ -261,6 +262,14 @@
 	<!-- @topicList "Workflow Subtasks" "workflowSubtasks" -->
 		<!-- @topicItem "Naming Conventions" "#namingConventions" "0" "" -->
 		<!-- @topicItem "Commit Message Conventions" "#commitMessageConventions" "0" "" -->
+		<!-- @topicItem "Compare Revisions" "#adminCompareRevisions" "0" "" -->
+		<!-- @topicItem "Compare Ancestry" "#adminCompareAncestry" "0" "" -->
+		<!-- @topicItem "Bash Debug Logging" "#adminDebugLogging" "0" "" -->
+		<!-- @topicItem "Resolve Conflicts" "#adminResolveConflicts" "0" "" -->
+		<!-- @topicItem "Fix Divergent Branches" "#adminFixDivergentBranches" "0" "" -->
+		<!-- @topicItem "Checkout Stash as Branch" "#CheckoutStashAsBranch" "0" "" -->
+		<!-- @topicItem "Squash Commits" "#SquashCommits" "0" "" -->
+		<!-- @topicItem "emacs Commands" "#emacsCommands" "0" "" -->
 	<!-- @/topicList -->
 
 	<div style="background-color: #deedf8">
@@ -280,37 +289,56 @@
 
 
 		<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
-	<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
-</ul>
+			<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
+		</ul>
 
-	<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
-	<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
-	<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
-</ul>
+		<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
+			<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
+			<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
+		</ul>
 
-	<h6 id="adminDebugLogging">Bash Debug Logging</h6><ul>
-	<li>add logger Live Template to code: `logger "$0#$LINENO: | #"`</li>
-	<li>enter information to be logged at cursor, &lt;logtag&gt; content after '#'</li>
-	<li>run code to make entries in syslog</li>
-	<li>Terminal: <span class="mono">syslog | grep "#&lt;logtag&gt;"</span> to display tagged information</li>
-</ul>
+		<h6 id="adminDebugLogging">Bash Debug Logging</h6><ul>
+			<li>add logger Live Template to code: `logger "$0#$LINENO: | #"`</li>
+			<li>enter information to be logged at cursor, &lt;logtag&gt; content after '#'</li>
+			<li>run code to make entries in syslog</li>
+			<li>Terminal: <span class="mono">syslog | grep "#&lt;logtag&gt;"</span> to display tagged information</li>
+		</ul>
 
-	<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
-	<li>status</li>
-	<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
-		<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
-	</ul></li>
-	<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
-	<li><span class='mono'>commit / resolve merge</span></li>
-	<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
-	<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
-</ul>
+		<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
+			<li>status</li>
+			<li>if conflicts: <span class='mono'>merge resolve</span> (mergetool), saving successfully merged files<ul>
+				<li>to choose one file, use <span class='mono'>checkout --[ours | theirs]</span> for local or merge target, respectively</li>
+			</ul></li>
+			<li class='ital'>if fetchup merge fails, could try: <span class='mono'>git rebase --preserve-merges @{u}</span></li>
+			<li><span class='mono'>commit / resolve merge</span></li>
+			<li>OR to undo merge: <span class='mono'>git merge --abort</span></li>
+			<li>to recover corrupted project file: close in Xcode; diff fileMerge with previous good copy; edit manually</li>
+		</ul>
 
-	<!-- @marker "adminFixDivergentBranches" -->
-	<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
-	<li>use 'git rebase'</li>
-</ul>
-</div></div>
+		<!-- @marker "adminFixDivergentBranches" -->
+		<h6 id='adminFixDivergentBranches'>Fix Divergent Branches</h6><ul>
+			<li>use 'git rebase'</li>
+		</ul>
+
+		<!-- @marker "Checkout Stash as Branch" -->
+		<h6 id='CheckoutStashAsBranch'>Checkout Stash as Branch</h6><ul>
+			<li class="mono">git stash branch &lt;branchname$gt; [@stash{n}]</li>
+		</ul>
+
+		<!-- @marker "Squash Commits" -->
+		<h6 id='SquashCommits'>Squash Commits</h6><ul>
+			<li class="mono">git rebase -i HEAD~&lt;#commits&gt;</li>
+			<li>edit conmmands (pick, squash, ...); save</li>
+			<li>edit comment; save</li>
+		</ul>
+
+		<!-- @marker "emacs Commands" -->
+		<h6 id='emacsCommands'>emacs Commands</h6><ul>
+			<li>save: rX-S; exit: rX-C; kill: rK</li>
+			<li>cut: rW; copy: oW; paste: rY</li>
+		</ul>
+
+	</div></div>
 
 <!-- @marker "Git Tasks" -->
 <div style="page-break-before: always">
