@@ -93,7 +93,7 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 
 		# test
 		print "== Developer/_Tests/testDevConfig.ksh"
-		result=$(Developer/_Tests/testDevConfig.ksh)
+		result="$(Developer/_Tests/testDevConfig.ksh)"
 		if [[ "${?}" > 0 ]] ; then
 			failcnt="${failcnt}"+1
 		fi

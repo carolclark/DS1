@@ -15,39 +15,26 @@ testInstallation() {
 	testData="${CCDev}/TestData"
 	assertEquals "$LINENO: incorrect "'$SHELL' /bin/ksh $(launchctl getenv SHELL)
 
-	# launchd settings
-	#	dev=$(launchctl getenv DEV)
-	#	if [[ ${USER} = carolclark ]] ; then
-	#		assertEquals "$LINENO"': incorrect $DEV' "/Volumes/Mac/Users/carolclark/Dev" ${dev}
-	#	elif [[ ${USER} = lauramartinez ]] ; then
-	#		assertEquals "$LINENO"': incorrect $DEV' "${HOME}/Documents/Projects" ${dev}
-	#	else
-	#		assertEquals "$LINENO"': incorrect $DEV' ${HOME}/Dev ${dev}
-	#	fi
-	#	assertEquals "$LINENO"': incorrect $CCDev' ${HOME}/Library/CCDev $(launchctl getenv CCDev)
-	#	assertEquals "$LINENO"': incorrect $VISUAL' \"/usr/bin/emacs\" $(launchctl getenv VISUAL)
-
 	# Scripts/errcc
 	fl="${CCDev}/bin/errcc"
 	if [[ ! -e "${fl}" ]] ; then
 		fail "$LINENO: CCDev script errcc missing"
 	fi
 
-	# ~/Library/Scripts/Developer/FixWindow.scpt
-#	fl="${HOME}/Library/Scripts/Developer/FixWindow.scpt"
-#	if [[ ! -e "${fl}" ]] ; then
-#		fail "$LINENO: AppleScript FixWindow.scpt missing"
-#	fi
 }
 
 #^ Developer_install.ksh
 testDeveloperInstall() {
 	logger "$0#$LINENO: directory: $(pwd) #pwd"
 	DEV=$(ccInstall --DEV ${USER})
-	callbackScript="Developer/Developer_install.ksh"
+	assertEquals "$LINENO: expected '/Users/carolclark/Dev'; got $DEV" "/Users/carolclark/Dev" "$DEV"
+	callbackScript="${DEV}/Support/Developer/Developer/Developer_install.ksh"
 	str=$(${callbackScript})
 	st=$?
-	assertEquals "$LINENO: RC_MissingArgument expected" $RC_MissingArgument ${st}
+	if [[ ${str} != ${callbackScript}* ]] ; then
+		assertEquals "$LINENO: expected ${callbackScript}...; got $str" "${callbackScript}" "$str"
+	fi
+	assertEquals "$LINENO: RC_MissingArgument expected; callbackScript: $str" $RC_MissingArgument ${st}
 
 	str=$(${callbackScript} --getSubtargetDestination)
 	st=$?
@@ -72,7 +59,6 @@ testDeveloperInstall() {
 	while read ln ; do
 		copyInfo+=("${ln}")
 	done < "${fl}"
-	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
 	assertTrue "$LINENO: incorrect array count" "[ ${#copyInfo[*]} -lt 4 ]"
 	assertEquals "$LINENO: incorrect action: " "copy" "${copyInfo[0]}"
 	assertEquals "$LINENO: incorrect sourceForCopy: " "${DEV}/Support/Developer/Developer/Scripts/ccInstall.ksh" "${copyInfo[1]}"
