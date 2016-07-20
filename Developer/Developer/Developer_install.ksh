@@ -147,6 +147,8 @@ function getSubtargetDestination {
 			;&
 		"ThirdParty" )			# handled elsewhere
 			;;
+		"JetBrains" )			# nothing to copy
+			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
 			return $RC_InputNotHandled

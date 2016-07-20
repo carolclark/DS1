@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6755BCE61922CC28005DC27D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6755BCE51922CC28005DC27D /* XCTest.framework */; };
 		6755BCF91922CDB6005DC27D /* RequiredCocoaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6755BCF71922CDB6005DC27D /* RequiredCocoaTests.m */; };
+		965F81967244A8A33755167A /* jetbrains.teamcity.server.plist in Resources */ = {isa = PBXBuildFile; fileRef = 965F8E656FACA50C2DB4AE10 /* jetbrains.teamcity.server.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		67FDF6FB191D776C002560CF /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67FDF6FD191D776C002560CF /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67FDF6FE191D776C002560CF /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
+		965F8E656FACA50C2DB4AE10 /* jetbrains.teamcity.server.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = jetbrains.teamcity.server.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				6755BCF51922CDB6005DC27D /* CocoaTestBundle */,
 				67FDF6F2191D776C002560CF /* Developer_install.ksh */,
 				67FDF6F1191D776C002560CF /* DevConfig.ksh */,
+				965F8035BFAFAF76A56DCE6C /* JetBrains */,
 			);
 			path = Developer;
 			sourceTree = "<group>";
@@ -222,6 +225,14 @@
 				67C2EE15199D6583002E8C58 /* ASUnit */,
 			);
 			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		965F8035BFAFAF76A56DCE6C /* JetBrains */ = {
+			isa = PBXGroup;
+			children = (
+				965F8E656FACA50C2DB4AE10 /* jetbrains.teamcity.server.plist */,
+			);
+			path = JetBrains;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965F81967244A8A33755167A /* jetbrains.teamcity.server.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
