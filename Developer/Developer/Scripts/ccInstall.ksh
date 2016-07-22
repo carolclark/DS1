@@ -611,34 +611,6 @@ return 0
 					msg=$(errorMessage ${st} "$0#$LINENO:" "error: ${action} ${sourceForCopy} : ${msg}")
 				fi
 				print "${msg}"
-#				case "${action}" in
-#					"ignore" )
-#						print "skipped"
-#						;;
-#					"copy" )
-#						msg=$(ccInstall --copyFile "${sourceForCopy}" "${destinationForCopy}")
-#						st=$?
-#						if [[ ${st} > 0 ]] ; then
-#							failcnt="${failcnt}"+1
-#							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-#						else
-#							print "succeeded"
-#						fi
-#						;;
-#					"translateCdoc" )
-#						msg=$(ccInstall --translateCdoc "${sourceForCopy}" "${destinationForCopy}")
-#						st=$?
-#						if [[ ${st} > 0 ]] ; then
-#							failcnt="${failcnt}"+1
-#							errorMessage ${st} "$0#$LINENO:" "error: ${msg}"
-#						else
-#							print "succeeded"
-#						fi
-#						;;
-#					* )
-#						errorMessage $RC_InputNotHandled "$0#$LINENO:" "error: Unrecognized action string ${action}"
-#						;;
-#				esac
 			fi
 		done < "${iofile}"
 		if [[ ${failcnt} = 0 ]] ; then

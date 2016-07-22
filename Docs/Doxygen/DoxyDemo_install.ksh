@@ -4,10 +4,10 @@
 #  Support
 #
 #  Created by Carol Clark on 5/6/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-16 C & C Software, Inc. All rights reserved.
 
 USAGE='
-Doxygen_install.ksh -- provide functions for ccInstall to support building Doxygen documentation
+DoxyDemo_install.ksh -- demonstration Doxygen project
 #	--getSubtargetDestination subtarget
 #		output destination location for files of subtarget
 #	--prepareFileOperation subtarget filepath destinationFolder
@@ -38,14 +38,12 @@ function getSubtargetDestination {
 	print "subtarget: ${1}"
 	destinationFolder=""
 	case "${subtarget}" in
-		"Doxygen" )
-			destinationFolder="${CCDev}/Sites/Doxygen/DoxyDemo"
+		"DoxyDemo" )
+			destinationFolder="${CCDev}/Sites/candcsoft_host/public_html/Doxygen/DoxyDemo"
 			;;
 		# Doxygen: local folders not processed
 		* )
-			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return
-			;;
+			;;		# all other files skipped now; processed later by Doxygen
 	esac
 	print "${destinationFolder}"
 	return 0

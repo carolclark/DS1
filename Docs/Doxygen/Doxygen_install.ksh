@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 12/3/14.
-#  Copyright (c) 2014 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2014-16 C & C Software, Inc. All rights reserved.
 
 USAGE='
 Doxygen_install.ksh -- provide functions for ccInstall to support building Doxygen documentation
@@ -38,13 +38,11 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"Doxygen" )
-			destinationFolder="${CCDev}/Sites/Doxygen/Support"
+			destinationFolder="${CCDev}/Sites/candcsoft_host/public_html/Doxygen/Support"
 			;;
 		# Doxygen: local folders not processed
 		* )
-			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
-			return $RC_InputNotHandled
-			;;
+			;;		# all other files skipped now; processed later by Doxygen
 	esac
 	print "${destinationFolder}"
 	return 0
