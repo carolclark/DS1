@@ -27,7 +27,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "Cdoc_install.ksh"
+            argument = "Cdoc"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
