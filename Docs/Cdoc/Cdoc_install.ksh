@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 1/15/13.
-#  Copyright (c) 2013 C & C Software, Inc. All rights reserved.
+#  Copyright (c) 2013-16 C & C Software, Inc. All rights reserved.
 
 USAGE='
 Cdoc_install.ksh -- provide functions for ccInstall to support CCDev installation

@@ -21,7 +21,7 @@ NAME='ccInstall -- installation script and supporting functions'
 USAGE='
 ccInstall sourceRoot targetFolder [action]
 #	build the specified project target
-#		action: action requested (clean, install, test); default: install
+#		action: action requested (clean, install, test, doxygen); default: install
 ccInstall commandFlag [argument(s)]
 #	--setPaths			set derived paths from arguments
 #	--get<Path>			sourceRoot targetFolder

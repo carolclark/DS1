@@ -4,7 +4,7 @@
 #  Support
 #
 #  Created by Carol Clark on 10/20/11.
-#  Copyright 2011-13 C & C Software, Inc. All rights reserved.
+#  Copyright 2011-16 C & C Software, Inc. All rights reserved.
 #  Confidential and Proprietary.
 
 USAGE='
@@ -53,7 +53,7 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 			print "== clean skipped: target Developer is already clean"
 			return
 		fi
-	elif [[ $# > 2 ]] && [[ "${3}" = "-t" ]] ; then		# test action
+	elif [[ $# > 2 ]] && [[ "${3}" = "test" ]] ; then		# test action
 		st=$?
 		if [[ $st == $RC_InvalidArgument ]] ; then
 			print  "$0#$LINENO: Testing supported by target DeveloperTests. RC_InvalidArgument"
