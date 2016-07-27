@@ -180,7 +180,7 @@
 					<p><strong>Commit</strong></p><ul>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
 						<li>backup GitHub, AppCode data</li>
-						<li>RTCP; *for Commit: diff all files in changelist; update message; commit*<ul>
+						<li>RTCP; <em>for Commit: diff all files in changelist; update message; commit</em><ul>
 							<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
 						</ul></li>
 						<li>[squash commits]; push $cb to remote tracking branch</li>
@@ -194,8 +194,9 @@
 						<li>if branch changed: RTCP</li>
 					</ul></li>
 				</ul></li>
-				<li>switch to master; merge in branch $cb; test; push master</li>
+				<li>switch to master; merge in branch $cb; refresh; test; commit; PUSH</li>
 				<li>verify merge complete: <span class="mono">git branch --no-merged</span></li>
+				<li>if task complete, delete, task and branch; else if branch complete, delete</li>
 				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
 			</ul></div></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
@@ -406,6 +407,7 @@
 	<li>apply:<ul>
 		<li><span class='mono'>git stash apply</span>&nbsp;&nbsp;# to apply the top stash to the current working copy</li>
 		<li><span class='mono'>git stash branch</span>&nbsp;&nbsp;# to apply the top stash to a new branch based in the stash's base revision</li>
+		<li><span class='mono'>git checkout stash@{n} -- &lt;filename&gt;</span>&nbsp;&nbsp;# to checkout a single file from a stash</li>
 		<li>add <span class='mono'>stash@{&lt;index&gt;}</span>&nbsp;&nbsp;#  to specify a different stash</li>
 	</ul></li>
 	<li><span class='mono'>git stash list</span>&nbsp;&nbsp;# list all stashes in repository</li>
