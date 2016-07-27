@@ -315,7 +315,7 @@
 		};
 		67B4600C1919939A007FB11A /* DoxyDemo */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "\"${SRCROOT}\" Doxygen $(ACTION)";
+			buildArgumentsString = "\"${SRCROOT}\" DoxyDemo $(ACTION)";
 			buildConfigurationList = 67B4600F1919939A007FB11A /* Build configuration list for PBXLegacyTarget "DoxyDemo" */;
 			buildPhases = (
 			);

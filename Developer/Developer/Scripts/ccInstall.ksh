@@ -21,7 +21,7 @@ NAME='ccInstall -- installation script and supporting functions'
 USAGE='
 ccInstall sourceRoot targetFolder [action]
 #	build the specified project target
-#		action: action requested (clean, install, test); default: install
+#		action: action requested (clean, install, test, doxygen); default: install
 ccInstall commandFlag [argument(s)]
 #	--setPaths			set derived paths from arguments
 #	--get<Path>			sourceRoot targetFolder
@@ -513,9 +513,9 @@ function processAction {
 # doxygen
 	if [[ ${action} = "doxygen" ]] ; then
 		targetName=$(ccInstall --getTargetName "${sourceRoot}" "${targetFolder}")
-		outputDir=$("${callbackScript}" --getSubtargetDestination "${sourceRoot}" "${targetFolder}" "${action}" "Doxygen")
+		outputDir="${CCDev}/Sites/candcsoft_host/public_html/Doxygen/${targetName}"
 		installName="${outputDir##*/}"
-		print "== installing ${installName} documentation"
+		echo "== installing ${installName} API documentation [$sourceRoot $targetFolder]"
 		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
 		mkdir -p "${outputDir}"
 		st=$?
@@ -525,7 +525,8 @@ function processAction {
 		fi
 
 	#  Run doxygen on the config file (builds local site)
-		$doxygenPath "${sourceRoot}/${targetFolder}/${installName}_doxygen.txt"
+		doxygenPath="/Applications/Doxygen.app/Contents/Resources/doxygen"
+		$doxygenPath "${sourceRoot}/Doxygen/${installName}_doxygen.txt"
 		st=$?
 		if [[ $st > 0 ]] ; then
 			errorMessage ${st} "$0#$LINENO:" "error while generating Doxygen docs"
