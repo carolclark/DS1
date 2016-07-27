@@ -6,6 +6,14 @@
 <head>
 	<title>Git</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+	<style type="text/css">
+		h3.wf-feature {
+			color: blue;
+		}
+		h3.wf-hotfix {
+			color: deeppink;
+		}
+	</style>
 </head>
 <body>
 <!-- @navhead "Support.html" "Support" "History_Support.html" -->
@@ -85,20 +93,6 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Add User to ProjectLocker Account" -->
-<h4 id='AddPLUser'>Add User to ProjectLocker Account</h4><ul>
-	<li>ProjectLocker admin: add user to account (List Account Users)</li>
-	<li>User<ul>
-		<li><a href="#setupSSH">User: Set Up User SSH</a></li>
-		<li>copy the contents (without the carriage return at the end) of the file ${HOME}/.ssh/authorized_keys to the clipboard</li>
-		<li>login to <a href="https://portal.projectlocker.com/">ProjectLocker</a> with your username and our password</li>
-		<li>select Manage Public Keys; click Edit next to the account with your name</li>
-		<li>paste the contents of the clipboard into the large field labeled Key</li>
-		<li>At the end of the new key field is some text starting with &lt;username&gt;@. Copy from username to the end of the field into the User Name field.</li>
-		<li>click Save Public Key</li>
-	</ul></li>
-</ul>
-
 <!-- @marker "Branches and Releases" -->
 <h2>Branches and Releases</h2>
 <!-- @topicList "Branches and Releases" "Branches_Releases_" -->
@@ -125,7 +119,8 @@
 	<p>Feature branches are used to develop features for a future release.
 		A feature branch is created from master, and merged back, if successful, to master.</p>
 	<p>In addition to standard feature branches, we also have some branches identified as "ongoing".
-		Currently, there is such a branch for documentation in each repository, and an Accessor branch for Slate editing.</p>
+		Currently, there are such branches for documentation and AppCode configuration in each repository,<br />
+		and an Accessor branch for Slate editing.</p>
 </div>
 <div class="paragraphs"> <p><a href="#WorkflowAppCode">Workflow: AppCode with Waffle</a> describes our prodecures for handling of feature branches.</p>
 </div>
@@ -167,61 +162,67 @@
 	<h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
 <div style="page-break-before: always">
 	<!-- @marker "Feature Branch Workflow" -->
-	<div style="background-color: #d8e8ff">
-	<h3 id='Feature_Branch_Workflow_'>Feature Branch Workflow</h3>
-		<h4>While Issue Not Complete</h4><div class="indent">
-			<h5>While Task(s) Not Complete</h5>
+	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div style="border-style:none solid none none; border-color: blue; border-width: 12px">
+		<h4>While Issue Not Complete</h4>
+			<h5>While Task(s) Not Complete</h5><div class="indent">
+				<div style="border-style:none none none solid; border-color: lightgreen; border-width: 8px">
 				<p><strong>Open Task</strong></p><ul>
-					<li>on master; update project (cT); commit</li>
+					<li>on master; update project (cT); RTCP (refresh; test; [commit, push]); backup developer data; RTCP</li>
 					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master</li>
-					<li>or <strong>Existing Task</strong>: switch to task; merge in master; commit</li>
-					<li>push branch</li></ul>
-				</div>
+					<li>or <strong>Existing Task</strong>: switch to task; merge in master; RTCP</li>
+				</ul></div>
 				<div class="indent2">
+					<div style="border-style:none none none solid; border-color: green; border-width: 8px">
 					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
-						<li>edit/test; if continuing: [diff modifications]; [Terminal: status; add/stage]</li>
+						<li>edit/test</li>
+						<li><span class="mono">status; add/stage</span>; if continuing, diff modifications</li>
 					</ul>
 					<p><strong>Commit</strong></p><ul>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
 						<li>backup GitHub, AppCode data</li>
-						<li>to Commit: diff all files in changelist; update message; commit, noting inspection status</li>
-						<li>as indicated: inspect code; add additional commits to fix as indicated <em>(<a href="#wf_Develop">Develop</a></em>)</li>
+						<li>RTCP; *for Commit: diff all files in changelist; update message; commit*<ul>
+							<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
+						</ul></li>
+						<li>[squash commits]; push $cb to remote tracking branch</li>
 					</ul>
-				</div>
-			<div class='indent'>
+				</div></div>
+			<div class='indent'><div style="border-style:none none none solid; border-color: orange; border-width: 8px">
 				<p><strong>Publish</strong></p><ul>
 				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
-				<li>[squash commits]; push $cb to remote tracking branch</li>
-				<li>switch to master; update project (cT); commit; if changed, test<ul>
+				<li>switch to master; update project (cT); RTCP<ul>
 					<li>if master had changed (had something to commit): switch to branch $cb; merge master into $cb<ul>
-						<li>if $cb changed, test and commit</li>
+						<li>if branch changed: RTCP</li>
 					</ul></li>
 				</ul></li>
 				<li>switch to master; merge in branch $cb; test; push master</li>
+				<li>verify merge complete: <span class="mono">git branch --no-merged</span></li>
 				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
-			</ul></div>
+			</ul></div></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
+				<div style="border-style:none none none solid; border-color: mediumpurple; border-width: 8px">
 				<p><strong>Trigger Code Review</strong></p><ul>
 					<li><strong><em>StatusReport.sh</em></strong>; note especially status clear</li>
 					<li>change issue's Waffle label from 'Waffle:in progress' to 'Waffle:needs review'<ul>
 						<li><em>Waffle should move issue to 'Needs Review' column</em></li>
 					</ul></li>
 					<li>add tests, refactor, or correct if indicated</li>
-				</ul>
-				<p><strong>Issue Review Complete: Close Issue</strong></p><ul>
+				</ul></div>
+				<div style="border-style:none none none solid; border-color: purple; border-width: 8px">
+				<p><strong>Code Review Complete: Close Issue</strong></p><ul>
 					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches</li>
-					<li>merge branch into local master; push master</li>
-					<li>remove issue's Waffle label 'Waffle:needs review'; close issue</li>
-					<li>update project; delete Task and local branch; address any unmerged branches</li>
+					<li>test; master branch; merge branch into local master; test; push master</li>
+					<li>go to task; commit issue, with 'closes #nn' in comment</li>
+					<li>remove issue's Waffle label 'Waffle:needs review'; close active Task</li>
+					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
-			</div>
+			</div></div>
 			<h5>[Archive Repository]</h5>
-		</div></div>
+		</div></div></div>
 
 		<div style="page-break-before: always">
 			<!-- @marker "Release and Hotfix Branches" -->
 			<div style="background-color: #e2faff">
-			<h3 id='Release_Hotfix_Workflow_'>Release and Hotfix Workflow</h3>
+			<h3 id='Release_Hotfix_Workflow_' class="wf-hotfix">Release and Hotfix Workflow</h3>
 				<p><em>WARNING: Normal workflow branches are updated frequently to and from master.
 					Updating is avoided in this workflow to prevent pollution of the release branch.</em></p>
 			<h5>Create Release or Hotfix Branch</h5><ul>
@@ -350,6 +351,7 @@
 	<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
 	<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
 	<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
+	<!-- @topicItem "Remove Repository File(s)" "#Remove_Repository_File_" "1" "" -->
 	<!-- @topicItem "Bisect" "#tsk_Bisect" "1" "" -->
 	<!-- @topicItem "Information" "#tsk_Information" "1" "" -->
 	<!-- @topicItem "Undo" "#tsk_Undo" "1" "" -->
@@ -455,6 +457,13 @@
 	<li><span class='mono'>git tag -d &lt;tag&gt;</span>&nbsp;&nbsp;# delete</li>
 	<li><span class='mono'>git show &lt;tag&gt;</span>&nbsp;&nbsp;# show information about &lt;tag&gt;</li>
 	<li><span class='mono'>git push --tags</span>&nbsp;&nbsp;# push tags</li>
+	<li><span class="mono">&lt;sha&gt;</span>&nbsp;&nbsp;# add to select another commit</li>
+</ul>
+
+<!-- @marker "Remove Repository File(s)" -->
+<h4 id='Remove_Repository_File_'>Remove Repository File(s)</h4><ul>
+	<li><span class='mono'>git rm --cached &lt;filename&gt;</span>&nbsp;&nbsp;# remove file</li>
+	<li><span class='mono'>git rm --cached -r &lt;directory&gt;</span>&nbsp;&nbsp;# remove directory</li>
 </ul>
 
 <!-- @marker "Bisect" -->
