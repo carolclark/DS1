@@ -26,6 +26,12 @@
    <Group
       location = "group:ThirdParty"
       name = "ThirdParty">
+      <FileRef
+         location = "group:ThirdParty_ReadMe.html">
+      </FileRef>
+      <FileRef
+         location = "group:current_versions.html">
+      </FileRef>
       <Group
          location = "group:ASUnit"
          name = "ASUnit">

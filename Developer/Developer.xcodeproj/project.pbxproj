@@ -223,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				67C2EE15199D6583002E8C58 /* ASUnit */,
+				965F8B303E2415FF4397FD95 /* current_versions.html */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
