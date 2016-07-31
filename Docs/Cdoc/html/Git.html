@@ -167,7 +167,7 @@
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div style="border-style:none none none solid; border-color: lightgreen; border-width: 8px">
 				<p><strong>Open Task</strong></p><ul>
-					<li>on master; update project (cT); RTCP (refresh; test; [commit, push]); backup developer data; RTCP</li>
+					<li>on master; update project (cT); RTCP (refresh; test; [commit, push])</li>
 					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master</li>
 					<li>or <strong>Existing Task</strong>: switch to task; merge in master; RTCP</li>
 				</ul></div>
@@ -175,12 +175,11 @@
 					<div style="border-style:none none none solid; border-color: green; border-width: 8px">
 					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
 						<li>edit/test</li>
-						<li><span class="mono">status; add/stage</span>; if continuing, diff modifications</li>
+						<li><span class="mono">status; add/stage</span>; if looping back, diff modifications</li>
 					</ul>
 					<p><strong>Commit</strong></p><ul>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
-						<li>backup GitHub, AppCode data</li>
-						<li>RTCP; <em>for Commit: diff all files in changelist; update message; commit</em><ul>
+						<li>RTCP; <em>for Commit: deselect any files to be skipped; diff remaining files in changelist; update message; commit</em><ul>
 							<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
 						</ul></li>
 						<li>[squash commits]; push $cb to remote tracking branch</li>
@@ -194,7 +193,7 @@
 						<li>if branch changed: RTCP</li>
 					</ul></li>
 				</ul></li>
-				<li>switch to master; merge in branch $cb; refresh; test; commit; PUSH</li>
+				<li>switch to master; merge in branch $cb; refresh; test; PUSH</li>
 				<li>verify merge complete: <span class="mono">git branch --no-merged</span></li>
 				<li>if task complete, delete, task and branch; else if branch complete, delete</li>
 				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
