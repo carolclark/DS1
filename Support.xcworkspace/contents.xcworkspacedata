@@ -27,6 +27,59 @@
       location = "group:ThirdParty"
       name = "ThirdParty">
       <Group
+         location = "group:sharness-master"
+         name = "sharness-master">
+         <FileRef
+            location = "group:aggregate-results.sh">
+         </FileRef>
+         <FileRef
+            location = "group:API.md">
+         </FileRef>
+         <FileRef
+            location = "group:CHANGELOG.md">
+         </FileRef>
+         <FileRef
+            location = "group:CONTRIBUTING.md">
+         </FileRef>
+         <FileRef
+            location = "group:COPYING">
+         </FileRef>
+         <FileRef
+            location = "group:Makefile">
+         </FileRef>
+         <FileRef
+            location = "group:README.git">
+         </FileRef>
+         <FileRef
+            location = "group:README.md">
+         </FileRef>
+         <FileRef
+            location = "group:sharness.sh">
+         </FileRef>
+         <Group
+            location = "group:test"
+            name = "test">
+            <FileRef
+               location = "group:aggregate-results.sh">
+            </FileRef>
+            <FileRef
+               location = "group:Makefile">
+            </FileRef>
+            <FileRef
+               location = "group:sharness.sh">
+            </FileRef>
+            <FileRef
+               location = "group:sharness.t">
+            </FileRef>
+            <FileRef
+               location = "group:simple.t">
+            </FileRef>
+            <FileRef
+               location = "group:test-terminal.perl">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
          location = "group:mcpp"
          name = "mcpp">
          <Group
