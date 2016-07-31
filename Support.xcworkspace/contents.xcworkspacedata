@@ -23,4 +23,32 @@
    <FileRef
       location = "group:BuildSupport/BuildSupport.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:ThirdParty"
+      name = "ThirdParty">
+      <Group
+         location = "group:ASUnit"
+         name = "ASUnit">
+      </Group>
+      <Group
+         location = "group:bash-doxygen-master"
+         name = "bash-doxygen-master">
+      </Group>
+      <Group
+         location = "group:bashdb"
+         name = "bashdb">
+         <Group
+            location = "group:bashdb-4.4-0.92"
+            name = "bashdb-4.4-0.92">
+         </Group>
+      </Group>
+      <Group
+         location = "group:mcpp"
+         name = "mcpp">
+         <Group
+            location = "group:mcpp-2.7.2"
+            name = "mcpp-2.7.2">
+         </Group>
+      </Group>
+   </Group>
 </Workspace>
