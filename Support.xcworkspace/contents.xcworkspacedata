@@ -27,10 +27,10 @@
       location = "group:ThirdParty"
       name = "ThirdParty">
       <FileRef
-         location = "group:active_versions.html">
+         location = "group:ThirdParty_ReadMe.html">
       </FileRef>
       <FileRef
-         location = "group:ThirdParty_ReadMe.html">
+         location = "group:active_versions.html">
       </FileRef>
       <Group
          location = "group:ASUnit"
@@ -97,6 +97,1480 @@
          </Group>
       </Group>
       <Group
+         location = "group:bashdb"
+         name = "bashdb">
+         <FileRef
+            location = "group:active_version">
+         </FileRef>
+         <Group
+            location = "group:bashdb_4.4-0.92"
+            name = "bashdb_4.4-0.92">
+            <FileRef
+               location = "group:acinclude.m4">
+            </FileRef>
+            <FileRef
+               location = "group:aclocal.m4">
+            </FileRef>
+            <FileRef
+               location = "group:AUTHORS">
+            </FileRef>
+            <FileRef
+               location = "group:bashdb-main.inc">
+            </FileRef>
+            <FileRef
+               location = "group:bashdb-main.inc.in">
+            </FileRef>
+            <FileRef
+               location = "group:bashdb-part2.sh">
+            </FileRef>
+            <FileRef
+               location = "group:bashdb-trace">
+            </FileRef>
+            <FileRef
+               location = "group:bashdb-trace.in">
+            </FileRef>
+            <FileRef
+               location = "group:bashdb.in">
+            </FileRef>
+            <Group
+               location = "group:builtin"
+               name = "builtin">
+               <FileRef
+                  location = "group:Makefile.am">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.in">
+               </FileRef>
+               <FileRef
+                  location = "group:readc.c">
+               </FileRef>
+               <FileRef
+                  location = "group:set0.c">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:ChangeLog">
+            </FileRef>
+            <FileRef
+               location = "group:ChangeLog.0">
+            </FileRef>
+            <FileRef
+               location = "group:check-prefix.sh">
+            </FileRef>
+            <Group
+               location = "group:command"
+               name = "command">
+               <FileRef
+                  location = "group:action.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:alias.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:backtrace.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:break.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:clear.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:commands.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:complete.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:condition.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:continue.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:debug.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:delete.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:disable.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:display.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:down.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:edit.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:enable.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:eval.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:examine.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:export.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:file.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:finish.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:frame.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:handle.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:help.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:history.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:info.sh">
+               </FileRef>
+               <Group
+                  location = "group:info_sub"
+                  name = "info_sub">
+                  <FileRef
+                     location = "group:args.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:breakpoints.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:display.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:files.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:functions.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:handle.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:line.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.am">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:program.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:signals.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:source.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:stack.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:variables.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:warranty.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:watchpoints.sh">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:kill.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:list.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:load.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:log.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.am">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.in">
+               </FileRef>
+               <FileRef
+                  location = "group:next.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:pwd.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:quit.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:return.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:run.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:search.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:set.sh">
+               </FileRef>
+               <Group
+                  location = "group:set_sub"
+                  name = "set_sub">
+                  <FileRef
+                     location = "group:annotate.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:args.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:autoeval.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:autolist.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:basename.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:debug.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:debugging.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:different.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dollar0.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:editing.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:highlight.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:history.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:linetrace.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:listsize.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.am">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:prompt.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:showcommand.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:trace-commands.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:tty.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:width.sh">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:shell.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:show.sh">
+               </FileRef>
+               <Group
+                  location = "group:show_sub"
+                  name = "show_sub">
+                  <FileRef
+                     location = "group:alias.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:annotate.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:args.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:autoeval.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:autolist.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:basename.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:commands.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:copying.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:debug.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:different.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:directories.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:editing.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:highlight.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:history.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:listsize.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.am">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:prompt.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:tty.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:version.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:warranty.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:width.sh">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:signal.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:skip.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:source.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:step.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:trace.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:tty.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:undisplay.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:untrace.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:up.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:watch.sh">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:compile">
+            </FileRef>
+            <FileRef
+               location = "group:compute-prefix.sh">
+            </FileRef>
+            <FileRef
+               location = "group:config.guess">
+            </FileRef>
+            <FileRef
+               location = "group:config.h.in">
+            </FileRef>
+            <FileRef
+               location = "group:config.sub">
+            </FileRef>
+            <FileRef
+               location = "group:configure">
+            </FileRef>
+            <FileRef
+               location = "group:configure.ac">
+            </FileRef>
+            <FileRef
+               location = "group:COPYING">
+            </FileRef>
+            <Group
+               location = "group:data"
+               name = "data">
+               <FileRef
+                  location = "group:Makefile.am">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.in">
+               </FileRef>
+               <FileRef
+                  location = "group:shell.sh">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:dbg-main.sh">
+            </FileRef>
+            <FileRef
+               location = "group:dbg-set-d-vars.inc">
+            </FileRef>
+            <FileRef
+               location = "group:depcomp">
+            </FileRef>
+            <Group
+               location = "group:doc"
+               name = "doc">
+               <FileRef
+                  location = "group:bashdb-man.html">
+               </FileRef>
+               <FileRef
+                  location = "group:bashdb-man.pod">
+               </FileRef>
+               <FileRef
+                  location = "group:bashdb.1">
+               </FileRef>
+               <FileRef
+                  location = "group:bashdb.info">
+               </FileRef>
+               <FileRef
+                  location = "group:bashdb.texi">
+               </FileRef>
+               <FileRef
+                  location = "group:copyright.texi">
+               </FileRef>
+               <FileRef
+                  location = "group:fdl.texi">
+               </FileRef>
+               <FileRef
+                  location = "group:gpl.texi">
+               </FileRef>
+               <FileRef
+                  location = "group:macros.texi">
+               </FileRef>
+               <FileRef
+                  location = "group:macros.texi.in">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.am">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.in">
+               </FileRef>
+               <FileRef
+                  location = "group:mdate-sh">
+               </FileRef>
+               <FileRef
+                  location = "group:stamp-vti">
+               </FileRef>
+               <FileRef
+                  location = "group:texinfo.tex">
+               </FileRef>
+               <FileRef
+                  location = "group:version.texi">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:getopts_long.sh">
+            </FileRef>
+            <Group
+               location = "group:init"
+               name = "init">
+               <FileRef
+                  location = "group:io.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.am">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.in">
+               </FileRef>
+               <FileRef
+                  location = "group:opts.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:pre.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:require.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:vars.sh">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:INSTALL">
+            </FileRef>
+            <FileRef
+               location = "group:install-sh">
+            </FileRef>
+            <Group
+               location = "group:lib"
+               name = "lib">
+               <FileRef
+                  location = "group:action.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:alias.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:break.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:cmd-hooks.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:columnize.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:commands.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:complete.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:dbg-call.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:display.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:file.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:filecache.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:fns.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:frame.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:help.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:hist.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:hook.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:info.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:journal.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:list.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.am">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.in">
+               </FileRef>
+               <FileRef
+                  location = "group:msg.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:processor.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:run.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:save-restore.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:setshow.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:shell.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:sig.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:sort.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:stepping.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:subcmd.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:term-highlight.py">
+               </FileRef>
+               <FileRef
+                  location = "group:validate.sh">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:libtool.m4">
+            </FileRef>
+            <FileRef
+               location = "group:ltmain.sh">
+            </FileRef>
+            <FileRef
+               location = "group:ltoptions.m4">
+            </FileRef>
+            <FileRef
+               location = "group:ltsugar.m4">
+            </FileRef>
+            <FileRef
+               location = "group:ltversion.m4">
+            </FileRef>
+            <FileRef
+               location = "group:lt~obsolete.m4">
+            </FileRef>
+            <FileRef
+               location = "group:make-check-filter.rb">
+            </FileRef>
+            <FileRef
+               location = "group:Makefile.am">
+            </FileRef>
+            <FileRef
+               location = "group:Makefile.in">
+            </FileRef>
+            <FileRef
+               location = "group:missing">
+            </FileRef>
+            <FileRef
+               location = "group:NEWS">
+            </FileRef>
+            <FileRef
+               location = "group:README">
+            </FileRef>
+            <FileRef
+               location = "group:README-git.md">
+            </FileRef>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+            <Group
+               location = "group:test"
+               name = "test">
+               <Group
+                  location = "group:data"
+                  name = "data">
+                  <FileRef
+                     location = "group:action.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:action.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:brkpt1.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:brkpt1.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:brkpt2.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:brkpt2.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:brkpt3.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:brkpt3.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-args.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-args.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-break.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-break.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-clear.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-clear.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-loc.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-loc.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-source.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-source.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-step-subshell.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-step-subshell.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-step.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-step.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bugI.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bugI.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bugIFS.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bugIFS.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:command.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:command.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:complete.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:complete.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:continue.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:debug.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:debug.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:debug2.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:delete.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:delete.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:display.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:display.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:enable.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:enable.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:export.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:export.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:finish.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:finish.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:frame.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:frame.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:info-args.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:info-args.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:interrupt.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:list.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:list.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:lopts.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.am">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:misc-output-41.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:misc-output.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:misc.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:misc.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi1.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi1.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi2.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi2.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi3.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi3.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi4.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi4.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:parm.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:parm.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:prof1.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:prof2.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:quit.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:README">
+                  </FileRef>
+                  <FileRef
+                     location = "group:restart.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:restart.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:restart2.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:search.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:search.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:setshow.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:setshow.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:settrace.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:settrace.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:sig-43.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:sig-43.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:sig-Darwin.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:sig.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:sig.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:skip.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:skip.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:sopts.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell1.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell1.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell2.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell2.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell3.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell3.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell4.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell4.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:tbreak.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:tbreak.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:trace.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:trace2.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:watch1.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:watch1.right">
+                  </FileRef>
+                  <FileRef
+                     location = "group:watch2.cmd">
+                  </FileRef>
+                  <FileRef
+                     location = "group:watch2.right">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:example"
+                  name = "example">
+                  <FileRef
+                     location = "group:bug-args.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-clear.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-loc.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-step-subshell.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bug-step.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bugI.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bugIFS.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dbg-test1.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dbg-test1.sub">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dbg-test2.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:debug.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:fib.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:gcd.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:hanoi.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:interrupt.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:library.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.am">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:multi.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:nexting.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:parm.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:README">
+                  </FileRef>
+                  <FileRef
+                     location = "group:restart.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:settrace.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:sig.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:skip.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:stepping.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:subshell.sh">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:integration"
+                  name = "integration">
+                  <FileRef
+                     location = "group:check-common.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:interrupt-3.tests">
+                  </FileRef>
+                  <FileRef
+                     location = "group:interrupt.tests">
+                  </FileRef>
+                  <FileRef
+                     location = "group:lopts.tests">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.am">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:README">
+                  </FileRef>
+                  <FileRef
+                     location = "group:settrace.tests">
+                  </FileRef>
+                  <FileRef
+                     location = "group:sopts.tests">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-action">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-brkpt">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bug-args">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bug-break">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bug-clear">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bug-loc">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bug-source">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bug-step">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bug-step-subshell">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bug-step-subshell.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bugI">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bugIFS">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-command">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-complete">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-complete.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-debug">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-debug.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-delete">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-delete.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-display">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-enable">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-export">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-export.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-file-with-spaces">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-file-with-spaces.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-finish">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-frame">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-info-args">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-info-args.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-interrupt">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-interrupt.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-list">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-lopts">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-misc">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-misc.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-multi">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-parm">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-restart">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-search">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-setshow">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-setshow.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-settrace">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-sig">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-sig.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-skip">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-sopts">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-subshell">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-tbreak">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-trace">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-watch1">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-watch2">
+                  </FileRef>
+                  <FileRef
+                     location = "group:trace.tests">
+                  </FileRef>
+                  <FileRef
+                     location = "group:trace2.tests">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Makefile.am">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile.in">
+               </FileRef>
+               <FileRef
+                  location = "group:README">
+               </FileRef>
+               <Group
+                  location = "group:unit"
+                  name = "unit">
+                  <FileRef
+                     location = "group:helper.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.am">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:mock-cmd.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:require_me.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:require_me.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:shunit2">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-action.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-action.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-alias.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-alias.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bashdb-trace.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-bashdb-trace.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-break.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-break.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-cmd-complete.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-cmd-complete.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-cmd-eval.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-cmd-eval.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-columns.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-columns.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-eval.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-eval.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-file.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-file.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-filecache.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-filecache.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-fns.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-fns.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-frame.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-frame.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-get-sourceline.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-get-sourceline.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-io.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-io.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-lib-eval.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-lib-eval.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-lib-list.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-lib-list.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-msg.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-msg.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-pre.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-pre.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-require.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-require.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-run.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-run.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-save-restore.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-save-restore.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-set0.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-set0.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-sort.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-sort.sh.in">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-validate.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:test-validate.sh.in">
+                  </FileRef>
+               </Group>
+            </Group>
+            <FileRef
+               location = "group:test-driver">
+            </FileRef>
+            <FileRef
+               location = "group:THANKS">
+            </FileRef>
+            <FileRef
+               location = "group:TODO">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
          location = "group:bash-doxygen"
          name = "bash-doxygen">
          <FileRef
@@ -122,6 +1596,66 @@
                </FileRef>
                <FileRef
                   location = "group:output">
+               </FileRef>
+            </Group>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Sharness"
+         name = "Sharness">
+         <FileRef
+            location = "group:active_version">
+         </FileRef>
+         <Group
+            location = "group:Sharness_1.0.1"
+            name = "Sharness_1.0.1">
+            <FileRef
+               location = "group:aggregate-results.sh">
+            </FileRef>
+            <FileRef
+               location = "group:API.md">
+            </FileRef>
+            <FileRef
+               location = "group:CHANGELOG.md">
+            </FileRef>
+            <FileRef
+               location = "group:CONTRIBUTING.md">
+            </FileRef>
+            <FileRef
+               location = "group:COPYING">
+            </FileRef>
+            <FileRef
+               location = "group:Makefile">
+            </FileRef>
+            <FileRef
+               location = "group:README.git">
+            </FileRef>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+            <FileRef
+               location = "group:sharness.sh">
+            </FileRef>
+            <Group
+               location = "group:test"
+               name = "test">
+               <FileRef
+                  location = "group:aggregate-results.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile">
+               </FileRef>
+               <FileRef
+                  location = "group:sharness.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:sharness.t">
+               </FileRef>
+               <FileRef
+                  location = "group:simple.t">
+               </FileRef>
+               <FileRef
+                  location = "group:test-terminal.perl">
                </FileRef>
             </Group>
          </Group>
