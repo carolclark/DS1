@@ -33,8 +33,11 @@
          location = "group:ThirdParty_ReadMe.html">
       </FileRef>
       <Group
-         location = "group:ThirdParty/ASUnit"
+         location = "group:ASUnit"
          name = "ASUnit">
+         <FileRef
+            location = "group:active_version">
+         </FileRef>
          <Group
             location = "group:ASUnit-2015-10-15"
             name = "ASUnit-2015-10-15">
@@ -92,9 +95,36 @@
                location = "group:TODO">
             </FileRef>
          </Group>
+      </Group>
+      <Group
+         location = "group:bash-doxygen"
+         name = "bash-doxygen">
          <FileRef
-            location = "group:current_version">
+            location = "group:active-version">
          </FileRef>
+         <Group
+            location = "group:bash-doxygen_2016-06-23"
+            name = "bash-doxygen_2016-06-23">
+            <FileRef
+               location = "group:COPYING">
+            </FileRef>
+            <FileRef
+               location = "group:doxygen-bash.sed">
+            </FileRef>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+            <Group
+               location = "group:test"
+               name = "test">
+               <FileRef
+                  location = "group:input">
+               </FileRef>
+               <FileRef
+                  location = "group:output">
+               </FileRef>
+            </Group>
+         </Group>
       </Group>
    </Group>
 </Workspace>
