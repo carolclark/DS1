@@ -27,7 +27,7 @@
       location = "group:ThirdParty"
       name = "ThirdParty">
       <FileRef
-         location = "group:current_versions.html">
+         location = "group:active_versions.html">
       </FileRef>
       <FileRef
          location = "group:ThirdParty_ReadMe.html">
