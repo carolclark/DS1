@@ -45,598 +45,128 @@
 		67FDF6FB191D776C002560CF /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67FDF6FD191D776C002560CF /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67FDF6FE191D776C002560CF /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
-		965F8002ACE4B93104FEBC8A /* dbg-test2.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "dbg-test2.sh"; sourceTree = "<group>"; };
-		965F80093B65EC22E5067744 /* prompt.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = prompt.sh; sourceTree = "<group>"; };
 		965F8010E11592A61BC62E1B /* sharness.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = sharness.sh; sourceTree = "<group>"; };
-		965F80120070C014509FE027 /* multi4.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = multi4.cmd; sourceTree = "<group>"; };
-		965F80153C518608CCCDAFA9 /* listsize.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = listsize.sh; sourceTree = "<group>"; };
-		965F8015E8A7ACC919030DD1 /* disable.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = disable.sh; sourceTree = "<group>"; };
-		965F80165438A4C295858E21 /* helper.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = helper.sh; sourceTree = "<group>"; };
-		965F801EC7E375D0A61AD5ED /* NEWS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
 		965F801FC1CA29EBC1609DAB /* aggregate-results.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "aggregate-results.sh"; sourceTree = "<group>"; };
-		965F80230980AE01C385EF66 /* require.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = require.sh; sourceTree = "<group>"; };
-		965F80288E028BC6AC2A6DFA /* different.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = different.sh; sourceTree = "<group>"; };
-		965F802962F461E2C837A5F4 /* multi1.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = multi1.right; sourceTree = "<group>"; };
-		965F803C1781E8744F24E99F /* interrupt.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = interrupt.right; sourceTree = "<group>"; };
-		965F8046F33DECDC1B0B446B /* test-debug.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-debug.in"; sourceTree = "<group>"; };
 		965F80518425B647D4217A0B /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
 		965F8052FEAE720FBDE4F848 /* output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
-		965F805502221528E271488B /* test-misc.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-misc.in"; sourceTree = "<group>"; };
 		965F8057597EE81030ECF556 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F80604AC91405E21DF437 /* bashdb-trace */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bashdb-trace"; sourceTree = "<group>"; };
 		965F80716DC7DA16657F6969 /* test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
-		965F8081C8C5FBA91B0AE82A /* test-get-sourceline.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-get-sourceline.sh.in"; sourceTree = "<group>"; };
-		965F808668323C8493B5E3E3 /* debug.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = debug.cmd; sourceTree = "<group>"; };
-		965F80888C9E641F009AEBC4 /* compute-prefix.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "compute-prefix.sh"; sourceTree = "<group>"; };
-		965F808C0E7FD6E74F96979A /* subshell1.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = subshell1.cmd; sourceTree = "<group>"; };
-		965F8094ACA858DEB987B6D2 /* test-file-with-spaces */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-file-with-spaces"; sourceTree = "<group>"; };
-		965F8098404A1FAE868FD136 /* configure */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = configure; sourceTree = "<group>"; };
-		965F80A2FE627AB3B5BB9F29 /* config.sub */ = {isa = PBXFileReference; lastKnownFileType = file.sub; path = config.sub; sourceTree = "<group>"; };
-		965F80AE43084C7B8B4FB27E /* test-search */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-search"; sourceTree = "<group>"; };
-		965F80AF9D0EF83D7E643535 /* brkpt2.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = brkpt2.cmd; sourceTree = "<group>"; };
-		965F80B64EA1E88777C6435C /* bug-step-subshell.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "bug-step-subshell.sh"; sourceTree = "<group>"; };
-		965F80BBD77071D4048183D7 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F80CA6E11AB2F75B01E36 /* test-bug-break */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bug-break"; sourceTree = "<group>"; };
-		965F80D10C33DD7CCF7B0F86 /* stack.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = stack.sh; sourceTree = "<group>"; };
-		965F80D709A121B9CDCE518C /* dbg-call.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "dbg-call.sh"; sourceTree = "<group>"; };
-		965F80D812CA84BF72F0B6E1 /* debug.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = debug.right; sourceTree = "<group>"; };
 		965F80D8C12303C9A5A8A3EA /* test-extension.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = "test-extension.t"; sourceTree = "<group>"; };
-		965F80D962ECB3FFD20FBE52 /* misc-output.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "misc-output.right"; sourceTree = "<group>"; };
-		965F80E7976CD56F5B545468 /* test-bugI */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bugI"; sourceTree = "<group>"; };
-		965F80F917312AAFC7EA68AF /* autolist.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = autolist.sh; sourceTree = "<group>"; };
-		965F810EB5A798529C9B46C0 /* autoeval.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = autoeval.sh; sourceTree = "<group>"; };
-		965F8118FF915F4F2997E7D6 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		965F811C564B1DFAD0FD72AE /* brkpt3.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = brkpt3.cmd; sourceTree = "<group>"; };
-		965F812133274A3EE8A1E072 /* acinclude.m4 */ = {isa = PBXFileReference; lastKnownFileType = file.m4; path = acinclude.m4; sourceTree = "<group>"; };
-		965F81222D09A9AEA349C420 /* bugIFS.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = bugIFS.right; sourceTree = "<group>"; };
-		965F812583600EA34E1ED446 /* bug-break.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "bug-break.cmd"; sourceTree = "<group>"; };
-		965F81345031464FD6C224FB /* bugI.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = bugI.right; sourceTree = "<group>"; };
-		965F813C8BF9BCE2C466EB5E /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F8144162E9683B6FC841D /* signal.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = signal.sh; sourceTree = "<group>"; };
-		965F81467B70D4844C4F4FDA /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F8149150D70698F9F2DC0 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F8151CEED8546BBBEA8D8 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
 		965F8151D4A729A7491FE856 /* OldManual.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = OldManual.md; sourceTree = "<group>"; };
 		965F815262B433967408E5E7 /* .partially-passing-todos.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".partially-passing-todos.t"; sourceTree = "<group>"; };
 		965F8155EB29A0EA9BECC8DA /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F8156F1977111D013BFF1 /* bug-break.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "bug-break.right"; sourceTree = "<group>"; };
-		965F81571403A5A661D28BE0 /* file.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = file.sh; sourceTree = "<group>"; };
-		965F815B12C079C4BAC45042 /* info.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = info.sh; sourceTree = "<group>"; };
-		965F815B653C437E692FC5E1 /* handle.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = handle.sh; sourceTree = "<group>"; };
 		965F815CC0F3D778A593BCAF /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
 		965F816DD81D406DABDE7564 /* .orig-term.13020.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".orig-term.13020.counts"; sourceTree = "<group>"; };
 		965F816F2F776DB230FBD796 /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F81773D2CBB68219A3F2D /* multi1.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = multi1.cmd; sourceTree = "<group>"; };
-		965F8180D3F633839519A7C0 /* watch2.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = watch2.cmd; sourceTree = "<group>"; };
 		965F81826BDC72DECF6BDC0D /* .failing-todo.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".failing-todo.t"; sourceTree = "<group>"; };
-		965F81829B51993896521536 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F81830A8F47BCE3AEC698 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F81888DF8A3BFC059A57D /* test-lib-list.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-lib-list.sh.in"; sourceTree = "<group>"; };
-		965F818952FD6B654CF712CE /* README-git.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "README-git.md"; sourceTree = "<group>"; };
-		965F819ADDE00AB40987517A /* bug-clear.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "bug-clear.cmd"; sourceTree = "<group>"; };
-		965F81A106AE06EEE7BF590E /* list.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = list.cmd; sourceTree = "<group>"; };
 		965F81A60E7DDDE29E111E76 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
-		965F81B3B1F5009D3FAEDACD /* undisplay.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = undisplay.sh; sourceTree = "<group>"; };
-		965F81B9C3D93A2305C634DC /* files.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = files.sh; sourceTree = "<group>"; };
-		965F81BBD9A34CDDE8B0BFC2 /* kill.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = kill.sh; sourceTree = "<group>"; };
-		965F81C61685CAF40F641F3D /* delete.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = delete.sh; sourceTree = "<group>"; };
-		965F81C9AA4DF0D7AF929704 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		965F81CA73BE0DDEA69E45BC /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
 		965F81D85B7E851798EA2611 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F81D9FCC8F5005559BDC4 /* watch1.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = watch1.right; sourceTree = "<group>"; };
-		965F81EEC28D428370AE21B4 /* sopts.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = sopts.right; sourceTree = "<group>"; };
-		965F81F0A9EEB37C05D51096 /* test-brkpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-brkpt"; sourceTree = "<group>"; };
-		965F81F527A74FBE8E209685 /* subshell3.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = subshell3.cmd; sourceTree = "<group>"; };
-		965F81F9663B729FA6A3D7C6 /* dbg-test1.sub */ = {isa = PBXFileReference; lastKnownFileType = file.sub; path = "dbg-test1.sub"; sourceTree = "<group>"; };
 		965F8202FCB8099CAD688AAC /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F8213D63E493F339AAF82 /* test-alias.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-alias.sh"; sourceTree = "<group>"; };
 		965F821D6BD75371CB8FDE2C /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F82221C589EDCD218009C /* frame.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = frame.sh; sourceTree = "<group>"; };
-		965F823950294C86A270790F /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F823955C6E7D8BF645EE9 /* different.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = different.sh; sourceTree = "<group>"; };
-		965F823A5F56B74F6DD003CC /* brkpt2.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = brkpt2.right; sourceTree = "<group>"; };
-		965F8242140BBB7B4E0C0EF0 /* bashdb.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = bashdb.in; sourceTree = "<group>"; };
-		965F82442821BC5B3C9426E2 /* test-setshow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-setshow"; sourceTree = "<group>"; };
-		965F824AB98781EE708C014E /* columnize.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = columnize.sh; sourceTree = "<group>"; };
 		965F8251B9100D9A96736184 /* .broken-chain.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".broken-chain.t"; sourceTree = "<group>"; };
-		965F826469AEB3ACC5CCD3BC /* handle.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = handle.sh; sourceTree = "<group>"; };
-		965F82653793A13303C256D9 /* tty.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = tty.sh; sourceTree = "<group>"; };
 		965F828970B3D19DDDB3963D /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
-		965F8297F39AF267C5289DA4 /* dbg-set-d-vars.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = "dbg-set-d-vars.inc"; sourceTree = "<group>"; };
-		965F829FAA54B5D9D6D92B57 /* cmd-hooks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "cmd-hooks.sh"; sourceTree = "<group>"; };
-		965F829FC023E6C949BA3D72 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F82A18B6C09A62C059549 /* setshow.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = setshow.cmd; sourceTree = "<group>"; };
-		965F82A54083AF7B8D3E9D2D /* msg.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = msg.sh; sourceTree = "<group>"; };
-		965F82AFD3017468773EEEE9 /* command.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = command.right; sourceTree = "<group>"; };
-		965F82AFEF9F82B90E4C4C6C /* test-file.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-file.sh.in"; sourceTree = "<group>"; };
-		965F82B0036C269FE6855CEE /* frame.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = frame.sh; sourceTree = "<group>"; };
-		965F82B5ABBAD7FC960BC8DB /* stamp-vti */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "stamp-vti"; sourceTree = "<group>"; };
-		965F82BB3F40205EF4A6CBAD /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
-		965F82C1A60A8C14BBB4A6EF /* debug2.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = debug2.cmd; sourceTree = "<group>"; };
-		965F82C1C5542720B0DABE7C /* finish.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = finish.cmd; sourceTree = "<group>"; };
-		965F82C2616A421E09BE3012 /* prof2.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = prof2.cmd; sourceTree = "<group>"; };
-		965F82CD8D927AA30D013A89 /* INSTALL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = INSTALL; sourceTree = "<group>"; };
-		965F82D3E03B01EDD746F38C /* require_me.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = require_me.sh.in; sourceTree = "<group>"; };
-		965F82DC28B09F44BB9DCFE6 /* history.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = history.sh; sourceTree = "<group>"; };
 		965F82DC45874E9F59E89A7D /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F82E78AFE5B304B65B404 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F82F2FFE6CBC2E71566F4 /* export.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = export.right; sourceTree = "<group>"; };
-		965F82F6B06DB0C97266963A /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F82F725FC3B5E3F8E6AAE /* lt~obsolete.m4 */ = {isa = PBXFileReference; lastKnownFileType = file.m4; path = "lt~obsolete.m4"; sourceTree = "<group>"; };
-		965F82FB3BBEBF4DA693239F /* width.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = width.sh; sourceTree = "<group>"; };
-		965F82FCBE9309ABBB22A78E /* shell.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shell.sh; sourceTree = "<group>"; };
-		965F8306DA6871DCE09823EE /* shunit2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shunit2; sourceTree = "<group>"; };
-		965F830FFAA58AE21C73FF7F /* return.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = return.sh; sourceTree = "<group>"; };
-		965F8313F8E4282AEF417C25 /* mdate-sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mdate-sh"; sourceTree = "<group>"; };
-		965F83174E7292827CC3F173 /* bug-source.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "bug-source.cmd"; sourceTree = "<group>"; };
-		965F832238B951C74F669FAB /* parm.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = parm.right; sourceTree = "<group>"; };
-		965F83231216F1C19F2F22D1 /* subshell4.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = subshell4.cmd; sourceTree = "<group>"; };
-		965F8329353D8DAED3B9021D /* test-lib-eval.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-lib-eval.sh"; sourceTree = "<group>"; };
-		965F83299A17B718DFCB73DC /* test-msg.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-msg.sh.in"; sourceTree = "<group>"; };
 		965F832F48C3D2019BDB8165 /* test-extension.13070.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = "test-extension.13070.counts"; sourceTree = "<group>"; };
-		965F833EC14FC764379B4EF6 /* next.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = next.sh; sourceTree = "<group>"; };
-		965F833F240A532AAC58DD7B /* test-tbreak */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-tbreak"; sourceTree = "<group>"; };
-		965F8342372CED64409D1214 /* shell.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shell.sh; sourceTree = "<group>"; };
-		965F834922ABB77C5D40BF7B /* vars.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = vars.sh; sourceTree = "<group>"; };
 		965F83506B8AE7DA08A60BDF /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
 		965F835202484AE7DE318DB0 /* Test ASUnit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test ASUnit.applescript"; sourceTree = "<group>"; };
-		965F8353BD92574131E0A8A2 /* edit.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = edit.sh; sourceTree = "<group>"; };
-		965F8354F8F6B3F78CCAF39B /* test-cmd-eval.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-cmd-eval.sh.in"; sourceTree = "<group>"; };
-		965F8374312698664D445D67 /* functions.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = functions.sh; sourceTree = "<group>"; };
-		965F837812C16719715F0832 /* parm.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = parm.sh; sourceTree = "<group>"; };
-		965F83781F4057B63C222B4E /* hist.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = hist.sh; sourceTree = "<group>"; };
-		965F83791D9399DD7073B8DB /* history.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = history.sh; sourceTree = "<group>"; };
 		965F837DEB15C0143BDE3B82 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
-		965F8384661AA8C12A5C0891 /* watch2.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = watch2.right; sourceTree = "<group>"; };
-		965F839282C8B86C15602F73 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		965F839CCDBF5DF20D116B9B /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
 		965F83A030B0B5C6EA195494 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F83A6BFBCFD1B59EDECD8 /* enable.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = enable.cmd; sourceTree = "<group>"; };
-		965F83B594BF015C1DAAE047 /* fns.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = fns.sh; sourceTree = "<group>"; };
 		965F83B75207590B927E3238 /* .mixed-results2.12927.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".mixed-results2.12927.counts"; sourceTree = "<group>"; };
-		965F83BC1C4C0A4E1ADFD6D5 /* display.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = display.sh; sourceTree = "<group>"; };
-		965F83D2BF89473CFB7F3DA3 /* test-multi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-multi"; sourceTree = "<group>"; };
 		965F83D6F97E00F08D1E3388 /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F83DB588EDFEEE723429C /* args.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = args.sh; sourceTree = "<group>"; };
-		965F83DDECBB1C55D8FC7D42 /* source.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = source.sh; sourceTree = "<group>"; };
-		965F83E0F7537985DE4FB638 /* test-restart */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-restart"; sourceTree = "<group>"; };
 		965F83E10740D7D2081AC0A1 /* Test Loader.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test Loader.applescript"; sourceTree = "<group>"; };
-		965F83EB2AFDEDA32CA19949 /* misc.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = misc.cmd; sourceTree = "<group>"; };
 		965F83F00A1C6B1459E47920 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
-		965F83FA92FE70736FB264DC /* break.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = break.sh; sourceTree = "<group>"; };
-		965F83FB01B0881EF30D8209 /* settrace.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = settrace.right; sourceTree = "<group>"; };
 		965F83FFF096484E98B1B2D3 /* makefile.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = makefile.applescript; sourceTree = "<group>"; };
-		965F840050832E587E02D702 /* setshow.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = setshow.right; sourceTree = "<group>"; };
-		965F8400CA600ADAF6C75261 /* dbg-main.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "dbg-main.sh"; sourceTree = "<group>"; };
 		965F841351CD70178E606D38 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
-		965F8415DAA64E780D7F40E5 /* test-trace */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-trace"; sourceTree = "<group>"; };
 		965F841AE467ABA0E1A29448 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		965F8422C9A8125AAE8B7F8C /* display.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = display.right; sourceTree = "<group>"; };
-		965F84234B697A85394C90DB /* test-pre.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-pre.sh"; sourceTree = "<group>"; };
 		965F84317406805458956B18 /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F843977D130175FD9A480 /* bugIFS.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = bugIFS.cmd; sourceTree = "<group>"; };
-		965F843AD5B9B97E16148CEF /* opts.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = opts.sh; sourceTree = "<group>"; };
-		965F843E99DA0D1659521E92 /* sig.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = sig.cmd; sourceTree = "<group>"; };
-		965F8441357E7D344A3D00A5 /* width.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = width.sh; sourceTree = "<group>"; };
-		965F84447120248DA34B2F95 /* aclocal.m4 */ = {isa = PBXFileReference; lastKnownFileType = file.m4; path = aclocal.m4; sourceTree = "<group>"; };
-		965F84478B1534DB832FA929 /* untrace.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = untrace.sh; sourceTree = "<group>"; };
-		965F845CDC95D4D3F1777CCB /* test-sort.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-sort.sh"; sourceTree = "<group>"; };
-		965F845EB030B083564AADF5 /* subshell1.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = subshell1.right; sourceTree = "<group>"; };
-		965F847292196789D7575316 /* test-save-restore.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-save-restore.sh"; sourceTree = "<group>"; };
 		965F8484B889488D44A38C35 /* test.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = test.t; sourceTree = "<group>"; };
-		965F848B8ECA9465B0935A16 /* debug.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = debug.sh; sourceTree = "<group>"; };
-		965F849AE512BEAC9E1FD826 /* line.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = line.sh; sourceTree = "<group>"; };
 		965F849B2E6886CFEE86666C /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F849EB2819BFA5A710923 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		965F849F1D2644525AEF1DB8 /* display.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = display.sh; sourceTree = "<group>"; };
-		965F84A4B7E705C3789F6EE6 /* restart.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = restart.cmd; sourceTree = "<group>"; };
-		965F84AB416D10A475A6F49B /* ChangeLog.0 */ = {isa = PBXFileReference; lastKnownFileType = file.0; path = ChangeLog.0; sourceTree = "<group>"; };
-		965F84ABB45A3223FDFD9370 /* search.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = search.sh; sourceTree = "<group>"; };
-		965F84B4E63A46E6C5FFCE37 /* info-args.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "info-args.right"; sourceTree = "<group>"; };
 		965F84BD8E8C3C04F2C212F9 /* API.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = API.md; sourceTree = "<group>"; };
-		965F84BD9558B64B0AB274FC /* bug-clear.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "bug-clear.sh"; sourceTree = "<group>"; };
 		965F84C68E24D79799D27C68 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F84CFACE668D21DC73A26 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F84D3A6A91BFFB4114F79 /* test-eval.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-eval.sh.in"; sourceTree = "<group>"; };
-		965F84DE367DE8A090AF3098 /* check-prefix.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "check-prefix.sh"; sourceTree = "<group>"; };
-		965F84DE77CB8536F0D5FF75 /* bashdb-man.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "bashdb-man.html"; sourceTree = "<group>"; };
-		965F84E2D3671C21EAA1F9CE /* bugI.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = bugI.sh; sourceTree = "<group>"; };
-		965F84E4C1CDBAD8E18F1AE9 /* test-enable */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-enable"; sourceTree = "<group>"; };
-		965F8504492242CDFFE3B21C /* action.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = action.sh; sourceTree = "<group>"; };
-		965F850EEBAE229DD53FCE6A /* brkpt3.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = brkpt3.right; sourceTree = "<group>"; };
-		965F85110C51191F606A1EDA /* bug-args.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "bug-args.cmd"; sourceTree = "<group>"; };
 		965F851113F5B7B009C1F940 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F8522BBAE576EB87F64F1 /* test-debug */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-debug"; sourceTree = "<group>"; };
-		965F85235D1D84AC54413641 /* bashdb-main.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = "bashdb-main.inc"; sourceTree = "<group>"; };
-		965F8523E8FE8E4618C6800B /* subshell.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = subshell.sh; sourceTree = "<group>"; };
-		965F852A1024D8EEFAA3B37D /* test-watch1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-watch1"; sourceTree = "<group>"; };
-		965F852B517A3BCBBEC4475C /* libtool.m4 */ = {isa = PBXFileReference; lastKnownFileType = file.m4; path = libtool.m4; sourceTree = "<group>"; };
 		965F852D83C4648D6F3DCD46 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F852E5546BFCD4C5D7A22 /* break.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = break.sh; sourceTree = "<group>"; };
-		965F852E6330CCE97DECF82F /* sort.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = sort.sh; sourceTree = "<group>"; };
 		965F8553ABEA235AB43A0D38 /* test-terminal.perl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = "test-terminal.perl"; sourceTree = "<group>"; };
 		965F8553D26D7CEA3B297799 /* .full-pass.12826.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".full-pass.12826.counts"; sourceTree = "<group>"; };
-		965F8555C3C00A57FD48BBFD /* test-sort.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-sort.sh.in"; sourceTree = "<group>"; };
 		965F8568BCBBFF15053F6E28 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F85892736E056149B9EE7 /* bug-step.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "bug-step.cmd"; sourceTree = "<group>"; };
-		965F858DFF8F98CC1FB8DBB5 /* autolist.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = autolist.sh; sourceTree = "<group>"; };
-		965F8591417174009708F8C9 /* test-columns.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-columns.sh"; sourceTree = "<group>"; };
-		965F85940C7851FC0341476E /* macros.texi */ = {isa = PBXFileReference; lastKnownFileType = file.texi; path = macros.texi; sourceTree = "<group>"; };
-		965F85A337BEF8AAB4ADC12E /* journal.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = journal.sh; sourceTree = "<group>"; };
-		965F85A7EF01607DF336CE1A /* test-misc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-misc"; sourceTree = "<group>"; };
-		965F85B1A7B457BFC6E2406B /* test-bugIFS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bugIFS"; sourceTree = "<group>"; };
 		965F85BA18A48B8DE3D50778 /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F85C4ECB8D0C8EF6CFFFB /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F85CEA5FEDDC724104EFB /* skip.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = skip.right; sourceTree = "<group>"; };
-		965F85D8788F1DE943F0FEB0 /* dollar0.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dollar0.sh; sourceTree = "<group>"; };
-		965F85F161F9A5F9287AB938 /* interrupt.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = interrupt.sh.in; sourceTree = "<group>"; };
-		965F85F49251A58D4BBEE704 /* fdl.texi */ = {isa = PBXFileReference; lastKnownFileType = file.texi; path = fdl.texi; sourceTree = "<group>"; };
-		965F85F4E63AE41C6B7334D3 /* program.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = program.sh; sourceTree = "<group>"; };
-		965F85F67047B30BDE9E627D /* test-set0.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-set0.sh.in"; sourceTree = "<group>"; };
 		965F85F69103D79E2C4FA8D5 /* test.12995.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = test.12995.counts; sourceTree = "<group>"; };
-		965F85FD0719AF1DBE18427D /* sig.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = sig.sh; sourceTree = "<group>"; };
-		965F8602A40CA10E8161F388 /* brkpt1.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = brkpt1.right; sourceTree = "<group>"; };
-		965F8603B51BB17E47A58B4B /* THANKS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = THANKS; sourceTree = "<group>"; };
 		965F8607BD93034E027889BD /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		965F86211C1458E908CD12CC /* .long.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = .long.t; sourceTree = "<group>"; };
-		965F862A4C856C81073845B5 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F862C48147D318A5551D3 /* lopts.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = lopts.right; sourceTree = "<group>"; };
-		965F8646EF07579B114C70E4 /* test-sig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-sig"; sourceTree = "<group>"; };
-		965F8653F9B9D01169FEFACD /* bug-args.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "bug-args.right"; sourceTree = "<group>"; };
 		965F8659E9C8682EB036A435 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F866F95F07BDEC6FE6394 /* finish.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = finish.sh; sourceTree = "<group>"; };
 		965F867278307231B7734F08 /* .mixed-results1.12911.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".mixed-results1.12911.counts"; sourceTree = "<group>"; };
-		965F86776A3E2B8ACACED162 /* display.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = display.cmd; sourceTree = "<group>"; };
-		965F867C8169A9CB12A2151A /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
 		965F867E8639450AB40E7F07 /* simple.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = simple.t; sourceTree = "<group>"; };
-		965F8680EFD63B8F07863DCB /* fib.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = fib.sh; sourceTree = "<group>"; };
-		965F868A4FD2FF7A4A18D634 /* settrace.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = settrace.cmd; sourceTree = "<group>"; };
-		965F868A6A17C4E9F930862D /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		965F869FCC9DC89699B640F3 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F86AFDA99629E85424674 /* restart2.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = restart2.cmd; sourceTree = "<group>"; };
-		965F86B42FC6218E75640E8A /* trace-commands.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "trace-commands.sh"; sourceTree = "<group>"; };
-		965F86CC09E0558B266C275C /* directories.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = directories.sh; sourceTree = "<group>"; };
-		965F86CC50DD0DB3A42BFB95 /* pwd.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = pwd.sh; sourceTree = "<group>"; };
-		965F86D12A2FC4F677E89FFA /* test-lib-eval.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-lib-eval.sh.in"; sourceTree = "<group>"; };
-		965F86D1B581C4E49D53F91D /* test-finish */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-finish"; sourceTree = "<group>"; };
-		965F86DAC0FA0D22859333B6 /* test-validate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-validate.sh"; sourceTree = "<group>"; };
-		965F86E4107A2BFB4C31F646 /* test-sig.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-sig.in"; sourceTree = "<group>"; };
-		965F86E968E24E4BC8F04772 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
 		965F86EEAA4AAAEB1F8B5825 /* Test Template.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test Template.applescript"; sourceTree = "<group>"; };
-		965F86F66047246C19A0C01C /* bashdb.info */ = {isa = PBXFileReference; lastKnownFileType = file.info; path = bashdb.info; sourceTree = "<group>"; };
-		965F86F96C8754D0B2675992 /* interrupt-3.tests */ = {isa = PBXFileReference; lastKnownFileType = file.tests; path = "interrupt-3.tests"; sourceTree = "<group>"; };
-		965F86FAEBCFB10F0E3B215A /* test-columns.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-columns.sh.in"; sourceTree = "<group>"; };
-		965F87018C694E93FD9EF3B8 /* tbreak.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = tbreak.cmd; sourceTree = "<group>"; };
-		965F8706F6DC79A31388BE4E /* multi2.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = multi2.right; sourceTree = "<group>"; };
-		965F870C99B2C84AFD4F11E0 /* settrace.tests */ = {isa = PBXFileReference; lastKnownFileType = file.tests; path = settrace.tests; sourceTree = "<group>"; };
-		965F8711A85919FB1D4C3D4A /* multi3.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = multi3.cmd; sourceTree = "<group>"; };
-		965F871851635ADFB2F0702E /* log.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = log.sh; sourceTree = "<group>"; };
 		965F871853623C617C355385 /* MyScript.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = MyScript.applescript; sourceTree = "<group>"; };
-		965F871999DE757CE3941BC6 /* test-action.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-action.sh.in"; sourceTree = "<group>"; };
-		965F872840385C46B66A1A65 /* test-file.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-file.sh"; sourceTree = "<group>"; };
-		965F8738CC4707FAD26D5ABF /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
 		965F873E0C9E5231FEE22BF8 /* .failing-todo.12860.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".failing-todo.12860.counts"; sourceTree = "<group>"; };
-		965F87470B34A828A09C9E66 /* test-interrupt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-interrupt"; sourceTree = "<group>"; };
-		965F874F1A52A7C572AFA508 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F8751F74DF02060D2CBFB /* bug-loc.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "bug-loc.cmd"; sourceTree = "<group>"; };
-		965F87599D46214C86697E8E /* bashdb-man.pod */ = {isa = PBXFileReference; lastKnownFileType = file.pod; path = "bashdb-man.pod"; sourceTree = "<group>"; };
 		965F8766244E706B92A5CFFF /* expected */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expected; sourceTree = "<group>"; };
 		965F8772DA914FADDDDC85D6 /* .no-long.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".no-long.t"; sourceTree = "<group>"; };
-		965F87751A7B6903BBC83778 /* enable.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = enable.sh; sourceTree = "<group>"; };
-		965F87764CFF2BB7626056C0 /* tbreak.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = tbreak.right; sourceTree = "<group>"; };
-		965F8777F04F5CAAFD1ACF34 /* subshell2.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = subshell2.right; sourceTree = "<group>"; };
-		965F8779D4BA9D05B4B19862 /* misc.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = misc.right; sourceTree = "<group>"; };
-		965F87805550204FC4938431 /* bugI.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = bugI.cmd; sourceTree = "<group>"; };
-		965F87805726DD763F27F577 /* complete.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = complete.sh; sourceTree = "<group>"; };
-		965F878487C5D213426DBC73 /* bug-step.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "bug-step.sh"; sourceTree = "<group>"; };
-		965F878FD539AF905966E195 /* list.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = list.sh; sourceTree = "<group>"; };
-		965F879668F8E0FBBDE1D3C7 /* multi4.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = multi4.right; sourceTree = "<group>"; };
-		965F879C590FBFF8BEAB105E /* args.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = args.sh; sourceTree = "<group>"; };
-		965F87A655792A8A06603625 /* display.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = display.sh; sourceTree = "<group>"; };
 		965F87A8DB656E74F0344211 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		965F87BA11F038D00981436C /* test-list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-list"; sourceTree = "<group>"; };
 		965F87C8D138789BF472501C /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F87CCBAC30310D7A4948F /* interrupt.tests */ = {isa = PBXFileReference; lastKnownFileType = file.tests; path = interrupt.tests; sourceTree = "<group>"; };
-		965F87CCEEF04D2C94F2B8A0 /* check-common.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "check-common.sh.in"; sourceTree = "<group>"; };
-		965F87D07AFB41BCEE8DDF8F /* test-info-args */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-info-args"; sourceTree = "<group>"; };
 		965F87D4C7FB53DC1B31EA70 /* .cleanup-function.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".cleanup-function.t"; sourceTree = "<group>"; };
 		965F87E26F0D76ED5D7455B2 /* .no-long.13034.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".no-long.13034.counts"; sourceTree = "<group>"; };
-		965F87E635F6D34D863A3848 /* set0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = set0.c; sourceTree = "<group>"; };
 		965F87E764D4ABFCC51EA91B /* .failing-cleanup.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".failing-cleanup.t"; sourceTree = "<group>"; };
-		965F87EE46F7D010AB753123 /* subshell3.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = subshell3.right; sourceTree = "<group>"; };
-		965F87F161DE68E32FEF6138 /* test-io.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-io.sh.in"; sourceTree = "<group>"; };
-		965F87F24C77EF6231C49BF7 /* trace.tests */ = {isa = PBXFileReference; lastKnownFileType = file.tests; path = trace.tests; sourceTree = "<group>"; };
-		965F87F6A60EA3DCEFF57B97 /* test-action */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-action"; sourceTree = "<group>"; };
-		965F88029B93A1E10A1B7D56 /* active_version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = active_version; sourceTree = "<group>"; };
-		965F880C0C53C0A21B89A3E0 /* depcomp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = depcomp; sourceTree = "<group>"; };
-		965F881899C7E37DDDD9E235 /* alias.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = alias.sh; sourceTree = "<group>"; };
 		965F881A7AEB94ACC499C16E /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
 		965F881C7DB33929471F9628 /* output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
-		965F88253B70F316F6F429FF /* subshell4.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = subshell4.right; sourceTree = "<group>"; };
-		965F882D649C220E3014CC72 /* quit.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = quit.sh; sourceTree = "<group>"; };
 		965F8848CC95A0C3A73CC40B /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F885D971954700FB19D95 /* multi.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = multi.sh; sourceTree = "<group>"; };
 		965F886127288C94A90477EC /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F8861AE6BFE6C7B13C12C /* watch1.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = watch1.cmd; sourceTree = "<group>"; };
 		965F88636BEDC4FFA19E5158 /* ASUnit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ASUnit.applescript; sourceTree = "<group>"; };
 		965F886D198CDBAEB36699BB /* .cleanup-function.12968.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".cleanup-function.12968.counts"; sourceTree = "<group>"; };
-		965F887045A47C157D650E2C /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
-		965F88775615916B069DDC54 /* copying.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copying.sh; sourceTree = "<group>"; };
-		965F8878AF1EAF614D739E70 /* filecache.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = filecache.sh; sourceTree = "<group>"; };
-		965F887D2447972A7FCE4F1E /* step.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = step.sh; sourceTree = "<group>"; };
-		965F887FB29B3F41785D00A1 /* missing */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = missing; sourceTree = "<group>"; };
 		965F88829081F3250CD66ECA /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F88831CFA03D61AA33415 /* ltoptions.m4 */ = {isa = PBXFileReference; lastKnownFileType = file.m4; path = ltoptions.m4; sourceTree = "<group>"; };
-		965F888580A03D95CC56C970 /* test-get-sourceline.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-get-sourceline.sh"; sourceTree = "<group>"; };
-		965F888D90B98BFECCFC5A95 /* sig.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = sig.sh; sourceTree = "<group>"; };
-		965F889021872E22926D06DA /* test-fns.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-fns.sh.in"; sourceTree = "<group>"; };
 		965F889127939345D84884A6 /* Runtime Loader.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Runtime Loader.applescript"; sourceTree = "<group>"; };
-		965F8891D4E255232D830A4C /* hanoi.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = hanoi.sh.in; sourceTree = "<group>"; };
-		965F8895AF0DBB2C0BC3F915 /* examine.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = examine.sh; sourceTree = "<group>"; };
-		965F889FF8FA8BA43AF51755 /* test-bug-loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bug-loc"; sourceTree = "<group>"; };
 		965F88A00A9239076CCF5A53 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		965F88A64A4DBDDDF9D89C1E /* alias.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = alias.sh; sourceTree = "<group>"; };
-		965F88B55088B552B384FE51 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F88B7ED4AC76723E839C8 /* test-cmd-complete.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-cmd-complete.sh.in"; sourceTree = "<group>"; };
-		965F88BA17CCD11EE3629FAD /* processor.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = processor.sh; sourceTree = "<group>"; };
-		965F88C6692CB65F402F3D3F /* bashdb.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = bashdb.1; sourceTree = "<group>"; };
-		965F88C949384D38A8EB1590 /* bug-clear.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "bug-clear.right"; sourceTree = "<group>"; };
-		965F88CDCA8D5882F56E9505 /* misc-output-41.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "misc-output-41.right"; sourceTree = "<group>"; };
-		965F88D031C6AA13EBC98715 /* test-settrace */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-settrace"; sourceTree = "<group>"; };
-		965F88F237850EEC9BDF3494 /* io.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = io.sh; sourceTree = "<group>"; };
-		965F88F5D39C415AA2CECC18 /* test-complete.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-complete.in"; sourceTree = "<group>"; };
-		965F890193C38B0CBDFC9EBF /* multi2.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = multi2.cmd; sourceTree = "<group>"; };
-		965F890B5E3C86491BDED80B /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
-		965F89135017C21A8BE0BCB9 /* macros.texi.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = macros.texi.in; sourceTree = "<group>"; };
-		965F891B2D220CB1190C7FE6 /* signals.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = signals.sh; sourceTree = "<group>"; };
-		965F891EDA5B516AAE6FF46E /* test-require.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-require.sh"; sourceTree = "<group>"; };
-		965F892B6F46B30D264439D4 /* ltversion.m4 */ = {isa = PBXFileReference; lastKnownFileType = file.m4; path = ltversion.m4; sourceTree = "<group>"; };
 		965F892B7AC6245C8783BAA3 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F8934091AD61EFDDA6406 /* test-lopts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-lopts"; sourceTree = "<group>"; };
-		965F893A43FE970EEC6C45F2 /* finish.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = finish.right; sourceTree = "<group>"; };
-		965F893A53F5DFF1A0170AAD /* config.h.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = config.h.in; sourceTree = "<group>"; };
 		965F893E6C47040E24D40799 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
 		965F893EB5344A41D9AD87EF /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F8943F54ECBBD5680ADDD /* test-require.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-require.sh.in"; sourceTree = "<group>"; };
-		965F894A8F192C4429B5F16C /* bug-loc.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "bug-loc.sh"; sourceTree = "<group>"; };
-		965F894FA9EFD5CC2A3DA041 /* eval.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = eval.sh; sourceTree = "<group>"; };
-		965F895197C4810DBAFF9AEF /* readc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = readc.c; sourceTree = "<group>"; };
-		965F895B4D17AA5BF7300AF5 /* test-bug-step-subshell.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-bug-step-subshell.in"; sourceTree = "<group>"; };
 		965F8967D72050E006B07162 /* .partially-passing-todos.12894.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".partially-passing-todos.12894.counts"; sourceTree = "<group>"; };
-		965F896C5BA561590037CAD0 /* copyright.texi */ = {isa = PBXFileReference; lastKnownFileType = file.texi; path = copyright.texi; sourceTree = "<group>"; };
-		965F896FE4BCAD7892B98BF4 /* test-parm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-parm"; sourceTree = "<group>"; };
-		965F897100E3AEB10CDE464E /* make-check-filter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "make-check-filter.rb"; sourceTree = "<group>"; };
 		965F8976B33D14BFBA296EB9 /* HexString.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = HexString.applescript; sourceTree = "<group>"; };
-		965F897A2CEF469A29EC7E2F /* list.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = list.sh; sourceTree = "<group>"; };
 		965F897DB1E76BA89B5153F6 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
 		965F89848A6B7D1D26F963E9 /* active_version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = active_version; sourceTree = "<group>"; };
 		965F8988C31B5C19BD80B64C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
-		965F8991EA3322EA9140E550 /* linetrace.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = linetrace.sh; sourceTree = "<group>"; };
-		965F8991EEC25F71EE45EA35 /* stepping.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = stepping.sh; sourceTree = "<group>"; };
-		965F899EC08B0CB386B07D8B /* show.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = show.sh; sourceTree = "<group>"; };
 		965F89A0E120483C5289A7E6 /* .mixed-results2.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".mixed-results2.t"; sourceTree = "<group>"; };
-		965F89A2B6AF09443BC79EBF /* command.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = command.cmd; sourceTree = "<group>"; };
-		965F89B390CAD7E5518D95E8 /* test-bug-source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bug-source"; sourceTree = "<group>"; };
-		965F89B9887CCBCC6D0EA2D9 /* commands.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = commands.sh; sourceTree = "<group>"; };
-		965F89C11551544316C295EA /* hook.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = hook.sh; sourceTree = "<group>"; };
-		965F89CEEBAC041B9A04FFC4 /* delete.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = delete.right; sourceTree = "<group>"; };
 		965F89D6CD155E1F65A70FA3 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F89DC909F74A6483B18AD /* trace2.tests */ = {isa = PBXFileReference; lastKnownFileType = file.tests; path = trace2.tests; sourceTree = "<group>"; };
-		965F89E6037A7FFE1D2C8860 /* library.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = library.sh; sourceTree = "<group>"; };
 		965F89F3381905611971859E /* test.13093.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = test.13093.counts; sourceTree = "<group>"; };
-		965F89F9788B8898EF4104CC /* bashdb-trace.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "bashdb-trace.in"; sourceTree = "<group>"; };
-		965F8A040564188FD1E9C7F0 /* test-skip */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-skip"; sourceTree = "<group>"; };
-		965F8A0BD130E01B6892E5C1 /* test-command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-command"; sourceTree = "<group>"; };
-		965F8A1AB65084ADD3F038D5 /* test-info-args.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-info-args.in"; sourceTree = "<group>"; };
-		965F8A1CDB3D3DC58BD7FD33 /* clear.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = clear.sh; sourceTree = "<group>"; };
-		965F8A2ED726F40842379153 /* bug-step-subshell.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "bug-step-subshell.right"; sourceTree = "<group>"; };
-		965F8A3766256AAEF124F9A4 /* test-bug-args */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bug-args"; sourceTree = "<group>"; };
-		965F8A41D72B2C7D016601BC /* info-args.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "info-args.cmd"; sourceTree = "<group>"; };
 		965F8A4228451BF15077BA81 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F8A57FD84D8CA61F4CE9B /* annotate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = annotate.sh; sourceTree = "<group>"; };
-		965F8A5E110593B8416562EC /* load.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = load.sh; sourceTree = "<group>"; };
-		965F8A648A8398DF9F2AC6C3 /* test-cmd-complete.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-cmd-complete.sh"; sourceTree = "<group>"; };
-		965F8A68B0E138D8D4E92C54 /* skip.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = skip.sh; sourceTree = "<group>"; };
 		965F8A6B8CA9EA8C46AA51E3 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F8A6BAE8D44A36057A82D /* trace2.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = trace2.right; sourceTree = "<group>"; };
 		965F8A701D08497487859B9A /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
-		965F8A72586B5912913E29DC /* test-alias.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-alias.sh.in"; sourceTree = "<group>"; };
-		965F8A765484834A1CEC96D0 /* test-frame.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-frame.sh.in"; sourceTree = "<group>"; };
-		965F8A947876610A1078F5AE /* subcmd.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = subcmd.sh; sourceTree = "<group>"; };
-		965F8A9CC7D4DDFD0F7CA891 /* run.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run.sh; sourceTree = "<group>"; };
-		965F8A9D2AF95A687E8E1656 /* up.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = up.sh; sourceTree = "<group>"; };
-		965F8AA1184758270AE0ED84 /* action.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = action.cmd; sourceTree = "<group>"; };
-		965F8AAC7297C6FAE33D0E6B /* commands.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = commands.sh; sourceTree = "<group>"; };
-		965F8AB0E93D06A4A6BBDBF5 /* editing.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = editing.sh; sourceTree = "<group>"; };
-		965F8AB734B4876710050B6F /* gcd.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = gcd.sh; sourceTree = "<group>"; };
-		965F8AC608B5C2D7B87809E8 /* compile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = compile; sourceTree = "<group>"; };
-		965F8AC973520078470EE2E7 /* getopts_long.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getopts_long.sh; sourceTree = "<group>"; };
 		965F8ACE7C241170D7484E96 /* sharness.12794.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = sharness.12794.counts; sourceTree = "<group>"; };
-		965F8AD58E41DEC163E1F132 /* gpl.texi */ = {isa = PBXFileReference; lastKnownFileType = file.texi; path = gpl.texi; sourceTree = "<group>"; };
-		965F8ADBEA6881C029A9DBA8 /* search.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = search.cmd; sourceTree = "<group>"; };
-		965F8ADCB348E1F13647280B /* test-bug-clear */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bug-clear"; sourceTree = "<group>"; };
 		965F8ADD4FC5180F7EE4B472 /* active_versions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = active_versions.html; sourceTree = "<group>"; };
-		965F8AE7AF013E6F00193A4E /* test-export.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-export.in"; sourceTree = "<group>"; };
-		965F8AEACF80D23983CA8B58 /* search.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = search.right; sourceTree = "<group>"; };
 		965F8AEDDA23301BBF6C1D19 /* active_version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = active_version; sourceTree = "<group>"; };
-		965F8AEDF45629091C5E5ADF /* down.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = down.sh; sourceTree = "<group>"; };
-		965F8AF23425509FA7308B28 /* complete.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = complete.cmd; sourceTree = "<group>"; };
-		965F8AF8ED4B7DC7BF572973 /* quit.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = quit.cmd; sourceTree = "<group>"; };
-		965F8AFD6DFBCCEE3626D785 /* subshell2.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = subshell2.cmd; sourceTree = "<group>"; };
-		965F8B015A3E789B9994DD86 /* bugIFS.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = bugIFS.sh.in; sourceTree = "<group>"; };
-		965F8B08D5DCA0932329859C /* autoeval.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = autoeval.sh; sourceTree = "<group>"; };
-		965F8B0E7A29880D0D3DCA98 /* frame.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = frame.cmd; sourceTree = "<group>"; };
-		965F8B11CA3D2F2B5A6CE4B4 /* test-set0.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-set0.sh"; sourceTree = "<group>"; };
-		965F8B208369203A7EA32C55 /* test-break.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-break.sh.in"; sourceTree = "<group>"; };
 		965F8B225C656EAB46FA6157 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		965F8B22784842C633924157 /* multi3.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = multi3.right; sourceTree = "<group>"; };
-		965F8B231DC5825FF044C8FC /* test-filecache.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-filecache.sh.in"; sourceTree = "<group>"; };
 		965F8B25546A9E8C04D157DE /* doxygen-bash.sed */ = {isa = PBXFileReference; lastKnownFileType = file.sed; path = "doxygen-bash.sed"; sourceTree = "<group>"; };
-		965F8B257CDF5610BA6731F7 /* sig-43.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "sig-43.right"; sourceTree = "<group>"; };
-		965F8B26DE6F86349BC227AF /* basename.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = basename.sh; sourceTree = "<group>"; };
-		965F8B378F67913C43E05254 /* history.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = history.sh; sourceTree = "<group>"; };
-		965F8B3E4881DF1B4044B891 /* condition.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = condition.sh; sourceTree = "<group>"; };
-		965F8B3E827749F38FCA3A91 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F8B406CEF033FF471837E /* skip.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = skip.sh; sourceTree = "<group>"; };
-		965F8B51FC7BDB9EAED1DCC1 /* help.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = help.sh; sourceTree = "<group>"; };
-		965F8B5BDBCC667E8F3BB825 /* skip.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = skip.cmd; sourceTree = "<group>"; };
-		965F8B658E63305B1AD995D5 /* set.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set.sh; sourceTree = "<group>"; };
-		965F8B66C83E80DF2D505EA3 /* test-frame.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-frame.sh"; sourceTree = "<group>"; };
-		965F8B67FAD70B23889DCCD0 /* list.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = list.right; sourceTree = "<group>"; };
-		965F8B6A6D15585CD551967F /* test-complete */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-complete"; sourceTree = "<group>"; };
-		965F8B7678EC740D8165AF94 /* test-frame */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-frame"; sourceTree = "<group>"; };
-		965F8B8A66C89B70F8AD20EA /* test-pre.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-pre.sh.in"; sourceTree = "<group>"; };
 		965F8BA0F1FBC8C116E8FBFF /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
-		965F8BA59F922F23A07B2969 /* pre.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = pre.sh; sourceTree = "<group>"; };
-		965F8BA8985269CE06D6EAAB /* test-sopts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-sopts"; sourceTree = "<group>"; };
-		965F8BB0517DD04FA919B134 /* ltmain.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ltmain.sh; sourceTree = "<group>"; };
-		965F8BB1789280AA6F26681B /* test-export */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-export"; sourceTree = "<group>"; };
 		965F8BB9F905CC15FBE7B5B8 /* .orig-term.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".orig-term.t"; sourceTree = "<group>"; };
-		965F8BBE35D736CE68BC9705 /* sopts.tests */ = {isa = PBXFileReference; lastKnownFileType = file.tests; path = sopts.tests; sourceTree = "<group>"; };
-		965F8BC90B965DC3B11F90EE /* bug-source.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "bug-source.right"; sourceTree = "<group>"; };
 		965F8BCE9CA4547C63D493F6 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = file.gitattributes; path = .gitattributes; sourceTree = "<group>"; };
 		965F8BD3961EEB9EF471DD18 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
 		965F8BDDA86463A4C025BE4E /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F8BF6BF19E32710E15C2C /* parm.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = parm.cmd; sourceTree = "<group>"; };
-		965F8BF7DA160E8BFF05C371 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		965F8C076E5C9AA1184CC73F /* debugging.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = debugging.sh; sourceTree = "<group>"; };
-		965F8C0C624E06F68059BC95 /* help.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = help.sh; sourceTree = "<group>"; };
-		965F8C1CEEEDE0E2EB653304 /* frame.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = frame.right; sourceTree = "<group>"; };
-		965F8C25AD5DF628738BF54C /* setshow.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = setshow.sh; sourceTree = "<group>"; };
 		965F8C2767C3A52215D108D5 /* Test AppleScript Variable Types and You.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test AppleScript Variable Types and You.applescript"; sourceTree = "<group>"; };
 		965F8C28FDB8969821010DB5 /* .partial-pass.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".partial-pass.t"; sourceTree = "<group>"; };
-		965F8C3A135AFFC567FA9530 /* validate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = validate.sh; sourceTree = "<group>"; };
-		965F8C53330778B59F51FD7A /* restart.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = restart.right; sourceTree = "<group>"; };
-		965F8C5DDB359A77A3B9ADFB /* configure.ac */ = {isa = PBXFileReference; lastKnownFileType = file.ac; path = configure.ac; sourceTree = "<group>"; };
-		965F8C6277349A8EC433D268 /* texinfo.tex */ = {isa = PBXFileReference; lastKnownFileType = file.tex; path = texinfo.tex; sourceTree = "<group>"; };
-		965F8C6BB8CE6547AE5DACE9 /* annotate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = annotate.sh; sourceTree = "<group>"; };
-		965F8C7D12DACC4021AE10D5 /* commands.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = commands.sh; sourceTree = "<group>"; };
-		965F8C7F5EAEE38C66CDA057 /* complete.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = complete.sh; sourceTree = "<group>"; };
-		965F8C81C24E1BBF80C070D4 /* warranty.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = warranty.sh; sourceTree = "<group>"; };
-		965F8C84B3C720EF50DF563E /* test-display */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-display"; sourceTree = "<group>"; };
 		965F8C8976BE54D2A664CF45 /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F8CA84AD97736D7D075C7 /* breakpoints.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = breakpoints.sh; sourceTree = "<group>"; };
-		965F8CB042EB8C54B2D96DBB /* version.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = version.sh; sourceTree = "<group>"; };
-		965F8CB62449BA6ED6168DCB /* save-restore.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "save-restore.sh"; sourceTree = "<group>"; };
-		965F8CBC4D9C3CD3BD48E2DE /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F8CC26214D4044A93473B /* config.guess */ = {isa = PBXFileReference; lastKnownFileType = file.guess; path = config.guess; sourceTree = "<group>"; };
-		965F8CC97A9ECD7D8E006601 /* sig.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = sig.right; sourceTree = "<group>"; };
-		965F8CD0048EFF3887D334B1 /* debug.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = debug.sh; sourceTree = "<group>"; };
-		965F8CD3DA59D8AFB6BDE98D /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F8CD592B47F97F29D201C /* test-delete.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-delete.in"; sourceTree = "<group>"; };
-		965F8CDEA1BC83F79B108F14 /* debug.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = debug.sh; sourceTree = "<group>"; };
-		965F8CE7C3E017D8645108A8 /* prompt.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = prompt.sh; sourceTree = "<group>"; };
 		965F8CEA4F68BACEB7D7D07B /* expect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expect; sourceTree = "<group>"; };
-		965F8CEA83D11903B470B258 /* test-bashdb-trace.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-bashdb-trace.sh"; sourceTree = "<group>"; };
-		965F8CF9440B7603229B7A24 /* bashdb-main.inc.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "bashdb-main.inc.in"; sourceTree = "<group>"; };
-		965F8D0B80704A5AD37CF95B /* watchpoints.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = watchpoints.sh; sourceTree = "<group>"; };
-		965F8D1140F9128F2A714A29 /* source.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = source.sh; sourceTree = "<group>"; };
-		965F8D119C0F1CA96F8C931A /* trace.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = trace.sh; sourceTree = "<group>"; };
-		965F8D131A9E9D29A6254502 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
 		965F8D1342DD26C8F957348E /* ThirdParty_ReadMe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ThirdParty_ReadMe.html; sourceTree = "<group>"; };
-		965F8D19E5F7788081137189 /* test-driver */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-driver"; sourceTree = "<group>"; };
-		965F8D1A7F63EE49804F7464 /* tty.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = tty.sh; sourceTree = "<group>"; };
 		965F8D1AEEE73E47B0DCF271 /* .passing-todo.12877.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".passing-todo.12877.counts"; sourceTree = "<group>"; };
-		965F8D1E2893D4D56824DECE /* test-subshell */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-subshell"; sourceTree = "<group>"; };
-		965F8D212832E0E8D56C27B7 /* backtrace.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = backtrace.sh; sourceTree = "<group>"; };
 		965F8D213DE4DFD2C541C26B /* .mixed-results1.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".mixed-results1.t"; sourceTree = "<group>"; };
 		965F8D22D91135B46AAFB83C /* .long.13051.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = .long.13051.counts; sourceTree = "<group>"; };
-		965F8D3AF0DB1B1DD12CDDC2 /* highlight.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = highlight.sh; sourceTree = "<group>"; };
-		965F8D411DDE163E2BA6DEC8 /* test-msg.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-msg.sh"; sourceTree = "<group>"; };
-		965F8D4A3B46392AE16D482F /* prof1.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = prof1.cmd; sourceTree = "<group>"; };
-		965F8D4F09B4524479D61856 /* test-delete */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-delete"; sourceTree = "<group>"; };
-		965F8D51A281E48FDE32BE58 /* editing.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = editing.sh; sourceTree = "<group>"; };
-		965F8D592727CE9F221A9A7E /* test-run.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-run.sh"; sourceTree = "<group>"; };
-		965F8D5A425664532F4CBF33 /* test-break.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-break.sh"; sourceTree = "<group>"; };
 		965F8D608BC5E5BF68B61B15 /* .failing-cleanup.12948.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".failing-cleanup.12948.counts"; sourceTree = "<group>"; };
-		965F8D6BF25E716566A6C474 /* trace.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = trace.right; sourceTree = "<group>"; };
-		965F8D6D8687FC0FE4502575 /* restart.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = restart.sh; sourceTree = "<group>"; };
-		965F8D7756A0A3E86E01B59D /* info.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = info.sh; sourceTree = "<group>"; };
-		965F8D7BD68D8E3B84DD0BEE /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
-		965F8DA77CF329F52035A7E6 /* continue.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = continue.cmd; sourceTree = "<group>"; };
-		965F8DAAFB5554F0B9789FA5 /* test-bashdb-trace.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-bashdb-trace.sh.in"; sourceTree = "<group>"; };
-		965F8DAB00067F482BDE4471 /* showcommand.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = showcommand.sh; sourceTree = "<group>"; };
-		965F8DB9DAF9FDBEFB200670 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = Makefile.in; sourceTree = "<group>"; };
-		965F8DC32F649125E16D4FEA /* bashdb.texi */ = {isa = PBXFileReference; lastKnownFileType = file.texi; path = bashdb.texi; sourceTree = "<group>"; };
 		965F8DCF76FF9D8E3129B385 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
 		965F8DD0238CD1EBC7D2B826 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
-		965F8DD8A795C0BCEF7F4AD9 /* bug-args.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "bug-args.sh.in"; sourceTree = "<group>"; };
-		965F8DE4C98C11128A0C4E5A /* test-action.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-action.sh"; sourceTree = "<group>"; };
-		965F8DEDF77F044ED022EB53 /* highlight.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = highlight.sh; sourceTree = "<group>"; };
-		965F8DF69D92F6857C531658 /* bashdb-part2.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "bashdb-part2.sh"; sourceTree = "<group>"; };
-		965F8DF9ED118AAF0DB871D2 /* require_me.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = require_me.sh; sourceTree = "<group>"; };
 		965F8DFEA2B36EEAA5209F63 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		965F8E0A0E8F7EDA57D4E9A5 /* export.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = export.cmd; sourceTree = "<group>"; };
 		965F8E111BB8C09A907988D2 /* input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input; sourceTree = "<group>"; };
 		965F8E2101C72EFB1D971B00 /* test.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = test.t; sourceTree = "<group>"; };
-		965F8E282FFAC5B658EBC63F /* bug-step.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "bug-step.right"; sourceTree = "<group>"; };
-		965F8E2BE3BDE9D961F96698 /* listsize.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = listsize.sh; sourceTree = "<group>"; };
-		965F8E35D4245452A1E4058B /* variables.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = variables.sh; sourceTree = "<group>"; };
-		965F8E3F91950E638A272AF8 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F8E46026C4F188096CCC0 /* continue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = continue.sh; sourceTree = "<group>"; };
 		965F8E4F955E78B22819F9FE /* .full-pass.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".full-pass.t"; sourceTree = "<group>"; };
-		965F8E511B15F1B6E29130CD /* action.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = action.sh; sourceTree = "<group>"; };
-		965F8E58E36EA0DDADC9AE18 /* debug.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = debug.sh; sourceTree = "<group>"; };
-		965F8E5C78B4864D71D0F51F /* action.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = action.right; sourceTree = "<group>"; };
 		965F8E656FACA50C2DB4AE10 /* jetbrains.teamcity.server.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = jetbrains.teamcity.server.plist; sourceTree = "<group>"; };
 		965F8E6BA1ECF8682513268B /* expected */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expected; sourceTree = "<group>"; };
-		965F8E6D54C79C6318D715B7 /* term-highlight.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "term-highlight.py"; sourceTree = "<group>"; };
 		965F8E79E666A321B9BC1A9A /* .partial-pass.12844.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = ".partial-pass.12844.counts"; sourceTree = "<group>"; };
 		965F8E7D42AF59692747077F /* sharness.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = sharness.t; sourceTree = "<group>"; };
-		965F8E7F1D2B73C5C19705F3 /* test-validate.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-validate.sh.in"; sourceTree = "<group>"; };
-		965F8E89FBBFF7D1776B5937 /* complete.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = complete.right; sourceTree = "<group>"; };
-		965F8E92217AFB34DA134B1F /* alias.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = alias.sh; sourceTree = "<group>"; };
-		965F8E9FA19EDD95E9B1F9D1 /* delete.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = delete.cmd; sourceTree = "<group>"; };
-		965F8EA305A089E7EB9997EC /* nexting.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = nexting.sh; sourceTree = "<group>"; };
 		965F8EA35298BCF2BC7D1A81 /* out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = out; sourceTree = "<group>"; };
-		965F8EA824EBB2F8FEC48472 /* warranty.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = warranty.sh; sourceTree = "<group>"; };
-		965F8EACB83FBC8F43D721AA /* version.texi */ = {isa = PBXFileReference; lastKnownFileType = file.texi; path = version.texi; sourceTree = "<group>"; };
-		965F8EB7C1EF87A2695421DA /* bug-loc.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "bug-loc.right"; sourceTree = "<group>"; };
-		965F8EBED4D1B4D59DDCE2AC /* test-fns.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-fns.sh"; sourceTree = "<group>"; };
-		965F8EBF4E5FB14B8E483D5B /* basename.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = basename.sh; sourceTree = "<group>"; };
-		965F8EC09429820134DF43FF /* export.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = export.sh; sourceTree = "<group>"; };
-		965F8ED5CAA7770D364377D5 /* test-lib-list.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-lib-list.sh"; sourceTree = "<group>"; };
-		965F8ED87BE3FBE805A90B65 /* test-io.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-io.sh"; sourceTree = "<group>"; };
 		965F8EE071200E81DE1B7B8B /* Test HexString.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = "Test HexString.applescript"; sourceTree = "<group>"; };
 		965F8EE0EE5875D7FA5D76D5 /* active-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "active-version"; sourceTree = "<group>"; };
-		965F8EE4DD57D6D666BCEB72 /* mock-cmd.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "mock-cmd.sh"; sourceTree = "<group>"; };
-		965F8EE7D227AD47A322720B /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
 		965F8EF23E5FBA89C8566A8D /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
 		965F8EF3BAE8EB61D3DF1B92 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
-		965F8F019CE0942BDA43F163 /* stepping.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = stepping.sh; sourceTree = "<group>"; };
-		965F8F07A1D0FEE9D285F2E1 /* test-filecache.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-filecache.sh"; sourceTree = "<group>"; };
-		965F8F0F9947B562EA76A8C5 /* shell.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shell.sh; sourceTree = "<group>"; };
-		965F8F19B30E046A57054AC8 /* tty.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = tty.sh; sourceTree = "<group>"; };
 		965F8F1CC57C00A8B223E4B9 /* simple.13151.counts */ = {isa = PBXFileReference; lastKnownFileType = file.counts; path = simple.13151.counts; sourceTree = "<group>"; };
-		965F8F26D0D6D44088FB1038 /* test-bug-step-subshell */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bug-step-subshell"; sourceTree = "<group>"; };
-		965F8F2B31B43F2C0438F7B5 /* install-sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "install-sh"; sourceTree = "<group>"; };
-		965F8F3B76651A701A238AE3 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F8F45266B639000933E6D /* test-setshow.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-setshow.in"; sourceTree = "<group>"; };
-		965F8F6255D67DC35C831880 /* test-eval.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-eval.sh"; sourceTree = "<group>"; };
-		965F8F785BB7AA48A8C725FB /* file.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = file.sh; sourceTree = "<group>"; };
-		965F8F7ABF834CFA7BB699C7 /* bug-step-subshell.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "bug-step-subshell.cmd"; sourceTree = "<group>"; };
-		965F8F7B501ABE7C32C03417 /* test-bug-step */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-bug-step"; sourceTree = "<group>"; };
-		965F8F7DC2367BF58303C130 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		965F8F802E474686D2070974 /* test-cmd-eval.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-cmd-eval.sh"; sourceTree = "<group>"; };
 		965F8F83C3FAC720E4310616 /* README.git */ = {isa = PBXFileReference; lastKnownFileType = file.git; path = README.git; sourceTree = "<group>"; };
-		965F8F9240F6C3DD6CA9586D /* brkpt1.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = brkpt1.cmd; sourceTree = "<group>"; };
-		965F8F9791CEA8136F053D47 /* settrace.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = settrace.sh; sourceTree = "<group>"; };
-		965F8FA97E054DA49E2360F7 /* lopts.tests */ = {isa = PBXFileReference; lastKnownFileType = file.tests; path = lopts.tests; sourceTree = "<group>"; };
-		965F8FB036C13E07C98EF540 /* test-interrupt.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-interrupt.in"; sourceTree = "<group>"; };
-		965F8FB1FCBF9E8608125B86 /* test-file-with-spaces.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-file-with-spaces.in"; sourceTree = "<group>"; };
-		965F8FB8AFD36FFC3E916108 /* enable.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = enable.right; sourceTree = "<group>"; };
-		965F8FB8B496F0D30DDD01D0 /* args.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = args.sh; sourceTree = "<group>"; };
 		965F8FBE2E9CF2A156E70DE0 /* err */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = err; sourceTree = "<group>"; };
 		965F8FC04E4B7BFDA0ACDDB3 /* .passing-todo.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; path = ".passing-todo.t"; sourceTree = "<group>"; };
-		965F8FD2CF6FF12FC96BEFEB /* run.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run.sh; sourceTree = "<group>"; };
-		965F8FDA2EB464C7456421C8 /* ltsugar.m4 */ = {isa = PBXFileReference; lastKnownFileType = file.m4; path = ltsugar.m4; sourceTree = "<group>"; };
-		965F8FDC1413BB029BEB1139 /* watch.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = watch.sh; sourceTree = "<group>"; };
-		965F8FDF364FA15EA9AEF1B8 /* dbg-test1.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "dbg-test1.sh"; sourceTree = "<group>"; };
-		965F8FEBA8F7EF18E0631198 /* sig-Darwin.right */ = {isa = PBXFileReference; lastKnownFileType = file.right; path = "sig-Darwin.right"; sourceTree = "<group>"; };
-		965F8FF007B150E6EFECF4DB /* sig-43.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = "sig-43.cmd"; sourceTree = "<group>"; };
-		965F8FF5B0454E397A79F529 /* test-run.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-run.sh.in"; sourceTree = "<group>"; };
-		965F8FF616A177AC549564CD /* test-save-restore.sh.in */ = {isa = PBXFileReference; lastKnownFileType = file.in; path = "test-save-restore.sh.in"; sourceTree = "<group>"; };
-		965F8FFDB3A9B29484B2382A /* test-watch2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-watch2"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -805,68 +335,6 @@
 			path = "full-pass";
 			sourceTree = "<group>";
 		};
-		965F8181777B4DCF4BF48D96 /* unit */ = {
-			isa = PBXGroup;
-			children = (
-				965F8306DA6871DCE09823EE /* shunit2 */,
-				965F80165438A4C295858E21 /* helper.sh */,
-				965F8ED87BE3FBE805A90B65 /* test-io.sh */,
-				965F8F3B76651A701A238AE3 /* Makefile.am */,
-				965F813C8BF9BCE2C466EB5E /* Makefile.in */,
-				965F8EE4DD57D6D666BCEB72 /* mock-cmd.sh */,
-				965F8EBED4D1B4D59DDCE2AC /* test-fns.sh */,
-				965F8D411DDE163E2BA6DEC8 /* test-msg.sh */,
-				965F84234B697A85394C90DB /* test-pre.sh */,
-				965F8D592727CE9F221A9A7E /* test-run.sh */,
-				965F8F6255D67DC35C831880 /* test-eval.sh */,
-				965F872840385C46B66A1A65 /* test-file.sh */,
-				965F8B11CA3D2F2B5A6CE4B4 /* test-set0.sh */,
-				965F845CDC95D4D3F1777CCB /* test-sort.sh */,
-				965F8DF9ED118AAF0DB871D2 /* require_me.sh */,
-				965F8213D63E493F339AAF82 /* test-alias.sh */,
-				965F8D5A425664532F4CBF33 /* test-break.sh */,
-				965F8B66C83E80DF2D505EA3 /* test-frame.sh */,
-				965F87F161DE68E32FEF6138 /* test-io.sh.in */,
-				965F8DE4C98C11128A0C4E5A /* test-action.sh */,
-				965F889021872E22926D06DA /* test-fns.sh.in */,
-				965F83299A17B718DFCB73DC /* test-msg.sh.in */,
-				965F8B8A66C89B70F8AD20EA /* test-pre.sh.in */,
-				965F8FF5B0454E397A79F529 /* test-run.sh.in */,
-				965F8591417174009708F8C9 /* test-columns.sh */,
-				965F84D3A6A91BFFB4114F79 /* test-eval.sh.in */,
-				965F82AFEF9F82B90E4C4C6C /* test-file.sh.in */,
-				965F891EDA5B516AAE6FF46E /* test-require.sh */,
-				965F85F67047B30BDE9E627D /* test-set0.sh.in */,
-				965F8555C3C00A57FD48BBFD /* test-sort.sh.in */,
-				965F82D3E03B01EDD746F38C /* require_me.sh.in */,
-				965F8A72586B5912913E29DC /* test-alias.sh.in */,
-				965F8B208369203A7EA32C55 /* test-break.sh.in */,
-				965F8F802E474686D2070974 /* test-cmd-eval.sh */,
-				965F8A765484834A1CEC96D0 /* test-frame.sh.in */,
-				965F8329353D8DAED3B9021D /* test-lib-eval.sh */,
-				965F8ED5CAA7770D364377D5 /* test-lib-list.sh */,
-				965F86DAC0FA0D22859333B6 /* test-validate.sh */,
-				965F871999DE757CE3941BC6 /* test-action.sh.in */,
-				965F8F07A1D0FEE9D285F2E1 /* test-filecache.sh */,
-				965F86FAEBCFB10F0E3B215A /* test-columns.sh.in */,
-				965F8943F54ECBBD5680ADDD /* test-require.sh.in */,
-				965F8354F8F6B3F78CCAF39B /* test-cmd-eval.sh.in */,
-				965F86D12A2FC4F677E89FFA /* test-lib-eval.sh.in */,
-				965F81888DF8A3BFC059A57D /* test-lib-list.sh.in */,
-				965F8E7F1D2B73C5C19705F3 /* test-validate.sh.in */,
-				965F8CEA83D11903B470B258 /* test-bashdb-trace.sh */,
-				965F8A648A8398DF9F2AC6C3 /* test-cmd-complete.sh */,
-				965F8B231DC5825FF044C8FC /* test-filecache.sh.in */,
-				965F847292196789D7575316 /* test-save-restore.sh */,
-				965F888580A03D95CC56C970 /* test-get-sourceline.sh */,
-				965F8DAAFB5554F0B9789FA5 /* test-bashdb-trace.sh.in */,
-				965F88B7ED4AC76723E839C8 /* test-cmd-complete.sh.in */,
-				965F8FF616A177AC549564CD /* test-save-restore.sh.in */,
-				965F8081C8C5FBA91B0AE82A /* test-get-sourceline.sh.in */,
-			);
-			path = unit;
-			sourceTree = "<group>";
-		};
 		965F81941A9C432EF2896472 /* sharness.d */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,46 +448,6 @@
 			path = test;
 			sourceTree = "<group>";
 		};
-		965F8411C7ECED500B7B2D88 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				965F83B594BF015C1DAAE047 /* fns.sh */,
-				965F82A54083AF7B8D3E9D2D /* msg.sh */,
-				965F8A9CC7D4DDFD0F7CA891 /* run.sh */,
-				965F888D90B98BFECCFC5A95 /* sig.sh */,
-				965F8F785BB7AA48A8C725FB /* file.sh */,
-				965F8C0C624E06F68059BC95 /* help.sh */,
-				965F83781F4057B63C222B4E /* hist.sh */,
-				965F89C11551544316C295EA /* hook.sh */,
-				965F8D7756A0A3E86E01B59D /* info.sh */,
-				965F897A2CEF469A29EC7E2F /* list.sh */,
-				965F852E6330CCE97DECF82F /* sort.sh */,
-				965F8E92217AFB34DA134B1F /* alias.sh */,
-				965F852E5546BFCD4C5D7A22 /* break.sh */,
-				965F82B0036C269FE6855CEE /* frame.sh */,
-				965F82FCBE9309ABBB22A78E /* shell.sh */,
-				965F8504492242CDFFE3B21C /* action.sh */,
-				965F8A947876610A1078F5AE /* subcmd.sh */,
-				965F849F1D2644525AEF1DB8 /* display.sh */,
-				965F85A337BEF8AAB4ADC12E /* journal.sh */,
-				965F8C25AD5DF628738BF54C /* setshow.sh */,
-				965F89B9887CCBCC6D0EA2D9 /* commands.sh */,
-				965F87805726DD763F27F577 /* complete.sh */,
-				965F80D709A121B9CDCE518C /* dbg-call.sh */,
-				965F862A4C856C81073845B5 /* Makefile.am */,
-				965F88B55088B552B384FE51 /* Makefile.in */,
-				965F8F019CE0942BDA43F163 /* stepping.sh */,
-				965F8C3A135AFFC567FA9530 /* validate.sh */,
-				965F829FAA54B5D9D6D92B57 /* cmd-hooks.sh */,
-				965F824AB98781EE708C014E /* columnize.sh */,
-				965F8878AF1EAF614D739E70 /* filecache.sh */,
-				965F88BA17CCD11EE3629FAD /* processor.sh */,
-				965F8CB62449BA6ED6168DCB /* save-restore.sh */,
-				965F8E6D54C79C6318D715B7 /* term-highlight.py */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
 		965F84F6ECF5B2FFF901DBED /* test-rundir */ = {
 			isa = PBXGroup;
 			children = (
@@ -1029,63 +457,6 @@
 				965F8C420904DDCECC34DBE9 /* test-results */,
 			);
 			path = "test-rundir";
-			sourceTree = "<group>";
-		};
-		965F850C65AB29EA25583D7F /* builtin */ = {
-			isa = PBXGroup;
-			children = (
-				965F87E635F6D34D863A3848 /* set0.c */,
-				965F895197C4810DBAFF9AEF /* readc.c */,
-				965F81CA73BE0DDEA69E45BC /* Makefile.am */,
-				965F82F6B06DB0C97266963A /* Makefile.in */,
-			);
-			path = builtin;
-			sourceTree = "<group>";
-		};
-		965F85230D36EB8983D4ECE1 /* info_sub */ = {
-			isa = PBXGroup;
-			children = (
-				965F83DB588EDFEEE723429C /* args.sh */,
-				965F849AE512BEAC9E1FD826 /* line.sh */,
-				965F81B9C3D93A2305C634DC /* files.sh */,
-				965F80D10C33DD7CCF7B0F86 /* stack.sh */,
-				965F826469AEB3ACC5CCD3BC /* handle.sh */,
-				965F8D1140F9128F2A714A29 /* source.sh */,
-				965F87A655792A8A06603625 /* display.sh */,
-				965F85F4E63AE41C6B7334D3 /* program.sh */,
-				965F891B2D220CB1190C7FE6 /* signals.sh */,
-				965F81829B51993896521536 /* Makefile.am */,
-				965F8151CEED8546BBBEA8D8 /* Makefile.in */,
-				965F8C81C24E1BBF80C070D4 /* warranty.sh */,
-				965F8374312698664D445D67 /* functions.sh */,
-				965F8E35D4245452A1E4058B /* variables.sh */,
-				965F8CA84AD97736D7D075C7 /* breakpoints.sh */,
-				965F8D0B80704A5AD37CF95B /* watchpoints.sh */,
-			);
-			path = info_sub;
-			sourceTree = "<group>";
-		};
-		965F854285B5E2B6C8681D2C /* init */ = {
-			isa = PBXGroup;
-			children = (
-				965F88F237850EEC9BDF3494 /* io.sh */,
-				965F8BA59F922F23A07B2969 /* pre.sh */,
-				965F843AD5B9B97E16148CEF /* opts.sh */,
-				965F834922ABB77C5D40BF7B /* vars.sh */,
-				965F80230980AE01C385EF66 /* require.sh */,
-				965F8E3F91950E638A272AF8 /* Makefile.am */,
-				965F823950294C86A270790F /* Makefile.in */,
-			);
-			path = init;
-			sourceTree = "<group>";
-		};
-		965F85804B423092CC0C7D21 /* bashdb */ = {
-			isa = PBXGroup;
-			children = (
-				965F88029B93A1E10A1B7D56 /* active_version */,
-				965F874E6ABAAA254FE1ED8A /* bashdb_4.4-0.92 */,
-			);
-			path = bashdb;
 			sourceTree = "<group>";
 		};
 		965F85D5596667E3511195A3 /* nil-extensions */ = {
@@ -1115,90 +486,12 @@
 			isa = PBXGroup;
 			children = (
 				965F88A425BE125CCB667D58 /* ASUnit */,
-				965F85804B423092CC0C7D21 /* bashdb */,
 				965F88C107424919E9B576FA /* Sharness */,
 				965F86FF692E3CABAFE08180 /* bash-doxygen */,
 				965F8ADD4FC5180F7EE4B472 /* active_versions.html */,
 				965F8D1342DD26C8F957348E /* ThirdParty_ReadMe.html */,
 			);
 			path = ThirdParty;
-			sourceTree = "<group>";
-		};
-		965F86557A1D3367D19CFF55 /* example */ = {
-			isa = PBXGroup;
-			children = (
-				965F8680EFD63B8F07863DCB /* fib.sh */,
-				965F8AB734B4876710050B6F /* gcd.sh */,
-				965F839282C8B86C15602F73 /* README */,
-				965F85FD0719AF1DBE18427D /* sig.sh */,
-				965F84E2D3671C21EAA1F9CE /* bugI.sh */,
-				965F837812C16719715F0832 /* parm.sh */,
-				965F8A68B0E138D8D4E92C54 /* skip.sh */,
-				965F8CD0048EFF3887D334B1 /* debug.sh */,
-				965F885D971954700FB19D95 /* multi.sh */,
-				965F894A8F192C4429B5F16C /* bug-loc.sh */,
-				965F89E6037A7FFE1D2C8860 /* library.sh */,
-				965F8EA305A089E7EB9997EC /* nexting.sh */,
-				965F8D6D8687FC0FE4502575 /* restart.sh */,
-				965F878487C5D213426DBC73 /* bug-step.sh */,
-				965F8891D4E255232D830A4C /* hanoi.sh.in */,
-				965F8149150D70698F9F2DC0 /* Makefile.am */,
-				965F84CFACE668D21DC73A26 /* Makefile.in */,
-				965F8F9791CEA8136F053D47 /* settrace.sh */,
-				965F8991EEC25F71EE45EA35 /* stepping.sh */,
-				965F8523E8FE8E4618C6800B /* subshell.sh */,
-				965F84BD9558B64B0AB274FC /* bug-clear.sh */,
-				965F8B015A3E789B9994DD86 /* bugIFS.sh.in */,
-				965F8FDF364FA15EA9AEF1B8 /* dbg-test1.sh */,
-				965F8002ACE4B93104FEBC8A /* dbg-test2.sh */,
-				965F81F9663B729FA6A3D7C6 /* dbg-test1.sub */,
-				965F8DD8A795C0BCEF7F4AD9 /* bug-args.sh.in */,
-				965F85F161F9A5F9287AB938 /* interrupt.sh.in */,
-				965F80B64EA1E88777C6435C /* bug-step-subshell.sh */,
-			);
-			path = example;
-			sourceTree = "<group>";
-		};
-		965F868B3892857BBADA98B5 /* set_sub */ = {
-			isa = PBXGroup;
-			children = (
-				965F8F19B30E046A57054AC8 /* tty.sh */,
-				965F879C590FBFF8BEAB105E /* args.sh */,
-				965F8CDEA1BC83F79B108F14 /* debug.sh */,
-				965F8441357E7D344A3D00A5 /* width.sh */,
-				965F8CE7C3E017D8645108A8 /* prompt.sh */,
-				965F85D8788F1DE943F0FEB0 /* dollar0.sh */,
-				965F8AB0E93D06A4A6BBDBF5 /* editing.sh */,
-				965F8B378F67913C43E05254 /* history.sh */,
-				965F8A57FD84D8CA61F4CE9B /* annotate.sh */,
-				965F8B08D5DCA0932329859C /* autoeval.sh */,
-				965F858DFF8F98CC1FB8DBB5 /* autolist.sh */,
-				965F8B26DE6F86349BC227AF /* basename.sh */,
-				965F80153C518608CCCDAFA9 /* listsize.sh */,
-				965F8CBC4D9C3CD3BD48E2DE /* Makefile.am */,
-				965F8B3E827749F38FCA3A91 /* Makefile.in */,
-				965F8C076E5C9AA1184CC73F /* debugging.sh */,
-				965F823955C6E7D8BF645EE9 /* different.sh */,
-				965F8D3AF0DB1B1DD12CDDC2 /* highlight.sh */,
-				965F8991EA3322EA9140E550 /* linetrace.sh */,
-				965F8DAB00067F482BDE4471 /* showcommand.sh */,
-				965F86B42FC6218E75640E8A /* trace-commands.sh */,
-			);
-			path = set_sub;
-			sourceTree = "<group>";
-		};
-		965F8697F96F6CCD7EB0C68C /* test */ = {
-			isa = PBXGroup;
-			children = (
-				965F8B89D5FF2F43D6E596D0 /* data */,
-				965F8181777B4DCF4BF48D96 /* unit */,
-				965F849EB2819BFA5A710923 /* README */,
-				965F86557A1D3367D19CFF55 /* example */,
-				965F8E63D2506FBF506C9EC3 /* integration */,
-				965F81467B70D4844C4F4FDA /* Makefile.am */,
-				965F82E78AFE5B304B65B404 /* Makefile.in */,
-			);
-			path = test;
 			sourceTree = "<group>";
 		};
 		965F86FF692E3CABAFE08180 /* bash-doxygen */ = {
@@ -1218,63 +511,6 @@
 				965F8BB9F905CC15FBE7B5B8 /* .orig-term.t */,
 			);
 			path = "orig-term";
-			sourceTree = "<group>";
-		};
-		965F874E6ABAAA254FE1ED8A /* bashdb_4.4-0.92 */ = {
-			isa = PBXGroup;
-			children = (
-				965F89E5FDA99871599AE751 /* doc */,
-				965F8411C7ECED500B7B2D88 /* lib */,
-				965F8B911DDCF9781EC6D0CA /* data */,
-				965F854285B5E2B6C8681D2C /* init */,
-				965F801EC7E375D0A61AD5ED /* NEWS */,
-				965F8697F96F6CCD7EB0C68C /* test */,
-				965F82BB3F40205EF4A6CBAD /* TODO */,
-				965F8118FF915F4F2997E7D6 /* README */,
-				965F8603B51BB17E47A58B4B /* THANKS */,
-				965F8D7BD68D8E3B84DD0BEE /* AUTHORS */,
-				965F850C65AB29EA25583D7F /* builtin */,
-				965F8D9764EDBCC30C3524F9 /* command */,
-				965F8AC608B5C2D7B87809E8 /* compile */,
-				965F890B5E3C86491BDED80B /* COPYING */,
-				965F880C0C53C0A21B89A3E0 /* depcomp */,
-				965F82CD8D927AA30D013A89 /* INSTALL */,
-				965F887FB29B3F41785D00A1 /* missing */,
-				965F8242140BBB7B4E0C0EF0 /* bashdb.in */,
-				965F887045A47C157D650E2C /* ChangeLog */,
-				965F8098404A1FAE868FD136 /* configure */,
-				965F8BB0517DD04FA919B134 /* ltmain.sh */,
-				965F81C9AA4DF0D7AF929704 /* README.md */,
-				965F84447120248DA34B2F95 /* aclocal.m4 */,
-				965F80A2FE627AB3B5BB9F29 /* config.sub */,
-				965F8F2B31B43F2C0438F7B5 /* install-sh */,
-				965F852B517A3BCBBEC4475C /* libtool.m4 */,
-				965F8FDA2EB464C7456421C8 /* ltsugar.m4 */,
-				965F84AB416D10A475A6F49B /* ChangeLog.0 */,
-				965F893A53F5DFF1A0170AAD /* config.h.in */,
-				965F8400CA600ADAF6C75261 /* dbg-main.sh */,
-				965F839CCDBF5DF20D116B9B /* Makefile.am */,
-				965F86E968E24E4BC8F04772 /* Makefile.in */,
-				965F8D19E5F7788081137189 /* test-driver */,
-				965F812133274A3EE8A1E072 /* acinclude.m4 */,
-				965F80604AC91405E21DF437 /* bashdb-trace */,
-				965F8CC26214D4044A93473B /* config.guess */,
-				965F8C5DDB359A77A3B9ADFB /* configure.ac */,
-				965F88831CFA03D61AA33415 /* ltoptions.m4 */,
-				965F892B6F46B30D264439D4 /* ltversion.m4 */,
-				965F818952FD6B654CF712CE /* README-git.md */,
-				965F82F725FC3B5E3F8E6AAE /* lt~obsolete.m4 */,
-				965F85235D1D84AC54413641 /* bashdb-main.inc */,
-				965F8DF69D92F6857C531658 /* bashdb-part2.sh */,
-				965F89F9788B8898EF4104CC /* bashdb-trace.in */,
-				965F84DE367DE8A090AF3098 /* check-prefix.sh */,
-				965F8AC973520078470EE2E7 /* getopts_long.sh */,
-				965F80888C9E641F009AEBC4 /* compute-prefix.sh */,
-				965F8CF9440B7603229B7A24 /* bashdb-main.inc.in */,
-				965F8297F39AF267C5289DA4 /* dbg-set-d-vars.inc */,
-				965F897100E3AEB10CDE464E /* make-check-filter.rb */,
-			);
-			path = "bashdb_4.4-0.92";
 			sourceTree = "<group>";
 		};
 		965F87CF20BD2F603B87916C /* failing-cleanup */ = {
@@ -1376,29 +612,6 @@
 			path = "mixed-results2";
 			sourceTree = "<group>";
 		};
-		965F89E5FDA99871599AE751 /* doc */ = {
-			isa = PBXGroup;
-			children = (
-				965F88C6692CB65F402F3D3F /* bashdb.1 */,
-				965F85F49251A58D4BBEE704 /* fdl.texi */,
-				965F8AD58E41DEC163E1F132 /* gpl.texi */,
-				965F8313F8E4282AEF417C25 /* mdate-sh */,
-				965F82B5ABBAD7FC960BC8DB /* stamp-vti */,
-				965F86F66047246C19A0C01C /* bashdb.info */,
-				965F8DC32F649125E16D4FEA /* bashdb.texi */,
-				965F85940C7851FC0341476E /* macros.texi */,
-				965F867C8169A9CB12A2151A /* Makefile.am */,
-				965F874F1A52A7C572AFA508 /* Makefile.in */,
-				965F8C6277349A8EC433D268 /* texinfo.tex */,
-				965F8EACB83FBC8F43D721AA /* version.texi */,
-				965F87599D46214C86697E8E /* bashdb-man.pod */,
-				965F896C5BA561590037CAD0 /* copyright.texi */,
-				965F89135017C21A8BE0BCB9 /* macros.texi.in */,
-				965F84DE77CB8536F0D5FF75 /* bashdb-man.html */,
-			);
-			path = doc;
-			sourceTree = "<group>";
-		};
 		965F8A3A663764CAB515FAB4 /* long */ = {
 			isa = PBXGroup;
 			children = (
@@ -1419,128 +632,6 @@
 				965F8D213DE4DFD2C541C26B /* .mixed-results1.t */,
 			);
 			path = "mixed-results1";
-			sourceTree = "<group>";
-		};
-		965F8B89D5FF2F43D6E596D0 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				965F8BF7DA160E8BFF05C371 /* README */,
-				965F843E99DA0D1659521E92 /* sig.cmd */,
-				965F87805550204FC4938431 /* bugI.cmd */,
-				965F81A106AE06EEE7BF590E /* list.cmd */,
-				965F83EB2AFDEDA32CA19949 /* misc.cmd */,
-				965F8BF6BF19E32710E15C2C /* parm.cmd */,
-				965F8AF8ED4B7DC7BF572973 /* quit.cmd */,
-				965F8B5BDBCC667E8F3BB825 /* skip.cmd */,
-				965F808668323C8493B5E3E3 /* debug.cmd */,
-				965F8B0E7A29880D0D3DCA98 /* frame.cmd */,
-				965F8D4A3B46392AE16D482F /* prof1.cmd */,
-				965F82C2616A421E09BE3012 /* prof2.cmd */,
-				965F8CC97A9ECD7D8E006601 /* sig.right */,
-				965F8AA1184758270AE0ED84 /* action.cmd */,
-				965F8F9240F6C3DD6CA9586D /* brkpt1.cmd */,
-				965F80AF9D0EF83D7E643535 /* brkpt2.cmd */,
-				965F811C564B1DFAD0FD72AE /* brkpt3.cmd */,
-				965F81345031464FD6C224FB /* bugI.right */,
-				965F843977D130175FD9A480 /* bugIFS.cmd */,
-				965F82C1A60A8C14BBB4A6EF /* debug2.cmd */,
-				965F8E9FA19EDD95E9B1F9D1 /* delete.cmd */,
-				965F83A6BFBCFD1B59EDECD8 /* enable.cmd */,
-				965F8E0A0E8F7EDA57D4E9A5 /* export.cmd */,
-				965F82C1C5542720B0DABE7C /* finish.cmd */,
-				965F8B67FAD70B23889DCCD0 /* list.right */,
-				965F8779D4BA9D05B4B19862 /* misc.right */,
-				965F81773D2CBB68219A3F2D /* multi1.cmd */,
-				965F890193C38B0CBDFC9EBF /* multi2.cmd */,
-				965F8711A85919FB1D4C3D4A /* multi3.cmd */,
-				965F80120070C014509FE027 /* multi4.cmd */,
-				965F832238B951C74F669FAB /* parm.right */,
-				965F8ADBEA6881C029A9DBA8 /* search.cmd */,
-				965F8FF007B150E6EFECF4DB /* sig-43.cmd */,
-				965F85CEA5FEDDC724104EFB /* skip.right */,
-				965F87018C694E93FD9EF3B8 /* tbreak.cmd */,
-				965F8861AE6BFE6C7B13C12C /* watch1.cmd */,
-				965F8180D3F633839519A7C0 /* watch2.cmd */,
-				965F8751F74DF02060D2CBFB /* bug-loc.cmd */,
-				965F89A2B6AF09443BC79EBF /* command.cmd */,
-				965F80D812CA84BF72F0B6E1 /* debug.right */,
-				965F86776A3E2B8ACACED162 /* display.cmd */,
-				965F8C1CEEEDE0E2EB653304 /* frame.right */,
-				965F862C48147D318A5551D3 /* lopts.right */,
-				965F81830A8F47BCE3AEC698 /* Makefile.am */,
-				965F80BBD77071D4048183D7 /* Makefile.in */,
-				965F84A4B7E705C3789F6EE6 /* restart.cmd */,
-				965F82A18B6C09A62C059549 /* setshow.cmd */,
-				965F81EEC28D428370AE21B4 /* sopts.right */,
-				965F8D6BF25E716566A6C474 /* trace.right */,
-				965F8E5C78B4864D71D0F51F /* action.right */,
-				965F8602A40CA10E8161F388 /* brkpt1.right */,
-				965F823A5F56B74F6DD003CC /* brkpt2.right */,
-				965F850EEBAE229DD53FCE6A /* brkpt3.right */,
-				965F85110C51191F606A1EDA /* bug-args.cmd */,
-				965F85892736E056149B9EE7 /* bug-step.cmd */,
-				965F81222D09A9AEA349C420 /* bugIFS.right */,
-				965F8AF23425509FA7308B28 /* complete.cmd */,
-				965F8DA77CF329F52035A7E6 /* continue.cmd */,
-				965F89CEEBAC041B9A04FFC4 /* delete.right */,
-				965F8FB8AFD36FFC3E916108 /* enable.right */,
-				965F82F2FFE6CBC2E71566F4 /* export.right */,
-				965F893A43FE970EEC6C45F2 /* finish.right */,
-				965F802962F461E2C837A5F4 /* multi1.right */,
-				965F8706F6DC79A31388BE4E /* multi2.right */,
-				965F8B22784842C633924157 /* multi3.right */,
-				965F879668F8E0FBBDE1D3C7 /* multi4.right */,
-				965F86AFDA99629E85424674 /* restart2.cmd */,
-				965F8AEACF80D23983CA8B58 /* search.right */,
-				965F868A4FD2FF7A4A18D634 /* settrace.cmd */,
-				965F8B257CDF5610BA6731F7 /* sig-43.right */,
-				965F87764CFF2BB7626056C0 /* tbreak.right */,
-				965F8A6BAE8D44A36057A82D /* trace2.right */,
-				965F81D9FCC8F5005559BDC4 /* watch1.right */,
-				965F8384661AA8C12A5C0891 /* watch2.right */,
-				965F812583600EA34E1ED446 /* bug-break.cmd */,
-				965F819ADDE00AB40987517A /* bug-clear.cmd */,
-				965F8EB7C1EF87A2695421DA /* bug-loc.right */,
-				965F82AFD3017468773EEEE9 /* command.right */,
-				965F8422C9A8125AAE8B7F8C /* display.right */,
-				965F8A41D72B2C7D016601BC /* info-args.cmd */,
-				965F8C53330778B59F51FD7A /* restart.right */,
-				965F840050832E587E02D702 /* setshow.right */,
-				965F808C0E7FD6E74F96979A /* subshell1.cmd */,
-				965F8AFD6DFBCCEE3626D785 /* subshell2.cmd */,
-				965F81F527A74FBE8E209685 /* subshell3.cmd */,
-				965F83231216F1C19F2F22D1 /* subshell4.cmd */,
-				965F8653F9B9D01169FEFACD /* bug-args.right */,
-				965F83174E7292827CC3F173 /* bug-source.cmd */,
-				965F8E282FFAC5B658EBC63F /* bug-step.right */,
-				965F8E89FBBFF7D1776B5937 /* complete.right */,
-				965F83FB01B0881EF30D8209 /* settrace.right */,
-				965F8156F1977111D013BFF1 /* bug-break.right */,
-				965F88C949384D38A8EB1590 /* bug-clear.right */,
-				965F84B4E63A46E6C5FFCE37 /* info-args.right */,
-				965F803C1781E8744F24E99F /* interrupt.right */,
-				965F845EB030B083564AADF5 /* subshell1.right */,
-				965F8777F04F5CAAFD1ACF34 /* subshell2.right */,
-				965F87EE46F7D010AB753123 /* subshell3.right */,
-				965F88253B70F316F6F429FF /* subshell4.right */,
-				965F8BC90B965DC3B11F90EE /* bug-source.right */,
-				965F8FEBA8F7EF18E0631198 /* sig-Darwin.right */,
-				965F80D962ECB3FFD20FBE52 /* misc-output.right */,
-				965F88CDCA8D5882F56E9505 /* misc-output-41.right */,
-				965F8F7ABF834CFA7BB699C7 /* bug-step-subshell.cmd */,
-				965F8A2ED726F40842379153 /* bug-step-subshell.right */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		965F8B911DDCF9781EC6D0CA /* data */ = {
-			isa = PBXGroup;
-			children = (
-				965F8F0F9947B562EA76A8C5 /* shell.sh */,
-				965F8D131A9E9D29A6254502 /* Makefile.am */,
-				965F829FC023E6C949BA3D72 /* Makefile.in */,
-			);
-			path = data;
 			sourceTree = "<group>";
 		};
 		965F8BC2335F8FE9014ADE36 /* trash directory..mixed-results1 */ = {
@@ -1601,67 +692,6 @@
 			path = "failing-todo";
 			sourceTree = "<group>";
 		};
-		965F8D9764EDBCC30C3524F9 /* command */ = {
-			isa = PBXGroup;
-			children = (
-				965F8A9D2AF95A687E8E1656 /* up.sh */,
-				965F871851635ADFB2F0702E /* log.sh */,
-				965F86CC50DD0DB3A42BFB95 /* pwd.sh */,
-				965F8FD2CF6FF12FC96BEFEB /* run.sh */,
-				965F8B658E63305B1AD995D5 /* set.sh */,
-				965F82653793A13303C256D9 /* tty.sh */,
-				965F8AEDF45629091C5E5ADF /* down.sh */,
-				965F8353BD92574131E0A8A2 /* edit.sh */,
-				965F894FA9EFD5CC2A3DA041 /* eval.sh */,
-				965F81571403A5A661D28BE0 /* file.sh */,
-				965F8B51FC7BDB9EAED1DCC1 /* help.sh */,
-				965F815B12C079C4BAC45042 /* info.sh */,
-				965F81BBD9A34CDDE8B0BFC2 /* kill.sh */,
-				965F878FD539AF905966E195 /* list.sh */,
-				965F8A5E110593B8416562EC /* load.sh */,
-				965F833EC14FC764379B4EF6 /* next.sh */,
-				965F882D649C220E3014CC72 /* quit.sh */,
-				965F868B3892857BBADA98B5 /* set_sub */,
-				965F899EC08B0CB386B07D8B /* show.sh */,
-				965F8B406CEF033FF471837E /* skip.sh */,
-				965F887D2447972A7FCE4F1E /* step.sh */,
-				965F88A64A4DBDDDF9D89C1E /* alias.sh */,
-				965F83FA92FE70736FB264DC /* break.sh */,
-				965F8A1CDB3D3DC58BD7FD33 /* clear.sh */,
-				965F848B8ECA9465B0935A16 /* debug.sh */,
-				965F82221C589EDCD218009C /* frame.sh */,
-				965F85230D36EB8983D4ECE1 /* info_sub */,
-				965F8342372CED64409D1214 /* shell.sh */,
-				965F8EAE412BC1829EAC609B /* show_sub */,
-				965F8D119C0F1CA96F8C931A /* trace.sh */,
-				965F8FDC1413BB029BEB1139 /* watch.sh */,
-				965F8E511B15F1B6E29130CD /* action.sh */,
-				965F81C61685CAF40F641F3D /* delete.sh */,
-				965F87751A7B6903BBC83778 /* enable.sh */,
-				965F8EC09429820134DF43FF /* export.sh */,
-				965F866F95F07BDEC6FE6394 /* finish.sh */,
-				965F815B653C437E692FC5E1 /* handle.sh */,
-				965F830FFAA58AE21C73FF7F /* return.sh */,
-				965F84ABB45A3223FDFD9370 /* search.sh */,
-				965F8144162E9683B6FC841D /* signal.sh */,
-				965F83DDECBB1C55D8FC7D42 /* source.sh */,
-				965F8015E8A7ACC919030DD1 /* disable.sh */,
-				965F83BC1C4C0A4E1ADFD6D5 /* display.sh */,
-				965F8895AF0DBB2C0BC3F915 /* examine.sh */,
-				965F82DC28B09F44BB9DCFE6 /* history.sh */,
-				965F84478B1534DB832FA929 /* untrace.sh */,
-				965F8C7D12DACC4021AE10D5 /* commands.sh */,
-				965F8C7F5EAEE38C66CDA057 /* complete.sh */,
-				965F8E46026C4F188096CCC0 /* continue.sh */,
-				965F8CD3DA59D8AFB6BDE98D /* Makefile.am */,
-				965F8DB9DAF9FDBEFB200670 /* Makefile.in */,
-				965F8D212832E0E8D56C27B7 /* backtrace.sh */,
-				965F8B3E4881DF1B4044B891 /* condition.sh */,
-				965F81B3B1F5009D3FAEDACD /* undisplay.sh */,
-			);
-			path = command;
-			sourceTree = "<group>";
-		};
 		965F8DAAF7F9E56BE5F1CBAD /* trash directory.test */ = {
 			isa = PBXGroup;
 			children = (
@@ -1675,104 +705,6 @@
 				965F80716DC7DA16657F6969 /* test.sh */,
 			);
 			path = sharness.d;
-			sourceTree = "<group>";
-		};
-		965F8E63D2506FBF506C9EC3 /* integration */ = {
-			isa = PBXGroup;
-			children = (
-				965F868A6A17C4E9F930862D /* README */,
-				965F8646EF07579B114C70E4 /* test-sig */,
-				965F80E7976CD56F5B545468 /* test-bugI */,
-				965F87BA11F038D00981436C /* test-list */,
-				965F85A7EF01607DF336CE1A /* test-misc */,
-				965F896FE4BCAD7892B98BF4 /* test-parm */,
-				965F8A040564188FD1E9C7F0 /* test-skip */,
-				965F81F0A9EEB37C05D51096 /* test-brkpt */,
-				965F8522BBAE576EB87F64F1 /* test-debug */,
-				965F8B7678EC740D8165AF94 /* test-frame */,
-				965F8934091AD61EFDDA6406 /* test-lopts */,
-				965F83D2BF89473CFB7F3DA3 /* test-multi */,
-				965F8BA8985269CE06D6EAAB /* test-sopts */,
-				965F8415DAA64E780D7F40E5 /* test-trace */,
-				965F8FA97E054DA49E2360F7 /* lopts.tests */,
-				965F8EE7D227AD47A322720B /* Makefile.am */,
-				965F8738CC4707FAD26D5ABF /* Makefile.in */,
-				965F8BBE35D736CE68BC9705 /* sopts.tests */,
-				965F87F6A60EA3DCEFF57B97 /* test-action */,
-				965F85B1A7B457BFC6E2406B /* test-bugIFS */,
-				965F8D4F09B4524479D61856 /* test-delete */,
-				965F84E4C1CDBAD8E18F1AE9 /* test-enable */,
-				965F8BB1789280AA6F26681B /* test-export */,
-				965F86D1B581C4E49D53F91D /* test-finish */,
-				965F80AE43084C7B8B4FB27E /* test-search */,
-				965F86E4107A2BFB4C31F646 /* test-sig.in */,
-				965F833F240A532AAC58DD7B /* test-tbreak */,
-				965F852A1024D8EEFAA3B37D /* test-watch1 */,
-				965F8FFDB3A9B29484B2382A /* test-watch2 */,
-				965F87F24C77EF6231C49BF7 /* trace.tests */,
-				965F889FF8FA8BA43AF51755 /* test-bug-loc */,
-				965F8A0BD130E01B6892E5C1 /* test-command */,
-				965F8C84B3C720EF50DF563E /* test-display */,
-				965F805502221528E271488B /* test-misc.in */,
-				965F83E0F7537985DE4FB638 /* test-restart */,
-				965F82442821BC5B3C9426E2 /* test-setshow */,
-				965F89DC909F74A6483B18AD /* trace2.tests */,
-				965F8A3766256AAEF124F9A4 /* test-bug-args */,
-				965F8F7B501ABE7C32C03417 /* test-bug-step */,
-				965F8B6A6D15585CD551967F /* test-complete */,
-				965F8046F33DECDC1B0B446B /* test-debug.in */,
-				965F88D031C6AA13EBC98715 /* test-settrace */,
-				965F8D1E2893D4D56824DECE /* test-subshell */,
-				965F870C99B2C84AFD4F11E0 /* settrace.tests */,
-				965F80CA6E11AB2F75B01E36 /* test-bug-break */,
-				965F8ADCB348E1F13647280B /* test-bug-clear */,
-				965F8CD592B47F97F29D201C /* test-delete.in */,
-				965F8AE7AF013E6F00193A4E /* test-export.in */,
-				965F87D07AFB41BCEE8DDF8F /* test-info-args */,
-				965F87470B34A828A09C9E66 /* test-interrupt */,
-				965F87CCBAC30310D7A4948F /* interrupt.tests */,
-				965F89B390CAD7E5518D95E8 /* test-bug-source */,
-				965F8F45266B639000933E6D /* test-setshow.in */,
-				965F88F5D39C415AA2CECC18 /* test-complete.in */,
-				965F86F96C8754D0B2675992 /* interrupt-3.tests */,
-				965F8A1AB65084ADD3F038D5 /* test-info-args.in */,
-				965F8FB036C13E07C98EF540 /* test-interrupt.in */,
-				965F87CCEEF04D2C94F2B8A0 /* check-common.sh.in */,
-				965F8094ACA858DEB987B6D2 /* test-file-with-spaces */,
-				965F8F26D0D6D44088FB1038 /* test-bug-step-subshell */,
-				965F8FB1FCBF9E8608125B86 /* test-file-with-spaces.in */,
-				965F895B4D17AA5BF7300AF5 /* test-bug-step-subshell.in */,
-			);
-			path = integration;
-			sourceTree = "<group>";
-		};
-		965F8EAE412BC1829EAC609B /* show_sub */ = {
-			isa = PBXGroup;
-			children = (
-				965F8D1A7F63EE49804F7464 /* tty.sh */,
-				965F8FB8B496F0D30DDD01D0 /* args.sh */,
-				965F881899C7E37DDDD9E235 /* alias.sh */,
-				965F8E58E36EA0DDADC9AE18 /* debug.sh */,
-				965F82FB3BBEBF4DA693239F /* width.sh */,
-				965F80093B65EC22E5067744 /* prompt.sh */,
-				965F88775615916B069DDC54 /* copying.sh */,
-				965F8D51A281E48FDE32BE58 /* editing.sh */,
-				965F83791D9399DD7073B8DB /* history.sh */,
-				965F8CB042EB8C54B2D96DBB /* version.sh */,
-				965F8C6BB8CE6547AE5DACE9 /* annotate.sh */,
-				965F810EB5A798529C9B46C0 /* autoeval.sh */,
-				965F80F917312AAFC7EA68AF /* autolist.sh */,
-				965F8EBF4E5FB14B8E483D5B /* basename.sh */,
-				965F8AAC7297C6FAE33D0E6B /* commands.sh */,
-				965F8E2BE3BDE9D961F96698 /* listsize.sh */,
-				965F8F7DC2367BF58303C130 /* Makefile.am */,
-				965F85C4ECB8D0C8EF6CFFFB /* Makefile.in */,
-				965F8EA824EBB2F8FEC48472 /* warranty.sh */,
-				965F80288E028BC6AC2A6DFA /* different.sh */,
-				965F8DEDF77F044ED022EB53 /* highlight.sh */,
-				965F86CC09E0558B266C275C /* directories.sh */,
-			);
-			path = show_sub;
 			sourceTree = "<group>";
 		};
 		965F8EB742DABC8886112A94 /* test-results */ = {
