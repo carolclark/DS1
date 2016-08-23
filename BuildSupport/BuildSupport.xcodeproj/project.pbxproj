@@ -63,6 +63,9 @@
 		67692458141EB921005D3E68 /* XcodeScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
+		678DFDCA1D6D090C0041C4D2 /* ___FILEBASENAME___.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "___FILEBASENAME___.sh"; sourceTree = "<group>"; };
+		678DFDCB1D6D090C0041C4D2 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
+		678DFDCC1D6D090C0041C4D2 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		6792806F1BBD99D4009D715B /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
 		679280701BBD99D4009D715B /* ___FILEBASENAME___.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "___FILEBASENAME___.mm"; sourceTree = "<group>"; };
 		679280711BBD99D4009D715B /* ___FILEBASENAME___Test.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "___FILEBASENAME___Test.mm"; sourceTree = "<group>"; };
@@ -241,6 +244,16 @@
 				6769245B141EB921005D3E68 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		678DFDC91D6D090C0041C4D2 /* BashInstallTarget.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				678DFDCA1D6D090C0041C4D2 /* ___FILEBASENAME___.sh */,
+				678DFDCB1D6D090C0041C4D2 /* TemplateIcon.icns */,
+				678DFDCC1D6D090C0041C4D2 /* TemplateInfo.plist */,
+			);
+			path = BashInstallTarget.xctemplate;
 			sourceTree = "<group>";
 		};
 		6792806E1BBD99D4009D715B /* OCWrapper.xctemplate */ = {
@@ -593,6 +606,7 @@
 		67DD772316A4AF9300BECCD5 /* _Scripting */ = {
 			isa = PBXGroup;
 			children = (
+				678DFDC91D6D090C0041C4D2 /* BashInstallTarget.xctemplate */,
 				674791F618567E3A00452FA5 /* PythonTestCase.xctemplate */,
 				674791F218567B4000452FA5 /* PythonModule.xctemplate */,
 				67DD772416A4AF9300BECCD5 /* InstallTarget.xctemplate */,
