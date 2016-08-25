@@ -1,16 +1,16 @@
-<!-- XcodeDevelopment.html -->
+<!-- ProjectDevelopment.html -->
 <!-- Created by Carol Clark on 12/17/11 for project Support. -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>XcodeDevelopment</title>
+	<title>ProjectDevelopment</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="History_Support.html#Contents">History</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<!-- @navhead "Support.html" "../Support" "History_Support.html" -->
 <h1>Developing Projects</h1>
 
-<!-- @topicList "XcodeDevelopment" "Contents" -->
+<!-- @topicList "ProjectDevelopment" "Contents" -->
 	<!-- @topicGroup "Standards and Conventions" "1" -->
 		<!-- @topicItem "Naming Conventions" "#NamingConventions" "0" "" -->
 	<!-- @topicSep -->
@@ -21,6 +21,9 @@
 		<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
 		<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
 		<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Troubleshooting" "#Troubleshooting_" "0" "" -->
+
 <!-- @/topicList -->
 
 <!-- @marker "Standards and Conventions" -->
@@ -84,42 +87,23 @@
 
 <!-- @topicList "Projects and Targets" "Target_" -->
 	<!-- @topicGroup "Projects" "1" -->
-		<!-- @topicItem "New Repository Project" "#NewRepositoryProject" "0" "" -->
 		<!-- @topicItem "New Cocoa Project" "#NewCocoaProject" "0" "" -->
 		<!-- @topicItem "New Docs Project" "#NewDocsProject" "0" "" -->
 		<!-- @topicItem "New Scripted Build Project" "#NewScriptedBuildProject" "0" "" -->
 		<!-- @topicItem "Reorganize Sources" "#ReorganizeSources" "0" "" -->
 		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Targets" "9" -->
+	<!-- @topicGroup "Targets" "8" -->
 		<!-- @topicItem "Add Cocoa Test Target" "#AddCocoaTestTarget" "0" "" -->
 		<!-- @topicItem "Add Scripted Build Test Target" "#AddScriptedBuildTestTarget" "0" "for non-Cocoa targets" -->
-		<!-- @topicItem "Add Aggregate Test Target" "#AddAggregateTestTarget" "0" "" -->
 		<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
 		<!-- @topicItem "New AppleScript Project" "#NewAppleScriptProject" "0" "" -->
 		<!-- @topicItem "Add Run Script Target" "#AddRunScriptTarget" "0" "" -->
 		<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Target Tasks" "18" -->
+	<!-- @topicGroup "Target Tasks" "16" -->
 		<!-- @topicItem "Rename Target" "#RenameTarget" "0" "" -->
 <!-- @/topicList -->
-
-<!-- @marker "New Repository Project" -->
-<h4 id='NewRepositoryProject'>New Repository Project</h4><pre>
-	* *top-level repository project contains references to all other projects in repo*
-		* *allows references between targets in different repo projects, including aggregate targets*
-	* in Xcode, close any open windows that contain this repository's projects
-	* create new empty project &lt;RepositoryName&gt;/&lt;RepositoryName&gt;
-	* move project root level of repository; discard extra folder &lt;RepositoryName&gt;/&lt;RepositoryName&gt;
-	* <a href="#AddAggregateTestTarget">Add Aggregate Test Target</a> AllTests_&lt;RepositoryName&gt;
-</pre>
-
-<!-- @marker "Add Aggregate Test Target" -->
-<h4 id='AddAggregateTestTarget'>Add Aggregate Test Target</h4><pre>
-	* add Aggregate Target AllTests_&lt;GroupName&gt;
-	* in Build Phases &gt; Target Dependencies: add each test target
-	* edit scheme AllTests_&lt;GroupName&gt;: add each test target to Tests action; mark scheme as shared
-</pre>
 
 <!-- @marker "New Cocoa Project" -->
 <h4 id='NewCocoaProject'>New Cocoa Project</h4><pre>
@@ -169,22 +153,20 @@
 
 <!-- marker "New Scripted Build Project" -->
 <h4 id='NewScriptedBuildProject'>New Scripted Build Project</h4><pre>
-	* *normally build with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.ksh*
-	* *may use ccInstall, an in-house tool for installing groups of files*
-		* *variants for Doxygen and Cdoc documentation are provided*
-	* new empty project
+	* *Target is normally built with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.sh. (previously .ksh)*
+	* *This process is done from Xcode.*
+	* new External Build System project
 	* <span class='em'>Project &lt;TargetName&gt;</span>
 		* add External Build System target &lt;TargetName&gt; with configuration:
-			* script: ${TARGET_NAME}/${TARGET_NAME}_install.ksh
+			* build tool: ${TARGET_NAME}/${TARGET_NAME}_install.sh
 			* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
-			* directory: "None"
+			* directory: "${SRCROOT}"
 			* Pass Build Settings in Environment: NO
 		* Build Settings: EXECUTABLE_EXTENSION .fauxprod
-		* apply <a href="#ReorganizeSources">Reorganize Sources</a>, <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
-		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh from template _Scripting/InstallTarget
-			* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.ksh)
+		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh from template _Scripting/BashInstallTarget
+			* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.sh)
 		* add product
-			* *see see <a href="http://www.cocoabuilder.com/archive/xcode/309768-external-build-system-target-products.html">External Build System Target and Products</a>*
+			* *see <a href="http://www.cocoabuilder.com/archive/xcode/309768-external-build-system-target-products.html">External Build System Target and Products</a>*
 			* build target
 			* from Finder, add product $CCDev/build_output/&lt;Repository&gt;[/&lt;Folder&gt;]/&lt;TargetName&gt;.fauxprod to group FauxProducts
 				* *this item can now be used to set a dependency for another build using its Copy Build Resources build phase*
@@ -529,6 +511,12 @@
 	<li>create new empty files &lt;Class&gt;.h, &lt;Class&gt;Test.mm/h; move starter code into the new files</li>
 	<li>add new files to project and relevant targets; compile and test</li>
 </ul>
+
+<!-- @marker "Troubleshooting" -->
+<h2 id='Troubleshooting_'>Troubleshooting</h2><ul>
+	<li><a href="http://lists.apple.com/archives/Xcode-users/2008/Oct/msg00569.html">warning: no debug symbols in executable (-arch i386)</a> </li>
+</ul>
+
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

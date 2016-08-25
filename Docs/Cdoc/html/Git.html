@@ -39,8 +39,7 @@
 <!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "1" "" -->
 <!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "1" "" -->
 <!-- @topicItem "Set Up User SSH" "#setupSSH" "1" "" -->
-<!-- @topicItem "Add User to ProjectLocker Account" "#AddPLUser" "1" "" -->
-<!-- @topicGroup "" "7" -->
+<!-- @topicGroup "" "6" -->
 <!-- @/topicList -->
 
 <!-- @marker "Create Bare Repository" -->
@@ -168,7 +167,7 @@
 				<div style="border-style:none none none solid; border-color: lightgreen; border-width: 8px">
 				<p><strong>Open Task</strong></p><ul>
 					<li>on master; update project (cT); RTCP (refresh; test; [commit, push])</li>
-					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master</li>
+					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master; RTCP</li>
 					<li>or <strong>Existing Task</strong>: switch to task; merge in master; RTCP</li>
 				</ul></div>
 				<div class="indent2">
@@ -268,7 +267,7 @@
 		<!-- @topicItem "Bash Debug Logging" "#adminDebugLogging" "0" "" -->
 		<!-- @topicItem "Resolve Conflicts" "#adminResolveConflicts" "0" "" -->
 		<!-- @topicItem "Fix Divergent Branches" "#adminFixDivergentBranches" "0" "" -->
-		<!-- @topicItem "Checkout Stash as Branch" "#CheckoutStashAsBranch" "0" "" -->
+		<!-- @topicItem "Checkout from Stash" "#CheckoutFromStash" "0" "" -->
 		<!-- @topicItem "Squash Commits" "#SquashCommits" "0" "" -->
 		<!-- @topicItem "emacs Commands" "#emacsCommands" "0" "" -->
 	<!-- @/topicList -->
@@ -322,14 +321,15 @@
 		</ul>
 
 		<!-- @marker "Checkout Stash as Branch" -->
-		<h6 id='CheckoutStashAsBranch'>Checkout Stash as Branch</h6><ul>
-			<li class="mono">git stash branch &lt;branchname$gt; [@stash{n}]</li>
+		<h6 id='CheckoutFromStash'>Checkout from Stash</h6><ul>
+			<li><span class="mono">git stash branch &lt;branchname&gt; [@stash{n}]</span>&nbsp;&nbsp;# checkout stash to branch</li>
+			<li><span class="mono">git checkout stash@{0} -- &lt;filename&gt;</span>&nbsp;&nbsp;# checkout single file</li>
 		</ul>
 
 		<!-- @marker "Squash Commits" -->
 		<h6 id='SquashCommits'>Squash Commits</h6><ul>
 			<li class="mono">git rebase -i HEAD~&lt;#commits&gt;</li>
-			<li>edit conmmands (pick, squash, ...); save</li>
+			<li>edit commands (pick, squash, ...); save</li>
 			<li>edit comment; save</li>
 		</ul>
 
@@ -514,9 +514,25 @@
 	<li><span class='mono'>git checkout HEAD &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in HEAD revision</li>
 	<li><span class='mono'>git reset --soft HEAD@{1}</span>&nbsp;&nbsp;# undo last commit (set HEAD to point to parent of HEAD)</li>
 	<li><span class='mono'>git reset --mixed HEAD@{1} (default)</span>&nbsp;&nbsp;# also update index to match new HEAD; same as unstaging everything</li>
-	<li><span class='mono'>git reset --hard HEAD</span>&nbsp;&nbsp;# discard all changes since last commit; restores index and files (causes the results of "git diff" and "git diff --cached" to both be empty)</li>
 	<li><span class='mono'>git revert [HEAD|&lt;commit&gt;]</span>&nbsp;&nbsp;# creates a new commit that undoes the most recent or a previous commit</li>
 	<li><span class='mono'>git reflog; git checkout &lt;sha&gt;; git checkout -b &lt;branch&gt;</span> find and restore recently deleted branch</li>
+	<li><a href="https://github.com/git/git/blob/master/Documentation/howto/revert-a-faulty-merge.txt">revert a faulty merge</a></li>
+	<li><a href="https://github.com/blog/2019-how-to-undo-almost-anything-with-git">How to undo (almost) anything with Git</a></li>
+	<li><span class='mono'>git reset --hard HEAD</span>&nbsp;&nbsp;# discard all changes since last commit; restores index and files; then:<ul>
+		<li>master branch; make small change somewhere (ReadMe?); commit master branch; push master (requires -f?)</li>
+		<li>rename branches between old and new heads to avoid accidental use<ul>
+			<li>to determine which branches were affected by the reset (have commits between old and new heads): list branches by date of last commit:<ul>
+				<li class="mono">for k in `git branch -r | perl -pe 's/^..(.*?)( ->.*)?$/\1/'`; do echo -e<br />
+					`git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k -- | head -n 1`\\t$k; done | sort -r</li>
+			</ul><li>
+			<li>for each branch to be renamed:<ul>
+				<li>checkout branch; set $cb; checkout master</li>
+				<li><span class="mono">git branch --move $cb inreset_$cb</span></li>
+				<li>checkout $cb; <span class="mono">git push origin :$cb</span></li>
+				<li><span class="mono">git push --set-upstream origin inreset_$cb</span></li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
 </ul>
 
 <!-- @marker "Fix Line Endings" -->
@@ -541,7 +557,7 @@
 <h2 id='_References'>References</h2><ul>
 	<li><a href="https://git-scm.com/docs/">Pro-Git</a></li>
 	<li><a href="http://paul.stadig.name/2010/12/thou-shalt-not-lie-git-rebase-ammend.html">Paul Stadig: Thou Shalt Not Lie</a></li>
-	<li><a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model <span><em>gitflow</em></span></a></li>
+	<li><a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a> <span><em>gitflow</em></span></li>
 	<li><a href="https://www.viget.com/articles/successful-release-management-and-how-to-communicate-about-it">Managing a Successful Release Process</a></li>
 	<li><a href="https://help.github.com/articles/creating-releases/">GitHub: Creating Release</a></li>
 	<li><a href="https://help.github.com/articles/linking-to-releases/">GitHub: Linking to releases</a> </li>

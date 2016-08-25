@@ -30,7 +30,7 @@
 		676695C61919A759005D3CED /* ucgl_x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ucgl_x.tiff; sourceTree = "<group>"; };
 		676695C71919A759005D3CED /* Cdoc_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cdoc_install.ksh; sourceTree = "<group>"; };
 		676695C91919A759005D3CED /* Cdoc.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Cdoc.html; sourceTree = "<group>"; };
-		676695CA1919A759005D3CED /* XcodeDevelopment.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; path = XcodeDevelopment.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
+		676695CA1919A759005D3CED /* ProjectDevelopment.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; path = ProjectDevelopment.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		676695CB1919A759005D3CED /* Development.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Development.html; sourceTree = "<group>"; };
 		676695CC1919A759005D3CED /* Git.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Git.html; sourceTree = "<group>"; };
 		676695CD1919A759005D3CED /* Glossary_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_Support.html; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 			children = (
 				67F24D731D11F30300CF9862 /* _img */,
 				676695C91919A759005D3CED /* Cdoc.html */,
-				676695CA1919A759005D3CED /* XcodeDevelopment.html */,
+				676695CA1919A759005D3CED /* ProjectDevelopment.html */,
 				676695CB1919A759005D3CED /* Development.html */,
 				676695CC1919A759005D3CED /* Git.html */,
 				676695CD1919A759005D3CED /* Glossary_Support.html */,
