@@ -170,7 +170,7 @@
 						CCDevConfig.ksh to DevConfig.ksh, testCCDev.ksh to testDeveloper.ksh, testCCDevConfig.ksh to testDevConfig.ksh
 				* add target DeveloperTests
 					* ccInstall: by default, build only instead of build and test
-					* add target DeveloperTests; see <a href="XcodeDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>
+					* add target DeveloperTests; see <a href="ProjectDevelopment.html#NewScriptedBuildProject">New Scripted Build Project</a>
 				* handle Python code and tests (from ccdevPy)
 					* add Python code and tests
 		<span class='tlmark'>&lt;-- 05/17/2014</span>
@@ -194,17 +194,17 @@
 			* reorganize Developer folder [reorgDevFolder]
 				* *folder Developer to contain multiple simple projects, including target Developer to aggregate the rest*
 				* *for now, create these projects in their own workspaces inside Support/Developer
-				* shunit2: new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a>
+				* shunit2: new <a href="../Support/ProjectDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a>
 					* move shunit2 target from project Developer target ThirdParty to project in ~/Dev/Support/Developer
 					* move third-party folder shunit2-2.1.6 from ~/Dev/Support/Developer/Developer/ThirdParty to ~/Dev/Support/Developer/shunit2
 					* move ThirdParty_install.ksh to new shunit2_install.ksh in new folder
 					* add ReadMe; remove all project-level Build Settings
-					* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+					* new <a href="../Support/ProjectDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
 						* ccInstall: use stderr/stdout instead of EXPECTED_ERROR to handle expected errors
 				* Python: fix issue removing folders with invisible files
 					* util.scan_directories lists both visible and invisible files
 				* ASUnit folder
-					* create (only) <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
+					* create (only) <a href="../Support/ProjectDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
 						* *project to filled in later; see <a href="#AppleScriptTesting">AppleScript Testing</a>*
 					* move ASUnit content folder into new project folder
 				* refactor Python_install.ksh
@@ -219,7 +219,7 @@
 						* combine 'install' and 'clean' blocks to reuse installation setup code
 					* take SRCROOT, TARGET_NAME from environment variables instead of passing arguments
 				* CCDev
-					* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
+					* new <a href="../Support/ProjectDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
 						* *install script from new template based on Python_install.ksh*
 							* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
 							* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
@@ -244,7 +244,7 @@
 			* save stash ReorgDevTry; revert --no-commit to 4e367f1
 			* save documentation and changes to be preserved from reorgDevFolder
 			* add Support projects
-				* existing <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> projects
+				* existing <a href="../Support/ProjectDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> projects
 					* based on External Build System projects
 					* problem because those projects do not produce a Product, but Products are needed to Establish dependencies
 					* will be replaced by project CCDev; cannot now be added as a dependency
@@ -252,13 +252,13 @@
 			* shunit [projectShunit]
 				* new empty project shunit2
 				* move shunit2 sources from Developer/Developer/ThirdParty/shunit2-2.1.6 to Developer/shunit2/shunit2-2.1.6
-				* finish <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/shunit
+				* finish <a href="../Support/ProjectDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/shunit
 					* add target shunit2, product shunit2.fauxprod
-					* new <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+					* new <a href="../Support/ProjectDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
 						* cd "${HOME}/Library/CCDev/shunit/src"; "${HOME}/Library/CCDev/shunit/src/shunit2_test.sh"
 			* CCDev
 				* [projCCDev] new project Developer/CCDev based on existing Developer/Developer
-					* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/CCDev
+					* new <a href="../Support/ProjectDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/CCDev
 					* new target CCDev, without product for now
 					* duplicate folders Scripts, _Tests from Developer to CCDev
 					* add test target
@@ -274,7 +274,7 @@
 					* switch to rewriting CCDev_install.ksh in python
 			* new CCDev test and build scripts
 				<span class='tldate'>[12/02/2014]</span>
-				* <a href="../Support/XcodeDevelopment.html#NewRepositoryProject">New Repository Project</a> Support
+				* <a href="../Support/ProjectDevelopment.html#NewRepositoryProject">New Repository Project</a> Support
 					* replace top-level repository &lt;RepoName&gt;.workspace with &lt;RepoName&gt;.xcodeproj
 						* * supports aggregating targets from among all targets of the Repository
 					* add tests Python_UTests, DeveloperTests
@@ -289,7 +289,7 @@
 				* verify no useful content remaining in project `Developer/Developer; delete
 				* CCDev depends on shunit2
 			* new project Developer/AppleScript
-			* new <a href="../Support/XcodeDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScript
+			* new <a href="../Support/ProjectDevelopment.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScript
 			* add AppleScript scripts
 		* for each repository and project:
 			* use new *_install template for each scripted build
@@ -314,7 +314,7 @@
 			* We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
 	<span class='tlmark'>&lt;-- 10/13/2014</span>
 	* reorganize Developer folder; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
-	* new <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit installs ASUnit, runs supplied tests
+	* new <a href="../Support/ProjectDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit installs ASUnit, runs supplied tests
 		* Initial AppleScript Tests: TestLoader and TestVarTypes test scripts from ASUnit examples
 			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
 	* new Developer target AppleScripts installs content from existing BuildSupport/Developer/AppleScripts
@@ -374,8 +374,8 @@
 		<span class='tlmark'>&lt;--09/21/32014</span>
 		* add Developer project <a href="Support.html#proj_Python">Python</a>
 			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
-			* add <a href="../Support/XcodeDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Python
-			* add <a href="../Support/XcodeDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
+			* add <a href="../Support/ProjectDevelopment.html#NewScriptedBuildProject">Scripted Build Project</a> Python
+			* add <a href="../Support/ProjectDevelopment.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
 			* move Python files, currently in project Developer, to project Python
 		* refactor Python_install.ksh
 			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
@@ -950,7 +950,7 @@
 		<li>Accessor (new): add copies of files AccessLib_rsrc.h, Keyboard_AL.h to UserSlates folder</li>
 		<li class='tlmark'>&lt;--</li>
 		<li>FixWindow.applescript: changes window position, and size if necessary, to avoid blocking Accessor window; stored at top level of Scripts folder, but code is per application<ul>
-			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="XcodeDevelopment.html#NewAppleScriptProject">New AppleScript Project</a></li>
+			<li>start with existing Safari script FixWindowHeight - and target DeveloperScripts to compile; copy to Developer scripts folder; see <a href="ProjectDevelopment.html#NewAppleScriptProject">New AppleScript Project</a></li>
 		</ul></li>
 	</ul>
 
@@ -1207,7 +1207,7 @@
 			<li>Accessor: support both Carbon (AccessorC9) and Accessor for project selection</li>
 			<li>add default annotated Doxygen configuration file Default.doxygen for reference</li>
 			<li>Xcode UserSlate: add macros for several common type actions</li>
-			<li>Cdoc: add file XcodeDevelopment.html<ul>
+			<li>Cdoc: add file ProjectDevelopment.html<ul>
 				<li class='blurb'>tasks and refactorings related to development with (Xcode) projects</li>
 			</ul></li>
 			<li>rename Xcode FileTemplate group Cdoc to Documentation</li>
@@ -1230,7 +1230,7 @@
 			<li class='blurb'>build Cdoc targets from run script that calls buildCdoc; clean using cleanProjectTarget from Terminal as for other targets</li>
 			<li class='blurb'>replaces Support_svn scripts build.uia, currently called from Terminal, and buildCdoc, called by build.uia</li>
 			<li>new script buildCdoc from existing Support_svn script buildCdoc</li>
-			<li><a href="XcodeDevelopment.html#AddRunScriptTarget">Add Run Script Target</a> Cdoc with script buildCdoc Support</li>
+			<li><a href="ProjectDevelopment.html#AddRunScriptTarget">Add Run Script Target</a> Cdoc with script buildCdoc Support</li>
 			<li>cleanProjectTarget: add special handling to clean targets Cdoc</li>
 			<li>Xcode.r: support cleanProjectTarget &lt;Project&gt; Cdoc</li>
 			<li class='tldate'>[targetCdoc 12/22/2011]</li>
