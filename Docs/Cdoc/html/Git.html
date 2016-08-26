@@ -524,7 +524,7 @@
 			<li>to determine which branches were affected by the reset (have commits between old and new heads): list branches by date of last commit:<ul>
 				<li class="mono">for k in `git branch -r | perl -pe 's/^..(.*?)( ->.*)?$/\1/'`; do echo -e<br />
 					`git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k -- | head -n 1`\\t$k; done | sort -r</li>
-			</ul><li>
+			</ul></li>
 			<li>for each branch to be renamed:<ul>
 				<li>checkout branch; set $cb; checkout master</li>
 				<li><span class="mono">git branch --move $cb inreset_$cb</span></li>
