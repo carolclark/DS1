@@ -19,6 +19,8 @@
 		67DD774716A4C4FB00BECCD5 /* BBEditUtil.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD774316A4C2BA00BECCD5 /* BBEditUtil.applescript */; };
 		67DD774816A4C4FB00BECCD5 /* CheckLinks.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD774416A4C2BA00BECCD5 /* CheckLinks.applescript */; };
 		67DD774916A4C4FB00BECCD5 /* CheckSyntax.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */; };
+		965F80FADE08E8A6F0E50EB8 /* TechnicalDocs_syntax.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 965F846395A21DC744BDC84E /* TechnicalDocs_syntax.applescript */; };
+		965F82F2F08D08C3BA24FD03 /* TechnicalDocs_links.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 965F8E9EAD1DC29CC3E4BAE4 /* TechnicalDocs_links.applescript */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +151,8 @@
 		965F827A4BFCDD34F30A6876 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		965F82CFEF8FC13C2120EF81 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
 		965F83F15B1CB4B762692D6D /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; lastKnownFileType = file.ksh; path = "___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
+		965F846395A21DC744BDC84E /* TechnicalDocs_syntax.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = TechnicalDocs_syntax.applescript; sourceTree = "<group>"; };
+		965F8E9EAD1DC29CC3E4BAE4 /* TechnicalDocs_links.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = TechnicalDocs_links.applescript; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -674,6 +678,8 @@
 				67DD774516A4C2BA00BECCD5 /* CheckSyntax.applescript */,
 				6773C4131791F844005E4CAB /* SetMarkers.applescript */,
 				67BB9CCD1933DC3300219B61 /* CheckHTML.applescript */,
+				965F846395A21DC744BDC84E /* TechnicalDocs_syntax.applescript */,
+				965F8E9EAD1DC29CC3E4BAE4 /* TechnicalDocs_links.applescript */,
 			);
 			path = AppleScripts;
 			sourceTree = "<group>";
@@ -817,6 +823,8 @@
 				67DD774716A4C4FB00BECCD5 /* BBEditUtil.applescript in Sources */,
 				67DD774816A4C4FB00BECCD5 /* CheckLinks.applescript in Sources */,
 				67DD774916A4C4FB00BECCD5 /* CheckSyntax.applescript in Sources */,
+				965F80FADE08E8A6F0E50EB8 /* TechnicalDocs_syntax.applescript in Sources */,
+				965F82F2F08D08C3BA24FD03 /* TechnicalDocs_links.applescript in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@
 	<!-- @topicSep -->
 	<!-- @topicGroup "Configuration" "4" -->
 		<!-- @topicItem "Xcode Project and Target Settings" "#pbxproj" "0" "" -->
+		<!-- @topicItem "Open Project in AppCode" "#OpenProjectInAppCode" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Refactorings and Tasks" "7" -->
 		<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
@@ -44,39 +45,44 @@
 
 <!-- @marker "Xcode Project and Target Settings" -->
 <h3 id='pbxproj'>Xcode Project and Target Settings</h3><ul>
-	<li><b>Project</b><ul>
+	<li><strong>Project</strong><ul>
 		<li>start with an empty project and add targets to it</li>
-		<li><b>ProjectName</b> for generic project, use Build&lt;ProjectName&gt;</li>
-		<li class='depr'><b>Source folder</b> support Source folder that can be shared among multiple projects<ul>
+		<li><strong>ProjectName</strong> for generic project, use Build&lt;ProjectName&gt;</li>
+		<li class='depr'><strong>Source folder</strong> support Source folder that can be shared among multiple projects<ul>
 			<li>USER_HEADER_SEARCH_PATHS = ${SRCROOT}/Source/**</li>
 		</ul></li>
-		<li class='depr'><b>initial target:</b> override Xcode's default behavior to name initial target with project name<ul>
+		<li class='depr'><strong>initial target:</strong> override Xcode's default behavior to name initial target with project name<ul>
 			<li>rename the target's product and its folder inside &lt;TargetName&gt;Build/&lt;</li>
 			<li>INFOPLIST_FILE = &lt;TargetName&gt;/&lt;TargetName&gt;-Info.plist</li>
 			<li>GCC_PREFIX_HEADER = &lt;TargetName&gt;/&lt;TargetName&gt;-Prefix.pch</li>
 		</ul></li>
 	</ul></li>
-	<li><b>Schemes</b> mark all schemes "shared"</li>
-	<li><b>Targets</b><ul>
-		<li><b>Test Targets</b> from Cocoa Unit Test Bundle<ul>
+	<li><strong>Schemes</strong> mark all schemes "shared"</li>
+	<li><strong>Targets</strong><ul>
+		<li><strong>Test Targets</strong> from Cocoa Unit Test Bundle<ul>
 			<li>Logic Tests include files for tested code in the target; Application Tests do not</li>
-			<li><b>Application Tests</b>: set up tests to run inside Application<ul>
+			<li><strong>Application Tests</strong>: set up tests to run inside Application<ul>
 				<li>BUNDLE_LOADER = $(BUILT_PRODUCTS_DIR(?CONFIGURATION_BUILD_DIR))/&lt;ProjectName&gt;.app/Contents/MacOS/&lt;ProjectName&gt;</li>
 				<li>TEST_HOST = $(BUNDLE_LOADER)</li>
 			</ul></li>
 		</ul></li>
-		<li><b>Script targets</b> Bundle targets; remove all template build phases except Target Dependencies; delete .pch file; add Run Script build phase<ul>
-			<li><b>Cdoc</b> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Cdoc $(ACTION)</span></li>
-			<li><b>Doxygen</b> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Doxygend $(ACTION)</span></li>
+		<li><strong>Script targets</strong> Bundle targets; remove all template build phases except Target Dependencies; delete .pch file; add Run Script build phase<ul>
+			<li><strong>Cdoc</strong> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Cdoc $(ACTION)</span></li>
+			<li><strong>Doxygen</strong> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Doxygend $(ACTION)</span></li>
 		</ul></li>
-		<li><b>InHouse</b> products installed for InHouse use<ul>
-			<li><b>Product</b> set installation location for the target to be istalled<ul>
+		<li><strong>InHouse</strong> products installed for InHouse use<ul>
+			<li><strong>Product</strong> set installation location for the target to be istalled<ul>
 				<li>INSTALL_PATH = /Applications</li>
 				<li>DSTROOT = $(HOME)</li>
 			</ul></li>
-			<li><b>InHouse</b> script target: xcodebuild install -target &lt;TargetName&gt; -configuration Debug DEPLOYMENT_LOCATION=YES SYMROOT=${HOME}/Library/CCDev/build</li>
+			<li><strong>InHouse</strong> script target: xcodebuild install -target &lt;TargetName&gt; -configuration Debug DEPLOYMENT_LOCATION=YES SYMROOT=${HOME}/Library/CCDev/build</li>
 		</ul></li>
 	</ul></li>
+</ul>
+
+<!-- @marker "Open Project in AppCode" -->
+<h3 id='OpenProjectInAppCode'>Open Project in AppCode</h3><ul>
+	<li>File &gt; Open...; select folder for existing Xcode project</li>
 </ul>
 
 <!-- @marker "Refactorings and Tasks" -->
@@ -265,7 +271,7 @@
 
 <!-- @marker "Add Target Feature" -->
 <h4 id='AddTargetFeature'>Add Target Feature</h4><ul>
-	<li><b>Core Data</b><ul>
+	<li><strong>Core Data</strong><ul>
 		<li>add Data Model file</li>
 		<li>create new &lt;Target&gt;AppDelegate from private template _ObjectiveC/CocoaClass/NSApplicationDelegate, with option Use Core Data; recover any preexisting code</li>
 		<li>for Core Data tests, use private template _ObjectiveC/CocoaTestClass/NSManagedObject;<br />
@@ -494,7 +500,7 @@
 <h4 id='ImportCppClass'>Import C++ Class</h4><ul>
 	<li>copy the existing class files directly into the project's source folder; add new files to project and relevant targets</li>
 	<li>make it compile, using these techniques is indicated:<ul>
-		<li>make <b>minor</b> editing changes, such as renaming parameters and/or variables named <span class='mono'>id</span></li>
+		<li>make <strong>minor</strong> editing changes, such as renaming parameters and/or variables named <span class='mono'>id</span></li>
 		<li>for code requiring significant change, apply <a href="#DeimplementMethod">Deimplement Method</a></li>
 		<li>for missing #included files, either:<ul>
 			<li>add the files, or</li>
