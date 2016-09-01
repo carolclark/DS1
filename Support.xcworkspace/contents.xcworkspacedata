@@ -23,20 +23,6 @@
    <Group
       location = "group:ThirdParty"
       name = "ThirdParty">
-      <Group
-         location = "group:Sharness"
-         name = "Sharness">
-         <Group
-            location = "group:test"
-            name = "demo">
-            <FileRef
-               location = "group:demo.t">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:Sharness_install.sh">
-         </FileRef>
-      </Group>
       <FileRef
          location = "group:ThirdParty_ReadMe.html">
       </FileRef>
