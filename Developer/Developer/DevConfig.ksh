@@ -16,12 +16,45 @@ DEV="${HOME}/Dev"
 
 #^	envProfile
 function envProfile {
-	print "SHELL=/bin/ksh"
-	print "export ENV=${CCDev}/bin/.kshrc"
+	print "SHELL=/bin/bash"
+	print "export ENV=${CCDev}/bin/.bashrc"
 	if [[ $(print "$PYTHONPATH") = "" ]] ; then
 		PYTHONPATH="${CCDev}/bin/python"
 	fi
 	print "PYTHONPATH=${PYTHONPATH}; export PYTHONPATH"		# path to search for python scripts
+}
+
+#^	envBash				Bash shell configuration
+function envBash {
+	DEV="${DEV}"; export DEV								# folder containing development projects
+	print "DEV=${DEV}; export DEV"
+	CCDev="${CCDev}"; export CCDev							# C & C derived data
+	print "CCDev=${CCDev}; export CCDev"
+	if [[ $(print ":$PATH:" | grep "CCDev") = "" ]] ; then
+		PATH="$PATH:/usr/local/bin:$CCDev/bin:$CCDev/bin/Sharness:$CCDev/bin/python:"
+	fi
+	print "PATH=${PATH}; export PATH"						# path to search for scripts
+	SHUnit="$CCDev/shunit/src/shunit2"; export SHUnit		# third-party library used for unix testing
+	print "SHUnit=${SHUnit}; export SHUnit"
+	Sharness="$CCDev/bin/sharness"; export Sharness			# third-party library used for unix testing
+	print "Sharness=${Sharness}; export Sharness"
+	if [[ ${configureTerminal} = "yes" ]] ; then
+		PS1="\033[1;33m$LOGNAME !\033[0m \033[1;34m$\033[0m "; export PS1		# colorized terminal prompt: "<username> <lineno> $ "
+		print "PS1=\"${PS1}\"; export PS1"
+		VISUAL="\"$(whereis emacs)\""; export VISUAL		# emacs editor
+		print "VISUAL=${VISUAL}; export VISUAL"
+		CLICOLOR=1; export CLICOLOR							# color ls output
+		print "CLICOLOR=${CLICOLOR}; export CLICOLOR"
+		LSCOLORS=exfxcxdxbxegedabagacad; export LSCOLORS
+		print "LSCOLORS=${LSCOLORS}; export LSCOLORS"
+		GREP_OPTIONS='--color=auto'; export GREP_OPTIONS	# highlight grep matches
+		print "GREP_OPTIONS=${GREP_OPTIONS}; export GREP_OPTIONS"
+# Terminal Aliases
+															# alias gmm: get merge message
+#	GET_MERGE_MESSAGE='print "''scm.py currentBranch issueNumber''"''; print -n issueNumber: ; read issueNumber;'
+#	print -n gmm="'"; print -n "$GET_MERGE_MESSAGE"; print "'; export gmm"
+#print -n "gmm='"print scm.py currentBranch issueNumber"; print -n issueNumber: ; read issueNumber; mm=$" #; print '(${CCDev}/bin/python/scm.py $cb $issueNumber)'"# print "$mm"'
+	fi
 }
 
 #^	envKsh				Korn shell configuration
@@ -168,6 +201,7 @@ if [[ "${1}" = clean ]] ; then
 	removeFileIfPresent "${HOME}/.gitconfig"
 	removeFileIfPresent "${HOME}/.launchd.conf"
 	removeFileIfPresent "${CCDev}/bin/.kshrc"
+	removeFileIfPresent "${CCDev}/bin/.bashrc"
 	removeFileIfPresent "${CCDev}/Git/attributes"
 	removeFileIfPresent "${CCDev}/Git/exclude"
 	exit
@@ -179,8 +213,8 @@ print "configuring environment; "
 envProfile > "${HOME}/.profile"
 chmod a+x "${HOME}/.profile"
 mkdir -p "${CCDev}/bin"
-envKsh > "${CCDev}/bin/.kshrc"
-chmod a+x "${CCDev}/bin/.kshrc"
+envBash > "${CCDev}/bin/.bashrc"
+chmod a+x "${CCDev}/bin/.bashrc"
 envLaunchctl > "${HOME}/.launchd.conf"
 chmod a+x "${HOME}/.launchd.conf"
 

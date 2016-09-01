@@ -21,8 +21,8 @@ testEnvironment() {
 	if [[ ! -e ${HOME}/.profile ]] ; then
 		fail "$LINENO: file .profile missing"
 	fi
-	if [[ ! -e ${CCDev}/bin/.kshrc ]] ; then
-		fail "$LINENO: file .kshrc missing"
+	if [[ ! -e ${CCDev}/bin/.bashrc ]] ; then
+		fail "$LINENO: file .bashrc missing"
 	fi
 }
 
