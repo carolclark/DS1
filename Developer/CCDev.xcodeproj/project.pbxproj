@@ -9,7 +9,6 @@
 /* Begin PBXFileReference section */
 		67A61AF31A211D2A008648AE /* CCDev_ReadMe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = CCDev_ReadMe.html; path = CCDev/CCDev_ReadMe.html; sourceTree = "<group>"; };
 		67A61AF41A211DB9008648AE /* CCDev_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = CCDev_install.ksh; path = CCDev/CCDev_install.ksh; sourceTree = "<group>"; };
-		67A61B021A213D1F008648AE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -33,7 +32,6 @@
 		67A61B011A213D1F008648AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				67A61B021A213D1F008648AE /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

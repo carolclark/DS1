@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6781060B19E3368E00C6B831 /* Python_UTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6791210D19E0992500B2AEDA /* Python_UTests.m */; };
-		679120F519E0907F00B2AEDA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679120F419E0907F00B2AEDA /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +29,6 @@
 		679013F01A3909F700F18C7A /* build.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = build.py; sourceTree = "<group>"; };
 		679013F31A390CB400F18C7A /* testBuild.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testBuild.py; sourceTree = "<group>"; };
 		679120F119E0907F00B2AEDA /* Python_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Python_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		679120F419E0907F00B2AEDA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6791210519E0929800B2AEDA /* Python_UTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Python_UTests-Info.plist"; sourceTree = "<group>"; };
 		6791210D19E0992500B2AEDA /* Python_UTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Python_UTests.m; sourceTree = "<group>"; };
 		6791211119E32B8600B2AEDA /* scm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = scm.py; sourceTree = "<group>"; };
@@ -47,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				679120F519E0907F00B2AEDA /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +74,6 @@
 		679120F319E0907F00B2AEDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				679120F419E0907F00B2AEDA /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
