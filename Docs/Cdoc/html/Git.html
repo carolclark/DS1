@@ -7,11 +7,33 @@
 	<title>Git</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 	<style type="text/css">
+		/* workflow borders; provide color to help developer keep place in workflow */
 		h3.wf-feature {
 			color: blue;
 		}
+		div.wf-feature {
+			border: 12px none blue;border-right-style: solid;
+		}
 		h3.wf-hotfix {
 			color: deeppink;
+		}
+		div.wf-hotfix {
+			border: 12px none deeppink;border-right-style: solid;
+		}
+		div.wf-openTask {
+			border: 8px none lightgreen;border-left-style: solid;
+		}
+		div.wf-developCommit {
+			border: 8px none green;border-left-style: solid;
+		}
+		div.wf-publish {
+			border: 8px none orange;border-left-style: solid;
+		}
+		div.wf-mergeReview {
+			border: 8px none mediumpurple;border-left-style: solid;
+		}
+		div.wf-close {
+			border: 8px none purple;border-left-style: solid;
 		}
 	</style>
 </head>
@@ -161,44 +183,44 @@
 	<h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
 <div style="page-break-before: always">
 	<!-- @marker "Feature Branch Workflow" -->
-	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div style="border-style:none solid none none; border-color: blue; border-width: 12px">
+	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature">
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
-				<div style="border-style:none none none solid; border-color: lightgreen; border-width: 8px">
+				<div class="wf-openTask">
 				<p><strong>Open Task</strong></p><ul>
 					<li>on master; update project (cT); RTCP (refresh; test; [commit, push])</li>
 					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master; RTCP</li>
 					<li>or <strong>Existing Task</strong>: switch to task; merge in master; RTCP</li>
 				</ul></div>
 				<div class="indent2">
-					<div style="border-style:none none none solid; border-color: green; border-width: 8px">
+					<div class="wf-developCommit">
 					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
 						<li>edit/test</li>
 						<li><span class="mono">status; add/stage</span>; if looping back, diff modifications</li>
 					</ul>
 					<p><strong>Commit</strong></p><ul>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
-						<li>RTCP; <em>for Commit: deselect any files to be skipped; diff remaining files in changelist; update message; commit</em><ul>
+						<li>RTCP; <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
 							<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
 						</ul></li>
 						<li>[squash commits]; push $cb to remote tracking branch</li>
 					</ul>
 				</div></div>
-			<div class='indent'><div style="border-style:none none none solid; border-color: orange; border-width: 8px">
+			<div class='indent'><div class="wf-publish">
 				<p><strong>Publish</strong></p><ul>
 				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
 				<li>switch to master; update project (cT); RTCP<ul>
-					<li>if master had changed (had something to commit): switch to branch $cb; merge master into $cb<ul>
+					<li>if master had changed (had something to commit): switch to branch $cb; push; merge master into $cb<ul>
 						<li>if branch changed: RTCP</li>
 					</ul></li>
 				</ul></li>
 				<li>switch to master; merge in branch $cb; refresh; test; [commit]; PUSH</li>
 				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
 				<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
-				<li>if task complete, delete task and local branch; else if branch complete, delete local branch</li>
+				<li>if task complete, delete task and local branch</li>
 			</ul></div></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
-				<div style="border-style:none none none solid; border-color: mediumpurple; border-width: 8px">
+				<div class="wf-mergeReview">
 				<p><strong>Merge and Review</strong></p><ul>
 					<li><strong><em>StatusReport.sh</em></strong>; note especially status clear</li>
 					<li>test; master branch; merge branch into local master; RTCP</li>
@@ -207,7 +229,7 @@
 					</ul></li>
 					<li>add tests, refactor, or correct, using still-present branch, if indicated</li>
 				</ul></div>
-				<div style="border-style:none none none solid; border-color: purple; border-width: 8px">
+				<div class="wf-close">
 				<p><strong>Code Review Complete: Close Issue</strong></p><ul>
 					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches</li>
 					<li>test; master branch; merge branch into local master; RTCP</li>
@@ -218,43 +240,43 @@
 			<h5>[Archive Repository]</h5>
 		</div></div></div>
 
-		<div style="page-break-before: always">
-			<!-- @marker "Release and Hotfix Branches" -->
-			<div style="background-color: #e2faff">
-			<h3 id='Release_Hotfix_Workflow_' class="wf-hotfix">Release and Hotfix Workflow</h3>
-				<p><em>WARNING: Normal workflow branches are updated frequently to and from master.
-					Updating is avoided in this workflow to prevent pollution of the release branch.</em></p>
-			<h5>Create Release or Hotfix Branch</h5><ul>
-				<li><strong><em>[Update Master]</em></strong> unless contraindicated for this version</li>
-				<li>create release description from existing content of milestone nextVersion,
-					along with result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
-				<li>select version number</li>
-				<li>GitHub: create and save draft of revision #&lt;versionName&gt;, eg. v1.0.1</li>
-				<li>create (or has that been done?) and push branch</li>
-				<li>bump version: change all version numbers that appear in product<ul>
-					<li>for now, that is the version numbers in most project files</li>
-				</ul></li>
-				<li>commit ("bump version to &lt;versionName&gt;"); push</li>
-			</ul>
-			<h5>While Needed Fix(es) are Identified</h5><ul>
-				<li>switch to Release/Hotfix task</li>
-				<li>edit/test; refresh; diff modifications</li>
-				<li>status; add/stage; check for stray spaces (`gdcc`)</li>
-				<li>diff all files in changelist; update message; commit; push</li>
-			</ul>
-			<h5>Issue Tasks Complete</h5><div class='indent'>
-				<p><strong>Trigger Code Review</strong></p><ul>
-				    <li>change Waffle label from Waffle:in progress to Waffle:needs review</li>
-					<li>add tests, refactor, or correct if indicated; DO NOT UPDATE</li>
-				</ul>
-				<p><strong>Code Review Complete</strong></p><ul>
-					<li>GitHub: from draft of Release: add product if indicated; publish</li>
-					<li>(expect: branch closed and tagged)</li>
-					<li>master branch: merge in release</li>
-				</ul>
-			</div>
-			<h5>Archive Repository</h5>
-			</div></div>
+<div style="page-break-before: always">
+	<!-- @marker "Release and Hotfix Branches" -->
+	<div style="background-color: #e2faff">
+	<h3 id='Release_Hotfix_Workflow_' class="wf-hotfix">Release and Hotfix Workflow</h3><div class="wf-hotfix">
+		<p><em>WARNING: Normal workflow branches are updated frequently to and from master.
+			Updating is avoided in this workflow to prevent pollution of the release branch.</em></p>
+	<h5>Create Release or Hotfix Branch</h5><ul>
+		<li><strong><em>[Update Master]</em></strong> unless contraindicated for this version</li>
+		<li>create release description from existing content of milestone nextVersion,
+			along with result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
+		<li>select version number</li>
+		<li>GitHub: create and save draft of revision #&lt;versionName&gt;, eg. v1.0.1</li>
+		<li>create (or has that been done?) and push branch</li>
+		<li>bump version: change all version numbers that appear in product<ul>
+			<li>for now, that is the version numbers in most project files</li>
+		</ul></li>
+		<li>commit ("bump version to &lt;versionName&gt;"); push</li>
+	</ul>
+	<h5>While Needed Fix(es) are Identified</h5><ul>
+		<li>switch to Release/Hotfix task</li>
+		<li>edit/test; refresh; diff modifications</li>
+		<li>status; add/stage; check for stray spaces (`gdcc`)</li>
+		<li>diff all files in changelist; update message; commit; push</li>
+	</ul>
+	<h5>Issue Tasks Complete</h5><div class='indent'>
+		<p><strong>Trigger Code Review</strong></p><ul>
+			<li>change Waffle label from Waffle:in progress to Waffle:needs review</li>
+			<li>add tests, refactor, or correct if indicated; DO NOT UPDATE</li>
+		</ul>
+		<p><strong>Code Review Complete</strong></p><ul>
+			<li>GitHub: from draft of Release: add product if indicated; publish</li>
+			<li>(expect: branch closed and tagged)</li>
+			<li>master branch: merge in release</li>
+		</ul>
+	</div>
+	<h5>Archive Repository</h5>
+	</div></div></div>
 
 <div style="page-break-before: always">
 	<!-- @marker "Workflow Subtasks" -->
