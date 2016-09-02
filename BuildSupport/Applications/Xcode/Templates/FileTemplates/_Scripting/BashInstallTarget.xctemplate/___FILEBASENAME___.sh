@@ -5,6 +5,7 @@
 # Copyright (c) ___YEAR___ by C & C Software, Inc. All rights reserved.
 
 main() {
+	local a; a=0
 }
  
 main "$@"
