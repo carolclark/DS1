@@ -157,29 +157,32 @@
 	<li>mark all schemes shared</li>
 </ul>
 
+<div style="page-break-before: always">
 <!-- marker "New Scripted Build Project" -->
 <h4 id='NewScriptedBuildProject'>New Scripted Build Project</h4><pre>
 	* *Target is normally built with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.sh. (previously .ksh)*
-	* *This process is done from Xcode.*
-	* new External Build System project
-	* <span class='em'>Project &lt;TargetName&gt;</span>
-		* add External Build System target &lt;TargetName&gt; with configuration:
-			* build tool: ${TARGET_NAME}/${TARGET_NAME}_install.sh
-			* arguments: "${SRCROOT}" ${TARGET_NAME} $(ACTION)
-			* directory: "${SRCROOT}"
-			* Pass Build Settings in Environment: NO
-		* Build Settings: EXECUTABLE_EXTENSION .fauxprod
-		* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh from template _Scripting/BashInstallTarget
-			* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.sh)
-		* add product
-			* *see <a href="http://www.cocoabuilder.com/archive/xcode/309768-external-build-system-target-products.html">External Build System Target and Products</a>*
-			* build target
-			* from Finder, add product $CCDev/build_output/&lt;Repository&gt;[/&lt;Folder&gt;]/&lt;TargetName&gt;.fauxprod to group FauxProducts
-				* *this item can now be used to set a dependency for another build using its Copy Build Resources build phase*
-	* <span class='em'>Target &lt;TargetName&gt;Tests</span>
-		* <a href="#AddScriptedBuildTestTarget">Add Scripted Build Test Target</a>
+	* **From Xcode**
+		* new External Build System project
+		* add folders  &lt;TargetName&gt;/&lt;TargetName&gt;, &lt;TargetName&gt;/test
+		* <span class='em'>Project &lt;TargetName&gt;</span>
+			* add External Build System target &lt;TargetName&gt; with configuration:
+				* build tool: ${TARGET_NAME}/${TARGET_NAME}_install.sh
+				* arguments: ${TARGET_NAME} &lt;CCDevOutput&gt; $(ACTION)
+				* directory: "${SRCROOT}"
+				* Pass Build Settings in Environment: NO
+			* Build Settings: EXECUTABLE_EXTENSION .fauxprod
+			* add new file &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh from template _Scripting/BashInstallTarget
+				* make executable (chmod a+x &lt;PathFromRepositoryFolder&gt;/&lt;TargetName&gt;_install.sh)
+			* add product
+				* *see <a href="http://www.cocoabuilder.com/archive/xcode/309768-external-build-system-target-products.html">External Build System Target and Products</a>*
+				* build target
+				* from Finder, add product $CCDev/build_output/&lt;Repository&gt;[/&lt;Folder&gt;]/&lt;TargetName&gt;.fauxprod to group FauxProducts
+					* *this item can now be used to set a dependency for another build using its Copy Build Resources build phase*
+		* <span class='em'>Target &lt;TargetName&gt;Tests</span>
+			* <a href="#AddScriptedBuildTestTarget">Add Scripted Build Test Target</a>
+		* add &lt;TargetName&gt;_ReadMe.html; switch back to AppCode to edit ReadMe and commit
 </pre>
-
+</div>
 <!-- @marker "Reorganize Sources" -->
 <h4 id='ReorganizeSources'>Reorganize Sources</h4><pre>
 	* Reorganize files into folders:
@@ -244,29 +247,27 @@
 <!-- @marker "Add Scripted Build Test Target" -->
 <h4 id='AddScriptedBuildTestTarget'>Add Scripted Build Test Target</h4><pre>
 	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior*
-		* *including Project &lt; Test menu item and Bots for continuous integration*
 	* *also: to improve feedback, consider running the tests from the Cocoa test class*
 		* *see <a href="http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942">execute-a-terminal-command-from-a-cocoa-app</a>*
-	* add Cocoa Unit Testing Bundle target &lt;TestTarget&gt;_(U|C|P)Tests
-	* Reorganize Files
-		* remove pch file, en.lproj folder
-		* rename required Cocoa tests file if indicated
-		* move folder &lt;TestTarget&gt;_(U/C/P)Tests into folder &lt;TestTarget&gt;
-		* move &lt;TestTarget&gt;_(U/C/P)Tests file &lt;TestTarget&gt;_(U/C/P)Tests-info.plist into folder OtherSources
-		* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
-		* exclude &lt;TestTarget&gt;_(U/C/P)Tests from &lt;TestTarget&gt;_install.ksh build processing
-	* Build Settings
-		* Precompile Prefix Header: no; remove Precompiled Header path
-		* update path to Info.plist file
-		* replace &lt;TestTarget&gt;_(U|C|P)Tests.m with new copy from template
-		* (later)edit test file to run the tests
-	* add Run Script build phase:
-		* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.ksh "${SRCROOT}" &lt;TargetName&gt; test
-		* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
-	* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
-	* add to aggregate target All&lt;ProjectName&gt;Tests, and to All&lt;RepoName&gt;Tests if indicated
-	* Schemes:Manage: add scheme &lt;TestTarget&gt;_(U|C|P)Tests; mark as shared; verify &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
-	* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;_(U|C|P)Tests
+	* **From Xcode:**
+		* add Cocoa Unit Testing Bundle target &lt;TestTarget&gt;_(U|C|P)Tests
+		* Reorganize Files
+			* remove pch file, en.lproj folder
+			* rename required Cocoa tests file if indicated
+			* move folder &lt;TestTarget&gt;_(U|C|P)Tests into folder &lt;TestTarget&gt;
+			* move &lt;TestTarget&gt;_(U|C|P)Tests file &lt;TestTarget&gt;_(U|C|P)Tests-info.plist into folder OtherSources
+			* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
+			* exclude &lt;TestTarget&gt;_(U|C|P)Tests from &lt;TestTarget&gt;_install.sh build processing
+		* Build Settings
+			* Precompile Prefix Header: no; remove Precompiled Header path
+			* update path to Info.plist file
+			* replace &lt;TestTarget&gt;_(U|C|P)Tests.mm with new copy from template
+		* add Run Script build phase:
+			* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh "${SRCROOT}" &lt;TargetName&gt; test
+			* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
+		* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
+		* Schemes:Manage: add scheme &lt;TestTarget&gt;_(U|C|P)Tests; mark as shared; verify &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
+		* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;_(U|C|P)Tests
 </pre>
 
 <!-- @marker "Add Target Feature" -->
