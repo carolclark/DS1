@@ -30,8 +30,8 @@
          location = "group:active_versions.html">
       </FileRef>
       <Group
-         location = "group:Sources"
-         name = "Sources">
+         location = "group:Downloaded"
+         name = "Downloaded">
          <Group
             location = "group:ASUnit_"
             name = "ASUnit_">
