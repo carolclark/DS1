@@ -160,14 +160,14 @@
 <div style="page-break-before: always">
 <!-- marker "New Scripted Build Project" -->
 <h4 id='NewScriptedBuildProject'>New Scripted Build Project</h4><pre>
-	* *Target is normally built with a custom target script at &lt;TargetName&gt;/&lt;TargetName&gt;.sh. (previously .ksh)*
+	* *Target is normally built with a custom target script at ./&lt;TargetName&gt;.sh. (previously &lt;TargetName&gt;/&lt;TargetName&gt;.ksh)*
 	* **From Xcode**
 		* new External Build System project
-		* add folders  &lt;TargetName&gt;/&lt;TargetName&gt;, &lt;TargetName&gt;/test
+		* ??add folders  ./&lt;TargetName&gt;, ./&lt;TargetName&gt;/&lt;TargetName&gt;, ./&lt;TargetName&gt;/test
 		* <span class='em'>Project &lt;TargetName&gt;</span>
 			* add External Build System target &lt;TargetName&gt; with configuration:
-				* build tool: ${TARGET_NAME}/${TARGET_NAME}_install.sh
-				* arguments: ${TARGET_NAME} &lt;CCDevOutput&gt; $(ACTION)
+				* build tool: ./"${TARGET_NAME}"_install.sh
+				* arguments: "${TARGET_NAME}" "${CCDev}" $(ACTION)
 				* directory: "${SRCROOT}"
 				* Pass Build Settings in Environment: NO
 			* Build Settings: EXECUTABLE_EXTENSION .fauxprod
@@ -211,7 +211,7 @@
 
 <!-- @marker "Add Cocoa Test Target" -->
 <h4 id='AddCocoaTestTarget'>Add Cocoa Test Target</h4><ul>
-	<li>create or edit test target (&lt;TestTarget&gt;_[U|C|P]Tests) Target<ul>
+	<li>create or edit test target (&lt;TestTarget&gt;[_U|C|P]Tests)<ul>
 		<li>for existing target from Cocoa Application template: apply <a href="#RenameTarget">Rename Target</a></li>
 		<li>else: add a new target from Cocoa Unit Testing Bundle template</li>
 	</ul></li>
@@ -247,23 +247,16 @@
 <!-- @marker "Add Scripted Build Test Target" -->
 <h4 id='AddScriptedBuildTestTarget'>Add Scripted Build Test Target</h4><pre>
 	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior*
-	* *also: to improve feedback, consider running the tests from the Cocoa test class*
-		* *see <a href="http://stackoverflow.com/questions/412562/execute-a-terminal-command-from-a-cocoa-app/696942#696942">execute-a-terminal-command-from-a-cocoa-app</a>*
 	* **From Xcode:**
-		* add Cocoa Unit Testing Bundle target &lt;TestTarget&gt;_(U|C|P)Tests
-		* Reorganize Files
-			* remove pch file, en.lproj folder
-			* rename required Cocoa tests file if indicated
-			* move folder &lt;TestTarget&gt;_(U|C|P)Tests into folder &lt;TestTarget&gt;
-			* move &lt;TestTarget&gt;_(U|C|P)Tests file &lt;TestTarget&gt;_(U|C|P)Tests-info.plist into folder OtherSources
-			* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
-			* exclude &lt;TestTarget&gt;_(U|C|P)Tests from &lt;TestTarget&gt;_install.sh build processing
+		* add Cocoa Unit Testing Bundle target &lt;TestTarget&gt;_[(U|C|P)]Test
+		* rename test file RequiredCocoaTests.m if indicated
 		* Build Settings
-			* Precompile Prefix Header: no; remove Precompiled Header path
+			* Precompile Prefix Header: NO
 			* update path to Info.plist file
 			* replace &lt;TestTarget&gt;_(U|C|P)Tests.mm with new copy from template
 		* add Run Script build phase:
-			* shell scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh "${SRCROOT}" &lt;TargetName&gt; test
+			* bash scripts: ./&lt;TargetName&gt;_install.sh &lt;TargetName&gt; ${CCDev} test
+			* ksh scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh "${SRCROOT}" &lt;TargetName&gt; test
 			* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
 		* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
 		* Schemes:Manage: add scheme &lt;TestTarget&gt;_(U|C|P)Tests; mark as shared; verify &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
