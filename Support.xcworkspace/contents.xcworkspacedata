@@ -24,9 +24,6 @@
       location = "group:ThirdParty"
       name = "ThirdParty">
       <FileRef
-         location = "group:Sharness/Sharness.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:ThirdParty_ReadMe.html">
       </FileRef>
       <FileRef
