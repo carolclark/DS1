@@ -6,26 +6,9 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		6752481B1D831C2200233807 /* SharnessTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6752481A1D831C2200233807 /* SharnessTest.m */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		675248011D8214B900233807 /* Sharness_install.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Sharness_install.sh; sourceTree = "<group>"; };
-		675248151D831C2200233807 /* SharnessTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharnessTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		675248191D831C2200233807 /* SharnessTest_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SharnessTest_Info.plist; sourceTree = "<group>"; };
-		6752481A1D831C2200233807 /* SharnessTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharnessTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		675248121D831C2200233807 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		675247F61D82132500233807 = {
@@ -33,8 +16,6 @@
 			children = (
 				675248011D8214B900233807 /* Sharness_install.sh */,
 				675248021D82170D00233807 /* FauxProducts */,
-				675248171D831C2200233807 /* SharnessTest */,
-				675248161D831C2200233807 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -43,39 +24,6 @@
 			children = (
 			);
 			name = FauxProducts;
-			sourceTree = "<group>";
-		};
-		675248161D831C2200233807 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				675248151D831C2200233807 /* SharnessTest.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		675248171D831C2200233807 /* SharnessTest */ = {
-			isa = PBXGroup;
-			children = (
-				6752481F1D831D7D00233807 /* OtherSources */,
-				675248181D831C2200233807 /* Supporting Files */,
-			);
-			path = SharnessTest;
-			sourceTree = "<group>";
-		};
-		675248181D831C2200233807 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6752481F1D831D7D00233807 /* OtherSources */ = {
-			isa = PBXGroup;
-			children = (
-				675248191D831C2200233807 /* SharnessTest_Info.plist */,
-				6752481A1D831C2200233807 /* SharnessTest.m */,
-			);
-			path = OtherSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,30 +40,10 @@
 			dependencies = (
 			);
 			name = Sharness;
-			passBuildSettingsInEnvironment = 0;
+			passBuildSettingsInEnvironment = 1;
 			productName = Sharness;
 		};
 /* End PBXLegacyTarget section */
-
-/* Begin PBXNativeTarget section */
-		675248141D831C2200233807 /* SharnessTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6752481C1D831C2200233807 /* Build configuration list for PBXNativeTarget "SharnessTest" */;
-			buildPhases = (
-				675248111D831C2200233807 /* Sources */,
-				675248121D831C2200233807 /* Frameworks */,
-				675248131D831C2200233807 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SharnessTest;
-			productName = SharnessTest;
-			productReference = 675248151D831C2200233807 /* SharnessTest.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		675247F71D82132500233807 /* Project object */ = {
@@ -125,9 +53,6 @@
 				ORGANIZATIONNAME = "C & C Software, Inc.";
 				TargetAttributes = {
 					675247FB1D82132500233807 = {
-						CreatedOnToolsVersion = 6.2;
-					};
-					675248141D831C2200233807 = {
 						CreatedOnToolsVersion = 6.2;
 					};
 				};
@@ -140,36 +65,13 @@
 				en,
 			);
 			mainGroup = 675247F61D82132500233807;
-			productRefGroup = 675248161D831C2200233807 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				675247FB1D82132500233807 /* Sharness */,
-				675248141D831C2200233807 /* SharnessTest */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		675248131D831C2200233807 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		675248111D831C2200233807 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6752481B1D831C2200233807 /* SharnessTest.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		675247FC1D82132500233807 /* Debug */ = {
@@ -269,38 +171,6 @@
 			};
 			name = Release;
 		};
-		6752481D1D831C2200233807 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SharnessTest/OtherSources/SharnessTest_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		6752481E1D831C2200233807 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SharnessTest/OtherSources/SharnessTest_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -318,14 +188,6 @@
 			buildConfigurations = (
 				675247FF1D82132500233807 /* Debug */,
 				675248001D82132500233807 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		6752481C1D831C2200233807 /* Build configuration list for PBXNativeTarget "SharnessTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6752481D1D831C2200233807 /* Debug */,
-				6752481E1D831C2200233807 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
