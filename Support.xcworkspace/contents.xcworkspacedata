@@ -30,11 +30,14 @@
          location = "group:active_versions.html">
       </FileRef>
       <Group
-         location = "group:Sources"
+         location = "group:Downloaded"
          name = "Downloaded">
          <Group
             location = "group:ASUnit_"
             name = "ASUnit_">
+            <FileRef
+               location = "group:active_version.txt">
+            </FileRef>
             <Group
                location = "group:ASUnit_2015-10-15"
                name = "ASUnit_2015-10-15">
@@ -89,9 +92,6 @@
                   location = "group:TODO">
                </FileRef>
             </Group>
-            <FileRef
-               location = "group:active_version.txt">
-            </FileRef>
          </Group>
          <Group
             location = "group:bash-doxygen_"
