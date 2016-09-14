@@ -35,12 +35,9 @@
          <Group
             location = "group:ASUnit_"
             name = "ASUnit_">
-            <FileRef
-               location = "group:active_version">
-            </FileRef>
             <Group
-               location = "group:ASUnit-2015-10-15"
-               name = "ASUnit-2015-10-15">
+               location = "group:ASUnit_2015-10-15"
+               name = "ASUnit_2015-10-15">
                <FileRef
                   location = "group:ASUnit.applescript">
                </FileRef>
@@ -92,13 +89,13 @@
                   location = "group:TODO">
                </FileRef>
             </Group>
+            <FileRef
+               location = "group:active_version.txt">
+            </FileRef>
          </Group>
          <Group
             location = "group:bash-doxygen_"
             name = "bash-doxygen_">
-            <FileRef
-               location = "group:active_version">
-            </FileRef>
             <Group
                location = "group:bash-doxygen_2016-06-23"
                name = "bash-doxygen_2016-06-23">
@@ -122,13 +119,13 @@
                   </FileRef>
                </Group>
             </Group>
+            <FileRef
+               location = "group:active_version.txt">
+            </FileRef>
          </Group>
          <Group
             location = "group:Sharness_"
             name = "Sharness_">
-            <FileRef
-               location = "group:active_version">
-            </FileRef>
             <Group
                location = "group:Sharness_1.0.1"
                name = "Sharness_1.0.1">
@@ -176,6 +173,9 @@
                   </FileRef>
                </Group>
             </Group>
+            <FileRef
+               location = "group:active_version.txt">
+            </FileRef>
          </Group>
       </Group>
    </Group>
