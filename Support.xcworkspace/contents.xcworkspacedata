@@ -31,7 +31,7 @@
       </FileRef>
       <Group
          location = "group:Sources"
-         name = "Sources">
+         name = "Downloaded">
          <Group
             location = "group:ASUnit_"
             name = "ASUnit_">
