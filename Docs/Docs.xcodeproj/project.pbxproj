@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		6703EAB61D8B360C007E7505 /* ThirdParty.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ThirdParty.html; sourceTree = "<group>"; };
 		6729FAA81957746200612D1A /* Tools_Inactive.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Tools_Inactive.html; sourceTree = "<group>"; };
 		6739B60E192EB33E00D659B6 /* Python.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Python.html; sourceTree = "<group>"; };
 		676695A41919973E005D3CED /* Support_ghissues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Support_ghissues.json; sourceTree = "<group>"; };
@@ -155,12 +154,11 @@
 		676695C81919A759005D3CED /* html */ = {
 			isa = PBXGroup;
 			children = (
-				6703EAB61D8B360C007E7505 /* ThirdParty.html */,
 				67F24D731D11F30300CF9862 /* _img */,
-				676695CA1919A759005D3CED /* ProjectDevelopment.html */,
-				676695CC1919A759005D3CED /* Git.html */,
 				676695C91919A759005D3CED /* Cdoc.html */,
+				676695CA1919A759005D3CED /* ProjectDevelopment.html */,
 				676695CB1919A759005D3CED /* Development.html */,
+				676695CC1919A759005D3CED /* Git.html */,
 				676695CD1919A759005D3CED /* Glossary_Support.html */,
 				676695CF1919A759005D3CED /* Personal.html */,
 				676695D01919A759005D3CED /* Support.html */,
