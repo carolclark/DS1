@@ -33,6 +33,119 @@
          location = "group:Downloaded"
          name = "Downloaded">
          <Group
+            location = "group:Doxygen_"
+            name = "Doxygen_">
+            <FileRef
+               location = "group:active_version.txt">
+            </FileRef>
+            <Group
+               location = "group:Doxygen_1.8.12"
+               name = "Doxygen_1.8.12">
+               <FileRef
+                  location = "group:Doxygen.app">
+               </FileRef>
+               <FileRef
+                  location = "group:README.rtf">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Rez_"
+            name = "Rez_">
+            <FileRef
+               location = "group:active_version.txt">
+            </FileRef>
+            <Group
+               location = "group:Rez_2014-12-08"
+               name = "Rez_2014-12-08">
+               <Group
+                  location = "group:Build"
+                  name = "Build">
+                  <FileRef
+                     location = "group:HaveRez.sh">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Makefile.main">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:COPYRIGHT">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile">
+               </FileRef>
+               <Group
+                  location = "group:Resources"
+                  name = "Resources">
+                  <FileRef
+                     location = "group:rez.mimeinfo">
+                  </FileRef>
+                  <FileRef
+                     location = "group:RRez.r">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Source"
+                  name = "Source">
+                  <FileRef
+                     location = "group:mods.cpp">
+                  </FileRef>
+                  <FileRef
+                     location = "group:mods.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:RElem.cpp">
+                  </FileRef>
+                  <FileRef
+                     location = "group:RElem.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:REval.cpp">
+                  </FileRef>
+                  <FileRef
+                     location = "group:REval.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:rez.cpp">
+                  </FileRef>
+                  <FileRef
+                     location = "group:rez.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:rez_parser.y">
+                  </FileRef>
+                  <FileRef
+                     location = "group:rez_scanner.l">
+                  </FileRef>
+                  <FileRef
+                     location = "group:RState.cpp">
+                  </FileRef>
+                  <FileRef
+                     location = "group:RState.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:RTypes.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:SymbolTable.cpp">
+                  </FileRef>
+                  <FileRef
+                     location = "group:SymbolTable.h">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:usage">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Rez_OrigTool"
+               name = "Rez_OrigTool">
+               <FileRef
+                  location = "group:Rez">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
             location = "group:ASUnit_"
             name = "ASUnit_">
             <FileRef
