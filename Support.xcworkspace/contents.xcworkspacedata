@@ -4,6 +4,9 @@
    <FileRef
       location = "group:Docs/Docs.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:BuildSupport/BuildSupport.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "Developer">
@@ -23,6 +26,9 @@
    <Group
       location = "group:ThirdParty"
       name = "ThirdParty">
+      <FileRef
+         location = "group:Sharness.xcodeproj">
+      </FileRef>
       <FileRef
          location = "group:ThirdParty_ReadMe.html">
       </FileRef>
@@ -292,7 +298,4 @@
          </Group>
       </Group>
    </Group>
-   <FileRef
-      location = "group:BuildSupport/BuildSupport.xcodeproj">
-   </FileRef>
 </Workspace>
