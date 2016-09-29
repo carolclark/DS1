@@ -138,6 +138,7 @@ function gitPrintExclude {
 	print '**/.idea/tasks.xml'
 	print '**/.idea/*.iws'
 	print '**/.idea/*.iml'
+	print '**/test/test-results/'
 	print '_patches'
 }
 
