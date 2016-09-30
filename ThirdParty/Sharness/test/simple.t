@@ -2,7 +2,7 @@
 
 test_description="Show basic features of Sharness"
 
-. ./sharness.sh
+. ${HOME}/Library/CCDev/bin/Sharness/Sharness.sh
 
 test_expect_success "Success is reported like this" "
     echo hello world | grep hello

@@ -3,11 +3,11 @@
 
 test_description="starter Sharness tests"
 
-. ./sharness.sh
+. ${HOME}/Library/CCDev/bin/Sharness/Sharness.sh
 
-test_expect_success 'failing test for string equality' '
-    [ "Hello" = "HelloX" ]
-'
+##test_expect_success 'failing test for string equality' '
+##    [ "Hello" = "HelloX" ]
+##'
 
 test_expect_success 'passing test for string equality' '
     [ "Hello" = "Hello" ]

@@ -8,8 +8,7 @@
 
 /* Begin PBXFileReference section */
 		67004E2E1D9B11900027C658 /* Sharness_install.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = Sharness_install.sh; path = Sharness/Sharness_install.sh; sourceTree = "<group>"; };
-		677C86BA1D9C71E000F35101 /* sharness.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = sharness.t; path = Sharness/test/sharness.t; sourceTree = "<group>"; };
-		677C86BC1D9C733100F35101 /* demo.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = demo.t; path = Sharness/test/demo.t; sourceTree = "<group>"; };
+		677C86BC1D9C733100F35101 /* starter.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = starter.t; path = Sharness/test/starter.t; sourceTree = "<group>"; };
 		677C86BE1D9DA87F00F35101 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = Sharness/test/Makefile; sourceTree = "<group>"; };
 		965F8572206665C977976797 /* simple.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; name = simple.t; path = Sharness/test/simple.t; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -28,8 +27,7 @@
 			children = (
 				677C86BE1D9DA87F00F35101 /* Makefile */,
 				965F8572206665C977976797 /* simple.t */,
-				677C86BA1D9C71E000F35101 /* sharness.t */,
-				677C86BC1D9C733100F35101 /* demo.t */,
+				677C86BC1D9C733100F35101 /* starter.t */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -43,7 +41,7 @@
 			buildConfigurationList = 67004E2B1D9B0F9C0027C658 /* Build configuration list for PBXLegacyTarget "Sharness" */;
 			buildPhases = (
 			);
-			buildToolPath = "${HOME}/Dev/Support/ThirdParty/Sharness/test/simple.t";
+			buildToolPath = "${HOME}/Dev/Support/ThirdParty/Sharness/test/starter.t";
 			buildWorkingDirectory = "";
 			dependencies = (
 			);
