@@ -32,9 +32,6 @@
       <FileRef
          location = "group:ThirdParty_ReadMe.html">
       </FileRef>
-      <FileRef
-         location = "group:active_versions.html">
-      </FileRef>
       <Group
          location = "group:Downloaded"
          name = "Downloaded">
