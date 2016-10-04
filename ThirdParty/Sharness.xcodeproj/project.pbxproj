@@ -6,15 +6,9 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		6765C8591DA40C90009C6AD8 /* SharnessTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6765C8581DA40C90009C6AD8 /* SharnessTest.m */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		67004E2E1D9B11900027C658 /* Sharness_install.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = Sharness_install.sh; path = Sharness/Sharness_install.sh; sourceTree = "<group>"; };
 		6765C8531DA40C90009C6AD8 /* SharnessTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharnessTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6765C8571DA40C90009C6AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6765C8581DA40C90009C6AD8 /* SharnessTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharnessTest.m; sourceTree = "<group>"; };
 		677C86BC1D9C733100F35101 /* starter.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = starter.t; path = Sharness/test/starter.t; sourceTree = "<group>"; };
 		677C86BE1D9DA87F00F35101 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = Sharness/test/Makefile; sourceTree = "<group>"; };
 		965F8572206665C977976797 /* simple.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; name = simple.t; path = Sharness/test/simple.t; sourceTree = "<group>"; };
@@ -36,7 +30,6 @@
 			children = (
 				67004E2E1D9B11900027C658 /* Sharness_install.sh */,
 				677C86B31D9C666200F35101 /* test */,
-				6765C8551DA40C90009C6AD8 /* SharnessTest */,
 				6765C8541DA40C90009C6AD8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,23 +40,6 @@
 				6765C8531DA40C90009C6AD8 /* SharnessTest.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		6765C8551DA40C90009C6AD8 /* SharnessTest */ = {
-			isa = PBXGroup;
-			children = (
-				6765C8581DA40C90009C6AD8 /* SharnessTest.m */,
-				6765C8561DA40C90009C6AD8 /* Supporting Files */,
-			);
-			path = SharnessTest;
-			sourceTree = "<group>";
-		};
-		6765C8561DA40C90009C6AD8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6765C8571DA40C90009C6AD8 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		677C86B31D9C666200F35101 /* test */ = {
@@ -163,7 +139,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6765C8591DA40C90009C6AD8 /* SharnessTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
