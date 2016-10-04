@@ -6,12 +6,29 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6765C8591DA40C90009C6AD8 /* SharnessTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6765C8581DA40C90009C6AD8 /* SharnessTest.m */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		67004E2E1D9B11900027C658 /* Sharness_install.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = Sharness_install.sh; path = Sharness/Sharness_install.sh; sourceTree = "<group>"; };
+		6765C8531DA40C90009C6AD8 /* SharnessTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharnessTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6765C8571DA40C90009C6AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6765C8581DA40C90009C6AD8 /* SharnessTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharnessTest.m; sourceTree = "<group>"; };
 		677C86BC1D9C733100F35101 /* starter.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = starter.t; path = Sharness/test/starter.t; sourceTree = "<group>"; };
 		677C86BE1D9DA87F00F35101 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = Sharness/test/Makefile; sourceTree = "<group>"; };
 		965F8572206665C977976797 /* simple.t */ = {isa = PBXFileReference; lastKnownFileType = file.t; name = simple.t; path = Sharness/test/simple.t; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6765C8501DA40C90009C6AD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		67004E231D9B0F9C0027C658 = {
@@ -19,7 +36,34 @@
 			children = (
 				67004E2E1D9B11900027C658 /* Sharness_install.sh */,
 				677C86B31D9C666200F35101 /* test */,
+				6765C8551DA40C90009C6AD8 /* SharnessTest */,
+				6765C8541DA40C90009C6AD8 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		6765C8541DA40C90009C6AD8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6765C8531DA40C90009C6AD8 /* SharnessTest.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6765C8551DA40C90009C6AD8 /* SharnessTest */ = {
+			isa = PBXGroup;
+			children = (
+				6765C8581DA40C90009C6AD8 /* SharnessTest.m */,
+				6765C8561DA40C90009C6AD8 /* Supporting Files */,
+			);
+			path = SharnessTest;
+			sourceTree = "<group>";
+		};
+		6765C8561DA40C90009C6AD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6765C8571DA40C90009C6AD8 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		677C86B31D9C666200F35101 /* test */ = {
@@ -51,6 +95,26 @@
 		};
 /* End PBXLegacyTarget section */
 
+/* Begin PBXNativeTarget section */
+		6765C8521DA40C90009C6AD8 /* SharnessTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6765C85C1DA40C90009C6AD8 /* Build configuration list for PBXNativeTarget "SharnessTest" */;
+			buildPhases = (
+				6765C84F1DA40C90009C6AD8 /* Sources */,
+				6765C8501DA40C90009C6AD8 /* Frameworks */,
+				6765C8511DA40C90009C6AD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharnessTest;
+			productName = SharnessTest;
+			productReference = 6765C8531DA40C90009C6AD8 /* SharnessTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
 /* Begin PBXProject section */
 		67004E241D9B0F9C0027C658 /* Project object */ = {
 			isa = PBXProject;
@@ -59,6 +123,9 @@
 				ORGANIZATIONNAME = "C & C Software, Inc.";
 				TargetAttributes = {
 					67004E281D9B0F9C0027C658 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					6765C8521DA40C90009C6AD8 = {
 						CreatedOnToolsVersion = 6.2;
 					};
 				};
@@ -71,13 +138,36 @@
 				en,
 			);
 			mainGroup = 67004E231D9B0F9C0027C658;
+			productRefGroup = 6765C8541DA40C90009C6AD8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				67004E281D9B0F9C0027C658 /* Sharness */,
+				6765C8521DA40C90009C6AD8 /* SharnessTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6765C8511DA40C90009C6AD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6765C84F1DA40C90009C6AD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6765C8591DA40C90009C6AD8 /* SharnessTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		67004E291D9B0F9C0027C658 /* Debug */ = {
@@ -177,6 +267,38 @@
 			};
 			name = Release;
 		};
+		6765C85A1DA40C90009C6AD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SharnessTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6765C85B1DA40C90009C6AD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SharnessTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -197,6 +319,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6765C85C1DA40C90009C6AD8 /* Build configuration list for PBXNativeTarget "SharnessTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6765C85A1DA40C90009C6AD8 /* Debug */,
+				6765C85B1DA40C90009C6AD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
