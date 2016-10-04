@@ -157,7 +157,6 @@
 	<li>mark all schemes shared</li>
 </ul>
 
-<div style="page-break-before: always">
 <!-- marker "New Scripted Build Project" -->
 <h4 id='NewScriptedBuildProject'>New Scripted Build Project</h4><pre>
 	* *Target is normally built with custom target script at ./&lt;TargetName&gt;.sh. (previously &lt;TargetName&gt;/&lt;TargetName&gt;.ksh)*
@@ -183,7 +182,7 @@
 		* <a href="ProjectDevelopment.html#OpenProjectInAppCode">OpenProjectInAppCode</a>
 			* add and edit &lt;TargetName&gt;_ReadMe.html; \c\
 </pre>
-</div>
+
 <!-- @marker "Reorganize Sources" -->
 <h4 id='ReorganizeSources'>Reorganize Sources</h4><pre>
 	* Reorganize files into folders:
@@ -212,7 +211,7 @@
 
 <!-- @marker "Add Cocoa Test Target" -->
 <h4 id='AddCocoaTestTarget'>Add Cocoa Test Target</h4><ul>
-	<li>create or edit test target (&lt;TestTarget&gt;[_U|C|P]Tests)<ul>
+	<li>create or edit test target (&lt;TestTarget&gt;[_C|P]Tests)<ul>
 		<li>for existing target from Cocoa Application template: apply <a href="#RenameTarget">Rename Target</a></li>
 		<li>else: add a new target from Cocoa Unit Testing Bundle template</li>
 	</ul></li>
@@ -228,8 +227,8 @@
 	</ul></li>
 	<li>add to aggregate target All&lt;ProjectName&gt;Tests, and to All&lt;RepoName&gt;Tests if indicated</li>
 	<li>Test Class<ul>
-		<li>rename supplied file &lt;TestTarget&gt;_[U|C|P]Tests</li>
-		<li>new file &lt;TestTarget&gt;_[U|C|P]Tests from template<ul>
+		<li>rename supplied file &lt;TestTarget&gt;[_C|P]Tests</li>
+		<li>new file &lt;TestTarget&gt;[_C|P]Tests from template<ul>
 			<li>check against supplied file, updating template if indicated</li>
 			<li>leave in or add a dummy test, or, for CTests, add test case testAppDelegate (testAppDelegate#)</li>
 		</ul></li>
@@ -249,19 +248,20 @@
 <h4 id='AddScriptedBuildTestTarget'>Add Scripted Build Test Target</h4><pre>
 	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior*
 	* **From Xcode:**
-		* add Cocoa Unit Testing Bundle target &lt;TestTarget&gt;[_(U|C|P)]Test
-		* rename test file RequiredCocoaTests.m|mm if indicated
+		* add Cocoa Testing Bundle target &lt;TestTarget&gt;[_C|P]Test /c/
+		* move test file and info.plist to OtherSources
+			* rename: test file &gt; RequiredCocoaTest.m, Info.plist -&gt; &lt;TestTarget&gt;_info.plist
 		* Build Settings
 			* Precompile Prefix Header: NO
 			* update path to Info.plist file
-			* replace &lt;TestTarget&gt;_(U|C|P)Tests.mm with new copy from template
+			* replace &lt;TestTarget&gt;[_C|P]Tests.mm with new copy from template
 		* add Run Script build phase:
 			* bash scripts: ./&lt;TargetName&gt;_install.sh &lt;TargetName&gt; ${CCDev} test
 			* ksh scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh "${SRCROOT}" &lt;TargetName&gt; test
 			* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
-		* add test files in folder &lt;TestTarget&gt;/_(U|C|P)Tests
-		* Schemes:Manage: add scheme &lt;TestTarget&gt;_(U|C|P)Tests; mark as shared; verify &lt;TestTarget&gt;_(U|C|P)Tests as a test for scheme &lt;TargetName&gt;
-		* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;_(U|C|P)Tests
+		* add test files in folder &lt;TestTarget&gt;/[_C|P]Tests
+		* Schemes:Manage: add scheme &lt;TestTarget&gt;[_C|P]Tests; mark as shared; verify &lt;TestTarget&gt;[_C|P]Tests as a test for scheme &lt;TargetName&gt;
+		* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;[_C|P]Tests
 </pre>
 
 <!-- @marker "Add Target Feature" -->
