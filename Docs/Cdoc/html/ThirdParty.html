@@ -5,65 +5,71 @@
 <head>
 	<title>ThirdParty</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
-	<style type="text/css">
-		table {
-			font-family: arial, sans-serif;
-			font-size: 10pt;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td, th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			padding: 8px;
-		}
-		h1, h2, h3, h4, h5, h6 {
-			font-family: Helvetica, sans-serif;
-		}
-
-		tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-	</style>
 </head>
 <body>
 <div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="History_Support.html#Contents">History</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
 <h1>ThirdParty</h1>
 
 <!-- @topicList "ThirdParty" "Contents" -->
-	<!-- @topicItem "ThirdParty Software and Versions" "#SoftwareAndVersions" "0" "" -->
+	<!-- @topicItem "ThirdParty Software and Versions" "#_SoftwareAndVersions" "0" "" -->
+		<!-- @topicItem "Required to build products" "#_RequiredToBuild" "1" "" -->
+			<!-- @topicItem "ASUnit" "#_ASUnit" "2" "AppleScript unit testing" -->
+			<!-- @topicItem "bats" "#_bats" "2" "Bash Automated Testing System" -->
+			<!-- @topicItem "bash-doxygen" "#_bash-doxygen" "2" "" -->
+			<!-- @topicItem "Doxygen" "#_Doxygen" "2" "" -->
+			<!-- @topicItem "Quex" "#_Quex" "2" "" -->
+			<!-- @topicItem "Rez" "#_Rez" "2" "" -->
+			<!-- @topicItem "Sharness" "#_Sharness" "2" "" -->
+		<!-- @topicGroup "" "10" -->
+		<!-- @topicItem "Other Tools Built from Source" "#_OtherTools" "1" "" -->
+			<!-- @topicItem "bashDB" "#_bashDB" "2" "" -->
+	<!-- @topicGroup "" "13" -->
+	<!-- @topicItem "ThirdParty Group Structure" "#_GroupStructure" "0" "" -->
 <!-- @/topicList -->
 
+<p>CocoaPods effectively manages Cocoa software on which are products depend.
+ThirdParty is a project group for tracking and installing software in other languages on which our development depends.</p>
+
 <!-- @marker "ThirdParty Software and Versions" -->
-<h4 id='SoftwareAndVersions'>ThirdParty Software and Versions</h4>
-<h5>Required to build products:</h5>
-<table><tr><th>title</th><th>source</th><th>active version</th><th>current version</th><th>purpose</th><th>docs</th><th>status</th></tr>
-	<tr><td>ASUnit</td>
+<h3 id='_SoftwareAndVersions'>ThirdParty Software and Versions</h3>
+<p>In addition to summarizing, these tables can facilitate tracking and maintaining up-to-date versions of software.</p>
+<!-- @marker "Required to build products:" -->
+<h5 id='_RequiredToBuild'>Required to build products:</h5>
+<div class="tableholder">
+<table class="tabl">
+	<tr><th>product</th>
+		<th>source</th>
+		<th>active version</th>
+		<th>current version</th>
+		<th>purpose</th>
+		<th>docs</th>
+		<th>status</th>
+	</tr>
+	<tr><td><a href="#_ASUnit">ASUnit</a></td>
 		<td><a href="https://github.com/lifepillar/ASUnit">github/lifepillar/ASUnit</a></td>
-		<td>2015-10-15</td>
-		<td>2015-10-15</td>
+		<td>4.0</td>
+		<td>4.0</td>
 		<td>AppleScript testing</td>
 		<td><a href="https://github.com/lifepillar/ASUnit">github/lifepillar/ASUnit</a></td>
-		<td>downloaded; soon</td>
+		<td>soon</td>
 	</tr>
-	<tr><td>Bash Automated Testing System (bats)</td>
+	<tr><td>Bash Automated Testing System (<a href="#_bats">bats</a>)</td>
 		<td><a href="https://github.com/sstephenson/bats">Bash Automated Testing System</a></td>
 		<td>0.4.0</td>
 		<td>0.4.0</td>
 		<td>shell testing</td>
 		<td><a href="https://github.com/sstephenson/bats">Bash Automated Testing System</a></td>
-		<td>probably Sharness instead</td>
+		<td>now</td>
 	</tr>
-	<tr><td>bash-doxygen</td>
+	<tr><td><a href="#_bash-doxygen">bash-doxygen</a></td>
 		<td><a href="https://github.com/Anvil/bash-doxygen">bash-doxygen</a></td>
 		<td>2016-06-23</td>
 		<td>2016-06-23</td>
 		<td>doxygen support for bash</td>
 		<td><a href="https://github.com/Anvil/bash-doxygen">bash-doxygen</a></td>
-		<td>downloaded; soon</td>
+		<td>soon</td>
 	</tr>
-	<tr><td>Doxygen</td>
+	<tr><td><a href="#_Doxygen">Doxygen</a></td>
 		<td><a href="https://github.com/doxygen/doxygen">Doxygen</a></td>
 		<td>1.8.11</td>
 		<td>1.8.12</td>
@@ -71,27 +77,52 @@
 		<td><a href="http://www.stack.nl/~dimitri/doxygen/">online docs</a>; <a href="https://github.com/doxygen/doxygen">GitHub repo</a> </td>
 		<td>using 1.8.11; 1.8.12 downloaded to install soon</td>
 	</tr>
-	<tr><td>Rez</td>
+	<tr><td><a href="#_Quex">Quex</a> </td>
+		<td><a href="https://sourceforge.net/p/quex/code/HEAD/tree/trunk/quex/code_base/">Quex</a></td>
+		<td>Quex 0.65.11</td>
+		<td>Quex 0.65.11</td>
+		<td>Lexical Analyzer Generator<br />generates C/C++</td>
+		<td><a href="https://sourceforge.net/p/quex/code/HEAD/tree/trunk/doc/">man page</a>,<br />
+			project contains docs to build</td>
+		<td>may use to help replace rez for reading Slates</td>
+	</tr>
+	<tr><td><a href="#_Rez">Rez</a></td>
 		<td><a href="https://github.com/HaikuArchives/Rez">Rez</a></td>
 		<td>2014-12-08</td>
 		<td>2014-12-08</td>
-		<td>resource compiler previously included with Xcode</td>
-		<td>source file "usage"; <a href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/Rez.1.html">Rez(1) Man Page</a> </td>
-		<td>downloaded; soon</td>
+		<td>deprecated Xcode<br />resource compiler</td>
+		<td>source file "usage"<br /><a href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/Rez.1.html">Rez(1) Man Page</a> </td>
+		<td>stopgap since rez is deprecated</td>
 	</tr>
-	<tr><td>Sharness</td>
+	<tr><td><a href="#_Sharness">Sharness</a></td>
 		<td><a href="https://github.com/chriscool/sharness">Sharness</a>, <a href="https://github.com/seveas/azuki/blob/master/test/sharness/API.md">Sharness API</a> </td>
 		<td>1.0.0</td>
 		<td>1.0.0</td>
 		<td>shell testing</td>
 		<td><a href="https://github.com/chriscool/sharness">Sharness</a></td>
-		<td>downloaded; now</td>
+		<td>no - use bats instead</td>
 	</tr>
 </table>
+</div>
 
-<h5>Other Tools Built from Source:</h5>
-<table><tr><th>title</th><th>source</th><th>active version</th><th>current version</th><th>purpose</th><th>docs</th><th>status</th></tr>
-	<tr><td>bashDB</td>
+<p class="blurb">Software used in building and testing products are included in Continuous Integration.
+Inclusion in Continuous Integration is optional for other tools.
+</p>
+
+<!-- @marker "Other Tools Built from Source:" -->
+<h5 id='_OtherTools'>Other Tools Built from Source:</h5>
+<div class="tableholder">
+<table class="tabl">
+	<tr>
+		<th>product</th>
+		<th>source</th>
+		<th>active version</th>
+		<th>current version</th>
+		<th>purpose</th>
+		<th>docs</th>
+		<th>status</th>
+	</tr>
+	<tr><td><a href="#_bashDB">bashDB</a></td>
 		<td><a href="http://bashdb.sourceforge.net">BASH debugger (SourceForge)</a></td>
 		<td>4.4-0.92</td>
 		<td>4.4-0.92</td>
@@ -100,6 +131,79 @@
 		<td>maybe</td>
 	</tr>
 </table>
+</div>
+
+<!-- @marker "ASUnit" -->
+<h4 id='_ASUnit'>ASUnit</h4><pre>
+	* probably needed fairly soon, at least to upgrade ValidateHTML process
+	* setup looks fairly easy
+	* see also <a href="http://www.mactech.com/articles/mactech/Vol.24/24.04/Test-DrivenDevelopmentUsingAppleScript/index.html">TDD Using ASUnit</a> (MacTech)
+</pre>
+
+<!-- @marker "bats" -->
+<h4 id='_bats'>bats</h4><pre>
+	* needed immediately to continue building code for installation
+</pre>
+
+<!-- @marker "bash-doxygen" -->
+<h4 id='_bash-doxygen'>bash-doxygen</h4><pre>
+	* generates a document to send to Doxygen
+	* needed soon to document Bash API
+	* also use this process to document task 'Upgrade ThirdParty Repository'
+</pre>
+
+<!-- @marker "Doxygen" -->
+<h4 id='_Doxygen'>Doxygen</h4><pre>
+	* in use for several years, but has a current installation bug
+	* after bug is fixed, upgrade from 1.8.11 &gt; 1.8.12, doocumenting process
+	* also soon extending with bash-doxygen to generate docs for bash
+</pre>
+
+<!-- @marker "Quex" -->
+<h4 id='_Quex'>Quex</h4><pre>
+	* lexical analysis for AccessorSlates, generated by this product,
+	may begin the process of compiling Slates for new system to replace rez
+</pre>
+
+<!-- @marker "Rez" -->
+<h4 id='_Rez'>Rez</h4><pre>
+	* our Slates have been compiled by Rez for many years using Build Cocoa Resources step in Xcode
+	* Rez is deprecated by Xcode, and
+	we could add more flexibility to our Slates if they had a more flexible format
+	* will ultimately be replaced
+</pre>
+
+<!-- @marker "Sharness" -->
+<h4 id='_Sharness'>Sharness</h4><pre>
+	* unix testing system that looked good at first
+	* however, when we tried to get it up and running, we ran into serious problems,
+	including dealing with Makefiles that appeared not to be Mac-compatible
+	* we will be using <a href="#_bats">bats</a>
+</pre>
+
+<!-- @marker "bashDB" -->
+<h4 id='_bashDB'>bashDB</h4><pre>
+	* appears to be best Bash debugger; source is huge
+	* given TDD and the trace option, we may not need it; apparently many developers do not use it
+</pre>
+
+<!-- @marker "ThirdParty Group Structure" -->
+<h3 id='_GroupStructure'>ThirdParty Group Structure</h3>
+<p>This structure is designed to isolate cloned projects with their own repositories into their own folders,
+	allowing for additional files to be placed in the outer folder.
+	It differs from our normal project structure in that the repository's project is inside its folder rather than next to it.</p>
+<pre>
+	* Support
+		* ThirdParty
+			* &lt;Product&gt; folder
+				* *placement inside folder allows for additional files, e.g. installers, to appear with product*
+				* &lt;Product&gt;.xcodeproj
+					* *contains cloned or forked repository from tool's host*
+					* *placed inside folder to isolate code that belongs to another repository*
+				* &lt;Product&gt;_install.sh
+				* additional files as needed
+			* ...
+</pre>
 
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
