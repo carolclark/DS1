@@ -28,7 +28,6 @@
 		6763D7F91A64568A00EC24A9 /* testU_sampletests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testU_sampletests.py; sourceTree = "<group>"; };
 		679013F01A3909F700F18C7A /* build.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = build.py; sourceTree = "<group>"; };
 		679013F31A390CB400F18C7A /* testBuild.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = testBuild.py; sourceTree = "<group>"; };
-		679120F119E0907F00B2AEDA /* Python_UTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Python_UTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6791210519E0929800B2AEDA /* Python_UTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Python_UTests-Info.plist"; sourceTree = "<group>"; };
 		6791210D19E0992500B2AEDA /* Python_UTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Python_UTests.m; sourceTree = "<group>"; };
 		6791211119E32B8600B2AEDA /* scm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = scm.py; sourceTree = "<group>"; };
@@ -65,7 +64,6 @@
 		679120F219E0907F00B2AEDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				679120F119E0907F00B2AEDA /* Python_UTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,7 +144,6 @@
 			);
 			name = Python_UTests;
 			productName = Python_UTests;
-			productReference = 679120F119E0907F00B2AEDA /* Python_UTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */

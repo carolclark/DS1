@@ -6,10 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		67CDC5E71A1EA82800C3BA9B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67CDC5E61A1EA82800C3BA9B /* XCTest.framework */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		67CDC5F11A1EA82800C3BA9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -63,8 +59,6 @@
 		67CDC5CF1A1D336800C3BA9B /* shunit2_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; name = shunit2_install.ksh; path = shunit2/shunit2_install.ksh; sourceTree = "<group>"; };
 		67CDC5D01A1D336800C3BA9B /* shunit2_ReadMe.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = shunit2_ReadMe.html; path = shunit2/shunit2_ReadMe.html; sourceTree = "<group>"; };
 		67CDC5DF1A1E9ADA00C3BA9B /* shunit2.fauxprod */ = {isa = PBXFileReference; lastKnownFileType = text; name = shunit2.fauxprod; path = ../../../Library/CCDev/build_output/Support/Developer/shunit2.fauxprod; sourceTree = "<group>"; };
-		67CDC5E41A1EA82800C3BA9B /* shunit2_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shunit2_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		67CDC5E61A1EA82800C3BA9B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +66,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67CDC5E71A1EA82800C3BA9B /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +80,6 @@
 				67652B4A1A23EB2D00ED252B /* shunit2_Tests */,
 				67652B4E1A23EB2D00ED252B /* shunit2-2.1.6 */,
 				67CDC5DE1A1E9A8800C3BA9B /* FauxProducts */,
-				67CDC5F61A1EAA1A00C3BA9B /* Products */,
 				67CDC5E51A1EA82800C3BA9B /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -206,18 +198,8 @@
 		67CDC5E51A1EA82800C3BA9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				67CDC5E61A1EA82800C3BA9B /* XCTest.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		67CDC5F61A1EAA1A00C3BA9B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				67CDC5E41A1EA82800C3BA9B /* shunit2_Tests.xctest */,
-			);
-			name = Products;
-			path = shunit2_Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +238,6 @@
 			);
 			name = shunit2_Tests;
 			productName = shunit2_Tests;
-			productReference = 67CDC5E41A1EA82800C3BA9B /* shunit2_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
