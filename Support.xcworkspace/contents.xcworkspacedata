@@ -26,6 +26,10 @@
    <Group
       location = "container:ThirdParty"
       name = "ThirdParty">
+      <Group
+         location = "container:"
+         name = "bats">
+      </Group>
       <FileRef
          location = "group:ThirdParty_ReadMe.html">
       </FileRef>

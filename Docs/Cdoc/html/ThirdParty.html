@@ -20,11 +20,15 @@
 			<!-- @topicItem "Quex" "#_Quex" "2" "" -->
 			<!-- @topicItem "Rez" "#_Rez" "2" "" -->
 			<!-- @topicItem "Sharness" "#_Sharness" "2" "" -->
-		<!-- @topicGroup "" "10" -->
+		<!-- @topicGroup "" "9" -->
 		<!-- @topicItem "Other Tools Built from Source" "#_OtherTools" "1" "" -->
 			<!-- @topicItem "bashDB" "#_bashDB" "2" "" -->
-	<!-- @topicGroup "" "13" -->
+	<!-- @topicGroup "" "12" -->
 	<!-- @topicItem "ThirdParty Group Structure" "#_GroupStructure" "0" "" -->
+	<!-- @topicItem "Tasks and Refactorings" "#_TasksAndRefactorings" "0" "" -->
+		<!-- @topicGroup "" "15" -->
+		<!-- @topicItem "Clone GitHub Repository" "#CloneGitHubRepository" "1" "" -->
+
 <!-- @/topicList -->
 
 <p>CocoaPods effectively manages Cocoa software on which are products depend.
@@ -205,7 +209,24 @@ Inclusion in Continuous Integration is optional for other tools.
 			* ...
 </pre>
 
+<!-- @marker "Tasks and Refactorings" -->
+<h3 id='_TasksAndRefactorings'>Tasks and Refactorings</h3>
 
+<!-- @marker "Clone GitHub Repository" -->
+<h4 id='CloneGitHubRepository'>Clone GitHub Repository</h4><pre>
+		* *Process is intended to create an active clone, and then enclose that clone inside an Xcode project*
+			That way  we can:*
+			* *isolate the code, which is from a different repository*
+			* *work with a repo that is separate from our own development projects*
+			* *add related files, such as installers, inside the folder but outside the project*
+			* *pull from the project on GitHub to update*
+			* *make pull request to repo if we have something to contribute*
+	* add folder inside ThirdParty for the new repo
+	* clone, as specified by GitHub for that repo, to the new folder
+	* create new Xcode project named after the repo; add group with same name; move in cloned repo
+</pre>
+
+<p><a href="http://stackoverflow.com/questions/6286571/are-git-forks-actually-git-clones">Are git forks actually git clones?</a> </p>
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
