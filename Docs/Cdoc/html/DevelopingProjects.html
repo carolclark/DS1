@@ -11,30 +11,20 @@
 <h1>Developing Projects</h1>
 
 <!-- @topicList "DevelopingProjects" "Contents" -->
-	<!-- @topicGroup "Standards and Conventions" "1" -->
-		<!-- @topicItem "Naming Conventions" "#NamingConventions" "0" "" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "Configuration" "4" -->
-		<!-- @topicItem "Xcode Project and Target Settings" "#pbxproj" "0" "" -->
-		<!-- @topicItem "Open XcodeProject in AppCode" "#OpenXcodeProjectInAppCode" "0" "" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "Refactorings and Tasks" "7" -->
-		<!-- @topicItem "Projects and Targets" "#Target_" "0" "" -->
-		<!-- @topicItem "Interface Builder" "#InterfaceBuilder" "0" "" -->
-		<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC" "0" "" -->
-	<!-- @topicSep -->
+	<!-- @topicItem "Naming Conventions" "#NamingConventions_" "0" "" -->
+	<!-- @topicItem "Xcode Project and Target Settings" "#pbxproj" "0" "" -->
+	<!-- @topicItem "Open XcodeProject in AppCode" "#OpenXcodeProjectInAppCode" "0" "" -->
+	<!-- @topicItem "Test Types and Suffixes" "#TestTypesAndSuffixes_" "0" "" -->
+	<!-- @topicItem "Project Directory Structure" "#ProjectDirectoryStructure_" "0" "" -->
 	<!-- @topicItem "Troubleshooting" "#Troubleshooting_" "0" "" -->
-
+	<!-- @topicGroup "" "7" -->
+	<!-- @topicItem "Refactorings and Tasks" "#RefactoringsAndTasks_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "OLD Refactorings and Tasks" "#OLDRefactoringsAndTasks_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Standards and Conventions" -->
-<h2>Standards and Conventions</h2>
-
 <!-- @marker "Naming Conventions" -->
-<h3>Naming Conventions</h3>
-	<!-- @topicList "Naming Conventions" "NamingConventions" -->
-		<!-- @topicItem "Controller and Delegate Classes" "#ControllerNDelegateClasses" "0" "" -->
-	<!-- @/topicList -->
+<h3 id='NamingConventions_'>Naming Conventions</h3>
 
 <!-- @marker "Controller and Delegate Classes" -->
 <h4 id='ControllerNDelegateClasses'>Controller and Delegate Classes</h4><ul>
@@ -43,19 +33,23 @@
 	<li>Window and View Controller classes: name &lt;Name&gt;WindowC, &lt;Name&gt;ViewC, &lt;Name&gt;SheetC and so on.</li>
 </ul>
 
+<!-- @marker "Test Types and Suffixes" -->
+<h4 id='TestTypesAndSuffixes_'>Test Types and Suffixes</h4>
+<p class="dq"><em>We might not need both Acceptance and Integration tests.</em></p>
+<dl>
+	<dt>Unit Tests (*_UTest)</dt><dd>test unit and close collaborators only; other collaborators are mocked or otherwise substituted for</dd>
+	<dt>Functional Tests (*_FTest)</dt><dd>test functionality of a group of related classes</dd>
+	<dt>Acceptance Tests(*_ATest)</dt><dd>verify that product's functional requirements are met</dd>
+	<dt>Integration Tests (*_ITest)</dt><dd>test scenarios of the software (eg. end-to-end)</dd>
+	<dt>Performance Tests (*_PTest)</dt><dd>use comparitive timing to track performance of operations</dd>
+	<dt>Xcode Tests (*_XTest)</dt><dd>specialized Xcode target type to test aspects of a running Cocoa application</dd>
+</dl>
+
 <!-- @marker "Xcode Project and Target Settings" -->
 <h3 id='pbxproj'>Xcode Project and Target Settings</h3><ul>
 	<li><strong>Project</strong><ul>
 		<li>start with an empty project and add targets to it</li>
 		<li><strong>ProjectName</strong> for generic project, use Build&lt;ProjectName&gt;</li>
-		<li class='depr'><strong>Source folder</strong> support Source folder that can be shared among multiple projects<ul>
-			<li>USER_HEADER_SEARCH_PATHS = ${SRCROOT}/Source/**</li>
-		</ul></li>
-		<li class='depr'><strong>initial target:</strong> override Xcode's default behavior to name initial target with project name<ul>
-			<li>rename the target's product and its folder inside &lt;TargetName&gt;Build/&lt;</li>
-			<li>INFOPLIST_FILE = &lt;TargetName&gt;/&lt;TargetName&gt;-Info.plist</li>
-			<li>GCC_PREFIX_HEADER = &lt;TargetName&gt;/&lt;TargetName&gt;-Prefix.pch</li>
-		</ul></li>
 	</ul></li>
 	<li><strong>Schemes</strong> mark all schemes "shared"</li>
 	<li><strong>Targets</strong><ul>
@@ -85,22 +79,168 @@
 	<li>File &gt; Open...; select folder for existing Xcode project</li>
 </ul>
 
+<!-- @marker "Project Directory Structure" -->
+<h3 id='ProjectDirectoryStructure_'>Project Directory Structure</h3>
+	<h4 id="CocoaApplicationDirectoryStructure_">Cocoa Application</h4><ul>
+		<li>&lt;ProjectName&gt;<ul>
+			<li>&lt;ProjectName&gt;<ul>
+				<li>Classes<ul>
+					<li>AppDelegate</li>
+					<li>Controllers</li>
+					<li>Models</li>
+					<li>Helpers</li>
+				</ul></li>
+				<li>OtherSources<ul>
+					<li>&lt;ProjectName&gt;-main.m</li>
+					<li>Plists (for all targets)</li>
+				</ul></li>
+				<li>Resources (for all targets)<ul>
+					<li>Images.assets</li>
+					<li>Nibs<ul>
+						<li>Base.lproj</li>
+						<li>[ *-infoPlist.strings, Credits.rtf ]</li>
+					</ul></li>
+					<li><em>add folders for other resource types as indicated</em></li>
+				</ul></li>
+			</ul></li>
+			<li>&lt;ProjectName&gt;LongTests<ul>
+				<li>AppDelegate</li>
+				<li>... <em>mirror Project structure</em></li>
+			</ul></li>
+			<li>&lt;ProjectName&gt;Tests<ul>
+				<li>... <em>mirror Project structure</em></li>
+			</ul></li>
+			<li>&lt;ProjectName&gt;_ReadMe.html</li>
+			<li>&lt;ProjectName&gt;.xcodeproj</li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "Troubleshooting" -->
+<h3 id='Troubleshooting_'>Troubleshooting</h3><ul>
+	<li><a href="http://lists.apple.com/archives/Xcode-users/2008/Oct/msg00569.html">warning: no debug symbols in executable (-arch i386)</a> </li>
+</ul>
+
 <!-- @marker "Refactorings and Tasks" -->
 <h2>Refactorings and Tasks</h2>
+<!-- @topicList "Refactorings and Tasks" "RefactoringsAndTasks_" -->
+	<!-- @topicItem "New Cocoa Project" "#NewCocoaProject_" "0" "" -->
+	<!-- @topicItem "Add Test Target" "#AddTestTarget_" "0" "" -->
+	<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
+	<!-- @topicItem "Rename Target" "#RenameTarget_" "0" "" -->
+<!-- @/topicList -->
 
-<!-- @marker "Targets and Build Phases" -->
-<h3>Targets and Build Phases</h3>
+<p>In Xcode, all tests are handled by a Cocoa Test target, which provides Xcode's framework for running the tests and reporting their results.
+	In general, all targets are therefore represented in Xcode by a Cocoa project.</p>
 
-<!-- @topicList "Projects and Targets" "Target_" -->
+<!-- @marker "New Cocoa Project" -->
+<h4 id='NewCocoaProject_'>New Cocoa Project</h4><ul>
+	<li>create Project from indicated template</li>
+	<li>T/A: test (command-U); add files to repo</li>
+	<li>move project file next to its folder; T/A</li>
+	<li>customize project structure<ul>
+		<li>Xcode: move files out of Supporting Files folder</li>
+		<li>Finder: add folders to create <a href="#ProjectDirectoryStructure_">Project Directory Structure</a> for existing targets</li>
+		<li>Xcode: verify Xcode file paths to new folders correct; move project files into their intended folders</li>
+		<li>Xcode BuildSettings: prepend "&lt;TargetName&gt;/" to info.plist paths</li>
+	</ul></li>
+	<li>T/A</li>
+	<li>rename Test target (folder, target, test file) to LongTests:<ul>
+		<li class="blurb">target is set up to run Xcode tests, which require running application</li>
+		<li>for both targets: info.plist =&gt; &lt;TargetName&gt;-info.plist</li>
+		<li>main.m =&gt; &lt;TargetName&gt;-main.m =&gt;</li>
+		<li>update Build Settings for paths to Info.plists; rename Tests target to LongTests</li>
+		<li>Xcode schema: view scheme &lt;TargetName&gt; with its tests; add test target to schemes; mark all schema shared</li>
+	</ul></li>
+	<li>test</li>
+	<li>replace AppDelegate<ul>
+		<li>new files &lt;Project&gt;/Classes/AppDelegate/&lt;Project&gt;App from Cocoa Application Delegate template<ul>
+			<li>check against supplied files AppDelegate, updating template if indicated</li>
+		</ul></li>
+		<li>remove files AppDelegate</li>
+		<li>MainMenu.xib<ul>
+			<li>update name and class of Application Delegate object to &lt;Project&gt;App</li>
+			<li>set Application's delegate outlet to the renamed file</li>
+		</ul></li>
+	</ul></li>
+	<li>test</li>
+	<li>add file &lt;ProjectName&gt;/&lt;ProjectName&gt;_ReadMe.html from template</li>
+	<li>apply <a href="#AddTestTarget_">Add Test Target</a> to add &lt;ProjectName&gt;Tests</li>
+	<li>test all</li>
+</ul>
+
+<!-- @marker "Add Test Target" -->
+<h4 id='AddTestTarget_'>Add Test Target</h4><ul>
+	<li class="blurb">In Xcode, all tests are handled by a Cocoa Test target, which provides Xcode's framework for running the tests and reporting their results.
+	In general, all targets are therefore represented in Xcode by a Cocoa target.</li>
+	<li>add a new target &lt;TestTarget&gt;Tests from Cocoa Unit Testing Bundle template</li>
+	<li>Reorganize Sources<ul>
+		<li>apply <a href="#ReorganizeSourcesOLD">Reorganize Sources</a></li>
+		<li>apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a></li>
+	</ul></li>
+	<li>Build Settings<ul>
+		<li>update path to Info.plist file</li>
+		<li>for pure Objective-C targets: Precompile Prefix Header: no; remove Precompiled Header path</li>
+		<li>for App Tests: set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
+	</ul></li>
+	<li>add to aggregate target All&lt;ProjectName&gt;Tests, and to All&lt;RepoName&gt;Tests if indicated</li>
+	<li>Test Class<ul>
+		<li>rename supplied file &lt;TestTarget&gt;[_C|P]Tests</li>
+		<li>new file &lt;TestTarget&gt;[_C|P]Tests from template<ul>
+			<li>check against supplied file, updating template if indicated</li>
+			<li>leave in or add a dummy test, or, for CTests, add test case testAppDelegate (testAppDelegate#)</li>
+		</ul></li>
+		<li>delete supplied file</li>
+	</ul></li>
+	<li>Schemes<ul>
+		<li>mark scheme "shared"</li>
+		<li>add to &lt;TestTarget&gt; scheme's Test specification</li>
+	</ul></li>
+	<li>set up debugging<ul>
+		<li>add Exception breakpoint with action Debugger Command <span class='mono'>log message</span></li>
+		<li>add Symbolic breakpoint at -[XCTestCase failWithException:]</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Xcode Project Mirrors Files" -->
+<h4 id='XcodeProjectMirrorsFiles'>Xcode Project Mirrors Files</h4><pre>
+	* in Xcode Project
+		* remove existing source groups/folders
+		* add new folders to Xcode project, recursively creating groups for every subfolder
+		* BuildSettings: update paths to plists as applicable
+</pre>
+
+<!-- @marker "Rename Target" -->
+<h4 id='RenameTarget_'>Rename Target</h4><pre>
+	* rename target, its corresponding folder, and its Xcode group
+	* for Cocoa targets, also:
+		* update pointers to plists in BuildSettings, renaming if they contain test target name
+	* rename scheme(s)
+	* test new scheme(s)
+	* close and reopen Xcode project
+</pre>
+
+
+<!-- @marker "OLD Refactorings and Tasks" -->
+<div style="background-color:lightslategray;">
+<h2>OLD Refactorings and Tasks</h2>
+	<!-- @topicList "OLD Refactorings and Tasks" "OLDRefactoringsAndTasks_" -->
+		<!-- @topicItem "Projects and Targets" "#Target_OLD" "0" "" -->
+		<!-- @topicItem "Interface Builder" "#InterfaceBuilder_OLD" "0" "" -->
+		<!-- @topicItem "Porting C++ to Objective-C" "#PortingCppToObjC_OLD" "0" "" -->
+	<!-- @/topicList -->
+
+<h3>Targets and Build Phases (OLD)</h3>
+
+<!-- @topicList "Projects and Targets" "Target_OLD" -->
 	<!-- @topicGroup "Projects" "1" -->
-		<!-- @topicItem "New Cocoa Project" "#NewCocoaProject" "0" "" -->
+		<!-- @topicItem "New Cocoa Project" "#NewCocoaProjectOLD" "0" "" -->
 		<!-- @topicItem "New Docs Project" "#NewDocsProject" "0" "" -->
 		<!-- @topicItem "New Scripted Build Project" "#NewScriptedBuildProject" "0" "" -->
-		<!-- @topicItem "Reorganize Sources" "#ReorganizeSources" "0" "" -->
-		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
+		<!-- @topicItem "Reorganize Sources" "#ReorganizeSourcesOLD" "0" "" -->
+		<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles_OLD" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Targets" "8" -->
-		<!-- @topicItem "Add Cocoa Test Target" "#AddCocoaTestTarget" "0" "" -->
+		<!-- @topicItem "Add Test Target" "#AddCocoaTestTarget_OLD" "0" "" -->
 		<!-- @topicItem "Add Scripted Build Test Target" "#AddScriptedBuildTestTarget" "0" "for non-Cocoa targets" -->
 		<!-- @topicItem "Add Target Feature" "#AddTargetFeature" "0" "" -->
 		<!-- @topicItem "New AppleScript Project" "#NewAppleScriptProject" "0" "" -->
@@ -108,17 +248,17 @@
 		<!-- @topicItem "Promote Build Phase to Target" "#PromoteRunPhaseToTarget" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Target Tasks" "16" -->
-		<!-- @topicItem "Rename Target" "#RenameTarget" "0" "" -->
+		<!-- @topicItem "Rename Target OLD" "#RenameTargetOLD" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "New Cocoa Project" -->
-<h4 id='NewCocoaProject'>New Cocoa Project</h4><pre>
+<h4 id='NewCocoaProjectOLD'>New Cocoa Project OLD</h4><pre>
 	* create Project from indicated template
 		* Use Base Internationalization
 		* checkin (tests currently fail due to unimplemented test)
 	* customize project structure
 		* reorganize Application Target folder &lt;ApplicationName&gt;
-			* apply <a href="#ReorganizeSources">Reorganize Sources</a>
+			* apply <a href="#ReorganizeSourcesOLD">Reorganize Sources</a>
 			* apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a>
 			* update Build Settings for paths to Prefix Header, Info.plist
 		* replace AppDelegate
@@ -128,8 +268,8 @@
 			* MainMenu.xib
 				* update name and class of Application Delegate object
 				* set Application's delegate outlet to the renamed &lt;Target&gt;App
-	* apply <a href="#AddCocoaTestTarget">Add Cocoa Test Target</a> to edit Unit Test target
-	* apply <a href="#AddCocoaTestTarget">Add Cocoa Test Target</a> to add Unit Test target &lt;ApplicationName&gt;Tests
+	* apply <a href="#AddCocoaTestTarget_OLD">Add Cocoa Test Target</a> to edit Unit Test target
+	* apply <a href="#AddCocoaTestTarget_OLD">Add Cocoa Test Target</a> to add Unit Test target &lt;ApplicationName&gt;Tests
 	* apply <a href="#ReplaceDefaultWindow"> to Replace Default Window</a>
 </pre>
 
@@ -179,12 +319,12 @@
 					* *this item can now be used to set a dependency for another build using its Copy Build Resources build phase*
 		* <span class='em'>Target &lt;TargetName&gt;Tests</span>
 			* <a href="#AddScriptedBuildTestTarget">Add Scripted Build Test Target</a>
-		* <a href="DevelopingProjects.html#OpenProjectInAppCode">OpenProjectInAppCode</a>
+		* <a href="DevelopingProjects.html#OpenXcodeProjectInAppCode">OpenXcodeProjectInAppCode</a>
 			* add and edit &lt;TargetName&gt;_ReadMe.html; \c\
 </pre>
 
 <!-- @marker "Reorganize Sources" -->
-<h4 id='ReorganizeSources'>Reorganize Sources</h4><pre>
+<h4 id='ReorganizeSourcesOLD'>Reorganize Sources</h4><pre>
 	* Reorganize files into folders:
 		* move project next to its folder
 		* Primary Sources:
@@ -198,7 +338,7 @@
 </pre>
 
 <!-- @marker "Xcode Project Mirrors Files" -->
-<h4 id='XcodeProjectMirrorsFiles'>Xcode Project Mirrors Files</h4><pre>
+<h4 id='XcodeProjectMirrorsFiles_OLD'>Xcode Project Mirrors Files OLD</h4><pre>
 	* *organize source files and resources in folders and mirror them in Xcode*
 		* *see <a href="http://akosma.com/2009/07/28/code-organization-in-xcode-projects/">Code Organization in Xcode Projects</a>*
 	* in Finder: organize source files and resources in folders
@@ -206,19 +346,19 @@
 		* remove existing groups and/or targets, if any, removing references only
 		* add new folder(s) to Xcode project, recursively creating groups for every subfolder
 		* remove any added plists from their targets
-		* BuildSettings: upddate path to plist if applicable
+		* BuildSettings: update path to plist if applicable
 </pre>
 
 <!-- @marker "Add Cocoa Test Target" -->
-<h4 id='AddCocoaTestTarget'>Add Cocoa Test Target</h4><ul>
+<h4 id='AddCocoaTestTarget_OLD'>Add Cocoa Test Target</h4><ul>
 	<li>create or edit test target (&lt;TestTarget&gt;[_C|P]Tests)<ul>
-		<li>for existing target from Cocoa Application template: apply <a href="#RenameTarget">Rename Target</a></li>
+		<li>for existing test target from Cocoa Application template: apply <a href="#RenameTargetOLD">Rename Target OLD</a></li>
 		<li>else: add a new target from Cocoa Unit Testing Bundle template</li>
 	</ul></li>
 	<li>Reorganize Sources<ul>
 		<li>for pure Objective-C targets, remove pch file</li>
-		<li>apply <a href="#ReorganizeSources">Reorganize Sources</a></li>
-		<li>apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a></li>
+		<li>apply <a href="#ReorganizeSourcesOLD">Reorganize Sources</a></li>
+		<li>apply <a href="#XcodeProjectMirrorsFiles_OLD">Xcode Project Mirrors Files</a></li>
 	</ul></li>
 	<li>Build Settings<ul>
 		<li>update path to Info.plist file</li>
@@ -315,9 +455,10 @@
 		<li>in the original target, remove the Run Script build phase that has been replaced</li>
 	</ul>
 
-<!-- @marker "RenameTarget" -->
-<h4 id='RenameTarget'>Rename Target</h4><pre>
-	* rename target, its corresponding folder, and its Xcode group
+<!-- @marker "RenameTargetOLD" -->
+<h4 id='RenameTargetOLD'>Rename Target</h4><pre>
+	* rename target
+	, its corresponding folder, and its Xcode group
 	* for Cocoa targets, also:
 		* [rename *-info.plist and *.pch files; update their pointers in Settings]
 		* edit Settings: Bundle Loader for AppTest target
@@ -327,8 +468,8 @@
 </pre>
 
 <!-- @marker "Interface Builder" -->
-<h2>Interface Builder</h2>
-<!-- @topicList "Interface Builder" "InterfaceBuilder" -->
+<h2>Interface Builder (OLD)</h2>
+<!-- @topicList "Interface Builder OLD" "InterfaceBuilder_OLD" -->
 	<!-- @topicItem "Remove IB Outlet" "#RemoveIBOutlet" "0" "" -->
 	<!-- @topicItem "Rename IB Outlet" "#RenameIBOutlet" "0" "" -->
 	<!-- @topicItem "Rename IB Object" "#RenameIBObject" "0" "" -->
@@ -439,9 +580,9 @@
 </ul>
 
 <!-- @marker "Porting C++ to Objective-C" -->
-<h2>Porting C++ to Objective-C</h2>
+<h2>Porting C++ to Objective-C (OLD)</h2>
 
-<!-- @topicList "Porting C++ to Objective-C" "PortingCppToObjC" -->
+<!-- @topicList "Porting C++ to Objective-C" "PortingCppToObjC_OLD" -->
 	<!-- @topicItem "Porting Overview" "#PortingOverview" "0" "" -->
 		<!-- @topicItem "Porting: Naming Conventions" "#PortingNamingConventions" "1" "" -->
 	<!-- @topicGroup "" "3" -->
@@ -512,12 +653,7 @@
 	<li>create new empty files &lt;Class&gt;.h, &lt;Class&gt;Test.mm/h; move starter code into the new files</li>
 	<li>add new files to project and relevant targets; compile and test</li>
 </ul>
-
-<!-- @marker "Troubleshooting" -->
-<h2 id='Troubleshooting_'>Troubleshooting</h2><ul>
-	<li><a href="http://lists.apple.com/archives/Xcode-users/2008/Oct/msg00569.html">warning: no debug symbols in executable (-arch i386)</a> </li>
-</ul>
-
+</div>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

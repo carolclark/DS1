@@ -20,13 +20,15 @@
 			<!-- @topicItem "Quex" "#_Quex" "2" "" -->
 			<!-- @topicItem "Rez" "#_Rez" "2" "" -->
 			<!-- @topicItem "Sharness" "#_Sharness" "2" "" -->
-		<!-- @topicGroup "" "9" -->
+			<!-- @topicItem "shunit2" "#_shunit2" "2" "" -->
+			<!-- @topicItem "Catch" "#_Catch" "0" "" -->
+		<!-- @topicGroup "" "11" -->
 		<!-- @topicItem "Other Tools Built from Source" "#_OtherTools" "1" "" -->
 			<!-- @topicItem "bashDB" "#_bashDB" "2" "" -->
-	<!-- @topicGroup "" "12" -->
+	<!-- @topicGroup "" "14" -->
 	<!-- @topicItem "ThirdParty Group Structure" "#_GroupStructure" "0" "" -->
 	<!-- @topicItem "Tasks and Refactorings" "#_TasksAndRefactorings" "0" "" -->
-		<!-- @topicGroup "" "15" -->
+		<!-- @topicGroup "" "17" -->
 		<!-- @topicItem "Clone GitHub Repository" "#CloneGitHubRepository" "1" "" -->
 
 <!-- @/topicList -->
@@ -73,6 +75,14 @@ ThirdParty is a project group for tracking and installing software in other lang
 		<td><a href="https://github.com/Anvil/bash-doxygen">bash-doxygen</a></td>
 		<td>soon</td>
 	</tr>
+	<tr><td><a href="#_Catch">Catch</a></td>
+		<td><a href="https://github.com/philsquared/Catch/blob/master/docs/tutorial.md">Catch</a></td>
+		<td>1.5.7</td>
+		<td>1.5.7</td>
+		<td>C++ testing</td>
+		<td><a href="https://github.com/philsquared/Catch/blob/master/docs/tutorial.md">Catch</a></td>
+		<td>for Accessor code</td>
+	</tr>
 	<tr><td><a href="#_Doxygen">Doxygen</a></td>
 		<td><a href="https://github.com/doxygen/doxygen">Doxygen</a></td>
 		<td>1.8.11</td>
@@ -105,6 +115,14 @@ ThirdParty is a project group for tracking and installing software in other lang
 		<td>shell testing</td>
 		<td><a href="https://github.com/chriscool/sharness">Sharness</a></td>
 		<td>no - use bats instead</td>
+	</tr>
+	<tr><td><a href="#_shunit2">shunit2</a></td>
+		<td><a href="https://github.com/zandev/shunit2">shunit2</a></td>
+		<td>2.1.6</td>
+		<td>2.1.6</td>
+		<td>shell testing</td>
+		<td><a href="https://github.com/zandev/shunit2">shunit2</a></td>
+		<td>in use; phasing out</td>
 	</tr>
 </table>
 </div>
@@ -147,6 +165,7 @@ Inclusion in Continuous Integration is optional for other tools.
 <!-- @marker "bats" -->
 <h4 id='_bats'>bats</h4><pre>
 	* needed immediately to continue building code for installation
+	* BDD helper: native
 </pre>
 
 <!-- @marker "bash-doxygen" -->
@@ -155,6 +174,12 @@ Inclusion in Continuous Integration is optional for other tools.
 	* needed soon to document Bash API
 	* also use this process to document task 'Upgrade ThirdParty Repository'
 </pre>
+
+<!-- @marker "Catch" -->
+<h4 id='_Catch'>Catch</h4><pre>
+	* BDD helper: gherkin
+</pre>
+
 
 <!-- @marker "Doxygen" -->
 <h4 id='_Doxygen'>Doxygen</h4><pre>
@@ -184,6 +209,18 @@ Inclusion in Continuous Integration is optional for other tools.
 	including dealing with Makefiles that appeared not to be Mac-compatible
 	* we will be using <a href="#_bats">bats</a>
 </pre>
+
+<!-- @marker "shunit2" -->
+<h4 id='_shunit2'>shunit2</h4><pre>
+	* we have been using this for several years, but it:
+		* does not return a nonzero value on test failure
+		* does not produce output compatible with TeamCity
+		* xUnit style does not fit shell scripting well
+		* appears not to be in active development
+	* we will be using <a href="#_bats">bats</a>for new development,
+	and gradually transferring existing code
+</pre>
+
 
 <!-- @marker "bashDB" -->
 <h4 id='_bashDB'>bashDB</h4><pre>

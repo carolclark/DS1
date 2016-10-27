@@ -4,6 +4,8 @@
       <env name="DEV" value="${HOME}/Dev" />
       <env name="CCDev" value="${HOME}/Library/CCDev" />
     </envs>
-    <method />
+    <method>
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="shunit2" run_configuration_type="AppleRunConfiguration" />
+    </method>
   </configuration>
 </component>
