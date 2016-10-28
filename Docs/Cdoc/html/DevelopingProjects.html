@@ -124,6 +124,7 @@
 <h2>Refactorings and Tasks</h2>
 <!-- @topicList "Refactorings and Tasks" "RefactoringsAndTasks_" -->
 	<!-- @topicItem "New Cocoa Project" "#NewCocoaProject_" "0" "" -->
+	<!-- @topicItem "New Third Party Project" "#NewThirdPartyProject_" "0" "" -->
 	<!-- @topicItem "Add Test Target" "#AddTestTarget_" "0" "" -->
 	<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
 	<!-- @topicItem "Rename Target" "#RenameTarget_" "0" "" -->
@@ -135,13 +136,18 @@
 <!-- @marker "New Cocoa Project" -->
 <h4 id='NewCocoaProject_'>New Cocoa Project</h4><ul>
 	<li>create Project from indicated template</li>
-	<li>T/A: test (command-U); add files to repo</li>
+	<li><strong>T/A:</strong> test (command-U); add files to repo</li>
 	<li>move project file next to its folder; T/A</li>
-	<li>customize project structure<ul>
-		<li>Xcode: move files out of Supporting Files folder</li>
-		<li>Finder: add folders to create <a href="#ProjectDirectoryStructure_">Project Directory Structure</a> for existing targets</li>
-		<li>Xcode: verify Xcode file paths to new folders correct; move project files into their intended folders</li>
-		<li>Xcode BuildSettings: prepend "&lt;TargetName&gt;/" to info.plist paths</li>
+	<li>Customize Target Directory Structure<ul>
+		<li>Supporting Files folder:<ul>
+			<li>Xcode: move files out of Supporting Files folder; delete empty folder</li>
+		</ul></li>
+		<li>Create New Directory Structure<ul>
+			<li>Finder: add folders to create <a href="#ProjectDirectoryStructure_">Project Directory Structure</a> for target</li>
+			<li>Xcode: add new folders to Xcode; verify Xcode has correct file paths for new folders</li>
+			<li>Xcode: move project files into their intended folders</li>
+			<li>Xcode BuildSettings: prepend "&lt;TargetName&gt;/" to info.plist paths</li>
+		</ul></li>
 	</ul></li>
 	<li>T/A</li>
 	<li>rename Test target (folder, target, test file) to LongTests:<ul>
@@ -168,11 +174,25 @@
 	<li>test all</li>
 </ul>
 
+<!-- @marker "New Third Party Project" -->
+<h4 id='NewThirdPartyProject_'>New Third Party Project</h4><ul>
+	<li class="blurb">A Third-party folder normally contains two folders, each with its own Xcode project<ul>
+		<li>Project &lt;ProjectName&gt;Sources contains the third-party source, normally cloned source with its own git repo.</li>
+		<li>Project &lt;ProjectName&gt;Support contains supporting files such as for installation and testing.
+			Its files are normally added to the git repository of the enclosing top-level project or workspace.</li>
+	</ul></li>
+	<li>Third-Party Sources<ul>
+		<li>create empty project &lt;ProjectName&gt;Sources</li>
+		<li>clone the third-party source into the same folder as the Xcode project</li>
+		<li>add the cloned sources to the empty Xcode project</li>
+	</ul></li>
+</ul>
+
 <!-- @marker "Add Test Target" -->
 <h4 id='AddTestTarget_'>Add Test Target</h4><ul>
 	<li class="blurb">In Xcode, all tests are handled by a Cocoa Test target, which provides Xcode's framework for running the tests and reporting their results.
 	In general, all targets are therefore represented in Xcode by a Cocoa target.</li>
-	<li>add a new target &lt;TestTarget&gt;Tests from Cocoa Unit Testing Bundle template</li>
+	<li>add a new target &lt;TestTarget&gt;Tests from Cocoa Testing Bundle template</li>
 	<li>Reorganize Sources<ul>
 		<li>apply <a href="#ReorganizeSourcesOLD">Reorganize Sources</a></li>
 		<li>apply <a href="#XcodeProjectMirrorsFiles">Xcode Project Mirrors Files</a></li>
@@ -180,12 +200,13 @@
 	<li>Build Settings<ul>
 		<li>update path to Info.plist file</li>
 		<li>for pure Objective-C targets: Precompile Prefix Header: no; remove Precompiled Header path</li>
-		<li>for App Tests: set Build Settings: BUNDLE_LOADER: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;; TEST_HOST: $(BUNDLE_LOADER)</li>
+		<li>for App Tests: set Build Settings: TEST_HOST: path to application executable; BUNDLE_LOADER: $(TEST_HOST)<ul>
+			<li>TEST_HOST: $(BUILT_PRODUCTS_DIR)/&lt;Target&gt;.app/Contents/MacOS/&lt;Target&gt;</li>
+		</ul></li>
 	</ul></li>
-	<li>add to aggregate target All&lt;ProjectName&gt;Tests, and to All&lt;RepoName&gt;Tests if indicated</li>
 	<li>Test Class<ul>
-		<li>rename supplied file &lt;TestTarget&gt;[_C|P]Tests</li>
-		<li>new file &lt;TestTarget&gt;[_C|P]Tests from template<ul>
+		<li>rename supplied file &lt;TestTarget&gt;_&lt;TType&gt;Tests</li>
+		<li>new file &lt;TestTarget&gt;_&lt;TType&gt;Tests from template<ul>
 			<li>check against supplied file, updating template if indicated</li>
 			<li>leave in or add a dummy test, or, for CTests, add test case testAppDelegate (testAppDelegate#)</li>
 		</ul></li>
