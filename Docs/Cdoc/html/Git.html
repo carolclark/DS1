@@ -66,18 +66,18 @@
 
 <!-- @marker "Create Bare Repository" -->
 <h4 id='tsk_CreateBareRepository'>Create Bare Repository</h4><ul>
-	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/gitrep/&lt;ProjectName&gt;; https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;Remote)</li>
+	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/&lt;ProjectName&gt;)</li>
 	<li class='mono'>mkdir -p ${path}; cd ${path}</li>
 	<li class='mono'>git init --bare</li>
 </ul>
 
 <!-- @marker "Fetch Working Copy of Repository" -->
 <h4 id='FetchWorkingCopy'>Fetch Working Copy of Repository</h4><ul>
-	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
-		<li><strong>source repository:</strong>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
-		<li><strong>name:</strong> &lt;ProjectName&gt;</li>
-		<li><strong>save at:</strong> ~/Dev/&lt;ProjectName&gt;</li>
-	</ul></li>
+	<li><strong>Finder</strong>: add folder for new project, eg. ~/Dev/Support/ThirdParty/&lt;repoName&gt;</li>
+	<li><strong>Xcode</strong>: add folder just created; add project &lt;repoName&gt;[_Source] to new folder</li>
+	<li><strong>github &gt; repo</strong>: select 'Clone'; copy repo path</li>
+	<li><strong>Terminal</strong>: cd to target folder, eg. &lt;repoName&gt;[_Source]; git clone &lt;repoPath&gt;</li>
+	<li><strong>Xcode</strong>: add new files to their Xcode project</li>
 </ul>
 
 <!-- @marker "Create New Repository" -->

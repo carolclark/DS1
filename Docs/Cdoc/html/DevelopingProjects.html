@@ -62,7 +62,7 @@
 		</ul></li>
 		<li><strong>Script targets</strong> Bundle targets; remove all template build phases except Target Dependencies; delete .pch file; add Run Script build phase<ul>
 			<li><strong>Cdoc</strong> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Cdoc $(ACTION)</span></li>
-			<li><strong>Doxygen</strong> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Doxygend $(ACTION)</span></li>
+			<li><strong>Doxygen</strong> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Doxygen $(ACTION)</span></li>
 		</ul></li>
 		<li><strong>InHouse</strong> products installed for InHouse use<ul>
 			<li><strong>Product</strong> set installation location for the target to be istalled<ul>
@@ -125,7 +125,7 @@
 <!-- @topicList "Refactorings and Tasks" "RefactoringsAndTasks_" -->
 	<!-- @topicItem "New Cocoa Project" "#NewCocoaProject_" "0" "" -->
 	<!-- @topicItem "New Third Party Project" "#NewThirdPartyProject_" "0" "" -->
-	<!-- @topicItem "Add Test Target" "#AddTestTarget_" "0" "" -->
+	<!-- @topicItem "Add Xcode Test Target" "#AddXcodeTestTarget_" "0" "" -->
 	<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
 	<!-- @topicItem "Rename Target" "#RenameTarget_" "0" "" -->
 <!-- @/topicList -->
@@ -155,6 +155,7 @@
 		<li>for both targets: info.plist =&gt; &lt;TargetName&gt;-info.plist</li>
 		<li>main.m =&gt; &lt;TargetName&gt;-main.m =&gt;</li>
 		<li>update Build Settings for paths to Info.plists; rename Tests target to LongTests</li>
+		<li>set 'Preserve Private External Symbols' to 'NO'</li>
 		<li>Xcode schema: view scheme &lt;TargetName&gt; with its tests; add test target to schemes; mark all schema shared</li>
 	</ul></li>
 	<li>test</li>
@@ -170,26 +171,27 @@
 	</ul></li>
 	<li>test</li>
 	<li>add file &lt;ProjectName&gt;/&lt;ProjectName&gt;_ReadMe.html from template</li>
-	<li>apply <a href="#AddTestTarget_">Add Test Target</a> to add &lt;ProjectName&gt;Tests</li>
+	<li>apply <a href="#AddXcodeTestTarget_">Add Test Target</a> to add &lt;ProjectName&gt;Tests</li>
 	<li>test all</li>
 </ul>
 
 <!-- @marker "New Third Party Project" -->
 <h4 id='NewThirdPartyProject_'>New Third Party Project</h4><ul>
 	<li class="blurb">A Third-party folder normally contains two folders, each with its own Xcode project<ul>
-		<li>Project &lt;ProjectName&gt;Sources contains the third-party source, normally cloned source with its own git repo.</li>
-		<li>Project &lt;ProjectName&gt;Support contains supporting files such as for installation and testing.
+		<li>Project &lt;ToolName&gt;Sources contains the third-party source.</li>
+		<li>Project &lt;ToolName&gt;Support contains supporting files such as for installation and testing.
 			Its files are normally added to the git repository of the enclosing top-level project or workspace.</li>
 	</ul></li>
 	<li>Third-Party Sources<ul>
-		<li>create empty project &lt;ProjectName&gt;Sources</li>
+		<li>create new group ThirdParty/&lt;ToolName&gt;</li>
+		<li>create empty project &lt;ToolName&gt;Sources, adding to existing project</li>
 		<li>clone the third-party source into the same folder as the Xcode project</li>
 		<li>add the cloned sources to the empty Xcode project</li>
 	</ul></li>
 </ul>
 
-<!-- @marker "Add Test Target" -->
-<h4 id='AddTestTarget_'>Add Test Target</h4><ul>
+<!-- @marker "Add Xcode Test Target" -->
+<h4 id='AddXcodeTestTarget_'>Add Xcode Test Target</h4><ul>
 	<li class="blurb">In Xcode, all tests are handled by a Cocoa Test target, which provides Xcode's framework for running the tests and reporting their results.
 	In general, all targets are therefore represented in Xcode by a Cocoa target.</li>
 	<li>add a new target &lt;TestTarget&gt;Tests from Cocoa Testing Bundle template</li>
@@ -372,7 +374,7 @@
 
 <!-- @marker "Add Cocoa Test Target" -->
 <h4 id='AddCocoaTestTarget_OLD'>Add Cocoa Test Target</h4><ul>
-	<li>create or edit test target (&lt;TestTarget&gt;[_C|P]Tests)<ul>
+	<li>create or edit test target (&lt;TestTarget&gt;_&lt;TType&gt;Tests)<ul>
 		<li>for existing test target from Cocoa Application template: apply <a href="#RenameTargetOLD">Rename Target OLD</a></li>
 		<li>else: add a new target from Cocoa Unit Testing Bundle template</li>
 	</ul></li>
@@ -388,8 +390,8 @@
 	</ul></li>
 	<li>add to aggregate target All&lt;ProjectName&gt;Tests, and to All&lt;RepoName&gt;Tests if indicated</li>
 	<li>Test Class<ul>
-		<li>rename supplied file &lt;TestTarget&gt;[_C|P]Tests</li>
-		<li>new file &lt;TestTarget&gt;[_C|P]Tests from template<ul>
+		<li>rename supplied file &lt;TestTarget&gt;_&lt;TType&gt;Tests</li>
+		<li>new file &lt;TestTarget&gt;_&lt;TType&gt;Tests from template<ul>
 			<li>check against supplied file, updating template if indicated</li>
 			<li>leave in or add a dummy test, or, for CTests, add test case testAppDelegate (testAppDelegate#)</li>
 		</ul></li>
@@ -409,20 +411,20 @@
 <h4 id='AddScriptedBuildTestTarget'>Add Scripted Build Test Target</h4><pre>
 	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior*
 	* **From Xcode:**
-		* add Cocoa Testing Bundle target &lt;TestTarget&gt;[_C|P]Test /c/
+		* add Cocoa Testing Bundle target &lt;TestTarget&gt;_&lt;TType&gt;Test /c/
 		* move test file and info.plist to OtherSources
 			* rename: test file &gt; RequiredCocoaTest.m, Info.plist -&gt; &lt;TestTarget&gt;_info.plist
 		* Build Settings
 			* Precompile Prefix Header: NO
 			* update path to Info.plist file
-			* replace &lt;TestTarget&gt;[_C|P]Tests.mm with new copy from template
+			* replace &lt;TestTarget&gt;_&lt;TType&gt;Tests.mm with new copy from template
 		* add Run Script build phase:
 			* bash scripts: ./&lt;TargetName&gt;_install.sh &lt;TargetName&gt; ${CCDev} test
 			* ksh scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh "${SRCROOT}" &lt;TargetName&gt; test
 			* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
-		* add test files in folder &lt;TestTarget&gt;/[_C|P]Tests
-		* Schemes:Manage: add scheme &lt;TestTarget&gt;[_C|P]Tests; mark as shared; verify &lt;TestTarget&gt;[_C|P]Tests as a test for scheme &lt;TargetName&gt;
-		* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;[_C|P]Tests
+		* add test files in folder &lt;TestTarget&gt;/_&lt;TType&gt;Tests
+		* Schemes:Manage: add scheme &lt;TestTarget&gt;_&lt;TType&gt;Tests; mark as shared; verify &lt;TestTarget&gt;_&lt;TType&gt;Tests as a test for scheme &lt;TargetName&gt;
+		* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;_&lt;TType&gt;Tests
 </pre>
 
 <!-- @marker "Add Target Feature" -->
