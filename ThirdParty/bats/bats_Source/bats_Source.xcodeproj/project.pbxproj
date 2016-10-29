@@ -1,0 +1,266 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		67546A151DC519B8001D83FE /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		67546A161DC519B8001D83FE /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		67546A181DC519B8001D83FE /* bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = bats; sourceTree = "<group>"; };
+		67546A191DC519B8001D83FE /* CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONDUCT.md; sourceTree = "<group>"; };
+		67546A1A1DC519B8001D83FE /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
+		67546A1C1DC519B8001D83FE /* bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = bats; sourceTree = "<group>"; };
+		67546A1D1DC519B8001D83FE /* bats-exec-suite */ = {isa = PBXFileReference; lastKnownFileType = text; path = "bats-exec-suite"; sourceTree = "<group>"; };
+		67546A1E1DC519B8001D83FE /* bats-exec-test */ = {isa = PBXFileReference; lastKnownFileType = text; path = "bats-exec-test"; sourceTree = "<group>"; };
+		67546A1F1DC519B8001D83FE /* bats-format-tap-stream */ = {isa = PBXFileReference; lastKnownFileType = text; path = "bats-format-tap-stream"; sourceTree = "<group>"; };
+		67546A201DC519B8001D83FE /* bats-preprocess */ = {isa = PBXFileReference; lastKnownFileType = text; path = "bats-preprocess"; sourceTree = "<group>"; };
+		67546A211DC519B8001D83FE /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		67546A231DC519B8001D83FE /* bats.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = bats.1; sourceTree = "<group>"; };
+		67546A241DC519B8001D83FE /* bats.1.ronn */ = {isa = PBXFileReference; lastKnownFileType = text; path = bats.1.ronn; sourceTree = "<group>"; };
+		67546A251DC519B8001D83FE /* bats.7 */ = {isa = PBXFileReference; lastKnownFileType = text; path = bats.7; sourceTree = "<group>"; };
+		67546A261DC519B8001D83FE /* bats.7.ronn */ = {isa = PBXFileReference; lastKnownFileType = text; path = bats.7.ronn; sourceTree = "<group>"; };
+		67546A271DC519B8001D83FE /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		67546A281DC519B8001D83FE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		67546A291DC519B8001D83FE /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		67546A2A1DC519B8001D83FE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		67546A2C1DC519B8001D83FE /* bats.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = bats.bats; sourceTree = "<group>"; };
+		67546A2F1DC519B8001D83FE /* dos_line.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = dos_line.bats; sourceTree = "<group>"; };
+		67546A301DC519B8001D83FE /* empty.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty.bats; sourceTree = "<group>"; };
+		67546A311DC519B8001D83FE /* environment.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = environment.bats; sourceTree = "<group>"; };
+		67546A321DC519B8001D83FE /* failing.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = failing.bats; sourceTree = "<group>"; };
+		67546A331DC519B8001D83FE /* failing_and_passing.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = failing_and_passing.bats; sourceTree = "<group>"; };
+		67546A341DC519B8001D83FE /* failing_helper.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = failing_helper.bats; sourceTree = "<group>"; };
+		67546A351DC519B8001D83FE /* failing_setup.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = failing_setup.bats; sourceTree = "<group>"; };
+		67546A361DC519B8001D83FE /* failing_teardown.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = failing_teardown.bats; sourceTree = "<group>"; };
+		67546A371DC519B8001D83FE /* intact.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = intact.bats; sourceTree = "<group>"; };
+		67546A381DC519B8001D83FE /* invalid_tap.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = invalid_tap.bats; sourceTree = "<group>"; };
+		67546A391DC519B8001D83FE /* load.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = load.bats; sourceTree = "<group>"; };
+		67546A3A1DC519B8001D83FE /* loop_keep_IFS.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = loop_keep_IFS.bats; sourceTree = "<group>"; };
+		67546A3B1DC519B8001D83FE /* output.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = output.bats; sourceTree = "<group>"; };
+		67546A3C1DC519B8001D83FE /* passing.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = passing.bats; sourceTree = "<group>"; };
+		67546A3D1DC519B8001D83FE /* passing_and_failing.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = passing_and_failing.bats; sourceTree = "<group>"; };
+		67546A3E1DC519B8001D83FE /* passing_and_skipping.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = passing_and_skipping.bats; sourceTree = "<group>"; };
+		67546A3F1DC519B8001D83FE /* passing_failing_and_skipping.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = passing_failing_and_skipping.bats; sourceTree = "<group>"; };
+		67546A401DC519B8001D83FE /* setup.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = setup.bats; sourceTree = "<group>"; };
+		67546A411DC519B8001D83FE /* single_line.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = single_line.bats; sourceTree = "<group>"; };
+		67546A421DC519B8001D83FE /* skipped.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = skipped.bats; sourceTree = "<group>"; };
+		67546A431DC519B8001D83FE /* teardown.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = teardown.bats; sourceTree = "<group>"; };
+		67546A441DC519B8001D83FE /* test_helper.bash */ = {isa = PBXFileReference; lastKnownFileType = text; path = test_helper.bash; sourceTree = "<group>"; };
+		67546A451DC519B8001D83FE /* without_trailing_newline.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = without_trailing_newline.bats; sourceTree = "<group>"; };
+		67546A481DC519B8001D83FE /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		67546A4A1DC519B8001D83FE /* a.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = a.bats; sourceTree = "<group>"; };
+		67546A4B1DC519B8001D83FE /* b.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = b.bats; sourceTree = "<group>"; };
+		67546A4D1DC519B8001D83FE /* test.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.bats; sourceTree = "<group>"; };
+		67546A4E1DC519B8001D83FE /* suite.bats */ = {isa = PBXFileReference; lastKnownFileType = text; path = suite.bats; sourceTree = "<group>"; };
+		67546A4F1DC519B8001D83FE /* test_helper.bash */ = {isa = PBXFileReference; lastKnownFileType = text; path = test_helper.bash; sourceTree = "<group>"; };
+		67546A511DC519B8001D83FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		67546A0D1DC50F81001D83FE = {
+			isa = PBXGroup;
+			children = (
+				67546A141DC519B8001D83FE /* bats */,
+			);
+			sourceTree = "<group>";
+		};
+		67546A141DC519B8001D83FE /* bats */ = {
+			isa = PBXGroup;
+			children = (
+				67546A151DC519B8001D83FE /* .gitattributes */,
+				67546A161DC519B8001D83FE /* .travis.yml */,
+				67546A171DC519B8001D83FE /* bin */,
+				67546A191DC519B8001D83FE /* CONDUCT.md */,
+				67546A1A1DC519B8001D83FE /* install.sh */,
+				67546A1B1DC519B8001D83FE /* libexec */,
+				67546A211DC519B8001D83FE /* LICENSE */,
+				67546A221DC519B8001D83FE /* man */,
+				67546A291DC519B8001D83FE /* package.json */,
+				67546A2A1DC519B8001D83FE /* README.md */,
+				67546A2B1DC519B8001D83FE /* test */,
+			);
+			path = bats;
+			sourceTree = "<group>";
+		};
+		67546A171DC519B8001D83FE /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				67546A181DC519B8001D83FE /* bats */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		67546A1B1DC519B8001D83FE /* libexec */ = {
+			isa = PBXGroup;
+			children = (
+				67546A1C1DC519B8001D83FE /* bats */,
+				67546A1D1DC519B8001D83FE /* bats-exec-suite */,
+				67546A1E1DC519B8001D83FE /* bats-exec-test */,
+				67546A1F1DC519B8001D83FE /* bats-format-tap-stream */,
+				67546A201DC519B8001D83FE /* bats-preprocess */,
+			);
+			path = libexec;
+			sourceTree = "<group>";
+		};
+		67546A221DC519B8001D83FE /* man */ = {
+			isa = PBXGroup;
+			children = (
+				67546A231DC519B8001D83FE /* bats.1 */,
+				67546A241DC519B8001D83FE /* bats.1.ronn */,
+				67546A251DC519B8001D83FE /* bats.7 */,
+				67546A261DC519B8001D83FE /* bats.7.ronn */,
+				67546A271DC519B8001D83FE /* Makefile */,
+				67546A281DC519B8001D83FE /* README.md */,
+			);
+			path = man;
+			sourceTree = "<group>";
+		};
+		67546A2B1DC519B8001D83FE /* test */ = {
+			isa = PBXGroup;
+			children = (
+				67546A2C1DC519B8001D83FE /* bats.bats */,
+				67546A2D1DC519B8001D83FE /* fixtures */,
+				67546A4E1DC519B8001D83FE /* suite.bats */,
+				67546A4F1DC519B8001D83FE /* test_helper.bash */,
+				67546A501DC519B8001D83FE /* tmp */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		67546A2D1DC519B8001D83FE /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				67546A2E1DC519B8001D83FE /* bats */,
+				67546A461DC519B8001D83FE /* suite */,
+			);
+			path = fixtures;
+			sourceTree = "<group>";
+		};
+		67546A2E1DC519B8001D83FE /* bats */ = {
+			isa = PBXGroup;
+			children = (
+				67546A2F1DC519B8001D83FE /* dos_line.bats */,
+				67546A301DC519B8001D83FE /* empty.bats */,
+				67546A311DC519B8001D83FE /* environment.bats */,
+				67546A321DC519B8001D83FE /* failing.bats */,
+				67546A331DC519B8001D83FE /* failing_and_passing.bats */,
+				67546A341DC519B8001D83FE /* failing_helper.bats */,
+				67546A351DC519B8001D83FE /* failing_setup.bats */,
+				67546A361DC519B8001D83FE /* failing_teardown.bats */,
+				67546A371DC519B8001D83FE /* intact.bats */,
+				67546A381DC519B8001D83FE /* invalid_tap.bats */,
+				67546A391DC519B8001D83FE /* load.bats */,
+				67546A3A1DC519B8001D83FE /* loop_keep_IFS.bats */,
+				67546A3B1DC519B8001D83FE /* output.bats */,
+				67546A3C1DC519B8001D83FE /* passing.bats */,
+				67546A3D1DC519B8001D83FE /* passing_and_failing.bats */,
+				67546A3E1DC519B8001D83FE /* passing_and_skipping.bats */,
+				67546A3F1DC519B8001D83FE /* passing_failing_and_skipping.bats */,
+				67546A401DC519B8001D83FE /* setup.bats */,
+				67546A411DC519B8001D83FE /* single_line.bats */,
+				67546A421DC519B8001D83FE /* skipped.bats */,
+				67546A431DC519B8001D83FE /* teardown.bats */,
+				67546A441DC519B8001D83FE /* test_helper.bash */,
+				67546A451DC519B8001D83FE /* without_trailing_newline.bats */,
+			);
+			path = bats;
+			sourceTree = "<group>";
+		};
+		67546A461DC519B8001D83FE /* suite */ = {
+			isa = PBXGroup;
+			children = (
+				67546A471DC519B8001D83FE /* empty */,
+				67546A491DC519B8001D83FE /* multiple */,
+				67546A4C1DC519B8001D83FE /* single */,
+			);
+			path = suite;
+			sourceTree = "<group>";
+		};
+		67546A471DC519B8001D83FE /* empty */ = {
+			isa = PBXGroup;
+			children = (
+				67546A481DC519B8001D83FE /* .gitkeep */,
+			);
+			path = empty;
+			sourceTree = "<group>";
+		};
+		67546A491DC519B8001D83FE /* multiple */ = {
+			isa = PBXGroup;
+			children = (
+				67546A4A1DC519B8001D83FE /* a.bats */,
+				67546A4B1DC519B8001D83FE /* b.bats */,
+			);
+			path = multiple;
+			sourceTree = "<group>";
+		};
+		67546A4C1DC519B8001D83FE /* single */ = {
+			isa = PBXGroup;
+			children = (
+				67546A4D1DC519B8001D83FE /* test.bats */,
+			);
+			path = single;
+			sourceTree = "<group>";
+		};
+		67546A501DC519B8001D83FE /* tmp */ = {
+			isa = PBXGroup;
+			children = (
+				67546A511DC519B8001D83FE /* .gitignore */,
+			);
+			path = tmp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		67546A0E1DC50F81001D83FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+			};
+			buildConfigurationList = 67546A111DC50F81001D83FE /* Build configuration list for PBXProject "bats_Source" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 67546A0D1DC50F81001D83FE;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		67546A121DC50F81001D83FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		67546A131DC50F81001D83FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67546A111DC50F81001D83FE /* Build configuration list for PBXProject "bats_Source" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67546A121DC50F81001D83FE /* Debug */,
+				67546A131DC50F81001D83FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67546A0E1DC50F81001D83FE /* Project object */;
+}

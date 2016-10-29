@@ -26,6 +26,13 @@
    <Group
       location = "container:ThirdParty"
       name = "ThirdParty">
+      <Group
+         location = "group:bats"
+         name = "bats">
+         <FileRef
+            location = "group:bats_Source/bats_Source.xcodeproj">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:ThirdParty_ReadMe.html">
       </FileRef>
