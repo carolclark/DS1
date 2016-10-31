@@ -178,14 +178,15 @@
 <!-- @marker "New Third Party Project" -->
 <h4 id='NewThirdPartyProject_'>New Third Party Project</h4><ul>
 	<li class="blurb">A Third-party folder normally contains two folders, each with its own Xcode project<ul>
-		<li>Project &lt;ToolName&gt;Sources contains the third-party source.</li>
-		<li>Project &lt;ToolName&gt;Support contains supporting files such as for installation and testing.
-			Its files are normally added to the git repository of the enclosing top-level project or workspace.</li>
+		<li>Project &lt;ToolName&gt;_Sources contains the third-party source,
+			normally with origin in our GitHub repository for that tool.</li>
+		<li>Project &lt;ToolName&gt;_Support contains supporting files such as for installation and testing.
+			Its files are normally added to our own git repository for the top-level project or workspace.</li>
 	</ul></li>
 	<li>Third-Party Sources<ul>
 		<li>create new group ThirdParty/&lt;ToolName&gt;</li>
-		<li>create empty project &lt;ToolName&gt;Sources, adding to existing project</li>
-		<li>clone the third-party source into the same folder as the Xcode project</li>
+		<li>create empty project &lt;ToolName&gt;_Sources, adding to existing project</li>
+		<li>clone the third-party source into the same folder as that Xcode project</li>
 		<li>add the cloned sources to the empty Xcode project</li>
 	</ul></li>
 </ul>
