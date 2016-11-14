@@ -19,8 +19,9 @@ fauxproduct="${HOME}/Library/CCDev/build_output/Support/Developer/shunit2.fauxpr
 
 #^ 2 ===  shunitInstall
 function shunitInstall {
+	echo ${HOME}; exit
 	src=${sourceRoot}/${targetFolder}/shunit2-2.1.6
-	dst=${CCDev}/shunit
+	dst=${HOME}/Library/CCDev/shunit
 
 	if [[ -e ${dst}/lib/versions ]] ; then
 		v_dst=$(cat ${dst}/lib/versions)

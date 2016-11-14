@@ -23,11 +23,11 @@
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "${DEV}/Support/Developer/Developer"
+            argument = "/Users/carolclark/Dev/Support/Developer"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "shunit"
+            argument = "shunit2"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

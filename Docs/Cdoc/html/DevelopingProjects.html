@@ -62,7 +62,7 @@
 		</ul></li>
 		<li><strong>Script targets</strong> Bundle targets; remove all template build phases except Target Dependencies; delete .pch file; add Run Script build phase<ul>
 			<li><strong>Cdoc</strong> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Cdoc $(ACTION)</span></li>
-			<li><strong>Doxygen</strong> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Doxygend $(ACTION)</span></li>
+			<li><strong>Doxygen</strong> External Target: script <span class='mono'>ccInstallAction</span>; params <span class='mono'>"${SRCROOT}" Doxygen $(ACTION)</span></li>
 		</ul></li>
 		<li><strong>InHouse</strong> products installed for InHouse use<ul>
 			<li><strong>Product</strong> set installation location for the target to be istalled<ul>
@@ -73,6 +73,23 @@
 		</ul></li>
 	</ul></li>
 </ul>
+
+<!-- @marker "Clone GitHub Repository" -->
+<h4 id='CloneGitHubRepository'>Clone GitHub Repository</h4><pre>
+		* *Process is intended to create an active clone, and then enclose that clone inside an Xcode project*
+			That way  we can:*
+			* *isolate the code, which is from a different repository*
+			* *work with a repo that is separate from our own development projects*
+			* *add related files, such as installers, inside the folder but outside the project*
+			* *pull from the project on GitHub to update*
+			* *make pull request to repo if we have something to contribute*
+		* *see <a href="http://stackoverflow.com/questions/6286571/are-git-forks-actually-git-clones">Are git forks actually git clones?</a>*
+	* add folder inside ThirdParty for the new repo
+	* clone, as specified by GitHub for that repo, to the new folder
+	* create new Xcode project named after the repo; add group with same name; move in cloned repo
+</pre>
+
+<p> </p>
 
 <!-- @marker "Open Xcode Project in AppCode" -->
 <h3 id='OpenXcodeProjectInAppCode'>Open Xcode Project in AppCode</h3><ul>
@@ -123,15 +140,23 @@
 <!-- @marker "Refactorings and Tasks" -->
 <h2>Refactorings and Tasks</h2>
 <!-- @topicList "Refactorings and Tasks" "RefactoringsAndTasks_" -->
+	<!-- @topicItem "Projects and Targets" "#ProjectsAndTargets_" "0" "" -->
+	<!-- @topicItem "Managing Repositories" "#ManagingRepositories_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Projects and Targets" -->
+<h3>Projects and Targets</h3>
+<!-- @topicList "Projects and Targets" "ProjectsAndTargets_" -->
 	<!-- @topicItem "New Cocoa Project" "#NewCocoaProject_" "0" "" -->
 	<!-- @topicItem "New Third Party Project" "#NewThirdPartyProject_" "0" "" -->
-	<!-- @topicItem "Add Test Target" "#AddTestTarget_" "0" "" -->
+	<!-- @topicItem "Add Xcode Test Target" "#AddXcodeTestTarget_" "0" "" -->
+	<!-- @topicItem "Fork GitHub Repository" "#ForkGitHubRepository_" "0" "" -->
 	<!-- @topicItem "Xcode Project Mirrors Files" "#XcodeProjectMirrorsFiles" "0" "" -->
 	<!-- @topicItem "Rename Target" "#RenameTarget_" "0" "" -->
 <!-- @/topicList -->
 
 <p>In Xcode, all tests are handled by a Cocoa Test target, which provides Xcode's framework for running the tests and reporting their results.
-	In general, all targets are therefore represented in Xcode by a Cocoa project.</p>
+	In general, all test targets are therefore represented in Xcode by a test target of a Cocoa project.</p>
 
 <!-- @marker "New Cocoa Project" -->
 <h4 id='NewCocoaProject_'>New Cocoa Project</h4><ul>
@@ -155,6 +180,7 @@
 		<li>for both targets: info.plist =&gt; &lt;TargetName&gt;-info.plist</li>
 		<li>main.m =&gt; &lt;TargetName&gt;-main.m =&gt;</li>
 		<li>update Build Settings for paths to Info.plists; rename Tests target to LongTests</li>
+		<li>set 'Preserve Private External Symbols' to 'NO'</li>
 		<li>Xcode schema: view scheme &lt;TargetName&gt; with its tests; add test target to schemes; mark all schema shared</li>
 	</ul></li>
 	<li>test</li>
@@ -170,26 +196,30 @@
 	</ul></li>
 	<li>test</li>
 	<li>add file &lt;ProjectName&gt;/&lt;ProjectName&gt;_ReadMe.html from template</li>
-	<li>apply <a href="#AddTestTarget_">Add Test Target</a> to add &lt;ProjectName&gt;Tests</li>
+	<li>apply <a href="#AddXcodeTestTarget_">Add Test Target</a> to add &lt;ProjectName&gt;Tests</li>
 	<li>test all</li>
 </ul>
 
 <!-- @marker "New Third Party Project" -->
 <h4 id='NewThirdPartyProject_'>New Third Party Project</h4><ul>
-	<li class="blurb">A Third-party folder normally contains two folders, each with its own Xcode project<ul>
-		<li>Project &lt;ProjectName&gt;Sources contains the third-party source, normally cloned source with its own git repo.</li>
-		<li>Project &lt;ProjectName&gt;Support contains supporting files such as for installation and testing.
-			Its files are normally added to the git repository of the enclosing top-level project or workspace.</li>
+	<li class="blurb">Third-party folder contains:<ul>
+		<li>Third_Party_Sources: third-party sources, normally with origin in our forked GitHub repository for that tool</li>
+		<li>Projects &lt;ToolName&gt;_Support: supporting files, such as for installation and testing.
+			These files are added to our own git repository for the top-level project or workspace.</li>
 	</ul></li>
-	<li>Third-Party Sources<ul>
-		<li>create empty project &lt;ProjectName&gt;Sources</li>
-		<li>clone the third-party source into the same folder as the Xcode project</li>
-		<li>add the cloned sources to the empty Xcode project</li>
+	<li>Fork Third-Party Repository<ul>
+		<li><a href="#ForkGitHubRepository_">Fork GitHub Repository</a> into ThirdParty/Third_Party_Sources</li>
+		<li><span class="mono">git checkout -b master origin</span></li>
+		<li>DO NOT COMMIT, as these files belong to their third-party repositories, not ours</li>
+	</ul></li>
+	<li>Add Supporting Group<ul>
+		<li>create folder ThirdParty/&lt;repo&gt;_Support</li>
+		<li>add installer, tests, additional support as indicated to ThirdParty/&lt;repo&gt;_Support</li>
 	</ul></li>
 </ul>
 
-<!-- @marker "Add Test Target" -->
-<h4 id='AddTestTarget_'>Add Test Target</h4><ul>
+<!-- @marker "Add Xcode Test Target" -->
+<h4 id='AddXcodeTestTarget_'>Add Xcode Test Target</h4><ul>
 	<li class="blurb">In Xcode, all tests are handled by a Cocoa Test target, which provides Xcode's framework for running the tests and reporting their results.
 	In general, all targets are therefore represented in Xcode by a Cocoa target.</li>
 	<li>add a new target &lt;TestTarget&gt;Tests from Cocoa Testing Bundle template</li>
@@ -222,6 +252,14 @@
 	</ul></li>
 </ul>
 
+<!-- @marker "Fork GitHub Repository" -->
+<h4 id='ForkGitHubRepository_'>Fork GitHub Repository</h4><ul>
+	<li>sign in to GitHub</li>
+	<li>go to the repository to be forked</li>
+	<li>click 'fork' to create a repository of that project within our account,
+	normally into ~/Dev/Support/ThirdParty/Third_Party_Sources</li>
+</ul>
+
 <!-- @marker "Xcode Project Mirrors Files" -->
 <h4 id='XcodeProjectMirrorsFiles'>Xcode Project Mirrors Files</h4><pre>
 	* in Xcode Project
@@ -240,6 +278,65 @@
 	* close and reopen Xcode project
 </pre>
 
+<!-- @marker "Managing Repositories" -->
+<h3>Managing Repositories</h3>
+<!-- @topicList "Managing Repositories" "ManagingRepositories_" -->
+	<!-- @topicItem "Create Bare Repository" "#tsk_CreateBareRepository" "0" "" -->
+	<!-- @topicItem "Fetch Working Copy of Repository" "#FetchWorkingCopy" "0" "" -->
+	<!-- @topicItem "Create New Repository" "#tsk_CreateNewRepository" "0" "" -->
+	<!-- @topicItem "Add Remote Repository" "#tsk_AddRemoteRepository" "0" "" -->
+	<!-- @topicItem "Set Up User SSH" "#setupSSH" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Create Bare Repository" -->
+<h4 id='tsk_CreateBareRepository'>Create Bare Repository</h4><ul>
+	<li><span class='mono'>path=&lt;Repository&gt;</span> (eg. ~/Dev/gitrep/&lt;ProjectName&gt;; https://&lt;username&gt;@candcsoft.com/gitrep/&lt;ProjectName&gt;Remote)</li>
+	<li class='mono'>mkdir -p ${path}; cd ${path}</li>
+	<li class='mono'>git init --bare</li>
+</ul>
+
+<!-- @marker "Fetch Working Copy of Repository" -->
+<h4 id='FetchWorkingCopy'>Fetch Working Copy of Repository</h4><ul>
+	<li>Xcode: add working copy of git repository: Repositories &gt; Add Repository &gt; Clone<ul>
+		<li><strong>source repository:</strong>~/Dev/gitrep/&lt;ProjectName&gt; or git-CCSoftware@pl5.projectLocker.com:&lt;ProjectName&gt;.git (or ssh://git-CCSoftware@pl5.projectLocker.com/&lt;ProjectName&gt;.git)</li>
+		<li><strong>name:</strong> &lt;ProjectName&gt;</li>
+		<li><strong>save at:</strong> ~/Dev/&lt;ProjectName&gt;</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Create New Repository" -->
+<h4 id='tsk_CreateNewRepository'>Create New Repository</h4><ul>
+	<li>create an empty local or ProjectLocker repository<ul>
+		<li>local: <a href="#tsk_CreateBareRepository">Create Bare Repository</a> at ~/Dev/gitrep/&lt;ProjectName&gt;</li>
+		<li>ProjectLocker: add project to ProjectLocker account</li>
+	</ul></li>
+	<li>Xcode: <a href="#FetchWorkingCopy">Fetch Working Copy of Repository</a></li>
+	<li class='blurb'>Xcode can clone this empty repository, but does not interact normally with it yet.</li>
+	<li>add new or existing content<ul>
+		<li>in working copy, either add existing files or create new ones (eg. Xcode workspace and initial history file Cdoc/History_&lt;ProjectName&gt;.html)</li>
+		<li>Terminal: <span class='mono'>cd ~/Dev/&lt;ProjectName&gt;; git add <span class='depr'>--all</span> --interactive</span></li>
+		<li>Xcode: commit; push</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add Remote Repository" -->
+<h4 id="tsk_AddRemoteRepository">Add Remote Repository</h4><ul class='depr'>
+	<li class='blurb'>Add Remote Repository from existing working copy ~/Dev/&lt;ProjectName&gt;</li>
+	<li>add repository to ProjectLocker account</li>
+	<li>push working copy's master branch to remote/master (create)</li>
+</ul>
+<ul>
+	<li>remote addresses: https://carolclark@github.com/carolclark/Punkin.git; https://github.com/lauracello/Punkin</li>
+</ul>
+
+<!-- @marker "Set Up User SSH" -->
+<h4 id='setupSSH'>Set Up User SSH</h4><ul>
+	<li>on User's computer, login to user account</li>
+	<li>Terminal:<ul>
+		<li><span class='mono'>ssh-keygen -t rsa</span>: create public and private ssh identity keys @ ~/.ssh; establish passphrase</li>
+		<li><span class='mono'>cd ~/.ssh; cp id_rsa.pub authorized_keys</span>: create ~/.ssh/authorized_keys file containing public key</li>
+	</ul></li>
+</ul>
 
 <!-- @marker "OLD Refactorings and Tasks" -->
 <div style="background-color:lightslategray;">
@@ -341,7 +438,7 @@
 		* <span class='em'>Target &lt;TargetName&gt;Tests</span>
 			* <a href="#AddScriptedBuildTestTarget">Add Scripted Build Test Target</a>
 		* <a href="DevelopingProjects.html#OpenXcodeProjectInAppCode">OpenXcodeProjectInAppCode</a>
-			* add and edit &lt;TargetName&gt;_ReadMe.html; \c\
+			* add and edit &lt;TargetName&gt;_ReadMe.html
 </pre>
 
 <!-- @marker "Reorganize Sources" -->
@@ -372,7 +469,7 @@
 
 <!-- @marker "Add Cocoa Test Target" -->
 <h4 id='AddCocoaTestTarget_OLD'>Add Cocoa Test Target</h4><ul>
-	<li>create or edit test target (&lt;TestTarget&gt;[_C|P]Tests)<ul>
+	<li>create or edit test target (&lt;TestTarget&gt;_&lt;TType&gt;Tests)<ul>
 		<li>for existing test target from Cocoa Application template: apply <a href="#RenameTargetOLD">Rename Target OLD</a></li>
 		<li>else: add a new target from Cocoa Unit Testing Bundle template</li>
 	</ul></li>
@@ -388,8 +485,8 @@
 	</ul></li>
 	<li>add to aggregate target All&lt;ProjectName&gt;Tests, and to All&lt;RepoName&gt;Tests if indicated</li>
 	<li>Test Class<ul>
-		<li>rename supplied file &lt;TestTarget&gt;[_C|P]Tests</li>
-		<li>new file &lt;TestTarget&gt;[_C|P]Tests from template<ul>
+		<li>rename supplied file &lt;TestTarget&gt;_&lt;TType&gt;Tests</li>
+		<li>new file &lt;TestTarget&gt;_&lt;TType&gt;Tests from template<ul>
 			<li>check against supplied file, updating template if indicated</li>
 			<li>leave in or add a dummy test, or, for CTests, add test case testAppDelegate (testAppDelegate#)</li>
 		</ul></li>
@@ -409,20 +506,20 @@
 <h4 id='AddScriptedBuildTestTarget'>Add Scripted Build Test Target</h4><pre>
 	* *even for non-Cocoa targets, Cocoa Test Bundle target provides standard testing behavior*
 	* **From Xcode:**
-		* add Cocoa Testing Bundle target &lt;TestTarget&gt;[_C|P]Test /c/
+		* add Cocoa Testing Bundle target &lt;TestTarget&gt;_&lt;TType&gt;Test /c/
 		* move test file and info.plist to OtherSources
 			* rename: test file &gt; RequiredCocoaTest.m, Info.plist -&gt; &lt;TestTarget&gt;_info.plist
 		* Build Settings
 			* Precompile Prefix Header: NO
 			* update path to Info.plist file
-			* replace &lt;TestTarget&gt;[_C|P]Tests.mm with new copy from template
+			* replace &lt;TestTarget&gt;_&lt;TType&gt;Tests.mm with new copy from template
 		* add Run Script build phase:
 			* bash scripts: ./&lt;TargetName&gt;_install.sh &lt;TargetName&gt; ${CCDev} test
 			* ksh scripts: &lt;TargetName&gt;/&lt;TargetName&gt;_install.sh "${SRCROOT}" &lt;TargetName&gt; test
 			* Python scripts: /usr/local/bin/python3 -m unittest discover --start-directory "${HOME}/Library/CCDev/bin/python"
-		* add test files in folder &lt;TestTarget&gt;/[_C|P]Tests
-		* Schemes:Manage: add scheme &lt;TestTarget&gt;[_C|P]Tests; mark as shared; verify &lt;TestTarget&gt;[_C|P]Tests as a test for scheme &lt;TargetName&gt;
-		* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;[_C|P]Tests
+		* add test files in folder &lt;TestTarget&gt;/_&lt;TType&gt;Tests
+		* Schemes:Manage: add scheme &lt;TestTarget&gt;_&lt;TType&gt;Tests; mark as shared; verify &lt;TestTarget&gt;_&lt;TType&gt;Tests as a test for scheme &lt;TargetName&gt;
+		* verify &lt;TargetName&gt; as a dependency of &lt;TestTarget&gt;_&lt;TType&gt;Tests
 </pre>
 
 <!-- @marker "Add Target Feature" -->

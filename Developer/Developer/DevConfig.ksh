@@ -13,7 +13,6 @@ USAGE='
 
 CCDev="${HOME}/Library/CCDev"
 DEV="${HOME}/Dev"
-
 #^	envProfile
 function envProfile {
 	print "SHELL=/bin/bash"
@@ -134,6 +133,7 @@ function gitPrintExclude {
 	print '*.xccheckout'
 	print '*.pyc'
 	print 'xcuserdata/'
+	print '**/ThirdParty/Third_Party_Sources/'
 	print '**/.idea/workspace.xml'
 	print '**/.idea/tasks.xml'
 	print '**/.idea/*.iws'
