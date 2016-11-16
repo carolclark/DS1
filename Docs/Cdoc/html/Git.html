@@ -23,13 +23,22 @@
 		div.wf-openTask {
 			border: 8px none lightgreen;border-left-style: solid;
 		}
+		div.wf-createRelease {
+			border: 8px none green;border-left-style: solid;
+		}
 		div.wf-developCommit {
 			border: 8px none green;border-left-style: solid;
 		}
 		div.wf-publish {
 			border: 8px none orange;border-left-style: solid;
 		}
+		div.wf-whileFixing {
+			border: 8px none orange;border-left-style: solid;
+		}
 		div.wf-mergeReview {
+			border: 8px none mediumpurple;border-left-style: solid;
+		}
+		div.wf-triggerReview {
 			border: 8px none mediumpurple;border-left-style: solid;
 		}
 		div.wf-close {
@@ -90,13 +99,7 @@
 
 <!-- @marker "Release Branches" -->
 <h4 id='ReleaseBranches_'>Release Branches</h4>
-<p><strong>Naming Convention</strong>: release-v&lt;versionNum&gt;</p>
-	<div class="paragraphs">
-		<p class="blurb">Historical Note: Until 6/16/16, we did not have a procedure for handling versioned releases,
-			although both Accessor and Support were assigned version 0.1 in a previous attempt.
-			Version 0.2 is the first version in this series for each currently active project.</p>
-	</div>
-
+<p><strong>Naming Convention</strong>: v&lt;versionNum&gt;, using semantic versioning</p>
 	<div class="paragraphs">
 		<p>When master is ready for a release, we assign a version number and create a release branch with name 'release-&lt;versionNum&gt;'.
 			The separate release branch supports version updating and minor bug fixes on the release branch,
@@ -109,6 +112,12 @@
 	<div class="paragraphs">
 		<p>Release branches are intended to isolate their work from the rest of the project workflow.
 		There are no updates or merges with other repository branches.</p>
+	</div>
+
+	<div class="paragraphs">
+		<p class="blurb">Historical Note: Until 6/16/16, we did not have a procedure for handling versioned releases,
+			although both Accessor and Support were assigned version 0.1 in a previous attempt.
+			We will rename the previous versions, and restart with v0.0 now.</p>
 	</div>
 
 <!-- @marker "Hotfix Branches" -->
@@ -128,6 +137,7 @@
 				<div class="wf-openTask">
 				<p><strong>Open Task</strong></p><ul>
 					<li>on master; update project (cT); RTCP (refresh; test; [commit, push])</li>
+					<li>cleanup old branches, stashes</li>
 					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master; test; push</li>
 					<li>or <strong>Existing Task</strong>: switch to task; test; merge in master; test; [commit; push]</li>
 				</ul></div>
@@ -148,7 +158,7 @@
 			<div class='indent'><div class="wf-publish">
 				<p><strong>Publish</strong></p><ul>
 				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
-				<li>switch to master; update project (cT); RTCP<ul>
+				<li>switch to master; update project (cT); RTC<ul>
 					<li>if master had changed (had something to commit): switch to branch $cb; push; merge master into $cb<ul>
 						<li>if branch changed: RTCP</li>
 					</ul></li>
@@ -161,7 +171,7 @@
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<div class="wf-mergeReview">
 				<p><strong>Merge and Review</strong></p><ul>
-					<li><strong><em>StatusReport.sh</em></strong>; note especially status clear</li>
+					<li>master branch; <strong><em>StatusReport.sh</em></strong>; note especially status clear</li>
 					<li>test; master branch; merge branch into local master; RTCP</li>
 					<li>change issue's Waffle label from 'Waffle:in progress' to 'Waffle:needs review'<ul>
 						<li><em>Waffle should move issue to 'Needs Review' column</em></li>
@@ -170,9 +180,8 @@
 				</ul></div>
 				<div class="wf-close">
 				<p><strong>Code Review Complete: Close Issue</strong></p><ul>
-					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches</li>
-					<li>test; master branch; merge branch into local master; RTCP</li>
-					<li>close issue; remove issue's Waffle label 'Waffle:needs review'</li>
+					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches; RTCP</li>
+					<li>close issue; (remove issue's Waffle label 'Waffle:needs review'(if needed))</li>
 					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
 			</div></div>
@@ -182,37 +191,42 @@
 <div style="page-break-before: always">
 	<!-- @marker "Release and Hotfix Branches" -->
 	<div style="background-color: #e2faff">
-	<h3 id='Release_Hotfix_Workflow_' class="wf-hotfix">Release and Hotfix Workflow</h3><div class="wf-hotfix">
+	<h3 id='Release_Hotfix_Workflow_' class="wf-hotfix">Release and Hotfix Workflow</h3>
+	<div class="wf-hotfix">
 		<p><em>WARNING: Normal workflow branches are updated frequently to and from master.
 			Updating is avoided in this workflow to prevent pollution of the release branch.</em></p>
-	<h5>Create Release or Hotfix Branch</h5><ul>
-		<li><strong><em>[Update Master]</em></strong> unless contraindicated for this version</li>
-		<li>create release description from existing content of milestone nextVersion,
-			along with result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
-		<li>select version number</li>
-		<li>GitHub: create and save draft of revision #&lt;versionName&gt;, eg. v1.0.1</li>
-		<li>create (or has that been done?) and push branch</li>
+	<h5>Create Release or Hotfix Branch</h5><div class="wf-createRelease"><ul>
+		<li>cleanup old branches, stashes, using branch/fix/test/commit/push if indicated</li>
+		<li>on master; update project (cT); RTCP (refresh; test; [commit, push])</li>
+		<li>create release description from existing content of milestone nextVersion</li>
+		<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
+	</ul></div>
+	<div class="wf-openTask"><ul>
+		<li>select version number/name, eg. v1.0.1; rename milestone</li>
+		<li>add new milestone 'nextVersion'; transfer any open tasks there</li>
+		<li>GitHub: from repository's Code tab, select "&lt;n&gt; revisions"; create and save draft of revision #&lt;versionName&gt;</li>
+		<li>create task &amp; branch 'revision &lt;name&gt;'; push branch</li>
 		<li>bump version: change all version numbers that appear in product<ul>
 			<li>for now, that is the version numbers in most project files</li>
 		</ul></li>
 		<li>commit ("bump version to &lt;versionName&gt;"); push</li>
-	</ul>
-	<h5>While Needed Fix(es) are Identified</h5><ul>
+	</ul></div>
+	<h5>While Needed Fix(es) are Identified</h5><div class="wf-whileFixing"><ul>
 		<li>switch to Release/Hotfix task</li>
-		<li>edit/test; refresh; diff modifications</li>
-		<li>status; add/stage; check for stray spaces (`gdcc`)</li>
-		<li>diff all files in changelist; update message; commit; push</li>
-	</ul>
+		<li>edit; test; add/stage</li>
+		<li>StatusInfo.sh; commit (update message; diff); push</li>
+		<li>switch back to master; merge in branch $cb; refresh; test; [commit]; PUSH</li>
+	</ul></div>
 	<h5>Issue Tasks Complete</h5><div class='indent'>
-		<p><strong>Trigger Code Review</strong></p><ul>
+		<p><strong>Trigger Code Review</strong></p><div class="wf-triggerReview"><ul>
 			<li>change Waffle label from Waffle:in progress to Waffle:needs review</li>
-			<li>add tests, refactor, or correct if indicated; DO NOT UPDATE</li>
-		</ul>
-		<p><strong>Code Review Complete</strong></p><ul>
+			<li>add tests, refactor, or correct if indicated; DO NOT UPDATE from master</li>
+		</ul></div>
+		<p><strong>Code Review Complete</strong></p><div class="wf-close"><ul>
 			<li>GitHub: from draft of Release: add product if indicated; publish</li>
 			<li>(expect: branch closed and tagged)</li>
 			<li>master branch: merge in release</li>
-		</ul>
+		</ul></div>
 	</div>
 	<h5>Archive Repository</h5>
 	</div></div></div>
@@ -424,6 +438,8 @@
 	</ul></li>
 	<li><span class='mono'>git tag -a &lt;tag&gt; -m '&lt;msg&gt;'</span>&nbsp;&nbsp;# create</li>
 	<li><span class='mono'>git tag -d &lt;tag&gt;</span>&nbsp;&nbsp;# delete</li>
+	<li><span class='mono'>git tag &lt;new&gt; &lt;new&gt;;git tag -d &lt;old&gt;; git push origin :&lt;old&gt;; git push --tags</span>&nbsp;&nbsp;# rename</li>
+	<li><span class='mono'>git ls-remote --tags origin</span>&nbsp;&nbsp;# list remote tags</li>
 	<li><span class='mono'>git show &lt;tag&gt;</span>&nbsp;&nbsp;# show information about &lt;tag&gt;</li>
 	<li><span class='mono'>git push --tags</span>&nbsp;&nbsp;# push tags</li>
 	<li><span class="mono">&lt;sha&gt;</span>&nbsp;&nbsp;# add to select another commit</li>
