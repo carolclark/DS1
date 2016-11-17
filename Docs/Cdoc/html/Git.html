@@ -180,8 +180,9 @@
 				</ul></div>
 				<div class="wf-close">
 				<p><strong>Code Review Complete: Close Issue</strong></p><ul>
-					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches; RTCP</li>
-					<li>close issue; (remove issue's Waffle label 'Waffle:needs review'(if needed))</li>
+					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches</li>
+					<li>test; master branch; merge branch into local master; RTCP</li>
+					<li>close issue; remove issue's Waffle label 'Waffle:needs review'</li>
 					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
 			</div></div>
@@ -196,7 +197,8 @@
 		<p><em>WARNING: Normal workflow branches are updated frequently to and from master.
 			Updating is avoided in this workflow to prevent pollution of the release branch.</em></p>
 	<h5>Create Release or Hotfix Branch</h5><div class="wf-createRelease"><ul>
-		<li>cleanup old branches, stashes, using branch/fix/test/commit/push if indicated</li>
+		<li>make sure all intended branches for this release are successfully merged</li>
+		<li>cleanup old branches and stashes, using branch/fix/test/commit/push/merge/push if indicated</li>
 		<li>on master; update project (cT); RTCP (refresh; test; [commit, push])</li>
 		<li>create release description from existing content of milestone nextVersion</li>
 		<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
