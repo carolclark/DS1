@@ -41,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		671C4824159CFF3800214A9E /* BBEditScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBEditScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		67200D9D16A9C7D500EA5974 /* ___FILEBASENAME___.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "___FILEBASENAME___.ksh"; path = "../../_Documentation/InstallCdoc.xctemplate/___FILEBASENAME___.ksh"; sourceTree = "<group>"; };
 		67200D9E16A9C7D500EA5974 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = ../../_Documentation/InstallCdoc.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
 		67200D9F16A9C7D500EA5974 /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TemplateInfo.plist; path = ../../_Documentation/InstallCdoc.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
@@ -52,7 +51,6 @@
 		673639D81BB1BD1F009B3D3E /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
 		673639D91BB1BD70009B3D3E /* ___FILEBASENAME___Test.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "___FILEBASENAME___Test.mm"; sourceTree = "<group>"; };
 		67364A6D16C0345900940D94 /* FixWindow.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = FixWindow.applescript; sourceTree = "<group>"; };
-		67364A7316C0362C00940D94 /* DeveloperScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeveloperScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		674791F318567B7500452FA5 /* ___FILEBASENAME___.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = "___FILEBASENAME___.py"; path = "PythonScript.xctemplate/___FILEBASENAME___.py"; sourceTree = "<group>"; };
 		674791F418567B7500452FA5 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = PythonScript.xctemplate/TemplateIcon.icns; sourceTree = "<group>"; };
 		674791F518567B7500452FA5 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TemplateInfo.plist; path = PythonScript.xctemplate/TemplateInfo.plist; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 		6761489016A8B93F00FE431B /* toBBEdit.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toBBEdit.applescript; sourceTree = "<group>"; };
 		6761489116A8B93F00FE431B /* toTEXT.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = toTEXT.applescript; sourceTree = "<group>"; };
 		6766325F17EA5813004B5A4F /* testBBEdit.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = testBBEdit.ksh; sourceTree = "<group>"; };
-		67692458141EB921005D3E68 /* XcodeScripts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeScripts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6769245B141EB921005D3E68 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		6773C4131791F844005E4CAB /* SetMarkers.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetMarkers.applescript; sourceTree = "<group>"; };
 		678DFDCA1D6D090C0041C4D2 /* ___FILEBASENAME___.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "___FILEBASENAME___.sh"; sourceTree = "<group>"; };
@@ -235,9 +232,6 @@
 		67692459141EB921005D3E68 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				67692458141EB921005D3E68 /* XcodeScripts.bundle */,
-				671C4824159CFF3800214A9E /* BBEditScripts.bundle */,
-				67364A7316C0362C00940D94 /* DeveloperScripts.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -750,7 +744,6 @@
 			);
 			name = BBEditScripts;
 			productName = BBEdit;
-			productReference = 671C4824159CFF3800214A9E /* BBEditScripts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		67364A7216C0362C00940D94 /* DeveloperScripts */ = {
@@ -765,7 +758,6 @@
 			);
 			name = DeveloperScripts;
 			productName = DeveloperScripts;
-			productReference = 67364A7316C0362C00940D94 /* DeveloperScripts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		67692457141EB921005D3E68 /* XcodeScripts */ = {
@@ -780,7 +772,6 @@
 			);
 			name = XcodeScripts;
 			productName = Xcode;
-			productReference = 67692458141EB921005D3E68 /* XcodeScripts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */

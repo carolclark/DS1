@@ -11,6 +11,7 @@
 <h1>Developing Projects</h1>
 
 <!-- @topicList "DevelopingProjects" "Contents" -->
+	<!-- @topicItem "Test Specification" "#TestSpecification_" "0" "" -->
 	<!-- @topicItem "Naming Conventions" "#NamingConventions_" "0" "" -->
 	<!-- @topicItem "Xcode Project and Target Settings" "#pbxproj" "0" "" -->
 	<!-- @topicItem "Open XcodeProject in AppCode" "#OpenXcodeProjectInAppCode" "0" "" -->
@@ -22,6 +23,30 @@
 	<!-- @topicSep -->
 	<!-- @topicItem "OLD Refactorings and Tasks" "#OLDRefactoringsAndTasks_" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "Test Specification" -->
+<h3 id='TestSpecification_'>Test Specification</h3>
+<h5>Example Specification</h5>
+	<p class="paragraph">This example is very oversimpified.
+		In particular, the specification would normally be build top-down, starting with why we want an Alert.
+		The top here is clumsy and incomplete.</p>
+	<h5>Alert</h5>
+		<p class="blurb">in test @interface leading comment</p>
+		<table>
+			<tr><td>withException</td><td>displays exception information to user</td></tr>
+			<tr><td>...</td></tr>
+			<tr><td>with parameterized init</td><td>has expected values</td></tr>
+			<tr><td>with default init</td><td>has expected values</td></tr>
+			<tr><td>with constructor call</td><td>object exists</td></tr>
+		</table>
+
+	<h5>@interface AlertTest</h5><ul class="mono">
+		<li>- (void)testAlert_withException_displaysExceptionInformationToUser;</li>
+		<li>...</li>
+		<li>- (void)testAlert_createWithParameterizedInit_hasExpectedValues;</li>
+		<li>- (void)testAlert_createWithDefaultInit_hasExpectedValues;</li>
+		<li>- (void)testAlert_createWithConstructorCall_objectExists;</li>
+	</ul>
 
 <!-- @marker "Naming Conventions" -->
 <h3 id='NamingConventions_'>Naming Conventions</h3>
@@ -35,7 +60,6 @@
 
 <!-- @marker "Test Types and Suffixes" -->
 <h4 id='TestTypesAndSuffixes_'>Test Types and Suffixes</h4>
-<p class="dq"><em>We might not need both Acceptance and Integration tests.</em></p>
 <dl>
 	<dt>Unit Tests (*_UTest)</dt><dd>test unit and close collaborators only; other collaborators are mocked or otherwise substituted for</dd>
 	<dt>Functional Tests (*_FTest)</dt><dd>test functionality of a group of related classes</dd>
@@ -73,23 +97,6 @@
 		</ul></li>
 	</ul></li>
 </ul>
-
-<!-- @marker "Clone GitHub Repository" -->
-<h4 id='CloneGitHubRepository'>Clone GitHub Repository</h4><pre>
-		* *Process is intended to create an active clone, and then enclose that clone inside an Xcode project*
-			That way  we can:*
-			* *isolate the code, which is from a different repository*
-			* *work with a repo that is separate from our own development projects*
-			* *add related files, such as installers, inside the folder but outside the project*
-			* *pull from the project on GitHub to update*
-			* *make pull request to repo if we have something to contribute*
-		* *see <a href="http://stackoverflow.com/questions/6286571/are-git-forks-actually-git-clones">Are git forks actually git clones?</a>*
-	* add folder inside ThirdParty for the new repo
-	* clone, as specified by GitHub for that repo, to the new folder
-	* create new Xcode project named after the repo; add group with same name; move in cloned repo
-</pre>
-
-<p> </p>
 
 <!-- @marker "Open Xcode Project in AppCode" -->
 <h3 id='OpenXcodeProjectInAppCode'>Open Xcode Project in AppCode</h3><ul>
@@ -156,7 +163,7 @@
 <!-- @/topicList -->
 
 <p>In Xcode, all tests are handled by a Cocoa Test target, which provides Xcode's framework for running the tests and reporting their results.
-	In general, all targets are therefore represented in Xcode by a Cocoa project.</p>
+	In general, all test targets are therefore represented in Xcode by a test target of a Cocoa project.</p>
 
 <!-- @marker "New Cocoa Project" -->
 <h4 id='NewCocoaProject_'>New Cocoa Project</h4><ul>
@@ -202,16 +209,21 @@
 
 <!-- @marker "New Third Party Project" -->
 <h4 id='NewThirdPartyProject_'>New Third Party Project</h4><ul>
-	<li class="blurb">A Third-party folder normally contains two folders, each with its own Xcode project<ul>
-		<li>Project &lt;ToolName&gt;_Sources contains the third-party source files,
-			normally obtained by checking out files from a repo at ThirdParty_Repos.</li>
-		<li>Project &lt;ToolName&gt;_Support contains supporting files such as for installation and testing.</li>
+	<li class="blurb">ThirdParty projects' files can be found in:<ul>
+		<li>folders ~/ThirdParty_Sources/&lt;ToolName&gt;: forks of ThirdParty sources (bare repositories)</li>
+		<li>project folders ThirdParty/&lt;ToolName&gt;: folder SOURCES with copies of sources obtained from forks; supporting files, such as for installation and testing</li>
 	</ul></li>
-	<li>Third-Party Sources<ul>
-		<li>create new group ThirdParty/&lt;ToolName&gt;</li>
-		<li>create empty project &lt;ToolName&gt;_Sources, adding to existing project</li>
-		<li>clone the third-party source into the same folder as that Xcode project</li>
-		<li>add the cloned sources to the empty Xcode project</li>
+	<li>Fork Third-Party Repository<ul>
+		<li><a href="#ForkGitHubRepository_">Fork GitHub Repository</a> into its own folder in ~/Dev/ThirdParty_Sources<ul>
+			<li class="em">This folder looks empty, but it actually contains an entire bare git repository in .git</li>
+		</ul></li>
+		<li>checkout contents of bare repository<ul>
+			<li><span class="mono">cd ~/Dev/ThirdParty_Sources/&lt;ToolName&gt;; git checkout -b master origin</span></li>
+		</ul></li>
+		<li>move the entire visible content of this folder to ThirdParty/&lt;ToolName&gt;/SOURCES;; commit</li>
+	</ul></li>
+	<li>Add Supporting Files<ul>
+		<li>in ThirdParty/&lt;toolName&gt;, add installer, tests, additional support as indicated</li>
 	</ul></li>
 </ul>
 
@@ -254,7 +266,7 @@
 	<li>sign in to GitHub</li>
 	<li>go to the repository to be forked</li>
 	<li>click 'fork' to create a repository of that project within our account,
-	normally into ~/Dev/Support/ThirdParty/Third_Party_Sources</li>
+	normally into ~/Dev/ThirdParty_Sources</li>
 </ul>
 
 <!-- @marker "Xcode Project Mirrors Files" -->

@@ -19,7 +19,6 @@ fauxproduct="${HOME}/Library/CCDev/build_output/Support/Developer/shunit2.fauxpr
 
 #^ 2 ===  shunitInstall
 function shunitInstall {
-	echo ${HOME}; exit
 	src=${sourceRoot}/${targetFolder}/shunit2-2.1.6
 	dst=${HOME}/Library/CCDev/shunit
 
