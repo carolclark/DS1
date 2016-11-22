@@ -210,8 +210,11 @@
 <!-- @marker "New Third Party Project" -->
 <h4 id='NewThirdPartyProject_'>New Third Party Project</h4><ul>
 	<li class="blurb">ThirdParty projects' files can be found in:<ul>
-		<li>folders ~/ThirdParty_Sources/&lt;ToolName&gt;: forks of ThirdParty sources (bare repositories)</li>
-		<li>project folders ThirdParty/&lt;ToolName&gt;: folder SOURCES with copies of sources obtained from forks; supporting files, such as for installation and testing</li>
+		<li>folders ~/Dev/ThirdParty_Sources/&lt;ToolName&gt;: bare repositories forked from ThirdParty sources</li>
+		<li>project folders ~/Dev/Support/ThirdParty/&lt;ToolName&gt;<ul>
+			<li>folder SOURCES with copies of sources obtained from forks</li>
+			<li>also contain supporting files, such as for installation and testing</li>
+		</ul></li>
 	</ul></li>
 	<li>Fork Third-Party Repository<ul>
 		<li><a href="#ForkGitHubRepository_">Fork GitHub Repository</a> into its own folder in ~/Dev/ThirdParty_Sources<ul>
@@ -265,8 +268,7 @@
 <h4 id='ForkGitHubRepository_'>Fork GitHub Repository</h4><ul>
 	<li>sign in to GitHub</li>
 	<li>go to the repository to be forked</li>
-	<li>click 'fork' to create a repository of that project within our account,
-	normally into ~/Dev/ThirdParty_Sources</li>
+	<li>click 'fork' to create a repository of that project within our account, normally into ~/Dev/ThirdParty_Sources</li>
 </ul>
 
 <!-- @marker "Xcode Project Mirrors Files" -->
