@@ -205,21 +205,30 @@
 				<li>cleanup old branches and stashes; <a href="#wf_Develop">develop</a> / commit / publish if indicated</li>
 			</ul></li>
 		</ul></li>
-		<li>on master or release-v&lt;versionNumber&gt;: TCP (test; [commit, push])</li>
-		<li>select semantic version number/name, eg. v1.0.1; rename milestone</li>
-		<li>add new milestone 'nextVersion'; transfer any open tasks there</li>
-		<li>create task and branch 'release v&lt;versionNum&gt;'<ul>
+		<li>select semantic version number/name, eg. v1.0.1</li>
+		<li>establish milestone and parent version<ul>
+			<li>Hotfix branch:<ul>
+				<li>add milestone 'v&lt;versionNum&gt;'; describe hotfix in milestone text</li>
+				<li>parent is the tagged release from which the fix will branch</li>
+			</ul></li>
+			<li>Other Release branch:<ul>
+				<li>rename milestone nextVersion to v&lt;versionNum&gt;; edit existing content to release description</li>
+				<li>add new milestone 'nextVersion'; transfer any open tasks there</li>
+				<li>parent is master branch</li>
+			</ul></li>
+			<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span> to release milestone</li>
 			<li>versionName is now <em>'v&lt;versionNum&gt;'</em></li>
 		</ul></li>
-		<li>create release description from existing content of milestone nextVersion to v&lt;versionName&gt;</li>
-		<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
+		<li>on parent branch: TCP (test; [commit, push])</li>
+		<li>create task and branch 'release &lt;versionName&gt;'</li>
 	</ul></div>
 	<div class="wf-openTask"><ul>
-		<li>GitHub: from repository's Code tab, select "&lt;n&gt; revisions"; create and save draft of revision #&lt;versionName&gt;</li>
-		<li>create task &amp; branch 'revision &lt;name&gt;'</li>
+		<li>GitHub: from repository's Code tab, select "&lt;n&gt; revisions"; create and save draft of revision &lt;versionName&gt;</li>
+		<li>create task &amp; branch 'release &lt;name&gt;'</li>
 		<li>Git &gt; tag; push branch and tags</li>
-		<li>bump version: change all version numbers that appear in product<ul>
-			<li>for now, that is the version numbers in most project files</li>
+		<li>bump version: change all version names that appear in product:<ul>
+			<li>version identifiers in most project files</li>
+			<li>...</li>
 		</ul></li>
 		<li>commit ("bump version to &lt;versionName&gt;"); push</li>
 	</ul></div>
@@ -234,6 +243,7 @@
 	<h5>Finish</h5><div class="wf-close"><ul>
 		<li>master branch; merge in tagged release branch; push master</li>
 		<li>GitHub: from draft of Release: add product if indicated; publish</li>
+		<li>delete release task and branch</li>
 	</ul></div>
 	<h5>Archive Repository</h5>
 	</div></div></div>
