@@ -28,7 +28,7 @@ sourceRoot=""
 targetFolder=""
 actionFlags=""
 
-technicalDocs="${CCDev}/Sites/candcsoft_host/public_html/TechnicalDocs"
+technicalDocs="/Users/carolclark/Library/CCDev/Sites/candcsoft_host/public_html/TechnicalDocs"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
