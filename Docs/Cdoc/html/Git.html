@@ -139,9 +139,8 @@
 				<div class="wf-openTask">
 				<p><strong>Open Task</strong></p><ul>
 					<li>on master; TCP (test; [commit, push])</li>
-					<li>cleanup old branches, stashes</li>
 					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master; test; push</li>
-					<li>or <strong>Existing Task</strong>: switch to task; test; merge in master; test; [commit; push]</li>
+					<li>or <strong>Existing Task</strong>: switch to task; test; merge in master; test; apply stashes; test; [commit; push]</li>
 				</ul></div>
 				<div class="indent2">
 					<div class="wf-developCommit">
@@ -152,10 +151,10 @@
 					<p><strong>Commit</strong></p><ul>
 						<li>git: status; add all</li>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
-						<li>RTCP; <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
+						<li>TCP; <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
 							<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
 						</ul></li>
-						<li>[squash commits]; push $cb to remote tracking branch</li>
+						<li>[<a href="#SquashCommits">squash commits</a>]; push $cb to remote tracking branch</li>
 					</ul>
 				</div></div>
 			<div class='indent'><div class="wf-publish">
@@ -163,12 +162,13 @@
 				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
 				<li>switch to master; RTC<ul>
 					<li>if master had changed (had something to commit): switch to branch $cb; push; merge master into $cb<ul>
-						<li>if branch changed: RTCP</li>
+						<li>if branch changed: TCP</li>
 					</ul></li>
 				</ul></li>
 				<li>switch to master; merge in branch $cb; refresh; test; [commit]; PUSH</li>
 				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
 				<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
+				<li>cleanup old branches, stashes</li>
 				<li>if task complete, delete task and local branch</li>
 			</ul></div></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
@@ -179,12 +179,12 @@
 					<li>change issue's Waffle label from 'Waffle:in progress' to 'Waffle:needs review'<ul>
 						<li><em>Waffle should soon move issue to 'Needs Review' column</em></li>
 					</ul></li>
-					<li>if indicated: add tests / refactor / correct, branching from still-present branch</li>
+					<li>add tests / refactor / correct as indicated, branching from still-present branch</li>
 				</ul></div>
 				<div class="wf-close">
 				<p><strong>Code Review Complete: Close Issue</strong></p><ul>
 					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches</li>
-					<li>test; master branch; merge branch into local master; RTCP</li>
+					<li>test; master branch; merge branch into local master; TCP</li>
 					<li>close issue; remove issue's Waffle label 'Waffle:needs review'</li>
 					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
@@ -211,7 +211,7 @@
 				<li>add milestone 'v&lt;versionNum&gt;'; describe hotfix in milestone text</li>
 				<li>parent is the tagged release from which the fix will branch</li>
 			</ul></li>
-			<li>Other Release branch:<ul>
+			<li>Other Release branches:<ul>
 				<li>rename milestone nextVersion to v&lt;versionNum&gt;; edit existing content to release description</li>
 				<li>add new milestone 'nextVersion'; transfer any open tasks there</li>
 				<li>parent is master branch</li>
@@ -227,10 +227,10 @@
 		<li>create task &amp; branch 'release &lt;name&gt;'</li>
 		<li>Git &gt; tag; push branch and tags</li>
 		<li>bump version: change all version names that appear in product:<ul>
-			<li>version identifiers in most project files</li>
+			<li>version identifiers in most Xcode project files</li>
 			<li>...</li>
 		</ul></li>
-		<li>commit ("bump version to &lt;versionName&gt;"); push</li>
+		<li>commit ("bump version to &lt;versionName&gt;"); PUSH</li>
 	</ul></div>
 	<h5>Code Review</h5><div class="wf-triggerReview"><ul>
 		<li>change Waffle label from Waffle:in progress to Waffle:needs review</li>

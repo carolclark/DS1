@@ -210,23 +210,23 @@
 <!-- @marker "New Third Party Project" -->
 <h4 id='NewThirdPartyProject_'>New Third Party Project</h4><ul>
 	<li class="blurb">ThirdParty projects' files can be found in:<ul>
-		<li>folders ~/Dev/ThirdParty_Sources/&lt;ToolName&gt;: bare repositories forked from ThirdParty sources</li>
-		<li>project folders ~/Dev/Support/ThirdParty/&lt;ToolName&gt;<ul>
+		<li>folders ~/Dev/ThirdParty_BareRepositories/&lt;ToolName&gt;: bare repositories forked from ThirdParty sources</li>
+		<li>folders ~/Dev/Support/ThirdParty/&lt;ToolName&gt;<ul>
 			<li>folder SOURCES with copies of sources obtained from forks</li>
-			<li>also contain supporting files, such as for installation and testing</li>
+			<li>supporting files, such as for installation and testing</li>
 		</ul></li>
 	</ul></li>
 	<li>Fork Third-Party Repository<ul>
-		<li><a href="#ForkGitHubRepository_">Fork GitHub Repository</a> into its own folder in ~/Dev/ThirdParty_Sources<ul>
+		<li><a href="#ForkGitHubRepository_">Fork GitHub Repository</a> into its own folder in ~/Dev/ThirdParty_BareRepositories<ul>
 			<li class="em">This folder looks empty, but it actually contains an entire bare git repository in .git</li>
 		</ul></li>
 		<li>checkout contents of bare repository<ul>
-			<li><span class="mono">cd ~/Dev/ThirdParty_Sources/&lt;ToolName&gt;; git checkout -b master origin</span></li>
+			<li><span class="mono">cd ~/Dev/ThirdParty_BareRepositories/&lt;ToolName&gt;; git checkout -b master origin</span></li>
 		</ul></li>
-		<li>move the entire visible content of this folder to ThirdParty/&lt;ToolName&gt;/SOURCES;; commit</li>
+		<li>move the entire visible content of this folder to ThirdParty/&lt;ToolName&gt;/SOURCES; commit</li>
 	</ul></li>
 	<li>Add Supporting Files<ul>
-		<li>in ThirdParty/&lt;toolName&gt;, add installer, tests, additional support as indicated</li>
+		<li>ThirdParty/&lt;toolName&gt; contains installer, tests, additional support as indicated</li>
 	</ul></li>
 </ul>
 
