@@ -26,6 +26,196 @@
    <Group
       location = "container:ThirdParty"
       name = "ThirdParty">
+      <Group
+         location = "group:bats"
+         name = "bats">
+         <Group
+            location = "group:SOURCES"
+            name = "SOURCES">
+            <Group
+               location = "group:bin"
+               name = "bin">
+               <FileRef
+                  location = "group:bats">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:CONDUCT.md">
+            </FileRef>
+            <FileRef
+               location = "group:install.sh">
+            </FileRef>
+            <Group
+               location = "group:libexec"
+               name = "libexec">
+               <FileRef
+                  location = "group:bats">
+               </FileRef>
+               <FileRef
+                  location = "group:bats-exec-suite">
+               </FileRef>
+               <FileRef
+                  location = "group:bats-exec-test">
+               </FileRef>
+               <FileRef
+                  location = "group:bats-format-tap-stream">
+               </FileRef>
+               <FileRef
+                  location = "group:bats-preprocess">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:LICENSE">
+            </FileRef>
+            <Group
+               location = "group:man"
+               name = "man">
+               <FileRef
+                  location = "group:bats.1">
+               </FileRef>
+               <FileRef
+                  location = "group:bats.1.ronn">
+               </FileRef>
+               <FileRef
+                  location = "group:bats.7">
+               </FileRef>
+               <FileRef
+                  location = "group:bats.7.ronn">
+               </FileRef>
+               <FileRef
+                  location = "group:Makefile">
+               </FileRef>
+               <FileRef
+                  location = "group:README.md">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:package.json">
+            </FileRef>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+            <Group
+               location = "group:test"
+               name = "test">
+               <FileRef
+                  location = "group:bats.bats">
+               </FileRef>
+               <Group
+                  location = "group:fixtures"
+                  name = "fixtures">
+                  <Group
+                     location = "group:bats"
+                     name = "bats">
+                     <FileRef
+                        location = "group:dos_line.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:empty.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:environment.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:failing.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:failing_and_passing.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:failing_helper.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:failing_setup.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:failing_teardown.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:intact.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:invalid_tap.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:load.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:loop_keep_IFS.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:output.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:passing.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:passing_and_failing.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:passing_and_skipping.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:passing_failing_and_skipping.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:setup.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:single_line.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:skipped.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:teardown.bats">
+                     </FileRef>
+                     <FileRef
+                        location = "group:test_helper.bash">
+                     </FileRef>
+                     <FileRef
+                        location = "group:without_trailing_newline.bats">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:suite"
+                     name = "suite">
+                     <Group
+                        location = "group:empty"
+                        name = "empty">
+                     </Group>
+                     <Group
+                        location = "group:multiple"
+                        name = "multiple">
+                        <FileRef
+                           location = "group:a.bats">
+                        </FileRef>
+                        <FileRef
+                           location = "group:b.bats">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:single"
+                        name = "single">
+                        <FileRef
+                           location = "group:test.bats">
+                        </FileRef>
+                     </Group>
+                  </Group>
+               </Group>
+               <FileRef
+                  location = "group:suite.bats">
+               </FileRef>
+               <FileRef
+                  location = "group:test_helper.bash">
+               </FileRef>
+               <Group
+                  location = "group:tmp"
+                  name = "tmp">
+               </Group>
+            </Group>
+         </Group>
+      </Group>
       <FileRef
          location = "group:ThirdParty_ReadMe.html">
       </FileRef>
