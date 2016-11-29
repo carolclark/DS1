@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="046b2ccd-1a25-42a8-b81f-64788994ec6f" type="jetbrains.git" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
+  <name>https://github.com/carolclark/Accessor</name>
+  <param name="agentCleanFilesPolicy" value="ALL_UNTRACKED" />
+  <param name="agentCleanPolicy" value="ON_BRANCH_CHANGE" />
+  <param name="authMethod" value="PASSWORD" />
+  <param name="branch" value="refs/heads/master" />
+  <param name="ignoreKnownHosts" value="true" />
+  <param name="secure:password" value="zxx77eecd1d0306ecc5775d03cbe80d301b" />
+  <param name="submoduleCheckout" value="CHECKOUT" />
+  <param name="url" value="https://github.com/carolclark/Accessor" />
+  <param name="useAlternates" value="true" />
+  <param name="username" value="carolclark" />
+  <param name="usernameStyle" value="USERID" />
+</vcs-root>
+
