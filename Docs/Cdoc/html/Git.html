@@ -24,7 +24,7 @@
 			border: 8px none lightgreen;border-left-style: solid;
 		}
 		div.wf-createRelease {
-			border: 8px none green;border-left-style: solid;
+			border: 8px none burlywood;border-left-style: solid;
 		}
 		div.wf-developCommit {
 			border: 8px none green;border-left-style: solid;
@@ -152,7 +152,7 @@
 					<p><strong>Commit</strong></p><ul>
 						<li>git: status; add all</li>
 						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
-						<li>RTCP; <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
+						<li>TCP; <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
 							<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
 						</ul></li>
 						<li>[squash commits]; push $cb to remote tracking branch</li>
@@ -161,12 +161,12 @@
 			<div class='indent'><div class="wf-publish">
 				<p><strong>Publish</strong></p><ul>
 				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
-				<li>switch to master; RTC<ul>
+				<li>switch to master; TC<ul>
 					<li>if master had changed (had something to commit): switch to branch $cb; push; merge master into $cb<ul>
-						<li>if branch changed: RTCP</li>
+						<li>if branch changed: TCP</li>
 					</ul></li>
 				</ul></li>
-				<li>switch to master; merge in branch $cb; refresh; test; [commit]; PUSH</li>
+				<li>switch to master; merge in branch $cb; test; [commit]; PUSH</li>
 				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
 				<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
 				<li>if task complete, delete task and local branch</li>
@@ -184,7 +184,7 @@
 				<div class="wf-close">
 				<p><strong>Code Review Complete: Close Issue</strong></p><ul>
 					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches</li>
-					<li>test; master branch; merge branch into local master; RTCP</li>
+					<li>test; master branch; merge branch into local master; TCP</li>
 					<li>close issue; remove issue's Waffle label 'Waffle:needs review'</li>
 					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
@@ -200,27 +200,47 @@
 		<p><em>WARNING: Feature branches are updated frequently to and from master.
 			Updating from master is avoided in this workflow to prevent pollution of the release branch.</em></p>
 	<h5>Create Release or Hotfix Branch</h5><div class="wf-createRelease"><ul>
-		<li>if not Hotfix:<ul>
+		<li>Hotfix:<ul>
+			<li>stash any active branches</li>
+		</ul></li>
+		<li>Release:<ul>
 			<li>make sure all intended branches and stashes for this release are successfully merged<ul>
 				<li>cleanup old branches and stashes; <a href="#wf_Develop">develop</a> / commit / publish if indicated</li>
 			</ul></li>
 		</ul></li>
-		<li>on master or release-v&lt;versionNumber&gt;: TCP (test; [commit, push])</li>
-		<li>select semantic version number/name, eg. v1.0.1; rename milestone</li>
-		<li>add new milestone 'nextVersion'; transfer any open tasks there</li>
-		<li>create task and branch 'release v&lt;versionNum&gt;'<ul>
-			<li>versionName is now <em>'v&lt;versionNum&gt;'</em></li>
+		<li>select semantic version number/name, eg. v1.0.1</li>
+		<li>establish milestone and parent version<ul>
+			<li>Hotfix branch:<ul>
+				<li>add milestone 'v&lt;versionNum&gt;'; describe hotfix in milestone text</li>
+				<li>parent is the tagged release from which the hotfix will branch</li>
+			</ul></li>
+			<li>other Release branches<ul>
+				<li>rename milestone nextVersion to 'v&lt;versionNum&gt;'; edit existing content to release description</li>
+				<li>add new milestone nextVersion; transfer any open tasks there</li>
+				<li>parent is master branch</li>
+			</ul></li>
+			<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt; to release milestone</span></li>
+			<li>versionName is now 'v&lt;versionNum&gt;'</li>
 		</ul></li>
-		<li>create release description from existing content of milestone nextVersion to v&lt;versionName&gt;</li>
-		<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt;</span></li>
 	</ul></div>
+
 	<div class="wf-openTask"><ul>
 		<li>GitHub: from repository's Code tab, select "&lt;n&gt; revisions"; create and save draft of revision #&lt;versionName&gt;</li>
-		<li>create task &amp; branch 'revision &lt;name&gt;'</li>
-		<li>Git &gt; tag; push branch and tags</li>
-		<li>bump version: change all version numbers that appear in product<ul>
-			<li>for now, that is the version numbers in most project files</li>
+		<li>create release branch from parent<ul>
+			<li>when parent is not master, use <span class="mono">git checkout -b release-&lt;versionName&gt; &lt;parentTag&gt;</span></li>
 		</ul></li>
+		<li>TCP (test; [commit, push])</li>
+	</ul></div>
+	<div class="wf-developCommit"><ul>
+		<li>create task 'release-&lt;versionName&gt;'</li>
+		<li>Hotfix: <a href="#wf_Develop">develop</a> as indicated; TCP</li>
+	</ul></div>
+	<div class="wf-publish"><ul>
+		<li>bump version: change all version numbers that appear in product<ul>
+			<li>change version numbers in most project files</li>
+			<li>...</li>
+		</ul></li>
+		<li>TCP; Git &gt; tag; push branch and tags</li>
 		<li>commit ("bump version to &lt;versionName&gt;"); push</li>
 	</ul></div>
 	<h5>Code Review</h5><div class="wf-triggerReview"><ul>
@@ -232,8 +252,9 @@
 		</ul></li>
 	</ul></div>
 	<h5>Finish</h5><div class="wf-close"><ul>
-		<li>master branch; merge in tagged release branch; push master</li>
+		<li>master branch; merge in tagged release branch; test; [commit]; PUSH</li>
 		<li>GitHub: from draft of Release: add product if indicated; publish</li>
+		<li>delete release task and branch</li>
 	</ul></div>
 	<h5>Archive Repository</h5>
 	</div></div></div>
