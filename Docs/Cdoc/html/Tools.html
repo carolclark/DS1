@@ -311,7 +311,7 @@
 
 <!-- @marker "gnu-tar" -->
 <h4><a name="_gnutar">gnu-tar</a></h4><div class='indent'>
-	<p class='blurb'>archiving utility; apparently better that bsdtar, which is still run by <span class="mono">tar</span></p>
+	<p class='blurb'>archiving utility; sometimes needed instead of bsd tar, which is still run by <span class="mono">tar</span></p>
 	<p><b>Tool</b> v1.14; run with <span class="mono">gtar</span></p>
 	<p><strong>Usage</strong> <span class="mono">cd &lt;archiveDirectory&gt;; gtar -xvf &lt;archiveName&gt;</span></p>
 	<p><b>Reference</b></p><ul>
@@ -616,36 +616,11 @@
 <!-- @marker "TeamCity" -->
 <h4 id='_TeamCity'>TeamCity</h4><div class='indent'>
 	<p class='blurb'>Continuous Integration system</p>
-	<p><b>Server and Web Application</b> at /Applications/TeamCity (use /Library/TeamCity next time);<br />
-		Professional Version v9.1.6; *.tar.gz archive downloaded from <a href="https://www.jetbrains.com/teamcity/download/">JetBrains TeamCity Download</a> </p>
-	<p><b>Critical Data</b> configurable \todo</p>
-	<p><b>Installation and Configuration</b> </p><ul>
-		<li><strong>Requires:</strong> <a href="#_Java">Java</a>, <a href="#_gnutar">gnu-tar</a> </li>
-		<li>cd to directory containing TeamCity archive</li>
-		<li>unzip using gnu-tar downloaded file <span class="mono">gtar xf &lt;archive&gt;</span></li>
-		<li>move unzipped file to destination (/Applications or /Libraries)</li>
-		<li>Start TeamCity<ul>
-			<li>open web page localhost:8111 (nothing there yet for new installation)</li>
-			<li>from TeamCity directory: <span class="mono">bin/runAll.sh start</span><ul>
-				<li class="blurb">should show short log in Terminal, maybe beginning of TeamCity window at localhost:8111</li>
-			</ul></li>
-		</ul></li>
-		<li>Autostart TeamCity<ul>
-			<li>copy jetbrains.teamcity.server.plist to /Library/LaunchDaemons<ul>
-				<li>see <a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
-				<li>restart computer</li>
-				<li class="blurb">localhost:8111 should show TeamCity window</li>
-			</ul></li>
-		</ul></li>
-		<li class="blurb">may take awhile for all the pieces to come together at this point;<br />
-			first time, no build agents appeared in evening, but were available next morning</li>
-	</ul>
-	<p><strong>Moving Projects to Another Server</strong></p><ul>
-		<li>make standard TeamCity backups of existing projects</li>
-		<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
-	</ul>
-	<p><b>Customization &amp; Automation</b> </p>
-	</div>
+	<p><b>Server and Web Application</b> at /Applications/TeamCity;<br />
+	Professional Version v9.1.6; *.tar.gz archive downloaded from <a href="https://www.jetbrains.com/teamcity/download/">JetBrains TeamCity Download</a><br />
+	upgrading to Professional Version v10.0.3, 2016 Nov 9</p>
+	<p>see <a href="TeamCity.html#Contents">TeamCity</a></p>
+</div>
 
 <!-- @marker "Terminal" -->
 <h4><a name="_Terminal">Terminal</a></h4><div class='indent'>
