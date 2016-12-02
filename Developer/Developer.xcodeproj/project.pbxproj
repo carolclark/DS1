@@ -444,7 +444,7 @@
 		67CBDB6D191AF1F700B8164A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = v0.0;
+				CURRENT_PROJECT_VERSION = v0.0.1;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -452,7 +452,7 @@
 		67CBDB6E191AF1F700B8164A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = v0.0;
+				CURRENT_PROJECT_VERSION = v0.0.1;
 			};
 			name = Release;
 		};
