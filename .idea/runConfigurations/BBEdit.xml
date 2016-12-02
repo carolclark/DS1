@@ -1,15 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="BBEdit" type="AppleRunConfiguration" factoryName="Application" PROGRAM_PARAMS="${DEV}/Support/BuildSupport" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="BuildSupport" TARGET_NAME="BBEdit" CONFIG_NAME="Debug" SCHEME_NAME="BBEdit" RUN_PATH="$PROJECT_DIR$/BuildSupport/Applications/BBEdit/BBEdit_install.ksh" MAKE_ACTIVE="FALSE" WAIT_FOR="FALSE">
+  <configuration default="false" name="BBEdit" type="AppleRunConfiguration" factoryName="Application" PROGRAM_PARAMS="${DEV}/Support/BuildSupport" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="BuildSupport" TARGET_NAME="BBEdit" CONFIG_NAME="Debug" SCHEME_NAME="BBEdit" RUN_PATH="$PROJECT_DIR$/BuildSupport/Applications/BBEdit/BBEdit_install.ksh" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
     <envs>
       <env name="DEV" value="${HOME}/Support" />
       <env name="CCDev" value="${HOME}/Library/CCDev" />
     </envs>
-    <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-      <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-    </EXTENSION>
-    <method>
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="BBEditScripts" run_configuration_type="AppleRunConfiguration" />
-      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-    </method>
+    <method />
   </configuration>
 </component>
