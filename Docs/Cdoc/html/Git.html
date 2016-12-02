@@ -219,20 +219,19 @@
 				<li>add new milestone nextVersion; transfer any open tasks there</li>
 				<li>parent is master branch</li>
 			</ul></li>
-			<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt; to release milestone</span></li>
 			<li>versionName is now 'v&lt;versionNum&gt;'</li>
 		</ul></li>
 	</ul></div>
 	<div class="wf-openTask"><ul>
 		<li>GitHub: from repository's Code tab, select "&lt;n&gt; revisions"; create and save draft of revision #&lt;versionName&gt;</li>
-		<li>create release branch from parent<ul>
+		<li>TCP (test; [commit, push])</li>
+		<li>ensure parent branch is checked out<ul>
 			<li>when parent is not master, use <span class="mono">git checkout -b release-&lt;versionName&gt; &lt;parentTag&gt;</span></li>
 		</ul></li>
-		<li>TCP (test; [commit, push])</li>
 	</ul></div>
 	<div class="wf-developCommit"><ul>
-		<li>create task 'release-&lt;versionName&gt;'</li>
-		<li>Hotfix: <a href="#wf_Develop">develop</a> as indicated; TCP</li>
+		<li>create task 'release-&lt;versionName&gt;' based on parent branch</li>
+		<li>Hotfix: <a href="#wf_Develop">develop</a> / TCP: loop as indicated</li>
 	</ul></div>
 	<div class="wf-publish"><ul>
 		<li>bump version: change all version numbers that appear in product<ul>
