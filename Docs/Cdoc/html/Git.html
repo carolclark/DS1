@@ -223,7 +223,7 @@
 		</ul></li>
 	</ul></div>
 	<div class="wf-openTask"><ul>
-		<li>GitHub: from repository's Code tab, select "&lt;n&gt; revisions"; create and save draft of revision #&lt;versionName&gt;</li>
+		<li>GitHub: from repository's Code tab, select "&lt;n&gt; releases"; create and save draft of revision &lt;versionName&gt;</li>
 		<li>TCP (test; [commit, push])</li>
 		<li>ensure parent branch is checked out<ul>
 			<li>when parent is not master, use <span class="mono">git checkout -b release-&lt;versionName&gt; &lt;parentTag&gt;</span></li>
@@ -252,9 +252,10 @@
 		</ul></li>
 	</ul></div>
 	<h5>Finish</h5><div class="wf-close"><ul>
+		<li>if indicated, update master from release</li>
 		<li>master branch; merge in tagged release branch; test; [commit]; PUSH</li>
 		<li>GitHub: from draft of Release: add product if indicated; publish</li>
-		<li>delete release task and branch</li>
+		<li>delete release task and local branch</li>
 	</ul></div>
 	<h5>Archive Repository</h5>
 	</div></div></div>
