@@ -17,11 +17,34 @@
 
 <!-- @marker "InstallConfig_" -->
 <h4 id='InstallConfig_'>Installation and Configuration</h4><ul>
-	<li><strong>Requires:</strong> <a href="Tools.html#_Java">Java</a>, <a href="Tools.html#_gnutar">gnu-tar</a> </li>
-	<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
-	<li>cd to directory containing TeamCity archive</li>
-	<li>unzip using gnu-tar: <span class="mono">gtar xf &lt;archive&gt;</span></li>
-	<li>move unzipped file to ~/Applications</li>
+	<li>install TeamCity application<ul>
+		<li><strong>Requires:</strong> <a href="Tools.html#_Java">Java</a>, <a href="Tools.html#_gnutar">gnu-tar</a><ul>
+			<li>check <a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+				Supported Platforms and Environments</a>; perform any support changes (e.g. update Java) needed</li>
+		</ul></li>
+		<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
+		<li>Terminal:<ul>
+			<li>cd to directory containing TeamCity archive</li>
+			<li>unzip using gnu-tar: <span class="mono">gtar xf &lt;archive&gt;</span></li>
+		</ul></li>
+		<li>move unzipped file to ~/Applications</li>
+	</ul></li>
+	<li>Starting TeamCity Server<ul>
+		<li>open http://localhost.8111; will not show content yet</li>
+		<li><span class="mono">~/Applications/TeamCity/bin/runAll.sh start</span>; localhost.8111 starts up</li>
+	</ul></li>
+	<li>Configuration<ul>
+		<li>user: carolclark</li>
+		<li>profile page: user name & email; UISettings: add "Show date/time in my timezone." </li>
+	</ul></li>
+
+	<li>continue and document from <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-installingWithTomcat">
+		Installing and Configuring the TeamCity Server</a></li>
+
+
+
+
+	<li>backup dsl configuration</li>
 	<li>Start TeamCity<ul>
 		<li>open web page localhost:8111 (nothing there yet for new installation)</li>
 		<li>from TeamCity directory: <span class="mono">bin/runAll.sh start</span><ul>
