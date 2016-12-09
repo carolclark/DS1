@@ -23,7 +23,5 @@
 	<string>logs/launchd.err.log</string>
 	<key>StandardOutPath</key>
 	<string>logs/launchd.out.log</string>
-	<key>UserName</key>
-	<string>server1</string>
 </dict>
 </plist>
