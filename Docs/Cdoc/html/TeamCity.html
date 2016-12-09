@@ -27,15 +27,26 @@
 			<li>cd to directory containing TeamCity archive</li>
 			<li>unzip using gnu-tar: <span class="mono">gtar xf &lt;archive&gt;</span></li>
 		</ul></li>
-		<li>move unzipped file to ~/Applications</li>
+		<li>move unzipped file to /Library</li>
 	</ul></li>
-	<li>Starting TeamCity Server<ul>
+	<li>Start TeamCity Server<ul>
 		<li>open http://localhost.8111; will not show content yet</li>
-		<li><span class="mono">~/Applications/TeamCity/bin/runAll.sh start</span>; localhost.8111 starts up</li>
+		<li><span class="mono">cd /Library/TeamCity; bin/runAll.sh start</span><ul>
+			<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111</li>
+		</ul></li>
 	</ul></li>
-	<li>Configuration<ul>
-		<li>user: carolclark</li>
-		<li>profile page: user name & email; UISettings: add "Show date/time in my timezone." </li>
+	<li>TeamCity profile, ui settings<ul>
+		<li>user: carolclark; password</li>
+		<li>profile page: user name & email</li>
+		<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
+		Show all personal builds: turn ON; Add builds triggered by me to favorites: OFF</li>
+	</ul></li>
+	<li>Autostart TeamCity<ul>
+		<li>run target DeveloperTests; Developer_install script copies jetbrains.teamcity.server.plist to /Library/LaunchDaemons<ul>
+			<li>see <a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
+			<li>restart computer</li>
+			<li class="blurb">localhost:8111 should show TeamCity window</li>
+		</ul></li>
 	</ul></li>
 
 	<li>continue and document from <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-installingWithTomcat">
@@ -45,19 +56,6 @@
 
 
 	<li>backup dsl configuration</li>
-	<li>Start TeamCity<ul>
-		<li>open web page localhost:8111 (nothing there yet for new installation)</li>
-		<li>from TeamCity directory: <span class="mono">bin/runAll.sh start</span><ul>
-			<li class="blurb">should show short log in Terminal, maybe beginning of TeamCity window at localhost:8111</li>
-		</ul></li>
-	</ul></li>
-	<li>Autostart TeamCity<ul>
-		<li>copy jetbrains.teamcity.server.plist to /Library/LaunchDaemons<ul>
-			<li>see <a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
-			<li>restart computer</li>
-			<li class="blurb">localhost:8111 should show TeamCity window</li>
-		</ul></li>
-	</ul></li>
 	<li class="blurb">may take awhile for all the pieces to come together at this point;<br />
 		first time, no build agents appeared in evening, but were available next morning</li>
 </ul>

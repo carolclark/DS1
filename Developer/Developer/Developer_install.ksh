@@ -115,6 +115,7 @@ actionFlags=""
 servicesFolder="${HOME}/Library/Services"
 scriptsFolder="${CCDev}/bin"
 applescriptsFolder="${HOME}/Library/Scripts/Developer"
+launchdaemonsFolder="/Library/LaunchDaemons"
 
 #^ 3 === getSubtargetDestination
 function getSubtargetDestination {
@@ -135,10 +136,13 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${applescriptsFolder}"
 			;;
+		"JetBrains" )
+			destinationFolder="${launchdaemonsFolder}"
+			;;
 		"Python" )				# separate target
-			;;
+			;&
 		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
-			;;
+			;&
 		"Doxygen" )				# files for reference only
 			;&
 		"CocoaTestBundle" )		# used by Xcode build system for these tests
@@ -146,8 +150,6 @@ function getSubtargetDestination {
 		"DevConfig.ksh" )		# custom setup script DevConfig.ksh
 			;&
 		"ThirdParty" )			# handled elsewhere
-			;;
-		"JetBrains" )			# nothing to copy
 			;;
 		* )
 			errorMessage $RC_InputNotHandled "$0#$LINENO:" "source folder ${sourceRoot}/${targetFolder}/${subtarget} not handled"
