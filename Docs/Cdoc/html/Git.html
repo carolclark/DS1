@@ -155,7 +155,11 @@
 						<li>TCP; <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
 							<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
 						</ul></li>
-						<li>[<a href="#SquashCommits">squash commits</a>]; push $cb to remote tracking branch</li>
+					</ul>
+					<p><strong>Push</strong></p><ul>
+						<li><span class="mono">git show --name-only</span>: check for indicated rebase to squash and/or reword</li>
+						<li>if indicated, <a href="#RebaseCommits">rebase commits</a></li>
+						<li>push $cb to remote tracking branch</li>
 					</ul>
 				</div></div>
 			<div class='indent'><div class="wf-publish">
@@ -273,7 +277,7 @@
 		<!-- @topicItem "Fix Divergent Branches" "#adminFixDivergentBranches" "0" "" -->
 		<!-- @topicItem "Checkout Remote Branch" "#CheckoutRemoteBranch_" "0" "" -->
 		<!-- @topicItem "Checkout from Stash" "#CheckoutFromStash" "0" "" -->
-		<!-- @topicItem "Squash Commits" "#SquashCommits" "0" "" -->
+		<!-- @topicItem "Rebase Commits" "#RebaseCommits" "0" "" -->
 		<!-- @topicItem "emacs Commands" "#emacsCommands" "0" "" -->
 	<!-- @/topicList -->
 
@@ -336,12 +340,16 @@
 			<li><span class="mono">git checkout stash@{0} -- &lt;filename&gt;</span>&nbsp;&nbsp;# checkout single file</li>
 		</ul>
 
-		<!-- @marker "Squash Commits" -->
-		<h6 id='SquashCommits'>Squash Commits</h6><ul>
+		<!-- @marker "Rebase Commits" -->
+		<h6 id='RebaseCommits'>Rebase Commits</h6><ul>
 			<li class="mono">git rebase -i HEAD~&lt;#commits&gt;</li>
-			<li>edit commands (pick, squash, ...); save</li>
-			<li>git rebase --continue</li>
-			<li>edit comment; save</li>
+			<li>edit commands (pick, squash, reword, ...); save<ul>
+				<li>for reword: edit messages as they are shown</li>
+				<li>for rebase: <ul>
+					<li>git rebase --continue</li>
+					<li>edit comment; save</li>
+				</ul></li>
+			</ul></li>
 		</ul>
 
 		<!-- @marker "emacs Commands" -->
