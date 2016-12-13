@@ -13,6 +13,9 @@
 <!-- @topicList "TeamCity" "Contents" -->
 	<!-- @topicItem "Installation and Configuration" "#InstallConfig_" "0" "" -->
 	<!-- @topicItem "Moving to Another Server" "#MovingServer_" "0" "" -->
+	<!-- @topicSep -->
+    <!-- @topicGroup "MySQL" "4" -->
+	<!-- @topicItem "Set up MySQL Server" "#SetupMySQLServer_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "InstallConfig_" -->
@@ -48,22 +51,69 @@
 			<li class="blurb">Safari: localhost:8111 should show TeamCity window</li>
 		</ul></li>
 	</ul></li>
+	<li>Configure BuildServer Data<ul>
+		<li>@ Administration &gt; &lt;RootProject&gt; &gt; Parameters: define env.TEAM_CITY_DATA_PATH /Volumes/TeamCity/BuildData</li>
+	</ul></li>
+</ul>
 
-	<li>continue and document from <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-installingWithTomcat">
-		Installing and Configuring the TeamCity Server</a></li>
+<h5>Configure TeamCity Server for Production Use</h5><ul>
+	<li>Use External Database (MySQL)</li>
+		<li>install MySQL if necessary:<ul>
+			<li>install <a href="Tools.html#_MySQL">MySQL</a></li>
+			<li><a href="#SetupMySQLServer_">Set up MySQL Server</a></li>
+		</ul></li>
+	<li>Initialize MySQL Data Directory<ul>
+		<li>from Terminal:<ul>
+			<li><span class="mono">cd /usr/local/mysql</span>&nbsp;&nbsp;<em>set directory to MySQL installation</em></li>
+			<li><span class="mono">bin/mysqld --initialize-insecure --user=mysql</span>&nbsp;&nbsp;<em>initialize MySQL data directory</em></li>
+			<li><span class="mono">,</span>&nbsp;&nbsp;<em>,</em></li>
+			<li><span class="mono">,</span>&nbsp;&nbsp;<em>,</em></li>
+			<li><span class="mono">,</span>&nbsp;&nbsp;<em>,</em></li>
+			<li><span class="mono">,</span>&nbsp;&nbsp;<em>,</em></li>
+			<li>use SystemPrefs/MySql to start MySQL server</li>
+			<li><span class="mono">mysql -u root --skip-password</span>&nbsp;&nbsp;<em>sign in to MySQL server</em></li>
+			<li><span class="mono">ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';</span>&nbsp;&nbsp;<em>add password to root user</em></li>
+
+		</ul></li>
+	</ul></li>
+
+
+	<li id="configTeamCityDB">Create and Configure TeamCityDB<ul>
+		<li class="mono">create database TeamCityDB collate utf8_bin; (where?)</li>
+	</ul></li>
+
+
+	<li><a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-ConfiguringTeamCityServer">
+		Configuring TeamCity Server</a></li>
 
 
 
 
 	<li>backup dsl configuration</li>
-	<li class="blurb">may take awhile for all the pieces to come together at this point;<br />
-		first time, no build agents appeared in evening, but were available next morning</li>
 </ul>
 
 <!-- @marker "Moving to Another Server" -->
 <h4 id='MovingServer_'>Moving Projects to Another Server</h4><ul>
 	<li>make standard TeamCity backups of existing projects</li>
 	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
+</ul>
+
+<!-- MySQL -->
+<h3>MySQL</h3>
+
+<!-- @marker "Set up MySQL Server" -->
+<h4 id='SetupMySQLServer_'>Set up MySQL Server</h4><ul>
+	<li>set up MySQL server<ul>
+		<li>download from <a href="http://dev.mysql.com/downloads/mysql/">MySQL Downloads</a><ul>
+			<li><em>version labelled macos11 works for Mavericks, Yosemite, El Capitan</em></li>
+		</ul></li>
+		<li>run installer; record temporary password given at end of installation</li>
+		<li>add <span class="mono">/usr/local/mysql/bin</span> to <span class="mono">PATH</span></li>
+		<li>reset password<ul>
+			<li>open MySQL: <span class="mono">mysql -u root -p</span>; enter temporary password </li>
+			<li>reset password: <span class="mono">set password=PASSWORD('newPassword');</span> </li>
+		</ul></li>
+	</ul></li>
 </ul>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
