@@ -483,6 +483,9 @@
 	.center {
 		text-align: center;
 	}
+	.prompt {
+		color: #cc00aa;
+	}
 	.gray {
 		color: #AAAAAA;
 	}
