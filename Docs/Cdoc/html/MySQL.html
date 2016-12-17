@@ -3,17 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<title>MySQL</title>
-	<link rel="stylesheet" type="text/css" href="../css/technical.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
 <div class='navhead' id='Top'>
 	<table class='navhead'>
-		<col class='navhead_c1'/>
+		<col class='navhead_c1' />
 		<tr>
 			<td>[<a href="../Support/Support.html">Support</a>]</td>
-			<td>[<a href="History_Support/Support.html#Contents">History</a>]</td>
 			<td class='right'>[<a href="#Contents">Contents</a>]</td>
 		</tr>
 	</table>
@@ -21,15 +20,104 @@
 <h1>MySQL</h1>
 
 <!-- @topicList "MySQL" "Contents" -->
+	<!-- @topicItem "Set up MySQL Server" "#SetupMySQLServer_" "0" "" -->
+	<!-- @topicItem "Test MySQL Server" "#TestMySQLServer_" "0" "" -->
+	<!-- @topicItem "Remove MySQL" "#RemoveMySQL_" "0" "" -->
+	<!-- @topicItem "Create Database" "#CreateDatabase_" "0" "" -->
 <!-- @/topicList -->
 
+<!-- @marker "Set Up MySQL Server" -->
+<h4 id='SetupMySQLServer_'>Set Up MySQL Server</h4><ul>
+	<li>download MySQL<ul>
+		<li>download from <a href="http://dev.mysql.com/downloads/mysql/">MySQL Downloads</a><ul>
+			<li><em>version labelled macos11 works for Mavericks, Yosemite, El Capitan</em></li>
+			<li>also see <a href="Tools.html#_MySQL">Tools: MySql</a></li>
+		</ul></li>
+	</ul></li>
+	<li>initialize data directory<ul>
+		<li><span class="mono">cd /usr/local/mysql</span>&nbsp;&nbsp;<em>set directory to MySQL installation</em></li>
+		<li><span class="mono">bin/mysqld --initialize-insecure --user=mysql --basedir=/opt/mysql/mysql --datadir=/opt/mysql/mysql/data</span><br />
+			<em>initialize MySQL data directory</em></li>
+		<li><span class="mono">mysql -u root --skip-password</span>&nbsp;&nbsp;<em>sign in to MySQL server to set password</em></li>
+		<li><span class="mono">ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';</span>&nbsp;&nbsp;<em>add password to root user</em></li>
+	</ul></li>
+	<li>add <span class="mono">/usr/local/mysql/bin</span> to <span class="mono">PATH</span></li>
+	<li>add aliases: mysql=/usr/local/mysql/bin/mysql; mysqladmin=/usr/local/mysql/bin/mysqladmin</li>
+	<li>use SystemPrefs/MySql to start MySQL server</li>
+	<li>Initialize MySQL Data Directory<ul>
+		<li>from Terminal:<ul>
+			<li><span class="mono">cd /usr/local/mysql</span>&nbsp;&nbsp;<em>set directory to MySQL installation</em></li>
+			<li><span class="mono">bin/mysqld --initialize-insecure --user=mysql</span>&nbsp;&nbsp;<em>initialize MySQL data directory</em></li>
+			<li>use SystemPrefs/MySql to start MySQL server</li>
+			<li><span class="mono">mysql -u root --skip-password</span>&nbsp;&nbsp;<em>sign in to MySQL server</em></li>
+			<li><span class="mono">ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';</span>&nbsp;&nbsp;<em>add password to root user</em></li>
+		</ul></li>
+	</ul></li>
+	</ul>
+
+<!-- @marker "Test MySQL Server" -->
+<h4 id='TestMySQLServer_'>Test MySQL Server</h4><ul>
+	<li class="blurb">see <a href="https://dev.mysql.com/doc/refman/5.7/en/testing-server.html">Testing the Server</a> for troubleshooting</li>
+	<li>bin/mysqladmin version</li>
+	<li>bin/mysqladmin variables</li>
+	<li>shutdown and restart server with command-line and SystemPrefs/MySql<ul>
+		<li>command-line commands: <span class="mono">bin/mysqladmin -u root shutdown; mysqld</span></li>
+	</ul></li>
+	<li>list existing databases: <span class="mono">bin/mysqlshow</span></li>
+	<li>pick a table, and show one of its tables <span class="mono">bin/mysqlshow &lt;databaseName&gt;</span></li>
+	<li>read some values from database mysql <span class="mono">bin/mysql -e "SELECT User, Host, plugin FROM mysql.user" mysql</span></li>
+</ul>
 
 
-<p><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
-<hr class='footer'/>
+
+
+
+<!-- @marker "Remove MySQL" -->
+<h4 id='RemoveMySQL_'>Remove MySQL</h4><ul>
+	<li class="blurb">based on GitHub gist <a href="https://gist.github.com/vitorbritto/0555879fe4414d18569d">Remove MySQL completely</a>
+		and <a href="http://community.jaspersoft.com/wiki/uninstall-mysql-mac-os-x">Jaspersoft: Uninstall MySql on a Mac OS X</a></li>
+	<li>backup existing databases:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysqldump</span></li>
+	<li>check for active MySQL processes:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ps -ax | grep mysql</span></li>
+	<li>stop and kill any active MySQL processes found</li>
+	<li>SystemPrefs: stop the MySQL server</li>
+	<li>remove files:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span></span><ul>
+		<li class="mono">sudo rm /usr/local/mysql</li>
+		<li class="mono">sudo rm -rf /usr/local/mysql*</li>
+		<li class="mono">sudo rm -rf /Library/StartupItems/MySQL*</li>
+		<li class="mono">sudo rm -rf /Library/PreferencePanes/MySQL*</li>
+	</ul></li>
+	<li>remove previous MySQL Configuration:&nbsp;&nbsp;
+		<span class='mono'><span class="prompt">$ </span>emacs /etc/hostconfig`</span>; # Remove the line MYSQLCOM=-YES-</li>
+	<li>remove previous MySQL Preferences:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span></span><ul>
+		<li class="mono">rm -rf ~/Library/PreferencePanes/MySQL*</li>
+		<li class="mono">sudo rm -rf /Library/Receipts/mysql*</li>
+		<li class="mono">sudo rm -rf /Library/Receipts/MySQL*</li>
+		<li class="mono">sudo rm -rf /private/var/db/receipts/*mysql*</li>
+	</ul></li>
+	<li>restart computer</li>
+	<li>attempting to run mysql should now fail</li>
+</ul>
+
+
+
+<ul>
+	<li>more stuff to add</li>
+	<li><a href="https://dev.mysql.com/doc/refman/5.7/en/default-privileges.html">Securing the Initial MySQL Accounts</a></li>
+	<li><a href="https://dev.mysql.com/doc/refman/5.7/en/backup-and-recovery.html">Backup and Recovery</a></li>
+	<li>make distribution contents accessible to mysql: chown -R mysql .; chgrp -R mysql .</li>
+	<li>initialize data directory: <span class="mono">scripts/mysql_install_db --user=mysql</span></li>
+	<li>https://dev.mysql.com/doc/refman/5.6/en/data-directory-initialization.html
+		<span class="https://dev.mysql.com/doc/refman/5.6/en/data-directory-initialization.html"></span> </li>
+</ul>
+
+<!-- @marker "Create Database" -->
+<h4 id='CreateDatabase_'>Create Database</h4>
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
 <p class='footer'>Copyright (c) 2016 C &amp; C Software, Inc. All rights reserved.</p>
 </body>
 </html>
