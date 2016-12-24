@@ -24,6 +24,7 @@
 	<!-- @topicItem "ChronoSync" "#_ChronoSync" "0" "" -->
 <!-- @topicGroup "" "10" -->
 	<!-- @topicItem "CocoaPods" "#_CocoaPods" "0" "" -->
+	<!-- @topicItem "Connector/J" "#_Connector_J" "0" "" -->
 	<!-- @topicItem "Dash" "#_Dash" "0" "" -->
 	<!-- @topicItem "Disk Inventory X" "#DiskInventoryX_" "0" "" -->
 	<!-- @topicItem "Doxygen" "#Doxygen_" "0" "" -->
@@ -31,8 +32,8 @@
 	<!-- @topicItem "Finder" "#Finder" "0" "" -->
 	<!-- @topicItem "git" "#_git" "0" "" -->
 	<!-- @topicItem "GitHub" "#_GitHub" "0" "" -->
-	<!-- @topicItem "GitX" "#_GitX" "0" "" -->
 <!-- @topicGroup "" "20" -->
+	<!-- @topicItem "GitX" "#_GitX" "0" "" -->
 	<!-- @topicItem "gnu-tar" "#_gnutar" "0" "" -->
 	<!-- @topicItem "GraphViz" "#_GraphViz" "0" "" -->
 	<!-- @topicItem "Homebrew" "#_Homebrew" "0" "" -->
@@ -41,8 +42,8 @@
 	<!-- @topicItem "iWork" "#_iWork" "0" "" -->
 	<!-- @topicItem "Java" "#_Java" "0" "" -->
 	<!-- @topicItem "MacPorts" "#_MacPorts" "0" "" -->
-	<!-- @topicItem "Mail" "#_Mail" "0" "" -->
 <!-- @topicGroup "" "30" -->
+	<!-- @topicItem "Mail" "#_Mail" "0" "" -->
 	<!-- @topicItem "Markdown" "#Markdown" "0" "" -->
 	<!-- @topicItem "Marked" "#_Marked" "0" "" -->
 	<!-- @topicItem "MySQL" "#_MySQL" "0" "" -->
@@ -51,8 +52,8 @@
 	<!-- @topicItem "Python" "#_Python" "0" "" -->
 	<!-- @topicItem "Reminders" "#_Reminders" "0" "" -->
 	<!-- @topicItem "Safari" "#_Safari" "0" "" -->
-	<!-- @topicItem "Server" "#_Server" "0" "" -->
 <!-- @topicGroup "" "40" -->
+	<!-- @topicItem "Server" "#_Server" "0" "" -->
 	<!-- @topicItem "Stickies" "#Stickies" "0" "" -->
 	<!-- @topicItem "StuffIt Expander" "#_StuffItExpander" "0" "" -->
 	<!-- @topicItem "System Preferences" "#SystemPreferences" "0" "" -->
@@ -63,7 +64,7 @@
 	<!-- @topicItem "Waffle" "#_Waffle" "0" "" -->
 	<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
 <!-- @topicSep -->
-<!-- @topicGroup "Inactive" "51" -->
+<!-- @topicGroup "Inactive" "52" -->
 <!-- @topicItem "Inactive Tools" "Tools_Inactive.html#Contents" "0" "inactive applications, tools, and libraries" -->
 <!-- @/topicList -->
 
@@ -229,12 +230,20 @@
     To search for pods, see <a href="https://cocoapods.org">CocoaPods.org</a></p>
 </div>
 
+<!-- @marker "Connector/J" -->
+<h4 id='_Connector_J'>Connector/J</h4><div class='indent'>
+	<p class='blurb'>MySQL's JDBC connector</p>
+	<p><strong>MySQL Java connector</strong> at &lt;TeamCity Data Directory&gt;/lib/jdbc; v5.1.40; download from <a href="http://dev.mysql.com/downloads/connector/j/">MySQL Downloads</a></p>
+	<p><strong>Installation and Configuration</strong> cd ~/Downloads; gtar -xvf ~/Downloads/&lt;archiveName&gt;; move Jar file to &lt;TeamCity Data Directory&gt;/lib/jdbc;
+		see <a href="http://dev.mysql.com/doc/connector-j/5.1/en/connector-j-binary-installation.html">Installing Connector/J from a Binary Distribution</a></p>
+</div>
+
 <!-- @marker "Dash" -->
 <h4><a name="_Dash">Dash</a></h4><div class='indent'>
 	<p><strong>Application</strong> AppStore app at /Applications</p>
-	<p><strong>Critical Data</strong> active snippets library inside ${DEV}/Support; supplied snippet examples at ~/Library/Application Support/Dash </p>
-	<p><strong>Configuration</strong> </p>
-	<p><strong>Customization &amp; Automation</strong> </p><ul>
+	<p><strong>Critical Data</strong>active snippets library inside ${DEV}/Support; supplied snippet examples at ~/Library/Application Support/Dash</p>
+	<p><strong>Configuration</strong></p>
+	<p><strong>Customization &amp; Automation</strong></p><ul>
         <li>Dash Preferences<ul>
             <li>Downloads: download docsets as indicated</li>
             <li>Docsets: set abbreviations dev:, pun:, acc: for ~/Dev docsets</li>
@@ -490,7 +499,8 @@
 	<p class='blurb'></p>
 	<p><em>see <a href="http://dev.mysql.com/doc/mysql-getting-started/en/">Getting Started with MySQL</a></em></p>
 	<p><strong>database driver</strong>; managed by SystemPreferences/MySQL version mysql-5.7.16-osx10.11-x86_64.dmg;
-		for MacOS Mavericks, Yosemite, El Capitan; downloaded from <a href="http://dev.mysql.com/downloads/mysql/">MySQL Downloads</a></p>
+		for MacOS Mavericks, Yosemite, El Capitan; downloaded from <a href="http://dev.mysql.com/downloads/mysql/">MySQL Downloads</a><br />
+		As of 12/22/2016, this version is no longer available or supported. There are copies on /Volumes/Archives and on DVD at Jim's office.</p>
 	<p><strong>binaries</strong> /usr/local/mysql/bin (add to path)</p>
 	<p><strong>Critical Data</strong> database for TeamCity at /Volumes/TeamCity/TeamCityDB</p>
 	<p><strong>Documentation</strong> <a href="http://dev.mysql.com/doc/refman/5.7/en">MySQL Documentation</a></p>

@@ -20,40 +20,52 @@
 <h1>MySQL</h1>
 
 <!-- @topicList "MySQL" "Contents" -->
-	<!-- @topicItem "Set up MySQL Server" "#SetupMySQLServer_" "0" "" -->
-	<!-- @topicItem "Test MySQL Server" "#TestMySQLServer_" "0" "" -->
-	<!-- @topicItem "Remove MySQL" "#RemoveMySQL_" "0" "" -->
-	<!-- @topicItem "Create Database" "#CreateDatabase_" "0" "" -->
+	<!-- @topicItem "Install and Set Up MySQL" "#InstallandSetUpMySQL_" "0" "" -->
+		<!-- @topicItem "Set up MySQL Server" "#SetupMySQLServer_" "1" "" -->
+		<!-- @topicItem "Initialize MySQL's Data Directory" "#InitMySQLDataDirectory_" "1" "" -->
+		<!-- @topicItem "Test MySQL Server" "#TestMySQLServer_" "1" "" -->
+		<!-- @topicItem "Securing the Initial MySQL Accounts" "#SecuringtheInitialMySQLAccounts_" "1" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Other Procedures and Tasks" "#OtherProceduresandTasks_" "0" "" -->
+		<!-- @topicItem "Create Database" "#CreateDatabase_" "1" "" -->
+		<!-- @topicItem "Install Connector/J" "Tools.html#_Connector_J" "1" "MySQL's Java connector" -->
+		<!-- @topicItem "Remove MySQL" "#RemoveMySQL_" "1" "" -->
+		<!-- @topicItem "MySQL Tasks" "#MySQLTasks_" "1" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "Install and Set Up MySQL" -->
+<h3 id='InstallandSetUpMySQL_'>Install and Set Up MySQL</h3>
 
 <!-- @marker "Set Up MySQL Server" -->
 <h4 id='SetupMySQLServer_'>Set Up MySQL Server</h4><ul>
-	<li>download MySQL<ul>
+	<li>download and install MySQL<ul>
 		<li>download from <a href="http://dev.mysql.com/downloads/mysql/">MySQL Downloads</a><ul>
 			<li><em>version labelled macos11 works for Mavericks, Yosemite, El Capitan</em></li>
 			<li>also see <a href="Tools.html#_MySQL">Tools: MySql</a></li>
 		</ul></li>
+		<li>unpack archive using gnu-tar:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>gtar xf &lt;archive&gt;</span></li>
+		<li>install package; take screenshot of temporary password in case it is needed for rescue</li>
+		<li>add <span class="mono">/usr/local/mysql/bin</span> to <span class="mono">PATH</span></li>
+		<li>add aliases: mysql=/usr/local/mysql/bin/mysql; mysqladmin=/usr/local/mysql/bin/mysqladmin</li>
+		<li>use SystemPrefs/MySQL to start MySQL server; set to run automatically on startup</li>
 	</ul></li>
-	<li>initialize data directory<ul>
-		<li><span class="mono">cd /usr/local/mysql</span>&nbsp;&nbsp;<em>set directory to MySQL installation</em></li>
-		<li><span class="mono">bin/mysqld --initialize-insecure --user=mysql --basedir=/opt/mysql/mysql --datadir=/opt/mysql/mysql/data</span><br />
-			<em>initialize MySQL data directory</em></li>
-		<li><span class="mono">mysql -u root --skip-password</span>&nbsp;&nbsp;<em>sign in to MySQL server to set password</em></li>
-		<li><span class="mono">ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';</span>&nbsp;&nbsp;<em>add password to root user</em></li>
+</ul>
+
+<h4 id='InitMySQLDataDirectory_'>Initialize MySQL's Data Directory</h4><ul>
+	<li>set directory to MySQL's installation:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>cd /usr/local/bin/mysql</span></li>
+	<li>skip these lines for now?<ul>
+		<li>sign in to MySQL server to set password:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root --skip-password</span></li>
+		<li>add password for root user:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';</span></li>
 	</ul></li>
-	<li>add <span class="mono">/usr/local/mysql/bin</span> to <span class="mono">PATH</span></li>
-	<li>add aliases: mysql=/usr/local/mysql/bin/mysql; mysqladmin=/usr/local/mysql/bin/mysqladmin</li>
-	<li>use SystemPrefs/MySql to start MySQL server</li>
-	<li>Initialize MySQL Data Directory<ul>
-		<li>from Terminal:<ul>
-			<li><span class="mono">cd /usr/local/mysql</span>&nbsp;&nbsp;<em>set directory to MySQL installation</em></li>
-			<li><span class="mono">bin/mysqld --initialize-insecure --user=mysql</span>&nbsp;&nbsp;<em>initialize MySQL data directory</em></li>
-			<li>use SystemPrefs/MySql to start MySQL server</li>
-			<li><span class="mono">mysql -u root --skip-password</span>&nbsp;&nbsp;<em>sign in to MySQL server</em></li>
-			<li><span class="mono">ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';</span>&nbsp;&nbsp;<em>add password to root user</em></li>
-		</ul></li>
-	</ul></li>
-	</ul>
+	<li>provide directory that controls import/export:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mkdir mysql-files;
+		chmod 750 mysql-files</span></li>
+	<li>set permissions to make installation location accessible to mysql:&nbsp;&nbsp;<span class='mono'><span class="prompt">$
+		</span>chown -R mysql .; chgrp -R mysql .</span></li>
+	<li>initialize MySQL data directory:&nbsp;&nbsp;<span class='mono'><span class="prompt">$
+		</span>bin/mysqld --initialize-insecure --user=mysql --basedir=/bin/mysql/mysql --datadir=/bin/mysql/mysql/data</span></li>
+	<li>set its permissions:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
+		chown -R root .; chown -R mysql data mysql-files</span></li>
+</ul>
 
 <!-- @marker "Test MySQL Server" -->
 <h4 id='TestMySQLServer_'>Test MySQL Server</h4><ul>
@@ -64,13 +76,38 @@
 		<li>command-line commands: <span class="mono">bin/mysqladmin -u root shutdown; mysqld</span></li>
 	</ul></li>
 	<li>list existing databases: <span class="mono">bin/mysqlshow</span></li>
-	<li>pick a table, and show one of its tables <span class="mono">bin/mysqlshow &lt;databaseName&gt;</span></li>
+	<li>pick a database, and show one of its tables <span class="mono">bin/mysqlshow &lt;databaseName&gt;</span></li>
 	<li>read some values from database mysql <span class="mono">bin/mysql -e "SELECT User, Host, plugin FROM mysql.user" mysql</span></li>
 </ul>
 
+<!-- @marker "Securing the Initial MySQL Accounts" -->
+<h4 id='SecuringtheInitialMySQLAccounts_'>Securing the Initial MySQL Accounts</h4><ul>
+	<li class="blurb"><a href="https://dev.mysql.com/doc/refman/5.7/en/default-privileges.html">Securing the Initial MySQL Accounts</a></li>
+	<li>sign in to mysql:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root</span></li>
+	<li>assign root password:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ALTER USER 'root'@'&lt;localhost&gt;' IDENTIFIED BY '&lt;new_password&gt;';</span></li>
+	<li>set up and/or drop other accounts and passwords as indicated; see <a href="MySQL.html#MySQLTasks_">MySQL Tasks</a></li>
+		<li>for security, do not leave any accounts without passwords</li>
+</ul>
 
+<!-- @marker "Other Procedures and Tasks" -->
+<h3 id='OtherProceduresandTasks_'>Other Procedures and Tasks</h3>
 
+<!-- @marker "Create Database" -->
+<h4 id='CreateDatabase_'>Create Database</h4><ul>
+	<li class="blurb">see <a href="https://dev.mysql.com/doc/refman/5.6/en/data-directory-initialization.html">initializing the data Directory</a> </li>
+	<li><span class="mono">mysql</span><ul>
+		<li><span class="mono">	create database &lt;databaseName&gt; collate utf8_bin;</span></li>
+		<li><span class="mono">create user &lt;username&gt; identified by '&lt;password&gt;';</span></li>
+		<li><span class="mono">grant all privileges on &lt;databaseName&gt;.* to &lt;username&gt;;</span></li>
+		<li><span class="mono">grant process on *.* to &lt;username&gt;;</span></li>
+	</ul></li>
+	<li class="blurb">creation parameters based on requirements for TeamCity</li>
+</ul>
 
+<!-- @marker "Install Connector/J" -->
+<h4 id="Connector_J_">Install Connector/J</h4><ul>
+	<li>install MySQL's Java connector <a href="Tools.html#_Connector_J">Connector/J</a></li>
+</ul>
 
 <!-- @marker "Remove MySQL" -->
 <h4 id='RemoveMySQL_'>Remove MySQL</h4><ul>
@@ -85,10 +122,6 @@
 		<li class="mono">sudo rm -rf /usr/local/mysql*</li>
 		<li class="mono">sudo rm -rf /Library/StartupItems/MySQL*</li>
 		<li class="mono">sudo rm -rf /Library/PreferencePanes/MySQL*</li>
-	</ul></li>
-	<li>remove previous MySQL Configuration:&nbsp;&nbsp;
-		<span class='mono'><span class="prompt">$ </span>emacs /etc/hostconfig`</span>; # Remove the line MYSQLCOM=-YES-</li>
-	<li>remove previous MySQL Preferences:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span></span><ul>
 		<li class="mono">rm -rf ~/Library/PreferencePanes/MySQL*</li>
 		<li class="mono">sudo rm -rf /Library/Receipts/mysql*</li>
 		<li class="mono">sudo rm -rf /Library/Receipts/MySQL*</li>
@@ -98,20 +131,23 @@
 	<li>attempting to run mysql should now fail</li>
 </ul>
 
-
-
-<ul>
-	<li>more stuff to add</li>
-	<li><a href="https://dev.mysql.com/doc/refman/5.7/en/default-privileges.html">Securing the Initial MySQL Accounts</a></li>
-	<li><a href="https://dev.mysql.com/doc/refman/5.7/en/backup-and-recovery.html">Backup and Recovery</a></li>
-	<li>make distribution contents accessible to mysql: chown -R mysql .; chgrp -R mysql .</li>
-	<li>initialize data directory: <span class="mono">scripts/mysql_install_db --user=mysql</span></li>
-	<li>https://dev.mysql.com/doc/refman/5.6/en/data-directory-initialization.html
-		<span class="https://dev.mysql.com/doc/refman/5.6/en/data-directory-initialization.html"></span> </li>
+<!-- @marker "MySQL Tasks" -->
+<h4 id='MySQLTasks_'>MySQL Tasks</h4><ul>
+	<li>log into mysql monitor:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root -p</span></li>
+	<li>memory settings: see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-SettingUpMemorysettingsforTeamCityServer">
+		Setting up Memory settings for TeamCity Server</a></li>
+	<li>managing user accounts<ul>
+		<li>to delete an account:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>DROP USER &#39;&lt;user&gt;&#39;@&#39;&lt;localhost&gt;&#39;;</span></li>
+		<li>to add a user:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>CREATE USER &#39;&lt;user&gt;&#39;@&#39;&lt;localhost&gt;&#39; IDENTIFIED BY &#39;&lt;some_password&gt;&#39;;</span></li>
+	</ul></li>
 </ul>
 
-<!-- @marker "Create Database" -->
-<h4 id='CreateDatabase_'>Create Database</h4>
+<!-- @marker "Backup and Recovery" -->
+<h4 id='BackupandRecovery_'>Backup and Recovery</h4><ul>
+	<li>see <a href="https://dev.mysql.com/doc/refman/5.7/en/backup-and-recovery.html">Backup and Recovery</a>
+		for information.</li>
+	<li>Currently, the only database we expect to use is for TeamCity. TeamCity provides its own backup of its data.</li>
+</ul>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

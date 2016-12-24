@@ -7,89 +7,128 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr><td>[<a href="../Support/Support.html">Support</a>]</td> <td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr>
+	<td>[<a href="../Support/Support.html">Support</a>]</td>
+	<td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
 <h1>TeamCity</h1>
 
 <!-- @topicList "TeamCity" "Contents" -->
 	<!-- @topicItem "Installation and Configuration" "#InstallConfig_" "0" "" -->
-	<!-- @topicItem "Configure TC Server for Production Use" "#ConfigForProductionUse_" "0" "" -->
+		<!-- @topicItem "Provide Dependencies" "#ProvideDependencies_" "1" "" -->
+		<!-- @topicItem "Install TeamCity Server" "#InstallTeamCityServer_" "1" "" -->
+		<!-- @topicItem "Start TeamCity Server" "#StartTeamCityServer_" "1" "" -->
+		<!-- @topicItem "Create TeamCityDB" "#CreateTeamCityDB_" "1" "" -->
+		<!-- @topicItem "Integrate MySQL and TeamCity Servers" "#IntegrateMySQLandTeamCityServers_" "1" "TeamCity server" -->
+		<!-- @topicItem "Run TeamCity WebApp" "#RunTeamCityWebApp_" "1" "" -->
+		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettingsinVCS_" "1" "" -->
+	<!-- @topicGroup "" "11" -->
 	<!-- @topicItem "Moving to Another Server" "#MovingServer_" "0" "" -->
+	<!-- @topicItem "Uninstall TeamCity" "#UninstallTeamCity_" "0" "" -->
+	<!-- @topicGroup "References" "14" -->
+	<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
+	<!-- @topicItem "Install and Configure the TeamCity Server" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server" "0" "contents page" -->
+	<!-- @topicItem "TeamCity Server icon" "https://hub.docker.com/r/jetbrains/teamcity-server/" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "InstallConfig_" -->
-<h4 id='InstallConfig_'>Installation and Configuration</h4><ul>
-	<li>install or check for updates as indicated:<ul>
-		<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
-			Supported Platforms and Environments</a></li>
-		<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
-		<li><a href="Tools.html#_Java">Java</a></li>
-		<li><a href="http://dev.mysql.com/doc/connector-j/5.1/en/connector-j-binary-installation.html">Connector/J</a>
-			<em># MySQL connector to Java DB</em></li>
-		<li><a href="MySQL.html#Contents">MySQL</a></li>
-	</ul></li>
-	<li>install TeamCity application<ul>
+<h4 id='InstallConfig_'>Install and Configure TeamCity</h4>
+
+	<!-- @marker "Provide Dependencies" -->
+	<h5 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h5><ul>
+		<li>install or check for updates as indicated:<ul>
+			<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+				Supported Platforms and Environments</a></li>
+			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+			<li><a href="Tools.html#_Java">Java</a></li>
+			<li><a href="MySQL.html#InstallandSetUpMySQL_">MySQL</a></li>
+		</ul></li>
+		<li>if necessary, <a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a><ul>
+			<li>includes install; initialize data directory; test; secure initial accounts</li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Install TeamCity Server" -->
+	<h5 id='InstallTeamCityServer_'>Install TeamCity Server</h5><ul>
 		<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
+		<li>move archive to /Library/; archive location will become TeamCity home directory</li>
 		<li>Terminal:<ul>
-			<li>cd to directory containing TeamCity archive</li>
+			<li>cd /Library</li>
 			<li>unzip using gnu-tar: <span class="mono">gtar xf &lt;archive&gt;</span></li>
 		</ul></li>
-		<li>move unzipped file to /Library</li>
-	</ul></li>
-	<li>Start TeamCity Server<ul>
-		<li>open http://localhost.8111; will not show content yet</li>
-		<li><span class="mono">cd /Library/TeamCity; bin/runAll.sh start</span><ul>
-			<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111</li>
+	</ul>
+
+	<!-- @marker "Start TeamCity Server" -->
+	<h5 id='StartTeamCityServer_'>Start TeamCity Server</h5><ul>
+		<li>Start TeamCity Server<ul>
+			<li class="blurb"><span style="color: crimson">WARNING</span>: do not enter this web application yet</li>
+			<li>open http://localhost.8111; will not show content yet</li>
+			<li><em>check/update path before running</em> <span class="mono">cd /Library/TeamCity; teamcity-server.sh start</span><ul>
+				<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111</li>
+			</ul></li>
 		</ul></li>
-	</ul></li>
-	<li>TeamCity profile, ui settings<ul>
-		<li>user: carolclark; password</li>
-		<li>profile page: user name and email</li>
-		<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
-		Show all personal builds: turn ON; Add builds triggered by me to favorites: OFF</li>
-	</ul></li>
-	<li>Autostart TeamCity<ul>
-		<li>run target DeveloperTests; Developer_install script copies jetbrains.teamcity.server.plist to /Library/LaunchDaemons<ul>
-			<li>see <a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
+		<li>Autostart TeamCity Server<ul>
+			<li>create AutoStart file ~/Dev/Support/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
+				<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
+			<li>add user to autostart file:<span class="mono">&lt;key&gt;UserName&lt;/key&gt;\n&lt;string&gt;carolclark&lt;/string&gt;</span></li>
+			<li>have installation process copy file jetbrains.teamcity.server.plist to /Library/LaunchDaemons; run installation</li>
 			<li>restart computer</li>
 			<li class="blurb">Safari: localhost:8111 should show TeamCity window</li>
 		</ul></li>
-	</ul></li>
-	<li>Configure BuildServer Data<ul>
-		<li>@ Administration &gt; &lt;RootProject&gt; &gt; Parameters: define env.TEAM_CITY_DATA_PATH /Volumes/TeamCity/BuildData</li>
-	</ul></li>
+		<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation">
+			Troubleshooting TeamCity Installation</a> if needed</li>
+		<li class="blurb"><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</li>
+	</ul>
+
+	<!-- @marker "Create TeamCityDB" -->
+	<h5 id='CreateTeamCityDB_'>Create TeamCityDB</h5><ul>
+		<li>create TeamCity database<ul>
+			<li><a href="../Support/MySQL.html#CreateDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
+		</ul></li>
+		<li>prevent creation of dummy admin user: add "teamcity.installation.completed=true" to &lt;TeamCity Home Directory&gt;\conf\teamcity-startup.properties</li>
+	</ul>
+
+	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
+	<h5 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h5><ul>
+		<li>MySQL server side<ul>
+			<li class="blurb">see<a href="https://confluence.jetbrains.com/pages/viewpage.action?pageId=74845225#HowTo...-ConfigureNewlyInstalledMySQLServer">
+			Configure Newly Installed MySQL Server</a></li>
+			<li>locate file my.cnf; see <a href="http://dev.mysql.com/doc/refman/5.5/en/option-files.html">Using Option Files</a></li>
+			<li>verify MySQL is using InnoDB database engine: mysql: <a class="mono">show table status like '%';</a></li>
+			<li>edit TeamCityDB configuration file my.cnf<ul>
+				<li>set memory allocation: <span class="mono">preset TEAMCITY_SERVER_MEM_OPTS=-Xmx750m</span><ul>
+					<li class="blurb">For small system not adjusted for compatibility with 64-bit Java, recommendation is 750m (-Xmx750m).
+						Since we have a very small system, we expect 750m to be fine.</li>
+					<li>reference: <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-SettingUpMemorysettingsforTeamCityServer">
+						Setting Up Memory Settings for TeamCity server</a></li>
+				</ul></li>
+				<li>configure InnoDB database engine<ul>
+					<li>innodb_buffer_pool_size, innodb_log_file_size: <span class="mono">innodb_buffer_pool_size=2000M; innodb_log_file_size=1000M</span></li>
+					<li>ensure <a class="mono">max_connections</a> parameter is larger than specified by TeamCity &lt;TeamCity data directory&gt;/config/database.properties</li>
+					<li>adjust flushing for better performance: <span class="mono">innodb_flush_log_at_trx_commit=2</span></li>
+				</ul></li>
+				<li>set binary logging format: <span class="mono">binlog-format=mixed</span> </li>
+			</ul></li>
+			<li>enable additional diagnostics: <span class="mono">mysql: GRANT PROCESS ON *.* TO &lt;teamcity-user-name&gt;;</span></li>
+		</ul></li>
+		<li>TeamCity server side<ul>
+			<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "Run TeamCity WebApp" -->
+<h5 id='RunTeamCityWebApp_'>Run TeamCity WebApp</h5><ul>
+	<li>TeamCity data path: /Volumes/TeamCity/.BuildServer</li>
+	<li class="blurb>">update this section as we go</li>
+	<li>user: carolclark; password</li>
+	<li>profile page: user name and email</li>
+	<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
+		Show all personal builds: turn ON; Add builds triggered by me to favorites: ON for now to see what it does</li>
 </ul>
 
-	<!-- @marker "Configure TeamCity Server for Production Use" -->
-	<h4 id='ConfigForProductionUse_'>Configure TeamCity Server for Production Use</h4><ul>
-
-	<li>Initialize MySQL Data Directory<ul>
-		<li>from Terminal:<ul>
-			<li><span class="mono">cd /usr/local/mysql</span>&nbsp;&nbsp;<em>set directory to MySQL installation</em></li>
-			<li><span class="mono">bin/mysqld --initialize-insecure --user=mysql</span>&nbsp;&nbsp;<em>initialize MySQL data directory</em></li>
-			<li><span class="mono">,</span>&nbsp;&nbsp;<em>,</em></li>
-			<li><span class="mono">,</span>&nbsp;&nbsp;<em>,</em></li>
-			<li><span class="mono">,</span>&nbsp;&nbsp;<em>,</em></li>
-			<li><span class="mono">,</span>&nbsp;&nbsp;<em>,</em></li>
-			<li>use SystemPrefs/MySql to start MySQL server</li>
-			<li><span class="mono">mysql -u root --skip-password</span>&nbsp;&nbsp;<em>sign in to MySQL server</em></li>
-			<li><span class="mono">ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';</span>&nbsp;&nbsp;<em>add password to root user</em></li>
-		</ul></li>
-	</ul></li>
-
-	<li id="configTeamCityDB">Create and Configure TeamCityDB<ul>
-		<li class="mono">create database TeamCityDB collate utf8_bin; (where?)</li>
-	</ul></li>
-
-
-	<li><a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-ConfiguringTeamCityServer">
-		Configuring TeamCity Server</a></li>
-
-
-
-
-	<li>download <a href="http://dev.mysql.com/downloads/connector/j/">MySQL JDBC driver</a></li>
-	<li>Place mysql-connector-java-*-bin.jar from the downloaded archive into the &lt;TeamCity Data Directory&gt;/lib/jdbc.</li>
-	<li>backup dsl configuration</li>
+<!-- @marker "Store Project Settings in Version Control" -->
+<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
+	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
+		Store Project Settings in Version Control</a></li>
 </ul>
 
 <!-- @marker "Moving to Another Server" -->
@@ -98,8 +137,19 @@
 	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
 </ul>
 
-<!-- MySQL -->
-<h3>MySQL</h3>
+<!-- @marker "Uninstall TeamCity" -->
+<h4 id='UninstallTeamCity_'>Uninstall TeamCity</h4><ul>
+	<li>quit TeamCity</li>
+	<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
+	<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
+		<li>open Activity Monitor; show all process</li>
+		<li>look through list; for any associated with TeamCity, 'quit' using button at top left</li>
+	</ul></li>
+	<li>delete TeamCity application (a Library or Applications folder)</li>
+	<li>delete /Application Support/TeamCityIntegration</li>
+	<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
+	<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
+</ul>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

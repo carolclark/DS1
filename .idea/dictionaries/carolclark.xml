@@ -4,6 +4,7 @@
       <w>autostart</w>
       <w>gnutar</w>
       <w>gtar</w>
+      <w>jdbc</w>
     </words>
   </dictionary>
 </component>

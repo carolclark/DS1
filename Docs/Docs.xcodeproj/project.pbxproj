@@ -34,7 +34,6 @@
 		676695CB1919A759005D3CED /* Development.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Development.html; sourceTree = "<group>"; };
 		676695CC1919A759005D3CED /* Git.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Git.html; sourceTree = "<group>"; };
 		676695CD1919A759005D3CED /* Glossary_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_Support.html; sourceTree = "<group>"; };
-		676695CE1919A759005D3CED /* History_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; name = History_Support.html; path = Cdoc/html/History_Support.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		676695CF1919A759005D3CED /* Personal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Personal.html; sourceTree = "<group>"; };
 		676695D01919A759005D3CED /* Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; path = Support.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		676695D11919A759005D3CED /* Tools.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt0@2x-251.jpg"; sourceTree = "<group>"; };
 		965F82F1C702C096455B200D /* GitBranchingModel.002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.002.png; sourceTree = "<group>"; };
 		965F83CC93258AC741E2647F /* Partitions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Partitions.pdf; sourceTree = "<group>"; };
+		965F8413959BB1D1E8EE03D1 /* History_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History_Support.html; sourceTree = "<group>"; };
 		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -77,7 +77,6 @@
 		674D3F131919864F00BAC8D1 = {
 			isa = PBXGroup;
 			children = (
-				676695CE1919A759005D3CED /* History_Support.html */,
 				676695B51919A759005D3CED /* Cdoc */,
 				67B4601019199472007FB11A /* Doxygen */,
 				676695A619199997005D3CED /* DoxyDemo */,
@@ -173,6 +172,7 @@
 				965F8E31089DF403926FB7C2 /* TeamCity.html */,
 				965F8125BE43F87CF012F727 /* AppCode.html */,
 				965F8F7D274B8EBB4F30076B /* MySQL.html */,
+				965F8413959BB1D1E8EE03D1 /* History_Support.html */,
 			);
 			path = html;
 			sourceTree = "<group>";

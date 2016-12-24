@@ -36,9 +36,8 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicItem "Web Sites" "#tp_WebSites" "0" "" -->
 		<!-- @topicGroup "" "10" -->
 		<!-- @topicItem "Unix" "#tp_Unix" "0" "" -->
-		<!-- @topicItem "Tools for Compiled Code" "#tp_CompileTools" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Related Project Files" "14" -->
+	<!-- @topicGroup "Related Project Files" "13" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
 		<!-- @topicItem "Developing Projects" "DevelopingProjects.html#Contents" "0" "tasks and refactorings" -->
 		<!-- @topicItem "AppCode" "AppCode.html#Contents" "0" "primary IDE" -->
@@ -51,7 +50,7 @@ heading with name: Task Name; tsk_TaskName;5
 			<!-- @topicItem "Inactive Tools" "Tools_Inactive.html#Contents" "1" "inactive applications, tools, and libraries" -->
 		<!-- @topicItem "Support Glossary" "Glossary_Support.html#Contents" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "Personal" "23" -->
+	<!-- @topicGroup "Personal" "26" -->
 		<!-- @topicItem "Personal" "Personal.html#Contents" "0" "Arbonne, ..." -->
 <!-- @/topicList -->
 
@@ -463,6 +462,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <h1>Version Control</h1>
 <!-- @topicList "Version Control" "tp_VersionControl" -->
 	<!-- @topicItem "Repository Backup" "#VCSPolicies_Backup" "0" "" -->
+	<!-- @topicItem "Commit Messages" "#CommitMessages_" "0" "" -->
 	<!-- @topicItem "Version Control History" "#VersionControlHistory" "0" "" -->
 	<!-- @topicItem "Git" "Git.html" "0" "git procedures and tasks" -->
 <!-- @/topicList -->
@@ -477,6 +477,26 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li>backed up by standard TimeMachine backup</li>
 	<li>archived periodically to tarballs stored at ~/Archives; some of these are then transferred to an external hard drive from more permanent storage</li>
 </ul>
+
+<!-- @marker "Commit Messages" -->
+<h4 id='CommitMessages_'>Commit Messages</h4><ul>
+		<li>last line is AppCode Task Name, which contains GitHub issue #</li>
+	</ul>
+	<h5>The seven rules of a great git commit message</h5><ul>
+		<li class="blurb">Keep in mind: This has all been said before.</li>
+	</ul>
+	<ol>
+		<li>Separate subject from body with a blank line</li>
+		<li>Limit the subject line to 50 characters</li>
+		<li>Capitalize the subject line</li>
+		<li>Do not end the subject line with a period</li>
+		<li>Use the imperative mood in the subject line</li>
+		<li>Wrap the body at 72 characters</li>
+		<li>Use the body to explain what and why vs. how</li>
+	</ol>
+	<ul>
+		<li class="blurb">from <a href="http://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a></li>
+	</ul>
 
 <h4><a name="VersionControlHistory">Version Control History</a></h4>
 <p><em>Current</em>git; hosted at <a href="https://github.com">GitHub</a>; <span>see <a href="Git.html">Git</a></span> for more about our use of git</p>
@@ -941,50 +961,6 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li>dsmemberutil checkmembership -U &lt;uname&gt; -G &lt;gname&gt;</li>
 	<li>sudo dscl . -append /Groups/&lt;gname&gt; GroupMembership &lt;uname&gt;</li>
 	<li>dsmemberutil checkmembership -U &lt;uname&gt; -G &lt;gname&gt;</li>
-</ul>
-
-<!-- @marker "7 ===" -->
-<!-- @marker "Tools for Compiled Code" -->
-<h1>Tools for Compiled Code</h1>
-<!-- @topicList "Tools for Compiled Code" "tp_CompileTools" -->
-	<!-- @topicItem "Xcode" "#Compile_Xcode" "0" "" -->
-	<!-- @topicItem "Doxygen" "#Compile_Doxygen" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Xcode" -->
-<h3>Xcode</h3>
-<!-- @topicList "Xcode" "Compile_Xcode" -->
-	<!-- @topicItem "Xcode Tool Info" "Tools.html#_Xcode" "0" "" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "Xcode Tasks" "3" -->
-	<!-- @topicItem "New Installer Target" "#tsk_NewInstallerTarget" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Xcode Tasks" -->
-<h4>Xcode Tasks</h4>
-<!-- @marker "  New Installer Target" -->
-<h5><a name="tsk_NewInstallerTarget">New Installer Target</a></h5><ul>
-	<li>add empty project, normally at project's root level</li>
-	<li>create new target<ul>
-		<li>set location for file *-Info.plist; delete file *.pch, folder en.lproj</li>
-		<li>mark scheme as shared</li>
-		<li>remove build phases Compile Sources, Link Binary with Libraries, Copy Bundle resources</li>
-		<li>add build phase BuildXcode to run *.install script</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Doxygen" -->
-<h3>Doxygen</h3>
-<!-- @topicList "Doxygen" "Compile_Doxygen" -->
-	<!-- @topicItem "Establish Doxygen Target" "#tsk_EstablishDoxygenTarget" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Doxygen Tasks" -->
-<h4>Doxygen Tasks</h4>
-<!-- @marker "  Establish Doxygen Target" -->
-<h5><a name="tsk_EstablishDoxygenTarget">Establish Doxygen Target</a></h5><ul class='expand'>
-	<li>template file Project.doxygen.tmpl defines configuration for project</li>
-	<li>reference file Xcode &gt; Defaults.doxygen describes available options</li>
 </ul>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
