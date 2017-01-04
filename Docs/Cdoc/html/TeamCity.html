@@ -13,17 +13,19 @@
 <h1>TeamCity</h1>
 
 <!-- @topicList "TeamCity" "Contents" -->
-	<!-- @topicItem "Installation and Configuration" "#InstallConfig_" "0" "" -->
-		<!-- @topicItem "Provide Dependencies" "#ProvideDependencies_" "1" "" -->
+	<!-- @topicItem "Install and Configure TeamCity Server" "#InstallConfig_" "0" "" -->
+		<!-- @topicItem "Provide Dependencies" "#ProvideDependencies_" "1" "includes MySQL" -->
 		<!-- @topicItem "Install TeamCity Server" "#InstallTeamCityServer_" "1" "" -->
 		<!-- @topicItem "Start TeamCity Server" "#StartTeamCityServer_" "1" "" -->
 		<!-- @topicItem "Create TeamCityDB" "#CreateTeamCityDB_" "1" "" -->
-		<!-- @topicItem "Integrate MySQL and TeamCity Servers" "#IntegrateMySQLandTeamCityServers_" "1" "TeamCity server" -->
-		<!-- @topicItem "Run TeamCity WebApp" "#RunTeamCityWebApp_" "1" "" -->
+		<!-- @topicItem "Integrate MySQL and TeamCity Servers" "#IntegrateMySQLandTeamCityServers_" "1" "" -->
+		<!-- @topicItem "Run TeamCity WebApp and Configure" "#RunTeamCityWebApp_" "1" "" -->
+		<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "1" "" -->
 		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettingsinVCS_" "1" "" -->
-	<!-- @topicGroup "" "11" -->
-	<!-- @topicItem "Moving to Another Server" "#MovingServer_" "0" "" -->
-	<!-- @topicItem "Uninstall TeamCity" "#UninstallTeamCity_" "0" "" -->
+	<!-- @topicGroup "" "10" -->
+	<!-- @topicItem "TeamCity Tasks" "#TeamCityTasks_" "0" "" -->
+		<!-- @topicItem "Moving to Another Server" "#MovingServer_" "1" "" -->
+		<!-- @topicItem "Uninstall TeamCity" "#UninstallTeamCity_" "1" "" -->
 	<!-- @topicGroup "References" "14" -->
 	<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
 	<!-- @topicItem "Install and Configure the TeamCity Server" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server" "0" "contents page" -->
@@ -31,10 +33,10 @@
 <!-- @/topicList -->
 
 <!-- @marker "InstallConfig_" -->
-<h4 id='InstallConfig_'>Install and Configure TeamCity</h4>
+<h3 id='InstallConfig_'>Install and Configure TeamCity</h3>
 
 	<!-- @marker "Provide Dependencies" -->
-	<h5 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h5><ul>
+	<h4 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h4><ul>
 		<li>install or check for updates as indicated:<ul>
 			<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
 				Supported Platforms and Environments</a></li>
@@ -48,7 +50,9 @@
 	</ul>
 
 	<!-- @marker "Install TeamCity Server" -->
-	<h5 id='InstallTeamCityServer_'>Install TeamCity Server</h5><ul>
+	<h4 id='InstallTeamCityServer_'>Install TeamCity Server</h4><ul>
+		<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server">
+			Installing and Configuring the TeamCity Server</a></li>
 		<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
 		<li>move archive to /Library/; archive location will become TeamCity home directory</li>
 		<li>Terminal:<ul>
@@ -58,7 +62,7 @@
 	</ul>
 
 	<!-- @marker "Start TeamCity Server" -->
-	<h5 id='StartTeamCityServer_'>Start TeamCity Server</h5><ul>
+	<h4 id='StartTeamCityServer_'>Start TeamCity Server</h4><ul>
 		<li>Start TeamCity Server<ul>
 			<li class="blurb"><span style="color: crimson">WARNING</span>: do not enter this web application yet</li>
 			<li>open http://localhost.8111; will not show content yet</li>
@@ -76,19 +80,19 @@
 		</ul></li>
 		<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation">
 			Troubleshooting TeamCity Installation</a> if needed</li>
-		<li class="blurb"><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</li>
+		<li><em><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</em></li>
 	</ul>
 
 	<!-- @marker "Create TeamCityDB" -->
-	<h5 id='CreateTeamCityDB_'>Create TeamCityDB</h5><ul>
+	<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
 		<li>create TeamCity database<ul>
 			<li><a href="../Support/MySQL.html#CreateDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
 		</ul></li>
-		<li>prevent creation of dummy admin user: add "teamcity.installation.completed=true" to &lt;TeamCity Home Directory&gt;\conf\teamcity-startup.properties</li>
+		<li>prevent creation of dummy admin user: add "teamcity.installation.completed=true" to &lt;TeamCity Home Directory&gt;/conf/teamcity-startup.properties</li>
 	</ul>
 
 	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
-	<h5 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h5><ul>
+	<h4 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h4><ul>
 		<li>MySQL server side<ul>
 			<li class="blurb">see<a href="https://confluence.jetbrains.com/pages/viewpage.action?pageId=74845225#HowTo...-ConfigureNewlyInstalledMySQLServer">
 			Configure Newly Installed MySQL Server</a></li>
@@ -115,41 +119,70 @@
 		</ul></li>
 	</ul>
 
-<!-- @marker "Run TeamCity WebApp" -->
-<h5 id='RunTeamCityWebApp_'>Run TeamCity WebApp</h5><ul>
-	<li>TeamCity data path: /Volumes/TeamCity/.BuildServer</li>
-	<li class="blurb>">update this section as we go</li>
-	<li>user: carolclark; password</li>
-	<li>profile page: user name and email</li>
-	<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
-		Show all personal builds: turn ON; Add builds triggered by me to favorites: ON for now to see what it does</li>
-</ul>
+	<!-- @marker "Run and Configure TeamCity WebApp" -->
+	<h4 id='RunTeamCityWebApp_'>Run TeamCity WebApp and Configure</h4><ul>
+		<li class="blurb">update this section as we go</li>
+		<li>TeamCity data path: /Volumes/TeamCity/.BuildServer</li>
+		<li>user: carolclark; password</li>
+		<li>profile page: user name and email</li>
+		<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
+			Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
+	</ul>
 
-<!-- @marker "Store Project Settings in Version Control" -->
-<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
-	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
-		Store Project Settings in Version Control</a></li>
-</ul>
+	<!-- @marker "Install Build Agent" -->
+	<h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
+		<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
+			Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
+		<li>TeamCity Web UI &gt; Agents tab &gt; Install Build Agents &gt; Zip file distribution</li>
+		<li>unzip into /Volumes/TeamCity/BuildAgent-&lt;n&gt;</li>
+		<li>/Volumes/TeamCity/BuildAgent-&lt;n&gt;/conf/ file buildAgent.dist.properties: rename to buildAgent.properties</li>
+		<li>edit buildAgent.properties<ul>
+			<li>serverUrl=http://localhost:8111/</li>
+			<li>name=BuildAgent-&lt;n&gt;</li>
+		</ul></li>
+		<li>specify unique label:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/jetbrains.teamcity.BuildAgent.plist: Label: jetbrains.teamcity.BuildAgent-&lt;n&gt;</span></li>
 
-<!-- @marker "Moving to Another Server" -->
-<h4 id='MovingServer_'>Moving Projects to Another Server</h4><ul>
-	<li>make standard TeamCity backups of existing projects</li>
-	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
-</ul>
+		<li class="dq">make sure that all files under the buildAgent directory are owned by carolclark</li>
+		<li>create directory under carolclark/user for BuildAgent logs:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mkdir buildAgent/logs</span></li>
+		<li>load build agent<ul>
+			<li>first agent:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh load</span></li>
+			<li>additional agents:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh (buildAgent?)/bin/agent.sh load</span></li>
+		</ul></li>
+		<li>wait a few minutes; watch for <span class="mono">(tail) -f buildAgent/logs/teamcity-agent.log</span></li>
+		<li>stop build server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh unload</span></li>
+		<li>configure build server to start automatically, but not on system startup:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
+		 cp buildAgent/bin/jetbrains.teamcity.BuildAgent.plist $HOME/Library/LaunchAgents/; rename file to ...BuildAgent-&lt;n&gt;</span></li>
+		<li>reboot: build user should be logged in, and the build agent should start</li>
+	</ul>
 
-<!-- @marker "Uninstall TeamCity" -->
-<h4 id='UninstallTeamCity_'>Uninstall TeamCity</h4><ul>
-	<li>quit TeamCity</li>
-	<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
-	<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
-		<li>open Activity Monitor; show all process</li>
-		<li>look through list; for any associated with TeamCity, 'quit' using button at top left</li>
-	</ul></li>
-	<li>delete TeamCity application (a Library or Applications folder)</li>
-	<li>delete /Application Support/TeamCityIntegration</li>
-	<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
-	<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
-</ul>
+	<!-- @marker "Store Project Settings in Version Control" -->
+	<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
+		<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
+			Store Project Settings in Version Control</a></li>
+	</ul>
+
+<!-- @marker "TeamCity Tasks" -->
+<h3 id='TeamCityTasks_'>TeamCity Tasks</h3>
+
+	<!-- @marker "Moving to Another Server" -->
+	<h4 id='MovingServer_'>Moving Projects to Another Server</h4><ul>
+		<li>make standard TeamCity backups of existing projects</li>
+		<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
+	</ul>
+
+	<!-- @marker "Uninstall TeamCity" -->
+	<h4 id='UninstallTeamCity_'>Uninstall TeamCity</h4><ul>
+		<li>quit TeamCity</li>
+		<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
+		<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
+			<li>open Activity Monitor; show all process</li>
+			<li>look through list; for any associated with TeamCity, 'quit' using button at top left</li>
+		</ul></li>
+		<li>delete TeamCity application (a Library or Applications folder)</li>
+		<li>delete /Application Support/TeamCityIntegration</li>
+		<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
+		<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
+	</ul>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

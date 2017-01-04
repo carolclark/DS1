@@ -24,13 +24,9 @@
 		<!-- @topicItem "Set up MySQL Server" "#SetupMySQLServer_" "1" "" -->
 		<!-- @topicItem "Initialize MySQL's Data Directory" "#InitMySQLDataDirectory_" "1" "" -->
 		<!-- @topicItem "Test MySQL Server" "#TestMySQLServer_" "1" "" -->
-		<!-- @topicItem "Securing the Initial MySQL Accounts" "#SecuringtheInitialMySQLAccounts_" "1" "" -->
+		<!-- @topicItem "Secure the Initial MySQL Accounts" "#SecuretheInitialMySQLAccounts_" "1" "" -->
 	<!-- @topicSep -->
-	<!-- @topicItem "Other Procedures and Tasks" "#OtherProceduresandTasks_" "0" "" -->
-		<!-- @topicItem "Create Database" "#CreateDatabase_" "1" "" -->
-		<!-- @topicItem "Install Connector/J" "Tools.html#_Connector_J" "1" "MySQL's Java connector" -->
-		<!-- @topicItem "Remove MySQL" "#RemoveMySQL_" "1" "" -->
-		<!-- @topicItem "MySQL Tasks" "#MySQLTasks_" "1" "" -->
+	<!-- @topicItem "MySQL Procedures and Tasks" "#MySQLProceduresandTasks_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Install and Set Up MySQL" -->
@@ -43,24 +39,25 @@
 			<li><em>version labelled macos11 works for Mavericks, Yosemite, El Capitan</em></li>
 			<li>also see <a href="Tools.html#_MySQL">Tools: MySql</a></li>
 		</ul></li>
-		<li>unpack archive using gnu-tar:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>gtar xf &lt;archive&gt;</span></li>
-		<li>install package; take screenshot of temporary password in case it is needed for rescue</li>
+		<li>unpack archive; install package; take screenshot (command-shift-4) of temporary password</li>
 		<li>add <span class="mono">/usr/local/mysql/bin</span> to <span class="mono">PATH</span></li>
 		<li>add aliases: mysql=/usr/local/mysql/bin/mysql; mysqladmin=/usr/local/mysql/bin/mysqladmin</li>
-		<li>use SystemPrefs/MySQL to start MySQL server; set to run automatically on startup</li>
+		<li>use SystemPrefs/MySQL to start MySQL server; set to run automatically on startup<ul>
+			<li>if my SQL preference pane does not appear: open installer again; customize to install just PreferencePane</li>
+		</ul></li>
+	</ul></li>
+	<li>reset 'root' password<ul>
+		<li>sign in to MySQL server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root -p</span>; enter temporary password from screenshot</li>
+		<li>reset password for root user:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ALTER USER 'root'@'localhost' IDENTIFIED BY '&lt;new_password&gt;';</span></li>
 	</ul></li>
 </ul>
 
-<h4 id='InitMySQLDataDirectory_'>Initialize MySQL's Data Directory</h4><ul>
-	<li>set directory to MySQL's installation:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>cd /usr/local/bin/mysql</span></li>
-	<li>skip these lines for now?<ul>
-		<li>sign in to MySQL server to set password:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root --skip-password</span></li>
-		<li>add password for root user:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';</span></li>
-	</ul></li>
-	<li>provide directory that controls import/export:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mkdir mysql-files;
-		chmod 750 mysql-files</span></li>
+<h4 id='InitMySQLDataDirectory_'>Initialize MySQL's Data Directory</h4><ul class="depr">
+	<li>set directory to MySQL's installation:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>cd /usr/local/&lt;targetOfAliasMysql&gt;</span></li>
 	<li>set permissions to make installation location accessible to mysql:&nbsp;&nbsp;<span class='mono'><span class="prompt">$
 		</span>chown -R mysql .; chgrp -R mysql .</span></li>
+	<li>provide directory that controls import/export:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mkdir mysql-files;
+		chmod 750 mysql-files</span></li>
 	<li>initialize MySQL data directory:&nbsp;&nbsp;<span class='mono'><span class="prompt">$
 		</span>bin/mysqld --initialize-insecure --user=mysql --basedir=/bin/mysql/mysql --datadir=/bin/mysql/mysql/data</span></li>
 	<li>set its permissions:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
@@ -70,38 +67,97 @@
 <!-- @marker "Test MySQL Server" -->
 <h4 id='TestMySQLServer_'>Test MySQL Server</h4><ul>
 	<li class="blurb">see <a href="https://dev.mysql.com/doc/refman/5.7/en/testing-server.html">Testing the Server</a> for troubleshooting</li>
-	<li>bin/mysqladmin version</li>
-	<li>bin/mysqladmin variables</li>
-	<li>shutdown and restart server with command-line and SystemPrefs/MySql<ul>
-		<li>command-line commands: <span class="mono">bin/mysqladmin -u root shutdown; mysqld</span></li>
+	<li><span class="mono">cd /usr/local/mysql</span></li>
+	<li><span class="mono">bin/mysqladmin -u root -p version</span> </li>
+	<li><span class="mono">bin/mysqladmin -u root -p variables</span> </li>
+	<li><a href="#StartandStopMySQLServer_">stop and restart server</a> both with command-line and with System Preferences pane MySql<ul>
+		<li>command-line commands: <span class="mono">bin/mysqladmin -u root shutdown; bin/mysqld_safe --user=mysql &amp;</span></li>
 	</ul></li>
-	<li>list existing databases: <span class="mono">bin/mysqlshow</span></li>
-	<li>pick a database, and show one of its tables <span class="mono">bin/mysqlshow &lt;databaseName&gt;</span></li>
-	<li>read some values from database mysql <span class="mono">bin/mysql -e "SELECT User, Host, plugin FROM mysql.user" mysql</span></li>
+	<li><a href="#ExamineDatabasesandTables_">examine tables and columns</a> of a database</li>
 </ul>
 
-<!-- @marker "Securing the Initial MySQL Accounts" -->
-<h4 id='SecuringtheInitialMySQLAccounts_'>Securing the Initial MySQL Accounts</h4><ul>
+<!-- @marker "Secure the Initial MySQL Accounts" -->
+<h4 id='SecuretheInitialMySQLAccounts_'>Secure the Initial MySQL Accounts</h4><ul>
 	<li class="blurb"><a href="https://dev.mysql.com/doc/refman/5.7/en/default-privileges.html">Securing the Initial MySQL Accounts</a></li>
-	<li>sign in to mysql:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root</span></li>
-	<li>assign root password:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ALTER USER 'root'@'&lt;localhost&gt;' IDENTIFIED BY '&lt;new_password&gt;';</span></li>
-	<li>set up and/or drop other accounts and passwords as indicated; see <a href="MySQL.html#MySQLTasks_">MySQL Tasks</a></li>
-		<li>for security, do not leave any accounts without passwords</li>
+	<li>sign in to mysql:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root -p</span></li>
+	<li>list user accounts:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SELECT User, Host, HEX(authentication_string) FROM mysql.user;
+	</span></li>
+	<li>for security:<ul>
+		<li>each 'root' account: assign password if none</li>
+		<li>each anonymous (no name) account: drop account or assign password</li>
+	</ul></li>
+	<li>add myself as a user</li>
+	<li>statements to use:<ul>
+		<li><span class="mono">(CREATE | ALTER) USER '&lt;name&gt;'@'localhost' IDENTIFIED BY '&lt;password&gt;';</span></li>
+		<li><span class="mono">DROP USER '&lt;name&gt;'@'localhost'</span></li>
+	</ul></li>
 </ul>
 
-<!-- @marker "Other Procedures and Tasks" -->
-<h3 id='OtherProceduresandTasks_'>Other Procedures and Tasks</h3>
+<!-- @marker "MySQL Procedures and Tasks" -->
+<h3>MySQL Procedures and Tasks</h3>
+<!-- @topicList "MySQL Procedures and Tasks" "MySQLProceduresandTasks_" -->
+	<!-- @topicItem "Start and Stop MySQL Server" "#StartandStopMySQLServer_" "0" "" -->
+	<!-- @topicItem "Create Database" "#CreateDatabase_" "0" "" -->
+	<!-- @topicItem "Use MySQL Monitor" "#UseMySQLMonitor_" "0" "" -->
+	<!-- @topicItem "Examine Databases and Tables" "#ExamineDatabasesandTables_" "0" "" -->
+	<!-- @topicItem "Manage User Accounts" "#ManageUserAccounts_" "0" "" -->
+	<!-- @topicItem "Configure Memory Settings" "#ConfigureMemorySettings_" "0" "" -->
+	<!-- @topicItem "Install Connector/J" "Tools.html#_Connector_J" "0" "MySQL's Java connector" -->
+	<!-- @topicItem "Remove MySQL" "#RemoveMySQL_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Start and Stop MySQL Server" -->
+<h4 id='StartandStopMySQLServer_'>Start and Stop MySQL Server</h4><ul>
+	<li>from Preference Pane<ul>
+		<li>start or stop; "Automatically start MySQL server on startup": YES</li>
+	</ul></li>
+	<li>from command line:<ul>
+		<li class="blurb">in practice:<ul>
+			<li>command-line shutdown works, but if Preferences pane is set normally, it starts up again</li>
+			<li>we did not get command-line startup to work</li>
+		</ul></li>
+		<li>stop server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqladmin -u root shutdown</span></li>
+		<li>start server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqld_safe --user=mysql &amp;</span></li>
+	</ul></li>
+</ul>
 
 <!-- @marker "Create Database" -->
 <h4 id='CreateDatabase_'>Create Database</h4><ul>
 	<li class="blurb">see <a href="https://dev.mysql.com/doc/refman/5.6/en/data-directory-initialization.html">initializing the data Directory</a> </li>
 	<li><span class="mono">mysql</span><ul>
-		<li><span class="mono">	create database &lt;databaseName&gt; collate utf8_bin;</span></li>
+		<li><span class="mono">create database &lt;databaseName&gt; collate utf8_bin;</span></li>
 		<li><span class="mono">create user &lt;username&gt; identified by '&lt;password&gt;';</span></li>
 		<li><span class="mono">grant all privileges on &lt;databaseName&gt;.* to &lt;username&gt;;</span></li>
 		<li><span class="mono">grant process on *.* to &lt;username&gt;;</span></li>
 	</ul></li>
 	<li class="blurb">creation parameters based on requirements for TeamCity</li>
+</ul>
+
+<!-- @marker "Use MySQL Monitor" -->
+<h4 id='UseMySQLMonitor_'>Use MySQL Monitor</h4><ul>
+	<li>log in:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root -p</span></li>
+	<li>quit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>\q</span></li>
+</ul>
+
+<!-- @marker "Examine Databases and Tables" -->
+<h4 id='ExamineDatabasesandTables_'>Examine Databases and Tables</h4><ul>
+	<li>list existing databases:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow</span></li>
+	<li>show tables of a database:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow &lt;databaseName&gt;</span></li>
+	<li>show columns of a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SHOW COLUMNS FROM &lt;db&gt;&lt;table&gt;;</span></li>
+	<li>see selected columns from a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SELECT &lt;comma-separated list of column names&gt; FROM &lt;db&gt;&lt;table&gt;;</span></li>
+</ul>
+
+<!-- @marker "Manage User Accounts" -->
+<h4 id='ManageUserAccounts_'>Manage User Accounts</h4><ul>
+	<li>to delete an account:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>DROP USER &#39;&lt;user&gt;&#39;@&#39;&lt;localhost&gt;&#39;;</span></li>
+	<li>to add a user:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>CREATE USER &#39;&lt;user&gt;&#39;@&#39;&lt;localhost&gt;&#39; IDENTIFIED BY &#39;&lt;some_password&gt;&#39;;</span></li>
+	<li>to change password for a user:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ALTER USER &#39;&lt;user&gt;&#39;@&#39;&lt;localhost&gt;&#39; IDENTIFIED BY &#39;&lt;some_password&gt;&#39;;</span></li>
+</ul>
+
+<!-- @marker "Configure Memory Settings" -->
+<h4 id='ConfigureMemorySettings_'>Configure Memory Settings</h4><ul>
+	<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-SettingUpMemorysettingsforTeamCityServer">
+		Setting up Memory settings for TeamCity Server</a></li>
 </ul>
 
 <!-- @marker "Install Connector/J" -->
@@ -114,8 +170,10 @@
 	<li class="blurb">based on GitHub gist <a href="https://gist.github.com/vitorbritto/0555879fe4414d18569d">Remove MySQL completely</a>
 		and <a href="http://community.jaspersoft.com/wiki/uninstall-mysql-mac-os-x">Jaspersoft: Uninstall MySql on a Mac OS X</a></li>
 	<li>backup existing databases:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysqldump</span></li>
-	<li>check for active MySQL processes:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ps -ax | grep mysql</span></li>
-	<li>stop and kill any active MySQL processes found</li>
+	<li>Activity Monitor<ul>
+		<li>check for active MySQL processes: search for mysql</li>
+		<li>mysqld, owned by _mysql, is associated with the MySQL server process; kill any other active MySQL processes found: kill process button at topleft</li>
+	</ul></li>
 	<li>SystemPrefs: stop the MySQL server</li>
 	<li>remove files:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span></span><ul>
 		<li class="mono">sudo rm /usr/local/mysql</li>
@@ -129,17 +187,6 @@
 	</ul></li>
 	<li>restart computer</li>
 	<li>attempting to run mysql should now fail</li>
-</ul>
-
-<!-- @marker "MySQL Tasks" -->
-<h4 id='MySQLTasks_'>MySQL Tasks</h4><ul>
-	<li>log into mysql monitor:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root -p</span></li>
-	<li>memory settings: see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-SettingUpMemorysettingsforTeamCityServer">
-		Setting up Memory settings for TeamCity Server</a></li>
-	<li>managing user accounts<ul>
-		<li>to delete an account:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>DROP USER &#39;&lt;user&gt;&#39;@&#39;&lt;localhost&gt;&#39;;</span></li>
-		<li>to add a user:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>CREATE USER &#39;&lt;user&gt;&#39;@&#39;&lt;localhost&gt;&#39; IDENTIFIED BY &#39;&lt;some_password&gt;&#39;;</span></li>
-	</ul></li>
 </ul>
 
 <!-- @marker "Backup and Recovery" -->
