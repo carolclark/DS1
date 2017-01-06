@@ -57,8 +57,9 @@
 		<li>move archive to /Library/; archive location will become TeamCity home directory</li>
 		<li>Terminal:<ul>
 			<li>cd /Library</li>
-			<li>unzip using gnu-tar: <span class="mono">gtar xf &lt;archive&gt;</span></li>
+			<li>unzip using gnu-tar: <span class="mono">sudo gtar xf &lt;archive&gt;</span></li>
 		</ul></li>
+		<li>if directory /Library/TeamCity/logs does not exist, create it</li>
 	</ul>
 
 	<!-- @marker "Start TeamCity Server" -->
@@ -74,7 +75,8 @@
 			<li>create AutoStart file ~/Dev/Support/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
 				<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
 			<li>add user to autostart file:<span class="mono">&lt;key&gt;UserName&lt;/key&gt;\n&lt;string&gt;carolclark&lt;/string&gt;</span></li>
-			<li>have installation process copy file jetbrains.teamcity.server.plist to /Library/LaunchDaemons; run installation</li>
+			<!-- \todo installation process copies jetbrains.teamcity.server.plist to /Library/LaunchDaemons -->
+			<li>copy file jetbrains.teamcity.server.plist to /Library/LaunchDaemons</li>
 			<li>restart computer</li>
 			<li class="blurb">Safari: localhost:8111 should show TeamCity window</li>
 		</ul></li>

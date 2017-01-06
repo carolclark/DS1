@@ -25,6 +25,7 @@
 		<!-- @topicItem "Initialize MySQL's Data Directory" "#InitMySQLDataDirectory_" "1" "" -->
 		<!-- @topicItem "Test MySQL Server" "#TestMySQLServer_" "1" "" -->
 		<!-- @topicItem "Secure the Initial MySQL Accounts" "#SecuretheInitialMySQLAccounts_" "1" "" -->
+		<!-- @topicItem "Move MySQL's Data Location" "#MoveMySQLsDataLocation_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "MySQL Procedures and Tasks" "#MySQLProceduresandTasks_" "0" "" -->
 <!-- @/topicList -->
@@ -93,6 +94,21 @@
 	</ul></li>
 </ul>
 
+<!-- @marker "Move MySQL's Data Location" -->
+<h4 id='MoveMySQLsDataLocation_'>Move MySQL's Data Location</h4><ul>
+	<li class="blurb">based on <a href="http://dba.stackexchange.com/questions/94279/possibly-a-silly-question-can-i-install-mysql-on-an-external-hdd-connected-to-m">
+		Possibly a silly question: Can I install MySQL on an External HDD </a></li>
+	<li>Preferences Panel: stop MySQL, and turn off Autostart</li>
+	<li>mkdir /Volumes/TeamCity/mysqldata</li>
+	<li>move data to new location:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>cp -rp /usr/local/mysql/*(huh?? don't we need data only?)
+		/Volumes/TeamCity/mysqldata</span></li>
+	<li>my_cnf: edit datadir to /Volumes/TeamCity/mysqldata</li>
+	<!-- \todo create my.cnf earlier with defaults -->
+	<!-- \todo update DevConfig to handle MySQL files (autostart only if MySQL is installed) -->
+	<li>Preferences Panel: restart MySQL; turn autostart back on</li>
+</ul>
+
+
 <!-- @marker "MySQL Procedures and Tasks" -->
 <h3>MySQL Procedures and Tasks</h3>
 <!-- @topicList "MySQL Procedures and Tasks" "MySQLProceduresandTasks_" -->
@@ -143,8 +159,8 @@
 <h4 id='ExamineDatabasesandTables_'>Examine Databases and Tables</h4><ul>
 	<li>list existing databases:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow</span></li>
 	<li>show tables of a database:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow &lt;databaseName&gt;</span></li>
-	<li>show columns of a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SHOW COLUMNS FROM &lt;db&gt;&lt;table&gt;;</span></li>
-	<li>see selected columns from a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SELECT &lt;comma-separated list of column names&gt; FROM &lt;db&gt;&lt;table&gt;;</span></li>
+	<li>show columns of a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SHOW COLUMNS FROM &lt;db&gt;.&lt;table&gt;;</span></li>
+	<li>show selected columns from a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SELECT &lt;comma-separated list of column names&gt; FROM &lt;db&gt;.&lt;table&gt;;</span></li>
 </ul>
 
 <!-- @marker "Manage User Accounts" -->
