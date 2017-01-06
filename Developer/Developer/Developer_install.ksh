@@ -139,6 +139,8 @@ function getSubtargetDestination {
 		"JetBrains" )
 			destinationFolder="${launchdaemonsFolder}"
 			;;
+		"MySQL" )				# probably handled by new build file
+			;;
 		"Python" )				# separate target
 			;&
 		"Snippets.txt" )		# used by Snippets.applescript (obsolete; saved for reference) only
