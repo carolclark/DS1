@@ -32,9 +32,6 @@
 		div.wf-publish {
 			border: 8px none orange;border-left-style: solid;
 		}
-		div.wf-whileFixing {
-			border: 8px none orange;border-left-style: solid;
-		}
 		div.wf-mergeReview {
 			border: 8px none mediumpurple;border-left-style: solid;
 		}
@@ -157,8 +154,8 @@
 						</ul></li>
 					</ul>
 					<p><strong>Push</strong></p><ul>
-						<li><span class="mono">git show --name-only</span>: check for indicated rebase to squash and/or reword</li>
-						<li>if indicated, <a href="#RebaseCommits">rebase commits</a></li>
+						<li>check messages for indicated rebase:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git show --name-only; git lg</span></li>
+						<li>if indicated, squash and/or reword:&nbsp;&nbsp;VCS &gt; Rebase Commits..., or <span class='mono'><span class="prompt">$ </span>git rebase -i HEAD~&lt;#commits&gt;</span></li>
 						<li>push $cb to remote tracking branch</li>
 					</ul>
 				</div></div>
