@@ -190,6 +190,11 @@ function prepareFileOperation {
 			sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
 			destinationForCopy="${destinationFolder}/${destname}"
 		fi
+	# /todo remove this block when my.cnf is properly intsalled
+	elif [[ "${destinationFolder}" = "${launchdaemonsFolder}" ]] ; then
+		if [[ "${filepath}" != "jetbrains.teamcity.server.plist" ]] ; then
+			action="ignore"
+		fi
 	else
 		action="ignore"
 	fi
