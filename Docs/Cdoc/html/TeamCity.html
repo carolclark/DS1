@@ -17,8 +17,8 @@
 		<!-- @topicItem "Provide Dependencies" "#ProvideDependencies_" "1" "includes MySQL" -->
 		<!-- @topicItem "Install TeamCity Server" "#InstallTeamCityServer_" "1" "" -->
 		<!-- @topicItem "Start TeamCity Server" "#StartTeamCityServer_" "1" "" -->
-		<!-- @topicItem "Create TeamCityDB" "#CreateTeamCityDB_" "1" "" -->
 		<!-- @topicItem "Integrate MySQL and TeamCity Servers" "#IntegrateMySQLandTeamCityServers_" "1" "" -->
+		<!-- @topicItem "Create TeamCityDB" "#CreateTeamCityDB_" "1" "" -->
 		<!-- @topicItem "Run TeamCity WebApp and Configure" "#RunTeamCityWebApp_" "1" "" -->
 		<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "1" "" -->
 		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettingsinVCS_" "1" "" -->
@@ -59,7 +59,7 @@
 			<li>cd /Library</li>
 			<li>unzip using gnu-tar: <span class="mono">sudo gtar xf &lt;archive&gt;</span></li>
 		</ul></li>
-		<li>if directory /Library/TeamCity/logs does not exist, create it</li>
+		<li>if directory /Volumes/TeamCity/<span class="dq">&lt;?&gt;</span>/logs does not exist, create it</li>
 	</ul>
 
 	<!-- @marker "Start TeamCity Server" -->
@@ -82,14 +82,6 @@
 		<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation">
 			Troubleshooting TeamCity Installation</a> if needed</li>
 		<li><em><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</em></li>
-	</ul>
-
-	<!-- @marker "Create TeamCityDB" -->
-	<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
-		<li>create TeamCity database<ul>
-			<li><a href="../Support/MySQL.html#CreateDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
-		</ul></li>
-		<li>prevent creation of dummy admin user: add "teamcity.installation.completed=true" to &lt;TeamCity Home Directory&gt;/conf/teamcity-startup.properties</li>
 	</ul>
 
 	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
@@ -120,7 +112,15 @@
 		</ul></li>
 	</ul>
 
-	<!-- @marker "Run and Configure TeamCity WebApp" -->
+<!-- @marker "Create TeamCityDB" -->
+<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
+	<li>create TeamCity database<ul>
+		<li><a href="../Support/MySQL.html#CreateDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
+	</ul></li>
+	<li>prevent creation of dummy admin user: add "teamcity.installation.completed=true" to &lt;TeamCity Home Directory&gt;/conf/teamcity-startup.properties</li>
+</ul>
+
+<!-- @marker "Run and Configure TeamCity WebApp" -->
 	<h4 id='RunTeamCityWebApp_'>Run TeamCity WebApp and Configure</h4><ul>
 		<li class="blurb">update this section as we go</li>
 		<li>TeamCity data path: /Volumes/TeamCity/.BuildServer</li>
@@ -173,13 +173,13 @@
 
 	<!-- @marker "Uninstall TeamCity" -->
 	<h4 id='UninstallTeamCity_'>Uninstall TeamCity</h4><ul>
-		<li>quit TeamCity</li>
-		<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
 		<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
 			<li>open Activity Monitor; show all process</li>
-			<li>look through list; for any associated with TeamCity, 'quit' using button at top left</li>
+			<li>for any processes except TeamCity associated with TeamCity, 'quit' using button at top left</li>
 		</ul></li>
-		<li>delete TeamCity application (a Library or Applications folder)</li>
+		<li>quit TeamCity</li>
+		<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
+		<li>delete TeamCity application from /Volumes/TeamCity</li>
 		<li>delete /Application Support/TeamCityIntegration</li>
 		<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
 		<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
