@@ -45,6 +45,7 @@
 		67FDF6FB191D776C002560CF /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67FDF6FD191D776C002560CF /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67FDF6FE191D776C002560CF /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
+		965F8545313F9DF90E3F35E1 /* MySQLCheckInstall.cmd */ = {isa = PBXFileReference; lastKnownFileType = file.cmd; path = MySQLCheckInstall.cmd; sourceTree = "<group>"; };
 		965F8E56CCE29899571D2E07 /* com.oracle.oss.mysql.mysqld.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = com.oracle.oss.mysql.mysqld.plist; sourceTree = "<group>"; };
 		965F8E656FACA50C2DB4AE10 /* jetbrains.teamcity.server.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = jetbrains.teamcity.server.plist; sourceTree = "<group>"; };
 		965F8FA97710317F0A363A78 /* my_cnf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = my_cnf.txt; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 			children = (
 				965F8E56CCE29899571D2E07 /* com.oracle.oss.mysql.mysqld.plist */,
 				965F8FA97710317F0A363A78 /* my_cnf.txt */,
+				965F8545313F9DF90E3F35E1 /* MySQLCheckInstall.cmd */,
 			);
 			path = MySQL;
 			sourceTree = "<group>";
