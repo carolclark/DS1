@@ -18,8 +18,16 @@
 		<!-- @topicItem "Initialize MySQL's Data Directory" "#InitMySQLDataDirectory_" "1" "" -->
 		<!-- @topicItem "Test MySQL Server" "#TestMySQLServer_" "1" "" -->
 		<!-- @topicItem "Secure the Initial MySQL Accounts" "#SecuretheInitialMySQLAccounts_" "1" "" -->
+		<!-- @topicItem "Test: mysql.bats" "#Test_mysql.bats_" "1" "" -->
+		<!-- @topicItem "Configure this MySQL Server for TeamCity" "#ConfigurethisMySQLServerforTeamCity_" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "MySQL Procedures and Tasks" "#MySQLProceduresandTasks_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Language" "10" -->
+		<!-- @topicItem "Language Structure" "http://dev.mysql.com/doc/refman/5.7/en/language-structure.html" "0" "" -->
+		<!-- @topicItem "Data Types" "http://dev.mysql.com/doc/refman/5.7/en/data-types.html" "0" "" -->
+		<!-- @topicItem "Functions and Operators" "http://dev.mysql.com/doc/refman/5.7/en/functions.html" "0" "" -->
+		<!-- @topicItem "SQL Statement Syntax" "http://dev.mysql.com/doc/refman/5.7/en/sql-syntax.html" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Install and Set Up MySQL" -->
@@ -63,38 +71,86 @@
 	<li><span class="mono">cd /usr/local/mysql</span></li>
 	<li><span class="mono">bin/mysqladmin -u root -p version</span> </li>
 	<li><span class="mono">bin/mysqladmin -u root -p variables</span> </li>
+	<li>mysql -u &lt;user&gt; -p -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%dir"'</li>
 	<li><a href="#StartandStopMySQLServer_">stop and restart server</a> both with command-line and with System Preferences pane MySql<ul>
 		<li>command-line commands: <span class="mono">bin/mysqladmin -u root shutdown; bin/mysqld_safe --user=mysql &amp;</span></li>
 	</ul></li>
-	<li><a href="#ExamineDatabasesandTables_">examine tables and columns</a> of a database</li>
+	<li><a href="#ExamineDatabasesandTables_">examine databases, tables, columns, and selections</a> of an existing database</li>
 </ul>
 
 <!-- @marker "Secure the Initial MySQL Accounts" -->
 <h4 id='SecuretheInitialMySQLAccounts_'>Secure the Initial MySQL Accounts</h4><ul>
 	<li class="blurb"><a href="https://dev.mysql.com/doc/refman/5.7/en/default-privileges.html">Securing the Initial MySQL Accounts</a></li>
 	<li>sign in to mysql:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u root -p</span></li>
-	<li>list user accounts:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SELECT User, Host, HEX(authentication_string) FROM mysql.user;
-	</span></li>
+	<li>list user accounts:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SELECT User, Host, HEX(authentication_string) FROM mysql.user;</span></li>
 	<li>for security:<ul>
 		<li>each 'root' account: assign password if none</li>
 		<li>each anonymous (no name) account: drop account or assign password</li>
 	</ul></li>
-	<li>add myself as a user</li>
+	<li>add 'carolclark' as a user with password, GRANT *.*</li>
+	<li>add 'test' as user with no password, GRANT SELECT</li>
 	<li>statements to use:<ul>
-		<li><span class="mono">(CREATE | ALTER) USER '&lt;name&gt;'@'localhost' IDENTIFIED BY '&lt;password&gt;';</span></li>
+		<li><span class="mono">(CREATE | ALTER) USER '&lt;name&gt;'@'localhost' [IDENTIFIED BY '&lt;password&gt;'];</span></li>
+		<li><span class="mono">GRANT (ALL | SELECT) ON *.* TO '&lt;name&gt;'@'localhost'</span> </li>
 		<li><span class="mono">DROP USER '&lt;name&gt;'@'localhost'</span></li>
 	</ul></li>
 </ul>
+
+<!-- @marker "Test: mysql.bats" -->
+<h4 id='Test_mysql.bats_'>Test: mysql.bats</h4>
+
+<!-- @marker "Configure this MySQL Server for TeamCity" -->
+<h4 id='ConfigurethisMySQLServerforTeamCity_'>Configure this MySQL Server for TeamCity</h4>
+	<p class="blurb">see<a href="https://confluence.jetbrains.com/pages/viewpage.action?pageId=74845225#HowTo...-ConfigureNewlyInstalledMySQLServer">
+		Configure Newly Installed MySQL Server</a>, <a href="http://dev.mysql.com/doc/refman/5.5/en/option-files.html">Using Option Files</a></p>
+	<h5>verify use of InnoDB database engine</h5><ul>
+		<li>verify MySQL is using InnoDB database engine:<ul>
+			<li>mysql&gt; <span class="mono">show table status like '%';</span></li>
+		</ul></li>
+	</ul>
+	<h5>edit file my.cnf (/usr/local/mysql/my.cnf) as follows:</h5><div class="indent">
+		<h5>set memory allocation</h5><ul>
+			<li><span class="mono">TEAMCITY_SERVER_MEM_OPTS=-Xmx750m</span><ul>
+				<li class="blurb">For small system not adjusted for compatibility with 64-bit Java, recommendation is 750m (-Xmx750m).
+					Since we have a very small system, we expect 750m to be fine.</li>
+				<li>reference: <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-SettingUpMemorysettingsforTeamCityServer">
+					Setting Up Memory Settings for TeamCity server</a></li>
+			</ul></li>
+		</ul>
+		<h5>configure InnoDB database engine</h5><ul>
+			<li>memory settings:<ul>
+				<li><span class="mono">innodb_log_file_size=1000M</span></li>
+				<li><span class="mono">innodb_buffer_pool_size=2000M</span></li>
+			</ul></li>
+			<li>synchronize max connections<ul>
+				<li>ensure <a class="mono">max_connections</a> parameter is larger than specified by TeamCity &lt;TeamCity data directory&gt;/config/database.properties</li>
+			</ul></li>
+			<li>adjust flushing for better performance:<ul>
+				<li><span class="mono">innodb_flush_log_at_trx_commit=2</span></li>
+			</ul></li>
+		</ul>
+		<h5>set binary logging format</h5><ul>
+			<li><span class="mono">binlog-format=mixed</span></li>
+		</ul>
+		<h5>relocate TeamCity data</h5><ul>
+			<li><span class="mono">mkdir /Volumes/TeamCity/mysqldata</span></li>
+			<li>set <span class="mono">datadir</span> to /Volumes/TeamCity/mysqldata</li>
+			<li>make same change in com.oracle.oss.mysql.mysqld.plist</li>
+		</ul>
+	</div>
+	<h5>enable additional diagnostics</h5><ul>
+		<li><span class="mono">mysql: GRANT PROCESS ON *.* TO &lt;teamcity-user-name&gt;;</span> for root, carolclark</li>
+	</ul>
 
 <!-- @marker "MySQL Procedures and Tasks" -->
 <h3>MySQL Procedures and Tasks</h3>
 <!-- @topicList "MySQL Procedures and Tasks" "MySQLProceduresandTasks_" -->
 	<!-- @topicItem "Start and Stop MySQL Server" "#StartandStopMySQLServer_" "0" "" -->
-	<!-- @topicItem "Create Database" "#CreateDatabase_" "0" "" -->
+	<!-- @topicItem "Create TeamCity Database" "#CreateTeamCityDatabase_" "0" "" -->
 	<!-- @topicItem "Use MySQL Monitor" "#UseMySQLMonitor_" "0" "" -->
 	<!-- @topicItem "Examine Databases and Tables" "#ExamineDatabasesandTables_" "0" "" -->
 	<!-- @topicItem "Manage User Accounts" "#ManageUserAccounts_" "0" "" -->
-	<!-- @topicItem "Move MySQL's Data Location" "#MoveMySQLsDataLocation_" "0" "" -->
+	<!-- @topicItem "Configure Location for TeamCity Data" "#ConfigureLocationforTeamCityData_" "0" "" -->
 	<!-- @topicItem "Configure Memory Settings" "#ConfigureMemorySettings_" "0" "" -->
 	<!-- @topicItem "Install Connector/J" "Tools.html#_Connector_J" "0" "MySQL's Java connector" -->
 	<!-- @topicItem "Remove MySQL" "#RemoveMySQL_" "0" "" -->
@@ -115,16 +171,18 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Create Database" -->
-<h4 id='CreateDatabase_'>Create Database</h4><ul>
+<!-- @marker "Create TeamCity Database" -->
+<h4 id='CreateTeamCityDatabase_'>Create TeamCity Database</h4><ul>
 	<li class="blurb">see <a href="https://dev.mysql.com/doc/refman/5.6/en/data-directory-initialization.html">initializing the data Directory</a> </li>
+	<li class="blurb">creation parameters based on requirements for TeamCity</li>
 	<li><span class="mono">mysql</span><ul>
 		<li><span class="mono">create database &lt;databaseName&gt; collate utf8_bin;</span></li>
 		<li><span class="mono">create user &lt;username&gt; identified by '&lt;password&gt;';</span></li>
 		<li><span class="mono">grant all privileges on &lt;databaseName&gt;.* to &lt;username&gt;;</span></li>
 		<li><span class="mono">grant process on *.* to &lt;username&gt;;</span></li>
 	</ul></li>
-	<li class="blurb">creation parameters based on requirements for TeamCity</li>
+	<li>verify use of InnoDB database engine:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql show table status like '%';</span>;
+		should find innodb properties</li>
 </ul>
 
 <!-- @marker "Use MySQL Monitor" -->
@@ -135,10 +193,13 @@
 
 <!-- @marker "Examine Databases and Tables" -->
 <h4 id='ExamineDatabasesandTables_'>Examine Databases and Tables</h4><ul>
-	<li>list existing databases:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow</span></li>
+	<li>list existing databases:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow databases</span></li>
 	<li>show tables of a database:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow &lt;databaseName&gt;</span></li>
 	<li>show columns of a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SHOW COLUMNS FROM &lt;db&gt;.&lt;table&gt;;</span></li>
-	<li>show selected columns from a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SELECT &lt;comma-separated list of column names&gt; FROM &lt;db&gt;.&lt;table&gt;;</span></li>
+	<li>show selected columns from a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
+		SELECT &lt;comma-separated list of column names&gt; FROM &lt;db&gt;.&lt;table&gt;;</span></li>
+	<li>select and show multiple variables from command line:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
+		bin/mysqladmin -u root -p variables | egrep 'back_log|basedir'</span></li>
 </ul>
 
 <!-- @marker "Manage User Accounts" -->
@@ -148,15 +209,12 @@
 	<li>to change password for a user:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>ALTER USER &#39;&lt;user&gt;&#39;@&#39;&lt;localhost&gt;&#39; IDENTIFIED BY &#39;&lt;some_password&gt;&#39;;</span></li>
 </ul>
 
-<!-- @marker "Move MySQL's Data Location" -->
-<h4 id='MoveMySQLsDataLocation_'>Move MySQL's Data Location</h4><ul>
-	<li class="blurb">based on <a href="http://dba.stackexchange.com/questions/94279/possibly-a-silly-question-can-i-install-mysql-on-an-external-hdd-connected-to-m">
-		Possibly a silly question: Can I install MySQL on an External HDD </a></li>
-	<li>Preferences Panel: stop MySQL, and turn off Autostart</li>
-	<li>mkdir /Volumes/TeamCity/mysqldata</li>
-	<li>move data to new location:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>cp -rp /usr/local/mysql/data/* /Volumes/TeamCity/mysqldata</span></li>
-	<li>MySQL/ my_cnf, com.oracle.oss.mysql.mysqld.plist: edit datadir to /Volumes/TeamCity/mysqldata</li>
-	<li>Preferences Panel: restart MySQL; turn autostart back on</li>
+<!-- @marker "Configure Location for TeamCity Data" -->
+<h4 id='ConfigureLocationforTeamCityData_'>Configure Location for TeamCity Data</h4><ul>
+	<li>move data directory to TeamCity volume<ul>
+		<li><span class="mono">mkdir /Volumes/TeamCity/mysqldata</span></li>
+		<li>my_cnf.txt (my.cnf), com.oracle.oss.mysql.mysqld.plist: edit datadir to /Volumes/TeamCity/mysqldata</li>
+	</ul></li>
 </ul>
 
 <!-- @marker "Configure Memory Settings" -->
@@ -183,11 +241,10 @@
 	<li>remove files:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span></span><ul>
 		<li class="mono">sudo rm /usr/local/mysql</li>
 		<li class="mono">sudo rm -rf /usr/local/mysql*</li>
-		<li class="mono">sudo rm -rf /Library/StartupItems/MySQL*</li>
-		<li class="mono">sudo rm -rf /Library/PreferencePanes/MySQL*</li>
-		<li class="mono">rm -rf ~/Library/PreferencePanes/MySQL*</li>
+		<li class="mono">sudo rm -rf /Library/StartupItems/mysql*</li>
+		<li class="mono">sudo rm -rf /Library/PreferencePanes/mysql*</li>
+		<li class="mono">rm -rf ~/Library/PreferencePanes/mysql*</li>
 		<li class="mono">sudo rm -rf /Library/Receipts/mysql*</li>
-		<li class="mono">sudo rm -rf /Library/Receipts/MySQL*</li>
 		<li class="mono">sudo rm -rf /private/var/db/receipts/*mysql*</li>
 	</ul></li>
 	<li>restart computer</li>
