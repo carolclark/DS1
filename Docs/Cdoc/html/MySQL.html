@@ -18,8 +18,8 @@
 		<!-- @topicItem "Initialize MySQL's Data Directory" "#InitMySQLDataDirectory_" "1" "" -->
 		<!-- @topicItem "Test MySQL Server" "#TestMySQLServer_" "1" "" -->
 		<!-- @topicItem "Secure the Initial MySQL Accounts" "#SecuretheInitialMySQLAccounts_" "1" "" -->
-		<!-- @topicItem "Test: mysql.bats" "#Test_mysql.bats_" "1" "" -->
-		<!-- @topicItem "Configure this MySQL Server for TeamCity" "#ConfigurethisMySQLServerforTeamCity_" "1" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Configure this MySQL Server for TeamCity" "#ConfigurethisMySQLServerforTeamCity_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "MySQL Procedures and Tasks" "#MySQLProceduresandTasks_" "0" "" -->
 	<!-- @topicSep -->
@@ -96,11 +96,8 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Test: mysql.bats" -->
-<h4 id='Test_mysql.bats_'>Test: mysql.bats</h4>
-
 <!-- @marker "Configure this MySQL Server for TeamCity" -->
-<h4 id='ConfigurethisMySQLServerforTeamCity_'>Configure this MySQL Server for TeamCity</h4>
+<h3 id='ConfigurethisMySQLServerforTeamCity_'>Configure this MySQL Server for TeamCity</h3>
 	<p class="blurb">see<a href="https://confluence.jetbrains.com/pages/viewpage.action?pageId=74845225#HowTo...-ConfigureNewlyInstalledMySQLServer">
 		Configure Newly Installed MySQL Server</a>, <a href="http://dev.mysql.com/doc/refman/5.5/en/option-files.html">Using Option Files</a></p>
 	<h5>verify use of InnoDB database engine</h5><ul>
@@ -108,7 +105,7 @@
 			<li>mysql&gt; <span class="mono">show table status like '%';</span></li>
 		</ul></li>
 	</ul>
-	<h5>edit file my.cnf (/usr/local/mysql/my.cnf) as follows:</h5><div class="indent">
+	<h5>edit file my_cnf.txt (/usr/local/mysql/my.cnf) as follows:</h5><div class="indent">
 		<h5>set memory allocation</h5><ul>
 			<li><span class="mono">TEAMCITY_SERVER_MEM_OPTS=-Xmx750m</span><ul>
 				<li class="blurb">For small system not adjusted for compatibility with 64-bit Java, recommendation is 750m (-Xmx750m).
