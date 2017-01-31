@@ -136,10 +136,11 @@ function getSubtargetDestination {
 		"AppleScripts" )
 			destinationFolder="${applescriptsFolder}"
 			;;
-		"JetBrains" )
-			destinationFolder="${launchdaemonsFolder}"
+		"test" )				# run by test target \todo
 			;;
-		"MySQL" )				# probably handled by new build file
+		"JetBrains" )			# skip for now - TeamCity stuff	\todo
+			;;
+		"MySQL" )				# implement after MySQL installed \todo
 			;;
 		"Python" )				# separate target
 			;&

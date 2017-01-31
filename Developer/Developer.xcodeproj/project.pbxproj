@@ -197,6 +197,7 @@
 				6755BCDF1922CC28005DC27D /* Frameworks */,
 				6755BCE01922CC28005DC27D /* Resources */,
 				6755BCFA1922CE90005DC27D /* shunit Tests */,
+				67A9F5001E3286BF00E372C1 /* bats Tests */,
 			);
 			buildRules = (
 			);
@@ -267,6 +268,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/ksh;
 			shellScript = "Developer/Developer_install.ksh \"${SRCROOT}\" Developer test";
+			showEnvVarsInLog = 0;
+		};
+		67A9F5001E3286BF00E372C1 /* bats Tests */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "bats Tests";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "/usr/local/bin/bats /Users/carolclark/Dev/Support/Developer/Developer/_Tests";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
