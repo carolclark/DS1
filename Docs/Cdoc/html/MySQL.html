@@ -105,7 +105,11 @@
 			<li>mysql&gt; <span class="mono">show table status like '%';</span></li>
 		</ul></li>
 	</ul>
-	<h5>edit file my_cnf.txt (/usr/local/mysql/my.cnf) as follows:</h5><div class="indent">
+	<h5>set up file to configure MySQL for TeamCity</h5><ul>
+		<li>copy file MySQL/default_cnf.txt to MySQL/TeamCity_cnf.txt; edit heading for new file</li>
+		<li>installation copies MySQL/TeamCity_cnf.txt to /usr/local/mysql/my.cnf; test</li>
+	</ul>
+	<h5>edit file TeamCity_cnf.txt (/usr/local/mysql/my.cnf) as follows; update and test after each change</h5><div class="indent">
 		<h5>set memory allocation</h5><ul>
 			<li><span class="mono">TEAMCITY_SERVER_MEM_OPTS=-Xmx750m</span><ul>
 				<li class="blurb">For small system not adjusted for compatibility with 64-bit Java, recommendation is 750m (-Xmx750m).
@@ -130,8 +134,7 @@
 			<li><span class="mono">binlog-format=mixed</span></li>
 		</ul>
 		<h5>relocate TeamCity data</h5><ul>
-			<li><span class="mono">mkdir /Volumes/TeamCity/mysqldata</span></li>
-			<li>set <span class="mono">datadir</span> to /Volumes/TeamCity/mysqldata</li>
+			<li>set configFile:<span class="mono">datadir</span> to /Volumes/TeamCity/mysqldata</li>
 			<li>make same change in com.oracle.oss.mysql.mysqld.plist</li>
 		</ul>
 	</div>

@@ -134,37 +134,38 @@
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
-				<p><strong>Open Task</strong></p><ul>
-					<li>on master; TCP (test; [commit, push])</li>
+				<h6>OpenTask</h6><ul>
+					<li>on master; test; [ commit, push ]</li>
 					<li>cleanup old branches, stashes</li>
 					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master; test; push</li>
 					<li>or <strong>Existing Task</strong>: switch to task; test; merge in master; test; [commit; push]</li>
 				</ul></div>
-				<div class="indent2">
-					<div class="wf-developCommit">
-					<p><strong><a name="wf_Develop">Develop</a>:</strong> repeat to commit:</p><ul>
-						<li>edit/test</li>
-						<li><span class="mono">status; add/stage</span>; if looping back, diff modifications</li>
-					</ul>
-					<p><strong>Commit</strong></p><ul>
-						<li>git: status; add all; [export AppCode settings]</li>
-						<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
-						<li>TC; <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
-							<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
-						</ul></li>
-					</ul>
-					<p><strong>Push</strong></p><ul>
-						<li>check messages for indicated rebase:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git show --name-only; git lg</span></li>
-						<li>if indicated, squash and/or reword:&nbsp;&nbsp;VCS &gt; Rebase Commits..., or <span class='mono'><span class="prompt">$ </span>git rebase -i HEAD~&lt;#commits&gt;</span></li>
-						<li>push $cb to remote tracking branch</li>
-					</ul>
-				</div></div>
+					<div class="indent2"><div class="wf-developCommit">
+						<h6><a name="wf_Develop">Develop</a></h6><ul>
+							<li>repeat to commit:<ul>
+								<li>edit; test; check for TODO's</li>
+								<li><span class="mono">status; add/stage</span>; if looping back, diff modifications</li>
+							</ul></li>
+						</ul>
+						<h6>Commit</h6><ul>
+							<li>git: status; add all; [export AppCode settings]</li>
+							<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
+							<li>test; commit <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
+								<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
+							</ul></li>
+						</ul>
+						<h6>Push</h6><ul>
+							<li>check messages for indicated rebase:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git show --name-only; git lg</span></li>
+							<li>if indicated, squash and/or reword:&nbsp;&nbsp;VCS &gt; Rebase Commits...; test; run ginfo.sh</li>
+							<li>push $cb to remote tracking branch</li>
+						</ul>
+					</div></div>
 			<div class='indent'><div class="wf-publish">
-				<p><strong>Publish</strong></p><ul>
+				<h6>Publish</h6><ul>
 				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
-				<li>switch to master; TC<ul>
+				<li>switch to master; test; commit<ul>
 					<li>if master had changed (had something to commit): switch to branch $cb; push; merge master into $cb<ul>
-						<li>if branch changed: TCP</li>
+						<li>if branch changed: test; commit</li>
 					</ul></li>
 				</ul></li>
 				<li>switch to master; merge in branch $cb; test; [commit]; PUSH</li>
@@ -174,18 +175,18 @@
 			</ul></div></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<div class="wf-mergeReview">
-				<p><strong>Merge and Review</strong></p><ul>
-					<li>master branch; <strong><em>StatusReport.sh</em></strong>; note especially status clear</li>
-					<li>test; master branch; merge branch into local master; TCP</li>
+				<h6>Merge and Review</h6><ul>
+					<li>master branch; <strong><em>ginfo.sh</em></strong>; note especially status clear</li>
+					<li>test; master branch; merge branch into local master; test; commit; push</li>
 					<li>change issue's Waffle label from 'Waffle:in progress' to 'Waffle:needs review'<ul>
 						<li><em>Waffle should soon move issue to 'Needs Review' column</em></li>
 					</ul></li>
-					<li>if indicated: add tests / refactor / correct, branching from still-present branch</li>
+					<li>review; add issues as indicated</li>
 				</ul></div>
 				<div class="wf-close">
-				<p><strong>Code Review Complete: Close Issue</strong></p><ul>
-					<li><strong><em>StatusReport.sh</em></strong>; note especially unmerged branches</li>
-					<li>test; master branch; merge branch into local master; TCP</li>
+				<h6>Code Review Complete: Close Issue</h6><ul>
+					<li><strong><em>ginfo.sh</em></strong>; note especially unmerged branches</li>
+					<li>test; master branch; merge branch into local master; test; commit; push</li>
 					<li>close issue; remove issue's Waffle label 'Waffle:needs review'</li>
 					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
