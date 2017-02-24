@@ -1,18 +1,66 @@
-<!-- TeamCity.html -->
-<!-- Created by Carol Clark on 2016 Nov 28 for repository Support. -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- JetBrains.html -->
+<!-- Created by carolclark on 2/23/17 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>TeamCity</title>
+	<title>JetBrains</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr>
-	<td>[<a href="../Support/Support.html">Support</a>]</td>
-	<td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
-<h1>TeamCity</h1>
+<!-- @navhead "../Support/Support.html" "Support" "History_Support.html" -->
+<h1>JetBrains</h1>
 
-<!-- @topicList "TeamCity" "Contents" -->
+<!-- @topicList "JetBrains" "Contents" -->
+	<!-- @topicItem "Hub" "#Hub_" "0" "integrates among YouTrack, UpSource, TeamCity" -->
+	<!-- @topicItem "TeamCity" "#TeamCity_" "0" "Continuous Integration Server" -->
+<!-- @/topicList -->
+
+<!-- @marker "Hub" -->
+<h2>Hub</h2>
+<!-- @topicList "Hub" "Hub_" -->
+	<!-- @topicItem "Installation" "#Installation_" "0" "" -->
+	<!-- @topicItem "Configuration" "#Configuration_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Installation" -->
+<h4 id='Installation_'>Installation</h4><ul>
+	<li>Installation<ul>
+		<li>Download the *.zip package from Jetbrains</li>
+		<li>Place downloaded package in /Volumes/Servers/jb/Hub; expand at that location</li>
+		<li><span class="mono">cd /Volumes/Servers/jb/Hub/bin</span>; <span class="mono">./hub.sh run</span></li>
+	</ul></li>
+	<li>Continue to Setup Wizard<ul>
+		<li><strong>BaseURL</strong> localhost:8080</li>
+		<li><strong>Application Listen Port</strong> 8080<ul>
+			<li><strong>Advanced Settings (Data Location)</strong> move backup location to /Volumes/Archives/jbbackup/hub/data;
+				other locations to /Volumes/jbdata/Hub</li>
+		</ul></li>
+		<li>setup 'admin' account (pw 2x.. changes)</li>
+		<li>'Finish'to accept login</li>
+		<li>'Users' page opens; setup is complete</li>
+	</ul></li>
+	<li>Starting and Stopping Hub<ul>
+		<li>hub.sh start	Start the Hub service</li>
+		<li>hub.sh stop		Stop the Hub service</li>
+		<li>hub.sh restart	Restart the Hub service</li>
+		<li>hub.sh help		Display a list of all commands that can be executed in the command-line interface</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Configuration" -->
+<h4 id='Configuration_'>Configuration</h4><ul>
+	<li>Setup / Upgrade Wizard<ul>
+
+	</ul></li>
+</ul>
+
+
+
+<!-- @marker "TeamCity" -->
+<h2>TeamCity</h2>
+
+<!-- @topicList "TeamCity" "TeamCity_" -->
 	<!-- @topicItem "Install and Configure TeamCity Server" "#InstallConfig_" "0" "" -->
 		<!-- @topicItem "Provide Dependencies" "#ProvideDependencies_" "1" "includes MySQL" -->
 		<!-- @topicItem "Install TeamCity Server" "#InstallTeamCityServer_" "1" "" -->
@@ -31,7 +79,7 @@
 		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
 		<!-- @topicItem "Install and Configure the TeamCity Server" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server" "0" "contents page" -->
 		<!-- @topicItem "TeamCity Server icon" "https://hub.docker.com/r/jetbrains/teamcity-server/" "0" "" -->
-<!-- @/topicList -->
+	<!-- @/topicList -->
 
 <!-- @marker "InstallConfig_" -->
 <h3 id='InstallConfig_'>Install and Configure TeamCity</h3>
@@ -127,7 +175,6 @@
 			<li>name=BuildAgent-&lt;n&gt;</li>
 		</ul></li>
 		<li>specify unique label:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/jetbrains.teamcity.BuildAgent.plist: Label: jetbrains.teamcity.BuildAgent-&lt;n&gt;</span></li>
-
 		<li class="dq">make sure that all files under the buildAgent directory are owned by carolclark</li>
 		<li>create directory under carolclark/user for BuildAgent logs:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mkdir buildAgent/logs</span></li>
 		<li>load build agent<ul>
@@ -137,7 +184,7 @@
 		<li>wait a few minutes; watch for <span class="mono">(tail) -f buildAgent/logs/teamcity-agent.log</span></li>
 		<li>stop build server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh unload</span></li>
 		<li>configure build server to start automatically, but not on system startup:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
-		 cp buildAgent/bin/jetbrains.teamcity.BuildAgent.plist $HOME/Library/LaunchAgents/; rename file to ...BuildAgent-&lt;n&gt;</span></li>
+			cp buildAgent/bin/jetbrains.teamcity.BuildAgent.plist $HOME/Library/LaunchAgents/; rename file to ...BuildAgent-&lt;n&gt;</span></li>
 		<li>reboot: build user should be logged in, and the build agent should start</li>
 	</ul>
 
@@ -175,6 +222,6 @@
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright (c) 2016 C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright (c) 2016-17 C &amp; C Software, Inc. All rights reserved.</p>
 </body>
 </html>
