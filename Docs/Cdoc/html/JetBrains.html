@@ -1,0 +1,305 @@
+<!-- JetBrains.html -->
+<!-- Created by carolclark on 2/23/17 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JetBrains</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+</head>
+<body>
+<!-- @navhead "../Support/Support.html" "Support" "History_Support.html" -->
+<h1>JetBrains</h1>
+
+<!-- @topicList "JetBrains" "Contents" -->
+	<!-- @topicItem "JetBrains Tasks" "#JetBrainsTasks_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "JetBrains Installation" "#JetBrainsInstallation_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "JetBrains" "http://www.jetbrains.com" "0" "JetBrains home" -->
+<!-- @/topicList -->
+
+<!-- @marker "JetBrains Tasks" -->
+<h2>JetBrains Tasks</h2>
+<!-- @topicList "JetBrains Tasks" "JetBrainsTasks_" -->
+	<!-- @topicGroup "Hub" "1" -->
+		<!-- @topicItem "Hub Command-Line Interface" "#HubCommandLineInterface_" "1" "" -->
+	<!-- @topicGroup "YouTrack" "3" -->
+	<!-- @topicItem "YouTrack tasks" "#YouTracktasks_" "0" "" -->
+		<!-- @topicItem "Sort a Card's Subtasks" "#SortaCardsSubtasks_" "0" "" -->
+	<!-- @topicItem "TeamCity Tasks" "#TeamCityTasks_" "6" "" -->
+		<!-- @topicItem "Moving to Another Server" "#MovingServer_" "1" "" -->
+		<!-- @topicItem "Uninstall TeamCity" "#UninstallTeamCity_" "1" "" -->
+	<!-- @topicGroup "References" "9" -->
+		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
+		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
+		<!-- @topicItem "Install and Configure the TeamCity Server" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server" "0" "contents page" -->
+		<!-- @topicItem "TeamCity Server icon" "https://hub.docker.com/r/jetbrains/teamcity-server/" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Hub Command-Line Interface" -->
+<h4 id='HubCommandLineInterface_'>Hub Command-Line Interface</h4><div class="indent">
+	<h5 id='StartingandStopping_'>Starting and Stopping</h5><table>
+	<tr><td>jbhub</td> <td><strong>start</strong></td> <td>Start the Hub service</td></tr>
+	<tr><td>jbhub</td> <td><strong>stop</strong></td> <td>Stop the Hub service</td></tr>
+	<tr><td>jbhub</td> <td><strong>restart</strong></td> <td>Restart the Hub service</td></tr>
+	<tr><td>jbhub</td> <td><strong>help</strong></td> <td>Display a list of all commands that can be executed in the command-line interface</td></tr>
+</table></div>
+
+<!-- @marker "YouTrack tasks" -->
+<h3 id='YouTracktasks_'>YouTrack tasks</h3>
+
+<!-- @marker "Sort a Card's Subtasks" -->
+<h4 id='SortaCardsSubtasks_'>Sort a Card's Subtasks</h4><ul>
+	<li>Create a swimlane for the card</li>
+	<li>Organize the subtasks in that lane</li>
+</ul>
+
+<!-- @marker "TeamCity Tasks" -->
+<h3 id='TeamCityTasks_'>TeamCity Tasks</h3>
+
+<!-- @marker "Moving to Another Server" -->
+<h4 id='MovingServer_'>Moving Projects to Another Server</h4><ul>
+	<li>make standard TeamCity backups of existing projects</li>
+	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
+</ul>
+
+<!-- @marker "Uninstall TeamCity" -->
+<h4 id='UninstallTeamCity_'>Uninstall TeamCity</h4><ul>
+	<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
+		<li>open Activity Monitor; show all process</li>
+		<li>for any processes except TeamCity associated with TeamCity, 'quit' using button at top left</li>
+	</ul></li>
+	<li>quit TeamCity:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysqladmin -u root -p shutdown</span></li>
+	<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
+	<li>delete TeamCity application from /Volumes/TeamCity</li>
+	<li>delete /Application Support/TeamCityIntegration</li>
+	<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
+	<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
+</ul>
+
+<!-- @marker "JetBrains Installation" -->
+<h2>JetBrains Installation</h2>
+<!-- @topicList "JetBrains Installation" "JetBrainsInstallation_" -->
+	<!-- @topicItem "Installation Overview" "#InstallationOverview_" "0" "establish installation strategy" -->
+	<!-- @topicItem "Hub Installation and Configuration" "#HubInstallationandConfiguration_" "0" "integrate YouTrack, TeamCity, UpSource" -->
+	<!-- @topicItem "YouTrack Installation" "#YouTrackInstallation_" "0" "track work on issues, including Agile Boards" -->
+	<!-- @topicItem "UpSource Installation" "#UpSourceInstallation_" "0" "support code review, discussions" -->
+	<!-- @topicItem "TeamCity Installation" "#TeamCityInstallConfig_" "0" "provide continuous integration" -->
+<!-- @/topicList -->
+
+
+<!-- @marker "Installation Overview" -->
+<h3 id='InstallationOverview_'>Installation Overview</h3><div class="paragraphs">
+<p>JetBrains projects are automatically added to any JetBrains Team tools (YouTrack, UpSource, Team City) that are installed in Hub at the time of the installation.
+	Projects added to Hub are automatically set up in each Team tool installed at the time.
+	Our installation sequence is therefore:</p>
+</div><ul>
+	<li>install Hub</li>
+	<li>install YouTrack and UpSource; attach each to Hub during installation</li>
+	<li>install MySQL and TeamCity</li>
+	<li>use TeamCity plug-in to link TeamCity to Hub</li>
+	<li><em>now</em> add projects</li>
+</ul>
+
+<!-- @marker "Hub Installation and Configuration" -->
+<h3 id='HubInstallationandConfiguration_'>Hub Installation and Configuration</h3>
+
+<!-- @marker "Hub Installation" -->
+<h4 id='HubInstallation_'>Hub Installation</h4><ul>
+	<li>Download the *.zip package from Jetbrains</li>
+	<li>Place downloaded package in /Volumes/Servers/jb/Hub; expand at that location</li>
+	<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh start</span></li>
+	<li>When welcome screen appears, select 'Setup'; login</li>
+	<li>Setup Wizard<ul>
+		<li>Setup admin account 'carolclark' with JetBrains password</li>
+		<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups/Hub</li>
+		<li>'Finish' to accept login</li>
+		<li>'Users' page opens; setup is complete<ul>
+			<li>if an administrator account is active, hexagonal "nut" icon represents the menu</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Hub Configuration" -->
+<h4 id='HubConfiguration_'>HubConfiguration</h4><ul>
+	<li><strong>Notifications</strong>: smtp.cox.net; from carolclark@cox.net; send test message</li>
+	<li><strong>Users</strong>: add cox email if necessary</li>
+	<li><strong>Auth Modules</strong>GitHub: follow screen instructions to connect; enable</li>
+	<li><strong>System Settings</strong>: defaults, except remember me for 6 months</li>
+	<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; every day at 2 AM; rotation 5</li>
+	<li><strong>SMTP</strong>: smtp.cox.net; from carolclark@cox.net</li>
+</ul>
+
+<!-- @marker "YouTrack Installation" -->
+<h3 id='YouTrackInstallation_'>YouTrack Installation</h3>
+
+<h4>YouTrack Installation</h4><ul>
+	<li>Download the *.zip package from Jetbrains</li>
+	<li>Place downloaded package in /Volumes/Servers/jb/YouTrack; expand at that location</li>
+	<li><span class="mono">cd &lt;path/to/YouTrack&gt;; </span></li>
+	<li>When welcome screen appears, select 'Setup'</li>
+	<li>Setup Wizard<ul>
+		<li>use External Hub; Hub address http://carols-imac-2.local:8080/hub/; verify</li>
+		<li>change backup location to '/Volumes/Mavericks 1/JetBrains_backups</li>
+		<li>'Finish' to accept login</li>
+		<li>'Users' page opens; setup is complete<ul>
+			<li>if an administrator account is active, hexagonal "nut" icon represents the menu</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "UpSource Installation" -->
+<h3 id='UpSourceInstallation_'>UpSource Installation</h3>
+
+<h4>UpSource Installation</h4><ul>
+	<li>Download the *.zip package from Jetbrains</li>
+	<li>Place downloaded package in /Volumes/Servers/jb/UpSource; expand at that location</li>
+	<li><span class="mono">cd &lt;path/to/UpSource&gt;; </span></li>
+	<li>When welcome screen appears, select 'Setup'</li>
+	<li>Setup Wizard<ul>
+		<li>use External Hub; Hub address http://carols-imac-2.local:8080/hub/; verify</li>
+		<li>change backup location to '/Volumes/Mavericks 1/JetBrains_backups</li>
+		<li>'Finish' to accept login</li>
+		<li>'Users' page opens; setup is complete<ul>
+			<li>if an administrator account is active, hexagonal "nut" icon represents the menu</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "TeamCity" -->
+<h3>TeamCity</h3>
+
+<!-- @topicList "TeamCity" "TeamCity_" -->
+	<!-- @topicItem "Install and Configure TeamCity Server" "#TeamCityInstallConfig_" "0" "" -->
+		<!-- @topicItem "Provide Dependencies" "#ProvideDependencies_" "1" "includes MySQL" -->
+		<!-- @topicItem "Install TeamCity Server" "#InstallTeamCityServer_" "1" "" -->
+		<!-- @topicItem "Start TeamCity Server" "#StartTeamCityServer_" "1" "" -->
+		<!-- @topicItem "Integrate MySQL and TeamCity Servers" "#IntegrateMySQLandTeamCityServers_" "1" "" -->
+		<!-- @topicItem "Create TeamCityDB" "#CreateTeamCityDB_" "1" "" -->
+		<!-- @topicItem "Run TeamCity WebApp and Configure" "#RunTeamCityWebApp_" "1" "" -->
+		<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "1" "" -->
+		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettingsinVCS_" "1" "" -->
+	<!-- @/topicList -->
+
+<!-- @marker "InstallConfig_" -->
+<h3 id='TeamCityInstallConfig_'>Install and Configure TeamCity</h3>
+
+	<!-- @marker "Provide Dependencies" -->
+	<h4 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h4><ul>
+		<li>install or check for updates as indicated:<ul>
+			<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+				Supported Platforms and Environments</a></li>
+			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+			<li><a href="Tools.html#_Java">Java</a></li>
+			<li><a href="MySQL.html#InstallandSetUpMySQL_">MySQL</a></li>
+		</ul></li>
+		<li>if necessary, <a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a><ul>
+			<li>includes install; initialize data directory; test; secure initial accounts</li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Install TeamCity Server" -->
+	<h4 id='InstallTeamCityServer_'>Install TeamCity Server</h4><ul>
+		<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server">
+			Installing and Configuring the TeamCity Server</a></li>
+		<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
+		<li>move archive to /Volumes/TeamCity; archive location will become TeamCity home directory</li>
+		<li>Terminal:<ul>
+			<li>cd /Volumes/TeamCity</li>
+			<li>unzip using gnu-tar: <span class="mono">sudo gtar xf &lt;archive&gt;</span></li>
+		</ul></li>
+		<li>if directory /Volumes/TeamCity/<span class="dq">&lt;?&gt;</span>/logs does not exist, create it</li>
+		<li>prevent creation of dummy admin user<ul>
+			<li>&lt;TeamCity Home Directory&gt;/conf/teamcity-startup.properties: add "teamcity.installation.completed=true"</li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Start TeamCity Server" -->
+	<h4 id='StartTeamCityServer_'>Start TeamCity Server</h4><ul>
+		<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation">
+			Troubleshooting TeamCity Installation</a> if needed</li>
+		<li>Start TeamCity Server<ul>
+			<li class="blurb"><span style="color: crimson">WARNING</span>: do not enter this web application yet</li>
+			<li>open http://localhost.8111; will not show content yet</li>
+			<li><em>check/update path before running</em> <span class="mono">cd /Library/TeamCity; teamcity-server.sh start</span><ul>
+				<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111</li>
+			</ul></li>
+		</ul></li>
+		<li>Autostart TeamCity Server<ul>
+			<li>create AutoStart file ~/Dev/Support/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
+				<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
+			<li>copy file jetbrains.teamcity.server.plist to /Library/LaunchDaemons</li>
+			<li>restart computer</li>
+			<li class="blurb">Safari: localhost:8111 should show TeamCity window</li>
+		</ul></li>
+		<li><em><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</em></li>
+	</ul>
+
+	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
+	<h4 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h4><ul>
+		<li>MySQL server side<ul>
+			<li><a href="../Support/MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
+		</ul></li>
+		<li>TeamCity server side<ul>
+			<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Create TeamCityDB" -->
+	<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
+		<li>create TeamCity database<ul>
+			<li><a href="../Support/MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Run and Configure TeamCity WebApp" -->
+	<h4 id='RunTeamCityWebApp_'>Run TeamCity WebApp and Configure</h4><ul>
+		<li class="blurb">update this section as we go</li>
+		<li>TeamCity data path: /Volumes/TeamCity/.BuildServer</li>
+		<li>user: carolclark; password</li>
+		<li>profile page: user name and email</li>
+		<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
+			Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
+		<li>build number: &lt;version&gt;.b%build.counter%</li>
+	</ul>
+
+	<!-- @marker "Install Build Agent" -->
+	<h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
+		<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
+			Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
+		<li>TeamCity Web UI &gt; Agents tab &gt; Install Build Agents &gt; Zip file distribution</li>
+		<li>unzip into /Volumes/TeamCity/BuildAgent-&lt;n&gt;</li>
+		<li>/Volumes/TeamCity/BuildAgent-&lt;n&gt;/conf/ file buildAgent.dist.properties: rename to buildAgent.properties</li>
+		<li>edit buildAgent.properties<ul>
+			<li>serverUrl=http://localhost:8111/</li>
+			<li>name=BuildAgent-&lt;n&gt;</li>
+		</ul></li>
+		<li>specify unique label:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/jetbrains.teamcity.BuildAgent.plist: Label: jetbrains.teamcity.BuildAgent-&lt;n&gt;</span></li>
+		<li class="dq">make sure that all files under the buildAgent directory are owned by carolclark</li>
+		<li>create directory under carolclark/user for BuildAgent logs:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mkdir buildAgent/logs</span></li>
+		<li>load build agent<ul>
+			<li>first agent:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh load</span></li>
+			<li>additional agents:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh (buildAgent?)/bin/agent.sh load</span></li>
+		</ul></li>
+		<li>wait a few minutes; watch for <span class="mono">(tail) -f buildAgent/logs/teamcity-agent.log</span></li>
+		<li>stop build server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh unload</span></li>
+		<li>configure build server to start automatically, but not on system startup:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
+			cp buildAgent/bin/jetbrains.teamcity.BuildAgent.plist $HOME/Library/LaunchAgents/; rename file to ...BuildAgent-&lt;n&gt;</span></li>
+		<li>reboot: build user should be logged in, and the build agent should start</li>
+	</ul>
+
+	<!-- @marker "Store Project Settings in Version Control" -->
+	<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
+		<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
+			Store Project Settings in Version Control</a></li>
+	</ul>
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright (c) 2016-17 C &amp; C Software, Inc. All rights reserved.</p>
+</body>
+</html>

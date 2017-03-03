@@ -42,7 +42,7 @@
 		</ul></li>
 		<li>unpack archive; install package; take screenshot (command-shift-4) of temporary password</li>
 		<li>add <span class="mono">/usr/local/mysql/bin</span> to <span class="mono">PATH</span></li>
-		<li>add aliases: mysql=/usr/local/mysql/bin/mysql; mysqladmin=/usr/local/mysql/bin/mysqladmin</li>
+		<li>add bash aliases: mysql=/usr/local/mysql/bin/mysql; mysqladmin=/usr/local/mysql/bin/mysqladmin</li>
 		<li>use SystemPrefs/MySQL to start MySQL server; set to run automatically on startup<ul>
 			<li>if my SQL preference pane does not appear: open installer again; customize to install just PreferencePane</li>
 		</ul></li>
@@ -71,9 +71,9 @@
 	<li><span class="mono">cd /usr/local/mysql</span></li>
 	<li><span class="mono">bin/mysqladmin -u root -p version</span> </li>
 	<li><span class="mono">bin/mysqladmin -u root -p variables</span> </li>
-	<li>mysql -u &lt;user&gt; -p -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%dir"'</li>
-	<li><a href="#StartandStopMySQLServer_">stop and restart server</a> both with command-line and with System Preferences pane MySql<ul>
-		<li>command-line commands: <span class="mono">bin/mysqladmin -u root shutdown; bin/mysqld_safe --user=mysql &amp;</span></li>
+	<li><span class="mono">bin/mysql -u &lt;user&gt; -p -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%dir"'</span></li>
+	<li>stop and restart server with System Preferences pane MySql<ul>
+		<li>command-line commands have not been working: <span class="mono">bin/mysqladmin -u root shutdown; bin/mysqld_safe --user=mysql &amp;</span></li>
 	</ul></li>
 	<li><a href="#ExamineDatabasesandTables_">examine databases, tables, columns, and selections</a> of an existing database</li>
 </ul>
@@ -162,10 +162,7 @@
 		<li>start or stop; "Automatically start MySQL server on startup": YES</li>
 	</ul></li>
 	<li>from command line:<ul>
-		<li class="blurb">in practice:<ul>
-			<li>command-line shutdown works, but if Preferences pane is set normally, it starts up again</li>
-			<li>we did not get command-line startup to work</li>
-		</ul></li>
+		<li class="blurb">in practice: Preferences pane works fine; we did not get command-line startup to work</li>
 		<li>stop server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqladmin -u root shutdown</span></li>
 		<li>start server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqld_safe --user=mysql &amp;</span></li>
 	</ul></li>

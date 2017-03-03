@@ -59,6 +59,7 @@
 		965F879A4CC12B5E0E783610 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		965F87D13524A7E376D0EDDC /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
+		965F882D39A596D13554A6CC /* JetBrains.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrains.html; sourceTree = "<group>"; };
 		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-1148.jpg"; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 				965F8125BE43F87CF012F727 /* AppCode.html */,
 				965F8F7D274B8EBB4F30076B /* MySQL.html */,
 				965F8413959BB1D1E8EE03D1 /* History_Support.html */,
+				965F882D39A596D13554A6CC /* JetBrains.html */,
 			);
 			path = html;
 			sourceTree = "<group>";
