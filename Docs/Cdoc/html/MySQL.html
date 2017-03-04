@@ -100,6 +100,9 @@
 <h3 id='ConfigurethisMySQLServerforTeamCity_'>Configure this MySQL Server for TeamCity</h3>
 	<p class="blurb">see<a href="https://confluence.jetbrains.com/pages/viewpage.action?pageId=74845225#HowTo...-ConfigureNewlyInstalledMySQLServer">
 		Configure Newly Installed MySQL Server</a>, <a href="http://dev.mysql.com/doc/refman/5.5/en/option-files.html">Using Option Files</a></p>
+	<h5>install TeamCity</h5><ul>
+		<li><a href="JetBrains.html#TeamCityInstallConfig_">install TeamCity</a></li>
+	</ul>
 	<h5>verify use of InnoDB database engine</h5><ul>
 		<li>verify MySQL is using InnoDB database engine:<ul>
 			<li>mysql&gt; <span class="mono">show table status like '%';</span></li>
@@ -134,7 +137,7 @@
 			<li><span class="mono">binlog-format=mixed</span></li>
 		</ul>
 		<h5>relocate TeamCity data</h5><ul>
-			<li>set configFile:<span class="mono">datadir</span> to /Volumes/TeamCity/mysqldata</li>
+			<li>set configFile:<span class="mono">datadir</span> to /Volumes//Servers/jb/TeamCity/mysqldata</li>
 			<li>make same change in com.oracle.oss.mysql.mysqld.plist</li>
 		</ul>
 	</div>
@@ -158,14 +161,7 @@
 
 <!-- @marker "Start and Stop MySQL Server" -->
 <h4 id='StartandStopMySQLServer_'>Start and Stop MySQL Server</h4><ul>
-	<li>from Preference Pane<ul>
-		<li>start or stop; "Automatically start MySQL server on startup": YES</li>
-	</ul></li>
-	<li>from command line:<ul>
-		<li class="blurb">in practice: Preferences pane works fine; we did not get command-line startup to work</li>
-		<li>stop server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqladmin -u root shutdown</span></li>
-		<li>start server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqld_safe --user=mysql &amp;</span></li>
-	</ul></li>
+	<li>from Preference Pane 'MySQL': start or stop; "Automatically start MySQL server on startup": YES</li>
 </ul>
 
 <!-- @marker "Create TeamCity Database" -->
@@ -190,11 +186,13 @@
 
 <!-- @marker "Examine Databases and Tables" -->
 <h4 id='ExamineDatabasesandTables_'>Examine Databases and Tables</h4><ul>
-	<li>list existing databases:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow databases</span></li>
-	<li>show tables of a database:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow &lt;databaseName&gt;</span></li>
+	<li>list existing databases:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow -u root -p</span></li>
+	<li>show tables of a database:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/mysqlshow -u root -p &lt;databaseName&gt;</span></li>
+	<li>enter mysql monitor:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql -u 'root' -p</span></li>
 	<li>show columns of a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>SHOW COLUMNS FROM &lt;db&gt;.&lt;table&gt;;</span></li>
 	<li>show selected columns from a table:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
 		SELECT &lt;comma-separated list of column names&gt; FROM &lt;db&gt;.&lt;table&gt;;</span></li>
+	<li>exit monitor:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>\q</span></li>
 	<li>select and show multiple variables from command line:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
 		bin/mysqladmin -u root -p variables | egrep 'back_log|basedir'</span></li>
 </ul>

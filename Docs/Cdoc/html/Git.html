@@ -68,13 +68,15 @@
 <!-- @/topicList -->
 
 <div class="paragraphs">
-	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues. GitHub "milestones" group issues into larger goals.</p>
+	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues. <span class="depr">GitHub "milestones"</span> Epic issues group issues into larger goals.</p>
 	<p>AppCode, our primary IDE, supports Tasks, each associated with an issue and a branch.
 	Tasks are a fundamental element in our workflow.
-	We do frequent integrations, and we often use multiple Tasks per branch.</p>
-	<p>AppCode projects are dependent on Xcode projects, so projects, especially in Objective-C/C++, are first created in Xcode.</p>
-	<p>Kanban boards, one for each active repository and hosted at <a href="https://github.com/waffleio/waffle.io/wiki">waffle.io</a>,
+	We do frequent integrations<span class="depr">, and we often use multiple Tasks per branch</span>.</p>
+	<p>AppCode projects are dependent on Xcode's projects format, so projects in Objective-C/C++, are normally first created in Xcode.</p>
+	<p class="depr">Kanban boards, one for each active repository and hosted at <a href="https://github.com/waffleio/waffle.io/wiki">waffle.io</a>,
 		help us to organize our work on issues, including display of GitHub labels and milestones.</p>
+	<p>Agile boards, one each for backlog refinement and for development,
+		help us to organize our work on epics, features and issues<span class="dq">, including display of GitHub labels and milestones</span>.</p>
 </div>
 
 <!-- @marker "Feature Branches" -->
@@ -148,8 +150,8 @@
 							</ul></li>
 						</ul>
 						<h6>Commit</h6><ul>
-							<li>git: status; add all; [export AppCode settings]</li>
-							<li>script <strong>StatusReport.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
+							<li>git: status; add all; [export IDE settings]</li>
+							<li>script <strong>ginfo.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
 							<li>test; commit <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
 								<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
 							</ul></li>
@@ -168,26 +170,24 @@
 						<li>if branch changed: test; commit</li>
 					</ul></li>
 				</ul></li>
-				<li>switch to master; merge in branch $cb; test; [commit]; PUSH</li>
+				<li>from master: merge in branch $cb; test; [commit]; PUSH</li>
 				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
 				<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
 				<li>if task complete, delete task and local branch</li>
 			</ul></div></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<div class="wf-mergeReview">
-				<h6>Merge and Review</h6><ul>
+				<h6>Review</h6><ul>
 					<li>master branch; <strong><em>ginfo.sh</em></strong>; note especially status clear</li>
-					<li>test; master branch; merge branch into local master; test; commit; push</li>
-					<li>change issue's Waffle label from 'Waffle:in progress' to 'Waffle:needs review'<ul>
-						<li><em>Waffle should soon move issue to 'Needs Review' column</em></li>
-					</ul></li>
-					<li>review; add issues as indicated</li>
+					<li>change issue's <span class="depr">Waffle label from 'Waffle:in progress' to 'Waffle:needs review'; refresh</span>
+						status from 'in progress' to 'needs review'</li>
+					<li>review code; add issues as indicated</li>
 				</ul></div>
 				<div class="wf-close">
 				<h6>Code Review Complete: Close Issue</h6><ul>
 					<li><strong><em>ginfo.sh</em></strong>; note especially unmerged branches</li>
-					<li>test; master branch; merge branch into local master; test; commit; push</li>
-					<li>close issue; remove issue's Waffle label 'Waffle:needs review'</li>
+					<li>test</li>
+					<li>close issue</li>
 					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
 			</div></div>
@@ -395,6 +395,8 @@
 		</ul></li>
 	</ul></li>
 	<li><span class='mono'>git checkout -b &lt;new-branch&gt; [&lt;start_point&gt;]</span>&nbsp;&nbsp;# move existing work to a new branch, rooted at commit &lt;start_point&gt; if specified</li>
+	<li>list branches by date:&nbsp;&nbsp;<span class='mono'>
+			<span class="prompt">$ </span>for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort</span></li>
 </ul>
 
 <!-- @marker "Master Branch" -->
