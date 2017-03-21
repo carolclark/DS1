@@ -11,6 +11,10 @@ USAGE='
 # DevConfig.ksh -- set up and configure C & C Software development environment
 '
 
+### add
+# com.oracle.oss.mysql.mysqld.plist to /Library/LaunchDaemons
+# youtrack.jvmoptions to $YouTrack/conf
+
 CCDev="${HOME}/Library/CCDev"
 DEV="${HOME}/Dev"
 #^	envProfile
