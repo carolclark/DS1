@@ -356,6 +356,34 @@
 	</ul></li>
 </ul>
 
+<!-- @marker "Documentation" -->
+<h3>Documentation</h3>
+<!-- @topicList "Documentation" "Documentation_" -->
+	<!-- @topicItem "Extract Section" "#ExtractSection_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Extract Document" -->
+<h4 id='ExtractSection_'>Extract Section</h4><ul>
+	<li>test links in existing documentation</li>
+	<li>create new html document for extracted content</li>
+	<li>for each section of text to be moved<ul>
+		<li>select section</li>
+		<li>copy selection to clipboard</li>
+		<li>wrap section in html style 'depr' (deprecated)</li>
+		<li>paste section into new document</li>
+		<li>fix links that would be broken<ul>
+			<li>for each link (#linkname) at new location:<ul>
+				<li>prepend (newFilename.html) to link</li>
+				<li>for each link (newFilename.html#linkname) found in other files, change oldFilename to newFilename</li>
+			</ul></li>
+		</ul></li>
+		<li>test</li>
+		<li>remove deprecated sections from original document</li>
+		<li>test</li>
+	</ul></li>
+	<li>end for section</li>
+</ul>
+
 <!-- @marker "OLD Refactorings and Tasks" -->
 <div style="background-color:lightslategray;">
 <h2>OLD Refactorings and Tasks</h2>
@@ -792,6 +820,7 @@
 </div>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
