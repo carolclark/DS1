@@ -123,41 +123,73 @@
 	<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh start</span></li>
 	<li>When welcome screen appears, select 'Setup'; login</li>
 	<li>Setup Wizard<ul>
-		<li>Setup admin account 'carolclark' with JetBrains password</li>
-		<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups/Hub</li>
-		<li>'Finish' to accept login</li>
-		<li>'Users' page opens; setup is complete<ul>
-			<li>if an administrator account is active, hexagonal "nut" icon represents the menu</li>
-		</ul></li>
+		<li>set JetBrains password for admin account</li>
+		<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+		<li>login as admin; 'Finish'</li>
+		<li>Hub opens; initial startup is complete; admin/setup menu is on hexagonal nut icon</li>
 	</ul></li>
 </ul>
 
 <!-- @marker "Hub Configuration" -->
 <h4 id='HubConfiguration_'>HubConfiguration</h4><ul>
-	<li><strong>Notifications</strong>: smtp.cox.net; from carolclark@cox.net; send test message</li>
-	<li><strong>Users</strong>: add cox email if necessary</li>
-	<li><strong>Auth Modules</strong>GitHub: follow screen instructions to connect; enable</li>
+	<li><strong>Users</strong>: add carolclark as an admin user; edit carolclark to add cox email and our avatar</li>
+	<li><strong>Auth Modules</strong><ul>
+		<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
+		<li>enable</li>
+	</ul></li>
 	<li><strong>System Settings</strong>: defaults, except remember me for 6 months</li>
-	<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; every day at 2 AM; rotation 5</li>
-	<li><strong>SMTP</strong>: smtp.cox.net; from carolclark@cox.net</li>
+	<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
+	<li><strong>SMTP</strong>: smtp.cox.net; from carolclark@cox.net; send test message</li>
+	<li><strong>Notifications</strong>: smtp.cox.net; from carolclark@cox.net; send test message</li>
 </ul>
 
-<!-- @marker "YouTrack Installation" -->
-<h3 id='YouTrackInstallation_'>YouTrack Installation</h3>
+<!-- @marker "YouTrack Installation and Configuration" -->
+<h3 id='YouTrackInstallConfig'>YouTrack Installation</h3>
 
 <h4>YouTrack Installation</h4><ul>
 	<li>Download the *.zip package from Jetbrains</li>
 	<li>Place downloaded package in /Volumes/Servers/jb/YouTrack; expand at that location</li>
-	<li><span class="mono">cd &lt;path/to/YouTrack&gt;; </span></li>
+	<li><span class="mono">cd &lt;path/to/YouTrack&gt;/bin; youtrack.sh run</span></li>
 	<li>When welcome screen appears, select 'Setup'</li>
 	<li>Setup Wizard<ul>
-		<li>use External Hub; Hub address http://carols-imac-2.local:8080/hub/; verify</li>
-		<li>change backup location to '/Volumes/Mavericks 1/JetBrains_backups</li>
+		<li>use External Hub; Hub address http://carols-imac-2.local:8080; verify</li>
+		<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups'</li>
 		<li>'Finish' to accept login</li>
-		<li>'Users' page opens; setup is complete<ul>
-			<li>if an administrator account is active, hexagonal "nut" icon represents the menu</li>
-		</ul></li>
+		<li>'Issues' page opens; initial startup is complete</li>
 	</ul></li>
+</ul>
+
+<h4>YouTrack Configuration</h4><ul>
+	<li>JVM<ul>
+		<li>stop YouTrack service</li>
+		<li>copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist" to Jetbrains/YouTrack/youtrack.jvmoptions</li>
+		<li>configure JVM<ul>
+			<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
+			<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
+			<li>also if needed for performance:<ul>
+				<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
+			</ul></li>
+		</ul></li>
+		<li>configure general options<ul>
+			<li>jetbrains.youtrack.mailLimit: 25</li>
+			<li>for additional configuration options, see
+				<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
+		</ul></li>
+		<li>install at $YouTrack/conf</li>
+	</ul></li>
+	<li>start YouTrack service</li>
+	<li>configuration menu (hexagonal "nut")<ul>
+		<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; zip format; every day at 2 AM; rotation 5</li>
+		<li><strong>VCS configurations</strong></li>
+	</ul></li>
+</ul>
+
+<h4>YouTrack Extensions</h4><ul>
+	<li><em>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</em></li>
+	<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
+		<li><em>includes Issue Navigation, Task Management, Time Tracking</em></li>
+	</ul></li>
+	<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/TMetric-Integration.html">TMetric (work timer) integration</a></li>
 </ul>
 
 <!-- @marker "UpSource Installation" -->
@@ -166,15 +198,13 @@
 <h4>UpSource Installation</h4><ul>
 	<li>Download the *.zip package from Jetbrains</li>
 	<li>Place downloaded package in /Volumes/Servers/jb/UpSource; expand at that location</li>
-	<li><span class="mono">cd &lt;path/to/UpSource&gt;; </span></li>
+	<li><span class="mono">cd &lt;path/to/UpSource&gt;/bin; ./upsource.sh run</span></li>
 	<li>When welcome screen appears, select 'Setup'</li>
 	<li>Setup Wizard<ul>
 		<li>use External Hub; Hub address http://carols-imac-2.local:8080/hub/; verify</li>
-		<li>change backup location to '/Volumes/Mavericks 1/JetBrains_backups</li>
+		<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups</li>
 		<li>'Finish' to accept login</li>
-		<li>'Users' page opens; setup is complete<ul>
-			<li>if an administrator account is active, hexagonal "nut" icon represents the menu</li>
-		</ul></li>
+		<li>'Users' page opens; initial startup is complete</li>
 	</ul></li>
 </ul>
 
@@ -250,7 +280,7 @@
 	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
 	<h4 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h4><ul>
 		<li>MySQL server side<ul>
-			<li><a href="../Support/MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
+			<li><a href="MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
 		</ul></li>
 		<li>TeamCity server side<ul>
 			<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
@@ -260,7 +290,7 @@
 	<!-- @marker "Create TeamCityDB" -->
 	<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
 		<li>create TeamCity database<ul>
-			<li><a href="../Support/MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
+			<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
 		</ul></li>
 	</ul>
 
