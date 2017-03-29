@@ -362,26 +362,26 @@
 	<!-- @topicItem "Extract Section" "#ExtractSection_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Extract Document" -->
+<!-- @marker "Extract Section" -->
 <h4 id='ExtractSection_'>Extract Section</h4><ul>
-	<li>test links in existing documentation</li>
-	<li>create new html document for extracted content</li>
-	<li>for each section of text to be moved<ul>
-		<li>select section</li>
-		<li>copy selection to clipboard</li>
-		<li>wrap section in html style 'depr' (deprecated)</li>
-		<li>paste section into new document</li>
-		<li>fix links that would be broken<ul>
-			<li>for each link (#linkname) at new location:<ul>
-				<li>prepend (newFilename.html) to link</li>
-				<li>for each link (newFilename.html#linkname) found in other files, change oldFilename to newFilename</li>
-			</ul></li>
+	<li class="blurb">extract a section of an html document and place it elsewhere</li>
+	<li>test links with existing documentation</li>
+	<li>create/identify html document for extracted content; provide a @topicList</li>
+	<li>for each named heading to be moved<ul>
+		<li>if section has a @topicItem entry, move to just before section</li>
+		<li>cut section to be moved, including leading @topicItem; paste into new document</li>
+		<li>move @topicItem to its new @topicList</li>
+		<li>examine content of moved section; correct any links that should go back to the old document</li>
+		<li>compile and test; fix any syntax issues</li>
+		<li>test to identify broken links</li>
+		<li>for each broken link found<ul>
+			<li>prepend/change &lt;correctFilename&gt;.html to &lt;linkName&gt;</li>
 		</ul></li>
 		<li>test</li>
-		<li>remove deprecated sections from original document</li>
-		<li>test</li>
+		<li>clean up in both documents' topic lists, including fixing line numbers</li>
+		<li>compile and test</li>
 	</ul></li>
-	<li>end for section</li>
+	<li>clean up any formatting, moving other text, ...; test</li>
 </ul>
 
 <!-- @marker "OLD Refactorings and Tasks" -->
@@ -820,7 +820,6 @@
 </div>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>

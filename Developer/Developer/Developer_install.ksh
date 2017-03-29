@@ -137,7 +137,11 @@ function getSubtargetDestination {
 			destinationFolder="${applescriptsFolder}"
 			;;
 		"JetBrains" )
-			destinationFolder="${launchdaemonsFolder}"
+			if [[ ${filepath} != "youtrack.jmvoptions" ]] ; then
+				destinationFolder="/Volumes/Servers/jb/YouTrack/YouTrack_current/conf"
+			else
+				destinationFolder="${launchdaemonsFolder}"
+			fi
 			;;
 		"MySQL" )				# probably handled by new build file
 			;;
