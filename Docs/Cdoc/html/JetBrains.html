@@ -70,10 +70,9 @@ toward the actual time taken.</p>
 	</ul></li>
 </ul></div>
 
-<!-- @topicItem "Hub" "#Hub_" "0" "" -->
 <!-- @marker "Hub" -->
 <h2>Hub</h2>
-<!-- @topicList "Hub" "HubTasks_" -->
+<!-- @topicList "Hub" "Hub_" -->
 	<!-- @topicItem "Hub Tasks" "#HubTasks_" "0" "" -->
 		<!-- @topicItem "Hub Command-Line Interface" "#HubCommandLineInterface_" "1" "integrate YouTrack, TeamCity, UpSource, IDE" -->
 	<!-- @topicSep -->
@@ -82,7 +81,7 @@ toward the actual time taken.</p>
 <!-- @/topicList -->
 
 <!-- @marker "Hub Tasks" -->
-<h3 id='HubTasks_'>Hub Tasks</h3>
+<h3 id="HubTasks_">Hub Tasks</h3>
 
 <!-- @marker "Hub Command-Line Interface" -->
 <h4 id='HubCommandLineInterface_'>Hub Command-Line Interface</h4><div class="indent">
@@ -130,7 +129,7 @@ toward the actual time taken.</p>
 
 <!-- @marker "YouTrack" -->
 <h2>YouTrack</h2>
-<!-- @topicList "YouTrack" "YouTrackTasks_" -->
+<!-- @topicList "YouTrack" "YouTrack_" -->
 	<!-- @topicItem "YouTrack Tasks" "#YouTrackTasks_" "0" "" -->
 		<!-- @topicItem "Add Project" "#AddProject_" "1" "" -->
 		<!-- @topicItem "Sort a Card's Subtasks" "#SortaCardsSubtasks_" "1" "" -->
@@ -141,7 +140,7 @@ toward the actual time taken.</p>
 <!-- @/topicList -->
 
 <!-- @marker "YouTrack Tasks" -->
-<h3 id='YouTrackTasks_'>YouTrack Tasks</h3>
+<h3 id="YouTrackTasks_">YouTrack Tasks</h3>
 
 <!-- @marker "Add Project" -->
 <h4 id='AddProject_'>Add Project</h4><ul>
@@ -153,6 +152,8 @@ toward the actual time taken.</p>
 	<li>Organize the subtasks in that lane</li>
 </ul>
 
+<!-- @marker "YouTrack Tasks" -->
+<h3 id="YouTrackInstallConfig_">YouTrack Installation and Configuration</h3>
 <!-- @marker "YouTrack Basic IC" -->
 <h4 id='YouTrackBasicIC_'>YouTrack Basic IC</h4>
 	<h5>Installation</h5><ul>
@@ -204,7 +205,7 @@ toward the actual time taken.</p>
 
 <!-- @marker "TeamCity" -->
 <h2>TeamCity</h2>
-<!-- @topicList "TeamCity" "TeamCityTasks_" -->
+<!-- @topicList "TeamCity" "TeamCity_" -->
 	<!-- @topicItem "TeamCity Tasks" "#TeamCityTasks_" "0" "" -->
 		<!-- @topicItem "Moving to Another Server" "#MovingServer_" "1" "" -->
 		<!-- @topicItem "Uninstall TeamCity" "#UninstallTeamCity_" "1" "" -->
@@ -214,7 +215,7 @@ toward the actual time taken.</p>
 <!-- @/topicList -->
 
 <!-- @marker "TeamCity Tasks" -->
-<h3 id='TeamCityTasks_'>TeamCity Tasks</h3>
+<h3 id="TeamCityTasks_">TeamCity Tasks</h3>
 
 <!-- @marker "Moving to Another Server" -->
 <h4 id='MovingServer_'>Moving Projects to Another Server</h4><ul>
@@ -251,6 +252,9 @@ toward the actual time taken.</p>
 	<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "1" "" -->
 	<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettingsinVCS_" "1" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "InstallConfig_" -->
+<h3>Install and Configure TeamCity</h3>
 
 <!-- @marker "Provide Dependencies" -->
 <h4 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h4><ul>
@@ -364,7 +368,7 @@ toward the actual time taken.</p>
 
 <!-- @marker "UpSource" -->
 <h2>UpSource</h2>
-<!-- @topicList "UpSource" "UpSourceTasks_" -->
+<!-- @topicList "UpSource" "UpSource_" -->
 	<!-- @topicItem "UpSource Tasks" "#UpSourceTasks_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "UpSource InstallConfig" "#UpSourceInstallConfig_" "0" "" -->
@@ -372,14 +376,14 @@ toward the actual time taken.</p>
 <!-- @/topicList -->
 
 <!-- @marker "UpSource Tasks" -->
-<h3 id='UpSourceTasks_'>UpSource Tasks</h3>
+<h3 id="UpSourceTasks_">UpSource Tasks</h3>
 
 <!-- @marker "UpSource InstallConfig" -->
 <h3 id='UpSourceInstallConfig_'>UpSource InstallConfig</h3>
 
 	<!-- @marker "UpSource Basic IC" -->
 	<h4 id='UpSourceBasicIC_'>UpSource Basic IC</h4><ul>
-		<li>Installatioon<ul>
+		<li>Installation<ul>
 			<li>Download the *.zip package from Jetbrains</li>
 			<li>Place downloaded package in /Volumes/Servers/jb/UpSource; expand at that location</li>
 			<li><span class="mono">cd &lt;path/to/UpSource&gt;/bin; ./upsource.sh run</span></li>
@@ -390,8 +394,8 @@ toward the actual time taken.</p>
 				<li>save license key; 'Finish' to accept login</li>
 				<li>'Users' page opens; initial startup is complete</li>
 			</ul></li>
-		</ul>
-	</ul></li>
+		</ul></li>
+	</ul>
 
 <!-- @marker "YouTrack Installation and Configuration" -->
 <h3 id='YouTrackInstallConfig'>YouTrack Installation</h3>
