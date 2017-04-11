@@ -108,12 +108,13 @@
 			<li>mysql&gt; <span class="mono">show table status like '%';</span></li>
 		</ul></li>
 	</ul>
-	<h5>set up file to configure MySQL for TeamCity</h5><ul>
-		<li>copy file MySQL/default_cnf.txt to MySQL/TeamCity_cnf.txt; edit heading for new file</li>
-		<li>installation copies MySQL/TeamCity_cnf.txt to /usr/local/mysql/my.cnf; test</li>
+	<h5></h5><ul>
+		<li>~/Dev/Support/Developer/Developer/MySQL: copy file MySQL/default_cnf.txt to TeamCity_cnf.txt; edit heading for new file</li>
 	</ul>
-	<h5>edit file TeamCity_cnf.txt (/usr/local/mysql/my.cnf) as follows; update and test after each change</h5><div class="indent">
-		<h5>set memory allocation</h5><ul>
+	<h5>TeamCity_cnf</h5><ul>
+			<li>set up file to configure MySQL for TeamCity</li>
+		</ul>
+		<h6>set memory allocation</h6><ul>
 			<li><span class="mono">TEAMCITY_SERVER_MEM_OPTS=-Xmx750m</span><ul>
 				<li class="blurb">For small system not adjusted for compatibility with 64-bit Java, recommendation is 750m (-Xmx750m).
 					Since we have a very small system, we expect 750m to be fine.</li>
@@ -121,7 +122,7 @@
 					Setting Up Memory Settings for TeamCity server</a></li>
 			</ul></li>
 		</ul>
-		<h5>configure InnoDB database engine</h5><ul>
+		<h6>configure InnoDB database engine</h6><ul>
 			<li>memory settings:<ul>
 				<li><span class="mono">innodb_log_file_size=1000M</span></li>
 				<li><span class="mono">innodb_buffer_pool_size=2000M</span></li>
@@ -133,14 +134,14 @@
 				<li><span class="mono">innodb_flush_log_at_trx_commit=2</span></li>
 			</ul></li>
 		</ul>
-		<h5>set binary logging format</h5><ul>
+		<h6>set binary logging format</h6><ul>
 			<li><span class="mono">binlog-format=mixed</span></li>
 		</ul>
-		<h5>relocate TeamCity data</h5><ul>
-			<li>set configFile:<span class="mono">datadir</span> to /Volumes/Servers/jb/TeamCity/TeamCity_current/???/mysqldata</li>
+		<h6>relocate TeamCity data</h6><ul>
+			<li>set configFile:<span class="mono">datadir</span> to /Volumes/Servers/jb/TeamCity/mysqldata</li>
 			<li>make same change in com.oracle.oss.mysql.mysqld.plist</li>
+			<li>copy MySQL/TeamCity_cnf.txt to /usr/local/mysql; test</li>
 		</ul>
-	</div>
 	<h5>enable additional diagnostics</h5><ul>
 		<li><span class="mono">mysql: GRANT PROCESS ON *.* TO &lt;teamcity-user-name&gt;;</span> for root, carolclark</li>
 	</ul>
@@ -174,7 +175,7 @@
 		<li><span class="mono">grant all privileges on &lt;databaseName&gt;.* to &lt;username&gt;;</span></li>
 		<li><span class="mono">grant process on *.* to &lt;username&gt;;</span></li>
 	</ul></li>
-	<li>verify use of InnoDB database engine:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql show table status like '%';</span>;
+	<li>verify MySQL use of InnoDB database engine:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysql show table status like '%';</span>;
 		should find innodb properties</li>
 </ul>
 

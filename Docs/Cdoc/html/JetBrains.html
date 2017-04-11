@@ -41,6 +41,8 @@ Target dates are established, but are normally adjusted if and when needed
 toward the actual time taken.</p>
 <div class="paragraphs">
 	<h6>Gaggles</h6><ul>
+		<li>target dates are established, but are normally adjusted if and when needed
+			toward the actual time needed</li>
 		<li>we expect to learn to make better estimates of time required as we use
 			this technique</li>
 		<li>if a task has a 'black box' step that we cannot estimate, it is not ready for development; a separate required-dependency task could be used here
@@ -56,10 +58,10 @@ toward the actual time taken.</p>
 		Projects added to Hub are automatically set up in each Team tool installed at the time.
 		Our installation sequence is therefore:</p><ul>
 	<li>install Hub</li>
-	<li>install YouTrack and UpSource; attach each to Hub during installation</li>
 	<li>install TeamCity</li>
 	<li>use TeamCity plug-in to link TeamCity to Hub</li>
-	<li><em>now</em> add projects</li>
+	<li>add projects</li>
+	<li>install UpSource and YouTrack; attach each to Hub during installation</li>
 </ul>
 
 <h6>Installation Levels</h6><ul>
@@ -103,9 +105,6 @@ toward the actual time taken.</p>
 		<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh start</span></li>
 		<li>When welcome screen appears, select installation type 'Setup'</li>
 		<li>Setup Wizard<ul>
-			<li>Confirm Settings<ul>
-				<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups/Hub'</li>
-			</ul></li>
 			<li>Select Hub Service<ul>
 				<li>set JetBrains password for admin account</li>
 			</ul></li>
@@ -122,8 +121,8 @@ toward the actual time taken.</p>
 			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
 			<li>enable</li>
 		</ul></li>
-		<li><strong>System Settings</strong>: defaults, except remember me for 6 months</li>
-		<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; zip format; every day at 2 AM; rotation 5</li>
+		<li><strong>System Settings</strong>: login timeout 12 hours; remember me for 1 year</li>
+		<li><strong>Backups</strong>: to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
 		<li><strong>SMTP</strong>: smtp.cox.net; from carolclark@cox.net; send test message; enable notification</li>
 	</ul>
 
@@ -185,7 +184,7 @@ toward the actual time taken.</p>
 				<li>for additional configuration options, see
 					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
 			</ul></li>
-			<li>install at $YouTrack/conf</li>
+			<li>install at &lt;path/to/YouTrack&gt;/conf</li>
 		</ul></li>
 		<li>start YouTrack service</li>
 		<li>configuration menu (hexagonal "nut")<ul>
@@ -275,14 +274,15 @@ toward the actual time taken.</p>
 	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server">
 		Installing and Configuring the TeamCity Server</a></li>
 	<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
-	<li>move archive to /Volumes/TeamCity; archive location will become TeamCity home directory</li>
+	<li>move archive to /Volumes/Servers/jb/TeamCity; archive location will become TeamCity home directory</li>
 	<li>Terminal:<ul>
-		<li>cd /Volumes/TeamCity</li>
+		<li><span class="mono">cd /Volumes/Servers/jb/TeamCity</span></li>
 		<li>unzip using gnu-tar: <span class="mono">sudo gtar xf &lt;archive&gt;</span></li>
 	</ul></li>
-	<li>if directory /Volumes/TeamCity/<span class="dq">&lt;?&gt;</span>/logs does not exist, create it</li>
-	<li>prevent creation of dummy admin user<ul>
-		<li>&lt;TeamCity Home Directory&gt;/conf/teamcity-startup.properties: add "teamcity.installation.completed=true"</li>
+	<li>if directory /Volumes/Servers/jb/TeamCity/&lt;TeamCityDistribution&gt;/logs does not exist, create it</li>
+	<li>&lt;TeamCity Home Directory&gt;/conf/teamcity-startup.properties:<ul>
+		<li>set TeamCity data path: teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer</li>
+		<li>prevent creation of dummy admin user: add "teamcity.installation.completed=true"</li>
 	</ul></li>
 </ul>
 
@@ -292,11 +292,12 @@ toward the actual time taken.</p>
 		Troubleshooting TeamCity Installation</a> if needed</li>
 	<li>Start TeamCity Server<ul>
 		<li class="blurb"><span style="color: crimson">WARNING</span>: do not enter this web application yet</li>
-		<li>open http://localhost.8111; will not show content yet</li>
-		<li><em>check/update path before running</em> <span class="mono">cd /Library/TeamCity; teamcity-server.sh start</span><ul>
+		<li>open http://localhost:8111; will not show content yet</li>
+		<li>cd /Volumes/Servers/jb/TeamCity/TeamCity/bin; teamcity-server.sh start<ul>
 			<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111</li>
 		</ul></li>
 	</ul></li>
+	<li><em><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</em></li>
 	<li>Autostart TeamCity Server<ul>
 		<li>create AutoStart file ~/Dev/Support/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
 			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
@@ -304,7 +305,6 @@ toward the actual time taken.</p>
 		<li>restart computer</li>
 		<li class="blurb">Safari: localhost:8111 should show TeamCity window</li>
 	</ul></li>
-	<li><em><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</em></li>
 </ul>
 
 <!-- @marker "Integrate MySQL and TeamCity Servers" -->
@@ -327,7 +327,7 @@ toward the actual time taken.</p>
 <!-- @marker "Run and Configure TeamCity WebApp" -->
 <h4 id='RunTeamCityWebApp_'>Run TeamCity WebApp and Configure</h4><ul>
 	<li class="blurb">update this section as we go</li>
-	<li>TeamCity data path: /Volumes/TeamCity/.BuildServer</li>
+	<li>TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
 	<li>user: carolclark; password</li>
 	<li>profile page: user name and email</li>
 	<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;

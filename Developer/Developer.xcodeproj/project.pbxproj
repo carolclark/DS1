@@ -45,6 +45,7 @@
 		67FDF6FB191D776C002560CF /* trapSigDemo.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = trapSigDemo.ksh; sourceTree = "<group>"; };
 		67FDF6FD191D776C002560CF /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67FDF6FE191D776C002560CF /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
+		965F81BA711EEC321E6A5140 /* teamcity-startup.properties */ = {isa = PBXFileReference; lastKnownFileType = file.properties; path = "teamcity-startup.properties"; sourceTree = "<group>"; };
 		965F86B867AD7D8F4F1C3BAC /* default_cnf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = default_cnf.txt; sourceTree = "<group>"; };
 		965F86F7635E6AEA26AFA199 /* youtrack.jvmoptions */ = {isa = PBXFileReference; lastKnownFileType = file.jvmoptions; path = youtrack.jvmoptions; sourceTree = "<group>"; };
 		965F8E56CCE29899571D2E07 /* com.oracle.oss.mysql.mysqld.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = com.oracle.oss.mysql.mysqld.plist; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 				965F8E656FACA50C2DB4AE10 /* jetbrains.teamcity.server.plist */,
 				965F880804D50BA82BD84310,
 				965F86F7635E6AEA26AFA199 /* youtrack.jvmoptions */,
+				965F81BA711EEC321E6A5140 /* teamcity-startup.properties */,
 			);
 			path = JetBrains;
 			sourceTree = "<group>";

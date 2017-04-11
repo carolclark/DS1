@@ -1,0 +1,264 @@
+<!-- TeamTools.html -->
+<!-- Created by carolclark on 3/30/17 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>TeamTools</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+</head>
+<body>
+<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<h1>TeamTools</h1>
+
+<!-- @topicList "TeamTools" "Contents" -->
+	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
+	<!-- @topicItem "Team Tools Tasks" "#TeamToolsTasks_" "0" "" -->
+	<!-- @topicItem "Install and Configure" "#InstallConfig_" "0" "plan to install and configure team tools" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "JetBrains Links" "http://www.jetbrains.com" "0" "JetBrains home" -->
+		<!-- @topicItem "HubRing" "http://jetbrains.com/hub/documentation" "1" "common connector for JetBrains Team Tools" -->
+		<!-- @topicItem "YouTrack Documentation" "https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Documentation.html" "1" "help" -->
+			<!-- @topicItem "YouTrack Resources" "http://jetbrains.com/youtrack/documentation" "2" "issue tracking; agile boards" -->
+			<!-- @topicItem "Workflow Language Fields" "https://www.jetbrains.com/help/youtrack/standalone/2017.1/Workflow-Language-Fields.html" "2" "properties available to workflows" -->
+			<!-- @topicItem "Replace Custom Fields" "https://www.jetbrains.com/help/youtrack/standalone/2017.1/Replace-Custom-Fields.html" "2" "replacing fields in exinsting project" -->
+		<!-- @topicItem "TeamCity" "http://jetbrains.com/teamcity/documentation" "1" "continuous integration" -->
+		<!-- @topicItem "UpSource" "http://jetbrains.com/upsource/documentation" "1" "code review" -->
+<!-- @/topicList -->
+<h4 id="Overview_">Development Overview</h4><ul>
+	<li>For most tasks in our development process, we use JetBrains products.<ul>
+		<li>IDE's for development languages:<ul>
+			<li>AppCode (previously in use): primary support for Objective-C++; plugins for unix and AppleScript</li>
+			<li>PythonCharm, WebStorm (for html; we are currently using AppCode for this);
+				PHPStorm for Website indices; MPS for DSL development are also available.</li>
+			</ul></li>
+		<li>Team Tools for managing workflow and development process:<ul>
+			<li>YouTrack: issue tracking; agile development</li>
+			<li>TeamCity (previously in use): Continuous Integration</li>
+			<li>UpSource: code review</li>
+			<li>Hub, aka HubRing, to tie it all together</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<h4 id="Agile_">Agile Development</h4>
+	<p>Our approach is very similar to standard test-first agile development,
+	but with a different approach toward time management. For our 'sprints',
+	which we call 'Gaggles', we use a time estimate, not a deadline.</p>
+	<div class="paragraphs">
+		<h5>Gaggles</h5><ul>
+			<li>target dates are established, but are normally adjusted if and when indicated
+				toward the actual time needed</li>
+			<li>we expect to learn to make better estimates of time required as we use
+				this technique</li>
+			<li>if a task has a 'black box' step that we cannot estimate, it is probably not ready for development;
+				a separate required-dependency task could be used here to separate the tasks of gathering information and estimating</li>
+			<li>YouTrack's 'fix version' fields, which define the cards (geese?) for a Gaggle, is a dummy value used only by gaggles.
+				For assigning version numbers, we prefer to establishing the version number when the product is ready for 'release',
+				as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+				on which our versioning workflow is based.</li>
+		</ul>
+
+<h4>JetBrains Installation</h4>
+	<p>JetBrains projects are automatically added to any JetBrains Team tools (YouTrack, UpSource, Team City) that are installed in Hub at the time of the installation.
+		Projects added to Hub are automatically set up in each Team tool installed at the time.
+		Our installation sequence is therefore:</p><ul>
+	<li>install Hub</li>
+	<li>install YouTrack and UpSource; attach each to Hub during installation</li>
+	<li>install TeamCity</li>
+	<li>use TeamCity plug-in to link TeamCity to Hub</li>
+	<li><em>now</em> add projects</li>
+</ul></div>
+
+<!-- @marker "Team Tools Tasks" -->
+<h2 class="promote">Team Tools Tasks</h2>
+<!-- @topicList "Team Tools Tasks" "TeamToolsTasks_" -->
+	<!-- @topicItem "YouTrack Project Settings" "#YouTrackProjectSettings_" "0" "" -->
+	<!-- @topicItem "Add Project with Agile Boards" "#AddProjectwithAgileBoard_" "0" "" -->
+<!-- @/topicList -->
+<p class="blurb">add active projects and Agile boards</p>
+<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
+<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
+</a></p>
+
+<!-- @marker "YouTrack Project Settings" -->
+<h3 id='YouTrackProjectSettings_'>YouTrack Project Settings</h3><ul>
+	<li><strong>Access Management</strong><ul>
+		<li>add user carolclark to Group Project Admin</li>
+		<li class="depr"><strong>Roles</strong></li>
+		<li class="depr"><strong>Groups</strong><ul>
+			<li>Project Admin<ul>
+				<li>add permissions 'Low-Level Admin', 'Low-Level Read Admin', 'Create Project', 'Update Project'</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Global Project-Related Settings</strong><ul>
+		<li><strong>Time Tracking</strong><ul>
+			<li>enable time tracking</li>
+			<li>Hours per ideal day: 6</li>
+			<li>add work types Design, Management (Backlog refinement), Administration</li>
+		</ul></li>
+	</ul></li>
+	<li><strong>VCS configurations</strong>: new GitHub integration</li>
+</ul>
+
+<!-- @marker "Add Project with Agile Boards" -->
+<h3 id='AddProjectwithAgileBoard_'>Add Project with Agile Board</h3><ul>
+	<li>YouTrack: create project<ul>
+		<li>for project already in GitHub, check VCS for last issue number already used</li>
+		<li>create project from Scrum template</li>
+		<li>edit custom fields<ul>
+			<li>includes edit field names to use camel case for readability<ul>
+				<li>Issue Type: Epic, Feature, Task; Bug, Cosmetic, Exception, Usability, Performance</li>
+			</ul></li>
+		</ul></li>
+		<li>edit workflows<ul>
+			<li>scrum: do NOT close issue automatically when subtasks completed<ul>
+				<li>either do nothing, of put parent issue up for review</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Custom Fields and Workflows</strong></li>
+</ul>
+
+<!-- @marker "Install and Configure" -->
+<h2 class="promote">Install and Configure</h2>
+<!-- @topicList "Install and Configure" "InstallConfig_" -->
+	<!-- @topicItem "Basic Installation and Setup" "#InstallSetup_" "0" "get all Team Tools up and running" -->
+	<!-- @topicItem "Improve Long-Term Stability" "#ImproveStability_" "0" "improve long-term stablilty of tools" -->
+	<!-- @topicItem "Add Extensions" "#AddExtensions_" "0" "add extensions to support additional features" -->
+<!-- @/topicList -->
+
+
+<!-- @marker "Basic Installation and Setup" -->
+<h2>Basic Installation and Setup</h2>
+<!-- @topicList "Basic Installation and Setup" "InstallSetup_" -->
+	<!-- @topicItem "Install Tools" "#InstallTools_" "0" "" -->
+<!-- @/topicList -->
+<p class="blurb">get all Team Tools up and running</p>
+
+<!-- @marker "Install Tools" -->
+<h2>Install Tools</h2>
+<!-- @topicList "Install Tools" "InstallTools_" -->
+	<!-- @topicItem "HubRing" "#HubRing_" "0" "" -->
+	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Standard Tool Install" "#InstallTooltoServer_" "0" "" -->
+<!-- @/topicList -->
+
+
+<!-- @marker "HubRing" -->
+<h3 id='HubRing_'>HubRing</h3><ul>
+	<li>download from <a href="https://www.jetbrains.com/hub/download/#section=mac">Hub Download</a><ul>
+		<li>note 2017.04.07: reported JPS-5617<ul>
+			<li>build 5178: attempt to set up OAuth with GitHub fails; 'copy' button for callback fails, associated GitHub link fails #404</li>
+			<li>using build 4996</li>
+		</ul></li>
+	</ul></li>
+	<li>follow installation instructions linked from Download page<ul>
+		<li>JVM Options: no changes</li>
+		<li><a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a><ul>
+			<li><strong>Users: Me</strong><ul>
+				<li>add 'carolclark':<ul>
+					<li>click our gravitar image</li>
+					<li>add and verify email address</li>
+					<li>do not force change password</li>
+				</ul></li>
+			</ul></li>
+			<li><strong>System Settings</strong>: session timeout 12 hours; remember me for 1 year</li>
+			<li><strong>SMTP</strong>:<ul>
+				<li>host smtp.cox.net; from carolclark@cox.net</li>
+				<li>user carolclark; password: cox</li>
+				<li>Security and Authorization: user name 'carolclark'; password cox</li>
+				<li>send test message; enable notification</li>
+			</ul></li>
+			<li><strong>Backups</strong>:<ul>
+				<li>to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
+				<li>backup now</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "YouTrack" -->
+<h3 id='YouTrack_'>YouTrack</h3><ul>
+	<li>download standalone version from <a href="https://www.jetbrains.com/youtrack/download/get_youtrack.html">YouTrack Download</a></li>
+	<li>follow installation instructions linked from Download page<ul>
+		<li>for external Hub: address http://carols-imac-2.local:8080/hub; sign in as admin</li>
+	</ul></li>
+	<li>configure JVM (Java virtual machine)<ul>
+		<li>stop YouTrack service<ul>
+			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
+			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
+		</ul></li>
+		<li>if necessary, create file youtrack.jvmoptions<ul>
+			<li>copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist" to Jetbrains/YouTrack/youtrack.jvmoptions</li>
+			<li>configure JVM<ul>
+				<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
+				<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
+				<li>also if needed for performance:<ul>
+					<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
+				</ul></li>
+			</ul></li>
+			<li>configure general options<ul>
+				<li>jetbrains.youtrack.mailLimit: 25</li>
+				<li>for additional configuration options, see
+					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
+			</ul></li>
+		</ul></li>
+		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
+		<li>start YouTrack service: <span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
+	</ul></li>
+	<li><strong>Server Settings</strong><ul>
+		<li><strong>Global</strong>:<ul>
+			<li>verify license shown; if not, fetch and copy</li>
+			<li>Default Timezone: verify</li>
+			<li>Date Fields Format: ISO date (2000.12.31)</li>
+			<li>enable email notifications; provide host (smtp.cox.net), username, password</li>
+		</ul></li>
+		<li><strong>Backups</strong>: to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
+	</ul></li>
+	<li>Access Settings<ul>
+
+	</ul></li>
+</ul>
+
+<!-- @marker "Install Tool to Server" -->
+<h4 id='InstallTooltoServer_'>Install Tool to Server</h4><ul>
+	<li>Download latest *.zip package from Jetbrains</li>
+	<li>Place downloaded package in /Volumes/Servers/jb/&lt;Tool&gt;; expand at that location</li>
+	<li><span class="mono">cd &lt;path/to/&lt;Tool&gt;&gt;; bin/&lt;Tool&gt;.sh start</span></li>
+	<li>When welcome screen appears, select installation type 'Setup'</li>
+	<li>Setup Wizard<ul>
+		<li>Select Hub Service (except when installing Hub)<ul>
+			<li>path: 'http://carols-imac-2.local:8080/hub</li>
+			<li>set JetBrains password as password for admin account</li>
+		</ul></li>
+		<li>Confirm License<ul>
+			<li>save license key; confirm License restrictions; 'Finish'</li>
+		</ul></li>
+		<li>Web page opens; logged in as admin</li>
+	</ul></li>
+	<li>admin menu is now represented by a 'nut' (hexagonal) symbol</li>
+</ul>
+
+<!-- @marker "Improve Long-Term Stability" -->
+<h2>Improve Long-Term Stability</h2>
+<!-- @topicList "Improve Long-Term Stability" "ImproveStability_" -->
+<!-- @/topicList -->
+<p class="blurb">improve long-term stablilty of tools</p>
+
+
+<!-- @marker "Add Extensions" -->
+<h2>Add Extensions</h2>
+<!-- @topicList "Add Extensions" "AddExtensions_" -->
+<!-- @/topicList -->
+<p class="blurb">add extensions to support additional features</p>
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright (c) 2017 C &amp; C Software, Inc. All rights reserved.</p>
+</body>
+</html>
