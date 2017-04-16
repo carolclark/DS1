@@ -1,0 +1,256 @@
+<!-- JetBrainsAdmin.html -->
+<!-- Created by carolclark on 4/14/17 for project Support. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JetBrains Administration</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css"/>
+</head>
+<body>
+<div class='navhead' id='Top'>
+	<table class='navhead'>
+		<col class='navhead_c1'/>
+		<tr>
+			<td>[<a href="../Support/Support.html">Support</a>]</td>
+			<td class='right'>[<a href="#Contents">Contents</a>]</td>
+		</tr>
+	</table>
+</div>
+<h1>JetBrains Administration</h1>
+
+<!-- @topicList "JetBrainsAdmin" "Contents" -->
+	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
+	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
+	<!-- @topicItem "Team Tools Install by Stage" "#TeamToolsInstallation_" "0" "sequence to get up and running sooner" -->
+	<!-- @topicItem "Installation by Tool" "#InstallationbyTool_" "0" "full installation for each tool" -->
+<!-- @/topicList -->
+
+<h2 class="promote" id="Overview_">Development Overview</h2><ul>
+	<li>For most tasks in our development process, we use JetBrains products.<ul>
+		<li>IDE's for development languages also available:<ul>
+			<li>AppCode (previously in use): primary support for Objective-C++; plugins for unix and AppleScript</li>
+			<li>WebStorm (for html and javascript; we are currently using AppCode with sed(!!) instead of javascript; PyCharm with Django</li>
+			<li>PHPStorm for Website indices; DataGrip for database storage; MPS for DSL development</li>
+		</ul></li>
+		<li>Team Tools for managing workflow and development process:<ul>
+			<li>YouTrack: issue tracking; agile development</li>
+			<li>TeamCity (previously in use): Continuous Integration</li>
+			<li>UpSource: code review</li>
+			<li>Hub, aka HubRing, to tie it all together</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<h3 id="Agile_">Agile Development</h3>
+	<p>Our process is very similar to standard test-first agile development,
+	but with a different approach toward time management. For our 'sprints',
+	which we call 'Gaggles', we use a time estimate, not a deadline.</p>
+	<div class="paragraphs">
+		<h4>Gaggles</h4><ul>
+			<li>target dates are established, but are normally adjusted if and when indicated
+				toward the actual time needed</li>
+			<li>we expect to learn to make better estimates of time required as we use
+				this technique</li>
+			<li>if a task has a 'black box' step that we cannot estimate, it is probably not ready for development;
+				a separate required-dependency task could be used here to separate the tasks of gathering information and estimating</li>
+			<li>YouTrack's 'fix version' fields is intended to identify cards for a scrum.
+				We will change 'fix version' to 'gaggle' to identify cards (geese?) for a Gaggle.
+				For assigning version numbers, we prefer to <a href="Git.html#Branches_Releases_">establish the version number</a>
+				when the product is ready for 'release',
+				as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+				on which our versioning plan is based.</li>
+		</ul>
+	</div>
+
+<!-- @marker "Team Tools Installation" -->
+<h2 class="promote">Team Tools Installation</h2>
+<!-- @topicList "Team Tools Installation" "TeamToolsInstallation_" -->
+	<!-- @topicItem "Install and Configure Basic Tools" "#InstallandConfigureBasicTools_" "0" "" -->
+	<!-- @topicGroup "Support Long-Term Stablility" "" -->
+	<!-- @topicGroup "Enable Additional Features" "" -->
+<!-- @/topicList -->
+
+<div class="paragraphs">
+	<p>The first feature we really need is YouTrack's Agile Boards. However: Hub must be installed first
+	so that other tools can be connected to it, and; apparently YouTrack depends on TeamCity and UpSource to provide
+	access to each project's GitHub issues.</p>
+	<p>Also, except for Team City, the tools are new to us. We will install the basics first,
+		and then proceed with other features after we have more familiarity with the tools.</p>
+</div>
+
+<!-- @marker "Install and Configure Basic Tools" -->
+<h2>Install and Configure Basic Tools</h2>
+<!-- @topicList "Install and Configure Basic Tools" "InstallandConfigureBasicTools_" -->
+	<!-- @topicItem "Install and Configure HubRing" "#HR_install-config" "0" "set up integration Hub" -->
+	<!-- @topicItem "HubRing: Access Management" "#HR_AccessManagement_" "0" "" -->
+	<!-- @topicItem "Backup Now" "#_BackupNow_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Installation by Tool" -->
+<h2 class="promote">Installation by Tool</h2>
+<!-- @topicList "Installation by Tool" "InstallationbyTool_" -->
+	<!-- @topicItem "HubRing" "#HubRing_" "0" "" -->
+		<!-- @topicItem "Install and Configure HubRing" "#HR_install-config" "1" "set up integration Hub" -->
+		<!-- @topicItem "Access Management" "#HR_AccessManagement_" "1" "" -->
+		<!-- @topicItem "Backup Now" "#BackupNow_" "1" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "HubRing" -->
+<h2 id="HubRing_">HubRing</h2>
+
+<h3 id='HR_install-config'>Install and Configure HubRing</h3><ul>
+	<li>download from <a href="https://www.jetbrains.com/hub/download/#section=mac">Hub Download</a><ul>
+		<li>note 2017.04.07: reported JPS-5617<ul>
+			<li>build 5178: attempt to set up OAuth with GitHub fails; 'copy' button for callback fails, associated GitHub link fails #404</li>
+			<li>using build 4996</li>
+		</ul></li>
+		<li>Download the *.zip package from Jetbrains</li>
+		<li>Place downloaded package in /Volumes/Servers/jb/Hub; expand at that location</li>
+		<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh start</span></li>
+		<li>In installation wizard, select installation type 'Setup'<ul>
+			<li>Select Hub Service<ul>
+				<li>set JetBrains password for admin account</li>
+			</ul></li>
+			<li>Confirm License<ul>
+				<li>save license key; confirm License restrictions; 'Finish'</li>
+			</ul></li>
+			<li>Hub opens; Login as admin; admin/setup menu is on hexagonal nut icon</li>
+		</ul></li>
+		<li>JVM Options: no changes</li>
+		<li><a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a><ul>
+			<li><strong>System Settings</strong>: session timeout 12 hours; remember me for 1 year</li>
+			<li><strong>SMTP</strong>:<ul>
+				<li>host smtp.cox.net; from carolclark@cox.net</li>
+				<li>user carolclark; password: cox</li>
+				<li>Security and Authorization: user name 'carolclark'; password cox</li>
+				<li>send test message; enable notification</li>
+			</ul></li>
+			<li><strong>Backups</strong><ul>
+				<li>to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Access Management" -->
+<h3 id="HR_AccessManagement_">Access Management</h3><ul>
+	<li><strong>Roles</strong><ul>
+		<li>add role 'All Projects Admin'<ul>
+			<li>Permissions<ul>
+				<li>match permissions of role Project Admin<ul>
+					<li>Project: read, update</li>
+					<li>Project Role: add, remove</li>
+					<li>Role: read</li>
+					<li>User: create; read self; read user; update self</li>
+					<li>User Group: create, delete, read, update</li>
+				</ul></li>
+				<li>add additional permissions<ul>
+					<li>add permissions 'Low-Level Admin', 'Low-Level Read Admin'</li>
+					<li>Project: create, delete</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Users</strong><ul>
+		<li>add 'carolclark':<ul>
+			<li>click our gravitar image</li>
+			<li>add and verify email address</li>
+			<li>do not force change password</li>
+		</ul></li>
+		<li>add role All Projects Admin to user carolclark</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Backup Now" -->
+<h3 id="BackupNow_">Backup Now</h3><ul>
+	<li id="backupNow_">Admin &gt; Backup &gt; backup now</li>
+</ul>
+
+<!-- @marker "JetBrains Adoption" -->
+<h2 class="promote">JetBrains Adoption</h2>
+<!-- @topicList "JetBrains Adoption" "JetBrainsAdoption_" -->
+	<!-- @topicItem "Motivation" "#Motivation_" "0" "" -->
+	<!-- @topicItem "JetBrains Team Tools" "#JetBrainsTeamTools_" "0" "" -->
+	<!-- @topicItem "Toolbox and IDEs" "#ToolboxandIDEs_" "0" "" -->
+	<!-- @topicItem "Costs" "#Costs_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Motivation" -->
+<h4 id='Motivation_'>Motivation</h4>
+	<p>We have been using AppCode instead of Xcode for basic development for a little over two years (since Jan 2015).
+		The decision to switch to AppCode was motivated by independent advocates, notably <a href="http://qualitycoding.org/start-here/">Jon Reid</a>;
+		their top reason was AppCode's refactoring capability in comparison with Xcode, with many other areas where AppCode was better.</p>
+	<p>About one year ago, we adopted JetBrains' TeamCity for continuous integration, and Kanban for planning through waffle.io.</p>
+	<p>Each of these steps helped us to improve our workflow considerably.</p>
+	<p>However, continuous integration frequently finds bugs for which we have a lot of difficulty finding a connection in the code.
+		Most of these problems come from legacy code.
+		We need better workflow to work more effectively on planning, implementation, and focus for add tasks, and especially with legacy code.</p>
+	<p>JetBrains also have tools for Developer and Manager workflow that integrate with each other, with TeamCity, and with the IDE.
+		These include Agile planning boards with many advantages over waffle.io.</p>
+	<p>JetBrains is a large company with headquarters in St. Petersburg, Russia, and many other locations across Europe and the US.
+		They also have a huge installed base of products, all of which receive many kudos for their quality.
+		We do not expect them to disappear.</p>
+
+<!-- @marker "JetBrains Team Tools" -->
+<h4 id='JetBrainsTeamTools_'>JetBrains Team Tools</h4>
+	<p><strong>YouTrack</strong>: Issue tracker for development teams</p>
+		<p class="indent">JetBrains system for integrating issues. Links with GitHub.
+			Replaces Waffle Kanban board with Agile boards (no scrums required) that also provide a specialized planning board,
+			and provide integration with AppCode and other tools.
+			Support a single set of Agile boards for all GitHub projects,
+			allowing improved planning and prioritization without requiring combination of repos.</p>
+
+	<p><strong>TeamCity</strong>: Powerful Continuous Integration out of the box</p>
+		<p class="indent">Continuous Integration we have been using and are very pleased.</p>
+
+    <p><strong>UpSource</strong>: Code review and repository browsing</p>
+		<p class="indent">Code review is normally done among peers, but we use UpSource to review code from our own multiple perspectives.</p>
+
+	<p><strong>Hub</strong>: JetBrains Tools, integrated</p>
+
+<!-- @marker "Toolbox and IDEs" -->
+<h4 id='ToolboxandIDEs_'>Toolbox and IDEs</h4>
+	<p>JetBrains provides a large variety of IDEs. We have been happily using their AppCode for Objective-C for a year now.</p>
+	<p>At some point, we will probably also be using other languages:</p><ul>
+		<li>WebStorm for web development with javascript</li>
+		<li>PyCharm, Python with Django, for web development and text processing; also to handle existing (mostly unused) Python code</li>
+		<li>DataGrip for data management</li>
+		<li>PHPStorm to support a site-wide web searches</li>
+		<li>MSL, a DSL development system that could build a DSL for Slates to replace Rez for editing Accessor Slates</li>
+	</ul>
+	<p>Toolbox is a JetBrains product that provides a control panel for access to all JetBrains IDEs, regardless of language.
+		Toolbox would know which of our projects use which IDE, and would also support updating of JetBrains products.</p>
+
+<!-- @marker "Costs" -->
+<h4 id='Costs_'>Costs</h4><ul>
+	<li>IDEs<ul>
+		<li>currently: continuing AppCode subscription: $53/yr</li>
+		<li>All-Products Pack: $519 for first year, then $389/yr<ul>
+			<li>does not include Team Tools</li>
+		</ul></li>
+		<li>Given our good experience with AppCode, this clearly makes sense if and when we use enough tools that it becomes cost-effective.</li>
+	</ul></li>
+	<li>Team Tools for fewer than 10 users:<ul>
+		<li>Hub is free</li>
+		<li>UpSource is free for 10 or fewer users</li>
+		<li>TeamCity<ul>
+			<li>free for up to 20 build configurations and 3 build agents (probably enough)</li>
+			<li>additional units of 10 build configurations and 1 build agent are $299 per year</li>
+		</ul></li>
+		<li>YouTrack<ul>
+			<li>Standalone, being installed now, version is free</li>
+			<li>InCloud hosted version is $200/year, unless no private repositories or they lift that restriction<ul>
+				<li>would be needed to have reliable access to Agile Boards from outside our wifi network</li>
+				<li>30-day "Cloud Trial" available for InCloud version</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+
+<p><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
+<hr class='footer'/>
+<p class='footer'>Copyright (c) 2017 C &amp; C Software, Inc. All rights reserved.</p>
+</body>
+</html>
