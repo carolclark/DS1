@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>WorkingDirectory</key>
-	<string>/Library/TeamCity</string>
+	<string>/Volumes/Servers/jb/TeamCity/TeamCity</string>
 	<key>Debug</key>
 	<false/>
 	<key>Label</key>
@@ -14,8 +14,8 @@
 	<true/>
 	<key>ProgramArguments</key>
 	<array>
-		<string>bin/teamcity-server.sh</string>
-		<string>run</string>
+		<string>bin/runAll.sh</string>
+		<string>start</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>

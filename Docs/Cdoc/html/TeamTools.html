@@ -7,11 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="Support.html">Support</a>]</td> <td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
 <h1>TeamTools</h1>
 
 <!-- @topicList "TeamTools" "Contents" -->
-	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
 	<!-- @topicItem "Team Tools Tasks" "#TeamToolsTasks_" "0" "" -->
 	<!-- @topicItem "Install and Configure" "#InstallConfig_" "0" "plan to install and configure team tools" -->
 	<!-- @topicSep -->
@@ -24,39 +23,6 @@
 		<!-- @topicItem "TeamCity" "http://jetbrains.com/teamcity/documentation" "1" "continuous integration" -->
 		<!-- @topicItem "UpSource" "http://jetbrains.com/upsource/documentation" "1" "code review" -->
 <!-- @/topicList -->
-<h4 id="Overview_">Development Overview</h4><ul>
-	<li>For most tasks in our development process, we use JetBrains products.<ul>
-		<li>IDE's for development languages:<ul>
-			<li>AppCode (previously in use): primary support for Objective-C++; plugins for unix and AppleScript</li>
-			<li>PythonCharm, WebStorm (for html; we are currently using AppCode for this);
-				PHPStorm for Website indices; MPS for DSL development are also available.</li>
-			</ul></li>
-		<li>Team Tools for managing workflow and development process:<ul>
-			<li>YouTrack: issue tracking; agile development</li>
-			<li>TeamCity (previously in use): Continuous Integration</li>
-			<li>UpSource: code review</li>
-			<li>Hub, aka HubRing, to tie it all together</li>
-		</ul></li>
-	</ul></li>
-</ul>
-
-<h4 id="Agile_">Agile Development</h4>
-	<p>Our approach is very similar to standard test-first agile development,
-	but with a different approach toward time management. For our 'sprints',
-	which we call 'Gaggles', we use a time estimate, not a deadline.</p>
-	<div class="paragraphs">
-		<h5>Gaggles</h5><ul>
-			<li>target dates are established, but are normally adjusted if and when indicated
-				toward the actual time needed</li>
-			<li>we expect to learn to make better estimates of time required as we use
-				this technique</li>
-			<li>if a task has a 'black box' step that we cannot estimate, it is probably not ready for development;
-				a separate required-dependency task could be used here to separate the tasks of gathering information and estimating</li>
-			<li>YouTrack's 'fix version' fields, which define the cards (geese?) for a Gaggle, is a dummy value used only by gaggles.
-				For assigning version numbers, we prefer to establishing the version number when the product is ready for 'release',
-				as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-				on which our versioning workflow is based.</li>
-		</ul>
 
 <h4>JetBrains Installation</h4>
 	<p>JetBrains projects are automatically added to any JetBrains Team tools (YouTrack, UpSource, Team City) that are installed in Hub at the time of the installation.
@@ -67,7 +33,7 @@
 	<li>install TeamCity</li>
 	<li>use TeamCity plug-in to link TeamCity to Hub</li>
 	<li><em>now</em> add projects</li>
-</ul></div>
+</ul>
 
 <!-- @marker "Team Tools Tasks" -->
 <h2 class="promote">Team Tools Tasks</h2>
@@ -133,6 +99,7 @@
 <h2>Basic Installation and Setup</h2>
 <!-- @topicList "Basic Installation and Setup" "InstallSetup_" -->
 	<!-- @topicItem "Install Tools" "#InstallTools_" "0" "" -->
+		<!-- @topicItem "HubRing" "#HubRing_" "1" "" -->
 <!-- @/topicList -->
 <p class="blurb">get all Team Tools up and running</p>
 
@@ -144,7 +111,6 @@
 	<!-- @topicSep -->
 	<!-- @topicItem "Standard Tool Install" "#InstallTooltoServer_" "0" "" -->
 <!-- @/topicList -->
-
 
 <!-- @marker "HubRing" -->
 <h3 id='HubRing_'>HubRing</h3><ul>

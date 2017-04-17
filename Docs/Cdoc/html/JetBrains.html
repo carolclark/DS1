@@ -291,11 +291,16 @@ toward the actual time taken.</p>
 	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation">
 		Troubleshooting TeamCity Installation</a> if needed</li>
 	<li>Start TeamCity Server<ul>
-		<li class="blurb"><span style="color: crimson">WARNING</span>: do not enter this web application yet</li>
 		<li>open http://localhost:8111; will not show content yet</li>
 		<li>cd /Volumes/Servers/jb/TeamCity/TeamCity/bin; teamcity-server.sh start<ul>
-			<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111</li>
+			<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111<ul>
+				<li>restart if necessary</li>
+			</ul></li>
 		</ul></li>
+		<li class="blurb"><span style="color: crimson">WARNING</span>: no editing yet</li>
+		<li>verify that localhost:8111 shows TeamCity startup page</li>
+		<li>close TeamCity page</li>
+		<li>start, including one default BuildServer:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/runAll.sh start</span></li>
 	</ul></li>
 	<li><em><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</em></li>
 	<li>Autostart TeamCity Server<ul>
