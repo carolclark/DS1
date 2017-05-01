@@ -1,7 +1,7 @@
 #! /usr/local/bin bats
-#	mysql.bats
+#	starter.bats
 
-@test "verify == MySQL is configured as expected for TeamCity" {
+@test "0 equals 0" {
 	[ 0 = 0 ]
 }
 

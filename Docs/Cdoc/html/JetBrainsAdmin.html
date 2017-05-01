@@ -7,20 +7,13 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<div class='navhead' id='Top'>
-	<table class='navhead'>
-		<col class='navhead_c1' />
-		<tr>
-			<td>[<a href="Support.html">Support</a>]</td>
-			<td class='right'>[<a href="#Contents">Contents</a>]</td>
-		</tr>
-	</table>
-</div>
+<!-- @navhead "Support.html" "Support" "History_Support.html" -->
 <h1>JetBrains Administration</h1>
 
 <!-- @topicList "JetBrainsAdmin" "Contents" -->
 	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
 	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
+	<!-- @topicItem "Admin Tasks and Info" "#AdminTasksandInfo_" "0" "" -->
 	<!-- @topicItem "Team Tools Install by Stage" "#TeamToolsInstallation_" "0" "sequence to get up and running sooner" -->
 	<!-- @topicItem "Installation by Tool" "#InstallationbyTool_" "0" "full installation for each tool" -->
 <!-- @/topicList -->
@@ -29,8 +22,8 @@
 	<li>For most tasks in our development process, we use JetBrains products.<ul>
 		<li>IDE's for development languages also available:<ul>
 			<li>AppCode (previously in use): primary support for Objective-C++; plugins for unix and AppleScript</li>
-			<li>WebStorm (for html and javascript; we are currently using AppCode with sed(!!) instead of javascript; PyCharm with Django</li>
-			<li>PHPStorm for Website indices; DataGrip for database storage; MPS for DSL development</li>
+			<li>WebStorm (for html and javascript - we are currently using AppCode with sed(!!) instead of javascript)</li>
+			<li>PyCharm with Django; PHPStorm for Website indices; DataGrip for internal databases; MPS for DSL development</li>
 		</ul></li>
 		<li>Team Tools for managing workflow and development process:<ul>
 			<li>YouTrack: issue tracking; agile development</li>
@@ -55,36 +48,75 @@
 				a separate required-dependency task could be used here to separate the tasks of gathering information and estimating</li>
 			<li>YouTrack's 'fix version' fields is intended to identify cards for a scrum.
 				We will change 'fix version' to 'gaggle' to identify cards (geese?) for a Gaggle.
-				For assigning version numbers, we prefer to <a href="Git.html#Branches_Releases_">establish the version number</a>
+				For assigning version numbers, we prefer to <a href="../Support/Git.html#Branches_Releases_">establish the version number</a>
 				when the product is ready for 'release',
 				as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 				on which our versioning plan is based.</li>
 		</ul>
 	</div>
 
+<!-- @marker "Admin Tasks and Info" -->
+<h2 class="promote">Admin Tasks and Info</h2>
+<!-- @topicList "Admin Tasks and Info" "AdminTasksandInfo_" -->
+	<!-- @topicItem "TeamCity Tasks" "#TeamCityTasks_" "0" "" -->
+		<!-- @topicItem "Startup and Maintenance Scripts" "#TCStartupScripts_" "1" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "TeamCity Tasks" -->
+<h3 id="TeamCityTasks_">TeamCity Tasks</h3>
+
+<!-- @marker "Startup Scripts" -->
+<h4 id="TCStartupScripts_">Startup and Maintenance Scripts</h4><ul>
+	<li><span class="mono">runAll.sh</span>: start/stop server and one build agent</li>
+	<li><span class="mono">teamcity-server.sh</span>: start/stop server only<ul>
+		<li><span class="mono">run</span>: start TeamCity in the current window</li>
+		<li><span class="mono">start</span>: start TeamCity in a separate window</li>
+		<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
+		<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
+			<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">Creating Backup via maintainDB command-line tool</a></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+
+
 <!-- @marker "Team Tools Installation" -->
 <h2 class="promote">Team Tools Installation</h2>
 <!-- @topicList "Team Tools Installation" "TeamToolsInstallation_" -->
 	<!-- @topicItem "Install and Configure Basic Tools" "#InstallandConfigureBasicTools_" "0" "" -->
 	<!-- @topicGroup "Support Long-Term Stablility" "" -->
+		<!-- @topicItem "Provide Dependencies" "Jetbrains.html#ProvideDependencies_" "1" "includes MySQL" -->
+		<!-- @topicItem "Integrate MySQL and TeamCity Servers" "JetBrains.html#IntegrateMySQLandTeamCityServers_" "1" "" -->
+		<!-- @topicItem "Create TeamCityDB" "JetBrains.html#CreateTeamCityDB_" "1" "" -->
+		<!-- @topicItem "Install Build Agent" "JetBrains.html#InstallBuildAgent_" "1" "" -->
 	<!-- @topicGroup "Enable Additional Features" "" -->
 <!-- @/topicList -->
 
 <div class="paragraphs">
-	<p>The first feature we really need is YouTrack's Agile Boards. However: Hub must be installed first
-	so that other tools can be connected to it, and; apparently YouTrack depends on TeamCity and UpSource to provide
-	access to each project's GitHub issues.</p>
-	<p>Also, except for Team City, the tools are new to us. We will install the basics first,
-		and then proceed with other features after we have more familiarity with the tools.</p>
+	<p>The sequence of steps is intended to get JetBrains Team Tools up and running sooner rather than later.
+	It focuses on the basics for now, leaving some items to improve long-term stability and add features until later.</p>
+	<p>The first feature we really need is YouTrack's Agile Boards.
+	However, installation order is heavily influenced by the fact that, apparently at least for now,
+	YouTrack's access to repo issues depends on TeamCity and UpSource.
+	This will probably soon be fixed by JetBrains, providing more flexibility.</p>
+	<p>Also in any case, Hub must be installed first.</p>
+	<p>Except for Team City, the tools are new to us.
+		Installing the basics first will allow us to gain familiarity with the tools,
+		and then proceed with other features.</p>
 </div>
 
 <!-- @marker "Install and Configure Basic Tools" -->
 <h2>Install and Configure Basic Tools</h2>
 <!-- @topicList "Install and Configure Basic Tools" "InstallandConfigureBasicTools_" -->
 	<!-- @topicGroup "Hub: install/config; initial access" "1" -->
-	<!-- @topicItem "Install and Configure HubRing" "#HR_install-config" "0" "set up integration Hub" -->
-	<!-- @topicItem "HubRing: Access Management" "#HR_AccessManagement_" "0" "add carolclark; All Projects Admin" -->
-	<!-- @topicItem "Backup Now" "#BackupNow_" "0" "" -->
+		<!-- @topicItem "Install and Configure HubRing" "#HR_install-config" "0" "set up integration Hub" -->
+		<!-- @topicItem "HubRing: Access Management" "#HR_AccessManagement_" "0" "add carolclark; All Projects Admin" -->
+		<!-- @topicItem "Backup Now" "#BackupNow_" "0" "" -->
+	<!-- @topicGroup "TeamCity: install/config with custom data location" "5" -->
+		<!-- @topicItem "Install and Start TeamCity" "#TC_InstallandStart_" "0" "" -->
+
+<!-- @topicGroup "Store Project Settings in Version Control" "" -->
+
 <!-- @/topicList -->
 
 <!-- @marker "Installation by Tool" -->
@@ -94,6 +126,8 @@
 		<!-- @topicItem "Install and Configure HubRing" "#HR_install-config" "1" "set up integration Hub" -->
 		<!-- @topicItem "Access Management" "#HR_AccessManagement_" "1" "" -->
 		<!-- @topicItem "Backup Now" "#BackupNow_" "1" "" -->
+	<!-- @topicItem "Team City" "#TeamCity_" "0" "" -->
+		<!-- @topicItem "Install and Start TeamCity" "#TC_InstallandStart_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "HubRing" -->
@@ -117,24 +151,30 @@
 			</ul></li>
 			<li>Hub opens; Login as admin; admin/setup menu is on hexagonal nut icon</li>
 		</ul></li>
-		<li>JVM Options: no changes</li>
-		<li><a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a><ul>
+		<li>Configure Initial Properties; see also <a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a><ul>
 			<li><strong>System Settings</strong>: session timeout 12 hours; remember me for 1 year</li>
 			<li><strong>SMTP</strong>:<ul>
 				<li>host smtp.cox.net; from carolclark@cox.net</li>
 				<li>user carolclark; password: cox</li>
 				<li>Security and Authorization: user name 'carolclark'; password cox</li>
-				<li>send test message; enable notification</li>
+				<li>enable notification; send test message</li>
 			</ul></li>
 			<li><strong>Backups</strong><ul>
 				<li>to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
 			</ul></li>
 		</ul></li>
+		<li>JVM Options: no changes</li>
 	</ul></li>
 </ul>
 
 <!-- @marker "Access Management" -->
 <h3 id="HR_AccessManagement_">Access Management</h3><ul>
+	<li><strong>Users</strong><ul>
+		<li>add 'carolclark':<ul>
+			<li>click our gravitar image</li>
+			<li>do not force change password</li>
+		</ul></li>
+	</ul></li>
 	<li><strong>Roles</strong><ul>
 		<li>add role 'All Projects Admin'<ul>
 			<li>Permissions<ul>
@@ -152,19 +192,101 @@
 			</ul></li>
 		</ul></li>
 	</ul></li>
-	<li><strong>Users</strong><ul>
-		<li>add 'carolclark':<ul>
-			<li>click our gravitar image</li>
-			<li>add and verify email address</li>
-			<li>do not force change password</li>
-		</ul></li>
-		<li>add role All Projects Admin to user carolclark</li>
-	</ul></li>
+	<li><strong>Groups</strong>: add group All Projects Admin with role all-projects-admin</li>
+	<li><strong>Users</strong>: add user carolclark to group All Projects Admin</li>
 </ul>
 
 <!-- @marker "Backup Now" -->
 <h3 id="BackupNow_">Backup Now</h3><ul>
 	<li id="backupNow_">Admin &gt; Backup &gt; backup now</li>
+</ul>
+
+<!-- @marker "Team City" -->
+<h2 id="TeamCity_">Team City</h2><ul>
+	<li class="blurb">References:<ul>
+		<li><a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server">
+			Installing and Configuring the TeamCity Server</a></li>
+		<li><a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation">
+			Troubleshooting TeamCity Installation</a></li>
+		<li><a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800">Scheduling Tasks with Cron Jobs</a></li>
+		<li><a href="https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">Creating Backup via maintainDB command-line tool</a></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Install and Start TeamCity" -->
+<h3>Install and Start TeamCity</h3>
+<!-- @topicList "Install and Start TeamCity" "TC_InstallandStart_" -->
+	<!-- @topicItem "Install Server" "#TC_installConfig" "0" "install/config; set data dir, no dummy admin" -->
+	<!-- @topicItem "Autostart TeamCity Server" "#TC_AutostartServer_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Install TeamCity Server" -->
+<h3 id='TC_installConfig'>Install TeamCity Server</h3><ul>
+	<li style="padding-top: 10px;"><strong>Unpack Archive</strong><ul>
+		<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
+		<li>move archive to /Volumes/Servers/jb/TeamCity; archive location will become TeamCity home directory</li>
+		<li>Unpack Archive<ul>
+			<li class="mono">cd /Volumes/Servers/jb/TeamCity</li>
+			<li>unzip archive using gnu-tar:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sudo gtar xf &lt;archive&gt;</span></li>
+		</ul></li>
+	</ul></li>
+
+	<li style="padding-top: 10px;"><strong>Start TeamCity Server</strong><ul>
+		<li>open http://localhost:8111; will not show content yet</li>
+		<li>start, including one default BuildServer:<ul>
+			<li><span class='mono'><span class="prompt">$ </span>cd /Volumes/Servers/jb/TeamCity/TeamCity/</span></li>
+			<li><span class='mono'><span class="prompt">$ </span>./bin/runAll.sh start</span></li>
+			<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111</li>
+			<li><span style="color: crimson">WARNING</span>: DO NOT enter main TeamCity webapp</li>
+		</ul></li>
+		<li>verify that localhost:8111 shows TeamCity startup page<ul>
+			<li>refresh if necessary</li>
+		</ul></li>
+		<li><span style="color: crimson">STOP</span> TeamCity: <span class='mono'><span class="prompt">$ </span>./bin/runAll.sh stop</span></li>
+	</ul></li>
+
+	<li style="padding-top: 10px;"><strong>Set TeamCity's Data Directory</strong><ul>
+		<li>Create New File for Startup Properties<ul>
+			<li class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
+				> /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
+		</ul></li>
+	</ul></li>
+
+	<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
+		<li class="blurb">localhost:8111</li>
+		<li>user: carolclark; password</li>
+		<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
+		<li>startup page configuration<ul>
+			<li><strong>smtp</strong>: smpt host: smpt.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
+			<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
+			<li><strong>user</strong>: username: carolclark; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
+		</ul></li>
+		<li>click user name for profile page<ul>
+			<li>user name and email</li>
+			<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
+				Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
+			<li>VCS User Names: add carolclark@cox.net</li>
+		</ul></li>
+		<li>Administration<ul>
+			<li>configure backups *WARNING* backups currently not run automatically</li>
+		</ul></li>
+		<li>build number: &lt;version&gt;.b%build.counter%</li>
+	</ul></li>
+
+	<li style="padding-top: 10px;"><strong>Prevent Creation of Dummy Admin User</strong><ul>
+		<li class="mono">echo "teamcity.installation.completed=true" >> /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Autostart TeamCity Server" -->
+<h3 id="TC_AutostartServer_">Autostart TeamCity Server</h3><ul>
+	<li>create AutoStart file ~/Dev/Support/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
+		<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
+			<li>Working Directory: /Volumes/Servers/jb/TeamCity/TeamCity</li>
+		</ul></li>
+	<li>copy file jetbrains.teamcity.server.plist to ~/Library/LaunchDaemons</li>
+	<li>restart computer</li>
+	<li>Safari: localhost:8111 should show TeamCity window</li>
 </ul>
 
 <!-- @marker "JetBrains Adoption" -->

@@ -88,10 +88,10 @@ toward the actual time taken.</p>
 <!-- @marker "Hub Command-Line Interface" -->
 <h4 id='HubCommandLineInterface_'>Hub Command-Line Interface</h4><div class="indent">
 	<h5 id='StartingandStopping_'>Starting and Stopping</h5><table>
-	<tr><td>jbhub</td> <td><strong>start</strong></td> <td>Start the Hub service</td></tr>
-	<tr><td>jbhub</td> <td><strong>stop</strong></td> <td>Stop the Hub service</td></tr>
-	<tr><td>jbhub</td> <td><strong>restart</strong></td> <td>Restart the Hub service</td></tr>
-	<tr><td>jbhub</td> <td><strong>help</strong></td> <td>Display a list of all commands that can be executed in the command-line interface</td></tr>
+	<tr><td>hubring</td> <td><strong>start</strong></td> <td>Start the Hub service</td></tr>
+	<tr><td>hubring</td> <td><strong>stop</strong></td> <td>Stop the Hub service</td></tr>
+	<tr><td>hubring</td> <td><strong>restart</strong></td> <td>Restart the Hub service</td></tr>
+	<tr><td>hubring</td> <td><strong>help</strong></td> <td>Display a list of all commands that can be executed in the command-line interface</td></tr>
 </table></div>
 
 <!-- @marker "Hub InstallConfig" -->
@@ -242,14 +242,6 @@ toward the actual time taken.</p>
 <!-- @marker "TeamCity Basic IC" -->
 <h4>TeamCity Basic IC</h4>
 <!-- @topicList "TeamCity Basic IC" "TeamCityBasicIC_" -->
-	<!-- @topicItem "Provide Dependencies" "#ProvideDependencies_" "1" "includes MySQL" -->
-	<!-- @topicItem "Install TeamCity Server" "#InstallTeamCityServer_" "1" "" -->
-	<!-- @topicItem "Start TeamCity Server" "#StartTeamCityServer_" "1" "" -->
-	<!-- @topicItem "Integrate MySQL and TeamCity Servers" "#IntegrateMySQLandTeamCityServers_" "1" "" -->
-	<!-- @topicItem "Create TeamCityDB" "#CreateTeamCityDB_" "1" "" -->
-	<!-- @topicItem "Run TeamCity WebApp and Configure" "#RunTeamCityWebApp_" "1" "" -->
-	<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "1" "" -->
-	<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettingsinVCS_" "1" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "InstallConfig_" -->
@@ -269,49 +261,6 @@ toward the actual time taken.</p>
 	</ul></li>
 </ul>
 
-<!-- @marker "Install TeamCity Server" -->
-<h4 id='InstallTeamCityServer_'>Install TeamCity Server</h4><ul>
-	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server">
-		Installing and Configuring the TeamCity Server</a></li>
-	<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
-	<li>move archive to /Volumes/Servers/jb/TeamCity; archive location will become TeamCity home directory</li>
-	<li>Terminal:<ul>
-		<li><span class="mono">cd /Volumes/Servers/jb/TeamCity</span></li>
-		<li>unzip using gnu-tar: <span class="mono">sudo gtar xf &lt;archive&gt;</span></li>
-	</ul></li>
-	<li>if directory /Volumes/Servers/jb/TeamCity/&lt;TeamCityDistribution&gt;/logs does not exist, create it</li>
-	<li>&lt;TeamCity Home Directory&gt;/conf/teamcity-startup.properties:<ul>
-		<li>set TeamCity data path: teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer</li>
-		<li>prevent creation of dummy admin user: add "teamcity.installation.completed=true"</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Start TeamCity Server" -->
-<h4 id='StartTeamCityServer_'>Start TeamCity Server</h4><ul>
-	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation">
-		Troubleshooting TeamCity Installation</a> if needed</li>
-	<li>Start TeamCity Server<ul>
-		<li>open http://localhost:8111; will not show content yet</li>
-		<li>cd /Volumes/Servers/jb/TeamCity/TeamCity/bin; teamcity-server.sh start<ul>
-			<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111<ul>
-				<li>restart if necessary</li>
-			</ul></li>
-		</ul></li>
-		<li class="blurb"><span style="color: crimson">WARNING</span>: no editing yet</li>
-		<li>verify that localhost:8111 shows TeamCity startup page</li>
-		<li>close TeamCity page</li>
-		<li>start, including one default BuildServer:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/runAll.sh start</span></li>
-	</ul></li>
-	<li><em><span style="color: crimson">CLOSE</span> the TeamCity window to the web application</em></li>
-	<li>Autostart TeamCity Server<ul>
-		<li>create AutoStart file ~/Dev/Support/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
-			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a></li>
-		<li>copy file jetbrains.teamcity.server.plist to /Library/LaunchDaemons</li>
-		<li>restart computer</li>
-		<li class="blurb">Safari: localhost:8111 should show TeamCity window</li>
-	</ul></li>
-</ul>
-
 <!-- @marker "Integrate MySQL and TeamCity Servers" -->
 <h4 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h4><ul>
 	<li>MySQL server side<ul>
@@ -327,17 +276,6 @@ toward the actual time taken.</p>
 	<li>create TeamCity database<ul>
 		<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
 	</ul></li>
-</ul>
-
-<!-- @marker "Run and Configure TeamCity WebApp" -->
-<h4 id='RunTeamCityWebApp_'>Run TeamCity WebApp and Configure</h4><ul>
-	<li class="blurb">update this section as we go</li>
-	<li>TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
-	<li>user: carolclark; password</li>
-	<li>profile page: user name and email</li>
-	<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
-		Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
-	<li>build number: &lt;version&gt;.b%build.counter%</li>
 </ul>
 
 <!-- @marker "Install Build Agent" -->
