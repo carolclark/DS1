@@ -19,11 +19,11 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
       <PathRunnable
-         FilePath = "/Users/carolclark/Dev/Support/Developer/shunit2/shunit2_install.ksh">
+         FilePath = "/Users/carolclark/Dev/DevSupport/Developer/shunit2/shunit2_install.ksh">
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/carolclark/Dev/Support/Developer"
+            argument = "/Users/carolclark/Dev/DevSupport/Developer"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

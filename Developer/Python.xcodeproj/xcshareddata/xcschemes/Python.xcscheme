@@ -19,7 +19,7 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
       <PathRunnable
-         FilePath = "/Users/carolclark/Dev/Support/Developer/Python/Python_install.ksh">
+         FilePath = "/Users/carolclark/Dev/DevSupport/Developer/Python/Python_install.ksh">
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument

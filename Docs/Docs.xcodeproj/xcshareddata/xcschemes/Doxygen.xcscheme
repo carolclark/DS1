@@ -19,7 +19,7 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
       <PathRunnable
-         FilePath = "/Users/carolclark/Dev/Support/Docs/Doxygen/Doxygen_install.ksh">
+         FilePath = "/Users/carolclark/Dev/DevSupport/Docs/Doxygen/Doxygen_install.ksh">
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument

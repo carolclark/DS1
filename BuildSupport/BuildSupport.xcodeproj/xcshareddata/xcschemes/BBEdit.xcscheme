@@ -19,7 +19,7 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
       <PathRunnable
-         FilePath = "/Users/carolclark/Dev/Support/BuildSupport/Applications/BBEdit/BBEdit_install.ksh">
+         FilePath = "/Users/carolclark/Dev/DevSupport/BuildSupport/Applications/BBEdit/BBEdit_install.ksh">
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument
