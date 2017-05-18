@@ -23,7 +23,7 @@
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "${DEV}/Support/Docs"
+            argument = "${DEV}/DevSupport/Docs"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
