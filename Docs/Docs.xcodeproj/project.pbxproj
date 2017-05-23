@@ -33,15 +33,11 @@
 		676695CA1919A759005D3CED /* DevelopingProjects.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; path = DevelopingProjects.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		676695CB1919A759005D3CED /* Development.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Development.html; sourceTree = "<group>"; };
 		676695CC1919A759005D3CED /* Git.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Git.html; sourceTree = "<group>"; };
-		676695CD1919A759005D3CED /* Glossary_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_Support.html; sourceTree = "<group>"; };
 		676695CF1919A759005D3CED /* Personal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Personal.html; sourceTree = "<group>"; };
-		676695D01919A759005D3CED /* Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; path = Support.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		676695D11919A759005D3CED /* Tools.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Tools.html; sourceTree = "<group>"; };
 		676695D21919AA3B005D3CED /* ArbonneStruct.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArbonneStruct.numbers; sourceTree = "<group>"; };
 		676695D31919AA3B005D3CED /* UseCaseImages.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = UseCaseImages.pages; sourceTree = "<group>"; };
 		67B4601119199472007FB11A /* DoxyDemo_install.ksh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoxyDemo_install.ksh; sourceTree = "<group>"; };
-		67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxygen_install.ksh; sourceTree = "<group>"; };
-		67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
 		67F24D751D11F30300CF9862 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
 		67F24D771D13264900CF9862 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
 		965F803622D42B6140D05477 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
@@ -54,18 +50,22 @@
 		965F8331E1FC8ADB26343621 /* JetBrainsAdmin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrainsAdmin.html; sourceTree = "<group>"; };
 		965F83CC93258AC741E2647F /* Partitions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Partitions.pdf; sourceTree = "<group>"; };
 		965F8413959BB1D1E8EE03D1 /* History_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History_Support.html; sourceTree = "<group>"; };
+		965F84281853AF6D626E9C81 /* Doxygen_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_doxygen.txt; sourceTree = "<group>"; };
 		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		965F8616CA7CBFCB8649B8A2 /* ThirdParty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ThirdParty.html; sourceTree = "<group>"; };
+		965F8762FEE3692000438723 /* Glossary_DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_DevSupport.html; sourceTree = "<group>"; };
 		965F8793DFC358BE4D872124 /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
 		965F879A4CC12B5E0E783610 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		965F87D13524A7E376D0EDDC /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F882D39A596D13554A6CC /* JetBrains.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrains.html; sourceTree = "<group>"; };
+		965F88756EC76D8FC8228B96 /* DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DevSupport.html; sourceTree = "<group>"; };
 		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-1148.jpg"; sourceTree = "<group>"; };
+		965F8AF608AC68792F7415BC /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = file.ksh; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		965F8C9798E940E064E8D4AE /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
 		965F8D110C54EC79190CB9B0 /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
 		965F8D1ED5AE55EB946B750A /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
@@ -164,9 +164,7 @@
 				676695CA1919A759005D3CED /* DevelopingProjects.html */,
 				676695CB1919A759005D3CED /* Development.html */,
 				676695CC1919A759005D3CED /* Git.html */,
-				676695CD1919A759005D3CED /* Glossary_Support.html */,
 				676695CF1919A759005D3CED /* Personal.html */,
-				676695D01919A759005D3CED /* Support.html */,
 				676695D11919A759005D3CED /* Tools.html */,
 				6729FAA81957746200612D1A /* Tools_Inactive.html */,
 				6739B60E192EB33E00D659B6 /* Python.html */,
@@ -177,6 +175,8 @@
 				965F882D39A596D13554A6CC /* JetBrains.html */,
 				965F803CA447BB3AE495A3E3 /* TeamTools.html */,
 				965F8331E1FC8ADB26343621 /* JetBrainsAdmin.html */,
+				965F88756EC76D8FC8228B96 /* DevSupport.html */,
+				965F8762FEE3692000438723 /* Glossary_DevSupport.html */,
 			);
 			path = html;
 			sourceTree = "<group>";
@@ -187,8 +187,8 @@
 				676695B41919A748005D3CED /* Default.doxygen */,
 				67B4601119199472007FB11A /* DoxyDemo_install.ksh */,
 				676695A519199779005D3CED /* DoxyDemo_doxygen.txt */,
-				67D506DE1A2FC9EE000BF1CF /* Doxygen_install.ksh */,
-				67D506DF1A2FCAA7000BF1CF /* Support_doxygen.txt */,
+				965F8AF608AC68792F7415BC /* Doxygen_install.ksh */,
+				965F84281853AF6D626E9C81 /* Doxygen_doxygen.txt */,
 			);
 			path = Doxygen;
 			sourceTree = "<group>";

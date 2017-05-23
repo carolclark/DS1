@@ -3,17 +3,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Support History</title>
+	<title>DevSupport History</title>
 	<link rel="stylesheet" type="text/css" href="../css/history.css" />
 	<style type="text/css">
 		.break { page-break-before: always; }
 	</style>
 </head>
 <body>
-<div class='navhead'><a name='Top'></a><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../DevSupport/Support.html">Support</a>]</td> <td >[<a href="History_Support.html#hmark_Current">Current</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
-<h1>Support History</h1>
+<div class='navhead'><a name='Top'></a><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../DevSupport/DevSupport.html">DevSupport</a>]</td> <td >[<a href="History_Support.html#hmark_Current">Current</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<h1>DevSupport History</h1>
 
-<!-- @topicList "Support History" "Contents" -->
+<!-- @topicList "DevSupport History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
@@ -53,7 +53,7 @@
 			* rename var $projectName to $folderName
 	<span class='tlmark'>&lt;-- 06/09/2014</span>
 	* ChronoSync: synchronize primary drive to MacMirror partition
-	* ChronoSync: implement remaining backup plan per <a href="Support.html#tp_Backup">Support: Backup</a>
+	* ChronoSync: implement remaining backup plan per <a href="DevSupport.html#tp_Backup">DevSupport: Backup</a>
 	* <a href="http://github.com/carolclark/DevSupport/issues/41">(#41)</a> reenable archive.ksh tests
 		* add optional argument 'destination'
 		* reenable tests
@@ -81,7 +81,7 @@
 			* use Doxygen for Python documentation
 				* rename DoxyDemo target Doxygen to DoxyDemo
 				* new target Doxygen documents Python files
-		* new project Support; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
+		* new project DevSupport; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
 		* refactor existing python modules [refactorPython2]
 			* util.py
 				* rename function remove_folder_at_home_path, command remove_folder to remove_my_folder
@@ -372,7 +372,7 @@
 			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
 				* prints 'skipped', 'succeeded', or error message
 		<span class='tlmark'>&lt;--09/21/32014</span>
-		* add Developer project <a href="Support.html#proj_Python">Python</a>
+		* add Developer project <a href="DevSupport.html#proj_Python">Python</a>
 			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
 			* add <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> Python
 			* add <a href="../DevSupport/DevelopingProjects.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
@@ -513,11 +513,11 @@
 		* target DeveloperSetup no longer needed; remove
 </pre>
 
-<h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
+<h4 id='collaboratorConfig'><a href="http://github.com/carolclark/DevSupport/issues/2">(#2)</a> support collaborator configuration</h4><pre>
 </pre>
 
 <!-- @marker "Fix RemoveFolder with Python" -->
-<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
+<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/DevSupport/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
 	<span class='tlmark'>&lt;--</span>
 	* setup python logging, error handling and debugging
 		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
@@ -555,7 +555,7 @@
 <p><span class='tldate'>[08/10/2014]</span></p>
 
 <!-- @marker "upgrade to Mavericks 10.9.4" -->
-<h4 id='Mavericks_10_9_4'><a href="http://github.com/carolclark/Support/issues/43">(#43)</a>upgrade to Mavericks 10.9.4</h4><pre>
+<h4 id='Mavericks_10_9_4'><a href="http://github.com/carolclark/DevSupport/issues/43">(#43)</a>upgrade to Mavericks 10.9.4</h4><pre>
 	* delete obsolete target BuildSupport:Developer
 </pre>
 <p><span class='tldate'>[08/18/2014]</span></p>
@@ -737,7 +737,7 @@
 
 	<!-- @marker "Add TechnicalDocs Area" -->
 	<h5 id='addTechnicalDocs'>Add TechnicalDocs Area</h5><ul>
-		<li><a href="Support.html#WebHosting">Support: WebHosting</a><ul>
+		<li><a href="DevSupport.html#WebHosting">DevSupport: WebHosting</a><ul>
 			<li>update to reflect changing hosting</li>
 			<li>plan revised site structure</li>
 		</ul></li>
@@ -907,7 +907,7 @@
 				<li>move Services from target Xcode to target Developer</li>
 			</ul></li>
 			<li>Xcode<ul>
-				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to ${CCDev}/build/Support/BuildSupport/Applications/Xcode</li>
+				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to ${CCDev}/build/DevSupport/BuildSupport/Applications/Xcode</li>
 				<li>move ccInstall functionality from Scripts target to new External target</li>
 				<li>Xcode_install.ksh: add folders to function cleanTarget<ul>
 					<li>ccInstall: add --removeFolder</li>
