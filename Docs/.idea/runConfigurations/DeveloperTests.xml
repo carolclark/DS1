@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DeveloperTests" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Developer" TARGET_NAME="DeveloperTests" CONFIG_NAME="Debug" SCHEME_NAME="DeveloperTests" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="0">
+    <envs>
+      <env name="DEV" value="${HOME}/Dev" />
+      <env name="CCDev" value="${HOME}/Library/CCDev" />
+    </envs>
+    <method />
+  </configuration>
+</component>
