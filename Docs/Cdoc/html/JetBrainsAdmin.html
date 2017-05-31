@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
+<!-- @navhead "Support.html" "Support" "History_Support.html" -->
 <h1>JetBrains Administration</h1>
 
 <!-- @topicList "JetBrainsAdmin" "Contents" -->
@@ -17,13 +17,30 @@
 	<!-- @topicItem "Team Tools Install by Stage" "#TeamToolsInstallation_" "0" "sequence to get up and running sooner" -->
 	<!-- @topicItem "Installation by Tool" "#InstallationbyTool_" "0" "full installation for each tool" -->
 <!-- @/topicList -->
+JetBrains Admin:
+Configuration
+Admin Tasks
+	New Project
+JetBrains Adoption
+Install TeamTools 05.17
 
-<h2 class="promote" id="Overview_">Development Overview</h2><ul>
+<h2 class="promote" id="Overview_">JetBrains Development Overview</h2><ul>
 	<li>For most tasks in our development process, we use JetBrains products.<ul>
-		<li>IDE's for development languages also available:<ul>
-			<li>AppCode (previously in use): primary support for Objective-C++; plugins for unix and AppleScript</li>
-			<li>WebStorm (for html and javascript - we are currently using AppCode with sed(!!) instead of javascript)</li>
-			<li>PyCharm with Django; PHPStorm for Website indices; DataGrip for internal databases; MPS for DSL development</li>
+		<li>IDE's for development languages:<ul>
+			<li>AppCode (already in use): primary support for Objective-C++; currently in use for bash, html, ...<ul>
+				<li>significantly limited by the fact that it gets its project structure from Xcode project<ul>
+					<li>essential for Cocoa products, but gets in the way, of everything else</li>
+				</ul></li>
+			</ul></li>
+			<li>IntelliJ IDEA<ul>
+				<li>primary languages is Java, which we do not use it this time; also the most powerful IDE for tasks in other languages</li>
+				<li>better choice for bash, html, AppleScript</li>
+			</ul></li>
+			<li>other languages/IDEs<ul>
+				<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
+				<li>WebStorm (for html and javascript - we are currently using AppCode with sed(!!) instead of javascript)</li>
+				<li>PyCharm with Django; PHPStorm for Website indices; DataGrip for internal databases; MPS for DSL development</li>
+			</ul>
 		</ul></li>
 		<li>Team Tools for managing workflow and development process:<ul>
 			<li>YouTrack: issue tracking; agile development</li>
