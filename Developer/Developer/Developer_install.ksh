@@ -130,6 +130,9 @@ function getSubtargetDestination {
 		"Scripts" )
 			destinationFolder="${scriptsFolder}"
 			;;
+		"Bash" )
+			destinationFolder="${scriptsFolder}"
+			;;
 		"Services" )
 			destinationFolder="${servicesFolder}"
 			;;
@@ -192,6 +195,9 @@ function prepareFileOperation {
 		else
 			srcname="${filepath}"
 			destname="${srcname%.ksh}"
+			if [[ "${srcname}" == "${destname}" ]] ; then
+				destname="${srcname%.sh}"
+			fi
 			action="copy"
 			sourceForCopy="${sourceRoot}/${targetFolder}/${subtarget}/${filepath}"
 			destinationForCopy="${destinationFolder}/${destname}"

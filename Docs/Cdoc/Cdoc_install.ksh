@@ -72,6 +72,7 @@ function prepareFileOperation {
 	if [[ -n "${destinationFolder}" ]] ; then
 		srcname="${filepath}"
 		destname="${srcname%.ksh}"
+		destname="${srcname%.sh}"
 		if [[ "${srcname%.html}" = "${srcname}" ]] ; then
 			action="copy"
 		else
