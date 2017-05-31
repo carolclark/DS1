@@ -1,7 +1,6 @@
 #!/bin/ksh
-
 #  Cdoc_install.ksh
-#  Support
+#  DevSupport
 #
 #  Created by Carol Clark on 1/15/13.
 #  Copyright (c) 2013-16 C & C Software, Inc. All rights reserved.
@@ -41,7 +40,7 @@ function getSubtargetDestination {
 	destinationFolder=""
 	case "${subtarget}" in
 		"html" )
-			destinationFolder="${technicalDocs}/Support"
+			destinationFolder="${technicalDocs}/DevSupport"
 			;;
 		"_tech" )
 			destinationFolder="${technicalDocs}"
@@ -93,7 +92,7 @@ function prepareFileOperation {
 
 #^ 7 === cleanTarget
 function cleanTarget {
-	for folder in "${technicalDocs}/Support" "${technicalDocs}/img" "${technicalDocs}/css"; do
+	for folder in "${technicalDocs}/DevSupport" "${technicalDocs}/img" "${technicalDocs}/css"; do
 		msg=$(ccInstall --removeFolder "${folder}")
 		st=${?}
 		if [[ ${st} > 0 ]] ; then

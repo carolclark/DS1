@@ -3,21 +3,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Support History</title>
+	<title>DevSupport History</title>
 	<link rel="stylesheet" type="text/css" href="../css/history.css" />
 	<style type="text/css">
 		.break { page-break-before: always; }
 	</style>
 </head>
 <body>
-<div class='navhead'><a name='Top'></a><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../Support/Support.html">Support</a>]</td> <td >[<a href="History_Support.html#hmark_Current">Current</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
-<h1>Support History</h1>
+<div class='navhead'><a name='Top'></a><table class='navhead'><col class='navhead_c1' /><tr> <td>[<a href="../DevSupport/DevSupport.html">DevSupport</a>]</td> <td >[<a href="History_Support.html#hmark_Current">Current</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<h1>DevSupport History</h1>
 
-<!-- @topicList "Support History" "Contents" -->
+<!-- @topicList "DevSupport History" "Contents" -->
 	<!-- @topicItem "Active Issues" "#ActiveIssues" "0" "move soon to separate file Support_v0_1" -->
 		<!-- @topicItem "Backup Procedure and Support" "#BackupProcedureAndSupport" "1" "" -->
 		<!-- @topicItem "AppleScript Testing" "#AppleScriptTesting" "1" "" -->
-		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "<a href='http://github.com/carolclark/Support/issues/31'>(#31)</a>" -->
+		<!-- @topicItem "Python and Workflow Support" "#PythonWorkflow" "1" "<a href='http://github.com/carolclark/DevSupport/issues/31'>(#31)</a>" -->
 		<!-- @topicItem "restructure Xcode projects" "#restructureXcodeProjects" "1" "" -->
 		<!-- @topicItem "adopt GitHub Issues and Markdown" "#gitHubIssues" "1" "" -->
 		<!-- @topicItem "add git workflow support" "#gitWorkflow" "1" "" -->
@@ -37,8 +37,8 @@
 <h2 id='ActiveIssues'>Active Issues</h2>
 
 <!-- @marker "Backup Procedure and Support" -->
-<h4 id='BackupProcedureAndSupport'><a href="http://github.com/carolclark/Support/issues/4">(#4)</a>Backup Prodecure and Support</h4><pre>
-	* <a href="http://github.com/carolclark/Support/issues/41">(#41)</a>Fix Archive Script
+<h4 id='BackupProcedureAndSupport'><a href="http://github.com/carolclark/DevSupport/issues/4">(#4)</a>Backup Prodecure and Support</h4><pre>
+	* <a href="http://github.com/carolclark/DevSupport/issues/41">(#41)</a>Fix Archive Script
 		* *script archive does not currently work; it does have tests that pass*
 			* *commit aa224e6 from May 15, 2013 works, but does not work with the tests*
 			* *We suspect that the problem is with the mechanism used to let the test override the normal source and destination for the archive. We should probably just pass more parameters.*
@@ -53,13 +53,13 @@
 			* rename var $projectName to $folderName
 	<span class='tlmark'>&lt;-- 06/09/2014</span>
 	* ChronoSync: synchronize primary drive to MacMirror partition
-	* ChronoSync: implement remaining backup plan per <a href="Support.html#tp_Backup">Support: Backup</a>
-	* <a href="http://github.com/carolclark/Support/issues/41">(#41)</a> reenable archive.ksh tests
+	* ChronoSync: implement remaining backup plan per <a href="DevSupport.html#tp_Backup">DevSupport: Backup</a>
+	* <a href="http://github.com/carolclark/DevSupport/issues/41">(#41)</a> reenable archive.ksh tests
 		* add optional argument 'destination'
 		* reenable tests
 </pre>
 
-<h4 id='PythonWorkflow'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
+<h4 id='PythonWorkflow'><a href="http://github.com/carolclark/DevSupport/issues/31">(#31)</a> Python and Workflow Support</h4><pre>
 	* add python function mergeMessage(branchName="",issueNum=0)
 		* new project CCDev with initial passing Python test testScm.py
 			* move python scripts to folder ${CCDev}/bin/ccdev; use test suites and discovery
@@ -74,14 +74,14 @@
 	* scm.main handles multiple subcommands
 		* extract util.parse_cmdlist
 	* Slate: scm.changes: diff --name-status and lg for arg1..arg2 (eg. "changes master currentBranch")
-		* see <a href="http://github.com/carolclark/Support/issues/29">(#29)</a> git workflow support
+		* see <a href="http://github.com/carolclark/DevSupport/issues/29">(#29)</a> git workflow support
 	* Python Build Script
 		* *replace CCDev_install.ksh with CCDev_build.py that is simpler and easier to test*
 		* refactor existing python modules [refactorPython]
 			* use Doxygen for Python documentation
 				* rename DoxyDemo target Doxygen to DoxyDemo
 				* new target Doxygen documents Python files
-		* new project Support; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
+		* new project DevSupport; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
 		* refactor existing python modules [refactorPython2]
 			* util.py
 				* rename function remove_folder_at_home_path, command remove_folder to remove_my_folder
@@ -146,7 +146,7 @@
 </pre>
 
 <!-- @marker "restructure Xcode projects" -->
-<h4 id='restructureXcodeProjects'><a href="http://github.com/carolclark/Support/issues/23">(#23)</a>restructure Xcode projects</h4><pre>
+<h4 id='restructureXcodeProjects'><a href="http://github.com/carolclark/DevSupport/issues/23">(#23)</a>restructure Xcode projects</h4><pre>
 	* use shared build output directory for all Xcode projects; see <a href="http://www.clintharris.net/2009/iphone-app-shared-libraries/">Easy, Modular: Static Libraries and Cross-Project References</a>
 	* rename Python target CCDev to CCDevPy to avoid confusion with new project CCDev, which will replace existing target Developer
 	<span class='tldate'>[02/10/2014]</span>
@@ -154,7 +154,7 @@
 	* Punkin: Docs
 		* add support for Docs targets
 	* Accessor: Docs
-	* Support
+	* DevSupport
 		* Docs
 			* Docs project and content
 			* move Website Structure files to Docs/OtherDocuments
@@ -176,7 +176,7 @@
 		<span class='tlmark'>&lt;-- 05/17/2014</span>
 		* move UserSlates to repository Accessor
 			* remove obsolete Slates
-			* copy folder UserSlates from Support/BuildSupport/UserSlates/Slates to Accessor/AccessorBuild/Resources/UserSlates
+			* copy folder UserSlates from DevSupport/BuildSupport/UserSlates/Slates to Accessor/AccessorBuild/Resources/UserSlates
 			* Accessor: <a href="../Accessor/History_Accessor.html#SupportLaptop">Support Laptop</a>
 			* remove folder and target UserSlates from Support/BuildSupport
 		<span class='tlmark'>&lt;-- 09/22/2014</span>
@@ -193,18 +193,18 @@
 				* *testing of refactored *_install has been inadequate, and at least test failure no longer works properly*
 			* reorganize Developer folder [reorgDevFolder]
 				* *folder Developer to contain multiple simple projects, including target Developer to aggregate the rest*
-				* *for now, create these projects in their own workspaces inside Support/Developer
-				* shunit2: new <a href="../Support/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a>
-					* move shunit2 target from project Developer target ThirdParty to project in ~/Dev/Support/Developer
-					* move third-party folder shunit2-2.1.6 from ~/Dev/Support/Developer/Developer/ThirdParty to ~/Dev/Support/Developer/shunit2
+				* *for now, create these projects in their own workspaces inside DevSupport/Developer
+				* shunit2: new <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a>
+					* move shunit2 target from project Developer target ThirdParty to project in ~/Dev/DevSupport/Developer
+					* move third-party folder shunit2-2.1.6 from ~/Dev/DevSupport/Developer/Developer/ThirdParty to ~/Dev/DevSupport/Developer/shunit2
 					* move ThirdParty_install.ksh to new shunit2_install.ksh in new folder
 					* add ReadMe; remove all project-level Build Settings
-					* new <a href="../Support/DevelopingProjects.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+					* new <a href="../DevSupport/DevelopingProjects.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
 						* ccInstall: use stderr/stdout instead of EXPECTED_ERROR to handle expected errors
 				* Python: fix issue removing folders with invisible files
 					* util.scan_directories lists both visible and invisible files
 				* ASUnit folder
-					* create (only) <a href="../Support/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
+					* create (only) <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit
 						* *project to filled in later; see <a href="#AppleScriptTesting">AppleScript Testing</a>*
 					* move ASUnit content folder into new project folder
 				* refactor Python_install.ksh
@@ -219,7 +219,7 @@
 						* combine 'install' and 'clean' blocks to reuse installation setup code
 					* take SRCROOT, TARGET_NAME from environment variables instead of passing arguments
 				* CCDev
-					* new <a href="../Support/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
+					* new <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> CCDev
 						* *install script from new template based on Python_install.ksh*
 							* *has been refactored to run as a primary script rather than as callbacks from ccInstall*
 							* *will run DevConfig scripts, install Python scripts, ShellScripts, Services*
@@ -243,22 +243,22 @@
 		* Reorganize Developer Folder
 			* save stash ReorgDevTry; revert --no-commit to 4e367f1
 			* save documentation and changes to be preserved from reorgDevFolder
-			* add Support projects
-				* existing <a href="../Support/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> projects
+			* add DevSupport projects
+				* existing <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> projects
 					* based on External Build System projects
 					* problem because those projects do not produce a Product, but Products are needed to Establish dependencies
 					* will be replaced by project CCDev; cannot now be added as a dependency
-			* move projects projects Developer, Python to Support workspace
+			* move projects projects Developer, Python to DevSupport workspace
 			* shunit [projectShunit]
 				* new empty project shunit2
 				* move shunit2 sources from Developer/Developer/ThirdParty/shunit2-2.1.6 to Developer/shunit2/shunit2-2.1.6
-				* finish <a href="../Support/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/shunit
+				* finish <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> DevSupport/Developer/shunit
 					* add target shunit2, product shunit2.fauxprod
-					* new <a href="../Support/DevelopingProjects.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
+					* new <a href="../DevSupport/DevelopingProjects.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> runs included tests
 						* cd "${HOME}/Library/CCDev/shunit/src"; "${HOME}/Library/CCDev/shunit/src/shunit2_test.sh"
 			* CCDev
 				* [projCCDev] new project Developer/CCDev based on existing Developer/Developer
-					* new <a href="../Support/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> Support/Developer/CCDev
+					* new <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> DevSupport/Developer/CCDev
 					* new target CCDev, without product for now
 					* duplicate folders Scripts, _Tests from Developer to CCDev
 					* add test target
@@ -284,16 +284,16 @@
 			* move CCDev scripts into new target CCDev or project Developer/CCDev
 				* runtests.py for testing
 				* install script CCDev_build.py
-			* Support
-				* *folder Support/Developer/Developer, project Support/Developer/Developer.xcodeproj should now contain no active content*
+			* DevSupport
+				* *folder DevSupport/Developer/Developer, project DevSupport/Developer/Developer.xcodeproj should now contain no active content*
 				* verify no useful content remaining in project `Developer/Developer; delete
 				* CCDev depends on shunit2
 			* new project Developer/AppleScript
-			* new <a href="../Support/DevelopingProjects.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScript
+			* new <a href="../DevSupport/DevelopingProjects.html#NewAppleScriptProject">AppleScript Project</a> Developer/AppleScript
 			* add AppleScript scripts
 		* for each repository and project:
 			* use new *_install template for each scripted build
-		* Application Support
+		* Application DevSupport
 			* Applications/BBEdit
 			* Applications/Xcode
 			* Applications/Finder
@@ -302,7 +302,7 @@
 </pre>
 
 <!-- @marker "AppleScript Testing" -->
-<h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/Support/issues/35">(#35)</a>AppleScript Testing</h4><pre>
+<h4 id='AppleScriptTesting'><a href="http://github.com/carolclark/DevSupport/issues/35">(#35)</a>AppleScript Testing</h4><pre>
 	* target ThirdParty
 		* move ThirdParty installation from DevConfig.ksh to new target ThirdParty
 			* Developer does not currently need access to third-party assets until testing
@@ -314,14 +314,14 @@
 			* We kept the new duplicate folder by that name so we would know in the future which shunit version we have.
 	<span class='tlmark'>&lt;-- 10/13/2014</span>
 	* reorganize Developer folder; see <a href="#restructureXcodeProjects">restructure Xcode projects</a>
-	* new <a href="../Support/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit installs ASUnit, runs supplied tests
+	* new <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> ASUnit installs ASUnit, runs supplied tests
 		* Initial AppleScript Tests: TestLoader and TestVarTypes test scripts from ASUnit examples
 			* TestVarTypes looks like a good model for demonstrating and verifying how to perform AppleScript tasks
 	* new Developer target AppleScripts installs content from existing BuildSupport/Developer/AppleScripts
 		* tests may be just a custom script based on TestVarTypes
 </pre>
 
-<h4 id='gitHubIssues'><a href="http://github.com/carolclark/Support/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
+<h4 id='gitHubIssues'><a href="http://github.com/carolclark/DevSupport/issues/3">(#3)</a> adopt GitHub Issues and Markdown</h4><pre>
 	* backup GitHub issue content
 	* script to automate backup of GitHub issue content
 		* new script file githUtil: utility functions for git and GitHub
@@ -335,7 +335,7 @@
 	* create new issues for future plans from existing *_History.html files
 </pre>
 
-<h4 id='gitWorkflow'><a href="http://github.com/carolclark/Support/issues/21">(#21)</a> add git workflow support</h4><pre>
+<h4 id='gitWorkflow'><a href="http://github.com/carolclark/DevSupport/issues/21">(#21)</a> add git workflow support</h4><pre>
 	* configuration
 		* add more colorization to Terminal
 			* *technique used to add color to terminal prompt also works to add color and special effects to UNIX output*
@@ -363,7 +363,7 @@
 <h2 id='Completed'>Completed</h2>
 
 <!-- @marker "simplify ccInstall" -->
-<h4 id='simplifyCcInstall'><a href="http://github.com/carolclark/Support/issues/42">(#42)</a>simplify ccInstall installation process</h4><pre>
+<h4 id='simplifyCcInstall'><a href="http://github.com/carolclark/DevSupport/issues/42">(#42)</a>simplify ccInstall installation process</h4><pre>
 	* replace ccInstall function getActions, argument actionFlags with function getAction, action keyword
 	* findTests, findSources use random filenames; see <a href="http://content.hccfl.edu/pollock/ShScript/TempFile.htm">mktemp</a>
 	* install: move tracking of $prevFolder to findSources via output file
@@ -372,10 +372,10 @@
 			* extract 'case' block to function <span class='mono'>ccInstall --installOneFile action source destination</span>
 				* prints 'skipped', 'succeeded', or error message
 		<span class='tlmark'>&lt;--09/21/32014</span>
-		* add Developer project <a href="Support.html#proj_Python">Python</a>
+		* add Developer project <a href="DevSupport.html#proj_Python">Python</a>
 			* *Motivation: make smaller, simpler projects as intended; have a simple *_install script to work on with refactoring*
-			* add <a href="../Support/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> Python
-			* add <a href="../Support/DevelopingProjects.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
+			* add <a href="../DevSupport/DevelopingProjects.html#NewScriptedBuildProject">Scripted Build Project</a> Python
+			* add <a href="../DevSupport/DevelopingProjects.html#AddScriptedBuildTestTarget">Scripted Build Test Target</a> Python_UTests
 			* move Python files, currently in project Developer, to project Python
 		* refactor Python_install.ksh
 			* *_install.ksh.cleanTarget: add ccInstall --clearLastbuilt; call *_install.ksh.cleanTarget function directly
@@ -392,7 +392,7 @@
 </pre>
 
 <!-- @marker "upgrade to Mavericks" -->
-<h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/Support/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
+<h4 id='upgradeToMavericks'><a href="http://github.com/carolclark/DevSupport/issues/29">(#29)</a>upgrade to Mavericks</h4><pre>
 	* Xcode 5
 		* install Xcode 5
 		* update all projects and targets for compatiblity with Xcode 5
@@ -412,23 +412,23 @@
 		* script selectFiles: correct issue where all trailing filenames are included in result
 			* Terminal Slate: make grep command more precise
 		* Xcode Slate: Product menu;  use  instead of popup for Target selection
-		* remove non-ascii characters (<a href="http://github.com/carolclark/Support/issues/36">Support#36</a>)
+		* remove non-ascii characters (<a href="http://github.com/carolclark/DevSupport/issues/36">Support#36</a>)
 		* clear new compiler warnings
 	<span class='tlmark'>&lt;--</span>
 </pre>
 
-<h4 id='useGitHubIssues'><a href="http://github.com/carolclark/Support/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>
-	* adapt History_Support.html to synchronize with GitHub issues
+<h4 id='useGitHubIssues'><a href="http://github.com/carolclark/DevSupport/issues/3#begin">(#3:begin)</a> use GitHub Issues; sync with Hist files</h4><pre>
+	* adapt History_DevSupport.html to synchronize with GitHub issues
 	<span class='tlmark'>&lt;--</span>
 </pre>
 
-<h4 id='replaceKshFPATH'><a href="http://github.com/carolclark/Support/issues/5">(#5)</a> replace ksh $FPATH calls with dot syntax</h4><pre>
+<h4 id='replaceKshFPATH'><a href="http://github.com/carolclark/DevSupport/issues/5">(#5)</a> replace ksh $FPATH calls with dot syntax</h4><pre>
 	* testCcInstall, ccInstallAction use "&lt;. path&gt;" syntax
 	* get all builds working again
 		* testDoxygenInstall: correct typo
 		* Punkin: replace deprecated script doxygenBuild; for <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
 		* Accessor: replace deprecated scripts doxygenBuild, buildCdoc; see <a href="http://github.com/carolclark/Punkin/issues/1">resolve User assumptions in Xcode builds</a>, item "replace deprecated scripts"
-		* Support: remove deprecated scripts doxygenBuild, buildCdoc
+		* DevSupport: remove deprecated scripts doxygenBuild, buildCdoc
 	* remove $FPATH
 		* function errtrap: replace calls
 			* trap 'echo "$0#$LINENO: Command exited with status $?." 1>&amp;2' ERR
@@ -437,7 +437,7 @@
 	<span class='tldate'>[05/03/2013]</span>
 </pre>
 
-<h4 id='UNIXerror'><a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling</h4><pre>
+<h4 id='UNIXerror'><a href="http://github.com/carolclark/DevSupport/issues/18">(#18)</a> clean up UNIX error handling</h4><pre>
 	* new file testErrsig.ksh: test and demonstrate improved error handling functionality
 		* initial errorExit function
 	* shunit tests should fail on errors in test scripts
@@ -455,7 +455,7 @@
 				* rename error RC_NoSuchDirectory to RC_NoSuchFileOrDirectory
 			* (deprecated) disallow direct calls to functions intended to be called from 'archive --&lt;command&gt;...'
 			* always define variables so that functions can be called independently
-	* stop here with work on "<a href="http://github.com/carolclark/Support/issues/18">(#18)</a> clean up UNIX error handling"
+	* stop here with work on "<a href="http://github.com/carolclark/DevSupport/issues/18">(#18)</a> clean up UNIX error handling"
 		* * We have already recognized a need to learn Python for customizing the Xcode debugger, and probably using the Python interpreter to generate user-customizable Slates for Accessor.*
 		* * Now, after spending an inordinate amount of time trying to make script `archive.ksh` more robust and testable,<br />
 			we are recognizing that this work may be contributing to significant fragility with Xcode and Terminal,<br />
@@ -464,7 +464,7 @@
 		* ccBackup is already scheduled for replacement. Add a new issue to convert scripts ccInstall and archive to Python.
 </pre>
 
-<h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/Support/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
+<h4 id='resolveXcodeBuildUser'><a href="http://github.com/carolclark/DevSupport/issues/1">(#1)</a> resolve User assumptions in Xcode builds</h4><pre>
 	* correct merge conflicts (Punkin; Accessor)
 	* remove references to deprecated functions $(DEV), $(CCDev); remove function definitions
 	* change ccInstallAction parameters to use ${SRCROOT} instead of ${DEV} (Support; Punkin; Accessor)
@@ -513,11 +513,11 @@
 		* target DeveloperSetup no longer needed; remove
 </pre>
 
-<h4 id='collaboratorConfig'><a href="http://github.com/carolclark/Support/issues/2">(#2)</a> support collaborator configuration</h4><pre>
+<h4 id='collaboratorConfig'><a href="http://github.com/carolclark/DevSupport/issues/2">(#2)</a> support collaborator configuration</h4><pre>
 </pre>
 
 <!-- @marker "Fix RemoveFolder with Python" -->
-<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/Support/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
+<h4 id='RemoveFolderWPython'><a href="http://github.com/carolclark/DevSupport/issues/31">(#31)</a>Fix RemoveFolder with Python</h4><pre>
 	<span class='tlmark'>&lt;--</span>
 	* setup python logging, error handling and debugging
 		* *see <a href="https://gimmebar-assets.s3.amazonaws.com/4fe38b76be0a5.html">Python Debugging Techniques</a>
@@ -555,7 +555,7 @@
 <p><span class='tldate'>[08/10/2014]</span></p>
 
 <!-- @marker "upgrade to Mavericks 10.9.4" -->
-<h4 id='Mavericks_10_9_4'><a href="http://github.com/carolclark/Support/issues/43">(#43)</a>upgrade to Mavericks 10.9.4</h4><pre>
+<h4 id='Mavericks_10_9_4'><a href="http://github.com/carolclark/DevSupport/issues/43">(#43)</a>upgrade to Mavericks 10.9.4</h4><pre>
 	* delete obsolete target BuildSupport:Developer
 </pre>
 <p><span class='tldate'>[08/18/2014]</span></p>
@@ -737,7 +737,7 @@
 
 	<!-- @marker "Add TechnicalDocs Area" -->
 	<h5 id='addTechnicalDocs'>Add TechnicalDocs Area</h5><ul>
-		<li><a href="Support.html#WebHosting">Support: WebHosting</a><ul>
+		<li><a href="DevSupport.html#WebHosting">DevSupport: WebHosting</a><ul>
 			<li>update to reflect changing hosting</li>
 			<li>plan revised site structure</li>
 		</ul></li>
@@ -907,7 +907,7 @@
 				<li>move Services from target Xcode to target Developer</li>
 			</ul></li>
 			<li>Xcode<ul>
-				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to ${CCDev}/build/Support/BuildSupport/Applications/Xcode</li>
+				<li>rename existing target Xcode to XcodeScripts; set Per-Configuration Built Products Path to ${CCDev}/build/DevSupport/BuildSupport/Applications/Xcode</li>
 				<li>move ccInstall functionality from Scripts target to new External target</li>
 				<li>Xcode_install.ksh: add folders to function cleanTarget<ul>
 					<li>ccInstall: add --removeFolder</li>
@@ -985,7 +985,7 @@
 			<li class='blurb'>These Slates used by Accessor to provide speech recognition support were previously stored with application Accessor. They are developed as part of each application's workflow, and compiled by Accessor_C9. They will be edited and versioned with any other work being done in their workflow, and compiled from their Support folder by target Accessor.</li>
 			<li>document and commit last Accessor_C9 revision of UserSlates</li>
 			<li>import active User Slates from project Accessor_C9 to Support/UserSlates; add to workspace Support</li>
-			<li>Xcode Source Trees: UserSlates now @ ${HOME}/Dev/Support/UserSlates</li>
+			<li>Xcode Source Trees: UserSlates now @ ${HOME}/DevSupport/Support/UserSlates</li>
 		</ul></li>
 		<li class='tldate'>[withUpdatedDocs 08/31/2011]</li>
 		<li>updates to Xcode Configuration and UserSlates<ul>
@@ -1387,7 +1387,7 @@
 	</ul>
 
 <!-- @marker "UserSlates: improve Developer workflow [#26]" -->
-<h4 id='devWorkflow'><a href="http://github.com/carolclark/Support/issues/26">(#26)</a> UserSlates: improve Developer workflow</h4><pre>
+<h4 id='devWorkflow'><a href="http://github.com/carolclark/DevSupport/issues/26">(#26)</a> UserSlates: improve Developer workflow</h4><pre>
 	* Support editing Cdoc files with BBEdit
 	* Xcode: resort for improved Marker navigation; resort Slate #defines to match code; renumber resorted Slates
 	* GitHub: move GitHub Slates from Xcode to new file; support Xcode-specific GitHub Slate
@@ -1399,7 +1399,7 @@
 </pre>
 
 <!-- @marker "Reorganize Snippets" -->
-<h4 id='ReorganizeSnippets'><a href="http://github.com/carolclark/Support/issues/38">(#38)</a>Reorganize Snippets</h4><pre>
+<h4 id='ReorganizeSnippets'><a href="http://github.com/carolclark/DevSupport/issues/38">(#38)</a>Reorganize Snippets</h4><pre>
 	* *sort slate typing features by language instead of by whether or not implemented as Dash snippet*
 	* Markup slate (from insertElement)
 	* also:

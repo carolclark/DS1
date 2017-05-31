@@ -4,12 +4,12 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Support</title>
+	<title>DevSupport</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<!-- @navhead "../Support/Development.html" "Development" "History_Support.html" -->
-<h1>Support</h1>
+<!-- @navhead "../DevSupport/Development.html" "Development" "History_Support.html" -->
+<h1>DevSupport</h1>
 
 <!-- @marker "(topic structure)" -->
 <!-- Topic Structure
@@ -24,7 +24,7 @@ heading with name: Task Name; tsk_TaskName;5
 -->
 
 <!-- @marker "0 ===" -->
-<!-- @topicList "Support" "Contents" -->
+<!-- @topicList "DevSupport" "Contents" -->
 	<!-- @topicItem "Projects and Targets" "#ProjectsAndTargets" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Policies and Techniques" "3" -->
@@ -38,7 +38,7 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicItem "Unix" "#tp_Unix" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Reading List" "13" -->
-	<!-- @topicItem "Reading List" "https://github.com/carolclark/Support/wiki/Links-and-Notes" "0" "" -->
+	<!-- @topicItem "Reading List" "https://github.com/carolclark/DevSupport/wiki/Links-and-Notes" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Related Project Files" "16" -->
 		<!-- @topicItem "Support History" "History_Support.html#Contents" "0" "" -->
@@ -53,7 +53,7 @@ heading with name: Task Name; tsk_TaskName;5
 		<!-- @topicItem "Third Party" "ThirdParty.html#Contents" "0" "Third Party products used in development" -->
 		<!-- @topicItem "Tools" "Tools.html#Contents" "0" "installed applications, tools, and libraries" -->
 			<!-- @topicItem "Inactive Tools" "Tools_Inactive.html#Contents" "1" "inactive applications, tools, and libraries" -->
-		<!-- @topicItem "Support Glossary" "Glossary_Support.html#Contents" "0" "" -->
+		<!-- @topicItem "DevSupport Glossary" "Glossary_DevSupport.html#Contents" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Personal" "29" -->
 		<!-- @topicItem "Personal" "Personal.html#Contents" "0" "Arbonne, ..." -->
@@ -323,7 +323,7 @@ heading with name: Task Name; tsk_TaskName;5
 	* bundle target with CompileSources build phase containing *.applescript files
 	* dependency relationships: used by target <a href="#target_Developer">Developer</a>
 	* configuration
-		* ?why? CONFIGURATION_BUILD_DIR (Per-Configuration Build Products Path): ${HOME}/Library/CCDev/build/Support/BuildSupport/Developer
+		* ?why? CONFIGURATION_BUILD_DIR (Per-Configuration Build Products Path): ${HOME}/Library/CCDev/build/DevSupport/BuildSupport/Developer
 		* ?why? INSTALL_PATH (Installation Directory) = $(LOCAL_LIBRARY_DIR)/Bundles
 		* ?why? MACOSX_DEPLOYMENT_TARGET ( OS X Deployment Target)= 10.8
 	* integration: build target Development only (todo: for each, deprecate if indicated, or add AppleScript testing)
@@ -661,7 +661,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li>Install Xcode for editing these documents<ul>
 		<li>download and install </li>
 		<li>create folder ~/Dev</li>
-		<li>for repositories Support, Accessor, Punkin:<ul>
+		<li>for repositories DevSupport, Accessor, Punkin:<ul>
 			<li>git clone https://github.com/carolclark/&lt;Repository&gt;.git ~/Dev/&lt;Repository&gt;<ul>
 				<li class='blurb'>can copy repo name from github site</li>
 			</ul></li>
@@ -679,7 +679,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 	<li>Support full Development functionality<ul>
 		<li>AppleScript: <a href="Tools.html#_AppleScript">configure</a></li>
 		<li>python3: <a href="Tools.html#_Python">install</a></li>
-		<li>Xcode: <a href="Tools.html#_Xcode">config</a>; build targets Support/Developer, Support/Cdoc</li>
+		<li>Xcode: <a href="Tools.html#_Xcode">config</a>; build targets DevSupport/Developer, DevSupport/Cdoc</li>
 		<li>Doxygen: <a href="Tools.html#Doxygen_">configure</a></li>
 		<li>Terminal:<ul>
 			<li><a href="Tools.html#_Terminal">configure</a></li>
@@ -692,7 +692,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li>Xcode: build and test all targets</li>
 		<li><a href="Tools.html#_PaintCode">PaintCode</a></li>
 		<li><a href="Tools.html#_Reminders">Reminders</a></li>
-		<li>alias to ~/Library/CCDev/Sites/TechnicalDocs/Support/Development.html to ~ and ~/Documents</li>
+		<li>alias to ~/Library/CCDev/Sites/TechnicalDocs/DevSupport/Development.html to ~ and ~/Documents</li>
 		<li>Transmit: <a href="Tools.html#_Transmit">configure</a></li>
 	</ul></li>
 	<li>implement Backup<ul>
@@ -757,7 +757,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li>possibly additional &lt;_parts&gt; folders with similar structure</li>
 	</ul></li>
 	<li>sites marked with '*' are self-contained sites that can be installed at another location</li>
-	<li><a class='glosslink' href='Glossary_Support.html#def_Cdoc'>Cdoc</a> is developer technical documentation</li>
+	<li><a class='glosslink' href='Glossary_DevSupport.html#def_Cdoc'>Cdoc</a> is developer technical documentation</li>
 </ul>
 
 <h5><a name="ws_Conceptual">Conceptual Site Structure</a></h5>
@@ -793,7 +793,7 @@ This decision was made on the advice of Scott Clark, and has been working very w
 		<li>_pnkn (Resources_)</li>
 	</ul></li>
 	<li>*Personal<ul>
-		<li class='blurb'>structure set up by Support/PersonalSite; most content generated by iWeb and stored in project WebGen</li>
+		<li class='blurb'>structure set up by DevSupport/PersonalSite; most content generated by iWeb and stored in project WebGen</li>
 		<li class='blurb'>photo galleries are exported from iPhoto to carollclark/Web/Sites/_gallery; pages use photos from that location directly</li>
 		<li>_prsn (Resources_)</li>
 	</ul></li>
@@ -803,27 +803,27 @@ This decision was made on the advice of Scott Clark, and has been working very w
 <!-- @marker "Site Source Structure" -->
 <h5><a name="ws_Source">Site Source Structure</a></h5><ul>
 	<li>TechnicalDocs: @~/Dev/&lt;ProjectName&gt;/Cdoc<ul>
-		<li>_tech: @~/Dev/Support/Cdoc</li>
+		<li>_tech: @~/Dev/DevSupport/Cdoc</li>
 		<li>Legacy: @~/Dev/&lt;ProjectName&gt;/cdocsrc/Tech</li>
 	</ul></li>
-	<li>C &amp; C Software: @~/Dev/Support/Sites/CandC<ul>
+	<li>C &amp; C Software: @~/Dev/DevSupport/Sites/CandC<ul>
 		<li>_pnkn: @~/Dev/Punkin/PunkinSite</li>
-		<li>_cnc: @~/Dev/Support/Sites/CandC</li>
+		<li>_cnc: @~/Dev/DevSupport/Sites/CandC</li>
 	</ul></li>
 	<li>Punkin<ul>
 		<li>AtTheTable: @~/Dev/Punkin</li>
 		<li>_bkid: @~/Dev/Punkin</li>
 	</ul></li>
 	<li>Personal<ul>
-		<li>site pages, _prsn: @~/Dev/Support/PersonalSite</li>
+		<li>site pages, _prsn: @~/Dev/DevSupport/PersonalSite</li>
 		<li>generated pages: @~/Dev/WebGen/(Personal)Pages</li>
 	</ul></li>
-	<li>_comn: @~/Dev/Support/Sites</li>
+	<li>_comn: @~/Dev/DevSupport/Sites</li>
 </ul>
 
 <!-- @marker "Local and Installed Sites" -->
 <h5><a name="ws_LocalNInstalled">Local and Installed Sites</a></h5><ul>
-	<li>build system, created by project Support, creates complete local site images at ~/Library/CCDev/Sites</li>
+	<li>build system, created by project DevSupport, creates complete local site images at ~/Library/CCDev/Sites</li>
 	<li>for self-contained sites, the build system actually stores shared resources from conceptual parents inside the folders of the sites that use them, generating multiple copies as necessary</li>
 	<li>build system also provides scripts to install local site images at their destination locations</li>
 	<li>installed site destinations:<ul>
