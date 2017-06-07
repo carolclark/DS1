@@ -13,7 +13,7 @@
 	</style>
 </head>
 <body>
-<!-- @navhead "../Support/Support.html" "Support" "History_Support.html" -->
+<!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
 <h1>JetBrains</h1>
 
 <!-- @topicList "JetBrains" "Contents" -->
@@ -247,19 +247,19 @@ toward the actual time taken.</p>
 <!-- @marker "InstallConfig_" -->
 <h3>Install and Configure TeamCity</h3>
 
-<!-- @marker "Provide Dependencies" -->
-<h4 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h4><ul>
-	<li>install or check for updates as indicated:<ul>
-		<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
-			Supported Platforms and Environments</a></li>
-		<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
-		<li><a href="Tools.html#_Java">Java</a></li>
-		<li><a href="MySQL.html#InstallandSetUpMySQL_">MySQL</a></li>
-	</ul></li>
-	<li>if necessary, <a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a><ul>
-		<li>includes install; initialize data directory; test; secure initial accounts</li>
-	</ul></li>
-</ul>
+	<!-- @marker "Provide Dependencies" -->
+	<h4 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h4><ul>
+		<li>install or check for updates as indicated:<ul>
+			<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+				Supported Platforms and Environments</a></li>
+			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+			<li><a href="Tools.html#_Java">Java</a></li>
+			<li><a href="MySQL.html#InstallandSetUpMySQL_">MySQL</a></li>
+		</ul></li>
+		<li>if necessary, <a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a><ul>
+			<li>includes install; initialize data directory; test; secure initial accounts</li>
+		</ul></li>
+	</ul>
 
 <!-- @marker "Integrate MySQL and TeamCity Servers" -->
 <h4 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h4><ul>
@@ -278,36 +278,36 @@ toward the actual time taken.</p>
 	</ul></li>
 </ul>
 
-<!-- @marker "Install Build Agent" -->
-<h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
-	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
-		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
-	<li>TeamCity Web UI &gt; Agents tab &gt; Install Build Agents &gt; Zip file distribution</li>
-	<li>unzip into /Volumes/TeamCity/BuildAgent-&lt;n&gt;</li>
-	<li>/Volumes/TeamCity/BuildAgent-&lt;n&gt;/conf/ file buildAgent.dist.properties: rename to buildAgent.properties</li>
-	<li>edit buildAgent.properties<ul>
-		<li>serverUrl=http://localhost:8111/</li>
-		<li>name=BuildAgent-&lt;n&gt;</li>
-	</ul></li>
-	<li>specify unique label:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/jetbrains.teamcity.BuildAgent.plist: Label: jetbrains.teamcity.BuildAgent-&lt;n&gt;</span></li>
-	<li class="dq">make sure that all files under the buildAgent directory are owned by carolclark</li>
-	<li>create directory under carolclark/user for BuildAgent logs:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mkdir buildAgent/logs</span></li>
-	<li>load build agent<ul>
-		<li>first agent:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh load</span></li>
-		<li>additional agents:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh (buildAgent?)/bin/agent.sh load</span></li>
-	</ul></li>
-	<li>wait a few minutes; watch for <span class="mono">(tail) -f buildAgent/logs/teamcity-agent.log</span></li>
-	<li>stop build server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh unload</span></li>
-	<li>configure build server to start automatically, but not on system startup:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
+	<!-- @marker "Install Build Agent" -->
+	<h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
+		<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
+			Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
+		<li>TeamCity Web UI &gt; Agents tab &gt; Install Build Agents &gt; Zip file distribution</li>
+		<li>unzip into /Volumes/TeamCity/BuildAgent-&lt;n&gt;</li>
+		<li>/Volumes/TeamCity/BuildAgent-&lt;n&gt;/conf/ file buildAgent.dist.properties: rename to buildAgent.properties</li>
+		<li>edit buildAgent.properties<ul>
+			<li>serverUrl=http://localhost:8111/</li>
+			<li>name=BuildAgent-&lt;n&gt;</li>
+		</ul></li>
+		<li>specify unique label:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>bin/jetbrains.teamcity.BuildAgent.plist: Label: jetbrains.teamcity.BuildAgent-&lt;n&gt;</span></li>
+		<li class="dq">make sure that all files under the buildAgent directory are owned by carolclark</li>
+		<li>create directory under carolclark/user for BuildAgent logs:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mkdir buildAgent/logs</span></li>
+		<li>load build agent<ul>
+			<li>first agent:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh load</span></li>
+			<li>additional agents:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh (buildAgent?)/bin/agent.sh load</span></li>
+		</ul></li>
+		<li>wait a few minutes; watch for <span class="mono">(tail) -f buildAgent/logs/teamcity-agent.log</span></li>
+		<li>stop build server:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sh buildAgent/bin/mac.launchd.sh unload</span></li>
+		<li>configure build server to start automatically, but not on system startup:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>
 			cp buildAgent/bin/jetbrains.teamcity.BuildAgent.plist $HOME/Library/LaunchAgents/; rename file to ...BuildAgent-&lt;n&gt;</span></li>
-	<li>reboot: build user should be logged in, and the build agent should start</li>
-</ul>
+		<li>reboot: build user should be logged in, and the build agent should start</li>
+	</ul>
 
-<!-- @marker "Store Project Settings in Version Control" -->
-<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
-	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
-		Store Project Settings in Version Control</a></li>
-</ul>
+	<!-- @marker "Store Project Settings in Version Control" -->
+	<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
+		<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
+			Store Project Settings in Version Control</a></li>
+	</ul>
 
 <!-- @marker "UpSource" -->
 <h2>UpSource</h2>
