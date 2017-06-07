@@ -18,7 +18,7 @@ Doxygen_install.ksh -- provide functions for ccInstall to support building Doxyg
 #		return 0 to have caller continue by updating last built data
 '
 
-CCDev="${HOME}/Library/CCDev"
+CCDev="/Users/carolclark/Library/CCDev"
 . "${CCDev}/bin/ccInstall"
 
 #^ 1 === top

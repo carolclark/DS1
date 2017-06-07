@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Developer" type="AppleRunConfiguration" factoryName="Application" PROGRAM_PARAMS="${DEV}/Support/Developer/Developer Developer_install.ksh install" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Developer" TARGET_NAME="Developer" CONFIG_NAME="Debug" SCHEME_NAME="Developer" RUN_PATH="$PROJECT_DIR$/Developer/Developer/Developer_install.ksh" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+  <configuration default="false" name="Developer" type="AppleRunConfiguration" factoryName="Application" PROGRAM_PARAMS="${DEV}/DevSupport/Developer/Developer Developer_install.ksh install" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Developer" TARGET_NAME="Developer" CONFIG_NAME="Debug" SCHEME_NAME="Developer" RUN_PATH="$PROJECT_DIR$/Developer/Developer/Developer_install.ksh" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
     <envs>
       <env name="DEV" value="${HOME}/Dev" />
       <env name="CCDev" value="${HOME}/Library/CCDev" />

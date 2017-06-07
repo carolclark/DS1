@@ -23,14 +23,14 @@
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "${DEV}/Support/BuildSupport"
+            argument = "${DEV}/DevSupport/BuildSupport"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "DEV"
-            value = "${HOME}/Support"
+            value = "${HOME}/DevSupport"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable

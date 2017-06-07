@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<!-- @navhead "Support.html" "Support" "History_Support.html" -->
+<!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
 <h1>Developing Projects</h1>
 
 <!-- @topicList "DevelopingProjects" "Contents" -->
@@ -216,7 +216,7 @@
 			separate from our own repositories. If the forked repository were checked out directly into our project's folders,
 			git would recognize it as belonging to another repository, and would handle it as a submodule.</span></li>
 		</ul></li>
-		<li>project folders ~/Dev/Support/ThirdParty/&lt;ToolName&gt;<ul>
+		<li>project folders ~/Dev/DevSupport/ThirdParty/&lt;ToolName&gt;<ul>
 			<li>folder SOURCES with copies of sources obtained from forked repository</li>
 			<li>supporting files, such as for installation and testing</li>
 		</ul></li>
@@ -234,7 +234,7 @@
 		<li>move the entire visible content of this folder to ThirdParty/&lt;ToolName&gt;/SOURCES;; commit</li>
 	</ul></li>
 	<li>Add Supporting Files<ul>
-		<li>in ~/Dev/Support/ThirdParty/&lt;toolName&gt;, add installer, tests, additional support as indicated</li>
+		<li>in ~/Dev/DevSupport/ThirdParty/&lt;toolName&gt;, add installer, tests, additional support as indicated</li>
 	</ul></li>
 </ul>
 
@@ -451,7 +451,7 @@
 			</ul></li>
 			<li>add Doxygen install file Doxygen_install.ksh from template</li>
 			<li>add Doxygen configuration file &lt;WorkspaceName&gt;_doxygen.txt from template<ul>
-				<li>set parameters as indicated, using ~/Dev/Support/Docs/Doxygen/Default.doxygen as a reference</li>
+				<li>set parameters as indicated, using ~/Dev/DevSupport/Docs/Doxygen/Default.doxygen as a reference</li>
 			</ul></li>
 		</ul></li>
 		<li>Cdoc<ul>
@@ -596,7 +596,7 @@
 		<li>Build Settings: set Per-Configuration Built Products Path to ${CCDev}/build/&lt;Workspace&gt;/&lt;Project&gt;/&lt;Target&gt;</li>
 	</ul></li>
 	<li>file &lt;Target&gt;_install.ksh<ul>
-		<li>update getSubtargetDestination, prepareFileOperation, cleanFiles accordingly; see Support/BuildSupport/Developer_install.ksh</li>
+		<li>update getSubtargetDestination, prepareFileOperation, cleanFiles accordingly; see DevSupport/BuildSupport/Developer_install.ksh</li>
 	</ul></li>
 </ul>
 
