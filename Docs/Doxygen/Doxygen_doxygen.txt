@@ -6,18 +6,18 @@
 #	see Support/BuildSupport/Doxygen/Default.doxygen or the Doxygen application.
 
 PROJECT_NAME			= Support
-OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/Support
-STRIP_FROM_PATH			= $(HOME)/Dev/Support
+OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/DevSupport
+STRIP_FROM_PATH			= $(HOME)/Dev/DevSupport
 EXTRACT_ALL				= YES
-INPUT					= $(HOME)/Dev/Support/Developer/Python/Scripts
+INPUT					= $(HOME)/Dev/DevSupport/Developer/Python/Scripts
 EXCLUDE_PATTERNS		= *.plist *.pch
 EXCLUDE					= en.lproj
 RECURSIVE				= YES
 EXAMPLE_PATTERNS		= *
 GENERATE_DOCSET			= YES
-DOCSET_FEEDNAME			= Support
-DOCSET_BUNDLE_ID		= com.candcsoft.Support
+DOCSET_FEEDNAME			= DevSupport
+DOCSET_BUNDLE_ID		= com.candcsoft.DevSupport
 DOCSET_PUBLISHER_ID		= com.candcsoft.Publisher
 GENERATE_LATEX			= NO
-#IMAGE_PATH				= $(HOME)/Dev/Support/Docs/Images
+#IMAGE_PATH				= $(HOME)/Dev/DevSupport/Docs/Images
 OPTIMIZE_OUTPUT_JAVA	= YES

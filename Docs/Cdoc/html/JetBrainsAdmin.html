@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<!-- @navhead "Support.html" "Support" "History_Support.html" -->
+<!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
 <h1>JetBrains Administration</h1>
 
 <!-- @topicList "JetBrainsAdmin" "Contents" -->
@@ -17,20 +17,25 @@
 	<!-- @topicItem "Team Tools Install by Stage" "#TeamToolsInstallation_" "0" "sequence to get up and running sooner" -->
 	<!-- @topicItem "Installation by Tool" "#InstallationbyTool_" "0" "full installation for each tool" -->
 <!-- @/topicList -->
-JetBrains Admin:
-Configuration
-Admin Tasks
-	New Project
-JetBrains Adoption
-Install TeamTools 05.17
+<ul>
+	<li>JetBrains Admin:<ul>
+		<li>Configuration</li>
+		<li>Admin Tasks</li>
+		<li>New Project</li>
+		<li>JetBrains Adoption</li>
+		<li>Install TeamTools 05.17</li>
+	</ul></li>
+</ul>
 
 <h2 class="promote" id="Overview_">JetBrains Development Overview</h2><ul>
 	<li>For most tasks in our development process, we use JetBrains products.<ul>
-		<li>IDE's for development languages:<ul>
-			<li>AppCode (already in use): primary support for Objective-C++; currently in use for bash, html, ...<ul>
-				<li>significantly limited by the fact that it gets its project structure from Xcode project<ul>
-					<li>essential for Cocoa products, but gets in the way, of everything else</li>
+		<li>available IDE's for development languages:<ul>
+			<li>IntelliJ IDEA: flagship development environment for Java<ul>
+				<li>best support for related languages, project structure with modules, ...</li>
+				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDs</li>
 				</ul></li>
+			<li>AppCode (already in use): primary support for Objective-C(++); plugins for unix and AppleScript<ul>
+				<li>project structure based on Xcode =&gt; no module support, limitations for other plug-ins and features</li>
 			</ul></li>
 			<li>IntelliJ IDEA<ul>
 				<li>primary languages is Java, which we do not use it this time; also the most powerful IDE for tasks in other languages</li>
@@ -47,6 +52,10 @@ Install TeamTools 05.17
 			<li>TeamCity (previously in use): Continuous Integration</li>
 			<li>UpSource: code review</li>
 			<li>Hub, aka HubRing, to tie it all together</li>
+		</ul></li>
+		<li>We expect to use:<ul>
+			<li>The complete team tool suite</li>
+			<li>AppCode for Cocoa projects; IDEA by default for other languages; add specialized product for other languages as indicated</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -65,7 +74,7 @@ Install TeamTools 05.17
 				a separate required-dependency task could be used here to separate the tasks of gathering information and estimating</li>
 			<li>YouTrack's 'fix version' fields is intended to identify cards for a scrum.
 				We will change 'fix version' to 'gaggle' to identify cards (geese?) for a Gaggle.
-				For assigning version numbers, we prefer to <a href="../DevSupport/Git.html#Branches_Releases_">establish the version number</a>
+				For assigning version numbers, we prefer to <a href=../"DevSupport/Git.html#Branches_Releases_">establish the version number</a>
 				when the product is ready for 'release',
 				as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 				on which our versioning plan is based.</li>

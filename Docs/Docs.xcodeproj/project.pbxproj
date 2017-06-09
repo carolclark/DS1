@@ -46,11 +46,11 @@
 		965F825D415F1A10047A3BAC /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
 		965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt0@2x-251.jpg"; sourceTree = "<group>"; };
 		965F82ACEA5C8859DD6025D9 /* ProjectSymbols.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = ProjectSymbols.pcvd; sourceTree = "<group>"; };
+		965F82EBB3DBD095339E37C0 /* Support_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
 		965F82F1C702C096455B200D /* GitBranchingModel.002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.002.png; sourceTree = "<group>"; };
 		965F8331E1FC8ADB26343621 /* JetBrainsAdmin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrainsAdmin.html; sourceTree = "<group>"; };
 		965F83CC93258AC741E2647F /* Partitions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Partitions.pdf; sourceTree = "<group>"; };
 		965F8413959BB1D1E8EE03D1 /* History_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History_Support.html; sourceTree = "<group>"; };
-		965F84281853AF6D626E9C81 /* Doxygen_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxygen_doxygen.txt; sourceTree = "<group>"; };
 		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -60,7 +60,6 @@
 		965F879A4CC12B5E0E783610 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		965F87D13524A7E376D0EDDC /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
-		965F882D39A596D13554A6CC /* JetBrains.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrains.html; sourceTree = "<group>"; };
 		965F88756EC76D8FC8228B96 /* DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DevSupport.html; sourceTree = "<group>"; };
 		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
@@ -172,7 +171,6 @@
 				965F8125BE43F87CF012F727 /* AppCode.html */,
 				965F8F7D274B8EBB4F30076B /* MySQL.html */,
 				965F8413959BB1D1E8EE03D1 /* History_Support.html */,
-				965F882D39A596D13554A6CC /* JetBrains.html */,
 				965F803CA447BB3AE495A3E3 /* TeamTools.html */,
 				965F8331E1FC8ADB26343621 /* JetBrainsAdmin.html */,
 				965F88756EC76D8FC8228B96 /* DevSupport.html */,
@@ -188,7 +186,7 @@
 				67B4601119199472007FB11A /* DoxyDemo_install.ksh */,
 				676695A519199779005D3CED /* DoxyDemo_doxygen.txt */,
 				965F8AF608AC68792F7415BC /* Doxygen_install.ksh */,
-				965F84281853AF6D626E9C81 /* Doxygen_doxygen.txt */,
+				965F82EBB3DBD095339E37C0 /* Support_doxygen.txt */,
 			);
 			path = Doxygen;
 			sourceTree = "<group>";

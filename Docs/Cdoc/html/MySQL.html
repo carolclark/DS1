@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 </head>
 <body>
-<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr><td>[<a href="../DevSupport/DevSupport.html">DevSupport</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
+<div class='navhead' id='Top'><table class='navhead'><col class='navhead_c1' /><tr><td>[<a href="DevSupport/DevSupport.html">DevSupport</a>]</td><td class='right'>[<a href="#Contents">Contents</a>]</td></tr></table></div>
 
 <h1>MySQL</h1>
 
@@ -108,11 +108,15 @@
 			<li>mysql&gt; <span class="mono">show table status like '%';</span></li>
 		</ul></li>
 	</ul>
-	<h5></h5><ul>
-		<li>~/Dev/DevSupport/Developer/Developer/MySQL: copy file MySQL/default_cnf.txt to TeamCity_cnf.txt; edit heading for new file</li>
+	<h5>set up file to configure MySQL for TeamCity</h5><ul>
+		<li>copy file MySQL/default_cnf.txt to MySQL/TeamCity_cnf.txt; edit heading for new file</li>
+		<li>installation copies MySQL/TeamCity_cnf.txt to /usr/local/mysql/my.cnf; test</li>
 	</ul>
 	<h5>TeamCity_cnf</h5><ul>
-			<li>set up file to configure MySQL for TeamCity</li>
+		<li>set up file to configure MySQL for TeamCity<ul>
+			<li>copy file MySQL/default_cnf.txt to MySQL/TeamCity_cnf.txt; edit heading for new file</li>
+			<li>installation copies MySQL/TeamCity_cnf.txt to /usr/local/mysql/my.cnf; test</li>
+		</ul></li>
 		</ul>
 		<h6>set memory allocation</h6><ul>
 			<li><span class="mono">TEAMCITY_SERVER_MEM_OPTS=-Xmx750m</span><ul>
