@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="XcodeScripts" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="BuildSupport" TARGET_NAME="XcodeScripts" CONFIG_NAME="Debug" SCHEME_NAME="XcodeScripts" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <envs>
+      <env name="DEV" value="${HOME}/Dev" />
+      <env name="CCDev" value="${HOME}/Library/CCDev" />
+    </envs>
+    <method />
+  </configuration>
+</component>
