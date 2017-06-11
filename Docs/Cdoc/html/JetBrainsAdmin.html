@@ -5,6 +5,11 @@
 <head>
 	<title>JetBrains Administration</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+	<style type="text/css">
+		span.webButton {
+			color: #e68a00;
+		}
+	</style>
 </head>
 <body>
 <!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
@@ -16,6 +21,20 @@
 	<!-- @topicItem "Admin Tasks and Info" "#AdminTasksandInfo_" "0" "" -->
 	<!-- @topicItem "Team Tools Install by Stage" "#TeamToolsInstallation_" "0" "sequence to get up and running sooner" -->
 	<!-- @topicItem "Installation by Tool" "#InstallationbyTool_" "0" "full installation for each tool" -->
+    <!-- @topicGroup "older" "7" -->
+	<!-- @topicGroup "Tools" "" -->
+		<!-- @topicItem "Hub" "#HubRing_" "0" "integrate YouTrack, TeamCity, UpSource, IDE" -->
+		<!-- @topicItem "YouTrack" "#YouTrack_" "0" "track work on issues, including Agile Boards" -->
+		<!-- @topicItem "TeamCity" "#TeamCity_" "0" "provide continuous integration" -->
+		<!-- @topicItem "UpSource" "#UpSource_" "0" "support code review, discussions" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "JetBrains" "http://www.jetbrains.com" "0" "JetBrains home" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "References" "8" -->
+	<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
+	<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
+	<!-- @topicItem "Install and Configure the TeamCity Server" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server" "0" "contents page" -->
+	<!-- @topicItem "TeamCity Server icon" "https://hub.docker.com/r/jetbrains/teamcity-server/" "0" "" -->
 <!-- @/topicList -->
 <ul>
 	<li>JetBrains Admin:<ul>
@@ -51,15 +70,14 @@
 			<li>The complete team tool suite</li>
 			<li>AppCode for Cocoa projects; IDEA by default for other languages; add specialized product for other languages as indicated</li>
 		</ul></li>
-	</ul></li>
-</ul>
+	</ul>
 
 <h3 id="Agile_">Agile Development</h3>
 	<p>Our process is very similar to standard test-first agile development,
-	but with a different approach toward time management. For our 'sprints',
-	which we call 'Gaggles', we use a time estimate, not a deadline.</p>
+	but with a more relaxed approach toward time management and deadlines. Instead of 'sprints',
+	we use 'gaggles', we use a time estimate, not a deadline.</p>
 	<div class="paragraphs">
-		<h4>Gaggles</h4><ul>
+		<h4>Gaggle</h4><ul>
 			<li>target dates are established, but are normally adjusted if and when indicated
 				toward the actual time needed</li>
 			<li>we expect to learn to make better estimates of time required as we use
@@ -98,10 +116,14 @@
 	</ul></li>
 </ul>
 
-
-
 <!-- @marker "Team Tools Installation" -->
 <h2 class="promote">Team Tools Installation</h2>
+<h6>Installation Levels</h6><ul>
+	<li>Installation and configuration may be specified at as many as 3 levels:<ul>
+		<li><strong>Basic</strong>: product can be used as intended</li>
+		<li><strong>Complete</strong>: complete installation, for long-term stability</li>
+		<li><strong>Extensions</strong>: additional installations that add additional features</li>
+	</ul>
 <!-- @topicList "Team Tools Installation" "TeamToolsInstallation_" -->
 	<!-- @topicItem "Install and Configure Basic Tools" "#InstallandConfigureBasicTools_" "0" "" -->
 	<!-- @topicGroup "DevSupport Long-Term Stablility" "" -->
@@ -162,7 +184,8 @@
 		<li>Download the *.zip package from Jetbrains</li>
 		<li>Place downloaded package in /Volumes/Servers/jb/Hub; expand at that location</li>
 		<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh start</span></li>
-		<li>In installation wizard, select installation type 'Setup'<ul>
+		<li>When welcome screen appears, select installation type 'Setup'</li>
+		<li>Setup Wizard<ul>
 			<li>Select Hub Service<ul>
 				<li>set JetBrains password for admin account</li>
 			</ul></li>
@@ -171,7 +194,17 @@
 			</ul></li>
 			<li>Hub opens; Login as admin; admin/setup menu is on hexagonal nut icon</li>
 		</ul></li>
+		<!-- \todo merge sections above (to "Downloac...") and below (to JVM options  -->
+		<li><strong>Users</strong>: add carolclark as an admin user; edit carolclark to add our avatar</li>
+		<li><strong>Auth Modules</strong><ul>
+			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
+			<li>enable</li>
+		</ul></li>
+		<li><strong>System Settings</strong>: login timeout 12 hours; remember me for 1 year</li>
+		<li><strong>Backups</strong>: to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
+		<li><strong>SMTP</strong>: smtp.cox.net; from carolclark@cox.net; send test message; enable notification</li>
 		<li>Configure Initial Properties; see also <a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a><ul>
+			<!-- start -->
 			<li><strong>System Settings</strong>: session timeout 12 hours; remember me for 1 year</li>
 			<li><strong>SMTP</strong>:<ul>
 				<li>host smtp.cox.net; from carolclark@cox.net</li>
@@ -184,6 +217,16 @@
 			</ul></li>
 		</ul></li>
 		<li>JVM Options: no changes</li>
+		<!-- \todo -->
+		<li><strong>Users</strong>: add carolclark as an admin user; edit carolclark to add our avatar</li>
+		<li><strong>Auth Modules</strong><ul>
+			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
+			<li>enable</li>
+		</ul></li>
+		<li><strong>System Settings</strong>: login timeout 12 hours; remember me for 1 year</li>
+		<li><strong>Backups</strong>: to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
+		<li><strong>SMTP</strong>: smtp.cox.net; from carolclark@cox.net; send test message; enable notification</li>
+		<!-- end -->
 	</ul></li>
 </ul>
 
@@ -221,8 +264,90 @@
 	<li id="backupNow_">Admin &gt; Backup &gt; backup now</li>
 </ul>
 
+<!-- @marker "YouTrack" -->
+<h2>YouTrack</h2>
+<!-- @topicList "YouTrack" "YouTrack_" -->
+	<!-- @topicItem "YouTrack Tasks" "#YouTrackTasks_" "0" "" -->
+		<!-- @topicItem "Add Project" "#AddProject_" "1" "" -->
+		<!-- @topicItem "Sort a Card's Subtasks" "#SortaCardsSubtasks_" "1" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "YouTrack InstallConfig" "#YouTrackInstallConfig_" "0" "" -->
+		<!-- @topicItem "YouTrack Basic IC" "#YouTrackBasicIC_" "1" "" -->
+		<!-- @topicItem "YouTrack Extensions" "#YouTrackExtensions_" "1" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "YouTrack Tasks" -->
+<h3 id="YouTrackTasks_">YouTrack Tasks</h3>
+
+<!-- @marker "Add Project" -->
+<h4 id='AddProject_'>Add Project</h4><ul>
+</ul>
+
+<!-- @marker "Sort a Card's Subtasks" -->
+<h4 id='SortaCardsSubtasks_'>Sort a Card's Subtasks</h4><ul>
+	<li>Create a swimlane for the card</li>
+	<li>Organize the subtasks in that lane</li>
+</ul>
+
+<!-- @marker "YouTrack Tasks" -->
+<h3 id="YouTrackInstallConfig_">YouTrack Installation and Configuration</h3>
+<!-- @marker "YouTrack Basic IC" -->
+<h4 id='YouTrackBasicIC_'>YouTrack Basic IC</h4>
+	<h5>Installation</h5><ul>
+		<li>Download the *.zip package from Jetbrains</li>
+		<li>Place downloaded package in /Volumes/Servers/jb/YouTrack; expand at that location</li>
+		<li><span class="mono">cd &lt;path/to/YouTrack&gt;/bin; youtrack.sh run</span></li>
+		<li>When welcome screen appears, select 'Setup'</li>
+		<li>Setup Wizard<ul>
+			<li>use External Hub; Hub address http://carols-imac-2.local:8080; verify</li>
+			<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups/YouTrack'</li>
+			<li>save license key; 'Finish' to accept login</li>
+			<li>'Issues' page opens; initial startup is complete</li>
+		</ul></li>
+	</ul>
+
+	<h5>Configuration</h5><ul>
+		<li>JVM<ul>
+			<li>stop YouTrack service</li>
+			<li>copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist" to Jetbrains/YouTrack/youtrack.jvmoptions</li>
+			<li>configure JVM<ul>
+				<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
+				<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
+				<li>also if needed for performance:<ul>
+					<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
+				</ul></li>
+			</ul></li>
+			<li>configure general options<ul>
+				<li>jetbrains.youtrack.mailLimit: 25</li>
+				<li>for additional configuration options, see
+					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
+			</ul></li>
+			<li>install at &lt;path/to/YouTrack&gt;/conf</li>
+		</ul></li>
+		<li>start YouTrack service</li>
+		<li>configuration menu (hexagonal "nut")<ul>
+			<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; zip format; every day at 2 AM; rotation 5</li>
+			<li><strong>VCS configurations</strong></li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "YouTrack Extensions" -->
+<h4 id='YouTrackExtensions_'>YouTrack Extensions</h4><ul>
+	<li><em>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</em></li>
+	<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
+		<li><em>includes Issue Navigation, Task Management, Time Tracking</em></li>
+	</ul></li>
+	<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/TMetric-Integration.html">TMetric (work timer) integration</a></li>
+</ul>
+
 <!-- @marker "Team City" -->
-<h2 id="TeamCity_">Team City</h2><ul>
+<h2 id="TeamCity1_">Team City</h2>
+
+	<!-- @topicList "TeamCity" "TeamCity_" -->
+		<!-- @topicItem "TeamCity Tasks" "#TeamCityTasks_" "0" "" -->
+		<!-- @topicItem "Moving to Another Server" "#MovingServer_" "1" "" -->
+		<!-- @topicItem "Uninstall TeamCity" "#UninstallTeamCity_" "1" "" -->
+	<!-- @/topicList --><ul>
 	<li class="blurb">References:<ul>
 		<li><a href="https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server">
 			Installing and Configuring the TeamCity Server</a></li>
@@ -231,8 +356,31 @@
 		<li><a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800">Scheduling Tasks with Cron Jobs</a></li>
 		<li><a href="https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">Creating Backup via maintainDB command-line tool</a></li>
 	</ul></li>
+</ul></li></ul>
+
+
+<!-- @marker "TeamCity Tasks" -->
+<h3 id="TeamCityTasks1_">TeamCity Tasks</h3>
+
+<!-- @marker "Moving to Another Server" -->
+<h4 id='MovingServer_'>Moving Projects to Another Server</h4><ul>
+	<li>make standard TeamCity backups of existing projects</li>
+	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
 </ul>
 
+<!-- @marker "Uninstall TeamCity" -->
+<h4 id='UninstallTeamCity_'>Uninstall TeamCity</h4><ul>
+	<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
+		<li>open Activity Monitor; show all process</li>
+		<li>for any processes except TeamCity associated with TeamCity, 'quit' using button at top left</li>
+	</ul></li>
+	<li>quit TeamCity:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysqladmin -u root -p shutdown</span></li>
+	<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
+	<li>delete TeamCity application from /Volumes/TeamCity</li>
+	<li>delete /Application Support/TeamCityIntegration</li>
+	<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
+	<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
+</ul>
 <!-- @marker "Install and Start TeamCity" -->
 <h3>Install and Start TeamCity</h3>
 <!-- @topicList "Install and Start TeamCity" "TC_InstallandStart_" -->
@@ -241,7 +389,19 @@
 <!-- @/topicList -->
 
 <!-- @marker "Install TeamCity Server" -->
-<h3 id='TC_installConfig'>Install TeamCity Server</h3><ul>
+<h3 id='TC_installConfig'>Install TeamCity Server</h3>
+		<h4 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h4><ul>
+			<li>install or check for updates as indicated:<ul>
+				<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+					Supported Platforms and Environments</a></li>
+				<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+				<li><a href="Tools.html#_Java">Java</a></li>
+				<li><a href="MySQL.html#InstallandSetUpMySQL_">MySQL</a></li>
+			</ul></li>
+			<li>if necessary, <a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a><ul>
+				<li>includes install; initialize data directory; test; secure initial accounts</li>
+			</ul></li>
+
 	<li style="padding-top: 10px;"><strong>Unpack Archive</strong><ul>
 		<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
 		<li>move archive to /Volumes/Servers/jb/TeamCity; archive location will become TeamCity home directory</li>
@@ -271,7 +431,23 @@
 				> /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
 		</ul></li>
 	</ul></li>
+	</ul>
 
+	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
+	<h4 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h4><ul>
+		<li>MySQL server side<ul>
+			<li><a href="MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
+		</ul></li>
+		<li>TeamCity server side<ul>
+			<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Create TeamCityDB" -->
+	<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
+	<li>create TeamCity database<ul>
+		<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
+	</ul></li>
 	<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
 		<li class="blurb">localhost:8111</li>
 		<li>user: carolclark; password</li>
@@ -298,7 +474,13 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Autostart TeamCity Server" -->
+<!-- @marker "Store Project Settings in Version Control" -->
+<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
+	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
+		Store Project Settings in Version Control</a></li>
+</ul>
+
+		<!-- @marker "Autostart TeamCity Server" -->
 <h3 id="TC_AutostartServer_">Autostart TeamCity Server</h3><ul>
 	<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
 		<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
@@ -390,7 +572,263 @@
 	</ul></li>
 </ul>
 
-<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<!-- @marker "Store Project Settings in Version Control" -->
+		<h4 id='StoreProjectSettingsinVCS1_'>Store Project Settings in Version Control</h4><ul>
+			<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
+				Store Project Settings in Version Control</a></li>
+		</ul>
+
+		<!-- @marker "UpSource" -->
+		<h2>UpSource</h2>
+		<!-- @topicList "UpSource" "UpSource_" -->
+		<!-- @topicItem "UpSource Tasks" "#UpSourceTasks_" "0" "" -->
+		<!-- @topicSep -->
+		<!-- @topicItem "UpSource InstallConfig" "#UpSourceInstallConfig_" "0" "" -->
+		<!-- @topicItem "UpSource Basic IC" "#UpSourceBasicIC_" "1" "" -->
+		<!-- @/topicList -->
+
+		<!-- @marker "UpSource Tasks" -->
+		<h3 id="UpSourceTasks_">UpSource Tasks</h3>
+
+		<!-- @marker "UpSource InstallConfig" -->
+		<h3 id='UpSourceInstallConfig_'>UpSource InstallConfig</h3>
+
+		<!-- @marker "UpSource Basic IC" -->
+		<h4 id='UpSourceBasicIC_'>UpSource Basic IC</h4><ul>
+			<li>Installation<ul>
+				<li>Download the *.zip package from Jetbrains</li>
+				<li>Place downloaded package in /Volumes/Servers/jb/UpSource; expand at that location</li>
+				<li><span class="mono">cd &lt;path/to/UpSource&gt;/bin; ./upsource.sh run</span></li>
+				<li>When welcome screen appears, select 'Setup'</li>
+				<li>Setup Wizard<ul>
+					<li>use External Hub; Hub address http://carols-imac-2.local:8080/hub/; verify</li>
+					<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups/UpSource</li>
+					<li>save license key; 'Finish' to accept login</li>
+					<li>'Users' page opens; initial startup is complete</li>
+				</ul></li>
+			</ul></li>
+		</ul>
+
+		<!-- @marker "YouTrack Installation and Configuration" -->
+		<h3 id='YouTrackInstallConfig'>YouTrack Installation</h3>
+
+		<!-- @marker "UpSource Installation" -->
+		<h3 id='UpSourceInstallation_'>UpSource Installation</h3>
+
+		<h4>UpSource Installation</h4>
+<h1>TeamTools</h1>
+
+<!-- @topicList "TeamTools" "Contents2" -->
+	<!-- @topicItem "Team Tools Tasks" "#TeamToolsTasks_" "0" "" -->
+	<!-- @topicItem "Install and Configure" "#InstallConfig_" "0" "plan to install and configure team tools" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "JetBrains Links" "http://www.jetbrains.com" "0" "JetBrains home" -->
+		<!-- @topicItem "HubRing" "http://jetbrains.com/hub/documentation" "1" "common connector for JetBrains Team Tools" -->
+		<!-- @topicItem "YouTrack Documentation" "https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Documentation.html" "1" "help" -->
+			<!-- @topicItem "YouTrack Resources" "http://jetbrains.com/youtrack/documentation" "2" "issue tracking; agile boards" -->
+			<!-- @topicItem "Workflow Language Fields" "https://www.jetbrains.com/help/youtrack/standalone/2017.1/Workflow-Language-Fields.html" "2" "properties available to workflows" -->
+			<!-- @topicItem "Replace Custom Fields" "https://www.jetbrains.com/help/youtrack/standalone/2017.1/Replace-Custom-Fields.html" "2" "replacing fields in exinsting project" -->
+		<!-- @topicItem "TeamCity" "http://jetbrains.com/teamcity/documentation" "1" "continuous integration" -->
+		<!-- @topicItem "UpSource" "http://jetbrains.com/upsource/documentation" "1" "code review" -->
+<!-- @/topicList -->
+
+<h4>JetBrains Installation</h4>
+	<p>JetBrains projects are automatically added to any JetBrains Team tools (YouTrack, UpSource, Team City) that are installed in Hub at the time of the installation.
+		Projects added to Hub are automatically set up in each Team tool installed at the time.
+		Our installation sequence is therefore:</p><ul>
+	<li>install Hub</li>
+	<li>install YouTrack and UpSource; attach each to Hub during installation</li>
+	<li>install TeamCity</li>
+	<li>use TeamCity plug-in to link TeamCity to Hub</li>
+	<li><em>now</em> add projects</li>
+</ul>
+
+<!-- @marker "Team Tools Tasks" -->
+<h2 class="promote">Team Tools Tasks</h2>
+<!-- @topicList "Team Tools Tasks" "TeamToolsTasks_" -->
+	<!-- @topicItem "YouTrack Project Settings" "#YouTrackProjectSettings_" "0" "" -->
+	<!-- @topicItem "Add Project with Agile Boards" "#AddProjectwithAgileBoard_" "0" "" -->
+<!-- @/topicList -->
+<p class="blurb">add active projects and Agile boards</p>
+<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
+<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
+</a></p>
+
+<!-- @marker "YouTrack Project Settings" -->
+<h3 id='YouTrackProjectSettings_'>YouTrack Project Settings</h3><ul>
+	<li><strong>Access Management</strong><ul>
+		<li>add user carolclark to Group Project Admin</li>
+		<li class="depr"><strong>Roles</strong></li>
+		<li class="depr"><strong>Groups</strong><ul>
+			<li>Project Admin<ul>
+				<li>add permissions 'Low-Level Admin', 'Low-Level Read Admin', 'Create Project', 'Update Project'</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Global Project-Related Settings</strong><ul>
+		<li><strong>Time Tracking</strong><ul>
+			<li>enable time tracking</li>
+			<li>Hours per ideal day: 6</li>
+			<li>add work types Design, Management (Backlog refinement), Administration</li>
+		</ul></li>
+	</ul></li>
+	<li><strong>VCS configurations</strong>: new GitHub integration</li>
+</ul>
+
+<!-- @marker "Add Project with Agile Boards" -->
+<h3 id='AddProjectwithAgileBoard_'>Add Project with Agile Board</h3><ul>
+	<li>YouTrack: create project<ul>
+		<li>for project already in GitHub, check VCS for last issue number already used</li>
+		<li>create project from Scrum template</li>
+		<li>edit custom fields<ul>
+			<li>includes edit field names to use camel case for readability<ul>
+				<li>Issue Type: Epic, Feature, Task; Bug, Cosmetic, Exception, Usability, Performance</li>
+			</ul></li>
+		</ul></li>
+		<li>edit workflows<ul>
+			<li>scrum: do NOT close issue automatically when subtasks completed<ul>
+				<li>either do nothing, of put parent issue up for review</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Custom Fields and Workflows</strong></li>
+</ul>
+
+<!-- @marker "Install and Configure" -->
+<h2 class="promote">Install and Configure</h2>
+<!-- @topicList "Install and Configure" "InstallConfig_" -->
+	<!-- @topicItem "Basic Installation and Setup" "#InstallSetup_" "0" "get all Team Tools up and running" -->
+	<!-- @topicItem "Improve Long-Term Stability" "#ImproveStability_" "0" "improve long-term stablilty of tools" -->
+	<!-- @topicItem "Add Extensions" "#AddExtensions_" "0" "add extensions to support additional features" -->
+<!-- @/topicList -->
+
+
+<!-- @marker "Basic Installation and Setup" -->
+<h2>Basic Installation and Setup</h2>
+<!-- @topicList "Basic Installation and Setup" "InstallSetup_" -->
+	<!-- @topicItem "Install Tools" "#InstallTools_" "0" "" -->
+		<!-- @topicItem "HubRing" "#HubRing_" "1" "" -->
+<!-- @/topicList -->
+<p class="blurb">get all Team Tools up and running</p>
+
+<!-- @marker "Install Tools" -->
+<h2>Install Tools</h2>
+<!-- @topicList "Install Tools" "InstallTools_" -->
+	<!-- @topicItem "HubRing" "#HubRing_" "0" "" -->
+	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Standard Tool Install" "#InstallTooltoServer_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "HubRing" -->
+<h3 id='HubRing1_'>HubRing</h3><ul>
+	<li>download from <a href="https://www.jetbrains.com/hub/download/#section=mac">Hub Download</a><ul>
+		<li>note 2017.04.07: reported JPS-5617<ul>
+			<li>build 5178: attempt to set up OAuth with GitHub fails; 'copy' button for callback fails, associated GitHub link fails #404</li>
+			<li>using build 4996</li>
+		</ul></li>
+	</ul></li>
+	<li>follow installation instructions linked from Download page<ul>
+		<li>JVM Options: no changes</li>
+		<li><a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a><ul>
+			<li><strong>Users: Me</strong><ul>
+				<li>add 'carolclark':<ul>
+					<li>click our gravitar image</li>
+					<li>add and verify email address</li>
+					<li>do not force change password</li>
+				</ul></li>
+			</ul></li>
+			<li><strong>System Settings</strong>: session timeout 12 hours; remember me for 1 year</li>
+			<li><strong>SMTP</strong>:<ul>
+				<li>host smtp.cox.net; from carolclark@cox.net</li>
+				<li>user carolclark; password: cox</li>
+				<li>Security and Authorization: user name 'carolclark'; password cox</li>
+				<li>send test message; enable notification</li>
+			</ul></li>
+			<li><strong>Backups</strong>:<ul>
+				<li>to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
+				<li>backup now</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "YouTrack" -->
+<h3 id='YouTrack1_'>YouTrack</h3><ul>
+	<li>download standalone version from <a href="https://www.jetbrains.com/youtrack/download/get_youtrack.html">YouTrack Download</a></li>
+	<li>follow installation instructions linked from Download page<ul>
+		<li>for external Hub: address http://carols-imac-2.local:8080/hub; sign in as admin</li>
+	</ul></li>
+	<li>configure JVM (Java virtual machine)<ul>
+		<li>stop YouTrack service<ul>
+			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
+			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
+		</ul></li>
+		<li>if necessary, create file youtrack.jvmoptions<ul>
+			<li>copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist" to Jetbrains/YouTrack/youtrack.jvmoptions</li>
+			<li>configure JVM<ul>
+				<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
+				<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
+				<li>also if needed for performance:<ul>
+					<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
+				</ul></li>
+			</ul></li>
+			<li>configure general options<ul>
+				<li>jetbrains.youtrack.mailLimit: 25</li>
+				<li>for additional configuration options, see
+					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
+			</ul></li>
+		</ul></li>
+		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
+		<li>start YouTrack service: <span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
+	</ul></li>
+	<li><strong>Server Settings</strong><ul>
+		<li><strong>Global</strong>:<ul>
+			<li>verify license shown; if not, fetch and copy</li>
+			<li>Default Timezone: verify</li>
+			<li>Date Fields Format: ISO date (2000.12.31)</li>
+			<li>enable email notifications; provide host (smtp.cox.net), username, password</li>
+		</ul></li>
+		<li><strong>Backups</strong>: to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
+	</ul></li>
+	<li>Access Settings<ul>
+
+	</ul></li>
+</ul>
+
+<!-- @marker "Install Tool to Server" -->
+<h4 id='InstallTooltoServer_'>Install Tool to Server</h4><ul>
+	<li>Download latest *.zip package from Jetbrains</li>
+	<li>Place downloaded package in /Volumes/Servers/jb/&lt;Tool&gt;; expand at that location</li>
+	<li><span class="mono">cd &lt;path/to/&lt;Tool&gt;&gt;; bin/&lt;Tool&gt;.sh start</span></li>
+	<li>When welcome screen appears, select installation type 'Setup'</li>
+	<li>Setup Wizard<ul>
+		<li>Select Hub Service (except when installing Hub)<ul>
+			<li>path: 'http://carols-imac-2.local:8080/hub</li>
+			<li>set JetBrains password as password for admin account</li>
+		</ul></li>
+		<li>Confirm License<ul>
+			<li>save license key; confirm License restrictions; 'Finish'</li>
+		</ul></li>
+		<li>Web page opens; logged in as admin</li>
+	</ul></li>
+	<li>admin menu is now represented by a 'nut' (hexagonal) symbol</li>
+</ul>
+
+<!-- @marker "Improve Long-Term Stability" -->
+<h2>Improve Long-Term Stability</h2>
+<!-- @topicList "Improve Long-Term Stability" "ImproveStability_" -->
+<!-- @/topicList -->
+<p class="blurb">improve long-term stablilty of tools</p>
+
+
+<!-- @marker "Add Extensions" -->
+<h2>Add Extensions</h2>
+<!-- @topicList "Add Extensions" "AddExtensions_" -->
+<!-- @/topicList -->
+<p class="blurb">add extensions to support additional features</p>
+
+		<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
