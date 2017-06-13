@@ -5,7 +5,7 @@
 # For more information about these settings, or about the many additional settings available,
 #	see Support/BuildSupport/Doxygen/Default.doxygen or the Doxygen application.
 
-PROJECT_NAME			= Support
+PROJECT_NAME			= DevSupport
 OUTPUT_DIRECTORY		= $(HOME)/Library/CCDev/Sites/Doxygen/DevSupport
 STRIP_FROM_PATH			= $(HOME)/Dev/DevSupport
 EXTRACT_ALL				= YES
