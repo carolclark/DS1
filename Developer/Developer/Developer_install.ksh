@@ -137,7 +137,7 @@ function getSubtargetDestination {
 			destinationFolder="${applescriptsFolder}"
 			;;
 		"JetBrains" )
-			if [[ ${filepath} != "youtrack.jmvoptions" ]] ; then
+			if [[ ${filepath} == "youtrack.jmvoptions" ]] ; then
 				destinationFolder="/Volumes/Servers/jb/YouTrack/YouTrack_current/conf"
 			else
 				destinationFolder="${launchdaemonsFolder}"

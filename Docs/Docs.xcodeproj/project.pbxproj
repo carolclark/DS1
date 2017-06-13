@@ -64,6 +64,7 @@
 		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-1148.jpg"; sourceTree = "<group>"; };
+		965F8A6D1CD35ED444C92BBA /* JVBAdminIn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JVBAdminIn.html; sourceTree = "<group>"; };
 		965F8AF608AC68792F7415BC /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = file.ksh; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		965F8C9798E940E064E8D4AE /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
 		965F8D110C54EC79190CB9B0 /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
@@ -175,6 +176,7 @@
 				965F8331E1FC8ADB26343621 /* JetBrainsAdmin.html */,
 				965F88756EC76D8FC8228B96 /* DevSupport.html */,
 				965F8762FEE3692000438723 /* Glossary_DevSupport.html */,
+				965F8A6D1CD35ED444C92BBA /* JVBAdminIn.html */,
 			);
 			path = html;
 			sourceTree = "<group>";
