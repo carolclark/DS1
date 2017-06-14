@@ -41,6 +41,9 @@
 		div.wf-close {
 			border: 8px none purple;border-left-style: solid;
 		}
+		div.red {
+			text-decoration-color: crimson;
+		}
 	</style>
 </head>
 <body>
@@ -125,7 +128,7 @@
 			(<span class="mono">git checkout tags/&lt;latestVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></p>
 		<p>The three parts of the semantic version number are major release; minor release; bug fix. Hotfix branches correspond to bug fixes.</p>
 	</div>
-	<h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
+<h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
 <div style="page-break-before: always">
 	<!-- @marker "Feature Branch Workflow" -->
 	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature">
@@ -133,63 +136,59 @@
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
 				<h6>OpenTask</h6><ul>
-					<li>on master; test; [ commit, push ]</li>
-					<li>cleanup old branches, stashes</li>
+					<li>on master; test; [ commit, push ]; cleanup stashes</li>
+					<li>Terminal: status; check for unmerged branches; cleanup branches</li>
 					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master; test; push</li>
 					<li>or <strong>Existing Task</strong>: switch to task; test; merge in master; test; [commit; push]</li>
 				</ul></div>
-					<div class="indent2"><div class="wf-developCommit">
-						<h6><a name="wf_Develop">Develop</a></h6><ul>
-							<li>repeat to commit:<ul>
-								<li>edit; test; check for TODO's</li>
-								<li><span class="mono">status; add/stage</span>; if looping back, diff modifications</li>
+				<div class="indent2"><div class="wf-developCommit">
+					<h6><a name="wf_Develop">Develop</a></h6><ul>
+						<li>repeat to commit:<ul>
+							<li>repeat to all staged:<ul>
+								<li>edit; test; [diff modifications]</li>
+								<li>Terminal: git status; add/stage; diff --cached --check</li>
 							</ul></li>
-						</ul>
-						<h6>Commit</h6><ul>
-							<li>git: status; add all; [export IDE settings]</li>
-							<li>script <strong>ginfo.sh</strong>; includes <span class="mono">git difftool --cached --check</span></li>
-							<li>test; commit <em>for Commit: update message; deselect any files to be skipped; diff remaining files in changelist; commit</em><ul>
-								<li>if inspection issues: inspect code; <em><a href="#wf_Develop">Develop</a></em> to fix as indicated</li>
-							</ul></li>
-						</ul>
-						<h6>Push</h6><ul>
-							<li>check messages for indicated rebase:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git show --name-only; git lg</span></li>
-							<li>if indicated, squash and/or reword:&nbsp;&nbsp;VCS &gt; Rebase Commits...; test; run ginfo.sh</li>
-							<li>push $cb to remote tracking branch</li>
-						</ul>
-					</div></div>
+						</ul></li>
+					</ul>
+					<h6>Commit</h6><ul>
+						<li>check for todo's; check local changes,log; [export IDE settings]</li>
+						<li>test; commit; if inspection or todo issues, address as indicated</li>
+					</ul>
+					<h6>Push</h6><ul>
+						<li>check messages &amp; log for indicated rebase; if indicated, squash commits</li>
+						<li>push $cb to remote tracking branch</li>
+					</ul>
+				</div></div>
 			<div class='indent'><div class="wf-publish">
 				<h6>Publish</h6><ul>
-				<li><strong><em>StatusReport.sh</em></strong>; note especially comparisons master..$cb</li>
-				<li>switch to master; test; commit<ul>
-					<li>if master had changed (had something to commit): switch to branch $cb; push; merge master into $cb<ul>
+					<li>compare branch with master; address any potential merge issues</li>
+					<li>switch to master; test; commit; if changed: switch to $cb; push; merge master into $cb<ul>
 						<li>if branch changed: test; commit</li>
 					</ul></li>
-				</ul></li>
-				<li>from master: merge in branch $cb; test; [commit]; PUSH</li>
-				<li>[GitHub: update notes in <em>milestone: nextVersion</em>]</li>
-				<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
-				<li>if task complete, delete task and local branch</li>
-			</ul></div></div>
+					<li>from master: merge in branch $cb; test; [commit]; <span class="red">PUSH</span></li>
+					<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
+					<li>if task complete, delete task and local branch</li>
+				</ul></div>
+			</div></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
 				<div class="wf-mergeReview">
+				<h6>Initiate Review</h6><ul>
+					<li>master branch; check VCS log</li>
+					<li>change issue's status from 'SwimIssue' to 'needs review'</li>
+				</ul>
 				<h6>Review</h6><ul>
-					<li>master branch; <strong><em>ginfo.sh</em></strong>; note especially status clear</li>
-					<li>change issue's <span class="depr">Waffle label from 'Waffle:in progress' to 'Waffle:needs review'; refresh</span>
-						status from 'in progress' to 'needs review'</li>
 					<li>review code; add issues as indicated</li>
 				</ul></div>
 				<div class="wf-close">
 				<h6>Code Review Complete: Close Issue</h6><ul>
-					<li><strong><em>ginfo.sh</em></strong>; note especially unmerged branches</li>
 					<li>test; check for unmerged branches, pending stashes</li>
 					<li>close issue</li>
 					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
 			</div></div>
 			<h5>[Archive Repository]</h5>
-		</div></div></div>
-
+	</div>
+</div>
 <div style="page-break-before: always">
 	<!-- @marker "Release and Hotfix Branches" -->
 	<div style="background-color: #e2faff">
@@ -349,7 +348,7 @@
 
 		<!-- @marker "emacs Commands" -->
 		<h6 id='emacsCommands'>emacs Commands</h6><ul>
-			<li>save: rX-S; exit: rX-C; kill: rK</li>
+			<li>save: rX-S; exit: rX-rC; kill: rK</li>
 			<li>cut: rW; copy: oW; paste: rY</li>
 		</ul>
 
