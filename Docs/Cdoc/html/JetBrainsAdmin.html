@@ -30,7 +30,7 @@
 		<!-- @topicItem "TeamCity Server icon" "https://hub.docker.com/r/jetbrains/teamcity-server/" "0" "" -->
 		<!-- @topicItem "Troubleshooting TeamCity Installation" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation" "0" "" -->
 		<!-- @topicItem "Scheduling Tasks with Cron Jobs" "https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800_" "0" "" -->
-		<!-- @topicItem "TeamCity: Creating Backup via maintainDB command-line tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool_" "0" "" -->
+		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
 <!-- @/topicList -->
 
 <h2 class="promote" id="Overview_">JetBrains Development Overview</h2><ul>
@@ -68,8 +68,8 @@
 
 <h3 id="Agile_">Agile Development</h3>
 	<p>Our process is very similar to standard test-first agile development,
-	but with a more relaxed approach toward time management and deadlines. Instead of 'sprints',
-	we use 'gaggles', we use a time estimate, not a deadline.</p>
+	but with a more relaxed approach toward time management and deadlines. Instead of time-pressure inducing 'sprints',
+	we use 'gaggles', with a time estimate, not a deadline.</p>
 	<div class="paragraphs">
 		<h4>Gaggle</h4><ul>
 			<li>target dates are established, but are normally adjusted if and when indicated
@@ -97,7 +97,8 @@
 <!-- @/topicList -->
 
 <!-- @marker "HubRing:  Configuration" -->
-<h3 id="HubRingConfiguration_">HubRing:  Configuration</h3><ul>
+<h3 id="HubRingConfiguration_">HubRing: Configuration</h3><ul>
+	<li class="ital">see <a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a></li>
 	<li><strong>Users</strong><ul>
 		<li>add 'carolclark':<ul>
 			<li>click our gravitar image</li>
@@ -114,10 +115,6 @@
 					<li>Role: read</li>
 					<li>User: create; read self; read user; update self</li>
 					<li>User Group: create, delete, read, update</li>
-				</ul></li>
-				<li>add additional permissions<ul>
-					<li>add permissions 'Low-Level Admin', 'Low-Level Read Admin'</li>
-					<li>Project: create, delete</li>
 				</ul></li>
 			</ul></li>
 		</ul></li>
@@ -145,7 +142,7 @@
 		<li>Security and Authorization: user name 'carolclark'; password cox</li>
 		<li>enable notification; send test message</li>
 	</ul></li>
-	<li>JVM Options: no changes</li>
+	<li><strong>JVM Options</strong>: no changes</li>
 </ul>
 
 <!-- @marker "YouTrack: Configuration" -->
@@ -168,12 +165,29 @@
 			<li><strong>VCS configurations</strong>: new GitHub integration</li>
 		</ul></li>
 	</ul></li>
-	<li><strong>Time Tracking</strong><ul>
-		<li>enable time tracking</li>
-		<li>Hours per ideal day: 6</li>
-		<li>add work types Design, Management (Backlog refinement), Admin</li>
+	<li><strong>JVM</strong> Java virtual machine<ul>
+		<li>stop YouTrack service<ul>
+			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
+			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
+		</ul></li>
+		<li>if necessary, create file youtrack.jvmoptions<ul>
+			<li>copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist" to Jetbrains/YouTrack/youtrack.jvmoptions</li>
+			<li>configure JVM<ul>
+				<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
+				<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
+				<li>also if needed for performance:<ul>
+					<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
+				</ul></li>
+			</ul></li>
+			<li>configure general options<ul>
+				<li>jetbrains.youtrack.mailLimit: 25</li>
+				<li>for additional configuration options, see
+					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
+			</ul></li>
+		</ul></li>
+		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
+		<li>start YouTrack service: <span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
 	</ul></li>
-	<li>if indicated, change version string in youtrack alias</li>
 </ul>
 
 <!-- @marker "UpSource:  Configuration" -->
@@ -185,12 +199,6 @@
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
 <!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
-	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Admin Tasks and Info" -->
-<h2 class="promote">Admin Tasks and Info</h2>
-<!-- @topicList "Admin Tasks and Info" "AdminTasksandInfo_" -->
 	<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
 	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
@@ -199,15 +207,11 @@
 
 <!-- @marker "Create Project" -->
 <h3 id="CreateProject_">Create Project</h3><ul>
-	<li><a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></li>
+	<li>see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></li>
 </ul>
 <p class="blurb">add active projects and Agile boards</p>
-<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
-<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
-</a></p>
-<!-- @marker "Add Project with Agile Boards" -->
-<h3 id='AddProjectwithAgileBoard_'>Add Project with Agile Board</h3><ul>
-	<li>YouTrack: create project<ul>
+<h4 id='AddProjectwithAgileBoard_'>Add Project with Agile Board</h4><ul>
+	<li>YouTrack: (Hub?) create project<ul>
 		<li>for project already in GitHub, check VCS for last issue number already used</li>
 		<li>create project from Scrum template</li>
 		<li>edit custom fields<ul>
@@ -223,6 +227,10 @@
 	</ul></li>
 	<li><strong>Custom Fields and Workflows</strong></li>
 </ul>
+
+<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
+<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
+</a></p>
 
 <!-- @marker "Command-Line Tools" -->
 <h3 id="CommandLineTools_">Command-Line Tools</h3>
@@ -385,11 +393,11 @@ Therefore, install all TeamTools before adding any projects.</p>
 			<li>Hub opens; Login as admin; admin/setup menu is on hexagonal nut icon</li>
 		</ul></li>
 		<li>continue to <a href="#HubRingConfiguration_">HubRing Configuration</a></li>
-	</ul>
+	</ul></li>
+</ul>
 
 <!-- @marker "YouTrack: Basic 2017-06" -->
-<h4 id="YouTrackBasic2017-06_">YouTrack: Basic 2017-06</h4>
-<ul>
+<h4 id="YouTrackBasic2017-06_">YouTrack: Basic 2017-06</h4><ul>
 	<li>Download standalone version from YouTrack Download; compress if not in archive form</li>
 	<li>Place .*zip package in /Volumes/Servers/jb/YouTrack; expand at that location</li>
 	<li><span class="mono">cd &lt;path/to/YouTrack&gt;/bin; youtrack.sh run</span></li>
@@ -420,18 +428,12 @@ Therefore, install all TeamTools before adding any projects.</p>
 
 <!-- @marker "TeamCity: Basic 2017-06" -->
 <h4 id="TeamCityBasic2017-06_">TeamCity: Basic 2017-06</h4>
-<!-- @marker "Install TeamCity Server" -->
-<h3 id='TC_installConfig'>Install TeamCity Server</h3>
-<h4 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h4><ul>
+<h6 id='ProvideDependencies_'>Provide Dependencies; includes MySQL</h6><ul>
 	<li>install or check for updates as indicated:<ul>
 		<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
 			Supported Platforms and Environments</a></li>
 		<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
 		<li><a href="Tools.html#_Java">Java</a></li>
-		<li><a href="MySQL.html#InstallandSetUpMySQL_">MySQL</a></li>
-	</ul></li>
-	<li>if necessary, <a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a><ul>
-		<li>includes install; initialize data directory; test; secure initial accounts</li>
 	</ul></li>
 
 	<li style="padding-top: 10px;"><strong>Unpack Archive</strong><ul>
@@ -481,10 +483,10 @@ Therefore, install all TeamTools before adding any projects.</p>
 <!-- @marker "Complete Team Tools 2017-06" -->
 <h3>Complete Team Tools 2017-06</h3>
 <!-- @topicList "Complete Team Tools 2017-06" "CompleteTeamTools2017-06_" -->
-<!-- @topicItem "HubRing: Complete 2017-06" "#HubRingComplete2017-06_" "0" "" -->
-<!-- @topicItem "YouTrack: Complete 2017-06" "#YouTrackComplete2017-06_" "0" "" -->
-<!-- @topicItem "UpSource: Complete 2017-06" "#UpSourceComplete2017-06_" "0" "" -->
-<!-- @topicItem "TeamCity: Complete 2017-06" "#TeamCityComplete2017-06_" "0" "" -->
+	<!-- @topicItem "HubRing: Complete 2017-06" "#HubRingComplete2017-06_" "0" "" -->
+	<!-- @topicItem "YouTrack: Complete 2017-06" "#YouTrackComplete2017-06_" "0" "" -->
+	<!-- @topicItem "UpSource: Complete 2017-06" "#UpSourceComplete2017-06_" "0" "" -->
+	<!-- @topicItem "TeamCity: Complete 2017-06" "#TeamCityComplete2017-06_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "HubRing: Complete 2017-06" -->
@@ -508,62 +510,62 @@ Therefore, install all TeamTools before adding any projects.</p>
 			<li>restart computer</li>
 			<li>Safari: localhost:8111 should show TeamCity window</li>
 		</ul></li>
-	</ul>
-
-	<ul>
-		<li><strong>Set TeamCity's Data Directory</strong><ul>
+		<li id="SetTeamCitysDataDirectory_"><strong>Set TeamCity's Data Directory</strong><ul>
 			<li>Create New File for Startup Properties<ul>
 				<li class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-					&gt;r /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
+					&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
 			</ul></li>
 		</ul></li>
+		<li><a href="MySQL.html#InstallandSetUpMySQL_"><strong>Install and Set Up MySQL</strong></a><ul>
+			<li>includes install; initialize data directory; test; secure initial accounts</li>
+		</ul></li>
 	</ul>
-<!-- @marker "Integrate MySQL and TeamCity Servers" -->
-<h4 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h4><ul>
-	<li>MySQL server side<ul>
-		<li><a href="MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
-	</ul></li>
-	<li>TeamCity server side<ul>
-		<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Create TeamCityDB" -->
-<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
-	<li>create TeamCity database<ul>
-		<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
-	</ul></li>
-	<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
-		<li class="blurb">localhost:8111</li>
-		<li>user: carolclark; password</li>
-		<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
-		<li>startup page configuration<ul>
-			<li><strong>smtp</strong>: smpt host: smpt.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
-			<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
-			<li><strong>user</strong>: username: carolclark; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
+	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
+	<h4 id='IntegrateMySQLandTeamCityServers_'>Integrate MySQL and TeamCity Servers</h4><ul>
+		<li>MySQL server side<ul>
+			<li><a href="MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
 		</ul></li>
-		<li>click user name for profile page<ul>
-			<li>user name and email</li>
-			<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
-				Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
-			<li>VCS User Names: add carolclark@cox.net</li>
+		<li>TeamCity server side<ul>
+			<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
 		</ul></li>
-		<li>Administration<ul>
-			<li>configure backups *WARNING* backups currently not run automatically</li>
+	</ul>
+
+	<!-- @marker "Create TeamCityDB" -->
+	<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
+		<li>create TeamCity database<ul>
+			<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
 		</ul></li>
-		<li>build number: &lt;version&gt;.b%build.counter%</li>
-	</ul></li>
+		<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
+			<li class="blurb">localhost:8111</li>
+			<li>user: carolclark; password</li>
+			<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
+			<li>startup page configuration<ul>
+				<li><strong>smtp</strong>: smpt host: smpt.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
+				<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
+				<li><strong>user</strong>: username: carolclark; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
+			</ul></li>
+			<li>click user name for profile page<ul>
+				<li>user name and email</li>
+				<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
+					Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
+				<li>VCS User Names: add carolclark@cox.net</li>
+			</ul></li>
+			<li>Administration<ul>
+				<li>configure backups *WARNING* backups currently not run automatically</li>
+			</ul></li>
+			<li>build number: &lt;version&gt;.b%build.counter%</li>
+		</ul></li>
 
-	<li style="padding-top: 10px;"><strong>Prevent Creation of Dummy Admin User</strong><ul>
-		<li class="mono">echo "teamcity.installation.completed=true" >> /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
-	</ul></li>
-</ul>
+		<li style="padding-top: 10px;"><strong>Prevent Creation of Dummy Admin User</strong><ul>
+			<li class="mono">echo "teamcity.installation.completed=true" >> /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
+		</ul></li>
+	</ul>
 
-<!-- @marker "Store Project Settings in Version Control" -->
-<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
+	<!-- @marker "Store Project Settings in Version Control" -->
+	<h4 id='StoreProjectSettingsinVCS_'>Store Project Settings in Version Control</h4><ul>
 	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
 		Store Project Settings in Version Control</a></li>
-</ul>
+	</ul>
 
 <!-- @marker "Extend Team Tools 2017-06" -->
 <h3>Extend Team Tools 2017-06</h3>
@@ -611,8 +613,7 @@ Therefore, install all TeamTools before adding any projects.</p>
 		</ul></li>
 		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
 		<li>start YouTrack service: <span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
-	</ul></li>
-</ul>
+	</ul>
 
 
 	<!-- @marker "UpSource: Extend 2017-06" -->
@@ -647,6 +648,7 @@ Therefore, install all TeamTools before adding any projects.</p>
 				<li>Upgrade; login as admin</li>
 			</ul></li>
 		</ul></li>
+		<li>.bashrc: change version string in &lt;tool&gt; alias</li>
 	</ul>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
