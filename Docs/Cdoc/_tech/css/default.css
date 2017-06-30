@@ -102,6 +102,20 @@
 	.navright {						/* top-right button */
 		text-align: right;
 	}
+/* sublist */
+	.subli5 {
+		margin-left: 24px;
+	}
+	.subli5 p {
+		font-weight: bold;		<!-- does not work; using &lt;strong&gt; in context -->
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 0;
+	}
+	.subli5 ul {
+		margin-top: -10px;		<!-- does not work; using as style in context -->
+	}
+
 /* class */
 	.classholder {
 		margin-left: 10px;

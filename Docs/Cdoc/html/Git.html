@@ -363,6 +363,7 @@
 	<!-- @topicItem "Master Branch" "#tsk_MasterBranch" "1" "" -->
 	<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
 	<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
+	<!-- @topicItem "Commit" "#tsk_Commit_" "0" "" -->
 	<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
 	<!-- @topicItem "Remove Repository File(s)" "#Remove_Repository_File_" "1" "" -->
 	<!-- @topicItem "Bisect" "#tsk_Bisect" "1" "" -->
@@ -429,7 +430,6 @@
 	<li><span class='mono'>git stash show [stash@{n}]</span>&nbsp;&nbsp;# show details for the top or a specified stash</li>
 </ul>
 
-<p><br /><br /><br /><br /><br /></p>
 <!-- @marker "Diff" -->
 <h4 id="tsk_Diff">Diff</h4>
 	<h5>Diff Commands</h5><ul>
@@ -463,6 +463,16 @@
 			</ul></li>
 		</ul></li>
 	</ul>
+
+<!-- @marker "Commit" -->
+<h4 id="tsk_Commit_">Commit</h4><ul>
+	<li class="blurb">Commit from Terminal when committing cached items only, which IntelliJ platform does not support.</li>
+	<li>diff between branch and cached files:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git difftool --cached (gdc)</span></li>
+	<li>edit TextEdit file "${CCDev}/tmp/msg.txt" to contain git message</li>
+	<li>dry-run commit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git commit --dry-run [--amend] -F ${CCDev}/tmp/msg.txt</span></li>
+	<li>commit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git commit [--amend] -F ${CCDev}/tmp/msg.txt</span></li>
+	<li>before pushing, diff log of this commit from IDE</li>
+</ul>
 
 <!-- @marker "Tag" -->
 <h4 id="tsk_Tag">Tag</h4><ul>
