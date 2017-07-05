@@ -33,20 +33,16 @@
 		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
 <!-- @/topicList -->
 
-<h2 class="promote" id="Overview_">JetBrains Development Overview</h2><ul>
-	<li>For most tasks in our development process, we use JetBrains products.<ul>
+<h2 class="promote" id="Overview_">JetBrains Development Overview</h2>
+	<p class="sl5">JetBrains: primary tools for our development process</p><ul class="sl4">
 		<li>available IDE's for development languages:<ul>
 			<li>IntelliJ IDEA: flagship development environment for Java<ul>
 				<li>best support for related languages, project structure with modules, ...</li>
-				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDs</li>
-				</ul></li>
+				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
+				<li>better choice for bash, html, AppleScript</li>
+			</ul></li>
 			<li>AppCode (already in use): primary support for Objective-C(++); plugins for unix and AppleScript<ul>
 				<li>project structure based on Xcode =&gt; no module support, limitations for other plug-ins and features</li>
-			</ul></li>
-			<li>IntelliJ IDEA<ul>
-				<li>primary languages is Java, which we do not use it this time; also the most powerful IDE for tasks in other languages</li>
-				<li>supports modular project structure</li>
-				<li>better choice for bash, html, AppleScript</li>
 			</ul></li>
 			<li>other languages/IDEs<ul>
 				<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
@@ -64,12 +60,11 @@
 			<li>The complete team tool suite</li>
 			<li>AppCode for Cocoa projects; IDEA by default for other languages; add specialized products for other languages as indicated</li>
 		</ul></li>
-	</ul></li>
 	</ul>
 
 <h4 id="Agile_">Agile Development</h4>
 	<p>Our process is very similar to standard test-first agile development,
-	but with a more relaxed approach toward time management and deadlines. Instead of time-pressure inducing 'sprints',
+	but with a more relaxed approach toward time management and deadlines. Instead 'sprints' to provide time pressure,
 	we use 'gaggles', with a time estimate, not a deadline.</p>
 		<h4>Gaggle</h4><ul>
 			<li>We expect 'Gaggle' to contribute to a less stressful development environment</li>
@@ -77,12 +72,15 @@
 				toward the actual time needed</li>
 			<li>We expect to learn to make better estimates of time required as we use this technique</li>
 			<li>For larger tasks as indicated, a required-dependency task is used to gather information and estimate</li>
-			<li>YouTrack's 'fix version' field is intended to identify cards for a version number and a scrum.
-				We prefer to establish the version number when the product is ready for 'release',
-				as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-				on which our <a href="Git.html#Branches_Releases_">versioning plan</a> is based.
-				Use 'fix version', which may be 'next', for versions with complete form vMaj.min.fix.
-				New field 'gaggle' identifies cards (geese?) for a Gaggle.</li>
+			<li>YouTrack's 'fix version' field is intended to identify cards for a version number and a scrum.<ul>
+				<li>We prefer to establish the version number when the product is ready for 'release',
+					as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+					on which our <a href="Git.html#Branches_Releases_">versioning plan</a> is based.</li>
+				<li>Field 'fix version' target is complete form vMaj.min.fix</li>
+					<li>New field 'gaggle' identifies cards (geese?) for a Gaggle<ul>
+						<li>'current', 'next', etc. identify current and future gaggles (if it fits)</li>
+					</ul></li>
+			</ul></li>
 		</ul>
 
 <!-- @marker "Team Tools Configuration" -->
@@ -97,14 +95,15 @@
 <!-- @marker "HubRing: Configuration" -->
 <h3 id="HubRingConfiguration_">HubRing: Configuration</h3><ul>
 	<li class="ital">see <a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a></li>
-	<li><strong>Users</strong><ul>
+	</ul>
+	<p class="sl6">Users</p><ul class="sl6">
 		<li>add 'carolclark':<ul>
 			<li>click our gravitar image</li>
 			<li>add and verify email address</li>
 			<li>do not force change password</li>
 		</ul></li>
-	</ul></li>
-	<li><strong>Roles</strong><ul>
+	</ul>
+	<p class="sl6">Roles</p><ul class="sl6">
 		<li>add role 'All Projects Admin'<ul>
 			<li>Permissions<ul>
 				<li>match permissions of role Project Admin<ul>
@@ -116,31 +115,45 @@
 				</ul></li>
 			</ul></li>
 		</ul></li>
-	</ul></li>
-	<li><strong>Groups</strong>: add group All Projects Admin with role all-projects-admin</li>
-	<li><strong>Users</strong>: add user carolclark to group All Projects Admin</li>
-	<li><strong>Auth Modules</strong><ul>
+	</ul>
+	<p class="sl6">Groups</p><ul class="sl6">
+		<li>add group All Projucts Admin with role all-projects-admin</li>
+	</ul>
+	<p class="sl6">Users</p><ul class="sl6">
+		<li>add user carolclark to group All Projects Admin</li>
+	</ul>
+	<p class="sl6">Auth Modules</p><ul class="sl6">
 		<li>Hub: Built-in Authorization<ul>
 			<li>Registration: Disabled (admin must add new users)</li>
-			<li class="ital">can also test login combinations from this page</li>
+			<li>test login combinations</li>
 		</ul></li>
-		<li>GitHub:<ul>
-			<li>Server URL: https://github.com</li>
-			<li>User Creation: Disabled</li>
-			<li>Enable Module</li>
-			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
-			<li>enable</li>
-	</ul></li>
-	</ul></li>
-	<li><strong>System Settings</strong>: login timeout 12 hours; remember me for 1 year</li>
-	<li><strong>Backups</strong>: to '/Volumes/Mavericks-1/JetBrains_backups; zip format; every day at 2 AM; rotation 5</li>
-	<li><strong>SMTP</strong>:<ul>
-			<li>host smtp.cox.net; from carolclark@cox.net</li>
-			<li>user carolclark; password: cox</li>
-			<li>Security and Authorization: user name 'carolclark'; password cox</li>
+	</ul>
+	<p class="sl6">GitHub</p><ul class="sl6">
+		<li>Server URL: https://github.com</li>
+		<li>User Creation: Disabled</li>
+		<li>Enable Module</li>
+		<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
+		<li>enable</li>
+	</ul>
+	<p class="sl6">System Settings</p><ul class="sl6">
+		<li>login timeout 12 hours</li>
+		<li>remember me for 1 year</li>
+	</ul>
+	<p class="sl6">Backups</p><ul class="sl6">
+		<li>to '/Volumes/Mavericks-1/JetBrains_backups</li>
+		<li>zip format</li>
+		<li>every day at 2 AM</li>
+		<li>rotation 5</li>
+	</ul>
+	<p class="sl6">SMTP</p><ul class="sl6">
+		<li>host smtp.cox.net; from carolclark@cox.net</li>
+		<li>user carolclark; password: cox</li>
+		<li>Security and Authorization: user name 'carolclark'; password cox</li>
 		<li>enable notification; send test message</li>
-	</ul></li>
-	<li><strong>JVM Options</strong>: no changes</li>
+	</ul>
+	<p class="sl6">Java virtual machine (JVM) Options</p><ul class="sl6">
+		<li>no changes</li>
+	</ul>
 </ul>
 
 <!-- @marker "YouTrack: Configuration" -->

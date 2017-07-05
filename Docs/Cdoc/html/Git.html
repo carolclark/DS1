@@ -155,17 +155,16 @@
 						<li>test; commit; if inspection or todo issues, address as indicated</li>
 					</ul>
 					<h6>Push</h6><ul>
-						<li>check messages &amp; log for indicated rebase; if indicated, squash commits</li>
+						<li>check messages in log for indicated rebase; if indicated, squash commits</li>
 						<li>push $cb to remote tracking branch</li>
 					</ul>
 				</div></div>
 			<div class='indent'><div class="wf-publish">
 				<h6>Publish</h6><ul>
-					<li>compare branch with master; address any potential merge issues</li>
-					<li>switch to master; test; commit; if changed: switch to $cb; push; merge master into $cb<ul>
-						<li>if branch changed: test; commit</li>
+					<li>check for changes to master since this branch was created: <span class="mono">gl ..master</span> and/or <span class="mono">gdn ...master</span><ul>
+						<li>if master changed: merge master into branch; test; commit</li>
 					</ul></li>
-					<li>from master: merge in branch $cb; test; [commit]; <span class="red">PUSH</span></li>
+					<li>checkout master; test; merge in branch $cb; test; commit; <span class="red">PUSH</span></li>
 					<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
 					<li>if task complete, delete task and local branch</li>
 				</ul></div>

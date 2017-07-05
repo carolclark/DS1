@@ -103,50 +103,40 @@
 		text-align: right;
 	}
 /* sublist */
-	.sl4 p {
-		font-size: 18px;
+	p.sl4 {
+		margin-top: 0;
+		margin-bottom: 4px;
+		margin-left: 18px;
+		font-size: 14px;
 		font-weight: bold;
 		border-bottom: 1px solid #aaaaaa;
 		width: 30%;
-		margin-left: 18px;
-		margin-bottom: 4px;
 	}
-	.sl4 ul {
-		margin-left: 12px;
+	ul.sl4 {
 		margin-top: 0;
+		margin-left: 12px;
 	}
-	.sl5 p {
-		font-size: 18px;
-		font-weight: bold;
+	p.sl5 {
+		margin-top: 0;
+		margin-bottom: 2px;
 		margin-left: 18px;
-		margin-bottom: -6px
-	}
-	.sl5 ul {
-		margin-left: 18px;
-		margin-top: 8px;
-	}
-	.sl6 p {
 		font-size: 14px;
 		font-weight: bold;
-		margin-left: 36px;"
-		margin-bottom: -6px;
 	}
-	.sl6 ul {
-		margin-left: 36px;
-		margin-top: 8px;
-	}
-	/* earlier try */
-	.subli5 {
-		margin-left: 24px;
-	}
-	.subli5 h5 {
-		font-weight: bold;		<!-- does not work; using &lt;strong&gt; in context -->
+	ul.sl5 {
 		margin-top: 0;
-		margin-bottom: 0;
-		padding: 0;
+		margin-left: 18px;
 	}
-	.subli5 ul {
-		margin-top: -10px;		<!-- does not work; using as style in context -->
+	p.sl6 {
+		margin-top: 0;
+		margin-bottom: 2px;
+		margin-left: 36px;
+		font-size: 12px;
+		font-weight: bold;
+	}
+	ul.sl6 {
+		margin-top: 0;
+		margin-left: 36px;
 	}
 
 /* class */
