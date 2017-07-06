@@ -63,7 +63,7 @@
 <!-- @/topicList -->
 
 <!-- @marker "Branches and Releases" -->
-<h2>Branches and Releases</h2>
+<h2 class="Branches_Releases_">Branches and Releases</h2>
 <!-- @topicList "Branches and Releases" "Branches_Releases_" -->
 	<!-- @topicItem "Feature Branches" "#FeatureBranches_" "0" "" -->
 	<!-- @topicItem "Release Branches" "#ReleaseBranches_" "0" "" -->
@@ -71,8 +71,9 @@
 <!-- @/topicList -->
 
 <div class="paragraphs">
-	<p>Repositories are hosted at GitHub. Work is organized with JetBrains Tasks associated with GitHub issues.
+	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues.
 	YouTrack Epic issues with swimlanes group other issues into larger goals.</p>
+	<p>Tasks are a fundamental element in our workflow. AppCode, our primary IDE, supports Tasks, each normally associated with a YouTrack task.</p>
 	<p>YouTrack Agile boards, one each for backlog refinement and for development, help us to organize our work on epics, features and tasks.</p>
 	<p>AppCode projects are dependent on Xcode's project format, so projects in Objective-C/C++ are first created in Xcode.</p>
 </div>
@@ -154,17 +155,16 @@
 						<li>test; commit; if inspection or todo issues, address as indicated</li>
 					</ul>
 					<h6>Push</h6><ul>
-						<li>check messages &amp; log for indicated rebase; if indicated, squash commits</li>
+						<li>check messages in log for indicated rebase; if indicated, squash commits</li>
 						<li>push $cb to remote tracking branch</li>
 					</ul>
 				</div></div>
 			<div class='indent'><div class="wf-publish">
 				<h6>Publish</h6><ul>
-					<li>compare branch with master; address any potential merge issues</li>
-					<li>switch to master; test; commit; if changed: switch to $cb; push; merge master into $cb<ul>
-						<li>if branch changed: test; commit</li>
+					<li>check for changes to master since this branch was created: <span class="mono">gl ..master</span> and/or <span class="mono">gdn ...master</span><ul>
+						<li>if master changed: merge master into branch; test; commit</li>
 					</ul></li>
-					<li>from master: merge in branch $cb; test; [commit]; <span class="red">PUSH</span></li>
+					<li>checkout master; test; merge in branch $cb; test; commit; <span class="red">PUSH</span></li>
 					<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
 					<li>if task complete, delete task and local branch</li>
 				</ul></div>
@@ -362,6 +362,7 @@
 	<!-- @topicItem "Master Branch" "#tsk_MasterBranch" "1" "" -->
 	<!-- @topicItem "Stash" "#tsk_Stash" "1" "" -->
 	<!-- @topicItem "Diff" "#tsk_Diff" "1" "" -->
+	<!-- @topicItem "Commit" "#tsk_Commit_" "0" "" -->
 	<!-- @topicItem "Tag" "#tsk_Tag" "1" "" -->
 	<!-- @topicItem "Remove Repository File(s)" "#Remove_Repository_File_" "1" "" -->
 	<!-- @topicItem "Bisect" "#tsk_Bisect" "1" "" -->
@@ -428,7 +429,6 @@
 	<li><span class='mono'>git stash show [stash@{n}]</span>&nbsp;&nbsp;# show details for the top or a specified stash</li>
 </ul>
 
-<p><br /><br /><br /><br /><br /></p>
 <!-- @marker "Diff" -->
 <h4 id="tsk_Diff">Diff</h4>
 	<h5>Diff Commands</h5><ul>
@@ -462,6 +462,16 @@
 			</ul></li>
 		</ul></li>
 	</ul>
+
+<!-- @marker "Commit" -->
+<h4 id="tsk_Commit_">Commit</h4><ul>
+	<li class="blurb">Commit from Terminal when committing cached items only, which IntelliJ platform does not support.</li>
+	<li>diff between branch and cached files:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git difftool --cached (gdc)</span></li>
+	<li>edit TextEdit file "${CCDev}/tmp/msg.txt" to contain git message</li>
+	<li>dry-run commit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git commit --dry-run [--amend] -F ${CCDev}/tmp/msg.txt</span></li>
+	<li>commit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git commit [--amend] -F ${CCDev}/tmp/msg.txt</span></li>
+	<li>before pushing, diff log of this commit from IDE</li>
+</ul>
 
 <!-- @marker "Tag" -->
 <h4 id="tsk_Tag">Tag</h4><ul>
