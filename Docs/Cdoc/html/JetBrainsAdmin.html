@@ -34,14 +34,14 @@
 <!-- @/topicList -->
 
 <h2 class="promote" id="Overview_">JetBrains Development Overview</h2>
-	<p class="sl5">JetBrains: primary tools for our development process</p><ul class="sl4">
-		<li>available IDE's for development languages:<ul>
+	<p class="sl5">JetBrains: primary tools for our development process</p>
+		<p class="sl6">available IDE's for development languages:</p><ul class="sl6">
 			<li>IntelliJ IDEA: flagship development environment for Java<ul>
 				<li>best support for related languages, project structure with modules, ...</li>
 				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
 				<li>better choice for bash, html, AppleScript</li>
 			</ul></li>
-			<li>AppCode (already in use): primary support for Objective-C(++); plugins for unix and AppleScript<ul>
+			<li>AppCode (already in use): primary support for Cocoa/Objective-C(++); plugins for unix and AppleScript<ul>
 				<li>project structure based on Xcode =&gt; no module support, limitations for other plug-ins and features</li>
 			</ul></li>
 			<li>other languages/IDEs<ul>
@@ -49,17 +49,16 @@
 				<li>WebStorm (for html and javascript - we are currently using AppCode with sed(!!) instead of javascript)</li>
 				<li>PyCharm with Django; PHPStorm for Website indices; DataGrip for internal databases; MPS for DSL development</li>
 			</ul></li>
-		</ul></li>
-		<li>Team Tools for managing workflow and development process:<ul>
+		</ul>
+		<p class="sl6">Team Tools for managing workflow and development process:</p><ul class="sl6">
 			<li>YouTrack: issue tracking; agile development</li>
 			<li>TeamCity (previously in use): Continuous Integration</li>
 			<li>UpSource: code review</li>
 			<li>Hub, aka HubRing, to tie it all together</li>
-		</ul></li>
-		<li>We expect to use:<ul>
+		</ul>
+		<p class="sl6">We expect to use:</p><ul class="sl6">
 			<li>The complete team tool suite</li>
-			<li>AppCode for Cocoa projects; IDEA by default for other languages; add specialized products for other languages as indicated</li>
-		</ul></li>
+			<li>AppCode IDE for Cocoa projects; IntelliJ IDEA by default for other languages; add specialized products for other languages as indicated</li>
 	</ul>
 
 <h4 id="Agile_">Agile Development</h4>
@@ -124,7 +123,8 @@
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
 		<li>Hub: Built-in Authorization<ul>
-			<li>Registration: Disabled (admin must add new users)</li>
+			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
+			<li class="depr">Registration: Disabled (admin must add new users)</li>
 			<li>test login combinations</li>
 		</ul></li>
 	</ul>
@@ -149,60 +149,65 @@
 		<li>host smtp.cox.net; from carolclark@cox.net</li>
 		<li>user carolclark; password: cox</li>
 		<li>Security and Authorization: user name 'carolclark'; password cox</li>
-		<li>enable notification; send test message</li>
+		<li>send test message; enable notification</li>
 	</ul>
 	<p class="sl6">Java virtual machine (JVM) Options</p><ul class="sl6">
 		<li>no changes</li>
 	</ul>
-</ul>
 
 <!-- @marker "YouTrack: Configuration" -->
-<h3 id="YouTrackConfiguration_">YouTrack:  Configuration</h3><ul>
-	<li><strong>Server Settings</strong><ul>
-		<li><strong>Global</strong>:<ul>
+<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
+	<p class="sl5">Server Settings</p>
+		<p class="sl6">Global</p><ul class="sl6">
 		<li>verify license shown; if not, fetch and copy</li>
 		<li>Default Timezone: verify</li>
 		<li>Date Fields Format: ISO date (2000.12.31)</li>
 		<li class="dq">enable email notifications; provide host (smtp.cox.net), username, password</li>
-	</ul></li>
-	</ul></li>
-	<li><strong>Global Project-Related Settings</strong><ul>
-		<li>Access Settings<ul>
-				<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; zip format; every day at 2 AM; rotation 5</li>
-				<li><strong>VCS configurations</strong></li>
-				<li><strong>Access Management</strong><ul>
-					<li>add user carolclark to Group Project Admin</li>
-				</ul></li>
-				<li><strong>VCS configurations</strong>: new GitHub integration</li>
+		</ul>
+	<p class="sl5">Global Project-Related Settings</p>
+		<p class="sl6">Access Settings</p><ul class="sl6">
+			<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; zip format; every day at 2 AM; rotation 5</li>
+			<li><strong>VCS configurations</strong></li>
+			<li><strong>Access Management</strong><ul>
+				<li>add user carolclark to Group Project Admin</li>
 			</ul></li>
-		</ul></li>
-	<li><strong>JVM</strong> Java virtual machine<ul>
-		<li>stop YouTrack service<ul>
+			<li><strong>VCS configurations</strong>: new GitHub integration</li>
+		</ul>
+	<p class="sl5">Java virtual machine (JVM) Options</p>
+		<p class="sl6">stop YouTrack service</p><ul class="sl6">
 			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
 			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
-		</ul></li>
-		<li>if necessary, create file youtrack.jvmoptions<ul>
-			<li>copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist" to Jetbrains/YouTrack/youtrack.jvmoptions</li>
-			<li>configure JVM<ul>
+		</ul>
+		<p class="sl6">if necessary, create file youtrack.jvmoptions</p>
+		<p class="sl6">install youtrack.jvmoptions</p><ul class="sl6">
+			<li>@ &lt;path/to/YouTrack&gt;/conf</li>
+		</ul>
+		<p class="sl6">copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist"</p><ul class="sl6">
+			<li>to Jetbrains/YouTrack/youtrack.jvmoptions</li>
+		</ul>
+		<p class="sl6">configure JVM</p><ul class="sl6">
 				<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
 				<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
 				<li>also if needed for performance:<ul>
 					<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
 				</ul></li>
-			</ul></li>
 			<li>configure general options<ul>
 				<li>jetbrains.youtrack.mailLimit: 25</li>
 				<li>for additional configuration options, see
 					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
 			</ul></li>
-		</ul></li>
-		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
-		<li>start YouTrack service: <span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
-	</ul></li>
+		</ul>
+		<p class="sl6">install youtrack.jvmoptions</p><ul class="sl6">
+			<li>@ &lt;path/to/YouTrack&gt;/conf</li>
+		</ul>
+	<p class="sl6">start YouTrack service:</p><ul class="sl6">
+		<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
 </ul>
 
 <!-- @marker "UpSource: Configuration" -->
 <h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
+	<p class="blurb">see
+		<a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">Mysterious "Build System" Setting</a></p>
 
 <!-- @marker "TeamCity: Configuration" -->
 <h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
@@ -227,16 +232,15 @@
 	<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
 	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
-	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "description" -->
+	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
+	<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Create Project" -->
-<h3 id="CreateProject_">Create Project</h3><ul>
-	<li>see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></li>
-</ul>
-<p class="blurb">add active projects and Agile boards</p>
-<h4 id='AddProjectwithAgileBoard_'>Add Project with Agile Board</h4><ul>
-		<li>YouTrack: (Hub?) create project<ul>
+<h3 id="CreateProject_">Create Project with Agile Board</h3>
+	<p class="blurb">see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></p>
+	<h4 id='AddProjectwithAgileBoard_'>Add Project </h4><ul>
+		<li>Hub: create project<ul>
 			<li>for project already in GitHub, check VCS for last issue number already used</li>
 			<li>create project from Scrum template</li>
 			<li>edit custom fields<ul>
@@ -256,6 +260,12 @@
 <p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
 <p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
 </a></p>
+
+<!-- marker Install Build Agent -->
+<h3 id='InstallBuildAgent_'>Install Build Agent</h3><ul>
+	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
+		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
+</ul>
 
 <!-- @marker "Command-Line Tools" -->
 <h3 id="CommandLineTools_">Command Line Tools</h3>
@@ -416,12 +426,19 @@ Therefore, install all TeamTools before adding any projects.</p>
 		<!-- @topicItem "YouTrack: Basic 2017-06" "#YouTrackBasic2017-06_" "0" "" -->
 		<!-- @topicItem "UpSource: Basic 2017-06" "#UpSourceBasic2017-06_" "0" "" -->
 		<!-- @topicItem "TeamCity: Basic 2017-06" "#TeamCityBasic2017-06_" "0" "" -->
-				<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "0" "" -->
+			<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "1" "" -->
 	<!-- @/topicList -->
 
 	<!-- @marker "HubRing: Basic 2017-06" -->
 	<h4 id="HubRingBasic2017-06_">HubRing: Basic 2017-06</h4><ul>
-	<li>download from <a href="https://www.jetbrains.com/hub/download/#section=mac">Hub Download</a><ul>
+		<li class="blurb">Try: set backup location in setup; then backup; then configure<ul>
+			<li>If that works<ul>
+				<li>change others to match</li>
+				<li>TeamCity needs to also reset data location before backup</li>
+			</ul></li>
+			<li class="dq">also: do Team City dependencies actually apply to all products?</li>
+		</ul></li>
+		<li>download from <a href="https://www.jetbrains.com/hub/download/#section=mac">Hub Download</a><ul>
 			<li>Download the *.zip package from Jetbrains</li>
 			<li>Place downloaded package in /Volumes/Servers/jb/Hub; expand at that location</li>
 			<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh start</span></li>
@@ -442,7 +459,7 @@ Therefore, install all TeamTools before adding any projects.</p>
 	<!-- @marker "YouTrack: Basic 2017-06" -->
 	<h4 id="YouTrackBasic2017-06_">YouTrack: Basic 2017-06</h4><ul>
 		<li>Download standalone version from YouTrack Download; compress if not in archive form</li>
-		<li>Place .*zip package in /Volumes/Servers/jb/YouTrack; expand at that location</li>
+		<li>Place *.zip package in /Volumes/Servers/jb/YouTrack; expand at that location</li>
 		<li><span class="mono">cd &lt;path/to/YouTrack&gt;/bin; youtrack.sh run</span></li>
 		<li>When welcome screen appears, select 'Setup'</li>
 		<li>Setup Wizard<ul>
@@ -473,7 +490,7 @@ Therefore, install all TeamTools before adding any projects.</p>
 
 	<!-- @marker "TeamCity: Basic 2017-06" -->
 	<h4 id="TeamCityBasic2017-06_">TeamCity: Basic 2017-06</h4><ul>
-		<li style="padding-top: 10px;"><strong>Provide Dependencies; includes MySQL</strong><ul>
+		<li style="padding-top: 10px;"><strong>Provide Dependencies</strong><ul>
 			<li>install or check for updates as indicated:<ul>
 				<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
 					Supported Platforms and Environments</a></li>

@@ -118,7 +118,7 @@
 	}
 	p.sl5 {
 		margin-top: 0;
-		margin-bottom: 2px;
+		margin-bottom: 3px;
 		margin-left: 18px;
 		font-size: 14px;
 		font-weight: bold;
@@ -130,13 +130,13 @@
 	p.sl6 {
 		margin-top: 0;
 		margin-bottom: 2px;
-		margin-left: 36px;
+		margin-left: 42px;
 		font-size: 12px;
 		font-weight: bold;
 	}
 	ul.sl6 {
 		margin-top: 0;
-		margin-left: 36px;
+		margin-left: 42px;
 	}
 
 /* class */
