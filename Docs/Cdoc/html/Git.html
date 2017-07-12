@@ -137,7 +137,7 @@
 				<div class="wf-openTask">
 				<h6>OpenTask</h6><ul>
 					<li>on master; test; [ commit, push ]; cleanup stashes</li>
-					<li>Terminal: status; check for unmerged branches; cleanup branches</li>
+					<li>Terminal: status; check for unmerged branches <span class="mono">git branch --no-merged</span> ; cleanup branches</li>
 					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master; test; push</li>
 					<li>or <strong>Existing Task</strong>: switch to task; test; status; if different from master: merge in master; test; commit; push</li>
 				</ul></div>
@@ -169,6 +169,7 @@
 					</ul></li>
 					<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
 					<li>if task complete, delete task and local branch</li>
+					<li>switch to Default (master) task</li>
 				</ul></div>
 			</div></div>
 			<h5>Issue Tasks Complete</h5><div class='indent'>
