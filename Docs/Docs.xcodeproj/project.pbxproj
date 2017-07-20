@@ -57,9 +57,11 @@
 		965F8762FEE3692000438723 /* Glossary_DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_DevSupport.html; sourceTree = "<group>"; };
 		965F8793DFC358BE4D872124 /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
 		965F879A4CC12B5E0E783610 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
+		965F87B5206606E18B4CF5D2 /* BranchWorkflow_source.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BranchWorkflow_source.txt; sourceTree = "<group>"; };
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		965F87D13524A7E376D0EDDC /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F88756EC76D8FC8228B96 /* DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DevSupport.html; sourceTree = "<group>"; };
+		965F891DDAA092A8121A8B6E /* BranchWorkflow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BranchWorkflow.png; path = OtherDocuments/BranchWorkflow.png; sourceTree = SOURCE_ROOT; };
 		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-1148.jpg"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				965F8DE26B1292AAB0D3346A /* DrivePartitions */,
 				965F816F72396FF388545791 /* GitBranchingModel */,
 				965F82ACEA5C8859DD6025D9 /* ProjectSymbols.pcvd */,
+				965F87B5206606E18B4CF5D2 /* BranchWorkflow_source.txt */,
 			);
 			path = OtherDocuments;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			children = (
 				965F8331CE98CCBEC543DF86 /* GitBranchingModel.key */,
 				965F89565A695D5DC277C674 /* GitBranchingModelImages */,
+				965F891DDAA092A8121A8B6E /* BranchWorkflow.png */,
 			);
 			path = GitBranchingModel;
 			sourceTree = "<group>";
