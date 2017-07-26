@@ -41,6 +41,7 @@
 		67F24D751D11F30300CF9862 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
 		67F24D771D13264900CF9862 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
 		965F803622D42B6140D05477 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
+		965F80AB866B6111A8406CC1 /* Workflows.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = Workflows.pcvd; sourceTree = "<group>"; };
 		965F8125BE43F87CF012F727 /* AppCode.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AppCode.html; sourceTree = "<group>"; };
 		965F825D415F1A10047A3BAC /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
 		965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt0@2x-251.jpg"; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		965F82EBB3DBD095339E37C0 /* Support_doxygen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Support_doxygen.txt; sourceTree = "<group>"; };
 		965F82F1C702C096455B200D /* GitBranchingModel.002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.002.png; sourceTree = "<group>"; };
 		965F8331E1FC8ADB26343621 /* JetBrainsAdmin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrainsAdmin.html; sourceTree = "<group>"; };
+		965F83BF8298FCD4D30059A5 /* Workflows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Workflows.png; sourceTree = "<group>"; };
 		965F83CC93258AC741E2647F /* Partitions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Partitions.pdf; sourceTree = "<group>"; };
 		965F8413959BB1D1E8EE03D1 /* History_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History_Support.html; sourceTree = "<group>"; };
 		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		965F891DDAA092A8121A8B6E /* BranchWorkflow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BranchWorkflow.png; path = OtherDocuments/BranchWorkflow.png; sourceTree = SOURCE_ROOT; };
 		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
+		965F8A25D212F97850C0E9D6 /* Workflows_withParts.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = Workflows_withParts.pcvd; sourceTree = "<group>"; };
 		965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-1148.jpg"; sourceTree = "<group>"; };
 		965F8AF608AC68792F7415BC /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = file.ksh; path = Doxygen_install.ksh; sourceTree = "<group>"; };
 		965F8C9798E940E064E8D4AE /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
@@ -96,6 +99,9 @@
 				965F816F72396FF388545791 /* GitBranchingModel */,
 				965F82ACEA5C8859DD6025D9 /* ProjectSymbols.pcvd */,
 				965F87B5206606E18B4CF5D2 /* BranchWorkflow_source.txt */,
+				965F80AB866B6111A8406CC1 /* Workflows.pcvd */,
+				965F83BF8298FCD4D30059A5 /* Workflows.png */,
+				965F8A25D212F97850C0E9D6 /* Workflows_withParts.pcvd */,
 			);
 			path = OtherDocuments;
 			sourceTree = "<group>";
