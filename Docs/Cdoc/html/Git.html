@@ -41,8 +41,9 @@
 		div.wf-close {
 			border: 8px none purple;border-left-style: solid;
 		}
-		div.red {
-			text-decoration-color: crimson;
+		.gitcore {
+			color: crimson;
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -95,11 +96,9 @@
 <p id="BranchingDiagram">Feature, release, and hotfix branches are all represented in this diagram:</p>
 <div><img src="_img/GitBranchingModel.001.png" alt="Git Branching Model" style="width:600px;height:800px;" /></div>
 
-<p id="BranchWorkflow">Git Workflow diagram:</p>
-<div><img src="_img/BranchWorkflow.png" alt="Workflow Diagram" /></div>
-
-<p class="ital">* Origin/Branch is intended as a private backup of interim stages of our work.<br />
-	Keeping it private could be a problem in a multi-developer environment.</p>
+<div style="page-break-before: always"></div>
+<p id="GitBranchWorkflow">Git Workflow diagram:</p>
+<div><img src="_img/Workflows.png" alt="Workflows" /></div>
 
 <!-- @marker "Release Branches" -->
 <h4 id='ReleaseBranches_'>Release Branches</h4>
@@ -138,63 +137,64 @@
 <div style="page-break-before: always">
 	<!-- @marker "Feature Branch Workflow" -->
 	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature">
+		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push Branch</strong>:
+			push current local branch to its remote</p>
+		<p><span class="gitcore">&#8618;</span> <strong>Merge Master</strong>: checkout master;
+			fetch from origin/master, commit (pull); checkout branch; merge in master</p>
+		<p><span class="gitcore">&#8617;</span> <strong>Merge Branch</strong>: <span class="gitcore">&#8618;</span>;
+			checkout master; test; merge in branch; test; <span class="gitcore">&uarr;</span></p>
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
 				<h6>OpenTask</h6><ul>
-					<li>on master; test; [ commit, push ]; cleanup stashes</li>
-					<li>Terminal: status; check for unmerged branches <span class="mono">git branch --no-merged</span> ; cleanup branches</li>
-					<li><strong>New Task</strong>: create new task, with branch name ending in #&lt;issueID&gt; and based on master; test; push</li>
-					<li>or <strong>Existing Task</strong>: switch to task; test; status; if different from master: merge in master; test; commit; push</li>
+					<li>clean up stashes; <span class="gitcore">&#8618;</span></li>
+					<li><strong>New Task</strong>: create new task with branch name ending in
+						&lt;productID&gt;-&lt;issueID&gt;; test; push</li>
+					<li>or <strong>Existing Task</strong>:
+						switch to task; <span class="gitcore">&#8618;</span>; commit; <span class="gitcore">&uarr;</span></li>
 				</ul></div>
 				<div class="indent2"><div class="wf-developCommit">
-					<h6><a name="wf_Develop">Develop</a></h6><ul>
-						<li>repeat to commit:<ul>
-							<li>repeat to all staged:<ul>
-								<li>edit; test and inspect; [diff modifications]</li>
-								<li>Terminal: git status; add/stage; diff --cached --check</li>
-							</ul></li>
+				<h6><a name="wf_Develop">Develop</a></h6><ul>
+					<li>repeat to commit:<ul>
+						<li>repeat to all staged:<ul>
+							<li>edit; test and inspect; [diff modifications]; add/stage</li>
 						</ul></li>
-					</ul>
-					<h6>Commit</h6><ul>
-						<li>check for todo's; check local changes,log; [export IDE settings]</li>
-						<li>test; commit; if inspection or todo issues, address as indicated</li>
-					</ul>
-					<h6>Push</h6><ul>
-						<li>check messages in log for indicated rebase; if indicated, squash commits</li>
-						<li>push $cb to remote tracking branch</li>
-					</ul>
-				</div></div>
+					</ul></li>
+				</ul>
+				<h6>Commit</h6><ul>
+					<li>Terminal: <span class="mono">git status; git diff --cached --check</span></li>
+					<li>if [ whitespace issues | inspection issues | todo's | settings to export ]:
+						<span class="gitcore">&uarr;</span>; address as indicated</li>
+					<li>test; commit; <span class="gitcore">&uarr;</span>; <span class="gitcore">&#8618;</span>;
+						if changed: test; <span class="gitcore">&uarr;</span></li>
+				</ul>
+			</div></div>
 			<div class='indent'><div class="wf-publish">
-				<h6>Publish</h6><ul>
-					<li>check for changes to master since this branch was created: <span class="mono">gl ..master</span> and/or <span class="mono">gdn ...master</span><ul>
-						<li>if master changed: merge master into branch; test; commit</li>
-					</ul></li>
-					<li>checkout branch master; test; merge in branch $cb; test; commit; <span class="red">PUSH</span><ul>
-						<li class="blurb">Task not expected to change</li>
-					</ul></li>
-					<li>ensure merge complete: <span class="mono">git branch --no-merged</span>; address any unmerged branches</li>
-					<li>if task complete, delete task and local branch</li>
-					<li>switch to Default (master) task</li>
-				</ul></div>
-			</div></div>
-			<h5>Issue Tasks Complete</h5><div class='indent'>
-				<div class="wf-mergeReview">
-				<h6>Initiate Review</h6><ul>
-					<li>master branch; check VCS log</li>
-					<li>change issue's status from 'SwimIssue' to 'needs review'</li>
-				</ul>
-				<h6>Review</h6><ul>
-					<li>review code; add issues as indicated</li>
-				</ul></div>
-				<div class="wf-close">
-				<h6>Code Review Complete: Close Issue</h6><ul>
-					<li>test; check for unmerged branches, pending stashes</li>
-					<li>close issue</li>
-					<li>address any unmerged branches and/or pending stashes</li>
-				</ul>
-			</div></div>
-			<h5>[Archive Repository]</h5>
+			<h6>Publish</h6><ul>
+				<li>checkout master; test; <span class="gitcore">&#8618;</span>; test branch;
+					<span class="gitcore">&uarr;</span>; <span class="gitcore">&#8617;</span></li>
+				<li>if task complete, delete task and local branch</li>
+				<li>switch to Default (master) task</li>
+				<li>&forall; other active branch: <span class="gitcore">&#8618;</span></li>
+			</ul></div>
+		</div></div>
+		<h5>Issue Tasks Complete</h5><div class='indent'><div class="dq">
+			<div class="wf-mergeReview">
+			<h6>Initiate Review</h6><ul>
+				<li>master branch; check VCS log</li>
+				<li>change issue's status from 'SwimIssue' to 'needs review'</li>
+			</ul>
+			<h6>Review</h6><ul>
+				<li>review code; add issues as indicated</li>
+			</ul></div>
+			<div class="wf-close">
+			<h6>Code Review Complete: Close Issue</h6><ul>
+				<li>test; check for unmerged branches, pending stashes</li>
+				<li>close issue</li>
+				<li>address any unmerged branches and/or pending stashes</li>
+			</ul>
+		</div></div></div>
+		<h5>[Archive Repository]</h5>
 	</div>
 </div>
 <div style="page-break-before: always">
