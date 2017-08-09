@@ -137,12 +137,13 @@
 <div style="page-break-before: always">
 	<!-- @marker "Feature Branch Workflow" -->
 	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature">
-		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push Branch</strong>:
+		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push This Branch</strong>:
 			push current local branch to its remote</p>
-		<p><span class="gitcore">&#8618;</span> <strong>Merge Master</strong>: checkout master;
-			fetch from origin/master, commit (pull); checkout branch; merge in master</p>
+		<p><span class="gitcore">&#8618;</span> <strong>Merge Master</strong>: checkout master; test; pull:
+			fetch from origin/master, commit; test; <span class="gitcore"><strong>&uarr;</strong></span>;
+			if changed: checkout branch; merge in master; test; <span class="gitcore"><strong>&uarr;</strong></span></p>
 		<p><span class="gitcore">&#8617;</span> <strong>Merge Branch</strong>: <span class="gitcore">&#8618;</span>;
-			checkout master; test; merge in branch; test; <span class="gitcore">&uarr;</span></p>
+			checkout master; test; merge in branch; test; checkout branch; <span class="gitcore">&uarr;</span></p>
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
@@ -163,9 +164,9 @@
 				</ul>
 				<h6>Commit</h6><ul>
 					<li>Terminal: <span class="mono">git status; git diff --cached --check</span></li>
-					<li>if [ whitespace issues | inspection issues | todo's | settings to export ]:
+					<li>if [ whitespace issues | inspection issues | stashes | todo's | settings to export ]:
 						<span class="gitcore">&uarr;</span>; address as indicated</li>
-					<li>test; commit; <span class="gitcore">&uarr;</span>; <span class="gitcore">&#8618;</span>;
+					<li>test; commit, with closing comment if indicated; <span class="gitcore">&uarr;</span>; <span class="gitcore">&#8618;</span>;
 						if changed: test; <span class="gitcore">&uarr;</span></li>
 				</ul>
 			</div></div>
@@ -173,8 +174,8 @@
 			<h6>Publish</h6><ul>
 				<li>checkout master; test; <span class="gitcore">&#8618;</span>; test branch;
 					<span class="gitcore">&uarr;</span>; <span class="gitcore">&#8617;</span></li>
-				<li>if task complete, delete task and local branch</li>
 				<li>switch to Default (master) task</li>
+				<li>if task complete, delete task and local branch</li>
 				<li>&forall; other active branch: <span class="gitcore">&#8618;</span></li>
 			</ul></div>
 		</div></div>
