@@ -42,9 +42,9 @@
 			border: 8px none purple;border-left-style: solid;
 		}
 		.gitcore {
-			color: blue;
-			background-color: #d3e2ff;
+			color: darkcyan;
 			font-weight: bold;
+			text-shadow: 1px 1px;
 		}
 	</style>
 </head>
@@ -141,19 +141,19 @@
 		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push This Branch</strong>:
 			push current local branch to its remote</p>
 		<p><span class="gitcore">&#8618;</span> <strong>Merge Master</strong>: checkout master; test;
-			fetch from origin/master; commit; test; <span class="gitcore"><strong>&uarr;</strong></span>;
-			checkout branch; merge in master; test; <span class="gitcore"><strong>&uarr;</strong></span></p>
+			fetch origin/master; test; commit; <span class="gitcore">&uarr;</span>;
+			checkout branch; merge in master; test; commit; <span class="gitcore">&uarr;</span></p>
 		<p><span class="gitcore">&#8617;</span> <strong>Merge Branch</strong>: <span class="gitcore">&#8618;</span>;
-			checkout master; test; merge in branch; test; <span class="gitcore">&uarr;</span></p>
+			checkout master; test; merge in branch; test; commit; <span class="gitcore">&uarr;</span></p>
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
 				<h6>OpenTask</h6><ul>
-					<li>clean up stashes; <span class="gitcore">&#8618;</span></li>
-					<li><strong>New Task</strong>: create new task with branch name ending in
-						&lt;productID&gt;-&lt;issueID&gt;; test; push</li>
+					<li>clean up stashes</li>
+					<li><strong>New Task</strong>: create new task with branch name
+						&lt;productID&gt;-&lt;issueID&gt;-short-desc; test; push</li>
 					<li>or <strong>Existing Task</strong>: switch to task;
-						<span class="gitcore">&#8618;</span>; commit; test; <span class="gitcore">&uarr;</span></li>
+						<span class="gitcore">&#8618;</span></li>
 				</ul></div>
 				<div class="indent2"><div class="wf-developCommit">
 				<h6><a name="wf_Develop">Develop</a></h6><ul>
