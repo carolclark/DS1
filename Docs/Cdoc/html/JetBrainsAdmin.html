@@ -26,11 +26,14 @@
 		<!-- @topicItem "JetBrains" "http://www.jetbrains.com" "0" "JetBrains home" -->
 		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
 		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
+		<!-- @topicItem "Install and Configure the TeamCity Server" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server" "0" "contents page" -->
+		<!-- @topicItem "TeamCity Server icon" "https://hub.docker.com/r/jetbrains/teamcity-server/" "0" "" -->
+		<!-- @topicItem "Troubleshooting TeamCity Installation" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation" "0" "" -->
 		<!-- @topicItem "Scheduling Tasks with Cron Jobs" "https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800_" "0" "" -->
 		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
-		<!-- @topicItem "Cross-project Agile Boards in YouTrack: The Best Recipes" "#https://blog.jetbrains.com/youtrack/2014/04/cross-project-agile-boards-in-youtrack-the-best-recipes/_" "0" "" -->
-		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "#https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "description" -->
-		<!-- @topicItem "18 Useful Reports for Your Development Team" "#https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
+		<!-- @topicItem "Cross-project Agile Boards in YouTrack: The Best Recipes" "https://blog.jetbrains.com/youtrack/2014/04/cross-project-agile-boards-in-youtrack-the-best-recipes/_" "0" "" -->
+		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "description" -->
+		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
 <!-- @/topicList -->
 
 <h2 class="promote" id="Overview_">JetBrains Development Overview</h2>
@@ -163,9 +166,9 @@
 			<li>test login combinations</li>
 		</ul></li>
 		<li>GitHub<ul>
-			<li>Server URL: https://github.com</li>
-			<li>User Creation: Disabled</li>
-			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
+		<li>Server URL: https://github.com</li>
+		<li>User Creation: Disabled</li>
+		<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
 			<li>Save</li>
 			<li>Enable Module</li>
 		</ul></li>
@@ -318,7 +321,7 @@
 	</ul>
 
 	<h4>YouTrack command line</h4><ul>
-		<li><span class="mono">youtrack.sh</span> <span class="mono">start</span>: Start YouTrack</li>
+		<li><span class="mono">youtrack.sh</span> <span class="mono">run</span>: Start YouTrack</li>
 	</ul>
 
 	<h4>UpSource commandline</h4><ul>
@@ -481,7 +484,7 @@ Therefore, install all TeamTools before adding any projects.</p>
 		<li>download from <a href="https://www.jetbrains.com/hub/download/#section=mac">Hub Download</a><ul>
 			<li>Download the *.zip package from Jetbrains</li>
 			<li>Place downloaded package in /Volumes/Servers/jb/Hub; expand at that location</li>
-			<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh run</span></li>
+			<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh start</span></li>
 			<li>When welcome screen appears, select installation type 'Setup'</li>
 			<li>Setup Wizard<ul>
 				<li>Select Hub Service<ul>
@@ -496,8 +499,8 @@ Therefore, install all TeamTools before adding any projects.</p>
 	</ul></li>
 	</ul>
 
-	<!-- @marker "YouTrack: Basic 2017-08" -->
-	<h4 id="YouTrackBasic2017-08_">YouTrack: Basic 2017-08</h4><ul>
+	<!-- @marker "YouTrack: Basic 2017-06" -->
+	<h4 id="YouTrackBasic2017-06_">YouTrack: Basic 2017-06</h4><ul>
 		<li>Download standalone version from YouTrack Download; compress if not in archive form</li>
 		<li>Place *.zip package in /Volumes/Servers/jb/YouTrack; expand at that location</li>
 		<li><span class="mono">cd &lt;path/to/YouTrack&gt;/bin; youtrack.sh run</span></li>
@@ -511,8 +514,8 @@ Therefore, install all TeamTools before adding any projects.</p>
 		<li>continue to <a href="#YouTrackConfiguration_">YouTrack Configuration</a></li>
 	</ul>
 
-	<!-- @marker "UpSource: Basic 2017-08" -->
-	<h4 id="UpSourceBasic2017-08_">UpSource: Basic 2017-08</h4><ul>
+	<!-- @marker "UpSource: Basic 2017-06" -->
+	<h4 id="UpSourceBasic2017-06_">UpSource: Basic 2017-06</h4><ul>
 		<li>Installation<ul>
 			<li>Download the *.zip package from Jetbrains</li>
 			<li>Place downloaded package in /Volumes/Servers/jb/UpSource; expand at that location</li>
@@ -528,8 +531,16 @@ Therefore, install all TeamTools before adding any projects.</p>
 		<li>continue to <a href="#UpSourceConfiguration_">UpSource Configuration</a></li>
 	</ul>
 
-	<!-- @marker "TeamCity: Basic 2017-08" -->
-	<h4 id="TeamCityBasic2017-08_">TeamCity: Basic 2017-08</h4><ul>
+	<!-- @marker "TeamCity: Basic 2017-06" -->
+	<h4 id="TeamCityBasic2017-06_">TeamCity: Basic 2017-06</h4><ul>
+		<li style="padding-top: 10px;"><strong>Provide Dependencies</strong><ul>
+			<li>install or check for updates as indicated:<ul>
+				<li class="blurb">see also<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+					Supported Platforms and Environments</a></li>
+				<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+				<li><a href="Tools.html#_Java">Java</a></li>
+			</ul></li>
+		</ul></li>
 		<li style="padding-top: 10px;"><strong>Unpack Archive</strong><ul>
 			<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
 			<li>move archive to /Volumes/Servers/jb/TeamCity; archive location will become TeamCity home directory</li>
@@ -573,26 +584,26 @@ Therefore, install all TeamTools before adding any projects.</p>
 		<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
 	</ul>
 
-<!-- @marker "Complete Team Tools 2017-08" -->
-<h3>Complete Team Tools 2017-08</h3>
-<!-- @topicList "Complete Team Tools 2017-08" "CompleteTeamTools2017-08_" -->
-	<!-- @topicItem "HubRing: Complete 2017-08" "#HubRingComplete2017-08_" "0" "" -->
-	<!-- @topicItem "YouTrack: Complete 2017-08" "#YouTrackComplete2017-08_" "0" "" -->
-	<!-- @topicItem "UpSource: Complete 2017-08" "#UpSourceComplete2017-08_" "0" "" -->
-	<!-- @topicItem "TeamCity: Complete 2017-08" "#TeamCityComplete2017-08_" "0" "" -->
+<!-- @marker "Complete Team Tools 2017-06" -->
+<h3>Complete Team Tools 2017-06</h3>
+<!-- @topicList "Complete Team Tools 2017-06" "CompleteTeamTools2017-06_" -->
+	<!-- @topicItem "HubRing: Complete 2017-06" "#HubRingComplete2017-06_" "0" "" -->
+	<!-- @topicItem "YouTrack: Complete 2017-06" "#YouTrackComplete2017-06_" "0" "" -->
+	<!-- @topicItem "UpSource: Complete 2017-06" "#UpSourceComplete2017-06_" "0" "" -->
+	<!-- @topicItem "TeamCity: Complete 2017-06" "#TeamCityComplete2017-06_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "HubRing: Complete 2017-08" -->
-<h4 id="HubRingComplete2017-08_">HubRing: Complete 2017-08</h4>
+<!-- @marker "HubRing: Complete 2017-06" -->
+<h4 id="HubRingComplete2017-06_">HubRing: Complete 2017-06</h4>
 
-<!-- @marker "YouTrack: Complete 2017-08" -->
-<h4 id="YouTrackComplete2017-08_">YouTrack: Complete 2017-08</h4>
+<!-- @marker "YouTrack: Complete 2017-06" -->
+<h4 id="YouTrackComplete2017-06_">YouTrack: Complete 2017-06</h4>
 
-<!-- @marker "UpSource: Complete 2017-08" -->
-<h4 id="UpSourceComplete2017-08_">UpSource: Complete 2017-08</h4>
+<!-- @marker "UpSource: Complete 2017-06" -->
+<h4 id="UpSourceComplete2017-06_">UpSource: Complete 2017-06</h4>
 
-<!-- @marker "TeamCity: Complete 2017-08" -->
-<h4 id="TeamCityComplete2017-08_">TeamCity: Complete 2017-08</h4><div class="indent">
+<!-- @marker "TeamCity: Complete 2017-06" -->
+<h4 id="TeamCityComplete2017-06_">TeamCity: Complete 2017-06</h4><div class="indent">
 	<ul>
 		<li id="AutostartServer_"><strong>Autostart TeamCity Server></strong><ul>
 			<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
@@ -630,16 +641,16 @@ Therefore, install all TeamTools before adding any projects.</p>
 	<!-- @marker "Create TeamCityDB" -->
 	<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
 		<li>create TeamCity database<ul>
-			<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carol</li>
+			<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
 		</ul></li>
 		<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
 			<li class="blurb">localhost:8111</li>
-			<li>user: carol; password</li>
+			<li>user: carolclark; password</li>
 			<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
 			<li>startup page configuration<ul>
 				<li><strong>smtp</strong>: smpt host: smpt.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
 				<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
-				<li><strong>user</strong>: username: carol; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
+				<li><strong>user</strong>: username: carolclark; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
 			</ul></li>
 			<li>click user name for profile page<ul>
 				<li>user name and email</li>
@@ -660,20 +671,20 @@ Therefore, install all TeamTools before adding any projects.</p>
 	</ul>
 </div>
 
-<!-- @marker "Extend Team Tools 2017-08" -->
-<h3>Extend Team Tools 2017-08</h3>
-<!-- @topicList "Extend Team Tools 2017-08" "ExtendTeamTools2017-08_" -->
-<!-- @topicItem "HubRing: Extend 2017-08" "#HubRingExtend2017-08_" "0" "" -->
-<!-- @topicItem "YouTrack: Extend 2017-08" "#YouTrackExtend2017-08_" "0" "" -->
-<!-- @topicItem "UpSource: Extend 2017-08" "#UpSourceExtend2017-08_" "0" "" -->
-<!-- @topicItem "TeamCity: Extend 2017-08" "#TeamCityExtend2017-08_" "0" "" -->
+<!-- @marker "Extend Team Tools 2017-06" -->
+<h3>Extend Team Tools 2017-06</h3>
+<!-- @topicList "Extend Team Tools 2017-06" "ExtendTeamTools2017-06_" -->
+<!-- @topicItem "HubRing: Extend 2017-06" "#HubRingExtend2017-06_" "0" "" -->
+<!-- @topicItem "YouTrack: Extend 2017-06" "#YouTrackExtend2017-06_" "0" "" -->
+<!-- @topicItem "UpSource: Extend 2017-06" "#UpSourceExtend2017-06_" "0" "" -->
+<!-- @topicItem "TeamCity: Extend 2017-06" "#TeamCityExtend2017-06_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "HubRing: Extend 2017-08" -->
-<h4 id="HubRingExtend2017-08_">HubRing: Extend 2017-08</h4>
+<!-- @marker "HubRing: Extend 2017-06" -->
+<h4 id="HubRingExtend2017-06_">HubRing: Extend 2017-06</h4>
 
-<!-- @marker "YouTrack: Extend 2017-08" -->
-<h4 id="YouTrackExtend2017-08_">YouTrack: Extend 2017-08</h4>
+<!-- @marker "YouTrack: Extend 2017-06" -->
+<h4 id="YouTrackExtend2017-06_">YouTrack: Extend 2017-06</h4>
 	<h5>Time Tracking</h5><ul>
 		<li><em>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</em></li>
 		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
@@ -709,20 +720,20 @@ Therefore, install all TeamTools before adding any projects.</p>
 	</ul>
 
 
-	<!-- @marker "UpSource: Extend 2017-08" -->
-<h4 id="UpSourceExtend2017-08_">UpSource: Extend 2017-08</h4>
+	<!-- @marker "UpSource: Extend 2017-06" -->
+<h4 id="UpSourceExtend2017-06_">UpSource: Extend 2017-06</h4>
 
-<!-- @marker "TeamCity: Extend 2017-08" -->
-<h4 id="TeamCityExtend2017-08_">TeamCity: Extend 2017-08</h4>
+<!-- @marker "TeamCity: Extend 2017-06" -->
+<h4 id="TeamCityExtend2017-06_">TeamCity: Extend 2017-06</h4>
 
-<!-- @marker "Upgrade Team Tools 2017-08" -->
-<h3>Upgrade Team Tools 2017-08</h3>
-<!-- @topicList "Upgrade Team Tools 2017-08" "UpgradeTeamTools2017-08_" -->
-	<!-- @topicItem "HubRing Upgrade 2017-08" "#HubRingUpgrade2017-08_" "0" "" -->
+<!-- @marker "Upgrade Team Tools 2017-06" -->
+<h3>Upgrade Team Tools 2017-06</h3>
+<!-- @topicList "Upgrade Team Tools 2017-06" "UpgradeTeamTools2017-06_" -->
+	<!-- @topicItem "HubRing Upgrade 2017-06" "#HubRingUpgrade2017-06_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "HubRing Upgrade 2017-08" -->
-<h4 id="HubRingUpgrade2017-08_">HubRing Upgrade 2017-08</h4>
+<!-- @marker "HubRing Upgrade 2017-06" -->
+<h4 id="HubRingUpgrade2017-06_">HubRing Upgrade 2017-06</h4>
 	<p>see https://www.jetbrains.com/help/hub &gt; Installation and Upgrade &gt; Upgrade Hub</p>
 	<ul>
 		<li>Server Settings > Backup > Backup Database</li>
