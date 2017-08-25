@@ -26,11 +26,11 @@
 		<!-- @topicItem "JetBrains" "http://www.jetbrains.com" "0" "JetBrains home" -->
 		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
 		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
-		<!-- @topicItem "Install and Configure the TeamCity Server" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server" "0" "contents page" -->
-		<!-- @topicItem "TeamCity Server icon" "https://hub.docker.com/r/jetbrains/teamcity-server/" "0" "" -->
-		<!-- @topicItem "Troubleshooting TeamCity Installation" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation" "0" "" -->
 		<!-- @topicItem "Scheduling Tasks with Cron Jobs" "https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800_" "0" "" -->
 		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
+		<!-- @topicItem "Cross-project Agile Boards in YouTrack: The Best Recipes" "https://blog.jetbrains.com/youtrack/2014/04/cross-project-agile-boards-in-youtrack-the-best-recipes/_" "0" "" -->
+		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "description" -->
+		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
 <!-- @/topicList -->
 
 <h2 class="promote" id="Overview_">JetBrains Development Overview</h2>
@@ -91,12 +91,53 @@
 	<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "HubRing: Configuration" -->
-<h3 id="HubRingConfiguration_">HubRing: Configuration</h3><ul>
-	<li class="ital">see <a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">Configure System Properties</a></li>
+<!-- @marker "Installation" -->
+<h3 id="Installation_">Installation</h3><ul>
+	<li><strong>Provide Dependencies</strong><ul>
+		<li>install or check for updates as indicated:<ul>
+			<li class="blurb">see <a href=
+				"https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+				Supported Platforms and Environments</a></li>
+			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+			<li><a href="Tools.html#_Java">Java</a></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Install</strong><ul>
+		<li>for each product:<ul>
+			<li>create folder &lt;produceName&gt; at /Servers/jb</li>
+			<li>download installation package; move to its folder</li>
+			<li>expand archive<ul>
+				<li>for TeamCity, use <span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
+			</ul></li>
+			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard</li>
+			<li>set TeamCity data directory: stop TeamCity; set data path; restart<ul>
+				<li><span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
+				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
+			</ul></li>
+			<li>when tool appears: backup</li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Data and Notes</strong><ul>
+		<li><strong>login</strong>: sign in as 'admin' or 'carol'</li>
+		<li><strong>Backups</strong><ul>
+			<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+			<li>zip format</li>
+			<li>every day at 2 AM</li>
+			<li>rotation 7</li>
+		</ul></li>
+		<li>address for our external HubRing: <span class="mono">&lt;http://carols-imac-2.local:8080&gt;</span></li>
+		<li>Set TeamCity Data Directory:<br />
+			<span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
+				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
+	</ul></li>
 	</ul>
+
+<!-- @marker "HubRing: Configuration" -->
+<h3 id="HubRingConfiguration_">HubRing: Configuration</h3>
+	<p class="ital">see <a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">
+		Configure System Properties</a></p>
 	<p class="sl6">Users</p><ul class="sl6">
-		<li>add 'carolclark':<ul>
+		<li>add 'carol':<ul>
 			<li>click our gravitar image</li>
 			<li>add and verify email address</li>
 			<li>do not force change password</li>
@@ -116,24 +157,22 @@
 		</ul></li>
 	</ul>
 	<p class="sl6">Groups</p><ul class="sl6">
-		<li>add group All Projucts Admin with role all-projects-admin</li>
+		<li>add group All Projects Admin with role all-projects-admin</li>
 	</ul>
 	<p class="sl6">Users</p><ul class="sl6">
-		<li>add user carolclark to group All Projects Admin</li>
+		<li>add user carol to group All Projects Admin</li>
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
 		<li>Hub: Built-in Authorization<ul>
-			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
-			<li class="depr">Registration: Disabled (admin must add new users)</li>
 			<li>test login combinations</li>
 		</ul></li>
-	</ul>
-	<p class="sl6">GitHub</p><ul class="sl6">
+		<li>GitHub<ul>
 		<li>Server URL: https://github.com</li>
 		<li>User Creation: Disabled</li>
-		<li>Enable Module</li>
 		<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
-		<li>enable</li>
+			<li>Save</li>
+			<li>Enable Module</li>
+		</ul></li>
 	</ul>
 	<p class="sl6">System Settings</p><ul class="sl6">
 		<li>login timeout 12 hours</li>
@@ -147,9 +186,9 @@
 	</ul>
 	<p class="sl6">SMTP</p><ul class="sl6">
 		<li>host smtp.cox.net; from carolclark@cox.net</li>
-		<li>user carolclark; password: cox</li>
-		<li>Security and Authorization: user name 'carolclark'; password cox</li>
-		<li>send test message; enable notification</li>
+		<li>user carol; password: cox</li>
+		<li>Security and Authorization: user name 'carolclark@cox.net'; password cox</li>
+		<li>save; enable notification; send test message</li>
 	</ul>
 	<p class="sl6">Java virtual machine (JVM) Options</p><ul class="sl6">
 		<li>no changes</li>
@@ -162,8 +201,9 @@
 		<li>verify license shown; if not, fetch and copy</li>
 		<li>Default Timezone: verify</li>
 		<li>Date Fields Format: ISO date (2000.12.31)</li>
-		<li class="dq">enable email notifications; provide host (smtp.cox.net), username, password</li>
+			<li>provide email host (smtp.cox.net); enable email notifications</li>
 		</ul>
+<div class="dq">
 	<p class="sl5">Global Project-Related Settings</p>
 		<p class="sl6">Access Settings</p><ul class="sl6">
 			<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; zip format; every day at 2 AM; rotation 5</li>
@@ -203,6 +243,7 @@
 	<p class="sl6">start YouTrack service:</p><ul class="sl6">
 		<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
 </ul>
+</div>
 
 <!-- @marker "UpSource: Configuration" -->
 <h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
