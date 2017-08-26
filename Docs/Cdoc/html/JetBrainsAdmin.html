@@ -17,8 +17,8 @@
 
 <!-- @topicList "JetBrainsAdmin" "Contents" -->
 	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
-	<!-- @topicItem "Team Tools Configuration" "#TeamToolsConfiguration_" "0" "" -->
 	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
+	<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
 	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
 	<!-- @topicItem "Install TeamTools" "#InstallTeamTools_" "0" "" -->
 	<!-- @topicSep -->
@@ -33,41 +33,13 @@
 		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
 <!-- @/topicList -->
 
-<h2 class="promote" id="Overview_">JetBrains Development Overview</h2>
-	<p class="sl5">JetBrains: primary tools for our development process</p>
-		<p class="sl6">available IDE's for development languages:</p><ul class="sl6">
-			<li>IntelliJ IDEA: flagship development environment for Java<ul>
-				<li>best support for related languages, project structure with modules, ...</li>
-				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
-				<li>better choice for bash, html, AppleScript</li>
-			</ul></li>
-			<li>AppCode (already in use): primary support for Cocoa/Objective-C(++); plugins for unix and AppleScript<ul>
-				<li>project structure based on Xcode =&gt; no module support, limitations for other plug-ins and features</li>
-			</ul></li>
-			<li>other languages/IDEs<ul>
-				<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
-				<li>WebStorm (for html and javascript - we are currently using AppCode with sed(!!) instead of javascript)</li>
-				<li>PyCharm with Django; PHPStorm for Website indices; DataGrip for internal databases; MPS for DSL development</li>
-			</ul></li>
-		</ul>
-		<p class="sl6">Team Tools for managing workflow and development process:</p><ul class="sl6">
-			<li>YouTrack: issue tracking; agile development</li>
-			<li>TeamCity (previously in use): Continuous Integration</li>
-			<li>UpSource: code review</li>
-			<li>Hub, aka HubRing, to tie it all together</li>
-		</ul>
-		<p class="sl6">We expect to use:</p><ul class="sl6">
-			<li>The complete team tool suite</li>
-			<li>AppCode IDE for Cocoa projects; IntelliJ IDEA by default for other languages; add specialized products for other languages as indicated</li>
-	</ul>
+<h2 class="promote" id="Overview_">Development Overview</h2>
 
-<h4 id="Agile_">Agile Development</h4>
-	<p>Our process is very similar to standard test-first agile development, but with a more relaxed approach
-		toward time management and deadlines. We intepret 'sprints' as having time estimates, not deadlines.</p><ul>
-		<li>date estimates are established based on card estimates, which are adjusted when indicated
-			toward the actual time needed</li>
-		<li>we expect to learn to make better estimates of time required as we use this technique</li>
-		<li>for larger tasks as indicated, a required-dependency task is used to gather information and estimate</li>
+<h4 id="Agile_">Agile Development</h4><ul>
+	<li>We use a fairly standard form of test-first agile development, with a couple of significant modifications:<ul>
+		<li>Sprints have time estimates, not deadlines.
+			Estimates are established based on card estimates, which are adjusted as indicated.
+			We expect to learn to make better estimates of time required as we use this technique.</li>
 		<li>YouTrack's 'fix version' field is intended to identify cards for a version number and a scrum.<ul>
 			<li>We prefer to establish the version number when the product is ready for 'release',
 				as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
@@ -75,11 +47,132 @@
 			<li>'fix version' targets are more like '17JanA'; actual version numbers,
 				if any, are assigned on completion</li>
 		</ul></li>
+		<li>We do not do deadlines.</li>
+	</ul></li>
+</ul>
+
+<h4 id="WIP_">Work in Progress</h4><ul>
+	<li>We are establishing WIP limits and related policies.</li>
+	<li>Tasks are broken down into smaller pieces as needed to conform to this policy.</li>
+	<li>For larger tasks as indicated, a required-dependency task is used to gather information and estimate.</li>
+</ul>
+
+<h4 id="JetBrainsTools_">JetBrains Tools</h4>
+	<p>JetBrains: primary tools for our development process</p>
+	<p class="sl6">available IDE's for development languages:</p><ul class="sl6">
+		<li>IntelliJ IDEA: flagship development environment for Java<ul>
+			<li>best support for related languages, project structure with modules, ...</li>
+			<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
+			<li>better choice for bash, html, AppleScript</li>
+		</ul></li>
+		<li>AppCode (already in use): primary support for Cocoa/Objective-C(++); plugins for unix and AppleScript<ul>
+			<li>project structure based on Xcode =&gt; no module support, limitations for other plug-ins and features</li>
+		</ul></li>
+		<li>other languages/IDEs<ul>
+			<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
+			<li>WebStorm (for html and javascript - we are currently using AppCode with sed(!!) instead of javascript)</li>
+			<li>PyCharm with Django; PHPStorm for Website indices; DataGrip for internal databases; MPS for DSL development</li>
+		</ul></li>
+	</ul>
+	<p class="sl6">Team Tools for managing workflow and development process:</p><ul class="sl6">
+		<li>YouTrack: issue tracking; agile development</li>
+		<li>TeamCity (previously in use): Continuous Integration</li>
+		<li>UpSource: code review</li>
+		<li>Hub, aka HubRing, to tie it all together</li>
+	</ul>
+	<p class="sl6">We expect to use:</p><ul class="sl6">
+		<li>The complete team tool suite</li>
+		<li>AppCode IDE for Cocoa projects; IntelliJ IDEA by default for other languages; add specialized products for other languages as indicated</li>
+	</ul>
+	<p>See also <a href="#JetBrainsAdoption_">JetBrains Adoption</a> for costs and motivations.</p>
+
+<!-- @marker "Admin Tasks and References" -->
+<h2 class="promote">Admin Tasks and References</h2>
+<!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
+	<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
+	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
+	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
+	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
+	<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Create Project" -->
+<h3 id="CreateProject_">Create Project with Agile Board</h3>
+	<p class="blurb">see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></p>
+	<h4 id='AddProjectwithAgileBoard_'>Add Project </h4><ul>
+		<li>Hub: create project<ul>
+			<li>for project already in GitHub, check VCS for last issue number already used</li>
+			<li>create project from Scrum template</li>
+			<li>edit custom fields<ul>
+				<li>includes edit field names to use camel case for readability<ul>
+					<li>Issue Type: Epic, Feature, Task; Bug, Cosmetic, Exception, Usability, Performance</li>
+				</ul></li>
+			</ul></li>
+			<li>edit workflows<ul>
+				<li>scrum: do NOT close issue automatically when subtasks completed<ul>
+					<li>either do nothing, of put parent issue up for review</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li><strong>Custom Fields and Workflows</strong></li>
+</ul>
+
+<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
+<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
+</a></p>
+
+<!-- marker Install Build Agent -->
+<h3 id='InstallBuildAgent_'>Install Build Agent</h3><ul>
+	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
+		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
+</ul>
+
+<!-- @marker "Command-Line Tools" -->
+<h3 id="CommandLineTools_">Command Line Tools</h3>
+
+	<h4>HubRing command line</h4><ul>
+		<li><span class="mono">hub.sh</span><ul>
+			<li><span class="mono">start</span> Start the HubRing service</li>
+			<li><span class="mono">stop</span> Stops the Hub service.</li>
+			<li><span class="mono">restart</span> Restarts the Hub service.</li>
+			<li><span class="mono">help</span> Displays a list of all commands that can be executed in the command-line interface.</li>
+		</ul></li>
 	</ul>
 
-<!-- @marker "Team Tools Configuration" -->
-<h2 class="promote">Team Tools Configuration</h2>
-<!-- @topicList "Team Tools Configuration" "TeamToolsConfiguration_" -->
+	<h4>YouTrack command line</h4><ul>
+		<li><span class="mono">youtrack.sh</span> <span class="mono">run</span>: Start YouTrack</li>
+	</ul>
+
+	<h4>UpSource commandline</h4><ul>
+		<li><span class="mono">upsource.sh</span> <span class="mono">start</span>: Start Upsource</li>
+	</ul>
+
+	<h4>TeamCity command line</h4><ul>
+		<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span> server and one build agent</li>
+		<li><span class="mono">teamcity-server.sh</span>: start/stop server only<ul>
+			<li><span class="mono">run</span>: start TeamCity in the current window</li>
+			<li><span class="mono">start</span>: start TeamCity in a separate window</li>
+			<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
+			<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
+				<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">Creating Backup via maintainDB command-line tool</a></li>
+			</ul></li>
+		</ul></li>
+	</ul>
+
+<!-- @marker "Moving to Another Server" -->
+<h3 id='MovingServer_'>Moving Projects to Another Server</h3><ul>
+	<li>make standard TeamCity backups of existing projects</li>
+	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
+</ul>
+
+<!-- @marker "Sort a Card's Subtasks" -->
+<h3 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h3><ul>
+	<li>Create a swimlane for the card</li>
+	<li>Organize the subtasks in that lane</li>
+</ul>
+<!-- @marker "Team Tools Install and Configure" -->
+<h2 class="promote" id="TeamToolsInstallConfig_">Team Tools: Install and Configure</h2>
+<!-- @topicList "Team Tools: Install and Configure" "TeamToolsConfiguration_" -->
 	<!-- @topicItem "Installation" "#Installation_" "0" "" -->
 	<!-- @topicItem "HubRing:  Configuration" "#HubRingConfiguration_" "0" "" -->
 	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
@@ -112,8 +205,9 @@
 			</ul></li>
 			<li>when tool appears: backup</li>
 		</ul></li>
+		<li>after each tool install, continue to <a href="#TeamToolsInstallConfig_">configure</a> new tool</li>
 	</ul></li>
-	<li><strong>Data and Notes</strong><ul>
+	<li><strong>Installation Data</strong><ul>
 		<li><strong>login</strong>: sign in as 'admin' or 'carol'</li>
 		<li><strong>Backups</strong><ul>
 			<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
@@ -122,9 +216,6 @@
 			<li>rotation 7</li>
 		</ul></li>
 		<li>address for our external HubRing: <span class="mono">&lt;http://carols-imac-2.local:8080&gt;</span></li>
-		<li>Set TeamCity Data Directory:<br />
-			<span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
 	</ul></li>
 </ul>
 
@@ -263,91 +354,6 @@
 				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
 		</ul></li>
 	</ul>
-
-<!-- @marker "Admin Tasks and References" -->
-<h2 class="promote">Admin Tasks and References</h2>
-<!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
-	<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
-	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
-	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
-	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
-	<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Create Project" -->
-<h3 id="CreateProject_">Create Project with Agile Board</h3>
-	<p class="blurb">see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></p>
-	<h4 id='AddProjectwithAgileBoard_'>Add Project </h4><ul>
-		<li>Hub: create project<ul>
-			<li>for project already in GitHub, check VCS for last issue number already used</li>
-			<li>create project from Scrum template</li>
-			<li>edit custom fields<ul>
-				<li>includes edit field names to use camel case for readability<ul>
-					<li>Issue Type: Epic, Feature, Task; Bug, Cosmetic, Exception, Usability, Performance</li>
-				</ul></li>
-			</ul></li>
-			<li>edit workflows<ul>
-				<li>scrum: do NOT close issue automatically when subtasks completed<ul>
-					<li>either do nothing, of put parent issue up for review</li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-		<li><strong>Custom Fields and Workflows</strong></li>
-</ul>
-
-<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
-<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
-</a></p>
-
-<!-- marker Install Build Agent -->
-<h3 id='InstallBuildAgent_'>Install Build Agent</h3><ul>
-	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
-		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
-</ul>
-
-<!-- @marker "Command-Line Tools" -->
-<h3 id="CommandLineTools_">Command Line Tools</h3>
-
-	<h4>HubRing command line</h4><ul>
-		<li><span class="mono">hub.sh</span><ul>
-			<li><span class="mono">start</span> Start the HubRing service</li>
-			<li><span class="mono">stop</span> Stops the Hub service.</li>
-			<li><span class="mono">restart</span> Restarts the Hub service.</li>
-			<li><span class="mono">help</span> Displays a list of all commands that can be executed in the command-line interface.</li>
-		</ul></li>
-	</ul>
-
-	<h4>YouTrack command line</h4><ul>
-		<li><span class="mono">youtrack.sh</span> <span class="mono">run</span>: Start YouTrack</li>
-	</ul>
-
-	<h4>UpSource commandline</h4><ul>
-		<li><span class="mono">upsource.sh</span> <span class="mono">start</span>: Start Upsource</li>
-	</ul>
-
-	<h4>TeamCity command line</h4><ul>
-		<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span> server and one build agent</li>
-		<li><span class="mono">teamcity-server.sh</span>: start/stop server only<ul>
-			<li><span class="mono">run</span>: start TeamCity in the current window</li>
-			<li><span class="mono">start</span>: start TeamCity in a separate window</li>
-			<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
-			<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
-				<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">Creating Backup via maintainDB command-line tool</a></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-
-<!-- @marker "Moving to Another Server" -->
-<h3 id='MovingServer_'>Moving Projects to Another Server</h3><ul>
-	<li>make standard TeamCity backups of existing projects</li>
-	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
-</ul>
-
-<!-- @marker "Sort a Card's Subtasks" -->
-<h3 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h3><ul>
-	<li>Create a swimlane for the card</li>
-	<li>Organize the subtasks in that lane</li>
-</ul>
 
 <!-- @marker "JetBrains Adoption" -->
 <h2 class="promote">JetBrains Adoption</h2>
