@@ -85,11 +85,53 @@
 <!-- @marker "Team Tools Configuration" -->
 <h2 class="promote">Team Tools Configuration</h2>
 <!-- @topicList "Team Tools Configuration" "TeamToolsConfiguration_" -->
+	<!-- @topicItem "Installation" "#Installation_" "0" "" -->
 	<!-- @topicItem "HubRing:  Configuration" "#HubRingConfiguration_" "0" "" -->
 	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
 	<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
 	<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "Installation" -->
+<h3 id="Installation_">Installation</h3><ul>
+	<li><strong>Provide Dependencies</strong><ul>
+		<li>install or check for updates as indicated:<ul>
+			<li class="blurb">see <a href=
+				"https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+				Supported Platforms and Environments</a></li>
+			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+			<li><a href="Tools.html#_Java">Java</a></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Install</strong><ul>
+		<li>for each product:<ul>
+			<li>create folder &lt;produceName&gt; at /Servers/jb</li>
+			<li>download installation package; move to its folder</li>
+			<li>expand archive<ul>
+				<li>for TeamCity, use <span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
+			</ul></li>
+			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard</li>
+			<li>set TeamCity data directory: stop TeamCity; set data path; restart<ul>
+				<li><span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
+				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
+			</ul></li>
+			<li>when tool appears: backup</li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Data and Notes</strong><ul>
+		<li><strong>login</strong>: sign in as 'admin' or 'carol'</li>
+		<li><strong>Backups</strong><ul>
+			<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+			<li>zip format</li>
+			<li>every day at 2 AM</li>
+			<li>rotation 7</li>
+		</ul></li>
+		<li>address for our external HubRing: <span class="mono">&lt;http://carols-imac-2.local:8080&gt;</span></li>
+		<li>Set TeamCity Data Directory:<br />
+			<span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
+				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
+	</ul></li>
+</ul>
 
 <!-- @marker "HubRing: Configuration" -->
 <h3 id="HubRingConfiguration_">HubRing: Configuration</h3><ul>
