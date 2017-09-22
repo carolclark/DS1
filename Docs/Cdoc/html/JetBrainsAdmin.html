@@ -26,11 +26,11 @@
 		<!-- @topicItem "JetBrains" "http://www.jetbrains.com" "0" "JetBrains home" -->
 		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
 		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
-		<!-- @topicItem "Install and Configure the TeamCity Server" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server" "0" "contents page" -->
-		<!-- @topicItem "TeamCity Server icon" "https://hub.docker.com/r/jetbrains/teamcity-server/" "0" "" -->
-		<!-- @topicItem "Troubleshooting TeamCity Installation" "https://confluence.jetbrains.com/display/TCD10/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-TroubleshootingTeamCityInstallation" "0" "" -->
 		<!-- @topicItem "Scheduling Tasks with Cron Jobs" "https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800_" "0" "" -->
 		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
+		<!-- @topicItem "Cross-project Agile Boards in YouTrack: The Best Recipes" "#https://blog.jetbrains.com/youtrack/2014/04/cross-project-agile-boards-in-youtrack-the-best-recipes/_" "0" "" -->
+		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "#https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "description" -->
+		<!-- @topicItem "18 Useful Reports for Your Development Team" "#https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
 <!-- @/topicList -->
 
 <h2 class="promote" id="Overview_">JetBrains Development Overview</h2>
@@ -62,25 +62,20 @@
 	</ul>
 
 <h4 id="Agile_">Agile Development</h4>
-	<p>Our process is very similar to standard test-first agile development,
-	but with a more relaxed approach toward time management and deadlines. Instead 'sprints' to provide time pressure,
-	we use 'gaggles', with a time estimate, not a deadline.</p>
-		<h4>Gaggle</h4><ul>
-			<li>We expect 'Gaggle' to contribute to a less stressful development environment</li>
-			<li>Date estimates for a Gaggle are established based on card estimates, which are adjusted when indicated
-				toward the actual time needed</li>
-			<li>We expect to learn to make better estimates of time required as we use this technique</li>
-			<li>For larger tasks as indicated, a required-dependency task is used to gather information and estimate</li>
-			<li>YouTrack's 'fix version' field is intended to identify cards for a version number and a scrum.<ul>
-				<li>We prefer to establish the version number when the product is ready for 'release',
-					as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-					on which our <a href="Git.html#Branches_Releases_">versioning plan</a> is based.</li>
-				<li>Field 'fix version' target is complete form vMaj.min.fix</li>
-					<li>New field 'gaggle' identifies cards (geese?) for a Gaggle<ul>
-						<li>'current', 'next', etc. identify current and future gaggles (if it fits)</li>
-					</ul></li>
-			</ul></li>
-		</ul>
+	<p>Our process is very similar to standard test-first agile development, but with a more relaxed approach
+		toward time management and deadlines. We intepret 'sprints' as having time estimates, not deadlines.</p><ul>
+		<li>date estimates are established based on card estimates, which are adjusted when indicated
+			toward the actual time needed</li>
+		<li>we expect to learn to make better estimates of time required as we use this technique</li>
+		<li>for larger tasks as indicated, a required-dependency task is used to gather information and estimate</li>
+		<li>YouTrack's 'fix version' field is intended to identify cards for a version number and a scrum.<ul>
+			<li>We prefer to establish the version number when the product is ready for 'release',
+				as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+				on which our <a href="Git.html#Branches_Releases_">versioning plan</a> is based.</li>
+			<li>'fix version' targets are more like '17JanA'; actual version numbers,
+				if any, are assigned on completion</li>
+		</ul></li>
+	</ul>
 
 <!-- @marker "Team Tools Configuration" -->
 <h2 class="promote">Team Tools Configuration</h2>
