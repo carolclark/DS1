@@ -160,17 +160,15 @@
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
 		<li>Hub: Built-in Authorization<ul>
-			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
-			<li class="depr">Registration: Disabled (admin must add new users)</li>
 			<li>test login combinations</li>
 		</ul></li>
-	</ul>
-	<p class="sl6">GitHub</p><ul class="sl6">
-		<li>Server URL: https://github.com</li>
-		<li>User Creation: Disabled</li>
-		<li>Enable Module</li>
-		<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
-		<li>enable</li>
+		<li>GitHub<ul>
+			<li>Server URL: https://github.com</li>
+			<li>User Creation: Disabled</li>
+			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
+			<li>Save</li>
+			<li>Enable Module</li>
+		</ul></li>
 	</ul>
 	<p class="sl6">System Settings</p><ul class="sl6">
 		<li>login timeout 12 hours</li>
@@ -196,11 +194,12 @@
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
 	<p class="sl5">Server Settings</p>
 		<p class="sl6">Global</p><ul class="sl6">
-		<li>verify license shown; if not, fetch and copy</li>
-		<li>Default Timezone: verify</li>
-		<li>Date Fields Format: ISO date (2000.12.31)</li>
-		<li class="dq">enable email notifications; provide host (smtp.cox.net), username, password</li>
+			<li>verify license shown; if not, fetch and copy</li>
+			<li>Default Timezone: verify</li>
+			<li>Date Fields Format: ISO date (2000.12.31)</li>
+			<li>provide email host (smtp.cox.net); enable email notifications</li>
 		</ul>
+<div class="dq">
 	<p class="sl5">Global Project-Related Settings</p>
 		<p class="sl6">Access Settings</p><ul class="sl6">
 			<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; zip format; every day at 2 AM; rotation 5</li>
@@ -240,6 +239,7 @@
 	<p class="sl6">start YouTrack service:</p><ul class="sl6">
 		<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
 </ul>
+</div>
 
 <!-- @marker "UpSource: Configuration" -->
 <h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
