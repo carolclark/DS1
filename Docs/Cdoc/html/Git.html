@@ -42,9 +42,8 @@
 			border: 8px none purple;border-left-style: solid;
 		}
 		.gitcore {
-			color: darkcyan;
-			font-weight: bold;
-			text-shadow: 1px 1px #83ff3d;
+			color: green;
+			text-shadow: 1px 3px #83FF3D;
 		}
 	</style>
 </head>
@@ -140,11 +139,11 @@
 	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature">
 		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push This Branch</strong>:
 			push current local branch to its remote</p>
-		<p><span class="gitcore">&#8618;</span> <strong>Merge Master</strong>: task master; test;
-			fetch origin/master; commit; test; <span class="gitcore">&uarr;</span>;
-			task branch; merge in master; test; commit; <span class="gitcore">&uarr;</span></p>
+		<p><span class="gitcore">&#8618;</span> <strong>Merge Master</strong>: checkout master; test;
+			fetch origin/master; test; commit; <span class="gitcore">&uarr;</span>;
+			checkout branch; merge in master; test; commit; <span class="gitcore">&uarr;</span></p>
 		<p><span class="gitcore">&#8617;</span> <strong>Merge Branch</strong>: <span class="gitcore">&#8618;</span>;
-			checkout master; test; merge in branch; test; commit; <span class="gitcore">&uarr;</span></p>
+			checkout master; test; merge in branch; test; <span class="gitcore">&uarr;</span></p>
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
@@ -153,7 +152,7 @@
 					<li><strong>New Task</strong>: create new task with branch name
 						&lt;productID&gt;-&lt;issueID&gt;-short-desc; test; <span class="gitcore">&uarr;</span></li>
 					<li>or <strong>Existing Task</strong>: switch to task;
-						<span class="gitcore">&#8618;</span></li>
+						<span class="gitcore">&#8618;</span>; commit; test; <span class="gitcore">&uarr;</span></li>
 				</ul></div>
 				<div class="indent2"><div class="wf-developCommit">
 				<h6><a name="wf_Develop">Develop</a></h6><ul>
@@ -173,8 +172,7 @@
 			</div></div>
 			<div class='indent'><div class="wf-publish">
 			<h6>Publish</h6><ul>
-				<li><span class="gitcore">&#8617;</span></li>
-				<li>switch to Default (master) task</li>
+				<li>on master branch; <span class="gitcore">&#8617;</span></li>
 				<li>if task complete, delete task and local branch</li>
 				<li>&forall; other active branch: <span class="gitcore">&#8618;</span></li>
 			</ul></div>
