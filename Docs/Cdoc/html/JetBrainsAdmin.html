@@ -33,14 +33,13 @@
 		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
 <!-- @/topicList -->
 
-<h2 class="promote" id="Overview_">JetBrains Development Overview</h2>
-		<h4 id="Agile_">Agile Development</h4>
-		<p>Our process is very similar to standard test-first agile development, but with a more relaxed approach
-			toward time management and deadlines. We intepret 'sprints' as having time estimates, not deadlines.</p><ul>
-			<li>date estimates are established based on card estimates, which are adjusted when indicated
-				toward the actual time needed</li>
-			<li>we expect to learn to make better estimates of time required as we use this technique</li>
-			<li>for larger tasks as indicated, a required-dependency task is used to gather information and estimate</li>
+<h2 class="promote" id="Overview_">Development Overview</h2>
+
+<h4 id="Agile_">Agile Development</h4><ul>
+	<li>We use a fairly standard form of test-first agile development, with a couple of significant modifications:<ul>
+		<li>Sprints have time estimates, not deadlines.
+			Estimates are established based on card estimates, which are adjusted as indicated.
+			We expect to learn to make better estimates of time required as we use this technique.</li>
 			<li>YouTrack's 'fix version' field is intended to identify cards for a version number and a scrum.<ul>
 				<li>We prefer to establish the version number when the product is ready for 'release',
 					as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
@@ -48,16 +47,25 @@
 				<li>'fix version' targets are more like '17JanA'; actual version numbers,
 					if any, are assigned on completion</li>
 			</ul></li>
-		</ul>
+		<li>We do not do deadlines.</li>
+	</ul></li>
+</ul>
 
-<p class="sl5">JetBrains: primary tools for our development process</p>
+<h4 id="WIP_">Work in Progress</h4><ul>
+	<li>We are establishing WIP limits and related policies.</li>
+	<li>Tasks are broken down into smaller pieces as needed to conform to this policy.</li>
+	<li>For larger tasks as indicated, a required-dependency task is used to gather information and estimate.</li>
+</ul>
+
+<h4 id="JetBrainsTools_">JetBrains Tools</h4>
+	<p>JetBrains: primary tools for our development process</p>
 		<p class="sl6">available IDE's for development languages:</p><ul class="sl6">
 			<li>IntelliJ IDEA: flagship development environment for Java<ul>
 				<li>best support for related languages, project structure with modules, ...</li>
 				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
 				<li>better choice for bash, html, AppleScript</li>
 			</ul></li>
-			<li>AppCode (already in use): primary support for Cocoa/Objective-C(++); plugins for unix and AppleScript<ul>
+			<li>AppCode (currently in use): primary support for Cocoa/Objective-C(++); plugins for unix and AppleScript<ul>
 				<li>project structure based on Xcode =&gt; no module support, limitations for other plug-ins and features</li>
 			</ul></li>
 			<li>other languages/IDEs<ul>
@@ -75,7 +83,9 @@
 		<p class="sl6">We expect to use:</p><ul class="sl6">
 			<li>The complete team tool suite</li>
 			<li>AppCode IDE for Cocoa projects; IntelliJ IDEA by default for other languages; add specialized products for other languages as indicated</li>
+		<li>We have an All-Products license for JetBrains IDEs</li>
 	</ul>
+	<p>See also <a href="#JetBrainsAdoption_">JetBrains Adoption</a> for costs and motivations.</p>
 
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
