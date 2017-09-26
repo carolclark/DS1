@@ -17,8 +17,8 @@
 
 <!-- @topicList "JetBrainsAdmin" "Contents" -->
 	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
-	<!-- @topicItem "Team Tools Configuration" "#TeamToolsConfiguration_" "0" "" -->
 	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
+	<!-- @topicItem "Team Tools Configuration" "#TeamToolsConfiguration_" "0" "" -->
 	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
 	<!-- @topicItem "Install TeamTools" "#InstallTeamTools_" "0" "" -->
 	<!-- @topicSep -->
@@ -76,6 +76,91 @@
 				if any, are assigned on completion</li>
 		</ul></li>
 	</ul>
+
+<!-- @marker "Admin Tasks and References" -->
+<h2 class="promote">Admin Tasks and References</h2>
+<!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
+<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
+<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
+<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
+<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
+<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Create Project" -->
+<h3 id="CreateProject_">Create Project with Agile Board</h3>
+<p class="blurb">see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></p>
+<h4 id='AddProjectwithAgileBoard_'>Add Project </h4><ul>
+	<li>Hub: create project<ul>
+		<li>for project already in GitHub, check VCS for last issue number already used</li>
+		<li>create project from Scrum template</li>
+		<li>edit custom fields<ul>
+			<li>includes edit field names to use camel case for readability<ul>
+				<li>Issue Type: Epic, Feature, Task; Bug, Cosmetic, Exception, Usability, Performance</li>
+			</ul></li>
+		</ul></li>
+		<li>edit workflows<ul>
+			<li>scrum: do NOT close issue automatically when subtasks completed<ul>
+				<li>either do nothing, of put parent issue up for review</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Custom Fields and Workflows</strong></li>
+</ul>
+
+<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
+<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
+</a></p>
+
+<!-- marker Install Build Agent -->
+<h3 id='InstallBuildAgent_'>Install Build Agent</h3><ul>
+	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
+		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
+</ul>
+
+<!-- @marker "Command-Line Tools" -->
+<h3 id="CommandLineTools_">Command Line Tools</h3>
+
+<h4>HubRing command line</h4><ul>
+	<li><span class="mono">hub.sh</span><ul>
+		<li><span class="mono">start</span> Start the HubRing service</li>
+		<li><span class="mono">stop</span> Stops the Hub service.</li>
+		<li><span class="mono">restart</span> Restarts the Hub service.</li>
+		<li><span class="mono">help</span> Displays a list of all commands that can be executed in the command-line interface.</li>
+	</ul></li>
+</ul>
+
+<h4>YouTrack command line</h4><ul>
+	<li><span class="mono">youtrack.sh</span> <span class="mono">start</span>: Start YouTrack</li>
+</ul>
+
+<h4>UpSource commandline</h4><ul>
+	<li><span class="mono">upsource.sh</span> <span class="mono">start</span>: Start Upsource</li>
+</ul>
+
+<h4>TeamCity command line</h4><ul>
+	<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span> server and one build agent</li>
+	<li><span class="mono">teamcity-server.sh</span>: start/stop server only<ul>
+		<li><span class="mono">run</span>: start TeamCity in the current window</li>
+		<li><span class="mono">start</span>: start TeamCity in a separate window</li>
+		<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
+		<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
+			<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">Creating Backup via maintainDB command-line tool</a></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Moving to Another Server" -->
+<h3 id='MovingServer_'>Moving Projects to Another Server</h3><ul>
+	<li>make standard TeamCity backups of existing projects</li>
+	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
+</ul>
+
+<!-- @marker "Sort a Card's Subtasks" -->
+<h3 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h3><ul>
+	<li>Create a swimlane for the card</li>
+	<li>Organize the subtasks in that lane</li>
+</ul>
 
 <!-- @marker "Team Tools Configuration" -->
 <h2 class="promote">Team Tools Configuration</h2>
@@ -263,91 +348,6 @@
 				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
 		</ul></li>
 	</ul>
-
-<!-- @marker "Admin Tasks and References" -->
-<h2 class="promote">Admin Tasks and References</h2>
-<!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
-	<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
-	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
-	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
-	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
-	<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Create Project" -->
-<h3 id="CreateProject_">Create Project with Agile Board</h3>
-	<p class="blurb">see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></p>
-	<h4 id='AddProjectwithAgileBoard_'>Add Project </h4><ul>
-		<li>Hub: create project<ul>
-			<li>for project already in GitHub, check VCS for last issue number already used</li>
-			<li>create project from Scrum template</li>
-			<li>edit custom fields<ul>
-				<li>includes edit field names to use camel case for readability<ul>
-					<li>Issue Type: Epic, Feature, Task; Bug, Cosmetic, Exception, Usability, Performance</li>
-				</ul></li>
-			</ul></li>
-			<li>edit workflows<ul>
-				<li>scrum: do NOT close issue automatically when subtasks completed<ul>
-					<li>either do nothing, of put parent issue up for review</li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-		<li><strong>Custom Fields and Workflows</strong></li>
-</ul>
-
-<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
-<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">Multi-Level Agile Boards or How We Support Epics
-</a></p>
-
-<!-- marker Install Build Agent -->
-<h3 id='InstallBuildAgent_'>Install Build Agent</h3><ul>
-	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
-		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
-</ul>
-
-<!-- @marker "Command-Line Tools" -->
-<h3 id="CommandLineTools_">Command Line Tools</h3>
-
-	<h4>HubRing command line</h4><ul>
-		<li><span class="mono">hub.sh</span><ul>
-			<li><span class="mono">start</span> Start the HubRing service</li>
-			<li><span class="mono">stop</span> Stops the Hub service.</li>
-			<li><span class="mono">restart</span> Restarts the Hub service.</li>
-			<li><span class="mono">help</span> Displays a list of all commands that can be executed in the command-line interface.</li>
-		</ul></li>
-	</ul>
-
-	<h4>YouTrack command line</h4><ul>
-		<li><span class="mono">youtrack.sh</span> <span class="mono">start</span>: Start YouTrack</li>
-	</ul>
-
-	<h4>UpSource commandline</h4><ul>
-		<li><span class="mono">upsource.sh</span> <span class="mono">start</span>: Start Upsource</li>
-	</ul>
-
-	<h4>TeamCity command line</h4><ul>
-		<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span> server and one build agent</li>
-		<li><span class="mono">teamcity-server.sh</span>: start/stop server only<ul>
-			<li><span class="mono">run</span>: start TeamCity in the current window</li>
-			<li><span class="mono">start</span>: start TeamCity in a separate window</li>
-			<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
-			<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
-				<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">Creating Backup via maintainDB command-line tool</a></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-
-<!-- @marker "Moving to Another Server" -->
-<h3 id='MovingServer_'>Moving Projects to Another Server</h3><ul>
-	<li>make standard TeamCity backups of existing projects</li>
-	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
-</ul>
-
-<!-- @marker "Sort a Card's Subtasks" -->
-<h3 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h3><ul>
-	<li>Create a swimlane for the card</li>
-	<li>Organize the subtasks in that lane</li>
-</ul>
 
 <!-- @marker "JetBrains Adoption" -->
 <h2 class="promote">JetBrains Adoption</h2>
