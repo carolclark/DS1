@@ -373,6 +373,87 @@
 		</ul></li>
 	</ul>
 
+<h3>Add Features: TeamCity</h3><div class="indent">
+
+<!-- @marker "Store Project Settings in Version Control" -->
+<h4 id='StoreProjectSettings_'>Store Project Settings in Version Control</h4><ul>
+	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
+		Store Project Settings in Version Control</a></li>
+</ul>
+
+<!-- marker "Install Build Agent" -->
+<h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
+	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
+		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
+</ul>
+
+<!-- @marker "Autostart TeamCity Server" -->
+<h4 id="id_">Autostart TeamCity Server</h4><ul>
+	<li id="AutostartServer_"><strong>Autostart TeamCity Server</strong><ul>
+		<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
+			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
+				<li>Working Directory: /Volumes/Servers/jb/TeamCity/TeamCity</li>
+			</ul></li>
+		<li>copy file jetbrains.teamcity.server.plist to ~/Library/LaunchDaemons</li>
+		<li>restart computer</li>
+		<li>Safari: localhost:8111 should show TeamCity window</li>
+	</ul></li>
+	<li id="SetTeamCitysDataDirectory_"><strong>Set TeamCity's Data Directory</strong><ul>
+		<li>Create New File for Startup Properties<ul>
+			<li class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
+				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Move to External Database" -->
+<h4 id="MoveToExternalDatabase_">Move to External Database</h4><ul>
+		<li class="blurb">includes install; initialize data directory; test; secure initial accounts</li>
+	</ul>
+
+	<!-- @marker "Install and Set Up MySQL" -->
+	<h5 id="InstallAndSetUpMySQL_">Install and Set Up MySQL</h5><ul>
+		<li><a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a></li>
+	</ul>
+
+	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
+	<h5 id="IntegrateMySQLAndTeamCityServers_">Integrate MySQL and TeamCity Servers</h5><ul>
+		<li>MySQL server side<ul>
+			<li><a href="MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
+		</ul></li>
+		<li>TeamCity server side<ul>
+			<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
+		</ul></li>
+	</ul>
+
+	<!-- @marker "Create TeamCityDB" -->
+	<h5 id='CreateTeamCityDB_'>Create TeamCityDB</h5><ul>
+		<li>create TeamCity database<ul>
+			<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
+		</ul></li>
+		<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
+			<li class="blurb">localhost:8111</li>
+			<li>user: carolclark; password</li>
+			<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
+			<li>startup page configuration<ul>
+				<li><strong>smtp</strong>: smpt host: smpt.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
+				<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
+				<li><strong>user</strong>: username: carolclark; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
+			</ul></li>
+			<li>click user name for profile page<ul>
+				<li>user name and email</li>
+				<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
+					Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
+				<li>VCS User Names: add carolclark@cox.net</li>
+			</ul></li>
+			<li>Administration<ul>
+				<li>configure backups *WARNING* backups currently not run automatically</li>
+			</ul></li>
+			<li>build number: &lt;version&gt;.b%build.counter%</li>
+		</ul></li>
+	</ul>
+</div>
+
 <!-- @marker "JetBrains Adoption" -->
 <h2 class="promote">JetBrains Adoption</h2>
 <!-- @topicList "JetBrains Adoption" "JetBrainsAdoption_" -->
