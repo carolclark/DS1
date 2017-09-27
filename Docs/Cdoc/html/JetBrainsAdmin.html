@@ -18,9 +18,10 @@
 <!-- @topicList "JetBrainsAdmin" "Contents" -->
 	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
 	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
-	<!-- @topicItem "Team Tools Configuration" "#TeamToolsConfiguration_" "0" "" -->
+	<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
+	<!-- @topicItem "TeamTools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
 	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
-	<!-- @topicItem "Install TeamTools" "#InstallTeamTools_" "0" "" -->
+	<!-- @topicItem "Install and Configure TeamTools" "#TeamToolsInstallConfig_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "References" "8" -->
 		<!-- @topicItem "JetBrains" "http://www.jetbrains.com" "0" "JetBrains home" -->
@@ -184,10 +185,9 @@
 	<li>make standard TeamCity backups of existing projects</li>
 	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
 </ul>
-
-<!-- @marker "Team Tools Configuration" -->
-<h2 class="promote">Team Tools Configuration</h2>
-<!-- @topicList "Team Tools Configuration" "TeamToolsConfiguration_" -->
+<!-- @marker "Team Tools Install and Configure" -->
+<h2 class="promote" id="TeamToolsInstallConfig_">Team Tools: Install and Configure</h2>
+<!-- @topicList "Team Tools: Install and Configure" "TeamToolsConfiguration_" -->
 	<!-- @topicItem "Installation" "#Installation_" "0" "" -->
 	<!-- @topicItem "HubRing:  Configuration" "#HubRingConfiguration_" "0" "" -->
 	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
@@ -213,15 +213,24 @@
 			<li>expand archive<ul>
 				<li>for TeamCity, use <span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
-			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard</li>
-			<li>set TeamCity data directory: stop TeamCity; set data path; restart<ul>
+			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard<ul>
+				<li>Hub: set JetBrains admin password for admin account; later, add account 'carol'</li>
+			</ul></li>
+			<li>set TeamCity startup properties: stop TeamCity; set startup properties; restart<ul>
 				<li><span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
 				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
+				<li><span class="mono">echo "teamcity.installation.completed=true" >>
+					/Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span><ul>
+					<li class="blurb">prevents creation of dummy admin user</li>
 			</ul></li>
+			</ul></li>
+			<li>UpSource: see <a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
+				Mysterious "Build System" Setting</a></li>
 			<li>when tool appears: backup</li>
 		</ul></li>
+		<li>after each tool install, continue to <a href="#TeamToolsInstallConfig_">configure</a> new tool</li>
 	</ul></li>
-	<li><strong>Data and Notes</strong><ul>
+	<li><strong>Installation Data</strong><ul>
 		<li><strong>login</strong>: sign in as 'admin' or 'carol'</li>
 		<li><strong>Backups</strong><ul>
 			<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
@@ -230,9 +239,6 @@
 			<li>rotation 7</li>
 		</ul></li>
 		<li>address for our external HubRing: <span class="mono">&lt;http://carols-imac-2.local:8080&gt;</span></li>
-		<li>Set TeamCity Data Directory:<br />
-			<span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
 	</ul></li>
 </ul>
 
