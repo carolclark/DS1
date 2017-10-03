@@ -210,17 +210,20 @@
 			</ul></li>
 			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard<ul>
 				<li>Hub: set JetBrains admin password for admin account; later, add account 'carol'</li>
-			</ul></li>
-			<li>set TeamCity startup properties: stop TeamCity; set startup properties; restart<ul>
-				<li><span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
-				<li><span class="mono">echo "teamcity.installation.completed=true" >>
-					/Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span><ul>
-					<li class="blurb">prevents creation of dummy admin user</li>
-			</ul></li>
-			</ul></li>
-			<li>UpSource: see <a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
-				Mysterious "Build System" Setting</a></li>
+				<li>TeamCity<ul>
+					<li><span class='mono'><span class="prompt">$ </span>./bin/runAll.sh start</span></li>
+					<li>set TeamCity startup properties: stop TeamCity; set startup properties; restart<ul>
+						<li><span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
+							&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
+						<li><span class="mono">echo "teamcity.installation.completed=true" >>
+							/Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span><ul>
+							<li class="blurb">prevents creation of dummy admin user</li>
+						</ul></li>
+					</ul></li>
+				</ul></li>
+				<li>UpSource: see <a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
+					Mysterious "Build System" Setting</a></li>
+				</ul></li>
 			<li>when tool appears: backup</li>
 		</ul></li>
 		<li>after each tool install, continue to <a href="#TeamToolsInstallConfig_">configure</a> new tool</li>
@@ -301,18 +304,13 @@
 
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
-	<p class="sl5">Server Settings</p>
-		<p class="sl6">Global</p><ul class="sl6">
+	<p class="sl5">Global Server Settings</p><ul class="sl6">
 			<li>verify license shown; if not, fetch and copy</li>
 			<li>Default Timezone: verify</li>
 			<li>Date Fields Format: ISO date (2000.12.31)</li>
 			<li>provide email host (smtp.cox.net); enable email notifications</li>
 		</ul>
-<div class="dq">
-	<p class="sl5">Global Project-Related Settings</p>
-		<p class="sl6">Access Settings</p><ul class="sl6">
-			<li><strong>Backups</strong>: to 'Mavericks-1/JetBrains_backups/Hub; zip format; every day at 2 AM; rotation 5</li>
-			<li><strong>VCS configurations</strong></li>
+	<p class="sl5">Global Project-Related Settings</p><ul class="sl6">
 			<li><strong>Access Management</strong><ul>
 				<li>add user carolclark to Group Project Admin</li>
 			</ul></li>
@@ -348,30 +346,12 @@
 	<p class="sl6">start YouTrack service:</p><ul class="sl6">
 		<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
 </ul>
-</div>
 
 <!-- @marker "UpSource: Configuration" -->
 <h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
-	<p class="blurb">see
-		<a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
-			Mysterious "Build System" Setting</a></p>
 
 <!-- @marker "TeamCity: Configuration" -->
 <h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
-
-	<!-- @marker "Store Project Settings in Version Control" -->
-	<h5 id='StoreProjectSettings'>Store Project Settings in Version Control</h5><ul>
-	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
-		Store Project Settings in Version Control</a></li>
-	</ul>
-
-	<!-- @marker "Set TeamCity's Data Directory" -->
-	<h5 style="padding-top: 10px;"><strong>Set TeamCity's Data Directory</strong></h5><ul>
-		<li>Create New File for Startup Properties<ul>
-			<li class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
-		</ul></li>
-	</ul>
 
 <!-- @marker "TeamTools: Add Features" -->
 <h2>TeamTools: Add Features</h2>
@@ -612,320 +592,6 @@
 		</ul></li>
 	</ul></li>
 </ul>
-
-<!-- @marker "Install TeamTools" -->
-<h2 class="promote">Install TeamTools</h2>
-	<!-- @topicList "Install TeamTools" "InstallTeamTools_" -->
-		<!-- @topicItem "Install TeamTools 2017-08" "#InstallTeamTools2017-08_" "0" "" -->
-<!-- @/topicList -->
-
-<p>Installation sections correspond with dates of actual installations, and appear in reverse chronological order.</p>
-<p>JetBrains projects are automatically added to any JetBrains Team tools (YouTrack, UpSource, Team City) that are installed in Hub at the time of the installation.
-Therefore, install all TeamTools before adding any projects.</p>
-
-<h6>Installation Levels</h6><ul>
-	<li>Installation and configuration may be specified at these levels:<ul>
-		<li><strong>Basic</strong>: product can be used as intended</li>
-		<li><strong>Complete</strong>: complete installation for long-term stability</li>
-		<li><strong>Extend</strong>: extensions add additional features</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Install TeamTools 2017-08" -->
-<h2>Install TeamTools 2017-08</h2>
-<!-- @topicList "Install TeamTools 2017-08" "InstallTeamTools2017-08_" -->
-	<!-- @topicItem "Basic Team Tools 2017-08" "#BasicTeamTools2017-08_" "0" "" -->
-	<!-- @topicItem "Complete Team Tools 2017-08" "#CompleteTeamTools2017-08_" "0" "" -->
-	<!-- @topicItem "Extend Team Tools 2017-08" "#ExtendTeamTools2017-08_" "0" "" -->
-	<!-- @topicItem "Upgrade Team Tools 2017-08" "#UpgradeTeamTools2017-08_" "0" "" -->
-<!-- @/topicList -->
-
-	<!-- @marker "Basic Team Tools 2017-08" -->
-	<h3>Basic Team Tools 2017-08</h3>
-	<!-- @topicList "Basic Team Tools 2017-08" "BasicTeamTools2017-08_" -->
-		<!-- @topicItem "HubRing: Basic 2017-08" "#HubRingBasic2017-08_" "0" "" -->
-		<!-- @topicItem "YouTrack: Basic 2017-08" "#YouTrackBasic2017-08_" "0" "" -->
-		<!-- @topicItem "UpSource: Basic 2017-08" "#UpSourceBasic2017-08_" "0" "" -->
-		<!-- @topicItem "TeamCity: Basic 2017-08" "#TeamCityBasic2017-08_" "0" "" -->
-			<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "1" "" -->
-	<!-- @/topicList -->
-
-	<!-- @marker "HubRing: Basic 2017-08" -->
-	<h4 id="HubRingBasic2017-08_">HubRing: Basic 2017-08</h4><ul>
-		<li class="blurb">Try: set backup location in setup; then backup; then configure<ul>
-			<li>If that works<ul>
-				<li>change others to match</li>
-				<li>TeamCity needs to also reset data location before backup</li>
-			</ul></li>
-			<li class="dq">also: do Team City dependencies actually apply to all products?</li>
-		</ul></li>
-		<li><span class="expand">see</span> <a href="https://www.jetbrains.com/help/hub/2017.1/HUB-Installation-and-Upgrade-Guide.html">
-			install JetBrains Hub</a></li>
-		<li>download from <a href="https://www.jetbrains.com/hub/download/#section=mac">Hub Download</a><ul>
-			<li>Download the *.zip package from Jetbrains</li>
-			<li>Place downloaded package in /Volumes/Servers/jb/Hub; expand at that location</li>
-			<li><span class="mono">cd &lt;path/to/hub&gt;; bin/hub.sh run</span></li>
-			<li>When welcome screen appears, select installation type 'Setup'</li>
-			<li>Setup Wizard<ul>
-				<li>Select Hub Service<ul>
-					<li>set JetBrains password for admin account</li>
-				</ul></li>
-				<li>Confirm License<ul>
-					<li>save license key; confirm License restrictions; 'Finish'</li>
-				</ul></li>
-				<li>Hub opens; Login as admin; admin/setup menu is on hexagonal nut icon</li>
-			</ul></li>
-		<li>continue to <a href="#HubRingConfiguration_">HubRing Configuration</a></li>
-	</ul></li>
-	</ul>
-
-	<!-- @marker "YouTrack: Basic 2017-08" -->
-	<h4 id="YouTrackBasic2017-08_">YouTrack: Basic 2017-08</h4><ul>
-		<li>Download standalone version from YouTrack Download; compress if not in archive form</li>
-		<li>Place *.zip package in /Volumes/Servers/jb/YouTrack; expand at that location</li>
-		<li><span class="mono">cd &lt;path/to/YouTrack&gt;/bin; youtrack.sh run</span></li>
-		<li>When welcome screen appears, select 'Setup'</li>
-		<li>Setup Wizard<ul>
-			<li>use External Hub; Hub address http://carols-imac-2.local:8080; verify</li>
-			<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups/YouTrack'</li>
-			<li>save license key; 'Finish' to accept login</li>
-			<li>'Issues' page opens; initial startup is complete</li>
-		</ul></li>
-		<li>continue to <a href="#YouTrackConfiguration_">YouTrack Configuration</a></li>
-	</ul>
-
-	<!-- @marker "UpSource: Basic 2017-08" -->
-	<h4 id="UpSourceBasic2017-08_">UpSource: Basic 2017-08</h4><ul>
-		<li>Installation<ul>
-			<li>Download the *.zip package from Jetbrains</li>
-			<li>Place downloaded package in /Volumes/Servers/jb/UpSource; expand at that location</li>
-			<li><span class="mono">cd &lt;path/to/UpSource&gt;/bin; ./upsource.sh run</span></li>
-			<li>When welcome screen appears, select 'Setup'</li>
-			<li>Setup Wizard<ul>
-				<li>use External Hub; Hub address http://carols-imac-2.local:8080/hub/; verify</li>
-				<li>change backup location to '/Volumes/Mavericks-1/JetBrains_backups/UpSource</li>
-				<li>save license key; 'Finish' to accept login</li>
-				<li>'Users' page opens; initial startup is complete</li>
-			</ul></li>
-		</ul></li>
-		<li>continue to <a href="#UpSourceConfiguration_">UpSource Configuration</a></li>
-	</ul>
-
-	<!-- @marker "TeamCity: Basic 2017-08" -->
-	<h4 id="TeamCityBasic2017-08_">TeamCity: Basic 2017-08</h4><ul>
-		<li style="padding-top: 10px;"><strong>Unpack Archive</strong><ul>
-			<li>download from <a href="https://www.jetbrains.com/teamcity/download/">TeamCity downloads</a></li>
-			<li>move archive to /Volumes/Servers/jb/TeamCity; archive location will become TeamCity home directory</li>
-			<li>Unpack Archive<ul>
-				<li class="mono">cd /Volumes/Servers/jb/TeamCity</li>
-				<li>unzip archive using gnu-tar:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>sudo gtar xf &lt;archive&gt;</span></li>
-			</ul></li>
-		</ul></li>
-		<li style="padding-top: 10px;"><strong>Start TeamCity Server</strong><ul>
-			<li>open http://localhost:8111; will not show content yet</li>
-			<li>start, including one default BuildServer:<ul>
-				<li><span class='mono'><span class="prompt">$ </span>cd /Volumes/Servers/jb/TeamCity/TeamCity/</span></li>
-				<li><span class='mono'><span class="prompt">$ </span>./bin/runAll.sh start</span></li>
-				<li class="blurb">should show short log in Terminal, TeamCity startup window at localhost:8111</li>
-				<li><span style="color: crimson">WARNING</span>: DO NOT enter main TeamCity webapp</li>
-			</ul></li>
-			<li>verify that localhost:8111 shows TeamCity startup page<ul>
-				<li>refresh if necessary</li>
-			</ul></li>
-			<li><span style="color: crimson">STOP</span> TeamCity: <span class='mono'><span class="prompt">$ </span>./bin/runAll.sh stop</span></li>
-		</ul></li>
-
-		<li style="padding-top: 10px;"><strong>Set TeamCity's Data Directory</strong><ul>
-			<li>Create New File for Startup Properties<ul>
-				<li class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-					> /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
-			</ul></li>
-		</ul></li>
-	</ul>
-
-	<h4 id='UninstallTeamCity_'>Uninstall TeamCity</h4><ul>
-		<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
-			<li>open Activity Monitor; show all process</li>
-			<li>for any processes except TeamCity associated with TeamCity, 'quit' using button at top left</li>
-		</ul></li>
-		<li>quit TeamCity:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysqladmin -u root -p shutdown</span></li>
-		<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
-		<li>delete TeamCity application from /Volumes/TeamCity</li>
-		<li>delete /Application Support/TeamCityIntegration</li>
-		<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
-		<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
-	</ul>
-
-<!-- @marker "Complete Team Tools 2017-08" -->
-<h3>Complete Team Tools 2017-08</h3>
-<!-- @topicList "Complete Team Tools 2017-08" "CompleteTeamTools2017-08_" -->
-	<!-- @topicItem "HubRing: Complete 2017-08" "#HubRingComplete2017-08_" "0" "" -->
-	<!-- @topicItem "YouTrack: Complete 2017-08" "#YouTrackComplete2017-08_" "0" "" -->
-	<!-- @topicItem "UpSource: Complete 2017-08" "#UpSourceComplete2017-08_" "0" "" -->
-	<!-- @topicItem "TeamCity: Complete 2017-08" "#TeamCityComplete2017-08_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "HubRing: Complete 2017-08" -->
-<h4 id="HubRingComplete2017-08_">HubRing: Complete 2017-08</h4>
-
-<!-- @marker "YouTrack: Complete 2017-08" -->
-<h4 id="YouTrackComplete2017-08_">YouTrack: Complete 2017-08</h4>
-
-<!-- @marker "UpSource: Complete 2017-08" -->
-<h4 id="UpSourceComplete2017-08_">UpSource: Complete 2017-08</h4>
-
-<!-- @marker "TeamCity: Complete 2017-08" -->
-<h4 id="TeamCityComplete2017-08_">TeamCity: Complete 2017-08</h4><div class="indent">
-	<ul>
-		<li id="AutostartServer_"><strong>Autostart TeamCity Server></strong><ul>
-			<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
-				<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
-					<li>Working Directory: /Volumes/Servers/jb/TeamCity/TeamCity</li>
-				</ul></li>
-			<li>copy file jetbrains.teamcity.server.plist to ~/Library/LaunchDaemons</li>
-			<li>restart computer</li>
-			<li>Safari: localhost:8111 should show TeamCity window</li>
-		</ul></li>
-		<li id="SetTeamCitysDataDirectory_"><strong>Set TeamCity's Data Directory</strong><ul>
-			<li>Create New File for Startup Properties<ul>
-				<li class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-					&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
-			</ul></li>
-		</ul></li>
-		<li><a href="MySQL.html#InstallandSetUpMySQL_"><strong>Install and Set Up MySQL</strong></a><ul>
-			<li>includes install; initialize data directory; test; secure initial accounts</li>
-		</ul></li>
-	</ul>
-	<h5>Move to External Database</h5><ul>
-		<li style="padding-top: 10px;"><strong>Install and Set Up MySQL</strong><ul>
-			<li class="blurb">includes install; initialize data directory; test; secure initial accounts</li>
-			<li><a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a></li>
-		</ul></li>
-		<li style="padding-top: 10px;">Integrate MySQL and TeamCity Servers<ul>
-			<li>MySQL server side<ul>
-				<li><a href="MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
-			</ul></li>
-			<li>TeamCity server side<ul>
-				<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
-			</ul></li>
-	</ul>
-
-	<!-- @marker "Create TeamCityDB" -->
-	<h4 id='CreateTeamCityDB_'>Create TeamCityDB</h4><ul>
-		<li>create TeamCity database<ul>
-			<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carol</li>
-		</ul></li>
-		<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
-			<li class="blurb">localhost:8111</li>
-			<li>user: carol; password</li>
-			<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
-			<li>startup page configuration<ul>
-				<li><strong>smtp</strong>: smpt host: smpt.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
-				<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
-				<li><strong>user</strong>: username: carol; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
-			</ul></li>
-			<li>click user name for profile page<ul>
-				<li>user name and email</li>
-				<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
-					Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
-				<li>VCS User Names: add carolclark@cox.net</li>
-			</ul></li>
-			<li>Administration<ul>
-				<li>configure backups *WARNING* backups currently not run automatically</li>
-			</ul></li>
-			<li>build number: &lt;version&gt;.b%build.counter%</li>
-		</ul></li>
-
-		<li style="padding-top: 10px;"><strong>Prevent Creation of Dummy Admin User</strong><ul>
-			<li class="mono">echo "teamcity.installation.completed=true" >> /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
-		</ul></li>
-	</ul></li>
-	</ul>
-</div>
-
-<!-- @marker "Extend Team Tools 2017-08" -->
-<h3>Extend Team Tools 2017-08</h3>
-<!-- @topicList "Extend Team Tools 2017-08" "ExtendTeamTools2017-08_" -->
-<!-- @topicItem "HubRing: Extend 2017-08" "#HubRingExtend2017-08_" "0" "" -->
-<!-- @topicItem "YouTrack: Extend 2017-08" "#YouTrackExtend2017-08_" "0" "" -->
-<!-- @topicItem "UpSource: Extend 2017-08" "#UpSourceExtend2017-08_" "0" "" -->
-<!-- @topicItem "TeamCity: Extend 2017-08" "#TeamCityExtend2017-08_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "HubRing: Extend 2017-08" -->
-<h4 id="HubRingExtend2017-08_">HubRing: Extend 2017-08</h4>
-
-<!-- @marker "YouTrack: Extend 2017-08" -->
-<h4 id="YouTrackExtend2017-08_">YouTrack: Extend 2017-08</h4>
-	<h5>Time Tracking</h5><ul>
-		<li><em>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</em></li>
-		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
-			<li><em>includes Issue Navigation, Task Management, Time Tracking</em></li>
-		</ul></li>
-		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/TMetric-Integration.html">TMetric (work timer) integration</a></li>
-	</ul>
-
-	<h5>configure Java virtual machine (JVM)</h5><ul>
-		<li class="blurb">may be needed to support some later extension</li>
-		<li>stop YouTrack service<ul>
-			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
-			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
-		</ul></li>
-		<li>if necessary, create file youtrack.jvmoptions<ul>
-			<li>copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist" to Jetbrains/YouTrack/youtrack.jvmoptions</li>
-			<li>configure JVM<ul>
-				<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
-				<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
-				<li>also if needed for performance:<ul>
-					<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
-				</ul></li>
-			</ul></li>
-			<li>configure general options<ul>
-				<li>jetbrains.youtrack.mailLimit: 25</li>
-				<li>for additional configuration options, see
-					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
-			</ul></li>
-			<li>On the Confirm Settings page, confirm or change the basic system settings.</li>
-		</ul></li>
-		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
-		<li>start YouTrack service: <span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
-	</ul>
-
-
-	<!-- @marker "UpSource: Extend 2017-08" -->
-<h4 id="UpSourceExtend2017-08_">UpSource: Extend 2017-08</h4>
-
-<!-- @marker "TeamCity: Extend 2017-08" -->
-<h4 id="TeamCityExtend2017-08_">TeamCity: Extend 2017-08</h4>
-
-<!-- @marker "Upgrade Team Tools 2017-08" -->
-<h3>Upgrade Team Tools 2017-08</h3>
-<!-- @topicList "Upgrade Team Tools 2017-08" "UpgradeTeamTools2017-08_" -->
-	<!-- @topicItem "HubRing Upgrade 2017-08" "#HubRingUpgrade2017-08_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "HubRing Upgrade 2017-08" -->
-<h4 id="HubRingUpgrade2017-08_">HubRing Upgrade 2017-08</h4>
-	<p>see https://www.jetbrains.com/help/hub &gt; Installation and Upgrade &gt; Upgrade Hub</p>
-	<ul>
-		<li>Server Settings > Backup > Backup Database</li>
-		<li>hubring stop</li>
-		<li>append date to name of existing installation</li>
-		<li>compress existing installation; move to Replaced</li>
-		<li>Activity Monitor: search for Hub processes; stop any found</li>
-		<li>verify folder HubRing contains no old files</li>
-		<li>download zip distribution; cd to folder jb/HubRing; extract</li>
-		<li>change alias hubring to match new version name</li>
-		<li>hubring run</li>
-		<li>Setup Wizard<ul>
-			<li>Select Installation Type: Upgrade</li>
-			<li>Select Upgrade Source: latest matching backup from /Volumes/Mavericks-1/jetbrainsBackups</li>
-			<li>Confirm Settings: set backup location to /Volumes/Mavericks-1/jetbrainsBackups<ul>
-				<li>Upgrade; login as admin</li>
-			</ul></li>
-		</ul></li>
-		<li>.bashrc: change version string in &lt;tool&gt; alias</li>
-	</ul>
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
