@@ -163,7 +163,7 @@
 						</ul></li>
 					</ul></li>
 				</ul>
-				<h6>Commit</h6><ul>
+				<h6 id='wf_Commit'>Commit</h6><ul>
 					<li>Terminal: <span class="mono">git status; git diff --cached --check</span></li>
 					<li>if [ whitespace issues | inspection issues | stashes | todo's | settings to export ]:
 						<span class="gitcore">&uarr;</span>; address as indicated</li>
@@ -544,6 +544,24 @@
 		<li><span class='mono'>git reflog [log options | with dates(custom)]</span>&nbsp;&nbsp;# show reflog</li>
 	</ul>
 
+<!-- @marker "Fix Line Endings" -->
+<h4 id='tsk_FixLineEndings'>Fix Line Endings</h4><ul>
+	<li class='blurb'>for fixing line endings when adding files from an external source<ul>
+		<li>see <a href="http://help.github.com/articles/dealing-with-line-endings/">GitHub: Dealing With Line Endings</a></li>
+		<li>We used a slightly modified version of this technique when importing the pyparser script and its support. It seems to have worked fine, although after the reset step there were no files to add, and we were done.</li>
+		<li>These steps show what we actually planned/did.</li>
+	</ul></li>
+	<li>checkin the files</li>
+	<li>remove files from working tree and index: <span class='mono'>git rm --cached -r &lt;pathnames, eg. fldr/*&gt;</span></li>
+	<li>rewrite the files back, with corrected line endings: <span class='mono'>git reset --hard</span></li>
+	<li>if necessary:<ul>
+		<li>add the files back into the index: <span class='mono'>git add --all</span><ul>
+			<li class='blurb'>messages "warning: CRLF will be replaced by LF in file." are ok</li>
+		</ul></li>
+		<li><span class='mono'>git commit -m "normalize line endings"</span></li>
+	</ul></li>
+</ul>
+
 <!-- @marker "Undo" -->
 <h4 id="tsk_Undo">Undo</h4><ul>
 	<li><span class='mono'>git checkout -- &lt;file&gt;</span>&nbsp;&nbsp;# restore one file to version in index</li>
@@ -569,24 +587,66 @@
 			</ul></li>
 		</ul></li>
 	</ul></li>
-</ul>
-
-<!-- @marker "Fix Line Endings" -->
-<h4 id='tsk_FixLineEndings'>Fix Line Endings</h4><ul>
-	<li class='blurb'>for fixing line endings when adding files from an external source<ul>
-		<li>see <a href="http://help.github.com/articles/dealing-with-line-endings/">GitHub: Dealing With Line Endings</a></li>
-		<li>We used a slightly modified version of this technique when importing the pyparser script and its support. It seems to have worked fine, although after the reset step there were no files to add, and we were done.</li>
-		<li>These steps show what we actually planned/did.</li>
-	</ul></li>
-	<li>checkin the files</li>
-	<li>remove files from working tree and index: <span class='mono'>git rm --cached -r &lt;pathnames, eg. fldr/*&gt;</span></li>
-	<li>rewrite the files back, with corrected line endings: <span class='mono'>git reset --hard</span></li>
-	<li>if necessary:<ul>
-		<li>add the files back into the index: <span class='mono'>git add --all</span><ul>
-			<li class='blurb'>messages "warning: CRLF will be replaced by LF in file." are ok</li>
+	<li><strong>Recovering from Problem Branches</strong><ul>
+		<li><em>Sometimes we must deal with branches that have content we want, but that also
+			include bad changes, require a merge commit that is too complex to be safe...</em></li>
+		<li><em>Our preferred strategy is to save both patches and a backup copies of the target files, and then
+			try one strategy, with the other available if problems are encountered.</em></li>
+		<li><strong>Recovery strategy</strong><ul>
+			<li>for intended channges: leave the existing local branch in place, and probably push it<ul>
+				<li><em>We consider all feature branches on the repo to be private,
+					so there should be no work based on it. Also, for the foreseeable future,
+					there are no other developers anyway.</em></li>
+				<li>create new branch, and make the desired source code changes again</li>
+			</ul></li>
 		</ul></li>
-		<li><span class='mono'>git commit -m "normalize line endings"</span></li>
+		<li><strong>Procedure</strong><ul>
+			<li>make backup copies of affected files</li>
+			<li>determine revision &lt;sha&gt; to start with - a spot where master and branch match</li>
+			<li>generate multiple patches for the problem branch<ul>
+				<li>on problem branch: <span class="mono">git format-patch &lt;sha&gt;</span></li>
+				<li>WARNING: If/when patches are applied, there must be NO CHANGES to any affected files
+					from the time the patch files are generated and until the patches have all been applied.
+					If changes are made, remaining patches will not apply cleanly, which will break the process.</li>
+			</ul></li>
+			<li>checkout master</li>
+			<li>move HEAD to point to &lt;sha&gt;: <span class="mono">git reset --hard &lt;sha&gt;</span></li>
+			<li>compare local master with origin/master to verify that local master is as expected</li>
+			<li>commit and push master: <span class="mono">git push --force origin master</span></li>
+			<li>IDEA: create new task based on *master* for the rebuilt branch</li>
+			<li>on new branch, push: <span class="mono">git push --force origin &lt;branch&gt;</span></li>
+			<li>choose: IDEA diff | git patch<ul>
+				<li>IDEA diff<ul>
+					<li>diff: target branch with tip of original branch<ul>
+						<li>for each group of changes:<ul>
+							<li>make changes by applying original branch changes to target branch</li>
+							<li><a href='#wf_Commit'>commit</a></li>
+						</ul></li>
+					</ul></li>
+				</ul></li>
+				<li>git patch<ul>
+					<li>for each patch, sequentially</li>
+						<li>apply to new branch: <span class="mono">git apply &lt;patchNumber&gt;-*.patch</span><ul>
+						<li>use diff from IDEA as indicated to examine and plan changes</li>
+						<li>on receiving branch:<ul>
+							<li>TextEdit: edit and save commit message in file <span class='mono'>${HOME}/Library/CCDev/tmp/msg.txt</span></li>
+							<li>add selected hunks: <span class='mono'>git add [ -i | --interactive ]</span> (alias 'gai')<ul>
+								<li>to undo: <span class='mono'>git reset &lt;filename&gt;</span></li>
+							</ul></li>
+							<li>view changes: <span class='mono'>git difftool --cached</span> (alias 'gdc')</li>
+							<li><span class='mono'>cat ${HOME}/Library/CCDev/tmp/msg.txt</span> (alias gcsm)</li>
+							<li><span class='mono'>git commit -F ~/Library/CCDev/tmp/msg</span>(alias gcmf)</li>
+							<li>push</li>
+						</ul></li>
+						<li>repeat until all changes in this patch have been committed</li>
+					<li>continue until all patches have been handled</li>
+				</ul></li>
+			</ul></li>
+			<li><a href="http://candcsoft.com/TechnicalDocs/DevSupport/Git.html#merge_master_">merge master</a></li>
+			<li><a href="http://candcsoft.com/TechnicalDocs/DevSupport/Git.html#publish_">publish</a> and continue</li>
+		</ul></li>
 	</ul></li>
+</ul></li>
 </ul>
 
 <!-- @marker "References" -->
