@@ -59,7 +59,7 @@ function prepareFileOperation {
 		filepath="${2}"
 		destinationFolder="${3}"
 	else
-		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
+                      		errorMessage $RC_MissingArgument "$0#$LINENO:" "USAGE: ${targetFolder}_install.ksh --prepareFileOperation subtarget filepath destinationFolder"
 		return $RC_MissingArgument
 	fi
 
