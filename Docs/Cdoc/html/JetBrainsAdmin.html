@@ -229,15 +229,15 @@
 				<li>UpSource: see <a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
 					Mysterious "Build System" Setting</a></li>
 				</ul></li>
-			<li>when tool appears: backup</li>
+			<li>when tool appears: <a href="#backups">backup</a></li>
 		</ul></li>
 		<li>after each tool install, continue to <a href="#TeamToolsInstallConfig_">configure</a> new tool</li>
 	</ul></li>
 	<li><strong>Installation Data</strong><ul>
 		<li><strong>login</strong>: sign in as 'admin' or 'carol'</li>
-		<li><strong>Backups</strong><ul>
+		<li id="backups"><strong>Backups</strong><ul>
 			<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
-			<li>zip format</li>
+			<li>tar.gz format</li>
 			<li>every day at 2 AM</li>
 			<li>rotation 7</li>
 		</ul></li>
@@ -270,19 +270,22 @@
 		</ul></li>
 	</ul>
 	<p class="sl6">Groups</p><ul class="sl6">
-		<li>add group All Projects Admin with role all-projects-admin</li>
-	</ul>
-	<p class="sl6">Users</p><ul class="sl6">
-		<li>add user carol to group All Projects Admin</li>
+ 		<li>add group 'All Projects Admin' with role all-projects-admin</li>
+		<li>add user 'admin' to group All Projects Admin</li>
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
 		<li>Hub: Built-in Authorization<ul>
 			<li>test login combinations</li>
 		</ul></li>
-		<li>GitHub<ul>
+		<li>add module GitHub<ul>
 			<li>Server URL: https://github.com</li>
-			<li>User Creation: Disabled</li>
-			<li>under server url, follow instructions to obtain and enter Client ID and Client Secret from GitHub</li>
+			<li>copy what can be seen of the seen of the Callback URL</li>
+			<li>in Safari, duplicate the OAuth tab; we will click between tabs to copy data back and forth</li>
+			<li>click link to register an application with GitHub</li>
+			<li>in GitHub, follow instructions to obtain Client ID and Client Secret from GitHub<ul>
+				<li>the callback link for GitHub, as shown, has been incomplete; make it end in 'landing'</li>
+			</ul></li>
+			<li>click between tabs to copy ClientID and Client Secret from GhtHub to Hub's OAuth page</li>
 			<li>Save</li>
 			<li>Enable Module</li>
 		</ul></li>
@@ -290,12 +293,6 @@
 	<p class="sl6">System Settings</p><ul class="sl6">
 		<li>login timeout 12 hours</li>
 		<li>remember me for 1 year</li>
-	</ul>
-	<p class="sl6">Backups</p><ul class="sl6">
-		<li>to '/Volumes/Mavericks-1/JetBrains_backups</li>
-		<li>zip format</li>
-		<li>every day at 2 AM</li>
-		<li>rotation 5</li>
 	</ul>
 	<p class="sl6">SMTP</p><ul class="sl6">
 		<li>host smtp.cox.net; from carolclark@cox.net</li>
