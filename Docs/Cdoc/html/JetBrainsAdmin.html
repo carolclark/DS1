@@ -91,7 +91,7 @@
 			<li>AppCode IDE for Cocoa projects; IntelliJ IDEA by default for other languages; add specialized products for other languages as indicated</li>
 		<li>We have an All-Products license for JetBrains IDEs</li>
 	</ul>
-	<p>See also <a href="#JetBrainsAdoption_">JetBrains Adoption</a> for costs and motivations.</p>
+	<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
 
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
@@ -106,7 +106,7 @@
 <!-- @marker "Create Project" -->
 <h3 id="CreateProject_">Create Project with Agile Board</h3>
 <p class="blurb">see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></p>
-<h4 id='AddProjectwithAgileBoard_'>Add Project </h4><ul>
+<h4 id='AddProjectWithAgileBoard_'>Add Project </h4><ul>
 	<li>Hub: create project<ul>
 		<li>for project already in GitHub, check VCS for last issue number already used</li>
 		<li>create project from Scrum template</li>
@@ -443,7 +443,7 @@
 
 <!-- marker "Install Build Agent" -->
 <h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
-	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingviaZIPFile">
+	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingViaZIPFile">
 		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
 </ul>
 
@@ -458,7 +458,7 @@
 		<li>restart computer</li>
 		<li>Safari: localhost:8111 should show TeamCity window</li>
 	</ul></li>
-	<li id="SetTeamCitysDataDirectory_"><strong>Set TeamCity's Data Directory</strong><ul>
+	<li id="SetTeamCityDataDirectory_"><strong>Set TeamCity's Data Directory</strong><ul>
 		<li>Create New File for Startup Properties<ul>
 			<li class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
 				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
@@ -496,7 +496,7 @@
 			<li>user: carolclark; password</li>
 			<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
 			<li>startup page configuration<ul>
-				<li><strong>smtp</strong>: smpt host: smpt.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
+				<li><strong>smtp</strong>: smtp host: smtp.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
 				<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
 				<li><strong>user</strong>: username: carolclark; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
 			</ul></li>
@@ -519,14 +519,14 @@
 <!-- @topicList "JetBrains Adoption" "JetBrainsAdoption_" -->
 	<!-- @topicItem "Motivation" "#Motivation_" "0" "" -->
 	<!-- @topicItem "JetBrains Team Tools" "#JetBrainsTeamTools_" "0" "" -->
-	<!-- @topicItem "Toolbox and IDEs" "#ToolboxandIDEs_" "0" "" -->
+	<!-- @topicItem "Toolbox and IDEs" "#ToolboxAndIDEs_" "0" "" -->
 	<!-- @topicItem "Costs" "#Costs_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Motivation" -->
 <h4 id='Motivation_'>Motivation</h4>
 	<p>We have been using AppCode instead of Xcode for basic development for a little over two years (since Jan 2015).
-		The decision to switch to AppCode was motivated by independent advocates, notably <a href="http://qualitycoding.org/start-here/">Jon Reid</a>;
+		The decision to switch to AppCode was motivated by independent advocates, notably <a href="http://QualityCoding.org/start-here/">Jon Reid</a>;
 		their top reason was AppCode's refactoring capability in comparison with Xcode, with many other areas where AppCode was better.</p>
 	<p>About one year ago, we adopted JetBrains' TeamCity for continuous integration, and Kanban for planning through waffle.io.</p>
 	<p>Each of these steps helped us to improve our workflow considerably.</p>
@@ -546,10 +546,10 @@
 			Replaces Waffle Kanban board with Agile boards (no scrums required) that also provide a specialized planning board,
 			and provide integration with AppCode and other tools.
 			Support a single set of Agile boards for all GitHub projects,
-			allowing improved planning and prioritization without requiring combination of repos.</p>
+			allowing improved planning and prioritization without requiring combination of repositories.</p>
 
 	<p><strong>TeamCity</strong>: Powerful Continuous Integration out of the box</p>
-		<p class="indent">Continuous Integration we have been comfortabally using.</p>
+		<p class="indent">Continuous Integration we have been comfortably using.</p>
 
     <p><strong>UpSource</strong>: Code review and repository browsing</p>
 		<p class="indent">Code review is normally done among peers, but we use UpSource to review code from our own multiple perspectives.</p>
@@ -557,7 +557,7 @@
 	<p><strong>Hub</strong>: JetBrains Tools, integrated</p>
 
 <!-- @marker "Toolbox and IDEs" -->
-<h4 id='ToolboxandIDEs_'>Toolbox and IDEs</h4>
+<h4 id="ToolboxAndIDEs_">Toolbox and IDEs</h4>
 	<p>JetBrains provides a large variety of IDEs. We have been happily using their AppCode for Objective-C for a year now.</p>
 	<p>At some point, we will probably also be using other languages:</p><ul>
 		<li>WebStorm for web development with javascript</li>
