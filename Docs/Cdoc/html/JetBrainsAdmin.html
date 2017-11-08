@@ -208,40 +208,30 @@
 	</ul></li>
 	<li id="install_"><strong>Install</strong><ul>
 		<li>for each product:<ul>
-			<li>create folder &lt;produceName&gt; at /Servers/jb</li>
+			<li>create folder &lt;productName&gt; at /Servers/jb</li>
 			<li>download installation package; move to its folder</li>
 			<li>expand archive<ul>
 				<li>for TeamCity, use <span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
 			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard<ul>
-				<li>Hub: set JetBrains admin password for admin account; later, add account 'carol'</li>
-				<li>TeamCity<ul>
-					<li><span class='mono'><span class="prompt">$ </span>./bin/runAll.sh start</span></li>
-					<li>set TeamCity startup properties: stop TeamCity; set startup properties; restart<ul>
-						<li><span class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-							&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span></li>
-						<li><span class="mono">echo "teamcity.installation.completed=true" >>
-							/Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</span><ul>
-							<li class="blurb">prevents creation of dummy admin user</li>
-						</ul></li>
-					</ul></li>
-				</ul></li>
+				<li>Hub: sign in as 'admin' with JetBrains admin password; account 'carol' added later</li>
 				<li>UpSource: see <a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
 					Mysterious "Build System" Setting</a></li>
 				</ul></li>
-			<li>when tool appears: <a href="#backups">backup</a></li>
+			<li>when tool appears:<ul>
+				<li id="backups"><strong>Backup</strong> @ Server Settings<ul>
+					<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+					<li>tar.gz format</li>
+					<li>every day at 2 AM</li>
+					<li>rotation 7</li>
+				</ul></li>
+				<li>execute backup</li>
+			</ul></li>
 		</ul></li>
 		<li>after each tool install, continue to <a href="#TeamToolsInstallConfig_">configure</a> new tool</li>
 	</ul></li>
 	<li><strong>Installation Data</strong><ul>
-		<li><strong>login</strong>: sign in as 'admin' or 'carol'</li>
-		<li id="backups"><strong>Backups</strong><ul>
-			<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
-			<li>tar.gz format</li>
-			<li>every day at 2 AM</li>
-			<li>rotation 7</li>
-		</ul></li>
-		<li>address for our external HubRing: <span class="mono">&lt;http://carols-imac-2.local:8080&gt;</span></li>
+		<li><strong>HubRing</strong>: <span class="mono">http://carols-imac-2.local:8080</span></li>
 	</ul></li>
 </ul>
 
@@ -255,23 +245,7 @@
 			<li>add and verify email address</li>
 			<li>do not force change password</li>
 		</ul></li>
-	</ul>
-	<p class="sl6">Roles</p><ul class="sl6">
-		<li>add role 'All Projects Admin'<ul>
-			<li>Permissions<ul>
-				<li>match permissions of role Project Admin<ul>
-					<li>Project: read, update</li>
-					<li>Project Role: add, remove</li>
-					<li>Role: read</li>
-					<li>User: create; read self; read user; update self</li>
-					<li>User Group: create, delete, read, update</li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-	<p class="sl6">Groups</p><ul class="sl6">
- 		<li>add group 'All Projects Admin' with role all-projects-admin</li>
-		<li>add user 'admin' to group All Projects Admin</li>
+		<li>login again as admin to finish configuration</li>
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
 		<li>Hub: Built-in Authorization<ul>
@@ -285,9 +259,7 @@
 			<li>in GitHub, follow instructions to obtain Client ID and Client Secret from GitHub<ul>
 				<li>the callback link for GitHub, as shown, has been incomplete; make it end in 'landing'</li>
 			</ul></li>
-			<li>click between tabs to copy ClientID and Client Secret from GhtHub to Hub's OAuth page</li>
-			<li>Save</li>
-			<li>Enable Module</li>
+			<li class="dq">Enable Module</li>
 		</ul></li>
 	</ul>
 	<p class="sl6">System Settings</p><ul class="sl6">
@@ -297,27 +269,25 @@
 	<p class="sl6">SMTP</p><ul class="sl6">
 		<li>host smtp.cox.net; from carolclark@cox.net</li>
 		<li>user carol; password: cox</li>
+		<li>from: "HubRing" &lt;my_email&gt;</li>
 		<li>Security and Authorization: user name 'carolclark@cox.net'; password cox</li>
 		<li>save; enable notification; send test message</li>
-	</ul>
-	<p class="sl6">Java virtual machine (JVM) Options</p><ul class="sl6">
-		<li>no changes</li>
 	</ul>
 
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
-	<p class="sl5">Global Server Settings</p><ul class="sl6">
-			<li>verify license shown; if not, fetch and copy</li>
-			<li>Default Timezone: verify</li>
-			<li>Date Fields Format: ISO date (2000.12.31)</li>
-			<li>provide email host (smtp.cox.net); enable email notifications</li>
-		</ul>
+	<p class="sl5">Global Settings</p><ul class="sl6">
+		<li>verify license shown; if not, fetch and copy</li>
+		<li>Default Timezone: verify</li>
+		<li>Date Fields Format: ISO date (2000.12.31)</li>
+		<li>provide email host (smtp.cox.net); enable email notifications</li>
+	</ul>
 	<p class="sl5">Global Project-Related Settings</p><ul class="sl6">
-			<li><strong>Access Management</strong><ul>
-				<li>add user carolclark to Group Project Admin</li>
-			</ul></li>
-			<li><strong>VCS configurations</strong>: new GitHub integration</li>
-		</ul>
+		<li><strong>Access Management</strong><ul>
+			<li>add user carolclark to Group Project Admin</li>
+		</ul></li>
+		<li><strong>VCS configurations</strong>: new GitHub integration</li>
+	</ul>
 	<p class="sl5">Java virtual machine (JVM) Options</p>
 		<p class="sl6">stop YouTrack service</p><ul class="sl6">
 			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
@@ -354,6 +324,23 @@
 
 <!-- @marker "TeamCity: Configuration" -->
 <h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
+<p class="sl5">Startup Properties</p><ul class="sl6">
+	<li>stop TeamCity<ul>
+		<li><span class='mono'><span class="prompt">$ </span>runAll.sh stop</span></li>
+	</ul></li>
+	<li>set TeamCity startup properties<ul>
+		<li>create file <span>teamcity-startup.properties</span><ul>
+			<li>set data path:
+				<span class="mono">teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer</span></li>
+			<li>prevent creation of dummy admin user:
+				<span class="mono">teamcity.installation.completed=true</span></li>
+		</ul></li>
+		<li>copy <span>teamcity-startup.properties</span> to <span class="mono">/Volumes/Servers/jb/TeamCity/TeamCity/conf</span></li>
+	</ul></li>
+	<li>start TeamCity<ul>
+		<li><span class='mono'><span class="prompt">$ </span>runAll.sh start</span></li>
+	</ul></li>
+ </ul>
 
 <!-- @marker "TeamTools: Add Features" -->
 <h2>TeamTools: Add Features</h2>
@@ -457,12 +444,6 @@
 		<li>copy file jetbrains.teamcity.server.plist to ~/Library/LaunchDaemons</li>
 		<li>restart computer</li>
 		<li>Safari: localhost:8111 should show TeamCity window</li>
-	</ul></li>
-	<li id="SetTeamCityDataDirectory_"><strong>Set TeamCity's Data Directory</strong><ul>
-		<li>Create New File for Startup Properties<ul>
-			<li class="mono">echo "teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer"
-				&gt; /Volumes/Servers/jb/TeamCity/TeamCity/conf/teamcity-startup.properties</li>
-		</ul></li>
 	</ul></li>
 </ul>
 
