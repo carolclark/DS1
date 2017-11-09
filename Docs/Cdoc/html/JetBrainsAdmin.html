@@ -214,18 +214,24 @@
 				<li>for TeamCity, use <span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
 			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard<ul>
-				<li>Hub: sign in as 'admin' with JetBrains admin password; account 'carol' added later</li>
+				<li>All: set backup directory path as specified below<ul>
+					<li>paths are on first setup page under Advanced Settings</li>
+				</ul></li>
+				<li>HubRing: sign in as 'admin' with JetBrains admin password; account 'carol' added later</li>
 				<li>UpSource: see <a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
 					Mysterious "Build System" Setting</a></li>
 				</ul></li>
 			<li>when tool appears:<ul>
-				<li id="backups"><strong>Backup</strong> @ Server Settings<ul>
-					<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
-					<li>tar.gz format</li>
-					<li>every day at 2 AM</li>
-					<li>rotation 7</li>
+				<li><strong>HubRing</strong>: Login as admin</li>
+				<li id="backups"><strong>All: Backup</strong> @ Server Settings<ul>
+					<li>Backup Settings<ul>
+						<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+						<li>tar.gz format</li>
+						<li>every day at 2 AM</li>
+						<li>rotation 7</li>
+					</ul></li>
+					<li>Execute Backup</li>
 				</ul></li>
-				<li>execute backup</li>
 			</ul></li>
 		</ul></li>
 		<li>after each tool install, continue to <a href="#TeamToolsInstallConfig_">configure</a> new tool</li>
@@ -241,11 +247,11 @@
 		Configure System Properties</a></p>
 	<p class="sl6">Users</p><ul class="sl6">
 		<li>add 'carol':<ul>
-			<li>click our gravitar image</li>
-			<li>add and verify email address</li>
-			<li>do not force change password</li>
+			<li>Create user 'carol'<ul>
+				<li>do not force change password</li>
+			</ul></li>
+			<li>avatar: select; click our gravitar image</li>
 		</ul></li>
-		<li>login again as admin to finish configuration</li>
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
 		<li>Hub: Built-in Authorization<ul>
@@ -254,23 +260,20 @@
 		<li>add module GitHub<ul>
 			<li>Server URL: https://github.com</li>
 			<li>copy what can be seen of the seen of the Callback URL</li>
-			<li>in Safari, duplicate the OAuth tab; we will click between tabs to copy data back and forth</li>
-			<li>click link to register an application with GitHub</li>
-			<li>in GitHub, follow instructions to obtain Client ID and Client Secret from GitHub<ul>
-				<li>the callback link for GitHub, as shown, has been incomplete; make it end in 'landing'</li>
+			<li>click link to register an application with GitHub<ul>
+				<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
 			</ul></li>
-			<li class="dq">Enable Module</li>
+			<li>Update Application</li>
 		</ul></li>
 	</ul>
 	<p class="sl6">System Settings</p><ul class="sl6">
-		<li>login timeout 12 hours</li>
+		<li>session timeout 12 hours</li>
 		<li>remember me for 1 year</li>
 	</ul>
 	<p class="sl6">SMTP</p><ul class="sl6">
-		<li>host smtp.cox.net; from carolclark@cox.net</li>
-		<li>user carol; password: cox</li>
-		<li>from: "HubRing" &lt;my_email&gt;</li>
-		<li>Security and Authorization: user name 'carolclark@cox.net'; password cox</li>
+		<li>host smtp.cox.net</li>
+		<li>from: "HubRing Admin" &lt;my_email&gt;</li>
+		<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
 		<li>save; enable notification; send test message</li>
 	</ul>
 
