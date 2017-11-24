@@ -283,44 +283,37 @@
 		<li>verify license shown; if not, fetch and copy</li>
 		<li>Default Timezone: verify</li>
 		<li>Date Fields Format: ISO date (2000.12.31)</li>
-		<li>provide email host (smtp.cox.net); enable email notifications</li>
+ 		<li>provide email host (smtp.cox.net); enable email notifications<ul>
+			<li class="blurb">see HubRing SMTP</li>
+		</ul></li>
 	</ul>
 	<p class="sl5">Global Project-Related Settings</p><ul class="sl6">
-		<li><strong>Access Management</strong><ul>
-			<li>add user carolclark to Group Project Admin</li>
-		</ul></li>
 		<li><strong>VCS configurations</strong>: new GitHub integration</li>
 	</ul>
-	<p class="sl5">Java virtual machine (JVM) Options</p>
-		<p class="sl6">stop YouTrack service</p><ul class="sl6">
+	<p class="sl5">Java virtual machine (JVM) Options</p><ul class="sl6">
+		<li>stop YouTrack service<ul>
 			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
 			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
-		</ul>
-		<p class="sl6">if necessary, create file youtrack.jvmoptions</p>
-		<p class="sl6">install youtrack.jvmoptions</p><ul class="sl6">
-			<li>@ &lt;path/to/YouTrack&gt;/conf</li>
-		</ul>
-		<p class="sl6">copy "&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist"</p><ul class="sl6">
-			<li>to Jetbrains/YouTrack/youtrack.jvmoptions</li>
-		</ul>
-		<p class="sl6">configure JVM</p><ul class="sl6">
-				<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
-				<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
-				<li>also if needed for performance:<ul>
-					<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
-				</ul></li>
+		</ul></li>
+		<li>if necessary, copy <span class="mono">&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist</span> to
+			<span class="mono">&lt;projectDir&gt;/youtrack.jvmoptions</span></li>
+		<li>add JVM configuration<ul>
+			<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
+			<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
+			<li>also if needed for performance:<ul>
+				<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
+			</ul></li>
 			<li>configure general options<ul>
 				<li>jetbrains.youtrack.mailLimit: 25</li>
 				<li>for additional configuration options, see
 					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
 			</ul></li>
-		</ul>
-		<p class="sl6">install youtrack.jvmoptions</p><ul class="sl6">
-			<li>@ &lt;path/to/YouTrack&gt;/conf</li>
-		</ul>
-	<p class="sl6">start YouTrack service:</p><ul class="sl6">
-		<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
-</ul>
+		</ul></li>
+		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
+		<li>start YouTrack service:<ul class="sl6">
+			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
+		</ul></li>
+	</ul>
 
 <!-- @marker "UpSource: Configuration" -->
 <h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
@@ -363,12 +356,6 @@
 <!-- @/topicList -->
 
 <h3>Add Features: YouTrack</h3><div class="indent">
-	<!-- @marker "YouTrack Integration Plugin" -->
-	<h4 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h4><ul>
-		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
-			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
-	</ul>
-
 	<!-- @marker "Additional JVM Configuration" -->
 	<h4 id="AdditionalJVMConfiguration_">Additional JVM Configuration</h4>
 		<h5>configure Java virtual machine (JVM)</h5><ul>
@@ -396,6 +383,12 @@
 			<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
 			<li>start YouTrack service: <span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
 		</ul>
+
+	<!-- @marker "YouTrack Integration Plugin" -->
+	<h4 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h4><ul>
+		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
+			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
+	</ul>
 
 	<!-- @marker "Issue Navigation" -->
 	<h4 id="IssueNavigation_">Issue Navigation</h4><ul>
