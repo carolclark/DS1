@@ -214,15 +214,28 @@
 				<li>for TeamCity, use <span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
 			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard<ul>
-				<li>All: set backup directory path as specified below<ul>
-					<li>paths are on first setup page under Advanced Settings</li>
-				</ul></li>
-				<li>HubRing: sign in as 'admin' with JetBrains admin password; account 'carol' added later</li>
 				<li>UpSource: see <a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
 					Mysterious "Build System" Setting</a></li>
 				</ul></li>
 			<li>when tool appears:<ul>
-				<li><strong>HubRing</strong>: Login as admin</li>
+				<li><strong>HubRing</strong>: login as 'admin' with JetBrains admin password; account 'carol' added later</li>
+				<li><strong>TeamCity</strong>: Startup Properties<ul>
+					<li>stop TeamCity<ul>
+						<li><span class='mono'><span class="prompt">$ </span>runAll.sh stop</span></li>
+					</ul></li>
+					<li>set TeamCity startup properties<ul>
+						<li>create file <span>teamcity-startup.properties</span><ul>
+							<li>set data path:
+								<span class="mono">teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer</span></li>
+							<li>prevent creation of dummy admin user:
+								<span class="mono">teamcity.installation.completed=true</span></li>
+						</ul></li>
+						<li>copy <span>teamcity-startup.properties</span> to <span class="mono">/Volumes/Servers/jb/TeamCity/TeamCity/conf</span></li>
+					</ul></li>
+					<li>start TeamCity<ul>
+						<li><span class='mono'><span class="prompt">$ </span>runAll.sh start</span></li>
+					</ul></li>
+				</ul></li>
 				<li id="backups"><strong>All: Backup</strong> @ Server Settings<ul>
 					<li>Backup Settings<ul>
 						<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
@@ -234,7 +247,6 @@
 				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li>after each tool install, continue to <a href="#TeamToolsInstallConfig_">configure</a> new tool</li>
 	</ul></li>
 	<li><strong>Installation Data</strong><ul>
 		<li><strong>HubRing</strong>: <span class="mono">http://carols-imac-2.local:8080</span></li>
@@ -320,23 +332,6 @@
 
 <!-- @marker "TeamCity: Configuration" -->
 <h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
-<p class="sl5">Startup Properties</p><ul class="sl6">
-	<li>stop TeamCity<ul>
-		<li><span class='mono'><span class="prompt">$ </span>runAll.sh stop</span></li>
-	</ul></li>
-	<li>set TeamCity startup properties<ul>
-		<li>create file <span>teamcity-startup.properties</span><ul>
-			<li>set data path:
-				<span class="mono">teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer</span></li>
-			<li>prevent creation of dummy admin user:
-				<span class="mono">teamcity.installation.completed=true</span></li>
-		</ul></li>
-		<li>copy <span>teamcity-startup.properties</span> to <span class="mono">/Volumes/Servers/jb/TeamCity/TeamCity/conf</span></li>
-	</ul></li>
-	<li>start TeamCity<ul>
-		<li><span class='mono'><span class="prompt">$ </span>runAll.sh start</span></li>
-	</ul></li>
- </ul>
 
 <!-- @marker "TeamTools: Add Features" -->
 <h2>TeamTools: Add Features</h2>
