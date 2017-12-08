@@ -131,31 +131,27 @@
 <!-- @marker "Command-Line Tools" -->
 <h3 id="CommandLineTools_">Command Line Tools</h3><div class="indent">
 
-<h4>HubRing command line</h4><ul>
-	<li><span class="mono">hub.sh</span><ul>
-		<li><span class="mono">start</span> Start the HubRing service</li>
-		<li><span class="mono">stop</span> Stops the Hub service.</li>
-		<li><span class="mono">restart</span> Restarts the Hub service.</li>
-		<li><span class="mono">help</span> Displays a list of all commands that can be executed in the command-line interface.</li>
+<h4>HubRing, YouTrack, UpSource</h4><ul>
+	<li><span class="mono">start</span>: Start the service</li>
+	<li><span class="mono">stop</span>: Stop the service.</li>
+	<li><span class="mono">restart</span>: Restart the service.</li>
+	<li><span class="mono">help</span>: Display a list of all commands that can be executed in the command-line interface.</li>
+</ul>
+
+<h4>TeamCity</h4><ul>
+	<li><strong>server and one build agent</strong><ul>
+		<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span></li>
 	</ul></li>
-</ul>
-
-<h4>YouTrack command line</h4><ul>
-		<li><span class="mono">youtrack.sh</span> <span class="mono">run</span>: Start YouTrack</li>
-</ul>
-
-<h4>UpSource commandline</h4><ul>
-	<li><span class="mono">upsource.sh</span> <span class="mono">start</span>: Start Upsource</li>
-</ul>
-
-<h4>TeamCity command line</h4><ul>
-	<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span> server and one build agent</li>
-	<li><span class="mono">teamcity-server.sh</span>: start/stop server only<ul>
-		<li><span class="mono">run</span>: start TeamCity in the current window</li>
-		<li><span class="mono">start</span>: start TeamCity in a separate window</li>
-		<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
-		<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
-			<li>see <a href="https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">Creating Backup via maintainDB command-line tool</a></li>
+	<li><strong>server only</strong><ul>
+		<li><span class="mono">teamcity-server.sh</span><ul>
+			<li><span class="mono">run</span>: start TeamCity in the current window</li>
+			<li><span class="mono">start</span>: start TeamCity in a separate window</li>
+			<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
+			<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
+				<li>see <a href=
+					"https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">
+					Creating Backup via maintainDB command-line tool</a></li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -211,32 +207,30 @@
 			<li>create folder &lt;productName&gt; at /Servers/jb</li>
 			<li>download installation package; move to its folder</li>
 			<li>expand archive<ul>
-				<li>for TeamCity, use <span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
+				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
+					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
-			<li><a href="#CommandLineTools_">Start Product</a> to run configuration wizard<ul>
-				<li>UpSource: see <a href="https://blog.jetbrains.com/upsource/2015/09/09/mysterious-build-system-setting/">
-					Mysterious "Build System" Setting</a></li>
-				</ul></li>
+			<li><a href="#CommandLineTools_">Start Product</a> to open configuration wizard<ul>
+				<li>set backup directory path to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+				<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+			</ul></li>
 			<li>when tool appears:<ul>
-				<li><strong>HubRing</strong>: login as 'admin' with JetBrains admin password; account 'carol' added later</li>
+				<li><strong>HubRing</strong>: login as 'admin' with JetBrains admin password</li>
 				<li><strong>TeamCity</strong>: Startup Properties<ul>
 					<li>stop TeamCity<ul>
 						<li><span class='mono'><span class="prompt">$ </span>runAll.sh stop</span></li>
 					</ul></li>
 					<li>set TeamCity startup properties<ul>
-						<li>create file <span>teamcity-startup.properties</span><ul>
-							<li>set data path:
-								<span class="mono">teamcity.data.path=/Volumes/Servers/jb/TeamCity/BuildServer</span></li>
-							<li>prevent creation of dummy admin user:
-								<span class="mono">teamcity.installation.completed=true</span></li>
-						</ul></li>
-						<li>copy <span>teamcity-startup.properties</span> to <span class="mono">/Volumes/Servers/jb/TeamCity/TeamCity/conf</span></li>
+						<li>copy <span>teamcity-startup.properties</span> from project to
+							<span class="mono">/Volumes/Servers/jb/TeamCity/TeamCity/conf</span></li>
+						<li class="blurb">set <span class="mono">teamcity.installation.completed</span>,
+							<span class="mono">teamcity.data.path</span></li>
 					</ul></li>
 					<li>start TeamCity<ul>
 						<li><span class='mono'><span class="prompt">$ </span>runAll.sh start</span></li>
 					</ul></li>
 				</ul></li>
-				<li id="backups"><strong>All: Backup</strong> @ Server Settings<ul>
+				<li id="backups"><strong>All</strong>: Backup @ Server Settings<ul>
 					<li>Backup Settings<ul>
 						<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
 						<li>tar.gz format</li>
@@ -246,10 +240,8 @@
 					<li>Execute Backup</li>
 				</ul></li>
 			</ul></li>
+			<li>leave product's window open</li>
 		</ul></li>
-	</ul></li>
-	<li><strong>Installation Data</strong><ul>
-		<li><strong>HubRing</strong>: <span class="mono">http://carols-imac-2.local:8080</span></li>
 	</ul></li>
 </ul>
 
