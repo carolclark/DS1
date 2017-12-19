@@ -96,19 +96,18 @@
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
 <!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
-	<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
+	<!-- @topicItem "Add and Integrate Project" "#AddProject_" "0" "" -->
 	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
 	<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Create Project" -->
-<h3 id="CreateProject_">Create Project with Agile Board</h3>
-<p class="blurb">see <a href="https://www.jetbrains.com/help/hub/2017.2/Project-Wizard.html">Project Wizard</a></p>
-<h4 id='AddProjectWithAgileBoard_'>Add Project </h4><ul>
-	<li>Hub: create project<ul>
-		<li>for project already in GitHub, check VCS for last issue number already used</li>
+<!-- @marker "Add and Integrate Project" -->
+<h3 id="AddProject_">Add and Integrate Project</h3><ul>
+	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+	<li>Hub: project owner: create project</li>
+	<li>YouTrack<ul>
 		<li>create project from Scrum template</li>
 		<li>edit custom fields<ul>
 			<li>includes edit field names to use camel case for readability<ul>
@@ -117,7 +116,7 @@
 		</ul></li>
 		<li>edit workflows<ul>
 			<li>scrum: do NOT close issue automatically when subtasks completed<ul>
-				<li>either do nothing, of put parent issue up for review</li>
+				<li>either do nothing, or put parent issue up for review</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
@@ -255,6 +254,7 @@
 				<li>do not force change password</li>
 			</ul></li>
 			<li>avatar: select; click our gravitar image</li>
+			<li>add role Project Admin for project Global</li>
 		</ul></li>
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
