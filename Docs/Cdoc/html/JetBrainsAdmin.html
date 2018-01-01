@@ -19,11 +19,11 @@
 	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
 	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
 	<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
-	<!-- @topicItem "TeamTools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
+	<!-- @topicItem "Team Tools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
 	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Documentation" "7" -->
-		<!-- @topicItem "JetBrains TeamTools" "https://www.jetbrains.com/products.html#type=team" "0" "JetBrains home" -->
+		<!-- @topicItem "JetBrains Team Tools" "https://www.jetbrains.com/products.html#type=team" "0" "JetBrains home" -->
 			<!-- @topicItem "HubRing" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
 			<!-- @topicItem "YouTrack" "https://www.jetbrains.com/help/youtrack/standalone/Getting-Started-With-YouTrack.html" "1" "" -->
 			<!-- @topicItem "UpSource" "https://www.jetbrains.com/help/upsource/getting-started-with-upsource.html" "1" "" -->
@@ -96,20 +96,44 @@
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
 <!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
-	<!-- @topicItem "Add and Integrate Project" "#AddProject_" "0" "" -->
+	<!-- @topicItem "Creating and Managing Projects" "#CreatingAndManagingProjects_" "0" "" -->
 	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
+	<!-- @topicItem "Restore Settings: for Team Tool: from Backup" "#RestoreSettings_ForTeamTool_FromBackup_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
 	<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
 <!-- @/topicList -->
 
+<!-- @marker "Creating and Managing Projects" -->
+<h3>Creating and Managing Projects</h3>
+<!-- @topicList "Creating and Managing Projects" "CreatingAndManagingProjects_" -->
+	<!-- @topicItem "Add and Integrate Project" "#AddAndIntegrateProject_" "0" "" -->
+	<!-- @topicItem "YouTrack: Manage Project" "#YouTrack_ManageProject_" "0" "" -->
+<!-- @/topicList -->
+
 <!-- @marker "Add and Integrate Project" -->
-<h3 id="AddProject_">Add and Integrate Project</h3><ul>
+<h4 id="AddAndIntegrateProject_">Add and Integrate Project</h4><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub: project owner: create project</li>
+	<li>Hub, as admin:<ul>
+		<li>create project</li>
+		<li>add intended Project Owner to project group</li>
+		<li>grant role Project Admin to Project Owner</li>
+		<li>login as Project Owner</li>
+	</ul></li>
+	<li>Hub, as Project Owner:<ul>
+		<li>select project from Project page</li>
+		<li>Project: Fine-Tune Project Settings: VCS</li>
+		<li>connect GitHub; connect project</li>
+	</ul></li>
 	<li>YouTrack<ul>
 		<li>create project from desired template</li>
 		<li>VCS integration: add VCS; connect to GitHub repo</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "YouTrack: Manage Project" -->
+<h4 id="YouTrack_ManageProject_">YouTrack: Manage Project</h4><ul>
+	<li><strong>Custom Fields and Workflows</strong><ul>
 		<li>edit custom fields<ul>
 			<li>includes edit field names to use camel case for readability<ul>
 				<li>Issue Type: Epic, Feature, Task; Bug, Cosmetic, Exception, Usability, Performance</li>
@@ -121,7 +145,6 @@
 			</ul></li>
 		</ul></li>
 	</ul></li>
-	<li><strong>Custom Fields and Workflows</strong></li>
 </ul>
 
 <p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
@@ -156,6 +179,19 @@
 	</ul></li>
 </ul>
 </div>
+
+<!-- @marker "Restore Settings: for Team Tool: from Backup" -->
+<h3 id="RestoreSettings_ForTeamTool_FromBackup_">Restore Settings: for Team Tool: from Backup</h3><ul>
+	<li class="blurb">see <a href="https://www.jetbrains.com/help/hub/Restore-Database-from-Backup.html">
+		Restore Database from Backup</a></li>
+	<li></li>
+	<li><a href="#CommandLineTools_">stop the Tool service</a></li>
+	<li>remove the existing Tool home directory from inside /Volumes/jb/&lt;Tool&gt;; empty trash</li>
+	<li>install clean Tool folder of same or later build than the one used in the backup</li>
+	<li>start Tool; in Configuration Wizard, select "Upgrade"</li>
+	<li>select the backup as Upgrade Source</li>
+</ul>
+
 
 <!-- @marker "Sort a Card's Subtasks" -->
 <h3 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h3><ul>
@@ -230,12 +266,18 @@
 						<li><span class='mono'><span class="prompt">$ </span>runAll.sh start</span></li>
 					</ul></li>
 				</ul></li>
+				<li>SMTP<ul>
+					<li>host smtp.cox.net</li>
+					<li>from: "HubRing Server" &lt;my_email&gt;</li>
+					<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+					<li>save; enable notification; send test message</li>
+				</ul></li>
 				<li id="backups"><strong>All</strong>: Backup @ Server Settings<ul>
 					<li>Backup Settings<ul>
 						<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
 						<li>tar.gz format</li>
 						<li>every day at 2 AM</li>
-						<li>rotation 7</li>
+						<li>rotation 10</li>
 					</ul></li>
 					<li>Execute Backup</li>
 				</ul></li>
@@ -247,15 +289,13 @@
 
 <!-- @marker "HubRing: Configuration" -->
 <h3 id="HubRingConfiguration_">HubRing: Configuration</h3>
-	<p class="ital">see <a href="https://www.jetbrains.com/help/hub/2017.2/Configuration-Parameters.html">
-		Configure System Properties</a></p>
 	<p class="sl6">Users</p><ul class="sl6">
 		<li>add 'carol':<ul>
 			<li>Create user 'carol'<ul>
 				<li>do not force change password</li>
 			</ul></li>
 			<li>avatar: select; click our gravitar image</li>
-			<li>add role Project Admin for project Global</li>
+			<li class="depr">add role Project Admin for project Global</li>
 		</ul></li>
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
@@ -265,37 +305,28 @@
 		<li>add module GitHub<ul>
 			<li>Server URL: https://github.com</li>
 			<li>copy what can be seen of the seen of the Callback URL</li>
-			<li>click link to register an application with GitHub<ul>
+			<li>new browser window: click link to register an application with GitHub<ul>
 				<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
 			</ul></li>
-			<li>Update Application</li>
+			<li>Enable Module</li>
 		</ul></li>
 	</ul>
 	<p class="sl6">System Settings</p><ul class="sl6">
 		<li>session timeout 12 hours</li>
 		<li>remember me for 1 year</li>
 	</ul>
-	<p class="sl6">SMTP</p><ul class="sl6">
-		<li>host smtp.cox.net</li>
-		<li>from: "HubRing Admin" &lt;my_email&gt;</li>
-		<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-		<li>save; enable notification; send test message</li>
-	</ul>
 
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
-	<p class="sl5">Global Settings</p><ul class="sl6">
+	<p class="sl6">Global Settings</p><ul class="sl6">
 		<li>verify license shown; if not, fetch and copy</li>
 		<li>Default Timezone: verify</li>
-		<li>Date Fields Format: ISO date (2000.12.31)</li>
+		<li>Date Fields Format: 31 Dec 2000 23:59</li>
  		<li>provide email host (smtp.cox.net); enable email notifications<ul>
 			<li class="blurb">see HubRing SMTP</li>
 		</ul></li>
 	</ul>
-	<p class="sl5">Global Project-Related Settings</p><ul class="sl6">
-		<li><strong>VCS configurations</strong>: new GitHub integration</li>
-	</ul>
-	<p class="sl5">Java virtual machine (JVM) Options</p><ul class="sl6">
+	<p class="sl6">Java virtual machine (JVM) Options</p><ul class="sl6">
 		<li>stop YouTrack service<ul>
 			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
 			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
@@ -326,9 +357,9 @@
 <!-- @marker "TeamCity: Configuration" -->
 <h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
 
-<!-- @marker "TeamTools: Add Features" -->
-<h2>TeamTools: Add Features</h2>
-<!-- @topicList "TeamTools: Add Features" "TeamTools_AddFeatures_" -->
+<!-- @marker "Team Tools: Add Features" -->
+<h2>Team Tools: Add Features</h2>
+<!-- @topicList "Team Tools: Add Features" "TeamTools_AddFeatures_" -->
 	<!-- @topicGroup "YouTrack" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
 		<!-- @topicItem "Additional JVM Configuration" "#AdditionalJVMConfiguration_" "0" "may be required for some extensions" -->
@@ -339,6 +370,7 @@
 	<!-- @topicGroup "TeamCity" "" -->
 		<!-- @topicItem "Autostart TeamCity Server" "#AutostartServer_" "0" "" -->
 		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettings_" "0" "" -->
+		<!-- @topicItem "Maintenance: Cleanup Obsolete Build Info" "#Maintenance_CleanupObsoleteBuildInfo_" "0" "" -->
 		<!-- @topicItem "Move to External Database" "#MoveToExternalDatabase_" "0" "" -->
 		<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
 <!-- @/topicList -->
@@ -430,6 +462,10 @@
 		<li>Safari: localhost:8111 should show TeamCity window</li>
 	</ul></li>
 </ul>
+
+<!-- @marker "Maintenance: Cleanup Obsolete Build Info" -->
+<h3 id="Maintenance_CleanupObsoleteBuildInfo_">Maintenance: Cleanup Obsolete Build Info</h3>
+	<p class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Clean-Up">TeamCity Clean-Up</a></p>
 
 <!-- @marker "Move to External Database" -->
 <h4 id="MoveToExternalDatabase_">Move to External Database</h4><ul>

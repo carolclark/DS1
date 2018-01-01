@@ -140,7 +140,7 @@
 		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push This Branch</strong>:
 			push current local branch to its remote</p>
 		<p><span class="gitcore">&#8618;</span> <strong>Merge Master</strong>:</p><ul>
-			<li>compare $cb with origin/master; done if master is unchanged</li>
+			<li>compare branch with origin/master; if master is fully merged: done</li>
 			<li>checkout master; test; fetch origin/master; test; commit; <span class="gitcore">&uarr;</span></li>
 			<li>checkout branch; merge in master; test; <span class="gitcore">&uarr;</span></li></ul>
 		<p><span class="gitcore">&#8617;</span> <strong>Merge Branch</strong>: <span class="gitcore">&#8618;</span>;
@@ -173,9 +173,8 @@
 			</div></div>
 			<div class='indent'><div class="wf-publish">
 			<h6>Publish</h6><ul>
-				<li>on master branch; <span class="gitcore">&#8617;</span></li>
-				<li>&forall; other active branch: <span class="gitcore">&#8618;</span></li>
-				<li>synchronize Task and branch</li>
+				<li><span class="gitcore">&#8617;</span></li>
+				<li>&forall; other active branch: <span class="gitcore">&#8618;</span>; synchronize Task and branch</li>
 				<li>if task complete, delete task and local branch</li>
 			</ul></div>
 		</div></div>
@@ -384,7 +383,7 @@
 
 <!-- @marker "NewRepo" -->
 <h4 id="tsk_NewRepo">NewRepo</h4><ul>
-	<li>from parent of intended directory: <span class="mono">git init --bare &lt;repoName&gt;.git</span></li>
+	<li>from parent of target directory: <span class="mono">git init --bare &lt;repoName&gt;.git</span></li>
 </ul>
 
 <!-- @marker "Branch" -->
