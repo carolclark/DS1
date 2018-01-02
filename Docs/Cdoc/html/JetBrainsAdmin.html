@@ -24,7 +24,7 @@
 	<!-- @topicSep -->
 	<!-- @topicGroup "Documentation" "7" -->
 		<!-- @topicItem "JetBrains Team Tools" "https://www.jetbrains.com/products.html#type=team" "0" "JetBrains home" -->
-			<!-- @topicItem "HubRing" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
+			<!-- @topicItem "Hub" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
 			<!-- @topicItem "YouTrack" "https://www.jetbrains.com/help/youtrack/standalone/Getting-Started-With-YouTrack.html" "1" "" -->
 			<!-- @topicItem "UpSource" "https://www.jetbrains.com/help/upsource/getting-started-with-upsource.html" "1" "" -->
 			<!-- @topicItem "TeamCity Documentation (Confluence)" "https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation" "1" "" -->
@@ -84,7 +84,7 @@
 			<li>YouTrack: issue tracking; agile development</li>
 			<li>TeamCity (previously in use): Continuous Integration</li>
 			<li>UpSource: code review</li>
-			<li>Hub, aka HubRing, to tie it all together</li>
+			<li>Hub, aka Hub, to tie it all together</li>
 		</ul>
 		<p class="sl6">We expect to use:</p><ul class="sl6">
 			<li>The complete team tool suite</li>
@@ -154,7 +154,7 @@
 <!-- @marker "Command-Line Tools" -->
 <h3 id="CommandLineTools_">Command Line Tools</h3><div class="indent">
 
-<h4>HubRing, YouTrack, UpSource</h4><ul>
+<h4>Hub, YouTrack, UpSource</h4><ul>
 	<li><span class="mono">start</span>: Start the service</li>
 	<li><span class="mono">stop</span>: Stop the service.</li>
 	<li><span class="mono">restart</span>: Restart the service.</li>
@@ -221,7 +221,7 @@
 <h2 class="promote" id="TeamToolsInstallConfig_">Team Tools: Install and Configure</h2>
 <!-- @topicList "Team Tools: Install and Configure" "TeamToolsConfiguration_" -->
 	<!-- @topicItem "Installation" "#Installation_" "0" "" -->
-	<!-- @topicItem "HubRing:  Configuration" "#HubRingConfiguration_" "0" "" -->
+	<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
 	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
 	<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
 	<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
@@ -248,10 +248,10 @@
 			</ul></li>
 			<li><a href="#CommandLineTools_">Start Product</a> to open configuration wizard<ul>
 				<li>set backup directory path to '/Volumes/Mavericks-1/JetBrains_backups'</li>
-				<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
 			</ul></li>
 			<li>when tool appears:<ul>
-				<li><strong>HubRing</strong>: login as 'admin' with JetBrains admin password</li>
+				<li><strong>Hub</strong>: login as 'admin' with JetBrains admin password</li>
 				<li><strong>TeamCity</strong>: Startup Properties<ul>
 					<li>stop TeamCity<ul>
 						<li><span class='mono'><span class="prompt">$ </span>runAll.sh stop</span></li>
@@ -268,7 +268,7 @@
 				</ul></li>
 				<li>SMTP<ul>
 					<li>host smtp.cox.net</li>
-					<li>from: "HubRing Server" &lt;my_email&gt;</li>
+					<li>from: "Hub Server" &lt;my_email&gt;</li>
 					<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
 					<li>save; enable notification; send test message</li>
 				</ul></li>
@@ -287,8 +287,8 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "HubRing: Configuration" -->
-<h3 id="HubRingConfiguration_">HubRing: Configuration</h3>
+<!-- @marker "Hub: Configuration" -->
+<h3 id="HubConfiguration_">Hub: Configuration</h3>
 	<p class="sl6">Users</p><ul class="sl6">
 		<li>add 'carol':<ul>
 			<li>Create user 'carol'<ul>
@@ -323,7 +323,7 @@
 		<li>Default Timezone: verify</li>
 		<li>Date Fields Format: 31 Dec 2000 23:59</li>
  		<li>provide email host (smtp.cox.net); enable email notifications<ul>
-			<li class="blurb">see HubRing SMTP</li>
+			<li class="blurb">see Hub SMTP</li>
 		</ul></li>
 	</ul>
 	<p class="sl6">Java virtual machine (JVM) Options</p><ul class="sl6">
