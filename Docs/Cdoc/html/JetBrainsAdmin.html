@@ -238,8 +238,7 @@
 			<li><a href="Tools.html#_Java">Java</a></li>
 		</ul></li>
 	</ul></li>
-	<li id="install_"><strong>Install</strong><ul>
-		<li>for each product:<ul>
+	<li id="install_"><strong>Install</strong><ul><li>for each product:<ul>
 			<li>create folder &lt;productName&gt; at /Servers/jb</li>
 			<li>download installation package; move to its folder</li>
 			<li>expand archive<ul>
@@ -262,27 +261,33 @@
 						<li class="blurb">set <span class="mono">teamcity.installation.completed</span>,
 							<span class="mono">teamcity.data.path</span></li>
 					</ul></li>
+					<li>set TeamCity JVM options (teamcity.jvmoptions)<ul>
+						<li>TEAMCITY_SERVER_MEM_OPTS="-Xmx4g -XX:ReservedCodeCacheSize=350m"</li>
+						<li>NOTE: upgrade will overwrite this change, so make it after each upgrade</li>
+					</ul></li>
 					<li>start TeamCity<ul>
 						<li><span class='mono'><span class="prompt">$ </span>runAll.sh start</span></li>
 					</ul></li>
 				</ul></li>
-				<li>SMTP<ul>
-					<li>host smtp.cox.net</li>
-					<li>from: "Hub Server" &lt;my_email&gt;</li>
-					<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-					<li>save; enable notification; send test message</li>
-				</ul></li>
-				<li id="backups"><strong>All</strong>: Backup @ Server Settings<ul>
-					<li>Backup Settings<ul>
-						<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
-						<li>tar.gz format</li>
-						<li>every day at 2 AM</li>
-						<li>rotation 10</li>
+				<li><strong>All</strong><ul>
+					<li><strong>SMTP</strong><ul>
+						<li>host smtp.cox.net</li>
+						<li>from: &lt;ToolName&gt; Server" &lt;my_email&gt;</li>
+						<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+						<li>save; enable notification; send test message</li>
 					</ul></li>
-					<li>Execute Backup</li>
+					<li id="backups"><strong>Backups</strong><ul>
+						<li >Backup &amp; Server Settings<ul>
+							<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+							<li>tar.gz format</li>
+							<li>every day at 2 AM</li>
+							<li>rotation 10</li>
+						</ul></li>
+						<li>Execute Backup</li>
+					</ul></li>
 				</ul></li>
-			</ul></li>
 			<li>leave product's window open</li>
+		</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -322,28 +327,28 @@
 		<li>verify license shown; if not, fetch and copy</li>
 		<li>Default Timezone: verify</li>
 		<li>Date Fields Format: 31 Dec 2000 23:59</li>
- 		<li>provide email host (smtp.cox.net); enable email notifications<ul>
-			<li class="blurb">see Hub SMTP</li>
-		</ul></li>
 	</ul>
 	<p class="sl6">Java virtual machine (JVM) Options</p><ul class="sl6">
 		<li>stop YouTrack service<ul>
 			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
 			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
 		</ul></li>
-		<li>if necessary, copy <span class="mono">&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist</span> to
-			<span class="mono">&lt;projectDir&gt;/youtrack.jvmoptions</span></li>
-		<li>add JVM configuration<ul>
+		<li>if file <span class="mono">&lt;projectDir&gt;/youtrack.jvmoptions</span> does not exist:<ul>
+			<li>copy <span class="mono">&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist</span> to
+				<span class="mono">&lt;projectDir&gt;/youtrack.jvmoptions</span></li>
+		</ul></li>
+		<li>confirm JVM configuration<ul>
 			<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
 			<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
-			<li>also if needed for performance:<ul>
+			<li>if needed for performance:<ul>
 				<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
 			</ul></li>
-			<li>configure general options<ul>
+			<li>general options<ul>
 				<li>jetbrains.youtrack.mailLimit: 25</li>
-				<li>for additional configuration options, see
-					<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">General Parameters</a></li>
-			</ul></li>
+ 			</ul></li>
+ 			<li class="blurb">for additional configuration options, see
+				<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">
+					General Parameters</a></li>
 		</ul></li>
 		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
 		<li>start YouTrack service:<ul class="sl6">
@@ -601,6 +606,6 @@
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright (c) 2017 C &amp; C Software, Inc. All rights reserved.</p>
+<p class='footer'>Copyright (c) 2017-18 by Carol Clark</p>
 </body>
 </html>
