@@ -10,6 +10,7 @@
 		6755BCF91922CDB6005DC27D /* RequiredCocoaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6755BCF71922CDB6005DC27D /* RequiredCocoaTests.m */; };
 		965F81967244A8A33755167A /* jetbrains.teamcity.server.plist in Resources */ = {isa = PBXBuildFile; fileRef = 965F8E656FACA50C2DB4AE10 /* jetbrains.teamcity.server.plist */; };
 		965F831A668FCFC16597D9DC /* com.oracle.oss.mysql.mysqld.plist in Resources */ = {isa = PBXBuildFile; fileRef = 965F8E56CCE29899571D2E07 /* com.oracle.oss.mysql.mysqld.plist */; };
+		965F8CEEB41B4E00C184D341 /* teamcity.jvmoptions in Resources */ = {isa = PBXBuildFile; fileRef = 965F83FEA9BCCD77F59FE5D6 /* teamcity.jvmoptions */; };
 		965F8E07BF4CD2E8DB36D123 /* default_cnf.txt in Resources */ = {isa = PBXBuildFile; fileRef = 965F86B867AD7D8F4F1C3BAC /* default_cnf.txt */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		67FDF6FD191D776C002560CF /* GitSaveMessage.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GitSaveMessage.workflow; sourceTree = "<group>"; };
 		67FDF6FE191D776C002560CF /* OpenAccessor.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenAccessor.workflow; sourceTree = "<group>"; };
 		965F81BA711EEC321E6A5140 /* teamcity-startup.properties */ = {isa = PBXFileReference; lastKnownFileType = file.properties; path = "teamcity-startup.properties"; sourceTree = "<group>"; };
+		965F83FEA9BCCD77F59FE5D6 /* teamcity.jvmoptions */ = {isa = PBXFileReference; lastKnownFileType = file.jvmoptions; path = teamcity.jvmoptions; sourceTree = "<group>"; };
 		965F857333AEB1C8AB860A39 /* starter.bats */ = {isa = PBXFileReference; lastKnownFileType = file.bats; path = starter.bats; sourceTree = "<group>"; };
 		965F86B867AD7D8F4F1C3BAC /* default_cnf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = default_cnf.txt; sourceTree = "<group>"; };
 		965F86F7635E6AEA26AFA199 /* youtrack.jvmoptions */ = {isa = PBXFileReference; lastKnownFileType = file.jvmoptions; path = youtrack.jvmoptions; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				965F8E656FACA50C2DB4AE10 /* jetbrains.teamcity.server.plist */,
 				965F86F7635E6AEA26AFA199 /* youtrack.jvmoptions */,
 				965F81BA711EEC321E6A5140 /* teamcity-startup.properties */,
+				965F83FEA9BCCD77F59FE5D6 /* teamcity.jvmoptions */,
 			);
 			path = JetBrains;
 			sourceTree = "<group>";
@@ -263,7 +266,8 @@
 				965F81967244A8A33755167A /* jetbrains.teamcity.server.plist in Resources */,
 				965F831A668FCFC16597D9DC /* com.oracle.oss.mysql.mysqld.plist in Resources */,
 				965F8E07BF4CD2E8DB36D123 /* default_cnf.txt in Resources */,
-				965F8A456C5F7182EF2A3550 /* starter.bats in Resources */,
+				965F8A456C5F7182EF2A3550,
+				965F8CEEB41B4E00C184D341 /* teamcity.jvmoptions in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

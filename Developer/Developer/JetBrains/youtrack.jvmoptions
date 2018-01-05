@@ -61,6 +61,11 @@
 #-yourkit
 
 -XX:MaxMetaspaceSize=250m
--Xmx1024m
+## enable if needed for performance: Minimum Metaspace memory:
+## -XX:MetaspaceSize 250m
+-Xmx1g
 
 -Djetbrains.youtrack.mailLimit=25
+
+## for additional configuration options, see
+##     <https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html>
