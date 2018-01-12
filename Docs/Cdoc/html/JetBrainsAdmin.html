@@ -118,8 +118,8 @@
 		<li>create project</li>
 		<li>add intended Project Owner to project group</li>
 		<li>grant role Project Admin to Project Owner</li>
-		<li>login as Project Owner</li>
 	</ul></li>
+	<li>login as Project Owner</li>
 	<li>Hub, as Project Owner:<ul>
 		<li>select project from Project page</li>
 		<li>Project: Fine-Tune Project Settings: VCS</li>
@@ -246,25 +246,22 @@
 				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
 					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
-			<li><a href="#CommandLineTools_">Start Product</a> to open configuration wizard<ul>
+			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
 				<li>set backup directory path to '/Volumes/Mavericks-1/JetBrains_backups'</li>
 				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
 			</ul></li>
  			<li>when tool window appears:<ul>
 				<li><strong>Hub</strong>: login as 'admin' with JetBrains admin password</li>
- 				<li><strong>TeamCity</strong><ul>
-					<li><strong>immediately</strong> stop TeamCity<ul>
-						<li><span class='mono'><span class="prompt">$ </span>runAll.sh stop</span></li>
+				<li><strong>TeamCity</strong> and <strong>YouTrack</strong><ul>
+					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a></li>
+					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
+					<li>copy <span class="mono">teamcity-startup.properties</span>,
+						<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
+						as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
+						<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
+							so make change after each upgrade</li>
 					</ul></li>
-					<li>copy <span class="mono">teamcity-startup.properties</span> from project to
-						<span class="mono">$TEAMCITY/conf</span></li>
-					<li>copy <span class="mono">teamcity.jvmoptions</span> from project to
-						<span class="mono">$TEAMCITY/conf</span><ul>
-						<li>NOTE: upgrade will overwrite this change, so make it after each upgrade</li>
-					</ul></li>
-					<li>start TeamCity<ul>
-						<li><span class='mono'><span class="prompt">$ </span>runAll.sh start</span></li>
-					</ul></li>
+					<li><a href="#CommandLineTools_">Restart Tool</a></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
 					<li><strong>SMTP</strong><ul>
@@ -297,7 +294,6 @@
 				<li>do not force change password</li>
 			</ul></li>
 			<li>avatar: select; click our gravitar image</li>
-			<li class="depr">add role Project Admin for project Global</li>
 		</ul></li>
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
@@ -323,34 +319,7 @@
 	<p class="sl6">Global Settings</p><ul class="sl6">
 		<li>verify license shown; if not, fetch and copy</li>
 		<li>Default Timezone: verify</li>
-		<li>Date Fields Format: 31 Dec 2000 23:59</li>
-	</ul>
-	<p class="sl6">Java virtual machine (JVM) Options</p><ul class="sl6">
-		<li>stop YouTrack service<ul>
-			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh stop</span></li>
-			<li>check Activity Monitor for other "YouTrack" processes; kill if found</li>
-		</ul></li>
-		<li>if file <span class="mono">&lt;projectDir&gt;/youtrack.jvmoptions</span> does not exist:<ul>
-			<li>copy <span class="mono">&lt;YouTrackDirectory&gt;/conf/youtrack.jvmoptions.dist</span> to
-				<span class="mono">&lt;projectDir&gt;/youtrack.jvmoptions</span></li>
-		</ul></li>
-		<li>confirm JVM configuration<ul>
-			<li><span class="mono">Maximum Metaspace memory: -XX:MaxMetaspaceSize 250m</span></li>
-			<li><span class="mono">Maximum Java heap size: -Xmx 1024m or 1g</span> </li>
-			<li>if needed for performance:<ul>
-				<li><span class="mono">Minimum Metaspace memory: -XX:MetaspaceSize 250m</span> </li>
-			</ul></li>
-			<li>general options<ul>
-				<li>jetbrains.youtrack.mailLimit: 25</li>
- 			</ul></li>
- 			<li class="blurb">for additional configuration options, see
-				<a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/YouTrack-Java-Start-Parameters.html">
-					General Parameters</a></li>
-		</ul></li>
-		<li>install youtrack.jvmoptions @ &lt;path/to/YouTrack&gt;/conf</li>
-		<li>start YouTrack service:<ul class="sl6">
-			<li><span class="mono">cd &lt;path/to/YouTrack&gt;; bin/youtrack.sh start</span></li>
-		</ul></li>
+		<li>Date Fields Format: 2000-12-31T23:59</li>
 	</ul>
 
 <!-- @marker "UpSource: Configuration" -->
@@ -413,7 +382,7 @@
 <h3>Add Features: TeamCity</h3><div class="indent">
 
 <!-- @marker "Autostart TeamCity Server" -->
- <h4 id="AutostartTCServer_">Autostart TeamCity Server</h4><ul>
+<h4 id="AutostartTCServer_">Autostart TeamCity Server</h4><ul>
 	<li><strong>Autostart TeamCity Server</strong><ul>
 		<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
 			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
