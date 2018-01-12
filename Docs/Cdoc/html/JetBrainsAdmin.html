@@ -369,7 +369,7 @@
 		<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
 		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 	<!-- @topicGroup "TeamCity" "" -->
-		<!-- @topicItem "Autostart TeamCity Server" "#AutostartServer_" "0" "" -->
+		<!-- @topicItem "Autostart TeamCity Server" "#AutostartTCServer_" "0" "" -->
 		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettings_" "0" "" -->
 		<!-- @topicItem "Maintenance: Cleanup Obsolete Build Info" "#Maintenance_CleanupObsoleteBuildInfo_" "0" "" -->
 		<!-- @topicItem "Move to External Database" "#MoveToExternalDatabase_" "0" "" -->
@@ -412,6 +412,19 @@
 
 <h3>Add Features: TeamCity</h3><div class="indent">
 
+<!-- @marker "Autostart TeamCity Server" -->
+ <h4 id="AutostartTCServer_">Autostart TeamCity Server</h4><ul>
+	<li><strong>Autostart TeamCity Server</strong><ul>
+		<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
+			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
+				<li>Working Directory: /Volumes/Servers/jb/TeamCity/TeamCity</li>
+			</ul></li>
+		<li>copy file jetbrains.teamcity.server.plist to ~/Library/LaunchDaemons</li>
+		<li>restart computer</li>
+		<li>Safari: localhost:8111 should show TeamCity window</li>
+	</ul></li>
+</ul>
+
 <!-- @marker "Store Project Settings in Version Control" -->
 <h4 id='StoreProjectSettings_'>Store Project Settings in Version Control</h4><ul>
 	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
@@ -422,19 +435,6 @@
 <h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
 	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingViaZIPFile">
 		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
-</ul>
-
-<!-- @marker "Autostart TeamCity Server" -->
-<h4 id="id_">Autostart TeamCity Server</h4><ul>
-	<li id="AutostartServer_"><strong>Autostart TeamCity Server</strong><ul>
-		<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
-			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
-				<li>Working Directory: /Volumes/Servers/jb/TeamCity/TeamCity</li>
-			</ul></li>
-		<li>copy file jetbrains.teamcity.server.plist to ~/Library/LaunchDaemons</li>
-		<li>restart computer</li>
-		<li>Safari: localhost:8111 should show TeamCity window</li>
-	</ul></li>
 </ul>
 
 <!-- @marker "Maintenance: Cleanup Obsolete Build Info" -->
