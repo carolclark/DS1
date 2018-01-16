@@ -98,6 +98,7 @@
 <!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
 	<!-- @topicItem "Creating and Managing Projects" "#CreatingAndManagingProjects_" "0" "" -->
 	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
+	<!-- @topicItem "Save Tagged Tools Backup" "#Save_TaggedToolsBackup_" "0" "" -->
 	<!-- @topicItem "Restore Settings: for Team Tool: from Backup" "#RestoreSettings_ForTeamTool_FromBackup_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
 	<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "0" "" -->
@@ -180,6 +181,17 @@
 </ul>
 </div>
 
+<!-- @marker "Save Tagged Tools Backup" -->
+<h3 id="Save_TaggedToolsBackup_">Make Tagged Backup of Team Tools</h3><ul>
+	<li>backup tools with changes</li>
+	<li>/Volumes/Mavericks-1/Backups/JetBrains_Tools:<ul>
+		<li>in JetBrains_Tools_Tagged<ul>
+			<li>new folder B-&lt;date&gt;-&lt;tag-name&gt;</li>
+			<li>copy latest backup for each tool from JetBrains_Tools to new tagged backup folder</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
 <!-- @marker "Restore Settings: for Team Tool: from Backup" -->
 <h3 id="RestoreSettings_ForTeamTool_FromBackup_">Restore Settings: for Team Tool: from Backup</h3><ul>
 	<li class="blurb">see <a href="https://www.jetbrains.com/help/hub/Restore-Database-from-Backup.html">
@@ -191,7 +203,6 @@
 	<li>start Tool; in Configuration Wizard, select "Upgrade"</li>
 	<li>select the backup as Upgrade Source</li>
 </ul>
-
 
 <!-- @marker "Sort a Card's Subtasks" -->
 <h3 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h3><ul>
@@ -237,6 +248,15 @@
 			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
 			<li><a href="Tools.html#_Java">Java</a></li>
 		</ul></li>
+		<li>create backup structure, folders for initial tagged backups<ul>
+			<li>/Volumes/Mavericks-1/Backups<ul>
+				<li>JetBrains_Tools</li>
+				<li>JetBrains_Tools_Tagged<ul>
+					<li>B-&lt;date&gt;-initial-installed</li>
+					<li>B-&lt;date&gt;-initial-configured</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
 	</ul></li>
   	<li id="install_"><strong>Install</strong><ul>
 		<li>for Hub, YouTrack, UpSource, TeamCity :<ul>
@@ -247,7 +267,7 @@
 					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
 			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-				<li>set backup directory path to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/JetBrains_Tools'</li>
 				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
 			</ul></li>
  			<li>when tool window appears:<ul>
@@ -272,15 +292,19 @@
 					</ul></li>
 					<li id="backups"><strong>Backups</strong><ul>
 						<li >Backup &amp; Server Settings<ul>
-							<li>to '/Volumes/Mavericks-1/JetBrains_backups'</li>
+							<li>to '/Volumes/Mavericks-1/Backups/JetBrains_Tools'</li>
 							<li>tar.gz format</li>
 							<li>every day at 2 AM</li>
 							<li>rotation 10</li>
 						</ul></li>
-						<li>Execute Backup</li>
+						<li>Execute Backup; copy backup file to tag 'initial_installed'</li>
 					</ul></li>
 				</ul></li>
  			</ul></li>
+		<li>complete per-product configuration (<a href="#HubConfiguration_">Hub</a>,
+			<a href="#YouTrackConfiguration_">YouTrack</a>, <a href="#UpSourceConfiguration_">UpSource</a>,
+			<a href="#TeamCityConfiguration_">TeamCity</a>)</li>
+		<li>backup; copy backup to tag 'initial_configured'</li>
 		<li>leave product's window open</li>
 		</ul></li>
 	</ul></li>
@@ -294,18 +318,21 @@
 				<li>do not force change password</li>
 			</ul></li>
 			<li>avatar: select; click our gravitar image</li>
+			<li>'change' password; do not force change password</li>
 		</ul></li>
 	</ul>
 	<p class="sl6">Auth Modules</p><ul class="sl6">
 		<li>Hub: Built-in Authorization<ul>
 			<li>test login combinations</li>
 		</ul></li>
-		<li>add module GitHub<ul>
-			<li>Server URL: https://github.com</li>
+		<li>add Authorization Module GitHub<ul>
+			<li>Server URL: https://github.com; create module</li>
 			<li>copy what can be seen of the seen of the Callback URL</li>
 			<li>new browser window: click link to register an application with GitHub<ul>
 				<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
 			</ul></li>
+ 			<li>generate client codes</li>
+			<li>copy over Client ID and Client Secret</li>
 			<li>Enable Module</li>
 		</ul></li>
 	</ul>
