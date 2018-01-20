@@ -184,10 +184,10 @@
 <!-- @marker "Save Tagged Tools Backup" -->
 <h3 id="Save_TaggedToolsBackup_">Make Tagged Backup of Team Tools</h3><ul>
 	<li>backup tools with changes</li>
-	<li>/Volumes/Mavericks-1/Backups/JetBrains_Tools:<ul>
+	<li>/Volumes/Mavericks-1/Backups/TeamTools:<ul>
 		<li>in TeamTools_Tagged<ul>
 			<li>new folder B-&lt;date&gt;-&lt;tag-name&gt;</li>
-			<li>copy latest backup for each tool from JetBrains_Tools to new tagged backup folder</li>
+			<li>copy latest backup for each tool from TeamTools to new tagged backup folder</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -267,11 +267,19 @@
 					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
 			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/JetBrains_Tools'</li>
+				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
 				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
 			</ul></li>
  			<li>when tool window appears:<ul>
-				<li><strong>Hub</strong>: login as 'admin' with JetBrains admin password</li>
+				<li><strong>Hub</strong><ul>
+					<li>login as 'admin' with JetBrains admin password</li>
+					<li><strong>SMTP</strong><ul>
+						<li>host smtp.cox.net</li>
+						<li>from: &lt;ToolName&gt; Server" &lt;my_email&gt;</li>
+						<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+						<li>save; enable notification; send test message</li>
+					</ul></li>
+				</ul></li>
 				<li><strong>TeamCity</strong> and <strong>YouTrack</strong><ul>
 					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a></li>
 					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
@@ -284,15 +292,9 @@
 					<li><a href="#CommandLineTools_">Restart Tool</a></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
-					<li><strong>SMTP</strong><ul>
-						<li>host smtp.cox.net</li>
-						<li>from: &lt;ToolName&gt; Server" &lt;my_email&gt;</li>
-						<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-						<li>save; enable notification; send test message</li>
-					</ul></li>
 					<li id="backups"><strong>Backups</strong><ul>
 						<li >Backup &amp; Server Settings<ul>
-							<li>to '/Volumes/Mavericks-1/Backups/JetBrains_Tools'</li>
+							<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
 							<li>tar.gz format</li>
 							<li>every day at 2 AM</li>
 							<li>rotation 10</li>
