@@ -280,6 +280,13 @@
 						<li>save; enable notification; send test message</li>
 					</ul></li>
 				</ul></li>
+ 				<li><strong>YouTrack</strong><ul>
+					<li>Global Settings<ul>
+						<li>verify license shown; if not, fetch and copy</li>
+						<li>Default Timezone: verify</li>
+						<li>Date Fields Format: 31 Dec 2000 23:59</li>
+					</ul></li>
+				</ul></li>
 				<li><strong>TeamCity</strong> and <strong>YouTrack</strong><ul>
 					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a></li>
 					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
@@ -345,11 +352,6 @@
 
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
-	<p class="sl6">Global Settings</p><ul class="sl6">
-		<li>verify license shown; if not, fetch and copy</li>
-		<li>Default Timezone: verify</li>
-		<li>Date Fields Format: 2000-12-31T23:59</li>
-	</ul>
 
 <!-- @marker "UpSource: Configuration" -->
 <h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
@@ -361,12 +363,13 @@
 <h2>Team Tools: Add Features</h2>
 <!-- @topicList "Team Tools: Add Features" "TeamTools_AddFeatures_" -->
 	<!-- @topicGroup "YouTrack" "" -->
+		<!-- @topicItem "YouTrack Mobile" "#YouTrackMobile_" "0" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
 		<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
 		<!-- @topicItem "Time Tracking" "#TimeTracking_" "0" "" -->
 		<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
 		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
-	<!-- @topicGroup "TeamCity" "" -->
+	<!-- @topicGroup "TeamCity" "8" -->
 		<!-- @topicItem "Autostart TeamCity Server" "#AutostartTCServer_" "0" "" -->
 		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettings_" "0" "" -->
 		<!-- @topicItem "Maintenance: Cleanup Obsolete Build Info" "#Maintenance_CleanupObsoleteBuildInfo_" "0" "" -->
@@ -375,6 +378,11 @@
 <!-- @/topicList -->
 
 <h3>Add Features: YouTrack</h3><div class="indent">
+
+	<!-- @marker "YouTrack Mobile" -->
+	<h4 id="YouTrackMobile_">YouTrack Mobile</h4><ul>
+		<li>download from AppStore and open</li>
+	</ul>
 
 	<!-- @marker "YouTrack Integration Plugin" -->
 	<h4 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h4><ul>
