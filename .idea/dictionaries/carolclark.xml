@@ -3,6 +3,7 @@
     <words>
       <w>cblue</w>
       <w>cgreen</w>
+      <w>committers</w>
       <w>creset</w>
       <w>datasift</w>
       <w>deamons</w>
@@ -22,10 +23,12 @@
       <w>logtag</w>
       <w>metaspace</w>
       <w>mysqladmin</w>
+      <w>roadmap</w>
       <w>smtp</w>
       <w>swimlane</w>
       <w>swimlanes</w>
       <w>syslog</w>
+      <w>uncategorized</w>
       <w>versioning</w>
       <w>viget</w>
       <w>youtrack</w>

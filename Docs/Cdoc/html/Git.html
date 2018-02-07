@@ -382,7 +382,13 @@
 
 <!-- @marker "NewRepo" -->
 <h4 id="tsk_NewRepo">NewRepo</h4><ul>
-	<li>from parent of target directory: <span class="mono">git init --bare &lt;repoName&gt;.git</span></li>
+	<li class="mono">git remote add origin https://github.com/&lt;userName&gt;/&lt;projectName&gt;.git</li>
+	<li class="mono">cd &lt;parentFolderForNewRepo&gt;</li>
+	<li class="mono">git clone https://github.com/&lt;userName&gt;/&lt;projectName&gt;.git</li>
+	<li class="mono">echo "# &lt;repoName&gt;" &gt; README.md</li>
+	<li class="mono">git add --all</li>
+	<li class="mono">git commit -m "first commit"</li>
+	<li class="mono">git push -u origin master</li>
 </ul>
 
 <!-- @marker "Branch" -->
