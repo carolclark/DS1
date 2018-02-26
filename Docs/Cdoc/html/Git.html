@@ -382,13 +382,14 @@
 
 <!-- @marker "NewRepo" -->
 <h4 id="tsk_NewRepo">NewRepo</h4><ul>
-	<li class="mono">git remote add origin https://github.com/&lt;userName&gt;/&lt;projectName&gt;.git</li>
-	<li class="mono">cd &lt;parentFolderForNewRepo&gt;</li>
-	<li class="mono">git clone https://github.com/&lt;userName&gt;/&lt;projectName&gt;.git</li>
-	<li class="mono">echo "# &lt;repoName&gt;" &gt; README.md</li>
-	<li class="mono">git add --all</li>
-	<li class="mono">git commit -m "first commit"</li>
-	<li class="mono">git push -u origin master</li>
+	<li><strong>GitHub</strong><ul>
+		<li>create new repository (GitHub knows to make it bare)</li>
+		<li>copy clone-from address to clipboard</li>
+	</ul></li>
+	<li><strong>Terminal</strong><ul>
+		<li>cd to folder that will contain folder &lt;repoName&gt;; eg. ~/Dev</li>
+		<li><span class="mono">git clone &lt;cloneFromAddressFromGitHub&gt;</span></li>
+	</ul></li>
 </ul>
 
 <!-- @marker "Branch" -->

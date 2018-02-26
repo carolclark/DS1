@@ -17,6 +17,7 @@
 
 <!-- @topicList "JetBrainsAdmin" "Contents" -->
 	<!-- @topicItem "Development Overview" "#Overview_" "0" "brief overview of development tools &amp; strategy" -->
+	<!-- @topicItem "User Documentation" "#UserDocumentation_" "0" "to be moved to a separate file" -->
 	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
 	<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
 	<!-- @topicItem "Team Tools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
@@ -92,6 +93,45 @@
 		<li>We have an All-Products license for JetBrains IDEs</li>
 	</ul>
 	<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
+
+<!-- @marker "User Documentation" -->
+<h2>User Documentation</h2>
+<!-- @topicList "User Documentation" "UserDocumentation_" -->
+	<!-- @topicItem "Issue States" "#IssueStates_" "0" "moving across the Boards" -->
+<!-- @/topicList -->
+
+<!-- @marker "Issue States" -->
+<h2 id="IssueStates_">Issue States</h2><ul>
+	<li><strong>SampleState</strong>: description; <em>transition</em></li>
+	<li>Backlog<ul>
+		<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
+			else resolve using a 'Resolved' state with comment</em><ul>
+			<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
+		</ul></li>
+		<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
+	</ul></li>
+	<li>&lt;project&gt;Roadmap<ul>
+		<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
+		<li><strong>Story</strong>: story used for planning;
+			<em>add substories as needed until design appears managable</em><ul>
+				<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+					orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
+				</em></li>
+			</ul></li>
+		<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
+			<em>plan and estimate implementation</em></li>
+		<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
+	</ul></li>
+	<li>&lt;project&gt;<ul>
+		<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
+		<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
+		<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
+			<em>release for publication, or set up for rejection or rework</em></li>
+		<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
+			<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
+		<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
+	</ul></li>
+</ul>
 
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
@@ -193,14 +233,10 @@
 
 <!-- @marker "Delete YouTrack Project" -->
 <h5 id="Delete_YouTrack_Project_">Delete YouTrack Project</h5><ul>
-	<li>delete &lt;projectToDelete&gt; in Hub<ul>
+	<li>Hub: Project: YouTrack Settings: &gt; settings: remove &lt;projectToDelete&gt;<ul>
 		<li>project's resources are moved to project Global</li>
+		<li>if recreating project of same name, move resources in from Global</li>
 	</ul></li>
-	<li>create new dummy project in Hub</li>
-	<li>move resources associated with &lt;projectToDelete&gt; from Global project to dummy</li>
-	<li>from project page: select settings from 'YT' on dummy project; click 'remove' from &lt;projectToDelete&gt;</li>
-	<li>remove dummy project from Hub</li>
-	<li>Global resources: remove &lt;projectToDelete&gt; again if necessary</li>
 </ul>
 
 <!-- @marker "Command-Line Tools" -->
@@ -406,40 +442,47 @@
 
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
-	<li>edit custom fields related to issues and their handling<ul>
-		<li>Custom Fields: Priority, Type, State, Assignee, Aspect, Story Points<br />
-			Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
-		<li>Issue Types: Task Story Feature Scenario Epic;
-			Bug Cosmetic Exception Usability Performance</li>
-		<li>Issue States:<ul>
-			<li><strong>SampleState</strong>: description; <em>transition</em></li>
-			<li>Backlog<ul>
-				<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
-					else resolve using a 'Resolved' state with comment</em><ul>
-					<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
-				</ul></li>
-				<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
-			</ul></li>
-			<li>&lt;project&gt;Roadmap<ul>
-				<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
-				<li><strong>Story</strong>: story used for planning;
-					<em>add substories as needed until design appears managable</em><ul>
-						<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-							orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
-							</em></li>
+	<li>from Hub<ul>
+		<li>add Service: Issue Tracker with Scrum</li>
+		<li>Projects: New Project: YT Settings<ul>
+			<li><strong>General</strong>: set Project Lead</li>
+			<li><strong>Team</strong>: check</li>
+			<li><strong>Fields</strong><ul>
+				<li>Custom Fields: Priority, Type, State, Assignee, Aspect, Story Points<br />
+					Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
+				<li>Issue Types: Story Feature Scenario Task Epic;
+					Bug Cosmetic Exception Usability Performance</li>
+				<li>Issue States:<ul>
+					<li><strong>SampleState</strong>: description; <em>transition</em></li>
+					<li>Backlog<ul>
+						<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
+							else resolve using a 'Resolved' state with comment</em><ul>
+							<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
+						</ul></li>
+						<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
 					</ul></li>
-				<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
-					<em>plan and estimate implementation</em></li>
-				<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
-			</ul></li>
-			<li>&lt;project&gt;<ul>
-				<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
-				<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
-				<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
-					<em>release for publication, or set up for rejection or rework</em></li>
-				<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
-					<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
-				<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
+					<li>&lt;project&gt;Roadmap<ul>
+						<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
+						<li><strong>Story</strong>: story used for planning;
+							<em>add substories as needed until design appears managable</em><ul>
+								<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+									orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
+								</em></li>
+							</ul></li>
+						<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
+							<em>plan and estimate implementation</em></li>
+						<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
+					</ul></li>
+					<li>&lt;project&gt;<ul>
+						<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
+						<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
+						<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
+							<em>release for publication, or set up for rejection or rework</em></li>
+						<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
+							<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
+						<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
+					</ul></li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
