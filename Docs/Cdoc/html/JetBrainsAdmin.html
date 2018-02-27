@@ -141,6 +141,7 @@
 	<!-- @topicItem "Save Tagged Tools Backup" "#Save_TaggedToolsBackup_" "0" "" -->
 	<!-- @topicItem "Restore Settings: for Team Tool: from Backup" "#RestoreSettings_ForTeamTool_FromBackup_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
+	<!-- @topicItem "Upgrade Team Tools" "#UpgradeTeamTools_" "0" "" -->
 	<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
 <!-- @/topicList -->
@@ -295,6 +296,24 @@
 <h3 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h3><ul>
 	<li>Create a swimlane for the card</li>
 	<li>Organize the subtasks in that lane</li>
+</ul>
+
+<!-- @marker "Upgrade Team Tools" -->
+<h3 id="UpgradeTeamTools_">Upgrade Team Tools</h3><ul>
+	<li>for tool to be upgraded:<ul>
+		<li>backup existing tool (Server Settings &gt; Backup)</li>
+		<li><a href="#CommandLineTools_">stop</a> the service to be upgraded</li>
+		<li><strong>Activity Monitor</strong>: search for processes with name &lt;toolName&gt;; kill any found</li>
+		<li>on /Volumes/Servers/jb: rename existing &lt;toolName&gt; to &lt;toolName&gt;_&lt;buildnum&gt;</li>
+		<li>download &lt;toolName&gt;.zip archive to /Volumes/Servers/jb</li>
+		<li>extract to /Volumes/Servers/jb/&lt;toolName&gt;</li>
+		<li><a href="#CommandLineTools_">start</a> the service</li>
+		<li>select "Upgrade"; when asked for Upgrade Source, select &lt;toolName&gt;_&lt;oldBuildnum&gt;</li>
+		<li>if necessary, change location of backup directory to /Volumes/Mavericks-1/Backups</li>
+		<li>click "Upgrade" to complete</li>
+	</ul></li>
+	<li class="blurb">see also <a href="https://www.jetbrains.com/help/youtrack/standalone/Upgrade-YouTrack-ZIP.html">
+		Upgrade YouTrack ZIP</a></li>
 </ul>
 
 <h3 id='UninstallTeamCity_'>Uninstall TeamCity</h3><ul>
