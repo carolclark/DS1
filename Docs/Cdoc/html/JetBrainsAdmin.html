@@ -5,11 +5,6 @@
 <head>
 	<title>JetBrains Administration</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
-	<style type="text/css">
-		span.webButton {
-			color: #e68a00;
-		}
-	</style>
 </head>
 <body>
 <!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
@@ -44,8 +39,9 @@
 <h4 id="Agile_">Agile Development</h4><ul>
 	<li>We use a fairly standard form of test-first agile development, with a couple of significant modifications:<ul>
 		<li>Sprints have time estimates, not deadlines.
-			Estimates are established based on card estimates, which are adjusted as indicated.
-			We expect to learn to make better estimates of time required as we use this technique.</li>
+			Estimates are established based on card estimates, which are adjusted as indicated.<ul>
+				<li>We expect to learn to make better estimates of time required as we use this technique.</li>
+			</ul></li>
 			<li>YouTrack's 'fix version' field is intended to identify cards for a version number and a scrum.<ul>
 				<li>We prefer to establish the version number when the product is ready for 'release',
 					as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
@@ -124,9 +120,40 @@
 			<li>Team: add user(s) to project team</li>
 		</ul></li>
 	</ul></li>
-	<li>YouTrack<ul>
-		<li>Add Hub Service: YouTrack with Scrum</li>
+	<li>Add Hub Service: YouTrack with Scrum</li>
+	<li>YouTrack Project-Related Settings<ul>
+		<li>length of day: 5h</li>
+		<li>work types: Development Testing Documentation Investigation Roadmap</li>
+	</ul></li>
+	<li>Hub Project Page: YouTrack Settings<ul>
 		<li>Settings<ul>
+			<li>General<ul>
+				<li>set project 'from' email: &lt;ProjectName&gt; \&lt;&lt;lead-email&gt;\&gt;</li>
+			</ul></li>
+			<li>Team<ul>
+				<li>add me</li>
+			</ul></li>
+			<li>Fields<ul>
+				<li class="blurb">colors: gy,gn,aq,bl,rd,or,br strength: 1(light)-5</li>
+				<li><strong>Priority</strong>as supplied: Show-stopper; Critical; Major; Normal; Minor</li>
+				<li><strong>Type</strong> (color)<ul>
+					<li>Epic (br5)</li>
+					<li>*Story (or3)</li>
+					<li>Feature (bl3)</li>
+					<li>Scenario (bl5)</li>
+					<li>Task (gn3)</li>
+					<li>Bug States: all color rd4: Bug; Cosmetic; Exception; Usability; Performance</li>
+				</ul></li>
+				<li><strong>State</strong><ul>
+					<li>Open States: *Submitted Open Epic Shape Design Ready Develop Review</li>
+					<li>Closed States: Done Fixed Duplicate CantReproduce Obsolete WorksAsIntended</li>
+				</ul></li>
+				<li>Aspect: Documentation br1; add additional Aspects as indicated for project</li>
+				<li>Assignee: as provided</li>
+				<li>Sprints: 20xxqx for current quarter - gn3; 20xxqx for next quarter - gn1<ul>
+					<li class="blurb">use syntax-based versioning for standard-style version numbering</li>
+				</ul></li>
+			</ul></li>
 			<li>VCS Integrations: New VCS Integration<ul>
 				<li>connect to GitHub repo<ul>
 					<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
@@ -135,39 +162,37 @@
 					</ul></li>
 				</ul></li>
 			</ul></li>
-			<li>Custom Fields - enumerations<ul>
-				<li>Aspects: add Aspects for this project (Documentation provided)</li>
-				<li>Sprints: add first couple of sprint version codes<ul>
-					<li>format &lt;2018&gt;.&lt;quarter&gt;;eg. 2018.1</li>
-					<li>can extend version number syntax-based versioning </li>
-				</ul></li>
+			<li>Notification Templates: no changes yet</li>
+			<li>Team City integration: nothing yet</li>
+			<li>Time Tracking: enable Time Tracking with default fields</li>
+			<li>Workflow<ul>
+				<li>remove Scrum Workflow</li>
 			</ul></li>
-			<li>Scrum Boards<ul>
-				<li>Configuration<ul>
-					<li>type: Scrum</li>
-					<li>project: &lt;repoName&gt;</li>
-					<li>can view and use board: &lt;repoName&gt; Team</li>
-					<li>can edit board settings: Owner</li>
-					<li>backlog: use existing</li>
-					<li>saved search query: project: DO #{Unassigned}</li>
-					<li>Swim lanes identified by: field of type Epic</li>
-					<li>Show swimlane for uncategorized cards at the bottom of the board</li>
-					<li>set Board Owner/Project Lead</li>
+		</ul></li>
+		<li>Scrum Boards<ul>
+			<li>Configuration<ul>
+				<li>type: Scrum</li>
+				<li>project: &lt;repoName&gt;</li>
+				<li>can view and use board: &lt;repoName&gt; Team</li>
+				<li>can edit board settings: Owner</li>
+				<li>backlog: use existing</li>
+				<li>saved search query: project: DO #{Unassigned}</li>
+				<li>Swim lanes identified by: field of type Epic</li>
+				<li>Show swimlane for uncategorized cards at the bottom of the board</li>
+				<li>set Board Owner/Project Lead</li>
+			</ul></li>
+			<li>Boards<ul>
+				<li>backlog issue states: <ul>
+					<li><strong>Submitted</strong>: new item; <em>evaluate for development</em></li>
+					<li><strong>Open</strong>: accepted for development; <em>may expand, format as story</em></li>
 				</ul></li>
-				<li>Boards<ul>
-					<li>backlog issue states: <ul>
-						<li><strong>Submitted</strong>: new item; <em>evaluate for development</em></li>
-						<li><strong>Open</strong>: accepted for development; <em>may expand, format as story</em></li>
-					</ul></li>
-					<li>Development Board "&lt;repoName&gt;"<ul>
-						<li>columns Ready  Done</li>
-					</ul></li>
-					<li>Roadmap Board "&lt;repoName&gt; Roadmap"<ul>
-					</ul></li>
+				<li>Development Board "&lt;repoName&gt;"<ul>
+					<li>columns Ready  Done</li>
+				</ul></li>
+				<li>Roadmap Board "&lt;repoName&gt; Roadmap"<ul>
 				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li>set 'from' email: &lt;ProjectName&gt; \&lt;&lt;lead-email&gt;\&gt;</li>
 	</ul></li>
 </ul>
 
@@ -589,7 +614,7 @@
 
 <!-- @marker "JetBrains Adoption" -->
 <h2 class="promote">JetBrains Adoption</h2>
-<!-- @topicList "JetBrains Adoption" "JetBrainsAdoption_" -->
+<!-- @topicList "JetBrains Adoption" "JetBrainsAdoption" -->
 	<!-- @topicItem "Motivation" "#Motivation_" "0" "" -->
 	<!-- @topicItem "JetBrains Team Tools" "#JetBrainsTeamTools_" "0" "" -->
 	<!-- @topicItem "Toolbox and IDEs" "#ToolboxAndIDEs_" "0" "" -->
