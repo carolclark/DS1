@@ -73,10 +73,10 @@
 			<!-- @topicItem "TeamCity Documentation (Confluence)" "https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "to Move Contents" "8" -->
-	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
-	<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
-	<!-- @topicItem "Team Tools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
-	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
+		<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
+		<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
+		<!-- @topicItem "Team Tools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
+		<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "References" "14" -->
 		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
@@ -87,6 +87,62 @@
 		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "description" -->
 		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "Hub: Configuration" -->
+<h3 id="HubConfiguration_">Hub: Configuration</h3>
+	<p class="sl6">Users</p><ul class="sl6">
+		<li>add 'carol':<ul>
+			<li>Create user 'carol'</li>
+			<li>set JetBrains password; do not force change password</li>
+			<li>avatar: select; click our gravitar image</li>
+		</ul></li>
+		<li>Auth Modules<ul>
+			<li class="dq">if needed, create JetBrains Account</li>
+			<li>Hub: Built-in Authorization<ul>
+				<li>test login combinations</li>
+			</ul></li>
+			<li>add Authorization Module GitHub<ul>
+				<li>Server URL: https://github.com; create module</li>
+				<li>copy what can be seen of the Callback URL</li>
+				<li class="dq">new browser window: click link to register an application with GitHub<ul>
+					<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
+				</ul></li>
+				<li>generate client codes</li>
+				<li>copy back Client ID and Client Secret</li>
+				<li>Enable Module</li>
+			</ul></li>
+		</ul></li>
+	<li><strong>Server Settings</strong></li>
+		<li>System Settings<ul>
+			<li>session timeout 3 hours</li>
+			<li>remember me for 1 month</li>
+			<li>email verification: no</li>
+		</ul></li>
+		<li>Backup<ul>
+			<li><i>should already be <a href="#TeamToolsInstallConfig_">configured</a></i></li>
+		</ul></li>
+	</ul>
+	<p class="sl6">Auth Modules</p><ul class="sl6">
+		<li>JetBrains Account: create</li>
+		<li>Hub: Built-in Authorization<ul>
+			<li>test login combinations</li>
+		</ul></li>
+		<li>grant role 'Reporter' to Carol</li>
+		<li>add Authorization Module GitHub<ul>
+			<li>Server URL: https://github.com; create module</li>
+			<li>copy what can be seen of the seen of the Callback URL</li>
+			<li>new browser window: click link to register an application with GitHub<ul>
+				<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
+			</ul></li>
+			<li>generate client codes</li>
+			<li>copy over Client ID and Client Secret</li>
+			<li>Enable Module</li>
+		</ul></li>
+	</ul>
+	<p class="sl6">System Settings</p><ul class="sl6">
+		<li>session timeout 30 minutes</li>
+		<li>remember me for 1 year</li>
+	</ul>
 
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
@@ -397,37 +453,6 @@
 	</ul></li>
  </ul>
 
-<!-- @marker "Hub: Configuration" -->
-<h3 id="HubConfiguration_">Hub: Configuration</h3>
-	<p class="sl6">Users</p><ul class="sl6">
-		<li>add 'carol':<ul>
-			<li>Create user 'carol'</li>
-			<li>set JetBrains password; do not force change password</li>
-			<li>avatar: select; click our gravitar image</li>
-		</ul></li>
-	</ul>
-	<p class="sl6">Auth Modules</p><ul class="sl6">
-		<li>JetBrains Account: create</li>
-		<li>Hub: Built-in Authorization<ul>
-			<li>test login combinations</li>
-		</ul></li>
-		<li>grant role 'Reporter' to Carol</li>
-		<li>add Authorization Module GitHub<ul>
-			<li>Server URL: https://github.com; create module</li>
-			<li>copy what can be seen of the seen of the Callback URL</li>
-			<li>new browser window: click link to register an application with GitHub<ul>
-				<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
-			</ul></li>
- 			<li>generate client codes</li>
-			<li>copy over Client ID and Client Secret</li>
-			<li>Enable Module</li>
-		</ul></li>
-	</ul>
-	<p class="sl6">System Settings</p><ul class="sl6">
-		<li>session timeout 30 minutes</li>
-		<li>remember me for 1 year</li>
-	</ul>
-
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
 	<li>edit custom fields related to issues and their handling<ul>
@@ -613,7 +638,7 @@
 
 <!-- @marker "JetBrains Adoption" -->
 <h2 class="promote">JetBrains Adoption</h2>
-<!-- @topicList "JetBrains Adoption" "JetBrainsAdoption" -->
+<!-- @topicList "JetBrains Adoption" "JetBrainsAdoption_" -->
 	<!-- @topicItem "Motivation" "#Motivation_" "0" "" -->
 	<!-- @topicItem "JetBrains Team Tools" "#JetBrainsTeamTools_" "0" "" -->
 	<!-- @topicItem "Toolbox and IDEs" "#ToolboxAndIDEs_" "0" "" -->
