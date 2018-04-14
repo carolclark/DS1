@@ -502,6 +502,37 @@
 	</ul></li>
  </ul>
 
+<!-- @marker "Hub: Configuration" -->
+<h3 id="HubConfiguration_">Hub: Configuration</h3>
+	<p class="sl6">Users</p><ul class="sl6">
+		<li>add 'carol':<ul>
+			<li>Create user 'carol'</li>
+			<li>set JetBrains password; do not force change password</li>
+			<li>avatar: select; click our gravitar image</li>
+		</ul></li>
+	</ul>
+	<p class="sl6">Auth Modules</p><ul class="sl6">
+		<li>JetBrains Account: create</li>
+		<li>Hub: Built-in Authorization<ul>
+			<li>test login combinations</li>
+		</ul></li>
+		<li>grant role 'Reporter' to Carol</li>
+		<li>add Authorization Module GitHub<ul>
+			<li>Server URL: https://github.com; create module</li>
+			<li>copy what can be seen of the seen of the Callback URL</li>
+			<li>new browser window: click link to register an application with GitHub<ul>
+				<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
+			</ul></li>
+ 			<li>generate client codes</li>
+			<li>copy over Client ID and Client Secret</li>
+			<li>Enable Module</li>
+		</ul></li>
+	</ul>
+	<p class="sl6">System Settings</p><ul class="sl6">
+		<li>session timeout 30 minutes</li>
+		<li>remember me for 1 year</li>
+	</ul>
+
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
 	<li>edit custom fields related to issues and their handling<ul>
