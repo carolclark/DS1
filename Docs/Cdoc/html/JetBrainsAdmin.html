@@ -89,132 +89,24 @@
 <!-- @/topicList -->
 
 <!-- @topicList "JetBrains Team Tools" "TeamToolsAdmin_" -->
-	<!-- @topicItem "Team Tools: Developer" "#Team_Tools_Developer_" "0" "" -->
-	<!-- @topicItem "Team Tools: ProjAdmin" "#Team_Tools_ProjAdmin_" "0" "" -->
-	<!-- @topicItem "Team Tools: SysAdmin" "#Team_Tools_SysAdmin_" "0" "" -->
+	<!-- @topicItem "Team Tools: Developer" "#TeamTools_Developer_" "0" "" -->
+	<!-- @topicItem "Team Tools: ProjAdmin" "#TeamTools_ProjAdmin_" "0" "" -->
+	<!-- @topicItem "Team Tools: SysAdmin" "#TeamTools_SysAdmin_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Team Tools: Developer" -->
 <h2>Team Tools: Developer</h2>
-<!-- @topicList "Team Tools: Developer" "Team_Tools_Developer_" -->
+<!-- @topicList "Team Tools: Developer" "TeamTools_Developer_" -->
 <!-- @/topicList -->
 
 <!-- @marker "Team Tools: ProjAdmin" -->
 <h2>Team Tools: ProjAdmin</h2>
-<!-- @topicList "Team Tools: ProjAdmin" "Team_Tools_ProjAdmin_" -->
+<!-- @topicList "Team Tools: ProjAdmin" "TeamTools_ProjAdmin_" -->
 <!-- @/topicList -->
 
 <!-- @marker "Team Tools: SysAdmin" -->
 <h2>Team Tools: SysAdmin</h2>
-<!-- @topicList "Team Tools: SysAdmin" "Team_Tools_SysAdmin_" -->
-	<!-- @topicItem "TeamTools Configuration" "#TeamTools_Configuration_" "0" "" -->
-		<!-- @topicItem "Hub Configuration" "#HubConfiguration_" "1" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Team Tools: Configuration" -->
-<h3 id="TeamTools_Configuration_">Team Tools: Configuration</h3>
-
-<!-- @marker "Hub: Configuration" -->
-<h3 id="HubConfiguration_">Hub: Configuration</h3>
-	<p class="sl6">Users</p><ul class="sl6">
-		<li>add 'carol':<ul>
-			<li>Create user 'carol'</li>
-			<li>set JetBrains password; do not force change password</li>
-			<li>avatar: select; click our gravitar image</li>
-		</ul></li>
-		<li>Auth Modules<ul>
-			<li class="dq">if needed, create JetBrains Account</li>
-			<li>Hub: Built-in Authorization<ul>
-				<li>test login combinations</li>
-			</ul></li>
-			<li>add Authorization Module GitHub<ul>
-				<li>Server URL: https://github.com; create module</li>
-				<li>copy what can be seen of the Callback URL</li>
-				<li class="dq">new browser window: click link to register an application with GitHub<ul>
-					<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
-				</ul></li>
-				<li>generate client codes</li>
-				<li>copy back Client ID and Client Secret</li>
-				<li>Enable Module</li>
-			</ul></li>
-		</ul></li>
-	<li><strong>Server Settings</strong></li>
-		<li>System Settings<ul>
-			<li>session timeout 3 hours</li>
-			<li>remember me for 1 month</li>
-			<li>email verification: no</li>
-		</ul></li>
-		<li>Backup<ul>
-			<li><i>should already be <a href="#TeamToolsInstallConfig_">configured</a></i></li>
-		</ul></li>
-	</ul>
-
-<!-- @marker "JetBrains IDEs" -->
-<h2 class="promote">JetBrains IDEs</h2>
-<!-- @topicList "JetBrains IDEs" "JetBrainsIDEs_" -->
-	<!-- @topicItem "IDEs: Developer" "#IDEs_Developer_" "0" "" -->
-	<!-- @topicItem "IDEs: ProjAdmin" "#IDEs_ProjAdmin_" "0" "" -->
-	<!-- @topicItem "IDEs: SysAdmin" "#IDEs_SysAdmin_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "IDEs: Developer" -->
-<h2>IDEs: Developer</h2>
-<!-- @topicList "IDEs: Developer" "IDEs_Developer_" -->
-<!-- @/topicList -->
-
-<!-- @marker "IDEs: ProjAdmin" -->
-<h2>IDEs: ProjAdmin</h2>
-<!-- @topicList "IDEs: ProjAdmin" "IDEs_ProjAdmin_" -->
-<!-- @/topicList -->
-
-<!-- @marker "IDEs: SysAdmin" -->
-<h2>IDEs: SysAdmin</h2>
-<!-- @topicList "IDEs: SysAdmin" "IDEs_SysAdmin_" -->
-<!-- @/topicList -->
-
-<!-- @topicList "JetBrains Tools" "Contents" -->
-	<!-- @topicGroup "Online Documentation" "1" -->
-		<!-- @topicItem "JetBrains Team Tools" "https://www.jetbrains.com/products.html#type=team" "0" "JetBrains home" -->
-			<!-- @topicItem "Hub" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
-			<!-- @topicItem "YouTrack" "https://www.jetbrains.com/help/youtrack/standalone/Getting-Started-With-YouTrack.html" "1" "" -->
-			<!-- @topicItem "UpSource" "https://www.jetbrains.com/help/upsource/getting-started-with-upsource.html" "1" "" -->
-			<!-- @topicItem "TeamCity Documentation (Confluence)" "https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation" "1" "" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "to Move Contents" "8" -->
-		<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
-		<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
-		<!-- @topicItem "Team Tools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
-		<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "References" "14" -->
-		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
-		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
-		<!-- @topicItem "Scheduling Tasks with Cron Jobs" "https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800_" "0" "" -->
-		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
-		<!-- @topicItem "Cross-project Agile Boards in YouTrack: The Best Recipes" "https://blog.jetbrains.com/youtrack/2014/04/cross-project-agile-boards-in-youtrack-the-best-recipes/_" "0" "" -->
-		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "description" -->
-		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @topicList "JetBrains Team Tools" "JetBrainsTeamTools_" -->
-	<!-- @topicItem "Team Tools: Developer" "#Team_Tools_Developer_" "0" "" -->
-	<!-- @topicItem "Team Tools: ProjAdmin" "#Team_Tools_ProjAdmin_" "0" "" -->
-	<!-- @topicItem "Team Tools: SysAdmin" "#Team_Tools_SysAdmin_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Team Tools: Developer" -->
-<h2>Team Tools: Developer</h2>
-<!-- @topicList "Team Tools: Developer" "Team_Tools_Developer_" -->
-<!-- @/topicList -->
-
-<!-- @marker "Team Tools: ProjAdmin" -->
-<h2>Team Tools: ProjAdmin</h2>
-<!-- @topicList "Team Tools: ProjAdmin" "Team_Tools_ProjAdmin_" -->
-<!-- @/topicList -->
-
-<!-- @marker "Team Tools: SysAdmin" -->
-<h2>Team Tools: SysAdmin</h2>
-<!-- @topicList "Team Tools: SysAdmin" "Team_Tools_SysAdmin_" -->
+<!-- @topicList "Team Tools: SysAdmin" "TeamTools_SysAdmin_" -->
 	<!-- @topicItem "TeamTools Configuration" "#TeamTools_Configuration_" "0" "" -->
 		<!-- @topicItem "Hub Configuration" "#HubConfiguration_" "1" "" -->
 <!-- @/topicList -->
@@ -234,25 +126,31 @@
 			</ul></li>
 			<li>Auth Modules<ul>
 				<li class="dq">if needed, create JetBrains Account</li>
-		<li>Hub: Built-in Authorization<ul>
-			<li>test login combinations</li>
-		</ul></li>
-		<li>grant role 'Reporter' to Carol</li>
-		<li>add Authorization Module GitHub<ul>
-			<li>Server URL: https://github.com; create module</li>
-			<li>copy what can be seen of the seen of the Callback URL</li>
-			<li>new browser window: click link to register an application with GitHub<ul>
-				<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
+				<li>Hub: Built-in Authorization<ul>
+					<li>test login combinations</li>
+				</ul></li>
+				<li>add Authorization Module GitHub<ul>
+					<li>Server URL: https://github.com; create module</li>
+					<li>copy what can be seen of the Callback URL</li>
+					<li class="dq">new browser window: click link to register an application with GitHub<ul>
+						<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
+					</ul></li>
+					<li>generate client codes</li>
+					<li>copy back Client ID and Client Secret</li>
+					<li>Enable Module</li>
+				</ul></li>
 			</ul></li>
-			<li>generate client codes</li>
-			<li>copy over Client ID and Client Secret</li>
-			<li>Enable Module</li>
+		<li><strong>Server Settings</strong></li>
+			<li>System Settings<ul>
+				<li>session timeout 3 hours</li>
+				<li>remember me for 1 month</li>
+				<li>email verification: no</li>
+			</ul></li>
+			<li>Backup<ul>
+				<li><i>should already be <a href="#TeamToolsInstallConfig_">configured</a></i></li>
+			</ul></li>
 		</ul></li>
-	</ul>
-	<p class="sl6">System Settings</p><ul class="sl6">
-		<li>session timeout 30 minutes</li>
-		<li>remember me for 1 year</li>
-	</ul>
+</ul>
 
 <!-- @marker "JetBrains IDEs" -->
 <h2 class="promote">JetBrains IDEs</h2>
@@ -497,7 +395,7 @@
 <!-- @topicList "Team Tools: Install and Configure" "TeamToolsConfiguration_" -->
 	<!-- @topicItem "Installation" "#Installation_" "0" "" -->
 	<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
-	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfig_" "0" "" -->
+	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
 	<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
 	<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
 <!-- @/topicList -->
@@ -585,37 +483,6 @@
 		</ul></li>
 	</ul></li>
  </ul>
-
-<!-- @marker "Hub: Configuration" -->
-<h3 id="HubConfiguration_">Hub: Configuration</h3>
-	<p class="sl6">Users</p><ul class="sl6">
-		<li>add 'carol':<ul>
-			<li>Create user 'carol'</li>
-			<li>set JetBrains password; do not force change password</li>
-			<li>avatar: select; click our gravitar image</li>
-		</ul></li>
-	</ul>
-	<p class="sl6">Auth Modules</p><ul class="sl6">
-		<li>JetBrains Account: create</li>
-		<li>Hub: Built-in Authorization<ul>
-			<li>test login combinations</li>
-		</ul></li>
-		<li>grant role 'Reporter' to Carol</li>
-		<li>add Authorization Module GitHub<ul>
-			<li>Server URL: https://github.com; create module</li>
-			<li>copy what can be seen of the seen of the Callback URL</li>
-			<li>new browser window: click link to register an application with GitHub<ul>
-				<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
-			</ul></li>
- 			<li>generate client codes</li>
-			<li>copy over Client ID and Client Secret</li>
-			<li>Enable Module</li>
-		</ul></li>
-	</ul>
-	<p class="sl6">System Settings</p><ul class="sl6">
-		<li>session timeout 30 minutes</li>
-		<li>remember me for 1 year</li>
-	</ul>
 
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
