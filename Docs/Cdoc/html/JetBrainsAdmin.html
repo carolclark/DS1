@@ -12,7 +12,8 @@
 <h1>JetBrains</h1>
 <h2 class="promote" id="Overview_">Development Overview</h2>
 <h4 id="Agile_">Agile Development</h4><ul>
-	<li>We use a fairly standard form of test-first agile development, with a couple of significant modifications:<ul>
+	<li>We use test-first agile development with BDD.<ul>
+		<li>We are attempting to have our Agile boards provide for Behavior Driven Development.</li>
 		<li>Sprints have time estimates, not deadlines.
 			Estimates are established based on card estimates, which are adjusted as indicated.<ul>
 				<li>We expect to learn to make better estimates of time required as we use this technique.</li>
@@ -21,8 +22,8 @@
 				<li>We prefer to establish the version number when the product is ready for 'release',
 					as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 					on which our <a href="Git.html#Branches_Releases_">versioning plan</a> is based.</li>
-				<li>'fix version' targets are more like '17JanA'; actual version numbers,
-					if any, are assigned on completion</li>
+				<li>'fix version' fields use Sprint IDs, eg. 18.2.1</li>
+				<li>actual version numbers, if any, are assigned on completion</li>
 			</ul></li>
 		<li>We do not do deadlines.</li>
 	</ul></li>
@@ -236,7 +237,7 @@
 				</ul></li>
 				<li>Aspect: Documentation br1; add additional Aspects as indicated for project</li>
 				<li>Assignee: as provided</li>
-				<li>Sprints: 20xxqx for current quarter - gn3; 20xxqx for next quarter - gn1<ul>
+				<li>Sprints: yy.q.n; q=quarter; n=# sprint started in q<ul>
 					<li class="blurb">use syntax-based versioning for standard-style version numbering</li>
 				</ul></li>
 			</ul></li>
