@@ -18,12 +18,13 @@
 			Estimates are established based on card estimates, which are adjusted as indicated.<ul>
 				<li>We expect to learn to make better estimates of time required as we use this technique.</li>
 			</ul></li>
-			<li>YouTrack's 'fix version' field is intended to identify cards for a version number and a scrum.<ul>
-				<li>We prefer to establish the version number when the product is ready for 'release',
+			<li>YouTrack's 'fixed in build' and 'fix version' fields:<ul>
+				<li>associate bug issues with the build and the release version for which they were fixed</li>
+				<li>We associate the version number when the product is ready for 'release',
 					as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-					on which our <a href="Git.html#Branches_Releases_">versioning plan</a> is based.</li>
+					on which our <a href="Git.html#Branches_Releases_">syntactic versioning plan</a> is based.</li>
 				<li>'fix version' fields use Sprint IDs, eg. 18.2.1</li>
-				<li>actual version numbers, if any, are assigned on completion</li>
+				<li>actual version numbers are assigned on completion</li>
 			</ul></li>
 		<li>We do not do deadlines.</li>
 	</ul></li>
@@ -35,20 +36,26 @@
 	<li>For larger tasks as indicated, a required-dependency task is used to gather information and estimate.</li>
 </ul>
 
-<h4 id="TeamTools_">Team Tools</h4>
-	<p>JetBrains Team Tools for our development process</p>
-		<p class="sl6">available IDE's for development languages:</p><ul class="sl6">
+<h4>JetBrains Tools</h4>
+	<p class="sl6">available JetBrains IDE's for development languages:</p><ul class="sl6">
 			<li>IntelliJ IDEA: flagship development environment for Java<ul>
 				<li>best support for related languages, project structure with modules, ...</li>
 				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
-				<li>better choice for bash, html, AppleScript</li>
+			<li>better choice for Java, javascript, bash, AppleScript</li>
 			</ul></li>
-			<li>AppCode (currently in use): primary support for Cocoa/Objective-C(++); plugins for unix and AppleScript<ul>
-				<li>project structure based on Xcode =&gt; no module support, limitations for other plug-ins and features</li>
+		<li>WebStorm: specializes in web development<ul>
+			<li>we are currently using AppCode with sed(!!) for our documentation</li>
+		</ul></li>
+		<li>AppCode (currently in use): primary support for Xcode projects associated with Cocoa/Objective-C(++)<ul>
+			<li>plugins for unix and AppleScript</li>
+			<li>project structure based on Xcode, so no module support, limitations for other plug-ins and features</li>
+		</ul></li>
+		<li>CLion: C-based languages, including C, C++, and Swift, not requiring build by Xcode<ul>
+			<li>has some features for working with C++ and Swift together, including porting C++ to Swift</li>
+			<li>apparently, many developers are moving directly to Swift from C++, skipping Objective-C</li>
 			</ul></li>
 			<li>other languages/IDEs<ul>
 				<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
-				<li>WebStorm (for html and javascript - we are currently using AppCode with sed(!!) instead of javascript)</li>
 				<li>PyCharm with Django; PHPStorm for Website indices; DataGrip for internal databases; MPS for DSL development</li>
 			</ul></li>
 		</ul>
