@@ -63,11 +63,11 @@
 			<li>YouTrack: issue tracking; agile development</li>
 			<li>TeamCity (previously in use): Continuous Integration</li>
 			<li>UpSource: code review</li>
-			<li>Hub, aka Hub, to tie it all together</li>
+		<li>Hub to tie it all together</li>
 		</ul>
 		<p class="sl6">We expect to use:</p><ul class="sl6">
 			<li>The complete team tool suite</li>
-			<li>AppCode IDE for Cocoa projects; IntelliJ IDEA by default for other languages; add specialized products for other languages as indicated</li>
+			<li>AppCode IDE for Cocoa projects, possibly moving to CLion/Swift; WebStorm for web development;IntelliJ IDEA by default for other languages; add specialized products for other languages as indicated</li>
 		<li>We have an All-Products license for JetBrains IDEs</li>
 	</ul>
 	<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
@@ -205,13 +205,14 @@
 <!-- @marker "Add and Integrate Project" -->
 <h4 id="AddAndIntegrateProject_">Add and Integrate Project</h4><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub<ul>
-		<li>login as admin</li>
+	<li>Hub as admin:<ul>
 		<li>Projects: New Project...<ul>
 			<li>set project name, ID</li>
 		</ul></li>
 		<li>Project: Fine-Tune Project Settings<ul>
 			<li>Team: add user(s) to project team</li>
+			<li>Fields: add custom fields</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 	<li>Add Hub Service: YouTrack with Scrum</li>
@@ -412,8 +413,8 @@
 <h3 id="Installation_">Installation</h3><ul>
 	<li><strong>Provide Dependencies</strong><ul>
 		<li>install or check for updates as indicated:<ul>
-			<li class="blurb">see <a href=
-				"https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+			<li class="blurb">see
+				<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
 				Supported Platforms and Environments</a></li>
 			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
 			<li><a href="Tools.html#_Java">Java</a></li>
@@ -422,8 +423,8 @@
 			<li>/Volumes/Mavericks-1/Backups<ul>
 				<li>TeamTools</li>
 				<li>TeamTools_Tagged<ul>
-					<li>B-&lt;date&gt;-initial-installed</li>
-					<li>B-&lt;date&gt;-initial-configured</li>
+					<li><i>PR-&lt;date&gt;-initial-installed</i></li>
+					<li><i>PR-&lt;date&gt;-initial-configured</i></li>
 				</ul></li>
 			</ul></li>
 		</ul></li>
@@ -747,7 +748,7 @@
 <h2 class="promote">JetBrains Adoption</h2>
 <!-- @topicList "JetBrains Adoption" "JetBrainsAdoption_" -->
 	<!-- @topicItem "Motivation" "#Motivation_" "0" "" -->
-	<!-- @topicItem "JetBrains Team Tools" "#JetBrainsTeamTools_" "0" "" -->
+	<!-- @topicItem "Team Tools" "#TeamTools_" "0" "" -->
 	<!-- @topicItem "Toolbox and IDEs" "#ToolboxAndIDEs_" "0" "" -->
 	<!-- @topicItem "Costs" "#Costs_" "0" "" -->
 <!-- @/topicList -->
@@ -768,8 +769,8 @@
 		They also have a huge installed base of products, all of which receive many kudos for their quality.
 		We do not expect them to disappear.</p>
 
-<!-- @marker "JetBrains Team Tools" -->
-<h4 id='JetBrainsTeamTools_'>JetBrains Team Tools</h4>
+<!-- @marker "Team Tools" -->
+<h4 id='TeamTools_'>Team Tools</h4>
 	<p><strong>YouTrack</strong>: Issue tracker for development teams</p>
 		<p class="indent">JetBrains system for integrating issues. Links with GitHub.
 			Replaces Waffle Kanban board with Agile boards (no scrums required) that also provide a specialized planning board,
