@@ -87,7 +87,6 @@
 	<!-- @topicItem "Team Tools" "#TeamTools_" "0" "" -->
 	<!-- @topicGroup "to Move Contents" "8" -->
 		<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
-		<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
 		<!-- @topicItem "Team Tools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
 		<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
 	<!-- @topicSep -->
@@ -122,166 +121,250 @@
 <!-- @marker "Team Tools: SysAdmin" -->
 <h2>Team Tools: SysAdmin</h2>
 <!-- @topicList "Team Tools: SysAdmin" "TeamTools_SysAdmin_" -->
-	<!-- @topicItem "TeamTools Configuration" "#TeamTools_Configuration_" "0" "" -->
-		<!-- @topicItem "Hub Configuration" "#HubConfiguration_" "1" "" -->
+	<!-- @topicGroup "Install &amp; Configure" "" -->
+		<!-- @topicItem "Installation" "#Installation_" "1" "" -->
+		<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "1" "" -->
+		<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "1" "" -->
+		<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "1" "" -->
+		<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "1" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Team Tools: Configuration" -->
-<h3 id="TeamTools_Configuration_">Team Tools: Configuration</h3>
-
-	<!-- @marker "Hub: Configuration" -->
-	<h4 id="HubConfiguration_">Hub Configuration</h4><ul>
-		<li><strong>Access Management</strong><ul>
-			<li>Users<ul>
-				<li>add 'carol':<ul>
-					<li>Create user 'carol'</li>
-					<li>set JetBrains password; do not force change password</li>
-					<li>avatar: select; click our gravitar image</li>
+<!-- @marker "Installation" -->
+<h3 id="Installation_">Installation</h3><ul>
+	<li><strong>Provide Dependencies</strong><ul>
+		<li>install or check for updates as indicated:<ul>
+			<li class="blurb">see
+				<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
+					Supported Platforms and Environments</a></li>
+			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+			<li><a href="Tools.html#_Java">Java</a></li>
+		</ul></li>
+		<li>create backup structure, folders for initial tagged backups<ul>
+			<li>/Volumes/Mavericks-1/Backups<ul>
+				<li>TeamTools</li>
+				<li>TeamTools_Tagged<ul>
+					<li><i>PR-&lt;date&gt;-initial-installed</i></li>
+					<li><i>PR-&lt;date&gt;-initial-configured</i></li>
 				</ul></li>
 			</ul></li>
-			<li>Auth Modules<ul>
-				<li class="dq">if needed, create JetBrains Account</li>
-				<li>Hub: Built-in Authorization<ul>
-					<li>test login combinations</li>
+		</ul></li>
+	</ul></li>
+	<li id="install_"><strong>Install</strong><ul>
+		<li>for Hub, YouTrack, UpSource, TeamCity :<ul>
+			<li>create folder &lt;productName&gt; at /Servers/jb</li>
+			<li>download installation package; move to its folder<ul>
+				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
+					<li class="blurb">commercial license supports private GitHub projects</li>
 				</ul></li>
-				<li>add Authorization Module GitHub<ul>
-					<li>Server URL: https://github.com; create module</li>
-					<li>copy what can be seen of the Callback URL</li>
-					<li class="dq">new browser window: click link to register an application with GitHub<ul>
-						<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
+			</ul></li>
+			<li>expand archive<ul>
+				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
+					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
+			</ul></li>
+			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
+				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+			</ul></li>
+			<li>when tool window appears:<ul>
+				<li><strong>Hub</strong>, as admin<ul>
+					<li><strong>SMTP</strong><ul>
+						<li>host smtp.cox.net</li>
+						<li>from: "JBServer" &lt;my_email&gt;</li>
+						<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+						<li>save; enable notification; send test message</li>
 					</ul></li>
-					<li>generate client codes</li>
-					<li>copy back Client ID and Client Secret</li>
-					<li>Enable Module</li>
 				</ul></li>
-			</ul></li>
-		</ul></li>
-		<li><strong>Server Settings</strong><ul>
-			<li>System Settings<ul>
-				<li>session timeout 3 hours</li>
-				<li>remember me for 1 month</li>
-				<li>email verification: no</li>
-			</ul></li>
-			<li>Backup<ul>
-				<li><i>should already be <a href="#TeamToolsInstallConfig_">configured</a></i></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-
-	<!-- @marker "YouTrack: Configuration" -->
-	<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
-		<li>Agile Boards<ul>
-			<li>general information<ul>
-				<li>'Roadmap' board for planning; 'Development' board for development</li>
-				<li>Swimlanes<ul>
-					<li>named by Epic issues on Roadmap board, Story on Development board</li>
-					<li>those items are stationary until ready for Review;
-						they generate issues of other types to get the work done</li>
-				</ul></li>
-				<li>BDD<ul>
-					<li>Our boards are built to support Behavior Driven Development</li>
-					<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-						orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
-					</em></li>
-				</ul></li>
-				<li>Review<ul>
-					<li>Since we cannot pass Review to another developer, we review our own work.
-						We do try to come at each review with a fresh perspective, including some delay after completion.</li>
-				</ul></li>
-			</ul></li>
-			<li>Agile Columns<ul>
-				<li>Backlog<ul>
-					<li><strong>Submit</strong>: incoming items</li>
-					<li><strong>Select</strong>: selected for development</li>
-				</ul></li>
-				<li>Roadmap Swimlane<ul>
-					<li><strong>Epic</strong>: goal; swimlane on Roadmap board</li>
-				</ul></li>
-				<li>Roadmap Columns<ul>
-					<li><strong>Open</strong>:<ul>
-						<li>selected for sprint</li>
-						<li>rewrite as: a Story; a Feature of an existing story; a Task; or an Analysis item<ul>
-							<li>then move to the appropriate column</li>
+				<li><strong>TeamCity</strong> and <strong>YouTrack</strong><ul>
+					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
+					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
+					<li>copy <span class="mono">teamcity-startup.properties</span>,
+						<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
+						as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
+							<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
+								so make change after each upgrade</li>
 						</ul></li>
-					</ul></li>
-					<li><strong>Story</strong>:<ul>
-						<li>As a: I want: so that:</li>
-						<li>serves as swimlane on a Development Board</li>
-					</ul></li>
-					<li><strong>Specify</strong>:<ul>
-						<li>specify the work to be done</li>
-						<li>item types:<ul>
-							<li>Feature: a BDD feature for development with Cucumber or similar tool<ul>
-								<li>Scenario is not a separate type, as Scenarios are normally developed from Feature files</li>
-								<li>during planning, Feature items may contain notes for Scenarios</li>
-							</ul></li>
-							<li>Task</li>
-							<li>Analysis: study an issue to plan and/or recommend a course of action</li>
-						</ul></li>
+					<li><a href="#CommandLineTools_">Restart Tool</a></li>
+				</ul></li>
+				<li><strong>YouTrack</strong><ul>
+					<li>Global Settings<ul>
+						<li>verify license shown; if not, fetch and copy</li>
+						<li>Default Timezone: verify</li>
+						<li>Date Fields Format: 31 Dec 2000 23:59</li>
 					</ul></li>
 				</ul></li>
-				<li>Shared Column<ul>
-					<li><strong>Ready</strong>: ready to be pulled for development; estimation required</li>
-				</ul></li>
-				<li>Development Swimlanes: based on Story</li>
-				<li>Development Columns<ul>
-					<li><strong>Develop</strong>: develop as specified; use use TDD/BDD when appropriate</li>
-					<li><strong>Review</strong>:<ul>
-						<li>Pause for a couple of days so that we can come at this work a fresh perspective</li>
-						<li>New items coming from this review may be attached to the current issue for prompt completion.
-							Alternatively, if the changes would not leave problems in the code base to be merged to master,
-							they may be scheduled for later completion.</li>
+				<li><strong>All</strong><ul>
+					<li id="backups"><strong>Backup &amp; Server Settings</strong><ul>
+						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+						<li>filename prefix: PR-, where PR is product abbreviation</li>
+						<li>tar.gz format</li>
+						<li>every day at 2 AM</li>
+						<li>rotation 10</li>
 					</ul></li>
-					<li><strong>Done</strong>: review, with completion of any resulting immediate tasks, is completed</li>
 				</ul></li>
 			</ul></li>
+			<li>backup; copy backup file to tag 'initial_installed'</li>
+			<li>complete per-product configuration (<a href="#HubConfiguration_">Hub</a>,
+				<a href="#YouTrackConfiguration_">YouTrack</a>, <a href="#UpSourceConfiguration_">UpSource</a>,
+				<a href="#TeamCityConfiguration_">TeamCity</a>)</li>
+			<li>backup; copy backup to tag 'initial_configured'</li>
+			<li>leave product's window open</li>
 		</ul></li>
-	</ul>
-	<ul>
-		<li>edit custom fields related to issues and their handling<ul>
-			<li>Custom Fields: Priority, Type, State, Assignee, Aspect, Story Points<br />
-				Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
-			<li>Issue Types: Task Story Feature Scenario Epic;
-				Bug Cosmetic Exception Usability Performance</li>
-			<li>Issue States:<ul>
-				<li><strong>SampleState</strong>: description; <em>transition</em></li>
-				<li>Backlog<ul>
-					<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
-						else resolve using a 'Resolved' state with comment</em><ul>
-						<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
-					</ul></li>
-					<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
-				</ul></li>
-				<li>&lt;project&gt; Roadmap<ul>
-					<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
-					<li><strong>Story</strong>: story used for planning;
-						<em>add substories as needed until design appears managable</em><ul>
-							<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-								orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
-								</em></li>
-						</ul></li>
-					<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
-						<em>plan and estimate implementation</em></li>
-					<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
-				</ul></li>
-				<li>&lt;project&gt; Development<ul>
-					<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
-					<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
-					<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
-						<em>release for publication, or set up for rejection or rework</em></li>
-					<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
-						<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
-					<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
-				</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Hub: Configuration" -->
+<h4 id="HubConfiguration_">Hub Configuration</h4><ul>
+	<li><strong>Access Management</strong><ul>
+		<li>Users<ul>
+			<li>add 'carol':<ul>
+				<li>Create user 'carol'</li>
+				<li>set JetBrains password; do not force change password</li>
+				<li>avatar: select; click our gravitar image</li>
 			</ul></li>
 		</ul></li>
-	</ul>
+		<li>Auth Modules<ul>
+			<li class="dq">if needed, create JetBrains Account</li>
+			<li>Hub: Built-in Authorization<ul>
+				<li>test login combinations</li>
+			</ul></li>
+			<li>add Authorization Module GitHub<ul>
+				<li>Server URL: https://github.com; create module</li>
+				<li>copy what can be seen of the Callback URL</li>
+				<li class="dq">new browser window: click link to register an application with GitHub<ul>
+					<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
+				</ul></li>
+				<li>generate client codes</li>
+				<li>copy back Client ID and Client Secret</li>
+				<li>Enable Module</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+	<li><strong>Server Settings</strong><ul>
+		<li>System Settings<ul>
+			<li>session timeout 3 hours</li>
+			<li>remember me for 1 month</li>
+			<li>email verification: no</li>
+		</ul></li>
+		<li>Backup<ul>
+			<li><i>should already be configured</i></li>
+		</ul></li>
+	</ul></li>
+</ul>
 
-	<!-- @marker "UpSource: Configuration" -->
-	<h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
+<!-- @marker "YouTrack: Configuration" -->
+<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
+	<li>Agile Boards<ul>
+		<li>general information<ul>
+			<li>'Roadmap' board for planning; 'Development' board for development</li>
+			<li>Swimlanes<ul>
+				<li>named by Epic issues on Roadmap board, Story on Development board</li>
+				<li>those items are stationary until ready for Review;
+					they generate issues of other types to get the work done</li>
+			</ul></li>
+			<li>BDD<ul>
+				<li>Our boards are built to support Behavior Driven Development</li>
+				<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+					orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
+				</em></li>
+			</ul></li>
+			<li>Review<ul>
+				<li>Since we cannot pass Review to another developer, we review our own work.
+					We do try to come at each review with a fresh perspective, including some delay after completion.</li>
+			</ul></li>
+		</ul></li>
+		<li>Agile Columns<ul>
+			<li>Backlog<ul>
+				<li><strong>Submit</strong>: incoming items</li>
+				<li><strong>Select</strong>: selected for development</li>
+			</ul></li>
+			<li>Roadmap Swimlane<ul>
+				<li><strong>Epic</strong>: goal; swimlane on Roadmap board</li>
+			</ul></li>
+			<li>Roadmap Columns<ul>
+				<li><strong>Open</strong>:<ul>
+					<li>selected for sprint</li>
+					<li>rewrite as: a Story; a Feature of an existing story; a Task; or an Analysis item<ul>
+						<li>then move to the appropriate column</li>
+					</ul></li>
+				</ul></li>
+				<li><strong>Story</strong>:<ul>
+					<li>As a: I want: so that:</li>
+					<li>serves as swimlane on a Development Board</li>
+				</ul></li>
+				<li><strong>Specify</strong>:<ul>
+					<li>specify the work to be done</li>
+					<li>item types:<ul>
+						<li>Feature: a BDD feature for development with Cucumber or similar tool<ul>
+							<li>Scenario is not a separate type, as Scenarios are normally developed from Feature files</li>
+							<li>during planning, Feature items may contain notes for Scenarios</li>
+						</ul></li>
+						<li>Task</li>
+						<li>Analysis: study an issue to plan and/or recommend a course of action</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+			<li>Shared Column<ul>
+				<li><strong>Ready</strong>: ready to be pulled for development; estimation required</li>
+			</ul></li>
+			<li>Development Swimlanes: based on Story</li>
+			<li>Development Columns<ul>
+				<li><strong>Develop</strong>: develop as specified; use use TDD/BDD when appropriate</li>
+				<li><strong>Review</strong>:<ul>
+					<li>Pause for a couple of days so that we can come at this work a fresh perspective</li>
+					<li>New items coming from this review may be attached to the current issue for prompt completion.
+						Alternatively, if the changes would not leave problems in the code base to be merged to master,
+						they may be scheduled for later completion.</li>
+				</ul></li>
+				<li><strong>Done</strong>: review, with completion of any resulting immediate tasks, is completed</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+<ul>
+	<li>edit custom fields related to issues and their handling<ul>
+		<li>Custom Fields: Priority, Type, State, Assignee, Aspect, Story Points<br />
+			Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
+		<li>Issue Types: Task Story Feature Scenario Epic;
+			Bug Cosmetic Exception Usability Performance</li>
+		<li>Issue States:<ul>
+			<li><strong>SampleState</strong>: description; <em>transition</em></li>
+			<li>Backlog<ul>
+				<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
+					else resolve using a 'Resolved' state with comment</em><ul>
+					<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
+				</ul></li>
+				<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
+			</ul></li>
+			<li>&lt;project&gt; Roadmap<ul>
+				<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
+				<li><strong>Story</strong>: story used for planning;
+					<em>add substories as needed until design appears managable</em><ul>
+						<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+							orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
+							</em></li>
+					</ul></li>
+				<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
+					<em>plan and estimate implementation</em></li>
+				<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
+			</ul></li>
+			<li>&lt;project&gt; Development<ul>
+				<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
+				<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
+				<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
+					<em>release for publication, or set up for rejection or rework</em></li>
+				<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
+					<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
+				<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
 
-	<!-- @marker "TeamCity: Configuration" -->
-	<h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
+<!-- @marker "UpSource: Configuration" -->
+<h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
+
+<!-- @marker "TeamCity: Configuration" -->
+<h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
 
 <!-- @marker "JetBrains IDEs" -->
 <h2 class="promote">JetBrains IDEs</h2>
@@ -521,98 +604,8 @@
 	<li>make backups of existing projects</li>
 	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
 </ul>
-<!-- @marker "Team Tools Install and Configure" -->
-<h2 class="promote" id="TeamToolsInstallConfig_">Team Tools: Install and Configure</h2>
-<!-- @topicList "Team Tools: Install and Configure" "TeamToolsConfiguration_" -->
-	<!-- @topicItem "Installation" "#Installation_" "0" "" -->
-	<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
-	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
-	<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
-	<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
-<!-- @/topicList -->
+<h2 class="promote">Old Header</h2>
 
-<!-- @marker "Installation" -->
-<h3 id="Installation_">Installation</h3><ul>
-	<li><strong>Provide Dependencies</strong><ul>
-		<li>install or check for updates as indicated:<ul>
-			<li class="blurb">see
-				<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
-				Supported Platforms and Environments</a></li>
-			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
-			<li><a href="Tools.html#_Java">Java</a></li>
-		</ul></li>
-		<li>create backup structure, folders for initial tagged backups<ul>
-			<li>/Volumes/Mavericks-1/Backups<ul>
-				<li>TeamTools</li>
-				<li>TeamTools_Tagged<ul>
-					<li><i>PR-&lt;date&gt;-initial-installed</i></li>
-					<li><i>PR-&lt;date&gt;-initial-configured</i></li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-  	<li id="install_"><strong>Install</strong><ul>
-		<li>for Hub, YouTrack, UpSource, TeamCity :<ul>
-			<li>create folder &lt;productName&gt; at /Servers/jb</li>
-			<li>download installation package; move to its folder<ul>
-				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
-					<li class="blurb">commercial license supports private GitHub projects</li>
-				</ul></li>
-			</ul></li>
-			<li>expand archive<ul>
-				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
-					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
-			</ul></li>
-			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
-			</ul></li>
- 			<li>when tool window appears:<ul>
-				<li><strong>Hub</strong>, as admin<ul>
-					<li><strong>SMTP</strong><ul>
-						<li>host smtp.cox.net</li>
-						<li>from: "JBServer" &lt;my_email&gt;</li>
-						<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-						<li>save; enable notification; send test message</li>
-					</ul></li>
-				</ul></li>
-				<li><strong>TeamCity</strong> and <strong>YouTrack</strong><ul>
-					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
-					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
-					<li>copy <span class="mono">teamcity-startup.properties</span>,
-						<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
-						as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
-						<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
-							so make change after each upgrade</li>
-					</ul></li>
-					<li><a href="#CommandLineTools_">Restart Tool</a></li>
-				</ul></li>
-				<li><strong>YouTrack</strong><ul>
-					<li>Global Settings<ul>
-						<li>verify license shown; if not, fetch and copy</li>
-						<li>Default Timezone: verify</li>
-						<li>Date Fields Format: 31 Dec 2000 23:59</li>
-					</ul></li>
-				</ul></li>
-				<li><strong>All</strong><ul>
-					<li id="backups"><strong>Backup &amp; Server Settings</strong><ul>
-						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-						<li>filename prefix: PR-, where PR is product abbreviation</li>
-						<li>tar.gz format</li>
-						<li>every day at 2 AM</li>
-						<li>rotation 10</li>
-					</ul></li>
-				</ul></li>
- 			</ul></li>
-			<li>backup; copy backup file to tag 'initial_installed'</li>
-			<li>complete per-product configuration (<a href="#HubConfiguration_">Hub</a>,
-				<a href="#YouTrackConfiguration_">YouTrack</a>, <a href="#UpSourceConfiguration_">UpSource</a>,
-				<a href="#TeamCityConfiguration_">TeamCity</a>)</li>
-			<li>backup; copy backup to tag 'initial_configured'</li>
-			<li>leave product's window open</li>
-		</ul></li>
-	</ul></li>
- </ul>
 
 <!-- @marker "Team Tools: Add Features" -->
 <h2>Team Tools: Add Features</h2>
@@ -624,6 +617,7 @@
 		<!-- @topicItem "Time Tracking" "#TimeTracking_" "0" "" -->
 		<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
 		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
+<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 	<!-- @topicGroup "TeamCity" "8" -->
 		<!-- @topicItem "Autostart TeamCity Server" "#AutostartTCServer_" "0" "" -->
 		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettings_" "0" "" -->
