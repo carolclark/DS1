@@ -494,6 +494,74 @@
 
 <!-- @marker "YouTrack: Configuration" -->
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
+	<li>Agile Boards<ul>
+		<li>general information<ul>
+			<li>'Roadmap' board for planning; 'Development' board for development</li>
+			<li>Swimlanes<ul>
+				<li>named by Epic issues on Roadmap board, Story on Development board</li>
+				<li>those items are stationary until ready for Review;
+					they generate issues of other types to get the work done</li>
+			</ul></li>
+			<li>BDD<ul>
+				<li>Our boards are built to support Behavior Driven Development</li>
+				<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+					orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
+				</em></li>
+			</ul></li>
+			<li>Review<ul>
+				<li>Since we cannot pass Review to another developer, we review our own work.
+ 					We do try to come at each review with a fresh perspective, including some delay after completion.</li>
+			</ul></li>
+		</ul></li>
+		<li>Agile Columns<ul>
+			<li>Backlog<ul>
+				<li><strong>Submit</strong>: incoming items</li>
+				<li><strong>Select</strong>: selected for development</li>
+			</ul></li>
+			<li>Roadmap Swimlane<ul>
+				<li><strong>Epic</strong>: goal; swimlane on Roadmap board</li>
+			</ul></li>
+			<li>Roadmap Columns<ul>
+				<li><strong>Open</strong>:<ul>
+					<li>selected for sprint</li>
+					<li>rewrite as: a Story; a Feature of an existing story; a Task; or an Analysis item<ul>
+						<li>then move to the appropriate column</li>
+					</ul></li>
+				</ul></li>
+				<li><strong>Story</strong>:<ul>
+					<li>As a: I want: so that:</li>
+					<li>serves as swimlane on a Development Board</li>
+				</ul></li>
+				<li><strong>Specify</strong>:<ul>
+					<li>specify the work to be done</li>
+					<li>item types:<ul>
+						<li>Feature: a BDD feature for development with Cucumber or similar tool<ul>
+							<li>Scenario is not a separate type, as Scenarios are normally developed from Feature files</li>
+							<li>during planning, Feature items may contain notes for Scenarios</li>
+						</ul></li>
+						<li>Task</li>
+						<li>Analysis: study an issue to plan and/or recommend a course of action</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+			<li>Shared Column<ul>
+				<li><strong>Ready</strong>: ready to be pulled for development; estimation required</li>
+			</ul></li>
+			<li>Development Swimlanes: based on Story</li>
+			<li>Development Columns<ul>
+				<li><strong>Develop</strong>: develop as specified; use use TDD/BDD when appropriate</li>
+				<li><strong>Review</strong>:<ul>
+					<li>Pause for a couple of days so that we can come at this work a fresh perspective</li>
+					<li>New items coming from this review may be attached to the current issue for prompt completion.
+						Alternatively, if the changes would not leave problems in the code base to be merged to master,
+						they may be scheduled for later completion.</li>
+				</ul></li>
+				<li><strong>Done</strong>: review, with completion of any resulting immediate tasks, is completed</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+<ul>
 	<li>edit custom fields related to issues and their handling<ul>
 		<li>Custom Fields: Priority, Type, State, Assignee, Aspect, Story Points<br />
 			Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
