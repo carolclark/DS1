@@ -37,12 +37,12 @@
 </ul>
 
 <h4>JetBrains Tools</h4>
-	<p class="sl6">available JetBrains IDE's for development languages:</p><ul class="sl6">
-			<li>IntelliJ IDEA: flagship development environment for Java and Kotlin<ul>
-				<li>best support for related languages, project structure with modules, ...</li>
-				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
+	<p>available JetBrains IDE's for development languages:</p><ul>
+		<li>IntelliJ IDEA: flagship development environment for Java and Kotlin<ul>
+			<li>best support for related languages, project structure with modules, ...</li>
+			<li>includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
 			<li>better choice for Java, javascript, bash, AppleScript</li>
-			</ul></li>
+		</ul></li>
 		<li>WebStorm: specializes in web development<ul>
 			<li>we are currently using AppCode with sed(!!) for our documentation</li>
 		</ul></li>
@@ -74,8 +74,7 @@
 			<li>WebStorm for web development</li>
 		</ul>
 		<p>We have an All-Products license for JetBrains IDEs</p>
-	</ul>
-	<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
+		<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
 
 <!-- @topicList "JetBrains Tools" "Contents" -->
 	<!-- @topicGroup "Online Documentation" "1" -->
@@ -85,6 +84,7 @@
 			<!-- @topicItem "UpSource" "https://www.jetbrains.com/help/upsource/getting-started-with-upsource.html" "1" "" -->
 			<!-- @topicItem "TeamCity Documentation (Confluence)" "https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation" "1" "" -->
 	<!-- @topicSep -->
+	<!-- @topicItem "Team Tools" "#TeamTools_" "0" "" -->
 	<!-- @topicGroup "to Move Contents" "8" -->
 		<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
 		<!-- @topicItem "Team Tools: Install and Configure" "#TeamToolsInstallConfig_" "0" "" -->
@@ -101,7 +101,9 @@
 		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @topicList "JetBrains Team Tools" "TeamToolsAdmin_" -->
+<!-- @marker "Team Tools" -->
+<h2 class="promote">Team Tools</h2>
+<!-- @topicList "Team Tools" "TeamTools_" -->
 	<!-- @topicItem "Team Tools: Developer" "#TeamTools_Developer_" "0" "" -->
 	<!-- @topicItem "Team Tools: ProjAdmin" "#TeamTools_ProjAdmin_" "0" "" -->
 	<!-- @topicItem "Team Tools: SysAdmin" "#TeamTools_SysAdmin_" "0" "" -->
@@ -153,7 +155,8 @@
 					<li>Enable Module</li>
 				</ul></li>
 			</ul></li>
-		<li><strong>Server Settings</strong></li>
+		</ul></li>
+		<li><strong>Server Settings</strong><ul>
 			<li>System Settings<ul>
 				<li>session timeout 3 hours</li>
 				<li>remember me for 1 month</li>
@@ -163,6 +166,7 @@
 				<li><i>should already be <a href="#TeamToolsInstallConfig_">configured</a></i></li>
 			</ul></li>
 		</ul></li>
+	</ul>
 
 	<!-- @marker "YouTrack: Configuration" -->
 	<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
@@ -248,7 +252,7 @@
 					</ul></li>
 					<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
 				</ul></li>
-				<li>&lt;project&gt;Roadmap<ul>
+				<li>&lt;project&gt; Roadmap<ul>
 					<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
 					<li><strong>Story</strong>: story used for planning;
 						<em>add substories as needed until design appears managable</em><ul>
@@ -260,7 +264,7 @@
 						<em>plan and estimate implementation</em></li>
 					<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
 				</ul></li>
-				<li>&lt;project&gt;<ul>
+				<li>&lt;project&gt; Development<ul>
 					<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
 					<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
 					<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
@@ -278,8 +282,6 @@
 
 	<!-- @marker "TeamCity: Configuration" -->
 	<h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
-
-</ul>
 
 <!-- @marker "JetBrains IDEs" -->
 <h2 class="promote">JetBrains IDEs</h2>
@@ -335,7 +337,6 @@
 			<li>Fields: add custom fields</li>
 			</ul></li>
 		</ul></li>
-	</ul></li>
 	<li>Add Hub Service: YouTrack with Scrum</li>
 	<li>YouTrack Project-Related Settings<ul>
 		<li>length of day: 5h</li>
@@ -753,7 +754,7 @@
 <h2 class="promote">JetBrains Adoption</h2>
 <!-- @topicList "JetBrains Adoption" "JetBrainsAdoption_" -->
 	<!-- @topicItem "Motivation" "#Motivation_" "0" "" -->
-	<!-- @topicItem "Team Tools" "#TeamTools_" "0" "" -->
+	<!-- @topicItem "Team Tools" "#Team_Tools_" "0" "" -->
 	<!-- @topicItem "Toolbox and IDEs" "#ToolboxAndIDEs_" "0" "" -->
 	<!-- @topicItem "Costs" "#Costs_" "0" "" -->
 <!-- @/topicList -->
@@ -775,7 +776,7 @@
 		We do not expect them to disappear.</p>
 
 <!-- @marker "Team Tools" -->
-<h4 id='TeamTools_'>Team Tools</h4>
+<h4 id='Team_Tools_'>Team Tools</h4>
 	<p><strong>YouTrack</strong>: Issue tracker for development teams</p>
 		<p class="indent">JetBrains system for integrating issues. Links with GitHub.
 			Replaces Waffle Kanban board with Agile boards (no scrums required) that also provide a specialized planning board,
