@@ -38,7 +38,7 @@
 
 <h4>JetBrains Tools</h4>
 	<p class="sl6">available JetBrains IDE's for development languages:</p><ul class="sl6">
-			<li>IntelliJ IDEA: flagship development environment for Java<ul>
+			<li>IntelliJ IDEA: flagship development environment for Java and Kotlin<ul>
 				<li>best support for related languages, project structure with modules, ...</li>
 				<li>also includes at least part of several other IDEs; we have an all-products license for JetBrains IDEs</li>
 			<li>better choice for Java, javascript, bash, AppleScript</li>
@@ -56,7 +56,8 @@
 			</ul></li>
 			<li>other languages/IDEs<ul>
 				<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
-				<li>PyCharm with Django; PHPStorm for Website indices; DataGrip for internal databases; MPS for DSL development</li>
+				<li>PHPStorm for Website indices; DataGrip for internal databases; PyCharm with Django; MPS for DSL development</li>
+				<li>Kotlin for TeamCity scripting; javascript for Workflows</li>
 			</ul></li>
 		</ul>
 		<p class="sl6">Team Tools for managing workflow and development process:</p><ul class="sl6">
@@ -67,8 +68,12 @@
 		</ul>
 		<p class="sl6">We expect to use:</p><ul class="sl6">
 			<li>The complete team tool suite</li>
-			<li>AppCode IDE for Cocoa projects, possibly moving to CLion/Swift; WebStorm for web development;IntelliJ IDEA by default for other languages; add specialized products for other languages as indicated</li>
-		<li>We have an All-Products license for JetBrains IDEs</li>
+			<li>IntelliJ IDEA: Java for kid coding; Kotlin for TeamCity scripting; Bash for shell utilities;
+				javascript for workflows and new documentation process;	by default for other languages</li>
+			<li>AppCode IDE for Cocoa projects, possibly moving to CLion/Swift</li>
+			<li>WebStorm for web development</li>
+		</ul>
+		<p>We have an All-Products license for JetBrains IDEs</p>
 	</ul>
 	<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
 
@@ -446,8 +451,7 @@
 				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
 			</ul></li>
  			<li>when tool window appears:<ul>
-				<li><strong>Hub</strong><ul>
-					<li>login as 'admin' with JetBrains admin password</li>
+				<li><strong>Hub</strong>, as admin<ul>
 					<li><strong>SMTP</strong><ul>
 						<li>host smtp.cox.net</li>
 						<li>from: "JBServer" &lt;my_email&gt;</li>
