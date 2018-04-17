@@ -121,12 +121,16 @@
 <!-- @marker "Team Tools: SysAdmin" -->
 <h2>Team Tools: SysAdmin</h2>
 <!-- @topicList "Team Tools: SysAdmin" "TeamTools_SysAdmin_" -->
-	<!-- @topicGroup "Install &amp; Configure" "" -->
-		<!-- @topicItem "Installation" "#Installation_" "1" "" -->
-		<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "1" "" -->
-		<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "1" "" -->
-		<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "1" "" -->
-		<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "1" "" -->
+	<!-- @topicGroup "Tools: General" "1" -->
+		<!-- @topicItem "Installation" "#Installation_" "0" "" -->
+	<!-- @topicGroup "Hub" "3" -->
+		<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
+	<!-- @topicGroup "YouTrack" "5" -->
+		<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
+	<!-- @topicGroup "UpSource" "7" -->
+		<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
+	<!-- @topicGroup "TeamCity" "9" -->
+		<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Installation" -->
@@ -212,7 +216,8 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Hub: Configuration" -->
+<!-- @marker "Hub" -->
+<h3>Hub</h3>
 <h4 id="HubConfiguration_">Hub Configuration</h4><ul>
 	<li><strong>Access Management</strong><ul>
 		<li>Users<ul>
@@ -251,27 +256,148 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "YouTrack: Configuration" -->
-<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
-	<li>Agile Boards<ul>
-		<li>general information<ul>
-			<li>'Roadmap' board for planning; 'Development' board for development</li>
-			<li>Swimlanes<ul>
-				<li>named by Epic issues on Roadmap board, Story on Development board</li>
-				<li>those items are stationary until ready for Review;
-					they generate issues of other types to get the work done</li>
+<!-- @marker "YouTrack" -->
+<h3 id="YouTrack_">YouTrack</h3>
+
+<h4 id="YouTrackConfiguration_">YouTrack: Configuration</h4><ul>
+	<li>Hub Project Page: YouTrack Settings<ul>
+		<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+		<li>Hub as admin:<ul>
+			<li>Projects: New Project...<ul>
+				<li>set project name, ID</li>
 			</ul></li>
-			<li>BDD<ul>
-				<li>Our boards are built to support Behavior Driven Development</li>
-				<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-					orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
-				</em></li>
-			</ul></li>
-			<li>Review<ul>
-				<li>Since we cannot pass Review to another developer, we review our own work.
-					We do try to come at each review with a fresh perspective, including some delay after completion.</li>
+			<li>Project: Fine-Tune Project Settings<ul>
+				<li>Team: add user(s) to project team</li>
+				<li>Fields: add custom fields</li>
 			</ul></li>
 		</ul></li>
+		<li>Add Hub Service: YouTrack with Scrum</li>
+		<li>Settings<ul>
+			<li>YouTrack Project-Related Settings<ul>
+				<li>length of day: 5h</li>
+				<li>work types: Development Testing Documentation Investigation Roadmap</li>
+			</ul></li>
+			<li>General<ul>
+				<li>set project 'from' email: &lt;ProjectName&gt; \&lt;&lt;lead-email&gt;\&gt;</li>
+			</ul></li>
+			<li>Team<ul>
+				<li>add me</li>
+			</ul></li>
+			<li>Fields<ul>
+				<li class="blurb">colors: gy,gn,aq,bl,rd,or,br strength: 1(light)-5</li>
+				<li><strong>Priority</strong>as supplied: Show-stopper; Critical; Major; Normal; Minor</li>
+				<li><strong>Type</strong> (color)<ul>
+					<li>Epic (br5)</li>
+					<li>*Story (or3)</li>
+					<li>Feature (bl3)</li>
+					<li>Scenario (bl5)</li>
+					<li>Task (gn3)</li>
+					<li>Bug States: all color rd4: Bug; Cosmetic; Exception; Usability; Performance</li>
+				</ul></li>
+				<li><strong>State</strong><ul>
+					<li>Open States: *Submitted Open Epic Shape Design Ready Develop Review</li>
+					<li>Closed States: Done Fixed Duplicate CantReproduce Obsolete WorksAsIntended</li>
+				</ul></li>
+				<li>Aspect: Documentation br1; add additional Aspects as indicated for project</li>
+				<li>Assignee: as provided</li>
+				<li>Sprints: yy.q.n; q=quarter; n=# sprint started in q<ul>
+					<li class="blurb">use syntax-based versioning for standard-style version numbering</li>
+				</ul></li>
+			</ul></li>
+			<li>VCS Integrations: New VCS Integration<ul>
+				<li>connect to GitHub repo<ul>
+					<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
+					<li>click link to create Auth token &lt;projectName&gt;<ul>
+						<li>delete existing token of same name if indicated</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+			<li>Time Tracking: enable Time Tracking with default fields</li>
+			</ul></li>
+			<li>Workflow<ul>
+				<li>remove Scrum Workflow</li>
+			</ul></li>
+			<li>Notification Templates: no changes yet</li>
+			<li>Team City integration: nothing yet</li>
+		</ul></li>
+		<li>Scrum Boards<ul>
+			<li>Configuration<ul>
+				<li>type: Scrum</li>
+				<li>project: &lt;repoName&gt;</li>
+				<li>can view and use board: &lt;repoName&gt; Team</li>
+				<li>can edit board settings: Owner</li>
+				<li>backlog: use existing</li>
+				<li>saved search query: project: DO #{Unassigned}</li>
+				<li>Swim lanes identified by: field of type Epic</li>
+				<li>Show swimlane for uncategorized cards at the bottom of the board</li>
+				<li>set Board Owner/Project Lead</li>
+			</ul></li>
+			<li>Boards<ul>
+				<li>backlog issue states: <ul>
+					<li><strong>Submitted</strong>: new item; <em>evaluate for development</em></li>
+					<li><strong>Open</strong>: accepted for development; <em>may expand, format as story</em></li>
+				</ul></li>
+				<li>Development Board "&lt;repoName&gt;"<ul>
+					<li>columns Ready  Done</li>
+				</ul></li>
+				<li>Roadmap Board "&lt;repoName&gt; Roadmap"<ul>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+	<li>Agile Boards Overview<ul>
+		<li>'Roadmap' board for planning; 'Development' board for development</li>
+		<li>Swimlanes<ul>
+			<li>named by Epic issues on Roadmap board, Story on Development board</li>
+			<li>those items are stationary until ready for Review;
+				they generate issues of other types to get the work done</li>
+		</ul></li>
+		<li>BDD<ul>
+			<li>Our boards are built to support Behavior Driven Development</li>
+			<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+				orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
+			</em></li>
+		</ul></li>
+		<li>Review<ul>
+			<li>Since we cannot pass Review to another developer, we review our own work.
+				We do try to come at each review with a fresh perspective, including some delay after completion.</li>
+		</ul></li>
+	</ul></li>
+	<li>Edit Custom Fields<ul>
+		<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
+		<li>Custom Fields: Priority, Type, State, Assignee, Aspect, Story Points<br />
+			Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
+		<li>Issue Types: Task Story Feature Scenario Epic;
+			Bug Cosmetic Exception Usability Performance</li>
+		<li>Issue States:<ul>
+			<li><strong>SampleState</strong>: description; <em>transition</em></li>
+			<li>Backlog<ul>
+				<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
+					else resolve using a 'Resolved' state with comment</em><ul>
+					<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
+				<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
+				<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
+				<li><strong>Story</strong>: story used for planning;
+					<em>add substories as needed until design appears managable</em><ul>
+						<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+							orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
+						</em></li>
+					</ul></li>
+				<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
+					<em>plan and estimate implementation</em></li>
+				<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
+			</ul></li>
+			<li>&lt;project&gt; Development<ul>
+				<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
+				<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
+				<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
+					<em>release for publication, or set up for rejection or rework</em></li>
+				<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
+					<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
+				<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+	</ul></li>
 		<li>Agile Columns<ul>
 			<li>Backlog<ul>
 				<li><strong>Submit</strong>: incoming items</li>
@@ -318,53 +444,17 @@
 				<li><strong>Done</strong>: review, with completion of any resulting immediate tasks, is completed</li>
 			</ul></li>
 		</ul></li>
-	</ul></li>
-</ul>
-<ul>
-	<li>edit custom fields related to issues and their handling<ul>
-		<li>Custom Fields: Priority, Type, State, Assignee, Aspect, Story Points<br />
-			Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
-		<li>Issue Types: Task Story Feature Scenario Epic;
-			Bug Cosmetic Exception Usability Performance</li>
-		<li>Issue States:<ul>
-			<li><strong>SampleState</strong>: description; <em>transition</em></li>
-			<li>Backlog<ul>
-				<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
-					else resolve using a 'Resolved' state with comment</em><ul>
-					<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
-				</ul></li>
-				<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
-			</ul></li>
-			<li>&lt;project&gt; Roadmap<ul>
-				<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
-				<li><strong>Story</strong>: story used for planning;
-					<em>add substories as needed until design appears managable</em><ul>
-						<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-							orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
-							</em></li>
-					</ul></li>
-				<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
-					<em>plan and estimate implementation</em></li>
-				<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
-			</ul></li>
-			<li>&lt;project&gt; Development<ul>
-				<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
-				<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
-				<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
-					<em>release for publication, or set up for rejection or rework</em></li>
-				<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
-					<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
-				<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-</ul>
+	</ul>
 
-<!-- @marker "UpSource: Configuration" -->
-<h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
+<!-- @marker "UpSource" -->
+<h3 id="UpSource_">UpSource</h3>
 
-<!-- @marker "TeamCity: Configuration" -->
-<h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
+<h4 id="UpSourceConfiguration_">UpSource: Configuration</h4>
+
+<!-- @marker "TeamCity" -->
+<h3 id="TeamCity_">TeamCity</h3>
+
+<h4 id="TeamCityConfiguration_">TeamCity: Configuration</h4>
 
 <!-- @marker "JetBrains IDEs" -->
 <h2 class="promote">JetBrains IDEs</h2>
@@ -392,120 +482,24 @@
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
 <!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
-	<!-- @topicItem "Creating and Managing Projects" "#CreatingAndManagingProjects_" "0" "" -->
 	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
 	<!-- @topicItem "Save Tagged Tools Backup" "#Save_TaggedToolsBackup_" "0" "" -->
 	<!-- @topicItem "Restore Settings: for Team Tool: from Backup" "#RestoreSettings_ForTeamTool_FromBackup_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
-	<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
+	<!-- @topicGroup "Hub" "7" -->
+	<!-- @topicGroup "YouTrack" "8" -->
+		<!-- @topicGroup "Manage Project" "9" -->
+			<!-- @topicItem "Custom Fields and Workflows" "#Custom_Fields_Workflows_" "0" "" -->
+			<!-- @topicItem "Delete YouTrack Project" "#Delete_YouTrack_Project_" "0" "" -->
+			<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
+	<!-- @topicGroup "UpSource" "10" -->
+	<!-- @topicGroup "TeamCity" "11" -->
+		<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "1" "" -->
 <!-- @/topicList -->
-
-<!-- @marker "Creating and Managing Projects" -->
-<h3>Creating and Managing Projects</h3>
-<!-- @topicList "Creating and Managing Projects" "CreatingAndManagingProjects_" -->
-	<!-- @topicItem "Add and Integrate Project" "#AddAndIntegrateProject_" "0" "" -->
-	<!-- @topicItem "YouTrack: Manage Project" "#YouTrack_Manage_Project_" "0" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "Add and Integrate Project" -->
-<h4 id="AddAndIntegrateProject_">Add and Integrate Project</h4><ul>
-	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub as admin:<ul>
-		<li>Projects: New Project...<ul>
-			<li>set project name, ID</li>
-		</ul></li>
-		<li>Project: Fine-Tune Project Settings<ul>
-			<li>Team: add user(s) to project team</li>
-			<li>Fields: add custom fields</li>
-			</ul></li>
-		</ul></li>
-	<li>Add Hub Service: YouTrack with Scrum</li>
-	<li>YouTrack Project-Related Settings<ul>
-		<li>length of day: 5h</li>
-		<li>work types: Development Testing Documentation Investigation Roadmap</li>
-	</ul></li>
-	<li>Hub Project Page: YouTrack Settings<ul>
-		<li>Settings<ul>
-			<li>General<ul>
-				<li>set project 'from' email: &lt;ProjectName&gt; \&lt;&lt;lead-email&gt;\&gt;</li>
-			</ul></li>
-			<li>Team<ul>
-				<li>add me</li>
-			</ul></li>
-			<li>Fields<ul>
-				<li class="blurb">colors: gy,gn,aq,bl,rd,or,br strength: 1(light)-5</li>
-				<li><strong>Priority</strong>as supplied: Show-stopper; Critical; Major; Normal; Minor</li>
-				<li><strong>Type</strong> (color)<ul>
-					<li>Epic (br5)</li>
-					<li>*Story (or3)</li>
-					<li>Feature (bl3)</li>
-					<li>Scenario (bl5)</li>
-					<li>Task (gn3)</li>
-					<li>Bug States: all color rd4: Bug; Cosmetic; Exception; Usability; Performance</li>
-				</ul></li>
-				<li><strong>State</strong><ul>
-					<li>Open States: *Submitted Open Epic Shape Design Ready Develop Review</li>
-					<li>Closed States: Done Fixed Duplicate CantReproduce Obsolete WorksAsIntended</li>
-				</ul></li>
-				<li>Aspect: Documentation br1; add additional Aspects as indicated for project</li>
-				<li>Assignee: as provided</li>
-				<li>Sprints: yy.q.n; q=quarter; n=# sprint started in q<ul>
-					<li class="blurb">use syntax-based versioning for standard-style version numbering</li>
-				</ul></li>
-			</ul></li>
-			<li>VCS Integrations: New VCS Integration<ul>
-				<li>connect to GitHub repo<ul>
-					<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
-					<li>click link to create Auth token &lt;projectName&gt;<ul>
-						<li>delete existing token of same name if indicated</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-			<li>Notification Templates: no changes yet</li>
-			<li>Team City integration: nothing yet</li>
-			<li>Time Tracking: enable Time Tracking with default fields</li>
-			<li>Workflow<ul>
-				<li>remove Scrum Workflow</li>
-			</ul></li>
-		</ul></li>
-		<li>Scrum Boards<ul>
-			<li>Configuration<ul>
-				<li>type: Scrum</li>
-				<li>project: &lt;repoName&gt;</li>
-				<li>can view and use board: &lt;repoName&gt; Team</li>
-				<li>can edit board settings: Owner</li>
-				<li>backlog: use existing</li>
-				<li>saved search query: project: DO #{Unassigned}</li>
-				<li>Swim lanes identified by: field of type Epic</li>
-				<li>Show swimlane for uncategorized cards at the bottom of the board</li>
-				<li>set Board Owner/Project Lead</li>
-			</ul></li>
-			<li>Boards<ul>
-				<li>backlog issue states: <ul>
-					<li><strong>Submitted</strong>: new item; <em>evaluate for development</em></li>
-					<li><strong>Open</strong>: accepted for development; <em>may expand, format as story</em></li>
-				</ul></li>
-				<li>Development Board "&lt;repoName&gt;"<ul>
-					<li>columns Ready  Done</li>
-				</ul></li>
-				<li>Roadmap Board "&lt;repoName&gt; Roadmap"<ul>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-</ul>
 
 <!-- @marker "YouTrack: Manage Project" -->
-<h4>YouTrack: Manage Project</h4>
-	<!-- @topicList "YouTrack: Manage Project" "YouTrack_Manage_Project_" -->
-	<!-- @topicItem "Custom Fields and Workflows" "#Custom_Fields_Workflows_" "0" "" -->
-	<!-- @topicItem "Delete YouTrack Project" "#Delete_YouTrack_Project_" "0" "" -->
-<!-- @/topicList -->
-
-<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
-<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">
-	Multi-Level Agile Boards or How We Support Epics</a></p>
+<h3>YouTrack: Manage Project</h3>
 
 <!-- @marker "Custom Fields and Workflows" -->
 <h5 id="Custom_Fields_Workflows_">Custom Fields and Workflows</h5><ul>
@@ -527,6 +521,13 @@
 	<li>remove dummy project from Hub</li>
 	<li>Global resources: remove &lt;projectToDelete&gt; again if necessary</li>
 </ul>
+
+<!-- @marker "YouTrack References" -->
+<h5 id="YouTrack_References_">YouTrack References</h5>
+
+<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
+<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">
+	Multi-Level Agile Boards or How We Support Epics</a></p>
 
 <!-- @marker "Command-Line Tools" -->
 <h3 id="CommandLineTools_">Command Line Tools</h3><div class="indent">
