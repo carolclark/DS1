@@ -123,28 +123,12 @@
 <!-- @topicList "Team Tools: SysAdmin" "TeamTools_SysAdmin_" -->
 	<!-- @topicGroup "Tools: General" "1" -->
 		<!-- @topicItem "Installation" "#Installation_" "0" "" -->
-	<!-- @topicGroup "Hub" "3" -->
-		<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
-	<!-- @topicGroup "YouTrack" "5" -->
-		<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
-		<!-- @topicGroup "YouTrack: Add Features" "" -->
-			<!-- @topicItem "YouTrack Mobile" "#YouTrackMobile_" "0" "" -->
-			<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
-			<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
-			<!-- @topicItem "Time Tracking" "#TimeTracking_" "0" "" -->
-			<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
-			<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
-	<!-- @topicGroup "UpSource" "7" -->
-		<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
-	<!-- @topicGroup "TeamCity" "9" -->
-		<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
-		<!-- @topicGroup "Team City: Add Features" "0" -->
-			<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
-			<!-- @topicItem "Autostart TeamCity Server" "#AutostartTCServer_" "0" "" -->
-			<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettings_" "0" "" -->
-			<!-- @topicItem "Maintenance: Cleanup Obsolete Build Info" "#Maintenance_CleanupObsoleteBuildInfo_" "0" "" -->
-			<!-- @topicItem "Move to External Database" "#MoveToExternalDatabase_" "0" "" -->
-			<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "Hub" "#Hub_" "0" "" -->
+	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
+	<!-- @topicItem "UpSource" "#UpSource_" "0" "" -->
+	<!-- @topicItem "TeamCity" "#TeamCity_" "0" "" -->
+
 <!-- @/topicList -->
 
 <!-- @marker "Installation" -->
@@ -231,6 +215,12 @@
 </ul>
 
 <!-- @marker "Hub" -->
+<h4>Hub</h4>
+<!-- @topicList "Hub" "Hub_" -->
+	<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Hub" -->
 <h3>Hub</h3>
 <h4 id="HubConfiguration_">Hub Configuration</h4><ul>
 	<li><strong>Access Management</strong><ul>
@@ -271,7 +261,17 @@
 </ul>
 
 <!-- @marker "YouTrack" -->
-<h3 id="YouTrack_">YouTrack</h3>
+<h3>YouTrack</h3>
+<!-- @topicList "YouTrack" "YouTrack_" -->
+	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
+	<!-- @topicGroup "YouTrack: Add Features" "" -->
+		<!-- @topicItem "YouTrack Mobile" "#YouTrackMobile_" "0" "" -->
+		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
+		<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
+		<!-- @topicItem "Time Tracking" "#TimeTracking_" "0" "" -->
+		<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
+		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
+<!-- @/topicList -->
 
 <h4 id="YouTrackConfiguration_">YouTrack: Configuration</h4><ul>
 	<li>Hub Project Page: YouTrack Settings<ul>
@@ -500,15 +500,29 @@
 </div>
 
 <!-- @marker "UpSource" -->
-<h3 id="UpSource_">UpSource</h3>
+<h3>UpSource</h3>
+<!-- @topicList "UpSource" "UpSource_" -->
+	<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
+<!-- @/topicList -->
 
 <h4 id="UpSourceConfiguration_">UpSource: Configuration</h4>
 
 <!-- @marker "TeamCity" -->
-<h3 id="TeamCity_">TeamCity</h3>
+<h3>TeamCity</h3>
+<!-- @topicList "TeamCity" "TeamCity_" -->
+	<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
+	<!-- @topicGroup "Team City: Add Features" "0" -->
+		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
+		<!-- @topicItem "Autostart TeamCity Server" "#AutostartTCServer_" "0" "" -->
+		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettings_" "0" "" -->
+		<!-- @topicItem "Maintenance: Cleanup Obsolete Build Info" "#Maintenance_CleanupObsoleteBuildInfo_" "0" "" -->
+		<!-- @topicItem "Move to External Database" "#MoveToExternalDatabase_" "0" "" -->
+		<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
+<!-- @/topicList -->
 
 <h4 id="TeamCityConfiguration_">TeamCity: Configuration</h4>
-<h3>Add Features: TeamCity</h3><div class="indent">
+
+<h4>Add Features: TeamCity</h4><div class="indent">
 
 	<!-- @marker "Autostart TeamCity Server" -->
 	<h4 id="AutostartTCServer_">Autostart TeamCity Server</h4><ul>
