@@ -77,26 +77,24 @@
 		<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
 
 <!-- @topicList "JetBrains Tools" "Contents" -->
-	<!-- @topicGroup "Online Documentation" "1" -->
+	<!-- @topicItem "Team Tools" "#TeamTools_" "0" "" -->
+	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
+	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Online Documentation" "5" -->
 		<!-- @topicItem "JetBrains Team Tools" "https://www.jetbrains.com/products.html#type=team" "0" "JetBrains home" -->
 			<!-- @topicItem "Hub" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
 			<!-- @topicItem "YouTrack" "https://www.jetbrains.com/help/youtrack/standalone/Getting-Started-With-YouTrack.html" "1" "" -->
 			<!-- @topicItem "UpSource" "https://www.jetbrains.com/help/upsource/getting-started-with-upsource.html" "1" "" -->
 			<!-- @topicItem "TeamCity Documentation (Confluence)" "https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation" "1" "" -->
 	<!-- @topicSep -->
-	<!-- @topicItem "Team Tools" "#TeamTools_" "0" "" -->
-	<!-- @topicGroup "to Move Contents" "8" -->
-		<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
-		<!-- @topicItem "Team Tools: Add Features" "#TeamTools_AddFeatures_" "0" "" -->
-		<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "References" "14" -->
+	<!-- @topicGroup "References" "12" -->
 		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
 		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
 		<!-- @topicItem "Scheduling Tasks with Cron Jobs" "https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800_" "0" "" -->
 		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
 		<!-- @topicItem "Cross-project Agile Boards in YouTrack: The Best Recipes" "https://blog.jetbrains.com/youtrack/2014/04/cross-project-agile-boards-in-youtrack-the-best-recipes/_" "0" "" -->
-		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "description" -->
+		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "" -->
 		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
 <!-- @/topicList -->
 
@@ -128,7 +126,6 @@
 	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
 	<!-- @topicItem "UpSource" "#UpSource_" "0" "" -->
 	<!-- @topicItem "TeamCity" "#TeamCity_" "0" "" -->
-
 <!-- @/topicList -->
 
 <!-- @marker "Installation" -->
@@ -215,14 +212,12 @@
 </ul>
 
 <!-- @marker "Hub" -->
-<h4>Hub</h4>
+<h2>Hub</h2>
 <!-- @topicList "Hub" "Hub_" -->
 	<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Hub" -->
-<h3>Hub</h3>
-<h4 id="HubConfiguration_">Hub Configuration</h4><ul>
+<h3 id="HubConfiguration_">Hub Configuration</h3><ul>
 	<li><strong>Access Management</strong><ul>
 		<li>Users<ul>
 			<li>add 'carol':<ul>
@@ -261,9 +256,12 @@
 </ul>
 
 <!-- @marker "YouTrack" -->
-<h3>YouTrack</h3>
+<h2>YouTrack</h2>
 <!-- @topicList "YouTrack" "YouTrack_" -->
 	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
+	<!-- @topicItem "Delete YouTrack Project" "#Delete_YouTrack_Project_" "0" "" -->
+	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
+	<!-- @topicSep -->
 	<!-- @topicGroup "YouTrack: Add Features" "" -->
 		<!-- @topicItem "YouTrack Mobile" "#YouTrackMobile_" "0" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
@@ -273,7 +271,7 @@
 		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 <!-- @/topicList -->
 
-<h4 id="YouTrackConfiguration_">YouTrack: Configuration</h4><ul>
+<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
 	<li>Hub Project Page: YouTrack Settings<ul>
 		<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 		<li>Hub as admin:<ul>
@@ -460,7 +458,19 @@
 		</ul></li>
 	</ul>
 
-<h4>Add Features: YouTrack</h4><div class="indent">
+<!-- @marker "Delete YouTrack Project" -->
+<h3 id="Delete_YouTrack_Project_" class="dq">Delete YouTrack Project (is this still applicable?)</h3><ul>
+	<li>delete &lt;projectToDelete&gt; in Hub<ul>
+		<li>project's resources are moved to project Global</li>
+	</ul></li>
+	<li>create new dummy project in Hub</li>
+	<li>move resources associated with &lt;projectToDelete&gt; from Global project to dummy</li>
+	<li>from project page: select settings from 'YT' on dummy project; click 'remove' from &lt;projectToDelete&gt;</li>
+	<li>remove dummy project from Hub</li>
+	<li>Global resources: remove &lt;projectToDelete&gt; again if necessary</li>
+</ul>
+
+<h3>Add Features: YouTrack</h3><div class="indent">
 
 	<!-- @marker "YouTrack Mobile" -->
 	<h5 id="YouTrackMobile_">YouTrack Mobile</h5><ul>
@@ -499,16 +509,25 @@
 		</li></ul>
 </div>
 
+<!-- @marker "YouTrack References" -->
+<h5 id="YouTrack_References_">YouTrack References</h5><ul>
+	<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></li>
+	<li><a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">
+		Multi-Level Agile Boards or How We Support Epics</a></li>
+</ul>
+
+
+
 <!-- @marker "UpSource" -->
-<h3>UpSource</h3>
+<h2>UpSource</h2>
 <!-- @topicList "UpSource" "UpSource_" -->
 	<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
 <!-- @/topicList -->
 
-<h4 id="UpSourceConfiguration_">UpSource: Configuration</h4>
+<h3 id="UpSourceConfiguration_">UpSource: Configuration</h3>
 
 <!-- @marker "TeamCity" -->
-<h3>TeamCity</h3>
+<h2>TeamCity</h2>
 <!-- @topicList "TeamCity" "TeamCity_" -->
 	<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
 	<!-- @topicGroup "Team City: Add Features" "0" -->
@@ -520,9 +539,9 @@
 		<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
 <!-- @/topicList -->
 
-<h4 id="TeamCityConfiguration_">TeamCity: Configuration</h4>
+<h3 id="TeamCityConfiguration_">TeamCity: Configuration</h3>
 
-<h4>Add Features: TeamCity</h4><div class="indent">
+<h3>Add Features: TeamCity</h3><div class="indent">
 
 	<!-- @marker "Autostart TeamCity Server" -->
 	<h4 id="AutostartTCServer_">Autostart TeamCity Server</h4><ul>
@@ -550,7 +569,7 @@
 </ul>
 
 	<!-- @marker "Maintenance: Cleanup Obsolete Build Info" -->
-	<h3 id="Maintenance_CleanupObsoleteBuildInfo_">Maintenance: Cleanup Obsolete Build Info</h3>
+	<h4 id="Maintenance_CleanupObsoleteBuildInfo_">Maintenance: Cleanup Obsolete Build Info</h4>
 	<p class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Clean-Up">TeamCity Clean-Up</a></p>
 
 	<!-- @marker "Move to External Database" -->
@@ -633,47 +652,8 @@
 	<!-- @topicItem "Restore Settings: for Team Tool: from Backup" "#RestoreSettings_ForTeamTool_FromBackup_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
-	<!-- @topicGroup "Hub" "7" -->
-	<!-- @topicGroup "YouTrack" "8" -->
-		<!-- @topicGroup "Manage Project" "9" -->
-			<!-- @topicItem "Custom Fields and Workflows" "#Custom_Fields_Workflows_" "0" "" -->
-			<!-- @topicItem "Delete YouTrack Project" "#Delete_YouTrack_Project_" "0" "" -->
-			<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
-	<!-- @topicGroup "UpSource" "10" -->
-	<!-- @topicGroup "TeamCity" "11" -->
-		<!-- @topicItem "Uninstall Team City" "#UninstallTeamCity_" "1" "" -->
+	<!-- @topicItem "Uninstall" "#Uninstall_" "0" "" -->
 <!-- @/topicList -->
-
-<!-- @marker "YouTrack: Manage Project" -->
-<h3>YouTrack: Manage Project</h3>
-
-<!-- @marker "Custom Fields and Workflows" -->
-<h5 id="Custom_Fields_Workflows_">Custom Fields and Workflows</h5><ul>
-	<li>edit workflows<ul>
-		<li>scrum: do NOT close issue automatically when subtasks completed<ul>
-			<li>either do nothing, or put parent issue up for review</li>
-		</ul></li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Delete YouTrack Project" -->
-<h5 id="Delete_YouTrack_Project_">Delete YouTrack Project</h5><ul>
-	<li>delete &lt;projectToDelete&gt; in Hub<ul>
-		<li>project's resources are moved to project Global</li>
-	</ul></li>
-	<li>create new dummy project in Hub</li>
-	<li>move resources associated with &lt;projectToDelete&gt; from Global project to dummy</li>
-	<li>from project page: select settings from 'YT' on dummy project; click 'remove' from &lt;projectToDelete&gt;</li>
-	<li>remove dummy project from Hub</li>
-	<li>Global resources: remove &lt;projectToDelete&gt; again if necessary</li>
-</ul>
-
-<!-- @marker "YouTrack References" -->
-<h5 id="YouTrack_References_">YouTrack References</h5>
-
-<p>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Managing-Projects.html">Managing Projects</a></p>
-<p>see <a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">
-	Multi-Level Agile Boards or How We Support Epics</a></p>
 
 <!-- @marker "Command-Line Tools" -->
 <h3 id="CommandLineTools_">Command Line Tools</h3><div class="indent">
@@ -733,34 +713,25 @@
 	<li>Organize the subtasks in that lane</li>
 </ul>
 
-<h3 id='UninstallTeamCity_'>Uninstall TeamCity</h3><ul>
-	<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
-		<li>open Activity Monitor; show all process</li>
-		<li>for any processes except TeamCity associated with TeamCity, 'quit' using button at top left</li>
-	</ul></li>
-	<li>quit TeamCity:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysqladmin -u root -p shutdown</span></li>
-	<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
-	<li>delete TeamCity application from /Volumes/TeamCity</li>
-	<li>delete /Application Support/TeamCityIntegration</li>
-	<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
-	<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
-</ul>
+<h3 id='Uninstall_'>Uninstall</h3>
+	<h4>Uninstall TeamCity</h4><ul>
+		<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
+			<li>open Activity Monitor; show all process</li>
+			<li>for any processes except TeamCity associated with TeamCity, 'quit' using button at top left</li>
+		</ul></li>
+		<li>quit TeamCity:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>mysqladmin -u root -p shutdown</span></li>
+		<li>from /Library/LaunchDeamons, delete jetbrains.teamcity.server.plist</li>
+		<li>delete TeamCity application from /Volumes/TeamCity</li>
+		<li>delete /Application Support/TeamCityIntegration</li>
+		<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
+		<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
+	</ul>
 
 <!-- @marker "Moving to Another Server" -->
 <h3 id='MovingServer_'>Moving Projects to Another Server</h3><ul>
 	<li>make backups of existing projects</li>
 	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
 </ul>
-<h2 class="promote">Old Header</h2>
-
-
-<!-- @marker "Team Tools: Add Features" -->
-<h2>Team Tools: Add Features</h2>
-<!-- @topicList "Team Tools: Add Features" "TeamTools_AddFeatures_" -->
-	<!-- @topicGroup "YouTrack" "" -->
-	<!-- @topicGroup "TeamCity" "8" -->
-<!-- @/topicList -->
-
 
 <!-- @marker "JetBrains Adoption" -->
 <h2 class="promote">JetBrains Adoption</h2>
