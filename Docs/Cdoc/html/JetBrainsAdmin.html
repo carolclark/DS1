@@ -127,10 +127,24 @@
 		<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
 	<!-- @topicGroup "YouTrack" "5" -->
 		<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
+		<!-- @topicGroup "YouTrack: Add Features" "" -->
+			<!-- @topicItem "YouTrack Mobile" "#YouTrackMobile_" "0" "" -->
+			<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
+			<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
+			<!-- @topicItem "Time Tracking" "#TimeTracking_" "0" "" -->
+			<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
+			<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 	<!-- @topicGroup "UpSource" "7" -->
 		<!-- @topicItem "UpSource:  Configuration" "#UpSourceConfiguration_" "0" "" -->
 	<!-- @topicGroup "TeamCity" "9" -->
 		<!-- @topicItem "TeamCity:  Configuration" "#TeamCityConfiguration_" "0" "" -->
+		<!-- @topicGroup "Team City: Add Features" "0" -->
+			<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
+			<!-- @topicItem "Autostart TeamCity Server" "#AutostartTCServer_" "0" "" -->
+			<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettings_" "0" "" -->
+			<!-- @topicItem "Maintenance: Cleanup Obsolete Build Info" "#Maintenance_CleanupObsoleteBuildInfo_" "0" "" -->
+			<!-- @topicItem "Move to External Database" "#MoveToExternalDatabase_" "0" "" -->
+			<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Installation" -->
@@ -446,6 +460,45 @@
 		</ul></li>
 	</ul>
 
+<h4>Add Features: YouTrack</h4><div class="indent">
+
+	<!-- @marker "YouTrack Mobile" -->
+	<h5 id="YouTrackMobile_">YouTrack Mobile</h5><ul>
+		<li>download from AppStore and open</li>
+	</ul>
+
+	<!-- @marker "YouTrack Integration Plugin" -->
+	<h5 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h5><ul>
+		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
+			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
+	</ul>
+
+	<!-- @marker "Issue Navigation" -->
+	<h5 id="IssueNavigation_">Issue Navigation</h5><ul>
+		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/Issue-Navigation.html">
+			Issue Navigation</a></li>
+		</ul>
+
+	<!-- @marker "Time Tracking" -->
+	<h5 id="TimeTracking_">Time Tracking</h5><ul>
+		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
+				<li>see Issue Navigation</li>
+			</ul></li>
+		</ul>
+
+	<!-- @marker "Task Management" -->
+	<h5 id="TaskManagement_">Task Management</h5><ul>
+		<li>see https://www.jetbrains.com/help/youtrack/standalone/Task-Management-Plugin.html</li>
+	</ul>
+
+	<!-- @marker "Tweaks Extension" -->
+	<h5 id="TweaksExtension_">Tweaks Extension</h5><ul>
+		<li>requires Chrome; has some useful-looking features</li>
+		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/YouTrack-Tweaks-Extension.html">
+			YouTrack Tweaks Extension</a>
+		</li></ul>
+</div>
+
 <!-- @marker "UpSource" -->
 <h3 id="UpSource_">UpSource</h3>
 
@@ -455,6 +508,85 @@
 <h3 id="TeamCity_">TeamCity</h3>
 
 <h4 id="TeamCityConfiguration_">TeamCity: Configuration</h4>
+<h3>Add Features: TeamCity</h3><div class="indent">
+
+	<!-- @marker "Autostart TeamCity Server" -->
+	<h4 id="AutostartTCServer_">Autostart TeamCity Server</h4><ul>
+	<li><strong>Autostart TeamCity Server</strong><ul>
+		<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
+			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
+				<li>Working Directory: /Volumes/Servers/jb/TeamCity/TeamCity</li>
+			</ul></li>
+		<li>copy file jetbrains.teamcity.server.plist to ~/Library/LaunchDaemons</li>
+		<li>restart computer</li>
+		<li>Safari: localhost:8111 should show TeamCity window</li>
+	</ul></li>
+</ul>
+
+	<!-- @marker "Store Project Settings in Version Control" -->
+	<h4 id='StoreProjectSettings_'>Store Project Settings in Version Control</h4><ul>
+	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
+		Store Project Settings in Version Control</a></li>
+</ul>
+
+	<!-- marker "Install Build Agent" -->
+	<h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
+	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingViaZIPFile">
+		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
+</ul>
+
+	<!-- @marker "Maintenance: Cleanup Obsolete Build Info" -->
+	<h3 id="Maintenance_CleanupObsoleteBuildInfo_">Maintenance: Cleanup Obsolete Build Info</h3>
+	<p class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Clean-Up">TeamCity Clean-Up</a></p>
+
+	<!-- @marker "Move to External Database" -->
+	<h4 id="MoveToExternalDatabase_">Move to External Database</h4><ul>
+	<li class="blurb">includes install; initialize data directory; test; secure initial accounts</li>
+</ul>
+
+	<!-- @marker "Install and Set Up MySQL" -->
+	<h5 id="InstallAndSetUpMySQL_">Install and Set Up MySQL</h5><ul>
+	<li><a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a></li>
+</ul>
+
+	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
+	<h5 id="IntegrateMySQLAndTeamCityServers_">Integrate MySQL and TeamCity Servers</h5><ul>
+	<li>MySQL server side<ul>
+		<li><a href="MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
+	</ul></li>
+	<li>TeamCity server side<ul>
+		<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
+	</ul></li>
+</ul>
+
+	<!-- @marker "Create TeamCityDB" -->
+	<h5 id='CreateTeamCityDB_'>Create TeamCityDB</h5><ul>
+	<li>create TeamCity database<ul>
+		<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
+	</ul></li>
+	<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
+		<li class="blurb">localhost:8111</li>
+		<li>user: carolclark; password</li>
+		<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
+		<li>startup page configuration<ul>
+			<li><strong>smtp</strong>: smtp host: smtp.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
+			<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
+			<li><strong>user</strong>: username: carolclark; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
+		</ul></li>
+		<li>click user name for profile page<ul>
+			<li>user name and email</li>
+			<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
+				Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
+			<li>VCS User Names: add carolclark@cox.net</li>
+		</ul></li>
+		<li>Administration<ul>
+			<li>configure backups *WARNING* backups currently not run automatically</li>
+		</ul></li>
+		<li>build number: &lt;version&gt;.b%build.counter%</li>
+	</ul></li>
+</ul>
+</div>
+
 
 <!-- @marker "JetBrains IDEs" -->
 <h2 class="promote">JetBrains IDEs</h2>
@@ -612,138 +744,9 @@
 <h2>Team Tools: Add Features</h2>
 <!-- @topicList "Team Tools: Add Features" "TeamTools_AddFeatures_" -->
 	<!-- @topicGroup "YouTrack" "" -->
-		<!-- @topicItem "YouTrack Mobile" "#YouTrackMobile_" "0" "" -->
-		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
-		<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
-		<!-- @topicItem "Time Tracking" "#TimeTracking_" "0" "" -->
-		<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
-		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
-<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 	<!-- @topicGroup "TeamCity" "8" -->
-		<!-- @topicItem "Autostart TeamCity Server" "#AutostartTCServer_" "0" "" -->
-		<!-- @topicItem "Store Project Settings in Version Control" "#StoreProjectSettings_" "0" "" -->
-		<!-- @topicItem "Maintenance: Cleanup Obsolete Build Info" "#Maintenance_CleanupObsoleteBuildInfo_" "0" "" -->
-		<!-- @topicItem "Move to External Database" "#MoveToExternalDatabase_" "0" "" -->
-		<!-- @topicItem "Install Build Agent" "#InstallBuildAgent_" "0" "" -->
 <!-- @/topicList -->
 
-<h3>Add Features: YouTrack</h3><div class="indent">
-
-	<!-- @marker "YouTrack Mobile" -->
-	<h4 id="YouTrackMobile_">YouTrack Mobile</h4><ul>
-		<li>download from AppStore and open</li>
-	</ul>
-
-	<!-- @marker "YouTrack Integration Plugin" -->
-	<h4 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h4><ul>
-		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
-			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
-	</ul>
-
-	<!-- @marker "Issue Navigation" -->
-	<h4 id="IssueNavigation_">Issue Navigation</h4><ul>
-		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/Issue-Navigation.html">
-			Issue Navigation</a></li>
-		</ul>
-
-	<!-- @marker "Time Tracking" -->
-	<h4 id="TimeTracking_">Time Tracking</h4><ul>
-		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
-				<li>see Issue Navigation</li>
-			</ul></li>
-		</ul>
-
-	<!-- @marker "Task Management" -->
-	<h4 id="TaskManagement_">Task Management</h4><ul>
-		<li>see https://www.jetbrains.com/help/youtrack/standalone/Task-Management-Plugin.html</li>
-	</ul>
-
-	<!-- @marker "Tweaks Extension" -->
-	<h4 id="TweaksExtension_">Tweaks Extension</h4><ul>
-		<li>requires Chrome; has some useful-looking features</li>
-		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/YouTrack-Tweaks-Extension.html">
-			YouTrack Tweaks Extension</a>
-		</li></ul>
-</div>
-
-<h3>Add Features: TeamCity</h3><div class="indent">
-
-<!-- @marker "Autostart TeamCity Server" -->
-<h4 id="AutostartTCServer_">Autostart TeamCity Server</h4><ul>
-	<li><strong>Autostart TeamCity Server</strong><ul>
-		<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
-			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
-				<li>Working Directory: /Volumes/Servers/jb/TeamCity/TeamCity</li>
-			</ul></li>
-		<li>copy file jetbrains.teamcity.server.plist to ~/Library/LaunchDaemons</li>
-		<li>restart computer</li>
-		<li>Safari: localhost:8111 should show TeamCity window</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Store Project Settings in Version Control" -->
-<h4 id='StoreProjectSettings_'>Store Project Settings in Version Control</h4><ul>
-	<li><a href="https://confluence.jetbrains.com/display/TCD10/Storing+Project+Settings+in+Version+Control">
-		Store Project Settings in Version Control</a></li>
-</ul>
-
-<!-- marker "Install Build Agent" -->
-<h4 id='InstallBuildAgent_'>Install Build Agent</h4><ul>
-	<li class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Setting+up+and+Running+Additional+Build+Agents#SettingupandRunningAdditionalBuildAgents-InstallingViaZIPFile">
-		Setting up and Running Additional Build Agents: Installing via ZIP file</a></li>
-</ul>
-
-<!-- @marker "Maintenance: Cleanup Obsolete Build Info" -->
-<h3 id="Maintenance_CleanupObsoleteBuildInfo_">Maintenance: Cleanup Obsolete Build Info</h3>
-	<p class="blurb">see <a href="https://confluence.jetbrains.com/display/TCD10/Clean-Up">TeamCity Clean-Up</a></p>
-
-<!-- @marker "Move to External Database" -->
-<h4 id="MoveToExternalDatabase_">Move to External Database</h4><ul>
-		<li class="blurb">includes install; initialize data directory; test; secure initial accounts</li>
-	</ul>
-
-	<!-- @marker "Install and Set Up MySQL" -->
-	<h5 id="InstallAndSetUpMySQL_">Install and Set Up MySQL</h5><ul>
-		<li><a href="MySQL.html#InstallandSetUpMySQL_">Install and Set Up MySQL</a></li>
-	</ul>
-
-	<!-- @marker "Integrate MySQL and TeamCity Servers" -->
-	<h5 id="IntegrateMySQLAndTeamCityServers_">Integrate MySQL and TeamCity Servers</h5><ul>
-		<li>MySQL server side<ul>
-			<li><a href="MySQL.html#ConfigurethisMySQLServerforTeamCity_">Configure this MySQL Server for TeamCity</a></li>
-		</ul></li>
-		<li>TeamCity server side<ul>
-			<li>install <a href="Tools.html#_Connector_J">Tools: Connector/J</a></li>
-		</ul></li>
-	</ul>
-
-	<!-- @marker "Create TeamCityDB" -->
-	<h5 id='CreateTeamCityDB_'>Create TeamCityDB</h5><ul>
-		<li>create TeamCity database<ul>
-			<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
-		</ul></li>
-		<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
-			<li class="blurb">localhost:8111</li>
-			<li>user: carolclark; password</li>
-			<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
-			<li>startup page configuration<ul>
-				<li><strong>smtp</strong>: smtp host: smtp.cox.net; send from carolclark@cox.net; login: carolclark@cox.net; cox password; test connection</li>
-				<li><strong>license</strong>: verify license for 3 build agents, 20 build configurations</li>
-				<li><strong>user</strong>: username: carolclark; name: Carol Clark: pw:jetbrains; grant administrator privileges</li>
-			</ul></li>
-			<li>click user name for profile page<ul>
-				<li>user name and email</li>
-				<li>UISettings: Highlight my changes and investigations: ON; Show date/time in my timezone: turn ON;
-					Show all personal builds: turn ON; Add builds triggered by me to favorites: ON (experiment)</li>
-				<li>VCS User Names: add carolclark@cox.net</li>
-			</ul></li>
-			<li>Administration<ul>
-				<li>configure backups *WARNING* backups currently not run automatically</li>
-			</ul></li>
-			<li>build number: &lt;version&gt;.b%build.counter%</li>
-		</ul></li>
-	</ul>
-</div>
 
 <!-- @marker "JetBrains Adoption" -->
 <h2 class="promote">JetBrains Adoption</h2>
