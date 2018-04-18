@@ -65,7 +65,7 @@ if [[ $# > 0 ]] && [[ "${1}" != -* ]] ; then			# not a callback
 		# installing
 		print -n "== Setup and Configure: "
 		logger "$0#$LINENO: pwd:$(pwd) #runDC"
-		msg=$(Developer/DevConfig.ksh)
+		msg=$(Developer/Devloper/DevConfig.ksh)
 		st=$?
 		if [[ ${st} > 0 ]] ; then
 			print "$0#$LINENO:" "failed: ${msg} #${st}"

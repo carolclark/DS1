@@ -11,6 +11,10 @@ USAGE='
 # DevConfig.ksh -- set up and configure C & C Software development environment
 '
 
+### install issue
+# this script's caller, Developer_install.ksh, does not run reliably
+# DevConfig.ksh can be run independently: /Users/carolclark/Dev/DevSupport/Developer/Developer/DevConfig.ksh
+
 ### add
 # com.oracle.oss.mysql.mysqld.plist to /Library/LaunchDaemons
 # youtrack.jvmoptions to $YouTrack/conf
@@ -142,6 +146,7 @@ function gitPrintExclude {
 	print '**/.idea/tasks.xml'
 	print '**/.idea/*.iws'
 	print '**/.idea/*.iml'
+	print '**/.idea/shelf*'
 	print 'test-results/'
 	print '_patches'
 }
