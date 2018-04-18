@@ -381,15 +381,26 @@
 <!-- @/topicList -->
 
 <!-- @marker "NewRepo" -->
-<h4 id="tsk_NewRepo">NewRepo</h4><ul>
-	<li class="mono">git remote add origin https://github.com/&lt;userName&gt;/&lt;projectName&gt;.git</li>
-	<li class="mono">cd &lt;parentFolderForNewRepo&gt;</li>
-	<li class="mono">git clone https://github.com/&lt;userName&gt;/&lt;projectName&gt;.git</li>
-	<li class="mono">echo "# &lt;repoName&gt;" &gt; README.md</li>
-	<li class="mono">git add --all</li>
-	<li class="mono">git commit -m "first commit"</li>
-	<li class="mono">git push -u origin master</li>
-</ul>
+<h4 id="tsk_NewRepo">NewRepo</h4><div class="indent">
+	<h5>create and clone initial repo</h5><ul>
+		<li class="mono">git remote add origin https://github.com/&lt;userName&gt;/&lt;projectName&gt;.git</li>
+		<li class="mono">cd &lt;parentFolderForNewRepo&gt;</li>
+		<li class="mono">git clone https://github.com/&lt;userName&gt;/&lt;projectName&gt;.git</li>
+	</ul>
+	<h5>add readme file</h5><ul>
+		<li class="mono">echo "# &lt;repoName&gt;" &gt; README.md</li>
+		<li class="mono">git add --all</li>
+		<li class="mono">git commit -m "initial commit"</li>
+	</ul>
+	<h5>add license, normally MIT</h5><ul>
+		<li>GitHub, from main page of new repository: Create new file named LICENSE or LICENSE.md</li>
+		<li>select 'Choose a license template'; select license; 'Review and submit'</li>
+		<li class="mono">git commit -m "add &lt;licenseType&gt; license"</li>
+	</ul>
+	<h5>push</h5><ul>
+		<li class="mono">git push -u origin master</li>
+	</ul>
+</div>
 
 <!-- @marker "Branch" -->
 <h4 id="tsk_Branch">Branch</h4><ul>
