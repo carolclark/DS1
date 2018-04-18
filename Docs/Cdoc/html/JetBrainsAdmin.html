@@ -597,7 +597,7 @@
 	<li>create TeamCity database<ul>
 		<li><a href="MySQL.html#CreateTeamCityDatabase_">create</a> MySQL database TeamCityDB with user carolclark</li>
 	</ul></li>
-	<li style="padding-top: 10px;"><strong>Open WebApp; Initial Configuration</strong><ul>
+	<li style="padding-top: 10px;">Open WebApp; Initial Configuration<ul>
 		<li class="blurb">localhost:8111</li>
 		<li>user: carolclark; password</li>
 		<li>verify TeamCity data path: /Volumes/Servers/jb/TeamCity/BuildServer</li>
@@ -657,36 +657,36 @@
 <!-- @/topicList -->
 
 <!-- @marker "Command-Line Tools" -->
-<h3 id="CommandLineTools_">Command Line Tools</h3><div class="indent">
+<h4 id="CommandLineTools_">Command Line Tools</h4><div class="indent">
 
-<h4>Hub, YouTrack, UpSource</h4><ul>
-	<li><span class="mono">start</span>: Start the service</li>
-	<li><span class="mono">stop</span>: Stop the service.</li>
-	<li><span class="mono">restart</span>: Restart the service.</li>
-	<li><span class="mono">help</span>: Display a list of all commands that can be executed in the command-line interface.</li>
-</ul>
+	<h5>Hub, YouTrack, UpSource</h5><ul>
+		<li><span class="mono">start</span>: Start the service</li>
+		<li><span class="mono">stop</span>: Stop the service.</li>
+		<li><span class="mono">restart</span>: Restart the service.</li>
+		<li><span class="mono">help</span>: Display a list of all commands that can be executed in the command-line interface.</li>
+	</ul>
 
-<h4>TeamCity</h4><ul>
-	<li><strong>server and one build agent</strong><ul>
-		<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span></li>
-	</ul></li>
-	<li><strong>server only</strong><ul>
-		<li><span class="mono">teamcity-server.sh</span><ul>
-			<li><span class="mono">run</span>: start TeamCity in the current window</li>
-			<li><span class="mono">start</span>: start TeamCity in a separate window</li>
-			<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
-			<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
-				<li>see <a href=
-					"https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">
-					Creating Backup via maintainDB command-line tool</a></li>
+	<h5>TeamCity</h5><ul>
+		<li><strong>server and one build agent</strong><ul>
+			<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span></li>
+		</ul></li>
+		<li><strong>server only</strong><ul>
+			<li><span class="mono">teamcity-server.sh</span><ul>
+				<li><span class="mono">run</span>: start TeamCity in the current window</li>
+				<li><span class="mono">start</span>: start TeamCity in a separate window</li>
+				<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
+				<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
+					<li>see <a href=
+						"https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">
+						Creating Backup via maintainDB command-line tool</a></li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
-	</ul></li>
-</ul>
+	</ul>
 </div>
 
 <!-- @marker "Save Tagged Tools Backup" -->
-<h3 id="Save_TaggedToolsBackup_">Make Tagged Backup of Team Tools</h3><ul>
+<h4 id="Save_TaggedToolsBackup_">Make Tagged Backup of Team Tools</h4><ul>
 	<li>backup tools with changes</li>
 	<li>/Volumes/Mavericks-1/Backups/TeamTools:<ul>
 		<li>in TeamTools_Tagged<ul>
@@ -697,7 +697,7 @@
 </ul>
 
 <!-- @marker "Restore Settings: for Team Tool: from Backup" -->
-<h3 id="RestoreSettings_ForTeamTool_FromBackup_">Restore Settings: for Team Tool: from Backup</h3><ul>
+<h4 id="RestoreSettings_ForTeamTool_FromBackup_">Restore Settings: for Team Tool: from Backup</h4><ul>
 	<li class="blurb">see <a href="https://www.jetbrains.com/help/hub/Restore-Database-from-Backup.html">
 		Restore Database from Backup</a></li>
 	<li></li>
@@ -709,13 +709,13 @@
 </ul>
 
 <!-- @marker "Sort a Card's Subtasks" -->
-<h3 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h3><ul>
+<h4 id='SortACardsSubtasks_'>Sort a Card's Subtasks</h4><ul>
 	<li>Create a swimlane for the card</li>
 	<li>Organize the subtasks in that lane</li>
 </ul>
 
 <!-- @marker "Upgrade Team Tools" -->
-<h3 id="UpgradeTeamTools_">Upgrade Team Tools</h3><ul>
+<h4 id="UpgradeTeamTools_">Upgrade Team Tools</h4><ul>
 	<li>for tool to be upgraded:<ul>
 		<li>backup existing tool (Server Settings &gt; Backup)</li>
 		<li><a href="#CommandLineTools_">stop</a> the service to be upgraded</li>
@@ -732,10 +732,8 @@
 		Upgrade YouTrack ZIP</a></li>
 </ul>
 
-<h3 id='UninstallTeamCity_'>Uninstall TeamCity</h3>
-
-<h3 id='Uninstall_'>Uninstall</h3>
-	<h4>Uninstall TeamCity</h4><ul>
+<h4 id='Uninstall_'>Uninstall</h4><div class="indent">
+	<h5>Uninstall TeamCity</h5><ul>
 		<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
 			<li>open Activity Monitor; show all process</li>
 			<li>for any processes except TeamCity associated with TeamCity, 'quit' using button at top left</li>
@@ -747,9 +745,10 @@
 		<li>delete BuildServer data (/Volumes/TeamCity/TeamCityDB/.BuildServer or ~/.BuildServer)</li>
 		<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
 	</ul>
+</div>
 
 <!-- @marker "Moving to Another Server" -->
-<h3 id='MovingServer_'>Moving Projects to Another Server</h3><ul>
+<h4 id='MovingServer_'>Moving Projects to Another Server</h4><ul>
 	<li>make backups of existing projects</li>
 	<li>see <a href="https://confluence.jetbrains.com/display/TCD9/Projects+Import">Project Import</a> to import into new server</li>
 </ul>
