@@ -109,7 +109,37 @@
 <!-- @marker "Team Tools: Developer" -->
 <h2>Team Tools: Developer</h2>
 <!-- @topicList "Team Tools: Developer" "TeamTools_Developer_" -->
+	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "Command-Line Tools" -->
+<h4 id="CommandLineTools_">Command Line Tools</h4><div class="indent">
+
+	<h5>Hub, YouTrack, UpSource</h5><ul>
+		<li><span class="mono">start</span>: Start the service</li>
+		<li><span class="mono">stop</span>: Stop the service.</li>
+		<li><span class="mono">restart</span>: Restart the service.</li>
+		<li><span class="mono">help</span>: Display a list of all commands that can be executed in the command-line interface.</li>
+	</ul>
+
+	<h5>TeamCity</h5><ul>
+		<li><strong>server and one build agent</strong><ul>
+			<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span></li>
+		</ul></li>
+		<li><strong>server only</strong><ul>
+			<li><span class="mono">teamcity-server.sh</span><ul>
+				<li><span class="mono">run</span>: start TeamCity in the current window</li>
+				<li><span class="mono">start</span>: start TeamCity in a separate window</li>
+				<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
+				<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
+					<li>see <a href=
+						"https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">
+						Creating Backup via maintainDB command-line tool</a></li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+	</ul>
+</div>
 
 <!-- @marker "Team Tools: ProjAdmin" -->
 <h2>Team Tools: ProjAdmin</h2>
@@ -649,7 +679,6 @@
 <!-- @marker "Admin Tasks and References" -->
 <h2 class="promote">Admin Tasks and References</h2>
 <!-- @topicList "Admin Tasks and References" "AdminTasksAndReferences_" -->
-	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
 	<!-- @topicItem "Save Tagged Tools Backup" "#Save_TaggedToolsBackup_" "0" "" -->
 	<!-- @topicItem "Restore Settings: for Team Tool: from Backup" "#RestoreSettings_ForTeamTool_FromBackup_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
@@ -658,34 +687,6 @@
 	<!-- @topicItem "Uninstall" "#Uninstall_" "0" "" -->
 <!-- @/topicList -->
 
-<!-- @marker "Command-Line Tools" -->
-<h4 id="CommandLineTools_">Command Line Tools</h4><div class="indent">
-
-	<h5>Hub, YouTrack, UpSource</h5><ul>
-		<li><span class="mono">start</span>: Start the service</li>
-		<li><span class="mono">stop</span>: Stop the service.</li>
-		<li><span class="mono">restart</span>: Restart the service.</li>
-		<li><span class="mono">help</span>: Display a list of all commands that can be executed in the command-line interface.</li>
-	</ul>
-
-	<h5>TeamCity</h5><ul>
-		<li><strong>server and one build agent</strong><ul>
-			<li><span class="mono">runAll.sh</span>: <span class="mono">start</span>/<span class="mono">stop</span></li>
-		</ul></li>
-		<li><strong>server only</strong><ul>
-			<li><span class="mono">teamcity-server.sh</span><ul>
-				<li><span class="mono">run</span>: start TeamCity in the current window</li>
-				<li><span class="mono">start</span>: start TeamCity in a separate window</li>
-				<li><span class="mono">stop</span>: stop TeamCity; wait up to 5 seconds for the process to end</li>
-				<li><span class="mono">maintainDB</span>: back up, restore, and migrate the server data<ul>
-					<li>see <a href=
-						"https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool">
-						Creating Backup via maintainDB command-line tool</a></li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-</div>
 
 <!-- @marker "Save Tagged Tools Backup" -->
 <h4 id="Save_TaggedToolsBackup_">Make Tagged Backup of Team Tools</h4><ul>
