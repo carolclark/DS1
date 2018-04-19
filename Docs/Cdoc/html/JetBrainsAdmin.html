@@ -192,7 +192,7 @@
 					</ul></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
-					<li id="backups"><strong>Backup &amp; Server Settings</strong><ul>
+					<li id="backupConfig_"><strong>Backup &amp; Server Settings</strong><ul>
 						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
 						<li>filename prefix: PR-, where PR is product abbreviation</li>
 						<li>tar.gz format</li>
@@ -250,7 +250,7 @@
 			<li>email verification: no</li>
 		</ul></li>
 		<li>Backup<ul>
-			<li><i>should already be configured</i></li>
+			<li><i>should already be configured</i>; see <a href="#backupConfig_">Backup Configuration</a></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -376,10 +376,10 @@
 	</ul></li>
 	<li>Edit Custom Fields<ul>
 		<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
-		<li>Custom Fields: Priority, Type, State, Assignee, Aspect, Story Points<br />
+		<li>Custom Fields: Priority, Type, State, Assignee, Aspect,<br />
 			Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
-		<li>Issue Types: Task Story Feature Scenario Epic;
-			Bug Cosmetic Exception Usability Performance</li>
+		<li>Issue Types: Task Story Feature Scenario Epic; Bug Cosmetic Exception Usability Performance,
+			CantReproduce Duplicate Incomplete Obsolete WontFix</li>
 		<li>Issue States:<ul>
 			<li><strong>SampleState</strong>: description; <em>transition</em></li>
 			<li>Backlog<ul>
@@ -399,8 +399,8 @@
 				<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
 			</ul></li>
 			<li>&lt;project&gt; Development<ul>
-				<li><strong>Ready</strong>: ready to implement; <em>pull for development</em></li>
-				<li><strong>Develop</strong>: develop; test; commit; publish; <em>move to Review</em></li>
+				<li><strong>Ready</strong>: ready to implement; <em>pull and develop</em></li>
+				<li><strong>Develop</strong>: in development; <em>move to Review</em></li>
 				<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
 					<em>release for publication, or set up for rejection or rework</em></li>
 				<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
@@ -449,9 +449,11 @@
 				<li><strong>Develop</strong>: develop as specified; use use TDD/BDD when appropriate</li>
 				<li><strong>Review</strong>:<ul>
 					<li>Pause for a couple of days so that we can come at this work a fresh perspective</li>
-					<li>New items coming from this review may be attached to the current issue for prompt completion.
-						Alternatively, if the changes would not leave problems in the code base to be merged to master,
-						they may be scheduled for later completion.</li>
+					<li>Review may generate suggested changes. These may be:<ul>
+						<li>added as a new issue for later completion</li>
+						<li>added to the current issue, which is then moved back to state/column Develop<li>
+						<li>rejected, with a comment explaining that decision</li>
+					</ul>
 				</ul></li>
 				<li><strong>Done</strong>: review, with completion of any resulting immediate tasks, is completed</li>
 			</ul></li>
