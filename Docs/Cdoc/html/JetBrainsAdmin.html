@@ -5,6 +5,43 @@
 <head>
 	<title>JetBrains Administration</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+	<style type="text/css">
+			.info {
+				margin-left: 80px;
+				background-color: white;
+			}
+			.info table {
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+			.info th {
+				padding: 5px;
+				text-align: left;
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+			.info td {
+				padding: 5px;
+				text-align: left;
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+			.info tr:nth-child(odd) {
+					background-color: #f2f2f2;
+			}
+			.info tr:nth-child(even) {
+				background-color: white;
+			}
+			.info tr:hover {
+				background-color: #ddd;
+			}
+			.info th {
+				padding-top: 4px;
+				padding-bottom: 4px;
+				text-align: center;
+				background-color: #E0FEFC;
+			}
+	</style>
 </head>
 <body>
 <!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
@@ -293,7 +330,6 @@
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "YouTrack: Add Features" "" -->
-		<!-- @topicItem "YouTrack Mobile" "#YouTrackMobile_" "0" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
 		<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
 		<!-- @topicItem "Time Tracking" "#TimeTracking_" "0" "" -->
@@ -302,8 +338,8 @@
 <!-- @/topicList -->
 
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
+	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>Hub Project Page: YouTrack Settings<ul>
-		<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 		<li>Hub as admin:<ul>
 			<li>Projects: New Project...<ul>
 				<li>set project name, ID</li>
@@ -317,10 +353,10 @@
 		<li>Settings<ul>
 			<li>YouTrack Project-Related Settings<ul>
 				<li>length of day: 5h</li>
-				<li>work types: Development Testing Documentation Investigation Roadmap</li>
+				<li>work types: Plan Investigate Test Develop Document</li>
 			</ul></li>
 			<li>General<ul>
-				<li>set project 'from' email: &lt;ProjectName&gt; \&lt;&lt;lead-email&gt;\&gt;</li>
+				<li>set project 'from' email: &lt;ProjectName&gt; &lt;&lt;lead-email&gt;&gt;</li>
 			</ul></li>
 			<li>Team<ul>
 				<li>add me</li>
@@ -334,7 +370,7 @@
 					<li>Feature (bl3)</li>
 					<li>Scenario (bl5)</li>
 					<li>Task (gn3)</li>
-					<li>Bug States: all color rd4: Bug; Cosmetic; Exception; Usability; Performance</li>
+					<li>Bug States: all color rd4: Bug; Cosmetic; Exception; Usability; Performance; </li>
 				</ul></li>
 				<li><strong>State</strong><ul>
 					<li>Open States: *Submitted Open Epic Shape Design Ready Develop Review</li>
@@ -349,8 +385,9 @@
 			<li>VCS Integrations: New VCS Integration<ul>
 				<li>connect to GitHub repo<ul>
 					<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
-					<li>click link to create Auth token &lt;projectName&gt;<ul>
-						<li>delete existing token of same name if indicated</li>
+					<li>click link to create Auth token<ul>
+						<li>if token of same name exists, delete existing token; return to TeamTools</li>
+						<li>create Auth token &lt;projectName&gt;</li>
 					</ul></li>
 				</ul></li>
 			</ul></li>
@@ -362,7 +399,7 @@
 			<li>Notification Templates: no changes yet</li>
 			<li>Team City integration: nothing yet</li>
 		</ul></li>
-		<li>Scrum Boards<ul>
+		<li>Add project with template Scrum Board<ul>
 			<li>Configuration<ul>
 				<li>type: Scrum</li>
 				<li>project: &lt;repoName&gt;</li>
@@ -386,60 +423,87 @@
 				</ul></li>
 			</ul></li>
 		</ul></li>
-	<li>Agile Boards Overview<ul>
-		<li>'Roadmap' board for planning; 'Development' board for development</li>
-		<li>Swimlanes<ul>
-			<li>named by Epic issues on Roadmap board, Story on Development board</li>
-			<li>those items are stationary until ready for Review;
-				they generate issues of other types to get the work done</li>
+		<li>Agile Boards Overview<ul>
+			<li>'Roadmap' board for planning; 'Development' board for development</li>
+			<li>Swimlanes<ul>
+				<li>named by Epic issues on Roadmap board, Story issues on Development board</li>
+				<li>those items are stationary until complete;
+					they generate issues of other types to get the work done</li>
+			</ul></li>
+			<li>BDD<ul>
+				<li>Our boards are built to support Behavior Driven Development</li>
+				<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+					orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
+				</em></li>
+			</ul></li>
+			<li>Review<ul>
+				<li>Since we cannot pass Review to another developer, we review our own work.
+					We do try to come at each review with a fresh perspective, including some delay after completion.</li>
+			</ul></li>
 		</ul></li>
-		<li>BDD<ul>
-			<li>Our boards are built to support Behavior Driven Development</li>
-			<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-				orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
-			</em></li>
-		</ul></li>
-		<li>Review<ul>
-			<li>Since we cannot pass Review to another developer, we review our own work.
-				We do try to come at each review with a fresh perspective, including some delay after completion.</li>
-		</ul></li>
-	</ul></li>
-	<li>Edit Custom Fields<ul>
-		<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
-		<li>Custom Fields: Priority, Type, State, Assignee, Aspect,<br />
-			Affected Versions (-&gt; Since Build), Fixed in Build, Sprints</li>
-		<li>Issue Types: Task Story Feature Scenario Epic; Bug Cosmetic Exception Usability Performance,
-			CantReproduce Duplicate Incomplete Obsolete WontFix</li>
-		<li>Issue States:<ul>
-			<li><strong>SampleState</strong>: description; <em>transition</em></li>
-			<li>Backlog<ul>
-				<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
-					else resolve using a 'Resolved' state with comment</em><ul>
-					<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
-				<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
-				<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
-				<li><strong>Story</strong>: story used for planning;
-					<em>add substories as needed until design appears managable</em><ul>
-						<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-							orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
-						</em></li>
+		<li>Edit Custom Fields<ul>
+			<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
+			<li>Custom Fields:</li>
+		</ul></li></ul>
+		<div class="info"><table>
+			<tr><th>Name</th><th>valDefault</th><th>valEmpty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
+				<td><table>
+					<tr><th>Priority Name</th> <th>Color</th></tr>
+					<tr><td>Show-Stopper</td><td>orange4</td></tr>
+					<tr><td>Critical</td><td>pink2</td></tr>
+					<tr><td>Higher</td><td>yellow1</td></tr>
+					<tr><td>Normal</td><td>green1</td></tr>
+					<tr><td>Lower</td><td>gray1</td></tr>
+				</table></td></tr>
+			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>-</td><td>-</td>
+				<td><table></table></td></tr>
+		</table></div>
+					<ul>
+					<li>Type</li>
+					<li>State</li>
+					<li>Aspect</li>
+					<li>Assignee</li>
+					<li>Sprints</li>
+					<li>Fixed in Build</li>
+					<li>Epics_</li>
+					<li>Stories_</li>
+					<li>Added when Time Management is enabled<ul>
+						<li>Estimation</li>
+						<li>Spent time</li>
 					</ul></li>
-				<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
-					<em>plan and estimate implementation</em></li>
-				<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
-			</ul></li>
-			<li>&lt;project&gt; Development<ul>
-				<li><strong>Ready</strong>: ready to implement; <em>pull and develop</em></li>
-				<li><strong>Develop</strong>: in development; <em>move to Review</em></li>
-				<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
-					<em>release for publication, or set up for rejection or rework</em></li>
-				<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
-					<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
-				<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
+			<li>Issue Types: Epic Task Story Feature Scenario; Bug Cosmetic Exception Usability Performance,
+				CannotReproduce WorksAsIntended Duplicate Incomplete Obsolete WontFix</li>
+
+			<li>Issue States:<ul>
+				<li><strong>SampleState</strong>: description; <em>transition</em></li>
+				<li>Backlog<ul>
+					<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
+						else resolve using a 'Resolved' state with comment</em><ul>
+						<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
+					<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
+					<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
+					<li><strong>Story</strong>: story used for planning;
+						<em>add substories as needed until design appears managable</em><ul>
+							<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+								orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
+							</em></li>
+						</ul></li>
+					<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
+						<em>plan and estimate implementation</em></li>
+					<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
+				</ul></li>
+				<li>&lt;project&gt; Development<ul>
+					<li><strong>Ready</strong>: ready to implement; <em>pull and develop</em></li>
+					<li><strong>Develop</strong>: in development; <em>move to Review</em></li>
+					<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
+						<em>release for publication, or set up for rejection or rework</em></li>
+					<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
+						<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
+					<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
-	</ul></li>
-	</ul></li>
 		<li>Agile Columns<ul>
 			<li>Backlog<ul>
 				<li><strong>Submit</strong>: incoming items</li>
