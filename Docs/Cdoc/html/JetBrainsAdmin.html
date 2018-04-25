@@ -1,7 +1,7 @@
 <!-- JetBrainsAdmin.html -->
 <!-- Created by carolclark on 4/14/17 for project Support. -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:height="http://www.w3.org/1999/xhtml">
 <head>
 	<title>JetBrains Administration</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
@@ -41,6 +41,13 @@
 				text-align: center;
 				background-color: #E0FEFC;
 			}
+			.subhead td {
+				font-size: smaller;
+				background-color: #ECE0D6;
+				font-style: italic;
+				line-height: 4px;
+			}
+
 	</style>
 </head>
 <body>
@@ -448,7 +455,7 @@
 		<div class="info"><table>
 			<tr><th>Name</th><th>valDefault</th><th>valEmpty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
-				<td><table>
+				<td><table align="center">
 					<tr><th>Priority Name</th> <th>Color</th></tr>
 					<tr><td>Show-Stopper</td><td>orange4</td></tr>
 					<tr><td>Critical</td><td>pink2</td></tr>
@@ -457,7 +464,34 @@
 					<tr><td>Lower</td><td>gray1</td></tr>
 				</table></td></tr>
 			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>-</td><td>-</td>
-				<td><table></table></td></tr>
+				<td><table>
+						<tr><th>Name</th><th>Description</th><th>Comments</th></tr>
+					<tr class="subhead"><td colspan="3">Swimlane Headers</td></tr>
+						<tr><td>Epic</td><td>'Epic' represents a goal containing several User Stories.</td>
+						<td rowspan="2">Neither Epics nor Stories move through States until ready for review.<br />
+							Instead, they use subissues to accomplish their work.</td></tr>
+						<tr><td>Story</td><td>'Story' represents a user story.</td></tr>
+					<tr class="subhead"><td colspan="3">Work Issues</td></tr>
+						<tr><td>Feature</td><td>A BDD feature. Features are orthogonal to Stories;<br />
+							Stories are a planning tool, while Features are about implementation organization.</td>
+							<td rowspan="4">These issue types share columns on the Agile Board.</td></tr>
+						<tr><td>Scenario</td><td>A BDD Scenario associated with a Feature.</td></tr>
+						<tr><td>Task</td><td>A task independent of the BDD structure.</td></tr>
+						<tr><td>Documentation</td><td>Documentation task. May be related to another issue.</td></tr>
+					<tr class="subhead"><td colspan="3">Classification for Confirmed Bugs</td></tr>
+						<tr><td>Bug</td><td></td><td rowspan="5"></td></tr>
+						<tr><td>Cosmetic</td><td></td><td></td></tr>
+						<tr><td>Exception</td><td></td></tr>
+						<tr><td>Usability</td><td></td></tr>
+						<tr><td>Performance</td><td></td></tr>
+					<tr class="subhead"><td colspan="3">Resolution for Bugs Not Accepted</td></tr>
+						<tr><td>CannotReproduce</td><td></td><td rowspan="6"></td></tr>
+						<tr><td>WorksAsIntended</td><td></td></tr>
+						<tr><td>Duplicate</td><td></td></tr>
+						<tr><td>Incomplete</td><td></td></tr>
+						<tr><td>Obsolete</td><td></td></tr>
+						<tr><td>WontFix</td><td></td></tr>
+				</table></td></tr>
 		</table></div>
 					<ul>
 					<li>Type</li>
