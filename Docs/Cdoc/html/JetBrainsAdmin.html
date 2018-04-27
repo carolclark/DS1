@@ -52,8 +52,32 @@
 </head>
 <body>
 <!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
-
 <h1>JetBrains</h1>
+
+<!-- @topicList "JetBrains Tools" "Contents" -->
+	<!-- @topicItem "Overview" "#Overview_" "0" "" -->
+	<!-- @topicItem "Team Tools" "#TeamTools_" "0" "" -->
+	<!-- @topicItem ""IDEs" "#IDEs_" "0" "" -->
+	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
+	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "Online Documentation" "5" -->
+		<!-- @topicItem "JetBrains Team Tools" "https://www.jetbrains.com/products.html#type=team" "0" "JetBrains home" -->
+			<!-- @topicItem "Hub" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
+			<!-- @topicItem "YouTrack" "https://www.jetbrains.com/help/youtrack/standalone/Getting-Started-With-YouTrack.html" "1" "" -->
+			<!-- @topicItem "UpSource" "https://www.jetbrains.com/help/upsource/getting-started-with-upsource.html" "1" "" -->
+			<!-- @topicItem "TeamCity Documentation (Confluence)" "https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation" "1" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "References" "12" -->
+		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
+		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
+		<!-- @topicItem "Scheduling Tasks with Cron Jobs" "https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800_" "0" "" -->
+		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
+		<!-- @topicItem "Cross-project Agile Boards in YouTrack: The Best Recipes" "https://blog.jetbrains.com/youtrack/2014/04/cross-project-agile-boards-in-youtrack-the-best-recipes/_" "0" "" -->
+		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "" -->
+		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
+<!-- @/topicList -->
+
 <h2 class="promote" id="Overview_">Development Overview</h2>
 <h4 id="Agile_">Agile Development</h4><ul>
 	<li>We use test-first agile development with BDD.<ul>
@@ -119,28 +143,6 @@
 		</ul>
 		<p>We have an All-Products license for JetBrains IDEs</p>
 		<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
-
-<!-- @topicList "JetBrains Tools" "Contents" -->
-	<!-- @topicItem "Team Tools" "#TeamTools_" "0" "" -->
-	<!-- @topicItem "Admin Tasks and References" "#AdminTasksAndReferences_" "0" "" -->
-	<!-- @topicItem "JetBrains Adoption" "#JetBrainsAdoption_" "0" "tools &amp; IDEs; costs and benefits" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "Online Documentation" "5" -->
-		<!-- @topicItem "JetBrains Team Tools" "https://www.jetbrains.com/products.html#type=team" "0" "JetBrains home" -->
-			<!-- @topicItem "Hub" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
-			<!-- @topicItem "YouTrack" "https://www.jetbrains.com/help/youtrack/standalone/Getting-Started-With-YouTrack.html" "1" "" -->
-			<!-- @topicItem "UpSource" "https://www.jetbrains.com/help/upsource/getting-started-with-upsource.html" "1" "" -->
-			<!-- @topicItem "TeamCity Documentation (Confluence)" "https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation" "1" "" -->
-	<!-- @topicSep -->
-	<!-- @topicGroup "References" "12" -->
-		<!-- @topicItem "REST API" "https://confluence.jetbrains.com/display/TCD10/REST+API" "0" "" -->
-		<!-- @topicItem "Build Script Interaction with TeamCity" "https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity" "0" "additional control for builds" -->
-		<!-- @topicItem "Scheduling Tasks with Cron Jobs" "https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800_" "0" "" -->
-		<!-- @topicItem "TeamCity: Backup with maintainDB tool" "https://confluence.jetbrains.com/display/TCD10/Creating+Backup+via+maintainDB+command-line+tool" "0" "" -->
-		<!-- @topicItem "Cross-project Agile Boards in YouTrack: The Best Recipes" "https://blog.jetbrains.com/youtrack/2014/04/cross-project-agile-boards-in-youtrack-the-best-recipes/_" "0" "" -->
-		<!-- @topicItem "Multi-Level Agile Boards or How We Support Epics" "https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/_" "indent" "" -->
-		<!-- @topicItem "18 Useful Reports for Your Development Team" "https://blog.jetbrains.com/youtrack/2014/06/useful-reports-for-your-development-team/_" "0" "" -->
-<!-- @/topicList -->
 
 <!-- @marker "Team Tools" -->
 <h2 class="promote">Team Tools</h2>
@@ -452,11 +454,10 @@
 			<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
 			<li>Custom Fields:</li>
 		</ul></li></ul>
-		<div class="info"><table>
-			<tr><th>Name</th><th>valDefault</th><th>valEmpty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+ 		<div class="info"><table id="Custom_Fields_">
+			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
-				<!-- \todo  align="center" not valid HTML -->
-				<td><table align="center">
+				<td><table>
 					<tr><th>Priority Name</th> <th>Color</th></tr>
 					<tr><td>Show-Stopper</td><td>orange4</td></tr>
 					<tr><td>Critical</td><td>pink2</td></tr>
@@ -480,6 +481,13 @@
 						<tr><td>Analysis</td><td>Aqua3</td><td>An issue for evaluation, design, recommendation, ...</td></tr>
 						<tr><td>Task</td><td>Green3</td><td>A task not in the BDD structure.</td></tr>
 						<tr><td>Documentation</td><td>Gray3</td><td>Documentation task. May be related to another issue.</td></tr>
+ 					<tr class="subhead"><td colspan="4">Time Management</td> </tr>
+						<tr><td>Estimation</td><td>orange1</td><td>time estimation; units w d h m</td><td rowspan="2">fields added when Time Tracking is enabled</td></tr>
+						<tr><td>Spent time</td><td>orange1</td><td>actual time spent, from work items reported</td></tr>
+					<tr class="subhead"><td colspan="4">Enumeration Values</td></tr>
+						<tr><td>Epics_</td><td>Orange5</td><td>,</td>
+							<td rowspan="2">per-project sets of available values for enumerations Epic/Story</td></tr>
+						<tr><td>Stories_</td><td>Orange3</td><td>,</td></tr>
 					<tr class="subhead"><td colspan="4">Classification for Confirmed Bugs</td></tr>
 						<tr><td>Bug</td><td>Red3</td><td></td><td rowspan="5"></td></tr>
 						<tr><td>Cosmetic</td><td>Red3</td><td></td></tr>
@@ -493,10 +501,7 @@
 						<tr><td>Incomplete</td><td>Red3</td><td></td></tr>
 						<tr><td>Obsolete</td><td>Red3</td><td></td></tr>
 						<tr><td>WillNotFix</td><td>Red3</td><td></td></tr>
-					<tr class="subhead"><td colspan="4">Enumeration Values</td></tr>
-						<tr><td>Epics_</td><td>Orange5</td><td>,</td><td rowspan="2">per-project sets of available values for Epic/Story</td></tr>
-						<tr><td>Stories_</td><td>Orange3</td><td>,</td></tr>
-			</table></td></tr>
+  			</table></td></tr>
 			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
 					<td><table>
 					<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
@@ -516,15 +521,9 @@
 						<div class="mono">As a: I want: so that:</div><br />
 						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 							orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td>
-						<td>does not move through states during development<br />
-							instead, it generates cards for the next column that do move
-							<p>When Story is completed, move to Review for verification.</p><ul>
-								<li>Evaluate completeness of Story as specified.</li>
-								<li>Evaluate completeness of automated testing.</li>
-								<li>Verify all relevant test results.</li>
-								<li>Review code for cleanness, refactoring opportunities, ...</li>
-							</ul>
-							<br />
+ 						<td>does not progress through states during development<br />
+							instead, it generates cards that do progress for the next column<br />
+							when Story is completed, move to Review for verification
 						</td></tr>
 				<tr class="subhead"><td colspan="3">Specify: a single column with items of these types:</td></tr>
 					<tr><td>Feature</td><td>a BDD feature for development</td><td>,</td></tr>
@@ -532,12 +531,17 @@
 					<tr><td>Task</td><td>a development task that does not fit within BDD</td><td>,</td></tr>
 					<tr><td>Analyze</td><td>study an issue to plan and/or recommend a course of action</td><td>,</td></tr>
 				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
-					<tr><td>Ready</td><td>ready to be pulled for development</td><td>estimation required</td></tr>
+					<tr><td>Ready</td><td>ready to be pulled for development</td><td>estimation required to enter this state</td></tr>
 				<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
 					<tr><td>Develop</td><td>develop as specified</td><td>,</td></tr>
 					<tr><td>Review</td><td>Pause for a couple of days so that we can come at this work a fresh perspective<br />
 						Review may generate suggested changes.
-					</td><td>,</td></tr>
+					</td><td><ul>
+						<li>Evaluate completeness of solution as specified.</li>
+						<li>Evaluate completeness of automated testing.</li>
+						<li>Verify all relevant test results.</li>
+						<li>Review code for cleanness, refactoring opportunities, ...</li>
+					</ul></td></tr>
 					<tr><td>Verify</td>
 						<td>Verify that all tests pass<br />
 								Items from Review suggestions may be:<br /><ul>
@@ -550,108 +554,11 @@
 					</table></td></tr>
 			<tr><td>Aspect</td><td>N/A</td><td>No Aspect</td><td>multiple enum</td><td>none</td><td>from per-project set of Aspects/Modules, ...</td><td>,</td></tr>
 			<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-				<td>to simplify Saved Search for user's items:<br />when moved from Ready and <br /> if not already assigned, assign user</td><td></td></tr>
+				<td>to simplify Saved Search for user's items:</td><td>when moved from Ready and if not already assigned, assign current user</td></tr>
 			<tr><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td> yy.q.n; q=quarter; n=# sprint started in q</td>
-				<td>sprint labels are for sprints only<br />
-					use syntax-based versioning for standard-style version numbering</td></tr>
+				<td>use syntax-based versioning for standard-style version numbering</td></tr>
 			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td><td>fix for, fixed in, build, fix build</td><td>,</td><td>,</td></tr>
-			<tr><td>Estimation</td><td>N/A</td><td>?</td><td>period</td><td>none</td><td>,</td><td rowspan="2">fields added when Time Tracking is enabled</td></tr>
-			<tr><td>Spent time</td><td>N/A</td><td>_</td><td>period</td><td>none</td><td>,</td></tr>
-		</table></div>
-					<ul>
-					<li>Type</li>
-					<li>State</li>
-					<li>Aspect</li>
-					<li>Assignee</li>
-					<li>Sprints</li>
-					<li>Fixed in Build</li>
-					<li>Epics_</li>
-					<li>Stories_</li>
-					<li>Added when Time Management is enabled<ul>
-						<li>Estimation</li>
-						<li>Spent time</li>
-					</ul></li>
-			<li>Issue Types: Epic Task Story Feature Scenario; Bug Cosmetic Exception Usability Performance,
-				CannotReproduce WorksAsIntended Duplicate Incomplete Obsolete WontFix</li>
-
-			<li>Issue States:<ul>
-				<li><strong>SampleState</strong>: description; <em>transition</em></li>
-				<li>Backlog<ul>
-					<li><strong>Submitted</strong>:evaluate for development; <em>Open if accepted;
-						else resolve using a 'Resolved' state with comment</em><ul>
-						<li>resolved states: (Done Fixed) CannotReproduce WorksAsIntended Obsolete Duplicate WontFix</li>
-					<li><strong>Open</strong>: accepted for development; <em>assign to sprint when indicated</em></li>
-					<li><strong>Select</strong>: selected for development now; <em>format as story</em></li>
-					<li><strong>Story</strong>: story used for planning;
-						<em>add substories as needed until design appears managable</em><ul>
-							<li>Note: <em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-								orthogonal to</a> features, and may require functionality from otherwise unrelated Features.
-							</em></li>
-						</ul></li>
-					<li><strong>Design</strong>: design solution, adding linked Features and/or Tasks;
-						<em>plan and estimate implementation</em></li>
-					<li><strong>Ready</strong>: ready to implement; <em>to be pulled for development</em></li>
-				</ul></li>
-				<li>&lt;project&gt; Development<ul>
-					<li><strong>Ready</strong>: ready to implement; <em>pull and develop</em></li>
-					<li><strong>Develop</strong>: in development; <em>move to Review</em></li>
-					<li><strong>Review</strong>: evaluate from fresh perspective; generate additional issues as indicated;
-						<em>release for publication, or set up for rejection or rework</em></li>
-					<li><strong>Hold</strong>: has been reviewed and is not yet ready for publication;
-						<em>correct issue(s) and move to Publish; add new issue to handle rework; or reject</em></li>
-					<li><strong>Publish</strong>: merge branch; update other outstanding branches; <em>status Fixed or Done</em></li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-		<li>Agile Columns<ul>
-			<li>Backlog<ul>
-				<li><strong>Submit</strong>: incoming items</li>
-				<li><strong>Select</strong>: selected for development</li>
-			</ul></li>
-			<li>Roadmap Swimlane<ul>
-				<li><strong>Epic</strong>: goal; swimlane on Roadmap board</li>
-			</ul></li>
-			<li>Roadmap Columns<ul>
-				<li><strong>Open</strong>:<ul>
-					<li>selected for sprint</li>
-					<li>rewrite as: a Story; a Feature of an existing story; a Task; or an Analysis item<ul>
-						<li>then move to the appropriate column</li>
-					</ul></li>
-				</ul></li>
-				<li><strong>Story</strong>:<ul>
-					<li>As a: I want: so that:</li>
-					<li>serves as swimlane on a Development Board</li>
-				</ul></li>
-				<li><strong>Specify</strong>:<ul>
-					<li>specify the work to be done</li>
-					<li>item types:<ul>
-						<li>Feature: a BDD feature for development with Cucumber or similar tool<ul>
-							<li>Scenario is not a separate type, as Scenarios are normally developed from Feature files</li>
-							<li>during planning, Feature items may contain notes for Scenarios</li>
-						</ul></li>
-						<li>Task</li>
-						<li>Analysis: study an issue to plan and/or recommend a course of action</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-			<li>Shared Column<ul>
-				<li><strong>Ready</strong>: ready to be pulled for development; estimation required</li>
-			</ul></li>
-			<li>Development Swimlanes: based on Story</li>
-			<li>Development Columns<ul>
-				<li><strong>Develop</strong>: develop as specified; use use TDD/BDD when appropriate</li>
-				<li><strong>Review</strong>:<ul>
-					<li>Pause for a couple of days so that we can come at this work a fresh perspective</li>
-					<li>Review may generate suggested changes. These may be:<ul>
-						<li>added as a new issue for later completion</li>
-						<li>added to the current issue, which is then moved back to state/column Develop</li>
-						<li>rejected, with a comment explaining that decision</li>
-					</ul></li>
-				</ul></li>
-				<li><strong>Done</strong>: review, with completion of any resulting immediate tasks, is completed</li>
-			</ul></li>
-		</ul></li>
-	</ul>
+ 		</table></div>
 
 <!-- @marker "Delete YouTrack Project" -->
 <h3 id="Delete_YouTrack_Project_" class="dq">Delete YouTrack Project (is this still applicable?)</h3><ul>
@@ -817,7 +724,7 @@
 
 
 <!-- @marker "JetBrains IDEs" -->
-<h2 class="promote">JetBrains IDEs</h2>
+<h2 class="promote" id="IDEs_">JetBrains IDEs</h2>
 <!-- @topicList "JetBrains IDEs" "JetBrainsIDEs_" -->
 	<!-- @topicItem "IDEs: Developer" "#IDEs_Developer_" "0" "" -->
 	<!-- @topicItem "IDEs: ProjAdmin" "#IDEs_ProjAdmin_" "0" "" -->
