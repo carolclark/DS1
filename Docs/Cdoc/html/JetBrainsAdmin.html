@@ -41,13 +41,17 @@
 				text-align: center;
 				background-color: #E0FEFC;
 			}
+			.smallHeader th {
+				font-size: smaller;
+				background-color: #E0FEFC;
+				line-height: 4px;
+			}
 			.subhead td {
 				font-size: smaller;
 				background-color: #ECE0D6;
 				font-style: italic;
 				line-height: 4px;
 			}
-
 	</style>
 </head>
 <body>
@@ -70,16 +74,8 @@
 			Estimates are established based on card estimates, which are adjusted as indicated.<ul>
 				<li>We expect to learn to make better estimates of time required as we use this technique.</li>
 			</ul></li>
-			<li>YouTrack's 'fixed in build' and 'fix version' fields:<ul>
-				<li>associate bug issues with the build and the release version for which they were fixed</li>
-				<li>We associate the version number when the product is ready for 'release',
-					as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-					on which our <a href="Git.html#Branches_Releases_">syntactic versioning plan</a> is based.</li>
-				<li>'fix version' fields use Sprint IDs, eg. 18.2.1</li>
-				<li>actual version numbers are assigned on completion</li>
-			</ul></li>
-		<li>We do not do deadlines.</li>
-	</ul></li>
+		</ul></li>
+	<li>We do not do deadlines.</li>
 </ul>
 
 <h4 id="WIP_">Work in Progress</h4><ul>
@@ -272,7 +268,6 @@
 <h2>YouTrack</h2>
 <!-- @topicList "YouTrack" "YouTrack_" -->
 	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
-	<!-- @topicItem "Delete YouTrack Project" "#Delete_YouTrack_Project_" "0" "" -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "YouTrack: Add Features" "" -->
@@ -402,6 +397,7 @@
 					<tr><td>Normal</td><td>green1</td></tr>
 					<tr><td>Lower</td><td>gray1</td></tr>
 				</table></td></tr>
+			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td>-</td>
 			<td><table>
 				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
@@ -439,6 +435,7 @@
 						<tr><td>Obsolete</td><td>Red3</td><td></td></tr>
 						<tr><td>WillNotFix</td><td>Red3</td><td></td></tr>
 			</table></td></tr>
+			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
 					<td><table>
 					<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
@@ -454,7 +451,7 @@
 						<td>reclassify and rewrite as a Story, a Feature or Scenario of an existing Story, a Task, or an Analyze item;
 							then move to Story or Specify as indicated</td></tr>
 				<tr><td>Story</td>
-					<td>goal elememt for planning<br />serves as swimlane on a Development Board<br />
+					<td>goal element for planning<br />serves as swimlane on a Development Board<br />
 						<div class="mono">As a: I want: so that:</div><br />
 						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 							orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td>
@@ -489,25 +486,21 @@
 					</tr>
 					<tr><td>Done</td><td>,</td><td>,</td></tr>
 					</table></td></tr>
+			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Aspect</td><td>N/A</td><td>No Aspect</td><td>multiple enum</td><td>none</td><td>from per-project set of Aspects/Modules, ...</td><td>,</td></tr>
 			<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
 				<td>to simplify Saved Search for user's items:</td><td>when moved from Ready and if not already assigned, assign current user</td></tr>
 			<tr><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td> yy.q.n; q=quarter; n=# sprint started in q</td>
-				<td>use syntax-based versioning for standard-style version numbering</td></tr>
-			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td><td>fix for, fixed in, build, fix build</td><td>,</td><td>,</td></tr>
+				<td> for standard-style version numbering</td></tr>
+			<tr><td>Fix version</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
+				<td>fix for, fixed in, fix sprint, sprint</td><td>Sprint when planned/fixed</td>
+				<td>,</td></tr>
+			<tr><td>Release version</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td></td>
+				<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+					on which our <a href="Git.html#Branches_Releases_">syntactic versioning plan</a> is based</td></tr>
+			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
+				<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
 		</table></div>
-
-<!-- @marker "Delete YouTrack Project" -->
-<h3 id="Delete_YouTrack_Project_" class="dq">Delete YouTrack Project (is this still applicable?)</h3><ul>
-	<li>delete &lt;projectToDelete&gt; in Hub<ul>
-		<li>project's resources are moved to project Global</li>
-	</ul></li>
-	<li>create new dummy project in Hub</li>
-	<li>move resources associated with &lt;projectToDelete&gt; from Global project to dummy</li>
-	<li>from project page: select settings from 'YT' on dummy project; click 'remove' from &lt;projectToDelete&gt;</li>
-	<li>remove dummy project from Hub</li>
-	<li>Global resources: remove &lt;projectToDelete&gt; again if necessary</li>
-</ul>
 
 <h3>Add Features: YouTrack</h3><div class="indent">
 
@@ -762,7 +755,7 @@
 		<li>download &lt;toolName&gt;.zip archive to /Volumes/Servers/jb</li>
 		<li>extract to /Volumes/Servers/jb/&lt;toolName&gt;</li>
 		<li><a href="#CommandLineTools_">start</a> the service</li>
-		<li>select "Upgrade"; when asked for Upgrade Source, select &lt;toolName&gt;_&lt;oldBuildnum&gt;</li>
+		<li>select "Upgrade"; when asked for Upgrade Source, select &lt;toolName&gt;_&lt;oldBuildNum&gt;</li>
 		<li>if necessary, change location of backup directory to /Volumes/Mavericks-1/Backups</li>
 		<li>click "Upgrade" to complete</li>
 	</ul></li>
