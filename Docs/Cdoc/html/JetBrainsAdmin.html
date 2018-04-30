@@ -160,12 +160,13 @@
 	<li id="install_"><strong>Install</strong><ul>
 		<li>for Hub, YouTrack, UpSource, TeamCity :<ul>
 			<li>create folder &lt;productName&gt; at /Servers/jb</li>
-			<li>download installation package; move to its folder<ul>
+			<li>download installation package appropriate for our license; move to its folder<ul>
 				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
 					<li class="blurb">commercial license supports private GitHub projects</li>
 				</ul></li>
 			</ul></li>
 			<li>expand archive<ul>
+				<li>in Terminal setup, reset name of version-numbered tool</li>
 				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
 					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
@@ -192,13 +193,6 @@
 								so make change after each upgrade</li>
 						</ul></li>
 					<li><a href="#CommandLineTools_">Restart Tool</a></li>
-				</ul></li>
-				<li><strong>YouTrack</strong><ul>
-					<li>Global Settings<ul>
-						<li>verify license shown; if not, fetch and copy</li>
-						<li>Default Timezone: verify</li>
-						<li>Date Fields Format: 31 Dec 2000 23:59</li>
-					</ul></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
 					<li id="backupConfig_"><strong>Backup &amp; Server Settings</strong><ul>
@@ -236,30 +230,17 @@
 			</ul></li>
 		</ul></li>
 		<li>Auth Modules<ul>
-			<li class="dq">if needed, create JetBrains Account</li>
 			<li>Hub: Built-in Authorization<ul>
 				<li>test login combinations</li>
 			</ul></li>
 			<li>add Authorization Module GitHub<ul>
 				<li>Server URL: https://github.com; create module</li>
 				<li>copy what can be seen of the Callback URL</li>
-				<li class="dq">new browser window: click link to register an application with GitHub<ul>
-					<li>the callback link for GitHub, as available, has been incomplete; make it end in 'landing'</li>
-				</ul></li>
+				<li>clone browser window: click link to register an application with GitHub</li>
 				<li>generate client codes</li>
-				<li>copy back Client ID and Client Secret</li>
+				<li>copy back Client ID and Client Secret; save</li>
 				<li>Enable Module</li>
 			</ul></li>
-		</ul></li>
-	</ul></li>
-	<li><strong>Server Settings</strong><ul>
-		<li>System Settings<ul>
-			<li>session timeout 3 hours</li>
-			<li>remember me for 1 month</li>
-			<li>email verification: no</li>
-		</ul></li>
-		<li>Backup<ul>
-			<li><i>should already be configured</i>; see <a href="#backupConfig_">Backup Configuration</a></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -279,43 +260,26 @@
 <!-- @/topicList -->
 
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
-	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub Project Page: YouTrack Settings<ul>
-		<li>Hub as admin:<ul>
-			<li>Projects: New Project...<ul>
-				<li>set project name, ID</li>
-			</ul></li>
-			<li>Project: Fine-Tune Project Settings<ul>
-				<li>Team: add user(s) to project team</li>
-				<li>Fields: add custom fields</li>
+		<li><strong>YouTrack</strong><ul>
+			<li>Global Settings<ul>
+				<li>verify license shown; if not, fetch and copy</li>
+				<li>Default Timezone: verify</li>
+				<li>Date Fields Format: 31 Dec 2000 23:59</li>
 			</ul></li>
 		</ul></li>
-		<li>Add Hub Service: YouTrack with Scrum</li>
 		<li>Settings<ul>
-			<li>YouTrack Project-Related Settings<ul>
+			<li>Time Tracking<ul>
 				<li>length of day: 5h</li>
 				<li>work types: Plan Investigate Test Develop Document</li>
 			</ul></li>
-			<li>General<ul>
+			<li>Global<ul>
 				<li>set project 'from' email: &lt;ProjectName&gt; &lt;&lt;lead-email&gt;&gt;</li>
-			</ul></li>
-			<li>Team<ul>
-				<li>add me</li>
+				<li>check timezone</li>
 			</ul></li>
 			<li>Fields<ul>
 				<li>see what <a href="#Custom_Fields_">Custom Fields</a> we can add from here</li>
 			</ul></li>
-			<li>VCS Integrations: New VCS Integration<ul>
-				<li>connect to GitHub repo<ul>
-					<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
-					<li>click link to create Auth token<ul>
-						<li>if token of same name exists, delete existing token; return to TeamTools</li>
-						<li>create Auth token &lt;projectName&gt;</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
 			<li>Time Tracking: enable Time Tracking with default fields</li>
-			</ul></li>
 			<li>Workflow<ul>
 				<li>remove Scrum Workflow</li>
 			</ul></li>
@@ -368,7 +332,7 @@
 			<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
 			<li>Custom Fields:</li>
 		</ul></li></ul>
- 		<div class="info"><table id="Custom_Fields_">
+		<div class="info"><table id="Custom_Fields_">
 			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
 				<td><table>
@@ -466,8 +430,8 @@
 								<li>rejected, with a comment explaining that decision</li></ul></td>
 							<td>all tests pass; all Review items have been appropriately handled</td>
 					</tr>
-					<tr><td>Done</td><td>,</td><td>,</td></tr>
-					</table></td></tr>
+				<tr><td>Done</td><td>,</td><td>,</td></tr>
+			</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Aspect</td><td>N/A</td><td>No Aspect</td><td>multiple enum</td><td>none</td><td>from per-project set of Aspects/Modules, ...</td><td>,</td></tr>
 			<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
@@ -483,6 +447,34 @@
 			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
 				<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
 		</table></div>
+
+<h3>Create Project</h3><div class="indent"><ul>
+	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+	<li>Hub Project Page: YouTrack Settings<ul>
+		<li>Hub as admin:<ul>
+			<li>Projects: New Project...<ul>
+				<li>set project name, ID</li>
+			</ul></li>
+			<li>Project: Fine-Tune Project Settings<ul>
+				<li>Team: add user(s) to project team</li>
+				<li>Fields: add custom fields</li>
+			</ul></li>
+		</ul></li>
+		<li>Add Hub Service: YouTrack with Scrum</li>
+		<li>Team<ul>
+			<li>add me</li>
+		</ul></li>
+		<li>VCS Integrations: New VCS Integration<ul>
+			<li>connect to GitHub repo<ul>
+				<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
+				<li>click link to create Auth token<ul>
+					<li>if token of same name exists, delete existing token; return to TeamTools</li>
+					<li>create Auth token &lt;projectName&gt;</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul></div>
 
 <h3>Add Features: YouTrack</h3><div class="indent">
 
