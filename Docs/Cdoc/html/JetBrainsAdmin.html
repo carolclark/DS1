@@ -175,14 +175,6 @@
 				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
 			</ul></li>
 			<li>when tool window appears:<ul>
-				<li><strong>Hub</strong>, as admin<ul>
-					<li><strong>SMTP</strong><ul>
-						<li>host smtp.cox.net</li>
-						<li>from: "JBServer" &lt;my_email&gt;</li>
-						<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-						<li>save; enable notification; send test message</li>
-					</ul></li>
-				</ul></li>
 				<li><strong>TeamCity</strong> and <strong>YouTrack</strong><ul>
 					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
 					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
@@ -242,12 +234,16 @@
 				<li>Enable Module</li>
 			</ul></li>
 		</ul></li>
-		<li>Notifications<ul>
-			<li>SMTP<ul>
-				<li>Host: smtp.cox.net</li>
-				<li>from: "JBServer" &lt;&lt;admin email&gt;&gt;</li>
-				<li>enable; send test message</li>
-			</ul></li>
+	</ul>
+	<li><strong>Server Settings</strong><ul>
+		<li>review Licenses, System Settings, Backup</li>
+	</ul></li>
+	<li><strong>Notifications</strong><ul>
+		<li><strong>SMTP</strong><ul>
+			<li>host smtp.cox.net</li>
+			<li>from: "JBHub" &lt;my_email&gt;</li>
+			<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+			<li>save; enable notification; send test message</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -255,7 +251,10 @@
 <!-- @marker "YouTrack" -->
 <h2>YouTrack</h2>
 <!-- @topicList "YouTrack" "YouTrack_" -->
-	<!-- @topicItem "YouTrack:  Configuration" "#YouTrackConfiguration_" "0" "" -->
+	<!-- @topicItem "YouTrack: Configuration" "#YouTrackConfiguration_" "0" "" -->
+		<!-- @topicItem "Configure YouTrack" "#Configure_YouTrack_" "1" "" -->
+		<!-- @topicItem "Default Project Settings" "#DefaultProjectSettings_" "1" "" -->
+			<!-- @topicItem "Custom Fields" "#CustomFields_" "2" "" -->
 	<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
 	<!-- @topicItem "Custom Fields" "#CustomFields_" "0" "" -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
@@ -268,109 +267,30 @@
 		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 <!-- @/topicList -->
 
-<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3><ul>
-	<li><strong>YouTrack Settings: Project Global</strong><ul>
-		<li>verify license shown; if not, fetch and copy</li>
-		<li>Default Timezone: verify</li>
-		<li>Date Fields Format: 31 Dec 2000 23:59</li>
-	</ul></li>
-		<li>Settings<ul>
-			<li>Time Tracking<ul>
-				<li>length of day: 5h</li>
-				<li>work types: Plan Investigate Test Develop Document</li>
-			</ul></li>
-			<li>Global<ul>
-				<li>set project 'from' email: &lt;ProjectName&gt; &lt;&lt;lead-email&gt;&gt;</li>
-				<li>check timezone</li>
-			</ul></li>
-			<li>Fields<ul>
-				<li>see what <a href="#Custom_Fields_">Custom Fields</a> we can add from here</li>
-			</ul></li>
-			<li>Time Tracking: enable Time Tracking with default fields</li>
-			<li>Workflow<ul>
-				<li>remove Scrum Workflow</li>
-			</ul></li>
-			<li>Notification Templates: no changes yet</li>
-			<li>Team City integration: nothing yet</li>
-		</ul></li>
-		<li>Add project with template Scrum Board<ul>
-			<li>Configuration<ul>
-				<li>type: Scrum</li>
-				<li>project: &lt;repoName&gt;</li>
-				<li>can view and use board: &lt;repoName&gt; Team</li>
-				<li>can edit board settings: Owner</li>
-				<li>backlog: use existing</li>
-				<li>saved search query: project: DO #{Unassigned}</li>
-				<li>Swim lanes identified by: field of type Epic</li>
-				<li>Show swimlane for uncategorized cards at the bottom of the board</li>
-				<li>set Board Owner/Project Lead</li>
-			</ul></li>
-			<li>Boards<ul>
-				<li>backlog issue states: <ul>
-					<li><strong>Submitted</strong>: new item; <em>evaluate for development</em></li>
-					<li><strong>Open</strong>: accepted for development; <em>may expand, format as story</em></li>
-				</ul></li>
-				<li>Development Board "&lt;repoName&gt;"<ul>
-					<li>columns Ready  Done</li>
-				</ul></li>
-				<li>Roadmap Board "&lt;repoName&gt; Roadmap"<ul>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-		<li>Agile Boards Overview<ul>
-			<li>'Roadmap' board for planning; 'Development' board for development</li>
-			<li>Swimlanes<ul>
-				<li>named by Epic issues on Roadmap board, Story issues on Development board</li>
-				<li>those items are stationary until complete;
-					they generate issues of other types to get the work done</li>
-			</ul></li>
-			<li>BDD<ul>
-				<li>Our boards are built to support Behavior Driven Development</li>
-				<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-					orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
-				</em></li>
-			</ul></li>
-			<li>Review<ul>
-				<li>Since we cannot pass Review to another developer, we review our own work.
-					We do try to come at each review with a fresh perspective, including some delay after completion.</li>
-			</ul></li>
-		</ul></li>
-		<li>Edit Custom Fields<ul>
-			<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
-			<li>Custom Fields:</li>
-		</ul></li></ul>
+<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
 
-<!-- @marker "Create Project" -->
-<h3 id="CreateProject_">Create Project</h3><div class="indent"><ul>
-	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub Project Page: YouTrack Settings<ul>
-		<li>Hub as admin:<ul>
-			<li>Projects: New Project...<ul>
-				<li>set project name, ID</li>
-			</ul></li>
-			<li>Project: Fine-Tune Project Settings<ul>
-				<li>Team: add user(s) to project team</li>
-				<li>Fields: add custom fields</li>
-			</ul></li>
-		</ul></li>
-		<li>Add Hub Service: YouTrack with Scrum</li>
-		<li>Team<ul>
-			<li>add me</li>
-		</ul></li>
-		<li>VCS Integrations: New VCS Integration<ul>
-			<li>connect to GitHub repo<ul>
-				<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
-				<li>click link to create Auth token<ul>
-					<li>if token of same name exists, delete existing token; return to TeamTools</li>
-					<li>create Auth token &lt;projectName&gt;</li>
-				</ul></li>
+<!-- @marker "Configure YouTrack" -->
+<h4 id="Configure_YouTrack_">Configure YouTrack</h4>
+
+	<li><strong>Server Settings</strong><ul>
+		<li>Global Settings<ul>
+			<li>verify license</li>
+			<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
+			<li>verify Default Timezone</li>
+			<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
+			<li><strong>SMTP</strong><ul>
+				<li>host smtp.cox.net</li>
+				<li>from: "YouTrack &lt;my_email&gt;"</li>
+				<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+				<li>save; enable notification; send a verify test message</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
-</ul></div>
 
-<!-- @marker "Custom Fields" -->
-<h3 id="CustomFields_">Custom Fields</h3><div class="info">
+<!-- @marker "Default Project Settings" -->
+<h4 id="DefaultProjectSettings_">Default Project Settings</h4>
+
+<h5 id="CustomFields_">Custom Fields</h5><div class="info">
 	<table id="Custom_Fields_">
 		<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 		<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
@@ -486,6 +406,105 @@
 			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
 				<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
 		</table></div>
+
+	<li><strong>YouTrack Settings: Project Global</strong><ul>
+		<li>verify license shown; if not, fetch and copy</li>
+	</ul></li>
+		<li>Settings<ul>
+			<li>Time Tracking<ul>
+				<li>length of day: 5h</li>
+				<li>work types: Plan Investigate Test Develop Document</li>
+			</ul></li>
+			<li>Global<ul>
+				<li>set project 'from' email: &lt;ProjectName&gt; &lt;&lt;lead-email&gt;&gt;</li>
+				<li>check timezone</li>
+			</ul></li>
+			<li>Fields<ul>
+				<li>see what <a href="#Custom_Fields_">Custom Fields</a> we can add from here</li>
+			</ul></li>
+			<li>Time Tracking: enable Time Tracking with default fields</li>
+			<li>Workflow<ul>
+				<li>remove Scrum Workflow</li>
+			</ul></li>
+			<li>Notification Templates: no changes yet</li>
+			<li>Team City integration: nothing yet</li>
+		</ul></li>
+		<li>Add project with template Scrum Board<ul>
+			<li>Configuration<ul>
+				<li>type: Scrum</li>
+				<li>project: &lt;repoName&gt;</li>
+				<li>can view and use board: &lt;repoName&gt; Team</li>
+				<li>can edit board settings: Owner</li>
+				<li>backlog: use existing</li>
+				<li>saved search query: project: DO #{Unassigned}</li>
+				<li>Swim lanes identified by: field of type Epic</li>
+				<li>Show swimlane for uncategorized cards at the bottom of the board</li>
+				<li>set Board Owner/Project Lead</li>
+			</ul></li>
+			<li>Boards<ul>
+				<li>backlog issue states: <ul>
+					<li><strong>Submitted</strong>: new item; <em>evaluate for development</em></li>
+					<li><strong>Open</strong>: accepted for development; <em>may expand, format as story</em></li>
+				</ul></li>
+				<li>Development Board "&lt;repoName&gt;"<ul>
+					<li>columns Ready  Done</li>
+				</ul></li>
+				<li>Roadmap Board "&lt;repoName&gt; Roadmap"<ul>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>Agile Boards Overview<ul>
+			<li>'Roadmap' board for planning; 'Development' board for development</li>
+			<li>Swimlanes<ul>
+				<li>named by Epic issues on Roadmap board, Story issues on Development board</li>
+				<li>those items are stationary until complete;
+					they generate issues of other types to get the work done</li>
+			</ul></li>
+			<li>BDD<ul>
+				<li>Our boards are built to support Behavior Driven Development</li>
+				<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+					orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
+				</em></li>
+			</ul></li>
+			<li>Review<ul>
+				<li>Since we cannot pass Review to another developer, we review our own work.
+					We do try to come at each review with a fresh perspective, including some delay after completion.</li>
+			</ul></li>
+		</ul></li>
+		<li>Edit Custom Fields<ul>
+			<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
+			<li>Custom Fields:</li>
+		</ul></li></ul>
+
+<!-- @marker "Create Project" -->
+<h3 id="CreateProject_">Create Project</h3><div class="indent"><ul>
+	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+	<li>Hub Project Page: YouTrack Settings<ul>
+		<li>Hub as admin:<ul>
+			<li>Projects: New Project...<ul>
+				<li>set project name, ID</li>
+			</ul></li>
+			<li>Project: Fine-Tune Project Settings<ul>
+				<li>Team: add user(s) to project team</li>
+				<li>Fields: add custom fields</li>
+			</ul></li>
+		</ul></li>
+		<li>Add Hub Service: YouTrack with Scrum</li>
+		<li>Team<ul>
+			<li>add me</li>
+		</ul></li>
+		<li>VCS Integrations: New VCS Integration<ul>
+			<li>connect to GitHub repo<ul>
+				<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
+				<li>click link to create Auth token<ul>
+					<li>if token of same name exists, delete existing token; return to TeamTools</li>
+					<li>create Auth token &lt;projectName&gt;</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul></div>
+
 
 <h3>Add Features: YouTrack</h3><div class="indent">
 
