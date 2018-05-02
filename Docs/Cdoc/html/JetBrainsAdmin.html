@@ -156,7 +156,7 @@
 	<!-- @topicSep -->
 	<!-- @topicItem "Hub" "#Hub_" "0" "" -->
 	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
-		<!-- @topicItem "Custom Fields" "#Custom_Fields_" "1" "" -->
+		<!-- @topicItem "Custom Fields" "#CustomFields_" "1" "" -->
 	<!-- @topicItem "UpSource" "#UpSource_" "0" "" -->
 	<!-- @topicItem "TeamCity" "#TeamCity_" "0" "" -->
 <!-- @/topicList -->
@@ -223,7 +223,7 @@
 			<li>backup; copy backup file to tag 'initial_installed'</li>
 			<li>complete per-product configuration (<a href="#HubConfiguration_">Hub</a>,
 				<a href="#YouTrackConfiguration_">YouTrack</a>, <a href="#UpSourceConfiguration_">UpSource</a>,
-				<a href="#TeamCityConfiguration_">TeamCity</a>)</li>
+				<a href="#TeamCityConfiguration_">TeamCity</a></li>
 			<li>backup; copy backup to tag 'initial_configured'</li>
 			<li>leave product's window open</li>
 		</ul></li>
@@ -358,17 +358,17 @@
 
 <!-- @marker "Configure Project" -->
 <h3 id="ConfigureProject_">Configure Project</h3><ul>
-	<li>Time Tracking: enable Time Tracking with default fields<ul>
-		<li>how?</li>
-	</ul></li>
 	<li>Workflow<ul>
 		<li>remove Scrum Workflow</li>
+	</ul></li>
+	<li>create tag 'Wait' (orange1)</li>
+	<li>Time Tracking: enable Time Tracking with default fields<ul>
+		<li>how?</li>
 	</ul></li>
 </ul>
 
 <!-- @marker "Add Agile Boards" -->
 <h3 id="AddAgileBoards_">Add Agile Boards</h3><ul>
-	<li>create tag 'Wait' (orange1)</li>
 	<li>Add project with template Scrum Board<ul>
 		<li>Configuration<ul>
 			<li>type: Scrum</li>
@@ -376,11 +376,13 @@
 			<li>can view and use board: &lt;repoName&gt; Team</li>
 			<li>can edit board settings: Owner</li>
 			<li>backlog: use existing</li>
-			<li>saved search query: project: DO #{Unassigned}</li>
+			<li>saved search query: project: &lt;PR&gt; #{Unresolved}</li>
 			<li>Swim lanes identified by: field of type Epic</li>
 			<li>Show swimlane for uncategorized cards at the bottom of the board</li>
 			<li>set Board Owner/Project Lead</li>
 		</ul></li>
+		<li>set board columns; see <a href="#CustomFields_">Custom Fields</a></li>
+		<li>create Sprint</li>
 	</ul></li>
 </ul>
 
@@ -426,8 +428,8 @@
 <!-- @marker "YouTrack Project Settings" -->
 <h3 id="YouTrackProjectSettings_">YouTrack Project Settings</h3>
 
-<h5 id="CustomFields_">Custom Fields</h5><div class="info">
-	<p>These settings have been set by admin to be the default settings with which a new project is created.</p>
+<h5>Custom Fields</h5><div class="info">
+	<p><a href="#CustomFields_">Custom Fields</a> settings have been set by admin to be the default settings with which a new project is created.</p>
 <!-- @marker "Issue Link Types" -->
 <h5 id="IssueLinkTypes_">Issue Link Types</h5><div class="info">
 	<table id="IssueLinkTypes">
@@ -455,7 +457,7 @@
 <h5 id="NotificationTemplates_">Notification Templates</h5>
 <p>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</p>
 
-	<table id="Custom_Fields_">
+	<table id="CustomFields_">
 		<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 		<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
 			<td><table>
