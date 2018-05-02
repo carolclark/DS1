@@ -76,6 +76,24 @@
 			</ul></li>
 		</ul></li>
 	<li>We do not do deadlines.</li>
+	<li>Our Agile Boards<ul>
+		<li>'Roadmap' board for planning; 'Development' board for development</li>
+		<li>Swimlanes<ul>
+			<li>named by Epic issues on Roadmap board, Story issues on Development board</li>
+			<li>those items are stationary until complete;
+				they generate issues of other types to get the work done</li>
+		</ul></li>
+		<li>BDD<ul>
+			<li>Our boards are built to support Behavior Driven Development</li>
+			<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+				orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
+			</em></li>
+		</ul></li>
+		<li>Review<ul>
+			<li>Since we cannot pass Review to another developer, we review our own work.
+				We do try to come at each review with a fresh perspective, including some delay after completion.</li>
+		</ul></li>
+	</ul></li>
 </ul>
 
 <h4 id="WIP_">Work in Progress</h4><ul>
@@ -83,6 +101,11 @@
 	<li>Tasks are broken down into smaller pieces as needed to conform to this policy.</li>
 	<li>For larger tasks as indicated, a required-dependency task is used to gather information and estimate.</li>
 </ul>
+
+<h4>DevOps: Automating Processes</h4>
+<p>A <a class="glosslink" href="Glossary_DevOps.html#def_process">Process</a> is a goal,
+	with a sequence of steps intended to accomplish that goal.
+	As processes and systems evolve, a Process may move gradually from manual to automated.</p>
 
 <h4>JetBrains Tools</h4>
 	<p>available JetBrains IDE's for development languages:</p><ul>
@@ -122,6 +145,7 @@
 			<li>WebStorm for web development</li>
 		</ul>
 		<p>We have an All-Products license for JetBrains IDEs</p>
+
 		<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
 
 <!-- @marker "Team Tools" -->
@@ -189,7 +213,7 @@
 				<li><strong>All</strong><ul>
 					<li id="backupConfig_"><strong>Backup &amp; Server Settings</strong><ul>
 						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-						<li>filename prefix: PR-, where PR is product abbreviation</li>
+						<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation</li>
 						<li>tar.gz format</li>
 						<li>every day at 2 AM</li>
 						<li>rotation 10</li>
@@ -234,7 +258,7 @@
 				<li>Enable Module</li>
 			</ul></li>
 		</ul></li>
-	</ul>
+	</ul></li>
 	<li><strong>Server Settings</strong><ul>
 		<li>review Licenses, System Settings, Backup</li>
 	</ul></li>
@@ -253,16 +277,21 @@
 <!-- @topicList "YouTrack" "YouTrack_" -->
 	<!-- @topicItem "YouTrack: Configuration" "#YouTrackConfiguration_" "0" "" -->
 		<!-- @topicItem "Configure YouTrack" "#Configure_YouTrack_" "1" "" -->
-		<!-- @topicItem "Default Project Settings" "#DefaultProjectSettings_" "1" "" -->
+		<!-- @topicItem "Customize Default Project Settings" "#ProjectDefaults_" "1" "used for new project" -->
 			<!-- @topicItem "Custom Fields" "#CustomFields_" "2" "" -->
-	<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
-	<!-- @topicItem "Custom Fields" "#CustomFields_" "0" "" -->
+			<!-- @topicItem "Issue Link Types" "#IssueLinkTypes_" "2" "" -->
+			<!-- @topicItem "Notification Templates" "#NotificationTemplates_" "2" "" -->
+			<!-- @topicItem "Time Tracking" "#TimeTracking_" "2" "" -->
+			<!-- @topicItem "Workflows" "#Workflows_" "2" "" -->
+		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
+		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
+		<!-- @topicItem "Add Agile Boards" "#AddAgileBoards_" "1" "" -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "YouTrack: Add Features" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
 		<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
-		<!-- @topicItem "Time Tracking" "#TimeTracking_" "0" "" -->
+		<!-- @topicItem "Time Tracking Extension" "#TimeTrackingExt_" "0" "" -->
 		<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
 		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 <!-- @/topicList -->
@@ -270,25 +299,55 @@
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
 
 <!-- @marker "Configure YouTrack" -->
-<h4 id="Configure_YouTrack_">Configure YouTrack</h4>
+<h4 id="Configure_YouTrack_">Configure YouTrack</h4><ul>
 
 	<li><strong>Server Settings</strong><ul>
 		<li>Global Settings<ul>
 			<li>verify license</li>
 			<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
-			<li>verify Default Timezone</li>
+			<li>verify Default Timezone: Chicago</li>
 			<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
-			<li><strong>SMTP</strong><ul>
-				<li>host smtp.cox.net</li>
-				<li>from: "YouTrack &lt;my_email&gt;"</li>
-				<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-				<li>save; enable notification; send a verify test message</li>
+			<li>Notifications<ul>
+				<li>SMTP<ul>
+					<li>host smtp.cox.net</li>
+					<li>from: "YouTrack &lt;my_email&gt;"</li>
+					<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+					<li>save; enable notification; send a verify test message</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
+</ul>
 
-<!-- @marker "Default Project Settings" -->
-<h4 id="DefaultProjectSettings_">Default Project Settings</h4>
+<!-- @marker "Customize Project Settings" -->
+<h4 id="ProjectDefaults_">Customize Default Project Settings</h4>
+
+<!-- @marker "Issue Link Types" -->
+<h5 id="IssueLinkTypes_">Issue Link Types</h5><div class="info">
+	<table id="IssueLinkTypes">
+		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th></tr>
+		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td></tr>
+		<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Undirected</td></tr>
+		<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
+		<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
+		<tr><td>Document</td><td>docs</td><td>documents</td><td>Aggregation (read only)</td></tr>
+	</table>
+</div>
+
+<!-- @marker "Time Tracking" -->
+<h5 id="TimeTracking_">Time Tracking</h5><ul>
+	<li>length of day: 5h</li>
+	<li>work types: Manage Investigate Develop Test Review Document</li>
+</ul>
+
+<!-- @marker "Workflows" -->
+<h5 id="Workflows_">Workflows</h5><ul>
+	<li>for now, just remove Scrum Workflow</li>
+</ul>
+
+<!-- @marker "Notification Templates" -->
+<h5 id="NotificationTemplates_">Notification Templates</h5>
+<p>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</p>
 
 <h5 id="CustomFields_">Custom Fields</h5><div class="info">
 	<table id="Custom_Fields_">
@@ -402,109 +461,68 @@
 				<td>,</td></tr>
 			<tr><td>Release version</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td></td>
 				<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-					on which our <a href="Git.html#Branches_Releases_">syntactic versioning plan</a> is based</td></tr>
 			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
 				<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
 		</table></div>
 
-	<li><strong>YouTrack Settings: Project Global</strong><ul>
-		<li>verify license shown; if not, fetch and copy</li>
-	</ul></li>
-		<li>Settings<ul>
-			<li>Time Tracking<ul>
-				<li>length of day: 5h</li>
-				<li>work types: Plan Investigate Test Develop Document</li>
-			</ul></li>
-			<li>Global<ul>
-				<li>set project 'from' email: &lt;ProjectName&gt; &lt;&lt;lead-email&gt;&gt;</li>
-				<li>check timezone</li>
-			</ul></li>
-			<li>Fields<ul>
-				<li>see what <a href="#Custom_Fields_">Custom Fields</a> we can add from here</li>
-			</ul></li>
-			<li>Time Tracking: enable Time Tracking with default fields</li>
-			<li>Workflow<ul>
-				<li>remove Scrum Workflow</li>
-			</ul></li>
-			<li>Notification Templates: no changes yet</li>
-			<li>Team City integration: nothing yet</li>
-		</ul></li>
-		<li>Add project with template Scrum Board<ul>
-			<li>Configuration<ul>
-				<li>type: Scrum</li>
-				<li>project: &lt;repoName&gt;</li>
-				<li>can view and use board: &lt;repoName&gt; Team</li>
-				<li>can edit board settings: Owner</li>
-				<li>backlog: use existing</li>
-				<li>saved search query: project: DO #{Unassigned}</li>
-				<li>Swim lanes identified by: field of type Epic</li>
-				<li>Show swimlane for uncategorized cards at the bottom of the board</li>
-				<li>set Board Owner/Project Lead</li>
-			</ul></li>
-			<li>Boards<ul>
-				<li>backlog issue states: <ul>
-					<li><strong>Submitted</strong>: new item; <em>evaluate for development</em></li>
-					<li><strong>Open</strong>: accepted for development; <em>may expand, format as story</em></li>
-				</ul></li>
-				<li>Development Board "&lt;repoName&gt;"<ul>
-					<li>columns Ready  Done</li>
-				</ul></li>
-				<li>Roadmap Board "&lt;repoName&gt; Roadmap"<ul>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-		<li>Agile Boards Overview<ul>
-			<li>'Roadmap' board for planning; 'Development' board for development</li>
-			<li>Swimlanes<ul>
-				<li>named by Epic issues on Roadmap board, Story issues on Development board</li>
-				<li>those items are stationary until complete;
-					they generate issues of other types to get the work done</li>
-			</ul></li>
-			<li>BDD<ul>
-				<li>Our boards are built to support Behavior Driven Development</li>
-				<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-					orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
-				</em></li>
-			</ul></li>
-			<li>Review<ul>
-				<li>Since we cannot pass Review to another developer, we review our own work.
-					We do try to come at each review with a fresh perspective, including some delay after completion.</li>
-			</ul></li>
-		</ul></li>
-		<li>Edit Custom Fields<ul>
-			<li class="blurb">edit all we can in Hub first; adjust instructions as indicated</li>
-			<li>Custom Fields:</li>
-		</ul></li></ul>
-
-<!-- @marker "Create Project" -->
+ <!-- @marker "Create Project" -->
 <h3 id="CreateProject_">Create Project</h3><div class="indent"><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>Hub Project Page: YouTrack Settings<ul>
-		<li>Hub as admin:<ul>
+		<li>Hub as SystemAdmin:<ul>
 			<li>Projects: New Project...<ul>
 				<li>set project name, ID</li>
 			</ul></li>
 			<li>Project: Fine-Tune Project Settings<ul>
-				<li>Team: add user(s) to project team</li>
-				<li>Fields: add custom fields</li>
+				<li>add user(s) to project team</li>
+			</ul></li>
+			<li>Add Hub Service: YouTrack with Scrum</li>
+			<li>ProjectAdmin<ul>
+				<li>Team: add intended project owner</li>
+				<li>grant ProjectAdmin role to intended project owner</li>
 			</ul></li>
 		</ul></li>
-		<li>Add Hub Service: YouTrack with Scrum</li>
-		<li>Team<ul>
-			<li>add me</li>
-		</ul></li>
-		<li>VCS Integrations: New VCS Integration<ul>
-			<li>connect to GitHub repo<ul>
-				<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
-				<li>click link to create Auth token<ul>
-					<li>if token of same name exists, delete existing token; return to TeamTools</li>
-					<li>create Auth token &lt;projectName&gt;</li>
+		<li>Hub as ProjectAdmin:<ul>
+			<li>VCS Integrations: New VCS Integration<ul>
+				<li>connect to GitHub repo<ul>
+					<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
+					<li>click link to create Auth token<ul>
+						<li>if token of same name exists, delete existing token; return to TeamTools</li>
+						<li>create Auth token &lt;projectName&gt;</li>
+					</ul></li>
 				</ul></li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul></div>
 
+<!-- @marker "Configure Project" -->
+<h3 id="ConfigureProject_">Configure Project</h3><ul>
+	<li>Time Tracking: enable Time Tracking with default fields<ul>
+		<li>how?</li>
+	</ul></li>
+	<li>Workflow<ul>
+		<li>remove Scrum Workflow</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add Agile Boards" -->
+<h3 id="AddAgileBoards_">Add Agile Boards</h3><ul>
+	<li>create tag 'Wait' (orange1)</li>
+	<li>Add project with template Scrum Board<ul>
+		<li>Configuration<ul>
+			<li>~: Scrum</li>
+			<li>project: &lt;repoName&gt;</li>
+			<li>can view and use board: &lt;repoName&gt; Team</li>
+			<li>can edit board settings: Owner</li>
+			<li>backlog: use existing</li>
+			<li>saved search query: project: DO #{Unassigned}</li>
+			<li>Swim lanes identified by: field of type Epic</li>
+			<li>Show swimlane for uncategorized cards at the bottom of the board</li>
+			<li>set Board Owner/Project Lead</li>
+		</ul></li>
+	</ul></li>
+</ul>
 
 <h3>Add Features: YouTrack</h3><div class="indent">
 
@@ -525,8 +543,8 @@
 			Issue Navigation</a></li>
 		</ul>
 
-	<!-- @marker "Time Tracking" -->
-	<h5 id="TimeTracking_">Time Tracking</h5><ul>
+	<!-- @marker "Time Tracking Extension" -->
+	<h5 id="TimeTrackingExt_">Time Tracking Extension</h5><ul>
 		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
 				<li>see Issue Navigation</li>
 			</ul></li>
@@ -551,8 +569,6 @@
 	<li><a href="https://blog.jetbrains.com/youtrack/2014/03/multi-level-agile-boards-or-how-we-support-epics/">
 		Multi-Level Agile Boards or How We Support Epics</a></li>
 </ul>
-
-
 
 <!-- @marker "UpSource" -->
 <h2>UpSource</h2>
