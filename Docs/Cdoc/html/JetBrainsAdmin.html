@@ -324,38 +324,8 @@
 <!-- @marker "Customize Project Settings" -->
 <h4 id="ProjectDefaults_">Customize Default Project Settings</h4>
 
-<!-- @marker "YouTrack Project Settings" -->
-<h3 id="YouTrackProjectSettings_">YouTrack Project Settings</h3>
-
 <h5>Custom Fields</h5><div class="info">
 	<p><a href="#CustomFields_">Custom Fields</a> settings have been set by admin to be the default settings with which a new project is created.</p>
-	<!-- @marker "Issue Link Types" -->
-	<h5 id="IssueLinkTypes_">Issue Link Types</h5><div class="info">
-	<table id="IssueLinkTypes">
-		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th></tr>
-		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td></tr>
-		<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Undirected</td></tr>
-		<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
-		<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
-		<tr><td>Document</td><td>docs</td><td>documents</td><td>Aggregation (read only)</td></tr>
-	</table>
-</div>
-
-	<!-- @marker "Time Tracking" -->
-	<h5 id="TimeTracking_">Time Tracking</h5><ul>
-	<li>length of day: 5h</li>
-	<li>work types: Manage Investigate Develop Test Review Document</li>
-</ul>
-
-	<!-- @marker "Workflows" -->
-	<h5 id="Workflows_">Workflows</h5><ul>
-	<li>for now, just remove Scrum Workflow</li>
-</ul>
-
-	<!-- @marker "Notification Templates" -->
-	<h5 id="NotificationTemplates_">Notification Templates</h5>
-	<p>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</p>
-
 	<table id="CustomFields_">
 		<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 		<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
@@ -502,6 +472,32 @@
 		</ul></li>
 	</ul></li>
 </ul></div>
+	<!-- @marker "Issue Link Types" -->
+	<h5 id="IssueLinkTypes_">Issue Link Types</h5><div class="info">
+	<table id="IssueLinkTypes">
+		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th></tr>
+		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td></tr>
+		<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Undirected</td></tr>
+		<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
+		<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
+		<tr><td>Document</td><td>docs</td><td>documents</td><td>Aggregation (read only)</td></tr>
+	</table>
+</div>
+
+	<!-- @marker "Time Tracking" -->
+	<h5 id="TimeTracking_">Time Tracking</h5><ul>
+	<li>length of day: 5h</li>
+	<li>work types: Manage Investigate Develop Test Review Document</li>
+</ul>
+
+	<!-- @marker "Workflows" -->
+	<h5 id="Workflows_">Workflows</h5><ul>
+	<li>for now, just remove Scrum Workflow</li>
+</ul>
+
+	<!-- @marker "Notification Templates" -->
+	<h5 id="NotificationTemplates_">Notification Templates</h5>
+	<p>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</p>
 
 <!-- @marker "Configure Project" -->
 <h3 id="ConfigureProject_">Configure Project</h3><ul>
