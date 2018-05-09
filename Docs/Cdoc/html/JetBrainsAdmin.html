@@ -228,7 +228,6 @@
 				<a href="#YouTrackConfiguration_">YouTrack</a>, <a href="#UpSourceConfiguration_">UpSource</a>,
 				<a href="#TeamCityConfiguration_">TeamCity</a></li>
 			<li>backup; copy backup to tag 'initial_configured'</li>
-			<li>leave product's window open</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -266,11 +265,16 @@
 		<li>review Licenses, System Settings, Backup</li>
 	</ul></li>
 	<li><strong>Notifications</strong><ul>
-		<li><strong>SMTP</strong><ul>
-			<li>host smtp.cox.net</li>
-			<li>from: "JBHub" &lt;my_email&gt;</li>
-			<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-			<li>save; enable notification; send test message</li>
+		<li><strong>email</strong><ul>
+			<li>email notifications<ul>
+				<li>enable</li>
+			</ul></li>
+			<li>SMTP<ul>
+				<li>host smtp.cox.net</li>
+				<li>from: "JBHub" &lt;my_email&gt;</li>
+				<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+				<li>save; send test message</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -331,9 +335,9 @@
 					<tr><th>Priority Name</th> <th>Color</th></tr>
 					<tr><td>Show-Stopper</td><td>orange4</td></tr>
 					<tr><td>Critical</td><td>pink2</td></tr>
-					<tr><td>Higher</td><td>yellow1</td></tr>
+					<tr><td>Major</td><td>yellow1</td></tr>
 					<tr><td>Normal</td><td>green1</td></tr>
-					<tr><td>Lower</td><td>gray1</td></tr>
+					<tr><td>Minor</td><td>gray1</td></tr>
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td>-</td>
@@ -348,23 +352,24 @@
 					<tr><td>Feature</td><td>Blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
 						Stories are a planning tool, while Features are about implementation organization.</td>
 						<td rowspan="5">These issue types share columns on the Agile Board.</td></tr>
-					<tr><td>Scenario</td><td>Blue5</td><td>A BDD Scenario associated with a Feature.</td></tr>
-					<tr><td>Analysis</td><td>Aqua3</td><td>An issue for evaluation, design, recommendation, ...</td></tr>
-					<tr><td>Task</td><td>Green3</td><td>A task not in the BDD structure.</td></tr>
-					<tr><td>Documentation</td><td>Brown2</td><td>Documentation task. May be related to another issue.</td></tr>
+					<tr><td>Scenario</td><td>blue5</td><td>A BDD Scenario associated with a Feature.</td></tr>
+					<tr><td>Task</td><td>green3</td><td>A task not in the BDD structure.</td></tr>
+					<tr><td>Analysis</td><td>aqua3</td><td>An issue for evaluation, design, recommendation, ...</td></tr>
+					<tr><td>Documentation</td><td>brown3</td><td>Documentation task.<br />
+						Not for documentation specific to an issue; documentation is part of that issue..</td></tr>
 					<tr class="subhead"><td colspan="4">Time Management</td> </tr>
 					<tr><td>Estimation</td><td>orange1</td><td>time estimation; units w d h m</td><td rowspan="2">fields added when Time Tracking is enabled</td></tr>
 					<tr><td>Spent time</td><td>orange1</td><td>actual time spent, from work items reported</td></tr>
 					<tr class="subhead"><td colspan="4">Enumeration Values</td></tr>
-					<tr><td>Epics_</td><td>Orange5</td><td>,</td>
-						<td rowspan="2">per-project sets of available values for enumerations Epic/Story</td></tr>
-					<tr><td>Stories_</td><td>Orange3</td><td>,</td></tr>
-					<tr class="subhead"><td colspan="4">Classification for Confirmed Bugs</td></tr>
 					<tr><td>Bug</td><td>Red3</td><td></td><td rowspan="5"></td></tr>
-					<tr><td>Cosmetic</td><td>Red3</td><td></td></tr>
-					<tr><td>Exception</td><td>Red3</td><td></td></tr>
-					<tr><td>Usability</td><td>Red3</td><td></td></tr>
-					<tr><td>Performance</td><td>Red3</td><td></td></tr>
+					<tr><td>Cosmetic</td><td>red3</td><td></td></tr>
+					<tr><td>Exception</td><td>red3</td><td></td></tr>
+					<tr><td>Usability</td><td>red3</td><td></td></tr>
+					<tr><td>Performance</td><td>red3</td><td></td></tr>
+					<tr><td>Epics_</td><td>orange5</td><td>,</td>
+						<td rowspan="2">per-project sets of available values for enumerations Epic/Story</td></tr>
+					<tr><td>Stories_</td><td>orange3</td><td>,</td></tr>
+				<tr class="subhead"><td colspan="4">Classification for Confirmed Bugs</td></tr>
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
@@ -396,7 +401,7 @@
 					<tr><td>Task</td><td>a development task that does not fit within BDD</td><td>,</td></tr>
 					<tr><td>Analyze</td><td>study an issue to plan and/or recommend a course of action</td><td>,</td></tr>
 					<tr class="subhead"><td colspan="3">Shared Column</td></tr>
-					<tr><td>Ready</td><td>ready to be pulled for development</td><td>estimation required to enter this state</td></tr>
+					<tr><td>Pull</td><td>ready to be pulled for development</td><td>estimation required to enter this state</td></tr>
 					<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
 					<tr><td>Develop</td><td>develop as specified</td><td>,</td></tr>
 					<tr><td>Review</td><td>Pause for a couple of days so that we can come at this work a fresh perspective<br />
@@ -414,7 +419,7 @@
 							<li>OR</li>
 							<li>rejected, with a comment explaining that decision</li></ul>
 						</td></tr>
-					<tr><td>Verify</td>
+					<tr><td>Ready</td>
 						<td>Verify that all tests pass, and all issues generated by Review have been appropriately handled</td>
 						<td>if verification is successful, move to state Verified<br />
 							otherwise, verify that any continuation state(s) are appropriately established
@@ -431,15 +436,14 @@
 						<tr><td>WillNotFix</td><td></td></tr>
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-			<tr><td>Aspect</td><td>N/A</td><td>No Aspect</td><td>multiple enum</td><td>none</td><td>from per-project set of Aspects/Modules, ...</td><td>,</td></tr>
 			<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
 				<td>to simplify Saved Search for user's items:</td><td>when moved from Ready and if not already assigned, assign current user</td></tr>
 			<tr><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td> yy.q.n; q=quarter; n=# sprint started in q</td>
-				<td> for standard-style version numbering</td></tr>
-			<tr><td>Fix version</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
+				<td>for standard-style version numbering; added when Sprints are enabled</td></tr>
+			<tr><td>Fix versions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
 				<td>fix for, fixed in, fix sprint, sprint</td><td>Sprint when planned/fixed</td>
 				<td>,</td></tr>
-			<tr><td>Release version</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td></td>
+			<tr><td>Release versions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td></td>
 				<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 					on which our versioning plan is based</td></tr>
 			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
@@ -451,15 +455,18 @@
 	<h5 id="IssueLinkTypes_" class="indent">Issue Link Types</h5><div class="info">
 		<table id="IssueLinkTypes">
 			<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
-			<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td></td></tr>
-			<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Undirected</td><td></td></tr>
-			<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td><td></td></tr>
-			<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td><td></td></tr>
-			<tr><td>Document</td><td>docs</td><td>documents</td><td>Aggregation (read only)</td><td>
-				intended for use with a <a href="Glossary_DevOps.html" id="glosslink">Process</a>
-				that would prevent full Issue from being committed until its Documentation is complete
-			</td></tr>
+			<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
+			<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Undirected</td></tr>
+			<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
+			<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
 		</table>
+	</div>
+
+	<!-- @marker "Notification Templates" -->
+	<div  class="indent">
+		<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
+			<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
+		</ul>
 	</div>
 
 	<!-- @marker "Time Tracking" -->
@@ -473,46 +480,22 @@
 	<!-- @marker "Workflows" -->
 	<div  class="indent">
 		<h5 id="Workflows_">Workflows</h5><ul>
-			<li>for now, just remove Scrum Workflow</li>
-		</ul>
-	</div>
-
-	<!-- @marker "Notification Templates" -->
-	<div  class="indent">
-		<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
-			<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
+			<li>nothing yet</li>
 		</ul>
 	</div>
 
 <!-- @marker "Create Project" -->
 <h4 id="CreateProject_">Create Project</h4><div class="indent"><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub Project Page: YouTrack Settings<ul>
-		<li>Hub as SystemAdmin:<ul>
-			<li>Project Page<ul>
-				<li>New Project...<ul>
-					<li>set project name, ID</li>
-					<li>Fine-Tune Project Settings<ul>
-						<li>add user(s) to project team</li>
-					</ul></li>
+	<li>Hub as SystemAdmin:<ul>
+		<li>Hub Project Page: create new YouTrack project</li>
+		<li>Project Page<ul>
+			<li>New Project...<ul>
+				<li>set project name, ID</li>
+				<li>Team<ul>
+					<li>add user(s) to project team</li>
+					<li>grant ProjectAdmin role to intended project owner</li>
 				</ul></li>
-			</ul></li>
-			<li>Add Hub Service: YouTrack with Scrum</li>
-			<li>ProjectAdmin<ul>
-				<li>Team: add intended project owner</li>
-				<li>grant ProjectAdmin role to intended project owner</li>
-			</ul></li>
-		</ul></li>
-		<li>Hub as ProjectAdmin:<ul>
-			<li>VCS Integrations: New VCS Integration<ul>
-				<li>connect to GitHub repo<ul>
-					<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
-					<li>click link to create Auth token<ul>
-						<li>if token of same name exists, delete existing token; return to TeamTools</li>
-						<li>create Auth token &lt;projectName&gt;</li>
-					</ul></li>
-				</ul></li>
-				<li>set SystemAdmin to intended project owner</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
@@ -521,12 +504,32 @@
 <!-- @marker "Configure Project" -->
 <h4 id="ConfigureProject_">Configure Project</h4><ul>
 	<li>as ProjectAdmin:<ul>
-		<li>Workflow<ul>
-			<li>remove Scrum Workflow</li>
+		<li>Hub<ul>
+			<li>Add YouTrack Service: Admin &gt; Services &gt; YouTrack with Scrum</li>
+			<li>VCS Integrations: New VCS Integration<ul>
+				<li>connect to GitHub repo<ul>
+					<li>&lt;repoName&gt;: &lt;projectName&gt;</li>
+					<li>click link to create Auth token<ul>
+						<li>if token of same name exists, delete existing token; return to TeamTools</li>
+						<li>create Auth token &lt;projectName&gt;</li>
+					</ul></li>
+				</ul></li>
+			</ul></li>
+			<li>Time Tracking: enable Time Tracking with default fields</li>
 		</ul></li>
-		<li>create tag 'Wait' (orange1)</li>
-		<li>Time Tracking: enable Time Tracking with default fields<ul>
-			<li>how?</li>
+		<li>Hub<ul>
+			<li>create YouTrack project with template Scrum Board<ul>
+				<li>type: Scrum</li>
+				<li>project: &lt;repoName&gt;</li>
+				<li>can view and use board: &lt;repoName&gt; Team</li>
+				<li>can edit board settings: Owner</li>
+			</ul></li>
+		</ul></li>
+		<li>YouTrack<ul>
+			<li>Workflow<ul>
+				<li>remove Scrum_2 Workflow</li>
+			</ul></li>
+			<li>Issues page: create tag 'Wait' (orange1)</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -534,21 +537,14 @@
 <!-- @marker "Add Agile Boards" -->
 <h4 id="AddAgileBoards_">Add Agile Boards</h4><ul>
 	<li>as ProjectAdmin:<ul>
-		<li>Add project with template Scrum Board<ul>
-			<li>Configuration<ul>
-				<li>type: Scrum</li>
-				<li>project: &lt;repoName&gt;</li>
-				<li>can view and use board: &lt;repoName&gt; Team</li>
-				<li>can edit board settings: Owner</li>
-				<li>backlog: use existing</li>
-				<li>saved search query: project: &lt;PR&gt; #{Unresolved}</li>
-				<li>Swim lanes identified by: field of type Epic</li>
-				<li>Show swimlane for uncategorized cards at the bottom of the board</li>
-				<li>set Board Owner/Project Lead</li>
-			</ul></li>
+		<li>YouTrack: Configuration<ul>
+			<li>saved search query: project: &lt;PR&gt; #{Unresolved}</li>
+			<li>Swim lanes identified by: field of type Epic</li>
+			<li>show Swimlane for uncategorized cards at the bottom of the board</li>
+			<li>set Board Owner/Project Lead</li>
 			<li>set board columns; see <a href="#CustomFields_">Custom Fields</a></li>
-			<li>create Sprint</li>
 		</ul></li>
+		<li>create Sprint</li>
 	</ul></li>
 </ul>
 
