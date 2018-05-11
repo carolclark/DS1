@@ -273,8 +273,8 @@
 			<li>SMTP<ul>
 				<li>host smtp.cox.net</li>
 				<li>from: "JBHub" &lt;my_email&gt;</li>
-				<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-				<li>save; send test message</li>
+				<li>Security and Authorization: username &lt;my_email&gt;; [password cox?]</li>
+				<li>save; enable; send test message</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
@@ -306,7 +306,8 @@
 
 	<li><strong>Server Settings</strong><ul>
 		<li>Global Settings<ul>
-			<li>verify license</li>
+			<li>verify license:
+				up to 10 users; no restriction for private repos; license forever; free updates this century </li>
 			<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
 			<li>verify Default Timezone: Chicago</li>
 			<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
@@ -344,12 +345,12 @@
 			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td>-</td>
 				<td><table>
 					<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
-					<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
+				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
 					<tr><td>Epic</td><td>Orange5</td><td>'Epic' represents a goal containing several User Stories.</td>
 						<td rowspan="2">Neither Epics nor Stories move through States until ready for review.<br />
 							Instead, they use subissues to accomplish their work.</td></tr>
 					<tr><td>Story</td><td>Orange3</td><td>'Story' represents a user story.</td></tr>
-					<tr class="subhead"><td colspan="4">Work Issues</td></tr>
+				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
 					<tr><td>Feature</td><td>Blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
 						Stories are a planning tool, while Features are about implementation organization.</td>
 						<td rowspan="5">These issue types share columns on the Agile Board.</td></tr>
@@ -358,19 +359,19 @@
 					<tr><td>Analysis</td><td>aqua3</td><td>An issue for evaluation, design, recommendation, ...</td></tr>
 					<tr><td>Document</td><td>brown3</td><td>Documentation task<br />
 						Not for documentation specific to an issue; documentation is part of that issue..</td></tr>
-					<tr class="subhead"><td colspan="4">Time Management</td> </tr>
+				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
 					<tr><td>Estimation</td><td>orange1</td><td>time estimation; units w d h m</td><td rowspan="2">fields added when Time Tracking is enabled</td></tr>
 					<tr><td>Spent time</td><td>orange1</td><td>actual time spent, from work items reported</td></tr>
-					<tr class="subhead"><td colspan="4">Enumeration Values</td></tr>
+				<tr class="subhead"><td colspan="4">Classification for Confirmed Bugs</td></tr>
 					<tr><td>Bug</td><td>red3</td><td></td><td rowspan="5"></td></tr>
 					<tr><td>Cosmetic</td><td>red3</td><td></td></tr>
 					<tr><td>Exception</td><td>red3</td><td></td></tr>
 					<tr><td>Usability</td><td>red3</td><td></td></tr>
 					<tr><td>Performance</td><td>red3</td><td></td></tr>
+				<tr class="subhead"><td colspan="4">Enumeration Values</td></tr>
 					<tr><td>Epics_</td><td>orange5</td><td>,</td>
 						<td rowspan="2">per-project sets of available values for enumerations Epic/Story</td></tr>
 					<tr><td>Stories_</td><td>orange3</td><td>,</td></tr>
-				<tr class="subhead"><td colspan="4">Classification for Confirmed Bugs</td></tr>
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
@@ -708,6 +709,8 @@
 	<table id="HubAuthModules_">
 		<tr><th>Integration</th><th>Supports</th><th>Test</th></tr>
 		<tr class="subhead"><td colspan="3">Hub Authorization Modules</td></tr>
+		<tr><td>Hub</td><td>single signin for all connected products</td><td>test for admin and carol signin with passwords</td></tr>
+		<tr><td>GitHub</td><td>connection with all repos, including forks, on our account</td><td>select and connect to repo</td></tr>
 	</table>
 </div>
 
