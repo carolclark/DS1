@@ -40,8 +40,9 @@
 #-Dfile.encoding=UTF-8
 #*Djava.awt.headless=true
 #-XX:MaxPermSize=250m
-#-XX:MaxMetaspaceSize=250m
-#-Xmx1024m
+-XX:MaxMetaspaceSize=250m
+## enable next line if needed for performance: Minimum Metaspace memory:
+-Xmx1024m
 #-Dorg.eclipse.jetty.server.Request.maxFormContentSize=5000000
 #-Dorg.eclipse.jetty.server.Request.maxFormKeys=10000
 #-Djetbrains.http.request.header.buffer.size=50000
@@ -59,11 +60,6 @@
 ## Uncomment the following line to run YouTrack with enabled YourKit profiling ("yourkit-home" property must be specified)
 ## You can also just run the "configure -J-yourkit" command of the YouTrack script
 #-yourkit
-
--XX:MaxMetaspaceSize=250m
-## enable if needed for performance: Minimum Metaspace memory:
-## -XX:MetaspaceSize 250m
--Xmx1g
 
 -Djetbrains.youtrack.mailLimit=25
 
