@@ -72,9 +72,17 @@
 		<li>We are attempting to have our Agile boards provide for Behavior Driven Development.</li>
 		<li>Sprints have time estimates, not deadlines.
 			Estimates are established based on card estimates, which are adjusted as indicated.<ul>
-				<li>We expect to learn to make better estimates of time required as we use this technique.</li>
-			</ul></li>
+			<li>We expect to learn to make better estimates of time required as we use this technique.</li>
 		</ul></li>
+	</ul></li>
+	<li>YouTrack's 'fixed in build' and 'fix version' fields:<ul>
+		<li>associate bug issues with the build and the release version for which they were fixed</li>
+		<li>We associate the version number when the product is ready for 'release',
+			as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+			on which our <a href="Git.html#Branches_Releases_">syntactic versioning plan</a> is based.</li>
+		<li>'fix version' fields use Sprint IDs, eg. 18.2.1</li>
+		<li>actual version numbers are assigned on completion</li>
+	</ul></li>
 	<li>We do not do deadlines.</li>
 	<li>Our Agile Boards<ul>
 		<li>'Roadmap' board for planning; 'Development' board for development</li>
@@ -177,8 +185,8 @@
 			<li>/Volumes/Mavericks-1/Backups<ul>
 				<li>TeamTools</li>
 				<li>TeamTools_Tagged<ul>
-					<li><i>PR-&lt;date&gt;-initial-installed</i></li>
-					<li><i>PR-&lt;date&gt;-initial-configured</i></li>
+					<li><em>PR-&lt;date&gt;-initial-installed</em></li>
+					<li><em>PR-&lt;date&gt;-initial-configured</em></li>
 				</ul></li>
 			</ul></li>
 		</ul></li>
@@ -213,6 +221,13 @@
 								so make change after each upgrade</li>
 						</ul></li>
 					<li><a href="#CommandLineTools_">Restart Tool</a></li>
+				</ul></li>
+				<li><strong>YouTrack</strong><ul>
+					<li>Global Settings<ul>
+						<li>verify license shown; if not, fetch and copy</li>
+						<li>Default Timezone: verify</li>
+						<li>Date Fields Format: 31 Dec 2000 23:59</li>
+					</ul></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
 					<li id="backupConfig_"><strong>Backup &amp; Server Settings</strong><ul>
@@ -263,7 +278,9 @@
 		</ul></li>
 	</ul></li>
 	<li><strong>Server Settings</strong><ul>
-		<li>review Licenses, System Settings, Backup</li>
+		<li>session timeout 3 hours</li>
+		<li>remember me for 1 month</li>
+		<li>email verification: no</li>
 	</ul></li>
 	<li><strong>Notifications</strong><ul>
 		<li><strong>email</strong><ul>
@@ -274,7 +291,7 @@
 				<li>host smtp.cox.net</li>
 				<li>from: "JBHub" &lt;my_email&gt;</li>
 				<li>Security and Authorization: username &lt;my_email&gt;; [password cox?]</li>
-				<li>save; enable; send test message</li>
+				<li>save; enable notification; send test message</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
@@ -284,7 +301,7 @@
 <h2>YouTrack</h2>
 <!-- @topicList "YouTrack" "YouTrack_" -->
 	<!-- @topicItem "YouTrack: Configuration" "#YouTrackConfiguration_" "0" "" -->
-		<!-- @topicItem "Configure YouTrack" "#Configure_YouTrack_" "1" "" -->
+		<!-- @topicItem "Global Settings" "#GlobalSettings_" "1" "" -->
 		<!-- @topicItem "Customize Default Project Settings" "#ProjectDefaults_" "1" "used for new project" -->
 		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
 		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
@@ -301,24 +318,19 @@
 
 <h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
 
-<!-- @marker "Configure YouTrack" -->
-<h4 id="Configure_YouTrack_">Configure YouTrack</h4><ul>
-
-	<li><strong>Server Settings</strong><ul>
-		<li>Global Settings<ul>
-			<li>verify license:
-				up to 10 users; no restriction for private repos; license forever; free updates this century </li>
-			<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
-			<li>verify Default Timezone: Chicago</li>
-			<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
-			<li>Notifications<ul>
-				<li>SMTP: enable email notifications<ul>
-					<li>host smtp.cox.net</li>
-					<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-					<li>from: "YouTrack &lt;my_email&gt;"</li>
-					<li>save; send message to test connection</li>
-				</ul></li>
-			</ul></li>
+<!-- @marker "Global Settings" -->
+<h4 id="GlobalSettings_">Global Settings</h4><ul>
+	<li>verify license:
+		up to 10 users; no restriction for private repos; license forever; free updates this century </li>
+	<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
+	<li>verify Default Timezone: Chicago</li>
+	<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
+	<li>Notifications<ul>
+		<li>SMTP: enable email notifications<ul>
+			<li>host smtp.cox.net</li>
+			<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
+			<li>from: "YouTrack &lt;my_email&gt;"</li>
+			<li>save; send message to test connection</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -327,7 +339,7 @@
 <h4 id="ProjectDefaults_">Customize Default Project Settings</h4>
 
 	<h5 class="indent">Custom Fields</h5><ul>
-		<li>default settings with which a new project is created</li>
+		<li>Settings have been set by admin to be the default settings with which a new project is created.</li>
 		<li>settings are preset by SysAdmin</li>
 	</ul><div class="info">
 		<table id="CustomFields_">
@@ -346,10 +358,10 @@
 				<td><table>
 					<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
 				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
-					<tr><td>Epic</td><td>Orange5</td><td>'Epic' represents a goal containing several User Stories.</td>
-						<td rowspan="2">Neither Epics nor Stories move through States until ready for review.<br />
-							Instead, they use subissues to accomplish their work.</td></tr>
-					<tr><td>Story</td><td>Orange3</td><td>'Story' represents a user story.</td></tr>
+				<tr><td>Epic</td><td>Orange5</td><td>'Epic' represents a goal containing several User Stories.</td>
+					<td rowspan="2">Neither Epics nor Stories move through States until ready for review.<br />
+						Instead, they use subissues to accomplish their work.</td></tr>
+				<tr><td>Story</td><td>Orange3</td><td>'Story' represents a user story.</td></tr>
 				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
 					<tr><td>Feature</td><td>Blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
 						Stories are a planning tool, while Features are about implementation organization.</td>
@@ -360,8 +372,8 @@
 					<tr><td>Document</td><td>brown3</td><td>Documentation task<br />
 						Not for documentation specific to an issue; documentation is part of that issue..</td></tr>
 				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
-					<tr><td>Estimation</td><td>orange1</td><td>time estimation; units w d h m</td><td rowspan="2">fields added when Time Tracking is enabled</td></tr>
-					<tr><td>Spent time</td><td>orange1</td><td>actual time spent, from work items reported</td></tr>
+					<tr><td>Estimation</td><td>orange2</td><td>time estimation; units w d h m</td><td rowspan="2">fields added when Time Tracking is enabled</td></tr>
+					<tr><td>Spent time</td><td>orange2</td><td>actual time spent, from work items reported</td></tr>
 				<tr class="subhead"><td colspan="4">Classification for Confirmed Bugs</td></tr>
 					<tr><td>Bug</td><td>red3</td><td></td><td rowspan="5"></td></tr>
 					<tr><td>Cosmetic</td><td>red3</td><td></td></tr>
@@ -418,7 +430,7 @@
 						</ul></td>
 						<td>work items generated by Review may be:<ul>
 							<li>added as a new issue for later completion</li>
-							<li>moved back for further Development<ul>
+							<li>added to the current issue, which is then moved back for further Development<ul>
 								<li>state 'Reopen' may be temporarily used</li>
 							</ul></li>
 							<li>OR</li>
@@ -488,7 +500,7 @@
 	<!-- @marker "Workflows" -->
 	<div  class="indent">
 		<h5 id="Workflows_">Workflows</h5><ul>
-			<li>nothing yet</li>
+			<li>for now, just remove Scrum Workflow</li>
 		</ul>
 	</div>
 
@@ -505,6 +517,7 @@
 					<li>grant ProjectAdmin role to intended project owner</li>
 				</ul></li>
 			</ul></li>
+			<li>Time Tracking: edit project: enable Time Tracking with default fields</li>
 		</ul></li>
 	</ul></li>
 </ul></div>
@@ -537,10 +550,14 @@
 <h4 id="AddAgileBoards_">Add Agile Boards</h4><ul>
 	<li>as ProjectAdmin:<ul>
 		<li>YouTrack: Configuration<ul>
+			<li>project: &lt;repoName&gt;</li>
+			<li>can view and use board: &lt;repoName&gt; Team</li>
+			<li>can edit board settings: Owner</li>
+			<li>backlog: use existing</li>
 			<li>saved search query: project: &lt;PR&gt; #{Unresolved}</li>
 			<li>Swim lanes identified by: field of type Epic</li>
 			<li>show Swimlane for uncategorized cards at the bottom of the board</li>
-			<li>set Board Owner/Project Lead</li>
+			<li>set Board Owner/Project Lead to project owner</li>
 			<li>set board columns; see <a href="#CustomFields_">Custom Fields</a></li>
 		</ul></li>
 		<li>create Sprint</li>
@@ -921,6 +938,6 @@
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright (c) 2017-18 by Carol Clark</p>
+<p class='footer'>Copyright (c) 2017-18 by C &amp; C Software</p>
 </body>
 </html>
