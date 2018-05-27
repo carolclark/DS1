@@ -192,7 +192,7 @@
 		</ul></li>
 	</ul></li>
 	<li id="install_"><strong>Install</strong><ul>
-		<li>for Hub, YouTrack, UpSource, TeamCity :<ul>
+		<li>for Hub, YouTrack, UpSource, TeamCity:<ul>
 			<li>create folder &lt;productName&gt; at /Servers/jb</li>
 			<li>download installation package appropriate for our license; move to its folder<ul>
 				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
@@ -207,9 +207,13 @@
 				path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;version&gt;</span></li>
 			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
 				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-				<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+				<li>use external Hub<ul>
+					<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+					<li>verify Hub connection</li>
+				</ul></li>
 			</ul></li>
 			<li>when tool window appears:<ul>
+				<li>ensure expected port: HB 8080; YT:8081; UP:8082; TC:8111</li>
 				<li><strong>Hub</strong>: login as admin</li>
 				<li><strong>TeamCity</strong> and <strong>YouTrack</strong><ul>
 					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
@@ -221,13 +225,6 @@
 								so make change after each upgrade</li>
 						</ul></li>
 					<li><a href="#CommandLineTools_">Restart Tool</a></li>
-				</ul></li>
-				<li><strong>YouTrack</strong><ul>
-					<li>Global Settings<ul>
-						<li>verify license shown; if not, fetch and copy</li>
-						<li>Default Timezone: verify</li>
-						<li>Date Fields Format: 31 Dec 2000 23:59</li>
-					</ul></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
 					<li id="backupConfig_"><strong>Backup &amp; Server Settings</strong><ul>
@@ -290,7 +287,7 @@
 			<li>SMTP<ul>
 				<li>host smtp.cox.net</li>
 				<li>from: "JBHub" &lt;my_email&gt;</li>
-				<li>Security and Authorization: username &lt;my_email&gt;; [password cox?]</li>
+				<li>Security and Authorization: username &lt;my_email&gt;</li>
 				<li>save; enable notification; send test message</li>
 			</ul></li>
 		</ul></li>
@@ -320,17 +317,19 @@
 
 <!-- @marker "Global Settings" -->
 <h4 id="GlobalSettings_">Global Settings</h4><ul>
-	<li>verify license:
-		up to 10 users; no restriction for private repos; license forever; free updates this century </li>
-	<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
-	<li>verify Default Timezone: Chicago</li>
-	<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
-	<li>Notifications<ul>
-		<li>SMTP: enable email notifications<ul>
-			<li>host smtp.cox.net</li>
-			<li>Security and Authorization: username &lt;my_email&gt;; password cox</li>
-			<li>from: "YouTrack &lt;my_email&gt;"</li>
-			<li>save; send message to test connection</li>
+	<li>Server Settings &gt; Global Settings, as admin:<ul>
+		<li>verify license:
+			up to 10 users; no restriction for private repos; license forever; free updates this century </li>
+		<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
+		<li>verify Default Timezone: Chicago</li>
+		<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
+		<li>Notifications<ul>
+			<li>SMTP: enable email notifications<ul>
+				<li>SMTP host: smtp.cox.net</li>
+				<li>SMTP login / password: cox email / password</li>
+				<li>Server From email: productName &lt;my_email&gt;; password cox</li>
+				<li>save; send message to test connection</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -339,8 +338,7 @@
 <h4 id="ProjectDefaults_">Customize Default Project Settings</h4>
 
 	<h5 class="indent">Custom Fields</h5><ul>
-		<li>Settings have been set by admin to be the default settings with which a new project is created.</li>
-		<li>settings are preset by SysAdmin</li>
+		<li>default settings with which a new project is created; set by SysAdmin</li>
 	</ul><div class="info">
 		<table id="CustomFields_">
 			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
@@ -500,7 +498,7 @@
 	<!-- @marker "Workflows" -->
 	<div  class="indent">
 		<h5 id="Workflows_">Workflows</h5><ul>
-			<li>for now, just remove Scrum Workflow</li>
+			<li>nothing to add yet</li>
 		</ul>
 	</div>
 
