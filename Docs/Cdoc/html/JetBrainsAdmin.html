@@ -81,13 +81,13 @@
 			as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 			on which our <a href="Git.html#Branches_Releases_">syntactic versioning plan</a> is based.</li>
 		<li>'fix version' fields use Sprint IDs, eg. 18.2.1</li>
-		<li>actual version numbers are assigned on completion</li>
+		<li>release version numbers are assigned on completion (ch_releaseVersions)</li>
 	</ul></li>
 	<li>We do not do deadlines.</li>
 	<li>Our Agile Boards<ul>
-		<li>'Roadmap' board for planning; 'Development' board for development</li>
+		<li>'Roadmap' board for planning; 'Develop' board for development</li>
 		<li>Swimlanes<ul>
-			<li>named by Epic issues on Roadmap board, Story issues on Development board</li>
+			<li>named by Epic issues on Roadmap board, Story issues on Develop board</li>
 			<li>those items are stationary until complete;
 				they generate issues of other types to get the work done</li>
 		</ul></li>
@@ -105,7 +105,7 @@
 </ul>
 
 <h4 id="WIP_">Work in Progress</h4><ul>
-	<li>We are establishing WIP limits and related policies.</li>
+	<li>We will establish WIP limits and related policies based on observation of what works.</li>
 	<li>Tasks are broken down into smaller pieces as needed to conform to this policy.</li>
 	<li>For larger tasks as indicated, a required-dependency task is used to gather information and estimate.</li>
 </ul>
@@ -127,18 +127,19 @@
 		</ul></li>
 		<li>AppCode (currently in use): primary support for Xcode projects associated with Cocoa/Objective-C(++)<ul>
 			<li>plugins for unix and AppleScript</li>
-			<li>project structure based on Xcode, so no module support, limitations for other plug-ins and features</li>
+			<li>project structure based on Xcode, so no standard module support, limitations for other plug-ins and features</li>
 		</ul></li>
 		<li>CLion: C-based languages, including C, C++, and Swift, not requiring build by Xcode<ul>
+			<li>required UI built in code; probably does not have Storyboard support</li>
 			<li>has some features for working with C++ and Swift together, including porting C++ to Swift</li>
 			<li>apparently, many developers are moving directly to Swift from C++, skipping Objective-C</li>
-			</ul></li>
-			<li>other languages/IDEs<ul>
-				<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
-				<li>PHPStorm for Website indices; DataGrip for internal databases; PyCharm with Django; MPS for DSL development</li>
-				<li>Kotlin for TeamCity scripting; javascript for Workflows</li>
-			</ul></li>
-		</ul>
+		</ul></li>
+		<li>other languages/IDEs<ul>
+			<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
+			<li>PHPStorm for Website indices; DataGrip for internal databases; PyCharm with Django; MPS for DSL development</li>
+			<li>Kotlin for TeamCity scripting; javascript for Workflows</li>
+		</ul></li>
+	</ul>
 		<p class="sl6">Team Tools for managing workflow and development process:</p><ul class="sl6">
 			<li>YouTrack: issue tracking; agile development</li>
 			<li>TeamCity (previously in use): Continuous Integration</li>
@@ -165,6 +166,7 @@
 	<!-- @topicItem "Hub" "#Hub_" "0" "" -->
 	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
 		<!-- @topicItem "Custom Fields" "#CustomFields_" "1" "" -->
+		<!-- @topicItem "Synchronize YouTrack Customization" "#SyncYTCustomization_" "0" "" -->
 	<!-- @topicItem "UpSource" "#UpSource_" "0" "" -->
 	<!-- @topicItem "TeamCity" "#TeamCity_" "0" "" -->
 	<!-- @topicSep -->
@@ -255,7 +257,7 @@
 	<li><strong>Access Management</strong><ul>
 		<li>Users<ul>
 			<li>add 'carol':<ul>
-				<li>Create user 'carol'</li>
+				<li>Create user 'carol'; my email</li>
 				<li>set JetBrains password; do not force change password</li>
 				<li>avatar: select; click our gravitar image</li>
 			</ul></li>
@@ -274,20 +276,12 @@
 			</ul></li>
 		</ul></li>
 	</ul></li>
-	<li><strong>Server Settings</strong><ul>
-		<li>session timeout 3 hours</li>
-		<li>remember me for 1 month</li>
-		<li>email verification: no</li>
-	</ul></li>
 	<li><strong>Notifications</strong><ul>
 		<li><strong>email</strong><ul>
-			<li>email notifications<ul>
-				<li>enable</li>
-			</ul></li>
-			<li>SMTP<ul>
+			<li>email notifications: SMTP<ul>
 				<li>host smtp.cox.net</li>
 				<li>from: "JBHub" &lt;my_email&gt;</li>
-				<li>Security and Authorization: username &lt;my_email&gt;</li>
+				<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
 				<li>save; enable notification; send test message</li>
 			</ul></li>
 		</ul></li>
@@ -299,10 +293,13 @@
 <!-- @topicList "YouTrack" "YouTrack_" -->
 	<!-- @topicItem "YouTrack: Configuration" "#YouTrackConfiguration_" "0" "" -->
 		<!-- @topicItem "Global Settings" "#GlobalSettings_" "1" "" -->
-		<!-- @topicItem "Customize Default Project Settings" "#ProjectDefaults_" "1" "used for new project" -->
-		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
-		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
-		<!-- @topicItem "Add Agile Boards" "#AddAgileBoards_" "1" "" -->
+		<!-- @topicItem "Add YouTrack Service" "#AddYouTrackService_" "0" "" -->
+			<!-- @topicItem "Backup Hub with YouTrack Service" "#BackupHubWYouTrackService_" "1" "" -->
+		<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
+			<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
+			<!-- @topicItem "Customize Project Settings" "#ProjectSettings_" "1" "used for new project" -->
+			<!-- @topicItem "Add Agile Boards" "#AddAgileBoards_" "1" "" -->
+	<!-- @topicSep -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "YouTrack: Add Features" "" -->
@@ -327,180 +324,20 @@
 			<li>SMTP: enable email notifications<ul>
 				<li>SMTP host: smtp.cox.net</li>
 				<li>SMTP login / password: cox email / password</li>
-				<li>Server From email: productName &lt;my_email&gt;; password cox</li>
+				<li>Server From email: productName &lt;my_email&gt;; use password cox</li>
 				<li>save; send message to test connection</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
 
-<!-- @marker "Customize Project Settings" -->
-<h4 id="ProjectDefaults_">Customize Default Project Settings</h4>
-
-	<h5 class="indent">Custom Fields</h5><ul>
-		<li>default settings with which a new project is created; set by SysAdmin</li>
-	</ul><div class="info">
-		<table id="CustomFields_">
-			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
-				<td><table>
-					<tr><th>Priority Name</th> <th>Color</th></tr>
-					<tr><td>Show-Stopper</td><td>orange4</td></tr>
-					<tr><td>Critical</td><td>pink2</td></tr>
-					<tr><td>Major</td><td>yellow1</td></tr>
-					<tr><td>Normal</td><td>green1</td></tr>
-					<tr><td>Minor</td><td>gray1</td></tr>
-				</table></td></tr>
-			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td>-</td>
-				<td><table>
-					<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
-				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
-				<tr><td>Epic</td><td>Orange5</td><td>'Epic' represents a goal containing several User Stories.</td>
-					<td rowspan="2">Neither Epics nor Stories move through States until ready for review.<br />
-						Instead, they use subissues to accomplish their work.</td></tr>
-				<tr><td>Story</td><td>Orange3</td><td>'Story' represents a user story.</td></tr>
-				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
-					<tr><td>Feature</td><td>Blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
-						Stories are a planning tool, while Features are about implementation organization.</td>
-						<td rowspan="5">These issue types share columns on the Agile Board.</td></tr>
-					<tr><td>Scenario</td><td>blue5</td><td>A BDD Scenario associated with a Feature.</td></tr>
-					<tr><td>Task</td><td>green3</td><td>A task not in the BDD structure.</td></tr>
-					<tr><td>Analysis</td><td>aqua3</td><td>An issue for evaluation, design, recommendation, ...</td></tr>
-					<tr><td>Document</td><td>brown3</td><td>Documentation task<br />
-						Not for documentation specific to an issue; documentation is part of that issue..</td></tr>
-				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
-					<tr><td>Estimation</td><td>orange2</td><td>time estimation; units w d h m</td><td rowspan="2">fields added when Time Tracking is enabled</td></tr>
-					<tr><td>Spent time</td><td>orange2</td><td>actual time spent, from work items reported</td></tr>
-				<tr class="subhead"><td colspan="4">Classification for Confirmed Bugs</td></tr>
-					<tr><td>Bug</td><td>red3</td><td></td><td rowspan="5"></td></tr>
-					<tr><td>Cosmetic</td><td>red3</td><td></td></tr>
-					<tr><td>Exception</td><td>red3</td><td></td></tr>
-					<tr><td>Usability</td><td>red3</td><td></td></tr>
-					<tr><td>Performance</td><td>red3</td><td></td></tr>
-				<tr class="subhead"><td colspan="4">Enumeration Values</td></tr>
-					<tr><td>Epics_</td><td>orange5</td><td>,</td>
-						<td rowspan="2">per-project sets of available values for enumerations Epic/Story</td></tr>
-					<tr><td>Stories_</td><td>orange3</td><td>,</td></tr>
-				</table></td></tr>
-			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
-				<td><table>
-					<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
-					<tr class="subhead"><td colspan="3">Backlog</td></tr>
-					<tr><td>Submit</td><td>incoming items</td>
-						<td>Evaluate for development. Select if accepted; else resolve using a 'Resolved' state with comment</td></tr>
-					<tr><td>Select</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
-					<tr class="subhead"><td colspan="3">Roadmap Swimlane</td></tr>
-					<tr><td>Epic</td><td>goal; swimlane on Roadmap board</td>
-						<td>move to Review when all subissues have been addressed and Verified</td></tr>
-					<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
-					<tr><td>Open</td><td>selected for sprint</td>
-						<td><ul>
-							<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, a Task, or an Analysis item</li>
-							<li>move to Story or Specify as indicated</li>
-						</ul>
-					</td></tr>
-					<tr><td>Story</td>
-						<td>goal element for planning<br />serves as swimlane on a Development Board<br />
-							<div class="mono">As a: I want: so that:</div><br />
-							Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-								orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td>
-						<td>does not progress through states during development<br />
-							instead, it generates cards that do progress for the next column<br />
-							when Story is completed, move to Review for verification
-						</td></tr>
-					<tr class="subhead"><td colspan="3">Specify: a single column with items of these types:</td></tr>
-					<tr><td>Feature</td><td>a BDD feature for development</td><td>,</td></tr>
-					<tr><td>Scenario</td><td>a BDD scenario for testing using BDD tools</td><td>,</td></tr>
-					<tr><td>Task</td><td>a development task that does not fit within BDD</td><td>,</td></tr>
-					<tr><td>Analysis</td><td>study an issue to plan and/or recommend a course of action</td><td>,</td></tr>
-					<tr class="subhead"><td colspan="3">Shared Column</td></tr>
-					<tr><td>Pull</td><td>ready to be pulled for development</td><td>estimation required to enter this state</td></tr>
-					<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
-					<tr><td>Develop</td><td>develop as specified</td><td>,</td></tr>
-					<tr><td>Review</td><td>Pause for a couple of days so that we can come at this work a fresh perspective<br />
-						<ul>
-							<li>Evaluate completeness of solution as specified.</li>
-							<li>Evaluate completeness of automated testing.</li>
-							<li>Verify all relevant test results.</li>
-							<li>Review code for cleanness, refactoring opportunities, ...</li>
-						</ul></td>
-						<td>work items generated by Review may be:<ul>
-							<li>added as a new issue for later completion</li>
-							<li>added to the current issue, which is then moved back for further Development<ul>
-								<li>state 'Reopen' may be temporarily used</li>
-							</ul></li>
-							<li>OR</li>
-							<li>rejected, with a comment explaining that decision</li></ul>
-						</td></tr>
-					<tr><td>Ready</td>
-						<td>Ready for review</td>
-						<td><ul>
-							<li>Verify that all tests pass, and all issues generated by Review have been appropriately handled<ul>
-								<li>if verification passes, move to state Verified</li>
-								<li>otherwise, verify that any continuation state(s) are appropriately established</li>
-							</ul></li>
-						</ul></td></tr>
-					<tr><td>Reopen</td><td>pending state change due to issue(s) found in review or testing</td>
-						<td>move back to appropriate state and continue</td></tr>
-					<tr><td>Verified</td><td>Issue is complete</td><td>,</td></tr>
-					<tr class="subhead"><td colspan="4">Resolution for Issues Not Accepted for Development</td></tr>
-						<tr><td>CannotReproduce</td><td>,</td><td rowspan="6"></td></tr>
-						<tr><td>WorksAsIntended</td><td></td></tr>
-						<tr><td>Duplicate</td><td></td></tr>
-						<tr><td>Incomplete</td><td></td></tr>
-						<tr><td>Obsolete</td><td></td></tr>
-						<tr><td>WillNotFix</td><td></td></tr>
-				</table></td></tr>
-			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-			<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-				<td>to simplify Saved Search for user's items:</td><td>when moved from Ready and if not already assigned, assign current user</td></tr>
-			<tr><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td> yy.q.n; q=quarter; n=# sprint started in q</td>
-				<td>for standard-style version numbering; added when Sprints are enabled</td></tr>
-			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
-				<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
-			<tr><td>Fix versions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
-				<td>fix for, fixed in, fix sprint, sprint</td><td>Sprint when planned/fixed</td>
-				<td>,</td></tr>
-			<tr><td>Release versions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td></td>
-				<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-					on which our versioning plan is based</td></tr>
-		</table>
-	</div>
-
-	<!-- @marker "Issue Link Types" -->
-	<h5 id="IssueLinkTypes_" class="indent">Issue Link Types</h5><div class="info">
-		<table id="IssueLinkTypes">
-			<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
-			<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
-			<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Directed</td></tr>
-			<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
-			<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
-		</table>
-	</div>
-
-	<!-- @marker "Notification Templates" -->
-	<div  class="indent">
-		<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
-			<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
-		</ul>
-	</div>
-
-	<!-- @marker "Time Tracking" -->
-	<div  class="indent">
-		<h5 id="TimeTracking_">Time Tracking</h5><ul class="indent2">
-			<li>length of day: 5h</li>
-			<li>work types: Manage Investigate Develop Test Review Document</li>
-		</ul>
-	</div>
-
-	<!-- @marker "Workflows" -->
-	<div  class="indent">
-		<h5 id="Workflows_">Workflows</h5><ul>
-			<li>nothing to add yet</li>
-		</ul>
-	</div>
+<!-- @marker "Add YouTrack Service" -->
+<h4 id="AddYouTrackService_">Add YouTrack Service</h4><ul>
+	<li>Hub: Project Global: add YouTrack Service<ul>
+		<li>accept default project Global (GLBL)</li>
+		<li>project template: type Scrum</li>
+	</ul></li>
+</ul>
 
 <!-- @marker "Create Project" -->
 <h4 id="CreateProject_">Create Project</h4><div class="indent"><ul>
@@ -515,7 +352,6 @@
 					<li>grant ProjectAdmin role to intended project owner</li>
 				</ul></li>
 			</ul></li>
-			<li>Time Tracking: edit project: enable Time Tracking with default fields</li>
 		</ul></li>
 	</ul></li>
 </ul></div>
@@ -536,13 +372,161 @@
 					</ul></li>
 					<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
 				</ul></li>
-				<li>Time Tracking &gt; Enable; select default fields</li>
+				<li>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
 				<li>Workflow: remove Scrum_2 Workflow</li>
 			</ul></li>
 			<li>Issues page: create tag 'Wait' (orange1)</li>
 		</ul></li>
 	</ul></li>
 </ul>
+
+<!-- @marker "Customize Project Settings" -->
+<h4 id="ProjectSettings_">Customize Project Settings</h4>
+
+<div style="page-break-before: always">
+<h5 class="indent">Custom Fields</h5><ul>
+	</ul><div class="info">
+		<table id="CustomFields_">
+			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
+				<td><table>
+					<tr><th>Priority Name</th> <th>Color</th></tr>
+					<tr><td>Show-Stopper</td><td>orange4</td></tr>
+					<tr><td>Critical</td><td>pink2</td></tr>
+					<tr><td>Major</td><td>yellow1</td></tr>
+					<tr><td>Normal</td><td>green1</td></tr>
+					<tr><td>Minor</td><td>gray1</td></tr>
+				</table></td></tr>
+			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td></td>
+				<td><table>
+					<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
+				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
+				<tr><td>Epic</td><td>orange5</td><td>'Epic' represents a goal containing several Stories.</td>
+					<td rowspan="2">move to Review when all subissues have been addressed and Verified</td></tr>
+					<!-- ch_UserStory2Story -->
+				<tr><td>Story</td><td>orange3</td><td>'Story' represents a BDD Story.<br />
+					goal element for planning<br />serves as swimlane on a Development Board<br />
+					<div class="mono">As a: I want: so that:</div><br />
+					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
+				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
+					<tr><td>Task</td><td>brown3</td><td>A task not in the BDD structure.</td>
+						<td rowspan="3">These issue types share a column on the Agile Board.</td> </tr>
+					<!-- ch_addFeature+Scenario -->
+					<tr><td>Feature</td><td>blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
+						Stories are a planning tool, while Features are about implementation organization.</td></tr>
+					<tr><td>Scenario</td><td>blue5</td><td>A BDD Scenario associated with a Feature.</td></tr>
+					<!-- ch_TimeManagement -->
+				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
+					<tr><td>Estimation</td><td>orange2</td><td>time estimation; units w d h m</td>
+						<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
+					<tr><td>Spent time</td><td>orange2</td><td>actual time spent, from work items reported</td></tr>
+					<!-- ch_BugClassification -->
+				<tr class="subhead"><td colspan="4">Bug Classification</td></tr>
+					<tr><td>Bug</td><td>pink3</td><td></td><td rowspan="5"></td></tr>
+					<tr><td>Cosmetic</td><td>pink3</td><td></td></tr>
+					<tr><td>Exception</td><td>pink3</td><td></td></tr>
+					<tr><td>Usability</td><td>pink3</td><td></td></tr>
+					<tr><td>Performance</td><td>pink3</td><td></td></tr>
+				</table></td></tr>
+			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
+				<td><table>
+					<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
+				<tr class="subhead"><td colspan="3">Backlog</td></tr>
+					<!-- ch_BacklogStates -->
+					<tr><td>Submit</td><td>incoming items</td>
+						<td>Evaluate for development. Select if accepted; else resolve using a 'Resolved' state with comment</td></tr>
+					<tr><td>Select</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
+				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
+					<tr><td>Open</td><td>selected for development</td>
+						<td><ul>
+							<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, or a Task</li>
+							<li>move to Story or Specify as indicated</li>
+						</ul>
+					</td></tr>
+					<tr><td>Story</td>
+						<td>a story of the form <span class="mono">As a: I want: so that:</span></td>
+						<td>does not progress through states during development<br />
+							instead, it generates cards to Specify that do progress to the next column<br />
+							when entire Story is completed, move to Review for verification
+						</td></tr>
+					<tr><td>Specify</td><td>specify what is to be done for this work item</td><td>,</td></tr>
+				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
+					<tr><td>Pull</td><td>ready to be pulled for development</td><td>estimation required to enter this state</td></tr>
+				<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
+					<tr><td>ToDo</td><td>items to be completed for this Sprint</td></tr>
+					<tr><td>Develop</td><td>develop as specified</td><td>,</td></tr>
+					<tr><td>Review</td><td>Pause for a couple of days so that we can come at this work a fresh perspective<br />
+						<ul>
+							<li>Evaluate completeness of solution as specified.</li>
+							<li>Evaluate completeness of automated and, if required, manual testing.</li>
+							<li>Verify all relevant test results.</li>
+							<li>Review code for cleanness, refactoring opportunities, ...</li>
+						</ul></td></tr>
+					<tr><td>Done</td><td>Issue is complete</td><td>,</td></tr>
+				<!-- ch_UnfixedResolutions -->
+				<tr class="subhead"><td colspan="4">Resolution for Issues Not Fixed</td></tr>
+					<tr><td>CannotReproduce</td><td>,</td><td rowspan="6"></td></tr>
+					<tr><td>WorksAsIntended</td><td></td></tr>
+					<tr><td>Duplicate</td><td></td></tr>
+					<tr><td>Incomplete</td><td></td></tr>
+					<tr><td>Obsolete</td><td></td></tr>
+					<tr><td>WillNotFix</td><td></td></tr>
+				</table></td></tr>
+			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+			<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
+				<td>to simplify Saved Search for user's items:</td><td>when moved from Ready and if not already assigned, assign current user</td></tr>
+			<tr><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td> yy.q.n; q=quarter; n=# sprint started in q</td>
+				<td>for standard-style version numbering; added when Sprints are enabled</td></tr>
+			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
+				<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
+			<tr><td>Fix versions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
+				<td>fix for, fixed in, fix sprint, sprint</td><td>Sprint when planned/fixed</td>
+				<td>,</td></tr>
+			<!-- ch_releaseVersions -->
+			<tr><td>Release versions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
+				<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+					on which our versioning plan is based</td></tr>
+		</table>
+	</div>
+
+	<!-- @marker "Issue Link Types" -->
+	<h5 id="IssueLinkTypes_" class="indent">Issue Link Types</h5><div class="info">
+		<table id="IssueLinkTypes">
+			<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
+			<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
+			<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Directed</td></tr>
+			<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
+			<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
+		</table>
+	</div>
+</div>
+
+<div style="page-break-before: always">
+	<!-- @marker "Notification Templates" -->
+	<div  class="indent">
+		<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
+			<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
+		</ul>
+	</div>
+
+	<!-- @marker "Time Tracking" -->
+	<div  class="indent">
+		<h5 id="TimeTracking_">Time Tracking</h5><ul class="indent2">
+			<li>length of day: 5h</li>
+			<li>work types: Manage Investigate Develop Test Review Document</li>
+		</ul>
+	</div>
+
+	<!-- @marker "Workflows" -->
+	<div  class="indent">
+		<h5 id="Workflows_">Workflows</h5><ul>
+			<li>remove workflow Scrum_2</li>
+		</ul>
+	</div>
+</div>
 
 <!-- @marker "Add Agile Boards" -->
 <h4 id="AddAgileBoards_">Add Agile Boards</h4><ul>
@@ -608,6 +592,26 @@
 		Multi-Level Agile Boards or How We Support Epics</a></li>
 </ul>
 
+<!-- @marker "Synchronize YouTrack Customization" -->
+<h3 id="SyncYTCustomization_">Synchronize YouTrack Customization</h3>
+<p>These changes were part of the original YouTrack customization plan,
+	but turned out to be too much to implement all at once.
+	Places to change in this document are marked with the following html ids:</p>
+
+<table>
+	<tr><th>tag</th><th>change</th><th>comments</th></tr>
+	<tr><td>ch_UserStory2Story</td><td>rename field "User Story" to "Story"</td>
+		<td>It's a Story; 'User' is at best unhelpful<br />Space would require "{}" for any search, ...</td></tr>
+	<tr><td>ch_addFeatureScenario</td><td>add fields Feature, Scenario</td>
+		<td>view special BDD types more easily<br />
+		then color cards by field Type</td></tr>
+	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td></td></tr>
+	<tr><td>ch_BacklogStates</td><td>add states Submit, Select for classifying backlog</td></tr>
+	<tr><td>ch_UnfixedResolutions</td><td>add resolutions for submissions not accepted for development (conditional)</td></tr>
+	<tr><td>ch_BugClassification</td><td>add classifications for bugs to be fixed (conditional)</td></tr>
+	<tr><td>ch_releaseVersions</td><td>add field releaseVersions</td>
+		<td>to conform with out existing policy</td></tr>
+</table>
 <!-- @marker "UpSource" -->
 <h2>UpSource</h2>
 <!-- @topicList "UpSource" "UpSource_" -->
