@@ -85,17 +85,17 @@
 	</ul></li>
 	<li>We do not do deadlines.</li>
 	<li>Our Agile Boards<ul>
-		<li>'Roadmap' board for planning; 'Develop' board for development</li>
-		<li>Swimlanes<ul>
-			<li>named by Epic issues on Roadmap board, Story issues on Develop board</li>
-			<li>those items are stationary until complete;
-				they generate issues of other types to get the work done</li>
-		</ul></li>
 		<li>BDD<ul>
 			<li>Our boards are built to support Behavior Driven Development</li>
 			<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 				orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
 			</em></li>
+		</ul></li>
+		<li>'Roadmap' board for planning; '_develop' board for development</li>
+		<li>Swimlanes<ul>
+			<li>named by Epic issues on Roadmap board, Story issues on _develop board</li>
+			<li>those items are stationary until complete;
+				they generate issues of other types to get the work done</li>
 		</ul></li>
 		<li>Review<ul>
 			<li>Since we cannot pass Review to another developer, we review our own work.
@@ -107,7 +107,7 @@
 <h4 id="WIP_">Work in Progress</h4><ul>
 	<li>We will establish WIP limits and related policies based on observation of what works.</li>
 	<li>Tasks are broken down into smaller pieces as needed to conform to this policy.</li>
-	<li>For larger tasks as indicated, a required-dependency task is used to gather information and estimate.</li>
+	<li>For larger tasks, a task may be used to gather information and estimate.</li>
 </ul>
 
 <h4>DevOps: Automating Processes</h4>
@@ -130,7 +130,7 @@
 			<li>project structure based on Xcode, so no standard module support, limitations for other plug-ins and features</li>
 		</ul></li>
 		<li>CLion: C-based languages, including C, C++, and Swift, not requiring build by Xcode<ul>
-			<li>required UI built in code; probably does not have Storyboard support</li>
+			<li>requires UI built in code; probably does not have Storyboard support</li>
 			<li>has some features for working with C++ and Swift together, including porting C++ to Swift</li>
 			<li>apparently, many developers are moving directly to Swift from C++, skipping Objective-C</li>
 		</ul></li>
@@ -293,12 +293,11 @@
 <!-- @topicList "YouTrack" "YouTrack_" -->
 	<!-- @topicItem "YouTrack: Configuration" "#YouTrackConfiguration_" "0" "" -->
 		<!-- @topicItem "Global Settings" "#GlobalSettings_" "1" "" -->
-		<!-- @topicItem "Add YouTrack Service" "#AddYouTrackService_" "0" "" -->
-			<!-- @topicItem "Backup Hub with YouTrack Service" "#BackupHubWYouTrackService_" "1" "" -->
-		<!-- @topicItem "Create Project" "#CreateProject_" "0" "" -->
-			<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
-			<!-- @topicItem "Customize Project Settings" "#ProjectSettings_" "1" "used for new project" -->
-			<!-- @topicItem "Add Agile Boards" "#AddAgileBoards_" "1" "" -->
+	<!-- @topicItem "YouTrack: Add Project" "#YT_NewProject_" "0" "" -->
+		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
+		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
+		<!-- @topicItem "Customize Project Settings" "#ProjectSettings_" "1" "used for new project" -->
+		<!-- @topicItem "Add Agile Boards" "#AddAgileBoards_" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
 	<!-- @topicSep -->
@@ -333,25 +332,26 @@
 
 <!-- @marker "Add YouTrack Service" -->
 <h4 id="AddYouTrackService_">Add YouTrack Service</h4><ul>
-	<li>Hub: Project Global: add YouTrack Service<ul>
-		<li>accept default project Global (GLBL)</li>
-		<li>project template: type Scrum</li>
+	<li>Hub<ul>
+		<li>Admin &gt; Services: add YouTrack service; trust</li>
 	</ul></li>
 </ul>
+
+<!-- @marker "YouTrack: New Project" -->
+<h3 id="YT_NewProject_">YouTrack: New Project</h3>
 
 <!-- @marker "Create Project" -->
 <h4 id="CreateProject_">Create Project</h4><div class="indent"><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>Hub as SystemAdmin:<ul>
 		<li>Hub Project Page: create new YouTrack project</li>
-		<li>Project Page<ul>
-			<li>New Project...<ul>
-				<li>set project name, ID</li>
-				<li>Team<ul>
-					<li>add user(s) to project team</li>
-					<li>grant ProjectAdmin role to intended project owner</li>
-				</ul></li>
-			</ul></li>
+		<li>&lt;NewProject&gt; Project Page<ul>
+			<li>set project name, ID</li>
+			<li>project template: type Scrum</li>
+		</ul></li>
+		<li>Team<ul>
+			<li>add user(s) to project team</li>
+			<li>grant ProjectAdmin role to intended project owner</li>
 		</ul></li>
 	</ul></li>
 </ul></div>
@@ -381,9 +381,10 @@
 </ul>
 
 <!-- @marker "Customize Project Settings" -->
-<h4 id="ProjectSettings_">Customize Project Settings</h4>
-
 <div style="page-break-before: always">
+<h4 id="ProjectSettings_">Customize Project Settings</h4>
+</div>
+
 <h5 class="indent">Custom Fields</h5><ul>
 	</ul><div class="info">
 		<table id="CustomFields_">
@@ -502,7 +503,7 @@
 			<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
 		</table>
 	</div>
-</div>
+
 
 <div style="page-break-before: always">
 	<!-- @marker "Notification Templates" -->
@@ -531,18 +532,29 @@
 <!-- @marker "Add Agile Boards" -->
 <h4 id="AddAgileBoards_">Add Agile Boards</h4><ul>
 	<li>as ProjectAdmin:<ul>
-		<li>YouTrack: Configuration<ul>
+		<li>create new Agile Boards:<ul>
+			<li>&lt;ProjectName&gt; Roadmap</li>
+			<li>&lt;ProjectName&gt;-develop</li>
+		</ul></li>
+		<li>with Configurations:<ul>
 			<li>project: &lt;repoName&gt;</li>
 			<li>can view and use board: &lt;repoName&gt; Team</li>
 			<li>can edit board settings: Owner</li>
 			<li>backlog: use existing</li>
-			<li>saved search query: project: &lt;PR&gt; #{Unresolved}</li>
-			<li>Swim lanes identified by: field of type Epic</li>
+			<li>Backlog search queries:<ul>
+				<li>Roadmap:<ul>
+					<li>name: &lt;ProjectName&gt; Manage Backlog</li>
+					<li>query: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
+				</ul></li>
+				<li>Roadmap:<ul>
+					<li>name: &lt;ProjectName&gt; develop-backlog</li>
+					<li>query: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
+				</ul></li>
+			</ul></li>
+			<li>Swim lanes identified by: field of type Epic (Manage) or Story (develop)</li>
 			<li>show Swimlane for uncategorized cards at the bottom of the board</li>
-			<li>set Board Owner/Project Lead to project owner</li>
 			<li>set board columns; see <a href="#CustomFields_">Custom Fields</a></li>
 		</ul></li>
-		<li>create Sprint</li>
 	</ul></li>
 </ul>
 
