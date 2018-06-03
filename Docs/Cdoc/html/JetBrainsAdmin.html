@@ -330,56 +330,6 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Add YouTrack Service" -->
-<h4 id="AddYouTrackService_">Add YouTrack Service</h4><ul>
-	<li>Hub<ul>
-		<li>Admin &gt; Services: add YouTrack service; trust</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "YouTrack: New Project" -->
-<h3 id="YT_NewProject_">YouTrack: New Project</h3>
-
-<!-- @marker "Create Project" -->
-<h4 id="CreateProject_">Create Project</h4><div class="indent"><ul>
-	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub as SystemAdmin:<ul>
-		<li>Hub Project Page: create new YouTrack project</li>
-		<li>&lt;NewProject&gt; Project Page<ul>
-			<li>set project name, ID</li>
-			<li>project template: type Scrum</li>
-		</ul></li>
-		<li>Team<ul>
-			<li>add user(s) to project team</li>
-			<li>grant ProjectAdmin role to intended project owner</li>
-		</ul></li>
-	</ul></li>
-</ul></div>
-
-<!-- @marker "Configure Project" -->
-<h4 id="ConfigureProject_">Configure Project</h4><ul>
-	<li>as ProjectAdmin:<ul>
-		<li>Hub<ul>
-			<li>Project Page &gt; Settings: set Project Admin</li>
-			<li>Add YouTrack Service: Services &gt; Issue Tracker &gt; YouTrack with Scrum</li>
-		</ul></li>
-		<li>YouTrack<ul>
-			<li>VCS Integrations: New VCS Integration<ul>
-				<li>connect to GitHub repo<ul>
-					<li>click link to create Auth token<ul>
-						<li>if token of same name exists, delete existing token; return to TeamTools</li>
-						<li>create Auth token &lt;projectName&gt;</li>
-					</ul></li>
-					<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
-				</ul></li>
-				<li>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
-				<li>Workflow: remove Scrum_2 Workflow</li>
-			</ul></li>
-			<li>Issues page: create tag 'Wait' (orange1)</li>
-		</ul></li>
-	</ul></li>
-</ul>
-
 <!-- @marker "Customize Project Settings" -->
 <div style="page-break-before: always">
 <h4 id="ProjectSettings_">Customize Project Settings</h4>
@@ -504,7 +454,6 @@
 		</table>
 	</div>
 
-
 <div style="page-break-before: always">
 	<!-- @marker "Notification Templates" -->
 	<div  class="indent">
@@ -528,6 +477,57 @@
 		</ul>
 	</div>
 </div>
+
+<!-- @marker "Add YouTrack Service" -->
+<h4 id="AddYouTrackService_">Add YouTrack Service</h4><ul>
+	<li>Hub<ul>
+		<li>Admin &gt; Services: add YouTrack service; trust</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "YouTrack: New Project" -->
+<h3 id="YT_NewProject_">YouTrack: New Project</h3>
+
+<!-- @marker "Create Project" -->
+<h4 id="CreateProject_">Create Project</h4><div class="indent"><ul>
+	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+	<li>Hub as SystemAdmin:<ul>
+		<li>Hub Project Page: create new YouTrack project</li>
+		<li>&lt;NewProject&gt; Project Page<ul>
+			<li>set project name, ID</li>
+			<li>project template: type Scrum</li>
+		</ul></li>
+		<li>Team<ul>
+			<li>add user(s) to project team</li>
+			<li>grant ProjectAdmin role to intended project owner</li>
+		</ul></li>
+	</ul></li>
+</ul></div>
+
+<!-- @marker "Configure Project" -->
+<h4 id="ConfigureProject_">Configure Project</h4><ul>
+	<li>as ProjectAdmin:<ul>
+		<li>Hub<ul>
+			<li>Project Page &gt; Settings: set Project Admin</li>
+			<li>Add YouTrack Service: Services &gt; Issue Tracker &gt; YouTrack with Scrum</li>
+		</ul></li>
+		<li>YouTrack<ul>
+			<li>VCS Integrations: New VCS Integration<ul>
+				<li>connect to GitHub repo<ul>
+					<li>click link to create Auth token<ul>
+						<li>if token of same name exists, delete existing token; return to TeamTools</li>
+						<li>create Auth token &lt;projectName&gt;</li>
+					</ul></li>
+					<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
+				</ul></li>
+				<li>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
+				<li>Workflow: remove Scrum_2 Workflow</li>
+			</ul></li>
+			<li>Issues page: create tag 'Wait' (orange1)</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
 
 <!-- @marker "Add Agile Boards" -->
 <h4 id="AddAgileBoards_">Add Agile Boards</h4><ul>
