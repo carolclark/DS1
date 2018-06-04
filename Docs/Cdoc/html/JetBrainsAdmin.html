@@ -241,7 +241,7 @@
 			<li>backup; copy backup file to tag 'initial_installed'</li>
 			<li>complete per-product configuration (<a href="#HubConfiguration_">Hub</a>,
 				<a href="#YouTrackConfiguration_">YouTrack</a>, <a href="#UpSourceConfiguration_">UpSource</a>,
-				<a href="#TeamCityConfiguration_">TeamCity</a></li>
+				<a href="#TeamCityConfiguration_">TeamCity</a>)</li>
 			<li>backup; copy backup to tag 'initial_configured'</li>
 		</ul></li>
 	</ul></li>
@@ -267,9 +267,8 @@
 				<li>test login combinations</li>
 			</ul></li>
 			<li>add Authorization Module GitHub<ul>
-				<li>Server URL: https://github.com; create module</li>
-				<li>copy what can be seen of the Callback URL</li>
-				<li>clone browser window: click link to register an application with GitHub</li>
+				<li>copy Callback URL using 'copy' button</li>
+				<li>clone browser tab; click link to register an application with GitHub</li>
 				<li>generate client codes</li>
 				<li>copy back Client ID and Client Secret; save</li>
 			<li>Enable Module</li>
@@ -277,13 +276,11 @@
 		</ul></li>
 	</ul></li>
 	<li><strong>Notifications</strong><ul>
-		<li><strong>email</strong><ul>
-			<li>email notifications: SMTP<ul>
-				<li>host smtp.cox.net</li>
-				<li>from: "JBHub" &lt;my_email&gt;</li>
-				<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
-				<li>save; enable notification; send test message</li>
-			</ul></li>
+		<li><strong>email notifications: SMTP</strong><ul>
+			<li>host smtp.cox.net</li>
+			<li>from: "JBHub" &lt;my_email&gt;</li>
+			<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
+			<li>save; enable notification; send test message</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -293,10 +290,10 @@
 <!-- @topicList "YouTrack" "YouTrack_" -->
 	<!-- @topicItem "YouTrack: Configuration" "#YouTrackConfiguration_" "0" "" -->
 		<!-- @topicItem "Global Settings" "#GlobalSettings_" "1" "" -->
+		<!-- @topicItem "Customize Default Project Settings" "#CustomizeDefaultProjectSettings_" "1" "settings for new project" -->
 	<!-- @topicItem "YouTrack: Add Project" "#YT_NewProject_" "0" "" -->
 		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
 		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
-		<!-- @topicItem "Customize Project Settings" "#ProjectSettings_" "1" "used for new project" -->
 		<!-- @topicItem "Add Agile Boards" "#AddAgileBoards_" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
@@ -330,12 +327,7 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Customize Project Settings" -->
-<div style="page-break-before: always">
-<h4 id="ProjectSettings_">Customize Project Settings</h4>
-</div>
-
-<h5 class="indent">Custom Fields</h5><ul>
+<h4 id="CustomizeDefaultProjectSettings_">Customize Default Project Settings</h4><ul class="indent">
 	</ul><div class="info">
 		<table id="CustomFields_">
 			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
@@ -416,7 +408,7 @@
 							<li>Verify all relevant test results.</li>
 							<li>Review code for cleanness, refactoring opportunities, ...</li>
 						</ul></td></tr>
-					<tr><td>Done</td><td>Issue is complete</td><td>,</td></tr>
+					<tr><td>Verified (Resolved)</td><td>Issue is complete</td><td>,</td></tr>
 				<!-- ch_UnfixedResolutions -->
 				<tr class="subhead"><td colspan="4">Resolution for Issues Not Fixed</td></tr>
 					<tr><td>CannotReproduce</td><td>,</td><td rowspan="6"></td></tr>
@@ -428,7 +420,7 @@
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-				<td>to simplify Saved Search for user's items:</td><td>when moved from Ready and if not already assigned, assign current user</td></tr>
+				<td>to simplify Saved Search for user's items:</td><td>when moved from ToDo and if not already assigned, assign current user</td></tr>
 			<tr><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td> yy.q.n; q=quarter; n=# sprint started in q</td>
 				<td>for standard-style version numbering; added when Sprints are enabled</td></tr>
 			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
@@ -478,28 +470,30 @@
 	</div>
 </div>
 
-<!-- @marker "Add YouTrack Service" -->
-<h4 id="AddYouTrackService_">Add YouTrack Service</h4><ul>
-	<li>Hub<ul>
-		<li>Admin &gt; Services: add YouTrack service; trust</li>
-	</ul></li>
-</ul>
-
 <!-- @marker "YouTrack: New Project" -->
 <h3 id="YT_NewProject_">YouTrack: New Project</h3>
 
+<!-- @marker "Add YouTrack Service" -->
+<h4 id="AddYouTrackService_">Add YouTrack Service</h4><ul>
+	<li>Hub Project Page<ul>
+		<li>add service: Issue Tracker YouTrack</li>
+	</ul></li>
+</ul>
+
 <!-- @marker "Create Project" -->
-<h4 id="CreateProject_">Create Project</h4><div class="indent"><ul>
+<h3 id="CreateProject_">Create Project</h3><div class="indent"><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>Hub as SystemAdmin:<ul>
 		<li>Hub Project Page: create new YouTrack project</li>
 		<li>&lt;NewProject&gt; Project Page<ul>
 			<li>set project name, ID</li>
-			<li>project template: type Scrum</li>
 		</ul></li>
 		<li>Team<ul>
 			<li>add user(s) to project team</li>
 			<li>grant ProjectAdmin role to intended project owner</li>
+		</ul></li>
+		<li>Edit Project: General<ul>
+			<li>set ProjectAdmin to intended project owner</li>
 		</ul></li>
 	</ul></li>
 </ul></div>
@@ -521,7 +515,7 @@
 					<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
 				</ul></li>
 				<li>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
-				<li>Workflow: remove Scrum_2 Workflow</li>
+				<li>remove attached Scrum_2 Workflow</li>
 			</ul></li>
 			<li>Issues page: create tag 'Wait' (orange1)</li>
 		</ul></li>
@@ -537,23 +531,39 @@
 			<li>&lt;ProjectName&gt;-develop</li>
 		</ul></li>
 		<li>with Configurations:<ul>
+			<li>name: &lt;repoName&gt; [Roadmap | -develop]</li>
 			<li>project: &lt;repoName&gt;</li>
 			<li>can view and use board: &lt;repoName&gt; Team</li>
 			<li>can edit board settings: Owner</li>
-			<li>backlog: use existing</li>
-			<li>Backlog search queries:<ul>
-				<li>Roadmap:<ul>
-					<li>name: &lt;ProjectName&gt; Manage Backlog</li>
-					<li>query: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
+			<li>Sprints: enabled</li>
+			<li>Board Behavior: Link Sprints to values for Sprints</li>
+			<li>Sprints: enabled</li>
+			<li>Board behavior: link sprints to values for Sprints<ul>
+				<li>Search Queries<ul>
+					<li>&lt;ProjectName&gt; Roadmap: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
+					<li>&lt;ProjectName&gt;-develop: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
 				</ul></li>
-				<li>Roadmap:<ul>
-					<li>name: &lt;ProjectName&gt; develop-backlog</li>
-					<li>query: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
+				<li>Ignore subtasks of existing cards: yes</li>
+			</ul></li>
+			<li>set board columns; see also <a href="#CustomFields_">Custom Fields</a><ul>
+				<li>Roadmap<ul>
+					<li>Open</li>
+					<li>Story</li>
+					<li>Specify</li>
+					<li>Pull</li>
+				</ul></li>
+				<li>-develop<ul>
+					<li>ToDo</li>
+					<li>Develop</li>
+					<li>Review</li>
+					<li>Verified</li>
 				</ul></li>
 			</ul></li>
-			<li>Swim lanes identified by: field of type Epic (Manage) or Story (develop)</li>
-			<li>show Swimlane for uncategorized cards at the bottom of the board</li>
-			<li>set board columns; see <a href="#CustomFields_">Custom Fields</a></li>
+			<li>Swimlanes<ul>
+				<li>-develop: values from Type Story (select User Story; edit name)</li>
+			<li>Roadmap: values from Type Epic</li>
+				<li>show swimlane for Uncategorized cards at bottom of Board</li>
+			</ul></li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -750,6 +760,7 @@
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
 	<!-- @topicItem "Upgrade Team Tools" "#UpgradeTeamTools_" "0" "" -->
+	<!-- @topicItem "Delete Project" "#DeleteProject_" "0" "" -->
 	<!-- @topicItem "Uninstall" "#Uninstall_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "Online Documentation" "5" -->
@@ -844,6 +855,14 @@
 	<li class="blurb">see also <a href="https://www.jetbrains.com/help/youtrack/standalone/Upgrade-YouTrack-ZIP.html">
 		Upgrade YouTrack ZIP</a></li>
 </ul>
+
+<!-- @marker "Delete Project" -->
+<h4 id="DeleteProject_">Delete Project</h4><ul>
+	<li>as admin: go to project's page</li>
+	<li>select Settings</li>
+	<li>click 'Delete Project'</li>
+</ul>
+
 
 <h4 id='Uninstall_'>Uninstall</h4><div class="indent">
 	<h5>Uninstall TeamCity</h5><ul>
