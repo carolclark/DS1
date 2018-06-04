@@ -291,6 +291,7 @@
 	<!-- @topicItem "YouTrack: Configuration" "#YouTrackConfiguration_" "0" "" -->
 		<!-- @topicItem "Global Settings" "#GlobalSettings_" "1" "" -->
 		<!-- @topicItem "Customize Default Project Settings" "#CustomizeDefaultProjectSettings_" "1" "settings for new project" -->
+		<!-- @topicItem "Configure Default Agile Boards" "#ConfigureDefaultAgileBoards_" "1" "agile boards for new project" -->
 	<!-- @topicItem "YouTrack: Add Project" "#YT_NewProject_" "0" "" -->
 		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
 		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
@@ -470,6 +471,49 @@
 	</div>
 </div>
 
+<!-- @marker "Configure Default Agile Boards" -->
+<h4 id="ConfigureDefaultAgileBoards_">Configure Default Agile Boards</h4><ul>
+	<li>as ProjectAdmin:<ul>
+		<li>create new Agile Boards:<ul>
+			<li>&lt;ProjectName&gt; Roadmap</li>
+			<li>&lt;ProjectName&gt;-develop</li>
+		</ul></li>
+		<li>with Configurations:<ul>
+			<li>name: &lt;repoName&gt; [Roadmap | -develop]</li>
+			<li>project: &lt;repoName&gt;</li>
+			<li>can view and use board: &lt;repoName&gt; Team</li>
+			<li>can edit board settings: Owner</li>
+			<li>Sprints: enabled</li>
+			<li>Board Behavior: Link Sprints to values for Sprints</li>
+			<li>Sprints: enabled</li>
+			<li>Board behavior: link sprints to values for Sprints<ul>
+				<li>Search Queries<ul>
+					<li>&lt;ProjectName&gt; Roadmap: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
+					<li>&lt;ProjectName&gt;-develop: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
+				</ul></li>
+				<li>Ignore subtasks of existing cards: yes</li>
+			</ul></li>
+			<li>set board columns; see also <a href="#CustomFields_">Custom Fields</a><ul>
+				<li>Roadmap<ul>
+					<li>Open</li>
+					<li>Story</li>
+					<li>Specify</li>
+					<li>Pull</li>
+				</ul></li>
+				<li>-develop<ul>
+					<li>ToDo</li>
+					<li>Develop</li>
+					<li>Review</li>
+					<li>Verified</li>
+				</ul></li>
+			</ul></li>
+			<li>Swimlanes<ul>
+				<li>-develop: values from Type Story (select User Story; edit name)</li>
+				<li>Roadmap: values from Type Epic</li>
+				<li>show swimlane for Uncategorized cards at bottom of Board</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
 <!-- @marker "YouTrack: New Project" -->
 <h3 id="YT_NewProject_">YouTrack: New Project</h3>
 
