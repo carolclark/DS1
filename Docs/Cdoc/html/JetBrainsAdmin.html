@@ -239,9 +239,7 @@
 				</ul></li>
 			</ul></li>
 			<li>backup; copy backup file to tag 'initial_installed'</li>
-			<li>complete per-product configuration (<a href="#HubConfiguration_">Hub</a>,
-				<a href="#YouTrackConfiguration_">YouTrack</a>, <a href="#UpSourceConfiguration_">UpSource</a>,
-				<a href="#TeamCityConfiguration_">TeamCity</a>)</li>
+			<li>complete YouTrack configuration</li>
 			<li>backup; copy backup to tag 'initial_configured'</li>
 		</ul></li>
 	</ul></li>
@@ -254,33 +252,35 @@
 <!-- @/topicList -->
 
 <h3 id="HubConfiguration_">Hub Configuration</h3><ul>
-	<li><strong>Access Management</strong><ul>
-		<li>Users<ul>
-			<li>add 'carol':<ul>
-				<li>Create user 'carol'; my email</li>
-				<li>set JetBrains password; do not force change password</li>
-				<li>avatar: select; click our gravitar image</li>
+	<li>Admin Menu:<ul>
+		<li><strong>Access Management</strong><ul>
+			<li>Users<ul>
+				<li>add 'carol':<ul>
+					<li>Create user 'carol'; my email</li>
+					<li>set JetBrains password; do not force change password</li>
+					<li>avatar: select; click our gravitar image</li>
+				</ul></li>
+			</ul></li>
+			<li>Auth Modules<ul>
+				<li>Hub: Built-in Authorization<ul>
+					<li>test login combinations</li>
+				</ul></li>
+				<li>add Authorization Module GitHub<ul>
+					<li>copy Callback URL using 'copy' button</li>
+					<li>clone browser tab; click link to register an application with GitHub</li>
+					<li>generate client codes</li>
+					<li>copy back Client ID and Client Secret; save</li>
+				<li>Enable Module</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li>Auth Modules<ul>
-			<li>Hub: Built-in Authorization<ul>
-				<li>test login combinations</li>
+		<li><strong>Notifications</strong><ul>
+			<li><strong>email notifications: SMTP</strong><ul>
+				<li>host smtp.cox.net</li>
+				<li>from: "JBHub" &lt;my_email&gt;</li>
+				<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
+				<li>save; enable notifications; send test message</li>
 			</ul></li>
-			<li>add Authorization Module GitHub<ul>
-				<li>copy Callback URL using 'copy' button</li>
-				<li>clone browser tab; click link to register an application with GitHub</li>
-				<li>generate client codes</li>
-				<li>copy back Client ID and Client Secret; save</li>
-			<li>Enable Module</li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-	<li><strong>Notifications</strong><ul>
-		<li><strong>email notifications: SMTP</strong><ul>
-			<li>host smtp.cox.net</li>
-			<li>from: "JBHub" &lt;my_email&gt;</li>
-			<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
-			<li>save; enable notification; send test message</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -288,14 +288,14 @@
 <!-- @marker "YouTrack" -->
 <h2>YouTrack</h2>
 <!-- @topicList "YouTrack" "YouTrack_" -->
-	<!-- @topicItem "YouTrack: Configuration" "#YouTrackConfiguration_" "0" "" -->
+	<!-- @topicGroup "YouTrack: Global Settings" "1" -->
 		<!-- @topicItem "Global Settings" "#GlobalSettings_" "1" "" -->
-		<!-- @topicItem "Customize Default Project Settings" "#CustomizeDefaultProjectSettings_" "1" "settings for new project" -->
-		<!-- @topicItem "Configure Default Agile Boards" "#ConfigureDefaultAgileBoards_" "1" "agile boards for new project" -->
-	<!-- @topicItem "YouTrack: Add Project" "#YT_NewProject_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicItem "YouTrack: New Project" "#YT_NewProject_" "0" "" -->
 		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
 		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
-		<!-- @topicItem "Add Agile Boards" "#AddAgileBoards_" "1" "" -->
+		<!-- @topicItem "Configure Issues" "#ConfigureIssues_" "1" "" -->
+		<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
 	<!-- @topicSep -->
@@ -307,18 +307,16 @@
 		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 <!-- @/topicList -->
 
-<h3 id="YouTrackConfiguration_">YouTrack: Configuration</h3>
-
 <!-- @marker "Global Settings" -->
-<h4 id="GlobalSettings_">Global Settings</h4><ul>
-	<li>Server Settings &gt; Global Settings, as admin:<ul>
+<h4 id="GlobalSettings_">YouTrack: Global Settings</h4><ul>
+	<li>as admin: Admin Menu &gt; Server Settings &gt; Global Settings<ul>
 		<li>verify license:
 			up to 10 users; no restriction for private repos; license forever; free updates this century </li>
 		<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
 		<li>verify Default Timezone: Chicago</li>
 		<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
 		<li>Notifications<ul>
-			<li>SMTP: enable email notifications<ul>
+			<li>enable email notifications<ul>
 				<li>SMTP host: smtp.cox.net</li>
 				<li>SMTP login / password: cox email / password</li>
 				<li>Server From email: productName &lt;my_email&gt;; use password cox</li>
@@ -328,7 +326,52 @@
 	</ul></li>
 </ul>
 
-<h4 id="CustomizeDefaultProjectSettings_">Customize Default Project Settings</h4><ul class="indent">
+<!-- @marker "YouTrack: New Project" -->
+<h3 id="YT_NewProject_">YouTrack: New Project</h3>
+
+<!-- @marker "Create Project" -->
+<h3 id="CreateProject_">Create Project</h3><div class="indent"><ul>
+	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+	<li>Hub as SystemAdmin:<ul>
+		<li>Hub Project Page: Create New Project...<ul>
+			<li>&lt;NewProject&gt; Project Page<ul>
+				<li>set project name, ID</li>
+			</ul></li>
+			<li>Team<ul>
+				<li>add user(s) to project team</li>
+				<li>grant ProjectAdmin role to intended project owner</li>
+			</ul></li>
+			<li>Project Settings<ul>
+				<li>set ProjectAdmin to intended project owner</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul></div>
+
+<!-- @marker "Configure Project" -->
+<h4 id="ConfigureProject_">Configure Project</h4><ul>
+	<li>as ProjectAdmin:<ul>
+		<li>Project Page<ul>
+			<li>Add YouTrack Service: Services &gt; Issue Tracker &gt; YouTrack with Scrum</li>
+		</ul></li>
+		<li>YouTrack<ul>
+			<li>VCS Integrations: New VCS Integration<ul>
+				<li>connect to GitHub repo<ul>
+					<li>click link to create Auth token<ul>
+						<li>if token of same name exists, delete existing token; return to TeamTools</li>
+						<li>create Auth token &lt;projectName&gt;</li>
+					</ul></li>
+					<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li class="nyi">Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
+		<li>remove attached Scrum_2 Workflow</li>
+		<li>Issues page: create tag 'waiting' (orange1)</li>
+	</ul></li>
+</ul>
+
+<h4 id="ConfigureIssues_">Configure Issues</h4><ul class="indent">
 	</ul><div class="info">
 		<table id="CustomFields_">
 			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
@@ -346,33 +389,33 @@
 				<td><table>
 					<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
 				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
-				<tr><td>Epic</td><td>orange5</td><td>'Epic' represents a goal containing several Stories.</td>
+				<tr class="nyi"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal containing several Stories.</td>
 					<td rowspan="2">move to Review when all subissues have been addressed and Verified</td></tr>
 					<!-- ch_UserStory2Story -->
-				<tr><td>Story</td><td>orange3</td><td>'Story' represents a BDD Story.<br />
+				<tr class="nyi"><td>Story</td><td>orange3</td><td>'Story' represents a BDD Story.<br />
 					goal element for planning<br />serves as swimlane on a Development Board<br />
 					<div class="mono">As a: I want: so that:</div><br />
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
 				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
-					<tr><td>Task</td><td>brown3</td><td>A task not in the BDD structure.</td>
+					<tr class="nyi"><td>Task</td><td>brown3</td><td>A task not in the BDD structure.</td>
 						<td rowspan="3">These issue types share a column on the Agile Board.</td> </tr>
 					<!-- ch_addFeature+Scenario -->
-					<tr><td>Feature</td><td>blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
+					<tr class="nyi"><td>Feature</td><td>blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
 						Stories are a planning tool, while Features are about implementation organization.</td></tr>
-					<tr><td>Scenario</td><td>blue5</td><td>A BDD Scenario associated with a Feature.</td></tr>
+					<tr class="nyi"><td>Scenario</td><td>blue5</td><td>A BDD Scenario associated with a Feature.</td></tr>
 					<!-- ch_TimeManagement -->
 				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
-					<tr><td>Estimation</td><td>orange2</td><td>time estimation; units w d h m</td>
+					<tr class="nyi"><td>Estimation</td><td>orange2</td><td>time estimation; units w d h m</td>
 						<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
-					<tr><td>Spent time</td><td>orange2</td><td>actual time spent, from work items reported</td></tr>
+					<tr class="nyi"><td>Spent time</td><td>orange2</td><td>actual time spent, from work items reported</td></tr>
 					<!-- ch_BugClassification -->
 				<tr class="subhead"><td colspan="4">Bug Classification</td></tr>
-					<tr><td>Bug</td><td>pink3</td><td></td><td rowspan="5"></td></tr>
-					<tr><td>Cosmetic</td><td>pink3</td><td></td></tr>
-					<tr><td>Exception</td><td>pink3</td><td></td></tr>
-					<tr><td>Usability</td><td>pink3</td><td></td></tr>
-					<tr><td>Performance</td><td>pink3</td><td></td></tr>
+					<tr class="nyi"><td>Bug</td><td>pink3</td><td></td><td rowspan="5"></td></tr>
+					<tr class="nyi"><td>Cosmetic</td><td>pink3</td><td></td></tr>
+					<tr class="nyi"><td>Exception</td><td>pink3</td><td></td></tr>
+					<tr class="nyi"><td>Usability</td><td>pink3</td><td></td></tr>
+					<tr class="nyi"><td>Performance</td><td>pink3</td><td></td></tr>
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
@@ -380,57 +423,57 @@
 					<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
 				<tr class="subhead"><td colspan="3">Backlog</td></tr>
 					<!-- ch_BacklogStates -->
-					<tr><td>Submit</td><td>incoming items</td>
+					<tr class="nyi"><td>Submit</td><td>incoming items</td>
 						<td>Evaluate for development. Select if accepted; else resolve using a 'Resolved' state with comment</td></tr>
-					<tr><td>Select</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
+					<tr class="nyi"><td>Select</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
 				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
-					<tr><td>Open</td><td>selected for development</td>
+					<tr class="nyi"><td>Open</td><td>selected for development</td>
 						<td><ul>
 							<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, or a Task</li>
 							<li>move to Story or Specify as indicated</li>
 						</ul>
 					</td></tr>
-					<tr><td>Story</td>
+					<tr class="nyi"><td>Story</td>
 						<td>a story of the form <span class="mono">As a: I want: so that:</span></td>
 						<td>does not progress through states during development<br />
 							instead, it generates cards to Specify that do progress to the next column<br />
 							when entire Story is completed, move to Review for verification
 						</td></tr>
-					<tr><td>Specify</td><td>specify what is to be done for this work item</td><td>,</td></tr>
+					<tr class="nyi"><td>Specify</td><td>specify what is to be done for this work item</td><td>,</td></tr>
 				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
-					<tr><td>Pull</td><td>ready to be pulled for development</td><td>estimation required to enter this state</td></tr>
+					<tr class="nyi"><td>Pull</td><td>ready to be pulled for development</td><td>estimation required to enter this state</td></tr>
 				<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
-					<tr><td>ToDo</td><td>items to be completed for this Sprint</td></tr>
-					<tr><td>Develop</td><td>develop as specified</td><td>,</td></tr>
-					<tr><td>Review</td><td>Pause for a couple of days so that we can come at this work a fresh perspective<br />
+					<tr class="nyi"><td>ToDo</td><td>items to be completed for this Sprint</td></tr>
+					<tr class="nyi"><td>Develop</td><td>develop as specified</td><td>,</td></tr>
+					<tr class="nyi"><td>Review</td><td>Pause for a couple of days so that we can come at this work a fresh perspective<br />
 						<ul>
 							<li>Evaluate completeness of solution as specified.</li>
 							<li>Evaluate completeness of automated and, if required, manual testing.</li>
 							<li>Verify all relevant test results.</li>
 							<li>Review code for cleanness, refactoring opportunities, ...</li>
 						</ul></td></tr>
-					<tr><td>Verified (Resolved)</td><td>Issue is complete</td><td>,</td></tr>
+					<tr class="nyi"><td>Verified (Resolved)</td><td>Issue is complete</td><td>,</td></tr>
 				<!-- ch_UnfixedResolutions -->
 				<tr class="subhead"><td colspan="4">Resolution for Issues Not Fixed</td></tr>
-					<tr><td>CannotReproduce</td><td>,</td><td rowspan="6"></td></tr>
-					<tr><td>WorksAsIntended</td><td></td></tr>
-					<tr><td>Duplicate</td><td></td></tr>
-					<tr><td>Incomplete</td><td></td></tr>
-					<tr><td>Obsolete</td><td></td></tr>
-					<tr><td>WillNotFix</td><td></td></tr>
+					<tr class="nyi"><td>CannotReproduce</td><td>,</td><td rowspan="6"></td></tr>
+					<tr class="nyi"><td>WorksAsIntended</td><td></td></tr>
+					<tr class="nyi"><td>Duplicate</td><td></td></tr>
+					<tr class="nyi"><td>Incomplete</td><td></td></tr>
+					<tr class="nyi"><td>Obsolete</td><td></td></tr>
+					<tr class="nyi"><td>WillNotFix</td><td></td></tr>
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-			<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
+			<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
 				<td>to simplify Saved Search for user's items:</td><td>when moved from ToDo and if not already assigned, assign current user</td></tr>
-			<tr><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td> yy.q.n; q=quarter; n=# sprint started in q</td>
+			<tr class="nyi"><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td>yy.q.n; q=quarter; n=# sprint started in q</td>
 				<td>for standard-style version numbering; added when Sprints are enabled</td></tr>
-			<tr><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
+			<tr class="nyi"><td>Fixed in build</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
 				<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
-			<tr><td>Fix versions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
+			<tr class="nyi"><td>Fix versions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
 				<td>fix for, fixed in, fix sprint, sprint</td><td>Sprint when planned/fixed</td>
 				<td>,</td></tr>
 			<!-- ch_releaseVersions -->
-			<tr><td>Release versions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
+			<tr class="nyi"><td>Release versions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
 				<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 					on which our versioning plan is based</td></tr>
 		</table>
@@ -447,7 +490,6 @@
 		</table>
 	</div>
 
-<div style="page-break-before: always">
 	<!-- @marker "Notification Templates" -->
 	<div  class="indent">
 		<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
@@ -457,7 +499,8 @@
 
 	<!-- @marker "Time Tracking" -->
 	<div  class="indent">
-		<h5 id="TimeTracking_">Time Tracking</h5><ul class="indent2">
+		<h5 class="nyi" id="TimeTracking_">Time Tracking</h5><ul class="indent2">
+			<li>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
 			<li>length of day: 5h</li>
 			<li>work types: Manage Investigate Develop Test Review Document</li>
 		</ul>
@@ -469,10 +512,9 @@
 			<li>remove workflow Scrum_2</li>
 		</ul>
 	</div>
-</div>
 
-<!-- @marker "Configure Default Agile Boards" -->
-<h4 id="ConfigureDefaultAgileBoards_">Configure Default Agile Boards</h4><ul>
+<!-- @marker "Add Custom Agile Boards" -->
+<h4  class="nyi" id="CustomAgileBoards_">Add Custom Agile Boards</h4><ul>
 	<li>as ProjectAdmin:<ul>
 		<li>create new Agile Boards:<ul>
 			<li>&lt;ProjectName&gt; Roadmap</li>
@@ -484,105 +526,9 @@
 			<li>can view and use board: &lt;repoName&gt; Team</li>
 			<li>can edit board settings: Owner</li>
 			<li>Sprints: enabled</li>
-			<li>Board Behavior: Link Sprints to values for Sprints</li>
 			<li>Sprints: enabled</li>
-			<li>Board behavior: link sprints to values for Sprints<ul>
-				<li>Search Queries<ul>
-					<li>&lt;ProjectName&gt; Roadmap: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
-					<li>&lt;ProjectName&gt;-develop: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
-				</ul></li>
-				<li>Ignore subtasks of existing cards: yes</li>
-			</ul></li>
-			<li>set board columns; see also <a href="#CustomFields_">Custom Fields</a><ul>
-				<li>Roadmap<ul>
-					<li>Open</li>
-					<li>Story</li>
-					<li>Specify</li>
-					<li>Pull</li>
-				</ul></li>
-				<li>-develop<ul>
-					<li>ToDo</li>
-					<li>Develop</li>
-					<li>Review</li>
-					<li>Verified</li>
-				</ul></li>
-			</ul></li>
-			<li>Swimlanes<ul>
-				<li>-develop: values from Type Story (select User Story; edit name)</li>
-				<li>Roadmap: values from Type Epic</li>
-				<li>show swimlane for Uncategorized cards at bottom of Board</li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-<!-- @marker "YouTrack: New Project" -->
-<h3 id="YT_NewProject_">YouTrack: New Project</h3>
-
-<!-- @marker "Add YouTrack Service" -->
-<h4 id="AddYouTrackService_">Add YouTrack Service</h4><ul>
-	<li>Hub Project Page<ul>
-		<li>add service: Issue Tracker YouTrack</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "Create Project" -->
-<h3 id="CreateProject_">Create Project</h3><div class="indent"><ul>
-	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub as SystemAdmin:<ul>
-		<li>Hub Project Page: create new YouTrack project</li>
-		<li>&lt;NewProject&gt; Project Page<ul>
-			<li>set project name, ID</li>
-		</ul></li>
-		<li>Team<ul>
-			<li>add user(s) to project team</li>
-			<li>grant ProjectAdmin role to intended project owner</li>
-		</ul></li>
-		<li>Edit Project: General<ul>
-			<li>set ProjectAdmin to intended project owner</li>
-		</ul></li>
-	</ul></li>
-</ul></div>
-
-<!-- @marker "Configure Project" -->
-<h4 id="ConfigureProject_">Configure Project</h4><ul>
-	<li>as ProjectAdmin:<ul>
-		<li>Hub<ul>
-			<li>Project Page &gt; Settings: set Project Admin</li>
-			<li>Add YouTrack Service: Services &gt; Issue Tracker &gt; YouTrack with Scrum</li>
-		</ul></li>
-		<li>YouTrack<ul>
-			<li>VCS Integrations: New VCS Integration<ul>
-				<li>connect to GitHub repo<ul>
-					<li>click link to create Auth token<ul>
-						<li>if token of same name exists, delete existing token; return to TeamTools</li>
-						<li>create Auth token &lt;projectName&gt;</li>
-					</ul></li>
-					<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
-				</ul></li>
-				<li>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
-				<li>remove attached Scrum_2 Workflow</li>
-			</ul></li>
-			<li>Issues page: create tag 'Wait' (orange1)</li>
-		</ul></li>
-	</ul></li>
-</ul>
-
-
-<!-- @marker "Add Agile Boards" -->
-<h4 id="AddAgileBoards_">Add Agile Boards</h4><ul>
-	<li>as ProjectAdmin:<ul>
-		<li>create new Agile Boards:<ul>
-			<li>&lt;ProjectName&gt; Roadmap</li>
-			<li>&lt;ProjectName&gt;-develop</li>
-		</ul></li>
-		<li>with Configurations:<ul>
-			<li>name: &lt;repoName&gt; [Roadmap | -develop]</li>
-			<li>project: &lt;repoName&gt;</li>
-			<li>can view and use board: &lt;repoName&gt; Team</li>
-			<li>can edit board settings: Owner</li>
-			<li>Sprints: enabled</li>
-			<li>Board Behavior: Link Sprints to values for Sprints</li>
-			<li>Sprints: enabled</li>
-			<li>Board behavior: link sprints to values for Sprints<ul>
+			<li>Board behavior:<ul>
+				<li>link sprints to values for Sprints</li>
 				<li>Search Queries<ul>
 					<li>&lt;ProjectName&gt; Roadmap: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
 					<li>&lt;ProjectName&gt;-develop: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
@@ -671,7 +617,7 @@
 	<tr><td>ch_addFeatureScenario</td><td>add fields Feature, Scenario</td>
 		<td>view special BDD types more easily<br />
 		then color cards by field Type</td></tr>
-	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td></td></tr>
+	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</td></tr>
 	<tr><td>ch_BacklogStates</td><td>add states Submit, Select for classifying backlog</td></tr>
 	<tr><td>ch_UnfixedResolutions</td><td>add resolutions for submissions not accepted for development (conditional)</td></tr>
 	<tr><td>ch_BugClassification</td><td>add classifications for bugs to be fixed (conditional)</td></tr>
@@ -903,8 +849,8 @@
 <!-- @marker "Delete Project" -->
 <h4 id="DeleteProject_">Delete Project</h4><ul>
 	<li>as admin: go to project's page</li>
-	<li>select Settings</li>
-	<li>click 'Delete Project'</li>
+	<li>Admin: Settings: 'Delete Project'</li>
+	<li>if no more projects: Services: delete all applicable services </li>
 </ul>
 
 
