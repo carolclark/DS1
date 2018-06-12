@@ -330,18 +330,20 @@
 <h3 id="YT_NewProject_">YouTrack: New Project</h3>
 
 <!-- @marker "Create Project" -->
-<h3 id="CreateProject_">Create Project</h3><div class="indent"><ul>
+<h4 id="CreateProject_">Create Project</h4><div class="indent"><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>Hub as SystemAdmin:<ul>
 		<li>Hub Project Page: Create New Project...<ul>
-			<li>&lt;NewProject&gt; Project Page<ul>
+			<li>&lt;NewProject&gt; Project Dialog<ul>
 				<li>set project name, ID</li>
 			</ul></li>
+		</ul></li>
+		<li>&lt;Project&gt; page<ul>
 			<li>Team<ul>
 				<li>add user(s) to project team</li>
 				<li>grant ProjectAdmin role to intended project owner</li>
 			</ul></li>
-			<li>Project Settings<ul>
+			<li>&lt;Project&gt; Settings<ul>
 				<li>set ProjectAdmin to intended project owner</li>
 			</ul></li>
 		</ul></li>
@@ -368,6 +370,7 @@
 		<li class="nyi">Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
 		<li>remove attached Scrum_2 Workflow</li>
 		<li>Issues page: create tag 'waiting' (orange1)</li>
+		<li>Admin : Edit : Fields : Type: User Story -&gt; Story</li>
 	</ul></li>
 </ul>
 
@@ -401,9 +404,9 @@
 					<tr class="nyi"><td>Task</td><td>brown3</td><td>A task not in the BDD structure.</td>
 						<td rowspan="3">These issue types share a column on the Agile Board.</td> </tr>
 					<!-- ch_addFeature+Scenario -->
-					<tr class="nyi"><td>Feature</td><td>blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
+					<tr class="nyi"><td>Feature</td><td>blue5</td><td>A BDD feature. Features are orthogonal to Stories;<br />
 						Stories are a planning tool, while Features are about implementation organization.</td></tr>
-					<tr class="nyi"><td>Scenario</td><td>blue5</td><td>A BDD Scenario associated with a Feature.</td></tr>
+					<tr class="nyi"><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
 					<!-- ch_TimeManagement -->
 				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
 					<tr class="nyi"><td>Estimation</td><td>orange2</td><td>time estimation; units w d h m</td>
@@ -848,9 +851,11 @@
 
 <!-- @marker "Delete Project" -->
 <h4 id="DeleteProject_">Delete Project</h4><ul>
-	<li>as admin: go to project's page</li>
-	<li>Admin: Settings: 'Delete Project'</li>
-	<li>if no more projects: Services: delete all applicable services </li>
+	<li>as admin: project's page</li>
+	<li>Admin: Settings:'Delete Project'</li>
+	<li class="dq">if no more projects:<ul>
+		<li>Services: delete all applicable services</li>
+	</ul>
 </ul>
 
 
