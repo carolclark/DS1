@@ -208,7 +208,9 @@
 			<li>for Terminal: update version in <span class="mono">$&lt;TOOLNAME&gt;</span>,
 				path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;version&gt;</span></li>
 			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'<ul>
+					<li>for YouTrack: add '/YouTrack' to path</li>
+				</ul></li>
 				<li>use external Hub<ul>
 					<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
 					<li>verify Hub connection</li>
@@ -229,7 +231,7 @@
 					<li><a href="#CommandLineTools_">Restart Tool</a></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
-					<li id="backupConfig_"><strong>Backup &amp; Server Settings</strong><ul>
+					<li id="backupConfig_"><strong>Server Settings : Backup</strong><ul>
 						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
 						<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation</li>
 						<li>tar.gz format</li>
@@ -293,8 +295,9 @@
 	<!-- @topicSep -->
 	<!-- @topicItem "YouTrack: New Project" "#YT_NewProject_" "0" "" -->
 		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
+		<!-- @topicItem "Connect Project" "#ConnectProject_" "1" "" -->
 		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
-		<!-- @topicItem "Configure Issues" "#ConfigureIssues_" "1" "" -->
+		<!-- @topicItem "Customized Project Configuration " "#CustomizedProjectConfiguration_" "1" "" -->
 		<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
@@ -320,7 +323,7 @@
 				<li>SMTP host: smtp.cox.net</li>
 				<li>SMTP login / password: cox email / password</li>
 				<li>Server From email: productName &lt;my_email&gt;; use password cox</li>
-				<li>save; send message to test connection</li>
+				<li>send message to test connection; save</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
@@ -340,7 +343,7 @@
 		</ul></li>
 		<li>&lt;Project&gt; page<ul>
 			<li>Team<ul>
-				<li>add user(s) to project team</li>
+				<li>select user(s) for project team</li>
 				<li>grant ProjectAdmin role to intended project owner</li>
 			</ul></li>
 			<li>&lt;Project&gt; Settings<ul>
@@ -350,8 +353,8 @@
 	</ul></li>
 </ul></div>
 
-<!-- @marker "Configure Project" -->
-<h4 id="ConfigureProject_">Configure Project</h4><ul>
+<!-- @marker "Connect Project" -->
+<h4 id="ConnectProject_">Connect Project</h4><ul>
 	<li>as ProjectAdmin:<ul>
 		<li>Project Page<ul>
 			<li>Add YouTrack Service: Services &gt; Issue Tracker &gt; YouTrack with Scrum</li>
@@ -367,14 +370,36 @@
 				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li class="nyi">Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
-		<li>remove attached Scrum_2 Workflow</li>
-		<li>Issues page: create tag 'waiting' (orange1)</li>
-		<li>Admin : Edit : Fields : Type: User Story -&gt; Story</li>
 	</ul></li>
 </ul>
 
-<h4 id="ConfigureIssues_">Configure Issues</h4><ul class="indent">
+<!-- @marker "Configure Project" -->
+<h4>Configure Project</h4>
+<!-- @topicList "Configure Project" "ConfigureProject_" -->
+	<!-- @topicItem "User Story -&gt; Story" "#UserStory2Story_" "0" "" -->
+<!-- @/topicList -->
+<div class="indent">
+
+	<!-- @marker "User Story -&gt; Story" -->
+	<h5 id="UserStory2Story_">User Story -&gt; Story</h5><ul>
+		<li>rename field</li>
+		<li>Agile Boards:<ul>
+			<li>edit saved backlog searches</li>
+			<li>edit swimlane header for Develop board</li>
+		</ul></li>
+	</ul>
+
+	<ul>
+		<li>orphans<ul>
+			<li class="nyi">Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
+			<li>remove attached Scrum_2 Workflow</li>
+			<li>Issues page: create tag 'waiting' (orange1)</li>
+		</ul></li>
+	</ul>
+
+</div>
+
+<h4 id="CustomizedProjectConfiguration_">Customized Project Configuration </h4><ul class="indent">
 	</ul><div class="info">
 		<table id="CustomFields_">
 			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
@@ -520,11 +545,11 @@
 <h4  class="nyi" id="CustomAgileBoards_">Add Custom Agile Boards</h4><ul>
 	<li>as ProjectAdmin:<ul>
 		<li>create new Agile Boards:<ul>
-			<li>&lt;ProjectName&gt; Roadmap</li>
+			<li>&lt;ProjectName&gt;&#9141;Roadmap</li>
 			<li>&lt;ProjectName&gt;-develop</li>
 		</ul></li>
 		<li>with Configurations:<ul>
-			<li>name: &lt;repoName&gt; [Roadmap | -develop]</li>
+			<li>name: &lt;repoName&gt;[&#9141;Roadmap | -develop]</li>
 			<li>project: &lt;repoName&gt;</li>
 			<li>can view and use board: &lt;repoName&gt; Team</li>
 			<li>can edit board settings: Owner</li>
@@ -853,9 +878,9 @@
 <h4 id="DeleteProject_">Delete Project</h4><ul>
 	<li>as admin: project's page</li>
 	<li>Admin: Settings:'Delete Project'</li>
-	<li class="dq">if no more projects:<ul>
+	<li>if no more projects:<ul>
 		<li>Services: delete all applicable services</li>
-	</ul>
+	</ul></li>
 </ul>
 
 

@@ -1,45 +1,88 @@
 <component name="ProjectDictionaryState">
   <dictionary name="carolclark">
     <words>
+      <w>applescript</w>
+      <w>arbonne</w>
+      <w>automator</w>
+      <w>barebones</w>
+      <w>bbedit</w>
+      <w>bootable</w>
       <w>buildnum</w>
       <w>cblue</w>
+      <w>ccdev</w>
+      <w>cdocsrc</w>
       <w>cgreen</w>
+      <w>checkmembership</w>
+      <w>chrono</w>
       <w>committers</w>
       <w>creset</w>
-      <w>datasift</w>
+      <w>cvsroot</w>
       <w>deamons</w>
-      <w>gcmf</w>
-      <w>gcsm</w>
+      <w>filetypes</w>
+      <w>fpath</w>
+      <w>funclist</w>
+      <w>gdform</w>
+      <w>ginaclark</w>
       <w>ginfo</w>
       <w>gitcore</w>
       <w>gitflow</w>
+      <w>gitmessage</w>
       <w>glbl</w>
       <w>glosslink</w>
+      <w>godaddy</w>
       <w>gravitar</w>
+      <w>grymoire</w>
+      <w>homebrew</w>
       <w>howto</w>
       <w>ide's</w>
       <w>imac</w>
       <w>inreset</w>
       <w>intelli</w>
       <w>jvmoptions</w>
+      <w>korn</w>
+      <w>kshrc</w>
+      <w>lauramartinez</w>
+      <w>lauras</w>
       <w>lineno</w>
       <w>logtag</w>
       <w>mattwynne</w>
+      <w>maxtor</w>
+      <w>menlo</w>
       <w>metaspace</w>
       <w>mysqladmin</w>
+      <w>offsite</w>
+      <w>pnkn</w>
+      <w>precompiles</w>
+      <w>prsn</w>
       <w>repos</w>
       <w>roadmap</w>
+      <w>rsrc</w>
+      <w>rwxr</w>
+      <w>scottclark</w>
+      <w>scpt</w>
+      <w>scptd</w>
+      <w>seagate</w>
+      <w>shunit</w>
       <w>signin</w>
       <w>smtp</w>
+      <w>srcroot</w>
       <w>subissues</w>
       <w>subtask</w>
+      <w>sudo</w>
       <w>swimlane</w>
       <w>swimlanes</w>
       <w>syslog</w>
+      <w>tabl</w>
+      <w>tableholder</w>
       <w>toolname</w>
+      <w>uname</w>
       <w>uncategorized</w>
+      <w>unittest</w>
       <w>versioning</w>
       <w>viget</w>
+      <w>vnbsp</w>
+      <w>webformmailer</w>
+      <w>webpages</w>
       <w>youtrack</w>
     </words>
   </dictionary>
