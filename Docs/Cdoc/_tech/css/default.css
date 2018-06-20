@@ -550,6 +550,9 @@
 		color: #a00000;
 		text-decoration: underline;
 	}
+	.custom {						/* customized feature */
+		color: #9A09FF;
+	}
 	.dq {						/* design question */
 		font-style: italic;
 		color: #da70d6;

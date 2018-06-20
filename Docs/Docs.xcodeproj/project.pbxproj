@@ -69,7 +69,7 @@
 		965F8A25D212F97850C0E9D6 /* Workflows_withParts.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = Workflows_withParts.pcvd; sourceTree = "<group>"; };
 		965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-1148.jpg"; sourceTree = "<group>"; };
 		965F8AF608AC68792F7415BC /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = file.ksh; path = Doxygen_install.ksh; sourceTree = "<group>"; };
-		965F8B3EB0F22393EEC4390D /* TT_ConfigModel.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TT_ConfigModel.html; sourceTree = "<group>"; };
+		965F8B3EB0F22393EEC4390D /* JetBrains_Config.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrains_Config.html; sourceTree = "<group>"; };
 		965F8C9798E940E064E8D4AE /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
 		965F8D110C54EC79190CB9B0 /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
 		965F8D1ED5AE55EB946B750A /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 				965F88756EC76D8FC8228B96 /* DevSupport.html */,
 				965F8762FEE3692000438723 /* Glossary_DevSupport.html */,
 				965F824C8932575EDA468EA1 /* Glossary_DevOps.html */,
-				965F8B3EB0F22393EEC4390D /* TT_ConfigModel.html */,
+				965F8B3EB0F22393EEC4390D /* JetBrains_Config.html */,
 			);
 			path = html;
 			sourceTree = "<group>";

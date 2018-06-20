@@ -1,0 +1,224 @@
+<!-- JetBrains_Config.html -->
+<!-- Created by carolclark on 6/16/18 for project DevSupport. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>TT_ConfigModel</title>
+	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
+	<style type="text/css">
+		.info {
+			margin-left: 80px;
+			background-color: white;
+		}
+		.info table {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		.info th {
+			padding: 5px;
+			text-align: left;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		.info td {
+			padding: 5px;
+			text-align: left;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		.info tr:nth-child(odd) {
+				background-color: #f2f2f2;
+		}
+		.info tr:nth-child(even) {
+			background-color: white;
+		}
+		.info tr:hover {
+			background-color: #ddd;
+		}
+		.info th {
+			padding-top: 4px;
+			padding-bottom: 4px;
+			text-align: center;
+			background-color: #E0FEFC;
+		}
+		.smallHeader th {
+			font-size: smaller;
+			background-color: #E0FEFC;
+			line-height: 4px;
+		}
+		.subhead td {
+			font-size: smaller;
+			background-color: #ECE0D6;
+			font-style: italic;
+			line-height: 4px;
+		}
+	</style>
+</head>
+
+<body>
+<!-- @navhead "JetBrainsAdmin.html" "JetBrainsAdmin" "History_Support.html" -->
+<h1>TT_ConfigModel</h1>
+
+<!-- @topicList "TT_ConfigModel" "Contents" -->
+	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
+<!-- @/topicList -->
+
+<p>TT_ConfigModel is a Team Tools project intended to help verify and maintain our customizations.
+	Note that YouTrack, in particular, is tricky to get set up correctly, and
+	does not provide for backup of its settings except for backup/restore of its entire database.</p>
+<p>The process described here is intended to manage customizations of TeamTools configurations.</p>
+<ul>
+	<li>For any such customization for our development environment, the process is:<ul>
+		<li>In this document, clearly define what and how changes are to be made.
+			This is especially important because we may need to go back to reconstruct this configuration.</li>
+		<li>When one or more changes are ready to be developed:<ul>
+			<li>For any change that can be copied between projects, e.g. Type and State values:<ul>
+				<li>configure and test the changes in TT_ConfigModel</li>
+				<li>if copyable, copy into separate settings-only project TeamTools_CopySettings</li>
+			</ul></li>
+			<li>otherwise, document and implement the process for making the change</li>
+		<li>Document, in JetBrainsAdmin.html, how to transfer the changes.
+			This may be either by copying from TeamTools_CopySettings or by reproducing the steps.</li>
+		</ul></li>
+	</ul></li>
+</ul>
+<p>In the associated <a href="JetBrainsAdmin.html#CustomizedProjectConfiguration_">Settings Table</a>;
+	planned customizations not yet implemented are colored as <span class="nyi">not yet implemented</span>;
+	customizations that have been implemented are colored as <span class="custom">customized</span>.</p>
+<p>Note that any issues added to the developing testbed are in the connected GitHub project, and are version controlled.</p>
+
+
+<!-- @marker "YouTrack" -->
+<h2>YouTrack</h2>
+<!-- @topicList "YouTrack" "YouTrack_" -->
+	<!-- @topicItem "Synchronize YouTrack Customization" "#SyncYTCustomization_" "0" "" -->
+	<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "1" "" -->
+	<!-- @topicItem "Customized Project Configuration " "JetBrainsAdmin.html#CustomizedProjectConfiguration_" "0" "" -->
+	<!-- @topicSep -->
+	<!-- @topicGroup "YouTrack: Add Features" "" -->
+		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "1" "required for all plugins" -->
+		<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "1" "" -->
+		<!-- @topicItem "Time Tracking Extension" "#TimeTrackingExt_" "1" "" -->
+		<!-- @topicItem "Task Management" "#TaskManagement_" "1" "" -->
+		<!-- @topicItem "Tweaks Extension" "JetBrainsAdmin.html#TweaksExtension_" "1" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "User Story -&gt; Story" -->
+<h4 id="UserStory2Story_" class="nyi">User Story -&gt; Story</h4><ul>
+	<li>rename field</li>
+	<li>Agile Boards:<ul>
+		<li>edit saved backlog searches</li>
+		<li>edit swimlane header for Develop board</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Add Custom Agile Boards" -->
+<h4  class="nyi" id="CustomAgileBoards_">Add Custom Agile Boards</h4><ul>
+	<li>as ProjectAdmin:<ul>
+		<li>create new Agile Boards:<ul>
+			<li>&lt;ProjectName&gt;&#9141;Roadmap</li>
+			<li>&lt;ProjectName&gt;-develop</li>
+		</ul></li>
+		<li>with Configurations:<ul>
+			<li>name: &lt;repoName&gt;[&#9141;Roadmap | -develop]</li>
+			<li>project: &lt;repoName&gt;</li>
+			<li>can view and use board: &lt;repoName&gt; Team</li>
+			<li>can edit board settings: Owner</li>
+			<li>Sprints: enabled</li>
+			<li>Sprints: enabled</li>
+			<li>Board behavior:<ul>
+				<li>link sprints to values for Sprints</li>
+				<li>Search Queries<ul>
+					<li>&lt;ProjectName&gt; Roadmap: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
+					<li>&lt;ProjectName&gt;-develop: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
+				</ul></li>
+				<li>Ignore subtasks of existing cards: yes</li>
+			</ul></li>
+			<li>set board columns;
+				see also <a href="JetBrainsAdmin.html#CustomizedProjectConfiguration_">Customized Project Configuraion</a><ul>
+				<li>Roadmap<ul>
+					<li>Open</li>
+					<li>Story</li>
+					<li>Specify</li>
+					<li>Pull</li>
+				</ul></li>
+				<li>-develop<ul>
+					<li>ToDo</li>
+					<li>Develop</li>
+					<li>Review</li>
+					<li>Verified</li>
+				</ul></li>
+			</ul></li>
+			<li>Swimlanes<ul>
+				<li>-develop: values from Type Story (select User Story; edit name)</li>
+			<li>Roadmap: values from Type Epic</li>
+				<li>show swimlane for Uncategorized cards at bottom of Board</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<h3>Add Features: YouTrack</h3><div class="indent">
+
+	<!-- @marker "YouTrack Mobile" -->
+	<h5 id="YouTrackMobile_">YouTrack Mobile</h5><ul>
+		<li>download from AppStore and open</li>
+	</ul>
+
+	<!-- @marker "YouTrack Integration Plugin" -->
+	<h5 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h5><ul>
+		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
+			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
+	</ul>
+
+	<!-- @marker "Issue Navigation" -->
+	<h5 id="IssueNavigation_">Issue Navigation</h5><ul>
+		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/Issue-Navigation.html">
+			Issue Navigation</a></li>
+		</ul>
+
+	<!-- @marker "Time Tracking Extension" -->
+	<h5 id="TimeTrackingExt_">Time Tracking Extension</h5><ul>
+		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
+				<li>see Issue Navigation</li>
+			</ul></li>
+		</ul>
+
+	<!-- @marker "Task Management" -->
+	<h5 id="TaskManagement_">Task Management</h5><ul>
+		<li>see https://www.jetbrains.com/help/youtrack/standalone/Task-Management-Plugin.html</li>
+	</ul>
+
+</div>
+
+<!-- @marker "Synchronize YouTrack Customization" -->
+<h3 id="SyncYTCustomization_">Synchronize YouTrack Customization</h3>
+<p>These changes were part of the original YouTrack customization plan,
+	but turned out to be too much to implement all at once.
+	Places to change in this document are marked with the following html ids:</p>
+
+<table>
+	<tr><th>tag</th><th>change</th><th>comments</th></tr>
+	<tr><td>ch_UserStory2Story</td><td>rename Type "User Story" to "Story"</td>
+		<td>It's a Story; 'User' is at best unhelpful<br />Space would require "{}" for any search, ...</td></tr>
+	<tr><td>ch_BacklogStates</td><td>add States Submit, Select for classifying backlog</td></tr>
+	<tr><td>ch_addFeatureScenario</td><td>add Types Feature, Scenario</td>
+		<td>view special BDD types more easily<br />
+			then color cards by field Type</td></tr>
+	<tr><td>ch_ColumnStates</td> <td>add States Story, Specify, Pull, ToDo, Develop, Review, Verified</td> <td></td></tr>
+	<tr><td rowspan="3"><a href="#CustomAgileBoards_"></a> </td></tr>
+	<tr><td>ch_releaseVersions</td><td>add field releaseVersions</td></tr>
+	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</td></tr>
+	<tr><td>ch_UnfixedResolutions</td><td>add resolution States for submissions not accepted for development (conditional)</td></tr>
+	<tr><td>ch_BugClassification</td><td>add Types to classify bugs to be fixed (conditional)</td>
+		<td>to conform with out existing policy</td></tr>
+</table>
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+<hr class='footer' />
+<p class='footer'>Copyright (c) 2018 C &amp; C Software, Inc. All rights reserved.</p>
+</body>
+</html>
