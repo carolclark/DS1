@@ -63,6 +63,7 @@
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		965F87D13524A7E376D0EDDC /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F88756EC76D8FC8228B96 /* DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DevSupport.html; sourceTree = "<group>"; };
+		965F88AC734F8F77ABDB1CE6 /* TT_ConfigModel.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TT_ConfigModel.html; sourceTree = "<group>"; };
 		965F891DDAA092A8121A8B6E /* BranchWorkflow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BranchWorkflow.png; path = OtherDocuments/BranchWorkflow.png; sourceTree = SOURCE_ROOT; };
 		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
@@ -185,6 +186,7 @@
 				965F8762FEE3692000438723 /* Glossary_DevSupport.html */,
 				965F824C8932575EDA468EA1 /* Glossary_DevOps.html */,
 				965F8B3EB0F22393EEC4390D /* JetBrains_Config.html */,
+				965F88AC734F8F77ABDB1CE6 /* TT_ConfigModel.html */,
 			);
 			path = html;
 			sourceTree = "<group>";
