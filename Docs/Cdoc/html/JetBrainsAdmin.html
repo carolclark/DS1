@@ -507,26 +507,29 @@
 			<td><table>
 				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
 				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
-				<tr class="nyi"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal containing several Stories.</td>
-					<td rowspan="2">move to Review when all subissues have been addressed and Verified</td></tr>
+				<tr class="nyi"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal containing multiple Stories.</td>
+					<td rowspan="2">manually move to Review when all subissues have been addressed and Verified</td></tr>
+				<tr><td>Subsystem</td> <td>no value</td> <td>N/A</td> <td>ownedField</td> <td>none</td>
+					<td>'owned' refers to a developer responsible for this Subsystem</td></tr>
 				<!-- ch_UserStory2Story -->
-				<tr class="nyi"><td>Story</td><td>orange3</td><td>'Story' represents a BDD Story.<br />
+				<tr class="nyi"><td>Story</td><td>orange3</td><td>'Story' represents a BDD Story<br />
 					goal element for planning<br />serves as swimlane on a Development Board<br />
 					<div class="mono">As a: I want: so that:</div><br />
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
+						orthogonal to</a> features, and may require functionality from otherwise unrelated Features</td></tr>
 				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
-				<tr class="nyi"><td>Task</td><td>brown3</td><td>A task not in the BDD structure.</td>
+				<tr class="nyi"><td>Task</td><td>brown3</td><td>A task not necessarily part of the BDD structure</td>
 					<td rowspan="3">These issue types share a column on the Agile Board.</td> </tr>
 				<!-- ch_addFeature+Scenario -->
-				<tr class="nyi"><td>Feature</td><td>blue5</td><td>A BDD feature. Features are orthogonal to Stories;<br />
+				<tr class="nyi"><td>Feature</td><td>blue3</td><td>A BDD feature. Features are orthogonal to Stories;<br />
 					Stories are a planning tool, while Features are about implementation organization.</td></tr>
-				<tr class="nyi"><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
 				<!-- ch_TimeManagement -->
 				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
-				<tr class="nyi"><td>Estimation</td><td>orange2</td><td>time estimation; units w d h m</td>
+				<tr class="nyi"><td>StoryPoints</td> <td>orange2</td> <td>size estimate for Story</td>
+					<td>values 0 1 2 3 5 8 13 21 34 55 89 144</td></tr>
+				<tr class="nyi"><td>Estimation</td><td>blue1</td><td>time estimation; units w d h m</td>
 					<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
-				<tr class="nyi"><td>Spent time</td><td>orange2</td><td>actual time spent, from work items reported</td></tr>
+				<tr class="nyi"><td>Spent time</td><td>blue2</td><td>actual time spent, from work items reported</td></tr>
 				<!-- ch_BugClassification -->
 				<tr class="subhead"><td colspan="4">Bug Classification</td></tr>
 				<tr class="nyi"><td>Bug</td><td>pink3</td><td></td><td rowspan="5"></td></tr>
@@ -555,7 +558,7 @@
 					<td>a story of the form <span class="mono">As a: I want: so that:</span></td>
 					<td>does not progress through states during development<br />
 						instead, it generates cards to Specify that do progress to the next column<br />
-						when entire Story is completed, move to Review for verification
+						when entire Story is completed, move to Fixed for verification
 					</td></tr>
 				<tr class="nyi"><td>Specify</td><td>specify what is to be done for this work item</td><td>,</td></tr>
 				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
@@ -563,14 +566,14 @@
 				<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
 				<tr class="nyi"><td>ToDo</td><td>items to be completed for this Sprint</td></tr>
 				<tr class="nyi"><td>Develop</td><td>develop as specified</td><td>,</td></tr>
-				<tr class="nyi"><td>Review</td><td>Pause for a couple of days so that we can come at this work a fresh perspective<br />
+				<tr class="nyi"><td>Review</td><td>If possible, pause for awhile and come at this work a fresh perspective<br />
 					<ul>
 						<li>Evaluate completeness of solution as specified.</li>
 						<li>Evaluate completeness of automated and, if required, manual testing.</li>
 						<li>Verify all relevant test results.</li>
 						<li>Review code for cleanness, refactoring opportunities, ...</li>
 					</ul></td></tr>
-				<tr class="nyi"><td>Verified (Resolved)</td><td>Issue is complete</td><td>,</td></tr>
+				<tr class="nyi"><td>Fixed</td><td>Issue is complete</td><td>,</td></tr>
 				<!-- ch_UnfixedResolutions -->
 				<tr class="subhead"><td colspan="4">Resolution for Issues Not Fixed</td></tr>
 				<tr class="nyi"><td>CannotReproduce</td><td>,</td><td rowspan="6"></td></tr>
