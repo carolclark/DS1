@@ -377,13 +377,9 @@
 <!-- @marker "Configure Project" -->
 <h4 id="ConfigureProject_">Configure Project</h4>
 
-	<ul>
-		<li>orphans<ul>
-			<li class="nyi">Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
-			<li>remove attached Scrum_2 Workflow</li>
-			<li>Issues page: create tag 'waiting' (orange1)</li>
-		</ul></li>
-	</ul>
+<!-- @topicList "Configure Project" "ConfigureProject_" -->
+	<!-- @topicItem "JetBrains Config" "JetBrains_Config.html#Contents" "0" "Team Tools Configuration" -->
+<!-- @/topicList -->
 
 <!-- @marker "Add Custom Agile Boards" -->
 <h4  class="nyi" id="CustomAgileBoards_">Add Custom Agile Boards</h4><ul>
@@ -431,7 +427,6 @@
 </ul>
 
 <p>On Issues page: create tag 'waiting' (orange1)</p>
-
 
 <h3>Add Features: YouTrack</h3><div class="indent">
 
@@ -512,15 +507,16 @@
 			<td><table>
 				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
 				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
-				<tr class="nyi"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal containing multiple Stories.</td>
+				<tr class="nyi"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
+					several Stories, some of which may be attached to different Epics or Projects</td>
 					<td rowspan="2">may be moved to Review if all subissues have been addressed and Verified
 					and no further work is expected at this stage</td></tr>
 				<tr><td>Subsystem</td> <td>no value</td> <td>N/A</td> <td>ownedField</td> <td>none</td>
 					<td>'owned' refers to a developer responsible for this Subsystem</td></tr>
 				<!-- ch_UserStory2Story -->
 				<tr class="nyi"><td>Story</td><td>orange3</td><td>'Story' represents a BDD Story.<br />
-					goal element for planning<br />serves as swimlane on a Development Board<br />
-					<div class="mono">As a: I want: so that:</div><br />
+					goal element for planning<br />serves as swimlane on a -develop Board<br />
+					"<span class="mono">As a: I want: so that:</span>" to be implemented<br />
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
 				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
@@ -590,6 +586,8 @@
 				<tr class="nyi"><td>Obsolete</td><td></td></tr>
 				<tr class="nyi"><td>WillNotFix</td><td></td></tr>
 			</table></td></tr>
+			<tr><td>Subsystem</td> <td>no value</td> <td>N/A</td> <td>ownedField</td> <td>none</td>
+				<td>'owned' normally refers to a developer responsible for this Subsystem</td></tr>
 		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 		<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
 			<td>to simplify Saved Search for user's items:</td><td>when moved from ToDo and if not already assigned, assign current user</td></tr>
@@ -856,12 +854,15 @@
 <h4 id="UpgradeTeamTools_">Upgrade Team Tools</h4><ul>
 	<li>for tool to be upgraded:<ul>
 		<li>backup existing tool (Server Settings &gt; Backup)</li>
-		<li><a href="#CommandLineTools_">stop</a> the service to be upgraded</li>
+		<li><a href="#CommandLineTools_">stop</a> the service to be upgraded; close its open windows</li>
 		<li><strong>Activity Monitor</strong>: search for processes with name &lt;toolName&gt;; kill any found</li>
-		<li>on /Volumes/Servers/jb: rename existing &lt;toolName&gt; to &lt;toolName&gt;_&lt;buildnum&gt;</li>
-		<li>download &lt;toolName&gt;.zip archive to /Volumes/Servers/jb</li>
-		<li>extract to /Volumes/Servers/jb/&lt;toolName&gt;</li>
-		<li><a href="#CommandLineTools_">start</a> the service</li>
+		<li>download &lt;toolName&gt;.zip archive</li>
+		<li>for Terminal: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
+			path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;newVersion&gt;</span><ul>
+				<li>also copy that line, and execute it in Terminal</li>
+			</ul></li>
+		<li>move archive to /Volumes/Servers/jb/&lt;toolName&gt;; extract</li>
+		<li><a href="#CommandLineTools_">start</a> the new service</li>
 		<li>select "Upgrade"; when asked for Upgrade Source, select &lt;toolName&gt;_&lt;oldBuildNum&gt;</li>
 		<li>if necessary, change location of backup directory to /Volumes/Mavericks-1/Backups</li>
 		<li>click "Upgrade" to complete</li>
