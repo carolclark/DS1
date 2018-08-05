@@ -204,7 +204,7 @@
 				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
 					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
-			<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
+			<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span>,
 				path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;newVersion&gt;</span><ul>
 					<li>also copy that line, and execute it in Terminal</li>
 				</ul></li>
@@ -299,6 +299,7 @@
 		<!-- @topicItem "Connect Project" "#ConnectProject_" "1" "" -->
 		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
 			<!-- @topicItem "JetBrains Config" "JetBrains_Config.html#Contents" "0" "description" -->
+		<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "Customized Project Configuration " "#CustomizedProjectConfiguration_" "0" "" -->
 	<!-- @topicItem "YouTrack References" "#YouTrack_References_" "0" "" -->
@@ -561,7 +562,7 @@
 					<td>a story of the form <span class="mono">As a: I want: so that:</span></td>
 					<td>does not progress through states during development<br />
 						instead, it generates cards to Specify that do progress to the next column<br />
-						when entire Story is completed, move to Fixed for verification
+						when entire Story is completed, move to Review for verification
 					</td></tr>
 				<tr class="nyi"><td>Specify</td><td>specify what is to be done for this work item</td><td>,</td></tr>
 				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
@@ -576,7 +577,7 @@
 						<li>Verify all relevant test results.</li>
 						<li>Review code for cleanness, refactoring opportunities, ...</li>
 					</ul></td></tr>
-				<tr class="nyi"><td>Fixed</td><td>Issue is complete</td><td>,</td></tr>
+				<tr class="nyi"><td>Verified (Resolved)</td><td>Issue is complete</td><td>,</td></tr>
 				<!-- ch_UnfixedResolutions -->
 				<tr class="subhead"><td colspan="4">Resolution for Issues Not Fixed</td></tr>
 				<tr class="nyi"><td>CannotReproduce</td><td>,</td><td rowspan="6"></td></tr>
