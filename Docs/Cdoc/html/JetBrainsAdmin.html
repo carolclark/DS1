@@ -376,113 +376,6 @@
 <!-- @marker "Configure Project" -->
 <h4><a id="ConfigureProject_">Configure Project</a></h4>
 
-<!-- @marker "Add Custom Agile Boards" -->
-<h4  class="nyi" id="CustomAgileBoards_">Add Custom Agile Boards</h4><ul>
-	<li>as ProjectAdmin:<ul>
-		<li>create new Agile Boards:<ul>
-			<li>&lt;ProjectName&gt;&#9141;Roadmap</li>
-			<li>&lt;ProjectName&gt;-develop</li>
-		</ul></li>
-		<li>with Configurations:<ul>
-			<li>name: &lt;repoName&gt;[&#9141;Roadmap | -develop]</li>
-			<li>project: &lt;repoName&gt;</li>
-			<li>can view and use board: &lt;repoName&gt; Team</li>
-			<li>can edit board settings: Owner</li>
-			<li>Sprints: enabled</li>
-			<li>Sprints: enabled</li>
-			<li>Board behavior:<ul>
-				<li>link sprints to values for Sprints</li>
-				<li>Search Queries<ul>
-					<li>&lt;ProjectName&gt; Roadmap: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
-					<li>&lt;ProjectName&gt;-develop: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
-				</ul></li>
-				<li>Ignore subtasks of existing cards: yes</li>
-			</ul></li>
-			<li>set board columns; see also <a href="#CustomFields_">Custom Fields</a><ul>
-				<li>Roadmap<ul>
-					<li>Open</li>
-					<li>Story</li>
-					<li>Specify</li>
-					<li>Ready</li>
-				</ul></li>
-				<li>-develop<ul>
-					<li>ToDo</li>
-					<li>Develop</li>
-					<li>Review</li>
-					<li>Verified</li>
-				</ul></li>
-			</ul></li>
-			<li>Swimlanes<ul>
-				<li>-develop: values from Type Story (select User Story; edit name)</li>
-			<li>Roadmap: values from Type Epic</li>
-				<li>show swimlane for Uncategorized cards at bottom of Board</li>
-			</ul></li>
-		</ul></li>
-	</ul></li>
-</ul>
-
-<p>On Issues page: create tag 'waiting' (orange1)</p>
-
-<h3>Add Features: YouTrack</h3><div class="indent">
-
-	<!-- @marker "YouTrack Mobile" -->
-	<h5 id="YouTrackMobile_">YouTrack Mobile</h5><ul>
-		<li>download from AppStore and open</li>
-	</ul>
-
-	<!-- @marker "YouTrack Integration Plugin" -->
-	<h5 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h5><ul>
-		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
-			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
-	</ul>
-
-	<!-- @marker "Issue Navigation" -->
-	<h5 id="IssueNavigation_">Issue Navigation</h5><ul>
-		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/Issue-Navigation.html">
-			Issue Navigation</a></li>
-		</ul>
-
-	<!-- @marker "Time Tracking Extension" -->
-	<h5 id="TimeTrackingExt_">Time Tracking Extension</h5><ul>
-		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
-				<li>see Issue Navigation</li>
-			</ul></li>
-		</ul>
-
-	<!-- @marker "Task Management" -->
-	<h5 id="TaskManagement_">Task Management</h5><ul>
-		<li>see https://www.jetbrains.com/help/youtrack/standalone/Task-Management-Plugin.html</li>
-	</ul>
-
-	<!-- @marker "RSS Feeds" -->
-	<h5 id="RSSFeeds_">RSS Feeds</h5><ul>
-		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/subscribe-rss-feed.html">RSS Feeds</a><ul>
-			<li>add Issues, Comments, and Issue Comments feeds</li>
-		</ul></li>
-	</ul>
-</div>
-
-<!-- @marker "Synchronize YouTrack Customization" -->
-<h3 id="SyncYTCustomization_">Synchronize YouTrack Customization</h3>
-<p>These changes were part of the original YouTrack customization plan,
-	but turned out to be too much to implement all at once.
-	Places to change in this document are marked with the following html ids:</p>
-
-<table>
-	<tr><th>tag</th><th>change</th><th>comments</th></tr>
-	<tr><td>ch_UserStory2Story</td><td>rename field "User Story" to "Story"</td>
-		<td>It's a Story; 'User' is at best unhelpful<br />Space would require "{}" for any search, ...</td></tr>
-	<tr><td>ch_addFeatureScenario</td><td>add fields Feature, Scenario</td>
-		<td>view special BDD types more easily<br />
-		then color cards by field Type</td></tr>
-	<tr><td>ch_BacklogStates</td><td>add states Submit, Select for classifying backlog</td></tr>
-	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</td></tr>
-	<tr><td>ch_UnfixedResolutions</td><td>add resolutions for submissions not accepted for development (conditional)</td></tr>
-	<tr><td>ch_BugClassification</td><td>add classifications for bugs to be fixed (conditional)</td></tr>
-	<tr><td>ch_releaseVersions</td><td>add field releaseVersions</td>
-		<td>to conform with our <a href="Git.html#ReleaseBranches_">existing policy</a> based on GitFlow</td></tr>
-</table>
-
 <h3 id="CustomizedProjectConfiguration_">Customized Project Configuration </h3>
 <p>These tables describe the expected status of the project after we have completed project customization.</p>
 <div class="info">
@@ -639,6 +532,113 @@
 	<li>remove workflow Scrum_2</li>
 </ul>
 </div>
+
+<!-- @marker "Add Custom Agile Boards" -->
+<h4  class="nyi" id="CustomAgileBoards_">Add Custom Agile Boards</h4><ul>
+	<li>as ProjectAdmin:<ul>
+		<li>create new Agile Boards:<ul>
+			<li>&lt;ProjectName&gt;&#9141;Roadmap</li>
+			<li>&lt;ProjectName&gt;-develop</li>
+		</ul></li>
+		<li>with Configurations:<ul>
+			<li>name: &lt;repoName&gt;[&#9141;Roadmap | -develop]</li>
+			<li>project: &lt;repoName&gt;</li>
+			<li>can view and use board: &lt;repoName&gt; Team</li>
+			<li>can edit board settings: Owner</li>
+			<li>Sprints: enabled</li>
+			<li>Sprints: enabled</li>
+			<li>Board behavior:<ul>
+				<li>link sprints to values for Sprints</li>
+				<li>Search Queries<ul>
+					<li>&lt;ProjectName&gt; Roadmap: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved</li>
+					<li>&lt;ProjectName&gt;-develop: project: &lt;ProjectName&gt; has: {Board &lt;BoardName&gt;} #Unresolved -Epic</li>
+				</ul></li>
+				<li>Ignore subtasks of existing cards: yes</li>
+			</ul></li>
+			<li>set board columns; see also <a href="#CustomFields_">Custom Fields</a><ul>
+				<li>Roadmap<ul>
+					<li>Open</li>
+					<li>Story</li>
+					<li>Specify</li>
+					<li>Ready</li>
+				</ul></li>
+				<li>-develop<ul>
+					<li>ToDo</li>
+					<li>Develop</li>
+					<li>Review</li>
+					<li>Verified</li>
+				</ul></li>
+			</ul></li>
+			<li>Swimlanes<ul>
+				<li>-develop: values from Type Story (select User Story; edit name)</li>
+			<li>Roadmap: values from Type Epic</li>
+				<li>show swimlane for Uncategorized cards at bottom of Board</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<p>On Issues page: create tag 'waiting' (orange1)</p>
+
+<h3>Add Features: YouTrack</h3><div class="indent">
+
+	<!-- @marker "YouTrack Mobile" -->
+	<h5 id="YouTrackMobile_">YouTrack Mobile</h5><ul>
+		<li>download from AppStore and open</li>
+	</ul>
+
+	<!-- @marker "YouTrack Integration Plugin" -->
+	<h5 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h5><ul>
+		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
+			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
+	</ul>
+
+	<!-- @marker "Issue Navigation" -->
+	<h5 id="IssueNavigation_">Issue Navigation</h5><ul>
+		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/Issue-Navigation.html">
+			Issue Navigation</a></li>
+		</ul>
+
+	<!-- @marker "Time Tracking Extension" -->
+	<h5 id="TimeTrackingExt_">Time Tracking Extension</h5><ul>
+		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
+				<li>see Issue Navigation</li>
+			</ul></li>
+		</ul>
+
+	<!-- @marker "Task Management" -->
+	<h5 id="TaskManagement_">Task Management</h5><ul>
+		<li>see https://www.jetbrains.com/help/youtrack/standalone/Task-Management-Plugin.html</li>
+	</ul>
+
+	<!-- @marker "RSS Feeds" -->
+	<h5 id="RSSFeeds_">RSS Feeds</h5><ul>
+		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/subscribe-rss-feed.html">RSS Feeds</a><ul>
+			<li>add Issues, Comments, and Issue Comments feeds</li>
+		</ul></li>
+	</ul>
+</div>
+
+<!-- @marker "Synchronize YouTrack Customization" -->
+<h3 id="SyncYTCustomization_">Synchronize YouTrack Customization</h3>
+<p>These changes were part of the original YouTrack customization plan,
+	but turned out to be too much to implement all at once.
+	Places to change in this document are marked with the following html ids:</p>
+
+<table>
+	<tr><th>tag</th><th>change</th><th>comments</th></tr>
+	<tr><td>ch_UserStory2Story</td><td>rename field "User Story" to "Story"</td>
+		<td>It's a Story; 'User' is at best unhelpful<br />Space would require "{}" for any search, ...</td></tr>
+	<tr><td>ch_addFeatureScenario</td><td>add fields Feature, Scenario</td>
+		<td>view special BDD types more easily<br />
+		then color cards by field Type</td></tr>
+	<tr><td>ch_BacklogStates</td><td>add states Submit, Select for classifying backlog</td></tr>
+	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</td></tr>
+	<tr><td>ch_UnfixedResolutions</td><td>add resolutions for submissions not accepted for development (conditional)</td></tr>
+	<tr><td>ch_BugClassification</td><td>add classifications for bugs to be fixed (conditional)</td></tr>
+	<tr><td>ch_releaseVersions</td><td>add field releaseVersions</td>
+		<td>to conform with our <a href="Git.html#ReleaseBranches_">existing policy</a> based on GitFlow</td></tr>
+</table>
 
 <!-- @marker "YouTrack References" -->
 <h3 id="YouTrack_References_">YouTrack References</h3><ul>
