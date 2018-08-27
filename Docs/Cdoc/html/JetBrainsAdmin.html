@@ -451,16 +451,16 @@
 					<!-- ch_BacklogStates -->
 					<tr class="nyi"><td>Submit</td><td>incoming items</td>
 						<td>Evaluate for development. Select if accepted; else resolve using a 'Resolved' state with comment</td></tr>
-					<tr class="nyi"><td>Select</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
+					<tr class="nyi"><td>Accept</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
 					<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
-					<tr class="nyi"><td>Open</td><td>selected for development</td>
+					<tr class="nyi"><td>Select</td><td>selected for development</td>
 						<td><ul>
 							<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, or a Task</li>
 							<li>move to Story or Specify as indicated</li>
 						</ul>
 						</td></tr>
 					<tr class="nyi"><td>Story</td>
-						<td>'Story' represents a goal element for planning
+						<td>State "Story" anchors a story for development.
 						<br />serves as swimlane on a -develop Board<br />
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 						orthogonal to</a> features, and may require functionality from otherwise unrelated Features</td>
@@ -469,14 +469,15 @@
 							when all subitems completed, check to see if Story itself is complete<br />
 							when entire Story is complete, move to Review for verification
 						</td></tr>
-					<tr class="nyi"><td>Specify</td><td>specify what is to be done for this work item</td><td>,</td></tr>
+					<tr class="nyi"><td>Specify</td><td>specify what is to be done for this work item</td>
+						<td>includes Types Feature, Scenario, Task</td></tr>
 					<tr class="subhead"><td colspan="3">Shared Column</td></tr>
 					<tr class="nyi"><td>Ready</td><td>column in Roadmap; backlog for development</td><td>estimation required to enter this state</td></tr>
 					<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
-					<tr class="nyi"><td>ToDo</td><td>items to be completed for this Sprint</td></tr>
+					<tr class="nyi"><td>Open</td><td>items to be completed for this Sprint</td></tr>
 					<tr class="nyi"><td>Develop</td><td>develop as specified</td><td>,</td></tr>
-					<tr class="nyi"><td>Review</td><td>If possible, pause for awhile and come at this work a fresh perspective</td></tr>
-					<tr class="nyi"><td>Verified (Resolved)</td><td>Issue is complete</td><td>,</td></tr>
+					<tr class="nyi"><td>Review</td><td>try to come at this work a fresh perspective</td></tr>
+					<tr class="nyi"><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
 					<!-- ch_UnfixedResolutions -->
 					<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
 					<tr class="nyi"><td>Duplicate</td><td>see YouTrack Duplicate handling</td></tr>
@@ -489,9 +490,9 @@
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-				<td>to simplify Saved Search for user's items:</td><td>when moved from ToDo and if not already assigned, assign current user</td></tr>
-			<tr class="nyi"><td>Subsystem</td> <td>pink5</td> <td>type 'owned'<br />
-				links to developer responsible for this Subsystem</td>
+				<td>to simplify Saved Search for user's items:</td><td>when moved from Open and if not already assigned, assign current user</td></tr>
+			<tr class="nyi"><td>Subsystem</td> <td>None</td> <td>owned</td> <td>none</td>
+				<td>type "owned" links to developer responsible for this Subsystem</td>
 			</tr>
 			<tr class="nyi"><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td>yy.q.n; q=quarter; n=# sprint started in q</td>
 				<td></td></tr>
@@ -570,13 +571,13 @@
 			<li>Columns and Rows<ul>
 				<li>Columns identified by: State<ul>
 					<li>_Roadmap columns<ul>
-						<li>Open</li>
+						<li>Select</li>
 						<li>Story</li>
 						<li>Specify</li>
 						<li>Ready</li>
 					</ul></li>
 					<li>-develop columns<ul>
-						<li>ToDo</li>
+						<li>Open</li>
 						<li>Develop</li>
 						<li>Review</li>
 						<li>Verified</li>
@@ -673,7 +674,7 @@
 	<tr><td>ch_addFeatureScenario</td><td>add fields Feature, Scenario</td>
 		<td>view special BDD types more easily<br />
 		then color cards by field Type</td></tr>
-	<tr><td>ch_BacklogStates</td><td>add states Submit, Select for classifying backlog</td></tr>
+	<tr><td>ch_BacklogStates</td><td>add states Submit, Accept for classifying backlog</td></tr>
 	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</td></tr>
 	<tr><td>ch_UnfixedResolutions</td><td>add resolutions for submissions not accepted for development (conditional)</td></tr>
 	<tr><td>ch_BugClassification</td><td>add classifications for bugs to be fixed (conditional)</td></tr>
