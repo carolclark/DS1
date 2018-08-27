@@ -204,7 +204,7 @@
 				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
 					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
 			</ul></li>
-			<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span>,
+			<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
 				path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;newVersion&gt;</span><ul>
 					<li>also copy that line, and execute it in Terminal</li>
 				</ul></li>
@@ -309,6 +309,7 @@
 			<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "1" "" -->
 			<!-- @topicItem "Time Tracking Extension" "#TimeTrackingExt_" "1" "" -->
 			<!-- @topicItem "Task Management" "#TaskManagement_" "1" "" -->
+			<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "1" "" -->
 			<!-- @topicItem "RSS Feeds" "#RSSFeeds_" "1" "" -->
 <!-- @/topicList -->
 
@@ -415,9 +416,8 @@
 							</ul>
 						</td></tr>
 					<!-- ch_UserStory2Story -->
-					<tr class="nyi"><td>Story</td><td>orange3</td><td>'Story' represents a BDD Story.<br />
+					<tr class="nyi"><td>Story</td><td>orange3</td><td>'Story' represents a
 						goal element for planning<br />serves as swimlane on a -develop Board<br />
-						"<span class="mono">As a: I want: so that:</span>" to be implemented<br />
 						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 							orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
 					<tr class="subhead"><td colspan="4">Work Issues</td></tr>
@@ -427,7 +427,7 @@
 						<td rowspan="3">These issue types share a column on the Agile Board.</td></tr>
 					<tr class="nyi"><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
 					<tr class="nyi"><td>Task</td><td>brown3</td><td>A task. May be associated with a Feature or Scenario,
-						or a non-BDD item associated directly with a Story.</td></tr>
+						or directly with a Story.</td></tr>
 					<!-- ch_TimeManagement -->
 					<tr class="subhead"><td colspan="4">Time Management</td> </tr>
 					<tr class="nyi"><td>StoryPoints</td> <td>orange2</td> <td>size estimate for Story</td>
@@ -460,10 +460,14 @@
 						</ul>
 						</td></tr>
 					<tr class="nyi"><td>Story</td>
-						<td>a story of the form <span class="mono">As a: I want: so that:</span></td>
+						<td>'Story' represents a goal element for planning
+						<br />serves as swimlane on a -develop Board<br />
+					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+						orthogonal to</a> features, and may require functionality from otherwise unrelated Features</td>
 						<td>does not progress through states during development<br />
 							instead, it generates cards to Specify that do progress to the next column<br />
-							when entire Story is completed, move to Review for verification
+							when all subitems completed, check to see if Story itself is complete<br />
+							when entire Story is complete, move to Review for verification
 						</td></tr>
 					<tr class="nyi"><td>Specify</td><td>specify what is to be done for this work item</td><td>,</td></tr>
 					<tr class="subhead"><td colspan="3">Shared Column</td></tr>
@@ -599,6 +603,8 @@
 </ul>
 </div>
 
+<p>On Issues page: create tag 'waiting' (orange1)</p>
+
 <h3>Add Features: YouTrack</h3><div class="indent">
 
 	<!-- @marker "YouTrack Mobile" -->
@@ -645,6 +651,13 @@
 			<li>add Issues, Comments, and Issue Comments feeds</li>
 		</ul></li>
 	</ul>
+
+	<!-- @marker "Tweaks Extension" -->
+	<h5 id="TweaksExtension_" class="dq">Tweaks Extension</h5><ul>
+		<li>requires Chrome; has some useful-looking features</li>
+		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/YouTrack-Tweaks-Extension.html">
+			YouTrack Tweaks Extension</a>
+		</li></ul>
 </div>
 
 <!-- @marker "Synchronize YouTrack Customization" -->

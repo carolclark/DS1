@@ -102,9 +102,20 @@
 
 <!-- @marker "Release Branches" -->
 <h4 id='ReleaseBranches_'>Release Branches</h4>
-<h5>Naming Convention</h5><ul>
-	<li>v&lt;versionNum&gt;, using semantic versioning</li>
-	</ul>
+<p><strong>Naming Convention</strong>: v&lt;versionNum&gt;, using semantic versioning</p>
+	<div class="paragraphs">
+		<p>When master is ready for a release, we assign a version number and create a release branch with name 'release-&lt;versionNum&gt;'.
+			The separate release branch supports version updating and minor bug fixes on the release branch,
+			while allowing work to proceed on master and feature branches.</p>
+		<p>As soon as the branch has been created, we update ("bump") the version number. Bug-fix commits may also be added.</p>
+		<p>Work from the release branch is merged into master when the release branch is tagged and closed.
+			Bug fixes may be incorporated sooner as indicated.</p>
+	</div>
+
+	<div class="paragraphs">
+		<p>Release branches are intended to isolate their work from the rest of the project workflow.
+		There are no updates or merges with other repository branches.</p>
+	</div>
 
 <h5>Implementation</h5><ul>
 	<li>When master is ready for a release,
@@ -118,11 +129,17 @@
 		There are no updates or merges with other repository branches.</li>
 </ul>
 
+	<div class="paragraphs">
+		<p class="blurb">Historical Note: Until 6/16/16, we did not have a procedure for handling versioned releases,
+			although both Accessor and Support were assigned version 0.1 in a previous attempt.
+			We will rename the previous versions, and restart with v0.0 now.</p>
+	</div>
+
 <h5>Thoughts on Continuous Integration</h5><ul>
 	<li>The current (2018.08.06) prevailing wisdom in devOps is to release continuously.</li>
 	<li>We had been concerned about the policy of closing a high-level task without looking back to see
 		if we had accomplished what we intended,</li>
-	<li>As a user of some products, including JetBrains, we have now seen:<ul>
+	<li>As a user of some products using Continuous Integration, including JetBrains, we have now seen:<ul>
 		<li>changes that turned out to be related to new features,
 			but that did not make sense when we first saw them</li>
 		<li>more bugs in those areas than we expect from their developers</li>
