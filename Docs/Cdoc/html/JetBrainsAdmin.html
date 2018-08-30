@@ -255,7 +255,7 @@
 <!-- @/topicList -->
 
 <h3 id="HubConfiguration_">Hub Configuration</h3><ul>
-	<li>Admin Menu:<ul>
+	<li>Settings Menu:<ul>
 		<li><strong>Access Management</strong><ul>
 			<li>Users<ul>
 				<li>add 'carol':<ul>
@@ -330,6 +330,7 @@
 			</ul></li>
 		</ul></li>
 	</ul></li>
+	<li>admin: log out</li>
 </ul>
 
 <!-- @marker "YouTrack: New Project" -->
@@ -344,33 +345,25 @@
 				<li>set project name, ID</li>
 			</ul></li>
 		</ul></li>
-		<li>&lt;Project&gt; page<ul>
-			<li>Team<ul>
-				<li>select user(s) for project team</li>
-				<li>grant ProjectAdmin role to intended project owner</li>
-			</ul></li>
-			<li>&lt;Project&gt; Settings<ul>
-				<li>set ProjectAdmin to intended project owner</li>
-			</ul></li>
+		<li>&lt;Project&gt; Team<ul>
+			<li>add project owner; grant ProjectAdmin role for this project to project owner</li>
+			<li>remove 'admin' user if present</li>
 		</ul></li>
+		<li>&lt;Project&gt; Settings: set ProjectAdmin to intended project owner</li>
 	</ul></li>
 </ul></div>
 
 <!-- @marker "Connect Project" -->
 <h4 id="ConnectProject_">Connect Project</h4><ul>
-	<li>as ProjectAdmin:<ul>
-		<li>Project Page<ul>
-			<li>Add YouTrack Service: Services &gt; Issue Tracker &gt; YouTrack with Scrum</li>
-		</ul></li>
-		<li>YouTrack<ul>
-			<li>VCS Integrations: New VCS Integration<ul>
-				<li>connect to GitHub repo<ul>
-					<li>click link to create Auth token<ul>
-						<li>if token of same name exists, delete existing token; return to TeamTools</li>
-						<li>create Auth token &lt;projectName&gt;</li>
-					</ul></li>
-					<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
+	<li>Add YouTrack Service: Services &gt; Issue Tracker &gt; YouTrack with Scrum</li>
+	<li>YouTrack<ul>
+		<li>VCS Integrations: New VCS Integration<ul>
+			<li>connect to GitHub repo<ul>
+				<li>click link to create Auth token<ul>
+					<li>if token of same name exists, delete existing token; return to TeamTools</li>
+					<li>create Auth token &lt;projectName&gt;</li>
 				</ul></li>
+				<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
@@ -386,7 +379,7 @@
 		<li>From e-mail: YouTrack</li>
 	</ul>
 	<h5>Team</h5><ul>
-		<li>add at least admin, project owner</li>
+		<li>project owner, other devs as indicated; NO admin</li>
 	</ul>
 	<h5 id="CustomFields_">Fields</h5><div id="CustomizedProjectConfiguration_" class="info">
 		<table >
@@ -916,11 +909,7 @@
 
 <!-- @marker "Delete Project" -->
 <h4 id="DeleteProject_">Delete Project</h4><ul>
-	<li>as admin: project's page</li>
-	<li>Admin: Settings:'Delete Project'</li>
-	<li>if no more projects:<ul>
-		<li>Services: delete all applicable services</li>
-	</ul></li>
+	<li>as Admin &gt; Project Page &gt; Settings:'Delete Project'</li>
 </ul>
 
 <h4 id='Uninstall_'>Uninstall</h4><div class="indent">
