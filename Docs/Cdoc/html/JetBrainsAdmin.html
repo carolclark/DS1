@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 	<style type="text/css">
 			.info {
-				margin-left: 80px;
+				margin-left: 20px;
 				background-color: white;
 			}
 			.info table {
@@ -355,19 +355,25 @@
 
 <!-- @marker "Connect Project" -->
 <h4 id="ConnectProject_">Connect Project</h4><ul>
-	<li>Add YouTrack Service: Services &gt; Issue Tracker &gt; YouTrack with Scrum</li>
-	<li>YouTrack<ul>
-		<li>VCS Integrations: New VCS Integration<ul>
-			<li>connect to GitHub repo<ul>
-				<li>click link to create Auth token<ul>
-					<li>if token of same name exists, delete existing token; return to TeamTools</li>
-					<li>create Auth token &lt;projectName&gt;</li>
+	<li>as SystemAdmin:<ul>
+		<li>Project Page<ul>
+			<li>Add YouTrack Service: Services &gt; Issue Tracker: Scrum</li>
+		</ul></li>
+		<li>YouTrack<ul>
+			<li>VCS Integrations: New VCS Integration<ul>
+				<li>connect to GitHub repo<ul>
+					<li>click link to generate Auth token, or use <a href=
+						"https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
+						this GitHub Auth Token link</a></li>
+						<li>if token of same name exists, delete existing token; return to TeamTools</li>
+						<li>create Auth token &lt;projectName&gt;</li>
+					</ul></li>
+					<li>set &lt;repoName&gt;, &lt;projectName&gt;, owned by &lt;Project&gt; Owner, NOT admin</li>
+					<li>visible: &lt;proj&gt; Team, Reporters</li>
 				</ul></li>
-				<li>set &lt;repoName&gt;, &lt;projectName&gt;</li>
 			</ul></li>
 		</ul></li>
-	</ul></li>
-</ul>
+	</ul>
 
 <!-- @marker "Configure Project" -->
 <h4><a id="ConfigureProject_">Configure Project</a></h4><div class="indent">
@@ -379,10 +385,10 @@
 		<li>From e-mail: YouTrack</li>
 	</ul>
 	<h5>Team</h5><ul>
-		<li>project owner, other devs as indicated; NO admin</li>
+		<li>&lt;Project&gt; Owner, other devs as indicated; NOT admin</li>
 	</ul>
 	<h5 id="CustomFields_">Fields</h5><div id="CustomizedProjectConfiguration_" class="info">
-		<table >
+		<table>
 			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
 				<td><table>
@@ -421,13 +427,6 @@
 					<tr class="nyi"><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
 					<tr class="nyi"><td>Task</td><td>brown3</td><td>A task. May be associated with a Feature or Scenario,
 						or directly with a Story.</td></tr>
-					<!-- ch_TimeManagement -->
-					<tr class="subhead"><td colspan="4">Time Management</td> </tr>
-					<tr class="nyi"><td>StoryPoints</td> <td>orange2</td> <td>size estimate for Story</td>
-						<td>values 0 1 2 3 5 8 13 21 34 55 89 144</td></tr>
-					<tr class="nyi"><td>*Estimation</td><td>blue1</td><td>time estimation; units w d h m</td>
-						<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
-					<tr class="nyi"><td>*Spent time</td><td>blue2</td><td>actual time spent, from work items reported</td></tr>
 					<!-- ch_BugClassification -->
 					<tr class="subhead"><td colspan="4">Bug Classification</td></tr>
 					<tr class="nyi"><td>Bug</td><td>pink3</td><td></td><td></td></tr>
@@ -435,6 +434,13 @@
 					<tr class="nyi"><td>*Exception</td><td>pink3</td><td></td></tr>
 					<tr class="nyi"><td>*Usability</td><td>pink3</td><td></td></tr>
 					<tr class="nyi"><td>*Performance</td><td>pink3</td><td></td></tr>
+					<!-- ch_TimeManagement -->
+					<tr class="subhead"><td colspan="4">Time Management</td> </tr>
+					<tr class="nyi"><td>StoryPoints</td> <td>orange2</td> <td>size estimate for Story</td>
+						<td>values 0 1 2 3 5 8 13 21 34 55 89 144</td></tr>
+					<tr class="nyi"><td>*Estimation</td><td>blue1</td><td>time estimation; units w d h m</td>
+						<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
+					<tr class="nyi"><td>*Spent time</td><td>blue2</td><td>actual time spent, from work items reported</td></tr>
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
@@ -483,8 +489,8 @@
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-				<td>to simplify Saved Search for user's items:</td><td>when moved from Open and if not already assigned, assign current user</td></tr>
-			<tr class="nyi"><td>Subsystem</td> <td>None</td> <td>owned</td> <td>none</td>
+				<td>to simplify Saved Search for user's items:</td><td>when moved from Open and         if not already assigned, assign current user</td></tr>
+			<tr class="nyi"><td>Subsystem</td> <td>N/A</td> <td>No Subsystem</td> <td>owned</td> <td>none</td> <td>none</td>
 				<td>type "owned" links to developer responsible for this Subsystem</td>
 			</tr>
 			<tr class="nyi"><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td>yy.q.n; q=quarter; n=# sprint started in q</td>
@@ -909,7 +915,8 @@
 
 <!-- @marker "Delete Project" -->
 <h4 id="DeleteProject_">Delete Project</h4><ul>
-	<li>as Admin &gt; Project Page &gt; Settings:'Delete Project'</li>
+	<li>as admin: project's page</li>
+	<li>Admin: Settings:'Delete Project'</li>
 </ul>
 
 <h4 id='Uninstall_'>Uninstall</h4><div class="indent">
