@@ -330,7 +330,6 @@
 			</ul></li>
 		</ul></li>
 	</ul></li>
-	<li>admin: log out</li>
 </ul>
 
 <!-- @marker "YouTrack: New Project" -->
@@ -341,20 +340,17 @@
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>Hub as SystemAdmin:<ul>
 		<li>Hub Project Page: Create New Project...<ul>
-			<li>&lt;NewProject&gt; Project Dialog<ul>
-				<li>set project name, ID</li>
-			</ul></li>
+			<li>&lt;NewProject&gt; Project Dialog: set project name, ID</li>
+			<li>Team: select member(s)s for project team</li>
+			<li>User &gt; &lt;intendedProjectOwner&gt; &gt; Roles: grant ProjectAdmin role</li>
+			<li>&lt;Project&gt; Settings: set ProjectAdmin to intended project owner</li>
 		</ul></li>
-		<li>&lt;Project&gt; Team<ul>
-			<li>add project owner; grant ProjectAdmin role for this project to project owner</li>
-			<li>remove 'admin' user if present</li>
-		</ul></li>
-		<li>&lt;Project&gt; Settings: set ProjectAdmin to intended project owner</li>
 	</ul></li>
 </ul></div>
 
 <!-- @marker "Connect Project" -->
 <h4 id="ConnectProject_">Connect Project</h4><ul>
+	<li class="blurb">if necessary, stop and start YT, HB, HB, YT</li>
 	<li>as SystemAdmin:<ul>
 		<li>Project Page<ul>
 			<li>Add YouTrack Service: Services &gt; Issue Tracker: Scrum</li>
