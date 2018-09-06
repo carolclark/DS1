@@ -220,7 +220,9 @@
 			<li>when tool window appears:<ul>
 				<li>ensure expected port: HB 8080; YT:8081; UP:8082; TC:8111</li>
 				<li><strong>Hub</strong>: login as admin</li>
-				<li><strong>TeamCity</strong> and <strong>YouTrack</strong><ul>
+				<li><strong>TeamCity</strong><ul>
+					<li class="blurb">YouTrack was included for youtrack.jvmoptions, but now there's a youtrack.jvmoptions.dist
+						file that should take over if there's no custom file youtrack.jvmoptions present</li>
 					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
 					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
 					<li>copy <span class="mono">teamcity-startup.properties</span>,
@@ -242,7 +244,7 @@
 				</ul></li>
 			</ul></li>
 			<li>backup; copy backup file to tag 'initial_installed'</li>
-			<li>complete YouTrack configuration</li>
+			<li>complete product configuration</li>
 			<li>backup; copy backup to tag 'initial_configured'</li>
 		</ul></li>
 	</ul></li>
@@ -297,7 +299,7 @@
 	<!-- @topicItem "YouTrack: New Project" "#YT_NewProject_" "0" "" -->
 		<!-- @topicItem "Create Project" "#CreateProject_" "1" "" -->
 		<!-- @topicItem "Connect Project" "#ConnectProject_" "1" "" -->
-		<!-- @topicItem "Configure Project" "#ConfigureProject_" "1" "" -->
+		<!-- @topicItem "Configure Default Project" "#ConfigureDefaultProject_" "1" "" -->
 			<!-- @topicItem "Customized Project Configuration " "#CustomizedProjectConfiguration_" "2" "" -->
 		<!-- @topicItem "Add Custom Tags" "#AddCustomTags_" "1" "" -->
 		<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "1" "" -->
@@ -315,20 +317,23 @@
 
 <!-- @marker "Global Settings" -->
 <h4 id="GlobalSettings_">YouTrack: Global Settings</h4><ul>
-	<li>as admin: Admin Menu &gt; Server Settings &gt; Global Settings<ul>
-		<li>verify license:
-			up to 10 users; no restriction for private repos; license forever; free updates this century </li>
-		<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
-		<li>verify Default Timezone: Chicago</li>
-		<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
-		<li>Notifications<ul>
-			<li>enable email notifications<ul>
-				<li>SMTP host: smtp.cox.net</li>
-				<li>SMTP login / password: cox email / password</li>
-				<li>Server From email: productName &lt;my_email&gt;; use password cox</li>
-				<li>send message to test connection; save</li>
+	<li>as admin: Settings button &gt; Server Settings<ul>
+		<li>Global Settings<ul>
+			<li>verify license:
+				up to 10 users; no restriction for private repos; license forever; free updates this century </li>
+			<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
+			<li>verify Default Timezone: Chicago</li>
+			<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
+			<li>Notifications<ul>
+				<li>enable email notifications<ul>
+					<li>SMTP host: smtp.cox.net</li>
+					<li>SMTP login / password: cox email / password</li>
+					<li>Server From email: productName &lt;my_email&gt;; use password cox</li>
+					<li>send message to test connection; save</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
+		<li>Backup Settings: verify backup directory path: '/Volumes/Mavericks-1/Backups/TeamTools/YouTrack'</li>
 	</ul></li>
 </ul>
 
@@ -343,7 +348,7 @@
 			<li>&lt;NewProject&gt; Project Dialog: set project name, ID</li>
 			<li>Team: select member(s)s for project team</li>
 			<li>User &gt; &lt;intendedProjectOwner&gt; &gt; Roles: grant ProjectAdmin role</li>
-			<li>&lt;Project&gt; Settings: set ProjectAdmin to intended project owner</li>
+			<li>&lt;Project&gt; Settings button: set ProjectAdmin to intended project owner</li>
 		</ul></li>
 	</ul></li>
 </ul></div>
@@ -364,7 +369,7 @@
 						<li>if token of same name exists, delete existing token; return to TeamTools</li>
 						<li>create Auth token &lt;projectName&gt;</li>
 					</ul></li>
-					<li>set &lt;repoName&gt;, &lt;projectName&gt;, owned by &lt;Project&gt; Owner, NOT admin</li>
+					<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner, NOT admin</li>
 					<li>visible: &lt;proj&gt; Team, Reporters</li>
 				</ul></li>
 			</ul></li>
@@ -372,7 +377,7 @@
 	</ul>
 
 <!-- @marker "Configure Project" -->
-<h4><a id="ConfigureProject_">Configure Project</a></h4><div class="indent">
+<h4><a id="ConfigureDefaultProject_">Configure Default Project</a></h4><div class="indent">
 	<h5>General</h5><ul>
 		<li>Name: usually repo name</li>
 		<li>ID: must be unique</li>
@@ -383,6 +388,14 @@
 	<h5>Team</h5><ul>
 		<li>&lt;Project&gt; Owner, other devs as indicated; NOT admin</li>
 	</ul>
+	<h5>Project-Related Settings</h5><div class="indent">
+		<h6>First Project</h6><ul>
+			<li>Configure as in <a href="#CustomizedProjectConfiguration_">YouTrack Project-Related Settings</a></li>
+		</ul>
+		<h6>Subsequent Projects</h6><ul>
+			<li>copy settings from existing configured project</li>
+		</ul>
+	</div>
 	<h5 id="CustomFields_">Fields</h5><div id="CustomizedProjectConfiguration_" class="info">
 		<table>
 			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
@@ -426,10 +439,10 @@
 					<!-- ch_BugClassification -->
 					<tr class="subhead"><td colspan="4">Bug Classification</td></tr>
 					<tr class="nyi"><td>Bug</td><td>pink3</td><td></td><td></td></tr>
-					<tr class="nyi"><td>*Cosmetic</td><td>pink3</td><td></td><td rowspan="4">Bug: conditional classifications</td></tr>
-					<tr class="nyi"><td>*Exception</td><td>pink3</td><td></td></tr>
-					<tr class="nyi"><td>*Usability</td><td>pink3</td><td></td></tr>
-					<tr class="nyi"><td>*Performance</td><td>pink3</td><td></td></tr>
+					<tr class="nyi"><td>Cosmetic</td><td>pink3</td><td></td><td></td></tr>
+					<tr class="nyi"><td>Exception</td><td>pink3</td><td></td><td></td></tr>
+					<tr class="nyi"><td>Usability</td><td>pink3</td><td></td><td></td></tr>
+					<tr class="nyi"><td>Performance</td><td>pink3</td><td></td><td></td></tr>
 					<!-- ch_TimeManagement -->
 					<tr class="subhead"><td colspan="4">Time Management</td> </tr>
 					<tr class="nyi"><td>StoryPoints</td> <td>orange2</td> <td>size estimate for Story</td>
@@ -445,15 +458,14 @@
 					<tr class="subhead"><td colspan="3">Backlog</td></tr>
 					<!-- ch_BacklogStates -->
 					<tr class="nyi"><td>Submit</td><td>incoming items</td>
-						<td>Evaluate for development. Select if accepted; else resolve using a 'Resolved' state with comment</td></tr>
+						<td>Evaluate for development. Accept; else resolve using a 'Resolved' state with comment</td></tr>
 					<tr class="nyi"><td>Accept</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
 					<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
 					<tr class="nyi"><td>Select</td><td>selected for development</td>
 						<td><ul>
 							<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, or a Task</li>
 							<li>move to Story or Specify as indicated</li>
-						</ul>
-						</td></tr>
+						 </ul></td></tr>
 					<tr class="nyi"><td>Story</td>
 						<td>State "Story" anchors a story for development.
 						<br />serves as swimlane on a -develop Board<br />
@@ -475,19 +487,17 @@
 					<tr class="nyi"><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
 					<!-- ch_UnfixedResolutions -->
 					<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
-					<tr class="nyi"><td>Duplicate</td><td>see YouTrack Duplicate handling</td></tr>
-					<tr class="nyi"><td>WillNotFix</td><td></td></tr>
-					<tr class="nyi"><td>*CannotReproduce</td><td></td><td rowspan="5">WillNotFix: conditional classifications</td></tr>
-					<tr class="nyi"><td>*WorksAsIntended</td><td></td></tr>
-					<tr class="nyi"><td>*Duplicate</td><td></td></tr>
-					<tr class="nyi"><td>*Incomplete</td><td></td></tr>
-					<tr class="nyi"><td>*Obsolete</td><td></td></tr>
+					<tr class="nyi"><td>Duplicate</td><td>see YouTrack Duplicate handling</td> <td></td></tr>
+					<tr class="nyi"><td>WillNotFix</td><td></td> <td></td></tr>
+					<tr class="nyi"><td>Reopened</td> <td></td> <td></td> </tr>
+					<tr class="nyi"><td>CannotReproduce</td><td></td><td></td></tr>
+					<tr class="nyi"><td>WorksAsIntended</td><td></td> <td></td></tr>
+					<tr class="nyi"><td>Incomplete</td><td></td> <td></td></tr>
+					<tr class="nyi"><td>Obsolete</td><td></td><td></td></tr>
 				</table></td></tr>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-				<td>to simplify Saved Search for user's items:</td><td>when moved from Open and         if not already assigned, assign current user</td></tr>
-			<tr class="nyi"><td>Subsystem</td> <td>N/A</td> <td>No Subsystem</td> <td>owned</td> <td>none</td> <td>none</td>
-				<td>type "owned" links to developer responsible for this Subsystem</td>
+				<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td>
 			</tr>
 			<tr class="nyi"><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td>yy.q.n; q=quarter; n=# sprint started in q</td>
 				<td></td></tr>
@@ -500,6 +510,10 @@
 			<tr class="nyi"><td>*ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release, version</td><td>prefix numeric string with 'v'</td>
 				<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 					on which our versioning plan is based</td></tr>
+			<tr class="smallHeader"><th colspan="7">Additional Fields: can be attached if needed</th></tr>
+			<tr><td>DueDate</td> <td>N/A</td> <td>No Due Date</td> <td>date</td> <td>due</td> <td></td> <td></td></tr>
+			<tr class="nyi"><td>Subsystem</td> <td>N/A</td> <td>No Subsystem</td> <td>owned</td> <td>none</td> <td>none</td>
+				<td>type "owned" links to developer responsible for this Subsystem</td></tr>
 		</table>
 	</div>
 </div>
