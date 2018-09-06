@@ -301,6 +301,11 @@
 		<!-- @topicItem "Connect Project" "#ConnectProject_" "1" "" -->
 		<!-- @topicItem "Configure Default Project" "#ConfigureDefaultProject_" "1" "" -->
 			<!-- @topicItem "Customized Project Configuration " "#CustomizedProjectConfiguration_" "2" "" -->
+				<!-- @topicItem "Priority" "#Priority_" "3" "" -->
+				<!-- @topicItem "Type" "#Type_" "3" "" -->
+				<!-- @topicItem "State" "#State_" "3" "" -->
+				<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "3" "" -->
+				<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "3" "" -->
 		<!-- @topicItem "Add Custom Tags" "#AddCustomTags_" "1" "" -->
 		<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "1" "" -->
 	<!-- @topicSep -->
@@ -396,9 +401,12 @@
 			<li>copy settings from existing configured project</li>
 		</ul>
 	</div>
-	<h5 id="CustomFields_">Fields</h5><div id="CustomizedProjectConfiguration_" class="info">
+	<h5 id="CustomFields_">Custom Fields</h5><div id="CustomizedProjectConfiguration_" class="info">
+
+	<!-- @marker "Priority" -->
+	<h6 id="Priority_">Priority</h6>
 		<table>
-			<tr><th>Name</th><th>Default Value</th><th>Empty Value</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+			<tr><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
 				<td><table>
 					<tr><th>Priority Name</th> <th>Color</th></tr>
@@ -408,13 +416,17 @@
 					<tr><td>Normal</td><td>green1</td></tr>
 					<tr><td>Minor</td><td>gray1</td></tr>
 				</table></td></tr>
+		</table>
+	<!-- @marker "Type" -->
+	<h6 id="Type_">Type</h6>
+		<table>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td></td>
 				<td><table>
 					<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
 					<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
 					<tr class="nyi"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
-						several Stories, some of which may be attached to different Epics or Projects</td>
+						several Stories,<br />some of which may be attached to different Epics or Projects</td>
 						<td rowspan="3">to Review:<ul>
 							<li>normally, add a task to review<ul>
 								<li>Standard method is to assume "Done" if all subitems are complete. We disagree.</li>
@@ -451,6 +463,11 @@
 						<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
 					<tr class="nyi"><td>*Spent time</td><td>blue2</td><td>actual time spent, from work items reported</td></tr>
 				</table></td></tr>
+			</table>
+
+		<!-- @marker "State" -->
+		<h6 id="State_">State</h6>
+		<table>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
 				<td><table>
@@ -469,8 +486,8 @@
 					<tr class="nyi"><td>Story</td>
 						<td>State "Story" anchors a story for development.
 						<br />serves as swimlane on a -develop Board<br />
-					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-						orthogonal to</a> features, and may require functionality from otherwise unrelated Features</td>
+						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+						orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
 						<td>does not progress through states during development<br />
 							instead, it generates cards to Specify that do progress to the next column<br />
 							when all subitems completed, check to see if Story itself is complete<br />
@@ -495,6 +512,10 @@
 					<tr class="nyi"><td>Incomplete</td><td></td> <td></td></tr>
 					<tr class="nyi"><td>Obsolete</td><td></td><td></td></tr>
 				</table></td></tr>
+			</table>
+		<!-- @marker "Other Attached Fields" -->
+		<h6 id="OtherAttachedFields_">Other Attached Fields</h6>
+		<table>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
 				<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td>
@@ -510,7 +531,11 @@
 			<tr class="nyi"><td>*ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release, version</td><td>prefix numeric string with 'v'</td>
 				<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 					on which our versioning plan is based</td></tr>
-			<tr class="smallHeader"><th colspan="7">Additional Fields: can be attached if needed</th></tr>
+		</table>
+	<!-- @marker "Other Available Fields" -->
+	<h6 id="OtherAvailableFields_">Other Available Fields</h6>
+		<table>
+			<tr class="smallHeader"><th colspan="7">Other Available Fields: can be attached if needed</th></tr>
 			<tr><td>DueDate</td> <td>N/A</td> <td>No Due Date</td> <td>date</td> <td>due</td> <td></td> <td></td></tr>
 			<tr class="nyi"><td>Subsystem</td> <td>N/A</td> <td>No Subsystem</td> <td>owned</td> <td>none</td> <td>none</td>
 				<td>type "owned" links to developer responsible for this Subsystem</td></tr>
@@ -519,7 +544,8 @@
 </div>
 
 <!-- @marker "Issue Link Types" -->
-<h5 id="IssueLinkTypes_" class="indent">Issue Link Types</h5><div class="info">
+<div class="info">
+<h5 id="IssueLinkTypes_">Issue Link Types</h5>
 	<table id="IssueLinkTypes">
 		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
 		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
