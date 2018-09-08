@@ -212,7 +212,7 @@
 				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'<ul>
 					<li>for YouTrack: add '/YouTrack' to path</li>
 				</ul></li>
-				<li>use external Hub<ul>
+				<li>use external Hub (except Hub itself)<ul>
 					<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
 					<li>verify Hub connection</li>
 				</ul></li>
@@ -234,12 +234,16 @@
 					<li><a href="#CommandLineTools_">Restart Tool</a></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
-					<li id="backupConfig_"><strong>Server Settings : Backup</strong><ul>
-						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-						<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation</li>
-						<li>tar.gz format</li>
-						<li>every day at 2 AM</li>
-						<li>rotation 10</li>
+					<li>Settings button:<ul>
+						<li id="backupConfig_"><strong>Server Settings : Backup</strong><ul>
+							<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+							<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation<ul>
+								<li class="dq">has this option been removed?</li>
+							</ul></li>
+							<li>tar.gz format</li>
+							<li>every day at 2 AM</li>
+							<li>rotation 10</li>
+						</ul></li>
 					</ul></li>
 				</ul></li>
 			</ul></li>
@@ -270,19 +274,24 @@
 				<li>Hub: Built-in Authorization<ul>
 					<li>test login combinations</li>
 				</ul></li>
-				<li>add Authorization Module GitHub<ul>
-					<li>copy Callback URL using 'copy' button</li>
-					<li>clone browser tab; click link to register an application with GitHub</li>
-					<li>generate client codes</li>
-					<li>copy back Client ID and Client Secret; save</li>
-				<li>Enable Module</li>
+				<li>New Module : GitHub<ul>
+					<li>Settings button : Access Management : Auth Modules<ul>
+						<li>New Module : GitHub<ul>
+							<li>verify module name GitHub, address https://github.com</li>
+							<li>create</li>
+							<li>copy Auth Callback URL</li>
+							<li>clone browser tab; click link to register an application with GitHub</li>
+							<li>copy back Client ID and Client Secret; save</li>
+							<li>Enable Module</li>
+						</ul></li>
+					</ul></li>
 				</ul></li>
 			</ul></li>
 		</ul></li>
 		<li><strong>Notifications</strong><ul>
 			<li><strong>email notifications: SMTP</strong><ul>
 				<li>host smtp.cox.net</li>
-				<li>from: "JBHub" &lt;my_email&gt;</li>
+				<li>from: "Hub" &lt;my_email&gt;</li>
 				<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
 				<li>save; enable notifications; send test message</li>
 			</ul></li>
@@ -322,7 +331,7 @@
 
 <!-- @marker "Global Settings" -->
 <h4 id="GlobalSettings_">YouTrack: Global Settings</h4><ul>
-	<li>as admin: Settings button &gt; Server Settings<ul>
+	<li>as admin: Settings button : Server Settings<ul>
 		<li>Global Settings<ul>
 			<li>verify license:
 				up to 10 users; no restriction for private repos; license forever; free updates this century </li>
@@ -352,8 +361,8 @@
 		<li>Hub Project Page: Create New Project...<ul>
 			<li>&lt;NewProject&gt; Project Dialog: set project name, ID</li>
 			<li>Team: select member(s)s for project team</li>
-			<li>User &gt; &lt;intendedProjectOwner&gt; &gt; Roles: grant ProjectAdmin role</li>
-			<li>&lt;Project&gt; Settings button: set ProjectAdmin to intended project owner</li>
+			<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
+			<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
 		</ul></li>
 	</ul></li>
 </ul></div>
@@ -363,7 +372,7 @@
 	<li class="blurb">if necessary, stop and start YT, HB, HB, YT</li>
 	<li>as SystemAdmin:<ul>
 		<li>Project Page<ul>
-			<li>Add YouTrack Service: Services &gt; Issue Tracker: Scrum</li>
+			<li>Add YouTrack Service: Services : Issue Tracker: Scrum</li>
 		</ul></li>
 		<li>YouTrack<ul>
 			<li>VCS Integrations: New VCS Integration<ul>
@@ -663,7 +672,7 @@
 	<!-- @marker "*Time Tracking" -->
 	<div  class="indent">
 		<h5 class="nyi" id="TimeTracking_">*Time Tracking</h5><ul class="indent2">
-			<li>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</li>
+			<li>Time Tracking : Enable; select default fields (ch_TimeManagement)</li>
 			<li>length of day: 5h</li>
 			<li>work types: Manage Investigate Develop Test Review Document</li>
 		</ul>
@@ -710,7 +719,7 @@
 		<td>view special BDD types more easily<br />
 		then color cards by field Type</td></tr>
 	<tr><td>ch_BacklogStates</td><td>add states Submit, Accept for classifying backlog</td></tr>
-	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td>Time Tracking &gt; Enable; select default fields (ch_TimeManagement)</td></tr>
+	<tr><td>ch_TimeManagement</td><td>add Time Management support</td><td>Time Tracking : Enable; select default fields (ch_TimeManagement)</td></tr>
 	<tr><td>ch_UnfixedResolutions</td><td>add resolutions for submissions not accepted for development (conditional)</td></tr>
 	<tr><td>ch_BugClassification</td><td>add classifications for bugs to be fixed (conditional)</td></tr>
 	<tr><td>ch_releaseVersions</td><td>add field releaseVersions</td>
@@ -931,7 +940,7 @@
 <!-- @marker "Upgrade Team Tools" -->
 <h4 id="UpgradeTeamTools_">Upgrade Team Tools</h4><ul>
 	<li>for tool to be upgraded:<ul>
-		<li>backup existing tool (Server Settings &gt; Backup)</li>
+		<li>backup existing tool (Server Settings : Backup)</li>
 		<li><a href="#CommandLineTools_">stop</a> the service to be upgraded; close its open windows</li>
 		<li><strong>Activity Monitor</strong>: search for processes with name &lt;toolName&gt;; kill any found</li>
 		<li>download &lt;toolName&gt;.zip archive</li>
