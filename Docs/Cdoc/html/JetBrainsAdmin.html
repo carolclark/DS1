@@ -144,7 +144,7 @@
 			<li>YouTrack: issue tracking; agile development</li>
 			<li>TeamCity (previously in use): Continuous Integration</li>
 			<li>UpSource: code review</li>
-		<li>Hub to tie it all together</li>
+		<li>HubRing to tie it all together</li>
 		</ul>
 		<p class="sl6">We expect to use:</p><ul class="sl6">
 			<li>The complete team tool suite</li>
@@ -163,7 +163,7 @@
 	<!-- @topicGroup "Tools: General" "1" -->
 		<!-- @topicItem "Installation" "#Installation_" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicItem "Hub" "#Hub_" "0" "" -->
+	<!-- @topicItem "HubRing" "#HubRing_" "0" "" -->
 	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
 		<!-- @topicItem "Custom Fields" "#CustomFields_" "1" "" -->
 	<!-- @topicItem "UpSource" "#UpSource_" "0" "" -->
@@ -193,7 +193,7 @@
 		</ul></li>
 	</ul></li>
 	<li id="install_"><strong>Install</strong><ul>
-		<li>for Hub, YouTrack, UpSource, TeamCity:<ul>
+		<li>for HubRing, YouTrack, UpSource, TeamCity:<ul>
 			<li>create folder &lt;productName&gt; at /Servers/jb</li>
 			<li>download installation package appropriate for our license; move to its folder<ul>
 				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
@@ -212,14 +212,14 @@
 				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'<ul>
 					<li>for YouTrack: add '/YouTrack' to path</li>
 				</ul></li>
-				<li>use external Hub (except Hub itself)<ul>
-					<li>Hub address: <span class="mono">http://carols-imac-2.local:8080</span></li>
-					<li>verify Hub connection</li>
+				<li>use external HubRing (except HubRing itself)<ul>
+					<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+					<li>verify HubRing connection</li>
 				</ul></li>
 			</ul></li>
 			<li>when tool window appears:<ul>
 				<li>ensure expected port: HB 8080; YT:8081; UP:8082; TC:8111</li>
-				<li><strong>Hub</strong>: login as admin</li>
+				<li><strong>HubRing</strong>: login as admin</li>
 				<li><strong>TeamCity</strong><ul>
 					<li class="blurb">YouTrack was included for youtrack.jvmoptions, but now there's a youtrack.jvmoptions.dist
 						file that should take over if there's no custom file youtrack.jvmoptions present</li>
@@ -254,13 +254,13 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Hub" -->
-<h2>Hub</h2>
-<!-- @topicList "Hub" "Hub_" -->
-	<!-- @topicItem "Hub:  Configuration" "#HubConfiguration_" "0" "" -->
+<!-- @marker "HubRing" -->
+<h2>HubRing</h2>
+<!-- @topicList "HubRing" "HubRing_" -->
+	<!-- @topicItem "HubRing:  Configuration" "#HubRingConfiguration_" "0" "" -->
 <!-- @/topicList -->
 
-<h3 id="HubConfiguration_">Hub Configuration</h3><ul>
+<h3 id="HubRingConfiguration_">HubRing Configuration</h3><ul>
 	<li>Settings Menu:<ul>
 		<li><strong>Access Management</strong><ul>
 			<li>Users<ul>
@@ -271,7 +271,7 @@
 				</ul></li>
 			</ul></li>
 			<li>Auth Modules<ul>
-				<li>Hub: Built-in Authorization<ul>
+				<li>HubRing: Built-in Authorization<ul>
 					<li>test login combinations</li>
 				</ul></li>
 				<li>New Module : GitHub<ul>
@@ -291,7 +291,7 @@
 		<li><strong>Notifications</strong><ul>
 			<li><strong>email notifications: SMTP</strong><ul>
 				<li>host smtp.cox.net</li>
-				<li>from: "Hub" &lt;my_email&gt;</li>
+				<li>from: "HubRing" &lt;my_email&gt;</li>
 				<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
 				<li>save; enable notifications; send test message</li>
 			</ul></li>
@@ -357,8 +357,8 @@
 <!-- @marker "Create Project" -->
 <h4 id="CreateProject_">Create Project</h4><div class="indent"><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>Hub as SystemAdmin:<ul>
-		<li>Hub Project Page: Create New Project...<ul>
+	<li>HubRing as SystemAdmin:<ul>
+		<li>HubRing Project Page: Create New Project...<ul>
 			<li>&lt;NewProject&gt; Project Dialog: set project name, ID</li>
 			<li>Team: select member(s)s for project team</li>
 			<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
@@ -839,8 +839,8 @@
 <h3 id="Integrations_AuthModules_">Integrations and Auth Modules</h3><div class="info">
 	<table id="HubAuthModules_">
 		<tr><th>Integration</th><th>Supports</th><th>Test</th></tr>
-		<tr class="subhead"><td colspan="3">Hub Authorization Modules</td></tr>
-		<tr><td>Hub</td><td>single signin for all connected products</td><td>test for admin and carol signin with passwords</td></tr>
+		<tr class="subhead"><td colspan="3">HubRing Authorization Modules</td></tr>
+		<tr><td>HubRing</td><td>single signin for all connected products</td><td>test for admin and carol signin with passwords</td></tr>
 		<tr><td>GitHub</td><td>connection with all repos, including forks, on our account</td><td>select and connect to repo</td></tr>
 	</table>
 </div>
@@ -864,7 +864,7 @@
 	<!-- @topicSep -->
 	<!-- @topicGroup "Online Documentation" "5" -->
 		<!-- @topicItem "JetBrains Team Tools" "https://www.jetbrains.com/products.html#type=team" "0" "JetBrains home" -->
-			<!-- @topicItem "Hub" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
+			<!-- @topicItem "HubRing" "https://www.jetbrains.com/help/hub/Introduction-to-HUB.html" "1" "" -->
 			<!-- @topicItem "YouTrack" "https://www.jetbrains.com/help/youtrack/standalone/Getting-Started-With-YouTrack.html" "1" "" -->
 			<!-- @topicItem "UpSource" "https://www.jetbrains.com/help/upsource/getting-started-with-upsource.html" "1" "" -->
 			<!-- @topicItem "TeamCity Documentation (Confluence)" "https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation" "1" "" -->
@@ -883,7 +883,7 @@
 <!-- @marker "Command-Line Tools" -->
 <h4 id="CommandLineTools_">Command Line Tools</h4><div class="indent">
 
-	<h5>Hub, YouTrack, UpSource</h5><ul>
+	<h5>HubRing, YouTrack, UpSource</h5><ul>
 		<li><span class="mono">start</span>: Start the service</li>
 		<li><span class="mono">stop</span>: Stop the service.</li>
 		<li><span class="mono">restart</span>: Restart the service.</li>
@@ -1025,7 +1025,7 @@
     <p><strong>UpSource</strong>: Code review and repository browsing</p>
 		<p class="indent">Code review is normally done among peers, but we use UpSource to review code from our own multiple perspectives.</p>
 
-	<p><strong>Hub</strong>: JetBrains Tools, integrated</p>
+	<p><strong>HubRing</strong>: JetBrains Tools, integrated</p>
 
 <!-- @marker "Toolbox and IDEs" -->
 <h4 id="ToolboxAndIDEs_">Toolbox and IDEs</h4>
@@ -1050,7 +1050,7 @@
 		<li>Given our good experience with AppCode, this clearly makes sense if and when we use enough tools that it becomes cost-effective.</li>
 	</ul></li>
 	<li>Team Tools for fewer than 10 users:<ul>
-		<li>Hub is free</li>
+		<li>HubRing is free</li>
 		<li>UpSource is free for 10 or fewer users</li>
 		<li>TeamCity<ul>
 			<li>free for up to 20 build configurations and 3 build agents (probably enough)</li>
