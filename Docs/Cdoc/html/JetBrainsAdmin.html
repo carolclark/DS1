@@ -218,7 +218,7 @@
 				</ul></li>
 			</ul></li>
 			<li>when tool window appears:<ul>
-				<li>ensure expected port: HB 8080; YT:8081; UP:8082; TC:8111</li>
+				<li>ensure expected port: HR 8080; YT:8081; UP:8082; TC:8111</li>
 				<li><strong>HubRing</strong>: login as admin</li>
 				<li><strong>TeamCity</strong><ul>
 					<li class="blurb">YouTrack was included for youtrack.jvmoptions, but now there's a youtrack.jvmoptions.dist
@@ -234,16 +234,12 @@
 					<li><a href="#CommandLineTools_">Restart Tool</a></li>
 				</ul></li>
 				<li><strong>All</strong><ul>
-					<li>Settings button:<ul>
-						<li id="backupConfig_"><strong>Server Settings : Backup</strong><ul>
-							<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-							<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation<ul>
-								<li class="dq">has this option been removed?</li>
-							</ul></li>
-							<li>tar.gz format</li>
-							<li>every day at 2 AM</li>
-							<li>rotation 10</li>
-						</ul></li>
+					<li id="backupConfig_"><strong>Settings button : Server Settings : Backup</strong><ul>
+						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+						<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation</li>
+						<li>tar.gz format</li>
+						<li>every day at 2 AM</li>
+						<li>rotation 10</li>
 					</ul></li>
 				</ul></li>
 			</ul></li>
@@ -281,8 +277,12 @@
 							<li>create</li>
 							<li>copy Auth Callback URL</li>
 							<li>clone browser tab; click link to register an application with GitHub</li>
-							<li>copy back Client ID and Client Secret; save</li>
-							<li>Enable Module</li>
+							<li>name: HubRing</li>
+							<li>home: https://carols-imac-2.local:8080</li>
+							<li>paste in authorization callback URL</li>
+							<li>register application</li>
+							<li>copy back Client ID and Client Secret</li>
+							<li>save; Enable Module</li>
 						</ul></li>
 					</ul></li>
 				</ul></li>
