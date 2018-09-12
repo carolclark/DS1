@@ -173,7 +173,7 @@
 <!-- @/topicList -->
 
 <!-- @marker "Installation" -->
-<h3 id="Installation_">Installation</h3><ul>
+	<h3 id="Installation_">Installation</h3><ul>
 	<li><strong>Provide Dependencies</strong><ul>
 		<li>install or check for updates as indicated:<ul>
 			<li class="blurb">see
@@ -359,7 +359,7 @@
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>HubRing as SystemAdmin:<ul>
 		<li>HubRing Project Page: Create New Project...<ul>
-			<li>&lt;NewProject&gt; Project Dialog: set project name, ID</li>
+			<li>Project Dialog: set project name, ID; create project</li>
 			<li>Team: select member(s)s for project team</li>
 			<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
 			<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
@@ -369,10 +369,10 @@
 
 <!-- @marker "Connect Project" -->
 <h4 id="ConnectProject_">Connect Project</h4><ul>
-	<li class="blurb">if necessary, stop and start YT, HB, HB, YT</li>
+	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
 	<li>as SystemAdmin:<ul>
 		<li>Project Page<ul>
-			<li>Add YouTrack Service: Services : Issue Tracker: Scrum</li>
+			<li>Add YouTrack Service: Services : Issue Tracker : Scrum</li>
 		</ul></li>
 		<li>YouTrack<ul>
 			<li>VCS Integrations: New VCS Integration<ul>
@@ -391,29 +391,29 @@
 	</ul>
 
 <!-- @marker "Configure Project" -->
-<h4><a id="ConfigureDefaultProject_">Configure Default Project</a></h4><div class="indent">
-	<h5>General</h5><ul>
+<h3><a id="ConfigureDefaultProject_">Configure Default Project</a></h3><div class="indent">
+	<h4>General</h4><ul>
 		<li>Name: usually repo name</li>
 		<li>ID: must be unique</li>
 		<li>Description</li>
 		<li>Project lead</li>
 		<li>From e-mail: YouTrack</li>
 	</ul>
-	<h5>Team</h5><ul>
+	<h4>Team</h4><ul>
 		<li>&lt;Project&gt; Owner, other devs as indicated; NOT admin</li>
 	</ul>
-	<h5>Project-Related Settings</h5><div class="indent">
-		<h6>First Project</h6><ul>
+	<h4>Project-Related Settings</h4><div class="indent">
+		<h5>First Project</h5><ul>
 			<li>Configure as in <a href="#CustomizedProjectConfiguration_">YouTrack Project-Related Settings</a></li>
 		</ul>
-		<h6>Subsequent Projects</h6><ul>
+		<h5>Subsequent Projects</h5><ul>
 			<li>copy settings from existing configured project</li>
 		</ul>
 	</div>
-	<h5 id="CustomFields_">Custom Fields</h5><div id="CustomizedProjectConfiguration_" class="info">
+	<h4 id="CustomFields_">Custom Fields</h4><div id="CustomizedProjectConfiguration_" class="info">
 
 	<!-- @marker "Priority" -->
-	<h6 id="Priority_">Priority</h6>
+	<h5 id="Priority_">Priority</h5>
 		<table>
 			<tr><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
@@ -427,7 +427,7 @@
 				</table></td></tr>
 		</table>
 	<!-- @marker "Type" -->
-	<h6 id="Type_">Type</h6>
+	<h5 id="Type_">Type</h5>
 		<table>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td></td>
@@ -475,7 +475,7 @@
 			</table>
 
 		<!-- @marker "State" -->
-		<h6 id="State_">State</h6>
+		<h5 id="State_">State</h5>
 		<table>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
@@ -523,7 +523,7 @@
 				</table></td></tr>
 			</table>
 		<!-- @marker "Other Attached Fields" -->
-		<h6 id="OtherAttachedFields_">Other Attached Fields</h6>
+		<h5 id="OtherAttachedFields_">Other Attached Fields</h5>
 		<table>
 			<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 			<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
@@ -542,7 +542,7 @@
 					on which our versioning plan is based</td></tr>
 		</table>
 	<!-- @marker "Other Available Fields" -->
-	<h6 id="OtherAvailableFields_">Other Available Fields</h6>
+	<h5 id="OtherAvailableFields_">Other Available Fields</h5>
 		<table>
 			<tr class="smallHeader"><th colspan="7">Other Available Fields: can be attached if needed</th></tr>
 			<tr><td>DueDate</td> <td>N/A</td> <td>No Due Date</td> <td>date</td> <td>due</td> <td></td> <td></td></tr>
@@ -554,7 +554,7 @@
 
 <!-- @marker "Issue Link Types" -->
 <div class="info">
-<h5 id="IssueLinkTypes_">Issue Link Types</h5>
+<h4 id="IssueLinkTypes_">Issue Link Types</h4>
 	<table id="IssueLinkTypes">
 		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
 		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
@@ -566,13 +566,13 @@
 
 <!-- @marker "Notification Templates" -->
 <div  class="indent">
-	<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
+	<h4 id="NotificationTemplates_">Notification Templates</h4><ul>
 		<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
 	</ul>
 </div>
 
 <div class="indent">
-	<h5 id="Workflows_">Workflows</h5><ul>
+	<h4 id="Workflows_">Workflows</h4><ul>
 		<li>detach workflow Scrum_2</li>
 	</ul>
 </div>
