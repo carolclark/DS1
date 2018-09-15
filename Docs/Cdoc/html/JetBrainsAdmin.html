@@ -166,8 +166,6 @@
 	<!-- @topicItem "TeamCity" "#TeamCity_IC" "0" "" -->
 
 	<!-- @topicGroup "previous" "" -->
-	<!-- @topicGroup "Tools: General" "1" -->
-		<!-- @topicItem "Installation" "#Installation_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "HubRing" "#HubRing_" "0" "" -->
 	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
@@ -188,85 +186,52 @@
 
 <!-- @marker "HR_Provide Requirements" -->
 <h3 id="HR_ProvideRequirements_">HR: Provide Requirements</h3><ul>
-	<li><strong>Provide Dependencies</strong><ul>
-		<li>install or check for updates as indicated:<ul>
-			<li class="blurb">see
-				<a href="https://confluence.jetbrains.com/display/TCD10/Supported+Platforms+and+Environments">
-					Supported Platforms and Environments</a></li>
-			<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
-			<li><a href="Tools.html#_Java">Java</a></li>
-		</ul></li>
-		<li>create backup structure, folders for initial tagged backups<ul>
-			<li>/Volumes/Mavericks-1/Backups<ul>
-				<li>TeamTools</li>
-				<li>TeamTools_Tagged<ul>
-					<li><em>PR-&lt;date&gt;-initial-installed</em></li>
-					<li><em>PR-&lt;date&gt;-initial-configured</em></li>
-				</ul></li>
+	<li>install as indicated:<ul>
+		<li><a href="Tools.html#_gnutar">gnu-tar</a>; execute with <span class="mono">gtar</span></li>
+		<li><a href="Tools.html#_Java">Java</a></li>
+	</ul></li>
+	<li>create backup structure, folders for initial backup tags<ul>
+		<li>/Volumes/Mavericks-1/Backups<ul>
+			<li>TeamTools</li>
+			<li>TeamTools_Tagged<ul>
+				<li>TT-initial-installed</li>
+				<li>TT-initial-configured</li>
 			</ul></li>
 		</ul></li>
+	</ul></li>
+</ul>
 
-
-		<!-- @marker "Install and Configure" -->
-<h3 id="HR_Install_">HR: Install</h3>
-	<li id="install_"><strong>Install</strong><ul>
-		<li>for HubRing, YouTrack, UpSource, TeamCity:<ul>
-			<li>create folder &lt;productName&gt; at /Servers/jb</li>
-			<li>download installation package appropriate for our license; move to its folder<ul>
-				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
-					<li class="blurb">commercial license supports private GitHub projects</li>
-				</ul></li>
-			</ul></li>
-			<li>expand archive<ul>
-				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
-					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
-			</ul></li>
-			<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
-				path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;newVersion&gt;</span><ul>
-					<li>also copy that line, and execute it in Terminal</li>
-				</ul></li>
-			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'<ul>
-					<li>for YouTrack: add '/YouTrack' to path</li>
-				</ul></li>
-				<li>use external HubRing (except HubRing itself)<ul>
-					<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
-					<li>verify HubRing connection</li>
-				</ul></li>
-			</ul></li>
-			<li>when tool window appears:<ul>
-				<li>ensure expected port: HR 8080; YT:8081; UP:8082; TC:8111</li>
-				<li><strong>HubRing</strong>: login as admin</li>
-				<li><strong>TeamCity</strong><ul>
-					<li class="blurb">YouTrack was included for youtrack.jvmoptions, but now there's a youtrack.jvmoptions.dist
-						file that should take over if there's no custom file youtrack.jvmoptions present</li>
-					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
-					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
-					<li>copy <span class="mono">teamcity-startup.properties</span>,
-						<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
-						as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
-							<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
-								so make change after each upgrade</li>
-						</ul></li>
-					<li><a href="#CommandLineTools_">Restart Tool</a></li>
-				</ul></li>
-				<li><strong>All</strong><ul>
-					<li id="backupConfig_"><strong>Settings button : Server Settings : Backup</strong><ul>
-						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-						<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation</li>
-						<li>tar.gz format</li>
-						<li>every day at 2 AM</li>
-						<li>rotation 10</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-			<li>backup; copy backup file to tag 'initial_installed'</li>
-			<li>complete product configuration</li>
-			<li>backup; copy backup to tag 'initial_configured'</li>
+<!-- @marker "Install" -->
+<h3 id="HR_Install_">HR: Install</h3><ul>
+	<li>create folder HubRing at /Servers/jb</li>
+	<li>download installation package appropriate for our license; move to its folder</li>
+	<li>expand archive</li>
+	<li>for Terminal Config: update version in <span class="mono">$HUBRING</span> to
+		<span class="mono">/Servers/jb/HubRing/HubRing-&lt;newVersion&gt;</span><ul>
+			<li>also copy that line, and execute it in Terminal</li>
 		</ul></li>
+	<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
+		<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+	</ul></li>
+	<li>when tool window appears:<ul>
+		<li>verify expected port 8080</li>
+		<li>login as admin</li>
+		<li id="backupConfig_">Settings button : Server Settings : Backup<ul>
+			<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+			<li>filename prefix: HR-</li>
+			<li>tar.gz format</li>
+			<li>every day at 2 AM</li>
+			<li>rotation 10</li>
+		</ul></li>
+	</ul></li>
+	<li>backup; copy backup file to tag 'initial_installed'</li>
+</ul>
 
 <!-- @marker "Configure" -->
-<h3 id="HR_Configure_">HR: Configure</h3>
+<h3 id="HR_Configure_">HR: Configure</h3><ul>
+	<li>...</li>
+	<li>backup; copy backup to tag 'initial_configured'</li>
+</ul>
 
 <!-- @marker "YouTrack" -->
 <h2>YouTrack</h2>
@@ -277,68 +242,41 @@
 <!-- @/topicList -->
 
 <!-- @marker "YT: Install" -->
-<h3 id="YT_Install_">YT: Install</h3>
-	<li id="install_"><strong>Install</strong><ul>
-		<li>for HubRing, YouTrack, UpSource, TeamCity:<ul>
-			<li>create folder &lt;productName&gt; at /Servers/jb</li>
-			<li>download installation package appropriate for our license; move to its folder<ul>
-				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
-					<li class="blurb">commercial license supports private GitHub projects</li>
-				</ul></li>
-			</ul></li>
-			<li>expand archive<ul>
-				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
-					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
-			</ul></li>
-			<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
-				path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;newVersion&gt;</span><ul>
-					<li>also copy that line, and execute it in Terminal</li>
-				</ul></li>
-			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'<ul>
-					<li>for YouTrack: add '/YouTrack' to path</li>
-				</ul></li>
-				<li>use external HubRing (except HubRing itself)<ul>
-					<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
-					<li>verify HubRing connection</li>
-				</ul></li>
-			</ul></li>
-			<li>when tool window appears:<ul>
-				<li>ensure expected port: HR 8080; YT:8081; UP:8082; TC:8111</li>
-				<li><strong>HubRing</strong>: login as admin</li>
-				<li><strong>TeamCity</strong><ul>
-					<li class="blurb">YouTrack was included for youtrack.jvmoptions, but now there's a youtrack.jvmoptions.dist
-						file that should take over if there's no custom file youtrack.jvmoptions present</li>
-					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
-					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
-					<li>copy <span class="mono">teamcity-startup.properties</span>,
-						<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
-						as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
-							<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
-								so make change after each upgrade</li>
-						</ul></li>
-					<li><a href="#CommandLineTools_">Restart Tool</a></li>
-				</ul></li>
-				<li><strong>All</strong><ul>
-					<li id="backupConfig_"><strong>Settings button : Server Settings : Backup</strong><ul>
-						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-						<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation</li>
-						<li>tar.gz format</li>
-						<li>every day at 2 AM</li>
-						<li>rotation 10</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-			<li>backup; copy backup file to tag 'initial_installed'</li>
-			<li>complete product configuration</li>
-			<li>backup; copy backup to tag 'initial_configured'</li>
+<h3 id="YT_Install_">YT: Install</h3><ul>
+	<li>create folder YouTrack at /Servers/jb</li>
+	<li>download installation package appropriate for our license; move to its folder<ul>
+		<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
+			<li class="blurb">commercial license supports private GitHub projects</li>
 		</ul></li>
+	</ul></li>
+	<li>expand archive</li>
+	<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
+		<span class="mono">/Servers/jb/YouTrack/YouTrack-&lt;newVersion&gt;</span><ul>
+			<li>also copy that line, and execute it in Terminal</li>
+		</ul></li>
+	<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
+		<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools/YouTrack'</li>
+		<li>use external HubRing<ul>
+			<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+			<li>verify HubRing connection</li>
+		</ul></li>
+	</ul></li>
+	<li>when tool window appears:<ul>
+		<li>verify expected port 8081</li>
+		<li>...</li>
+		<li><a href="#backupConfig_">configure</a> and execute backup</li>
+		<li>copy backup file to tag 'initial_installed'</li>
+	</ul></li>
+</ul>
 
 <!-- @marker "YT: Add Initial Project" -->
 <h3 id="YT_AddInitialProject_">YT: Add Initial Project</h3>
 
 <!-- @marker "YT: Configure" -->
-<h3 id="YT_Configure_">YT: Configure</h3>
+<h3 id="YT_Configure_">YT: Configure</h3><ul>
+	<li>...</li>
+	<li>backup; copy backup to tag 'initial_configured'</li>
+</ul>
 
 <!-- @marker "UpSource" -->
 <h2>UpSource</h2>
@@ -348,67 +286,39 @@
 <!-- @/topicList -->
 
 <!-- @marker "UP: Install" -->
-<h3 id="UP_Install_">UP: Install</h3>
-	<li id="install_"><strong>Install</strong><ul>
-		<li>for HubRing, YouTrack, UpSource, TeamCity:<ul>
-			<li>create folder &lt;productName&gt; at /Servers/jb</li>
-			<li>download installation package appropriate for our license; move to its folder<ul>
-				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
-					<li class="blurb">commercial license supports private GitHub projects</li>
-				</ul></li>
-			</ul></li>
-			<li>expand archive<ul>
-				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
-					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
-			</ul></li>
-			<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
-				path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;newVersion&gt;</span><ul>
-					<li>also copy that line, and execute it in Terminal</li>
-				</ul></li>
-			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'<ul>
-					<li>for YouTrack: add '/YouTrack' to path</li>
-				</ul></li>
-				<li>use external HubRing (except HubRing itself)<ul>
-					<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
-					<li>verify HubRing connection</li>
-				</ul></li>
-			</ul></li>
-			<li>when tool window appears:<ul>
-				<li>ensure expected port: HR 8080; YT:8081; UP:8082; TC:8111</li>
-				<li><strong>HubRing</strong>: login as admin</li>
-				<li><strong>TeamCity</strong><ul>
-					<li class="blurb">YouTrack was included for youtrack.jvmoptions, but now there's a youtrack.jvmoptions.dist
-						file that should take over if there's no custom file youtrack.jvmoptions present</li>
-					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
-					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
-					<li>copy <span class="mono">teamcity-startup.properties</span>,
-						<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
-						as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
-							<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
-								so make change after each upgrade</li>
-						</ul></li>
-					<li><a href="#CommandLineTools_">Restart Tool</a></li>
-				</ul></li>
-				<li><strong>All</strong><ul>
-					<li id="backupConfig_"><strong>Settings button : Server Settings : Backup</strong><ul>
-						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-						<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation</li>
-						<li>tar.gz format</li>
-						<li>every day at 2 AM</li>
-						<li>rotation 10</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-			<li>backup; copy backup file to tag 'initial_installed'</li>
-			<li>complete product configuration</li>
-			<li>backup; copy backup to tag 'initial_configured'</li>
+<h3 id="UP_Install_">UP: Install</h3><ul>
+	<li>create folder UpSource at /Servers/jb</li>
+	<li>download installation package appropriate for our license; move to its folder</li>
+	<li>expand archive</li>
+	<li>for Terminal Config: update version in <span class="mono">$UPSOURCE</span> to
+		<span class="mono">/Servers/jb/UpSource/UpSource-&lt;newVersion&gt;</span><ul>
+			<li>also copy that line, and execute it in Terminal</li>
 		</ul></li>
+	<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
+		<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+		<li>use external HubRing<ul>
+			<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+			<li>verify HubRing connection</li>
+		</ul></li>
+	</ul></li>
+	<li>when tool window appears:<ul>
+		<li>verify expected port 8082</li>
+		<li>...</li>
+		<li><a href="#backupConfig_">configure</a> and execute backup; copy file to tag 'initial_installed'</li>
+	</ul></li>
+</ul>
 
 <!-- @marker "UP: Configure" -->
-<h3 id="UP_Configure_">UP: Configure</h3>
+<h3 id="UP_Configure_">UP: Configure</h3><ul>
+	<li>when tool window appears:<ul>
+		<li>verify expected port 8082</li>
+		<li>...</li>
+		<li>backup; copy backup file to tag 'initial_configured'</li>
+	</ul></li>
+</ul>
 
-<!-- @marker "TeamCity" -->
+
+	<!-- @marker "TeamCity" -->
 <h2>TeamCity</h2>
 <!-- @topicList "TeamCity" "TeamCity_IC" -->
 	<!-- @topicItem "TC: Install" "#TC_Install_" "0" "" -->
@@ -417,65 +327,44 @@
 <!-- @/topicList -->
 
 <!-- @marker "TC: Install" -->
-<h3 id="TC_Install_">TC: Install</h3>
-	<li id="install_"><strong>Install</strong><ul>
-		<li>for HubRing, YouTrack, UpSource, TeamCity:<ul>
-			<li>create folder &lt;productName&gt; at /Servers/jb</li>
-			<li>download installation package appropriate for our license; move to its folder<ul>
-				<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
-					<li class="blurb">commercial license supports private GitHub projects</li>
-				</ul></li>
-			</ul></li>
-			<li>expand archive<ul>
-				<li><strong>TeamCity</strong>: use <span class="prompt">$ </span>
-					<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
-			</ul></li>
-			<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
-				path to <span class="mono">/Servers/jb/&lt;ToolName&gt;/&lt;ToolName&gt;-&lt;newVersion&gt;</span><ul>
-					<li>also copy that line, and execute it in Terminal</li>
-				</ul></li>
-			<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-				<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'<ul>
-					<li>for YouTrack: add '/YouTrack' to path</li>
-				</ul></li>
-				<li>use external HubRing (except HubRing itself)<ul>
-					<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
-					<li>verify HubRing connection</li>
-				</ul></li>
-			</ul></li>
-			<li>when tool window appears:<ul>
-				<li>ensure expected port: HR 8080; YT:8081; UP:8082; TC:8111</li>
-				<li><strong>HubRing</strong>: login as admin</li>
-				<li><strong>TeamCity</strong><ul>
-					<li class="blurb">YouTrack was included for youtrack.jvmoptions, but now there's a youtrack.jvmoptions.dist
-						file that should take over if there's no custom file youtrack.jvmoptions present</li>
-					<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
-					<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
-					<li>copy <span class="mono">teamcity-startup.properties</span>,
-						<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
-						as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
-							<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
-								so make change after each upgrade</li>
-						</ul></li>
-					<li><a href="#CommandLineTools_">Restart Tool</a></li>
-				</ul></li>
-				<li><strong>All</strong><ul>
-					<li id="backupConfig_"><strong>Settings button : Server Settings : Backup</strong><ul>
-						<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-						<li>filename prefix: &lt;PR&gt;-, where &lt;PR&gt; is product abbreviation</li>
-						<li>tar.gz format</li>
-						<li>every day at 2 AM</li>
-						<li>rotation 10</li>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-			<li>backup; copy backup file to tag 'initial_installed'</li>
-			<li>complete product configuration</li>
-			<li>backup; copy backup to tag 'initial_configured'</li>
+<h3 id="TC_Install_">TC: Install</h3><ul>
+	<li>create folder TeamCity at /Servers/jb</li>
+	<li>download installation package appropriate for our license; move to its folder</li>
+	<li>expand archive<ul>
+		<li>for TC, use <span class="prompt">$ </span>
+			<span class="mono">gtar xfz TeamCity-&lt;versionNumber&gt;.tar.gz</span></li>
+	</ul></li>
+	<li>for Terminal Config: update version in <span class="mono">$TEAMCITY</span> to
+		<span class="mono">/Servers/jb/TeamCity/TeamCity-&lt;newVersion&gt;</span><ul>
+			<li>also copy that line, and execute it in Terminal</li>
 		</ul></li>
-
+	<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
+		<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+		<li>use external HubRing<ul>
+			<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+			<li>verify HubRing connection</li>
+		</ul></li>
+	</ul></li>
+	<li>when tool window appears:<ul>
+		<li>verify expected port 8111</li>
+		<li><strong>immediately</strong> <a href="#CommandLineTools_">Stop Tool</a>; close its window</li>
+		<li>check Activity Monitor for other &lt;ToolName&gt; processes; kill if found</li>
+		<li>copy <span class="mono">teamcity-startup.properties</span>,
+			<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
+			as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
+				<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
+					so make change after each upgrade</li>
+			</ul></li>
+		<li><a href="#CommandLineTools_">Restart Tool</a></li>
+		<li>...</li>
+		<li><a href="#backupConfig_">configure</a> and execute backup; copy file to tag 'initial_installed'</li>
+	</ul></li>
+</ul>
 <!-- @marker "TC: Configure" -->
-<h3 id="TC_Configure_">TC: Configure</h3>
+<h3 id="TC_Configure_">TC: Configure</h3><ul>
+	<li>...</li>
+	<li>backup; copy backup to tag 'initial_configured'</li>
+</ul>
 
 <!-- @marker "TC: Extend" -->
 <h3 id="TC_Extend_">TC: Extend</h3>
@@ -483,11 +372,6 @@
 <p>new</p>
 <p>===========================</p>
 <p>old</p>
-
-	<!-- @marker "Installation" -->
-	<h3 id="Installation_">Installation</h3>	</ul></li>
-	</ul></li>
-</ul>
 
 <!-- @marker "HubRing" -->
 <h2>HubRing</h2>
