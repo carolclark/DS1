@@ -54,7 +54,6 @@
 		965F8413959BB1D1E8EE03D1 /* History_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History_Support.html; sourceTree = "<group>"; };
 		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
-		965F85D733BC5B6FAD4B8E4E /* JetBrains.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrains.html; sourceTree = "<group>"; };
 		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		965F8616CA7CBFCB8649B8A2 /* ThirdParty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ThirdParty.html; sourceTree = "<group>"; };
 		965F8762FEE3692000438723 /* Glossary_DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_DevSupport.html; sourceTree = "<group>"; };
@@ -184,7 +183,6 @@
 				965F88756EC76D8FC8228B96 /* DevSupport.html */,
 				965F8762FEE3692000438723 /* Glossary_DevSupport.html */,
 				965F824C8932575EDA468EA1 /* Glossary_DevOps.html */,
-				965F85D733BC5B6FAD4B8E4E /* JetBrains.html */,
 			);
 			path = html;
 			sourceTree = "<group>";
