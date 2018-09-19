@@ -270,6 +270,7 @@
 	<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
 	<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "0" "" -->
 	<!-- @topicItem "YT: Manage Access" "#YT_ManageAccess_" "0" "" -->
+	<!-- @topicItem "YT: Connect Initial Project" "#YT_ConnectInitialProject_" "0" "" -->
 	<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "0" "" -->
 			<!-- @topicItem "Priority" "#Priority_" "2" "" -->
 			<!-- @topicItem "Type" "#Type_" "2" "" -->
@@ -279,6 +280,7 @@
 		<!-- @topicItem "Add Custom Tags" "#AddCustomTags_" "1" "" -->
 	<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "0" "" -->
 	<!-- @topicSep -->
+	<!-- @topicItem "YT: Create and Connect Project" "#YT_CreateAndConnectProject_" "0" "" -->
 	<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicGroup "YouTrack: Add Features" "" -->
@@ -353,8 +355,8 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "YT: Connect Project" -->
-<h3 id="ConnectProject_">Connect Project</h3><ul>
+<!-- @marker "YT: Connect Initial Project" -->
+<h3 id="YT_ConnectInitialProject_">YT: Connect Initial Project</h3><ul>
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
 	<li>as admin:<ul>
 		<li>Project Page<ul>
@@ -363,9 +365,9 @@
 		<li>YouTrack<ul>
 			<li>VCS Integrations: New VCS Integration<ul>
 				<li>connect to GitHub repo<ul>
-					<li>click link to generate Auth token, or use <a href=
-																			 "https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
-						this GitHub Auth Token link</a></li>
+					<li>click link to generate Auth token, or use
+						<a href="https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
+							this GitHub Auth Token link</a></li>
 					<li>if token of same name exists, delete existing token; return to TeamTools</li>
 					<li>create Auth token &lt;projectName&gt;</li>
 				</ul></li>
@@ -628,6 +630,29 @@
 		<li>backup; copy backup to tag 'initial_configured'</li>
 	</ul>
 
+<!-- @topicItem "YT: Create and Connect Project" "#YT_CreateAndConnectProject_" "0" "" -->
+<ul>
+	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
+	<li>as admin:<ul>
+		<li>Project Page<ul>
+			<li>Add YouTrack Service: Services : Issue Tracker : Scrum</li>
+		</ul></li>
+		<li>YouTrack<ul>
+			<li>VCS Integrations: New VCS Integration<ul>
+				<li>connect to GitHub repo<ul>
+					<li>click link to generate Auth token, or use
+						<a href="https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
+							this GitHub Auth Token link</a></li>
+					<li>if token of same name exists, delete existing token; return to TeamTools</li>
+					<li>create Auth token &lt;projectName&gt;</li>
+				</ul></li>
+				<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
+				<li>visible: &lt;proj&gt; Team, Reporters</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
 <!-- @marker "YouTrack: Add Project" -->
 <h3 id="YT_AddProject_">YT: Add Project</h3><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
@@ -642,34 +667,34 @@
 	</ul>
 
 <!-- @marker "YT: Add Features" -->
-<h3 id="YT_AddFeatures_">YT: Add Features</h3>
+<h2 id="YT_AddFeatures_">YT: Add Features</h2>
 
 	<!-- @marker "YouTrack Mobile" -->
-	<h4 id="YouTrackMobile_">YouTrack Mobile</h4><ul>
+	<h3 id="YouTrackMobile_">YouTrack Mobile</h3><ul>
 		<li>download from AppStore and open</li>
 	</ul>
 
 	<!-- @marker "YouTrack Integration Plugin" -->
-	<h4 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h4><ul>
+	<h3 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h3><ul>
 		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
 			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
 	</ul>
 
 	<!-- @marker "Issue Navigation" -->
-	<h4 id="IssueNavigation_">Issue Navigation</h4><ul>
+	<h3 id="IssueNavigation_">Issue Navigation</h3><ul>
 		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/Issue-Navigation.html">
 			Issue Navigation</a></li>
 	</ul>
 
 	<!-- @marker "*Time Tracking" -->
-	<h4 class="nyi" id="TimeTracking_">*Time Tracking</h4><ul class="indent2">
+	<h3 class="nyi" id="TimeTracking_">*Time Tracking</h3><ul class="indent2">
 		<li>Time Tracking : Enable; select default fields (ch_TimeManagement)</li>
 		<li>length of day: 5h</li>
 		<li>work types: Manage Investigate Develop Test Review Document</li>
 	</ul>
 
 	<!-- @marker "Time Tracking Extension" -->
-	<h4 id="TimeTrackingExt_" class="dq">Time Tracking Extension</h4><ul>
+	<h3 id="TimeTrackingExt_" class="dq">Time Tracking Extension</h3><ul>
 		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
 			<li>see Issue Navigation</li>
 		</ul></li>
