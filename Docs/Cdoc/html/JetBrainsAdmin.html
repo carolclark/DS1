@@ -269,7 +269,7 @@
 <!-- @topicList "YouTrack" "YouTrack_IC" -->
 	<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
 	<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "0" "" -->
-	<!-- @topicItem "YT: Add Initial Project" "#YT_AddInitialProject_" "0" "" -->
+	<!-- @topicItem "YT: Manage Access" "#YT_ManageAccess_" "0" "" -->
 	<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "0" "" -->
 			<!-- @topicItem "Priority" "#Priority_" "2" "" -->
 			<!-- @topicItem "Type" "#Type_" "2" "" -->
@@ -279,6 +279,8 @@
 		<!-- @topicItem "Add Custom Tags" "#AddCustomTags_" "1" "" -->
 	<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "0" "" -->
 	<!-- @topicSep -->
+	<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "0" "" -->
+	<!-- @topicSep -->
 	<!-- @topicGroup "YouTrack: Add Features" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
 			<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "1" "" -->
@@ -286,7 +288,6 @@
 			<!-- @topicItem "Task Management" "#TaskManagement_" "1" "" -->
 			<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "1" "" -->
 			<!-- @topicItem "RSS Feeds" "#RSSFeeds_" "1" "" -->
-	<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "YT: Install" -->
@@ -338,13 +339,24 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "YT: Add Initial Project" -->
-<h3 id="YT_AddInitialProject_">YT: Add Initial Project</h3>
+<!-- @marker "YT: Manage Access" -->
+<h3 id="YT_ManageAccess_">YT: Manage Access</h3><ul>
+	<li>SystemAdmin_CC:<ul>
+		<li>SystemAdmin: <a href="#CloneARole_">clone</a> to SystemAdmin_CC<ul>
+			<li>remove "Create Issue" permission from SystemAdmin_CC</li>
+			<li class="blurb">YouTrack considers admin and carol to be different people.
+				Therefore, if admin creates an issue, it it PERMANENTLY bound to that "person".</li>
+			<li class="blurb">This causes problems with any searches that include "me" (lots);
+				probably more problems when there is another developer.</li>
+			<li>admin: replace role SystemAdmin with SystemAdmin_CC</li>
+		</ul></li>
+	</ul></li>
+</ul>
 
 <!-- @marker "YT: Connect Project" -->
-<h4 id="ConnectProject_">Connect Project</h4><ul>
+<h3 id="ConnectProject_">Connect Project</h3><ul>
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
-	<li>as SystemAdmin:<ul>
+	<li>as admin:<ul>
 		<li>Project Page<ul>
 			<li>Add YouTrack Service: Services : Issue Tracker : Scrum</li>
 		</ul></li>
@@ -357,7 +369,7 @@
 					<li>if token of same name exists, delete existing token; return to TeamTools</li>
 					<li>create Auth token &lt;projectName&gt;</li>
 				</ul></li>
-				<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner, NOT admin</li>
+				<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
 				<li>visible: &lt;proj&gt; Team, Reporters</li>
 			</ul></li>
 		</ul></li>
@@ -375,7 +387,7 @@
 	</ul>
 
 	<h4>Team</h4><ul>
-		<li>&lt;Project&gt; Owner, other devs as indicated; NOT admin</li>
+		<li>&lt;Project&gt; Owner, other devs as indicated</li>
 	</ul>
 
 	<h4 id="YT_CustomFields">YT: Custom Fields</h4><div class="info">
@@ -531,11 +543,6 @@
 		</ul>
 	</div>
 
-	<!-- @marker "Add Custom Tags" -->
-	<h4 id="AddCustomTags_">Add Custom Tags</h4><ul>
-	<li>'waiting' (pink4): development is waiting for something</li>
-</ul>
-
 	<!-- @marker "Issue Link Types" -->
 	<div class="info">
 		<h4 id="IssueLinkTypes_">Issue Link Types</h4>
@@ -547,6 +554,12 @@
 			<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
 		</table>
 	</div>
+
+	<!-- @marker "Add Custom Tags" -->
+	<h4 id="AddCustomTags_">Add Custom Tags</h4><ul>
+		<li>'waiting' (pink4): development is waiting for something</li>
+	</ul>
+
 	<div style="page-break-before: always">
 		<!-- @marker "Add Custom Agile Boards" -->
 		<h3  class="nyi" id="CustomAgileBoards_">Add Custom Agile Boards</h3><ul>
@@ -562,7 +575,6 @@
 					</ul></li>
 				</ul></li>
 			</ul></li>
-			<li>check owner: should NOT be admin</li>
 			<li>Configure Agile Boards<ul>
 				<li>Type: Scrum Board</li>
 				<li>General<ul>
@@ -618,17 +630,16 @@
 
 <!-- @marker "YouTrack: Add Project" -->
 <h3 id="YT_AddProject_">YT: Add Project</h3><ul>
-
-<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>HubRing as SystemAdmin:<ul>
-		<li>HubRing Project Page: Create New Project...<ul>
-			<li>Project Dialog: set project name, ID; create project</li>
-			<li>Team: select member(s)s for project team</li>
-			<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
-			<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
+	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+		<li>HubRing as admin:<ul>
+			<li>HubRing Project Page: Create New Project...<ul>
+				<li>Project Dialog: set project name, ID; create project</li>
+				<li>Team: select member(s)s for project team</li>
+				<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
+				<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
+			</ul></li>
 		</ul></li>
-	</ul></li>
-</ul>
+	</ul>
 
 <!-- @marker "YT: Add Features" -->
 <h3 id="YT_AddFeatures_">YT: Add Features</h3>
@@ -879,6 +890,7 @@
 	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
 	<!-- @topicItem "Save Tagged Tools Backup" "#Save_TaggedToolsBackup_" "0" "" -->
 	<!-- @topicItem "Restore Settings: for Team Tool: from Backup" "#RestoreSettings_ForTeamTool_FromBackup_" "0" "" -->
+	<!-- @topicItem "Clone a Role" "#CloneARole_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
 	<!-- @topicItem "Moving Projects to Another Server" "#MovingServer_" "0" "" -->
 	<!-- @topicItem "Upgrade Team Tools" "#UpgradeTeamTools_" "0" "" -->
@@ -952,6 +964,19 @@
 	<li>install clean Tool folder of same or later build than the one used in the backup</li>
 	<li>start Tool; in Configuration Wizard, select "Upgrade"</li>
 	<li>select the backup as Upgrade Source</li>
+</ul>
+
+<!-- @marker "Clone a Role" -->
+<h4 id="CloneARole_">Clone a Role</h4><ul>
+	<li>Settings button : Administration : <ul>
+		<li>from roles list, select the role to be cloned</li>
+		<li>click "clone" button</li>
+		<li>set Name (title case with spaces), key (lowercase with '-'s); click clone button</li>
+		<li>fill in role description; save</li>
+		<li>switch to "Permissions" tab to customize role</li>
+	</ul></li>
+	<li class="em">also see <a href="https://www.jetbrains.com/help/youtrack/standalone/clone-role.html">
+		Clone a Role</a></li>
 </ul>
 
 <!-- @marker "Sort a Card's Subtasks" -->
