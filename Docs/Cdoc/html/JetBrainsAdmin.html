@@ -347,9 +347,11 @@
 	</ul></li>
 	<li>when tool window appears:<ul>
 		<li>verify expected port 8081</li>
-		<li>...</li>
+		<li>identify initial project:<ul>
+			<li>project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Scrum</li>
+		</ul></li>
 		<li><a href="#backupConfig_">configure</a> and execute backup</li>
-		<li>copy backup file to tag 'initial_installed'</li>
+		<li>copy backup file to tag 'initial_installed'; if no file prefix present, add it</li>
 	</ul></li>
 </ul>
 
@@ -360,7 +362,7 @@
 				up to 10 users; no restriction for private repos; license forever; free updates this century </li>
 			<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
 			<li>verify Default Timezone: Chicago</li>
-			<li>verify Date Fields Format: 31 Dec 2000 23:59</li>
+			<li>verify Date Fields Format: 2000-12-31T23:59</li>
 			<li>Notifications<ul>
 				<li>enable email notifications<ul>
 					<li>SMTP host: smtp.cox.net</li>
@@ -370,22 +372,14 @@
 				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li>Backup Settings: verify backup directory path: '/Volumes/Mavericks-1/Backups/TeamTools/YouTrack'</li>
+		<li>Database Backup: verify backup directory path: '/Volumes/Mavericks-1/Backups/TeamTools/YouTrack'</li>
 	</ul></li>
 </ul>
 
 <!-- @marker "YT: Manage Access" -->
 <h3 id="YT_ManageAccess_">YT: Manage Access</h3><ul>
-	<li>SystemAdmin_CC:<ul>
-		<li>SystemAdmin: <a href="#CloneARole_">clone</a> to SystemAdmin_CC<ul>
-			<li>remove "Create Issue" permission from SystemAdmin_CC</li>
-			<li class="blurb">YouTrack considers admin and carol to be different people.
-				Therefore, if admin creates an issue, it it PERMANENTLY bound to that "person".</li>
-			<li class="blurb">This causes problems with any searches that include "me" (lots);
-				probably more problems when there is another developer.</li>
-			<li>admin: replace role SystemAdmin with SystemAdmin_CC</li>
-		</ul></li>
-	</ul></li>
+	<li>verify users: admin: role SystemAdmin_CC; carol: role ProjectAdmin</li>
+	<li>look around</li>
 </ul>
 
 <!-- @marker "YT: Connect Initial Project" -->
