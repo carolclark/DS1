@@ -173,7 +173,10 @@
 <!-- @topicList "HubRing" "HubRing_IC" -->
 	<!-- @topicItem "HR: Provide Requirements" "#HR_ProvideRequirements_" "0" "" -->
 	<!-- @topicItem "HR: Install" "#HR_Install_" "0" "" -->
-	<!-- @topicItem "HR: Configure" "#HR_Configure_" "0" "" -->
+	<!-- @topicItem "HR: Authorization Modules" "#HR_AuthorizationModules_" "0" "" -->
+	<!-- @topicItem "HR: Access Management" "#HR_AccessManagement_" "0" "" -->
+	<!-- @topicItem "HR: Notifications" "#HR_Notifications_" "0" "" -->
+	<!-- @topicItem "HR: Backup 'Initial Configured'" "#HR_Backup_InitialConfigured_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "HR_Provide Requirements" -->
@@ -193,7 +196,7 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "Install" -->
+<!-- @marker "HR: Install" -->
 <h3 id="HR_Install_">HR: Install</h3><ul>
 	<li>create folder HubRing at /Servers/jb</li>
 	<li>download installation package appropriate for our license; move to its folder</li>
@@ -219,17 +222,8 @@
 	<li>backup; copy backup file to tag 'initial_installed'</li>
 </ul>
 
-<!-- @marker "HR: Configuration" -->
-<h3 id="HR_Configure_">HubRing Configure</h3><ul>
-	<li>Settings Menu:<ul>
-		<li><strong>Access Management</strong><ul>
-			<li>Users<ul>
-				<li>add 'carol':<ul>
-					<li>Create user 'carol'; my email</li>
-					<li>set JetBrains password; do not force change password</li>
-					<li>avatar: select; click our gravitar image</li>
-				</ul></li>
-			</ul></li>
+<!-- @marker "HR: Authorization Modules" -->
+<h3 id="HR_AuthorizationModules_">HR: Authorization Modules</h3><ul>
 			<li>Auth Modules<ul>
 				<li>HubRing: Built-in Authorization<ul>
 					<li>test login combinations</li>
@@ -251,16 +245,45 @@
 					</ul></li>
 				</ul></li>
 			</ul></li>
+</ul>
+
+<!-- @marker "HR: Access Management" -->
+<h3 id="HR_AccessManagement_">HR: Access Management</h3><ul>
+	<li>Settings Menu: Access Management<ul>
+		<li>Roles<ul>
+			<li>create role SystemAdmin_CC:<ul>
+				<li class="blurb">In YouTrack, 'admin' and 'carol' are different people.
+					Therefore, if admin creates an issue, it is PERMANENTLY bound to that "person".</li>
+				<li class="blurb">This causes problems with any searches that include "me" (lots);
+					probably more problems when there is another developer.</li>
+				<li>select role SystemAdmin; click Clone; clone to SystemAdmin_CC</li>
+				<li>remove "Create Issue" permission from SystemAdmin_CC</li>
+				<li>save; verify SystemAdmin_CC on role list</li>
+			</ul></li>
 		</ul></li>
-		<li><strong>Notifications</strong><ul>
-			<li><strong>email notifications: SMTP</strong><ul>
+		<li>Users<ul>
+			<li>existing user admin: replace role SystemAdmin with SystemAdmin_CC</li>
+			<li>add user 'carol':<ul>
+				<li>Create user 'carol'; my email</li>
+				<li>set JetBrains password; do not force change password</li>
+				<li>avatar: select; click our gravitar image</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "HR: Notifications" -->
+<h3 id="HR_Notifications_">HR: Notifications</h3><ul>
+	<li>email notifications: SMTP<ul>
 				<li>host smtp.cox.net</li>
 				<li>from: "HubRing" &lt;my_email&gt;</li>
 				<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
 				<li>save; enable notifications; send test message</li>
 			</ul></li>
-		</ul></li>
-	</ul></li>
+</ul>
+
+<!-- @marker "HR: Backup 'Initial Configured'" -->
+<h3 id="HR_Backup_InitialConfigured_">HR: Backup 'initial-configured'</h3><ul>
 	<li>backup; copy backup to tag 'initial_configured'</li>
 </ul>
 
