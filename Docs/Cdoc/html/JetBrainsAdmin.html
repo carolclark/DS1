@@ -411,183 +411,6 @@
 	<li>configure as shown in <a href="#YT_OurDefaultSettings_">YT: Our Default Settings</a></li>
 </ul>
 
-	<h4>General</h4><ul>
-		<li>Name: usually repo name</li>
-		<li>ID: must be unique</li>
-		<li>Description</li>
-		<li>Project lead</li>
-		<li>From e-mail: YouTrack</li>
-	</ul>
-
-	<h4>Team</h4><ul>
-		<li>&lt;Project&gt; Owner, other devs as indicated</li>
-	</ul>
-
-	<h4 id="YT_CustomFields">YT: Custom Fields</h4><div class="info">
-	<!-- @marker "Priority" -->
-	<h5 id="Priority_">Priority</h5>
-	<table>
-		<tr><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
-			<td><table>
-				<tr><th>Priority Name</th> <th>Color</th></tr>
-				<tr><td>Show-Stopper</td><td>orange4</td></tr>
-				<tr><td>Critical</td><td>pink2</td></tr>
-				<tr><td>Major</td><td>yellow1</td></tr>
-				<tr><td>Normal</td><td>green1</td></tr>
-				<tr><td>Minor</td><td>gray1</td></tr>
-			</table></td></tr>
-	</table>
-	<!-- @marker "Type" -->
-	<h5 id="Type_">Type</h5>
-	<table>
-		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td></td>
-			<td><table>
-				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
-				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
-				<tr class="nyi"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
-					several Stories,<br />some of which may be attached to different Epics or Projects</td>
-					<td rowspan="3">to Review:<ul>
-						<li>normally, add a task to review<ul>
-							<li>Standard method is to assume "Done" if all subitems are complete. We disagree.</li>
-						</ul></li>
-						<li>may be moved to Review if all subissues have been addressed and Verified
-							and no further work is expected</li>
-					</ul>
-					</td></tr>
-				<!-- ch_UserStory2Story -->
-				<tr class="nyi"><td>Story</td><td>orange3</td><td>'Story' represents a
-					goal element for planning<br />serves as swimlane on a -develop Board<br />
-					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
-				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
-				<!-- ch_addFeature+Scenario -->
-				<tr class="nyi"><td>Feature</td><td>blue5</td><td>A BDD feature. Features are orthogonal to Stories;<br />
-					Stories are a planning tool, while Features are about implementation organization.</td>
-					<td rowspan="3">These issue types share a column on the Agile Board.</td></tr>
-				<tr class="nyi"><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
-				<tr class="nyi"><td>Task</td><td>brown3</td><td>A task. May be associated with a Feature or Scenario,
-					or directly with a Story.</td></tr>
-				<!-- ch_BugClassification -->
-				<tr class="subhead"><td colspan="4">Bug Classification</td></tr>
-				<tr class="nyi"><td>Bug</td><td>pink3</td><td></td><td></td></tr>
-				<tr class="nyi"><td>Cosmetic</td><td>pink3</td><td></td><td></td></tr>
-				<tr class="nyi"><td>Exception</td><td>pink3</td><td></td><td></td></tr>
-				<tr class="nyi"><td>Usability</td><td>pink3</td><td></td><td></td></tr>
-				<tr class="nyi"><td>Performance</td><td>pink3</td><td></td><td></td></tr>
-				<!-- ch_TimeManagement -->
-				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
-				<tr class="nyi"><td>StoryPoints</td> <td>orange2</td> <td>size estimate for Story</td>
-					<td>values 0 1 2 3 5 8 13 21 34 55 89 144</td></tr>
-				<tr class="nyi"><td>*Estimation</td><td>blue1</td><td>time estimation; units w d h m</td>
-					<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
-				<tr class="nyi"><td>*Spent time</td><td>blue2</td><td>actual time spent, from work items reported</td></tr>
-			</table></td></tr>
-	</table>
-
-	<!-- @marker "State" -->
-	<h5 id="State_">State</h5>
-	<table>
-		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
-			<td><table>
-				<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
-				<tr class="subhead"><td colspan="3">Backlog</td></tr>
-				<!-- ch_BacklogStates -->
-				<tr class="nyi"><td>Submit</td><td>incoming items</td>
-					<td>Evaluate for development. Accept; else resolve using a 'Resolved' state with comment</td></tr>
-				<tr class="nyi"><td>Accept</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
-				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
-				<tr class="nyi"><td>Select</td><td>selected for development</td>
-					<td><ul>
-						<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, or a Task</li>
-						<li>move to Story or Specify as indicated</li>
-					</ul></td></tr>
-				<tr class="nyi"><td>Story</td>
-					<td>State "Story" anchors a story for development.
-						<br />serves as swimlane on a -develop Board<br />
-						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-							orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
-					<td>does not progress through states during development<br />
-						instead, it generates cards to Specify that do progress to the next column<br />
-						when all subitems completed, check to see if Story itself is complete<br />
-						when entire Story is complete, move to Review for verification
-					</td></tr>
-				<tr class="nyi"><td>Specify</td><td>specify what is to be done for this work item</td>
-					<td>includes Types Feature, Scenario, Task</td></tr>
-				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
-				<tr class="nyi"><td>Ready</td><td>column in Roadmap; backlog for development</td><td>estimation required to enter this state</td></tr>
-				<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
-				<tr class="nyi"><td>Open</td><td>items to be completed for this Sprint</td></tr>
-				<tr class="nyi"><td>Develop</td><td>develop as specified</td><td>,</td></tr>
-				<tr class="nyi"><td>Review</td><td>try to come at this work a fresh perspective</td></tr>
-				<tr class="nyi"><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
-				<!-- ch_UnfixedResolutions -->
-				<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
-				<tr class="nyi"><td>Duplicate</td><td>see YouTrack Duplicate handling</td> <td></td></tr>
-				<tr class="nyi"><td>WillNotFix</td><td></td> <td></td></tr>
-				<tr class="nyi"><td>Reopened</td> <td></td> <td></td> </tr>
-				<tr class="nyi"><td>CannotReproduce</td><td></td><td></td></tr>
-				<tr class="nyi"><td>WorksAsIntended</td><td></td> <td></td></tr>
-				<tr class="nyi"><td>Incomplete</td><td></td> <td></td></tr>
-				<tr class="nyi"><td>Obsolete</td><td></td><td></td></tr>
-			</table></td></tr>
-	</table>
-	<!-- @marker "Other Attached Fields" -->
-	<h5 id="OtherAttachedFields_">Other Attached Fields</h5>
-	<table>
-		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td>
-		</tr>
-		<tr class="nyi"><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td>yy.q.n; q=quarter; n=# sprint started in q</td>
-			<td></td></tr>
-		<tr class="nyi"><td>*FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
-			<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
-		<tr class="nyi"><td>*FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
-			<td>fix for, fixed in, fix sprint, sprint</td><td>Sprint when fixed</td>
-			<td></td></tr>
-		<!-- ch_releaseVersions -->
-		<tr class="nyi"><td>*ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release, version</td><td>prefix numeric string with 'v'</td>
-			<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-				on which our versioning plan is based</td></tr>
-	</table>
-	<!-- @marker "Other Available Fields" -->
-	<h5 id="OtherAvailableFields_">Other Available Fields</h5>
-	<table>
-		<tr class="smallHeader"><th colspan="7">Other Available Fields: can be attached if needed</th></tr>
-		<tr><td>DueDate</td> <td>N/A</td> <td>No Due Date</td> <td>date</td> <td>due</td> <td></td> <td></td></tr>
-		<tr class="nyi"><td>Subsystem</td> <td>N/A</td> <td>No Subsystem</td> <td>owned</td> <td>none</td> <td>none</td>
-			<td>type "owned" links to developer responsible for this Subsystem</td></tr>
-	</table>
-</div>
-
-	<!-- @marker "Notification Templates" -->
-	<div  class="indent">
-		<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
-			<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
-		</ul>
-	</div>
-
-	<div class="indent">
-		<h5 id="Workflows_">Workflows</h5><ul>
-			<li>detach workflow Scrum_2</li>
-		</ul>
-	</div>
-
-	<!-- @marker "Issue Link Types" -->
-	<div class="info">
-		<h4 id="IssueLinkTypes_">Issue Link Types</h4>
-		<table id="IssueLinkTypes">
-			<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
-			<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
-			<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Directed</td></tr>
-			<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
-			<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
-		</table>
-	</div>
-
 	<!-- @marker "YT: Add Custom Tags" -->
 	<h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
 		<li>'waiting' (pink4): development is waiting for something</li>
@@ -752,6 +575,182 @@
 </div>
 <!-- @marker "YT: Our Default Settings" -->
 <h2 id="YT_OurDefaultSettings_">YT: Our Default Settings</h2>
+<h4>General</h4><ul>
+	<li>Name: usually repo name</li>
+	<li>ID: must be unique</li>
+	<li>Description</li>
+	<li>Project lead</li>
+	<li>From e-mail: YouTrack</li>
+</ul>
+
+<h4>Team</h4><ul>
+	<li>&lt;Project&gt; Owner, other devs as indicated</li>
+</ul>
+
+<h4 id="YT_CustomFields">YT: Custom Fields</h4><div class="info">
+	<!-- @marker "Priority" -->
+	<h5 id="Priority_">Priority</h5>
+	<table>
+		<tr><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+		<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
+			<td><table>
+				<tr><th>Priority Name</th> <th>Color</th></tr>
+				<tr><td>Show-Stopper</td><td>orange4</td></tr>
+				<tr><td>Critical</td><td>pink2</td></tr>
+				<tr><td>Major</td><td>yellow1</td></tr>
+				<tr><td>Normal</td><td>green1</td></tr>
+				<tr><td>Minor</td><td>gray1</td></tr>
+			</table></td></tr>
+	</table>
+	<!-- @marker "Type" -->
+	<h5 id="Type_">Type</h5>
+	<table>
+		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+		<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td></td>
+			<td><table>
+				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
+				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
+				<tr class="nyi"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
+					several Stories,<br />some of which may be attached to different Epics or Projects</td>
+					<td rowspan="3">to Review:<ul>
+						<li>normally, add a task to review<ul>
+							<li>Standard method is to assume "Done" if all subitems are complete. We disagree.</li>
+						</ul></li>
+						<li>may be moved to Review if all subissues have been addressed and Verified
+							and no further work is expected</li>
+					</ul>
+					</td></tr>
+				<!-- ch_UserStory2Story -->
+				<tr class="nyi"><td>Story</td><td>orange3</td><td>'Story' represents a
+					goal element for planning<br />serves as swimlane on a -develop Board<br />
+					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
+				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
+				<!-- ch_addFeature+Scenario -->
+				<tr class="nyi"><td>Feature</td><td>blue5</td><td>A BDD feature. Features are orthogonal to Stories;<br />
+					Stories are a planning tool, while Features are about implementation organization.</td>
+					<td rowspan="3">These issue types share a column on the Agile Board.</td></tr>
+				<tr class="nyi"><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
+				<tr class="nyi"><td>Task</td><td>brown3</td><td>A task. May be associated with a Feature or Scenario,
+					or directly with a Story.</td></tr>
+				<!-- ch_BugClassification -->
+				<tr class="subhead"><td colspan="4">Bug Classification</td></tr>
+				<tr class="nyi"><td>Bug</td><td>pink3</td><td></td><td></td></tr>
+				<tr class="nyi"><td>Cosmetic</td><td>pink3</td><td></td><td></td></tr>
+				<tr class="nyi"><td>Exception</td><td>pink3</td><td></td><td></td></tr>
+				<tr class="nyi"><td>Usability</td><td>pink3</td><td></td><td></td></tr>
+				<tr class="nyi"><td>Performance</td><td>pink3</td><td></td><td></td></tr>
+				<!-- ch_TimeManagement -->
+				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
+				<tr class="nyi"><td>StoryPoints</td> <td>orange2</td> <td>size estimate for Story</td>
+					<td>values 0 1 2 3 5 8 13 21 34 55 89 144</td></tr>
+				<tr class="nyi"><td>*Estimation</td><td>blue1</td><td>time estimation; units w d h m</td>
+					<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
+				<tr class="nyi"><td>*Spent time</td><td>blue2</td><td>actual time spent, from work items reported</td></tr>
+			</table></td></tr>
+	</table>
+
+	<!-- @marker "State" -->
+	<h5 id="State_">State</h5>
+	<table>
+		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+		<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
+			<td><table>
+				<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
+				<tr class="subhead"><td colspan="3">Backlog</td></tr>
+				<!-- ch_BacklogStates -->
+				<tr class="nyi"><td>Submit</td><td>incoming items</td>
+					<td>Evaluate for development. Accept; else resolve using a 'Resolved' state with comment</td></tr>
+				<tr class="nyi"><td>Accept</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
+				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
+				<tr class="nyi"><td>Select</td><td>selected for development</td>
+					<td><ul>
+						<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, or a Task</li>
+						<li>move to Story or Specify as indicated</li>
+					</ul></td></tr>
+				<tr class="nyi"><td>Story</td>
+					<td>State "Story" anchors a story for development.
+						<br />serves as swimlane on a -develop Board<br />
+						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+							orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
+					<td>does not progress through states during development<br />
+						instead, it generates cards to Specify that do progress to the next column<br />
+						when all subitems completed, check to see if Story itself is complete<br />
+						when entire Story is complete, move to Review for verification
+					</td></tr>
+				<tr class="nyi"><td>Specify</td><td>specify what is to be done for this work item</td>
+					<td>includes Types Feature, Scenario, Task</td></tr>
+				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
+				<tr class="nyi"><td>Ready</td><td>column in Roadmap; backlog for development</td><td>estimation required to enter this state</td></tr>
+				<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
+				<tr class="nyi"><td>Open</td><td>items to be completed for this Sprint</td></tr>
+				<tr class="nyi"><td>Develop</td><td>develop as specified</td><td>,</td></tr>
+				<tr class="nyi"><td>Review</td><td>try to come at this work a fresh perspective</td></tr>
+				<tr class="nyi"><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
+				<!-- ch_UnfixedResolutions -->
+				<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
+				<tr class="nyi"><td>Duplicate</td><td>see YouTrack Duplicate handling</td> <td></td></tr>
+				<tr class="nyi"><td>WillNotFix</td><td></td> <td></td></tr>
+				<tr class="nyi"><td>Reopened</td> <td></td> <td></td> </tr>
+				<tr class="nyi"><td>CannotReproduce</td><td></td><td></td></tr>
+				<tr class="nyi"><td>WorksAsIntended</td><td></td> <td></td></tr>
+				<tr class="nyi"><td>Incomplete</td><td></td> <td></td></tr>
+				<tr class="nyi"><td>Obsolete</td><td></td><td></td></tr>
+			</table></td></tr>
+	</table>
+	<!-- @marker "Other Attached Fields" -->
+	<h5 id="OtherAttachedFields_">Other Attached Fields</h5>
+	<table>
+		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+		<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
+			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td>
+		</tr>
+		<tr class="nyi"><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td>yy.q.n; q=quarter; n=# sprint started in q</td>
+			<td></td></tr>
+		<tr class="nyi"><td>*FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
+			<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
+		<tr class="nyi"><td>*FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
+			<td>fix for, fixed in, fix sprint, sprint</td><td>Sprint when fixed</td>
+			<td></td></tr>
+		<!-- ch_releaseVersions -->
+		<tr class="nyi"><td>*ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release, version</td><td>prefix numeric string with 'v'</td>
+			<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+				on which our versioning plan is based</td></tr>
+	</table>
+	<!-- @marker "Other Available Fields" -->
+	<h5 id="OtherAvailableFields_">Other Available Fields</h5>
+	<table>
+		<tr class="smallHeader"><th colspan="7">Other Available Fields: can be attached if needed</th></tr>
+		<tr><td>DueDate</td> <td>N/A</td> <td>No Due Date</td> <td>date</td> <td>due</td> <td></td> <td></td></tr>
+		<tr class="nyi"><td>Subsystem</td> <td>N/A</td> <td>No Subsystem</td> <td>owned</td> <td>none</td> <td>none</td>
+			<td>type "owned" links to developer responsible for this Subsystem</td></tr>
+	</table>
+</div>
+
+<!-- @marker "Notification Templates" -->
+<div  class="indent">
+	<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
+	<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
+</ul>
+</div>
+
+<div class="indent">
+	<h5 id="Workflows_">Workflows</h5><ul>
+	<li>detach workflow Scrum_2</li>
+</ul>
+</div>
+
+<!-- @marker "Issue Link Types" -->
+<div class="info">
+	<h4 id="IssueLinkTypes_">Issue Link Types</h4>
+	<table id="IssueLinkTypes">
+		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
+		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
+		<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Directed</td></tr>
+		<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
+		<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
+	</table>
+</div>
 
 
 <!-- @marker "UP: Install" -->
