@@ -305,24 +305,25 @@
 	<!-- @topicItem "YT: Manage Access" "#YT_ManageAccess_" "0" "" -->
 	<!-- @topicItem "YT: Connect Initial Project" "#YT_ConnectInitialProject_" "0" "" -->
 	<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "0" "" -->
-			<!-- @topicItem "Priority" "#Priority_" "2" "" -->
-			<!-- @topicItem "Type" "#Type_" "2" "" -->
-			<!-- @topicItem "State" "#State_" "2" "" -->
-			<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "2" "" -->
-			<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "2" "" -->
-		<!-- @topicItem "Add Custom Tags" "#AddCustomTags_" "1" "" -->
-	<!-- @topicItem "Add Custom Agile Boards" "#CustomAgileBoards_" "0" "" -->
+	<!-- @topicItem "YT: Add Custom Tags" "#YT_AddCustomTags_" "0" "" -->
+	<!-- @topicItem "YT: Add Custom Agile Boards" "#YT_CustomAgileBoards_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "YT: Create and Connect Project" "#YT_CreateAndConnectProject_" "0" "" -->
 	<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicGroup "YouTrack: Add Features" "" -->
+	<!-- @topicItem "YT: Our Default Settings" "#YT_OurDefaultSettings_" "0" "" -->
+		<!-- @topicItem "Priority" "#Priority_" "2" "" -->
+		<!-- @topicItem "Type" "#Type_" "2" "" -->
+		<!-- @topicItem "State" "#State_" "2" "" -->
+		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "2" "" -->
+		<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "2" "" -->
+	<!-- @topicGroup "YT: Add Features" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
-			<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "1" "" -->
-			<!-- @topicItem "Time Tracking Extension" "#TimeTrackingExt_" "1" "" -->
-			<!-- @topicItem "Task Management" "#TaskManagement_" "1" "" -->
-			<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "1" "" -->
-			<!-- @topicItem "RSS Feeds" "#RSSFeeds_" "1" "" -->
+		<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
+		<!-- @topicItem "Time Tracking Extension" "#TimeTrackingExt_" "0" "" -->
+		<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
+		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
+		<!-- @topicItem "RSS Feeds" "#RSSFeeds_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "YT: Install" -->
@@ -406,7 +407,10 @@
 </ul>
 
 <!-- @marker "YT: Configure Initial Project" -->
-<h3 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h3>
+<h3 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h3><ul>
+	<li>configure as shown in <a href="#YT_OurDefaultSettings_">YT: Our Default Settings</a></li>
+</ul>
+
 	<h4>General</h4><ul>
 		<li>Name: usually repo name</li>
 		<li>ID: must be unique</li>
@@ -584,81 +588,17 @@
 		</table>
 	</div>
 
-	<!-- @marker "Add Custom Tags" -->
-	<h4 id="AddCustomTags_">Add Custom Tags</h4><ul>
+	<!-- @marker "YT: Add Custom Tags" -->
+	<h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
 		<li>'waiting' (pink4): development is waiting for something</li>
 	</ul>
 
-	<div style="page-break-before: always">
-		<!-- @marker "Add Custom Agile Boards" -->
-		<h3  class="nyi" id="CustomAgileBoards_">Add Custom Agile Boards</h3><ul>
-		<li>as &lt;projectOwner&gt;:<ul>
-			<li>Add Agile Board</li>
-			<li>process parameters<ul>
-				<li><em>board: </em>&lt;ProjectID&gt;_Roadmap; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: -{Board &lt;ProjectID&gt;_Roadmap} #Unresolved</li>
-				<li><em>board: </em>&lt;ProjectID&gt;-develop; <em>savedSearch: </em>project: &lt;ProjectName&gt; has: {Board &lt;ProjectName&gt;-develop} #Unresolved -Epic</li>
-			</ul></li>
-			<li>create new Agile Boards:<ul>
-				<li>for each parameter set<ul>
-					<li>add savedSearches<ul>
-					</ul></li>
-				</ul></li>
-			</ul></li>
-			<li>Configure Agile Boards<ul>
-				<li>Type: Scrum Board</li>
-				<li>General<ul>
-					<li>name: &lt;ProjectID&gt;; search: <em>savedSearch</em></li>
-					<li>add project(s)</li>
-					<li>can view and use board: &lt;repoName&gt; Team</li>
-					<li>can edit board settings: Owner</li>
-					<li>Sprints: enabled</li>
-					<li>Board Behavior<ul>
-						<li>link sprints to values for Sprints</li>
-						<li>select appropriate savedSearch</li>
-						<li>Ignore subtasks of existing cards: yes</li>
-					</ul></li>
-				</ul></li>
-				<li>Columns and Rows<ul>
-					<li>Columns identified by: State<ul>
-						<li>_Roadmap columns<ul>
-							<li>Select</li>
-							<li>Story</li>
-							<li>Specify</li>
-							<li>Ready</li>
-						</ul></li>
-						<li>-develop columns<ul>
-							<li>Open</li>
-							<li>Develop</li>
-							<li>Review</li>
-							<li>Verified</li>
-						</ul></li>
-					</ul></li>
-					<li>Swimlanes identified by: Type<ul>
-						<li>_Roadmap: Epic</li>
-						<li>-develop: Story</li>
-					</ul></li>
-					<li>show swimlane for Uncategorized cards at bottom of Board: yes</li>
-				</ul></li>
-				<li>Card<ul>
-					<li>Estimation field: StoryPoints</li>
-					<li>Default value for type: Task</li>
-					<li>Color scheme: Type</li>
-					<li>Show colors for other custom types: Yes</li>
-				</ul></li>
-				<li>Chart<ul>
-					<li>Type: Cumulative flow</li>
-					<li>Issue filter: All cards</li>
-				</ul></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-	</div>
 	<h4>Backup</h4><ul>
 		<li>backup; copy backup to tag 'initial_configured'</li>
 	</ul>
 
 <!-- @marker "YT: Create and Connect Project" -->
-<h3 id="YT_CreateAndConnectProject_">YT: Create and Connect Project</h3><ul>
+<h3 id="YT_CreateAndConnectProject_">YT: Create and Connect Project</h3><ul class="depr">
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
 	<li>as admin:<ul>
 		<li>Project Page<ul>
@@ -746,6 +686,74 @@
 			YouTrack Tweaks Extension</a>
 		</li></ul>
 
+<div style="page-break-before: always">
+	<!-- @marker "Add Custom Agile Boards" -->
+	<h3 class="nyi" id="YT_CustomAgileBoards_">YT: Add Custom Agile Boards</h3><ul>
+	<li>as &lt;projectOwner&gt;:<ul>
+		<li>Add Agile Board</li>
+		<li>process parameters<ul>
+			<li><em>board: </em>&lt;ProjectID&gt;_Roadmap; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: -{Board &lt;ProjectID&gt;_Roadmap} #Unresolved</li>
+			<li><em>board: </em>&lt;ProjectID&gt;-develop; <em>savedSearch: </em>project: &lt;ProjectName&gt; has: {Board &lt;ProjectName&gt;-develop} #Unresolved -Epic</li>
+		</ul></li>
+		<li>create new Agile Boards:<ul>
+			<li>for each parameter set<ul>
+				<li>add savedSearches<ul>
+				</ul></li>
+			</ul></li>
+		</ul></li>
+		<li>Configure Agile Boards<ul>
+			<li>Type: Scrum Board</li>
+			<li>General<ul>
+				<li>name: &lt;ProjectID&gt;; search: <em>savedSearch</em></li>
+				<li>add project(s)</li>
+				<li>can view and use board: &lt;repoName&gt; Team</li>
+				<li>can edit board settings: Owner</li>
+				<li>Sprints: enabled</li>
+				<li>Board Behavior<ul>
+					<li>link sprints to values for Sprints</li>
+					<li>select appropriate savedSearch</li>
+					<li>Ignore subtasks of existing cards: yes</li>
+				</ul></li>
+			</ul></li>
+			<li>Columns and Rows<ul>
+				<li>Columns identified by: State<ul>
+					<li>_Roadmap columns<ul>
+						<li>Select</li>
+						<li>Story</li>
+						<li>Specify</li>
+						<li>Ready</li>
+					</ul></li>
+					<li>-develop columns<ul>
+						<li>Open</li>
+						<li>Develop</li>
+						<li>Review</li>
+						<li>Verified</li>
+					</ul></li>
+				</ul></li>
+				<li>Swimlanes identified by: Type<ul>
+					<li>_Roadmap: Epic</li>
+					<li>-develop: Story</li>
+				</ul></li>
+				<li>show swimlane for Uncategorized cards at bottom of Board: yes</li>
+			</ul></li>
+			<li>Card<ul>
+				<li>Estimation field: StoryPoints</li>
+				<li>Default value for type: Task</li>
+				<li>Color scheme: Type</li>
+				<li>Show colors for other custom types: Yes</li>
+			</ul></li>
+			<li>Chart<ul>
+				<li>Type: Cumulative flow</li>
+				<li>Issue filter: All cards</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+</div>
+<!-- @marker "YT: Our Default Settings" -->
+<h2 id="YT_OurDefaultSettings_">YT: Our Default Settings</h2>
+
+
 <!-- @marker "UP: Install" -->
 <h2>UpSource</h2>
 <!-- @topicList "UpSource" "UpSource_IC" -->
@@ -783,7 +791,6 @@
 		<li>backup; copy backup file to tag 'initial_configured'</li>
 	</ul></li>
 </ul>
-
 
 <!-- @marker "TeamCity" -->
 <h2>TeamCity</h2>
