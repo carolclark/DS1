@@ -160,6 +160,7 @@
 <!-- @marker "Team Tools" -->
 <h2 class="promote">Team Tools</h2>
 <!-- @topicList "Team Tools" "TeamTools_" -->
+	<!-- @topicItem "TT: Documentation Conventions" "#TT_DocumentationConventions_" "0" "" -->
 	<!-- @topicItem "HubRing" "#HubRing_IC" "0" "" -->
 	<!-- @topicItem "YouTrack" "#YouTrack_IC" "0" "" -->
 		<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "1" "" -->
@@ -167,6 +168,15 @@
 	<!-- @topicItem "TeamCity" "#TeamCity_IC" "0" "" -->
 	<!-- @topicItem "Integrations and Auth Modules" "#Integrations_AuthModules_" "0" "" -->
 <!-- @/topicList -->
+
+<!-- @marker "TT: Documentation Conventions" -->
+<h3 id="TT_DocumentationConventions_">TT: Documentation Conventions</h3><ul>
+	<li>Nutty Button<ul>
+		<li>Team Tools routinely use a button near the top right of the screen that seems to be variously called
+			"Settings", "Administration" or whatever.</li>
+		<li>The button is shaped like a nut (the one with a bolt). We refer to it as the "Nutty button".</li>
+	</ul></li>
+</ul>
 
 <!-- @marker "HubRing" -->
 <h2>HubRing</h2>
@@ -211,7 +221,7 @@
 	<li>when tool window appears:<ul>
 		<li>verify expected port 8080</li>
 		<li>login as admin</li>
-		<li id="backupConfig_">Settings button : Server Settings : Backup<ul>
+		<li id="backupConfig_">Nutty button : Server Settings : Backup<ul>
 			<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
 			<li>filename prefix: HR-</li>
 			<li>tar.gz format</li>
@@ -228,8 +238,8 @@
 				<li>HubRing: Built-in Authorization<ul>
 					<li>test login combinations</li>
 				</ul></li>
-				<li>New Module : GitHub<ul>
-					<li>Settings button : Access Management : Auth Modules<ul>
+		<li>GitHub : New Module<ul>
+			<li>Nutty button : Access Management : Auth Modules<ul>
 						<li>New Module : GitHub<ul>
 							<li>verify module name GitHub, address https://github.com</li>
 							<li>create</li>
@@ -249,7 +259,7 @@
 
 <!-- @marker "HR: Access Management" -->
 <h3 id="HR_AccessManagement_">HR: Access Management</h3><ul>
-	<li>Settings Menu: Access Management<ul>
+	<li>Nutty Menu: Access Management<ul>
 		<li>Roles<ul>
 			<li>create role SystemAdmin_CC:<ul>
 				<li class="blurb">In YouTrack, 'admin' and 'carol' are different people.
@@ -344,7 +354,7 @@
 </ul>
 
 <h3 id="YT_GlobalSettings_">YT: Global Settings</h3><ul>
-	<li>as admin: Settings button : Server Settings<ul>
+	<li>as admin: Nutty button : Server Settings<ul>
 		<li>Global Settings<ul>
 			<li>verify license:
 				up to 10 users; no restriction for private repos; license forever; free updates this century </li>
