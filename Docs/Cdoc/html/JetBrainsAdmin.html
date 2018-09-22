@@ -218,9 +218,11 @@
 	<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
 		<li>set backup directory path to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
 	</ul></li>
-	<li>when tool window appears:<ul>
+	<li>when setup window appears:<ul>
 		<li>verify expected port 8080</li>
 		<li>login as admin</li>
+	</ul></li>
+	<li>when tool window appears:<ul>
 		<li id="backupConfig_">Nutty button : Server Settings : Backup<ul>
 			<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
 			<li>filename prefix: HR-</li>
@@ -234,45 +236,33 @@
 
 <!-- @marker "HR: Authorization Modules" -->
 <h3 id="HR_AuthorizationModules_">HR: Authorization Modules</h3><ul>
-			<li>Auth Modules<ul>
-				<li>HubRing: Built-in Authorization<ul>
-					<li>test login combinations</li>
-				</ul></li>
+	<li>Nutty menu : Access Management : Auth Modules<ul>
+		<li>HubRing: Built-in Authorization<ul>
+			<li>test login combinations</li>
+		</ul></li>
 		<li>GitHub : New Module<ul>
 			<li>Nutty button : Access Management : Auth Modules<ul>
-						<li>New Module : GitHub<ul>
-							<li>verify module name GitHub, address https://github.com</li>
-							<li>create</li>
-							<li>copy Auth Callback URL</li>
-							<li>clone browser tab; click link to register an application with GitHub</li>
-							<li>name: HubRing</li>
-							<li>home: https://carols-imac-2.local:8080</li>
-							<li>paste in authorization callback URL</li>
-							<li>register application</li>
-							<li>copy back Client ID and Client Secret</li>
-							<li>save; Enable Module</li>
-						</ul></li>
-					</ul></li>
+				<li>New Module : GitHub<ul>
+					<li>verify module name GitHub, address https://github.com</li>
+					<li>create</li>
+					<li>copy Auth Callback URL</li>
+					<li>clone browser tab; click link to register an application with GitHub</li>
+					<li>name: HubRing</li>
+					<li>home: https://carols-imac-2.local:8080</li>
+					<li>paste in authorization callback URL</li>
+					<li>register application</li>
+					<li>copy back Client ID and Client Secret</li>
+					<li>save; Enable Module</li>
 				</ul></li>
 			</ul></li>
+		</ul></li>
+	</ul></li>
 </ul>
 
 <!-- @marker "HR: Access Management" -->
 <h3 id="HR_AccessManagement_">HR: Access Management</h3><ul>
 	<li>Nutty Menu: Access Management<ul>
-		<li>Roles<ul>
-			<li>create role SystemAdmin_CC:<ul>
-				<li class="blurb">In YouTrack, 'admin' and 'carol' are different people.
-					Therefore, if admin creates an issue, it is PERMANENTLY bound to that "person".</li>
-				<li class="blurb">This causes problems with any searches that include "me" (lots);
-					probably more problems when there is another developer.</li>
-				<li>select role SystemAdmin; click Clone; clone to SystemAdmin_CC</li>
-				<li>remove "Create Issue" permission from SystemAdmin_CC</li>
-				<li>save; verify SystemAdmin_CC on role list</li>
-			</ul></li>
-		</ul></li>
 		<li>Users<ul>
-			<li>existing user admin: replace role SystemAdmin with SystemAdmin_CC</li>
 			<li>add user 'carol':<ul>
 				<li>Create user 'carol'; my email</li>
 				<li>set JetBrains password; do not force change password</li>
@@ -284,17 +274,19 @@
 
 <!-- @marker "HR: Notifications" -->
 <h3 id="HR_Notifications_">HR: Notifications</h3><ul>
-	<li>email notifications: SMTP<ul>
-				<li>host smtp.cox.net</li>
-				<li>from: "HubRing" &lt;my_email&gt;</li>
-				<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
-				<li>save; enable notifications; send test message</li>
-			</ul></li>
+	<li>Nutty menu : Notifications : SMTP<ul>
+		<li>email notifications: SMTP<ul>
+			<li>host smtp.cox.net</li>
+			<li>from: "HubRing" &lt;my_email&gt;</li>
+			<li>Security and Authorization: username &lt;my_email&gt;; "change" password to cox</li>
+			<li>save; enable notifications; send test message</li>
+		</ul></li>
+	</ul></li>
 </ul>
 
 <!-- @marker "HR: Backup 'Initial Configured'" -->
 <h3 id="HR_Backup_InitialConfigured_">HR: Backup 'initial-configured'</h3><ul>
-	<li>backup; copy backup to tag 'initial_configured'</li>
+	<li>backup; COPY (with option key) backup file to tag 'initial_configured'</li>
 </ul>
 
 <!-- @marker "YouTrack" -->
@@ -302,21 +294,12 @@
 <!-- @topicList "YouTrack" "YouTrack_IC" -->
 	<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
 	<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "0" "" -->
-	<!-- @topicItem "YT: Manage Access" "#YT_ManageAccess_" "0" "" -->
 	<!-- @topicItem "YT: Connect Initial Project" "#YT_ConnectInitialProject_" "0" "" -->
 	<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "0" "" -->
 	<!-- @topicItem "YT: Add Custom Tags" "#YT_AddCustomTags_" "0" "" -->
 	<!-- @topicItem "YT: Add Custom Agile Boards" "#YT_CustomAgileBoards_" "0" "" -->
 	<!-- @topicSep -->
-	<!-- @topicItem "YT: Create and Connect Project" "#YT_CreateAndConnectProject_" "0" "" -->
-	<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "0" "" -->
-	<!-- @topicSep -->
-	<!-- @topicItem "YT: Our Default Settings" "#YT_OurDefaultSettings_" "0" "" -->
-		<!-- @topicItem "Priority" "#Priority_" "1" "" -->
-		<!-- @topicItem "Type" "#Type_" "1" "" -->
-		<!-- @topicItem "State" "#State_" "1" "" -->
-		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "1" "" -->
-		<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "1" "" -->
+	<!-- @topicItem "YT: Add Another Project" "#YT_AddAnotherProject_" "0" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "YT: Add Features" "#YT_AddFeatures_" "0" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "1" "required for all plugins" -->
@@ -325,6 +308,13 @@
 		<!-- @topicItem "Task Management" "#TaskManagement_" "1" "" -->
 		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "1" "" -->
 		<!-- @topicItem "RSS Feeds" "#RSSFeeds_" "1" "" -->
+	<!-- @topicItem "YT: CC Default Settings" "#YT_CCDefaultSettings_" "0" "" -->
+		<!-- @topicItem "Priority" "#Priority_" "1" "" -->
+		<!-- @topicItem "Type" "#Type_" "1" "" -->
+		<!-- @topicItem "State" "#State_" "1" "" -->
+		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "1" "" -->
+		<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "1" "" -->
+	<!-- @topicSep -->
 <!-- @/topicList -->
 
 <!-- @marker "YT: Install" -->
@@ -349,8 +339,8 @@
 	</ul></li>
 	<li>when tool window appears:<ul>
 		<li>verify expected port 8081</li>
-		<li>identify initial project:<ul>
-			<li>project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Scrum</li>
+		<li>identify initial project info; Create Project<ul>
+			<li>Settings: project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Scrum</li>
 		</ul></li>
 		<li><a href="#backupConfig_">configure</a> and execute backup</li>
 		<li>copy backup file to tag 'initial_installed'; if no file prefix present, add it</li>
@@ -378,38 +368,27 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "YT: Manage Access" -->
-<h3 id="YT_ManageAccess_">YT: Manage Access</h3><ul>
-	<li>verify users: admin: role SystemAdmin_CC; carol: role ProjectAdmin</li>
-	<li>look around</li>
-</ul>
-
 <!-- @marker "YT: Connect Initial Project" -->
 <h3 id="YT_ConnectInitialProject_">YT: Connect Initial Project</h3><ul>
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
-	<li>as admin:<ul>
-		<li>Project Page<ul>
-			<li>Add YouTrack Service: Services : Issue Tracker : Scrum</li>
-		</ul></li>
-		<li>YouTrack<ul>
-			<li>VCS Integrations: New VCS Integration<ul>
-				<li>connect to GitHub repo<ul>
-					<li>click link to generate Auth token, or use
-						<a href="https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
-							this GitHub Auth Token link</a></li>
-					<li>if token of same name exists, delete existing token; return to TeamTools</li>
-					<li>create Auth token &lt;projectName&gt;</li>
-				</ul></li>
-				<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
-				<li>visible: &lt;proj&gt; Team, Reporters</li>
+	<li>YouTrack: as admin:<ul>
+		<li>Nutty menu : Integrations : VCS Integrations<ul>
+			<li>New VCS Integration<ul>
+				<li>connect to GitHub repo</li>
+				<li>click link to generate Auth token, or use
+					<a href="https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
+						this GitHub Auth Token link</a></li>
+ 				<li>create Auth token &lt;projectName&gt;</li>
 			</ul></li>
 		</ul></li>
+		<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
+		<li>visible: &lt;proj&gt; Team, Reporters</li>
 	</ul></li>
 </ul>
 
 <!-- @marker "YT: Configure Initial Project" -->
 <h3 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h3><ul>
-	<li>configure as shown in <a href="#YT_OurDefaultSettings_">YT: Our Default Settings</a></li>
+	<li>configure as shown in <a href="#YT_CCDefaultSettings_">YT: Our Default Settings</a></li>
 </ul>
 
 	<!-- @marker "YT: Add Custom Tags" -->
@@ -421,41 +400,32 @@
 		<li>backup; copy backup to tag 'initial_configured'</li>
 	</ul>
 
-<!-- @marker "YT: Create and Connect Project" -->
-<h3 id="YT_CreateAndConnectProject_">YT: Create and Connect Project</h3><ul class="depr">
-	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
-	<li>as admin:<ul>
-		<li>Project Page<ul>
-			<li>Add YouTrack Service: Services : Issue Tracker : Scrum</li>
+<!-- @marker "YouTrack: Add Another Project" -->
+<h3 id="YT_AddAnotherProject_">YT: Add Another Project</h3><ul>
+	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+	<li>HubRing as admin:<ul>
+		<li>HubRing Project Page: Create New Project...<ul>
+			<li>Project Dialog: set project name, ID; create project</li>
+			<li>Team: select member(s)s for project team</li>
+			<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
+			<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
 		</ul></li>
-		<li>YouTrack<ul>
-			<li>VCS Integrations: New VCS Integration<ul>
-				<li>connect to GitHub repo<ul>
-					<li>click link to generate Auth token, or use
-						<a href="https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
-							this GitHub Auth Token link</a></li>
-					<li>if token of same name exists, delete existing token; return to TeamTools</li>
-					<li>create Auth token &lt;projectName&gt;</li>
-				</ul></li>
-				<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
-				<li>visible: &lt;proj&gt; Team, Reporters</li>
+	</ul></li>
+	<li>YouTrack<ul>
+		<li class="blurb">not recently tested</li>
+		<li>VCS Integrations: New VCS Integration<ul>
+			<li>connect to GitHub repo<ul>
+				<li>click link to generate Auth token, or use
+					<a href="https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
+						this GitHub Auth Token link</a></li>
+				<li>if token of same name exists, delete existing token; return to TeamTools</li>
+				<li>create Auth token &lt;projectName&gt;</li>
 			</ul></li>
+			<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
+			<li>visible: &lt;proj&gt; Team, Reporters</li>
 		</ul></li>
 	</ul></li>
 </ul>
-
-<!-- @marker "YouTrack: Add Project" -->
-<h3 id="YT_AddProject_">YT: Add Project</h3><ul>
-	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-		<li>HubRing as admin:<ul>
-			<li>HubRing Project Page: Create New Project...<ul>
-				<li>Project Dialog: set project name, ID; create project</li>
-				<li>Team: select member(s)s for project team</li>
-				<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
-				<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
-			</ul></li>
-		</ul></li>
-	</ul>
 
 <div style="page-break-before: always">
 	<!-- @marker "Add Custom Agile Boards" -->
@@ -576,7 +546,7 @@
 		</li></ul>
 
 <!-- @marker "YT: Our Default Settings" -->
-<h2 id="YT_OurDefaultSettings_">YT: Our Default Settings</h2>
+<h2 id="YT_CCDefaultSettings_">YT : CC Default Settings</h2>
 <h4>General</h4><ul>
 	<li>Name: usually repo name</li>
 	<li>ID: must be unique</li>
