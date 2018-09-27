@@ -162,8 +162,7 @@
 <!-- @topicList "Team Tools" "TeamTools_" -->
 	<!-- @topicItem "TT: Documentation Conventions" "#TT_DocumentationConventions_" "0" "" -->
 	<!-- @topicItem "HubRing" "#HubRing_IC" "0" "" -->
-	<!-- @topicItem "YouTrack" "#YouTrack_IC" "0" "" -->
-		<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "1" "" -->
+	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
 	<!-- @topicItem "UpSource" "#UpSource_IC" "0" "" -->
 	<!-- @topicItem "TeamCity" "#TeamCity_IC" "0" "" -->
 	<!-- @topicItem "Integrations and Auth Modules" "#Integrations_AuthModules_" "0" "" -->
@@ -291,15 +290,18 @@
 
 <!-- @marker "YouTrack" -->
 <h2>YouTrack</h2>
-<!-- @topicList "YouTrack" "YouTrack_IC" -->
-	<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
-	<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "0" "" -->
-	<!-- @topicItem "YT: Connect Initial Project" "#YT_ConnectInitialProject_" "0" "" -->
-	<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "0" "" -->
-	<!-- @topicItem "YT: Add Custom Tags" "#YT_AddCustomTags_" "0" "" -->
-	<!-- @topicItem "YT: Add Custom Agile Boards" "#YT_CustomAgileBoards_" "0" "" -->
-	<!-- @topicSep -->
-	<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "0" "" -->
+<!-- @topicList "YouTrack" "YouTrack_" -->
+	<!-- @topicGroup "Install and Configure" "1" -->
+		<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
+		<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "1" "" -->
+		<!-- @topicItem "YT: Add Custom Tags" "#YT_AddCustomTags_" "1" "" -->
+		<!-- @topicItem "YT: Backup" "#YT_Backup_" "1" "" -->
+	<!-- @topicGroup "Add and Configure Projects" "6" -->
+	<!-- @topicItem "YT: Add Projects" "#YT_AddProjects_" "0" "" -->
+		<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "1" "" -->
+		<!-- @topicItem "YT: Integrate Project with VCS" "#YT_IntegrateProject_VCS_" "1" "" -->
+		<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "1" "" -->
+		<!-- @topicItem "YT: Customize Agile Boards" "#YT_CustomizeAgileBoards_" "1" "" -->
 	<!-- @topicSep -->
 	<!-- @topicItem "YT: Add Features" "#YT_AddFeatures_" "0" "" -->
 		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "1" "required for all plugins" -->
@@ -369,37 +371,21 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "YT: Connect Initial Project" -->
-<h3 id="YT_ConnectInitialProject_">YT: Connect Initial Project</h3><ul>
-	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
-	<li>YouTrack: as admin:<ul>
-		<li>Nutty menu : Integrations : VCS Integrations<ul>
-			<li>New VCS Integration<ul>
-				<li>connect to GitHub repo</li>
-				<li>click link to generate Auth token, or use
-					<a href="https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
-						this GitHub Auth Token link</a></li>
- 				<li>create Auth token &lt;projectName&gt;</li>
-			</ul></li>
-		</ul></li>
-		<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
-		<li>visible: &lt;proj&gt; Team, Reporters</li>
-	</ul></li>
+<!-- @marker "YT: Add Custom Tags" -->
+<h3 id="YT_AddCustomTags_">YT: Add Custom Tags</h3><ul>
+	<li>'waiting' (pink4): development is waiting for something</li>
 </ul>
 
-<!-- @marker "YT: Configure Initial Project" -->
-<h3 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h3><ul>
-	<li>configure as shown in <a href="#YT_CCDefaultSettings_">YT: Our Default Settings</a></li>
+<!-- @marker "YT_Backup" -->
+<h3 id="YT_Backup_">YT: Backup</h3><ul>
+	<li>backup; copy backup to tag 'initial_configured'</li>
 </ul>
 
-	<!-- @marker "YT: Add Custom Tags" -->
-	<h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
-		<li>'waiting' (pink4): development is waiting for something</li>
-	</ul>
+<!-- @marker "YT: Add Projects" -->
+<h2>Add Projects</h2>
+<!-- @topicList "YT: Add Projects" "YT_AddProjects_" -->
+<!-- @/topicList -->
 
-	<h4>Backup</h4><ul>
-		<li>backup; copy backup to tag 'initial_configured'</li>
-	</ul>
 
 <!-- @marker "YouTrack: Add Project" -->
 <h3 id="YT_AddProject_">YT: Add Project</h3><ul>
@@ -412,26 +398,33 @@
 			<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
 		</ul></li>
 	</ul></li>
-	<li>YouTrack<ul>
-		<li class="blurb">not recently tested</li>
-		<li>VCS Integrations: New VCS Integration<ul>
-			<li>connect to GitHub repo<ul>
-				<li>click link to generate Auth token, or use
-					<a href="https://github.com/settings/tokens/new?scopes=repo,write:repo_hook,read:org,admin:repo_hook">
-						this GitHub Auth Token link</a></li>
-				<li>if token of same name exists, delete existing token; return to TeamTools</li>
-				<li>create Auth token &lt;projectName&gt;</li>
+</ul>
+
+<!-- @marker "YT: Integrate Project with VCS " -->
+<h3 id="YT_IntegrateProject_VCS_">YT: Integrate Project with VCS</h3><ul>
+	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
+	<li>YouTrack: as admin:<ul>
+		<li>Nutty menu : Integrations : VCS Integrations<ul>
+			<li>New VCS Integration<ul>
+				<li>connect to GitHub repo</li>
+				<li>click link to generate Auth token; copy</li>
 			</ul></li>
-			<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
-			<li>visible: &lt;proj&gt; Team, Reporters</li>
 		</ul></li>
+		<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
+		<li>visible: &lt;proj&gt; Team, Reporters</li>
 	</ul></li>
 </ul>
 
-<div style="page-break-before: always">
-	<!-- @marker "Add Custom Agile Boards" -->
-	<h3 class="nyi" id="YT_CustomAgileBoards_">YT: Add Custom Agile Boards</h3><ul>
-	<li>as &lt;projectOwner&gt;:<ul>
+<!-- @marker "YT: Configure Initial Project" -->
+<h3 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h3><ul>
+	<li>IF this is the first project, provide default configuration<ul>
+		<li>configure as shown in <a href="#YT_CCDefaultSettings_">YT: Our Default Settings</a></li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Customize Agile Boards" -->
+<h3 class="nyi" id="YT_CustomizeAgileBoards_">YT: Customize Agile Boards</h3><ul>
+	<li>as &lt;projectOwner&gt;:<ul class="depr">
 		<li>Add Agile Board</li>
 		<li>process parameters<ul>
 			<li><em>board: </em>&lt;ProjectID&gt;_Roadmap; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: -{Board &lt;ProjectID&gt;_Roadmap} #Unresolved</li>
@@ -491,7 +484,6 @@
 		</ul></li>
 	</ul></li>
 </ul>
-</div>
 
 <!-- @marker "YT: Add Features" -->
 <h2 id="YT_AddFeatures_">YT: Add Features</h2>
