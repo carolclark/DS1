@@ -291,37 +291,23 @@
 <!-- @marker "YouTrack" -->
 <h2>YouTrack</h2>
 <!-- @topicList "YouTrack" "YouTrack_" -->
-	<!-- @topicGroup "Install and Configure" "1" -->
-		<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
-		<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "1" "" -->
-		<!-- @topicItem "YT: Add Custom Tags" "#YT_AddCustomTags_" "1" "" -->
-		<!-- @topicItem "YT: Backup" "#YT_Backup_" "1" "" -->
-	<!-- @topicGroup "Add and Configure Projects" "6" -->
-	<!-- @topicItem "YT: Add Projects" "#YT_AddProjects_" "0" "" -->
-		<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "1" "" -->
-		<!-- @topicItem "YT: Integrate Project with VCS" "#YT_IntegrateProject_VCS_" "1" "" -->
-		<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "1" "" -->
-		<!-- @topicItem "YT: Customize Agile Boards" "#YT_CustomizeAgileBoards_" "1" "" -->
-	<!-- @topicSep -->
-	<!-- @topicItem "YT: Add Features" "#YT_AddFeatures_" "0" "" -->
-		<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "1" "required for all plugins" -->
-		<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "1" "" -->
-		<!-- @topicItem "Time Tracking Extension" "#TimeTrackingExt_" "1" "" -->
-		<!-- @topicItem "Task Management" "#TaskManagement_" "1" "" -->
-		<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "1" "" -->
-		<!-- @topicItem "RSS Feeds" "#RSSFeeds_" "1" "" -->
-	<!-- @topicSep -->
-	<!-- @topicItem "YT: CC Default Settings" "#YT_CCDefaultSettings_" "0" "" -->
-		<!-- @topicItem "Priority" "#Priority_" "1" "" -->
-		<!-- @topicItem "Type" "#Type_" "1" "" -->
-		<!-- @topicItem "State" "#State_" "1" "" -->
-		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "1" "" -->
-		<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "1" "" -->
-	<!-- @topicSep -->
+	<!-- @topicItem "Install YouTrack" "#InstallYouTrack_" "0" "" -->
+	<!-- @topicItem "YouTrack Projects" "#YouTrackProjects_" "0" "" -->
+	<!-- @topicItem "Extend YouTrack" "#ExtendYouTrack_" "0" "" -->
+	<!-- @topicItem "Our YouTrack Project Settings" "#OurYouTrackProjectSettings_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Install YouTrack" -->
+<h3>Install YouTrack</h3>
+<!-- @topicList "Install YouTrack" "InstallYouTrack_" -->
+	<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
+	<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "0" "" -->
+	<!-- @topicItem "YT: Add Custom Tags" "#YT_AddCustomTags_" "0" "" -->
+	<!-- @topicItem "YT: Backup" "#YT_Backup_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "YT: Install" -->
-<h3 id="YT_Install_">YT: Install</h3><ul>
+<h4 id="YT_Install_">YT: Install</h4><ul>
 	<li>create folder YouTrack at /Servers/jb</li>
 	<li>download installation package appropriate for our license; move to its folder<ul>
 		<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
@@ -350,7 +336,7 @@
 	</ul></li>
 </ul>
 
-<h3 id="YT_GlobalSettings_">YT: Global Settings</h3><ul>
+<h4 id="YT_GlobalSettings_">YT: Global Settings</h4><ul>
 	<li>as admin: Nutty button : Server Settings<ul>
 		<li>Global Settings<ul>
 			<li>verify license:
@@ -372,23 +358,26 @@
 </ul>
 
 <!-- @marker "YT: Add Custom Tags" -->
-<h3 id="YT_AddCustomTags_">YT: Add Custom Tags</h3><ul>
+<h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
 	<li>'waiting' (pink4): development is waiting for something</li>
 </ul>
 
 <!-- @marker "YT_Backup" -->
-<h3 id="YT_Backup_">YT: Backup</h3><ul>
+<h4 id="YT_Backup_">YT: Backup</h4><ul>
 	<li>backup; copy backup to tag 'initial_configured'</li>
 </ul>
 
-<!-- @marker "YT: Add Projects" -->
-<h2>Add Projects</h2>
-<!-- @topicList "YT: Add Projects" "YT_AddProjects_" -->
+<!-- @marker "YouTrack Projects" -->
+<h3>YouTrack Projects</h3>
+<!-- @topicList "YouTrack Projects" "YouTrackProjects_" -->
+	<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "0" "" -->
+	<!-- @topicItem "YT: Integrate Project with VCS" "#YT_IntegrateProject_VCS_" "0" "" -->
+	<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "0" "" -->
+	<!-- @topicItem "YT: Customize Agile Boards" "#YT_CustomizeAgileBoards_" "0" "" -->
 <!-- @/topicList -->
 
-
 <!-- @marker "YouTrack: Add Project" -->
-<h3 id="YT_AddProject_">YT: Add Project</h3><ul>
+<h4 id="YT_AddProject_">YT: Add Project</h4><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>HubRing as admin:<ul>
 		<li>HubRing Project Page: Create New Project...<ul>
@@ -401,7 +390,7 @@
 </ul>
 
 <!-- @marker "YT: Integrate Project with VCS " -->
-<h3 id="YT_IntegrateProject_VCS_">YT: Integrate Project with VCS</h3><ul>
+<h4 id="YT_IntegrateProject_VCS_">YT: Integrate Project with VCS</h4><ul>
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
 	<li>YouTrack: as admin:<ul>
 		<li>Nutty menu : Integrations : VCS Integrations<ul>
@@ -416,14 +405,14 @@
 </ul>
 
 <!-- @marker "YT: Configure Initial Project" -->
-<h3 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h3><ul>
+<h4 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h4><ul>
 	<li>IF this is the first project, provide default configuration<ul>
-		<li>configure as shown in <a href="#YT_CCDefaultSettings_">YT: Our Default Settings</a></li>
+		<li>configure as shown in <a href="#OurYouTrackProjectSettings_">Our YouTrack Project Settings</a></li>
 	</ul></li>
 </ul>
 
 <!-- @marker "Customize Agile Boards" -->
-<h3 class="nyi" id="YT_CustomizeAgileBoards_">YT: Customize Agile Boards</h3><ul>
+<h4 class="nyi" id="YT_CustomizeAgileBoards_">YT: Customize Agile Boards</h4><ul>
 	<li>as &lt;projectOwner&gt;:<ul class="depr">
 		<li>Add Agile Board</li>
 		<li>process parameters<ul>
@@ -485,35 +474,43 @@
 	</ul></li>
 </ul>
 
-<!-- @marker "YT: Add Features" -->
-<h2 id="YT_AddFeatures_">YT: Add Features</h2>
+<!-- @marker "Extend YouTrack" -->
+<h3>Extend YouTrack</h3>
+<!-- @topicList "Extend YouTrack" "ExtendYouTrack_" -->
+	<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
+	<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
+	<!-- @topicItem "Time Tracking Extension" "#TimeTrackingExt_" "0" "" -->
+	<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
+	<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
+	<!-- @topicItem "RSS Feeds" "#RSSFeeds_" "0" "" -->
+<!-- @/topicList -->
 
 	<!-- @marker "YouTrack Mobile" -->
-	<h3 id="YouTrackMobile_">YouTrack Mobile</h3><ul>
+	<h4 id="YouTrackMobile_">YouTrack Mobile</h4><ul>
 		<li>download from AppStore and open</li>
 	</ul>
 
 	<!-- @marker "YouTrack Integration Plugin" -->
-	<h3 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h3><ul>
+	<h4 id="YouTrackIntegrationPlugin_">YouTrack Integration Plugin</h4><ul>
 		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Extending_YouTrack.html">
 			Extending YouTrack</a>; YouTrack Integration Plugin <strong>required</strong> for all extensions</li>
 	</ul>
 
 	<!-- @marker "Issue Navigation" -->
-	<h3 id="IssueNavigation_">Issue Navigation</h3><ul>
+	<h4 id="IssueNavigation_">Issue Navigation</h4><ul>
 		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/Issue-Navigation.html">
 			Issue Navigation</a></li>
 	</ul>
 
 	<!-- @marker "*Time Tracking" -->
-	<h3 class="nyi" id="TimeTracking_">*Time Tracking</h3><ul class="indent2">
+	<h4 class="nyi" id="TimeTracking_">*Time Tracking</h4><ul class="indent2">
 		<li>Time Tracking : Enable; select default fields (ch_TimeManagement)</li>
 		<li>length of day: 5h</li>
 		<li>work types: Manage Investigate Develop Test Review Document</li>
 	</ul>
 
 	<!-- @marker "Time Tracking Extension" -->
-	<h3 id="TimeTrackingExt_" class="dq">Time Tracking Extension</h3><ul>
+	<h4 id="TimeTrackingExt_" class="dq">Time Tracking Extension</h4><ul>
 		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
 			<li>see Issue Navigation</li>
 		</ul></li>
@@ -538,9 +535,22 @@
 			YouTrack Tweaks Extension</a>
 		</li></ul>
 
-<!-- @marker "YT: Our Default Settings" -->
-<h2 id="YT_CCDefaultSettings_">YT : CC Default Settings</h2>
-<h4>General</h4><ul>
+
+<!-- @marker "Our YouTrack Project Settings" -->
+<h3>Our YouTrack Project Settings</h3>
+<!-- @topicList "Our YouTrack Project Settings" "OurYouTrackProjectSettings_" -->
+	<!-- @topicItem "YT: General Settings" "#YT_GeneralSettings_" "0" "" -->
+	<!-- @topicItem "YT: Project Team" "#YT_ProjectTeam_" "0" "" -->
+	<!-- @topicItem "YT: Custom Fields" "#YT_CustomFields_" "0" "" -->
+		<!-- @topicItem "Priority" "#Priority_" "1" "" -->
+		<!-- @topicItem "Type" "#Type_" "1" "" -->
+		<!-- @topicItem "State" "#State_" "1" "" -->
+		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "1" "" -->
+		<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "1" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "YT: General Settings" -->
+<h4 id="YT_GeneralSettings_">YT: General Settings</h4><ul>
 	<li>Name: usually repo name</li>
 	<li>ID: must be unique</li>
 	<li>Description</li>
@@ -548,11 +558,21 @@
 	<li>From e-mail: YouTrack</li>
 </ul>
 
-<h4>Team</h4><ul>
+<!-- @marker "YT: Project Team" -->
+<h4 id="YT_ProjectTeam_">YT: Project Team</h4><ul>
 	<li>&lt;Project&gt; Owner, other devs as indicated</li>
 </ul>
 
-<h4 id="YT_CustomFields">YT: Custom Fields</h4><div class="info">
+<!-- @marker "YT: Custom Fields" -->
+<h4>YT: Custom Fields</h4>
+<!-- @topicList "YT: Custom Fields" "YT_CustomFields_" -->
+	<!-- @topicItem "Priority" "#Priority_" "0" "" -->
+	<!-- @topicItem "Type" "#Type_" "0" "" -->
+	<!-- @topicItem "State" "#State_" "0" "" -->
+	<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "0" "" -->
+	<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "0" "" -->
+<!-- @/topicList -->
+<h4 id="CustomFields">Custom Fields</h4><div class="info">
 	<!-- @marker "Priority" -->
 	<h5 id="Priority_">Priority</h5>
 	<table>
