@@ -173,7 +173,7 @@
 	<li>Nutty Button<ul>
 		<li>Team Tools routinely use a button near the top right of the screen that seems to be variously called
 			"Settings", "Administration" or whatever.</li>
-		<li>The button is shaped like a nut (the one with a bolt). We refer to it as the "Nutty button".</li>
+		<li>The button is shaped like a nut (the one with a bolt). We refer to it as the "Nutty button". ... or "nut"</li>
 	</ul></li>
 </ul>
 
@@ -222,15 +222,9 @@
 		<li>login as admin</li>
 	</ul></li>
 	<li>when tool window appears:<ul>
-		<li id="backupConfig_">Nutty button : Server Settings : Backup<ul>
-			<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-			<li>filename prefix: HR-</li>
-			<li>tar.gz format</li>
-			<li>every day at 2 AM</li>
-			<li>rotation 10</li>
-		</ul></li>
+		<li><a href="#backupConfig_">configure backup</a></li>
+		<li><a href="#BackupToTag_">backup</a> to tag 'initial_installed'</li>
 	</ul></li>
-	<li>backup; copy backup file to tag 'initial_installed'</li>
 </ul>
 
 <!-- @marker "HR: Authorization Modules" -->
@@ -285,7 +279,10 @@
 
 <!-- @marker "HR: Backup 'Initial Configured'" -->
 <h3 id="HR_Backup_InitialConfigured_">HR: Backup 'initial-configured'</h3><ul>
-	<li>backup; COPY (with option key) backup file to tag 'initial_configured'</li>
+	<li>Nutty menu : Server Settings : Backup : Execute Backup</li>
+	<li>to tag:<ul>
+		<li>Finder : COPY (with option key) backup file to tag specified</li>
+	</ul></li>
 </ul>
 
 <!-- @marker "YouTrack" -->
@@ -303,7 +300,7 @@
 	<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
 	<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "0" "" -->
 	<!-- @topicItem "YT: Add Custom Tags" "#YT_AddCustomTags_" "0" "" -->
-	<!-- @topicItem "YT: Backup" "#YT_Backup_" "0" "" -->
+	<!-- @topicItem "YT: Backup Configured" "#YT_BackupConfigured_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "YT: Install" -->
@@ -328,15 +325,16 @@
 	</ul></li>
 	<li>when tool window appears:<ul>
 		<li>verify expected port 8081</li>
-		<li>identify initial project info; Create Project<ul>
-			<li>Settings: project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Scrum</li>
-		</ul></li>
-		<li><a href="#backupConfig_">configure</a> and execute backup</li>
-		<li>copy backup file to tag 'initial_installed'; if no file prefix present, add it</li>
+		<li>cancel out of New Project configuration for now</li>
 	</ul></li>
 </ul>
 
-<h4 id="YT_GlobalSettings_">YT: Global Settings</h4><ul>
+<!-- @marker "YT: Backup Initial" -->
+<h4 id="YT_BackupInitial_">YT: Backup Initial</h4><ul>
+	<li><a href="#BackupToTag_">configure and execute</a> backup to tag 'initial_configured'</li>
+</ul>
+
+<h4 id="YT_GlobalSettings_">YT : Global Settings</h4><ul>
 	<li>as admin: Nutty button : Server Settings<ul>
 		<li>Global Settings<ul>
 			<li>verify license:
@@ -352,19 +350,12 @@
 					<li>send message to test connection; save</li>
 				</ul></li>
 			</ul></li>
-		</ul></li>
-		<li>Database Backup: verify backup directory path: '/Volumes/Mavericks-1/Backups/TeamTools/YouTrack'</li>
-	</ul></li>
+		</ul></li></ul></li>
 </ul>
 
-<!-- @marker "YT: Add Custom Tags" -->
-<h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
-	<li>'waiting' (pink4): development is waiting for something</li>
-</ul>
-
-<!-- @marker "YT_Backup" -->
-<h4 id="YT_Backup_">YT: Backup</h4><ul>
-	<li>backup; copy backup to tag 'initial_configured'</li>
+<!-- @marker "YT: Backup Configured" -->
+<h4 id="YT_BackupConfigured_">YT: Backup Configured</h4><ul>
+	<li><a href="#BackupToTag_">configure and execute</a> backup to tag 'initial_configured'</li>
 </ul>
 
 <!-- @marker "YouTrack Projects" -->
@@ -380,7 +371,11 @@
 <h4 id="YT_AddProject_">YT: Add Project</h4><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>HubRing as admin:<ul>
-		<li>HubRing Project Page: Create New Project...<ul>
+		<li>YouTrack: Create New Project...<ul>
+			<li>identify initial project info; Create Project<ul>
+				<li>Settings: project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Scrum</li>
+				<li>Starting number if applicable</li>
+			</ul></li>
 			<li>Project Dialog: set project name, ID; create project</li>
 			<li>Team: select member(s)s for project team</li>
 			<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
@@ -404,6 +399,11 @@
 	</ul></li>
 </ul>
 
+<!-- @marker "YT: Add Custom Tags" -->
+<h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
+	<li>'waiting' (pink4): development is waiting for something</li>
+</ul>
+
 <!-- @marker "YT: Configure Initial Project" -->
 <h4 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h4><ul>
 	<li>IF this is the first project, provide default configuration<ul>
@@ -413,6 +413,7 @@
 
 <!-- @marker "Customize Agile Boards" -->
 <h4 class="nyi" id="YT_CustomizeAgileBoards_">YT: Customize Agile Boards</h4><ul>
+	<li class="blurb">Boards as-is will not work, due primarily to field changes</li>
 	<li>as &lt;projectOwner&gt;:<ul class="depr">
 		<li>Add Agile Board</li>
 		<li>process parameters<ul>
@@ -763,7 +764,7 @@
 	<li>when tool window appears:<ul>
 		<li>verify expected port 8082</li>
 		<li>...</li>
-		<li><a href="#backupConfig_">configure</a> and execute backup; copy file to tag 'initial_installed'</li>
+		<li>configure and execute<a href="#BackupToTag_">backup</a> to tag 'initial_Installed'</li>
 	</ul></li>
 </ul>
 
@@ -822,7 +823,7 @@
 			</ul></li>
 		<li><a href="#CommandLineTools_">Restart Tool</a></li>
 		<li>...</li>
-		<li><a href="#backupConfig_">configure</a> and execute backup; copy file to tag 'initial_installed'</li>
+		<li>configure and execute<a href="#BackupToTag_">backup</a> to tag 'initial_installed'</li>
 	</ul></li>
 </ul>
 <!-- @marker "TC: Configure" -->
@@ -931,7 +932,8 @@
 <h2 class="promote">Tasks and References</h2>
 <!-- @topicList "Tasks and References" "TasksAndReferences_" -->
 	<!-- @topicItem "Command-Line Tools" "#CommandLineTools_" "0" "" -->
-	<!-- @topicItem "Save Tagged Tools Backup" "#Save_TaggedToolsBackup_" "0" "" -->
+	<!-- @topicItem "Backup Configuration" "#BackupConfiguration_" "0" "" -->
+	<!-- @topicItem "Backup to Tag" "#BackupToTag_" "0" "" -->
 	<!-- @topicItem "Restore Settings: for Team Tool: from Backup" "#RestoreSettings_ForTeamTool_FromBackup_" "0" "" -->
 	<!-- @topicItem "Clone a Role" "#CloneARole_" "0" "" -->
 	<!-- @topicItem "Sort a Card's Subtasks" "#SortACardsSubtasks_" "0" "" -->
@@ -986,14 +988,23 @@
 </ul>
 </div>
 
-<!-- @marker "Save Tagged Tools Backup" -->
-<h4 id="Save_TaggedToolsBackup_">Make Tagged Backup of Team Tools</h4><ul>
-	<li>backup tools with changes</li>
-	<li>/Volumes/Mavericks-1/Backups/TeamTools:<ul>
-		<li>in TeamTools_Tagged<ul>
-			<li>new folder B-&lt;date&gt;-&lt;tag-name&gt;</li>
-			<li>copy latest backup for each tool from TeamTools to new tagged backup folder</li>
-		</ul></li>
+<!-- @marker "Backup Configuration" -->
+<h4 id="BackupConfiguration_">Backup Configuration</h4><ul>
+	<li id="backupConfig_">Nutty button : Server Settings : Backup<ul>
+		<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
+		<li>filename prefix: HR-</li>
+		<li>tar.gz format</li>
+		<li>every day at 2 AM</li>
+		<li>rotation 10</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Backup to Tag" -->
+<h4 id="BackupToTag_">Backup to Tag</h4><ul>
+	<li>Nutty button : Server Settings:<ul>
+		<li>Backup : execute backup</li>
+		<li>COPY (option key) backup to folder Backup/TeamTools/'tagname'</li>
+		<li>if leading prefix (HR_, ...) is missing, add it to tagged file</li>
 	</ul></li>
 </ul>
 
@@ -1056,6 +1067,36 @@
 </ul>
 
 <h4 id='Uninstall_'>Uninstall</h4><div class="indent">
+
+	<h5>Uninstall YouTrack</h5><ul>
+		<li>completely uninstall each project<ul>
+			<li>Global project page: </li>
+			<li>Hub: Access: Groups: remove each project-related group</li>
+			<li>projects page: YouTrack<ul>
+				<li>agile boards; reports</li>
+			</ul></li>
+			<li>for profiles: click on user name or service name; open in new tab<ul>
+				<li>look in profiles for stuff to disconnect</li>
+			</ul></li>
+			<li>saved searches</li>
+			<li>agile boards</li>
+			<li>Notifications</li>
+			<li>projects page: detach YouTrack service</li>
+			<li>global: project resources</li>
+			<li>delete project</li>
+		</ul></li>
+		<li>close all YouTrack windows</li>
+		<li>stop YouTrack:&nbsp;&nbsp;
+			<span class='mono'><span class="prompt">$ </span>cd $YOUTRACK/bin; youtrack.sh stop</span></li>
+		<li>Activity Monitor: terminate any active YouTrack process(es)<ul>
+			<li>open Activity Monitor; show all process</li>
+			<li>for any processes except YouTrack associated with YouTrack, 'quit' using button at top left</li>
+		</ul></li>
+		<li>delete YouTrack application from /Servers/jb/YouTrack</li>
+		<li>delete ?/Application Support/Integration??</li>
+		<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
+	</ul>
+
 	<h5>Uninstall TeamCity</h5><ul>
 		<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
 			<li>open Activity Monitor; show all process</li>
