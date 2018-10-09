@@ -178,7 +178,7 @@
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
 				<h6>OpenTask</h6><ul>
-					<li>clean up stashes</li>
+					<li>delete any unneeded stashes; stash any other open branches</li>
 					<li><strong>New Task</strong>: create new task with branch name
 						&lt;productID&gt;-&lt;issueID&gt;-short-desc; test; <span class="gitcore">&uarr;</span></li>
 					<li>or <strong>Existing Task</strong>: switch to task;
@@ -186,9 +186,9 @@
 				</ul></div>
 				<div class="indent2"><div class="wf-developCommit">
 				<h6><a name="wf_Develop">Develop</a></h6><ul>
-					<li>verify Task and branch</li>
+					<li>verify UI Task and branch</li>
 					<li>repeat to commit:<ul>
-						<li>edit; test and inspect; [diff modifications]; add/stage</li>
+						<li>edit; inspect; test; [diff modifications]; add/stage; git diff --cashed --check</li>
 					</ul></li>
 				</ul>
 				<h6 id='wf_Commit'>Commit</h6><ul>
