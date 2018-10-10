@@ -1,6 +1,6 @@
 <!-- JetBrainsAdmin.html -->
 <!-- Created by carolclark on 4/14/17 for project Support. -->
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>JetBrains Administration</title>
@@ -334,7 +334,6 @@
 	<li><a href="#BackupToTag_">configure and execute</a> backup to tag 'initial_configured'</li>
 </ul>
 
-<!-- @marker "YT: Global Settings" -->
 <h4 id="YT_GlobalSettings_">YT : Global Settings</h4><ul>
 	<li>as admin: Nutty button : Server Settings<ul>
 		<li>Global Settings<ul>
@@ -1070,15 +1069,23 @@
 
 <h4 id='Uninstall_'>Uninstall</h4><div class="indent">
 
-	<h5>Uninstall YouTrack Project</h5><ul>
-		<li>Projects : &lt;Project&gt;<ul>
-			<li>Edit Project : Remove Project (button)</li>
-			<li>Settings : Delete Project (button)</li>
+	<h5>Uninstall YouTrack</h5><ul>
+		<li>completely uninstall each project<ul>
+			<li>Global project page: </li>
+			<li>Hub: Access: Groups: remove each project-related group</li>
+			<li>projects page: YouTrack<ul>
+				<li>agile boards; reports</li>
+			</ul></li>
+			<li>for profiles: click on user name or service name; open in new tab<ul>
+				<li>look in profiles for stuff to disconnect</li>
+			</ul></li>
+			<li>saved searches</li>
+			<li>agile boards</li>
+			<li>Notifications</li>
+			<li>projects page: detach YouTrack service</li>
+			<li>global: project resources</li>
+			<li>delete project</li>
 		</ul></li>
-	</ul>
-
-	<h5>Old Instructions: Uninstall YouTrack</h5><ul>
-		<li>uninstall each project</li>
 		<li>close all YouTrack windows</li>
 		<li>stop YouTrack:&nbsp;&nbsp;
 			<span class='mono'><span class="prompt">$ </span>cd $YOUTRACK/bin; youtrack.sh stop</span></li>
