@@ -136,13 +136,13 @@
 	</div>
 
 <h5>Thoughts on Continuous Integration</h5><ul>
-	<li>The current (2018.08.06) prevailing wisdom in devOps is to release continuously.</li>
+	<li>The current (2018.08.06) prevailing wisdom in devOps appears to be to release continuously.</li>
 	<li>We had been concerned about the policy of closing a high-level task without looking back to see
 		if we had accomplished what we intended,</li>
 	<li>As a user of some products using Continuous Integration, including JetBrains, we have now seen:<ul>
-		<li>changes that turned out to be related to new features,
-			but that did not make sense when we first saw them</li>
-		<li>more bugs in those areas than we expect from their developers</li>
+		<li>changes that turned out to be related to upcoming features
+			and did not make sense when we first saw them</li>
+		<li>more bugs in those areas than we expect from that compant</li>
 	</ul></li>
 </ul>
 
@@ -186,25 +186,31 @@
 				</ul></div>
 				<div class="indent2"><div class="wf-developCommit">
 				<h6><a name="wf_Develop">Develop</a></h6><ul>
-					<li>verify Task and branch</li>
+					<li>verify UI Task and Branch</li>
 					<li>repeat to commit:<ul>
-						<li>edit; test and inspect; [diff modifications]; add/stage</li>
+						<li>edit; inspect; test; diff modifications</li>
+						<li>add/stage; git diff --cashed --check</li>
 					</ul></li>
 				</ul>
 				<h6 id='wf_Commit'>Commit</h6><ul>
+					<li>test</li>
+					<li>inspect; check for stashes, todo's</li>
 					<li>Terminal: <span class="mono">git status; git add; git diff --cached --check</span></li>
 					<li>if [ whitespace issues | inspection issues | stashes | todo's | settings to export ]:
 						address as indicated</li>
-					<li>test; commit; <span class="gitcore">&uarr;</span>, <span class="gitcore">&#8618;</span>,
-						checkout branch</li>
+					<li>test; commit; <span class="gitcore">&uarr;</span></li>
+					<li><span class="gitcore">&#8618;</span>; if branch changed: return to target branch</li>
 				</ul>
 			</div></div>
 			<div class='indent'><div class="wf-publish">
 			<h6>Publish</h6><ul>
+				<li><span class="gitcore">&#8617;</span>; <span class="gitcore">&uarr;</span>;
+					check for complete commit <span class="mono">git cherry -v master</span> </li>
 				<li><span class="gitcore">&#8617;</span></li>
-				<li>&forall; other active branch: <span class="gitcore">&#8618;</span>; synchronize Task and branch</li>
+				<li>&forall; other active branch: <span class="gitcore">&#8618;</span></li>
+				<li>synchronize UI Task and Branch</li>
 				<li>if task complete, delete task and local branch</li>
-			</ul></div>
+			</ul></div></div>
 		</div></div>
 		<h5>Issue Tasks Complete</h5><div class='indent'><div class="dq">
 			<div class="wf-mergeReview">
