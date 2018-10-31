@@ -169,7 +169,7 @@
 		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push This Branch</strong>:
 			push current local branch to its remote</p>
 		<p><span class="gitcore">&#8617;</span> <strong>Merge Master into Branch</strong>:</p><ul>
-			<li>checkout master; test; fetch origin/master; **merge?**; test; commit; <span class="gitcore">&uarr;</span></li>
+			<li>checkout master; test; fetch origin/master; merge; test; commit; <span class="gitcore">&uarr;</span></li>
 			<li>checkout branch; merge in master; test; <span class="gitcore">&uarr;</span></li></ul>
 		<p><span class="gitcore">&#8618;</span> <strong>Merge Branch into Master</strong>: <span class="gitcore">&#8617</span>;
 			checkout master; test; merge in branch; test; <span class="gitcore">&uarr;</span></p>
@@ -178,8 +178,11 @@
 				<div class="wf-openTask">
 				<h6>OpenTask</h6><ul>
 					<li>clean up stashes</li>
-					<li><strong>New Task</strong>: create new task with branch name
+					<li><strong>New Task</strong><ul>
+						<li>master: fetch O/M; merge to master; test</li>
+						<li>create new task with branch name
 						&lt;productID&gt;-&lt;issueID&gt;-short-desc; test; <span class="gitcore">&uarr;</span></li>
+					</ul>
 					<li>or <strong>Existing Task</strong>: switch to task;
 						<span class="gitcore">&#8618;</span>; commit; test; <span class="gitcore">&uarr;</span></li>
 				</ul></div>
@@ -204,6 +207,7 @@
 			<div class='indent'><div class="wf-publish">
 			<h6>Publish</h6><ul>
 				<li>verify complete commit set:<span class="mono"> git cherry -v master</span></li>
+ 				<li>&#8617;;</li>
 				<li><span class="gitcore">&#8618;</span>; <span class="gitcore">&#8617;</span></li>
 				<li>&forall; other active branch: <span class="gitcore">&#8618;</span></li>
 				<li>synchronize UI Task and Branch</li>
