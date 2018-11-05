@@ -137,7 +137,7 @@
 
 <h5>Thoughts on Continuous Integration</h5><ul>
 	<li>The current (2018.08.06) prevailing wisdom in devOps appears to be to release continuously.</li>
-	<li>We had been concerned about the policy of closing a high-level task without looking back to see
+	<li>We had been concerned about the policy of closing a high-level task without looking back to seeg
 		if we had accomplished what we intended,</li>
 	<li>As a user of some products using Continuous Integration, including JetBrains, we have now seen:<ul>
 		<li>changes that turned out to be related to upcoming features,
@@ -168,10 +168,11 @@
 	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature">
 		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push This Branch</strong>:
 			push current local branch to its remote</p>
-		<p><span class="gitcore">&#8617;</span> <strong>Merge Master into Branch</strong>:</p><ul>
-			<li>checkout master; test; fetch origin/master; merge; test; commit; <span class="gitcore">&uarr;</span></li>
+		<p><span class="gitcore">&#8618;</span> <strong>Merge Master</strong>:</p><ul>
+			<li>compare branch with origin/master; if master is fully merged: done</li>
+			<li>checkout master; test; fetch origin/master; test; commit; <span class="gitcore">&uarr;</span></li>
 			<li>checkout branch; merge in master; test; <span class="gitcore">&uarr;</span></li></ul>
-		<p><span class="gitcore">&#8618;</span> <strong>Merge Branch into Master</strong>: <span class="gitcore">&#8617</span>;
+		<p><span class="gitcore">&#8617;</span> <strong>Merge Branch</strong>: <span class="gitcore">&#8618;</span>;
 			checkout master; test; merge in branch; test; <span class="gitcore">&uarr;</span></p>
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
@@ -199,16 +200,16 @@
 					<li>Terminal: <span class="mono">git status; git add; git diff --cached --check</span></li>
 					<li>if [ whitespace issues | inspection issues | stashes | todo's | settings to export ]:
 						address as indicated</li>
-					<li>check for complete commit set: <span class="mono">git cherry -v master</span></li>
+					<li>check for complete commit: <span class="mono">git cherry -v master</span></li>
 					<li>test; commit; <span class="gitcore">&uarr;</span></li>
 					<li><span class="gitcore">&#8618;</span>; if branch changed: checkout target branch</li>
 				</ul>
 			</div></div>
 			<div class='indent'><div class="wf-publish">
 			<h6>Publish</h6><ul>
-				<li>verify complete commit set:<span class="mono"> git cherry -v master</span></li>
- 				<li>&#8617;;</li>
-				<li><span class="gitcore">&#8618;</span>; <span class="gitcore">&#8617;</span></li>
+				<li><span class="gitcore">&#8618;</span>; <span class="gitcore">&uarr;</span>;
+					check for complete commit <span class="mono">git cherry -v master</span> </li>
+				<li><span class="gitcore">&#8617;</span></li>
 				<li>&forall; other active branch: <span class="gitcore">&#8618;</span></li>
 				<li>synchronize UI Task and Branch</li>
 				<li>if task complete, delete task and local branch</li>
@@ -217,7 +218,7 @@
 			<h6>Trigger Review</h6><ul>
 				<li>set issue state to Review</li>
 			</ul>
-			</div></div>
+		</div></div>
 
 	<div style="page-break-before: always">
 		<h5>Issue Tasks Complete</h5><div class='indent'><div class="dq">
