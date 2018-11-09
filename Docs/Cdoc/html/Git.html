@@ -41,11 +41,24 @@
 		div.wf-close {
 			border: 8px none purple;border-left-style: solid;
 		}
-		.gitcore {
-			color: green;
-			text-shadow: 1px 3px #83FF3D;
+		/* links: highlight tagged steps (top of Branch Workflow) and their links */
+		.step {
+			color: saddlebrown;
+			font-weight: bold;
 		}
-	</style>
+		.step a:link {
+			color: sienna;
+		}
+		.step a:hover {
+			color: maroon;
+		}
+		.step a:visited {
+			color: darkgoldenrod;
+		}
+		.step a:active {
+			color: gold;
+		}
+		</style>
 </head>
 <body>
 <!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
@@ -165,26 +178,33 @@
 <h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
 <div style="page-break-before: always">
  	<!-- @marker "Feature Branch Workflow" -->
-	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature">
-		<p><span class="gitcore"><strong>&uarr;</strong></span> <strong>Push This Branch</strong>:
-			push current local branch to its remote</p>
-		<p><span class="gitcore">&#8617;</span> <strong>Merge Master into Branch</strong>:</p><ul>
-			<li>checkout master; test; fetch origin/master; merge; test; commit; <span class="gitcore">&uarr;</span></li>
-			<li>checkout branch; merge in master; test; <span class="gitcore">&uarr;</span></li></ul>
-		<p><span class="gitcore">&#8618;</span> <strong>Merge Branch into Master</strong>: <span class="gitcore">&#8617</span>;
-			checkout master; test; merge in branch; test; <span class="gitcore">&uarr;</span></p>
+	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature"><ul>
+		<li id="ws_push"><span class="step">Push:</span> push current local branch to its remote<ul>
+			<li>push; if rejected(?), synchronize again and retry</li>
+		</ul></li>
+		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> synchronize local and remote master branches<ul>
+			<li>checkout master; test; fetch origin/master; merge; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+		</ul></li>
+		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> Merge Master into Branch<ul>
+			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
+				checkout branch; merge in master; test; <span class="step"><a href="#ws_push">push</a></span></li>
+		</ul></li>
+		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> merge branch into main line of development<ul>
+			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>; checkout master; test;
+				merge in branch; test; <span class="step"><a href="#ws_push">push</a></span></li>
+		</ul>
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
 				<h6>OpenTask</h6><ul>
 					<li>clean up stashes</li>
 					<li><strong>New Task</strong><ul>
-						<li>master: fetch O/M; merge to master; test</li>
-						<li>create new task with branch name
-						&lt;productID&gt;-&lt;issueID&gt;-short-desc; test; <span class="gitcore">&uarr;</span></li>
-					</ul>
-					<li>or <strong>Existing Task</strong>: switch to task;
-						<span class="gitcore">&#8618;</span>; commit; test; <span class="gitcore">&uarr;</span></li>
+						<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>; create new task with branch name
+						&lt;productID&gt;-&lt;issueID&gt;-short-desc; test; <span class="step"><a href="#ws_push">push</a></span></li>
+					</ul></li>
+					<li>or <strong>Existing Task</strong>: switch to task; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span><ul>
+						<li>commit; test; <span class="step"><a href="#ws_push">Push</a></span></li>
+					</ul></li>
 				</ul></div>
 				<div class="indent2"><div class="wf-developCommit">
 				<h6><a name="wf_Develop">Develop</a></h6><ul>
@@ -199,25 +219,23 @@
 					<li>Terminal: <span class="mono">git status; git add; git diff --cached --check</span></li>
 					<li>if [ whitespace issues | inspection issues | stashes | todo's | settings to export ]:
 						address as indicated</li>
-					<li>check for complete commit set: <span class="mono">git cherry -v master</span></li>
-					<li>test; commit; <span class="gitcore">&uarr;</span></li>
-					<li><span class="gitcore">&#8618;</span>; if branch changed: checkout target branch</li>
+					<li>check for complete commit: &nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
+					<li>test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+					<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span></li>
 				</ul>
 			</div></div>
 			<div class='indent'><div class="wf-publish">
 			<h6>Publish</h6><ul>
-				<li>verify complete commit set:<span class="mono"> git cherry -v master</span></li>
- 				<li>&#8617;;</li>
-				<li><span class="gitcore">&#8618;</span>; <span class="gitcore">&#8617;</span></li>
-				<li>&forall; other active branch: <span class="gitcore">&#8618;</span></li>
+				<li>check for complete commit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
+				<li><span class="step"><a href="#ws_MergeBranch">Merge Branch</a></span></li>
 				<li>synchronize UI Task and Branch</li>
 				<li>if task complete, delete task and local branch</li>
-			</ul></div></div></div></div></div>
+			</ul></div></div></div></li></ul></div></div>
 			<div class='indent'><div class="wf-feature">
 			<h6>Trigger Review</h6><ul>
 				<li>set issue state to Review</li>
 			</ul>
-			</div></div>
+		</div></div>
 
 	<div style="page-break-before: always">
 		<h5>Issue Tasks Complete</h5><div class='indent'><div class="dq">
