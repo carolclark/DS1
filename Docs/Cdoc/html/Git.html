@@ -185,23 +185,25 @@
 			<li id="ws_SyncMaster"><span class="step">Sync Master:</span> synchronize local and remote master branches<ul>
 				<li>checkout master; test; fetch origin/master; test; merge; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
 			</ul></li>
-			<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> Merge Master into Branch<ul>
+			<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> update branch with changes from master<ul>
 				<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
 					checkout branch; merge in master; test; <span class="step"><a href="#ws_push">push</a></span></li>
 			</ul></li>
 			<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> merge branch into main line of development<ul>
-				<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>; checkout master; test;
+				<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master; test;
 					merge in branch; test; <span class="step"><a href="#ws_push">push</a></span></li>
 			</ul></li>
-			<li>for merge issues:&nbsp;&nbsp;<span class='mono'><span class="prompt">$</span> git revert --no-commit</span></li>
+			<li>for merge issues:&nbsp;&nbsp;<span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span>;
+				then commit in groups</li>
 		</ul>
 		<h4>While Issue Not Complete</h4>
 			<h5>While Task(s) Not Complete</h5><div class="indent">
 				<div class="wf-openTask">
 				<h6>OpenTask</h6><ul>
 					<li>clean up stashes</li>
-					<li><strong>New Task</strong>: <span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>; create new task with branch name
-						&lt;productID&gt;-&lt;issueID&gt;-short-desc; test; <span class="step"><a href="#ws_push">push</a></span></li>
+					<li><strong>New Task</strong>: <span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
+						new task with branch, task name &lt;productID&gt;-&lt;issueID&gt;-short-desc; test;
+						<span class="step"><a href="#ws_push">push</a></span></li>
 					<li>or <strong>Existing Task</strong>: switch to task; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a>;
 						</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
 				</ul></div>
@@ -209,7 +211,7 @@
 				<h6><a name="wf_Develop">Develop</a></h6><ul>
 					<li>UI: verify Task and Branch</li>
 					<li>repeat to commit:<ul>
-						<li>develop; inspect; test; [ diff modifications; add/stage ]</li>
+						<li>develop; add; inspect; test; diff modifications</li>
 					</ul></li>
 				</ul>
 				<h6 id='wf_Commit'>Commit</h6><ul>
