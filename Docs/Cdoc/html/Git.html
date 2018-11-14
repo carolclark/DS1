@@ -175,51 +175,61 @@
 			(<span class="mono">git checkout tags/&lt;latestVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></p>
 		<p>The three parts of the semantic version number are major release; minor release; bug fix. Hotfix branches correspond to bug fixes.</p>
 	</div>
+
 <h2 id="WorkflowAppCode">Workflow: AppCode with Waffle</h2>
+
 <div style="page-break-before: always">
- 	<!-- @marker "Feature Branch Workflow" -->
-	<h3 id='Feature_Branch_Workflow_' class="wf-feature">Feature Branch Workflow</h3><div class="wf-feature"><ul>
-			<li id="ws_push"><span class="step">Push:</span> push current local branch to its remote<ul>
-				<li>push; if rejected(?), synchronize again and retry</li>
-			</ul></li>
-			<li id="ws_SyncMaster"><span class="step">Sync Master:</span> synchronize local and remote master branches<ul>
-				<li>checkout master; test; fetch origin/master; test; merge; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
-			</ul></li>
-			<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> update branch with changes from master<ul>
-				<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
-					checkout branch; merge in master; test; <span class="step"><a href="#ws_push">push</a></span></li>
-			</ul></li>
-			<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> merge branch into main line of development<ul>
-				<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master; test;
-					merge in branch; test; <span class="step"><a href="#ws_push">push</a></span></li>
-			</ul></li>
-			<li>for merge issues:&nbsp;&nbsp;<span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span>;
-				then commit in groups</li>
-		</ul>
-		<h4>While Issue Not Complete</h4>
-			<h5>While Task(s) Not Complete</h5><div class="indent">
-				<div class="wf-openTask">
-				<h6>OpenTask</h6><ul>
-					<li>clean up stashes</li>
-					<li><strong>New Task</strong>: <span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
-						new task with branch, task name &lt;productID&gt;-&lt;issueID&gt;-short-desc; test;
-						<span class="step"><a href="#ws_push">push</a></span></li>
-					<li>or <strong>Existing Task</strong>: switch to task; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a>;
-						</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
-				</ul></div>
-				<div class="indent2"><div class="wf-developCommit">
-				<h6><a name="wf_Develop">Develop</a></h6><ul>
-					<li>UI: verify Task and Branch</li>
-					<li>repeat to commit:<ul>
-						<li>develop; add; inspect; test; diff modifications</li>
-					</ul></li>
-				</ul>
-				<h6 id='wf_Commit'>Commit</h6><ul>
-					<li>inspect; test; view local changes; commit; <span class="step"><a href="#ws_push">push</a></span></li>
-					<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span></li>
-				</ul>
-			</div></div>
-			<div class='indent'><div class="wf-publish">
+<!-- @marker "Feature Branch Workflow" -->
+<h3 id='Feature_Branch_Workflow_'>Feature Branch Workflow</h3>
+	<div class="wf-feature">
+	<ul>
+		<li id="ws_push"><span class="step">Push:</span> push current local branch to its remote<ul>
+			<li>push; if rejected(?), synchronize again and retry</li>
+		</ul></li>
+		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> synchronize local and remote master branches<ul>
+			<li>checkout master; test; fetch origin/master; test; merge; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+		</ul></li>
+		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> update branch with changes from master<ul>
+			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
+				checkout branch; merge in master; test; <span class="step"><a href="#ws_push">push</a></span></li>
+		</ul></li>
+		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> merge branch into main line of development<ul>
+			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master; test;
+				merge in branch; test; <span class="step"><a href="#ws_push">push</a></span></li>
+		</ul></li>
+		<li>for merge issues:&nbsp;&nbsp;<span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span>;
+			then commit in groups</li>
+	</ul>
+<h4>While Issue Not Complete</h4>
+	<h5>While Task(s) Not Complete</h5>
+	<div class="indent">
+		<div class="wf-openTask">
+			<h6>OpenTask</h6><ul>
+				<li>clean up stashes</li>
+				<li><strong>New Task</strong>: <span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
+					new task with branch, task name &lt;productID&gt;-&lt;issueID&gt;-short-desc; test;
+					<span class="step"><a href="#ws_push">push</a></span></li>
+				<li>or <strong>Existing Task</strong>: switch to task; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a>;
+					</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
+			</ul>
+		</div><!-- wf-openTask -->
+	</div><!-- indent -->
+	<div class="indent2">
+		<div class="wf-developCommit">
+			<h6><a id="wf_Develop">Develop</a></h6><ul>
+				<li>UI: verify Task and Branch</li>
+				<li>repeat to commit:<ul>
+					<li>develop; add; inspect; test; diff modifications</li>
+				</ul></li>
+			</ul>
+			<h6 id='wf_Commit'>Commit</h6><ul>
+				<li>inspect; test; view local changes; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+				<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span></li>
+			</ul>
+		</div><!-- wf-developCommit -->
+	</div><!-- indent2 -->
+	<div class='indent'>
+		<div class="wf-publish">
 			<h6>Publish</h6><ul>
 				<li>UI: synchronize Task and Branch</li>
 				<li>check for complete commit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
@@ -227,40 +237,47 @@
 				<li><span class="step"><a href="#ws_MergeBranch">Merge Branch</a></span></li>
 				<li>UI: synchronize Task and Branch</li>
 				<li>if task complete, delete task and local branch</li>
-			</ul></div></div></div></div></div>
-			<div class='indent'><div class="wf-feature">
+			</ul></div><!-- wf-publish -->
+		<div class="wf-triggerReview">
 			<h6>Trigger Review</h6><ul>
 				<li>generate pull request; set issue state to Review</li>
 			</ul>
-		</div></div>
+		</div><!-- wf-triggerReview -->
+	</div><!-- indent -->
+</div><!-- wf-feature -->
+	</div><!-- page-break-before: always -->
 
-	<div style="page-break-before: always">
-		<h5>Issue Tasks Complete</h5><div class='indent'><div class="dq">
-			<div class="wf-mergeReview">
-			<h6>Initiate Review</h6><ul>
-				<li>master branch; check VCS log</li>
-				<li>change issue's status from 'SwimIssue' to 'needs review'</li>
-			</ul>
-			<h6>Review</h6><ul>
-				<li>review code; add issues as indicated</li>
-			</ul></div>
-			<div class="wf-close">
-			<h6>Code Review Complete: Close Issue</h6><ul>
-				<li>test; check for unmerged  branches, pending stashes</li>
-				<li>close issue</li>
-				<li>address any unmerged branches and/or pending stashes</li>
-			</ul>
-		</div></div></div>
-		<h5>[Archive Repository]</h5>
-		<h5>Review</h5><ul>	<!-- git \todo: incorporate -->
-			<li>Evaluate completeness of solution as specified.</li>
-			<li>Evaluate completeness of automated and, if required, manual testing.</li>
-			<li>Verify test completeness and results.</li>
-			<li>Review code for cleanness, refactoring opportunities, ...</li>
-		</ul>
-	</div>
-
+<h3 id="FeatureBranchReview">Feature Branch Review</h3><!-- \todo: fix collapsing -->
 <div style="page-break-before: always">
+	<h5>Issue Tasks Complete</h5><div class='indent'>
+			<div class="dq">
+				<div class="wf-mergeReview">
+					<h6>Initiate Review</h6><ul>
+						<li>master branch; check VCS log</li>
+						<li>change issue's status from 'SwimIssue' to 'needs review'</li>
+					</ul>
+					<h6>Review</h6><ul>
+						<li>review code; add issues as indicated</li>
+					</ul>
+				</div><!-- wf-mergeReview -->
+				<div class="wf-close">
+				<h6>Code Review Complete: Close Issue</h6><ul>
+					<li>test; check for unmerged  branches, pending stashes</li>
+					<li>close issue</li>
+					<li>address any unmerged branches and/or pending stashes</li>
+				</ul>
+				</div><!-- wf-close -->
+			</div><!-- dq -->
+		</div><!-- indent -->
+	<h5>[Archive Repository]</h5>
+	<h5>Review</h5><ul>	<!-- git \todo: incorporate -->
+		<li>Evaluate completeness of solution as specified.</li>
+		<li>Evaluate completeness of automated and, if required, manual testing.</li>
+		<li>Verify test completeness and results.</li>
+		<li>Review code for cleanness, refactoring opportunities, ...</li>
+	</ul>
+</div><!-- page-break-before: always -->
+
 	<!-- @marker "Release and Hotfix Branches" -->
 	<div style="background-color: #e2faff">
 	<h3 id='Release_Hotfix_Workflow_' class="wf-hotfix">Release and Hotfix Workflow</h3>
@@ -326,7 +343,8 @@
 		<li>delete release task and local branch</li>
 	</ul></div>
 	<h5>Archive Repository</h5>
-	</div></div></div>
+777	</div>
+		</div>
 
 <div style="page-break-before: always">
 	<!-- @marker "Workflow Subtasks" -->
