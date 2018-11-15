@@ -14,6 +14,7 @@
       <w>cgreen</w>
       <w>checkmembership</w>
       <w>chrono</w>
+      <w>cidr</w>
       <w>committers</w>
       <w>creset</w>
       <w>cvsroot</w>
@@ -81,6 +82,7 @@
       <w>uname</w>
       <w>uncategorized</w>
       <w>unittest</w>
+      <w>unselect</w>
       <w>versioning</w>
       <w>viget</w>
       <w>vnbsp</w>
