@@ -63,7 +63,6 @@
 <body>
 <!-- @navhead "DevSupport.html" "DevSupport" "History_Support.html" -->
 <h1>Git</h1>
-
 <!-- @topicList "Git" "Contents" -->
 	<!-- @topicItem "Branches and Releases" "#Branches_Releases_" "0" "" -->
 	<!-- @topicItem "Daily Workflows: AppCode with Waffle" "#WorkflowAppCode" "0" "current workflow" -->
@@ -187,7 +186,7 @@
 			<li>push; if rejected(?), synchronize again and retry</li>
 		</ul></li>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> synchronize local and remote master branches<ul>
-			<li>checkout master; test; fetch origin/master; test; merge; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+			<li>checkout master; test; fetch origin/master; test; merge in origin/master; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
 		</ul></li>
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> update branch with changes from master<ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
@@ -197,8 +196,27 @@
 			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master; test;
 				merge in branch; test; <span class="step"><a href="#ws_push">push</a></span></li>
 		</ul></li>
-		<li>for merge issues:&nbsp;&nbsp;<span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span>;
-			then commit in groups</li>
+	</ul>
+	<ul>
+		<li id="ws_PerformMerge"><span class="step">Perform Merge:</span><ul>
+			<li><span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span> if too many conflicts<ul>
+				<li>||</li>
+			</ul></li>
+			<li>look ahead at files with conflicts:<ul>
+				<li><span class='mono'><span class="prompt">$</span>&nbsp;git diff --name-only --diff-filter=U</span></li>
+				<li>|| <span class='mono'><span class="prompt">$</span> git diff HEAD @{upstream}</span></li>
+				<li>|| <span class='mono'><span class="prompt">$</span> git diff HEAD origin/&lt;branch&gt;</span></li>
+			</ul></li>
+			<li>diff and commit conflicted files as indicated</li>
+			<li>execute merge<br /></li>
+			<li class="ital">to Abort Merge if indicated, try any of:<ul>
+				<li>Abort button</li>
+				<li>|| <span class='mono'><span class="prompt">$</span> git reset --merge [ORIG_HEAD]</span></li>
+				<li>|| <span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span></li>
+				<li>|| <span class='mono'><span class="prompt">$</span> git reflog</span> to identify reset target SHA-1;
+					<span class="mono"><span class="prompt">$</span>git reset --merge &lt;target&gt;</span></li>
+			</ul></li>
+		</ul></li>
 	</ul>
 <h4>While Issue Not Complete</h4>
 	<h5>While Task(s) Not Complete</h5>
@@ -247,8 +265,8 @@
 </div><!-- wf-feature -->
 	</div><!-- page-break-before: always -->
 
-<h3 id="FeatureBranchReview">Feature Branch Review</h3><!-- \todo: fix collapsing -->
 <div style="page-break-before: always">
+<h3 id="FeatureBranchReview">Feature Branch Review</h3><!-- \todo: fix collapsing -->
 	<h5>Issue Tasks Complete</h5><div class='indent'>
 			<div class="dq">
 				<div class="wf-mergeReview">
@@ -277,38 +295,6 @@
 		<li>Review code for cleanness, refactoring opportunities, ...</li>
 	</ul>
 </div><!-- page-break-before: always -->
-
-<h3 id="FeatureBranchReview">Feature Branch Review</h3><!-- \todo: fix collapsing -->
-<div style="page-break-before: always">
-	<h5>Issue Tasks Complete</h5><div class='indent'>
-			<div class="dq">
-				<div class="wf-mergeReview">
-					<h6>Initiate Review</h6><ul>
-						<li>master branch; check VCS log</li>
-						<li>change issue's status from 'SwimIssue' to 'needs review'</li>
-					</ul>
-					<h6>Review</h6><ul>
-						<li>review code; add issues as indicated</li>
-					</ul>
-				</div><!-- wf-mergeReview -->
-				<div class="wf-close">
-				<h6>Code Review Complete: Close Issue</h6><ul>
-					<li>test; check for unmerged  branches, pending stashes</li>
-					<li>close issue</li>
-					<li>address any unmerged branches and/or pending stashes</li>
-				</ul>
-				</div><!-- wf-close -->
-			</div><!-- dq -->
-		</div><!-- indent -->
-	<h5>[Archive Repository]</h5>
-	<h5>Review</h5><ul>	<!-- git \todo: incorporate -->
-		<li>Evaluate completeness of solution as specified.</li>
-		<li>Evaluate completeness of automated and, if required, manual testing.</li>
-		<li>Verify test completeness and results.</li>
-		<li>Review code for cleanness, refactoring opportunities, ...</li>
-	</ul>
-</div><!-- page-break-before: always -->
-
 	<!-- @marker "Release and Hotfix Branches" -->
 	<div style="background-color: #e2faff">
 	<h3 id='Release_Hotfix_Workflow_' class="wf-hotfix">Release and Hotfix Workflow</h3>
@@ -374,7 +360,7 @@
 		<li>delete release task and local branch</li>
 	</ul></div>
 	<h5>Archive Repository</h5>
-	</div></div></div>
+	</div></div>
 
 <div style="page-break-before: always">
 	<!-- @marker "Workflow Subtasks" -->
