@@ -186,7 +186,9 @@
 			<li>push; if rejected(?), synchronize again and retry</li>
 		</ul></li>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> synchronize local and remote master branches<ul>
-			<li>checkout master; test; fetch origin/master; test; merge in origin/master; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+			<li>if master differs from its remote:&nbsp;&nbsp;<span class='mono'><span class="prompt">$&nbsp;</span>git checkout master; git diff --name-only @{upstream}</span><ul>
+				<li>checkout master; test; merge in origin/master; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+			 </ul></li>
 		</ul></li>
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> update branch with changes from master<ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
@@ -235,9 +237,9 @@
 	<div class="indent2">
 		<div class="wf-developCommit">
 			<h6><a id="wf_Develop">Develop</a></h6><ul>
-				<li>UI: verify Task and Branch</li>
 				<li>repeat to commit:<ul>
-					<li>develop; add; inspect; test; diff modifications</li>
+					<li>UI: verify task and branch</li>
+					<li>develop; inspect; test; add files to cache; diff modifications</li>
 				</ul></li>
 			</ul>
 			<h6 id='wf_Commit'>Commit</h6><ul>
@@ -263,7 +265,7 @@
 		</div><!-- wf-triggerReview -->
 	</div><!-- indent -->
 </div><!-- wf-feature -->
-	</div><!-- page-break-before: always -->
+</div><!-- page-break-before: always -->
 
 <div style="page-break-before: always">
 <h3 id="FeatureBranchReview">Feature Branch Review</h3><!-- \todo: fix collapsing -->
@@ -286,6 +288,7 @@
 				</ul>
 				</div><!-- wf-close -->
 			</div><!-- dq -->
+		</div><!-- indent -->
 	<h5>[Archive Repository]</h5>
 	<h5>Review</h5><ul>	<!-- git \todo: incorporate -->
 		<li>Evaluate completeness of solution as specified.</li>
@@ -293,7 +296,6 @@
 		<li>Verify test completeness and results.</li>
 		<li>Review code for cleanness, refactoring opportunities, ...</li>
 	</ul>
-	</div><!-- indent -->
 </div><!-- page-break-before: always -->
 	<!-- @marker "Release and Hotfix Branches" -->
 	<div style="background-color: #e2faff">
