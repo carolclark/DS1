@@ -186,7 +186,7 @@
 			<li>push; if rejected(?), synchronize again and retry</li>
 		</ul></li>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> synchronize local and remote master branches<ul>
-			<li>if master differs from its remote:&nbsp;&nbsp;<span class='mono'><span class="prompt">$&nbsp;</span>git checkout master</span>; observe<ul>
+			<li>checkout master; fetch updates:&nbsp;&nbsp;<span class='mono'><span class="prompt">$&nbsp;</span>git checkout master; git fetch</span><ul>
 				<li>checkout master; test; merge in origin/master; test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
 			 </ul></li>
 		</ul></li>
