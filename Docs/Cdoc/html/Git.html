@@ -2,6 +2,7 @@
 <!-- Created by Carol Clark on 24 Aug 2011 for project Support. -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--suppress HtmlUnknownTag -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Git</title>
@@ -183,28 +184,32 @@
 <div class="wf-feature">
 	<h3 id='Feature_Branch_Workflow_'>Feature Branch Workflow</h3>
 	<ul>
-		<li id="ws_merge"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
+		<li id="ws_merge"><span class="step">Merge:</span> <span class="ital">merge another branch into current branch</span> <ul>
 			<li>preview: <span class='mono'><span class="prompt">$</span> git diff HEAD @{upstream}</span>; then:<ul>
 				<li>if indicated, handle some individual files with
 					<span class="mono">diff -F &lt;file&gt; @{upstream}</span> first</li>
-				<li><span class='mono'><span class="prompt">$</span> fetch/<span class="step"><a href="#ws_merge">merge</a></span></span></li>
+				<li><span class='mono'><span class="prompt">$</span> fetch/merge</span></li>
 			</ul></li>
 			<li>to abort Merge if needed: <span class="mono"><span class="prompt">$ </span>git reflog</span>
 				to identify previous entry as target SHA-1;
 				<span class="mono"><span class="prompt">$ </span>git reset --merge &lt;target&gt;</span></li>
 		</ul></li>
+		<br />
 		<li id="ws_push"><span class="step">Push:</span>  <span class="ital">push current local branch to its remote</span><ul>
 			<li>git push; if rejected: git fetch/<span class="step"><a href="#ws_merge">merge</a></span>; retry</li>
 		</ul></li>
+		<br />
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
 			<li>checkout master; fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master; commit;
 				<span class="step"><a href="#ws_push">push</a></span></li>
 		</ul></li>
-		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> update branch with changes from master<ul>
+		<br />
+		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
 				checkout branch; merge in master; test; <span class="step"><a href="#ws_push">push</a></span></li>
 		</ul></li>
-		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> merge branch into main line of development<ul>
+		<br />
+		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
 			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master; test;
 				merge in branch; test; <span class="step"><a href="#ws_push">push</a></span></li>
 		</ul></li>
