@@ -206,9 +206,28 @@
 		</ul></li>
 		<li id="ws_merge"><span class="step">Merge Branch:</span> merge branch into main line of development<ul>
 			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master;
-				<span class="step"><a href="#ws_merge">merge</a></span> in branch; <span class="step"><a href="#ws_push">push</a></span></li>
+				<span class="step"><a href="#ws_merge">merge</a></span> in branch; test;
+				<span class="step"><a href="#ws_push">push</a></span></li>
 		</ul></li>
-	</ul>
+			<li id="ws_PerformMerge"><span class="step">Perform Merge:</span><ul>
+			   <li><span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span> if too many conflicts<ul>
+				   <li>||</li>
+			   </ul></li>
+			   <li>look ahead at files with conflicts:<ul>
+				   <li><span class='mono'><span class="prompt">$</span>&nbsp;git diff --name-only --diff-filter=U</span></li>
+				   <li>|| <span class='mono'><span class="prompt">$</span> git diff HEAD @{upstream}</span></li>
+				   <li>|| <span class='mono'><span class="prompt">$</span> git diff HEAD origin/&lt;branch&gt;</span></li>
+			   </ul></li>
+			   <li>diff and commit conflicted files as indicated</li>
+			   <li>execute merge</li>
+			   <li class="ital">to Abort Merge if indicated, try any of:<ul>
+				   <li>Abort button</li>
+				   <li>|| <span class='mono'><span class="prompt">$</span> git reset --merge [ORIG_HEAD]</span></li>
+				   <li>|| <span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span></li>
+				   <li>|| <span class='mono'><span class="prompt">$</span> git reflog</span> to identify reset target SHA-1;-                                   <span class="mono"><span class="prompt">$</span>git reset --merge &lt;target&gt;</span></li>
+			   </ul></li>
+			</ul><!-- Perform Merge -->
+		</ul>
 
 <h4>While Issue Not Complete</h4>
 	<h5>While Task(s) Not Complete</h5>
