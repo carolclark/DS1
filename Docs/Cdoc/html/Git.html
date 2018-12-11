@@ -185,15 +185,16 @@
 	<h5>Workflow Steps</h5>
 	<ul>
 		<li id="ws_merge"><span class="step">Merge:</span> <span class="ital">merge another branch into current branch</span> <ul>
-			<li>preview: <span class='mono'><span class="prompt">$</span> git diff HEAD @{upstream}</span>; then:<ul>
+			<li>preview: <span class='mono'><span class="prompt">$</span> git difftool HEAD @{upstream}</span>; then:<ul>
 				<li>if indicated, handle some individual files with
 					<span class="mono">diff -F &lt;file&gt; @{upstream}</span> first</li>
 				<li><span class='mono'><span class="prompt">$</span> fetch/merge</span></li>
 			</ul></li>
-			<li>to abort Merge if needed: <span class="mono"><span class="prompt">$ </span>git reflog</span>
+			<li>to undo Merge if needed: <span class="mono"><span class="prompt">$ </span>git reflog</span>
 				to identify previous entry as target SHA-1;
 				<span class="mono"><span class="prompt">$ </span>git reset --merge &lt;target&gt;</span></li>
 		</ul></li>
+	</ul><ul>
 		<li id="ws_push"><span class="step">Push:</span>  <span class="ital">push current local branch to its remote</span><ul>
 			<li>git push; if rejected: git fetch/<span class="step"><a href="#ws_merge">merge</a></span>; retry</li>
 		</ul></li>
@@ -201,8 +202,8 @@
 	<h5>Processes</h5>
 	<ul>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
-			<li>checkout master; fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master; commit;
-				<span class="step"><a href="#ws_push">push</a></span></li>
+			<li>checkout master; fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
+				test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
 		</ul></li>
 	</ul><ul>
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
@@ -214,25 +215,7 @@
 			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master; test;
 				merge in branch; test; <span class="step"><a href="#ws_push">push</a></span></li>
 		</ul></li>
-			<li id="ws_PerformMerge"><span class="step">Perform Merge:</span><ul>
-			   <li><span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span> if too many conflicts<ul>
-				   <li>||</li>
-			   </ul></li>
-			   <li>look ahead at files with conflicts:<ul>
-				   <li><span class='mono'><span class="prompt">$</span>&nbsp;git diff --name-only --diff-filter=U</span></li>
-				   <li>|| <span class='mono'><span class="prompt">$</span> git diff HEAD @{upstream}</span></li>
-				   <li>|| <span class='mono'><span class="prompt">$</span> git diff HEAD origin/&lt;branch&gt;</span></li>
-			   </ul></li>
-			   <li>diff and commit conflicted files as indicated</li>
-			   <li>execute merge</li>
-			   <li class="ital">to Abort Merge if indicated, try any of:<ul>
-				   <li>Abort button</li>
-				   <li>|| <span class='mono'><span class="prompt">$</span> git reset --merge [ORIG_HEAD]</span></li>
-				   <li>|| <span class='mono'><span class="prompt">$</span> git revert --no-commit(?)</span></li>
-				   <li>|| <span class='mono'><span class="prompt">$</span> git reflog</span> to identify reset target SHA-1;-                                   <span class="mono"><span class="prompt">$</span>git reset --merge &lt;target&gt;</span></li>
-			   </ul></li>
-			</ul><!-- Perform Merge -->
-		</ul>
+	</ul>
 
 <h4>While Issue Not Complete</h4>
 	<h5>While Task(s) Not Complete</h5>
@@ -257,6 +240,7 @@
 				</ul></li>
 			</ul>
 			<h6 id='wf_Commit'>Commit</h6><ul>
+				<li>UI: verify task and branch</li>
 				<li>inspect; test; view local changes; commit; <span class="step"><a href="#ws_push">push</a></span></li>
 				<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span></li>
 			</ul>
@@ -272,7 +256,8 @@
 				<li><span class="step"><a href="#ws_MergeBranch">Merge Branch</a></span></li>
 				<li>UI: synchronize Task and Branch</li>
 				<li>if task complete, delete task and local branch</li>
-			</ul></div><!-- wf-publish -->
+			</ul>
+		</div><!-- wf-publish -->
 		<div class="wf-triggerReview">
 			<h6>Trigger Review</h6><ul>
 				<li>generate pull request; set issue state to Review</li>

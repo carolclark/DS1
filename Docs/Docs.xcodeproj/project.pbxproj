@@ -49,7 +49,6 @@
 		965F82ACEA5C8859DD6025D9 /* ProjectSymbols.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = ProjectSymbols.pcvd; sourceTree = "<group>"; };
 		965F82F1C702C096455B200D /* GitBranchingModel.002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.002.png; sourceTree = "<group>"; };
 		965F8331E1FC8ADB26343621 /* JetBrainsAdmin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrainsAdmin.html; sourceTree = "<group>"; };
-		965F83BF8298FCD4D30059A5 /* Workflows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Workflows.png; sourceTree = "<group>"; };
 		965F83CC93258AC741E2647F /* Partitions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Partitions.pdf; sourceTree = "<group>"; };
 		965F8413959BB1D1E8EE03D1 /* History_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History_Support.html; sourceTree = "<group>"; };
 		965F84982E81E80431934634 /* orig-gitflow-model.src.key */ = {isa = PBXFileReference; lastKnownFileType = file.key; path = "orig-gitflow-model.src.key"; sourceTree = "<group>"; };
@@ -101,7 +100,6 @@
 				965F82ACEA5C8859DD6025D9 /* ProjectSymbols.pcvd */,
 				965F87B5206606E18B4CF5D2 /* BranchWorkflow_source.txt */,
 				965F80AB866B6111A8406CC1 /* Workflows.pcvd */,
-				965F83BF8298FCD4D30059A5 /* Workflows.png */,
 				965F8A25D212F97850C0E9D6 /* Workflows_withParts.pcvd */,
 			);
 			path = OtherDocuments;
