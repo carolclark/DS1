@@ -210,18 +210,18 @@
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
 			<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
 				fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
-				test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+				test; commit; <span class="step"><a href="#ws_push">push</a></span> master</li>
 		</ul></li>
 	</ul><ul>
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
 				<span class="step"><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</span>;
-				merge in master; test; <span class="step"><a href="#ws_push">push</a></span></li>
+				merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;</li>
 		</ul></li>
 	</ul><ul>
 		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
 			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master; test;
-				merge in branch; test; <span class="step"><a href="#ws_push">push</a> master</span></li>
+			merge in branch; test; <span class="step"><a href="#ws_push">push</a></span> master</li>
 		</ul></li>
 	</ul>
 
