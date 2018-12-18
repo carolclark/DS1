@@ -55,6 +55,7 @@
 		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		965F8611C309A164093246DA /* gitflow-model.key */ = {isa = PBXFileReference; lastKnownFileType = file.key; path = "gitflow-model.key"; sourceTree = "<group>"; };
 		965F8616CA7CBFCB8649B8A2 /* ThirdParty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ThirdParty.html; sourceTree = "<group>"; };
 		965F8762FEE3692000438723 /* Glossary_DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_DevSupport.html; sourceTree = "<group>"; };
 		965F8793DFC358BE4D872124 /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
@@ -223,6 +224,7 @@
 				965F89565A695D5DC277C674 /* GitBranchingModelImages */,
 				965F891DDAA092A8121A8B6E /* BranchWorkflow.png */,
 				965F84982E81E80431934634 /* orig-gitflow-model.src.key */,
+`				965F8611C309A164093246DA /* gitflow-model.key */,
 			);
 			path = GitBranchingModel;
 			sourceTree = "<group>";
