@@ -224,7 +224,7 @@
 				965F89565A695D5DC277C674 /* GitBranchingModelImages */,
 				965F891DDAA092A8121A8B6E /* BranchWorkflow.png */,
 				965F84982E81E80431934634 /* orig-gitflow-model.src.key */,
-`				965F8611C309A164093246DA /* gitflow-model.key */,
+				965F8611C309A164093246DA /* gitflow-model.key */,
 			);
 			path = GitBranchingModel;
 			sourceTree = "<group>";
