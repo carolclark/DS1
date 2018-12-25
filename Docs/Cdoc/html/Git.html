@@ -1,7 +1,6 @@
 <!-- Git.html -->
 <!-- Created by Carol Clark on 24 Aug 2011 for project Support. -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Git</title>
@@ -106,11 +105,8 @@
 </div>
 
 <p id="BranchingDiagram">Feature, release, and hotfix branches are all represented in this diagram:</p>
-<div><img src="_img/GitBranchingModel.001.png" alt="Git Branching Model" style="width:600px;height:800px;" /></div>
-
-<div style="page-break-before: always"></div>
 <p id="GitBranchWorkflow">Git Workflow diagram:</p>
-<div><img src="_img/Workflows.png" alt="Workflows" /></div>
+<div><img src="_img/GitFlow.src/GitFlow.src.001.png" alt="Workflows" /></div>
 
 <!-- @marker "Release Branches" -->
 <h4 id='ReleaseBranches_'>Release Branches</h4>
@@ -185,10 +181,11 @@
 	<h5>Workflow Steps</h5>
 	<ul>
 		<li id="ws_merge"><span class="step">Merge:</span> <span class="ital">merge another branch into current branch</span> <ul>
-			<li>preview: <span class='mono'><span class="prompt">$</span> git difftool HEAD @{upstream}</span>; then:<ul>
+			<li>preview: <span class='mono'><span class="prompt">$</span> git difftool HEAD origin</span>; then:<ul>
 				<li>if indicated, handle some individual files with
-					<span class="mono">diff -F &lt;file&gt; @{upstream}</span> first</li>
-				<li><span class='mono'><span class="prompt">$</span> fetch/merge</span></li>
+					<span class="mono">diff -F &lt;file&gt; origin</span> first</li>
+				<li>fetch/merge	<span class='mono'>(&nbsp;<span class="prompt">$&nbsp;</span>
+						<span class="mono">git fetch [-v] origin [--dry-run]</span></span>&nbsp;)</li>
 			</ul></li>
 			<li>to undo Merge if needed: <span class="mono"><span class="prompt">$ </span>git reflog</span>
 				to identify previous entry as target SHA-1;
@@ -199,21 +196,28 @@
 			<li>git push; if rejected: git fetch/<span class="step"><a href="#ws_merge">merge</a></span>; retry</li>
 		</ul></li>
 	</ul>
+	<ul>
+		<li id="ws_setBranch"><span class="step">Set Branch:</span> <span class="ital">all UI views show target branch</span><ul>
+			<li>set Task; Terminal: press "return" to show current branch; match Task, Terminal, and branch</li>
+		</ul></li>
+	</ul>
 	<h5>Processes</h5>
 	<ul>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
-			<li>checkout master; fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
-				test; commit; <span class="step"><a href="#ws_push">push</a></span></li>
+			<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
+				fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
+				test; commit; <span class="step"><a href="#ws_push">push</a></span> master</li>
 		</ul></li>
 	</ul><ul>
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
-				checkout branch; merge in master; test; <span class="step"><a href="#ws_push">push</a></span></li>
+				<span class="step"><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</span>;
+				merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;</li>
 		</ul></li>
 	</ul><ul>
 		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
 			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>; checkout master; test;
-				merge in branch; test; <span class="step"><a href="#ws_push">push</a></span></li>
+			merge in branch; test; <span class="step"><a href="#ws_push">push</a></span> master</li>
 		</ul></li>
 	</ul>
 
@@ -235,12 +239,12 @@
 		<div class="wf-developCommit">
 			<h6><a id="wf_Develop">Develop/Stage</a></h6><ul>
 				<li>repeat to commit:<ul>
-					<li>UI: verify task and branch</li>
+					<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
 					<li>develop; inspect; test; diff modifications; stage (add) files</li>
 				</ul></li>
 			</ul>
 			<h6 id='wf_Commit'>Commit</h6><ul>
-				<li>UI: verify task and branch</li>
+				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
 				<li>inspect; test; view local changes; commit; <span class="step"><a href="#ws_push">push</a></span></li>
 				<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span></li>
 			</ul>
@@ -249,12 +253,12 @@
 	<div class='indent'>
 		<div class="wf-publish">
 			<h6>Publish</h6><ul>
-				<li>UI: synchronize Task and Branch</li>
+				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
 				<li>check for complete commit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
 				<li>show status of all active branches<span class='mono'><span class="prompt"> $ </span>git branch -vv</span></li>
 				<li>check for stashes, todo's; if [ incomplete commit | stashes | todo's | settings to export ]: address as indicated</li>
 				<li><span class="step"><a href="#ws_MergeBranch">Merge Branch</a></span></li>
-				<li>UI: synchronize Task and Branch</li>
+				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> master</li>
 				<li>if task complete, delete task and local branch</li>
 			</ul>
 		</div><!-- wf-publish -->

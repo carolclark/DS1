@@ -19,6 +19,7 @@
       <w>creset</w>
       <w>cvsroot</w>
       <w>deamons</w>
+     <w>doctype</w>
       <w>filetypes</w>
       <w>fpath</w>
       <w>funclist</w>
@@ -68,10 +69,12 @@
       <w>shunit</w>
       <w>signin</w>
       <w>smtp</w>
+      <w>snowcone</w>
       <w>srcroot</w>
       <w>subissues</w>
       <w>subtask</w>
       <w>sudo</w>
+      <w>svgw</w>
       <w>swimlane</w>
       <w>swimlanes</w>
       <w>syslog</w>
@@ -83,6 +86,7 @@
       <w>uncategorized</w>
       <w>unittest</w>
       <w>unselect</w>
+      <w>urbsst</w>
       <w>versioning</w>
       <w>viget</w>
       <w>vnbsp</w>

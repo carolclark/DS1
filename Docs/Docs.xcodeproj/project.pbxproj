@@ -43,39 +43,51 @@
 		965F803622D42B6140D05477 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
 		965F80AB866B6111A8406CC1 /* Workflows.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = Workflows.pcvd; sourceTree = "<group>"; };
 		965F8125BE43F87CF012F727 /* AppCode.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AppCode.html; sourceTree = "<group>"; };
+		965F812A28DCACB0B0A23C5A /* mt9@2x-135.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt9@2x-135.jpg"; sourceTree = "<group>"; };
 		965F824C8932575EDA468EA1 /* Glossary_DevOps.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_DevOps.html; sourceTree = "<group>"; };
 		965F825D415F1A10047A3BAC /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
-		965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt0@2x-251.jpg"; sourceTree = "<group>"; };
+		965F82901900EC0D5B0E0331 /* Index.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Index.zip; sourceTree = "<group>"; };
 		965F82ACEA5C8859DD6025D9 /* ProjectSymbols.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = ProjectSymbols.pcvd; sourceTree = "<group>"; };
-		965F82F1C702C096455B200D /* GitBranchingModel.002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.002.png; sourceTree = "<group>"; };
+		965F832F517B6AF5F17E2B28 /* mt5@2x-131.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt5@2x-131.jpg"; sourceTree = "<group>"; };
 		965F8331E1FC8ADB26343621 /* JetBrainsAdmin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JetBrainsAdmin.html; sourceTree = "<group>"; };
+		965F83760155E37934F71DFD /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F83CC93258AC741E2647F /* Partitions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Partitions.pdf; sourceTree = "<group>"; };
+		965F83F340776CEFB519128D /* mt10@2x-136.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt10@2x-136.jpg"; sourceTree = "<group>"; };
 		965F8413959BB1D1E8EE03D1 /* History_Support.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History_Support.html; sourceTree = "<group>"; };
-		965F84982E81E80431934634 /* orig-gitflow-model.src.key */ = {isa = PBXFileReference; lastKnownFileType = file.key; path = "orig-gitflow-model.src.key"; sourceTree = "<group>"; };
-		965F84A908CB1A213B4C6105 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
+		965F85345503D619A64AA4FD /* mt1@2x-128.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt1@2x-128.jpg"; sourceTree = "<group>"; };
 		965F853900CA7836B32E11C2 /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
 		965F85D7BC609E4499DD528D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		965F85D7CCD45CDAA3990E24 /* mt12@2x-138.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt12@2x-138.jpg"; sourceTree = "<group>"; };
 		965F8616CA7CBFCB8649B8A2 /* ThirdParty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ThirdParty.html; sourceTree = "<group>"; };
+		965F863FE25D751BAA43606D /* Girl_and_Snowcone-small-109.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Girl_and_Snowcone-small-109.jpg"; sourceTree = "<group>"; };
+		965F8702D92513CBEEE7A64F /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
+		965F8712338361EF0C1194F4 /* mt7@2x-133.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt7@2x-133.jpg"; sourceTree = "<group>"; };
+		965F8758036DED9A80F3450C /* mt6@2x-132.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt6@2x-132.jpg"; sourceTree = "<group>"; };
 		965F8762FEE3692000438723 /* Glossary_DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_DevSupport.html; sourceTree = "<group>"; };
 		965F8793DFC358BE4D872124 /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
-		965F879A4CC12B5E0E783610 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
 		965F87B5206606E18B4CF5D2 /* BranchWorkflow_source.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BranchWorkflow_source.txt; sourceTree = "<group>"; };
 		965F87B6C9FF2B7D264C48A9 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
-		965F87D13524A7E376D0EDDC /* DocumentIdentifier */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentIdentifier; sourceTree = "<group>"; };
+		965F87D8DE52995347144D5C /* mt11@2x-137.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt11@2x-137.jpg"; sourceTree = "<group>"; };
+		965F8847D502B8A45D8A14B3 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
+		965F88674CD9F41EA78482E9 /* st0-126.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st0-126.jpg"; sourceTree = "<group>"; };
 		965F88756EC76D8FC8228B96 /* DevSupport.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DevSupport.html; sourceTree = "<group>"; };
-		965F891DDAA092A8121A8B6E /* BranchWorkflow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BranchWorkflow.png; path = OtherDocuments/BranchWorkflow.png; sourceTree = SOURCE_ROOT; };
 		965F8983AA820AB4453CE3A1 /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 		965F89BCBB76CCA217C61F09 /* preview-web.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-web.jpg"; sourceTree = "<group>"; };
 		965F8A25D212F97850C0E9D6 /* Workflows_withParts.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = Workflows_withParts.pcvd; sourceTree = "<group>"; };
-		965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "st2-1148.jpg"; sourceTree = "<group>"; };
 		965F8A6A0C8C670A15AA0BAE /* Workflows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Workflows.png; sourceTree = "<group>"; };
 		965F8AF608AC68792F7415BC /* Doxygen_install.ksh */ = {isa = PBXFileReference; lastKnownFileType = file.ksh; path = Doxygen_install.ksh; sourceTree = "<group>"; };
-		965F8C9798E940E064E8D4AE /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
-		965F8D110C54EC79190CB9B0 /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
-		965F8D1ED5AE55EB946B750A /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
-		965F8F36D473172852C9A19B /* BuildVersionHistory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = BuildVersionHistory.plist; sourceTree = "<group>"; };
+		965F8BF3E3E886380374F593 /* mt13@2x-139.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt13@2x-139.jpg"; sourceTree = "<group>"; };
+		965F8CD9AEFF68C3731A9A21 /* mt3@2x-130.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt3@2x-130.jpg"; sourceTree = "<group>"; };
+		965F8DFE619E7D08FCEAED75 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Properties.plist; sourceTree = "<group>"; };
+		965F8EA59D094774DEBFA3DD /* Happy_Girls-small-107.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Happy_Girls-small-107.jpg"; sourceTree = "<group>"; };
+		965F8F0EDD3445FEE135F57E /* orig-gitflow-model.src.key */ = {isa = PBXFileReference; lastKnownFileType = file.key; path = "orig-gitflow-model.src.key"; sourceTree = "<group>"; };
 		965F8F7D274B8EBB4F30076B /* MySQL.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = MySQL.html; sourceTree = "<group>"; };
-		965F8FB531FD58E27E38D62C /* Index.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Index.zip; sourceTree = "<group>"; };
+		965F8F801DE15CE23EA9536C /* mt8@2x-134.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt8@2x-134.jpg"; sourceTree = "<group>"; };
+		965F8F98321A3B711BFAF317 /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
+		965F8FA32BEB7BC22AD1DE75 /* mt2@2x-129.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt2@2x-129.jpg"; sourceTree = "<group>"; };
+		965F8FB36A25146009977F91 /* mt0@2x-217.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt0@2x-217.jpg"; sourceTree = "<group>"; };
+		965F8FECD49A9C8E3C9AF1D3 /* BranchWorkflow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BranchWorkflow.png; sourceTree = "<group>"; };
+		965F8FF6A4FE85F3691F555D /* preview-micro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "preview-micro.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -97,11 +109,13 @@
 				676695D31919AA3B005D3CED /* UseCaseImages.pages */,
 				676695A41919973E005D3CED /* Support_ghissues.json */,
 				965F8DE26B1292AAB0D3346A /* DrivePartitions */,
-				965F816F72396FF388545791 /* GitBranchingModel */,
 				965F82ACEA5C8859DD6025D9 /* ProjectSymbols.pcvd */,
 				965F87B5206606E18B4CF5D2 /* BranchWorkflow_source.txt */,
 				965F80AB866B6111A8406CC1 /* Workflows.pcvd */,
 				965F8A25D212F97850C0E9D6 /* Workflows_withParts.pcvd */,
+				965F88A645155F6ED55DC433 /* GitFlow.src.key */,
+				965F8F0EDD3445FEE135F57E /* orig-gitflow-model.src.key */,
+				965F8FECD49A9C8E3C9AF1D3 /* BranchWorkflow.png */,
 			);
 			path = OtherDocuments;
 			sourceTree = "<group>";
@@ -216,28 +230,27 @@
 			path = WebsiteStructure;
 			sourceTree = "<group>";
 		};
-		965F816F72396FF388545791 /* GitBranchingModel */ = {
+		965F8292CB698969AB621FEA /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				965F8331CE98CCBEC543DF86 /* GitBranchingModel.key */,
-				965F89565A695D5DC277C674 /* GitBranchingModelImages */,
-				965F891DDAA092A8121A8B6E /* BranchWorkflow.png */,
-				965F84982E81E80431934634 /* orig-gitflow-model.src.key */,
+				965F88674CD9F41EA78482E9 /* st0-126.jpg */,
+				965F8FB36A25146009977F91 /* mt0@2x-217.jpg */,
+				965F85345503D619A64AA4FD /* mt1@2x-128.jpg */,
+				965F8FA32BEB7BC22AD1DE75 /* mt2@2x-129.jpg */,
+				965F8CD9AEFF68C3731A9A21 /* mt3@2x-130.jpg */,
+				965F832F517B6AF5F17E2B28 /* mt5@2x-131.jpg */,
+				965F8758036DED9A80F3450C /* mt6@2x-132.jpg */,
+				965F8712338361EF0C1194F4 /* mt7@2x-133.jpg */,
+				965F8F801DE15CE23EA9536C /* mt8@2x-134.jpg */,
+				965F812A28DCACB0B0A23C5A /* mt9@2x-135.jpg */,
+				965F83F340776CEFB519128D /* mt10@2x-136.jpg */,
+				965F87D8DE52995347144D5C /* mt11@2x-137.jpg */,
+				965F85D7CCD45CDAA3990E24 /* mt12@2x-138.jpg */,
+				965F8BF3E3E886380374F593 /* mt13@2x-139.jpg */,
+				965F8EA59D094774DEBFA3DD /* Happy_Girls-small-107.jpg */,
+				965F863FE25D751BAA43606D /* Girl_and_Snowcone-small-109.jpg */,
 			);
-			path = GitBranchingModel;
-			sourceTree = "<group>";
-		};
-		965F8331CE98CCBEC543DF86 /* GitBranchingModel.key */ = {
-			isa = PBXGroup;
-			children = (
-				965F8BB2B8EBB03FD9E60779 /* Data */,
-				965F8BFABA7A24C8610C6D8B /* Metadata */,
-				965F8FB531FD58E27E38D62C /* Index.zip */,
-				965F8D110C54EC79190CB9B0 /* preview.jpg */,
-				965F84A908CB1A213B4C6105 /* preview-web.jpg */,
-				965F8D1ED5AE55EB946B750A /* preview-micro.jpg */,
-			);
-			path = GitBranchingModel.key;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		965F844BB5F075AB31086240 /* Metadata */ = {
@@ -249,30 +262,17 @@
 			path = Metadata;
 			sourceTree = "<group>";
 		};
-		965F89565A695D5DC277C674 /* GitBranchingModelImages */ = {
+		965F88A645155F6ED55DC433 /* GitFlow.src.key */ = {
 			isa = PBXGroup;
 			children = (
-				965F8A497F0F1EDC30659C79 /* GitBranchingModel */,
+				965F8292CB698969AB621FEA /* Data */,
+				965F8EDF12BAA1BC3D7BBFF8 /* Metadata */,
+				965F82901900EC0D5B0E0331 /* Index.zip */,
+				965F8F98321A3B711BFAF317 /* preview.jpg */,
+				965F8847D502B8A45D8A14B3 /* preview-web.jpg */,
+				965F8FF6A4FE85F3691F555D /* preview-micro.jpg */,
 			);
-			path = GitBranchingModelImages;
-			sourceTree = "<group>";
-		};
-		965F8A497F0F1EDC30659C79 /* GitBranchingModel */ = {
-			isa = PBXGroup;
-			children = (
-				965F879A4CC12B5E0E783610 /* GitBranchingModel.001.png */,
-				965F82F1C702C096455B200D /* GitBranchingModel.002.png */,
-			);
-			path = GitBranchingModel;
-			sourceTree = "<group>";
-		};
-		965F8BB2B8EBB03FD9E60779 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				965F8A4A7C76A19F3EB58521 /* st2-1148.jpg */,
-				965F829B9ABE397571E25F59 /* mt0@2x-251.jpg */,
-			);
-			path = Data;
+			path = GitFlow.src.key;
 			sourceTree = "<group>";
 		};
 		965F8BB614D97D7BD74165B1 /* TechnicalDocs */ = {
@@ -281,16 +281,6 @@
 				965F85D7BC609E4499DD528D /* index.html */,
 			);
 			path = TechnicalDocs;
-			sourceTree = "<group>";
-		};
-		965F8BFABA7A24C8610C6D8B /* Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				965F8C9798E940E064E8D4AE /* Properties.plist */,
-				965F87D13524A7E376D0EDDC /* DocumentIdentifier */,
-				965F8F36D473172852C9A19B /* BuildVersionHistory.plist */,
-			);
-			path = Metadata;
 			sourceTree = "<group>";
 		};
 		965F8DE26B1292AAB0D3346A /* DrivePartitions */ = {
@@ -312,6 +302,16 @@
 				965F8983AA820AB4453CE3A1 /* preview-micro.jpg */,
 			);
 			path = Partitions.numbers;
+			sourceTree = "<group>";
+		};
+		965F8EDF12BAA1BC3D7BBFF8 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				965F8DFE619E7D08FCEAED75 /* Properties.plist */,
+				965F83760155E37934F71DFD /* DocumentIdentifier */,
+				965F8702D92513CBEEE7A64F /* BuildVersionHistory.plist */,
+			);
+			path = Metadata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
