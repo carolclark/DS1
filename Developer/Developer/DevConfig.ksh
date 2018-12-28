@@ -124,11 +124,13 @@ function gitPrintConfig {
 
 	git config --global push.default simple			# push only the current branch
 
-	git config --global diff.tool opendiff
-
+	git config --global diff.tool p4merge
+	git config --global difftool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
 	git config --global difftool.prompt false
 
-	git config --global merge.tool opendiff
+	git config --global merge.tool p4merge
+	git config --global mergetool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
+	git config --global mergetool.prompt false
 
 	git config --global alias.lg "log --graph --pretty=format:'%C(red)%h%Creset %C(green)%cd%Creset %s %C(blue)%d%Creset %C(yellow)<%an>%Creset' --abbrev-commit --date=short"
 	git config --global alias.fetchup '!git remote update -p; git merge --ff-only @{u}'
