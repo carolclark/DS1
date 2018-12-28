@@ -1,63 +1,110 @@
 <component name="ProjectDictionaryState">
   <dictionary name="carolclark">
     <words>
+      <w>andale</w>
       <w>applescript</w>
       <w>arbonne</w>
+      <w>archivebrowser</w>
+      <w>assistive</w>
+      <w>attributesfile</w>
+      <w>autocrlf</w>
       <w>automator</w>
       <w>barebones</w>
+      <w>bashrc</w>
       <w>bbedit</w>
+      <w>bbprojectsettings</w>
+      <w>bluetooth</w>
       <w>bootable</w>
       <w>buildnum</w>
+      <w>capitan</w>
       <w>cblue</w>
       <w>ccdev</w>
       <w>cdocsrc</w>
       <w>cgreen</w>
       <w>checkmembership</w>
       <w>chrono</w>
+      <w>chronosync</w>
+      <w>chsh</w>
       <w>cidr</w>
+      <w>clicolor</w>
+      <w>cocoapods</w>
       <w>committers</w>
       <w>creset</w>
       <w>cvsroot</w>
+      <w>daringfireball</w>
       <w>deamons</w>
-     <w>doctype</w>
+      <w>derlien</w>
+      <w>docsets</w>
+      <w>doctype</w>
+      <w>econtechnologies</w>
+      <w>excludesfile</w>
       <w>filetypes</w>
       <w>fpath</w>
+      <w>frim</w>
+      <w>fullname</w>
       <w>funclist</w>
       <w>gdform</w>
+      <w>gemfile</w>
       <w>ginaclark</w>
       <w>ginfo</w>
+      <w>gitconfig</w>
       <w>gitcore</w>
       <w>gitflow</w>
       <w>gitmessage</w>
+      <w>gitx</w>
       <w>glbl</w>
       <w>glosslink</w>
+      <w>gmail</w>
       <w>godaddy</w>
+      <w>graphviz</w>
       <w>gravitar</w>
       <w>grymoire</w>
       <w>homebrew</w>
+      <w>hotkey</w>
       <w>howto</w>
       <w>hubring</w>
       <w>ide's</w>
       <w>imac</w>
+      <w>imap</w>
       <w>inreset</w>
       <w>intelli</w>
       <w>jvmoptions</w>
       <w>korn</w>
       <w>kshrc</w>
+      <w>launchctl</w>
+      <w>launchctld</w>
+      <w>launchd</w>
       <w>lauramartinez</w>
       <w>lauras</w>
+      <w>lifepillar</w>
       <w>lineno</w>
+      <w>logname</w>
       <w>logtag</w>
+      <w>lscolors</w>
+      <w>macos</w>
+      <w>macports</w>
       <w>makefiles</w>
       <w>mattwynne</w>
       <w>maxtor</w>
       <w>menlo</w>
       <w>metaspace</w>
       <w>mysqladmin</w>
+      <w>mysqld</w>
+      <w>nergetool</w>
+      <w>netflix</w>
       <w>offsite</w>
+      <w>organizationname</w>
+      <w>pandoc</w>
+      <w>pbxproj</w>
+      <w>pcode</w>
       <w>pnkn</w>
+      <w>podfile</w>
       <w>precompiles</w>
+      <w>prefabsoftware</w>
+      <w>preinstalled</w>
       <w>prsn</w>
+      <w>pythonpath</w>
+      <w>refman</w>
       <w>repos</w>
       <w>roadmap</w>
       <w>rsrc</w>
@@ -66,14 +113,19 @@
       <w>scpt</w>
       <w>scptd</w>
       <w>seagate</w>
+      <w>setenv</w>
       <w>shunit</w>
       <w>signin</w>
+      <w>smithmicro</w>
       <w>smtp</w>
       <w>snowcone</w>
+      <w>sosumi</w>
+      <w>sql's</w>
       <w>srcroot</w>
       <w>subissues</w>
       <w>subtask</w>
       <w>sudo</w>
+      <w>susumi</w>
       <w>svgw</w>
       <w>swimlane</w>
       <w>swimlanes</w>
@@ -82,6 +134,7 @@
       <w>tableholder</w>
       <w>tagname</w>
       <w>toolname</w>
+      <w>uibrowser</w>
       <w>uname</w>
       <w>uncategorized</w>
       <w>unittest</w>
@@ -92,6 +145,9 @@
       <w>vnbsp</w>
       <w>webformmailer</w>
       <w>webpages</w>
+      <w>whereis</w>
+      <w>xccheckout</w>
+      <w>xcuserdata</w>
       <w>youtrack</w>
     </words>
   </dictionary>
