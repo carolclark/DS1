@@ -49,10 +49,11 @@
 	<!-- @topicItem "MySQL" "#_MySQL" "0" "" -->
 	<!-- @topicItem "PaintCode" "#_PaintCode" "0" "" -->
 	<!-- @topicItem "Pandoc" "#_Pandoc" "0" "" -->
+	<!-- @topicItem "p4merge" "#_p4merge" "0" "" -->
 	<!-- @topicItem "Python" "#_Python" "0" "" -->
 	<!-- @topicItem "Reminders" "#_Reminders" "0" "" -->
-	<!-- @topicItem "Safari" "#_Safari" "0" "" -->
 <!-- @topicGroup "" "40" -->
+	<!-- @topicItem "Safari" "#_Safari" "0" "" -->
 	<!-- @topicItem "Server" "#_Server" "0" "" -->
 	<!-- @topicItem "Stickies" "#Stickies" "0" "" -->
 	<!-- @topicItem "StuffIt Expander" "#_StuffItExpander" "0" "" -->
@@ -61,6 +62,7 @@
 	<!-- @topicItem "Terminal" "#_Terminal" "0" "" -->
 	<!-- @topicItem "Transmit" "#_Transmit" "0" "" -->
 	<!-- @topicItem "UI Browser" "#UIBrowser" "0" "" -->
+<!-- @topicGroup "" "50" -->
 	<!-- @topicItem "Waffle" "#_Waffle" "0" "" -->
 	<!-- @topicItem "Xcode" "#_Xcode" "0" "" -->
 <!-- @topicSep -->
@@ -150,7 +152,7 @@
 			<li>Use Tab key to navigate Placeholders: Off</li>
 		</ul></li>
 		<li><strong>HTML Web Sites</strong> <ul>
-			<li>add site TechicalDocs<ul>
+			<li>add site TechnicalDocs<ul>
 				<li>Web server name: ~/Library/CCDev/Sites/TechnicalDocs/</li>
 				<li>Site path on server: ~carolclark/Library/CCDev/Sites/TechnicalDocs/</li>
 				<li>Default page name: Development.html</li>
@@ -522,6 +524,27 @@
 	<p><strong>Installation and Configuration</strong> installer provided</p>
 </div>
 
+<!-- @marker "p4merge" -->
+<h4 id='_p4merge'>p4merge</h4><div class='indent'>
+	<p class='blurb'>visual diff and merge tool</p>
+	<p><strong>command-line tool</strong> at /Applications/p4merge; 2018.1 for macos 9; downloaded from https://www.perforce.com/downloads/visual-merge-tool</p>
+	<p><strong>Critical Data</strong> </p>
+	<p><strong>Run</strong> command line: /Applications/p4merge.app/Contents/Resources/p4merge &lt;args&gt;</p>
+	<p><strong>Installation and Configuration</strong></p><ul>
+		<li>install app p4merge only to applications</li>
+		<li>Configuration<ul>
+			<li>git config --global diff.tool p4merge</li>
+			<li>git config --global difftool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge</li>
+			<li>git config --global difftool.prompt false</li>
+			<li>--</li>
+			<li>git config --global merge.tool p4merge</li>
+			<li>git config --global mergetool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge</li>
+			<li>git config --global nergetool.prompt false</li>
+		</ul></li>
+	</ul>
+	<p><strong>Customization &amp; Automation</strong></p>
+</div>
+
 <!-- @marker "Python" -->
 <h4 id='_Python'>Python</h4>
     <p class='blurb'>Python language support</p>
@@ -603,7 +626,7 @@
 			<li>Keyboard<ul>
 				<li>Keyboard<ul>
 					<li>Use all F1, F2 keys as standard function keys: On <ul>
-						<li class='blurb'>then press &lt;fn&gt; to perfom the special function on the key</li>
+						<li class='blurb'>then press &lt;fn&gt; to perform the special function on the key</li>
 					</ul></li>
 					<li>Show Keyboard and Character Viewer in menu bar: On</li>
 				</ul></li>
@@ -626,10 +649,10 @@
 			<li>Output: volume ~5%</li>
 			<li>Input: external microphone; input volume 100%</li>
 		</ul></li>
-		<li><strong>Network</strong>: Show Wi-Fi Status in munu bar: On</li>
+		<li><strong>Network</strong>: Show Wi-Fi Status in menu bar: On</li>
 		<li><strong>Sharing</strong>: File Sharing, Printer Sharing: On</li>
 		<li><strong>Users &amp; Groups</strong> Login Items: Mail, Calendar, ChronoSync Backgrounder, Activity Monitor (Hide); in Account Context Menu: set system shell to /bin/ksh</li>
-		<li><strong>Dictation &amp; Speech</strong>: Dictation: On; select external microphone; <span class='depr'>dictation key cosr6</span></li>
+		<li><strong>Dictation &amp; Speech</strong>: Dictation: On; select external microphone</li>
 		<li><strong>Date &amp; Time</strong><ul>
 			<li>Time Zone: select</li>
 			<li>Clock: Show date and time in menu bar</li>
@@ -677,8 +700,8 @@
                 <li>username: cand2524</li>
                 <li>clc gk2</li>
             </ul></li>
-            <li>remote: candcsoft/TechicalDocs</li>
-            <li>local: $CCDev/TechicalDocs</li>
+            <li>remote: candcsoft/TechnicalDocs</li>
+            <li>local: $CCDev/TechnicalDocs</li>
         </ul></li>
     </ul>
     <p><strong>Customization &amp; Automation</strong> </p>
