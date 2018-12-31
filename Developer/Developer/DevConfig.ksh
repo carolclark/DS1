@@ -139,6 +139,7 @@ function gitPrintConfig {
 #^	gitPrintExclude
 function gitPrintExclude {
 	print '.DS_Store'
+	print '*.orig'
 	print '*.bbprojectsettings'
 	print '*.xccheckout'
 	print '*.pyc'
