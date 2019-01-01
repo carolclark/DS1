@@ -190,14 +190,14 @@
 			<li>preview: <span class='mono'><span class="prompt">$</span> git difftool HEAD origin</span>; then:<ul>
 				<li>if indicated, handle some individual change groups first</li>
 				<li>fetch/merge	<span class='mono'>(&nbsp;<span class="prompt">$&nbsp;</span>
-					<span class="mono">git fetch [-v] origin [--dry-run]</span></span>&nbsp;)</li>
+					git fetch [-v] origin [--dry-run]; git merge --no-ff</span>)</li>
 			</ul></li><!-- end Preview -->
 			<li>to undo Merge if needed: <span class="mono"><span class="prompt">$ </span>git reflog</span>
 				to identify previous entry as target SHA-1;
 				<span class="mono"><span class="prompt">$ </span>git reset --merge &lt;target&gt;</span></li><!-- end undo-->
 		</ul></li><!-- end Merge-->
 		<li id="ws_push"><span class="step">Push:</span>  <span class="ital">push current local branch to its remote</span><ul>
-			<li>git push; if rejected: git fetch/<span class="step"><a href="#ws_merge">merge</a></span>; retry</li>
+			<li>fetch; [merge if changed]; push</li>
 		</ul></li><!-- end Push -->
 	</ul><!-- end Workflow Steps -->
 	<h5>Processes</h5>
@@ -218,7 +218,9 @@
 	<ul>
 		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
 			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
-				<span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>; test</li>
+				<span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>; test;
+				merge in branch; test; <span class="step"><a href="#ws_push">push</a> master</span>
+			</li>
 		</ul></li>
 	</ul>
 
@@ -254,13 +256,13 @@
 	<div class='indent'>
 		<div class="wf-publish">
 			<h6>Publish</h6><ul>
-				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
-				<li>show commits to be published:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
-				<li>show status of all active branches:&nbsp;&nbsp;<span class='mono'><span class="prompt"> $ </span>git branch -vv</span></li>
 				<li>check for stashes, todo's; if [ incomplete commit | stashes | todo's | settings to export ]: address as indicated</li>
+				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
+				<li>show status of all active branches:&nbsp;&nbsp;<span class='mono'><span class="prompt"> $ </span>git branch -vv</span></li>
+				<li>check commits to be published:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
 				<li><span class="step"><a href="#ws_MergeBranch">Merge Branch</a></span></li>
 				<li>verify complete commit:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
-				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> master</li>
+				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> master; compare origin; verify match</li>
 			</ul>
 		</div><!-- wf-publish -->
 		<div class="wf-triggerReview">
