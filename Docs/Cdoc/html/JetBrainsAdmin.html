@@ -68,19 +68,13 @@
 
 <h2 class="promote" id="Overview_">Development Overview</h2>
 <h4 id="Agile_">Agile Development</h4><ul>
-	<li>We use test-first agile development with BDD.<ul>
-		<li>We are attempting to have our Agile boards provide for Behavior Driven Development.</li>
-		<li>Sprints have time estimates, not deadlines.
-			Estimates are established based on card estimates, which are adjusted as indicated.<ul>
-			<li>We expect to learn to make better estimates of time required as we use this technique.</li>
-		</ul></li>
-	</ul></li>
+	<li>We use test-first agile development with Kanban and BDD.</li>
 	<li>YouTrack's 'fixed in build' and 'fix version' fields:<ul>
-		<li>associate bug issues with the build and the release version for which they were fixed</li>
+		<li>associate bug issues with the build and the release version in which they were fixed</li>
 		<li>We associate the version number when the product is ready for 'release',
 			as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-			on which our <a href="Git.html#Branches_Releases_">syntactic versioning plan</a> is based.</li>
-		<li>'fix version' fields use Sprint IDs, eg. 18.2.1</li>
+			on which our <a href="Git.html#ReleaseBranches_">semantic versioning plan</a> is based.</li>
+		<li>'fix version' follows semantic versioning, eg. 18.2.1</li>
 		<li>release version numbers are assigned on release version completion (ch_releaseVersions)</li>
 	</ul></li>
 	<li>We do not do deadlines.</li>
@@ -134,8 +128,10 @@
 			<li>has some features for working with C++ and Swift together, including porting C++ to Swift</li>
 			<li>apparently, many developers are moving directly to Swift from C++, skipping Objective-C</li>
 		</ul></li>
-		<li>other languages/IDEs<ul>
-			<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
+		<li>RubyMine: test websites - 
+			see "Cucumber &amp; Cheese: A Testers Workshop", Jeff Morgan; we have on Kindle</li>
+		<li>other language/IDE's and tasks:<ul>
+  			<li class="blurb">many of these are also available, at least at some level, from IntelliJ IDEA</li>
 			<li>PHPStorm for Website indices; DataGrip for internal databases; PyCharm with Django; MPS for DSL development</li>
 			<li>Kotlin for TeamCity scripting; javascript for Workflows</li>
 		</ul></li>
@@ -144,18 +140,20 @@
 			<li>YouTrack: issue tracking; agile development</li>
 			<li>TeamCity (previously in use): Continuous Integration</li>
 			<li>UpSource: code review</li>
-		<li>HubRing to tie it all together</li>
+			<li>HubRing to tie it all together</li>
 		</ul>
 		<p class="sl6">We expect to use:</p><ul class="sl6">
 			<li>The complete team tool suite</li>
 			<li>IntelliJ IDEA: Java for kid coding; Kotlin for TeamCity scripting; Bash for shell utilities;
 				javascript for workflows and new documentation process;	by default for other languages</li>
-			<li>AppCode IDE for Cocoa projects, possibly moving to CLion/Swift</li>
+			<li>AppCode IDE for Cocoa projects, possibly moving to CLion/Swift<ul>
+				<li>Sketch tool is routinely used as a UI development tool</li>
+			</ul></li>
 			<li>WebStorm for web development</li>
 		</ul>
 		<p>We have an All-Products license for JetBrains IDEs</p>
 
-		<p>See also <a href="JetBrainsAdmin.html#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
+		<p>See also <a href="#JetBrainsAdoption_">JetBrains Adoption</a> for expected costs and motivations.</p>
 
 <!-- @marker "Team Tools" -->
 <h2 class="promote">Team Tools</h2>
@@ -429,15 +427,14 @@
 			</ul></li>
 		</ul></li>
 		<li>Configure Agile Boards<ul>
-			<li>Type: Scrum Board</li>
+			<li>Type: Kanban Board</li>
 			<li>General<ul>
 				<li>name: &lt;ProjectID&gt;; search: <em>savedSearch</em></li>
 				<li>add project(s)</li>
 				<li>can view and use board: &lt;repoName&gt; Team</li>
 				<li>can edit board settings: Owner</li>
-				<li>Sprints: enabled</li>
+				<li>Sprints: disabled</li>
 				<li>Board Behavior<ul>
-					<li>link sprints to values for Sprints</li>
 					<li>select appropriate savedSearch</li>
 					<li>Ignore subtasks of existing cards: yes</li>
 				</ul></li>
@@ -464,7 +461,6 @@
 				<li>show swimlane for Uncategorized cards at bottom of Board: yes</li>
 			</ul></li>
 			<li>Card<ul>
-				<li>Estimation field: StoryPoints</li>
 				<li>Default value for type: Task</li>
 				<li>Color scheme: Type</li>
 				<li>Show colors for other custom types: Yes</li>
@@ -505,6 +501,7 @@
 			Issue Navigation</a></li>
 	</ul>
 
+<div class="depr">
 	<!-- @marker "*Time Tracking" -->
 	<h4 class="nyi" id="TimeTracking_">*Time Tracking</h4><ul class="indent2">
 		<li>Time Tracking : Enable; select default fields (ch_TimeManagement)</li>
@@ -518,6 +515,7 @@
 			<li>see Issue Navigation</li>
 		</ul></li>
 	</ul>
+</div>
 
 	<!-- @marker "Task Management" -->
 	<h4 id="TaskManagement_">Task Management</h4><ul>
@@ -629,7 +627,7 @@
 				<tr class="nyi"><td>Usability</td><td>pink3</td><td></td><td></td></tr>
 				<tr class="nyi"><td>Performance</td><td>pink3</td><td></td><td></td></tr>
 				<!-- ch_TimeManagement -->
-				<tr class="subhead"><td colspan="4">Time Management</td> </tr>
+				<tr class="subhead"><td colspan="4">Time Management (Deprecated)</td> </tr>
 				<tr class="nyi"><td>StoryPoints</td> <td>orange2</td> <td>size estimate for Story</td>
 					<td>values 0 1 2 3 5 8 13 21 34 55 89 144</td></tr>
 				<tr class="nyi"><td>*Estimation</td><td>blue1</td><td>time estimation; units w d h m</td>
@@ -649,7 +647,7 @@
 				<!-- ch_BacklogStates -->
 				<tr class="nyi"><td>Submit</td><td>incoming items</td>
 					<td>Evaluate for development. Accept; else resolve using a 'Resolved' state with comment</td></tr>
-				<tr class="nyi"><td>Accept</td><td>accepted for development</td><td>assign to sprint when indicated</td></tr>
+				<tr class="nyi"><td>Accept</td><td>accepted for development</td><td></td></tr>
 				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
 				<tr class="nyi"><td>Select</td><td>selected for development</td>
 					<td><ul>
@@ -690,15 +688,13 @@
 	<h5 id="OtherAttachedFields_">Other Attached Fields</h5>
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr class="nyi"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
+		<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
 			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td>
 		</tr>
-		<tr class="nyi"><td>Sprints</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td><td>none</td><td>yy.q.n; q=quarter; n=# sprint started in q</td>
-			<td></td></tr>
 		<tr class="nyi"><td>*FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
 			<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
 		<tr class="nyi"><td>*FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
-			<td>fix for, fixed in, fix sprint, sprint</td><td>Sprint when fixed</td>
+			<td>fix for, fixed in, fix version, version</td><td>Version when fixed</td>
 			<td></td></tr>
 		<!-- ch_releaseVersions -->
 		<tr class="nyi"><td>*ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release, version</td><td>prefix numeric string with 'v'</td>
