@@ -85,7 +85,7 @@
 <div class="paragraphs">
 	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues.
 	YouTrack Epic issues with swimlanes group other issues into larger goals.</p>
-	<p>Tasks are a fundamental element in our workflow. AppCode, our primary IDE, supports Tasks, each normally associated with a YouTrack task.</p>
+	<p>Tasks are a fundamental element in our workflow. IntelliJ, our primary collection of IDEs, supports Tasks, each normally associated with a YouTrack task.</p>
 	<p>YouTrack Agile boards, one each for backlog refinement and for development, help us to organize our work on epics, features and tasks.</p>
 	<p>AppCode projects are dependent on Xcode's project format, so projects in Objective-C/C++ are first created in Xcode.</p>
 </div>
@@ -97,9 +97,6 @@
 <div class="paragraphs">
 	<p>Feature branches are used to develop features for a future release.
 		A feature branch is created from master, and merged back, if successful, to master.</p>
-	<p>In addition to standard feature branches, we also have some branches identified as "ongoing".
-		Currently, there are such branches for documentation and AppCode configuration in each repository,<br />
-		and an Accessor branch for Slate editing.</p>
 </div>
 <div class="paragraphs"> <p><a href="#WorkflowIntelliJ">Workflow: IntelliJ</a> describes our prodecures for handling of feature branches.</p>
 </div>
@@ -110,19 +107,17 @@
 
 <!-- @marker "Release Branches" -->
 <h4 id='ReleaseBranches_'>Release Branches</h4>
-<p><strong>Naming Convention</strong>: v&lt;versionNum&gt;, using semantic versioning</p>
+<p id="Branches_Versions_"><strong>Naming Convention</strong>: v&lt;versionNum&gt;, using semantic versioning</p>
 	<div class="paragraphs">
 		<p>When master is ready for a release, we assign a version number and create a release branch with name 'release-&lt;versionNum&gt;'.
 			The separate release branch supports version updating and minor bug fixes on the release branch,
 			while allowing work to proceed on master and feature branches.</p>
-		<p>As soon as the branch has been created, we update ("bump") the version number. Bug-fix commits may also be added.</p>
+		<p>As soon as the release branch has been created, we update ("bump") the version number.
+			Bug-fix commits may also be added.</p>
 		<p>Work from the release branch is merged into master when the release branch is tagged and closed.
 			Bug fixes may be incorporated sooner as indicated.</p>
-	</div>
-
-	<div class="paragraphs">
 		<p>Release branches are intended to isolate their work from the rest of the project workflow.
-		There are no updates or merges with other repository branches.</p>
+			There are no updates or merges with other repository branches.</p>
 	</div>
 
 <h5>Implementation</h5><ul>
@@ -130,7 +125,8 @@
 		we assign a version number and create a release branch with name 'release-&lt;versionNum&gt;'.<ul>
 		<li>The separate release branch supports version updating and minor bug fixes on the release branch,<br />
 				while allowing work to proceed on master and feature branches.</li></ul></li>
-	<li>As soon as the branch has been created, we update ("bump") the version number. Bug-fix commits may also be added.</li>
+	<li>As soon as the release branch has been created, we update ("bump") the version number.
+		Bug-fix commits may also be added.</li>
 	<li>Work from the release branch is merged into master when the release branch is tagged and closed.
 		Bug fixes may be incorporated sooner as indicated.</li>
 	<li>Release branches are intended to isolate their work from the rest of the project workflow.
