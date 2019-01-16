@@ -370,24 +370,29 @@
 <!-- @marker "YouTrack: Add Project" -->
 <h4 id="YT_AddProject_">YT: Add Project</h4><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
+	<li>login as admin</li>
 	<li>HubRing as admin:<ul>
-		<li>YouTrack: Create New Project...<ul>
-			<li>identify initial project info; Create Project<ul>
-				<li>Settings: project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Scrum</li>
+		<li>Create Project<ul>
+			<li>identify initial project info:<ul>
+				<li>Settings: project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Kanban</li>
 				<li>Starting number if applicable</li>
 			</ul></li>
-			<li>Project Dialog: set project name, ID; create project</li>
-			<li>Team: select member(s)s for project team</li>
-			<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
-			<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
+			<li>New Project...<ul>
+				<li>Project Dialog: set project name, ID; create project</li>
+			</ul></li>
 		</ul></li>
+		<li>Team: select member(s)s for project team</li>
+		<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
+		<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
 	</ul></li>
 </ul>
 
 <!-- @marker "YT: Integrate Project with VCS " -->
 <h4 id="YT_IntegrateProject_VCS_">YT: Integrate Project with VCS</h4><ul>
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
-	<li>YouTrack: as admin:<ul>
+	<li>login as project owner</li>
+	<li>YouTrack as project owner:<ul>
+		<li>Project Page: Add Issue Tracker Service</li>
 		<li>Nutty menu : Integrations : VCS Integrations<ul>
 			<li>New VCS Integration<ul>
 				<li>connect to GitHub repo</li>
