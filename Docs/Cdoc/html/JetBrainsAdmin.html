@@ -371,27 +371,34 @@
 <h4 id="YT_AddProject_">YT: Add Project</h4><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
 	<li>login as admin</li>
+	<li>if necessary, <a href="#Uninstall_">Uninstall</a> any previous attempts</li>
 	<li>HubRing as admin:<ul>
-		<li>Create Project<ul>
+		<li>Project<ul>
 			<li>identify initial project info:<ul>
 				<li>Settings: project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Kanban</li>
-				<li>Starting number if applicable</li>
+				<li>Starting issue number if applicable</li>
 			</ul></li>
 			<li>New Project...<ul>
 				<li>Project Dialog: set project name, ID; create project</li>
 			</ul></li>
+			<li>Teams<ul>
+				<li>&lt;Project&gt; Team<ul>
+					<li>select member(s) for project team</li>
+					<li>&lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
+					<li>Settings: set project owner to intended ProjectAdmin</li>
+				</ul></li>
+				<li>add Team Reporters: Registered Users</li>
+			</ul></li>
+			<li>Add Issue Tracker Service; Project Type: Kanban</li>
 		</ul></li>
-		<li>Team: select member(s)s for project team</li>
-		<li>User : &lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
-		<li>&lt;Project&gt; Settings: set project owner to intended ProjectAdmin</li>
 	</ul></li>
 </ul>
 
 <!-- @marker "YT: Integrate Project with VCS " -->
 <h4 id="YT_IntegrateProject_VCS_">YT: Integrate Project with VCS</h4><ul>
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
-	<li>login as project owner</li>
-	<li>YouTrack as project owner:<ul>
+	<li>login as admin</li>
+	<li>YouTrack as admin: (fuzzy)<ul>
 		<li>Project Page: Add Issue Tracker Service</li>
 		<li>Nutty menu : Integrations : VCS Integrations<ul>
 			<li>New VCS Integration<ul>
@@ -399,21 +406,20 @@
 				<li>click link to generate Auth token; copy</li>
 			</ul></li>
 		</ul></li>
-		<li>set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
+		<li>?set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
+		<li>Saved Search: if searches for this project ID exist, delete them</li>
 		<li>visible: &lt;proj&gt; Team, Reporters</li>
 	</ul></li>
 </ul>
 
 <!-- @marker "YT: Add Custom Tags" -->
 <h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
-	<li>'waiting' (pink4): development is waiting for something</li>
+	<li>ensure tag 'waiting' (pink4): development is waiting for something</li>
 </ul>
 
 <!-- @marker "YT: Configure Initial Project" -->
 <h4 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h4><ul>
-	<li>IF this is the first project, provide default configuration<ul>
-		<li>configure as shown in <a href="#OurYouTrackProjectSettings_">Our YouTrack Project Settings</a></li>
-	</ul></li>
+	<li>validate/match configuration as shown in <a href="#OurYouTrackProjectSettings_">Our YouTrack Project Settings</a></li>
 </ul>
 
 <!-- @marker "Customize Agile Boards" -->
@@ -422,15 +428,15 @@
 	<li>as &lt;projectOwner&gt;:<ul>
 		<li>Add Agile Board</li>
 		<li>process parameters<ul>
-			<li><em>board: </em>&lt;ProjectID&gt;_Roadmap; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: -{Board &lt;ProjectID&gt;_Roadmap} #Unresolved</li>
-			<li><em>board: </em>&lt;ProjectID&gt;-develop; <em>savedSearch: </em>project: &lt;ProjectName&gt; has: {Board &lt;ProjectName&gt;-develop} #Unresolved -Epic</li>
+			<li><em>board: </em>&lt;ProjectID&gt;_Roadmap; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: {Board &lt;ProjectID&gt;_Roadmap} #Unresolved -Epic</li>
+			<li><em>board: </em>&lt;ProjectID&gt;-develop; <em>savedSearch: </em>project: &lt;ProjectName&gt; has: {Board &lt;ProjectName&gt;-develop} #Unresolved -Epic -Story</li>
 		</ul></li>
 		<li>create new Agile Boards:<ul>
-			<li>for each parameter set<ul>
+			<li>for each of above parameter sets:<ul>
 				<li>add savedSearches<ul>
 				</ul></li>
 			</ul></li>
-		</ul></li>
+		</ul></li><!-- create boards -->
 		<li>Configure Agile Boards<ul>
 			<li>Type: Kanban Board</li>
 			<li>General<ul>
@@ -483,7 +489,6 @@
 <!-- @topicList "Extend YouTrack" "ExtendYouTrack_" -->
 	<!-- @topicItem "YouTrack Integration Plugin" "#YouTrackIntegrationPlugin_" "0" "required for all plugins" -->
 	<!-- @topicItem "Issue Navigation" "#IssueNavigation_" "0" "" -->
-	<!-- @topicItem "Time Tracking Extension" "#TimeTrackingExt_" "0" "" -->
 	<!-- @topicItem "Task Management" "#TaskManagement_" "0" "" -->
 	<!-- @topicItem "Tweaks Extension" "#TweaksExtension_" "0" "" -->
 	<!-- @topicItem "RSS Feeds" "#RSSFeeds_" "0" "" -->
@@ -506,22 +511,6 @@
 			Issue Navigation</a></li>
 	</ul>
 
-<div class="depr">
-	<!-- @marker "*Time Tracking" -->
-	<h4 class="nyi" id="TimeTracking_">*Time Tracking</h4><ul class="indent2">
-		<li>Time Tracking : Enable; select default fields (ch_TimeManagement)</li>
-		<li>length of day: 5h</li>
-		<li>work types: Manage Investigate Develop Test Review Document</li>
-	</ul>
-
-	<!-- @marker "Time Tracking Extension" -->
-	<h4 id="TimeTrackingExt_" class="dq">Time Tracking Extension</h4><ul>
-		<li><a href="https://www.jetbrains.com/help/youtrack/standalone/2017.1/Integration-with-IDE.html">JetBrains IDE extensions</a><ul>
-			<li>see Issue Navigation</li>
-		</ul></li>
-	</ul>
-</div>
-
 	<!-- @marker "Task Management" -->
 	<h4 id="TaskManagement_">Task Management</h4><ul>
 		<li>see https://www.jetbrains.com/help/youtrack/standalone/Task-Management-Plugin.html</li>
@@ -535,8 +524,8 @@
 	</ul>
 
 	<!-- @marker "Tweaks Extension" -->
-	<h4 id="TweaksExtension_" class="dq">Tweaks Extension</h4><ul>
-		<li>requires Chrome; has some useful-looking features</li>
+	<h4 id="TweaksExtension_">Tweaks Extension</h4><ul>
+		<li>requires Chrome; has some useful-looking features, including adding limited data to cards at size small</li>
 		<li>see <a href="https://www.jetbrains.com/help/youtrack/standalone/YouTrack-Tweaks-Extension.html">
 			YouTrack Tweaks Extension</a>
 		</li></ul>
@@ -552,7 +541,6 @@
 		<!-- @topicItem "Type" "#Type_" "1" "" -->
 		<!-- @topicItem "State" "#State_" "1" "" -->
 		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "1" "" -->
-		<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "1" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "YT: General Settings" -->
@@ -576,7 +564,6 @@
 	<!-- @topicItem "Type" "#Type_" "0" "" -->
 	<!-- @topicItem "State" "#State_" "0" "" -->
 	<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "0" "" -->
-	<!-- @topicItem "Other Available Fields" "#OtherAvailableFields_" "0" "" -->
 <!-- @/topicList -->
 <h4 id="CustomFields">Custom Fields</h4><div class="info">
 	<!-- @marker "Priority" -->
@@ -597,7 +584,7 @@
 	<h5 id="Type_">Type</h5>
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum single</td><td>none</td><td></td>
+		<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum[1]</td><td>none</td><td></td>
 			<td><table>
 				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
 				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
@@ -611,7 +598,6 @@
 							and no further work is expected</li>
 					</ul>
 					</td></tr>
-				<!-- ch_UserStory2Story -->
 				<tr><td>Story</td><td>orange3</td><td>'Story' represents a
 					goal element for planning<br />serves as swimlane on a -develop Board<br />
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
@@ -631,12 +617,6 @@
 				<tr><td>Exception</td><td>pink3</td><td></td><td></td></tr>
 				<tr><td>Usability</td><td>pink3</td><td></td><td></td></tr>
 				<tr><td>Performance</td><td>pink3</td><td></td><td></td></tr>
-				<!-- ch_TimeManagement -->
-				<tr class="subhead"><td colspan="4">Time Management (Deprecated)</td>
-					<td>values 0 1 2 3 5 8 13 21 34 55 89 144</td></tr>
-				<tr><td>*Estimation</td><td>blue1</td><td>time estimation; units w d h m</td>
-					<td rowspan="2">fields added when Time Tracking is enabled</td></tr>
-				<tr><td>*Spent time</td><td>blue2</td><td>actual time spent, from work items reported</td></tr>
 			</table></td></tr>
 	</table>
 
@@ -647,34 +627,34 @@
 		<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
 			<td><table>
 				<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
-				<tr class="subhead"><td colspan="3">Backlog</td></tr>
 				<!-- ch_BacklogStates -->
+				<tr class="subhead"><td colspan="3">Backlog</td></tr>
 				<tr><td>Submit</td><td>incoming items</td>
-					<td>Evaluate for development. Accept; else resolve using a 'Resolved' state with comment</td></tr>
-				<tr><td>Accept</td><td>accepted for development</td><td>assign to version when indicated</td></tr>
+					<td>Evaluate for development. Accept; else set a 'Resolved' state with comment</td></tr>
+				<tr><td>Accept</td><td>accepted for development</td><td></td></tr>
 				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
 				<tr><td>Select</td><td>selected for development</td>
 					<td><ul>
-						<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, or a Task</li>
-						<li>move to Story or Specify as indicated</li>
+						<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, a Task, or a bug</li>
+						<li>move to Story or Ticket as indicated</li>
 					</ul></td></tr>
 				<tr><td>Story</td>
 					<td>State "Story" anchors a story for development.
 						<br />serves as swimlane on a -develop Board<br />
 						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 							orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
-					<td>does not progress through states during development<br />
-						instead, it generates cards to Specify that do progress to the next column<br />
-						when all subitems completed, check to see if Story itself is complete<br />
-						when entire Story is complete, move to Review for verification
+						<td>generates Tickets that move through the rest of the board<br />
+							Tickets may have State Feature, Scenario, Task, or Bug<br />
+							If all Story Tickets are complete, add new stories as indicated or
+							move to Review for verification.
 					</td></tr>
-				<tr><td>Specify</td><td>specify what is to be done for this work item</td>
-					<td>includes Types Feature, Scenario, Task</td></tr>
+				<tr><td>Ticket</td><td>specification for what is to be done for this work item</td>
+					<td>Feature, Scenario, Task, and Bug share this column<br />
+						move to Open when ready</td></tr>
 				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
-				<tr><td>Ready</td><td>column in Roadmap; backlog for development</td><td>estimation required to enter this state</td></tr>
-				<tr class="subhead"><td colspan="3">Development Swimlanes use Story issues</td></tr>
-				<tr><td>Open</td><td>items to be completed for this Sprint</td></tr>
-				<tr><td>Develop</td><td>develop as specified</td><td>,</td></tr>
+				<tr><td>Open</td><td>last column in _Roadmap; first column in -develop</td><td></td></tr>
+				<tr class="subhead"><td colspan="3"></td></tr>
+				<tr><td>Develop</td><td>develop as specified</td><td></td></tr>
 				<tr><td>Review</td><td>try to come at this work a fresh perspective</td></tr>
 				<tr><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
 				<!-- ch_UnfixedResolutions -->
@@ -695,23 +675,14 @@
 		<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
 			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td>
 		</tr>
-		<tr><td>*FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
-			<td>fix for, fixed in, build, fix build</td><td>,</td><td>associated by TeamCity with build number</td></tr>
-		<tr><td>*FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
+		<tr><td>FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
+			<td>fix for, fixed in, build, fix build</td><td></td><td>associated by TeamCity with build number</td></tr>
+		<tr><td>FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
 			<td>fix for, fixed in, fix version, version</td><td>Version when fixed</td>
 			<td></td></tr>
-		<!-- ch_releaseVersions -->
-		<tr><td>*ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release, version</td><td>prefix numeric string with 'v'</td>
+		<tr><td>ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
 			<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 				on which our versioning plan is based</td></tr>
-	</table>
-	<!-- @marker "Other Available Fields" -->
-	<h5 id="OtherAvailableFields_">Other Available Fields</h5>
-	<table>
-		<tr class="smallHeader"><th colspan="7">Other Available Fields: can be attached if needed</th></tr>
-		<tr><td>DueDate</td> <td>N/A</td> <td>No Due Date</td> <td>date</td> <td>due</td> <td></td> <td></td></tr>
-		<tr class="nyi"><td>Subsystem</td> <td>N/A</td> <td>No Subsystem</td> <td>owned</td> <td>none</td> <td>none</td>
-			<td>type "owned" links to developer responsible for this Subsystem</td></tr>
 	</table>
 </div>
 
@@ -723,9 +694,7 @@
 </div>
 
 <div class="indent">
-	<h5 id="Workflows_">Workflows</h5><ul>
-	<li>detach workflow Scrum_2</li>
-</ul>
+	<h5 id="Workflows_">Workflows</h5>
 </div>
 
 <!-- @marker "Issue Link Types" -->
