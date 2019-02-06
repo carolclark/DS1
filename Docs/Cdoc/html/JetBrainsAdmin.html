@@ -93,7 +93,8 @@
 		</ul></li>
 		<li>Review<ul>
 			<li>Since we cannot pass Review to another developer, we review our own work.
-				We do try to come at each review with a fresh perspective, including some delay after completion.</li>
+				We do try to come at each review with a fresh perspective,
+				including some delay and some work on other issues after completion.</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -398,18 +399,20 @@
 <h4 id="YT_IntegrateProject_VCS_">YT: Integrate Project with VCS</h4><ul>
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
 	<li>login as admin</li>
-	<li>YouTrack as admin: (fuzzy)<ul>
+	<li>YouTrack as admin:<ul>
 		<li>Project Page: Add Issue Tracker Service</li>
 		<li>Nutty menu : Integrations : VCS Integrations<ul>
 			<li>New VCS Integration<ul>
 				<li>connect to GitHub repo</li>
 				<li>click link to generate Auth token; copy</li>
+				<li>in YouTrack, paste into OAuth field</li>
 			</ul></li>
 		</ul></li>
-		<li>?set &lt;repoName&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
+		<li>set &lt;repo&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
 		<li>Saved Search: if searches for this project ID exist, delete them</li>
 		<li>visible: &lt;proj&gt; Team, Reporters</li>
 	</ul></li>
+	<li>login as Project Owner</li>
 </ul>
 
 <!-- @marker "YT: Add Custom Tags" -->
@@ -539,7 +542,7 @@
 	<!-- @topicItem "YT: Custom Fields" "#YT_CustomFields_" "0" "" -->
 		<!-- @topicItem "Priority" "#Priority_" "1" "" -->
 		<!-- @topicItem "Type" "#Type_" "1" "" -->
-		<!-- @topicItem "State" "#State_" "1" "" -->
+		<!-- @topicItem "Stage" "#Stage_" "1" "" -->
 		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "1" "" -->
 <!-- @/topicList -->
 
@@ -562,7 +565,8 @@
 <!-- @topicList "YT: Custom Fields" "YT_CustomFields_" -->
 	<!-- @topicItem "Priority" "#Priority_" "0" "" -->
 	<!-- @topicItem "Type" "#Type_" "0" "" -->
-	<!-- @topicItem "State" "#State_" "0" "" -->
+	<!-- @topicItem "KanbanState" "#KanbanState_" "0" "" -->
+	<!-- @topicItem "Stage" "#Stage_" "0" "" -->
 	<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "0" "" -->
 <!-- @/topicList -->
 <h4 id="CustomFields">Custom Fields</h4><div class="info">
@@ -602,35 +606,38 @@
 					goal element for planning<br />serves as swimlane on a -develop Board<br />
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
-				<tr class="subhead"><td colspan="4">Work Issues</td></tr>
-				<!-- ch_addFeature+Scenario -->
-				<tr><td>Feature</td><td>blue5</td><td>A BDD feature. Features are orthogonal to Stories;<br />
-					Stories are a planning tool, while Features are about implementation organization.</td>
-					<td rowspan="3">These issue types share a column on the Agile Board.</td></tr>
-				<tr><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
-				<tr><td>Task</td><td>brown3</td><td>A task. May be associated with a Feature or Scenario,
-					or directly with a Story.</td></tr>
-				<!-- ch_BugClassification -->
-				<tr class="subhead"><td colspan="4">Bug Classification</td></tr>
-				<tr><td>Bug</td><td>pink3</td><td></td><td></td></tr>
-				<tr><td>Cosmetic</td><td>pink3</td><td></td><td></td></tr>
-				<tr><td>Exception</td><td>pink3</td><td></td><td></td></tr>
-				<tr><td>Usability</td><td>pink3</td><td></td><td></td></tr>
-				<tr><td>Performance</td><td>pink3</td><td></td><td></td></tr>
+				<tr class="subhead"><td colspan="4">Tickets</td></tr>
+					<tr><td>Feature</td><td>blue5</td><td>A BDD feature. Features are orthogonal to Stories;<br />
+						Stories are a planning tool, while Features are about implementation organization.</td>
+						<td rowspan="3">These issue types share a column on the Agile Board.</td></tr>
+					<tr><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
+					<tr><td>Task</td><td>brown3</td><td>A task. May be associated with a Feature or Scenario,
+						or directly with a Story.</td></tr>
+					<tr><td>Bug</td><td>pink3</td><td></td><td>Bug Classifications:
+						Cosmetic, Exception, Usability, Performance, Bug</td></tr>
 			</table></td></tr>
 	</table>
 
-	<!-- @marker "State" -->
-	<h5 id="State_">State</h5>
+	<!-- @marker "KanbanState" -->
+	<h5 id="KanbanState_">KanbanState</h5>
+	<table>
+		<tr class="smallHeader"><th>Name</th><th>Color</th><th>Description</th><th>Transition</th></tr>
+		<tr><td>KanbanBlocked</td><td>Project:dark</td><td>ticket is not ready to pull</td>
+			<td>If attempt is made to move card, it returns to its original KanbanState and position</td></tr>
+		<tr><td>KanbanReady</td><td>Project:light</td><td>ticket is ready to pull</td>
+			<td>After card is moved, its Kanban State is returned to blocked</td></tr>
+	</table>
+
+	<!-- @marker "Stage" -->
+	<h5 id="Stage_">Stage</h5>
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>State</td><td>Submit</td><td>N/A</td><td>state</td><td>none</td><td>shown as columns on Agile Boards</td>
+		<tr><td>Stage</td><td>Submit</td><td>N/A</td><td>Stage</td><td>none</td><td>shown as columns on Agile Boards</td>
 			<td><table>
-				<tr><th>State Name</th><th>Description</th><th>Transition</th></tr>
-				<!-- ch_BacklogStates -->
+				<tr><th>Stage Name</th><th>Description</th><th>Transition</th></tr>
 				<tr class="subhead"><td colspan="3">Backlog</td></tr>
 				<tr><td>Submit</td><td>incoming items</td>
-					<td>Evaluate for development. Accept; else set a 'Resolved' state with comment</td></tr>
+					<td>Evaluate for development. Accept; else set a 'Resolved' State with comment</td></tr>
 				<tr><td>Accept</td><td>accepted for development</td><td></td></tr>
 				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
 				<tr><td>Select</td><td>selected for development</td>
@@ -639,12 +646,12 @@
 						<li>move to Story or Ticket as indicated</li>
 					</ul></td></tr>
 				<tr><td>Story</td>
-					<td>State "Story" anchors a story for development.
+					<td>Stage "Story" anchors a story for development.
 						<br />serves as swimlane on a -develop Board<br />
 						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 							orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
 						<td>generates Tickets that move through the rest of the board<br />
-							Tickets may have State Feature, Scenario, Task, or Bug<br />
+							Tickets may have Stage Feature, Scenario, Task, or Bug<br />
 							If all Story Tickets are complete, add new stories as indicated or
 							move to Review for verification.
 					</td></tr>
@@ -694,7 +701,14 @@
 </div>
 
 <div class="indent">
-	<h5 id="Workflows_">Workflows</h5>
+	<h5 id="Workflows_">Workflows</h5><ul>
+		<li>When a Kanban card is moved from one Stage to the next:<ul>
+			<li>If the card's Kanban State is 'Ready to pull',
+				the card takes its new position and it's Kanban State is set back to Blocked.</li>
+			<li>Else if the card's Kanban State 'Blocked', the move is blocked.
+				The card returns to Kanban State 'Blocked', and a message is displayed.</li>
+		</ul></li>
+	</ul>
 </div>
 
 <!-- @marker "Issue Link Types" -->
@@ -1181,6 +1195,6 @@
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 <hr class='footer' />
-<p class='footer'>Copyright (c) 2017-18 by C &amp; C Software</p>
+<p class='footer'>Copyright (c) 2017-19 by C &amp; C Software</p>
 </body>
 </html>
