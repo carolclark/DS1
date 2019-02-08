@@ -427,8 +427,9 @@
 
 <!-- @marker "Customize Agile Boards" -->
 <h4 id="YT_CustomizeAgileBoards_">YT: Customize Agile Boards</h4><ul>
-	<li class="blurb">Boards as-is will not work, due primarily to field changes</li>
-	<li>as &lt;projectOwner&gt;:<ul>
+	<li class="blurb">Note: NEVER delete the only agile board. YouTrack cannot (2/7/19)
+		then add a board</li>
+	<li>as: <strong>&lt;ProjectOwner&gt;</strong><ul>
 		<li>Add Agile Board</li>
 		<li>process parameters<ul>
 			<li><em>board: </em>&lt;ProjectID&gt;_Roadmap; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: {Board &lt;ProjectID&gt;_Roadmap} #Unresolved -Epic</li>
@@ -459,7 +460,7 @@
 						<li>Select</li>
 						<li>Story</li>
 						<li>Specify</li>
-						<li>Ready</li>
+						<li>Open</li>
 					</ul></li>
 					<li>-develop columns<ul>
 						<li>Open</li>
@@ -548,11 +549,13 @@
 
 <!-- @marker "YT: General Settings" -->
 <h4 id="YT_GeneralSettings_">YT: General Settings</h4><ul>
-	<li>Name: usually repo name</li>
-	<li>ID: must be unique</li>
-	<li>Description</li>
-	<li>Project lead</li>
-	<li>From e-mail: YouTrack</li>
+	<li>as <strong>admin</strong>:<ul>
+		<li>Name: usually repo name</li>
+		<li>ID: must be unique</li>
+		<li>Description</li>
+		<li>Project lead</li>
+		<li>From e-mail: YouTrack</li>
+	</ul></li>
 </ul>
 
 <!-- @marker "YT: Project Team" -->
@@ -632,7 +635,7 @@
 	<h5 id="Stage_">Stage</h5>
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Stage</td><td>Submit</td><td>N/A</td><td>Stage</td><td>none</td><td>shown as columns on Agile Boards</td>
+		<tr><td>Stage</td><td>Submit</td><td>N/A</td><td>State</td><td>none</td><td>shown as columns on Agile Boards</td>
 			<td><table>
 				<tr><th>Stage Name</th><th>Description</th><th>Transition</th></tr>
 				<tr class="subhead"><td colspan="3">Backlog</td></tr>
@@ -662,7 +665,7 @@
 				<tr><td>Open</td><td>last column in _Roadmap; first column in -develop</td><td></td></tr>
 				<tr class="subhead"><td colspan="3"></td></tr>
 				<tr><td>Develop</td><td>develop as specified</td><td></td></tr>
-				<tr><td>Review</td><td>try to come at this work a fresh perspective</td></tr>
+				<tr><td>Review</td><td>try to come at this work from a fresh perspective</td></tr>
 				<tr><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
 				<!-- ch_UnfixedResolutions -->
 				<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
@@ -1047,8 +1050,11 @@
 
 <!-- @marker "Delete Project" -->
 <h4 id="DeleteProject_">Delete Project</h4><ul>
-	<li>as admin: project's page</li>
-	<li>Admin: Settings:'Delete Project'</li>
+	<li>as <strong>admin</strong>:<ul>
+		<li>project's page<ul>
+			<li>Admin: Settings:'Delete Project'</li>
+		</ul></li>
+	</ul></li>
 </ul>
 
 <h4 id='Uninstall_'>Uninstall</h4><div class="indent">
