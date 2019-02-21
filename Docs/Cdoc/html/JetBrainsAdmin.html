@@ -326,11 +326,37 @@
 		<li>verify expected port 8081</li>
 		<li>cancel out of New Project configuration for now</li>
 	</ul></li>
+	<li><a href="#BackupToTag_">configure and execute</a> backup to tag 'initial_configured'</li>
+</ul>
+
+<!-- @marker "YT: Update" -->
+<h4 id="YT_Update_">YT: Update</h4><ul>
+	<li>download installation package appropriate for our license; move to its folder<ul>
+		<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
+			<li class="blurb">commercial license supports private GitHub projects</li>
+		</ul></li>
+	</ul></li>
+	<li>expand archive</li>
+	<li>compress existing installation of same product; delete original folder</li>
+	<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
+		<span class="mono">/Servers/jb/YouTrack/YouTrack-&lt;newVersion&gt;</span><ul>
+			<li>also copy that line, and execute it in Terminal</li>
+		</ul></li>
+	<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
+		<li>use external HubRing<ul>
+			<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+			<li>verify HubRing connection</li>
+		</ul></li>
+	</ul></li>
+	<li>when tool window appears:<ul>
+		<li>verify expected port 8081</li>
+		<li>cancel out of Project configuration for now</li>
+	</ul></li>
 </ul>
 
 <!-- @marker "YT: Backup Initial" -->
 <h4 id="YT_BackupInitial_">YT: Backup Initial</h4><ul>
-	<li><a href="#BackupToTag_">configure and execute</a> backup to tag 'initial_configured'</li>
+	<li><a href="#BackupToTag_">configure and execute</a> backup to tag 'initial_original'</li>
 </ul>
 
 <!-- @marker "YT: Global Settings" -->
@@ -371,9 +397,8 @@
 <!-- @marker "YouTrack: Add Project" -->
 <h4 id="YT_AddProject_">YT: Add Project</h4><ul>
 	<li>if necessary, <a href="Git.html#tsk_NewRepo">create new repository</a></li>
-	<li>login as admin</li>
-	<li>if necessary, <a href="#Uninstall_">Uninstall</a> any previous attempts</li>
 	<li>HubRing as admin:<ul>
+		<li>if necessary, <a href="#Uninstall_">Uninstall</a> any previous versions</li>
 		<li>Project<ul>
 			<li>identify initial project info:<ul>
 				<li>Settings: project: &lt;ProjectName&gt;; keyword &lt;project-name&gt;; description; type Kanban</li>
@@ -1061,8 +1086,12 @@
 
 	<h5>Uninstall YouTrack Project</h5><ul>
 		<li>Projects : &lt;Project&gt;<ul>
-			<li>Edit Project : Remove Project (button)</li>
-			<li>Settings : Delete Project (button)</li>
+			<li class="depr">Edit Project : Remove Project (button)</li>
+			<li>Settings : Delete Project (button)<ul>
+				<li>delete saved searches</li>
+				<li>disconnect VCS integration</li>
+				<li>remove Team role(s)</li>
+			</ul></li>
 		</ul></li>
 	</ul>
 
