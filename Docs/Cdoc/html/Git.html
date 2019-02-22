@@ -263,10 +263,11 @@
 	<div class='indent'>
 		<div class="wf-publish">
 			<h6>Publish</h6><ul>
-				<li>check for stashes, todo's; if [ incomplete commit | stashes | todo's | settings to export ]: address as indicated</li>
+				<li>check for stashes, todo's; if [ (?)incomplete commit | stashes | todo's | settings to export ]: address as indicated</li>
 				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
-				<li>show status of all active branches:&nbsp;&nbsp;<span class='mono'><span class="prompt"> $ </span>git branch -vv</span></li>
+				<li>show status of all active local branches:&nbsp;&nbsp;<span class='mono'><span class="prompt"> $ </span>git branch -vv</span></li>
 				<li>check commits to be published:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
+				<li>[gd &lt;branch&gt; &lt;origin/branch&gt;] delete local branch</li>
 				<li><span class="step"><a href="#ws_MergeBranch">Merge Branch</a></span></li>
 				<li>[verify :&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span>]</li>
 				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> master; compare origin; verify match</li>
@@ -275,7 +276,6 @@
 		<div class="wf-triggerReview">
 			<h6>Trigger Review</h6><ul>
 				<li>generate pull request; set issue state to Review</li>
-				<li>after Review: if issue complete, delete task and local branch</li>
 			</ul>
 		</div><!-- wf-triggerReview -->
 	</div><!-- indent -->
@@ -298,14 +298,14 @@
 				<div class="wf-close">
 				<h6>Code Review Complete: Close Issue</h6><ul>
 					<li>test; check for unmerged  branches, pending stashes</li>
-					<li>close issue</li>
+					<li>if task and issue complete; close issue; delete task and local branch</li>
 					<li>address any unmerged branches and/or pending stashes</li>
 				</ul>
 				</div><!-- wf-close -->
 			</div><!-- dq -->
 		</div><!-- indent -->
 	<h5>[Archive Repository]</h5>
-	<h5>Review</h5><ul>	<!-- git \todo: incorporate -->
+	<h5>Review</h5><ul>	<!-- git gs\todo: incorporate -->
 		<li>Evaluate completeness of solution as specified.</li>
 		<li>Evaluate completeness of automated and, if required, manual testing.</li>
 		<li>Verify test completeness and results.</li>
