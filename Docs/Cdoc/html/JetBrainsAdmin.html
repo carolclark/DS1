@@ -81,7 +81,7 @@
 	<li>Our Agile Boards<ul>
 		<li>BDD<ul>
 			<li>Our boards are built to support Behavior Driven Development</li>
-			<li><em>Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+			<li><em>Stories a planning tool. They are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 				orthogonal to</a> Features, and may require functionality from otherwise unrelated Features.
 			</em></li>
 		</ul></li>
@@ -407,15 +407,28 @@
 			<li>New Project...<ul>
 				<li>Project Dialog: set project name, ID; create project</li>
 			</ul></li>
-			<li>Teams<ul>
-				<li>&lt;Project&gt; Team<ul>
-					<li>select member(s) for project team</li>
-					<li>&lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
-					<li>Settings: set project owner to intended ProjectAdmin</li>
+		</ul></li>
+		<li>Teams<ul>
+			<li>add new team members @ Users : new User; add to group reporters</li>
+			<li>Users: Groups and Roles<ul>
+				<li>admin:<ul>
+					<li>member of Registered Users and Reporters</li>
+					<li>Project Admin, Developer, Reporter in project DevSupport</li>
+					<li>System Admin, Developer, Reporter in project Global</li>
 				</ul></li>
-				<li>add Team Reporters: Registered Users</li>
+				<li>carol:<ul>
+					<li>member of Registered Users and Reporters</li>
+					<li>Developer in project DevSupport; Observer, Reporter in project Global</li>
+				</ul></li>
+				<li>Guest: Observer in projects Global and DevSupport;
+					member of Registered Users (contains only Observer permissions)</li>
 			</ul></li>
-			<li>Add Issue Tracker Service; Project Type: Kanban</li>
+		</ul></li>
+		<li>Add Issue Tracker Service; Project Type: Kanban</li>
+		<li>&lt;Project&gt; Team<ul>
+			<li>select member(s) for project team</li>
+			<li>&lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
+			<li>Settings: set project owner to intended ProjectAdmin</li>
 		</ul></li>
 	</ul></li>
 </ul>
@@ -427,7 +440,7 @@
 	<li>YouTrack as admin:<ul>
 		<li>Project Page: Add Issue Tracker Service</li>
 		<li>Nutty menu : Integrations : VCS Integrations<ul>
-			<li>New VCS Integration<ul>
+			<li>New VCS Integration<ul class="depr">
 				<li>connect to GitHub repo</li>
 				<li>click link to generate Auth token; copy</li>
 				<li>in YouTrack, paste into OAuth field</li>
@@ -482,7 +495,7 @@
 			<li>Columns and Rows<ul>
 				<li>Columns identified by: State<ul>
 					<li>_Roadmap columns<ul>
-						<li>Select</li>
+						<li>Backlog</li>
 						<li>Story</li>
 						<li>Specify</li>
 						<li>Open</li>
@@ -635,14 +648,10 @@
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
 				<tr class="subhead"><td colspan="4">Tickets</td></tr>
-					<tr><td>Feature</td><td>blue5</td><td>A BDD feature. Features are orthogonal to Stories;<br />
-						Stories are a planning tool, while Features are about implementation organization.</td>
-						<td rowspan="3">These issue types share a column on the Agile Board.</td></tr>
-					<tr><td>Scenario</td><td>blue3</td><td>A BDD Scenario associated with a Feature.</td></tr>
-					<tr><td>Task</td><td>brown3</td><td>A task. May be associated with a Feature or Scenario,
-						or directly with a Story.</td></tr>
-					<tr><td>Bug</td><td>pink3</td><td></td><td>Bug Classifications:
-						Cosmetic, Exception, Usability, Performance, Bug</td></tr>
+				<tr><td>Ticket</td><td>blue3</td><td>represents an issue / agile board card</td><td></td></tr>
+				<tr><td>TicketType</td><td></td><td>Feature (blue5); Scenario (blue3); Task (brown3); Bug (pink3)</td><td>conditional on Type==Ticket</td></tr>
+				<tr><td>BugClass</td><td></td><td>Cosmetic; Exception; Usability; Performance; Bug</td>
+					<td>conditional on TicketType == Bug</td></tr>
 			</table></td></tr>
 	</table>
 
@@ -650,9 +659,9 @@
 	<h5 id="KanbanState_">KanbanState</h5>
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Color</th><th>Description</th><th>Transition</th></tr>
-		<tr><td>KanbanBlocked</td><td>Project:dark</td><td>ticket is not ready to pull</td>
+		<tr><td>KanbanBlocked</td><td>pink (YT default)</td><td>ticket is not ready to pull</td>
 			<td>If attempt is made to move card, it returns to its original KanbanState and position</td></tr>
-		<tr><td>KanbanReady</td><td>Project:light</td><td>ticket is ready to pull</td>
+		<tr><td>KanbanReady</td><td>gray (YT default)</td><td>ticket is ready to pull</td>
 			<td>After card is moved, its Kanban State is returned to blocked</td></tr>
 	</table>
 
@@ -664,15 +673,15 @@
 			<td><table>
 				<tr><th>Stage Name</th><th>Description</th><th>Transition</th></tr>
 				<tr class="subhead"><td colspan="3">Backlog</td></tr>
-				<tr><td>Submit</td><td>incoming items</td>
-					<td>Evaluate for development. Accept; else set a 'Resolved' State with comment</td></tr>
-				<tr><td>Accept</td><td>accepted for development</td><td></td></tr>
+				<tr><td>Backlog</td><td>incoming items</td>
+					<td>Evaluate for development. If not accepted, set a 'Resolved' State with comment</td></tr>
 				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
-				<tr><td>Select</td><td>selected for development</td>
-					<td><ul>
-						<li>reclassify and edit as a Story, a Feature or Scenario of an existing Story, a Task, or a bug</li>
-						<li>move to Story or Ticket as indicated</li>
-					</ul></td></tr>
+				<tr><td>Epic</td>
+					<td>'Epic' represents a goal containing several Stories.</td>
+					<td>to Review: Normally, add a Feature, Task, ... to review<br />
+					Standard method is to assume "Done" if all existing subitems are complete. We disagree.<br />
+					Move to Review if all subissues have been resolved and no further work is expected.
+					</td></tr>
 				<tr><td>Story</td>
 					<td>Stage "Story" anchors a story for development.
 						<br />serves as swimlane on a -develop Board<br />
@@ -680,7 +689,7 @@
 							orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
 						<td>generates Tickets that move through the rest of the board<br />
 							Tickets may have Stage Feature, Scenario, Task, or Bug<br />
-							If all Story Tickets are complete, add new stories as indicated or
+							If all of a Story's Tickets are complete, plan new work as indicated or
 							move to Review for verification.
 					</td></tr>
 				<tr><td>Ticket</td><td>specification for what is to be done for this work item</td>
@@ -708,7 +717,7 @@
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
 		<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td>
+			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td><td></td>
 		</tr>
 		<tr><td>FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
 			<td>fix for, fixed in, build, fix build</td><td></td><td>associated by TeamCity with build number</td></tr>
@@ -1005,7 +1014,7 @@
 <h4 id="BackupConfiguration_">Backup Configuration</h4><ul>
 	<li id="backupConfig_">Nutty button : Server Settings : Backup<ul>
 		<li>to '/Volumes/Mavericks-1/Backups/TeamTools'</li>
-		<li>filename prefix: HR-</li>
+		<li>filename prefix: HR-, YT-, US-, TC-</li>
 		<li>tar.gz format</li>
 		<li>every day at 2 AM</li>
 		<li>rotation 10</li>
@@ -1075,43 +1084,11 @@
 
 <!-- @marker "Delete Project" -->
 <h4 id="DeleteProject_">Delete Project</h4><ul>
-	<li>as <strong>admin</strong>:<ul>
-		<li>project's page<ul>
-			<li>Admin: Settings:'Delete Project'</li>
-		</ul></li>
-	</ul></li>
+	<li>do not delete project: archive if we're really done with it</li>
 </ul>
 
-<h4 id='Uninstall_'>Uninstall</h4><div class="indent">
-
-	<h5>Uninstall YouTrack Project</h5><ul>
-		<li>Projects : &lt;Project&gt;<ul>
-			<li class="depr">Edit Project : Remove Project (button)</li>
-			<li>Settings : Delete Project (button)<ul>
-				<li>delete saved searches</li>
-				<li>disconnect VCS integration</li>
-				<li>remove Team role(s)</li>
-			</ul></li>
-		</ul></li>
-	</ul>
-
-	<h5>Old Instructions: Uninstall YouTrack</h5><ul>
-		<li>completely uninstall each project<ul>
-			<li>Global project page: </li>
-			<li>Hub: Access: Groups: remove each project-related group</li>
-			<li>projects page: YouTrack<ul>
-				<li>agile boards; reports</li>
-			</ul></li>
-			<li>for profiles: click on user name or service name; open in new tab<ul>
-				<li>look in profiles for stuff to disconnect</li>
-			</ul></li>
-			<li>saved searches</li>
-			<li>agile boards</li>
-			<li>Notifications</li>
-			<li>projects page: detach YouTrack service</li>
-			<li>global: project resources</li>
-			<li>delete project</li>
-		</ul></li>
+<h4 id='Uninstall_'>Uninstall YouTrack</h4><div class="indent">
+	<h5>Uninstall YouTrack</h5><ul class="depr">
 		<li>close all YouTrack windows</li>
 		<li>stop YouTrack:&nbsp;&nbsp;
 			<span class='mono'><span class="prompt">$ </span>cd $YOUTRACK/bin; youtrack.sh stop</span></li>
@@ -1120,11 +1097,10 @@
 			<li>for any processes except YouTrack associated with YouTrack, 'quit' using button at top left</li>
 		</ul></li>
 		<li>delete YouTrack application from /Servers/jb/YouTrack</li>
-		<li>delete ?/Application Support/Integration??</li>
-		<li>look in user and top-level folders "Application Support", Preferences, Caches for files to delete</li>
+		<li>look in user and top-level Library folders "Application Support", Preferences, Caches for files to delete</li>
 	</ul>
 
-	<h5>Uninstall TeamCity</h5><ul>
+	<h5>Uninstall TeamCity</h5><ul class="depr">
 		<li>Activity Monitor: terminate any active TeamCity process(es)<ul>
 			<li>open Activity Monitor; show all process</li>
 			<li>for any processes except TeamCity associated with TeamCity, 'quit' using button at top left</li>
