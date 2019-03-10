@@ -160,11 +160,11 @@
 <h2 class="promote">Team Tools</h2>
 <!-- @topicList "Team Tools" "TeamTools_" -->
 	<!-- @topicItem "TT: Documentation Conventions" "#TT_DocumentationConventions_" "0" "" -->
+	<!-- @topicItem "Integrations and Auth Modules" "#Integrations_AuthModules_" "0" "" -->
 	<!-- @topicItem "HubRing" "#HubRing_IC" "0" "" -->
 	<!-- @topicItem "YouTrack" "#YouTrack_" "0" "" -->
 	<!-- @topicItem "UpSource" "#UpSource_IC" "0" "" -->
 	<!-- @topicItem "TeamCity" "#TeamCity_IC" "0" "" -->
-	<!-- @topicItem "Integrations and Auth Modules" "#Integrations_AuthModules_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "TT: Documentation Conventions" -->
@@ -175,6 +175,16 @@
 		<li>The button is shaped like a nut (the one with a bolt). We refer to it as the "Nutty button". ... or "nut"</li>
 	</ul></li>
 </ul>
+
+<!-- @marker "Integrations + Auth Modules" -->
+<h3 id="Integrations_AuthModules_">Integrations and Auth Modules</h3><div class="info">
+	<table id="HubAuthModules_">
+		<tr><th>Integration</th><th>Supports</th><th>Test</th></tr>
+		<tr class="subhead"><td colspan="3">HubRing Authorization Modules</td></tr>
+		<tr><td>HubRing</td><td>single signin for all connected products</td><td>test for admin and carol signin with passwords</td></tr>
+		<tr><td>GitHub</td><td>connection with all repos, including forks, on our account</td><td>select and connect to repo</td></tr>
+	</table>
+</div>
 
 <!-- @marker "HubRing" -->
 <h2>HubRing</h2>
@@ -228,12 +238,12 @@
 
 <!-- @marker "HR: Authorization Modules" -->
 <h3 id="HR_AuthorizationModules_">HR: Authorization Modules</h3><ul>
-	<li>Nutty menu : Access Management : Auth Modules<ul>
+	<li>Access Management : Auth Modules<ul>
 		<li>HubRing: Built-in Authorization<ul>
 			<li>test login combinations</li>
 		</ul></li>
 		<li>GitHub : New Module<ul>
-			<li>Nutty button : Access Management : Auth Modules<ul>
+			<li>Access Management : Auth Modules<ul>
 				<li>New Module : GitHub<ul>
 					<li>verify module name GitHub, address https://github.com</li>
 					<li>create</li>
@@ -253,20 +263,18 @@
 
 <!-- @marker "HR: Access Management" -->
 <h3 id="HR_AccessManagement_">HR: Access Management</h3><ul>
-	<li>Nutty Menu: Access Management<ul>
-		<li>Users<ul>
-			<li>add user 'carol':<ul>
-				<li>Create user 'carol'; my email</li>
-				<li>set JetBrains password; do not force change password</li>
-				<li>avatar: select; click our gravitar image</li>
-			</ul></li>
+	<li>Access Management : Users<ul>
+		<li>add user 'carol':<ul>
+			<li>Create user 'carol'; my email</li>
+			<li>set JetBrains password; do not force change password</li>
+			<li>avatar: select; click our gravitar image</li>
 		</ul></li>
 	</ul></li>
 </ul>
 
 <!-- @marker "HR: Notifications" -->
 <h3 id="HR_Notifications_">HR: Notifications</h3><ul>
-	<li>Nutty menu : Notifications : SMTP<ul>
+	<li>Notifications : SMTP<ul>
 		<li>email notifications: SMTP<ul>
 			<li>host smtp.cox.net</li>
 			<li>from: "HubRing" &lt;my_email&gt;</li>
@@ -278,7 +286,7 @@
 
 <!-- @marker "HR: Backup 'Initial Configured'" -->
 <h3 id="HR_Backup_InitialConfigured_">HR: Backup 'initial-configured'</h3><ul>
-	<li>Nutty menu : Server Settings : Backup : Execute Backup</li>
+	<li>Server Settings : Backup : Execute Backup</li>
 	<li>to tag:<ul>
 		<li>Finder : COPY (with option key) backup file to tag specified</li>
 	</ul></li>
@@ -290,13 +298,13 @@
 	<!-- @topicItem "Install YouTrack" "#InstallYouTrack_" "0" "" -->
 	<!-- @topicItem "YouTrack Projects" "#YouTrackProjects_" "0" "" -->
 	<!-- @topicItem "Extend YouTrack" "#ExtendYouTrack_" "0" "" -->
-	<!-- @topicItem "Our YouTrack Project Settings" "#OurYouTrackProjectSettings_" "0" "" -->
 <!-- @/topicList -->
 
 <!-- @marker "Install YouTrack" -->
 <h3>Install YouTrack</h3>
 <!-- @topicList "Install YouTrack" "InstallYouTrack_" -->
 	<!-- @topicItem "YT: Install" "#YT_Install_" "0" "" -->
+	<!-- @topicItem "YT: Backup Initial" "#YT_BackupInitial_" "0" "" -->
 	<!-- @topicItem "YT: Global Settings" "#YT_GlobalSettings_" "0" "" -->
 	<!-- @topicItem "YT: Add Custom Tags" "#YT_AddCustomTags_" "0" "" -->
 	<!-- @topicItem "YT: Backup Configured" "#YT_BackupConfigured_" "0" "" -->
@@ -326,33 +334,9 @@
 		<li>verify expected port 8081</li>
 		<li>cancel out of New Project configuration for now</li>
 	</ul></li>
-	<li><a href="#BackupToTag_">configure and execute</a> backup to tag 'initial_configured'</li>
+	<li><a href="#BackupToTag">backup to tag</a> 'initial_configured'</li>
 </ul>
 
-<!-- @marker "YT: Update" -->
-<h4 id="YT_Update_">YT: Update</h4><ul>
-	<li>download installation package appropriate for our license; move to its folder<ul>
-		<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
-			<li class="blurb">commercial license supports private GitHub projects</li>
-		</ul></li>
-	</ul></li>
-	<li>expand archive</li>
-	<li>compress existing installation of same product; delete original folder</li>
-	<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
-		<span class="mono">/Servers/jb/YouTrack/YouTrack-&lt;newVersion&gt;</span><ul>
-			<li>also copy that line, and execute it in Terminal</li>
-		</ul></li>
-	<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
-		<li>use external HubRing<ul>
-			<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
-			<li>verify HubRing connection</li>
-		</ul></li>
-	</ul></li>
-	<li>when tool window appears:<ul>
-		<li>verify expected port 8081</li>
-		<li>cancel out of Project configuration for now</li>
-	</ul></li>
-</ul>
 
 <!-- @marker "YT: Backup Initial" -->
 <h4 id="YT_BackupInitial_">YT: Backup Initial</h4><ul>
@@ -361,20 +345,18 @@
 
 <!-- @marker "YT: Global Settings" -->
 <h4 id="YT_GlobalSettings_">YT : Global Settings</h4><ul>
-	<li>as admin: Nutty button : Server Settings<ul>
-		<li>Global Settings<ul>
-			<li>verify license:
-				up to 10 users; no restriction for private repos; license forever; free updates this century </li>
-			<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
-			<li>verify Default Timezone: Chicago</li>
-			<li>verify Date Fields Format: 2000-12-31T23:59</li>
-			<li>Notifications<ul>
-				<li>enable email notifications<ul>
-					<li>SMTP host: smtp.cox.net</li>
-					<li>SMTP login / password: cox email / password</li>
-					<li>Server From email: productName &lt;my_email&gt;; use password cox</li>
-					<li>send message to test connection; save</li>
-				</ul></li>
+	<li>as admin: Server Settings : Global Settings<ul>
+		<li>verify license:
+			up to 10 users; no restriction for private repos; license forever; free updates this century </li>
+		<li>verify Base URL <span class="mono">http://carols-imac-2.local:8081</span></li>
+		<li>verify Default Timezone: Chicago</li>
+		<li>verify Date Fields Format: 2000-12-31T23:59</li>
+		<li>Notifications<ul>
+			<li>enable email notifications<ul>
+				<li>SMTP host: smtp.cox.net</li>
+				<li>SMTP login / password: cox email / password</li>
+				<li>Server From email: productName &lt;my_email&gt;; use password cox</li>
+				<li>send message to test connection; save</li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
@@ -388,9 +370,15 @@
 <!-- @marker "YouTrack Projects" -->
 <h3>YouTrack Projects</h3>
 <!-- @topicList "YouTrack Projects" "YouTrackProjects_" -->
+	<!-- @topicGroup "-- All Projects --" "" -->
 	<!-- @topicItem "YT: Add Project" "#YT_AddProject_" "0" "" -->
 	<!-- @topicItem "YT: Integrate Project with VCS" "#YT_IntegrateProject_VCS_" "0" "" -->
-	<!-- @topicItem "YT: Configure Initial Project" "#YT_ConfigureInitialProject_" "0" "" -->
+	<!-- @topicGroup "-- Project Template --" "" -->
+	<!-- @topicItem "YT: Configure Custom Fields" "#YT_ConfigureCustomFields_" "0" "" -->
+		<!-- @topicItem "Priority" "#Priority_" "1" "" -->
+		<!-- @topicItem "Type" "#Type_" "1" "" -->
+		<!-- @topicItem "Stage" "#Stage_" "1" "" -->
+		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "1" "" -->
 	<!-- @topicItem "YT: Customize Agile Boards" "#YT_CustomizeAgileBoards_" "0" "" -->
 <!-- @/topicList -->
 
@@ -409,27 +397,23 @@
 			</ul></li>
 		</ul></li>
 		<li>Teams<ul>
-			<li>add new team members @ Users : new User; add to group reporters</li>
-			<li>Users: Groups and Roles<ul>
-				<li>admin:<ul>
-					<li>member of Registered Users and Reporters</li>
-					<li>Project Admin, Developer, Reporter in project DevSupport</li>
-					<li>System Admin, Developer, Reporter in project Global</li>
+			<li>add any new team members @ Users</li>
+			<li>Users: Verify/Assign Groups and Roles<ul>
+				<li>Global Project<ul>
+					<li>user admin: role System Admin</li>
+					<li>Group Registered Users: Role Observer</li>
 				</ul></li>
-				<li>carol:<ul>
-					<li>member of Registered Users and Reporters</li>
-					<li>Developer in project DevSupport; Observer, Reporter in project Global</li>
+				<li>Project Team<ul>
+					<li>users admin, &lt;IntendedProjectOwner&gt;: Role Developer</li>
 				</ul></li>
-				<li>Guest: Observer in projects Global and DevSupport;
-					member of Registered Users (contains only Observer permissions)</li>
+				<li>Directly Assign<ul>
+					<li>Guest: Role Observer </li>
+					<li>&lt;IntendedProjectOwner&gt;: Role Project Admin</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
-		<li>Add Issue Tracker Service; Project Type: Kanban</li>
-		<li>&lt;Project&gt; Team<ul>
-			<li>select member(s) for project team</li>
-			<li>&lt;intendedProjectOwner&gt; : Roles : grant ProjectAdmin role</li>
-			<li>Settings: set project owner to intended ProjectAdmin</li>
-		</ul></li>
+		<li>in Users list, select &lt;IntendedProjectOwner&gt; and assign Project Owner</li>
+		<li>ensure Guest is not on Developer Team</li>
 	</ul></li>
 </ul>
 
@@ -437,31 +421,178 @@
 <h4 id="YT_IntegrateProject_VCS_">YT: Integrate Project with VCS</h4><ul>
 	<li class="blurb">if necessary, stop and start YT, HR, HR, YT</li>
 	<li>login as admin</li>
-	<li>YouTrack as admin:<ul>
-		<li>Project Page: Add Issue Tracker Service</li>
-		<li>Nutty menu : Integrations : VCS Integrations<ul>
-			<li>New VCS Integration<ul class="depr">
+	<li>YouTrack: Settings<ul>
+		<li>Project Page: Add Issue Tracker Service; Project Type: Kanban</li>
+		<li>Integrations : VCS Integrations<ul>
+			<li>New VCS Integration<ul>
 				<li>connect to GitHub repo</li>
 				<li>click link to generate Auth token; copy</li>
 				<li>in YouTrack, paste into OAuth field</li>
 			</ul></li>
 		</ul></li>
-		<li>set &lt;repo&gt;; &lt;projectName&gt;; owned by &lt;Project&gt; Owner</li>
+		<li>set &lt;repo&gt;; &lt;projectName&gt;; owned by admin</li>
 		<li>Saved Search: if searches for this project ID exist, delete them</li>
 		<li>visible: &lt;proj&gt; Team, Reporters</li>
 	</ul></li>
-	<li>login as Project Owner</li>
 </ul>
 
 <!-- @marker "YT: Add Custom Tags" -->
 <h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
-	<li>ensure tag 'waiting' (pink4): development is waiting for something</li>
+	<li>login as Project Owner</li>
+	<li>Custom Tags<ul>
+		<li>'Blocked' (pink4): development is Blocked waiting for something</li>
+	</ul></li>
 </ul>
 
-<!-- @marker "YT: Configure Initial Project" -->
-<h4 id="YT_ConfigureInitialProject_">YT: Configure Initial Project</h4><ul>
-	<li>validate/match configuration as shown in <a href="#OurYouTrackProjectSettings_">Our YouTrack Project Settings</a></li>
+<!-- @marker "YT: Custom Fields" -->
+<h4 id="YT_ConfigureCustomFields_">YT: Configure Custom Fields</h4><div class="info">
+	<!-- @marker "Priority" -->
+	<h5 id="Priority_">Priority</h5>
+	<table>
+		<tr><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+		<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
+			<td><table>
+				<tr><th>Priority Name</th> <th>Color</th></tr>
+				<tr><td>Show-Stopper</td><td>orange4</td></tr>
+				<tr><td>Critical</td><td>pink2</td></tr>
+				<tr><td>Major</td><td>yellow1</td></tr>
+				<tr><td>Normal</td><td>green1</td></tr>
+				<tr><td>Minor</td><td>gray1</td></tr>
+			</table></td></tr>
+	</table>
+	<!-- @marker "Type" -->
+	<h5 id="Type_">Type</h5>
+	<table>
+		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+		<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum[1]</td><td>none</td><td></td>
+			<td><table>
+				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
+				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
+				<tr><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
+					several Stories,<br />some of which may be attached to different Epics or Projects</td>
+					<td rowspan="3">to Review:<ul>
+						<li>normally, add a task to review<ul>
+							<li>Standard method is to assume "Done" if all subitems are complete. We disagree.</li>
+						</ul></li>
+						<li>may be moved to Review if all subissues have been addressed and Verified
+							and no further work is expected</li>
+					</ul>
+					</td></tr>
+				<tr><td>Story</td><td>orange3</td><td>'Story' represents a
+					goal element for planning<br />serves as swimlane on a -develop Board<br />
+					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
+				<tr class="subhead"><td colspan="4">Tickets</td></tr>
+				<tr><td>Ticket</td><td></td><td>represents an issue / agile board card</td><td></td></tr>
+				<tr><td>TicketType</td><td></td><td>Feature (blue5); Scenario (blue3); Task (brown3); Bug (pink3)</td><td>conditional on Type==Ticket</td></tr>
+				<tr><td>BugClass</td><td></td><td>Cosmetic; Exception; Usability; Performance; Bug</td>
+					<td>conditional on TicketType == Bug</td></tr>
+			</table></td></tr>
+	</table>
+
+	<!-- @marker "KanbanState" -->
+	<h5 id="KanbanState_">KanbanState</h5>
+	<table>
+		<tr class="smallHeader"><th>Name</th><th>Color</th><th>Description</th><th>Transition</th></tr>
+		<tr><td>KanbanBlocked</td><td>pink (YT default)</td><td>ticket is not ready to pull</td>
+			<td>If attempt is made to move card, it returns to its original KanbanState and position</td></tr>
+		<tr><td>KanbanReady</td><td>gray (YT default)</td><td>ticket is ready to pull</td>
+			<td>After card is moved, its Kanban State is returned to blocked</td></tr>
+	</table>
+
+	<!-- @marker "Stage" -->
+	<h5 id="Stage_">Stage</h5>
+	<table>
+		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+		<tr><td>Stage</td><td>Submit</td><td>N/A</td><td>State</td><td>none</td><td>shown as columns on Agile Boards</td>
+			<td><table>
+				<tr><th>Stage Name</th><th>Description</th><th>Transition</th></tr>
+				<tr class="subhead"><td colspan="3">Backlog</td></tr>
+				<tr><td>Backlog</td><td>incoming items</td>
+					<td>Evaluate for development. If rejected here, set a 'Resolved' State with comment</td></tr>
+				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
+				<tr><td>Epic</td>
+					<td>'Epic' represents a goal containing several Stories.</td>
+					<td>to Review: Normally, add a Feature, Task, ... to review<br />
+						Standard method is to assume "Done" if all existing subitems are complete. We disagree.<br />
+						Move to Review if all subissues have been resolved and no further work is expected.
+					</td></tr>
+				<tr><td>Story</td>
+					<td>Stage "Story" anchors a story for development.
+						<br />serves as swimlane on a -develop Board<br />
+						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
+							orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
+					<td>generates Tickets that move through the rest of the board<br />
+						Tickets may have Stage Feature, Scenario, Task, or Bug<br />
+						If all of a Story's Tickets are complete, plan new work as indicated or
+						move to Review for verification.
+					</td></tr>
+				<tr><td>Ticket</td><td>specification for what is to be done for this work item</td>
+					<td>Feature, Scenario, Task, and Bug share this column<br />
+						move to Open when ready</td></tr>
+				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
+				<tr><td>Open</td><td>last column in _Roadmap; first column in -develop</td><td></td></tr>
+				<tr class="subhead"><td colspan="3"></td></tr>
+				<tr><td>Develop</td><td>develop as specified</td><td></td></tr>
+				<tr><td>Review</td><td>try to come at this work from a fresh perspective</td></tr>
+				<tr><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
+ 				<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
+				<tr><td>Duplicate</td><td>see YouTrack Duplicate handling</td> <td></td></tr>
+				<tr><td>WillNotFix</td><td></td> <td></td></tr>
+				<tr><td>Reopened</td> <td></td> <td></td> </tr>
+				<tr><td>CannotReproduce</td><td></td><td></td></tr>
+				<tr><td>WorksAsIntended</td><td></td> <td></td></tr>
+				<tr><td>Incomplete</td><td></td> <td></td></tr>
+				<tr><td>Obsolete</td><td></td><td></td></tr>
+			</table></td></tr>
+	</table>
+	<!-- @marker "Other Attached Fields" -->
+	<h5 id="OtherAttachedFields_">Other Attached Fields</h5>
+	<table>
+		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
+		<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
+			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td><td></td>
+		</tr>
+		<tr><td>FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
+			<td>fix for, fixed in, build, fix build</td><td></td><td>associated by TeamCity with build number</td></tr>
+		<tr><td>FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
+			<td>fix for, fixed in, fix version, version</td><td>Version when fixed</td>
+			<td></td></tr>
+		<tr><td>ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
+			<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
+				on which our versioning plan is based</td></tr>
+		</table>
+</div>
+
+<!-- @marker "Notification Templates" -->
+<div  class="indent">
+	<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
+	<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
 </ul>
+</div>
+
+<div class="indent">
+	<h5 id="Workflows_">Workflows</h5><ul>
+		<li>When a Kanban card is moved from one Stage to the next:<ul>
+			<li>If the card's Kanban State is 'Ready to pull',
+				the card takes its new position and it's Kanban State is set back to Blocked.</li>
+			<li>Else if the card's Kanban State 'Blocked', the move is blocked.
+				The card returns to Kanban State 'Blocked', and a message is displayed.</li>
+		</ul></li>
+	</ul>
+</div>
+
+<!-- @marker "Issue Link Types" -->
+<div class="info">
+	<h4 id="IssueLinkTypes_">Issue Link Types</h4>
+	<table id="IssueLinkTypes">
+		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
+		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
+		<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Directed</td></tr>
+		<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
+		<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
+	</table>
+</div>
 
 <!-- @marker "Customize Agile Boards" -->
 <h4 id="YT_CustomizeAgileBoards_">YT: Customize Agile Boards</h4><ul>
@@ -572,195 +703,6 @@
 			YouTrack Tweaks Extension</a>
 		</li></ul>
 
-
-<!-- @marker "Our YouTrack Project Settings" -->
-<h3>Our YouTrack Project Settings</h3>
-<!-- @topicList "Our YouTrack Project Settings" "OurYouTrackProjectSettings_" -->
-	<!-- @topicItem "YT: General Settings" "#YT_GeneralSettings_" "0" "" -->
-	<!-- @topicItem "YT: Project Team" "#YT_ProjectTeam_" "0" "" -->
-	<!-- @topicItem "YT: Custom Fields" "#YT_CustomFields_" "0" "" -->
-		<!-- @topicItem "Priority" "#Priority_" "1" "" -->
-		<!-- @topicItem "Type" "#Type_" "1" "" -->
-		<!-- @topicItem "Stage" "#Stage_" "1" "" -->
-		<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "1" "" -->
-<!-- @/topicList -->
-
-<!-- @marker "YT: General Settings" -->
-<h4 id="YT_GeneralSettings_">YT: General Settings</h4><ul>
-	<li>as <strong>admin</strong>:<ul>
-		<li>Name: usually repo name</li>
-		<li>ID: must be unique</li>
-		<li>Description</li>
-		<li>Project lead</li>
-		<li>From e-mail: YouTrack</li>
-	</ul></li>
-</ul>
-
-<!-- @marker "YT: Project Team" -->
-<h4 id="YT_ProjectTeam_">YT: Project Team</h4><ul>
-	<li>&lt;Project&gt; Owner, other devs as indicated</li>
-</ul>
-
-<!-- @marker "YT: Custom Fields" -->
-<h4>YT: Custom Fields</h4>
-<!-- @topicList "YT: Custom Fields" "YT_CustomFields_" -->
-	<!-- @topicItem "Priority" "#Priority_" "0" "" -->
-	<!-- @topicItem "Type" "#Type_" "0" "" -->
-	<!-- @topicItem "KanbanState" "#KanbanState_" "0" "" -->
-	<!-- @topicItem "Stage" "#Stage_" "0" "" -->
-	<!-- @topicItem "Other Attached Fields" "#OtherAttachedFields_" "0" "" -->
-<!-- @/topicList -->
-<h4 id="CustomFields">Custom Fields</h4><div class="info">
-	<!-- @marker "Priority" -->
-	<h5 id="Priority_">Priority</h5>
-	<table>
-		<tr><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Priority</td><td>Normal</td><td>N/A</td><td>enum single</td><td>none</td><td>default settings</td>
-			<td><table>
-				<tr><th>Priority Name</th> <th>Color</th></tr>
-				<tr><td>Show-Stopper</td><td>orange4</td></tr>
-				<tr><td>Critical</td><td>pink2</td></tr>
-				<tr><td>Major</td><td>yellow1</td></tr>
-				<tr><td>Normal</td><td>green1</td></tr>
-				<tr><td>Minor</td><td>gray1</td></tr>
-			</table></td></tr>
-	</table>
-	<!-- @marker "Type" -->
-	<h5 id="Type_">Type</h5>
-	<table>
-		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Type</td><td>Story</td><td>N/A</td><td>enum[1]</td><td>none</td><td></td>
-			<td><table>
-				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
-				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
-				<tr><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
-					several Stories,<br />some of which may be attached to different Epics or Projects</td>
-					<td rowspan="3">to Review:<ul>
-						<li>normally, add a task to review<ul>
-							<li>Standard method is to assume "Done" if all subitems are complete. We disagree.</li>
-						</ul></li>
-						<li>may be moved to Review if all subissues have been addressed and Verified
-							and no further work is expected</li>
-					</ul>
-					</td></tr>
-				<tr><td>Story</td><td>orange3</td><td>'Story' represents a
-					goal element for planning<br />serves as swimlane on a -develop Board<br />
-					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
-				<tr class="subhead"><td colspan="4">Tickets</td></tr>
-				<tr><td>Ticket</td><td>blue3</td><td>represents an issue / agile board card</td><td></td></tr>
-				<tr><td>TicketType</td><td></td><td>Feature (blue5); Scenario (blue3); Task (brown3); Bug (pink3)</td><td>conditional on Type==Ticket</td></tr>
-				<tr><td>BugClass</td><td></td><td>Cosmetic; Exception; Usability; Performance; Bug</td>
-					<td>conditional on TicketType == Bug</td></tr>
-			</table></td></tr>
-	</table>
-
-	<!-- @marker "KanbanState" -->
-	<h5 id="KanbanState_">KanbanState</h5>
-	<table>
-		<tr class="smallHeader"><th>Name</th><th>Color</th><th>Description</th><th>Transition</th></tr>
-		<tr><td>KanbanBlocked</td><td>pink (YT default)</td><td>ticket is not ready to pull</td>
-			<td>If attempt is made to move card, it returns to its original KanbanState and position</td></tr>
-		<tr><td>KanbanReady</td><td>gray (YT default)</td><td>ticket is ready to pull</td>
-			<td>After card is moved, its Kanban State is returned to blocked</td></tr>
-	</table>
-
-	<!-- @marker "Stage" -->
-	<h5 id="Stage_">Stage</h5>
-	<table>
-		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Stage</td><td>Submit</td><td>N/A</td><td>State</td><td>none</td><td>shown as columns on Agile Boards</td>
-			<td><table>
-				<tr><th>Stage Name</th><th>Description</th><th>Transition</th></tr>
-				<tr class="subhead"><td colspan="3">Backlog</td></tr>
-				<tr><td>Backlog</td><td>incoming items</td>
-					<td>Evaluate for development. If not accepted, set a 'Resolved' State with comment</td></tr>
-				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
-				<tr><td>Epic</td>
-					<td>'Epic' represents a goal containing several Stories.</td>
-					<td>to Review: Normally, add a Feature, Task, ... to review<br />
-					Standard method is to assume "Done" if all existing subitems are complete. We disagree.<br />
-					Move to Review if all subissues have been resolved and no further work is expected.
-					</td></tr>
-				<tr><td>Story</td>
-					<td>Stage "Story" anchors a story for development.
-						<br />serves as swimlane on a -develop Board<br />
-						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
-							orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
-						<td>generates Tickets that move through the rest of the board<br />
-							Tickets may have Stage Feature, Scenario, Task, or Bug<br />
-							If all of a Story's Tickets are complete, plan new work as indicated or
-							move to Review for verification.
-					</td></tr>
-				<tr><td>Ticket</td><td>specification for what is to be done for this work item</td>
-					<td>Feature, Scenario, Task, and Bug share this column<br />
-						move to Open when ready</td></tr>
-				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
-				<tr><td>Open</td><td>last column in _Roadmap; first column in -develop</td><td></td></tr>
-				<tr class="subhead"><td colspan="3"></td></tr>
-				<tr><td>Develop</td><td>develop as specified</td><td></td></tr>
-				<tr><td>Review</td><td>try to come at this work from a fresh perspective</td></tr>
-				<tr><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
-				<!-- ch_UnfixedResolutions -->
-				<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
-				<tr><td>Duplicate</td><td>see YouTrack Duplicate handling</td> <td></td></tr>
-				<tr><td>WillNotFix</td><td></td> <td></td></tr>
-				<tr><td>Reopened</td> <td></td> <td></td> </tr>
-				<tr><td>CannotReproduce</td><td></td><td></td></tr>
-				<tr><td>WorksAsIntended</td><td></td> <td></td></tr>
-				<tr><td>Incomplete</td><td></td> <td></td></tr>
-				<tr><td>Obsolete</td><td></td><td></td></tr>
-			</table></td></tr>
-	</table>
-	<!-- @marker "Other Attached Fields" -->
-	<h5 id="OtherAttachedFields_">Other Attached Fields</h5>
-	<table>
-		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
-			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td><td></td>
-		</tr>
-		<tr><td>FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
-			<td>fix for, fixed in, build, fix build</td><td></td><td>associated by TeamCity with build number</td></tr>
-		<tr><td>FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
-			<td>fix for, fixed in, fix version, version</td><td>Version when fixed</td>
-			<td></td></tr>
-		<tr><td>ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
-			<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-				on which our versioning plan is based</td></tr>
-	</table>
-</div>
-
-<!-- @marker "Notification Templates" -->
-<div  class="indent">
-	<h5 id="NotificationTemplates_">Notification Templates</h5><ul>
-	<li>see <a href="http://carols-imac-2.local:8081/admin/notificationTemplates">Notification Templates</a>; no changes from defaults</li>
-</ul>
-</div>
-
-<div class="indent">
-	<h5 id="Workflows_">Workflows</h5><ul>
-		<li>When a Kanban card is moved from one Stage to the next:<ul>
-			<li>If the card's Kanban State is 'Ready to pull',
-				the card takes its new position and it's Kanban State is set back to Blocked.</li>
-			<li>Else if the card's Kanban State 'Blocked', the move is blocked.
-				The card returns to Kanban State 'Blocked', and a message is displayed.</li>
-		</ul></li>
-	</ul>
-</div>
-
-<!-- @marker "Issue Link Types" -->
-<div class="info">
-	<h4 id="IssueLinkTypes_">Issue Link Types</h4>
-	<table id="IssueLinkTypes">
-		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
-		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
-		<tr><td>Depend</td><td>is required for</td><td>depends on</td><td>Directed</td></tr>
-		<tr><td>Duplicate</td><td>is duplicated by</td><td>duplicates</td><td>Aggregation (read only)</td></tr>
-		<tr><td>Subtask</td><td>parent for</td><td>subtask of</td><td>Aggregation (read only)</td></tr>
-	</table>
-</div>
-
-
 <!-- @marker "UP: Install" -->
 <h2>UpSource</h2>
 <!-- @topicList "UpSource" "UpSource_IC" -->
@@ -861,7 +803,7 @@
 	<!-- @marker "Autostart TeamCity Server" -->
 	<h4 id="AutostartTCServer_">Autostart TeamCity Server</h4><ul>
 	<li><strong>Autostart TeamCity Server</strong><ul>
-		<li>create AutoStart file ~/Dev/DevSupport/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
+ 		<li>create AutoStart file (??)~/Dev/&lt;Project&gt;/Developer/Developer/Developer/JetBrains/jetbrains.teamcity.server.plist as specified in
 			<a href="https://confluence.jetbrains.com/display/TCD6/Autostart+TeamCity+on+Mac">Autostart TeamCity on Mac</a><ul>
 				<li>Working Directory: /Volumes/Servers/jb/TeamCity/TeamCity</li>
 			</ul></li>
@@ -935,15 +877,48 @@
 </ul>
 </div>
 
-<!-- @marker "Integrations + Auth Modules" -->
-<h2 id="Integrations_AuthModules_">Integrations and Auth Modules</h2><div class="info">
-	<table id="HubAuthModules_">
-		<tr><th>Integration</th><th>Supports</th><th>Test</th></tr>
-		<tr class="subhead"><td colspan="3">HubRing Authorization Modules</td></tr>
-		<tr><td>HubRing</td><td>single signin for all connected products</td><td>test for admin and carol signin with passwords</td></tr>
-		<tr><td>GitHub</td><td>connection with all repos, including forks, on our account</td><td>select and connect to repo</td></tr>
-	</table>
-</div>
+<!-- @marker "Update Team Tools" -->
+<h3>Update Team Tools</h3>
+<!-- @topicList "Update Team Tools" "UpdateTeamTools_" -->
+	<!-- @topicItem "Update HubRing" "#Update_HubRing_" "0" "" -->
+	<!-- @topicItem "Update YouTrack" "#Update_YouTrack_" "0" "" -->
+	<!-- @topicItem "Update UpSource" "#Update_UpSource_" "0" "" -->
+	<!-- @topicItem "Update TeamCity Tools" "#Update_TeamCity_" "0" "" -->
+<!-- @/topicList -->
+
+<!-- @marker "Update HubRing" -->
+<h4 id="Update_HubRing_">Update HubRing</h4>
+
+<!-- @marker "Update YouTrack" -->
+<h4 id="Update_YouTrack_">Update YouTrack</h4><ul>
+	<li>download installation package appropriate for our license; move to its folder<ul>
+		<li><strong>YouTrack</strong>: we have free commercial license for up to 10 users<ul>
+			<li class="blurb">commercial license supports private GitHub projects</li>
+		</ul></li>
+	</ul></li>
+	<li>expand archive</li>
+	<li>compress existing installation of same product; delete original folder</li>
+	<li>for Terminal Config: update version in <span class="mono">$&lt;TOOLNAME&gt;</span> to
+		<span class="mono">/Servers/jb/YouTrack/YouTrack-&lt;newVersion&gt;</span><ul>
+			<li>also copy that line, and execute it in Terminal</li>
+		</ul></li>
+	<li><a href="#CommandLineTools_">Start Tool</a> to open configuration wizard<ul>
+		<li>use external HubRing<ul>
+			<li>HubRing address: <span class="mono">http://carols-imac-2.local:8080</span></li>
+			<li>verify HubRing connection</li>
+		</ul></li>
+	</ul></li>
+	<li>when tool window appears:<ul>
+		<li>verify expected port 8081</li>
+		<li>cancel out of Project configuration for now</li>
+	</ul></li>
+</ul>
+
+<!-- @marker "Update UpSource" -->
+<h4 id="Update_UpSource_">Update UpSource</h4>
+
+<!-- @marker "Update TeamCity" -->
+<h4 id="Update_TeamCity_">Update TeamCity</h4>
 
 <!-- @marker "JetBrains IDEs" -->
 <h2 class="promote" id="IDEs_">JetBrains IDEs</h2>
