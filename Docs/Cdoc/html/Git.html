@@ -215,7 +215,7 @@
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
 				<span class="step"><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</span>;
-				merge in master; test; [gd origin]; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;</li>
+				merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;; [gd origin/branch ]</li>
 		</ul></li>
 	</ul>
 	<ul>
@@ -247,11 +247,13 @@
 				<li>repeat to push:<ul>
 					<li>repeat to stage / commit:<ul>
 						<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
-						<li>develop; inspect; test; diff modifications; stage or commit files</li>
+						<li>test/develop; inspect; diff modifications; [ stage files ]</li>
 					</ul></li>
 					<li class="like-h6" id='wf_Commit'>Commit<ul><!-- \todo fix 'like-h6' -->
 						<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
-						<li>inspect; test; view local changes; commit</li>
+						<li>inspect; test; view local changes; commit<ul>
+							<li>OR, for large and/or complicated commit: <span>git stash; git diff stash</span></li>
+						</ul></li>
 					</ul></li>
 				</ul></li>
 			</ul>
@@ -266,11 +268,12 @@
 				<li>check for stashes, todo's; if [ (?)incomplete commit | stashes | todo's | settings to export ]: address as indicated</li>
 				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
 				<li>show status of all active local branches:&nbsp;&nbsp;<span class='mono'><span class="prompt"> $ </span>git branch -vv</span></li>
-				<li>check commits to be published:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span></li>
-				<li>[gd &lt;branch&gt; &lt;origin/branch&gt;] delete local branch</li>
+				<li>check commits to be merged:&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v origin/master</span></li>
 				<li><span class="step"><a href="#ws_MergeBranch">Merge Branch</a></span></li>
-				<li>[verify :&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v master</span>]</li>
-				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> master; compare origin; verify match</li>
+				<li>[verify :&nbsp;&nbsp;<span class='mono'><span class="prompt">$ </span>git cherry -v origin/master</span>]</li>
+				<li>[gd &lt;branch&gt; &lt;origin/branch&gt;] delete local branch</li>
+				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> master</li>
+				<li>[Backup Database with suffix &lt;id&gt;-&lt;issuenum&gt;-&lt;date&gt;]</li>
 			</ul>
 		</div><!-- wf-publish -->
 		<div class="wf-triggerReview">
