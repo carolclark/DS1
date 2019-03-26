@@ -6,6 +6,9 @@
 	<title>JetBrains Administration</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 	<style type="text/css">
+			.nc {
+				color: #cc0000;
+			}
 			.info {
 				margin-left: 20px;
 				background-color: white;
@@ -471,7 +474,7 @@
 			<td><table>
 				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
 				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
-				<tr><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
+				<tr class="nc"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
 					several Stories,<br />some of which may be attached to different Epics or Projects</td>
 					<td rowspan="3">to Review:<ul>
 						<li>normally, add a task to review<ul>
@@ -481,14 +484,14 @@
 							and no further work is expected</li>
 					</ul>
 					</td></tr>
-				<tr><td>Story</td><td>orange3</td><td>'Story' represents a
+				<tr class="nc"><td>Story</td><td>orange3</td><td>'Story' represents a
 					goal element for planning<br />serves as swimlane on a -develop Board<br />
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
 				<tr class="subhead"><td colspan="4">Tickets</td></tr>
-				<tr><td>TicketType</td><td></td><td>Feature (blue5); Scenario (blue3); Task (brown3); Bug (pink3)</td><td>conditional on Type==Ticket</td></tr>
-				<tr><td>Ticket</td><td></td><td>represents an issue / agile board card</td><td></td></tr>
-				<tr><td>BugClass</td><td></td><td>Cosmetic; Exception; Usability; Performance; Bug</td>
+				<tr class="nc"><td>TicketType</td><td></td><td>Feature (blue5); Scenario (blue3); Task (brown3); Bug (pink3)</td><td>conditional on Type==Ticket</td></tr>
+				<tr class="nc"><td>Ticket</td><td></td><td>represents an issue / agile board card</td><td></td></tr>
+				<tr class="nc"><td>BugClass</td><td></td><td>Cosmetic; Exception; Usability; Performance; Bug</td>
 					<td>conditional on TicketType == Bug</td></tr>
 			</table></td></tr>
 	</table>
@@ -511,57 +514,57 @@
 			<td><table>
 				<tr><th>Stage Name</th><th>Description</th><th>Transition</th></tr>
 				<tr class="subhead"><td colspan="3">Backlog</td></tr>
-				<tr><td>Backlog</td><td>incoming items</td>
+				<tr class="nc"><td>Backlog</td><td>incoming items</td>
 					<td>Evaluate for development. If rejected here, set a 'Resolved' State with comment</td></tr>
 				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
-				<tr><td>Epic</td>
+				<tr class="nc"><td>Epic</td>
 					<td>'Epic' represents a goal containing several Stories.</td>
 					<td>to Review: Normally, add a Feature, Task, ... to review<br />
 						Standard method is to assume "Done" if all existing subitems are complete. We disagree.<br />
 						Move to Review if all subissues have been resolved and no further work is expected.
 					</td></tr>
-				<tr><td>Story</td>
-					<td>Stage "Story" anchors a story for development.
+				<tr class="nc"><td>Story</td>
+					<td class="nc">Stage "Story" anchors a story for development.
 						<br />serves as swimlane on a -develop Board<br />
 						Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 							orthogonal to</a> features,<br />and may require functionality from otherwise unrelated Features</td>
-					<td>generates Tickets that move through the rest of the board<br />
+					<td class="nc">generates Tickets that move through the rest of the board<br />
 						Tickets may have Stage Feature, Scenario, Task, or Bug<br />
 						If all of a Story's Tickets are complete, plan new work as indicated or
 						move to Review for verification.
 					</td></tr>
-				<tr><td>Ticket</td><td>specification for what is to be done for this work item</td>
+				<tr class="nc"><td>Ticket</td><td>specification for what is to be done for this work item</td>
 					<td>Feature, Scenario, Task, and Bug share this column<br />
 						move to Open when ready</td></tr>
 				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
-				<tr><td>Open</td><td>last column in _Roadmap; first column in -develop</td><td></td></tr>
+				<tr class="nc"><td>Open</td><td>last column in _Roadmap; first column in -develop</td><td></td></tr>
 				<tr class="subhead"><td colspan="3"></td></tr>
-				<tr><td>Develop</td><td>develop as specified</td><td></td></tr>
-				<tr><td>Review</td><td>try to come at this work from a fresh perspective</td></tr>
-				<tr><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
+				<tr class="nc"><td>Develop</td><td>develop as specified</td><td></td></tr>
+				<tr class="nc"><td>Review</td><td>try to come at this work from a fresh perspective</td></tr>
+				<tr class="nc"><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
  				<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
-				<tr><td>Duplicate</td><td>see YouTrack Duplicate handling</td> <td></td></tr>
-				<tr><td>WillNotFix</td><td></td> <td></td></tr>
-				<tr><td>Reopened</td> <td></td> <td></td> </tr>
-				<tr><td>CannotReproduce</td><td></td><td></td></tr>
-				<tr><td>WorksAsIntended</td><td></td> <td></td></tr>
-				<tr><td>Incomplete</td><td></td> <td></td></tr>
-				<tr><td>Obsolete</td><td></td><td></td></tr>
+				<tr class="nc"><td>Duplicate</td><td>see YouTrack Duplicate handling</td> <td></td></tr>
+				<tr class="nc"><td>WillNotFix</td><td></td> <td></td></tr>
+				<tr class="nc"><td>Reopened</td> <td></td> <td></td> </tr>
+				<tr class="nc"><td>CannotReproduce</td><td></td><td></td></tr>
+				<tr class="nc"><td>WorksAsIntended</td><td></td> <td></td></tr>
+				<tr class="nc"><td>Incomplete</td><td></td> <td></td></tr>
+				<tr class="nc"><td>Obsolete</td><td></td><td></td></tr>
 			</table></td></tr>
 	</table>
 	<!-- @marker "Other Attached Fields" -->
 	<h5 id="OtherAttachedFields_">Other Attached Fields</h5>
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
-		<tr><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
+		<tr class="nc"><td>Assignee</td><td>N/A</td><td>Unassigned</td><td>user, single</td><td>for, assigned to</td>
 			<td>to simplify Saved Search for user's items: when moved from Open and if not already assigned, assign current user</td><td></td>
 		</tr>
-		<tr><td>FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
+		<tr class="nc"><td>FixedInBuild</td><td>N/A</td><td>Unscheduled</td><td>build, single</td>
 			<td>fix for, fixed in, build, fix build</td><td></td><td>associated by TeamCity with build number</td></tr>
-		<tr><td>FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
+		<tr class="nc"><td>FixVersions</td><td>N/A</td><td>Unscheduled</td><td>version, multiple</td>
 			<td>fix for, fixed in, fix version, version</td><td>Version when fixed</td>
 			<td></td></tr>
-		<tr><td>ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
+		<tr class="nc"><td>ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
 			<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 				on which our versioning plan is based</td></tr>
 		</table>
@@ -587,7 +590,7 @@
 
 <!-- @marker "Issue Link Types" -->
 <div class="info">
-	<h4 id="IssueLinkTypes_">Issue Link Types</h4>
+	<h4 id="IssueLinkTypes_">Issue Link Types</h4>DS-303 docs: mark non-conformant features
 	<table id="IssueLinkTypes">
 		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
 		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
@@ -602,59 +605,60 @@
 	<li class="blurb">Note: NEVER delete the only agile board. YouTrack cannot (2/7/19)
 		then add a board</li>
 	<li>as: <strong>&lt;ProjectOwner&gt;</strong><ul>
-		<li>Add Agile Board</li>
-		<li>process parameters<ul>
-			<li><em>board: </em>&lt;ProjectID&gt;_Roadmap; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: {Board &lt;ProjectID&gt;_Roadmap} #Unresolved -Epic</li>
-			<li><em>board: </em>&lt;ProjectID&gt;-develop; <em>savedSearch: </em>project: &lt;ProjectName&gt; has: {Board &lt;ProjectName&gt;-develop} #Unresolved -Epic -Story</li>
-		</ul></li>
-		<li>create new Agile Boards:<ul>
-			<li>for each of above parameter sets:<ul>
-				<li>add savedSearches<ul>
-				</ul></li>
+		<li>Add Agile Board<ul>
+			<li class="nc">process parameters<ul>
+				<li><em>board: </em>&lt;ProjectName&gt;_Roadmap; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: {Board &lt;ProjectID&gt;_Roadmap} #Unresolved -Epic</li>
+				<li><em>board: </em>&lt;ProjectName&gt;-develop; <em>savedSearch: </em>project: &lt;ProjectID&gt; has: {Board &lt;ProjectID&gt;-develop} #Unresolved -Epic -Story</li>
 			</ul></li>
-		</ul></li><!-- create boards -->
-		<li>Configure Agile Boards<ul>
-			<li>Type: Kanban Board</li>
-			<li>General<ul>
-				<li>name: &lt;ProjectID&gt;; search: <em>savedSearch</em></li>
-				<li>add project(s)</li>
-				<li>can view and use board: &lt;repoName&gt; Team</li>
-				<li>can edit board settings: Owner</li>
-				<li>Sprints: disabled</li>
-				<li>Board Behavior<ul>
-					<li>select appropriate savedSearch</li>
-					<li>Ignore subtasks of existing cards: yes</li>
-				</ul></li>
-			</ul></li>
-			<li>Columns and Rows<ul>
-				<li>Columns identified by: State<ul>
-					<li>_Roadmap columns<ul>
-						<li>Backlog</li>
-						<li>Story</li>
-						<li>Specify</li>
-						<li>Open</li>
-					</ul></li>
-					<li>-develop columns<ul>
-						<li>Open</li>
-						<li>Develop</li>
-						<li>Review</li>
-						<li>Verified</li>
+			<li class="nc">create new Agile Boards:<ul>
+				<li>for each of above parameter sets:<ul>
+					<li>add savedSearches<ul>
 					</ul></li>
 				</ul></li>
-				<li>Swimlanes identified by: Type<ul>
-					<li>_Roadmap: Epic</li>
-					<li>-develop: Story</li>
+			</ul></li><!-- create boards -->
+			<li>Configure Agile Boards<ul>
+				<li>Type: Kanban Board</li>
+				<li>General<ul>
+					<li>name: &lt;ProjectID&gt;; search: <em>savedSearch</em></li>
+					<li>add project(s)</li>
+					<li>can view and use board: &lt;repoName&gt; Team</li>
+					<li>can edit board settings: Owner</li>
+					<li>Sprints: disabled</li>
+					<li>Board Behavior<ul>
+						<li>select appropriate savedSearch</li>
+						<li>Ignore subtasks of existing cards: yes</li>
+					</ul></li>
 				</ul></li>
-				<li>show swimlane for Uncategorized cards at bottom of Board: yes</li>
-			</ul></li>
-			<li>Card<ul>
-				<li>Default value for type: Task</li>
-				<li>Color scheme: Type</li>
-				<li>Show colors for other custom types: Yes</li>
-			</ul></li>
-			<li>Chart<ul>
-				<li>Type: Cumulative flow</li>
-				<li>Issue filter: All cards</li>
+				<li>Columns and Rows<ul>
+					<li class="nc">Columns identified by: State<ul>
+						<li class="nc">_Roadmap columns<ul>
+							<li>Backlog</li>
+							<li>Story</li>
+							<li>Specify</li>
+							<li>Open</li>
+						</ul></li>
+						<li class="nc">-develop columns<ul>
+							<li>Open</li>
+							<li>Develop</li>
+							<li>Review</li>
+							<li>Verified</li>
+						</ul></li>
+					</ul></li>
+					<li class="nc">Swimlanes identified by: Type<ul>
+						<li class="nc">_Roadmap: Epic</li>
+						<li class="nc">-develop: Story</li>
+					</ul></li>
+					<li>show swimlane for Uncategorized cards at bottom of Board: yes</li>
+				</ul></li>
+				<li>Card<ul>
+					<li class="nc">Default value for type: Task</li>
+					<li class="nc">Color scheme: Type</li>
+					<li class="nc">Show colors for other custom types: Yes</li>
+				</ul></li>
+				<li>Chart<ul>
+					<li>Type: Cumulative flow</li>
+					<li>Issue filter: All cards</li>
+				</ul></li>
 			</ul></li>
 		</ul></li>
 	</ul></li>
