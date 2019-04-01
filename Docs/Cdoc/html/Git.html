@@ -208,14 +208,16 @@
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
 			<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
 				fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
-				test; commit; <span class="step"><a href="#ws_push">push</a></span> master</li>
+				test; commit; <span class="step"><a href="#ws_push">push</a></span> master;
+				[ gd origin origin/master ] (should be empty)</li>
 		</ul></li>
 	</ul>
 	<ul>
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
 				<span class="step"><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</span>;
-				merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;; [gd origin/branch ]</li>
+				merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;;
+				[ gd -- origin/target ]</li>
 		</ul></li>
 	</ul>
 	<ul>
@@ -232,7 +234,7 @@
 	<div class="indent">
 		<div class="wf-openTask">
 			<h6>OpenTask</h6><ul>
-				<li>clean up stashes</li>
+				<li>verify no pending changes; clean up stashes</li>
 				<li><strong>New Task</strong>: <span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
 					new task from master with branch, task name &lt;productID&gt;-&lt;issueID&gt;-short-desc; test;
 					<span class="step"><a href="#ws_push">push</a></span></li>
@@ -377,11 +379,12 @@
 		<li>if indicated, update master from release</li>
 		<li>master branch; merge in tagged release branch; test; [commit]; PUSH</li>
 		<li>GitHub: from draft of Release: add product if indicated; publish</li>
-		<li>delete release task and local branch</li>
+		<li>delete branch: <span class="step">set tb=targetBranch</span> <span class="step">git branch -d $tb</span>
+			<span class="step">git push origin --delete $tb</span></li>
 	</ul></div>
-	<h5>Archive Repository</h5>
-	</div></div>
-
+	<h5>[ Archive Repository ]</h5>
+	</div>
+</div>
 <div style="page-break-before: always">
 	<!-- @marker "Workflow Subtasks" -->
 	<h3>Workflow Subtasks</h3>

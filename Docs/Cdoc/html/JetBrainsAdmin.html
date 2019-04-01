@@ -406,16 +406,16 @@
 		</ul></li>
 		<li>Teams<ul>
 			<li>add any new team members @ Users</li>
-			<li>Users: Verify/Assign Groups and Roles<ul>
+			<li>select each User; Verify/Assign Groups and Roles<ul>
 				<li>user admin<ul>
-					<li>2 Roles: Global System Admin, &lt;ProjectName&gt; Project Admin</li>
-					<li>1 Group: Registered Users with Role Observer</li>
+					<li>Roles: Global System Admin; &lt;ProjectName&gt; Project Admin for each project</li>
+					<li>Group: Registered Users with Role Observer</li>
 				</ul></li>
 				<li>user &lt;IntendedProjectOwner&gt;<ul>
-					<li>1 Role: &lt;ProjectName&gt; Project Admin</li>
-					<li>1 Group: Registered Users with Role Observer</li>
+					<li>Roles: Project Admin for each &lt;ProjectName&gt;</li>
+					<li>Group: Registered Users with Role Observer</li>
 				</ul></li>
-				<li>Guest: Role Observer</li>
+				<li>Guest: Role Observer for each project</li>
 			</ul></li>
 		</ul></li>
 		<li>in Users list, select &lt;IntendedProjectOwner&gt; and assign Project Owner</li>
@@ -430,10 +430,11 @@
 	<li>YouTrack: Settings<ul>
 		<li>Project Page: Add Issue Tracker Service; Project Type: Kanban</li>
 		<li>Integrations : VCS Integrations<ul>
-			<li>New VCS Integration<ul>
+			<li>from Issues List: New VCS Integration<ul>
 				<li>connect to GitHub repo</li>
 				<li>click link to generate Auth token; copy</li>
-				<li>in YouTrack, paste into OAuth field</li>
+				<li>in YouTrack, paste into OAuth field; generate token</li>
+				<li>copy token; paste into request</li>
 			</ul></li>
 		</ul></li>
 		<li>set &lt;repo&gt;; &lt;projectName&gt;; owned by admin</li>
@@ -444,7 +445,7 @@
 
 <!-- @marker "YT: Add Custom Tags" -->
 <h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
-	<li>login as Project Owner</li>
+	<li>login as Project Owner; goto issues list</li>
 	<li>Custom Tags<ul>
 		<li>'Blocked' (pink4): development is Blocked waiting for something</li>
 	</ul></li>
