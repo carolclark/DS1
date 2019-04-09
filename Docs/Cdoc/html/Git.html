@@ -90,16 +90,17 @@
 <!-- @/topicList -->
 
 <div class="paragraphs">
-	<p>Repositories are hosted at GitHub. Work is organized around GitHub issues.
+	<p>Repositories are hosted at GitHub.</p>
+	<p>Work is organized around YouTrack issues.
 	YouTrack Epic issues with swimlanes group other issues into larger goals.</p>
 	<p>Tasks are a fundamental element in our workflow. IntelliJ, our primary collection of IDEs, supports Tasks, each normally associated with a YouTrack task.</p>
-	<p>YouTrack Agile boards, one each for backlog refinement and for development, help us to organize our work on epics, features and tasks.</p>
+	<p>YouTrack Agile boards, one each for backlog refinement and for development, help us to organize our work on epics, stories, and features.</p>
 	<p>AppCode projects are dependent on Xcode's project format, so projects in Objective-C/C++ are first created in Xcode.</p>
 </div>
 
 <!-- @marker "Feature Branches" -->
 <h4 id='FeatureBranches_'>Feature Branches</h4>
-<p><strong>Naming Convention</strong>: &lt;task&gt;-#&lt;issueNum&gt;</p>
+<p><strong>Naming Convention</strong>: &lt;PR&gt;-&lt;issueNum&gt;-shortDesc</p>
 
 <div class="paragraphs">
 	<p>Feature branches are used to develop features for a future release.
@@ -109,23 +110,12 @@
 </div>
 
 <p id="BranchingDiagram">Feature, release, and hotfix branches are all represented in this diagram:</p>
-<p id="GitBranchWorkflow">Git Workflow diagram:</p>
+<h6 id="GitBranchWorkflow">Git Workflow diagram:</h6>
 <div><img src="_img/GitFlow.src/GitFlow.src.001.png" alt="Workflows" /></div>
 
 <!-- @marker "Release Branches" -->
 <h4 id='ReleaseBranches_'>Release Branches</h4>
 <p id="Branches_Versions_"><strong>Naming Convention</strong>: v&lt;versionNum&gt;, using semantic versioning</p>
-	<div class="paragraphs">
-		<p>When master is ready for a release, we assign a version number and create a release branch with name 'release-&lt;versionNum&gt;'.
-			The separate release branch supports version updating and minor bug fixes on the release branch,
-			while allowing work to proceed on master and feature branches.</p>
-		<p>As soon as the release branch has been created, we update ("bump") the version number.
-			Bug-fix commits may also be added.</p>
-		<p>Work from the release branch is merged into master when the release branch is tagged and closed.
-			Bug fixes may be incorporated sooner as indicated.</p>
-		<p>Release branches are intended to isolate their work from the rest of the project workflow.
-			There are no updates or merges with other repository branches.</p>
-	</div>
 
 <h5>Implementation</h5><ul>
 	<li>When master is ready for a release,
@@ -138,29 +128,6 @@
 		Bug fixes may be incorporated sooner as indicated.</li>
 	<li>Release branches are intended to isolate their work from the rest of the project workflow.
 		There are no updates or merges with other repository branches.</li>
-</ul>
-
-	<div class="paragraphs">
-		<p class="blurb">Historical Note: Until 6/16/16, we did not have a procedure for handling versioned releases,
-			although both Accessor and Support were assigned version 0.1 in a previous attempt.
-			We will rename the previous versions, and restart with v0.0 now.</p>
-	</div>
-
-<h5>Thoughts on Continuous Integration</h5><ul>
-	<li>The current (2018.08.06) prevailing wisdom in devOps appears to be to release continuously.</li>
-	<li>We had been concerned about the policy of closing a high-level task without looking back to see
-		if we had accomplished what we intended,</li>
-	<li>As a user of some products using Continuous Integration, including JetBrains, we have now seen:<ul>
-		<li>changes that turned out to be related to upcoming features,
-			but that did not make sense when we first saw them</li>
-		<li>more bugs in those areas than we expect from their developers</li>
-	</ul></li>
-</ul>
-
-<h5>Historical Note</h5><ul>
-	<li class="blurb">Until 6/16/16, we did not have a procedure for handling versioned releases,
-		although both Accessor and Support were assigned version 0.1 in a previous attempt.<br />
-		We will rename the previous versions, and restart with v0.0 now.</li>
 </ul>
 
 <!-- @marker "Hotfix Branches" -->
