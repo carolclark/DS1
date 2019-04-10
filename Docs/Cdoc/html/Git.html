@@ -13,6 +13,12 @@
 			font-size: 12px;
 			color: #000;
 		}
+
+		span.bold-italic {
+			font-weight: bold;
+			font-style: italic;
+		}
+
 		/* workflow borders; provide color to help developer keep place in workflow */
 		h3.wf-feature {
 			color: blue;
@@ -47,6 +53,7 @@
 		div.wf-close {
 			border: 8px none purple;border-left-style: solid;
 		}
+
 		/* links: highlight tagged steps (top of Branch Workflow) and their links */
 		.step {
 			color: saddlebrown;
@@ -139,11 +146,10 @@
 			They are checked out from the tip of the latest release tag
 			(<span class="mono">git checkout tags/&lt;latestVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></p>
 		<p>The three parts of the semantic version number are major release; minor release; bug fix.
-			Hotfix branches correspond to bug fixes.</p>
+			Hotfix branches are checked out from the tip of the latest revision.</p>
 	</div>
 
-<h2 id="WorkflowIntelliJ">Workflow: IntelliJ with Terminal</h2>
-
+<h2 id="WorkflowIntelliJ">Workflows: IntelliJ with Terminal</h2>
 <div style="page-break-before: always">
 <!-- @marker "Feature Branch Workflow" -->
 <div class="wf-feature">
@@ -170,8 +176,7 @@
 			<li>fetch; [merge if changed]; push</li>
 		</ul></li><!-- end Push -->
 	</ul><!-- end Workflow Steps -->
-	<h5>Processes</h5>
-	<ul>
+	<h5>Processes</h5><ul>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
 			<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
 				fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
@@ -226,8 +231,10 @@
 					</ul></li>
 				</ul></li>
 			</ul>
-			<h6><a id="wf_push">Push</a></h6><ul>
-				<li><span class="step"><a href="#ws_push">push</a></span>; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span></li>
+			<h6><a id="wf_push">Push / Review</a></h6><ul>
+				<li><span class="step"><a href="#ws_push">push</a></span>; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
+					<a href="#TriggerReview_">Trigger Review</a> as indicated
+				</li>
 			</ul>
 		</div><!-- wf-developCommit -->
 	</div><!-- indent2 -->
@@ -246,10 +253,11 @@
 			</ul>
 		</div><!-- wf-publish -->
 		<div class="wf-triggerReview">
-			<h6>Trigger Review</h6><ul>
-				<li>generate pull request; set issue state to Review</li>
+			<h6><a id="TriggerReview_">Trigger Review</a></h6><ul>
+				<li>UpSource: select commit; trigger review</li>
 			</ul>
 		</div><!-- wf-triggerReview -->
+ 		<h5>[Archive Repository]</h5>
 	</div><!-- indent -->
 </div><!-- wf-feature -->
 </div><!-- page-break-before: always -->
