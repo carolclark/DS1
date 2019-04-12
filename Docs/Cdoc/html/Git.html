@@ -155,7 +155,7 @@
 			They are checked out from the tip of the latest release tag
 			(<span class="mono">git checkout tags/&lt;latestVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></p>
 		<p>The three parts of the semantic version number are major release; minor release; bug fix.
-			Hotfix branches are checked out from the tip of the latest revision.</p>
+			Hotfix branches correspond to bug fixes, and are checked out from the latest revisio's tag.</p>
 	</div>
 
 <h2 id="WorkflowIntelliJ">Workflows: IntelliJ with Terminal</h2>
@@ -272,6 +272,26 @@
 </div><!-- page-break-before: always -->
 
 <div style="page-break-before: always">
+	<h3 id="_IssueReview" class="wf-doReview">Issue Review</h3>
+	<div class="wf-doReview">
+	<h5>Review Commit</h5><div class="wf-Review">
+	<ul>
+		<li>review code, adding issues as indicated<ul>
+			<li>Evaluate completeness of solution as specified.</li>
+			<li>Evaluate completeness of automated and, if required, manual testing.</li>
+			<li>Verify test completeness and results.</li>
+			<li>Review code for cleanness, refactoring opportunities, ...</li>
+		</ul></li>
+	</ul></div>
+	</div><!-- class="wf-doReview" -->
+	<h5>Code Review</h5><ul>
+	<li>NO MORE UPDATES from master</li>
+	<li>for identified changes needed:<ul>
+		<li>create task/branch based on tagged branch</li>
+		<li>ginfo.sh; test; [commit, push]; edit; test; add/stage; test; [commit, push]</li>
+	</ul></li>
+</ul>
+-- other
 	<h3 id="_IssueReview">Issue Review</h3><!-- \todo: fix collapsing -->
 	<h5>Issue Tasks Complete</h5><div class='indent'>
 			<div class="dq">
@@ -303,33 +323,36 @@
 </div><!-- page-break-before: always -->
 	<!-- @marker "Release and Hotfix Branches" -->
 	<div style="background-color: #e2faff">
-	<h3 id='Release_Hotfix_Workflow_' class="wf-hotfix">Release and Hotfix Workflow</h3>
-	<div class="wf-hotfix">
-		<p><strong>WARNING:</strong> Feature branches are updated frequently to and from master.
-			Updating to and from master is avoided in this workflow to prevent pollution of the release branch.</p>
-	<h5>Create Release or Hotfix Branch</h5><div class="wf-createRelease"><ul>
-		<li>Hotfix:<ul>
-			<li>stash any active branches</li>
+	<h3 id='Release_Hotfix_Workflows_' class="wf-release-hotfix">Release and Hotfix Workflows</h3><ul>
+		<p><strong>WARNING:</strong>PUSH from master is prohibited to prevent pollution of the release branch.</p>
+		<li>if Release, make sure all intended branches and stashes for this release are successfully merged<ul>
+			<li>cleanup old branches and stashes; <a href="#wf_Develop">develop</a> / commit / publish if indicated</li>
 		</ul></li>
-		<li>Release:<ul>
-			<li>make sure all intended branches and stashes for this release are successfully merged<ul>
-				<li>cleanup old branches and stashes; <a href="#wf_Develop">develop</a> / commit / publish if indicated</li>
+	<div class="wf-hotfix">
+	<h5>Create Release or Hotfix Branch</h5><div class="wf-createRelease">
+		<h6>Prepare Branches</h6><ul>
+		<li>cleanup existing branches and stashes<ul>
+			<li>stash any other active branches<ul>
+				<li>for Hotfix, may need to be selective to save time, but prepare stable base for Hotfix</li>
 			</ul></li>
 		</ul></li>
+	</ul>
+	<h6>Revision Number</h6><ul>
 		<li>select semantic version number/name, eg. v1.0.1</li>
 		<li>establish milestone and parent version<ul>
 			<li>Hotfix branch:<ul>
 				<li>add milestone 'v&lt;versionNum&gt;'; describe hotfix in milestone text</li>
-				<li>parent is the tagged release from which the hotfix will branch</li>
+				<li>parent is the tip of the most recent release</li>
 			</ul></li>
-			<li>other Release branches<ul>
+			<li>Release branch:<ul>
 				<li>rename milestone nextVersion to 'v&lt;versionNum&gt;'; edit existing content to release description</li>
 				<li>add new milestone nextVersion; transfer any open tasks there</li>
 				<li>parent is master branch</li>
 			</ul></li>
-			<li>versionName is now 'v&lt;versionNum&gt;'</li>
 		</ul></li>
-	</ul></div>
+		<li class="bold-italic">versionName is now 'v&lt;versionNum&gt;'</li>
+	</ul>
+</ul></div>
 	<div class="wf-openTask"><ul>
 		<li>GitHub: from repository's Code tab, select "&lt;n&gt; releases"; create and save draft of revision &lt;versionName&gt;</li>
 		<li>TCP (test; [commit, push])</li>
