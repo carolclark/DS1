@@ -26,15 +26,16 @@
 			font-style: italic;
 		}
 
+		span.warning {
+			color: red;
+		}
+
 		/* workflow borders; provide color to help developer keep place in workflow */
 		h3.wf-feature {
 			color: blue;
 		}
 		div.wf-feature {
 			border: 12px none blue;border-right-style: solid;
-		}
-		div.wf-doReview {
-			border: 12px none green;border-right-style: solid;
 		}
 		h3.wf-release-hotfix {
 			color: deeppink;
@@ -96,6 +97,7 @@
 	<!-- @topicItem "Branches and Releases" "#Branches_Releases_" "0" "" -->
  	<!-- @topicItem "Daily Workflows" "#WorkflowIntelliJ" "0" "current workflow" -->
 		<!-- @topicItem "Feature Branches" "#Feature_Branch_Workflow_" "1" "" -->
+		<!-- @topicItem "Code Review" "#CodeReview" "1" "" -->
 		<!-- @topicItem "Release and Hotfix Branches" "#Release_Hotfix_Workflow_" "1" "" -->
 		<!-- @topicItem "Workflow Subtasks" "#workflowSubtasks" "1" "" -->
 	<!-- @topicGroup "" "6" -->
@@ -108,76 +110,77 @@
 <h2>Branches and Releases</h2>
 <!-- @topicList "Branches and Releases" "Branches_Releases_" -->
 	<!-- @topicItem "Feature Branches" "#FeatureBranches_" "0" "" -->
-	<!-- @topicItem "Release Branches" "#ReleaseBranches_" "0" "" -->
-	<!-- @topicItem "Hotfix Branches" "#Hotfix_Branches_" "0" "" -->
+	<!-- @topicItem "Release Branches" "#Releases_" "0" "" -->
+	<!-- @topicItem "Hotfix Branches" "#wf_release-hotfix" "0" "" -->
 <!-- @/topicList -->
 
-<div class="paragraphs">
-	<p>Repositories are hosted at GitHub.</p>
-	<p>Work is organized around YouTrack issues.
-	YouTrack Epic issues with swimlanes group other issues into larger goals.</p>
-	<p>Tasks are a fundamental element in our workflow. IntelliJ, our primary collection of IDEs, supports Tasks, each normally associated with a YouTrack task.</p>
-	<p>YouTrack Agile boards, one each for backlog refinement and for development, help us to organize our work on epics, stories, and features.</p>
-	<p>AppCode projects are dependent on Xcode's project format, so projects in Objective-C/C++ are first created in Xcode.</p>
-</div>
+<!-- overview\summary --><ul>
+	<li>Repositories are hosted at GitHub.</li>
+	<li>Work is organized around YouTrack issues.
+	YouTrack Epic issues with swimlanes group other issues into larger goals.</li>
+	<li>Tasks are a fundamental element in our workflow. IntelliJ, our primary collection of IDEs, supports Tasks, each normally associated with a YouTrack task.</li>
+	<li>YouTrack Agile boards, one each for backlog refinement and for development, help us to organize our work on epics, stories, and features.</li>
+</ul><!-- overview\summary -->
 
-<!-- @marker "Feature Branches" -->
-<h4 id='FeatureBranches_'>Feature Branches</h4>
-<p><strong>Naming Convention</strong>: &lt;PR&gt;-&lt;issueNum&gt;-shortDesc</p>
+<!-- @marker "Branch Types" -->
+<h4 id='BranchesTypes_'>Branch Types</h4><ul>
+	<li><em>Feature</em> branches are used to develop features for a future release.
+		A feature branch is created from master, and merged back, if successful, to master.</li>
+	<li><em>Release</em> branches are used when a product is released. We manage releases with GitHub's release tool.</li>
+	<li><em>Hotfix</em> branches are used to fix bugs in released software that must be corrected before the next Release<ul>
+		<li>check out from the tag of the release to be fixed
+			(<span class="mono">git checkout tags/&lt;targetVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></li>
+	</ul></li>
+	<li><em>Branch Naming Convention</em><ul>
+		<li>(release|hotfix)-&lt;PR&gt;-&lt;issueNum&gt;-shortDesc;
+			&lt;issueNum&gt; uses <a href="https://semver.org/#semantic-versioning-200">semantic versioning</a></li>
+	</ul></li>
+	<li><a href="#WorkflowIntelliJ">Workflow: IntelliJ</a> describes our procedures for developing branches.</li>
+</ul><!-- Branch Types -->
 
-<div class="paragraphs">
-	<p>Feature branches are used to develop features for a future release.
-		A feature branch is created from master, and merged back, if successful, to master.</p>
-</div>
-<div class="paragraphs"> <p><a href="#WorkflowIntelliJ">Workflow: IntelliJ</a> describes our prodecures for handling of feature branches.</p>
-</div>
+<!-- @marker "Release Management" -->
+<h4>Release Management</h4><ul>
+	<li>GitHub Release tool<ul>
+		<li>actual release for public projects, with option to tag as pre-release</li>
+		<li>revision, including resources, created in GitHub; add resources, information, ...</li>
+		<li>GitHub release stores description for potential users</li>
+		<li>attached GitHub milestones store a technical summary</li>
+	</ul></li>
+	<li>Release Branch<ul>
+		<li>Once the release branch has been created, we update ("bump") the version number.</li>
+		<li>Work from the release branch is merged into master when the release branch is tagged and closed.</li>
+	</ul></li>
+</ul><!-- Release Management -->
 
-<p id="BranchingDiagram">Feature, release, and hotfix branches are all represented in this diagram:</p>
-<h6 id="GitBranchWorkflow">Git Workflow diagram:</h6>
-<div><img src="_img/GitFlow.src/GitFlow.src.001.png" alt="Workflows" /></div>
-
-<!-- @marker "Release Branches" -->
-<h4 id='ReleaseBranches_'>Release Branches</h4>
-<p id="Branches_Versions_"><strong>Naming Convention</strong>: v&lt;versionNum&gt;, using semantic versioning</p>
-
-<h5>Implementation</h5><ul>
-	<li>When master is ready for a release,
-		we assign a version number and create a release branch with name 'release-&lt;versionNum&gt;'.<ul>
-		<li>The separate release branch supports version updating and minor bug fixes on the release branch,<br />
-				while allowing work to proceed on master and feature branches.</li></ul></li>
-	<li>As soon as the release branch has been created, we update ("bump") the version number.
-		Bug-fix commits may also be added.</li>
-	<li>Work from the release branch is merged into master when the release branch is tagged and closed.
-		Bug fixes may be incorporated sooner as indicated.</li>
-	<li>Release branches are intended to isolate their work from the rest of the project workflow.
-		There are no updates or merges with other repository branches.</li>
-</ul>
-
-<!-- @marker "Hotfix Branches" -->
-<h4 id='Hotfix_Branches_'>Hotfix Branches</h4>
-<p><strong>Naming Convention</strong>: hotfix-v&lt;versionNum&gt;</p>
-	<div class="paragraphs">
-		<p>Hotfix Branches are a special case of Release branches, and are handled in much the same way.</p>
-		<p>Hotfix branches are created to fix bugs in released software that must be fixed before the next Release branch.
-			They are checked out from the tip of the latest release tag
-			(<span class="mono">git checkout tags/&lt;latestVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></p>
-		<p>The three parts of the semantic version number are major release; minor release; bug fix.
-			Hotfix branches correspond to bug fixes, and are checked out from the latest revisio's tag.</p>
-	</div>
+<h4>Xcode-related projects</h4><ul>
+	<li>AppCode projects are dependent on Xcode's project format, so projects in Objective-C/C++ are first created in Xcode.<ul>
+		<li>issues with Xcode/AppCode projects<ul>
+			<li>uses Xcode-specific project type<ul>
+				<li>makes other project types unavailable</li>
+			</ul></li>
+			<li>Xcode interference: changes our configurations when it ie opened</li>
+		</ul></li>
+	</ul></li>
+	<li>CLion><ul>
+		<li>CLion is another JetBrains IDE for C/C++. Swift is available as a plugin.</li>
+		<li>CLion uses CMake; projects have no connection with Xcode</li>
+		<li>CLion does not have an editor for UI. We probably would use Sketch, which is intended for UI development.
+			Sketch is highly rated, and our evaluation concurs.</li>
+	</ul></li>
+</ul><!-- Xcode-related projects -->
 
 <h2 id="WorkflowIntelliJ">Workflows: IntelliJ with Terminal</h2>
-<div style="page-break-before: always">
+<div style="page-break-before: always"></div>
 <!-- @marker "Feature Branch Workflow" -->
 <div class="wf-feature">
-	<h3 id='Feature_Branch_Workflow_'>Feature Branch Workflow</h3>
-	<h5>Workflow Steps</h5>
-	<ul>
+<h3 id='Feature_Branch_Workflow_'>Feature Branch Workflow</h3>
+	<h5>Workflow Steps</h5><ul>
 		<li id="ws_setBranch"><span class="step">Set Branch:</span> <span class="ital">set active branch; all UI views show target branch</span><ul>
 			<li>set Task; Terminal: press "return" to show current branch; match Task, Terminal, and branch</li>
-		</ul></li><!-- end Set Branch -->
+		</ul></li><!-- ws_setBranch -->
 		<li id="ws_commit"><span class="step">Commit:</span> <span class="ital">all commits</span><ul>
 			<li>use IntelliJ's commit (currently crK) for git message support</li>
-		</ul></li><!-- end Commit -->
+		</ul></li><!-- ws_Commit -->
 		<li id="ws_merge"><span class="step">Merge:</span> <span class="ital">merge another branch into current branch</span><ul>
 			<li>preview: <span class='mono'><span class="prompt">$</span> git difftool HEAD origin</span>; then:<ul>
 				<li>if indicated, handle some individual change groups first</li>
@@ -193,33 +196,28 @@
 		</ul></li><!-- end Push -->
 	</ul><!-- end Workflow Steps -->
 	<h5>Processes</h5><ul>
-		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
-			<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
-				fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
-				test; commit; <span class="step"><a href="#ws_push">push</a></span> master;
-				[ gd origin origin/master ] (should be empty)</li>
-		</ul></li>
-	</ul>
-	<ul>
-		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
-			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
-				<span class="step"><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</span>;
-				merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;;
-				[ gd -- origin/target ]</li>
-		</ul></li>
-	</ul>
-	<ul>
-		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
-			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
-				<span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>; test;
-				merge in branch; test; <span class="step"><a href="#ws_push">push</a> master</span>
-			</li>
-		</ul></li>
-	</ul>
+			<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
+				<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
+					fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
+					test; commit; <span class="step"><a href="#ws_push">push</a></span> master;
+					[ gd origin origin/master ] (should be empty)</li>
+			</ul></li><!-- ws_SyncMaster -->
+			<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
+				<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
+					<span class="step"><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</span>;
+					merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;;
+					[ gd -- origin/target ]</li>
+			</ul></li>
+			<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
+				<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
+					<span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>; test;
+					merge in branch; test; <span class="step"><a href="#ws_push">push</a> master</span>
+				</li>
+			</ul></li><!-- ws_MergeBranch -->
+		</ul><!-- Processes -->
 
-<h4>While Issue Not Complete &nbsp;&nbsp;<span class='wf-developStart'>&lt;== start here</h4>
-	<h5>While Task(s) Not Complete</h5>
-	<div class="indent">
+<h4>While Issue Not Complete &nbsp;&nbsp;<span class='wf-developStart'>&lt;== start here</span></h4>
+	<h5>While Task(s) Not Complete</h5><div class="indent">
 		<div class="wf-openTask">
 			<h6>OpenTask</h6><ul>
 				<li>verify no pending changes; clean up stashes</li>
@@ -228,8 +226,8 @@
 					<span class="step"><a href="#ws_push">push</a></span></li>
 				<li>or <strong>Existing Task</strong>: switch to task; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a>;
 					</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
-			</ul>
-		</div><!-- wf-openTask -->
+			</ul><!-- wf-openTask -->
+		</div>
 	</div><!-- indent -->
 	<div class="indent2">
 		<div class="wf-developCommit">
@@ -270,135 +268,78 @@
 		</div><!-- wf-publish -->
 		<div class="wf-triggerReview">
 			<h6><a id="TriggerReview_">Trigger Review</a></h6><ul>
+				<li>check git status, log</li>
 				<li>UpSource: select commit; trigger review</li>
 			</ul>
-		</div><!-- wf-triggerReview -->
  		<h5>[Archive Repository]</h5>
 	</div><!-- indent -->
 </div><!-- wf-feature -->
-</div><!-- page-break-before: always -->
 
-<div style="page-break-before: always">
-	<h3 id="_IssueReview" class="wf-doReview">Issue Review</h3>
-	<div class="wf-doReview">
-	<h5>Review Commit</h5><div class="wf-Review">
-	<ul>
+<div style="page-break-before: always"></div>
+<h3 id="CodeReview">Code Review</h3><div class="wf-Review">
+	<h5>Review</h5><ul>
 		<li>review code, adding issues as indicated<ul>
 			<li>Evaluate completeness of solution as specified.</li>
-			<li>Evaluate completeness of automated and, if required, manual testing.</li>
+			<li>Evaluate completeness of automated and, if required, manual testing</li>
 			<li>Verify test completeness and results.</li>
 			<li>Review code for cleanness, refactoring opportunities, ...</li>
 		</ul></li>
-	</ul></div>
-	</div><!-- class="wf-doReview" -->
-	<h5>Code Review</h5><ul>
-	<li>NO MORE UPDATES from master</li>
-	<li>for identified changes needed:<ul>
-		<li>create task/branch based on tagged branch</li>
-		<li>ginfo.sh; test; [commit, push]; edit; test; add/stage; test; [commit, push]</li>
-	</ul></li>
-</ul>
--- other
-	<h3 id="_IssueReview">Issue Review</h3><!-- \todo: fix collapsing -->
-	<h5>Issue Tasks Complete</h5><div class='indent'>
-			<div class="dq">
-				<div class="wf-mergeReview">
-					<h6>Initiate Review</h6><ul>
-						<li>master branch; check VCS log</li>
-						<li>change issue's status from 'SwimIssue' to 'needs review'</li>
+	</ul>
+	<h6>Code Review Complete: Close Issue</h6><ul>
+		<li>test; check for unmerged  branches, pending stashes</li>
+		<li>if task and issue complete; close issue; delete task and local branch</li>
+		<li>address any unmerged branches and/or pending stashes</li>
+	</ul>
+</div><!-- wf-Review -->
+
+<!-- @marker "Release and Hotfix Branches" -->
+<div style="background-color: #e2faff">
+<h3 id='Release_Hotfix_Workflow_' class="wf-release-hotfix">Release and Hotfix Workflow</h3>
+	<div class="wf_release-hotfix">
+		<h6><span class="warning">CAUTION: This workflow is tentative; we have not yet done these procedures</span></h6>
+		<h5><a name="wf_release-hotfix">Release or Hotfix Branch</a></h5>
+		<div class="wf-createRelease">
+			<h6>Clean Up Branches</h6><ul>
+				<li>cleanup existing branches and stashes<ul>
+					<li>stash any other active branches</li>
+				</ul></li>
+			</ul><!-- end Clean Up Branches -->
+			<h6>Set Up Revision</h6><ul>
+				<li>Release Branch<ul>
+					<li>select semantic version number/name, eg. v1.0.1</li>
+				</ul></li>
+				<li>Hotfix Branch<ul>
+					<li>create 'release-&lt;versionName&gt;' based on tag where issue first appears</li>
+					<li>ensure parent branch is checked out<ul>
+						<li>if parent is not master, use <span class="mono">git checkout -b release-&lt;versionName&gt; &lt;parentTag&gt;</span></li>
 					</ul>
-					<h6>Review</h6><ul>
-						<li>review code; add issues as indicated</li>
-					</ul>
-				</div><!-- wf-mergeReview -->
-				<div class="wf-close">
-				<h6>Code Review Complete: Close Issue</h6><ul>
-					<li>test; check for unmerged  branches, pending stashes</li>
-					<li>if task and issue complete; close issue; delete task and local branch</li>
-					<li>address any unmerged branches and/or pending stashes</li>
-				</ul>
-				</div><!-- wf-close -->
-			</div><!-- dq -->
-		</div><!-- indent -->
-	<h5>[Archive Repository]</h5>
-	<h5>Review</h5><ul>	<!-- git gs\todo: incorporate -->
-		<li>Evaluate completeness of solution as specified.</li>
-		<li>Evaluate completeness of automated and, if required, manual testing.</li>
-		<li>Verify test completeness and results.</li>
-		<li>Review code for cleanness, refactoring opportunities, ...</li>
-	</ul>
-</div><!-- page-break-before: always -->
-	<!-- @marker "Release and Hotfix Branches" -->
-	<div style="background-color: #e2faff">
-	<h3 id='Release_Hotfix_Workflows_' class="wf-release-hotfix">Release and Hotfix Workflows</h3><ul>
-		<p><strong>WARNING:</strong>PUSH from master is prohibited to prevent pollution of the release branch.</p>
-		<li>if Release, make sure all intended branches and stashes for this release are successfully merged<ul>
-			<li>cleanup old branches and stashes; <a href="#wf_Develop">develop</a> / commit / publish if indicated</li>
-		</ul></li>
-	<div class="wf-hotfix">
-	<h5>Create Release or Hotfix Branch</h5><div class="wf-createRelease">
-		<h6>Prepare Branches</h6><ul>
-		<li>cleanup existing branches and stashes<ul>
-			<li>stash any other active branches<ul>
-				<li>for Hotfix, may need to be selective to save time, but prepare stable base for Hotfix</li>
-			</ul></li>
-		</ul></li>
-	</ul>
-	<h6>Revision Number</h6><ul>
-		<li>select semantic version number/name, eg. v1.0.1</li>
-		<li>establish milestone and parent version<ul>
-			<li>Hotfix branch:<ul>
-				<li>add milestone 'v&lt;versionNum&gt;'; describe hotfix in milestone text</li>
-				<li>parent is the tip of the most recent release</li>
-			</ul></li>
-			<li>Release branch:<ul>
-				<li>rename milestone nextVersion to 'v&lt;versionNum&gt;'; edit existing content to release description</li>
-				<li>add new milestone nextVersion; transfer any open tasks there</li>
-				<li>parent is master branch</li>
-			</ul></li>
-		</ul></li>
-		<li class="bold-italic">versionName is now 'v&lt;versionNum&gt;'</li>
-	</ul>
-</ul></div>
-	<div class="wf-openTask"><ul>
-		<li>GitHub: from repository's Code tab, select "&lt;n&gt; releases"; create and save draft of revision &lt;versionName&gt;</li>
-		<li>TCP (test; [commit, push])</li>
-		<li>ensure parent branch is checked out<ul>
-			<li>when parent is not master, use <span class="mono">git checkout -b release-&lt;versionName&gt; &lt;parentTag&gt;</span></li>
-		</ul></li>
-		<li>create task 'release-&lt;versionName&gt;' based on parent branch</li>
-	</ul></div>
-	<div class="wf-developCommit"><ul>
-		<li>Hotfix: cycles <a href="#wf_Develop">develop/TCP</a> as indicated</li>
-	</ul></div>
+					<li>cycles <a href="#wf_Develop">Develop</a> as indicated to fix</li>
+				</ul></li>
+			<li>GitHub: from repository's Code tab, select "&lt;n&gt; releases"; create and save draft of revision &lt;versionName&gt;</li>
+			<li>add milestone 'v&lt;versionNum&gt;'; describe Revision goal in milestone text</li>
+		</ul>
+		</div>
+	</div><!-- wf_release-hotfix -->
 	<div class="wf-publish"><ul>
-		<li>TCP</li>
-		<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt; to release milestone</span></li>
-		<li>bump version: change all version numbers that appear in product<ul>
-			<li>change version numbers in most project files</li>
-			<li>...</li>
+			<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt; to release milestone</span></li>
+			<li>bump version: change all version numbers that appear in product<ul>
+				<li>change version numbers in most project files</li>
+				<li>(continue)</li>
+			</ul></li>
+			<li>commit ("bump version to &lt;versionName&gt;"); push</li>
+			<li>Git &gt; tag &lt;versionName&gt;"; push branch and tags</li>
+		</ul>
+		<li><span class="bold-italic">versionName is now 'v&lt;versionNum&gt;'</span></li>
+		<li>Finish<div class="wf-close"><ul>
+			<li>update master from release</li>
+			<li>master branch; merge in tagged release branch; test; [commit]; PUSH</li>
+			<li>GitHub: from draft of Release: add product if indicated; publish</li>
+			<li>delete branch: <span class="step">set tb=targetBranch</span> <span class="step">git branch -d $tb</span>
+				<span class="step">git push origin --delete $tb</span></li>
 		</ul></li>
-		<li>commit ("bump version to &lt;versionName&gt;"); push</li>
-		<li>Git &gt; tag &lt;versionName&gt;"; push branch and tags</li>
-	</ul></div>
-	<h5>Code Review</h5><div class="wf-triggerReview"><ul>
-		<li>change Waffle label from Waffle:in progress to Waffle:needs review</li>
-		<li>NO MORE UPDATES from master</li>
-		<li>for identified changes needed:<ul>
-			<li>create task/branch based on tagged branch</li>
-			<li>ginfo.sh; TCP; edit; test; add/stage; TCP</li>
-		</ul></li>
-	</ul></div>
-	<h5>Finish</h5><div class="wf-close"><ul>
-		<li>if indicated, update master from release</li>
-		<li>master branch; merge in tagged release branch; test; [commit]; PUSH</li>
-		<li>GitHub: from draft of Release: add product if indicated; publish</li>
-		<li>delete branch: <span class="step">set tb=targetBranch</span> <span class="step">git branch -d $tb</span>
-			<span class="step">git push origin --delete $tb</span></li>
-	</ul></div>
+	</div><!-- wf-publish -->
 	<h5>[ Archive Repository ]</h5>
-	</div>
-</div>
+
 <div style="page-break-before: always">
 	<!-- @marker "Workflow Subtasks" -->
 	<h3>Workflow Subtasks</h3>
@@ -415,6 +356,7 @@
 		<!-- @topicItem "Rebase Commits" "#RebaseCommits" "0" "" -->
 		<!-- @topicItem "emacs Commands" "#emacsCommands" "0" "" -->
 	<!-- @/topicList -->
+	</div>
 
 	<div style="background-color: #deedf8">
 		<!-- @marker "Naming Conventions" -->
@@ -422,31 +364,31 @@
 			<li>feature branches and associated tasks: &lt;task-desc&gt;-#&lt;issueNum&gt;</li>
 			<li>release branches and associated tasks: <span class="mono">release-v&lt;versionNum&gt;</span></li>
 			<li>hotfix branches and associated tasks: <span class="mono">hotfix-v&lt;versionNum&gt;</span></li>
-		</ul>
+		</ul><!-- Naming Conventions -->
 
 		<!-- @marker "Commit Message Conventions" -->
 		<h6 id='commitMessageConventions'>Commit Message Conventions</h6><ul>
-			<li><em>GitHub and Waffle take actions based on some appearances of issueIDs in commit messages</em></li>
+			<li><em>actions are taken based on some appearances of issueIDs in commit messages</em></li>
 			<li>to close associated issue: add (close | fix | resolve)#&lt;issueID&gt; to commit message</li>
 			<li>to connect to another issue: connect#&lt;ID&gt;</li>
-		</ul>
+		</ul><!-- Commit Message Conventions -->
 
 
 		<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
 			<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
-		</ul>
+		</ul><!-- Compare Revisions -->
 
 		<h6 id='adminCompareAncestry'>Compare Ancestry</h6><ul>
 			<li><span class='em'>Ancestry</span>: (<span class='mono'>difftool --name-status first...second; lg first..second</span>)</li>
 			<li class='ital'>difference between Compare Revisions and Compare Ancestry is the extra dot in difftool for Ancestry</li>
-		</ul>
+		</ul><!-- adminCompareAncestry -->
 
 		<h6 id="adminDebugLogging">Bash Debug Logging</h6><ul>
 			<li>add logger Live Template to code: `logger "$0#$LINENO: | #"`</li>
 			<li>enter information to be logged at cursor, &lt;logtag&gt; content after '#'</li>
 			<li>run code to make entries in syslog</li>
 			<li>Terminal: <span class="mono">syslog | grep "#&lt;logtag&gt;"</span> to display tagged information</li>
-		</ul>
+		</ul><!-- Logging -->
 
 		<h6 id='adminResolveConflicts'>Resolve Conflicts</h6><ul>
 			<li>status</li>
@@ -481,7 +423,7 @@
 			<li class="mono">git rebase -i HEAD~&lt;#commits&gt;</li>
 			<li>edit commands (pick, squash, reword, ...); save<ul>
 				<li>for reword: edit messages as they are shown</li>
-				<li>for rebase: <ul>
+				<li>for rebase:<ul>
 					<li>git rebase --continue</li>
 					<li>edit comment; save</li>
 				</ul></li>
@@ -497,9 +439,8 @@
 	</div></div>
 
 <!-- @marker "Git Tasks" -->
-<div style="page-break-before: always">
+<div style="page-break-before: always"></div>
 <h2>Git Tasks</h2>
-</div>
 <!-- @topicList "Git Tasks" "GitTasks_" -->
 	<!-- @topicItem "NewRepo" "#tsk_NewRepo" "0" "" -->
 	<!-- @topicItem "Branch" "#tsk_Branch" "1" "" -->
