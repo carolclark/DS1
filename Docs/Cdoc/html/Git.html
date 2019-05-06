@@ -196,28 +196,28 @@
 		</ul></li><!-- end Push -->
 	</ul><!-- end Workflow Steps -->
 	<h5>Processes</h5><ul>
-			<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
-				<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
-					fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
-					test; commit; <span class="step"><a href="#ws_push">push</a></span> master;
-					[ gd origin origin/master ] (should be empty)</li>
-			</ul></li><!-- ws_SyncMaster -->
-			<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
-				<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
-					<span class="step"><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</span>;
-					merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;;
-					[ gd -- origin/target ]</li>
-			</ul></li>
-			<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
-				<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
-					<span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>; test;
-					merge in branch; test; <span class="step"><a href="#ws_push">push</a> master</span>
-				</li>
-			</ul></li><!-- ws_MergeBranch -->
-		</ul><!-- Processes -->
+		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
+			<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
+				fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
+				test; commit; <span class="step"><a href="#ws_push">push</a></span> master;
+				[ gd origin origin/master ] (should be empty)</li>
+		</ul></li><!-- ws_SyncMaster -->
+		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
+			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
+				<span class="step"><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</span>;
+				merge in master; test; <span class="step"><a href="#ws_push">push</a></span> &lt;target&gt;;
+				[ gd -- origin/target ]</li>
+		</ul></li><!-- Update Branch -->
+		<li id="ws_MergeBranch"><span class="step">Merge Branch:</span> <span class="ital">merge branch into main line of development</span><ul>
+			<li><span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
+				<span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>; test;
+				merge in branch; test; <span class="step"><a href="#ws_push">push</a> master</span>
+			</li>
+		</ul></li><!-- ws_MergeBranch -->
+	</ul><!-- Processes -->
 
 <h4>While Issue Not Complete &nbsp;&nbsp;<span class='wf-developStart'>&lt;== start here</span></h4>
-	<h5>While Task(s) Not Complete</h5><div class="indent">
+	<h5>While Task(s) Not Complete</h5>
 		<div class="wf-openTask">
 			<h6>OpenTask</h6><ul>
 				<li>verify no pending changes; clean up stashes</li>
@@ -228,7 +228,7 @@
 					</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
 			</ul><!-- wf-openTask -->
 		</div>
-	</div><!-- indent -->
+	</div>
 	<div class="indent2">
 		<div class="wf-developCommit">
 			<h6><a id="wf_Develop">Develop/Commit</a></h6><ul>
@@ -265,15 +265,16 @@
 				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> master</li>
 				<li>[Backup Database with suffix &lt;id&gt;-&lt;issuenum&gt;-&lt;date&gt;]</li>
 			</ul>
-		</div><!-- wf-publish -->
+		</div><!-- wf-publish --></div>
 		<div class="wf-triggerReview">
 			<h6><a id="TriggerReview_">Trigger Review</a></h6><ul>
 				<li>check git status, log</li>
 				<li>UpSource: select commit; trigger review</li>
 			</ul>
- 		<h5>[Archive Repository]</h5>
 	</div><!-- indent -->
-</div><!-- wf-feature -->
+	<h5>[Archive Repository]</h5>
+
+<!-- wf-feature -->
 
 <div style="page-break-before: always"></div>
 <h3 id="CodeReview">Code Review</h3><div class="wf-Review">
@@ -282,6 +283,7 @@
 			<li>Evaluate completeness of solution as specified.</li>
 			<li>Evaluate completeness of automated and, if required, manual testing</li>
 			<li>Verify test completeness and results.</li>
+			<li>Check documentation that should have been updated.r</li>
 			<li>Review code for cleanness, refactoring opportunities, ...</li>
 		</ul></li>
 	</ul>
@@ -296,7 +298,7 @@
 <div style="background-color: #e2faff">
 <h3 id='Release_Hotfix_Workflow_' class="wf-release-hotfix">Release and Hotfix Workflow</h3>
 	<div class="wf_release-hotfix">
-		<h6><span class="warning">CAUTION: This workflow is tentative; we have not yet done these procedures</span></h6>
+	<h6><span class="warning">CAUTION: This workflow is tentative; we have not yet done these procedures</span></h6>
 		<h5><a name="wf_release-hotfix">Release or Hotfix Branch</a></h5>
 		<div class="wf-createRelease">
 			<h6>Clean Up Branches</h6><ul>
@@ -320,17 +322,18 @@
 		</ul>
 		</div>
 	</div><!-- wf_release-hotfix -->
+	<div class="wf-bump-version"><ul>
+		<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt; to release milestone</span></li>
+		<li>bump version: change all version numbers that appear in product<ul>
+			<li>change version numbers in most project files</li>
+			<li>(continue)</li>
+		</ul></li>
+		<li>commit ("bump version to &lt;versionName&gt;"); push</li>
+		<li>Git &gt; tag &lt;versionName&gt;"; push branch and tags</li>
+	</ul>
+	<li><span class="bold-italic">versionName is now 'v&lt;versionNum&gt;'</span></li>
 	<div class="wf-publish"><ul>
-			<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt; to release milestone</span></li>
-			<li>bump version: change all version numbers that appear in product<ul>
-				<li>change version numbers in most project files</li>
-				<li>(continue)</li>
-			</ul></li>
-			<li>commit ("bump version to &lt;versionName&gt;"); push</li>
-			<li>Git &gt; tag &lt;versionName&gt;"; push branch and tags</li>
-		</ul>
-		<li><span class="bold-italic">versionName is now 'v&lt;versionNum&gt;'</span></li>
-		<li>Finish<div class="wf-close"><ul>
+		<li>Publish<div class="wf-close"><ul>
 			<li>update master from release</li>
 			<li>master branch; merge in tagged release branch; test; [commit]; PUSH</li>
 			<li>GitHub: from draft of Release: add product if indicated; publish</li>
