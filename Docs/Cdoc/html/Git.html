@@ -14,13 +14,6 @@
 			color: #000;
 		}
 
-		span.wf-developStart {
-			font-style: italic;
-			font-size: 75%;
-			font-weight: normal;
-			color: forestgreen;
-		}
-
 		span.bold-italic {
 			font-weight: bold;
 			font-style: italic;
@@ -67,7 +60,7 @@
 		div.wf-triggerReview {
 			border: 8px none mediumpurple;border-left-style: solid;
 		}
-		div.wf-close {
+		div.wf-publish {
 			border: 8px none purple;border-left-style: solid;
 		}
 
@@ -174,17 +167,17 @@
 <!-- @marker "Feature Branch Workflow" -->
 <div class="wf-feature">
 <h3 id='Feature_Branch_Workflow_'>Feature Branch Workflow</h3>
-	<h4>While Issue Not Complete &nbsp;&nbsp;<span class='wf-developStart'>&lt;== start here</span></h4>
-	<h5>While Task(s) Not Complete</h5>
-	<div class="wf-openTask">
-		<h6>OpenTask</h6><ul>
-		<li>verify no pending changes; clean up stashes</li>
-		<li><strong>New Task</strong>: <span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
-			new task from master with branch, task name &lt;productID&gt;-&lt;issueID&gt;-short-desc; test;
-			<span class="step"><a href="#ws_push">push</a></span></li>
-		<li>or <strong>Existing Task</strong>: switch to task; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a>;
-					</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
-	</ul><!-- wf-openTask -->
+	<h4>While Issue Not Complete</h4>
+		<h5>While Task(s) Not Complete</h5>
+		<div class="wf-openTask">
+			<h6>OpenTask</h6><ul>
+			<li>verify no pending changes; clean up stashes</li>
+			<li><strong>New Task</strong>: <span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
+				new task from master with branch, task name &lt;productID&gt;-&lt;issueID&gt;-short-desc; test;
+				<span class="step"><a href="#ws_push">push</a></span></li>
+			<li>or <strong>Existing Task</strong>: switch to task; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a>;
+						</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
+		</ul><!-- wf-openTask -->
 	</div>
 </div>
 <div class="indent2">
@@ -227,11 +220,11 @@
 <div class="wf-triggerReview">
 	<h6><a id="TriggerReview_">Trigger Review</a></h6><ul>
 	<li>check git status, log</li>
-	<li>UpSource: select commit; trigger review</li>
+	<li>UpSource: select commit; [ trigger review ]</li>
 </ul>
 </div><!-- indent -->
 <h5>[Archive Repository]</h5>
-	<h5>* (Workflow Steps)</h5><ul>
+	<h5>* (Workflow SubSteps)</h5><ul>
 		<li id="ws_setBranch"><span class="step">Set Branch:</span> <span class="ital">set active branch; all UI views show target branch</span><ul>
 			<li>set Task; Terminal: press "return" to show current branch; match Task, Terminal, and branch</li>
 		</ul></li><!-- ws_setBranch -->
@@ -252,7 +245,7 @@
 			<li>fetch; [merge if changed]; push</li>
 		</ul></li><!-- end Push -->
 	</ul><!-- end Workflow Steps -->
-	<h5>* (Processes)</h5><ul>
+	<h5>* (Workflow SubProcesses)</h5><ul>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
 			<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
 				fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
@@ -331,8 +324,8 @@
 		<li>Git &gt; tag &lt;versionName&gt;"; push branch and tags</li>
 	</ul>
 	<li><span class="bold-italic">versionName is now 'v&lt;versionNum&gt;'</span></li>
-	<div class="wf-publish"><ul>
-		<li>Publish<div class="wf-close"><ul>
+	<div class="wf-publish">
+		<li>Publish<ul>
 			<li>update master from release</li>
 			<li>master branch; merge in tagged release branch; test; [commit]; PUSH</li>
 			<li>GitHub: from draft of Release: add product if indicated; publish</li>
@@ -341,6 +334,7 @@
 		</ul></li>
 	</div><!-- wf-publish -->
 	<h5>[ Archive Repository ]</h5>
+</div>
 
 <div style="page-break-before: always">
 	<!-- @marker "Workflow Subtasks" -->
@@ -358,7 +352,7 @@
 		<!-- @topicItem "Rebase Commits" "#RebaseCommits" "0" "" -->
 		<!-- @topicItem "emacs Commands" "#emacsCommands" "0" "" -->
 	<!-- @/topicList -->
-	</div>
+</div>
 
 	<div style="background-color: #deedf8">
 		<!-- @marker "Naming Conventions" -->
