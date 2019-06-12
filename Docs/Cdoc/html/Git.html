@@ -100,20 +100,15 @@
 <!-- @/topicList -->
 
 <!-- @marker "Branches and Releases" -->
-<h2>Branches and Releases</h2>
-<!-- @topicList "Branches and Releases" "Branches_Releases_" -->
-	<!-- @topicItem "Feature Branches" "#FeatureBranches_" "0" "" -->
-	<!-- @topicItem "Release Branches" "#Releases_" "0" "" -->
-	<!-- @topicItem "Hotfix Branches" "#wf_release-hotfix" "0" "" -->
-<!-- @/topicList -->
+<h2 id="Branches_Releases_">Branches and Releases</h2>
 
-<!-- overview\summary --><ul>
+<ul>
 	<li>Repositories are hosted at GitHub.</li>
 	<li>Work is organized around YouTrack issues.
 	YouTrack Epic issues with swimlanes group other issues into larger goals.</li>
 	<li>Tasks are a fundamental element in our workflow. IntelliJ, our primary collection of IDEs, supports Tasks, each normally associated with a YouTrack task.</li>
 	<li>YouTrack Agile boards, one each for backlog refinement and for development, help us to organize our work on epics, stories, and features.</li>
-</ul><!-- overview\summary -->
+</ul>
 
 <!-- @marker "Branch Types" -->
 <h4 id='BranchesTypes_'>Branch Types</h4><ul>
@@ -224,6 +219,7 @@
 </ul>
 </div><!-- indent -->
 <h5>[Archive Repository]</h5>
+<hr />
 	<h5>* (Workflow SubSteps)</h5><ul>
 		<li id="ws_setBranch"><span class="step">Set Branch:</span> <span class="ital">set active branch; all UI views show target branch</span><ul>
 			<li>set Task; Terminal: press "return" to show current branch; match Task, Terminal, and branch</li>
@@ -306,7 +302,7 @@
 					<li>create 'release-&lt;versionName&gt;' based on tag where issue first appears</li>
 					<li>ensure parent branch is checked out<ul>
 						<li>if parent is not master, use <span class="mono">git checkout -b release-&lt;versionName&gt; &lt;parentTag&gt;</span></li>
-					</ul>
+					</ul></li>
 					<li>cycles <a href="#wf_Develop">Develop</a> as indicated to fix</li>
 				</ul></li>
 			<li>GitHub: from repository's Code tab, select "&lt;n&gt; releases"; create and save draft of revision &lt;versionName&gt;</li>
@@ -314,7 +310,8 @@
 		</ul>
 		</div>
 	</div><!-- wf_release-hotfix -->
-	<div class="wf-bump-version"><ul>
+	<div class="wf-bump-version">
+		<h6>Bump Version</h6><ul>
 		<li>add result of <span class="mono">git cherry -v &lt;mostRecentTag&gt; to release milestone</span></li>
 		<li>bump version: change all version numbers that appear in product<ul>
 			<li>change version numbers in most project files</li>
@@ -322,21 +319,21 @@
 		</ul></li>
 		<li>commit ("bump version to &lt;versionName&gt;"); push</li>
 		<li>Git &gt; tag &lt;versionName&gt;"; push branch and tags</li>
-	</ul>
-	<li><span class="bold-italic">versionName is now 'v&lt;versionNum&gt;'</span></li>
+	</ul></div>
+	<p><span class="bold-italic">versionName is now 'v&lt;versionNum&gt;'</span></p>
 	<div class="wf-publish">
-		<li>Publish<ul>
+		<h6>Publish</h6><ul>
 			<li>update master from release</li>
 			<li>master branch; merge in tagged release branch; test; [commit]; PUSH</li>
 			<li>GitHub: from draft of Release: add product if indicated; publish</li>
 			<li>delete branch: <span class="step">set tb=targetBranch</span> <span class="step">git branch -d $tb</span>
 				<span class="step">git push origin --delete $tb</span></li>
-		</ul></li>
+		</ul>
 	</div><!-- wf-publish -->
 	<h5>[ Archive Repository ]</h5>
 </div>
 
-<div style="page-break-before: always">
+<div style="page-break-before: always"></div>
 	<!-- @marker "Workflow Subtasks" -->
 	<h3>Workflow Subtasks</h3>
 	<!-- @topicList "Workflow Subtasks" "workflowSubtasks" -->
@@ -352,7 +349,6 @@
 		<!-- @topicItem "Rebase Commits" "#RebaseCommits" "0" "" -->
 		<!-- @topicItem "emacs Commands" "#emacsCommands" "0" "" -->
 	<!-- @/topicList -->
-</div>
 
 	<div style="background-color: #deedf8">
 		<!-- @marker "Naming Conventions" -->
@@ -368,7 +364,6 @@
 			<li>to close associated issue: add (close | fix | resolve)#&lt;issueID&gt; to commit message</li>
 			<li>to connect to another issue: connect#&lt;ID&gt;</li>
 		</ul><!-- Commit Message Conventions -->
-
 
 		<h6 id='adminCompareRevisions'>Compare Revisions</h6><ul>
 			<li><span class='em'>Compare</span>: (<span class='mono'>difftool --name-status first..second; lg first..second</span>)</li>
@@ -432,7 +427,7 @@
 			<li>cut: rW; copy: oW; paste: rY</li>
 		</ul>
 
-	</div></div>
+	</div>
 
 <!-- @marker "Git Tasks" -->
 <div style="page-break-before: always"></div>
