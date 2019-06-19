@@ -171,7 +171,7 @@
 				new task from master with branch, task name &lt;productID&gt;-&lt;issueID&gt;-short-desc; test;
 				<span class="step"><a href="#ws_push">push</a></span></li>
 			<li>or <strong>Existing Task</strong>: switch to task; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a>;
-						</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
+				</span>commit; test; <span class="step"><a href="#ws_push">push</a></span></li>
 		</ul><!-- wf-openTask -->
 	</div>
 </div>
@@ -191,7 +191,7 @@
 			</ul></li>
 		</ul></li>
 	</ul>
-		<h6><a id="wf_push">Push / Review</a></h6><ul>
+		<h6>Push / Review</h6><ul>
 		<li><span class="step"><a href="#ws_push">push</a></span>; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
 			<a href="#TriggerReview_">Trigger Review</a> as indicated
 		</li>
@@ -222,25 +222,24 @@
 <h5>[Archive Repository]</h5>
 <hr />
 	<h5>* (Workflow SubSteps)</h5><ul>
-		<li id="ws_setBranch"><span class="step">Set Branch:</span> <span class="ital">set active branch; all UI views show target branch</span><ul>
+		<li id="ws_setBranch"><span class="step">Set Branch:</span> <span class="ital">set active branch; all IDE views show target branch</span><ul>
 			<li>set Task; Terminal: press "return" to show current branch; match Task, Terminal, and branch</li>
 		</ul></li><!-- ws_setBranch -->
 		<li id="ws_commit"><span class="step">Commit:</span> <span class="ital">all commits</span><ul>
 			<li>use IntelliJ's commit (currently crK) for git message support</li>
 		</ul></li><!-- ws_Commit -->
 		<li id="ws_merge"><span class="step">Merge:</span> <span class="ital">merge another branch into current branch</span><ul>
-			<li>preview: <span class='mono'><span class="prompt">$</span> git difftool HEAD origin</span>; then:<ul>
-				<li>if indicated, handle some individual change groups first</li>
-				<li>fetch/merge	<span class='mono'>(&nbsp;<span class="prompt">$&nbsp;</span>
-					git fetch [-v] origin [--dry-run]; git merge --no-ff</span>)</li>
-			</ul></li><!-- end Preview -->
-			<li>to undo Merge if needed: <span class="mono"><span class="prompt">$ </span>git reflog</span>
-				to identify previous entry as target SHA-1;
-				<span class="mono"><span class="prompt">$ </span>git reset --merge &lt;target&gt;</span></li><!-- end undo-->
-		</ul></li><!-- end Merge-->
-		<li id="ws_push"><span class="step">Push:</span>  <span class="ital">push current local branch to its remote</span><ul>
-			<li>fetch; [merge if changed]; push</li>
-		</ul></li><!-- end Push -->
+			<li>preview???<span class='mono'><span class="prompt">$</span> git difftool HEAD origin</span></li>
+			<li>fetch/merge:&nbsp;&nbsp;<span class='mono'><span class="prompt">$&nbsp;</span>
+				git fetch [-v] origin [--dry-run]; git merge --no-ff</span><ul>
+				<li><em>to undo Merge</em>: <span class="mono">
+					[ <span class="prompt">$ </span>git reflog</span>: find target SHA-1 from previous entry;
+					<span class="mono"><span class="prompt">$ </span>git reset --merge &lt;target&gt;</span> ]</li>
+			</ul></li><!-- end Merge--><!-- end undoMerge-->
+		</ul></li>
+		<li id="ws_push"><span class="step">Push</span><span class="ital">&nbsp;&nbsp;push current local branch to its off-site remote</span><ul>
+			<li>push (current keycode roK); in push dialog, verify commits are as expected</li>
+		</ul></li>
 	</ul><!-- end Workflow Steps -->
 	<h5>* (Workflow SubProcesses)</h5><ul>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
