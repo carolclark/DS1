@@ -243,10 +243,7 @@
 	</ul><!-- end Workflow Steps -->
 	<h5>* (Workflow SubProcesses)</h5><ul>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
-			<li><span class="step"><a href="#ws_setBranch">Set Branch</a> master</span>;
-				fetch/<span class="step"><a href="#ws_merge">merge</a></span> origin/master;
-				test; commit; <span class="step"><a href="#ws_push">push</a></span> master;
-				[ gd origin origin/master ] (should be empty)</li>
+			<li>checkout branch master; git difftool origin/master; git difftool origin master (both should be empty)</li>
 		</ul></li><!-- ws_SyncMaster -->
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
