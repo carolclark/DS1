@@ -404,16 +404,16 @@
 		</ul></li>
 		<li>Teams<ul>
 			<li>add any new team members @ Users</li>
-			<li>select each User; Verify/Assign Groups and Roles<ul>
+			<li>Users: Verify/Assign Groups and Roles<ul>
 				<li>user admin<ul>
-					<li>Roles: Global System Admin; &lt;ProjectName&gt; Project Admin for each project</li>
-					<li>Group: Registered Users with Role Observer</li>
+					<li>2 Roles: Global System Admin, &lt;ProjectName&gt; Project Admin</li>
+					<li>1 Group: Registered Users with Role Observer</li>
 				</ul></li>
 				<li>user &lt;IntendedProjectOwner&gt;<ul>
-					<li>Roles: Project Admin for each &lt;ProjectName&gt;</li>
-					<li>Group: Registered Users with Role Observer</li>
+					<li>1 Role: &lt;ProjectName&gt; Project Admin</li>
+					<li>1 Group: Registered Users with Role Observer</li>
 				</ul></li>
-				<li>Guest: Role Observer for each project</li>
+				<li>Guest: Role Observer</li>
 			</ul></li>
 		</ul></li>
 		<li>in Users list, select &lt;IntendedProjectOwner&gt; and assign Project Owner</li>
@@ -428,11 +428,10 @@
 	<li>YouTrack: Settings<ul>
 		<li>Project Page: Add Issue Tracker Service; Project Type: Kanban</li>
 		<li>Integrations : VCS Integrations<ul>
-			<li>from Issues List: New VCS Integration<ul>
+			<li>New VCS Integration<ul>
 				<li>connect to GitHub repo</li>
 				<li>click link to generate Auth token; copy</li>
-				<li>in YouTrack, paste into OAuth field; generate token</li>
-				<li>copy token; paste into request</li>
+				<li>in YouTrack, paste into OAuth field</li>
 			</ul></li>
 		</ul></li>
 		<li>set &lt;repo&gt;; &lt;projectName&gt;; owned by admin</li>
@@ -443,7 +442,7 @@
 
 <!-- @marker "YT: Add Custom Tags" -->
 <h4 id="YT_AddCustomTags_">YT: Add Custom Tags</h4><ul>
-	<li>login as Project Owner; goto issues list</li>
+	<li>login as Project Owner</li>
 	<li>Custom Tags<ul>
 		<li>'Blocked' (pink4): development is Blocked waiting for something</li>
 	</ul></li>
@@ -518,8 +517,10 @@
 				<tr class="subhead"><td colspan="3">Roadmap Columns</td></tr>
 				<tr class="nc"><td>Epic</td>
 					<td>'Epic' represents a goal containing several Stories.</td>
-					<td>Verify that all existing subitems are done and all goals have been attained.<br	/>
-						Mark as done, or trigger review and leave on board for ongoing efforts.</td></tr>
+					<td>to Review: Normally, add a Feature, Task, ... to review<br />
+						Standard method is to assume "Done" if all existing subitems are complete. We disagree.<br />
+						Move to Review if all subissues have been resolved and no further work is expected.
+					</td></tr>
 				<tr class="nc"><td>Story</td>
 					<td class="nc">Stage "Story" anchors a story for development.
 						<br />serves as swimlane on a -develop Board<br />
@@ -536,11 +537,9 @@
 				<tr class="subhead"><td colspan="3">Shared Column</td></tr>
 				<tr class="nc"><td>Open</td><td>last column in _Roadmap; first column in -develop</td><td></td></tr>
 				<tr class="subhead"><td colspan="3"></td></tr>
-				<tr class="nc"><td>Test</td><td>establish desired result</td><td></td></tr>
 				<tr class="nc"><td>Develop</td><td>develop as specified</td><td></td></tr>
-				<tr class="nc"><td>Done</td><td></td><td>triggers review</td></tr>
-				<tr class="nc"><td>Review</td><td>try to come at this work from a fresh perspective</td>
-					<td>reviewer proposes changes by adding new issues, possibly Bugs or refactorings</td></tr>
+				<tr class="nc"><td>Review</td><td>try to come at this work from a fresh perspective</td></tr>
+				<tr class="nc"><td>Verified</td><td>Issue is complete</td><td>Resolved</td></tr>
  				<tr class="subhead"><td colspan="3">Resolution for Issues Not Fixed</td></tr>
 				<tr class="nc"><td>Duplicate</td><td>see YouTrack Duplicate handling</td> <td></td></tr>
 				<tr class="nc"><td>WillNotFix</td><td></td> <td></td></tr>
@@ -550,7 +549,8 @@
 				<tr class="nc"><td>Incomplete</td><td></td> <td></td></tr>
 				<tr class="nc"><td>Obsolete</td><td></td><td></td></tr>
 			</table></td></tr>
-	</table></div><!--close div "info"--><!-- @marker "Other Attached Fields" -->
+	</table>
+	<!-- @marker "Other Attached Fields" -->
 	<h5 id="OtherAttachedFields_">Other Attached Fields</h5>
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Default</th><th>Empty</th><th>Type</th><th>Aliases</th><th>Comments</th><th>Details</th></tr>
@@ -566,6 +566,7 @@
 			<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 				on which our versioning plan is based</td></tr>
 	</table>
+</div>
 
 <!-- @marker "Notification Templates" -->
 <div  class="indent">
@@ -790,7 +791,7 @@
 				so make change after each upgrade</li>
 		</ul></li>
 		<li><a href="#CommandLineTools_">Restart Tool</a></li>
-		<li>... \todo ...</li>
+		<li>...</li>
 		<li>configure and execute<a href="#BackupToTag_">backup</a> to tag 'initial_installed'</li>
 	</ul></li>
 </ul>
