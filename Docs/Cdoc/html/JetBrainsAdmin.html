@@ -74,10 +74,8 @@
 	<li>We use test-first agile development with Kanban and BDD.</li>
 	<li>YouTrack's 'fixed in build' and 'fix version' fields:<ul>
 		<li>associate bug issues with the build and the release version in which they were fixed</li>
-		<li>We associate the version number when the product is ready for 'release',
-			as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
-			on which our <a href="Git.html#ReleaseBranches_">semantic versioning plan</a> is based.</li>
-		<li>'fix version' follows semantic versioning, eg. 18.2.1</li>
+		<li>We associate the version number when the product is ready for 'release'.
+			'fix version' field also follows semantic versioning, eg. 1.0.6</li>
 		<li>release version numbers are assigned on release version completion (ch_releaseVersions)</li>
 	</ul></li>
 	<li>We do not do deadlines.</li>
@@ -567,7 +565,7 @@
 		<tr class="nc"><td>ReleaseVersions</td><td>N/A</td><td>Not Released</td><td>version, multiple</td><td>release</td><td>prefix numeric string with 'v'</td>
 			<td>use syntax-based versioning as recommended by <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>,
 				on which our versioning plan is based</td></tr>
-		</table>
+	</table>
 </div>
 
 <!-- @marker "Notification Templates" -->
@@ -789,9 +787,9 @@
 		<li>copy <span class="mono">teamcity-startup.properties</span>,
 			<span class="mono">teamcity.jvmoptions</span>, <span class="mono">youtrack.jvmoptions</span><br />
 			as applicable from project to <span class="mono">&lt;ToolFolder&gt;/conf</span><ul>
-				<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
-					so make change after each upgrade</li>
-			</ul></li>
+			<li>NOTE: for TeamCity, upgrade will overwrite some of JVM options,
+				so make change after each upgrade</li>
+		</ul></li>
 		<li><a href="#CommandLineTools_">Restart Tool</a></li>
 		<li>...</li>
 		<li>configure and execute<a href="#BackupToTag_">backup</a> to tag 'initial_installed'</li>
