@@ -6,13 +6,6 @@
 	<title>Git</title>
 	<link rel="stylesheet" type="text/css" href="../css/technical.css" />
 	<style type="text/css">
-		li.like-h6 {
-			margin-top: 5px;
-			margin-bottom: .2em;
-			padding: 0;
-			font-size: 12px;
-			color: #000;
-		}
 
 		span.bold-italic {
 			font-weight: bold;
@@ -178,23 +171,24 @@
 <div class="indent2">
 	<div class="wf-developCommit">
 		<h6><a id="wf_Develop">Develop/Commit</a></h6><ul>
-		<li>repeat to push:<ul>
-			<li>repeat to stage / commit:<ul>
-				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
-				<li>test/develop; inspect; diff modifications; [ stage files ]</li>
-			</ul></li>
-			<li class="like-h6" id='wf_Commit'>Commit<ul><!-- \todo fix 'like-h6' -->
-				<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
-				<li>inspect; test; view local changes; commit<ul>
-					<li>OR, for large and/or complicated commit: <span>git stash; git diff stash</span></li>
+			<li>repeat to push:<ul>
+				<li>repeat to stage / commit:<ul>
+					<li><span class="step"><a href="#ws_setBranch">Set Branch</a></span> &lt;target&gt;</li>
+					<li>test/develop; inspect; diff modifications; [ stage files ]</li>
+				</ul></li>
+				<li id="wf_Commit"><span class="step">Commit</span><ul>
+					<li><a href="#ws_setBranch">Set Branch</a> &lt;target&gt;</li>
+					<li>inspect; test; view local changes; commit<ul>
+						<li>OR, for large and/or complicated commit: <span>git stash; git diff stash</span></li>
+					</ul></li>
 				</ul></li>
 			</ul></li>
-		</ul></li>
-	</ul>
+		</ul>
 		<h6>Push / Review</h6><ul>
-		<li><span class="step"><a href="#ws_push">push</a></span>; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
-			<a href="#TriggerReview_">Trigger Review</a> as indicated
-		</li>
+			<li><span class="step"><a href="#ws_push">push</a></span>; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
+				<a href="#TriggerReview_">Trigger Review</a> as indicated
+			</li>
+		</ul></li>
 	</ul>
 	</div><!-- wf-developCommit -->
 </div><!-- indent2 -->
