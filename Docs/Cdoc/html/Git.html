@@ -104,20 +104,27 @@
 </ul>
 
 <!-- @marker "Branch Types" -->
-<h4 id='BranchesTypes_'>Branch Types</h4><ul>
-	<li><em>Feature</em> branches are used to develop features for a future release.
-		A feature branch is created from master, and merged back, if successful, to master.</li>
-	<li><em>Release</em> branches are used when a product is released. We manage releases with GitHub's release tool.</li>
-	<li><em>Hotfix</em> branches are used to fix bugs in released software that must be corrected before the next Release<ul>
-		<li>check out from the tag of the release to be fixed
-			(<span class="mono">git checkout tags/&lt;targetVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></li>
-	</ul></li>
-	<li><em>Branch Naming Convention</em><ul>
-		<li>(release|hotfix)-&lt;PR&gt;-&lt;issueNum&gt;-shortDesc;
-			&lt;issueNum&gt; uses <a href="https://semver.org/#semantic-versioning-200">semantic versioning</a></li>
-	</ul></li>
-	<li><a href="#WorkflowIntelliJ">Workflow: IntelliJ</a> describes our procedures for developing branches.</li>
-</ul><!-- Branch Types -->
+<h4 id='BranchesTypes_'>Branch Types</h4>
+	<h6>Git Master Branches</h6><ul>
+		<li><span class="ital">master:</span> the <span class="ital">master</span> branch in a developer's working copy</li>
+		<li><span class="ital">origin master:</span> the copy of <span class="ital">master</span> on the remote repository at GitHub</li>
+		<li><span class="ital">origin/master:</span> a local branch used by git to maintain a local copy of <span class="ital">master</span></li>
+	</ul>
+	<h6>Feature, Release and Hotfix Branches</h6><ul>
+		<li><em>Feature</em> branches are used to develop features for a future release.
+			A feature branch is created from master, and merged back, if successful, to master.</li>
+		<li><em>Release</em> branches are used when a product is released. We manage releases with GitHub's release tool.</li>
+		<li><em>Hotfix</em> branches are used to fix bugs in released software that must be corrected before the next Release<ul>
+			<li>check out from the tag of the release to be fixed
+				(<span class="mono">git checkout tags/&lt;targetVersionTag&gt; -b hotfix-&lt;versionNum&gt;)</span></li>
+		</ul></li>
+		<li><em>Branch Naming Convention</em><ul>
+			<li>(release|hotfix)-&lt;PR&gt;-&lt;issueNum&gt;-shortDesc;
+				&lt;issueNum&gt; uses <a href="https://semver.org/#semantic-versioning-200">semantic versioning</a></li>
+		</ul></li>
+		<li><a href="#WorkflowIntelliJ">Workflows: IntelliJ</a> describes our procedures for developing branches.</li>
+	</ul>
+<!-- Branch Types -->
 
 <!-- @marker "Release Management" -->
 <h4>Release Management</h4><ul>
@@ -188,8 +195,7 @@
 			<li><span class="step"><a href="#ws_push">push</a></span>; <span class="step"><a href="#ws_UpdateBranch">Update Branch</a></span>;
 				<a href="#TriggerReview_">Trigger Review</a> as indicated
 			</li>
-		</ul></li>
-	</ul>
+		</ul>
 	</div><!-- wf-developCommit -->
 </div><!-- indent2 -->
 <div class='indent'>
@@ -237,7 +243,7 @@
 	</ul><!-- end Workflow Steps -->
 	<h5>* (Workflow SubProcesses)</h5><ul>
 		<li id="ws_SyncMaster"><span class="step">Sync Master:</span> <span class="ital">synchronize local and remote master branches</span><ul>
-			<li>checkout branch master; git difftool origin/master; git difftool origin master (both should be empty)</li>
+			<li>checkout branch master; git difftool origin/master; git difftool origin master (both diffs should be empty)</li>
 		</ul></li><!-- ws_SyncMaster -->
 		<li id="ws_UpdateBranch"><span class="step">Update Branch:</span> <span class="ital">update branch with changes from master</span> <ul>
 			<li><span class="step"><a href="#ws_SyncMaster">Sync Master</a></span>;
