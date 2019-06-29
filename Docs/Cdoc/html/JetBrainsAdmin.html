@@ -473,7 +473,7 @@
 				<tr><th>Type Name</th><th>Color</th><th>Description</th><th>Comments</th></tr>
 				<tr class="subhead"><td colspan="4">Swimlane Headers</td></tr>
 				<tr class="nc"><td>Epic</td><td>orange5</td><td>'Epic' represents a goal potentially containing
-					several Stories,<br />some of which may be attached to different Epics or Projects</td>
+					several Stories,<br />some of which may depend on items from other Stories, Epics, or Projects</td>
 					<td rowspan="3">to Review:<ul>
 						<li>normally, add a task to review<ul>
 							<li>Standard method is to assume "Done" if all subitems are complete. We disagree.</li>
@@ -487,8 +487,8 @@
 					Stories are <a href="http://blog.mattwynne.net/2010/10/22/features-user-stories/">
 						orthogonal to</a> features, and may require functionality from otherwise unrelated Features.</td></tr>
 				<tr class="subhead"><td colspan="4">Tickets</td></tr>
+				<tr class="nc"><td>Ticket</td><td></td><td>represents an issue / agile board card to be completed</td><td></td></tr>
 				<tr class="nc"><td>TicketType</td><td></td><td>Feature (blue5); Scenario (blue3); Task (brown3); Bug (pink3)</td><td>conditional on Type==Ticket</td></tr>
-				<tr class="nc"><td>Ticket</td><td></td><td>represents an issue / agile board card</td><td></td></tr>
 				<tr class="nc"><td>BugClass</td><td></td><td>Cosmetic; Exception; Usability; Performance; Bug</td>
 					<td>conditional on TicketType == Bug</td></tr>
 			</table></td></tr>
@@ -498,9 +498,9 @@
 	<h5 id="KanbanState_">KanbanState</h5>
 	<table>
 		<tr class="smallHeader"><th>Name</th><th>Color</th><th>Description</th><th>Transition</th></tr>
-		<tr><td>KanbanBlocked</td><td>pink (YT default)</td><td>ticket is not ready to pull</td>
+		<tr><td>KanbanBlocked</td><td>gray</td><td>ticket is not ready to pull</td>
 			<td>If attempt is made to move card, it returns to its original KanbanState and position</td></tr>
-		<tr><td>KanbanReady</td><td>gray (YT default)</td><td>ticket is ready to pull</td>
+		<tr><td>KanbanReady</td><td>green</td><td>ticket is ready to pull</td>
 			<td>After card is moved, its Kanban State is returned to blocked</td></tr>
 	</table>
 
@@ -588,7 +588,7 @@
 
 <!-- @marker "Issue Link Types" -->
 <div class="info">
-	<h4 id="IssueLinkTypes_">Issue Link Types</h4>DS-303 docs: mark non-conformant features
+	<h4 id="IssueLinkTypes_">Issue Link Types</h4>
 	<table id="IssueLinkTypes">
 		<tr><th>Type</th><th>Outward Name</th><th>Inward Name</th><th>Direction</th><th>Comments</th></tr>
 		<tr><td>Relates</td><td>relates to</td><td>relates to</td><td>Undirected</td><td rowspan="5">default settings</td></tr>
