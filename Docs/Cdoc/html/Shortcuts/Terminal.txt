@@ -1,0 +1,98 @@
+Terminal Aliases
+==================
+
+Installation Addresses
+----------------------
+alias mysql         mysql installation
+    '/usr/local/mysql/bin/mysql'
+alias mysqladmin    mysqladmin installation
+    '/usr/local/mysql/bin/mysqladmin'
+alias hubring       TeamTools Hub
+    '/Volumes/Servers/jb/HubRing/hub-ring-bundle-2017.4.7885/bin/hub.sh '
+alias youtrack      TeamTools YouTrack
+    '/Volumes/Servers/jb/YouTrack/youtrack-2017.3.37517/bin/youtrack.sh'
+alias upsource      TeamTools UpSource
+    '/Volumes/Servers/jb/UpSource/upsource-2017.2.2197/bin/upsource.sh '
+alias teamcity      TeamTools TeamCity
+    '/Volumes/Servers/jb/TeamCity/TeamCity/bin/runall.sh '
+alias sbu           set bu to JetBrains backups
+    'bu=/Volumes/Mavericks-1/JetBrains_backups'
+
+Git
+---
+alias gaa           add all
+    'git add --all'
+alias gai           add all interactive
+    'git add --interactive'
+alias gap           add patch
+    'git add --patch'
+alias gll           log [spec] (default format)
+    'git log '
+alias gl            log [spec] (custom 'pretty' format)
+    'git lg '
+alias gs            status
+    'git status '
+alias gshn          show [whatever] abbreviated
+    'git show --name-status '
+alias gsh           show [whatever]
+    'git show '
+alias gd            difftool, currently p4merge
+    'git difftool '
+alias gdn
+    'git difftool --name-status '
+alias gdc
+    'git difftool --cached '
+alias gdcc
+    'git difftool --cached --check'
+alias gft
+    'git fetch '
+alias gfo
+    'git fetch origin '
+alias gm
+    'git mergetool '
+alias gmnf
+    'git merge --no-ff '
+alias gb
+    'git branch '
+alias gbn
+    'git branch --no-merged '
+alias gbg
+    'git branch | grep -n "[a-z,A-Z]" > ~/Library/CCDev/tmp/_GBR_; cat ~/Library/CCDev/tmp/_G
+alias gbs
+    'for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci
+alias gbas
+    'for k in `git branch -a | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen
+alias gba
+    'for k in `git branch -a | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%
+alias gcb
+    'cb=$(gb | grep "*" | cut -c 3-); echo cb: $cb'
+alias gco
+    'git checkout '
+alias gcmf
+    'git commit -F ${HOME}/Library/CCDev/tmp/msg.txt'
+alias gcsm
+    'cat "${HOME}/Library/CCDev/tmp/msg.txt"'
+alias cdsy
+    'osascript "/Users/carolclark/Library/Scripts/AppCode/TechnicalDocs_syntax.scpt"'
+alias cdln
+    'osascript "/Users/carolclark/Library/Scripts/AppCode/TechnicalDocs_links.scpt"'
+alias filemerge
+    '/Applications/Xcode.app/Contents/Applications/FileMerge.app/Contents/MacOS/FileMer
+alias gbu
+    'ghubUtil --backupIssues'
+alias cdsy
+    'osascript "/Users/carolclark/Library/Scripts/AppCode/TechnicalDocs_syntax.scpt"'
+alias cdln
+    'osascript "/Users/carolclark/Library/Scripts/AppCode/TechnicalDocs_links.scpt"'
+alias filemerge
+    '/Applications/Xcode.app/Contents/Applications/FileMerge.app/Contents/MacOS/FileMer
+alias gbu
+    'ghubUtil --backupIssues'
+alias buildCdoc
+    'Docs/Cdoc/Cdoc_install.ksh ~/Dev/DevOps/Docs Cdoc install'
+alias cdbd
+    'Docs/Cdoc/cdoc_install.ksh /Users/carolclark/Dev/DevOps/Docs Cdoc install'
+alias buildCdoc
+    'Docs/Cdoc/Cdoc_install.ksh ~/Dev/DevSupport/Docs Cdoc install'
+alias cdbd
+    'Docs/Cdoc/cdoc_install.ksh /Users/carolclark/Dev/DevSupport/Docs Cdoc install'
