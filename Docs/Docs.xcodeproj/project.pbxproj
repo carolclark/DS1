@@ -42,6 +42,7 @@
 		67F24D771D13264900CF9862 /* GitBranchingModel.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GitBranchingModel.001.png; sourceTree = "<group>"; };
 		965F803622D42B6140D05477 /* Partitions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Partitions.png; sourceTree = "<group>"; };
 		965F80AB866B6111A8406CC1 /* Workflows.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = Workflows.pcvd; sourceTree = "<group>"; };
+		965F80B62DE31E070340E7CD /* Terminal.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Terminal.txt; path = Shortcuts/Terminal.txt; sourceTree = "<group>"; };
 		965F8125BE43F87CF012F727 /* AppCode.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AppCode.html; sourceTree = "<group>"; };
 		965F812A28DCACB0B0A23C5A /* mt9@2x-135.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mt9@2x-135.jpg"; sourceTree = "<group>"; };
 		965F824C8932575EDA468EA1 /* Glossary_DevOps.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Glossary_DevOps.html; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 				965F88756EC76D8FC8228B96 /* DevSupport.html */,
 				965F8762FEE3692000438723 /* Glossary_DevSupport.html */,
 				965F824C8932575EDA468EA1 /* Glossary_DevOps.html */,
+				965F80B62DE31E070340E7CD /* Terminal.txt */,
 			);
 			path = html;
 			sourceTree = "<group>";
